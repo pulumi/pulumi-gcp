@@ -26,7 +26,6 @@ import (
 //
 // ### Machine Image Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,10 +67,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Compute Machine Image Kms
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -131,7 +128,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Internal Http Lb With Mig Backend
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -79,15 +78,15 @@ import * as utilities from "../utilities";
  * apt-get update
  * apt-get install -y nginx-light jq
  *
- * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
- * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
- * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * NAME=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
  *
  * cat <<EOF > /var/www/html/index.html
  * <pre>
- * Name: $NAME
- * IP: $IP
- * Metadata: $METADATA
+ * Name: NAME
+ * IP: IP
+ * Metadata: METADATA
  * </pre>
  * EOF
  * `,
@@ -188,10 +187,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Internal Tcp Udp Lb With Mig Backend
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -243,15 +240,15 @@ import * as utilities from "../utilities";
  * apt-get update
  * apt-get install -y nginx-light jq
  *
- * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
- * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
- * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * NAME=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
  *
  * cat <<EOF > /var/www/html/index.html
  * <pre>
- * Name: $NAME
- * IP: $IP
- * Metadata: $METADATA
+ * Name: NAME
+ * IP: IP
+ * Metadata: METADATA
  * </pre>
  * EOF
  * `,
@@ -353,10 +350,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Externallb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -384,10 +379,8 @@ import * as utilities from "../utilities";
  *     backendService: backend.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Global Internallb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -427,10 +420,8 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -442,10 +433,8 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule L3 Default
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -471,10 +460,8 @@ import * as utilities from "../utilities";
  *     allPorts: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Internallb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -514,10 +501,8 @@ import * as utilities from "../utilities";
  *     ipVersion: "IPV4",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Http Lb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -677,10 +662,8 @@ import * as utilities from "../utilities";
  *     role: "ACTIVE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Regional Http Xlb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -845,10 +828,8 @@ import * as utilities from "../utilities";
  *     role: "ACTIVE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Vpc Psc
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -930,10 +911,8 @@ import * as utilities from "../utilities";
  *     allowPscGlobalAccess: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Vpc Psc No Automate Dns
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -1013,10 +992,8 @@ import * as utilities from "../utilities";
  *     noAutomateDnsZone: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Regional Steering
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -1049,10 +1026,8 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "EXTERNAL",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Internallb Ipv6
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -1095,7 +1070,6 @@ import * as utilities from "../utilities";
  *     ipVersion: "IPV6",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

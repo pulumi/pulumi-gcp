@@ -25,7 +25,6 @@ import (
 //
 // ### Dialogflow Intent Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,10 +56,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dialogflow Intent Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -149,7 +146,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     destGroup: destGroup.groupName,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTunnelDestGroupIamPolicy(args: GetTunnelDestGroupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelDestGroupIamPolicyResult> {
 
@@ -77,7 +75,6 @@ export interface GetTunnelDestGroupIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,7 +85,6 @@ export interface GetTunnelDestGroupIamPolicyResult {
  *     destGroup: destGroup.groupName,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTunnelDestGroupIamPolicyOutput(args: GetTunnelDestGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelDestGroupIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTunnelDestGroupIamPolicy(a, opts))

@@ -14,6 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GroupAdditionalGroupKey struct {
+	// (Output)
 	// The ID of the entity.
 	// For Google-managed entities, the id must be the email address of an existing
 	// group or user.
@@ -21,14 +22,13 @@ type GroupAdditionalGroupKey struct {
 	// to the Identity Source's requirements.
 	// Must be unique within a namespace.
 	Id *string `pulumi:"id"`
+	// (Output)
 	// The namespace in which the entity exists.
 	// If not specified, the EntityKey represents a Google-managed entity
 	// such as a Google user or a Google Group.
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
-	//
-	// ***
 	Namespace *string `pulumi:"namespace"`
 }
 
@@ -44,6 +44,7 @@ type GroupAdditionalGroupKeyInput interface {
 }
 
 type GroupAdditionalGroupKeyArgs struct {
+	// (Output)
 	// The ID of the entity.
 	// For Google-managed entities, the id must be the email address of an existing
 	// group or user.
@@ -51,14 +52,13 @@ type GroupAdditionalGroupKeyArgs struct {
 	// to the Identity Source's requirements.
 	// Must be unique within a namespace.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// (Output)
 	// The namespace in which the entity exists.
 	// If not specified, the EntityKey represents a Google-managed entity
 	// such as a Google user or a Google Group.
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
-	//
-	// ***
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
@@ -113,6 +113,7 @@ func (o GroupAdditionalGroupKeyOutput) ToGroupAdditionalGroupKeyOutputWithContex
 	return o
 }
 
+// (Output)
 // The ID of the entity.
 // For Google-managed entities, the id must be the email address of an existing
 // group or user.
@@ -123,14 +124,13 @@ func (o GroupAdditionalGroupKeyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupAdditionalGroupKey) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The namespace in which the entity exists.
 // If not specified, the EntityKey represents a Google-managed entity
 // such as a Google user or a Google Group.
 // If specified, the EntityKey represents an external-identity-mapped group.
 // The namespace must correspond to an identity source created in Admin Console
 // and must be in the form of `identitysources/{identity_source_id}`.
-//
-// ***
 func (o GroupAdditionalGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupAdditionalGroupKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }

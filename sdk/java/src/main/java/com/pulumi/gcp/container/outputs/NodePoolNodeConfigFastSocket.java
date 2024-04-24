@@ -11,16 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class NodePoolNodeConfigFastSocket {
     /**
-     * @return Enable Confidential GKE Nodes for this cluster, to
-     * enforce encryption of data in-use.
+     * @return Whether or not NCCL Fast Socket is enabled
      * 
      */
     private Boolean enabled;
 
     private NodePoolNodeConfigFastSocket() {}
     /**
-     * @return Enable Confidential GKE Nodes for this cluster, to
-     * enforce encryption of data in-use.
+     * @return Whether or not NCCL Fast Socket is enabled
      * 
      */
     public Boolean enabled() {

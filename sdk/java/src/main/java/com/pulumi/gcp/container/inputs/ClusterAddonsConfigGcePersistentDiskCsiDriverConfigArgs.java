@@ -14,17 +14,9 @@ public final class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs exten
 
     public static final ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs Empty = new ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs();
 
-    /**
-     * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
-    /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
@@ -53,23 +45,11 @@ public final class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs exten
             $ = new ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

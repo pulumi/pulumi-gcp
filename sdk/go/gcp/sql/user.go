@@ -18,7 +18,6 @@ import (
 //
 // Example creating a SQL User.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,11 +65,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -139,11 +136,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -196,7 +191,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

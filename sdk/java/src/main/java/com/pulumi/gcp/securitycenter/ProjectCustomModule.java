@@ -253,32 +253,24 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
         return this.lastEditor;
     }
     /**
-     * Name of the property for the custom output.
+     * The resource name of the custom module. Its format is &#34;projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the property for the custom output.
+     * @return The resource name of the custom module. Its format is &#34;projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }

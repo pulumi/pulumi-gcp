@@ -386,7 +386,6 @@ class Domain(pulumi.CustomResource):
 
         ### Active Directory Domain Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -396,7 +395,6 @@ class Domain(pulumi.CustomResource):
             locations=["us-central1"],
             reserved_ip_range="192.168.255.0/24")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -450,7 +448,6 @@ class Domain(pulumi.CustomResource):
 
         ### Active Directory Domain Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -460,7 +457,6 @@ class Domain(pulumi.CustomResource):
             locations=["us-central1"],
             reserved_ip_range="192.168.255.0/24")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

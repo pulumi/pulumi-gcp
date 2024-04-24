@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Security Gateway Security Policy Rules Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,10 +36,8 @@ import * as utilities from "../utilities";
  *     basicProfile: "ALLOW",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Security Gateway Security Policy Rules Advanced
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -63,7 +60,6 @@ import * as utilities from "../utilities";
  *     basicProfile: "ALLOW",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

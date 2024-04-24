@@ -25,7 +25,6 @@ import (
 //
 // ### Spanner Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,10 +53,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Spanner Instance Processing Units
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,10 +83,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Spanner Instance With Autoscaling
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,10 +122,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Spanner Instance Multi Regional
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -159,7 +152,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

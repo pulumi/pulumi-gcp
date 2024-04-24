@@ -450,7 +450,6 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         ### Scan Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -461,7 +460,6 @@ class SecurityScanConfig(pulumi.CustomResource):
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -533,7 +531,6 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         ### Scan Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -544,7 +541,6 @@ class SecurityScanConfig(pulumi.CustomResource):
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

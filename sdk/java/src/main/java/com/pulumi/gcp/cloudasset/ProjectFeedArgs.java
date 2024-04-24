@@ -20,20 +20,20 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectFeedArgs Empty = new ProjectFeedArgs();
 
     /**
-     * A list of the full names of the assets to receive updates. You must specify either or both of
-     * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
-     * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
-     * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+     * A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
+     * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+     * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
+     * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      * 
      */
     @Import(name="assetNames")
     private @Nullable Output<List<String>> assetNames;
 
     /**
-     * @return A list of the full names of the assets to receive updates. You must specify either or both of
-     * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
-     * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
-     * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+     * @return A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
+     * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+     * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
+     * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      * 
      */
     public Optional<Output<List<String>>> assetNames() {
@@ -41,10 +41,9 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of types of the assets to receive updates. You must specify either or both of assetNames
-     * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
-     * the feed. For example: &#34;compute.googleapis.com/Disk&#34;
-     * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+     * A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
+     * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+     * &#34;compute.googleapis.com/Disk&#34; See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      * 
      */
@@ -52,10 +51,9 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> assetTypes;
 
     /**
-     * @return A list of types of the assets to receive updates. You must specify either or both of assetNames
-     * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
-     * the feed. For example: &#34;compute.googleapis.com/Disk&#34;
-     * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+     * @return A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
+     * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+     * &#34;compute.googleapis.com/Disk&#34; See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      * 
      */
@@ -64,20 +62,16 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project whose identity will be used when sending messages to the
-     * destination pubsub topic. It also specifies the project for API
-     * enablement check, quota, and billing. If not specified, the resource&#39;s
-     * project will be used.
+     * The project whose identity will be used when sending messages to the destination pubsub topic. It also specifies the
+     * project for API enablement check, quota, and billing. If not specified, the resource&#39;s project will be used.
      * 
      */
     @Import(name="billingProject")
     private @Nullable Output<String> billingProject;
 
     /**
-     * @return The project whose identity will be used when sending messages to the
-     * destination pubsub topic. It also specifies the project for API
-     * enablement check, quota, and billing. If not specified, the resource&#39;s
-     * project will be used.
+     * @return The project whose identity will be used when sending messages to the destination pubsub topic. It also specifies the
+     * project for API enablement check, quota, and billing. If not specified, the resource&#39;s project will be used.
      * 
      */
     public Optional<Output<String>> billingProject() {
@@ -85,24 +79,20 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A condition which determines whether an asset update should be published. If specified, an asset
-     * will be returned only when the expression evaluates to true. When set, expression field
-     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
-     * expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions. Other fields of
-     * condition are optional.
-     * Structure is documented below.
+     * A condition which determines whether an asset update should be published. If specified, an asset will be returned only
+     * when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
+     * name temporal_asset. Example: a Feed with expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions.
+     * Other fields of condition are optional.
      * 
      */
     @Import(name="condition")
     private @Nullable Output<ProjectFeedConditionArgs> condition;
 
     /**
-     * @return A condition which determines whether an asset update should be published. If specified, an asset
-     * will be returned only when the expression evaluates to true. When set, expression field
-     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
-     * expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions. Other fields of
-     * condition are optional.
-     * Structure is documented below.
+     * @return A condition which determines whether an asset update should be published. If specified, an asset will be returned only
+     * when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
+     * name temporal_asset. Example: a Feed with expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions.
+     * Other fields of condition are optional.
      * 
      */
     public Optional<Output<ProjectFeedConditionArgs>> condition() {
@@ -110,16 +100,16 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
+     * Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
+     * [&#34;CONTENT_TYPE_UNSPECIFIED&#34;, &#34;RESOURCE&#34;, &#34;IAM_POLICY&#34;, &#34;ORG_POLICY&#34;, &#34;OS_INVENTORY&#34;, &#34;ACCESS_POLICY&#34;]
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
+     * @return Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
+     * [&#34;CONTENT_TYPE_UNSPECIFIED&#34;, &#34;RESOURCE&#34;, &#34;IAM_POLICY&#34;, &#34;ORG_POLICY&#34;, &#34;OS_INVENTORY&#34;, &#34;ACCESS_POLICY&#34;]
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -158,19 +148,9 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         return this.feedOutputConfig;
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -207,10 +187,10 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assetNames A list of the full names of the assets to receive updates. You must specify either or both of
-         * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
-         * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
-         * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+         * @param assetNames A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
+         * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+         * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
+         * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
          * 
          * @return builder
          * 
@@ -221,10 +201,10 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assetNames A list of the full names of the assets to receive updates. You must specify either or both of
-         * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
-         * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
-         * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+         * @param assetNames A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
+         * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+         * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
+         * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
          * 
          * @return builder
          * 
@@ -234,10 +214,10 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assetNames A list of the full names of the assets to receive updates. You must specify either or both of
-         * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
-         * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
-         * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+         * @param assetNames A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
+         * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+         * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
+         * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
          * 
          * @return builder
          * 
@@ -247,10 +227,9 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assetTypes A list of types of the assets to receive updates. You must specify either or both of assetNames
-         * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
-         * the feed. For example: &#34;compute.googleapis.com/Disk&#34;
-         * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+         * @param assetTypes A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
+         * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+         * &#34;compute.googleapis.com/Disk&#34; See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
          * supported asset types.
          * 
          * @return builder
@@ -262,10 +241,9 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assetTypes A list of types of the assets to receive updates. You must specify either or both of assetNames
-         * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
-         * the feed. For example: &#34;compute.googleapis.com/Disk&#34;
-         * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+         * @param assetTypes A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
+         * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+         * &#34;compute.googleapis.com/Disk&#34; See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
          * supported asset types.
          * 
          * @return builder
@@ -276,10 +254,9 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assetTypes A list of types of the assets to receive updates. You must specify either or both of assetNames
-         * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
-         * the feed. For example: &#34;compute.googleapis.com/Disk&#34;
-         * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+         * @param assetTypes A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
+         * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
+         * &#34;compute.googleapis.com/Disk&#34; See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
          * supported asset types.
          * 
          * @return builder
@@ -290,10 +267,8 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingProject The project whose identity will be used when sending messages to the
-         * destination pubsub topic. It also specifies the project for API
-         * enablement check, quota, and billing. If not specified, the resource&#39;s
-         * project will be used.
+         * @param billingProject The project whose identity will be used when sending messages to the destination pubsub topic. It also specifies the
+         * project for API enablement check, quota, and billing. If not specified, the resource&#39;s project will be used.
          * 
          * @return builder
          * 
@@ -304,10 +279,8 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingProject The project whose identity will be used when sending messages to the
-         * destination pubsub topic. It also specifies the project for API
-         * enablement check, quota, and billing. If not specified, the resource&#39;s
-         * project will be used.
+         * @param billingProject The project whose identity will be used when sending messages to the destination pubsub topic. It also specifies the
+         * project for API enablement check, quota, and billing. If not specified, the resource&#39;s project will be used.
          * 
          * @return builder
          * 
@@ -317,12 +290,10 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param condition A condition which determines whether an asset update should be published. If specified, an asset
-         * will be returned only when the expression evaluates to true. When set, expression field
-         * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
-         * expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions. Other fields of
-         * condition are optional.
-         * Structure is documented below.
+         * @param condition A condition which determines whether an asset update should be published. If specified, an asset will be returned only
+         * when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
+         * name temporal_asset. Example: a Feed with expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions.
+         * Other fields of condition are optional.
          * 
          * @return builder
          * 
@@ -333,12 +304,10 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param condition A condition which determines whether an asset update should be published. If specified, an asset
-         * will be returned only when the expression evaluates to true. When set, expression field
-         * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
-         * expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions. Other fields of
-         * condition are optional.
-         * Structure is documented below.
+         * @param condition A condition which determines whether an asset update should be published. If specified, an asset will be returned only
+         * when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
+         * name temporal_asset. Example: a Feed with expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions.
+         * Other fields of condition are optional.
          * 
          * @return builder
          * 
@@ -348,8 +317,8 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType Asset content type. If not specified, no content but the asset name and type will be returned.
-         * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
+         * @param contentType Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
+         * [&#34;CONTENT_TYPE_UNSPECIFIED&#34;, &#34;RESOURCE&#34;, &#34;IAM_POLICY&#34;, &#34;ORG_POLICY&#34;, &#34;OS_INVENTORY&#34;, &#34;ACCESS_POLICY&#34;]
          * 
          * @return builder
          * 
@@ -360,8 +329,8 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType Asset content type. If not specified, no content but the asset name and type will be returned.
-         * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
+         * @param contentType Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
+         * [&#34;CONTENT_TYPE_UNSPECIFIED&#34;, &#34;RESOURCE&#34;, &#34;IAM_POLICY&#34;, &#34;ORG_POLICY&#34;, &#34;OS_INVENTORY&#34;, &#34;ACCESS_POLICY&#34;]
          * 
          * @return builder
          * 
@@ -414,25 +383,11 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
             return feedOutputConfig(Output.of(feedOutputConfig));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

@@ -17,7 +17,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
     public static final RegionHealthCheckHttp2HealthCheckArgs Empty = new RegionHealthCheckHttp2HealthCheckArgs();
 
     /**
-     * The value of the host header in the HTTP health check request.
+     * The value of the host header in the HTTP2 health check request.
      * If left empty (default value), the public IP on behalf of which this health
      * check is performed will be used.
      * 
@@ -26,7 +26,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
     private @Nullable Output<String> host;
 
     /**
-     * @return The value of the host header in the HTTP health check request.
+     * @return The value of the host header in the HTTP2 health check request.
      * If left empty (default value), the public IP on behalf of which this health
      * check is performed will be used.
      * 
@@ -36,18 +36,16 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
     }
 
     /**
-     * The port number for the health check request.
-     * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * The TCP port number for the HTTP2 health check request.
+     * The default value is 443.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port number for the health check request.
-     * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * @return The TCP port number for the HTTP2 health check request.
+     * The default value is 443.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -75,6 +73,18 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
      * Specifies how port is selected for health checking, can be one of the
      * following values:
      * 
+     *   * &#39;USE_FIXED_PORT&#39;: The port number in &#39;port&#39; is used for health checking.
+     * 
+     *   * &#39;USE_NAMED_PORT&#39;: The &#39;portName&#39; is used for health checking.
+     * 
+     *   * &#39;USE_SERVING_PORT&#39;: For NetworkEndpointGroup, the port specified for each
+     *   network endpoint is used for health checking. For other backends, the
+     *   port or named port specified in the Backend Service is used for health
+     *   checking.
+     * 
+     * If not specified, HTTP2 health check follows behavior specified in &#39;port&#39; and
+     * &#39;portName&#39; fields. Possible values: [&#34;USE_FIXED_PORT&#34;, &#34;USE_NAMED_PORT&#34;, &#34;USE_SERVING_PORT&#34;]
+     * 
      */
     @Import(name="portSpecification")
     private @Nullable Output<String> portSpecification;
@@ -83,6 +93,18 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
      * @return Specifies how port is selected for health checking, can be one of the
      * following values:
      * 
+     *   * &#39;USE_FIXED_PORT&#39;: The port number in &#39;port&#39; is used for health checking.
+     * 
+     *   * &#39;USE_NAMED_PORT&#39;: The &#39;portName&#39; is used for health checking.
+     * 
+     *   * &#39;USE_SERVING_PORT&#39;: For NetworkEndpointGroup, the port specified for each
+     *   network endpoint is used for health checking. For other backends, the
+     *   port or named port specified in the Backend Service is used for health
+     *   checking.
+     * 
+     * If not specified, HTTP2 health check follows behavior specified in &#39;port&#39; and
+     * &#39;portName&#39; fields. Possible values: [&#34;USE_FIXED_PORT&#34;, &#34;USE_NAMED_PORT&#34;, &#34;USE_SERVING_PORT&#34;]
+     * 
      */
     public Optional<Output<String>> portSpecification() {
         return Optional.ofNullable(this.portSpecification);
@@ -90,9 +112,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
 
     /**
      * Specifies the type of proxy header to append before sending data to the
-     * backend.
-     * Default value is `NONE`.
-     * Possible values are: `NONE`, `PROXY_V1`.
+     * backend. Default value: &#34;NONE&#34; Possible values: [&#34;NONE&#34;, &#34;PROXY_V1&#34;]
      * 
      */
     @Import(name="proxyHeader")
@@ -100,9 +120,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
 
     /**
      * @return Specifies the type of proxy header to append before sending data to the
-     * backend.
-     * Default value is `NONE`.
-     * Possible values are: `NONE`, `PROXY_V1`.
+     * backend. Default value: &#34;NONE&#34; Possible values: [&#34;NONE&#34;, &#34;PROXY_V1&#34;]
      * 
      */
     public Optional<Output<String>> proxyHeader() {
@@ -110,7 +128,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
     }
 
     /**
-     * The request path of the HTTP health check request.
+     * The request path of the HTTP2 health check request.
      * The default value is /.
      * 
      */
@@ -118,7 +136,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
     private @Nullable Output<String> requestPath;
 
     /**
-     * @return The request path of the HTTP health check request.
+     * @return The request path of the HTTP2 health check request.
      * The default value is /.
      * 
      */
@@ -176,7 +194,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param host The value of the host header in the HTTP health check request.
+         * @param host The value of the host header in the HTTP2 health check request.
          * If left empty (default value), the public IP on behalf of which this health
          * check is performed will be used.
          * 
@@ -189,7 +207,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param host The value of the host header in the HTTP health check request.
+         * @param host The value of the host header in the HTTP2 health check request.
          * If left empty (default value), the public IP on behalf of which this health
          * check is performed will be used.
          * 
@@ -201,9 +219,8 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param port The port number for the health check request.
-         * Must be specified if portName and portSpecification are not set
-         * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         * @param port The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
          * 
          * @return builder
          * 
@@ -214,9 +231,8 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param port The port number for the health check request.
-         * Must be specified if portName and portSpecification are not set
-         * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         * @param port The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
          * 
          * @return builder
          * 
@@ -252,6 +268,18 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
          * @param portSpecification Specifies how port is selected for health checking, can be one of the
          * following values:
          * 
+         *   * &#39;USE_FIXED_PORT&#39;: The port number in &#39;port&#39; is used for health checking.
+         * 
+         *   * &#39;USE_NAMED_PORT&#39;: The &#39;portName&#39; is used for health checking.
+         * 
+         *   * &#39;USE_SERVING_PORT&#39;: For NetworkEndpointGroup, the port specified for each
+         *   network endpoint is used for health checking. For other backends, the
+         *   port or named port specified in the Backend Service is used for health
+         *   checking.
+         * 
+         * If not specified, HTTP2 health check follows behavior specified in &#39;port&#39; and
+         * &#39;portName&#39; fields. Possible values: [&#34;USE_FIXED_PORT&#34;, &#34;USE_NAMED_PORT&#34;, &#34;USE_SERVING_PORT&#34;]
+         * 
          * @return builder
          * 
          */
@@ -264,6 +292,18 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
          * @param portSpecification Specifies how port is selected for health checking, can be one of the
          * following values:
          * 
+         *   * &#39;USE_FIXED_PORT&#39;: The port number in &#39;port&#39; is used for health checking.
+         * 
+         *   * &#39;USE_NAMED_PORT&#39;: The &#39;portName&#39; is used for health checking.
+         * 
+         *   * &#39;USE_SERVING_PORT&#39;: For NetworkEndpointGroup, the port specified for each
+         *   network endpoint is used for health checking. For other backends, the
+         *   port or named port specified in the Backend Service is used for health
+         *   checking.
+         * 
+         * If not specified, HTTP2 health check follows behavior specified in &#39;port&#39; and
+         * &#39;portName&#39; fields. Possible values: [&#34;USE_FIXED_PORT&#34;, &#34;USE_NAMED_PORT&#34;, &#34;USE_SERVING_PORT&#34;]
+         * 
          * @return builder
          * 
          */
@@ -273,9 +313,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
 
         /**
          * @param proxyHeader Specifies the type of proxy header to append before sending data to the
-         * backend.
-         * Default value is `NONE`.
-         * Possible values are: `NONE`, `PROXY_V1`.
+         * backend. Default value: &#34;NONE&#34; Possible values: [&#34;NONE&#34;, &#34;PROXY_V1&#34;]
          * 
          * @return builder
          * 
@@ -287,9 +325,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
 
         /**
          * @param proxyHeader Specifies the type of proxy header to append before sending data to the
-         * backend.
-         * Default value is `NONE`.
-         * Possible values are: `NONE`, `PROXY_V1`.
+         * backend. Default value: &#34;NONE&#34; Possible values: [&#34;NONE&#34;, &#34;PROXY_V1&#34;]
          * 
          * @return builder
          * 
@@ -299,7 +335,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param requestPath The request path of the HTTP health check request.
+         * @param requestPath The request path of the HTTP2 health check request.
          * The default value is /.
          * 
          * @return builder
@@ -311,7 +347,7 @@ public final class RegionHealthCheckHttp2HealthCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param requestPath The request path of the HTTP health check request.
+         * @param requestPath The request path of the HTTP2 health check request.
          * The default value is /.
          * 
          * @return builder

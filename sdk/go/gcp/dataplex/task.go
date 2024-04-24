@@ -24,7 +24,6 @@ import (
 //
 // ### Dataplex Task Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -87,10 +86,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataplex Task Spark
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -186,10 +183,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataplex Task Notebook
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -285,7 +280,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -327,10 +321,8 @@ type Task struct {
 	// Configuration for the cluster
 	// Structure is documented below.
 	ExecutionStatuses TaskExecutionStatusArrayOutput `pulumi:"executionStatuses"`
-	// User-defined labels for the task.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The lake in which the task will be created in.
 	Lake pulumi.StringPtrOutput `pulumi:"lake"`
@@ -339,17 +331,15 @@ type Task struct {
 	// (Output)
 	// The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Notebook TaskNotebookPtrOutput `pulumi:"notebook"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project  pulumi.StringOutput   `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Spark TaskSparkPtrOutput `pulumi:"spark"`
 	// (Output)
 	// Execution state for the job.
@@ -422,10 +412,8 @@ type taskState struct {
 	// Configuration for the cluster
 	// Structure is documented below.
 	ExecutionStatuses []TaskExecutionStatus `pulumi:"executionStatuses"`
-	// User-defined labels for the task.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake in which the task will be created in.
 	Lake *string `pulumi:"lake"`
@@ -434,17 +422,15 @@ type taskState struct {
 	// (Output)
 	// The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
 	Name *string `pulumi:"name"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Notebook *TaskNotebook `pulumi:"notebook"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project  *string       `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Spark *TaskSpark `pulumi:"spark"`
 	// (Output)
 	// Execution state for the job.
@@ -477,10 +463,8 @@ type TaskState struct {
 	// Configuration for the cluster
 	// Structure is documented below.
 	ExecutionStatuses TaskExecutionStatusArrayInput
-	// User-defined labels for the task.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake in which the task will be created in.
 	Lake pulumi.StringPtrInput
@@ -489,17 +473,15 @@ type TaskState struct {
 	// (Output)
 	// The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
 	Name pulumi.StringPtrInput
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Notebook TaskNotebookPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Spark TaskSparkPtrInput
 	// (Output)
 	// Execution state for the job.
@@ -529,23 +511,19 @@ type taskArgs struct {
 	// Configuration for the cluster
 	// Structure is documented below.
 	ExecutionSpec TaskExecutionSpec `pulumi:"executionSpec"`
-	// User-defined labels for the task.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake in which the task will be created in.
 	Lake *string `pulumi:"lake"`
 	// The location in which the task will be created in.
 	Location *string `pulumi:"location"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Notebook *TaskNotebook `pulumi:"notebook"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	Project  *string       `pulumi:"project"`
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Spark *TaskSpark `pulumi:"spark"`
 	// The task Id of the task.
 	TaskId *string `pulumi:"taskId"`
@@ -563,23 +541,19 @@ type TaskArgs struct {
 	// Configuration for the cluster
 	// Structure is documented below.
 	ExecutionSpec TaskExecutionSpecInput
-	// User-defined labels for the task.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake in which the task will be created in.
 	Lake pulumi.StringPtrInput
 	// The location in which the task will be created in.
 	Location pulumi.StringPtrInput
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Notebook TaskNotebookPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-	// Structure is documented below.
+	Project  pulumi.StringPtrInput
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+	// its memory over time.
 	Spark TaskSparkPtrInput
 	// The task Id of the task.
 	TaskId pulumi.StringPtrInput
@@ -707,10 +681,8 @@ func (o TaskOutput) ExecutionStatuses() TaskExecutionStatusArrayOutput {
 	return o.ApplyT(func(v *Task) TaskExecutionStatusArrayOutput { return v.ExecutionStatuses }).(TaskExecutionStatusArrayOutput)
 }
 
-// User-defined labels for the task.
-//
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
+// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o TaskOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -731,14 +703,12 @@ func (o TaskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-// Structure is documented below.
+// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+// its memory over time.
 func (o TaskOutput) Notebook() TaskNotebookPtrOutput {
 	return o.ApplyT(func(v *Task) TaskNotebookPtrOutput { return v.Notebook }).(TaskNotebookPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o TaskOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -749,8 +719,8 @@ func (o TaskOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-// Structure is documented below.
+// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+// its memory over time.
 func (o TaskOutput) Spark() TaskSparkPtrOutput {
 	return o.ApplyT(func(v *Task) TaskSparkPtrOutput { return v.Spark }).(TaskSparkPtrOutput)
 }

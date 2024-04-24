@@ -24,20 +24,24 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final AwsClusterArgs Empty = new AwsClusterArgs();
 
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -195,14 +199,14 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of the Fleet host project where this cluster will be registered.
+     * The project for the resource
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The number of the Fleet host project where this cluster will be registered.
+     * @return The project for the resource
      * 
      */
     public Optional<Output<String>> project() {
@@ -245,10 +249,12 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+         * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -259,10 +265,12 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+         * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -482,7 +490,7 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The number of the Fleet host project where this cluster will be registered.
+         * @param project The project for the resource
          * 
          * @return builder
          * 
@@ -493,7 +501,7 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The number of the Fleet host project where this cluster will be registered.
+         * @param project The project for the resource
          * 
          * @return builder
          * 

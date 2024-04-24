@@ -542,42 +542,14 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requirePartitionFilter);
     }
     /**
-     * A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
-     * 
-     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * A JSON schema for the table.
      * 
      */
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output<String> schema;
 
     /**
-     * @return A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
-     * 
-     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * @return A JSON schema for the table.
      * 
      */
     public Output<String> schema() {
@@ -660,16 +632,14 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timePartitioning);
     }
     /**
-     * The supported types are DAY, HOUR, MONTH, and YEAR,
-     * which will generate one partition per day, hour, month, and year, respectively.
+     * Describes the table type.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The supported types are DAY, HOUR, MONTH, and YEAR,
-     * which will generate one partition per day, hour, month, and year, respectively.
+     * @return Describes the table type.
      * 
      */
     public Output<String> type() {

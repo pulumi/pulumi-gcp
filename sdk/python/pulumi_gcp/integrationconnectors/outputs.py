@@ -436,9 +436,8 @@ class ConnectionAuthConfigOauth2AuthCodeFlow(dict):
                  scopes: Optional[Sequence[str]] = None):
         """
         :param str auth_uri: Auth URL for Authorization Code Flow.
-        :param str client_id: Secret version of Password for Authentication.
-        :param 'ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs' client_secret: Secret version reference containing the client secret.
-               Structure is documented below.
+        :param str client_id: Client ID for user-provided OAuth app.
+        :param 'ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs' client_secret: Client secret for user-provided OAuth app.
         :param bool enable_pkce: Whether to enable PKCE when the user performs the auth code flow.
         :param Sequence[str] scopes: Scopes the connection will request when the user performs the auth code flow.
         """
@@ -465,7 +464,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlow(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        Secret version of Password for Authentication.
+        Client ID for user-provided OAuth app.
         """
         return pulumi.get(self, "client_id")
 
@@ -473,8 +472,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlow(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional['outputs.ConnectionAuthConfigOauth2AuthCodeFlowClientSecret']:
         """
-        Secret version reference containing the client secret.
-        Structure is documented below.
+        Client secret for user-provided OAuth app.
         """
         return pulumi.get(self, "client_secret")
 
@@ -559,7 +557,6 @@ class ConnectionAuthConfigOauth2ClientCredentials(dict):
         """
         :param str client_id: Secret version of Password for Authentication.
         :param 'ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs' client_secret: Secret version reference containing the client secret.
-               Structure is documented below.
         """
         pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -578,7 +575,6 @@ class ConnectionAuthConfigOauth2ClientCredentials(dict):
     def client_secret(self) -> Optional['outputs.ConnectionAuthConfigOauth2ClientCredentialsClientSecret']:
         """
         Secret version reference containing the client secret.
-        Structure is documented below.
         """
         return pulumi.get(self, "client_secret")
 
@@ -648,9 +644,7 @@ class ConnectionAuthConfigOauth2JwtBearer(dict):
         :param 'ConnectionAuthConfigOauth2JwtBearerClientKeyArgs' client_key: Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
                This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
                Specified in the form as: projects/*/secrets/*/versions/*.
-               Structure is documented below.
         :param 'ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs' jwt_claims: JwtClaims providers fields to generate the token.
-               Structure is documented below.
         """
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
@@ -664,7 +658,6 @@ class ConnectionAuthConfigOauth2JwtBearer(dict):
         Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
         This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
         Specified in the form as: projects/*/secrets/*/versions/*.
-        Structure is documented below.
         """
         return pulumi.get(self, "client_key")
 
@@ -673,7 +666,6 @@ class ConnectionAuthConfigOauth2JwtBearer(dict):
     def jwt_claims(self) -> Optional['outputs.ConnectionAuthConfigOauth2JwtBearerJwtClaims']:
         """
         JwtClaims providers fields to generate the token.
-        Structure is documented below.
         """
         return pulumi.get(self, "jwt_claims")
 

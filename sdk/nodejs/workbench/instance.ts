@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Workbench Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,10 +22,8 @@ import * as utilities from "../utilities";
  *     location: "us-west1-a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Workbench Instance Basic Container
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,10 +39,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Workbench Instance Basic Gpu
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,10 +61,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Workbench Instance Labels Stopped
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -98,10 +91,8 @@ import * as utilities from "../utilities";
  *     desiredState: "STOPPED",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Workbench Instance Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -168,7 +159,6 @@ import * as utilities from "../utilities";
  *     desiredState: "ACTIVE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

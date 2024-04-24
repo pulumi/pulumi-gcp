@@ -17,7 +17,6 @@ public final class ClusterControlPlaneEncryptionKmsStatusArgs extends com.pulumi
     public static final ClusterControlPlaneEncryptionKmsStatusArgs Empty = new ClusterControlPlaneEncryptionKmsStatusArgs();
 
     /**
-     * (Output)
      * The status code, which should be an enum value of google.rpc.Code.
      * 
      */
@@ -25,8 +24,7 @@ public final class ClusterControlPlaneEncryptionKmsStatusArgs extends com.pulumi
     private @Nullable Output<Integer> code;
 
     /**
-     * @return (Output)
-     * The status code, which should be an enum value of google.rpc.Code.
+     * @return The status code, which should be an enum value of google.rpc.Code.
      * 
      */
     public Optional<Output<Integer>> code() {
@@ -34,7 +32,6 @@ public final class ClusterControlPlaneEncryptionKmsStatusArgs extends com.pulumi
     }
 
     /**
-     * (Output)
      * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
      * 
      */
@@ -42,8 +39,7 @@ public final class ClusterControlPlaneEncryptionKmsStatusArgs extends com.pulumi
     private @Nullable Output<String> message;
 
     /**
-     * @return (Output)
-     * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+     * @return A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
      * 
      */
     public Optional<Output<String>> message() {
@@ -76,8 +72,7 @@ public final class ClusterControlPlaneEncryptionKmsStatusArgs extends com.pulumi
         }
 
         /**
-         * @param code (Output)
-         * The status code, which should be an enum value of google.rpc.Code.
+         * @param code The status code, which should be an enum value of google.rpc.Code.
          * 
          * @return builder
          * 
@@ -88,8 +83,7 @@ public final class ClusterControlPlaneEncryptionKmsStatusArgs extends com.pulumi
         }
 
         /**
-         * @param code (Output)
-         * The status code, which should be an enum value of google.rpc.Code.
+         * @param code The status code, which should be an enum value of google.rpc.Code.
          * 
          * @return builder
          * 
@@ -99,8 +93,7 @@ public final class ClusterControlPlaneEncryptionKmsStatusArgs extends com.pulumi
         }
 
         /**
-         * @param message (Output)
-         * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+         * @param message A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
          * 
          * @return builder
          * 
@@ -111,8 +104,7 @@ public final class ClusterControlPlaneEncryptionKmsStatusArgs extends com.pulumi
         }
 
         /**
-         * @param message (Output)
-         * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+         * @param message A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
          * 
          * @return builder
          * 

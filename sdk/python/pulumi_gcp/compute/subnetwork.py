@@ -876,7 +876,6 @@ class Subnetwork(pulumi.CustomResource):
 
         ### Subnetwork Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -894,10 +893,8 @@ class Subnetwork(pulumi.CustomResource):
                 ip_cidr_range="192.168.10.0/24",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Logging Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -916,10 +913,8 @@ class Subnetwork(pulumi.CustomResource):
                 metadata="INCLUDE_ALL_METADATA",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Internal L7lb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -935,10 +930,8 @@ class Subnetwork(pulumi.CustomResource):
             role="ACTIVE",
             network=custom_test.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Ipv6
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -954,10 +947,8 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="EXTERNAL",
             network=custom_test.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Internal Ipv6
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -974,10 +965,8 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="INTERNAL",
             network=custom_test.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Purpose Private Nat
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -992,10 +981,8 @@ class Subnetwork(pulumi.CustomResource):
             purpose="PRIVATE_NAT",
             network=custom_test.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Cidr Overlap
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1010,7 +997,6 @@ class Subnetwork(pulumi.CustomResource):
             allow_subnet_cidr_routes_overlap=True,
             network=net_cidr_overlap.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1146,7 +1132,6 @@ class Subnetwork(pulumi.CustomResource):
 
         ### Subnetwork Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1164,10 +1149,8 @@ class Subnetwork(pulumi.CustomResource):
                 ip_cidr_range="192.168.10.0/24",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Logging Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1186,10 +1169,8 @@ class Subnetwork(pulumi.CustomResource):
                 metadata="INCLUDE_ALL_METADATA",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Internal L7lb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1205,10 +1186,8 @@ class Subnetwork(pulumi.CustomResource):
             role="ACTIVE",
             network=custom_test.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Ipv6
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1224,10 +1203,8 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="EXTERNAL",
             network=custom_test.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Internal Ipv6
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1244,10 +1221,8 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="INTERNAL",
             network=custom_test.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Purpose Private Nat
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1262,10 +1237,8 @@ class Subnetwork(pulumi.CustomResource):
             purpose="PRIVATE_NAT",
             network=custom_test.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Subnetwork Cidr Overlap
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1280,7 +1253,6 @@ class Subnetwork(pulumi.CustomResource):
             allow_subnet_cidr_routes_overlap=True,
             network=net_cidr_overlap.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

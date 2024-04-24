@@ -89,6 +89,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     }
 
     /**
+     * (Output)
      * The subject alternative name fields.
      * Structure is documented below.
      * 
@@ -97,7 +98,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs>> subjectAltNames;
 
     /**
-     * @return The subject alternative name fields.
+     * @return (Output)
+     * The subject alternative name fields.
      * Structure is documented below.
      * 
      */
@@ -106,6 +108,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     }
 
     /**
+     * (Output)
      * Contains distinguished name fields such as the location and organization.
      * Structure is documented below.
      * 
@@ -114,7 +117,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectArgs>> subjects;
 
     /**
-     * @return Contains distinguished name fields such as the location and organization.
+     * @return (Output)
+     * Contains distinguished name fields such as the location and organization.
      * Structure is documented below.
      * 
      */
@@ -246,7 +250,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param subjectAltNames The subject alternative name fields.
+         * @param subjectAltNames (Output)
+         * The subject alternative name fields.
          * Structure is documented below.
          * 
          * @return builder
@@ -258,7 +263,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param subjectAltNames The subject alternative name fields.
+         * @param subjectAltNames (Output)
+         * The subject alternative name fields.
          * Structure is documented below.
          * 
          * @return builder
@@ -269,7 +275,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param subjectAltNames The subject alternative name fields.
+         * @param subjectAltNames (Output)
+         * The subject alternative name fields.
          * Structure is documented below.
          * 
          * @return builder
@@ -280,7 +287,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param subjects Contains distinguished name fields such as the location and organization.
+         * @param subjects (Output)
+         * Contains distinguished name fields such as the location and organization.
          * Structure is documented below.
          * 
          * @return builder
@@ -292,7 +300,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param subjects Contains distinguished name fields such as the location and organization.
+         * @param subjects (Output)
+         * Contains distinguished name fields such as the location and organization.
          * Structure is documented below.
          * 
          * @return builder
@@ -303,7 +312,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param subjects Contains distinguished name fields such as the location and organization.
+         * @param subjects (Output)
+         * Contains distinguished name fields such as the location and organization.
          * Structure is documented below.
          * 
          * @return builder

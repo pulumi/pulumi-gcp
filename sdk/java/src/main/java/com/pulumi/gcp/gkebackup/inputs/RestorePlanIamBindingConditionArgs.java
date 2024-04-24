@@ -16,17 +16,9 @@ public final class RestorePlanIamBindingConditionArgs extends com.pulumi.resourc
 
     public static final RestorePlanIamBindingConditionArgs Empty = new RestorePlanIamBindingConditionArgs();
 
-    /**
-     * User specified descriptive string for this RestorePlan.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return User specified descriptive string for this RestorePlan.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -71,23 +63,11 @@ public final class RestorePlanIamBindingConditionArgs extends com.pulumi.resourc
             $ = new RestorePlanIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description User specified descriptive string for this RestorePlan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description User specified descriptive string for this RestorePlan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }

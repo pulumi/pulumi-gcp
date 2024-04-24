@@ -27,7 +27,6 @@ import (
 //
 // ### Router Peer Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,10 +55,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Router Peer Disabled
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,10 +87,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Router Peer Bfd
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -129,10 +124,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Router Peer Router Appliance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -279,7 +272,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

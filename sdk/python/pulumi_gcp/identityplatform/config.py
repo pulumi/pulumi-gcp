@@ -469,7 +469,6 @@ class Config(pulumi.CustomResource):
 
         ### Identity Platform Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -536,7 +535,6 @@ class Config(pulumi.CustomResource):
                 "my-project.web.app",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -610,7 +608,6 @@ class Config(pulumi.CustomResource):
 
         ### Identity Platform Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,7 +674,6 @@ class Config(pulumi.CustomResource):
                 "my-project.web.app",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

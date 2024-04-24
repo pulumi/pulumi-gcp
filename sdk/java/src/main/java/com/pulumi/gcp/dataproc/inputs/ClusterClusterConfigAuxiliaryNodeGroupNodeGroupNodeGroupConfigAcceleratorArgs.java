@@ -16,18 +16,14 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     public static final ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs Empty = new ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs();
 
     /**
-     * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-     * 
-     * ***
+     * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
      * 
      */
     @Import(name="acceleratorCount", required=true)
     private Output<Integer> acceleratorCount;
 
     /**
-     * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-     * 
-     * ***
+     * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
      * 
      */
     public Output<Integer> acceleratorCount() {
@@ -35,14 +31,14 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     }
 
     /**
-     * The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+     * The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
      * 
      */
     @Import(name="acceleratorType", required=true)
     private Output<String> acceleratorType;
 
     /**
-     * @return The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+     * @return The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
      * 
      */
     public Output<String> acceleratorType() {
@@ -75,9 +71,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param acceleratorCount The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-         * 
-         * ***
+         * @param acceleratorCount The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
          * 
          * @return builder
          * 
@@ -88,9 +82,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param acceleratorCount The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-         * 
-         * ***
+         * @param acceleratorCount The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
          * 
          * @return builder
          * 
@@ -100,7 +92,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param acceleratorType The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+         * @param acceleratorType The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
          * 
          * @return builder
          * 
@@ -111,7 +103,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param acceleratorType The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+         * @param acceleratorType The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
          * 
          * @return builder
          * 

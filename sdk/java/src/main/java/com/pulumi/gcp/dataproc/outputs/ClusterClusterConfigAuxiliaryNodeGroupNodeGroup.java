@@ -15,10 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
     /**
-     * @return The name of the cluster, unique within the project and
-     * zone.
-     * 
-     * ***
+     * @return The Node group resource name.
      * 
      */
     private @Nullable String name;
@@ -36,10 +33,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
 
     private ClusterClusterConfigAuxiliaryNodeGroupNodeGroup() {}
     /**
-     * @return The name of the cluster, unique within the project and
-     * zone.
-     * 
-     * ***
+     * @return The Node group resource name.
      * 
      */
     public Optional<String> name() {

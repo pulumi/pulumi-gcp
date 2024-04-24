@@ -22,7 +22,6 @@ import (
 //
 // ### Identity Platform Inbound Saml Config Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,7 +67,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -106,9 +104,7 @@ type InboundSamlConfig struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -165,9 +161,7 @@ type inboundSamlConfigState struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -186,9 +180,7 @@ type InboundSamlConfigState struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -211,9 +203,7 @@ type inboundSamlConfigArgs struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -233,9 +223,7 @@ type InboundSamlConfigArgs struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -353,8 +341,6 @@ func (o InboundSamlConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InboundSamlConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o InboundSamlConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InboundSamlConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -694,7 +694,6 @@ class Route(pulumi.CustomResource):
 
         ### Route Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -707,10 +706,8 @@ class Route(pulumi.CustomResource):
             next_hop_ip="10.132.1.5",
             priority=100)
         ```
-        <!--End PulumiCodeChooser -->
         ### Route Ilb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -749,10 +746,8 @@ class Route(pulumi.CustomResource):
             next_hop_ilb=default_forwarding_rule.id,
             priority=2000)
         ```
-        <!--End PulumiCodeChooser -->
         ### Route Ilb Vip
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -811,7 +806,6 @@ class Route(pulumi.CustomResource):
                 "tag2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -935,7 +929,6 @@ class Route(pulumi.CustomResource):
 
         ### Route Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -948,10 +941,8 @@ class Route(pulumi.CustomResource):
             next_hop_ip="10.132.1.5",
             priority=100)
         ```
-        <!--End PulumiCodeChooser -->
         ### Route Ilb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -990,10 +981,8 @@ class Route(pulumi.CustomResource):
             next_hop_ilb=default_forwarding_rule.id,
             priority=2000)
         ```
-        <!--End PulumiCodeChooser -->
         ### Route Ilb Vip
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1052,7 +1041,6 @@ class Route(pulumi.CustomResource):
                 "tag2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

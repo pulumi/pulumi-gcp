@@ -30,7 +30,6 @@ import (
 //
 // ### Billing Budget Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,10 +72,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Billing Budget Lastperiod
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,10 +124,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Billing Budget Filter
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -199,10 +194,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Billing Budget Notify
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -277,10 +270,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Billing Budget Customperiod
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -353,7 +344,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -381,19 +371,15 @@ import (
 type Budget struct {
 	pulumi.CustomResourceState
 
-	// Defines notifications that are sent on every update to the
-	// billing account's spend, regardless of the thresholds defined
+	// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
 	// using threshold rules.
-	// Structure is documented below.
 	AllUpdatesRule BudgetAllUpdatesRulePtrOutput `pulumi:"allUpdatesRule"`
 	// The budgeted amount for each usage period.
 	// Structure is documented below.
 	Amount BudgetAmountOutput `pulumi:"amount"`
 	// ID of the billing account to set a budget on.
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
-	// Filters that define which resources are used to compute the actual
-	// spend against the budget.
-	// Structure is documented below.
+	// Filters that define which resources are used to compute the actual spend against the budget.
 	BudgetFilter BudgetBudgetFilterOutput `pulumi:"budgetFilter"`
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -401,10 +387,8 @@ type Budget struct {
 	// implies the scope of a budget. Values are of the form
 	// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Rules that trigger alerts (notifications of thresholds being
-	// crossed) when spend exceeds the specified percentages of the
-	// budget.
-	// Structure is documented below.
+	// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+	// the budget.
 	ThresholdRules BudgetThresholdRuleArrayOutput `pulumi:"thresholdRules"`
 }
 
@@ -444,19 +428,15 @@ func GetBudget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Budget resources.
 type budgetState struct {
-	// Defines notifications that are sent on every update to the
-	// billing account's spend, regardless of the thresholds defined
+	// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
 	// using threshold rules.
-	// Structure is documented below.
 	AllUpdatesRule *BudgetAllUpdatesRule `pulumi:"allUpdatesRule"`
 	// The budgeted amount for each usage period.
 	// Structure is documented below.
 	Amount *BudgetAmount `pulumi:"amount"`
 	// ID of the billing account to set a budget on.
 	BillingAccount *string `pulumi:"billingAccount"`
-	// Filters that define which resources are used to compute the actual
-	// spend against the budget.
-	// Structure is documented below.
+	// Filters that define which resources are used to compute the actual spend against the budget.
 	BudgetFilter *BudgetBudgetFilter `pulumi:"budgetFilter"`
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName *string `pulumi:"displayName"`
@@ -464,27 +444,21 @@ type budgetState struct {
 	// implies the scope of a budget. Values are of the form
 	// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 	Name *string `pulumi:"name"`
-	// Rules that trigger alerts (notifications of thresholds being
-	// crossed) when spend exceeds the specified percentages of the
-	// budget.
-	// Structure is documented below.
+	// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+	// the budget.
 	ThresholdRules []BudgetThresholdRule `pulumi:"thresholdRules"`
 }
 
 type BudgetState struct {
-	// Defines notifications that are sent on every update to the
-	// billing account's spend, regardless of the thresholds defined
+	// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
 	// using threshold rules.
-	// Structure is documented below.
 	AllUpdatesRule BudgetAllUpdatesRulePtrInput
 	// The budgeted amount for each usage period.
 	// Structure is documented below.
 	Amount BudgetAmountPtrInput
 	// ID of the billing account to set a budget on.
 	BillingAccount pulumi.StringPtrInput
-	// Filters that define which resources are used to compute the actual
-	// spend against the budget.
-	// Structure is documented below.
+	// Filters that define which resources are used to compute the actual spend against the budget.
 	BudgetFilter BudgetBudgetFilterPtrInput
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName pulumi.StringPtrInput
@@ -492,10 +466,8 @@ type BudgetState struct {
 	// implies the scope of a budget. Values are of the form
 	// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 	Name pulumi.StringPtrInput
-	// Rules that trigger alerts (notifications of thresholds being
-	// crossed) when spend exceeds the specified percentages of the
-	// budget.
-	// Structure is documented below.
+	// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+	// the budget.
 	ThresholdRules BudgetThresholdRuleArrayInput
 }
 
@@ -504,51 +476,39 @@ func (BudgetState) ElementType() reflect.Type {
 }
 
 type budgetArgs struct {
-	// Defines notifications that are sent on every update to the
-	// billing account's spend, regardless of the thresholds defined
+	// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
 	// using threshold rules.
-	// Structure is documented below.
 	AllUpdatesRule *BudgetAllUpdatesRule `pulumi:"allUpdatesRule"`
 	// The budgeted amount for each usage period.
 	// Structure is documented below.
 	Amount BudgetAmount `pulumi:"amount"`
 	// ID of the billing account to set a budget on.
 	BillingAccount string `pulumi:"billingAccount"`
-	// Filters that define which resources are used to compute the actual
-	// spend against the budget.
-	// Structure is documented below.
+	// Filters that define which resources are used to compute the actual spend against the budget.
 	BudgetFilter *BudgetBudgetFilter `pulumi:"budgetFilter"`
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName *string `pulumi:"displayName"`
-	// Rules that trigger alerts (notifications of thresholds being
-	// crossed) when spend exceeds the specified percentages of the
-	// budget.
-	// Structure is documented below.
+	// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+	// the budget.
 	ThresholdRules []BudgetThresholdRule `pulumi:"thresholdRules"`
 }
 
 // The set of arguments for constructing a Budget resource.
 type BudgetArgs struct {
-	// Defines notifications that are sent on every update to the
-	// billing account's spend, regardless of the thresholds defined
+	// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
 	// using threshold rules.
-	// Structure is documented below.
 	AllUpdatesRule BudgetAllUpdatesRulePtrInput
 	// The budgeted amount for each usage period.
 	// Structure is documented below.
 	Amount BudgetAmountInput
 	// ID of the billing account to set a budget on.
 	BillingAccount pulumi.StringInput
-	// Filters that define which resources are used to compute the actual
-	// spend against the budget.
-	// Structure is documented below.
+	// Filters that define which resources are used to compute the actual spend against the budget.
 	BudgetFilter BudgetBudgetFilterPtrInput
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName pulumi.StringPtrInput
-	// Rules that trigger alerts (notifications of thresholds being
-	// crossed) when spend exceeds the specified percentages of the
-	// budget.
-	// Structure is documented below.
+	// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+	// the budget.
 	ThresholdRules BudgetThresholdRuleArrayInput
 }
 
@@ -639,10 +599,8 @@ func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutpu
 	return o
 }
 
-// Defines notifications that are sent on every update to the
-// billing account's spend, regardless of the thresholds defined
+// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
 // using threshold rules.
-// Structure is documented below.
 func (o BudgetOutput) AllUpdatesRule() BudgetAllUpdatesRulePtrOutput {
 	return o.ApplyT(func(v *Budget) BudgetAllUpdatesRulePtrOutput { return v.AllUpdatesRule }).(BudgetAllUpdatesRulePtrOutput)
 }
@@ -658,9 +616,7 @@ func (o BudgetOutput) BillingAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.BillingAccount }).(pulumi.StringOutput)
 }
 
-// Filters that define which resources are used to compute the actual
-// spend against the budget.
-// Structure is documented below.
+// Filters that define which resources are used to compute the actual spend against the budget.
 func (o BudgetOutput) BudgetFilter() BudgetBudgetFilterOutput {
 	return o.ApplyT(func(v *Budget) BudgetBudgetFilterOutput { return v.BudgetFilter }).(BudgetBudgetFilterOutput)
 }
@@ -677,10 +633,8 @@ func (o BudgetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Rules that trigger alerts (notifications of thresholds being
-// crossed) when spend exceeds the specified percentages of the
-// budget.
-// Structure is documented below.
+// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+// the budget.
 func (o BudgetOutput) ThresholdRules() BudgetThresholdRuleArrayOutput {
 	return o.ApplyT(func(v *Budget) BudgetThresholdRuleArrayOutput { return v.ThresholdRules }).(BudgetThresholdRuleArrayOutput)
 }

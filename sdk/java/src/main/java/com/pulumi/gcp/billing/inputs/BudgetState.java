@@ -21,20 +21,16 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
     public static final BudgetState Empty = new BudgetState();
 
     /**
-     * Defines notifications that are sent on every update to the
-     * billing account&#39;s spend, regardless of the thresholds defined
+     * Defines notifications that are sent on every update to the billing account&#39;s spend, regardless of the thresholds defined
      * using threshold rules.
-     * Structure is documented below.
      * 
      */
     @Import(name="allUpdatesRule")
     private @Nullable Output<BudgetAllUpdatesRuleArgs> allUpdatesRule;
 
     /**
-     * @return Defines notifications that are sent on every update to the
-     * billing account&#39;s spend, regardless of the thresholds defined
+     * @return Defines notifications that are sent on every update to the billing account&#39;s spend, regardless of the thresholds defined
      * using threshold rules.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BudgetAllUpdatesRuleArgs>> allUpdatesRule() {
@@ -74,18 +70,14 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Filters that define which resources are used to compute the actual
-     * spend against the budget.
-     * Structure is documented below.
+     * Filters that define which resources are used to compute the actual spend against the budget.
      * 
      */
     @Import(name="budgetFilter")
     private @Nullable Output<BudgetBudgetFilterArgs> budgetFilter;
 
     /**
-     * @return Filters that define which resources are used to compute the actual
-     * spend against the budget.
-     * Structure is documented below.
+     * @return Filters that define which resources are used to compute the actual spend against the budget.
      * 
      */
     public Optional<Output<BudgetBudgetFilterArgs>> budgetFilter() {
@@ -127,20 +119,16 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rules that trigger alerts (notifications of thresholds being
-     * crossed) when spend exceeds the specified percentages of the
-     * budget.
-     * Structure is documented below.
+     * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+     * the budget.
      * 
      */
     @Import(name="thresholdRules")
     private @Nullable Output<List<BudgetThresholdRuleArgs>> thresholdRules;
 
     /**
-     * @return Rules that trigger alerts (notifications of thresholds being
-     * crossed) when spend exceeds the specified percentages of the
-     * budget.
-     * Structure is documented below.
+     * @return Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+     * the budget.
      * 
      */
     public Optional<Output<List<BudgetThresholdRuleArgs>>> thresholdRules() {
@@ -178,10 +166,8 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allUpdatesRule Defines notifications that are sent on every update to the
-         * billing account&#39;s spend, regardless of the thresholds defined
+         * @param allUpdatesRule Defines notifications that are sent on every update to the billing account&#39;s spend, regardless of the thresholds defined
          * using threshold rules.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -192,10 +178,8 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allUpdatesRule Defines notifications that are sent on every update to the
-         * billing account&#39;s spend, regardless of the thresholds defined
+         * @param allUpdatesRule Defines notifications that are sent on every update to the billing account&#39;s spend, regardless of the thresholds defined
          * using threshold rules.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -249,9 +233,7 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param budgetFilter Filters that define which resources are used to compute the actual
-         * spend against the budget.
-         * Structure is documented below.
+         * @param budgetFilter Filters that define which resources are used to compute the actual spend against the budget.
          * 
          * @return builder
          * 
@@ -262,9 +244,7 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param budgetFilter Filters that define which resources are used to compute the actual
-         * spend against the budget.
-         * Structure is documented below.
+         * @param budgetFilter Filters that define which resources are used to compute the actual spend against the budget.
          * 
          * @return builder
          * 
@@ -320,10 +300,8 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param thresholdRules Rules that trigger alerts (notifications of thresholds being
-         * crossed) when spend exceeds the specified percentages of the
-         * budget.
-         * Structure is documented below.
+         * @param thresholdRules Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+         * the budget.
          * 
          * @return builder
          * 
@@ -334,10 +312,8 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param thresholdRules Rules that trigger alerts (notifications of thresholds being
-         * crossed) when spend exceeds the specified percentages of the
-         * budget.
-         * Structure is documented below.
+         * @param thresholdRules Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+         * the budget.
          * 
          * @return builder
          * 
@@ -347,10 +323,8 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param thresholdRules Rules that trigger alerts (notifications of thresholds being
-         * crossed) when spend exceeds the specified percentages of the
-         * budget.
-         * Structure is documented below.
+         * @param thresholdRules Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+         * the budget.
          * 
          * @return builder
          * 

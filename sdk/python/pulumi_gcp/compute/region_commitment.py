@@ -591,7 +591,6 @@ class RegionCommitment(pulumi.CustomResource):
 
         ### Compute Region Commitment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -610,10 +609,8 @@ class RegionCommitment(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Region Commitment Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -636,7 +633,6 @@ class RegionCommitment(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -728,7 +724,6 @@ class RegionCommitment(pulumi.CustomResource):
 
         ### Compute Region Commitment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -747,10 +742,8 @@ class RegionCommitment(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Region Commitment Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -773,7 +766,6 @@ class RegionCommitment(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

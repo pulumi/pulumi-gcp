@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Dialogflowcx Entity Type Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,7 +65,6 @@ import * as utilities from "../utilities";
  *     enableFuzzyExtraction: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -115,10 +113,9 @@ export class CxEntityType extends pulumi.CustomResource {
     }
 
     /**
-     * Represents kinds of entities.
-     * * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
-     * * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-     * Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+     * Represents kinds of entities. * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity. *
+     * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
+     * Possible values: ["AUTO_EXPANSION_MODE_DEFAULT", "AUTO_EXPANSION_MODE_UNSPECIFIED"]
      */
     public readonly autoExpansionMode!: pulumi.Output<string | undefined>;
     /**
@@ -135,9 +132,9 @@ export class CxEntityType extends pulumi.CustomResource {
      */
     public readonly entities!: pulumi.Output<outputs.diagflow.CxEntityTypeEntity[]>;
     /**
-     * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
-     * If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-     * Structure is documented below.
+     * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
+     * entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
+     * KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
      */
     public readonly excludedPhrases!: pulumi.Output<outputs.diagflow.CxEntityTypeExcludedPhrase[] | undefined>;
     /**
@@ -149,11 +146,9 @@ export class CxEntityType extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * The language of the following fields in entityType:
-     * EntityType.entities.value
-     * EntityType.entities.synonyms
-     * EntityType.excluded_phrases.value
-     * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
+     * The language of the following fields in entityType: EntityType.entities.value EntityType.entities.synonyms
+     * EntityType.excluded_phrases.value If not specified, the agent's default language is used. Many languages are supported.
+     * Note: languages must be enabled in the agent before they can be used.
      */
     public readonly languageCode!: pulumi.Output<string | undefined>;
     /**
@@ -162,12 +157,12 @@ export class CxEntityType extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The agent to create a entity type for.
-     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+     * The agent to create a entity type for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
     public readonly parent!: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
+     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and
+     * intent parameters referring to the entity type will be replaced by parameter name when logging.
      */
     public readonly redact!: pulumi.Output<boolean | undefined>;
 
@@ -226,10 +221,9 @@ export class CxEntityType extends pulumi.CustomResource {
  */
 export interface CxEntityTypeState {
     /**
-     * Represents kinds of entities.
-     * * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
-     * * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-     * Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+     * Represents kinds of entities. * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity. *
+     * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
+     * Possible values: ["AUTO_EXPANSION_MODE_DEFAULT", "AUTO_EXPANSION_MODE_UNSPECIFIED"]
      */
     autoExpansionMode?: pulumi.Input<string>;
     /**
@@ -246,9 +240,9 @@ export interface CxEntityTypeState {
      */
     entities?: pulumi.Input<pulumi.Input<inputs.diagflow.CxEntityTypeEntity>[]>;
     /**
-     * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
-     * If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-     * Structure is documented below.
+     * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
+     * entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
+     * KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
      */
     excludedPhrases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxEntityTypeExcludedPhrase>[]>;
     /**
@@ -260,11 +254,9 @@ export interface CxEntityTypeState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * The language of the following fields in entityType:
-     * EntityType.entities.value
-     * EntityType.entities.synonyms
-     * EntityType.excluded_phrases.value
-     * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
+     * The language of the following fields in entityType: EntityType.entities.value EntityType.entities.synonyms
+     * EntityType.excluded_phrases.value If not specified, the agent's default language is used. Many languages are supported.
+     * Note: languages must be enabled in the agent before they can be used.
      */
     languageCode?: pulumi.Input<string>;
     /**
@@ -273,12 +265,12 @@ export interface CxEntityTypeState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The agent to create a entity type for.
-     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+     * The agent to create a entity type for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
     parent?: pulumi.Input<string>;
     /**
-     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
+     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and
+     * intent parameters referring to the entity type will be replaced by parameter name when logging.
      */
     redact?: pulumi.Input<boolean>;
 }
@@ -288,10 +280,9 @@ export interface CxEntityTypeState {
  */
 export interface CxEntityTypeArgs {
     /**
-     * Represents kinds of entities.
-     * * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
-     * * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-     * Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+     * Represents kinds of entities. * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity. *
+     * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
+     * Possible values: ["AUTO_EXPANSION_MODE_DEFAULT", "AUTO_EXPANSION_MODE_UNSPECIFIED"]
      */
     autoExpansionMode?: pulumi.Input<string>;
     /**
@@ -308,9 +299,9 @@ export interface CxEntityTypeArgs {
      */
     entities: pulumi.Input<pulumi.Input<inputs.diagflow.CxEntityTypeEntity>[]>;
     /**
-     * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
-     * If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-     * Structure is documented below.
+     * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
+     * entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
+     * KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
      */
     excludedPhrases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxEntityTypeExcludedPhrase>[]>;
     /**
@@ -322,20 +313,18 @@ export interface CxEntityTypeArgs {
      */
     kind: pulumi.Input<string>;
     /**
-     * The language of the following fields in entityType:
-     * EntityType.entities.value
-     * EntityType.entities.synonyms
-     * EntityType.excluded_phrases.value
-     * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
+     * The language of the following fields in entityType: EntityType.entities.value EntityType.entities.synonyms
+     * EntityType.excluded_phrases.value If not specified, the agent's default language is used. Many languages are supported.
+     * Note: languages must be enabled in the agent before they can be used.
      */
     languageCode?: pulumi.Input<string>;
     /**
-     * The agent to create a entity type for.
-     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+     * The agent to create a entity type for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
     parent?: pulumi.Input<string>;
     /**
-     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
+     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and
+     * intent parameters referring to the entity type will be replaced by parameter name when logging.
      */
     redact?: pulumi.Input<boolean>;
 }

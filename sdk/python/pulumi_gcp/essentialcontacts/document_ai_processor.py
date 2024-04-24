@@ -240,7 +240,6 @@ class DocumentAiProcessor(pulumi.CustomResource):
 
         ### Documentai Processor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -250,7 +249,6 @@ class DocumentAiProcessor(pulumi.CustomResource):
             display_name="test-processor",
             type="OCR_PROCESSOR")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -307,7 +305,6 @@ class DocumentAiProcessor(pulumi.CustomResource):
 
         ### Documentai Processor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -317,7 +314,6 @@ class DocumentAiProcessor(pulumi.CustomResource):
             display_name="test-processor",
             type="OCR_PROCESSOR")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

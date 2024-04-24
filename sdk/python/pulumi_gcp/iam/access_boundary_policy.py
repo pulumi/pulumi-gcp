@@ -194,7 +194,6 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
 
         ### Iam Access Boundary Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -243,7 +242,6 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,7 +278,6 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
 
         ### Iam Access Boundary Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -329,7 +326,6 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

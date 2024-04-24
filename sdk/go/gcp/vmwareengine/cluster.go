@@ -22,7 +22,6 @@ import (
 //
 // ### Vmware Engine Cluster Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -83,10 +82,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vmware Engine Cluster Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -149,7 +146,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

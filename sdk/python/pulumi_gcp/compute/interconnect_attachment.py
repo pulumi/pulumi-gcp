@@ -1028,7 +1028,6 @@ class InterconnectAttachment(pulumi.CustomResource):
 
         ### Interconnect Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1049,10 +1048,8 @@ class InterconnectAttachment(pulumi.CustomResource):
             router=foobar.id,
             mtu="1500")
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Interconnect Attachment Ipsec Encryption
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1082,7 +1079,6 @@ class InterconnectAttachment(pulumi.CustomResource):
             encryption="IPSEC",
             ipsec_internal_addresses=[address.self_link])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1212,7 +1208,6 @@ class InterconnectAttachment(pulumi.CustomResource):
 
         ### Interconnect Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1233,10 +1228,8 @@ class InterconnectAttachment(pulumi.CustomResource):
             router=foobar.id,
             mtu="1500")
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Interconnect Attachment Ipsec Encryption
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1266,7 +1259,6 @@ class InterconnectAttachment(pulumi.CustomResource):
             encryption="IPSEC",
             ipsec_internal_addresses=[address.self_link])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

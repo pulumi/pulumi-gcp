@@ -783,7 +783,6 @@ class Image(pulumi.CustomResource):
 
         ### Image Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -794,10 +793,8 @@ class Image(pulumi.CustomResource):
                 source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Image Guest Os
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -816,10 +813,8 @@ class Image(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Image Basic Storage Location
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -831,7 +826,6 @@ class Image(pulumi.CustomResource):
             ),
             storage_locations=["us-central1"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -947,7 +941,6 @@ class Image(pulumi.CustomResource):
 
         ### Image Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -958,10 +951,8 @@ class Image(pulumi.CustomResource):
                 source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Image Guest Os
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -980,10 +971,8 @@ class Image(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Image Basic Storage Location
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -995,7 +984,6 @@ class Image(pulumi.CustomResource):
             ),
             storage_locations=["us-central1"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

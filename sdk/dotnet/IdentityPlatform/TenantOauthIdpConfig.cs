@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// ### Identity Platform Tenant Oauth Idp Config Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,7 +46,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

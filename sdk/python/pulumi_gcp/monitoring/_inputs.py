@@ -4150,7 +4150,7 @@ class UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: The fully qualified name of the cloud function resource.
+        :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -4158,7 +4158,7 @@ class UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The fully qualified name of the cloud function resource.
+        A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         """
         return pulumi.get(self, "name")
 

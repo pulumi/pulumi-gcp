@@ -453,7 +453,6 @@ class CertificateMapEntry(pulumi.CustomResource):
 
         ### Certificate Manager Certificate Map Entry Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -498,7 +497,6 @@ class CertificateMapEntry(pulumi.CustomResource):
             certificates=[certificate.id],
             matcher="PRIMARY")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -564,7 +562,6 @@ class CertificateMapEntry(pulumi.CustomResource):
 
         ### Certificate Manager Certificate Map Entry Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -609,7 +606,6 @@ class CertificateMapEntry(pulumi.CustomResource):
             certificates=[certificate.id],
             matcher="PRIMARY")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Identity Platform Tenant Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     allowPasswordSignup: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

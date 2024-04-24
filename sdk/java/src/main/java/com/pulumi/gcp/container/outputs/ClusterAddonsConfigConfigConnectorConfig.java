@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterAddonsConfigConfigConnectorConfig {
-    /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     */
     private Boolean enabled;
 
     private ClusterAddonsConfigConfigConnectorConfig() {}
-    /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     */
     public Boolean enabled() {
         return this.enabled;
     }

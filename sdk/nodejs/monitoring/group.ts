@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Monitoring Group Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,10 +29,8 @@ import * as utilities from "../utilities";
  *     filter: "resource.metadata.region=\"europe-west2\"",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Monitoring Group Subgroup
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -48,7 +45,6 @@ import * as utilities from "../utilities";
  *     parentName: parent.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

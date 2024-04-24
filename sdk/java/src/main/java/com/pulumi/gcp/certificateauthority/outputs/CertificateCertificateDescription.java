@@ -44,10 +44,9 @@ public final class CertificateCertificateDescription {
      */
     private @Nullable List<String> crlDistributionPoints;
     /**
-     * @return A PublicKey describes a public key.
+     * @return (Output)
+     * A PublicKey describes a public key.
      * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 
      */
     private @Nullable List<CertificateCertificateDescriptionPublicKey> publicKeys;
@@ -109,10 +108,9 @@ public final class CertificateCertificateDescription {
         return this.crlDistributionPoints == null ? List.of() : this.crlDistributionPoints;
     }
     /**
-     * @return A PublicKey describes a public key.
+     * @return (Output)
+     * A PublicKey describes a public key.
      * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 
      */
     public List<CertificateCertificateDescriptionPublicKey> publicKeys() {

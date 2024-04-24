@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Vmware Engine Subnet User Defined
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,7 +51,6 @@ import * as utilities from "../utilities";
  *     ipCidrRange: "192.168.100.0/26",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

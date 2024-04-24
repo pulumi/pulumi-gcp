@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ### Dns Response Policy Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -116,7 +115,6 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

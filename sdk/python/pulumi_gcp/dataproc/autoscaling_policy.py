@@ -295,7 +295,6 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         ### Dataproc Autoscaling Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -322,7 +321,6 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -380,7 +378,6 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         ### Dataproc Autoscaling Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -407,7 +404,6 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

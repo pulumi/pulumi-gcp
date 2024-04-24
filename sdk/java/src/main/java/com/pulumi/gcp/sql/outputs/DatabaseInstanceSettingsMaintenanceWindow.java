@@ -26,8 +26,6 @@ public final class DatabaseInstanceSettingsMaintenanceWindow {
      * @return Receive updates earlier (`canary`) or later
      * (`stable`)
      * 
-     * The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
-     * 
      */
     private @Nullable String updateTrack;
 
@@ -49,8 +47,6 @@ public final class DatabaseInstanceSettingsMaintenanceWindow {
     /**
      * @return Receive updates earlier (`canary`) or later
      * (`stable`)
-     * 
-     * The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
      * 
      */
     public Optional<String> updateTrack() {

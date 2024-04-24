@@ -26,8 +26,6 @@ class EngineSplitTrafficArgs:
         :param pulumi.Input['EngineSplitTrafficSplitArgs'] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
         :param pulumi.Input[bool] migrate_traffic: If set to true traffic will be migrated to this version.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "split", split)
@@ -76,10 +74,6 @@ class EngineSplitTrafficArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -97,8 +91,6 @@ class _EngineSplitTrafficState:
         """
         Input properties used for looking up and filtering EngineSplitTraffic resources.
         :param pulumi.Input[bool] migrate_traffic: If set to true traffic will be migrated to this version.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
         :param pulumi.Input['EngineSplitTrafficSplitArgs'] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
@@ -127,10 +119,6 @@ class _EngineSplitTrafficState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -184,7 +172,6 @@ class EngineSplitTraffic(pulumi.CustomResource):
 
         ### App Engine Service Split Traffic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -239,7 +226,6 @@ class EngineSplitTraffic(pulumi.CustomResource):
                 }),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -268,8 +254,6 @@ class EngineSplitTraffic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] migrate_traffic: If set to true traffic will be migrated to this version.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
         :param pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArgs']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
@@ -291,7 +275,6 @@ class EngineSplitTraffic(pulumi.CustomResource):
 
         ### App Engine Service Split Traffic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -346,7 +329,6 @@ class EngineSplitTraffic(pulumi.CustomResource):
                 }),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -430,8 +412,6 @@ class EngineSplitTraffic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] migrate_traffic: If set to true traffic will be migrated to this version.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
         :param pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArgs']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
@@ -457,10 +437,6 @@ class EngineSplitTraffic(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

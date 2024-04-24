@@ -27,7 +27,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? IdleDeleteTtl;
         /// <summary>
-        /// Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+        /// Time when the cluster became idle
+        /// (most recent job finished) and became eligible for deletion due to idleness.
         /// </summary>
         public readonly string? IdleStartTime;
 

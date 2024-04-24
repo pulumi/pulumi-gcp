@@ -25,7 +25,6 @@ import (
 //
 // ### Healthcare Fhir Store Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,10 +76,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Healthcare Fhir Store Streaming Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -161,10 +158,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Healthcare Fhir Store Notification Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -214,10 +209,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Healthcare Fhir Store Notification Configs
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -272,7 +265,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

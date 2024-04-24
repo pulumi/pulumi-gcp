@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Service Directory Endpoint Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,10 +40,8 @@ import * as utilities from "../utilities";
  *     port: 5353,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Service Directory Endpoint With Network
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,7 +68,6 @@ import * as utilities from "../utilities";
  *     port: 5353,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

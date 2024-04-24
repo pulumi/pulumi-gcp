@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Services Tls Route Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,10 +42,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Services Tls Route Mesh Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -86,10 +83,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Services Tls Route Gateway Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -132,7 +127,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -195,24 +189,21 @@ export class TlsRoute extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
+     * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+     * served by the gateway. Each gateway reference should match the pattern:
+     * projects/*&#47;locations/global/gateways/<gateway_name>
      */
     public readonly gateways!: pulumi.Output<string[] | undefined>;
     /**
-     * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name>
-     * The attached Mesh should be of a type SIDECAR
+     * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name> The attached
+     * Mesh should be of a type SIDECAR
      */
     public readonly meshes!: pulumi.Output<string[] | undefined>;
     /**
      * Name of the TlsRoute resource.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Rules that define how traffic is routed and handled.
@@ -283,24 +274,21 @@ export interface TlsRouteState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
+     * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+     * served by the gateway. Each gateway reference should match the pattern:
+     * projects/*&#47;locations/global/gateways/<gateway_name>
      */
     gateways?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name>
-     * The attached Mesh should be of a type SIDECAR
+     * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name> The attached
+     * Mesh should be of a type SIDECAR
      */
     meshes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the TlsRoute resource.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Rules that define how traffic is routed and handled.
@@ -326,24 +314,21 @@ export interface TlsRouteArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
+     * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+     * served by the gateway. Each gateway reference should match the pattern:
+     * projects/*&#47;locations/global/gateways/<gateway_name>
      */
     gateways?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name>
-     * The attached Mesh should be of a type SIDECAR
+     * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name> The attached
+     * Mesh should be of a type SIDECAR
      */
     meshes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the TlsRoute resource.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Rules that define how traffic is routed and handled.

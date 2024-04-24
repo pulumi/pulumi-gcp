@@ -325,7 +325,6 @@ class VolumeSnapshot(pulumi.CustomResource):
 
         ### Volume Snapshot Create
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -349,7 +348,6 @@ class VolumeSnapshot(pulumi.CustomResource):
             volume_name=default_volume.name,
             name="testvolumesnap")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -415,7 +413,6 @@ class VolumeSnapshot(pulumi.CustomResource):
 
         ### Volume Snapshot Create
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -439,7 +436,6 @@ class VolumeSnapshot(pulumi.CustomResource):
             volume_name=default_volume.name,
             name="testvolumesnap")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

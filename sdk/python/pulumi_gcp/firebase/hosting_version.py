@@ -155,7 +155,6 @@ class HostingVersion(pulumi.CustomResource):
 
         ### Firebasehosting Version Redirect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -177,10 +176,8 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Redirect to Google")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Version Cloud Run
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -214,10 +211,8 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Cloud Run Integration")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Version Cloud Functions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -257,7 +252,6 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Cloud Functions Integration")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -297,7 +291,6 @@ class HostingVersion(pulumi.CustomResource):
 
         ### Firebasehosting Version Redirect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,10 +312,8 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Redirect to Google")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Version Cloud Run
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -356,10 +347,8 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Cloud Run Integration")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Version Cloud Functions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -399,7 +388,6 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Cloud Functions Integration")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

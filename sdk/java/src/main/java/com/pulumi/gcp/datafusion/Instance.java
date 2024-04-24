@@ -723,16 +723,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.serviceEndpoint;
     }
     /**
-     * The type of an accelator for a CDF instance.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * The current state of this Data Fusion instance.
+     * - CREATING: Instance is being created
+     * - RUNNING: Instance is running and ready for requests
+     * - FAILED: Instance creation failed
+     * - DELETING: Instance is being deleted
+     * - UPGRADING: Instance is being upgraded
+     * - RESTARTING: Instance is being restarted
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The type of an accelator for a CDF instance.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * @return The current state of this Data Fusion instance.
+     * - CREATING: Instance is being created
+     * - RUNNING: Instance is running and ready for requests
+     * - FAILED: Instance creation failed
+     * - DELETING: Instance is being deleted
+     * - UPGRADING: Instance is being upgraded
+     * - RESTARTING: Instance is being restarted
      * 
      */
     public Output<String> state() {

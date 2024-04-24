@@ -24,7 +24,6 @@ import (
 //
 // ### Healthcare Consent Store Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,10 +55,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Healthcare Consent Store Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -96,10 +93,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Healthcare Consent Store Iam
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -152,7 +147,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

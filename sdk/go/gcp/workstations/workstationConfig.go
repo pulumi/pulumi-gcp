@@ -16,7 +16,6 @@ import (
 //
 // ### Workstation Config Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,10 +93,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workstation Config Container
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -170,10 +167,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workstation Config Persistent Directories
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -253,10 +248,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workstation Config Source Snapshot
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -334,10 +327,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workstation Config Shielded Instance Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -406,10 +397,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workstation Config Accelerators
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -480,10 +469,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workstation Config Boost
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -564,10 +551,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workstation Config Encryption Key
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -663,7 +648,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

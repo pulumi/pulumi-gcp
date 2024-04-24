@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Kms Crypto Key Version Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  * });
  * const example_key = new gcp.kms.CryptoKeyVersion("example-key", {cryptoKey: cryptokey.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

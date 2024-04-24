@@ -120,7 +120,6 @@ def get_discovered_workload(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -128,7 +127,6 @@ def get_discovered_workload(location: Optional[str] = None,
     my_workload = gcp.apphub.get_discovered_workload(location="us-central1",
         workload_uri="my-workload-uri")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the discovered workload.
@@ -162,7 +160,6 @@ def get_discovered_workload_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -170,7 +167,6 @@ def get_discovered_workload_output(location: Optional[pulumi.Input[str]] = None,
     my_workload = gcp.apphub.get_discovered_workload(location="us-central1",
         workload_uri="my-workload-uri")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the discovered workload.

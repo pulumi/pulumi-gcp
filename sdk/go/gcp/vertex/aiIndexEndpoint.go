@@ -22,7 +22,6 @@ import (
 //
 // ### Vertex Ai Index Endpoint
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,10 +88,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Index Endpoint With Psc
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -132,10 +129,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Index Endpoint With Public Endpoint
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -165,7 +160,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

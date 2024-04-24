@@ -84,14 +84,12 @@ def get_account_iam_policy(billing_account_id: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.billing.get_account_iam_policy(billing_account_id="MEEP-MEEP-MEEP-MEEP-MEEP")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str billing_account_id: The billing account id.
@@ -116,14 +114,12 @@ def get_account_iam_policy_output(billing_account_id: Optional[pulumi.Input[str]
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.billing.get_account_iam_policy(billing_account_id="MEEP-MEEP-MEEP-MEEP-MEEP")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str billing_account_id: The billing account id.

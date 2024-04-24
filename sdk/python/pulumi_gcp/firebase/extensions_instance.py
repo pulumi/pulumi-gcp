@@ -25,8 +25,6 @@ class ExtensionsInstanceArgs:
                Structure is documented below.
         :param pulumi.Input[str] instance_id: The ID to use for the Extension Instance, which will become the final
                component of the instance's name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -62,10 +60,6 @@ class ExtensionsInstanceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -93,8 +87,7 @@ class _ExtensionsInstanceState:
         Input properties used for looking up and filtering ExtensionsInstance resources.
         :param pulumi.Input['ExtensionsInstanceConfigArgs'] config: The current Config of the Extension Instance.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: (Output)
-               The time at which the Extension Instance Config was created.
+        :param pulumi.Input[str] create_time: The time at which the Extension Instance was created.
         :param pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]] error_statuses: If this Instance has `state: ERRORED`, the error messages
                will be found here.
                Structure is documented below.
@@ -106,10 +99,7 @@ class _ExtensionsInstanceState:
         :param pulumi.Input[str] last_operation_name: The name of the last operation that acted on this Extension
                Instance
         :param pulumi.Input[str] last_operation_type: The type of the last operation that acted on the Extension Instance.
-        :param pulumi.Input[str] name: (Output)
-               The unique identifier for this configuration.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] name: The fully-qualified resource name of the Extension Instance.
         :param pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]] runtime_datas: Data set by the extension instance at runtime.
                Structure is documented below.
         :param pulumi.Input[str] service_account_email: The email of the service account to be used at runtime by compute resources
@@ -161,8 +151,7 @@ class _ExtensionsInstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
-        The time at which the Extension Instance Config was created.
+        The time at which the Extension Instance was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -240,8 +229,7 @@ class _ExtensionsInstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
-        The unique identifier for this configuration.
+        The fully-qualified resource name of the Extension Instance.
         """
         return pulumi.get(self, "name")
 
@@ -252,10 +240,6 @@ class _ExtensionsInstanceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -327,7 +311,6 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         ### Firebase Extentions Instance Resize Image
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,7 +347,6 @@ class ExtensionsInstance(pulumi.CustomResource):
                 eventarc_channel="projects/my-project-name/locations//channels/firebase",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -396,8 +378,6 @@ class ExtensionsInstance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] instance_id: The ID to use for the Extension Instance, which will become the final
                component of the instance's name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -410,7 +390,6 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         ### Firebase Extentions Instance Resize Image
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -447,7 +426,6 @@ class ExtensionsInstance(pulumi.CustomResource):
                 eventarc_channel="projects/my-project-name/locations//channels/firebase",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -549,8 +527,7 @@ class ExtensionsInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']] config: The current Config of the Extension Instance.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: (Output)
-               The time at which the Extension Instance Config was created.
+        :param pulumi.Input[str] create_time: The time at which the Extension Instance was created.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceErrorStatusArgs']]]] error_statuses: If this Instance has `state: ERRORED`, the error messages
                will be found here.
                Structure is documented below.
@@ -562,10 +539,7 @@ class ExtensionsInstance(pulumi.CustomResource):
         :param pulumi.Input[str] last_operation_name: The name of the last operation that acted on this Extension
                Instance
         :param pulumi.Input[str] last_operation_type: The type of the last operation that acted on the Extension Instance.
-        :param pulumi.Input[str] name: (Output)
-               The unique identifier for this configuration.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] name: The fully-qualified resource name of the Extension Instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceRuntimeDataArgs']]]] runtime_datas: Data set by the extension instance at runtime.
                Structure is documented below.
         :param pulumi.Input[str] service_account_email: The email of the service account to be used at runtime by compute resources
@@ -605,8 +579,7 @@ class ExtensionsInstance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        (Output)
-        The time at which the Extension Instance Config was created.
+        The time at which the Extension Instance was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -660,18 +633,13 @@ class ExtensionsInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        (Output)
-        The unique identifier for this configuration.
+        The fully-qualified resource name of the Extension Instance.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

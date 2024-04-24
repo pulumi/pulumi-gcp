@@ -112,19 +112,9 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.preferredZone);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -145,16 +135,14 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Initial type of the private cloud.
-     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+     * Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Initial type of the private cloud.
-     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+     * @return Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
      * 
      */
     public Optional<Output<String>> type() {
@@ -323,25 +311,11 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
             return preferredZone(Output.of(preferredZone));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -368,8 +342,7 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Initial type of the private cloud.
-         * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+         * @param type Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
          * 
          * @return builder
          * 
@@ -380,8 +353,7 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Initial type of the private cloud.
-         * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+         * @param type Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
          * 
          * @return builder
          * 

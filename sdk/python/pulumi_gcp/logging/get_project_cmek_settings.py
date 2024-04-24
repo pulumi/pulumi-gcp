@@ -128,14 +128,12 @@ def get_project_cmek_settings(kms_key_name: Optional[str] = None,
 
     ### Logging Project Cmek Settings Basic
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     cmek_settings = gcp.logging.get_project_cmek_settings(project="my-project-name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str kms_key_name: The resource name for the configured Cloud KMS key.
@@ -177,14 +175,12 @@ def get_project_cmek_settings_output(kms_key_name: Optional[pulumi.Input[Optiona
 
     ### Logging Project Cmek Settings Basic
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     cmek_settings = gcp.logging.get_project_cmek_settings(project="my-project-name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str kms_key_name: The resource name for the configured Cloud KMS key.

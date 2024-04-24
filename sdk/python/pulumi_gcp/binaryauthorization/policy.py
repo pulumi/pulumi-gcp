@@ -27,27 +27,15 @@ class PolicyArgs:
         :param pulumi.Input['PolicyDefaultAdmissionRuleArgs'] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
-               image's name matches a whitelist pattern, the image's admission
-               requests will always be permitted regardless of your admission rules.
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that
-               all container images used in a pod creation request must be attested
-               to by one or more attestors, that all pod creations will be allowed,
-               or that all pod creations will be denied. There can be at most one
-               admission rule per cluster spec.
-               
-               Identifier format: `{{location}}.{{clusterId}}`.
-               A location is either a compute zone (e.g. `us-central1-a`) or a region
-               (e.g. `us-central1`).
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+               image's admission requests will always be permitted regardless of your admission rules.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+               must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+               denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+               location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         :param pulumi.Input[str] description: A descriptive comment.
-        :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
-               for common system-level images. Images not covered by the global
-               policy will be subject to the project admission policy.
-               Possible values are: `ENABLE`, `DISABLE`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+               covered by the global policy will be subject to the project admission policy. Possible values: ["ENABLE", "DISABLE"]
         """
         pulumi.set(__self__, "default_admission_rule", default_admission_rule)
         if admission_whitelist_patterns is not None:
@@ -79,10 +67,8 @@ class PolicyArgs:
     @pulumi.getter(name="admissionWhitelistPatterns")
     def admission_whitelist_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]:
         """
-        A whitelist of image patterns to exclude from admission rules. If an
-        image's name matches a whitelist pattern, the image's admission
-        requests will always be permitted regardless of your admission rules.
-        Structure is documented below.
+        A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+        image's admission requests will always be permitted regardless of your admission rules.
         """
         return pulumi.get(self, "admission_whitelist_patterns")
 
@@ -94,16 +80,10 @@ class PolicyArgs:
     @pulumi.getter(name="clusterAdmissionRules")
     def cluster_admission_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]:
         """
-        Per-cluster admission rules. An admission rule specifies either that
-        all container images used in a pod creation request must be attested
-        to by one or more attestors, that all pod creations will be allowed,
-        or that all pod creations will be denied. There can be at most one
-        admission rule per cluster spec.
-
-        Identifier format: `{{location}}.{{clusterId}}`.
-        A location is either a compute zone (e.g. `us-central1-a`) or a region
-        (e.g. `us-central1`).
-        Structure is documented below.
+        Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+        must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+        denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+        location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         """
         return pulumi.get(self, "cluster_admission_rules")
 
@@ -127,10 +107,8 @@ class PolicyArgs:
     @pulumi.getter(name="globalPolicyEvaluationMode")
     def global_policy_evaluation_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the evaluation of a Google-maintained global admission policy
-        for common system-level images. Images not covered by the global
-        policy will be subject to the project admission policy.
-        Possible values are: `ENABLE`, `DISABLE`.
+        Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+        covered by the global policy will be subject to the project admission policy. Possible values: ["ENABLE", "DISABLE"]
         """
         return pulumi.get(self, "global_policy_evaluation_mode")
 
@@ -141,10 +119,6 @@ class PolicyArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -163,30 +137,18 @@ class _PolicyState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
-               image's name matches a whitelist pattern, the image's admission
-               requests will always be permitted regardless of your admission rules.
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that
-               all container images used in a pod creation request must be attested
-               to by one or more attestors, that all pod creations will be allowed,
-               or that all pod creations will be denied. There can be at most one
-               admission rule per cluster spec.
-               
-               Identifier format: `{{location}}.{{clusterId}}`.
-               A location is either a compute zone (e.g. `us-central1-a`) or a region
-               (e.g. `us-central1`).
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+               image's admission requests will always be permitted regardless of your admission rules.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+               must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+               denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+               location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         :param pulumi.Input['PolicyDefaultAdmissionRuleArgs'] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment.
-        :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
-               for common system-level images. Images not covered by the global
-               policy will be subject to the project admission policy.
-               Possible values are: `ENABLE`, `DISABLE`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+               covered by the global policy will be subject to the project admission policy. Possible values: ["ENABLE", "DISABLE"]
         """
         if admission_whitelist_patterns is not None:
             pulumi.set(__self__, "admission_whitelist_patterns", admission_whitelist_patterns)
@@ -205,10 +167,8 @@ class _PolicyState:
     @pulumi.getter(name="admissionWhitelistPatterns")
     def admission_whitelist_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]:
         """
-        A whitelist of image patterns to exclude from admission rules. If an
-        image's name matches a whitelist pattern, the image's admission
-        requests will always be permitted regardless of your admission rules.
-        Structure is documented below.
+        A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+        image's admission requests will always be permitted regardless of your admission rules.
         """
         return pulumi.get(self, "admission_whitelist_patterns")
 
@@ -220,16 +180,10 @@ class _PolicyState:
     @pulumi.getter(name="clusterAdmissionRules")
     def cluster_admission_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]:
         """
-        Per-cluster admission rules. An admission rule specifies either that
-        all container images used in a pod creation request must be attested
-        to by one or more attestors, that all pod creations will be allowed,
-        or that all pod creations will be denied. There can be at most one
-        admission rule per cluster spec.
-
-        Identifier format: `{{location}}.{{clusterId}}`.
-        A location is either a compute zone (e.g. `us-central1-a`) or a region
-        (e.g. `us-central1`).
-        Structure is documented below.
+        Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+        must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+        denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+        location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         """
         return pulumi.get(self, "cluster_admission_rules")
 
@@ -267,10 +221,8 @@ class _PolicyState:
     @pulumi.getter(name="globalPolicyEvaluationMode")
     def global_policy_evaluation_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the evaluation of a Google-maintained global admission policy
-        for common system-level images. Images not covered by the global
-        policy will be subject to the project admission policy.
-        Possible values are: `ENABLE`, `DISABLE`.
+        Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+        covered by the global policy will be subject to the project admission policy. Possible values: ["ENABLE", "DISABLE"]
         """
         return pulumi.get(self, "global_policy_evaluation_mode")
 
@@ -281,10 +233,6 @@ class _PolicyState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -317,7 +265,6 @@ class Policy(pulumi.CustomResource):
 
         ### Binary Authorization Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -349,10 +296,8 @@ class Policy(pulumi.CustomResource):
                 require_attestations_bies=[attestor.name],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Binary Authorization Policy Global Evaluation
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -377,7 +322,6 @@ class Policy(pulumi.CustomResource):
             ),
             global_policy_evaluation_mode="ENABLE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -399,30 +343,18 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
-               image's name matches a whitelist pattern, the image's admission
-               requests will always be permitted regardless of your admission rules.
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that
-               all container images used in a pod creation request must be attested
-               to by one or more attestors, that all pod creations will be allowed,
-               or that all pod creations will be denied. There can be at most one
-               admission rule per cluster spec.
-               
-               Identifier format: `{{location}}.{{clusterId}}`.
-               A location is either a compute zone (e.g. `us-central1-a`) or a region
-               (e.g. `us-central1`).
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+               image's admission requests will always be permitted regardless of your admission rules.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+               must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+               denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+               location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         :param pulumi.Input[pulumi.InputType['PolicyDefaultAdmissionRuleArgs']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment.
-        :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
-               for common system-level images. Images not covered by the global
-               policy will be subject to the project admission policy.
-               Possible values are: `ENABLE`, `DISABLE`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+               covered by the global policy will be subject to the project admission policy. Possible values: ["ENABLE", "DISABLE"]
         """
         ...
     @overload
@@ -443,7 +375,6 @@ class Policy(pulumi.CustomResource):
 
         ### Binary Authorization Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -475,10 +406,8 @@ class Policy(pulumi.CustomResource):
                 require_attestations_bies=[attestor.name],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Binary Authorization Policy Global Evaluation
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -503,7 +432,6 @@ class Policy(pulumi.CustomResource):
             ),
             global_policy_evaluation_mode="ENABLE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -584,30 +512,18 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
-               image's name matches a whitelist pattern, the image's admission
-               requests will always be permitted regardless of your admission rules.
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that
-               all container images used in a pod creation request must be attested
-               to by one or more attestors, that all pod creations will be allowed,
-               or that all pod creations will be denied. There can be at most one
-               admission rule per cluster spec.
-               
-               Identifier format: `{{location}}.{{clusterId}}`.
-               A location is either a compute zone (e.g. `us-central1-a`) or a region
-               (e.g. `us-central1`).
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+               image's admission requests will always be permitted regardless of your admission rules.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+               must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+               denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+               location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         :param pulumi.Input[pulumi.InputType['PolicyDefaultAdmissionRuleArgs']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment.
-        :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
-               for common system-level images. Images not covered by the global
-               policy will be subject to the project admission policy.
-               Possible values are: `ENABLE`, `DISABLE`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+               covered by the global policy will be subject to the project admission policy. Possible values: ["ENABLE", "DISABLE"]
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -625,10 +541,8 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="admissionWhitelistPatterns")
     def admission_whitelist_patterns(self) -> pulumi.Output[Optional[Sequence['outputs.PolicyAdmissionWhitelistPattern']]]:
         """
-        A whitelist of image patterns to exclude from admission rules. If an
-        image's name matches a whitelist pattern, the image's admission
-        requests will always be permitted regardless of your admission rules.
-        Structure is documented below.
+        A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+        image's admission requests will always be permitted regardless of your admission rules.
         """
         return pulumi.get(self, "admission_whitelist_patterns")
 
@@ -636,16 +550,10 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="clusterAdmissionRules")
     def cluster_admission_rules(self) -> pulumi.Output[Optional[Sequence['outputs.PolicyClusterAdmissionRule']]]:
         """
-        Per-cluster admission rules. An admission rule specifies either that
-        all container images used in a pod creation request must be attested
-        to by one or more attestors, that all pod creations will be allowed,
-        or that all pod creations will be denied. There can be at most one
-        admission rule per cluster spec.
-
-        Identifier format: `{{location}}.{{clusterId}}`.
-        A location is either a compute zone (e.g. `us-central1-a`) or a region
-        (e.g. `us-central1`).
-        Structure is documented below.
+        Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+        must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+        denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+        location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         """
         return pulumi.get(self, "cluster_admission_rules")
 
@@ -671,19 +579,13 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="globalPolicyEvaluationMode")
     def global_policy_evaluation_mode(self) -> pulumi.Output[str]:
         """
-        Controls the evaluation of a Google-maintained global admission policy
-        for common system-level images. Images not covered by the global
-        policy will be subject to the project admission policy.
-        Possible values are: `ENABLE`, `DISABLE`.
+        Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+        covered by the global policy will be subject to the project admission policy. Possible values: ["ENABLE", "DISABLE"]
         """
         return pulumi.get(self, "global_policy_evaluation_mode")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 

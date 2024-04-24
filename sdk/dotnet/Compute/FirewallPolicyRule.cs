@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ### Basic_fir_sec_rule
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -108,7 +107,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -150,13 +148,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
-        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+        /// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        /// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+        /// "goto_next" rules.
         /// </summary>
         [Output("enableLogging")]
         public Output<bool?> EnableLogging { get; private set; } = null!;
@@ -192,7 +193,8 @@ namespace Pulumi.Gcp.Compute
         public Output<int> RuleTupleCount { get; private set; } = null!;
 
         /// <summary>
-        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+        /// this rule. If this field is left blank, all VMs within the organization will receive the rule.
         /// </summary>
         [Output("targetResources")]
         public Output<ImmutableArray<string>> TargetResources { get; private set; } = null!;
@@ -268,13 +270,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
-        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+        /// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        /// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+        /// "goto_next" rules.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -301,7 +306,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetResources;
 
         /// <summary>
-        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+        /// this rule. If this field is left blank, all VMs within the organization will receive the rule.
         /// </summary>
         public InputList<string> TargetResources
         {
@@ -348,13 +354,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+        /// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        /// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+        /// "goto_next" rules.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -393,7 +402,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetResources;
 
         /// <summary>
-        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+        /// this rule. If this field is left blank, all VMs within the organization will receive the rule.
         /// </summary>
         public InputList<string> TargetResources
         {

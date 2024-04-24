@@ -38,7 +38,6 @@ import * as utilities from "../utilities";
  *
  * ### Route Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,10 +51,8 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Route Ilb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -100,10 +97,8 @@ import * as utilities from "../utilities";
  *     priority: 2000,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Route Ilb Vip
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -172,7 +167,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

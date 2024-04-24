@@ -25,7 +25,6 @@ import (
 //
 // ### Region Network Endpoint Group Functions
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,10 +85,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Cloudrun
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -142,10 +139,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Appengine
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -243,10 +238,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Appengine Empty
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -274,10 +267,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Psc
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -304,10 +295,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Psc Service Attachment
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -406,10 +395,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Internet Ip Port
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -442,10 +429,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Internet Fqdn Port
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -478,7 +463,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

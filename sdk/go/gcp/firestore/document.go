@@ -34,7 +34,6 @@ import (
 //
 // ### Firestore Document Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,10 +94,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Document Nested Document
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -185,7 +182,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -24,7 +24,6 @@ import (
 //
 // ### Cloudbuildv2 Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,10 +54,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuildv2 Connection Ghe
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -159,10 +156,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuildv2 Connection Github
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -238,7 +233,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

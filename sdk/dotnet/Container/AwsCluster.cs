@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ### Basic_aws_cluster
     /// A basic example of a containeraws cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -135,10 +134,8 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Basic_enum_aws_cluster
     /// A basic example of a containeraws cluster with lowercase enums
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -248,10 +245,8 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Beta_basic_enum_aws_cluster
     /// A basic example of a containeraws cluster with lowercase enums (beta)
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -376,7 +371,6 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -406,10 +400,12 @@ namespace Pulumi.Gcp.Container
     public partial class AwsCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        /// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        /// `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -500,7 +496,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.AwsClusterNetworking> Networking { get; private set; } = null!;
 
         /// <summary>
-        /// The number of the Fleet host project where this cluster will be registered.
+        /// The project for the resource
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -585,10 +581,12 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        /// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        /// `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -657,7 +655,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AwsClusterNetworkingArgs> Networking { get; set; } = null!;
 
         /// <summary>
-        /// The number of the Fleet host project where this cluster will be registered.
+        /// The project for the resource
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -674,10 +672,12 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        /// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        /// `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -777,7 +777,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AwsClusterNetworkingGetArgs>? Networking { get; set; }
 
         /// <summary>
-        /// The number of the Fleet host project where this cluster will be registered.
+        /// The project for the resource
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

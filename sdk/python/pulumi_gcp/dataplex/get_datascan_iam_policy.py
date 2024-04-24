@@ -105,7 +105,6 @@ def get_datascan_iam_policy(data_scan_id: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_datascan_iam_policy(data_scan_id: Optional[str] = None,
         location=basic_profile["location"],
         data_scan_id=basic_profile["dataScanId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location where the data scan should reside.
@@ -148,7 +146,6 @@ def get_datascan_iam_policy_output(data_scan_id: Optional[pulumi.Input[str]] = N
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -157,7 +154,6 @@ def get_datascan_iam_policy_output(data_scan_id: Optional[pulumi.Input[str]] = N
         location=basic_profile["location"],
         data_scan_id=basic_profile["dataScanId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location where the data scan should reside.

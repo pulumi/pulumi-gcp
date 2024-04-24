@@ -29,7 +29,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ### Reservation Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -121,10 +119,6 @@ namespace Pulumi.Gcp.Compute
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -136,7 +130,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The share setting for reservations.
-        /// Structure is documented below.
         /// </summary>
         [Output("shareSettings")]
         public Output<Outputs.ReservationShareSettings> ShareSettings { get; private set; } = null!;
@@ -149,9 +142,8 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.ReservationSpecificReservation> SpecificReservation { get; private set; } = null!;
 
         /// <summary>
-        /// When set to true, only VMs that target this reservation by name can
-        /// consume this reservation. Otherwise, it can be consumed by VMs with
-        /// affinity for any reservation. Defaults to false.
+        /// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+        /// consumed by VMs with affinity for any reservation. Defaults to false.
         /// </summary>
         [Output("specificReservationRequired")]
         public Output<bool?> SpecificReservationRequired { get; private set; } = null!;
@@ -232,16 +224,11 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The share setting for reservations.
-        /// Structure is documented below.
         /// </summary>
         [Input("shareSettings")]
         public Input<Inputs.ReservationShareSettingsArgs>? ShareSettings { get; set; }
@@ -254,9 +241,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.ReservationSpecificReservationArgs> SpecificReservation { get; set; } = null!;
 
         /// <summary>
-        /// When set to true, only VMs that target this reservation by name can
-        /// consume this reservation. Otherwise, it can be consumed by VMs with
-        /// affinity for any reservation. Defaults to false.
+        /// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+        /// consumed by VMs with affinity for any reservation. Defaults to false.
         /// </summary>
         [Input("specificReservationRequired")]
         public Input<bool>? SpecificReservationRequired { get; set; }
@@ -306,10 +292,6 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -321,7 +303,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The share setting for reservations.
-        /// Structure is documented below.
         /// </summary>
         [Input("shareSettings")]
         public Input<Inputs.ReservationShareSettingsGetArgs>? ShareSettings { get; set; }
@@ -334,9 +315,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.ReservationSpecificReservationGetArgs>? SpecificReservation { get; set; }
 
         /// <summary>
-        /// When set to true, only VMs that target this reservation by name can
-        /// consume this reservation. Otherwise, it can be consumed by VMs with
-        /// affinity for any reservation. Defaults to false.
+        /// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+        /// consumed by VMs with affinity for any reservation. Defaults to false.
         /// </summary>
         [Input("specificReservationRequired")]
         public Input<bool>? SpecificReservationRequired { get; set; }

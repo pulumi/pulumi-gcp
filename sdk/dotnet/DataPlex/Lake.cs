@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// ### Basic_lake
     /// A basic example of a dataplex lake
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

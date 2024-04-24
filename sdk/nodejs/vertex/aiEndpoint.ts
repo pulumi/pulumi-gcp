@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Vertex Ai Endpoint Network
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,7 +57,6 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

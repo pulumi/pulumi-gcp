@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// ### Data Catalog Tag Template Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -90,7 +89,6 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -121,22 +119,18 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<ImmutableArray<Outputs.TagTemplateField>> Fields { get; private set; } = null!;
 
         /// <summary>
-        /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+        /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+        /// template.
         /// </summary>
         [Output("forceDelete")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+        /// The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -218,15 +212,12 @@ namespace Pulumi.Gcp.DataCatalog
         }
 
         /// <summary>
-        /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+        /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+        /// template.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -270,22 +261,18 @@ namespace Pulumi.Gcp.DataCatalog
         }
 
         /// <summary>
-        /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+        /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+        /// template.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+        /// The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

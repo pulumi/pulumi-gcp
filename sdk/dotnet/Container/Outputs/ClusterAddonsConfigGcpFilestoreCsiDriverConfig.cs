@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterAddonsConfigGcpFilestoreCsiDriverConfig
     {
-        /// <summary>
-        /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

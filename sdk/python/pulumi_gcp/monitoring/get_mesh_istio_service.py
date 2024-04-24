@@ -160,7 +160,6 @@ def get_mesh_istio_service(mesh_uid: Optional[str] = None,
 
     ### Monitoring Mesh Istio Service
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -170,7 +169,6 @@ def get_mesh_istio_service(mesh_uid: Optional[str] = None,
         service_namespace="istio-system",
         service_name="prometheus")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str mesh_uid: Identifier for the mesh in which this Istio service is defined.
@@ -232,7 +230,6 @@ def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
 
     ### Monitoring Mesh Istio Service
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -242,7 +239,6 @@ def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
         service_namespace="istio-system",
         service_name="prometheus")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str mesh_uid: Identifier for the mesh in which this Istio service is defined.

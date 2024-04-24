@@ -561,7 +561,6 @@ class Job(pulumi.CustomResource):
 
         ### Scheduler Job Pubsub
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -577,10 +576,8 @@ class Job(pulumi.CustomResource):
                 data=std.base64encode(input="test").result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job Http
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -604,10 +601,8 @@ class Job(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job Paused
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -632,10 +627,8 @@ class Job(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job App Engine
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -662,10 +655,8 @@ class Job(pulumi.CustomResource):
                 relative_uri="/ping",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job Oauth
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -685,10 +676,8 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job Oidc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -708,7 +697,6 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -800,7 +788,6 @@ class Job(pulumi.CustomResource):
 
         ### Scheduler Job Pubsub
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -816,10 +803,8 @@ class Job(pulumi.CustomResource):
                 data=std.base64encode(input="test").result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job Http
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -843,10 +828,8 @@ class Job(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job Paused
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -871,10 +854,8 @@ class Job(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job App Engine
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -901,10 +882,8 @@ class Job(pulumi.CustomResource):
                 relative_uri="/ping",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job Oauth
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -924,10 +903,8 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scheduler Job Oidc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -947,7 +924,6 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

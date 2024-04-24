@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSupportedDatabaseFlags(args: GetSupportedDatabaseFlagsArgs, opts?: pulumi.InvokeOptions): Promise<GetSupportedDatabaseFlagsResult> {
 
@@ -65,7 +63,6 @@ export interface GetSupportedDatabaseFlagsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -74,7 +71,6 @@ export interface GetSupportedDatabaseFlagsResult {
  *     location: "us-central1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSupportedDatabaseFlagsOutput(args: GetSupportedDatabaseFlagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSupportedDatabaseFlagsResult> {
     return pulumi.output(args).apply((a: any) => getSupportedDatabaseFlags(a, opts))

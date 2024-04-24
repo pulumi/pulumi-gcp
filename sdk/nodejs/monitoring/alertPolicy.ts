@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Monitoring Alert Policy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,10 +45,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Monitoring Alert Policy Evaluation Missing Data
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,10 +72,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Monitoring Alert Policy Forecast Options
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -106,10 +101,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Monitoring Alert Policy Promql Condition
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -132,7 +125,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -176,7 +168,6 @@ export class AlertPolicy extends pulumi.CustomResource {
 
     /**
      * Control over how this alert policy's notification channels are notified.
-     * Structure is documented below.
      */
     public readonly alertStrategy!: pulumi.Output<outputs.monitoring.AlertPolicyAlertStrategy | undefined>;
     /**
@@ -208,12 +199,10 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Documentation that is included with notifications and incidents related
-     * to this policy. Best practice is for the documentation to include information
-     * to help responders understand, mitigate, escalate, and correct the underlying
-     * problems detected by the alerting policy. Notification channels that have
-     * limited capacity might not show this documentation.
-     * Structure is documented below.
+     * Documentation that is included with notifications and incidents related to this policy. Best practice is for the
+     * documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
+     * problems detected by the alerting policy. Notification channels that have limited capacity might not show this
+     * documentation.
      */
     public readonly documentation!: pulumi.Output<outputs.monitoring.AlertPolicyDocumentation | undefined>;
     /**
@@ -221,43 +210,27 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * (Output)
-     * The unique resource name for this condition.
-     * Its syntax is:
-     * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
-     * [CONDITION_ID] is assigned by Stackdriver Monitoring when
-     * the condition is created as part of a new or updated alerting
-     * policy.
+     * The unique resource name for this policy.
+     * Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Identifies the notification channels to which notifications should be
-     * sent when incidents are opened or closed or when new violations occur
-     * on an already opened incident. Each element of this array corresponds
-     * to the name field in each of the NotificationChannel objects that are
-     * returned from the notificationChannels.list method. The syntax of the
-     * entries in this field is
-     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
+     * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
+     * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
+     * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
+     * in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
      */
     public readonly notificationChannels!: pulumi.Output<string[] | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The severity of an alert policy indicates how important incidents generated
-     * by that policy are. The severity level will be displayed on the Incident
-     * detail page and in notifications.
-     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     * The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will
+     * be displayed on the Incident detail page and in notifications. Possible values: ["CRITICAL", "ERROR", "WARNING"]
      */
     public readonly severity!: pulumi.Output<string | undefined>;
     /**
-     * This field is intended to be used for organizing and identifying the AlertPolicy
-     * objects.The field can contain up to 64 entries. Each key and value is limited
-     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
-     * must begin with a letter.
+     * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
+     * entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      */
     public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -321,7 +294,6 @@ export class AlertPolicy extends pulumi.CustomResource {
 export interface AlertPolicyState {
     /**
      * Control over how this alert policy's notification channels are notified.
-     * Structure is documented below.
      */
     alertStrategy?: pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategy>;
     /**
@@ -353,12 +325,10 @@ export interface AlertPolicyState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Documentation that is included with notifications and incidents related
-     * to this policy. Best practice is for the documentation to include information
-     * to help responders understand, mitigate, escalate, and correct the underlying
-     * problems detected by the alerting policy. Notification channels that have
-     * limited capacity might not show this documentation.
-     * Structure is documented below.
+     * Documentation that is included with notifications and incidents related to this policy. Best practice is for the
+     * documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
+     * problems detected by the alerting policy. Notification channels that have limited capacity might not show this
+     * documentation.
      */
     documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
     /**
@@ -366,43 +336,27 @@ export interface AlertPolicyState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * (Output)
-     * The unique resource name for this condition.
-     * Its syntax is:
-     * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
-     * [CONDITION_ID] is assigned by Stackdriver Monitoring when
-     * the condition is created as part of a new or updated alerting
-     * policy.
+     * The unique resource name for this policy.
+     * Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
      */
     name?: pulumi.Input<string>;
     /**
-     * Identifies the notification channels to which notifications should be
-     * sent when incidents are opened or closed or when new violations occur
-     * on an already opened incident. Each element of this array corresponds
-     * to the name field in each of the NotificationChannel objects that are
-     * returned from the notificationChannels.list method. The syntax of the
-     * entries in this field is
-     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
+     * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
+     * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
+     * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
+     * in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
      */
     notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The severity of an alert policy indicates how important incidents generated
-     * by that policy are. The severity level will be displayed on the Incident
-     * detail page and in notifications.
-     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     * The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will
+     * be displayed on the Incident detail page and in notifications. Possible values: ["CRITICAL", "ERROR", "WARNING"]
      */
     severity?: pulumi.Input<string>;
     /**
-     * This field is intended to be used for organizing and identifying the AlertPolicy
-     * objects.The field can contain up to 64 entries. Each key and value is limited
-     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
-     * must begin with a letter.
+     * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
+     * entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      */
     userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -413,7 +367,6 @@ export interface AlertPolicyState {
 export interface AlertPolicyArgs {
     /**
      * Control over how this alert policy's notification channels are notified.
-     * Structure is documented below.
      */
     alertStrategy?: pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategy>;
     /**
@@ -438,12 +391,10 @@ export interface AlertPolicyArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Documentation that is included with notifications and incidents related
-     * to this policy. Best practice is for the documentation to include information
-     * to help responders understand, mitigate, escalate, and correct the underlying
-     * problems detected by the alerting policy. Notification channels that have
-     * limited capacity might not show this documentation.
-     * Structure is documented below.
+     * Documentation that is included with notifications and incidents related to this policy. Best practice is for the
+     * documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
+     * problems detected by the alerting policy. Notification channels that have limited capacity might not show this
+     * documentation.
      */
     documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
     /**
@@ -451,33 +402,22 @@ export interface AlertPolicyArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Identifies the notification channels to which notifications should be
-     * sent when incidents are opened or closed or when new violations occur
-     * on an already opened incident. Each element of this array corresponds
-     * to the name field in each of the NotificationChannel objects that are
-     * returned from the notificationChannels.list method. The syntax of the
-     * entries in this field is
-     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
+     * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
+     * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
+     * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
+     * in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
      */
     notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The severity of an alert policy indicates how important incidents generated
-     * by that policy are. The severity level will be displayed on the Incident
-     * detail page and in notifications.
-     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     * The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will
+     * be displayed on the Incident detail page and in notifications. Possible values: ["CRITICAL", "ERROR", "WARNING"]
      */
     severity?: pulumi.Input<string>;
     /**
-     * This field is intended to be used for organizing and identifying the AlertPolicy
-     * objects.The field can contain up to 64 entries. Each key and value is limited
-     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
-     * must begin with a letter.
+     * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
+     * entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      */
     userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

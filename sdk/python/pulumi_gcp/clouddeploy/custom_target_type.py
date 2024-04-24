@@ -447,7 +447,6 @@ class CustomTargetType(pulumi.CustomResource):
 
         ### Clouddeploy Custom Target Type Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -469,10 +468,8 @@ class CustomTargetType(pulumi.CustomResource):
                 deploy_action="deployAction",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Clouddeploy Custom Target Type Git Skaffold Modules
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -494,10 +491,8 @@ class CustomTargetType(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Clouddeploy Custom Target Type Gcs Skaffold Modules
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -518,7 +513,6 @@ class CustomTargetType(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -583,7 +577,6 @@ class CustomTargetType(pulumi.CustomResource):
 
         ### Clouddeploy Custom Target Type Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -605,10 +598,8 @@ class CustomTargetType(pulumi.CustomResource):
                 deploy_action="deployAction",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Clouddeploy Custom Target Type Git Skaffold Modules
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -630,10 +621,8 @@ class CustomTargetType(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Clouddeploy Custom Target Type Gcs Skaffold Modules
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -654,7 +643,6 @@ class CustomTargetType(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

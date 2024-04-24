@@ -569,7 +569,6 @@ class WorkstationCluster(pulumi.CustomResource):
 
         ### Workstation Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -595,10 +594,8 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Cluster Private
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -627,10 +624,8 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Cluster Custom Domain
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -662,7 +657,6 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -724,7 +718,6 @@ class WorkstationCluster(pulumi.CustomResource):
 
         ### Workstation Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -750,10 +743,8 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Cluster Private
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -782,10 +773,8 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Cluster Custom Domain
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -817,7 +806,6 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetListingIamPolicyResult> InvokeAsync(GetListingIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListingIamPolicyResult>("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args ?? new GetListingIamPolicyArgs(), options.WithDefaults());
@@ -49,7 +47,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetListingIamPolicyResult> Invoke(GetListingIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListingIamPolicyResult>("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args ?? new GetListingIamPolicyInvokeArgs(), options.WithDefaults());

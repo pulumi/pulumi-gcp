@@ -292,7 +292,6 @@ class Table(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -323,7 +322,6 @@ class Table(pulumi.CustomResource):
             ],
             change_stream_retention="24h0m0s")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -379,7 +377,6 @@ class Table(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -410,7 +407,6 @@ class Table(pulumi.CustomResource):
             ],
             change_stream_retention="24h0m0s")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

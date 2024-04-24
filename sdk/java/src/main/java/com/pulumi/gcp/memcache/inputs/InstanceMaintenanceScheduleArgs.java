@@ -60,16 +60,20 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
     }
 
     /**
-     * Required. Start time of the window in UTC time.
-     * Structure is documented below.
+     * (Output)
+     * Output only. The start time of any upcoming scheduled maintenance for this instance.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return Required. Start time of the window in UTC time.
-     * Structure is documented below.
+     * @return (Output)
+     * Output only. The start time of any upcoming scheduled maintenance for this instance.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -159,8 +163,10 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param startTime Required. Start time of the window in UTC time.
-         * Structure is documented below.
+         * @param startTime (Output)
+         * Output only. The start time of any upcoming scheduled maintenance for this instance.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+         * resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -171,8 +177,10 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param startTime Required. Start time of the window in UTC time.
-         * Structure is documented below.
+         * @param startTime (Output)
+         * Output only. The start time of any upcoming scheduled maintenance for this instance.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+         * resolution and up to nine fractional digits.
          * 
          * @return builder
          * 

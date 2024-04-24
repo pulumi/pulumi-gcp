@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId {
     /**
-     * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * @return (Output)
+     * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
     private @Nullable List<Integer> objectIdPaths;
 
     private CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId() {}
     /**
-     * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * @return (Output)
+     * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
     public List<Integer> objectIdPaths() {

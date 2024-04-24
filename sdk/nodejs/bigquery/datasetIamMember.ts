@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  *
  * ## google\_bigquery\_dataset\_iam\_policy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,11 +43,9 @@ import * as utilities from "../utilities";
  *     policyData: owner.then(owner => owner.policyData),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## google\_bigquery\_dataset\_iam\_binding
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,11 +57,9 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## google\_bigquery\_dataset\_iam\_member
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -76,11 +71,9 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## google\_bigquery\_dataset\_iam\_policy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -97,11 +90,9 @@ import * as utilities from "../utilities";
  *     policyData: owner.then(owner => owner.policyData),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## google\_bigquery\_dataset\_iam\_binding
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -113,11 +104,9 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## google\_bigquery\_dataset\_iam\_member
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -129,7 +118,6 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

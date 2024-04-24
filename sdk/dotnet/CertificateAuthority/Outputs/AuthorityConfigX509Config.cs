@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     {
         /// <summary>
         /// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AuthorityConfigX509ConfigAdditionalExtension> AdditionalExtensions;
         /// <summary>
@@ -25,22 +24,18 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly ImmutableArray<string> AiaOcspServers;
         /// <summary>
         /// Describes values that are relevant in a CA certificate.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AuthorityConfigX509ConfigCaOptions CaOptions;
         /// <summary>
         /// Indicates the intended use for keys that correspond to a certificate.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AuthorityConfigX509ConfigKeyUsage KeyUsage;
         /// <summary>
         /// Describes the X.509 name constraints extension.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AuthorityConfigX509ConfigNameConstraints? NameConstraints;
         /// <summary>
         /// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AuthorityConfigX509ConfigPolicyId> PolicyIds;
 

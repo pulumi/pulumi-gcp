@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebasehosting Version Redirect
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,10 +35,8 @@ import * as utilities from "../utilities";
  *     message: "Redirect to Google",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Version Cloud Run
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -77,10 +74,8 @@ import * as utilities from "../utilities";
  *     message: "Cloud Run Integration",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Version Cloud Functions
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -126,7 +121,6 @@ import * as utilities from "../utilities";
  *     message: "Cloud Functions Integration",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

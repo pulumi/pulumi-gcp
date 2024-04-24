@@ -162,7 +162,6 @@ def get_application(application_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -171,7 +170,6 @@ def get_application(application_id: Optional[str] = None,
         application_id="application",
         location="location")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
@@ -206,7 +204,6 @@ def get_application_output(application_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -215,6 +212,5 @@ def get_application_output(application_id: Optional[pulumi.Input[str]] = None,
         application_id="application",
         location="location")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

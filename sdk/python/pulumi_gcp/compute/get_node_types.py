@@ -83,7 +83,6 @@ def get_node_types(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -94,7 +93,6 @@ def get_node_types(project: Optional[str] = None,
         region="us-central1",
         node_type=types["names"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: ID of the project to list available node types for.
@@ -126,7 +124,6 @@ def get_node_types_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -137,7 +134,6 @@ def get_node_types_output(project: Optional[pulumi.Input[Optional[str]]] = None,
         region="us-central1",
         node_type=types["names"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: ID of the project to list available node types for.

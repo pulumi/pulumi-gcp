@@ -455,7 +455,6 @@ class BackupPolicy(pulumi.CustomResource):
 
         ### Netapp Backup Policy Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -472,7 +471,6 @@ class BackupPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -539,7 +537,6 @@ class BackupPolicy(pulumi.CustomResource):
 
         ### Netapp Backup Policy Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -556,7 +553,6 @@ class BackupPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

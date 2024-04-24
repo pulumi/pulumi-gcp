@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase Android App Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,10 +21,8 @@ import * as utilities from "../utilities";
  *     sha256Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebase Android App Custom Api Key
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,7 +49,6 @@ import * as utilities from "../utilities";
  *     apiKeyId: android.uid,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

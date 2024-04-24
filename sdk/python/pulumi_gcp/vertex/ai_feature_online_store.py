@@ -479,7 +479,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
         ### Vertex Ai Feature Online Store
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -498,10 +497,8 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featureonlinestore With Beta Fields Optimized
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,10 +518,8 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -548,7 +543,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             force_destroy=True)
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -620,7 +614,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
         ### Vertex Ai Feature Online Store
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -639,10 +632,8 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featureonlinestore With Beta Fields Optimized
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -662,10 +653,8 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -689,7 +678,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             force_destroy=True)
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

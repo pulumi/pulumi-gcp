@@ -560,7 +560,6 @@ class BackupPlan(pulumi.CustomResource):
 
         ### Gkebackup Backupplan Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -590,10 +589,8 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Autopilot
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -624,10 +621,8 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -671,10 +666,8 @@ class BackupPlan(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -722,10 +715,8 @@ class BackupPlan(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Rpo Daily Window
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -788,10 +779,8 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Rpo Weekly Window
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -869,7 +858,6 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -942,7 +930,6 @@ class BackupPlan(pulumi.CustomResource):
 
         ### Gkebackup Backupplan Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -972,10 +959,8 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Autopilot
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1006,10 +991,8 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1053,10 +1036,8 @@ class BackupPlan(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1104,10 +1085,8 @@ class BackupPlan(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Rpo Daily Window
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1170,10 +1149,8 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Rpo Weekly Window
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1251,7 +1228,6 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

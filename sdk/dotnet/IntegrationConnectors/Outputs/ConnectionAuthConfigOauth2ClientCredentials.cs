@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.IntegrationConnectors.Outputs
         public readonly string ClientId;
         /// <summary>
         /// Secret version reference containing the client secret.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConnectionAuthConfigOauth2ClientCredentialsClientSecret? ClientSecret;
 

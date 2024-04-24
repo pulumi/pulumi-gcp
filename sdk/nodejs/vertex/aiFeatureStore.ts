@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Vertex Ai Featurestore
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,10 +38,8 @@ import * as utilities from "../utilities";
  *     forceDestroy: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Featurestore With Beta Fields
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -63,10 +60,8 @@ import * as utilities from "../utilities";
  *     forceDestroy: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Featurestore Scaling
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -89,7 +84,6 @@ import * as utilities from "../utilities";
  *     forceDestroy: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

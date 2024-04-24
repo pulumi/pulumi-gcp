@@ -221,7 +221,6 @@ class AccessPolicy(pulumi.CustomResource):
 
         ### Access Context Manager Access Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -230,10 +229,8 @@ class AccessPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             title="Org Access Policy")
         ```
-        <!--End PulumiCodeChooser -->
         ### Access Context Manager Access Policy Scoped
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -247,7 +244,6 @@ class AccessPolicy(pulumi.CustomResource):
             title="Scoped Access Policy",
             scopes=project.number.apply(lambda number: f"projects/{number}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -301,7 +297,6 @@ class AccessPolicy(pulumi.CustomResource):
 
         ### Access Context Manager Access Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -310,10 +305,8 @@ class AccessPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             title="Org Access Policy")
         ```
-        <!--End PulumiCodeChooser -->
         ### Access Context Manager Access Policy Scoped
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -327,7 +320,6 @@ class AccessPolicy(pulumi.CustomResource):
             title="Scoped Access Policy",
             scopes=project.number.apply(lambda number: f"projects/{number}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

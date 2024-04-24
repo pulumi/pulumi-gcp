@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -101,7 +100,6 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -137,7 +135,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        /// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+        /// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+        /// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+        /// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+        /// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+        /// cluster is deleted.
         /// </summary>
         [Output("dagTimeout")]
         public Output<string?> DagTimeout { get; private set; } = null!;
@@ -156,7 +159,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableArray<Outputs.WorkflowTemplateJob>> Jobs { get; private set; } = null!;
 
         /// <summary>
-        /// The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+        /// by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+        /// 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+        /// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+        /// associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+        /// configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -174,7 +182,8 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+        /// when the template is instantiated.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.WorkflowTemplateParameter>> Parameters { get; private set; } = null!;
@@ -204,7 +213,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        /// Output only. The current version of this workflow template.
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
@@ -261,7 +270,12 @@ namespace Pulumi.Gcp.Dataproc
     public sealed class WorkflowTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        /// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+        /// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+        /// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+        /// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+        /// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+        /// cluster is deleted.
         /// </summary>
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
@@ -282,7 +296,12 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+        /// by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+        /// 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+        /// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+        /// associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+        /// configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -306,7 +325,8 @@ namespace Pulumi.Gcp.Dataproc
         private InputList<Inputs.WorkflowTemplateParameterArgs>? _parameters;
 
         /// <summary>
-        /// Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+        /// when the template is instantiated.
         /// </summary>
         public InputList<Inputs.WorkflowTemplateParameterArgs> Parameters
         {
@@ -327,7 +347,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        /// Output only. The current version of this workflow template.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
@@ -347,7 +367,12 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        /// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+        /// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+        /// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+        /// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+        /// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+        /// cluster is deleted.
         /// </summary>
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
@@ -385,7 +410,12 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+        /// by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+        /// 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+        /// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+        /// associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+        /// configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -409,7 +439,8 @@ namespace Pulumi.Gcp.Dataproc
         private InputList<Inputs.WorkflowTemplateParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+        /// when the template is instantiated.
         /// </summary>
         public InputList<Inputs.WorkflowTemplateParameterGetArgs> Parameters
         {
@@ -452,7 +483,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        /// Output only. The current version of this workflow template.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

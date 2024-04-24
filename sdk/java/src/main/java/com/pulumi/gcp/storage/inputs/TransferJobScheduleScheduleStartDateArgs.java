@@ -17,16 +17,12 @@ public final class TransferJobScheduleScheduleStartDateArgs extends com.pulumi.r
     /**
      * Day of month. Must be from 1 to 31 and valid for the year and month.
      * 
-     * &lt;a name=&#34;nested_start_time_of_day&#34;&gt;&lt;/a&gt;The `start_time_of_day` blocks support:
-     * 
      */
     @Import(name="day", required=true)
     private Output<Integer> day;
 
     /**
      * @return Day of month. Must be from 1 to 31 and valid for the year and month.
-     * 
-     * &lt;a name=&#34;nested_start_time_of_day&#34;&gt;&lt;/a&gt;The `start_time_of_day` blocks support:
      * 
      */
     public Output<Integer> day() {
@@ -92,8 +88,6 @@ public final class TransferJobScheduleScheduleStartDateArgs extends com.pulumi.r
         /**
          * @param day Day of month. Must be from 1 to 31 and valid for the year and month.
          * 
-         * &lt;a name=&#34;nested_start_time_of_day&#34;&gt;&lt;/a&gt;The `start_time_of_day` blocks support:
-         * 
          * @return builder
          * 
          */
@@ -104,8 +98,6 @@ public final class TransferJobScheduleScheduleStartDateArgs extends com.pulumi.r
 
         /**
          * @param day Day of month. Must be from 1 to 31 and valid for the year and month.
-         * 
-         * &lt;a name=&#34;nested_start_time_of_day&#34;&gt;&lt;/a&gt;The `start_time_of_day` blocks support:
          * 
          * @return builder
          * 

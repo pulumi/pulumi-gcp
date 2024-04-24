@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Compute Packet Mirroring Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,7 +89,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -163,8 +161,7 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A filter for mirrored traffic.  If unset, all traffic is mirrored.
-     * Structure is documented below.
+     * A filter for mirrored traffic. If unset, all traffic is mirrored.
      */
     public readonly filter!: pulumi.Output<outputs.compute.PacketMirroringFilter | undefined>;
     /**
@@ -184,19 +181,13 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<outputs.compute.PacketMirroringNetwork>;
     /**
-     * Since only one rule can be active at a time, priority is
-     * used to break ties in the case of two rules that apply to
-     * the same instances.
+     * Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+     * same instances.
      */
     public readonly priority!: pulumi.Output<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The Region in which the created address should reside.
-     * If it is not provided, the provider region is used.
+     * The Region in which the created address should reside. If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
 
@@ -265,8 +256,7 @@ export interface PacketMirroringState {
      */
     description?: pulumi.Input<string>;
     /**
-     * A filter for mirrored traffic.  If unset, all traffic is mirrored.
-     * Structure is documented below.
+     * A filter for mirrored traffic. If unset, all traffic is mirrored.
      */
     filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
     /**
@@ -286,19 +276,13 @@ export interface PacketMirroringState {
      */
     network?: pulumi.Input<inputs.compute.PacketMirroringNetwork>;
     /**
-     * Since only one rule can be active at a time, priority is
-     * used to break ties in the case of two rules that apply to
-     * the same instances.
+     * Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+     * same instances.
      */
     priority?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The Region in which the created address should reside.
-     * If it is not provided, the provider region is used.
+     * The Region in which the created address should reside. If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
 }
@@ -320,8 +304,7 @@ export interface PacketMirroringArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A filter for mirrored traffic.  If unset, all traffic is mirrored.
-     * Structure is documented below.
+     * A filter for mirrored traffic. If unset, all traffic is mirrored.
      */
     filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
     /**
@@ -341,19 +324,13 @@ export interface PacketMirroringArgs {
      */
     network: pulumi.Input<inputs.compute.PacketMirroringNetwork>;
     /**
-     * Since only one rule can be active at a time, priority is
-     * used to break ties in the case of two rules that apply to
-     * the same instances.
+     * Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+     * same instances.
      */
     priority?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The Region in which the created address should reside.
-     * If it is not provided, the provider region is used.
+     * The Region in which the created address should reside. If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
 }

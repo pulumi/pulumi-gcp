@@ -357,7 +357,6 @@ class DataExchange(pulumi.CustomResource):
 
         ### Bigquery Analyticshub Data Exchange Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,7 +367,6 @@ class DataExchange(pulumi.CustomResource):
             display_name="my_data_exchange",
             description="example data exchange")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -434,7 +432,6 @@ class DataExchange(pulumi.CustomResource):
 
         ### Bigquery Analyticshub Data Exchange Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -445,7 +442,6 @@ class DataExchange(pulumi.CustomResource):
             display_name="my_data_exchange",
             description="example data exchange")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

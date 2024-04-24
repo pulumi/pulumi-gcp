@@ -492,7 +492,6 @@ class VpnConnection(pulumi.CustomResource):
 
         ### Edgecontainer Vpn Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -531,7 +530,6 @@ class VpnConnection(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -597,7 +595,6 @@ class VpnConnection(pulumi.CustomResource):
 
         ### Edgecontainer Vpn Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -636,7 +633,6 @@ class VpnConnection(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

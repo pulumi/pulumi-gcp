@@ -376,7 +376,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
 
         ### Network Security Authorization Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -395,10 +394,8 @@ class AuthorizationPolicy(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Authorization Policy Destinations
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -426,7 +423,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -483,7 +479,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
 
         ### Network Security Authorization Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -502,10 +497,8 @@ class AuthorizationPolicy(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Authorization Policy Destinations
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -533,7 +526,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

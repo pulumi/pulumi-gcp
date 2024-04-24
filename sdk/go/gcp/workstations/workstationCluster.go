@@ -16,7 +16,6 @@ import (
 //
 // ### Workstation Cluster Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -71,10 +70,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workstation Cluster Private
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -132,10 +129,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workstation Cluster Custom Domain
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -196,7 +191,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

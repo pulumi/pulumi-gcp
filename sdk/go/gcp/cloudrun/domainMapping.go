@@ -24,7 +24,6 @@ import (
 //
 // ### Cloud Run Domain Mapping Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,7 +73,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -105,12 +103,9 @@ type DomainMapping struct {
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Metadata associated with this DomainMapping.
-	// Structure is documented below.
 	Metadata DomainMappingMetadataOutput `pulumi:"metadata"`
 	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The spec for this DomainMapping.
 	// Structure is documented below.
@@ -159,12 +154,9 @@ type domainMappingState struct {
 	// The location of the cloud run instance. eg us-central1
 	Location *string `pulumi:"location"`
 	// Metadata associated with this DomainMapping.
-	// Structure is documented below.
 	Metadata *DomainMappingMetadata `pulumi:"metadata"`
 	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The spec for this DomainMapping.
 	// Structure is documented below.
@@ -178,12 +170,9 @@ type DomainMappingState struct {
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringPtrInput
 	// Metadata associated with this DomainMapping.
-	// Structure is documented below.
 	Metadata DomainMappingMetadataPtrInput
 	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The spec for this DomainMapping.
 	// Structure is documented below.
@@ -201,12 +190,9 @@ type domainMappingArgs struct {
 	// The location of the cloud run instance. eg us-central1
 	Location string `pulumi:"location"`
 	// Metadata associated with this DomainMapping.
-	// Structure is documented below.
 	Metadata *DomainMappingMetadata `pulumi:"metadata"`
 	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The spec for this DomainMapping.
 	// Structure is documented below.
@@ -218,12 +204,9 @@ type DomainMappingArgs struct {
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringInput
 	// Metadata associated with this DomainMapping.
-	// Structure is documented below.
 	Metadata DomainMappingMetadataPtrInput
 	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The spec for this DomainMapping.
 	// Structure is documented below.
@@ -323,7 +306,6 @@ func (o DomainMappingOutput) Location() pulumi.StringOutput {
 }
 
 // Metadata associated with this DomainMapping.
-// Structure is documented below.
 func (o DomainMappingOutput) Metadata() DomainMappingMetadataOutput {
 	return o.ApplyT(func(v *DomainMapping) DomainMappingMetadataOutput { return v.Metadata }).(DomainMappingMetadataOutput)
 }
@@ -333,8 +315,6 @@ func (o DomainMappingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o DomainMappingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

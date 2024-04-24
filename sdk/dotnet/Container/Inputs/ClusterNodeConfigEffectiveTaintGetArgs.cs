@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodeConfigEffectiveTaintGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        /// Effect for taint.
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
         /// <summary>
-        /// The default or custom node affinity label key name.
+        /// Key for taint.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

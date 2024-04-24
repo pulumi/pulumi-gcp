@@ -20,7 +20,6 @@ import (
 //
 // ### Basic_azure_cluster
 // A basic example of a containerazure azure cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -101,10 +100,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Beta_basic_enum_azure_cluster
 // A basic example of a containerazure azure cluster with lowercase enums (beta)
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -188,7 +185,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -216,10 +212,12 @@ import (
 type AzureCluster struct {
 	pulumi.CustomResourceState
 
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AzureClusterAuthorizationOutput `pulumi:"authorization"`
@@ -227,7 +225,10 @@ type AzureCluster struct {
 	AzureRegion pulumi.StringOutput `pulumi:"azureRegion"`
 	// Azure authentication configuration for management of Azure resources
 	AzureServicesAuthentication AzureClusterAzureServicesAuthenticationPtrOutput `pulumi:"azureServicesAuthentication"`
-	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+	// `AzureCluster`. `AzureClient` names are formatted as
+	// `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+	// (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
 	Client pulumi.StringPtrOutput `pulumi:"client"`
 	// Configuration related to the cluster control plane.
 	ControlPlane AzureClusterControlPlaneOutput `pulumi:"controlPlane"`
@@ -252,7 +253,7 @@ type AzureCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingOutput `pulumi:"networking"`
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
@@ -319,10 +320,12 @@ func GetAzureCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzureCluster resources.
 type azureClusterState struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization *AzureClusterAuthorization `pulumi:"authorization"`
@@ -330,7 +333,10 @@ type azureClusterState struct {
 	AzureRegion *string `pulumi:"azureRegion"`
 	// Azure authentication configuration for management of Azure resources
 	AzureServicesAuthentication *AzureClusterAzureServicesAuthentication `pulumi:"azureServicesAuthentication"`
-	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+	// `AzureCluster`. `AzureClient` names are formatted as
+	// `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+	// (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
 	Client *string `pulumi:"client"`
 	// Configuration related to the cluster control plane.
 	ControlPlane *AzureClusterControlPlane `pulumi:"controlPlane"`
@@ -355,7 +361,7 @@ type azureClusterState struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking *AzureClusterNetworking `pulumi:"networking"`
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
@@ -372,10 +378,12 @@ type azureClusterState struct {
 }
 
 type AzureClusterState struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AzureClusterAuthorizationPtrInput
@@ -383,7 +391,10 @@ type AzureClusterState struct {
 	AzureRegion pulumi.StringPtrInput
 	// Azure authentication configuration for management of Azure resources
 	AzureServicesAuthentication AzureClusterAzureServicesAuthenticationPtrInput
-	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+	// `AzureCluster`. `AzureClient` names are formatted as
+	// `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+	// (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
 	Client pulumi.StringPtrInput
 	// Configuration related to the cluster control plane.
 	ControlPlane AzureClusterControlPlanePtrInput
@@ -408,7 +419,7 @@ type AzureClusterState struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingPtrInput
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
@@ -429,10 +440,12 @@ func (AzureClusterState) ElementType() reflect.Type {
 }
 
 type azureClusterArgs struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AzureClusterAuthorization `pulumi:"authorization"`
@@ -440,7 +453,10 @@ type azureClusterArgs struct {
 	AzureRegion string `pulumi:"azureRegion"`
 	// Azure authentication configuration for management of Azure resources
 	AzureServicesAuthentication *AzureClusterAzureServicesAuthentication `pulumi:"azureServicesAuthentication"`
-	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+	// `AzureCluster`. `AzureClient` names are formatted as
+	// `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+	// (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
 	Client *string `pulumi:"client"`
 	// Configuration related to the cluster control plane.
 	ControlPlane AzureClusterControlPlane `pulumi:"controlPlane"`
@@ -456,7 +472,7 @@ type azureClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworking `pulumi:"networking"`
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 	ResourceGroupId string `pulumi:"resourceGroupId"`
@@ -464,10 +480,12 @@ type azureClusterArgs struct {
 
 // The set of arguments for constructing a AzureCluster resource.
 type AzureClusterArgs struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AzureClusterAuthorizationInput
@@ -475,7 +493,10 @@ type AzureClusterArgs struct {
 	AzureRegion pulumi.StringInput
 	// Azure authentication configuration for management of Azure resources
 	AzureServicesAuthentication AzureClusterAzureServicesAuthenticationPtrInput
-	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+	// `AzureCluster`. `AzureClient` names are formatted as
+	// `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+	// (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
 	Client pulumi.StringPtrInput
 	// Configuration related to the cluster control plane.
 	ControlPlane AzureClusterControlPlaneInput
@@ -491,7 +512,7 @@ type AzureClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingInput
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 	ResourceGroupId pulumi.StringInput
@@ -584,10 +605,12 @@ func (o AzureClusterOutput) ToAzureClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-//
-// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+// all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+// `effective_annotations` for all of the annotations present on the resource.
 func (o AzureClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -609,7 +632,10 @@ func (o AzureClusterOutput) AzureServicesAuthentication() AzureClusterAzureServi
 	}).(AzureClusterAzureServicesAuthenticationPtrOutput)
 }
 
-// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+// `AzureCluster`. `AzureClient` names are formatted as
+// `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+// (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
 func (o AzureClusterOutput) Client() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringPtrOutput { return v.Client }).(pulumi.StringPtrOutput)
 }
@@ -670,7 +696,7 @@ func (o AzureClusterOutput) Networking() AzureClusterNetworkingOutput {
 	return o.ApplyT(func(v *AzureCluster) AzureClusterNetworkingOutput { return v.Networking }).(AzureClusterNetworkingOutput)
 }
 
-// The number of the Fleet host project where this cluster will be registered.
+// The project for the resource
 func (o AzureClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -15,7 +15,6 @@ import (
 //
 // ## example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetKeyRingIamPolicy(ctx *pulumi.Context, args *GetKeyRingIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetKeyRingIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKeyRingIamPolicyResult

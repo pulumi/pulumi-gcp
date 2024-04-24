@@ -227,7 +227,6 @@ class TagValue(pulumi.CustomResource):
 
         ### Tag Value Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -241,7 +240,6 @@ class TagValue(pulumi.CustomResource):
             short_name="valuename",
             description="For valuename resources.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -290,7 +288,6 @@ class TagValue(pulumi.CustomResource):
 
         ### Tag Value Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -304,7 +301,6 @@ class TagValue(pulumi.CustomResource):
             short_name="valuename",
             description="For valuename resources.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

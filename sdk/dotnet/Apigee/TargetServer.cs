@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// ### Apigee Target Server Test Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -110,7 +109,6 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Endpoints
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -98,7 +97,6 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

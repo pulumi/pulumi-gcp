@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Data Fusion Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,10 +29,8 @@ import * as utilities from "../utilities";
  *     type: "BASIC",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,10 +67,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Cmek
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,10 +96,8 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Enterprise
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -116,10 +109,8 @@ import * as utilities from "../utilities";
  *     enableRbac: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Event
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -135,10 +126,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Zone
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -150,7 +139,6 @@ import * as utilities from "../utilities";
  *     type: "DEVELOPER",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -323,8 +311,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceEndpoint!: pulumi.Output<string>;
     /**
-     * The type of an accelator for a CDF instance.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * The current state of this Data Fusion instance.
+     * - CREATING: Instance is being created
+     * - RUNNING: Instance is running and ready for requests
+     * - FAILED: Instance creation failed
+     * - DELETING: Instance is being deleted
+     * - UPGRADING: Instance is being upgraded
+     * - RESTARTING: Instance is being restarted
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -570,8 +563,13 @@ export interface InstanceState {
      */
     serviceEndpoint?: pulumi.Input<string>;
     /**
-     * The type of an accelator for a CDF instance.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * The current state of this Data Fusion instance.
+     * - CREATING: Instance is being created
+     * - RUNNING: Instance is running and ready for requests
+     * - FAILED: Instance creation failed
+     * - DELETING: Instance is being deleted
+     * - UPGRADING: Instance is being upgraded
+     * - RESTARTING: Instance is being restarted
      */
     state?: pulumi.Input<string>;
     /**

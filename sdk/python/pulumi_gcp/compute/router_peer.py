@@ -942,7 +942,6 @@ class RouterPeer(pulumi.CustomResource):
 
         ### Router Peer Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -955,10 +954,8 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface="interface-1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Peer Disabled
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -973,10 +970,8 @@ class RouterPeer(pulumi.CustomResource):
             interface="interface-1",
             enable=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Peer Bfd
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -996,10 +991,8 @@ class RouterPeer(pulumi.CustomResource):
                 session_initialization_mode="ACTIVE",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Peer Router Appliance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1082,7 +1075,6 @@ class RouterPeer(pulumi.CustomResource):
             peer_asn=65513,
             peer_ip_address=addr_peer.address)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1199,7 +1191,6 @@ class RouterPeer(pulumi.CustomResource):
 
         ### Router Peer Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1212,10 +1203,8 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface="interface-1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Peer Disabled
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1230,10 +1219,8 @@ class RouterPeer(pulumi.CustomResource):
             interface="interface-1",
             enable=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Peer Bfd
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1253,10 +1240,8 @@ class RouterPeer(pulumi.CustomResource):
                 session_initialization_mode="ACTIVE",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Peer Router Appliance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1339,7 +1324,6 @@ class RouterPeer(pulumi.CustomResource):
             peer_asn=65513,
             peer_ip_address=addr_peer.address)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

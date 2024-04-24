@@ -355,7 +355,6 @@ class InstanceGroup(pulumi.CustomResource):
 
         ### Empty Instance Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,11 +365,9 @@ class InstanceGroup(pulumi.CustomResource):
             zone="us-central1-a",
             network=default["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Example Usage - With instances and named ports
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -394,14 +391,12 @@ class InstanceGroup(pulumi.CustomResource):
             ],
             zone="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Example Usage - Recreating an instance group in use
         Recreating an instance group that's in use by another resource will give a
         `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
         as shown in this example to avoid this type of error.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,7 +441,6 @@ class InstanceGroup(pulumi.CustomResource):
             )],
             health_checks=staging_health.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -509,7 +503,6 @@ class InstanceGroup(pulumi.CustomResource):
 
         ### Empty Instance Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -520,11 +513,9 @@ class InstanceGroup(pulumi.CustomResource):
             zone="us-central1-a",
             network=default["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Example Usage - With instances and named ports
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -548,14 +539,12 @@ class InstanceGroup(pulumi.CustomResource):
             ],
             zone="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Example Usage - Recreating an instance group in use
         Recreating an instance group that's in use by another resource will give a
         `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
         as shown in this example to avoid this type of error.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -600,7 +589,6 @@ class InstanceGroup(pulumi.CustomResource):
             )],
             health_checks=staging_health.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

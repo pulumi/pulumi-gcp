@@ -230,18 +230,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firestore/index:Index")
 public class Index extends com.pulumi.resources.CustomResource {
     /**
-     * The API scope at which a query is run.
-     * Default value is `ANY_API`.
-     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
      * 
      */
     @Export(name="apiScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiScope;
 
     /**
-     * @return The API scope at which a query is run.
-     * Default value is `ANY_API`.
-     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * @return The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
      * 
      */
     public Output<Optional<String>> apiScope() {
@@ -262,14 +258,14 @@ public class Index extends com.pulumi.resources.CustomResource {
         return this.collection;
     }
     /**
-     * The Firestore database id. Defaults to `&#34;(default)&#34;`.
+     * The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
      * 
      */
     @Export(name="database", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> database;
 
     /**
-     * @return The Firestore database id. Defaults to `&#34;(default)&#34;`.
+     * @return The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
      * 
      */
     public Output<Optional<String>> database() {
@@ -317,35 +313,23 @@ public class Index extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The scope at which a query is run.
-     * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+     * The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
+     * &#34;COLLECTION_RECURSIVE&#34;]
      * 
      */
     @Export(name="queryScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queryScope;
 
     /**
-     * @return The scope at which a query is run.
-     * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+     * @return The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
+     * &#34;COLLECTION_RECURSIVE&#34;]
      * 
      */
     public Output<Optional<String>> queryScope() {

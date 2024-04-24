@@ -703,7 +703,6 @@ class Backup(pulumi.CustomResource):
 
         ### Alloydb Backup Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -732,10 +731,8 @@ class Backup(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb Backup Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -769,7 +766,6 @@ class Backup(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -840,7 +836,6 @@ class Backup(pulumi.CustomResource):
 
         ### Alloydb Backup Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -869,10 +864,8 @@ class Backup(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb Backup Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -906,7 +899,6 @@ class Backup(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

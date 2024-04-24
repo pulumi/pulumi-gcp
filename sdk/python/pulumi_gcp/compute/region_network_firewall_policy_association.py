@@ -234,7 +234,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         ## Example Usage
 
         ### Regional
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -252,7 +251,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
             project="my-project-name",
             region="us-west1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -296,7 +294,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         ## Example Usage
 
         ### Regional
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -314,7 +311,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
             project="my-project-name",
             region="us-west1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

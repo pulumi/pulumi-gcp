@@ -12,62 +12,54 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateManagedAuthorizationAttemptInfo {
     /**
-     * @return (Output)
-     * Human readable explanation for reaching the state. Provided to help
+     * @return Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
-     * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+     * Not guaranteed to be stable. For programmatic access use &#39;failure_reason&#39; field.
      * 
      */
     private @Nullable String details;
     /**
-     * @return (Output)
-     * Domain name of the authorization attempt.
+     * @return Domain name of the authorization attempt.
      * 
      */
     private @Nullable String domain;
     /**
-     * @return (Output)
-     * Reason for failure of the authorization attempt for the domain.
+     * @return Reason for failure of the authorization attempt for the domain.
      * 
      */
     private @Nullable String failureReason;
     /**
-     * @return (Output)
-     * State of the domain for managed certificate issuance.
+     * @return State of the domain for managed certificate issuance.
      * 
      */
     private @Nullable String state;
 
     private CertificateManagedAuthorizationAttemptInfo() {}
     /**
-     * @return (Output)
-     * Human readable explanation for reaching the state. Provided to help
+     * @return Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
-     * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+     * Not guaranteed to be stable. For programmatic access use &#39;failure_reason&#39; field.
      * 
      */
     public Optional<String> details() {
         return Optional.ofNullable(this.details);
     }
     /**
-     * @return (Output)
-     * Domain name of the authorization attempt.
+     * @return Domain name of the authorization attempt.
      * 
      */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return (Output)
-     * Reason for failure of the authorization attempt for the domain.
+     * @return Reason for failure of the authorization attempt for the domain.
      * 
      */
     public Optional<String> failureReason() {
         return Optional.ofNullable(this.failureReason);
     }
     /**
-     * @return (Output)
-     * State of the domain for managed certificate issuance.
+     * @return State of the domain for managed certificate issuance.
      * 
      */
     public Optional<String> state() {

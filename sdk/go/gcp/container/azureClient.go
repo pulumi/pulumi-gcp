@@ -20,7 +20,6 @@ import (
 //
 // ### Basic_azure_client
 // A basic example of a containerazure azure client
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

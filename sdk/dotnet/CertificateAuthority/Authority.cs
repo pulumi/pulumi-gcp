@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// ### Privateca Certificate Authority Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -99,10 +98,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Privateca Certificate Authority Subordinate
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -230,10 +227,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Privateca Certificate Authority Byo Key
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -342,7 +337,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -407,7 +401,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        /// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         /// </summary>
         [Output("desiredState")]
         public Output<string?> DesiredState { get; private set; } = null!;
@@ -419,18 +413,17 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-        /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-        /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-        /// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-        /// created.
+        /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+        /// CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+        /// example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+        /// be created.
         /// </summary>
         [Output("gcsBucket")]
         public Output<string?> GcsBucket { get; private set; } = null!;
 
         /// <summary>
-        /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-        /// Use with care. Defaults to `false`.
+        /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+        /// unexpired certs. Use with care. Defaults to 'false'.
         /// </summary>
         [Output("ignoreActiveCertificatesOnDeletion")]
         public Output<bool?> IgnoreActiveCertificatesOnDeletion { get; private set; } = null!;
@@ -445,20 +438,16 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<Outputs.AuthorityKeySpec> KeySpec { get; private set; } = null!;
 
         /// <summary>
-        /// Labels with user-defined metadata.
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-        /// "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+        /// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+        /// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-        /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-        /// fractional digits, terminated by 's'. Example: "3.5s".
+        /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+        /// certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         [Output("lifetime")]
         public Output<string?> Lifetime { get; private set; } = null!;
@@ -478,7 +467,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+        /// a third party issuer.
         /// </summary>
         [Output("pemCaCertificate")]
         public Output<string?> PemCaCertificate { get; private set; } = null!;
@@ -498,10 +488,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Output("pool")]
         public Output<string> Pool { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -513,10 +499,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// If this flag is set, the Certificate Authority will be deleted as soon as
-        /// possible without a 30-day grace period where undeletion would have been
-        /// allowed. If you proceed, there will be no way to recover this CA.
-        /// Use with care. Defaults to `false`.
+        /// If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+        /// undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+        /// 'false'.
         /// </summary>
         [Output("skipGracePeriod")]
         public Output<bool?> SkipGracePeriod { get; private set; } = null!;
@@ -528,19 +513,15 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// If this is a subordinate CertificateAuthority, this field will be set
-        /// with the subordinate configuration, which describes its issuers.
-        /// Structure is documented below.
+        /// If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+        /// describes its issuers.
         /// </summary>
         [Output("subordinateConfig")]
         public Output<Outputs.AuthoritySubordinateConfig?> SubordinateConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Type of this CertificateAuthority.
-        /// &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        /// be activated before they can issue certificates.
-        /// Default value is `SELF_SIGNED`.
-        /// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        /// The Type of this CertificateAuthority. ~&gt; **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        /// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -625,24 +606,23 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        /// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
 
         /// <summary>
-        /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-        /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-        /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-        /// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-        /// created.
+        /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+        /// CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+        /// example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+        /// be created.
         /// </summary>
         [Input("gcsBucket")]
         public Input<string>? GcsBucket { get; set; }
 
         /// <summary>
-        /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-        /// Use with care. Defaults to `false`.
+        /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+        /// unexpired certs. Use with care. Defaults to 'false'.
         /// </summary>
         [Input("ignoreActiveCertificatesOnDeletion")]
         public Input<bool>? IgnoreActiveCertificatesOnDeletion { get; set; }
@@ -660,12 +640,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels with user-defined metadata.
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-        /// "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+        /// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+        /// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -674,9 +651,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
 
         /// <summary>
-        /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-        /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-        /// fractional digits, terminated by 's'. Example: "3.5s".
+        /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+        /// certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         [Input("lifetime")]
         public Input<string>? Lifetime { get; set; }
@@ -689,7 +665,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+        /// a third party issuer.
         /// </summary>
         [Input("pemCaCertificate")]
         public Input<string>? PemCaCertificate { get; set; }
@@ -700,36 +677,27 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("pool", required: true)]
         public Input<string> Pool { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If this flag is set, the Certificate Authority will be deleted as soon as
-        /// possible without a 30-day grace period where undeletion would have been
-        /// allowed. If you proceed, there will be no way to recover this CA.
-        /// Use with care. Defaults to `false`.
+        /// If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+        /// undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+        /// 'false'.
         /// </summary>
         [Input("skipGracePeriod")]
         public Input<bool>? SkipGracePeriod { get; set; }
 
         /// <summary>
-        /// If this is a subordinate CertificateAuthority, this field will be set
-        /// with the subordinate configuration, which describes its issuers.
-        /// Structure is documented below.
+        /// If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+        /// describes its issuers.
         /// </summary>
         [Input("subordinateConfig")]
         public Input<Inputs.AuthoritySubordinateConfigArgs>? SubordinateConfig { get; set; }
 
         /// <summary>
-        /// The Type of this CertificateAuthority.
-        /// &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        /// be activated before they can issue certificates.
-        /// Default value is `SELF_SIGNED`.
-        /// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        /// The Type of this CertificateAuthority. ~&gt; **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        /// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -784,7 +752,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        /// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -806,18 +774,17 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
 
         /// <summary>
-        /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-        /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-        /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-        /// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-        /// created.
+        /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+        /// CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+        /// example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+        /// be created.
         /// </summary>
         [Input("gcsBucket")]
         public Input<string>? GcsBucket { get; set; }
 
         /// <summary>
-        /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-        /// Use with care. Defaults to `false`.
+        /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+        /// unexpired certs. Use with care. Defaults to 'false'.
         /// </summary>
         [Input("ignoreActiveCertificatesOnDeletion")]
         public Input<bool>? IgnoreActiveCertificatesOnDeletion { get; set; }
@@ -835,12 +802,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels with user-defined metadata.
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-        /// "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+        /// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+        /// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -849,9 +813,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
 
         /// <summary>
-        /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-        /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-        /// fractional digits, terminated by 's'. Example: "3.5s".
+        /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+        /// certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         [Input("lifetime")]
         public Input<string>? Lifetime { get; set; }
@@ -871,7 +834,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+        /// a third party issuer.
         /// </summary>
         [Input("pemCaCertificate")]
         public Input<string>? PemCaCertificate { get; set; }
@@ -897,10 +861,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("pool")]
         public Input<string>? Pool { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -922,10 +882,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
 
         /// <summary>
-        /// If this flag is set, the Certificate Authority will be deleted as soon as
-        /// possible without a 30-day grace period where undeletion would have been
-        /// allowed. If you proceed, there will be no way to recover this CA.
-        /// Use with care. Defaults to `false`.
+        /// If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+        /// undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+        /// 'false'.
         /// </summary>
         [Input("skipGracePeriod")]
         public Input<bool>? SkipGracePeriod { get; set; }
@@ -937,19 +896,15 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// If this is a subordinate CertificateAuthority, this field will be set
-        /// with the subordinate configuration, which describes its issuers.
-        /// Structure is documented below.
+        /// If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+        /// describes its issuers.
         /// </summary>
         [Input("subordinateConfig")]
         public Input<Inputs.AuthoritySubordinateConfigGetArgs>? SubordinateConfig { get; set; }
 
         /// <summary>
-        /// The Type of this CertificateAuthority.
-        /// &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        /// be activated before they can issue certificates.
-        /// Default value is `SELF_SIGNED`.
-        /// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        /// The Type of this CertificateAuthority. ~&gt; **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        /// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -322,7 +322,6 @@ class LinkedDataset(pulumi.CustomResource):
 
         ### Logging Linked Dataset Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -337,10 +336,8 @@ class LinkedDataset(pulumi.CustomResource):
             bucket=logging_linked_dataset.id,
             description="Linked dataset test")
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Linked Dataset All Params
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -357,7 +354,6 @@ class LinkedDataset(pulumi.CustomResource):
             location="global",
             description="Linked dataset test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -405,7 +401,6 @@ class LinkedDataset(pulumi.CustomResource):
 
         ### Logging Linked Dataset Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -420,10 +415,8 @@ class LinkedDataset(pulumi.CustomResource):
             bucket=logging_linked_dataset.id,
             description="Linked dataset test")
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Linked Dataset All Params
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,7 +433,6 @@ class LinkedDataset(pulumi.CustomResource):
             location="global",
             description="Linked dataset test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceScratchDisk
     {
         /// <summary>
-        /// Name with which the attached disk will be accessible
-        /// under `/dev/disk/by-id/google-*`
+        /// Name with which the attached disk is accessible under /dev/disk/by-id/
         /// </summary>
         public readonly string? DeviceName;
         /// <summary>
@@ -23,8 +22,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Interface;
         /// <summary>
-        /// The size of the image in gigabytes. If not specified, it
-        /// will inherit the size of its base image.
+        /// The size of the disk in gigabytes. One of 375 or 3000.
         /// </summary>
         public readonly int? Size;
 

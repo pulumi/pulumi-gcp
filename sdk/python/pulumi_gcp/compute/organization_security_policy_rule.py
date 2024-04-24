@@ -37,18 +37,14 @@ class OrganizationSecurityPolicyRuleArgs:
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] description: A description of the rule.
-        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
-               Possible values are: `INGRESS`, `EGRESS`.
-        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
-               If logging is enabled, logs will be exported to the
-               configured export destination in Stackdriver.
+        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+               "EGRESS"]
+        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+               export destination in Stackdriver.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies.
-               This field allows you to control which network's VMs get
-               this rule. If this field is left blank, all VMs
-               within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
-               instances that are applied with this rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+               this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "match", match)
@@ -135,8 +131,8 @@ class OrganizationSecurityPolicyRuleArgs:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
-        The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        Possible values are: `INGRESS`, `EGRESS`.
+        The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+        "EGRESS"]
         """
         return pulumi.get(self, "direction")
 
@@ -148,9 +144,8 @@ class OrganizationSecurityPolicyRuleArgs:
     @pulumi.getter(name="enableLogging")
     def enable_logging(self) -> Optional[pulumi.Input[bool]]:
         """
-        Denotes whether to enable logging for a particular rule.
-        If logging is enabled, logs will be exported to the
-        configured export destination in Stackdriver.
+        Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        export destination in Stackdriver.
         """
         return pulumi.get(self, "enable_logging")
 
@@ -174,10 +169,8 @@ class OrganizationSecurityPolicyRuleArgs:
     @pulumi.getter(name="targetResources")
     def target_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of network resource URLs to which this rule applies.
-        This field allows you to control which network's VMs get
-        this rule. If this field is left blank, all VMs
-        within the organization will receive the rule.
+        A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+        this rule. If this field is left blank, all VMs within the organization will receive the rule.
         """
         return pulumi.get(self, "target_resources")
 
@@ -189,8 +182,7 @@ class OrganizationSecurityPolicyRuleArgs:
     @pulumi.getter(name="targetServiceAccounts")
     def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of service accounts indicating the sets of
-        instances that are applied with this rule.
+        A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         return pulumi.get(self, "target_service_accounts")
 
@@ -217,11 +209,10 @@ class _OrganizationSecurityPolicyRuleState:
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
         :param pulumi.Input[str] description: A description of the rule.
-        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
-               Possible values are: `INGRESS`, `EGRESS`.
-        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
-               If logging is enabled, logs will be exported to the
-               configured export destination in Stackdriver.
+        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+               "EGRESS"]
+        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+               export destination in Stackdriver.
         :param pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
@@ -229,12 +220,9 @@ class _OrganizationSecurityPolicyRuleState:
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies.
-               This field allows you to control which network's VMs get
-               this rule. If this field is left blank, all VMs
-               within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
-               instances that are applied with this rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+               this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -286,8 +274,8 @@ class _OrganizationSecurityPolicyRuleState:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
-        The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        Possible values are: `INGRESS`, `EGRESS`.
+        The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+        "EGRESS"]
         """
         return pulumi.get(self, "direction")
 
@@ -299,9 +287,8 @@ class _OrganizationSecurityPolicyRuleState:
     @pulumi.getter(name="enableLogging")
     def enable_logging(self) -> Optional[pulumi.Input[bool]]:
         """
-        Denotes whether to enable logging for a particular rule.
-        If logging is enabled, logs will be exported to the
-        configured export destination in Stackdriver.
+        Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        export destination in Stackdriver.
         """
         return pulumi.get(self, "enable_logging")
 
@@ -364,10 +351,8 @@ class _OrganizationSecurityPolicyRuleState:
     @pulumi.getter(name="targetResources")
     def target_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of network resource URLs to which this rule applies.
-        This field allows you to control which network's VMs get
-        this rule. If this field is left blank, all VMs
-        within the organization will receive the rule.
+        A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+        this rule. If this field is left blank, all VMs within the organization will receive the rule.
         """
         return pulumi.get(self, "target_resources")
 
@@ -379,8 +364,7 @@ class _OrganizationSecurityPolicyRuleState:
     @pulumi.getter(name="targetServiceAccounts")
     def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of service accounts indicating the sets of
-        instances that are applied with this rule.
+        A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         return pulumi.get(self, "target_service_accounts")
 
@@ -418,7 +402,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
         ### Organization Security Policy Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -450,7 +433,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             ),
             priority=100)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -469,11 +451,10 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
         :param pulumi.Input[str] description: A description of the rule.
-        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
-               Possible values are: `INGRESS`, `EGRESS`.
-        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
-               If logging is enabled, logs will be exported to the
-               configured export destination in Stackdriver.
+        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+               "EGRESS"]
+        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+               export destination in Stackdriver.
         :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
@@ -481,12 +462,9 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies.
-               This field allows you to control which network's VMs get
-               this rule. If this field is left blank, all VMs
-               within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
-               instances that are applied with this rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+               this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         ...
     @overload
@@ -507,7 +485,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
         ### Organization Security Policy Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -539,7 +516,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             ),
             priority=100)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -635,11 +611,10 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
         :param pulumi.Input[str] description: A description of the rule.
-        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
-               Possible values are: `INGRESS`, `EGRESS`.
-        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
-               If logging is enabled, logs will be exported to the
-               configured export destination in Stackdriver.
+        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+               "EGRESS"]
+        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+               export destination in Stackdriver.
         :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
@@ -647,12 +622,9 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies.
-               This field allows you to control which network's VMs get
-               this rule. If this field is left blank, all VMs
-               within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
-               instances that are applied with this rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+               this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -691,8 +663,8 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     @pulumi.getter
     def direction(self) -> pulumi.Output[Optional[str]]:
         """
-        The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        Possible values are: `INGRESS`, `EGRESS`.
+        The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+        "EGRESS"]
         """
         return pulumi.get(self, "direction")
 
@@ -700,9 +672,8 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     @pulumi.getter(name="enableLogging")
     def enable_logging(self) -> pulumi.Output[Optional[bool]]:
         """
-        Denotes whether to enable logging for a particular rule.
-        If logging is enabled, logs will be exported to the
-        configured export destination in Stackdriver.
+        Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        export destination in Stackdriver.
         """
         return pulumi.get(self, "enable_logging")
 
@@ -745,10 +716,8 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     @pulumi.getter(name="targetResources")
     def target_resources(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of network resource URLs to which this rule applies.
-        This field allows you to control which network's VMs get
-        this rule. If this field is left blank, all VMs
-        within the organization will receive the rule.
+        A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+        this rule. If this field is left blank, all VMs within the organization will receive the rule.
         """
         return pulumi.get(self, "target_resources")
 
@@ -756,8 +725,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     @pulumi.getter(name="targetServiceAccounts")
     def target_service_accounts(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of service accounts indicating the sets of
-        instances that are applied with this rule.
+        A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         return pulumi.get(self, "target_service_accounts")
 

@@ -100,14 +100,12 @@ def get_project_service(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_project_service = gcp.projects.get_project_service(service="my-project-service")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project in which the resource belongs. If it
@@ -151,14 +149,12 @@ def get_project_service_output(project: Optional[pulumi.Input[Optional[str]]] = 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_project_service = gcp.projects.get_project_service(service="my-project-service")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project in which the resource belongs. If it

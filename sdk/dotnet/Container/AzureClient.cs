@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ### Basic_azure_client
     /// A basic example of a containerazure azure client
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

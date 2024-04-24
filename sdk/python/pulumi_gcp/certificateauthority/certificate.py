@@ -601,7 +601,6 @@ class Certificate(pulumi.CustomResource):
 
         ### Privateca Certificate Generated Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -702,10 +701,8 @@ class Certificate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate With Template
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -832,10 +829,8 @@ class Certificate(pulumi.CustomResource):
             pem_csr=std.file(input="test-fixtures/rsa_csr.pem").result,
             certificate_template=default_certificate_template.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Csr
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -888,10 +883,8 @@ class Certificate(pulumi.CustomResource):
             lifetime="860s",
             pem_csr=std.file(input="test-fixtures/rsa_csr.pem").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate No Authority
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -975,7 +968,6 @@ class Certificate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1048,7 +1040,6 @@ class Certificate(pulumi.CustomResource):
 
         ### Privateca Certificate Generated Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1149,10 +1140,8 @@ class Certificate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate With Template
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1279,10 +1268,8 @@ class Certificate(pulumi.CustomResource):
             pem_csr=std.file(input="test-fixtures/rsa_csr.pem").result,
             certificate_template=default_certificate_template.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Csr
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1335,10 +1322,8 @@ class Certificate(pulumi.CustomResource):
             lifetime="860s",
             pem_csr=std.file(input="test-fixtures/rsa_csr.pem").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate No Authority
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1422,7 +1407,6 @@ class Certificate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

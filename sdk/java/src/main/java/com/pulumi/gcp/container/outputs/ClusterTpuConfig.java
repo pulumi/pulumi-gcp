@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTpuConfig {
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return Whether Cloud TPU integration is enabled or not
      * 
      */
     private Boolean enabled;
@@ -31,7 +31,7 @@ public final class ClusterTpuConfig {
 
     private ClusterTpuConfig() {}
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return Whether Cloud TPU integration is enabled or not
      * 
      */
     public Boolean enabled() {

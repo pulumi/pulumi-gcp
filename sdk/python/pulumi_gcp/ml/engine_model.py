@@ -385,7 +385,6 @@ class EngineModel(pulumi.CustomResource):
 
         ### Ml Model Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -395,10 +394,8 @@ class EngineModel(pulumi.CustomResource):
             description="My model",
             regions="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Ml Model Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -413,7 +410,6 @@ class EngineModel(pulumi.CustomResource):
             online_prediction_logging=True,
             online_prediction_console_logging=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -481,7 +477,6 @@ class EngineModel(pulumi.CustomResource):
 
         ### Ml Model Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -491,10 +486,8 @@ class EngineModel(pulumi.CustomResource):
             description="My model",
             regions="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Ml Model Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -509,7 +502,6 @@ class EngineModel(pulumi.CustomResource):
             online_prediction_logging=True,
             online_prediction_console_logging=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

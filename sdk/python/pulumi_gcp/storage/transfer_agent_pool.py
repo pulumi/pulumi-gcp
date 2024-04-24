@@ -244,7 +244,6 @@ class TransferAgentPool(pulumi.CustomResource):
 
         ### Agent Pool Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -261,7 +260,6 @@ class TransferAgentPool(pulumi.CustomResource):
                 limit_mbps="120",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -325,7 +323,6 @@ class TransferAgentPool(pulumi.CustomResource):
 
         ### Agent Pool Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -342,7 +339,6 @@ class TransferAgentPool(pulumi.CustomResource):
                 limit_mbps="120",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -248,7 +248,6 @@ def get_snapshot(filter: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -259,7 +258,6 @@ def get_snapshot(filter: Optional[str] = None,
     latest_snapshot = gcp.compute.get_snapshot(filter="name != my-snapshot",
         most_recent=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str filter: A filter to retrieve the compute snapshot.
@@ -320,7 +318,6 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -331,7 +328,6 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     latest_snapshot = gcp.compute.get_snapshot(filter="name != my-snapshot",
         most_recent=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str filter: A filter to retrieve the compute snapshot.

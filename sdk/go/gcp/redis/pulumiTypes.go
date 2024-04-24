@@ -135,11 +135,7 @@ func (o ClusterDiscoveryEndpointArrayOutput) Index(i pulumi.IntInput) ClusterDis
 }
 
 type ClusterDiscoveryEndpointPscConfig struct {
-	// Required. The consumer network where the network address of
-	// the discovery endpoint will be reserved, in the form of
-	// projects/{network_project_id_or_number}/global/networks/{network_id}.
-	//
-	// ***
+	// The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
 }
 
@@ -155,11 +151,7 @@ type ClusterDiscoveryEndpointPscConfigInput interface {
 }
 
 type ClusterDiscoveryEndpointPscConfigArgs struct {
-	// Required. The consumer network where the network address of
-	// the discovery endpoint will be reserved, in the form of
-	// projects/{network_project_id_or_number}/global/networks/{network_id}.
-	//
-	// ***
+	// The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 }
 
@@ -240,11 +232,7 @@ func (o ClusterDiscoveryEndpointPscConfigOutput) ToClusterDiscoveryEndpointPscCo
 	}).(ClusterDiscoveryEndpointPscConfigPtrOutput)
 }
 
-// Required. The consumer network where the network address of
-// the discovery endpoint will be reserved, in the form of
-// projects/{network_project_id_or_number}/global/networks/{network_id}.
-//
-// ***
+// The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
 func (o ClusterDiscoveryEndpointPscConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDiscoveryEndpointPscConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -273,11 +261,7 @@ func (o ClusterDiscoveryEndpointPscConfigPtrOutput) Elem() ClusterDiscoveryEndpo
 	}).(ClusterDiscoveryEndpointPscConfigOutput)
 }
 
-// Required. The consumer network where the network address of
-// the discovery endpoint will be reserved, in the form of
-// projects/{network_project_id_or_number}/global/networks/{network_id}.
-//
-// ***
+// The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
 func (o ClusterDiscoveryEndpointPscConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDiscoveryEndpointPscConfig) *string {
 		if v == nil {
@@ -401,11 +385,7 @@ type ClusterPscConnection struct {
 	Address *string `pulumi:"address"`
 	// Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
 	ForwardingRule *string `pulumi:"forwardingRule"`
-	// Required. The consumer network where the network address of
-	// the discovery endpoint will be reserved, in the form of
-	// projects/{network_project_id_or_number}/global/networks/{network_id}.
-	//
-	// ***
+	// The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
 	// Output only. The consumer projectId where the forwarding rule is created from.
 	ProjectId *string `pulumi:"projectId"`
@@ -429,11 +409,7 @@ type ClusterPscConnectionArgs struct {
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
 	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
-	// Required. The consumer network where the network address of
-	// the discovery endpoint will be reserved, in the form of
-	// projects/{network_project_id_or_number}/global/networks/{network_id}.
-	//
-	// ***
+	// The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Output only. The consumer projectId where the forwarding rule is created from.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
@@ -502,11 +478,7 @@ func (o ClusterPscConnectionOutput) ForwardingRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPscConnection) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
 }
 
-// Required. The consumer network where the network address of
-// the discovery endpoint will be reserved, in the form of
-// projects/{network_project_id_or_number}/global/networks/{network_id}.
-//
-// ***
+// The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
 func (o ClusterPscConnectionOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPscConnection) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -1293,8 +1265,10 @@ type InstanceMaintenanceSchedule struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime *string `pulumi:"scheduleDeadlineTime"`
-	// Required. Start time of the window in UTC time.
-	// Structure is documented below.
+	// (Output)
+	// Output only. The start time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
 	StartTime *string `pulumi:"startTime"`
 }
 
@@ -1321,8 +1295,10 @@ type InstanceMaintenanceScheduleArgs struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime pulumi.StringPtrInput `pulumi:"scheduleDeadlineTime"`
-	// Required. Start time of the window in UTC time.
-	// Structure is documented below.
+	// (Output)
+	// Output only. The start time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
@@ -1394,8 +1370,10 @@ func (o InstanceMaintenanceScheduleOutput) ScheduleDeadlineTime() pulumi.StringP
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.ScheduleDeadlineTime }).(pulumi.StringPtrOutput)
 }
 
-// Required. Start time of the window in UTC time.
-// Structure is documented below.
+// (Output)
+// Output only. The start time of any upcoming scheduled maintenance for this instance.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
 func (o InstanceMaintenanceScheduleOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -1799,9 +1777,7 @@ type InstanceServerCaCert struct {
 	// The certificate data in PEM format.
 	Cert *string `pulumi:"cert"`
 	// (Output)
-	// Output only. The time when the policy was created.
-	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits.
+	// The time when the certificate was created.
 	CreateTime *string `pulumi:"createTime"`
 	// (Output)
 	// The time when the certificate expires.
@@ -1830,9 +1806,7 @@ type InstanceServerCaCertArgs struct {
 	// The certificate data in PEM format.
 	Cert pulumi.StringPtrInput `pulumi:"cert"`
 	// (Output)
-	// Output only. The time when the policy was created.
-	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits.
+	// The time when the certificate was created.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
 	// (Output)
 	// The time when the certificate expires.
@@ -1903,9 +1877,7 @@ func (o InstanceServerCaCertOutput) Cert() pulumi.StringPtrOutput {
 }
 
 // (Output)
-// Output only. The time when the policy was created.
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-// resolution and up to nine fractional digits.
+// The time when the certificate was created.
 func (o InstanceServerCaCertOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceServerCaCert) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }

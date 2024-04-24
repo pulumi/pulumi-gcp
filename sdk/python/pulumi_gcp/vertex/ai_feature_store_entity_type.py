@@ -375,7 +375,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
 
         ### Vertex Ai Featurestore Entitytype
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -417,10 +416,8 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featurestore Entitytype With Beta Fields
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -457,7 +454,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             ),
             offline_storage_ttl_days=30)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -507,7 +503,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
 
         ### Vertex Ai Featurestore Entitytype
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -549,10 +544,8 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featurestore Entitytype With Beta Fields
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -589,7 +582,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             ),
             offline_storage_ttl_days=30)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

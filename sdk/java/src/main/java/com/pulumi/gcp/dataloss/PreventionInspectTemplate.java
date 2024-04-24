@@ -400,16 +400,14 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.inspectConfig);
     }
     /**
-     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * The resource name of the inspect template. Set by the server.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * @return The resource name of the inspect template. Set by the server.
      * 
      */
     public Output<String> name() {

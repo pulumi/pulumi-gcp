@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Gkeonprem Vmware Cluster Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,10 +60,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkeonprem Vmware Cluster F5lb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -137,10 +134,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkeonprem Vmware Cluster Manuallb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -237,7 +232,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -299,33 +293,24 @@ export class VMwareCluster extends pulumi.CustomResource {
      */
     public readonly adminClusterMembership!: pulumi.Output<string>;
     /**
-     * Annotations on the VMware User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * 'effective_annotations' for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * AAGConfig specifies whether to spread VMware User Cluster nodes across at
-     * least three physical hosts in the datacenter.
-     * Structure is documented below.
+     * AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
      */
     public readonly antiAffinityGroups!: pulumi.Output<outputs.gkeonprem.VMwareClusterAntiAffinityGroups>;
     /**
      * RBAC policy that will be applied and managed by GKE On-Prem.
-     * Structure is documented below.
      */
     public readonly authorization!: pulumi.Output<outputs.gkeonprem.VMwareClusterAuthorization | undefined>;
     /**
      * Configuration for auto repairing.
-     * Structure is documented below.
      */
     public readonly autoRepairConfig!: pulumi.Output<outputs.gkeonprem.VMwareClusterAutoRepairConfig>;
     /**
@@ -339,7 +324,6 @@ export class VMwareCluster extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-     * Structure is documented below.
      */
     public readonly dataplaneV2!: pulumi.Output<outputs.gkeonprem.VMwareClusterDataplaneV2>;
     /**
@@ -347,7 +331,8 @@ export class VMwareCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
-     * A human readable description of this VMware User Cluster.
+     * (Output)
+     * The description of the validation check.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -382,7 +367,6 @@ export class VMwareCluster extends pulumi.CustomResource {
     public /*out*/ readonly fleets!: pulumi.Output<outputs.gkeonprem.VMwareClusterFleet[]>;
     /**
      * Load Balancer configuration.
-     * Structure is documented below.
      */
     public readonly loadBalancer!: pulumi.Output<outputs.gkeonprem.VMwareClusterLoadBalancer | undefined>;
     /**
@@ -408,17 +392,12 @@ export class VMwareCluster extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The VMware User Cluster network configuration.
-     * Structure is documented below.
      */
     public readonly networkConfig!: pulumi.Output<outputs.gkeonprem.VMwareClusterNetworkConfig | undefined>;
     /**
      * The Anthos clusters on the VMware version for your user cluster.
      */
     public readonly onPremVersion!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * If set, there are currently changes in flight to the VMware User Cluster.
@@ -437,7 +416,6 @@ export class VMwareCluster extends pulumi.CustomResource {
     public /*out*/ readonly statuses!: pulumi.Output<outputs.gkeonprem.VMwareClusterStatus[]>;
     /**
      * Storage configuration.
-     * Structure is documented below.
      */
     public readonly storage!: pulumi.Output<outputs.gkeonprem.VMwareClusterStorage>;
     /**
@@ -450,7 +428,6 @@ export class VMwareCluster extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Specifies upgrade policy for the cluster.
-     * Structure is documented below.
      */
     public readonly upgradePolicy!: pulumi.Output<outputs.gkeonprem.VMwareClusterUpgradePolicy | undefined>;
     /**
@@ -459,9 +436,7 @@ export class VMwareCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly validationChecks!: pulumi.Output<outputs.gkeonprem.VMwareClusterValidationCheck[]>;
     /**
-     * VmwareVCenterConfig specifies vCenter config for the user cluster.
-     * Inherited from the admin cluster.
-     * Structure is documented below.
+     * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      */
     public readonly vcenters!: pulumi.Output<outputs.gkeonprem.VMwareClusterVcenter[] | undefined>;
     /**
@@ -580,33 +555,24 @@ export interface VMwareClusterState {
      */
     adminClusterMembership?: pulumi.Input<string>;
     /**
-     * Annotations on the VMware User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * 'effective_annotations' for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * AAGConfig specifies whether to spread VMware User Cluster nodes across at
-     * least three physical hosts in the datacenter.
-     * Structure is documented below.
+     * AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
      */
     antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VMwareClusterAntiAffinityGroups>;
     /**
      * RBAC policy that will be applied and managed by GKE On-Prem.
-     * Structure is documented below.
      */
     authorization?: pulumi.Input<inputs.gkeonprem.VMwareClusterAuthorization>;
     /**
      * Configuration for auto repairing.
-     * Structure is documented below.
      */
     autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterAutoRepairConfig>;
     /**
@@ -620,7 +586,6 @@ export interface VMwareClusterState {
     createTime?: pulumi.Input<string>;
     /**
      * VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-     * Structure is documented below.
      */
     dataplaneV2?: pulumi.Input<inputs.gkeonprem.VMwareClusterDataplaneV2>;
     /**
@@ -628,7 +593,8 @@ export interface VMwareClusterState {
      */
     deleteTime?: pulumi.Input<string>;
     /**
-     * A human readable description of this VMware User Cluster.
+     * (Output)
+     * The description of the validation check.
      */
     description?: pulumi.Input<string>;
     /**
@@ -663,7 +629,6 @@ export interface VMwareClusterState {
     fleets?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterFleet>[]>;
     /**
      * Load Balancer configuration.
-     * Structure is documented below.
      */
     loadBalancer?: pulumi.Input<inputs.gkeonprem.VMwareClusterLoadBalancer>;
     /**
@@ -689,17 +654,12 @@ export interface VMwareClusterState {
     name?: pulumi.Input<string>;
     /**
      * The VMware User Cluster network configuration.
-     * Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterNetworkConfig>;
     /**
      * The Anthos clusters on the VMware version for your user cluster.
      */
     onPremVersion?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * If set, there are currently changes in flight to the VMware User Cluster.
@@ -718,7 +678,6 @@ export interface VMwareClusterState {
     statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterStatus>[]>;
     /**
      * Storage configuration.
-     * Structure is documented below.
      */
     storage?: pulumi.Input<inputs.gkeonprem.VMwareClusterStorage>;
     /**
@@ -731,7 +690,6 @@ export interface VMwareClusterState {
     updateTime?: pulumi.Input<string>;
     /**
      * Specifies upgrade policy for the cluster.
-     * Structure is documented below.
      */
     upgradePolicy?: pulumi.Input<inputs.gkeonprem.VMwareClusterUpgradePolicy>;
     /**
@@ -740,9 +698,7 @@ export interface VMwareClusterState {
      */
     validationChecks?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterValidationCheck>[]>;
     /**
-     * VmwareVCenterConfig specifies vCenter config for the user cluster.
-     * Inherited from the admin cluster.
-     * Structure is documented below.
+     * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      */
     vcenters?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter>[]>;
     /**
@@ -763,33 +719,24 @@ export interface VMwareClusterArgs {
      */
     adminClusterMembership: pulumi.Input<string>;
     /**
-     * Annotations on the VMware User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * 'effective_annotations' for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * AAGConfig specifies whether to spread VMware User Cluster nodes across at
-     * least three physical hosts in the datacenter.
-     * Structure is documented below.
+     * AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
      */
     antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VMwareClusterAntiAffinityGroups>;
     /**
      * RBAC policy that will be applied and managed by GKE On-Prem.
-     * Structure is documented below.
      */
     authorization?: pulumi.Input<inputs.gkeonprem.VMwareClusterAuthorization>;
     /**
      * Configuration for auto repairing.
-     * Structure is documented below.
      */
     autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterAutoRepairConfig>;
     /**
@@ -799,11 +746,11 @@ export interface VMwareClusterArgs {
     controlPlaneNode: pulumi.Input<inputs.gkeonprem.VMwareClusterControlPlaneNode>;
     /**
      * VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-     * Structure is documented below.
      */
     dataplaneV2?: pulumi.Input<inputs.gkeonprem.VMwareClusterDataplaneV2>;
     /**
-     * A human readable description of this VMware User Cluster.
+     * (Output)
+     * The description of the validation check.
      */
     description?: pulumi.Input<string>;
     /**
@@ -816,7 +763,6 @@ export interface VMwareClusterArgs {
     enableControlPlaneV2?: pulumi.Input<boolean>;
     /**
      * Load Balancer configuration.
-     * Structure is documented below.
      */
     loadBalancer?: pulumi.Input<inputs.gkeonprem.VMwareClusterLoadBalancer>;
     /**
@@ -829,32 +775,23 @@ export interface VMwareClusterArgs {
     name?: pulumi.Input<string>;
     /**
      * The VMware User Cluster network configuration.
-     * Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterNetworkConfig>;
     /**
      * The Anthos clusters on the VMware version for your user cluster.
      */
     onPremVersion: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Storage configuration.
-     * Structure is documented below.
      */
     storage?: pulumi.Input<inputs.gkeonprem.VMwareClusterStorage>;
     /**
      * Specifies upgrade policy for the cluster.
-     * Structure is documented below.
      */
     upgradePolicy?: pulumi.Input<inputs.gkeonprem.VMwareClusterUpgradePolicy>;
     /**
-     * VmwareVCenterConfig specifies vCenter config for the user cluster.
-     * Inherited from the admin cluster.
-     * Structure is documented below.
+     * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      */
     vcenters?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter>[]>;
     /**

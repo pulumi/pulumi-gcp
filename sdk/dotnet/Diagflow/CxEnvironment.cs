@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ### Dialogflowcx Environment Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -78,7 +77,6 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -102,7 +100,8 @@ namespace Pulumi.Gcp.Diagflow
     public partial class CxEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
+        /// rejected.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -120,8 +119,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Agent to create an Environment for.
-        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+        /// The Agent to create an Environment for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
         /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
@@ -186,7 +184,8 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
+        /// rejected.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -198,8 +197,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The Agent to create an Environment for.
-        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+        /// The Agent to create an Environment for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -226,7 +224,8 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxEnvironmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
+        /// rejected.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -244,8 +243,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Agent to create an Environment for.
-        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+        /// The Agent to create an Environment for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

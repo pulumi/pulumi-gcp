@@ -31,7 +31,6 @@ import (
 //
 // ### Reservation Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,7 +62,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -111,21 +109,17 @@ type Reservation struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The share setting for reservations.
-	// Structure is documented below.
 	ShareSettings ReservationShareSettingsOutput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservationOutput `pulumi:"specificReservation"`
-	// When set to true, only VMs that target this reservation by name can
-	// consume this reservation. Otherwise, it can be consumed by VMs with
-	// affinity for any reservation. Defaults to false.
+	// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+	// consumed by VMs with affinity for any reservation. Defaults to false.
 	SpecificReservationRequired pulumi.BoolPtrOutput `pulumi:"specificReservationRequired"`
 	// The status of the reservation.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -183,21 +177,17 @@ type reservationState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The share setting for reservations.
-	// Structure is documented below.
 	ShareSettings *ReservationShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation *ReservationSpecificReservation `pulumi:"specificReservation"`
-	// When set to true, only VMs that target this reservation by name can
-	// consume this reservation. Otherwise, it can be consumed by VMs with
-	// affinity for any reservation. Defaults to false.
+	// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+	// consumed by VMs with affinity for any reservation. Defaults to false.
 	SpecificReservationRequired *bool `pulumi:"specificReservationRequired"`
 	// The status of the reservation.
 	Status *string `pulumi:"status"`
@@ -220,21 +210,17 @@ type ReservationState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The share setting for reservations.
-	// Structure is documented below.
 	ShareSettings ReservationShareSettingsPtrInput
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservationPtrInput
-	// When set to true, only VMs that target this reservation by name can
-	// consume this reservation. Otherwise, it can be consumed by VMs with
-	// affinity for any reservation. Defaults to false.
+	// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+	// consumed by VMs with affinity for any reservation. Defaults to false.
 	SpecificReservationRequired pulumi.BoolPtrInput
 	// The status of the reservation.
 	Status pulumi.StringPtrInput
@@ -256,19 +242,15 @@ type reservationArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The share setting for reservations.
-	// Structure is documented below.
 	ShareSettings *ReservationShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservation `pulumi:"specificReservation"`
-	// When set to true, only VMs that target this reservation by name can
-	// consume this reservation. Otherwise, it can be consumed by VMs with
-	// affinity for any reservation. Defaults to false.
+	// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+	// consumed by VMs with affinity for any reservation. Defaults to false.
 	SpecificReservationRequired *bool `pulumi:"specificReservationRequired"`
 	// The zone where the reservation is made.
 	Zone string `pulumi:"zone"`
@@ -285,19 +267,15 @@ type ReservationArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The share setting for reservations.
-	// Structure is documented below.
 	ShareSettings ReservationShareSettingsPtrInput
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservationInput
-	// When set to true, only VMs that target this reservation by name can
-	// consume this reservation. Otherwise, it can be consumed by VMs with
-	// affinity for any reservation. Defaults to false.
+	// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+	// consumed by VMs with affinity for any reservation. Defaults to false.
 	SpecificReservationRequired pulumi.BoolPtrInput
 	// The zone where the reservation is made.
 	Zone pulumi.StringInput
@@ -417,8 +395,6 @@ func (o ReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o ReservationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -429,7 +405,6 @@ func (o ReservationOutput) SelfLink() pulumi.StringOutput {
 }
 
 // The share setting for reservations.
-// Structure is documented below.
 func (o ReservationOutput) ShareSettings() ReservationShareSettingsOutput {
 	return o.ApplyT(func(v *Reservation) ReservationShareSettingsOutput { return v.ShareSettings }).(ReservationShareSettingsOutput)
 }
@@ -440,9 +415,8 @@ func (o ReservationOutput) SpecificReservation() ReservationSpecificReservationO
 	return o.ApplyT(func(v *Reservation) ReservationSpecificReservationOutput { return v.SpecificReservation }).(ReservationSpecificReservationOutput)
 }
 
-// When set to true, only VMs that target this reservation by name can
-// consume this reservation. Otherwise, it can be consumed by VMs with
-// affinity for any reservation. Defaults to false.
+// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+// consumed by VMs with affinity for any reservation. Defaults to false.
 func (o ReservationOutput) SpecificReservationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.BoolPtrOutput { return v.SpecificReservationRequired }).(pulumi.BoolPtrOutput)
 }

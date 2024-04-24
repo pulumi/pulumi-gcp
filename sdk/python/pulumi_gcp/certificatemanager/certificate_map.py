@@ -299,7 +299,6 @@ class CertificateMap(pulumi.CustomResource):
 
         ### Certificate Manager Certificate Map Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -312,7 +311,6 @@ class CertificateMap(pulumi.CustomResource):
                 "acc-test": "true",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -367,7 +365,6 @@ class CertificateMap(pulumi.CustomResource):
 
         ### Certificate Manager Certificate Map Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -380,7 +377,6 @@ class CertificateMap(pulumi.CustomResource):
                 "acc-test": "true",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

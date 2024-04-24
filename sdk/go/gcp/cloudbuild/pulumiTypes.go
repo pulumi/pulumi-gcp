@@ -2177,10 +2177,12 @@ func (o TriggerBuildArtifactsObjectsPtrOutput) Timings() TriggerBuildArtifactsOb
 
 type TriggerBuildArtifactsObjectsTiming struct {
 	// End of time span.
+	//
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	EndTime *string `pulumi:"endTime"`
 	// Start of time span.
+	//
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	StartTime *string `pulumi:"startTime"`
@@ -2199,10 +2201,12 @@ type TriggerBuildArtifactsObjectsTimingInput interface {
 
 type TriggerBuildArtifactsObjectsTimingArgs struct {
 	// End of time span.
+	//
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Start of time span.
+	//
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
@@ -2260,6 +2264,7 @@ func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjects
 }
 
 // End of time span.
+//
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 // nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o TriggerBuildArtifactsObjectsTimingOutput) EndTime() pulumi.StringPtrOutput {
@@ -2267,6 +2272,7 @@ func (o TriggerBuildArtifactsObjectsTimingOutput) EndTime() pulumi.StringPtrOutp
 }
 
 // Start of time span.
+//
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 // nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o TriggerBuildArtifactsObjectsTimingOutput) StartTime() pulumi.StringPtrOutput {

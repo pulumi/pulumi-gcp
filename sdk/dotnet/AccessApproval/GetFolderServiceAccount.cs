@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFolderServiceAccountResult> InvokeAsync(GetFolderServiceAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderServiceAccountResult>("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args ?? new GetFolderServiceAccountArgs(), options.WithDefaults());
@@ -61,7 +59,6 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFolderServiceAccountResult> Invoke(GetFolderServiceAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderServiceAccountResult>("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args ?? new GetFolderServiceAccountInvokeArgs(), options.WithDefaults());

@@ -312,7 +312,6 @@ class OrganizationBucketConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -328,7 +327,6 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                 "type": "INDEX_TYPE_STRING",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -369,7 +367,6 @@ class OrganizationBucketConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -385,7 +382,6 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                 "type": "INDEX_TYPE_STRING",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -55,7 +55,8 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<string>? ServiceJob { get; set; }
 
         /// <summary>
-        /// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+        /// (Output)
+        /// The time when the job was started.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }

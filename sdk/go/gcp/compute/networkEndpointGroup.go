@@ -37,7 +37,6 @@ import (
 //
 // ### Network Endpoint Group
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,10 +80,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Endpoint Group Non Gcp
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,7 +123,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

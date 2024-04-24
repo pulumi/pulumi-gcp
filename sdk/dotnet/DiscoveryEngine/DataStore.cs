@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// ### Discoveryengine Datastore Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

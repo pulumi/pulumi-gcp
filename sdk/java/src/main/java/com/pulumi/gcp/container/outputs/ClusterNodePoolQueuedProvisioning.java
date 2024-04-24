@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterNodePoolQueuedProvisioning {
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
      * 
      */
     private Boolean enabled;
 
     private ClusterNodePoolQueuedProvisioning() {}
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
      * 
      */
     public Boolean enabled() {

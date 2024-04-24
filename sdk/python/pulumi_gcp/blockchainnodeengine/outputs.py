@@ -319,12 +319,9 @@ class BlockchainNodesEthereumDetailsAdditionalEndpoint(dict):
                  beacon_prometheus_metrics_api_endpoint: Optional[str] = None,
                  execution_client_prometheus_metrics_api_endpoint: Optional[str] = None):
         """
-        :param str beacon_api_endpoint: (Output)
-               The assigned URL for the node's Beacon API endpoint.
-        :param str beacon_prometheus_metrics_api_endpoint: (Output)
-               The assigned URL for the node's Beacon Prometheus metrics endpoint.
-        :param str execution_client_prometheus_metrics_api_endpoint: (Output)
-               The assigned URL for the node's execution client's Prometheus metrics endpoint.
+        :param str beacon_api_endpoint: The assigned URL for the node's Beacon API endpoint.
+        :param str beacon_prometheus_metrics_api_endpoint: The assigned URL for the node's Beacon Prometheus metrics endpoint.
+        :param str execution_client_prometheus_metrics_api_endpoint: The assigned URL for the node's execution client's Prometheus metrics endpoint.
         """
         if beacon_api_endpoint is not None:
             pulumi.set(__self__, "beacon_api_endpoint", beacon_api_endpoint)
@@ -337,7 +334,6 @@ class BlockchainNodesEthereumDetailsAdditionalEndpoint(dict):
     @pulumi.getter(name="beaconApiEndpoint")
     def beacon_api_endpoint(self) -> Optional[str]:
         """
-        (Output)
         The assigned URL for the node's Beacon API endpoint.
         """
         return pulumi.get(self, "beacon_api_endpoint")
@@ -346,7 +342,6 @@ class BlockchainNodesEthereumDetailsAdditionalEndpoint(dict):
     @pulumi.getter(name="beaconPrometheusMetricsApiEndpoint")
     def beacon_prometheus_metrics_api_endpoint(self) -> Optional[str]:
         """
-        (Output)
         The assigned URL for the node's Beacon Prometheus metrics endpoint.
         """
         return pulumi.get(self, "beacon_prometheus_metrics_api_endpoint")
@@ -355,7 +350,6 @@ class BlockchainNodesEthereumDetailsAdditionalEndpoint(dict):
     @pulumi.getter(name="executionClientPrometheusMetricsApiEndpoint")
     def execution_client_prometheus_metrics_api_endpoint(self) -> Optional[str]:
         """
-        (Output)
         The assigned URL for the node's execution client's Prometheus metrics endpoint.
         """
         return pulumi.get(self, "execution_client_prometheus_metrics_api_endpoint")

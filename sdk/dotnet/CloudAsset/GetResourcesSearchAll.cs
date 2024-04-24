@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// ### Searching For All Projects In An Org
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,11 +35,9 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Searching For All Projects With CloudBuild API Enabled
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,11 +58,9 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Searching For All Service Accounts In A Project
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,7 +80,6 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetResourcesSearchAllResult> InvokeAsync(GetResourcesSearchAllArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourcesSearchAllResult>("gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll", args ?? new GetResourcesSearchAllArgs(), options.WithDefaults());
@@ -95,7 +89,6 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// ### Searching For All Projects In An Org
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -115,11 +108,9 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Searching For All Projects With CloudBuild API Enabled
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -140,11 +131,9 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Searching For All Service Accounts In A Project
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -164,7 +153,6 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetResourcesSearchAllResult> Invoke(GetResourcesSearchAllInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourcesSearchAllResult>("gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll", args ?? new GetResourcesSearchAllInvokeArgs(), options.WithDefaults());

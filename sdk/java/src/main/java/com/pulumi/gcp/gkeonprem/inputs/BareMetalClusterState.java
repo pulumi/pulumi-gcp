@@ -52,34 +52,24 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Annotations on the Bare Metal User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
+     * size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations on the Bare Metal User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
+     * size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -103,7 +93,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * Binary Authorization related configurations.
-     * Structure is documented below.
      * 
      */
     @Import(name="binaryAuthorization")
@@ -111,7 +100,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Binary Authorization related configurations.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BareMetalClusterBinaryAuthorizationArgs>> binaryAuthorization() {
@@ -120,7 +108,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * Specifies the User Cluster&#39;s observability infrastructure.
-     * Structure is documented below.
      * 
      */
     @Import(name="clusterOperations")
@@ -128,7 +115,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies the User Cluster&#39;s observability infrastructure.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BareMetalClusterClusterOperationsArgs>> clusterOperations() {
@@ -183,14 +169,16 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A human readable description of this Bare Metal User Cluster.
+     * (Output)
+     * The description of the validation check.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A human readable description of this Bare Metal User Cluster.
+     * @return (Output)
+     * The description of the validation check.
      * 
      */
     public Optional<Output<String>> description() {
@@ -346,7 +334,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * Specifies the workload node configurations.
-     * Structure is documented below.
      * 
      */
     @Import(name="maintenanceConfig")
@@ -354,7 +341,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies the workload node configurations.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BareMetalClusterMaintenanceConfigArgs>> maintenanceConfig() {
@@ -395,7 +381,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * Specifies the node access related settings for the bare metal user cluster.
-     * Structure is documented below.
      * 
      */
     @Import(name="nodeAccessConfig")
@@ -403,7 +388,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies the node access related settings for the bare metal user cluster.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BareMetalClusterNodeAccessConfigArgs>> nodeAccessConfig() {
@@ -412,7 +396,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * Specifies the workload node configurations.
-     * Structure is documented below.
      * 
      */
     @Import(name="nodeConfig")
@@ -420,7 +403,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies the workload node configurations.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BareMetalClusterNodeConfigArgs>> nodeConfig() {
@@ -429,7 +411,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * OS environment related configurations.
-     * Structure is documented below.
      * 
      */
     @Import(name="osEnvironmentConfig")
@@ -437,33 +418,21 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return OS environment related configurations.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BareMetalClusterOsEnvironmentConfigArgs>> osEnvironmentConfig() {
         return Optional.ofNullable(this.osEnvironmentConfig);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
      * Specifies the cluster proxy configuration.
-     * Structure is documented below.
      * 
      */
     @Import(name="proxy")
@@ -471,7 +440,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies the cluster proxy configuration.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BareMetalClusterProxyArgs>> proxy() {
@@ -495,7 +463,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * Specifies the security related settings for the Bare Metal User Cluster.
-     * Structure is documented below.
      * 
      */
     @Import(name="securityConfig")
@@ -503,7 +470,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies the security related settings for the Bare Metal User Cluster.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BareMetalClusterSecurityConfigArgs>> securityConfig() {
@@ -595,7 +561,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * The cluster upgrade policy.
-     * Structure is documented below.
      * 
      */
     @Import(name="upgradePolicy")
@@ -603,7 +568,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The cluster upgrade policy.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<BareMetalClusterUpgradePolicyArgs>> upgradePolicy() {
@@ -707,17 +671,12 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param annotations Annotations on the Bare Metal User Cluster.
-         * This field has the same restrictions as Kubernetes annotations.
-         * The total size of all keys and values combined is limited to 256k.
-         * Key can have 2 segments: prefix (optional) and name (required),
-         * separated by a slash (/).
-         * Prefix must be a DNS subdomain.
-         * Name must be 63 characters or less, begin and end with alphanumerics,
-         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
+         * size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -728,17 +687,12 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param annotations Annotations on the Bare Metal User Cluster.
-         * This field has the same restrictions as Kubernetes annotations.
-         * The total size of all keys and values combined is limited to 256k.
-         * Key can have 2 segments: prefix (optional) and name (required),
-         * separated by a slash (/).
-         * Prefix must be a DNS subdomain.
-         * Name must be 63 characters or less, begin and end with alphanumerics,
-         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
+         * size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -770,7 +724,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param binaryAuthorization Binary Authorization related configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -782,7 +735,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param binaryAuthorization Binary Authorization related configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -793,7 +745,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param clusterOperations Specifies the User Cluster&#39;s observability infrastructure.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -805,7 +756,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param clusterOperations Specifies the User Cluster&#39;s observability infrastructure.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -880,7 +830,8 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description A human readable description of this Bare Metal User Cluster.
+         * @param description (Output)
+         * The description of the validation check.
          * 
          * @return builder
          * 
@@ -891,7 +842,8 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description A human readable description of this Bare Metal User Cluster.
+         * @param description (Output)
+         * The description of the validation check.
          * 
          * @return builder
          * 
@@ -1107,7 +1059,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param maintenanceConfig Specifies the workload node configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1119,7 +1070,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param maintenanceConfig Specifies the workload node configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1174,7 +1124,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeAccessConfig Specifies the node access related settings for the bare metal user cluster.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1186,7 +1135,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeAccessConfig Specifies the node access related settings for the bare metal user cluster.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1197,7 +1145,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeConfig Specifies the workload node configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1209,7 +1156,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeConfig Specifies the workload node configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1220,7 +1166,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param osEnvironmentConfig OS environment related configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1232,7 +1177,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param osEnvironmentConfig OS environment related configurations.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1241,32 +1185,17 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
             return osEnvironmentConfig(Output.of(osEnvironmentConfig));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
          * @param proxy Specifies the cluster proxy configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1278,7 +1207,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param proxy Specifies the cluster proxy configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1310,7 +1238,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param securityConfig Specifies the security related settings for the Bare Metal User Cluster.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1322,7 +1249,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param securityConfig Specifies the security related settings for the Bare Metal User Cluster.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1458,7 +1384,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param upgradePolicy The cluster upgrade policy.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1470,7 +1395,6 @@ public final class BareMetalClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param upgradePolicy The cluster upgrade policy.
-         * Structure is documented below.
          * 
          * @return builder
          * 

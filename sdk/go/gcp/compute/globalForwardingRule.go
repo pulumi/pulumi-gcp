@@ -24,7 +24,6 @@ import (
 //
 // ### External Ssl Proxy Lb Mig Backend
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -253,10 +252,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### External Tcp Proxy Lb Mig Backend
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -440,10 +437,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### External Http Lb Mig Backend Custom Header
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -645,10 +640,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Global Forwarding Rule Http
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -731,10 +724,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Global Forwarding Rule Internal
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -882,10 +873,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Global Forwarding Rule External Managed
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -960,10 +949,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Global Forwarding Rule Hybrid
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1150,10 +1137,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Global Internal Http Lb With Mig Backend
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1389,10 +1374,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Private Service Connect Google Apis
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1455,10 +1438,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Private Service Connect Google Apis No Automate Dns
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1518,7 +1499,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

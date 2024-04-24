@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Scc Mute Config
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,7 +29,6 @@ import * as utilities from "../utilities";
  *     description: "My Mute Config",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

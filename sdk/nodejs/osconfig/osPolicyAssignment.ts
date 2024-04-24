@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ### Os Config Os Policy Assignment Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -110,7 +109,6 @@ import * as utilities from "../utilities";
  *     description: "A test os policy assignment",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -177,8 +175,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleted!: pulumi.Output<boolean>;
     /**
-     * OS policy assignment description. Length of the
-     * description is limited to 1024 characters.
+     * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -205,8 +202,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public readonly osPolicies!: pulumi.Output<outputs.osconfig.OsPolicyAssignmentOsPolicy[]>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -237,8 +233,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public /*out*/ readonly rolloutState!: pulumi.Output<string>;
     /**
-     * Set to true to skip awaiting rollout
-     * during resource creation and update.
+     * Set to true to skip awaiting rollout during resource creation and update.
      */
     public readonly skipAwaitRollout!: pulumi.Output<boolean | undefined>;
     /**
@@ -329,8 +324,7 @@ export interface OsPolicyAssignmentState {
      */
     deleted?: pulumi.Input<boolean>;
     /**
-     * OS policy assignment description. Length of the
-     * description is limited to 1024 characters.
+     * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -357,8 +351,7 @@ export interface OsPolicyAssignmentState {
      */
     osPolicies?: pulumi.Input<pulumi.Input<inputs.osconfig.OsPolicyAssignmentOsPolicy>[]>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The project for the resource
      */
     project?: pulumi.Input<string>;
     /**
@@ -389,8 +382,7 @@ export interface OsPolicyAssignmentState {
      */
     rolloutState?: pulumi.Input<string>;
     /**
-     * Set to true to skip awaiting rollout
-     * during resource creation and update.
+     * Set to true to skip awaiting rollout during resource creation and update.
      */
     skipAwaitRollout?: pulumi.Input<boolean>;
     /**
@@ -405,8 +397,7 @@ export interface OsPolicyAssignmentState {
  */
 export interface OsPolicyAssignmentArgs {
     /**
-     * OS policy assignment description. Length of the
-     * description is limited to 1024 characters.
+     * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -428,8 +419,7 @@ export interface OsPolicyAssignmentArgs {
      */
     osPolicies: pulumi.Input<pulumi.Input<inputs.osconfig.OsPolicyAssignmentOsPolicy>[]>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The project for the resource
      */
     project?: pulumi.Input<string>;
     /**
@@ -441,8 +431,7 @@ export interface OsPolicyAssignmentArgs {
      */
     rollout: pulumi.Input<inputs.osconfig.OsPolicyAssignmentRollout>;
     /**
-     * Set to true to skip awaiting rollout
-     * during resource creation and update.
+     * Set to true to skip awaiting rollout during resource creation and update.
      */
     skipAwaitRollout?: pulumi.Input<boolean>;
 }

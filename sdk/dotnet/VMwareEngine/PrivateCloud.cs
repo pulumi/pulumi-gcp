@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// ### Vmware Engine Private Cloud Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,10 +62,8 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Vmware Engine Private Cloud Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -111,7 +108,6 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -192,10 +188,6 @@ namespace Pulumi.Gcp.VMwareEngine
         [Output("preferredZone")]
         public Output<string?> PreferredZone { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -213,8 +205,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Initial type of the private cloud.
-        /// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        /// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -316,10 +307,6 @@ namespace Pulumi.Gcp.VMwareEngine
         [Input("preferredZone")]
         public Input<string>? PreferredZone { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -330,8 +317,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public Input<string>? SecondaryZone { get; set; }
 
         /// <summary>
-        /// Initial type of the private cloud.
-        /// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        /// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -408,10 +394,6 @@ namespace Pulumi.Gcp.VMwareEngine
         [Input("preferredZone")]
         public Input<string>? PreferredZone { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -429,8 +411,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Initial type of the private cloud.
-        /// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        /// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

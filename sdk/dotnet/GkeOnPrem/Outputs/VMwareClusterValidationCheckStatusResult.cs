@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// A human readable description of this VMware User Cluster.
+        /// (Output)
+        /// The description of the validation check.
         /// </summary>
         public readonly string? Description;
         /// <summary>

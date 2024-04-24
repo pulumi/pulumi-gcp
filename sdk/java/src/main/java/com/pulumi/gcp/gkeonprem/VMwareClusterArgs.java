@@ -51,34 +51,24 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Annotations on the VMware User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations on the VMware User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -86,18 +76,14 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * AAGConfig specifies whether to spread VMware User Cluster nodes across at
-     * least three physical hosts in the datacenter.
-     * Structure is documented below.
+     * AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
      * 
      */
     @Import(name="antiAffinityGroups")
     private @Nullable Output<VMwareClusterAntiAffinityGroupsArgs> antiAffinityGroups;
 
     /**
-     * @return AAGConfig specifies whether to spread VMware User Cluster nodes across at
-     * least three physical hosts in the datacenter.
-     * Structure is documented below.
+     * @return AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
      * 
      */
     public Optional<Output<VMwareClusterAntiAffinityGroupsArgs>> antiAffinityGroups() {
@@ -106,7 +92,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * RBAC policy that will be applied and managed by GKE On-Prem.
-     * Structure is documented below.
      * 
      */
     @Import(name="authorization")
@@ -114,7 +99,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return RBAC policy that will be applied and managed by GKE On-Prem.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<VMwareClusterAuthorizationArgs>> authorization() {
@@ -123,7 +107,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configuration for auto repairing.
-     * Structure is documented below.
      * 
      */
     @Import(name="autoRepairConfig")
@@ -131,7 +114,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configuration for auto repairing.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<VMwareClusterAutoRepairConfigArgs>> autoRepairConfig() {
@@ -157,7 +139,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-     * Structure is documented below.
      * 
      */
     @Import(name="dataplaneV2")
@@ -165,7 +146,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<VMwareClusterDataplaneV2Args>> dataplaneV2() {
@@ -173,14 +153,16 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A human readable description of this VMware User Cluster.
+     * (Output)
+     * The description of the validation check.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A human readable description of this VMware User Cluster.
+     * @return (Output)
+     * The description of the validation check.
      * 
      */
     public Optional<Output<String>> description() {
@@ -219,7 +201,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Load Balancer configuration.
-     * Structure is documented below.
      * 
      */
     @Import(name="loadBalancer")
@@ -227,7 +208,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Load Balancer configuration.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<VMwareClusterLoadBalancerArgs>> loadBalancer() {
@@ -266,7 +246,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The VMware User Cluster network configuration.
-     * Structure is documented below.
      * 
      */
     @Import(name="networkConfig")
@@ -274,7 +253,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The VMware User Cluster network configuration.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<VMwareClusterNetworkConfigArgs>> networkConfig() {
@@ -296,26 +274,15 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         return this.onPremVersion;
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
      * Storage configuration.
-     * Structure is documented below.
      * 
      */
     @Import(name="storage")
@@ -323,7 +290,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Storage configuration.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<VMwareClusterStorageArgs>> storage() {
@@ -332,7 +298,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies upgrade policy for the cluster.
-     * Structure is documented below.
      * 
      */
     @Import(name="upgradePolicy")
@@ -340,7 +305,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies upgrade policy for the cluster.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<VMwareClusterUpgradePolicyArgs>> upgradePolicy() {
@@ -348,18 +312,14 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * VmwareVCenterConfig specifies vCenter config for the user cluster.
-     * Inherited from the admin cluster.
-     * Structure is documented below.
+     * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      * 
      */
     @Import(name="vcenters")
     private @Nullable Output<List<VMwareClusterVcenterArgs>> vcenters;
 
     /**
-     * @return VmwareVCenterConfig specifies vCenter config for the user cluster.
-     * Inherited from the admin cluster.
-     * Structure is documented below.
+     * @return VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      * 
      */
     public Optional<Output<List<VMwareClusterVcenterArgs>>> vcenters() {
@@ -452,17 +412,12 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations on the VMware User Cluster.
-         * This field has the same restrictions as Kubernetes annotations.
-         * The total size of all keys and values combined is limited to 256k.
-         * Key can have 2 segments: prefix (optional) and name (required),
-         * separated by a slash (/).
-         * Prefix must be a DNS subdomain.
-         * Name must be 63 characters or less, begin and end with alphanumerics,
-         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+         * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -473,17 +428,12 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations on the VMware User Cluster.
-         * This field has the same restrictions as Kubernetes annotations.
-         * The total size of all keys and values combined is limited to 256k.
-         * Key can have 2 segments: prefix (optional) and name (required),
-         * separated by a slash (/).
-         * Prefix must be a DNS subdomain.
-         * Name must be 63 characters or less, begin and end with alphanumerics,
-         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+         * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -493,9 +443,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antiAffinityGroups AAGConfig specifies whether to spread VMware User Cluster nodes across at
-         * least three physical hosts in the datacenter.
-         * Structure is documented below.
+         * @param antiAffinityGroups AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
          * 
          * @return builder
          * 
@@ -506,9 +454,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antiAffinityGroups AAGConfig specifies whether to spread VMware User Cluster nodes across at
-         * least three physical hosts in the datacenter.
-         * Structure is documented below.
+         * @param antiAffinityGroups AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
          * 
          * @return builder
          * 
@@ -519,7 +465,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param authorization RBAC policy that will be applied and managed by GKE On-Prem.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -531,7 +476,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param authorization RBAC policy that will be applied and managed by GKE On-Prem.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -542,7 +486,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoRepairConfig Configuration for auto repairing.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -554,7 +497,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoRepairConfig Configuration for auto repairing.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -588,7 +530,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataplaneV2 VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -600,7 +541,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataplaneV2 VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -610,7 +550,8 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A human readable description of this VMware User Cluster.
+         * @param description (Output)
+         * The description of the validation check.
          * 
          * @return builder
          * 
@@ -621,7 +562,8 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A human readable description of this VMware User Cluster.
+         * @param description (Output)
+         * The description of the validation check.
          * 
          * @return builder
          * 
@@ -674,7 +616,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loadBalancer Load Balancer configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -686,7 +627,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loadBalancer Load Balancer configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -739,7 +679,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkConfig The VMware User Cluster network configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -751,7 +690,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkConfig The VMware User Cluster network configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -781,32 +719,17 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
             return onPremVersion(Output.of(onPremVersion));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
          * @param storage Storage configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -818,7 +741,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storage Storage configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -829,7 +751,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param upgradePolicy Specifies upgrade policy for the cluster.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -841,7 +762,6 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param upgradePolicy Specifies upgrade policy for the cluster.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -851,9 +771,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster.
-         * Inherited from the admin cluster.
-         * Structure is documented below.
+         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
          * 
          * @return builder
          * 
@@ -864,9 +782,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster.
-         * Inherited from the admin cluster.
-         * Structure is documented below.
+         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
          * 
          * @return builder
          * 
@@ -876,9 +792,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster.
-         * Inherited from the admin cluster.
-         * Structure is documented below.
+         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
          * 
          * @return builder
          * 

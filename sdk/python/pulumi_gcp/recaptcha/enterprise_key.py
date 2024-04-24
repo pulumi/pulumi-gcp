@@ -397,7 +397,6 @@ class EnterpriseKey(pulumi.CustomResource):
 
         ### Android_key
         A basic test of recaptcha enterprise key that can be used by Android apps
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -416,10 +415,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Ios_key
         A basic test of recaptcha enterprise key that can be used by iOS apps
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -438,10 +435,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Minimal_key
         A minimal test of recaptcha enterprise key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,10 +450,8 @@ class EnterpriseKey(pulumi.CustomResource):
             ),
             labels={})
         ```
-        <!--End PulumiCodeChooser -->
         ### Waf_key
         A basic test of recaptcha enterprise key that includes WAF settings
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -484,10 +477,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Web_key
         A basic test of recaptcha enterprise key that can be used by websites
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -509,10 +500,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Web_score_key
         A basic test of recaptcha enterprise key with score integration type that can be used by websites
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -533,7 +522,6 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -590,7 +578,6 @@ class EnterpriseKey(pulumi.CustomResource):
 
         ### Android_key
         A basic test of recaptcha enterprise key that can be used by Android apps
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -609,10 +596,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Ios_key
         A basic test of recaptcha enterprise key that can be used by iOS apps
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -631,10 +616,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Minimal_key
         A minimal test of recaptcha enterprise key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -648,10 +631,8 @@ class EnterpriseKey(pulumi.CustomResource):
             ),
             labels={})
         ```
-        <!--End PulumiCodeChooser -->
         ### Waf_key
         A basic test of recaptcha enterprise key that includes WAF settings
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,10 +658,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Web_key
         A basic test of recaptcha enterprise key that can be used by websites
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -702,10 +681,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Web_score_key
         A basic test of recaptcha enterprise key with score integration type that can be used by websites
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -726,7 +703,6 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

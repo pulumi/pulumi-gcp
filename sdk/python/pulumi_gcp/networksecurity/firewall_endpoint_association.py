@@ -449,7 +449,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
 
         ### Network Security Firewall Endpoint Association Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -469,7 +468,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -514,7 +512,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
 
         ### Network Security Firewall Endpoint Association Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,7 +531,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

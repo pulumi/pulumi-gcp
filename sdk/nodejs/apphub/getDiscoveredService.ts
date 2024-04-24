@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     serviceUri: "my-service-uri",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDiscoveredService(args: GetDiscoveredServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDiscoveredServiceResult> {
 
@@ -83,7 +81,6 @@ export interface GetDiscoveredServiceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -93,7 +90,6 @@ export interface GetDiscoveredServiceResult {
  *     serviceUri: "my-service-uri",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDiscoveredServiceOutput(args: GetDiscoveredServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiscoveredServiceResult> {
     return pulumi.output(args).apply((a: any) => getDiscoveredService(a, opts))

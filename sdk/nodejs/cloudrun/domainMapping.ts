@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Cloud Run Domain Mapping Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -49,7 +48,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -109,17 +107,12 @@ export class DomainMapping extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Metadata associated with this DomainMapping.
-     * Structure is documented below.
      */
     public readonly metadata!: pulumi.Output<outputs.cloudrun.DomainMappingMetadata>;
     /**
      * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The spec for this DomainMapping.
@@ -181,17 +174,12 @@ export interface DomainMappingState {
     location?: pulumi.Input<string>;
     /**
      * Metadata associated with this DomainMapping.
-     * Structure is documented below.
      */
     metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
     /**
      * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.
@@ -215,17 +203,12 @@ export interface DomainMappingArgs {
     location: pulumi.Input<string>;
     /**
      * Metadata associated with this DomainMapping.
-     * Structure is documented below.
      */
     metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
     /**
      * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.

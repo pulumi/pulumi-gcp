@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase Project Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,7 +34,6 @@ import * as utilities from "../utilities";
  * });
  * const defaultProject = new gcp.firebase.Project("default", {project: _default.projectId});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

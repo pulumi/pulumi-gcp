@@ -566,9 +566,9 @@ func (o WorkloadPartnerPermissionsPtrOutput) ServiceAccessApprover() pulumi.Bool
 }
 
 type WorkloadResource struct {
-	// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
+	// Resource identifier. For a project this represents project_number.
 	ResourceId *int `pulumi:"resourceId"`
-	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+	// Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -584,9 +584,9 @@ type WorkloadResourceInput interface {
 }
 
 type WorkloadResourceArgs struct {
-	// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
+	// Resource identifier. For a project this represents project_number.
 	ResourceId pulumi.IntPtrInput `pulumi:"resourceId"`
-	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+	// Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
@@ -641,12 +641,12 @@ func (o WorkloadResourceOutput) ToWorkloadResourceOutputWithContext(ctx context.
 	return o
 }
 
-// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
+// Resource identifier. For a project this represents project_number.
 func (o WorkloadResourceOutput) ResourceId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkloadResource) *int { return v.ResourceId }).(pulumi.IntPtrOutput)
 }
 
-// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+// Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
 func (o WorkloadResourceOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkloadResource) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }

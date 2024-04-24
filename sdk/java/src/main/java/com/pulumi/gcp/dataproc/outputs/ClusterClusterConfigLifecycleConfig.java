@@ -27,7 +27,8 @@ public final class ClusterClusterConfigLifecycleConfig {
      */
     private @Nullable String idleDeleteTtl;
     /**
-     * @return Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+     * @return Time when the cluster became idle
+     * (most recent job finished) and became eligible for deletion due to idleness.
      * 
      */
     private @Nullable String idleStartTime;
@@ -53,7 +54,8 @@ public final class ClusterClusterConfigLifecycleConfig {
         return Optional.ofNullable(this.idleDeleteTtl);
     }
     /**
-     * @return Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+     * @return Time when the cluster became idle
+     * (most recent job finished) and became eligible for deletion due to idleness.
      * 
      */
     public Optional<String> idleStartTime() {

@@ -28,7 +28,6 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// ### Os Config Os Policy Assignment Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -169,7 +168,6 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -215,8 +213,7 @@ namespace Pulumi.Gcp.OsConfig
         public Output<bool> Deleted { get; private set; } = null!;
 
         /// <summary>
-        /// OS policy assignment description. Length of the
-        /// description is limited to 1024 characters.
+        /// OS policy assignment description. Length of the description is limited to 1024 characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -255,8 +252,7 @@ namespace Pulumi.Gcp.OsConfig
         public Output<ImmutableArray<Outputs.OsPolicyAssignmentOsPolicy>> OsPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The project for the resource
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -299,8 +295,7 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> RolloutState { get; private set; } = null!;
 
         /// <summary>
-        /// Set to true to skip awaiting rollout
-        /// during resource creation and update.
+        /// Set to true to skip awaiting rollout during resource creation and update.
         /// </summary>
         [Output("skipAwaitRollout")]
         public Output<bool?> SkipAwaitRollout { get; private set; } = null!;
@@ -359,8 +354,7 @@ namespace Pulumi.Gcp.OsConfig
     public sealed class OsPolicyAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OS policy assignment description. Length of the
-        /// description is limited to 1024 characters.
+        /// OS policy assignment description. Length of the description is limited to 1024 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -398,8 +392,7 @@ namespace Pulumi.Gcp.OsConfig
         }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The project for the resource
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -415,8 +408,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<Inputs.OsPolicyAssignmentRolloutArgs> Rollout { get; set; } = null!;
 
         /// <summary>
-        /// Set to true to skip awaiting rollout
-        /// during resource creation and update.
+        /// Set to true to skip awaiting rollout during resource creation and update.
         /// </summary>
         [Input("skipAwaitRollout")]
         public Input<bool>? SkipAwaitRollout { get; set; }
@@ -446,8 +438,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<bool>? Deleted { get; set; }
 
         /// <summary>
-        /// OS policy assignment description. Length of the
-        /// description is limited to 1024 characters.
+        /// OS policy assignment description. Length of the description is limited to 1024 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -492,8 +483,7 @@ namespace Pulumi.Gcp.OsConfig
         }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The project for the resource
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -536,8 +526,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? RolloutState { get; set; }
 
         /// <summary>
-        /// Set to true to skip awaiting rollout
-        /// during resource creation and update.
+        /// Set to true to skip awaiting rollout during resource creation and update.
         /// </summary>
         [Input("skipAwaitRollout")]
         public Input<bool>? SkipAwaitRollout { get; set; }

@@ -270,7 +270,6 @@ class Group(pulumi.CustomResource):
 
         ### Monitoring Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -279,10 +278,8 @@ class Group(pulumi.CustomResource):
             display_name="tf-test MonitoringGroup",
             filter="resource.metadata.region=\\"europe-west2\\"")
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Group Subgroup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -295,7 +292,6 @@ class Group(pulumi.CustomResource):
             filter="resource.metadata.region=\\"europe-west2\\"",
             parent_name=parent.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -349,7 +345,6 @@ class Group(pulumi.CustomResource):
 
         ### Monitoring Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,10 +353,8 @@ class Group(pulumi.CustomResource):
             display_name="tf-test MonitoringGroup",
             filter="resource.metadata.region=\\"europe-west2\\"")
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Group Subgroup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -374,7 +367,6 @@ class Group(pulumi.CustomResource):
             filter="resource.metadata.region=\\"europe-west2\\"",
             parent_name=parent.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -570,13 +570,10 @@ func (o BlockchainNodesEthereumDetailsPtrOutput) ValidatorConfig() BlockchainNod
 }
 
 type BlockchainNodesEthereumDetailsAdditionalEndpoint struct {
-	// (Output)
 	// The assigned URL for the node's Beacon API endpoint.
 	BeaconApiEndpoint *string `pulumi:"beaconApiEndpoint"`
-	// (Output)
 	// The assigned URL for the node's Beacon Prometheus metrics endpoint.
 	BeaconPrometheusMetricsApiEndpoint *string `pulumi:"beaconPrometheusMetricsApiEndpoint"`
-	// (Output)
 	// The assigned URL for the node's execution client's Prometheus metrics endpoint.
 	ExecutionClientPrometheusMetricsApiEndpoint *string `pulumi:"executionClientPrometheusMetricsApiEndpoint"`
 }
@@ -593,13 +590,10 @@ type BlockchainNodesEthereumDetailsAdditionalEndpointInput interface {
 }
 
 type BlockchainNodesEthereumDetailsAdditionalEndpointArgs struct {
-	// (Output)
 	// The assigned URL for the node's Beacon API endpoint.
 	BeaconApiEndpoint pulumi.StringPtrInput `pulumi:"beaconApiEndpoint"`
-	// (Output)
 	// The assigned URL for the node's Beacon Prometheus metrics endpoint.
 	BeaconPrometheusMetricsApiEndpoint pulumi.StringPtrInput `pulumi:"beaconPrometheusMetricsApiEndpoint"`
-	// (Output)
 	// The assigned URL for the node's execution client's Prometheus metrics endpoint.
 	ExecutionClientPrometheusMetricsApiEndpoint pulumi.StringPtrInput `pulumi:"executionClientPrometheusMetricsApiEndpoint"`
 }
@@ -655,13 +649,11 @@ func (o BlockchainNodesEthereumDetailsAdditionalEndpointOutput) ToBlockchainNode
 	return o
 }
 
-// (Output)
 // The assigned URL for the node's Beacon API endpoint.
 func (o BlockchainNodesEthereumDetailsAdditionalEndpointOutput) BeaconApiEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlockchainNodesEthereumDetailsAdditionalEndpoint) *string { return v.BeaconApiEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // The assigned URL for the node's Beacon Prometheus metrics endpoint.
 func (o BlockchainNodesEthereumDetailsAdditionalEndpointOutput) BeaconPrometheusMetricsApiEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlockchainNodesEthereumDetailsAdditionalEndpoint) *string {
@@ -669,7 +661,6 @@ func (o BlockchainNodesEthereumDetailsAdditionalEndpointOutput) BeaconPrometheus
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // The assigned URL for the node's execution client's Prometheus metrics endpoint.
 func (o BlockchainNodesEthereumDetailsAdditionalEndpointOutput) ExecutionClientPrometheusMetricsApiEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlockchainNodesEthereumDetailsAdditionalEndpoint) *string {

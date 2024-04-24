@@ -1188,7 +1188,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         ### External Ssl Proxy Lb Mig Backend
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1328,10 +1327,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-health-check"])
         ```
-        <!--End PulumiCodeChooser -->
         ### External Tcp Proxy Lb Mig Backend
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1442,10 +1439,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-health-check"])
         ```
-        <!--End PulumiCodeChooser -->
         ### External Http Lb Mig Backend Custom Header
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1566,10 +1561,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-health-check"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Forwarding Rule Http
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1610,10 +1603,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target=default_target_http_proxy.id,
             port_range="80")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Forwarding Rule Internal
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1694,10 +1685,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Forwarding Rule External Managed
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1734,10 +1723,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_range="80",
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Forwarding Rule Hybrid
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1843,10 +1830,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target=default_target_http_proxy.id,
             port_range="80")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Internal Http Lb With Mig Backend
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1994,10 +1979,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Private Service Connect Google Apis
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2032,10 +2015,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 service_directory_region="europe-west3",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Private Service Connect Google Apis No Automate Dns
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2067,7 +2048,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
             load_balancing_scheme="",
             no_automate_dns_zone=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -2248,7 +2228,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         ### External Ssl Proxy Lb Mig Backend
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2388,10 +2367,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-health-check"])
         ```
-        <!--End PulumiCodeChooser -->
         ### External Tcp Proxy Lb Mig Backend
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2502,10 +2479,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-health-check"])
         ```
-        <!--End PulumiCodeChooser -->
         ### External Http Lb Mig Backend Custom Header
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2626,10 +2601,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-health-check"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Forwarding Rule Http
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2670,10 +2643,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target=default_target_http_proxy.id,
             port_range="80")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Forwarding Rule Internal
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2754,10 +2725,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Forwarding Rule External Managed
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2794,10 +2763,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_range="80",
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Forwarding Rule Hybrid
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2903,10 +2870,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target=default_target_http_proxy.id,
             port_range="80")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Internal Http Lb With Mig Backend
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3054,10 +3019,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Private Service Connect Google Apis
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3092,10 +3055,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 service_directory_region="europe-west3",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Private Service Connect Google Apis No Automate Dns
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3127,7 +3088,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
             load_balancing_scheme="",
             no_automate_dns_zone=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -484,7 +484,7 @@ class ClusterBackupSourceArgs:
     def __init__(__self__, *,
                  backup_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] backup_name: The name of the backup that this cluster is restored from.
+        :param pulumi.Input[str] backup_name: The name of the backup resource.
         """
         if backup_name is not None:
             pulumi.set(__self__, "backup_name", backup_name)
@@ -493,7 +493,7 @@ class ClusterBackupSourceArgs:
     @pulumi.getter(name="backupName")
     def backup_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the backup that this cluster is restored from.
+        The name of the backup resource.
         """
         return pulumi.get(self, "backup_name")
 

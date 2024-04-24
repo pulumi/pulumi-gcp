@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// ### Access Context Manager Service Perimeter Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -100,10 +99,8 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Access Context Manager Service Perimeter Secure Data Exchange
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -289,10 +286,8 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Access Context Manager Service Perimeter Dry-Run
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -331,7 +326,6 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ## Import
     /// 
     /// ServicePerimeter can be imported using any of these accepted formats:

@@ -21,7 +21,6 @@ import (
 //
 // ### Resource Policy Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,10 +53,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Resource Policy Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -101,10 +98,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Resource Policy Placement Policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -133,10 +128,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Resource Policy Placement Policy Max Distance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -166,10 +159,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Resource Policy Instance Schedule Policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -204,10 +195,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Resource Policy Snapshot Schedule Chain Name
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -253,10 +242,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Resource Policy Consistency Group
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -284,7 +271,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

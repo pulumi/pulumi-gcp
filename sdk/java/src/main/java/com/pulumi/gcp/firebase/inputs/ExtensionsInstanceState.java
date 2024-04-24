@@ -37,16 +37,14 @@ public final class ExtensionsInstanceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Output)
-     * The time at which the Extension Instance Config was created.
+     * The time at which the Extension Instance was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return (Output)
-     * The time at which the Extension Instance Config was created.
+     * @return The time at which the Extension Instance was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -141,35 +139,23 @@ public final class ExtensionsInstanceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Output)
-     * The unique identifier for this configuration.
+     * The fully-qualified resource name of the Extension Instance.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (Output)
-     * The unique identifier for this configuration.
+     * @return The fully-qualified resource name of the Extension Instance.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -298,8 +284,7 @@ public final class ExtensionsInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime (Output)
-         * The time at which the Extension Instance Config was created.
+         * @param createTime The time at which the Extension Instance was created.
          * 
          * @return builder
          * 
@@ -310,8 +295,7 @@ public final class ExtensionsInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime (Output)
-         * The time at which the Extension Instance Config was created.
+         * @param createTime The time at which the Extension Instance was created.
          * 
          * @return builder
          * 
@@ -450,8 +434,7 @@ public final class ExtensionsInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name (Output)
-         * The unique identifier for this configuration.
+         * @param name The fully-qualified resource name of the Extension Instance.
          * 
          * @return builder
          * 
@@ -462,8 +445,7 @@ public final class ExtensionsInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name (Output)
-         * The unique identifier for this configuration.
+         * @param name The fully-qualified resource name of the Extension Instance.
          * 
          * @return builder
          * 
@@ -472,25 +454,11 @@ public final class ExtensionsInstanceState extends com.pulumi.resources.Resource
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

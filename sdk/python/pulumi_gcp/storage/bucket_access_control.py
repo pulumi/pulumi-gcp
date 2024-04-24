@@ -262,7 +262,6 @@ class BucketAccessControl(pulumi.CustomResource):
 
         ### Storage Bucket Access Control Public Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -275,7 +274,6 @@ class BucketAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -347,7 +345,6 @@ class BucketAccessControl(pulumi.CustomResource):
 
         ### Storage Bucket Access Control Public Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -360,7 +357,6 @@ class BucketAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

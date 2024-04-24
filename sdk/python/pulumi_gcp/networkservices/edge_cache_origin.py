@@ -709,7 +709,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
 
         ### Network Services Edge Cache Origin Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -719,10 +718,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             origin_address="gs://media-edge-default",
             description="The default bucket for media edge test")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Origin Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -780,10 +777,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 connect_timeout="10s",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Origin V4auth
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -806,7 +801,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 origin_region="auto",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -908,7 +902,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
 
         ### Network Services Edge Cache Origin Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -918,10 +911,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             origin_address="gs://media-edge-default",
             description="The default bucket for media edge test")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Origin Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -979,10 +970,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 connect_timeout="10s",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Origin V4auth
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1005,7 +994,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 origin_region="auto",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

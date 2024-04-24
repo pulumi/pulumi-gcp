@@ -329,7 +329,6 @@ class CaPoolIamBinding(pulumi.CustomResource):
 
         ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -342,11 +341,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,10 +361,8 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -377,11 +372,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -396,10 +389,8 @@ class CaPoolIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_privateca\\_ca\\_pool\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -409,11 +400,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             role="roles/privateca.certificateManager",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -428,11 +417,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -445,11 +432,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -467,10 +452,8 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -480,11 +463,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -499,10 +480,8 @@ class CaPoolIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_privateca\\_ca\\_pool\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -512,11 +491,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             role="roles/privateca.certificateManager",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -531,7 +508,6 @@ class CaPoolIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -619,7 +595,6 @@ class CaPoolIamBinding(pulumi.CustomResource):
 
         ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -632,11 +607,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -654,10 +627,8 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -667,11 +638,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -686,10 +655,8 @@ class CaPoolIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_privateca\\_ca\\_pool\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -699,11 +666,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             role="roles/privateca.certificateManager",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -718,11 +683,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -735,11 +698,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -757,10 +718,8 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -770,11 +729,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -789,10 +746,8 @@ class CaPoolIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_privateca\\_ca\\_pool\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -802,11 +757,9 @@ class CaPoolIamBinding(pulumi.CustomResource):
             role="roles/privateca.certificateManager",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -821,7 +774,6 @@ class CaPoolIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

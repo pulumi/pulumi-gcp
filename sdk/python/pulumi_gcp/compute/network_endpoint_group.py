@@ -442,7 +442,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
 
         ### Network Endpoint Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -462,10 +461,8 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Endpoint Group Non Gcp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -482,7 +479,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             port=neg.default_port,
             ip_address="127.0.0.1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -579,7 +575,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
 
         ### Network Endpoint Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -599,10 +594,8 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Endpoint Group Non Gcp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -619,7 +612,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             port=neg.default_port,
             ip_address="127.0.0.1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

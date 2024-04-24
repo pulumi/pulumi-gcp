@@ -84,14 +84,12 @@ def get_dicom_store_iam_policy(dicom_store_id: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.healthcare.get_dicom_store_iam_policy(dicom_store_id=dicom_store["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str dicom_store_id: The DICOM store ID, in the form
@@ -119,14 +117,12 @@ def get_dicom_store_iam_policy_output(dicom_store_id: Optional[pulumi.Input[str]
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.healthcare.get_dicom_store_iam_policy(dicom_store_id=dicom_store["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str dicom_store_id: The DICOM store ID, in the form

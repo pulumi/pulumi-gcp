@@ -489,7 +489,6 @@ class AiEndpoint(pulumi.CustomResource):
 
         ### Vertex Ai Endpoint Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -524,7 +523,6 @@ class AiEndpoint(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -588,7 +586,6 @@ class AiEndpoint(pulumi.CustomResource):
 
         ### Vertex Ai Endpoint Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -623,7 +620,6 @@ class AiEndpoint(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

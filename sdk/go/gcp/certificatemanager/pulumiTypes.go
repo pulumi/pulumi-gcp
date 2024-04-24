@@ -590,18 +590,14 @@ func (o CertificateManagedPtrOutput) State() pulumi.StringPtrOutput {
 }
 
 type CertificateManagedAuthorizationAttemptInfo struct {
-	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
-	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
+	// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
 	Details *string `pulumi:"details"`
-	// (Output)
 	// Domain name of the authorization attempt.
 	Domain *string `pulumi:"domain"`
-	// (Output)
 	// Reason for failure of the authorization attempt for the domain.
 	FailureReason *string `pulumi:"failureReason"`
-	// (Output)
 	// State of the domain for managed certificate issuance.
 	State *string `pulumi:"state"`
 }
@@ -618,18 +614,14 @@ type CertificateManagedAuthorizationAttemptInfoInput interface {
 }
 
 type CertificateManagedAuthorizationAttemptInfoArgs struct {
-	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
-	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
+	// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
 	Details pulumi.StringPtrInput `pulumi:"details"`
-	// (Output)
 	// Domain name of the authorization attempt.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// (Output)
 	// Reason for failure of the authorization attempt for the domain.
 	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
-	// (Output)
 	// State of the domain for managed certificate issuance.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
@@ -685,27 +677,23 @@ func (o CertificateManagedAuthorizationAttemptInfoOutput) ToCertificateManagedAu
 	return o
 }
 
-// (Output)
 // Human readable explanation for reaching the state. Provided to help
 // address the configuration issues.
-// Not guaranteed to be stable. For programmatic access use `failureReason` field.
+// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
 func (o CertificateManagedAuthorizationAttemptInfoOutput) Details() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedAuthorizationAttemptInfo) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // Domain name of the authorization attempt.
 func (o CertificateManagedAuthorizationAttemptInfoOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedAuthorizationAttemptInfo) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // Reason for failure of the authorization attempt for the domain.
 func (o CertificateManagedAuthorizationAttemptInfoOutput) FailureReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedAuthorizationAttemptInfo) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // State of the domain for managed certificate issuance.
 func (o CertificateManagedAuthorizationAttemptInfoOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedAuthorizationAttemptInfo) *string { return v.State }).(pulumi.StringPtrOutput)
@@ -732,12 +720,10 @@ func (o CertificateManagedAuthorizationAttemptInfoArrayOutput) Index(i pulumi.In
 }
 
 type CertificateManagedProvisioningIssue struct {
-	// (Output)
-	// Human readable explanation for reaching the state. Provided to help
-	// address the configuration issues.
-	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
+	// Human readable explanation about the issue. Provided to help address
+	// the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use 'reason' field.
 	Details *string `pulumi:"details"`
-	// (Output)
 	// Reason for provisioning failures.
 	Reason *string `pulumi:"reason"`
 }
@@ -754,12 +740,10 @@ type CertificateManagedProvisioningIssueInput interface {
 }
 
 type CertificateManagedProvisioningIssueArgs struct {
-	// (Output)
-	// Human readable explanation for reaching the state. Provided to help
-	// address the configuration issues.
-	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
+	// Human readable explanation about the issue. Provided to help address
+	// the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use 'reason' field.
 	Details pulumi.StringPtrInput `pulumi:"details"`
-	// (Output)
 	// Reason for provisioning failures.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
 }
@@ -815,15 +799,13 @@ func (o CertificateManagedProvisioningIssueOutput) ToCertificateManagedProvision
 	return o
 }
 
-// (Output)
-// Human readable explanation for reaching the state. Provided to help
-// address the configuration issues.
-// Not guaranteed to be stable. For programmatic access use `failureReason` field.
+// Human readable explanation about the issue. Provided to help address
+// the configuration issues.
+// Not guaranteed to be stable. For programmatic access use 'reason' field.
 func (o CertificateManagedProvisioningIssueOutput) Details() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedProvisioningIssue) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // Reason for provisioning failures.
 func (o CertificateManagedProvisioningIssueOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedProvisioningIssue) *string { return v.Reason }).(pulumi.StringPtrOutput)

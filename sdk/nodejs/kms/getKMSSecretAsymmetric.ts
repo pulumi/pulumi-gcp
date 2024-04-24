@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * First, create a KMS KeyRing and CryptoKey using the resource definitions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,14 +30,12 @@ import * as utilities from "../utilities";
  *     cryptoKey: myCryptoKeyCryptoKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
  * some sensitive information:
  *
  * Finally, reference the encrypted ciphertext in your resource definitions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,7 +72,6 @@ import * as utilities from "../utilities";
  *     password: sqlUserPasswordGoogleKmsSecret.plaintext,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */
@@ -133,7 +129,6 @@ export interface GetKMSSecretAsymmetricResult {
  *
  * First, create a KMS KeyRing and CryptoKey using the resource definitions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -155,14 +150,12 @@ export interface GetKMSSecretAsymmetricResult {
  *     cryptoKey: myCryptoKeyCryptoKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
  * some sensitive information:
  *
  * Finally, reference the encrypted ciphertext in your resource definitions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -199,7 +192,6 @@ export interface GetKMSSecretAsymmetricResult {
  *     password: sqlUserPasswordGoogleKmsSecret.plaintext,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */

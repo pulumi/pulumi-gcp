@@ -254,7 +254,6 @@ class Fulfillment(pulumi.CustomResource):
 
         ### Dialogflow Fulfillment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -275,7 +274,6 @@ class Fulfillment(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -322,7 +320,6 @@ class Fulfillment(pulumi.CustomResource):
 
         ### Dialogflow Fulfillment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -343,7 +340,6 @@ class Fulfillment(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

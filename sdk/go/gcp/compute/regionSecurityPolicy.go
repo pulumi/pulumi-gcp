@@ -15,7 +15,6 @@ import (
 //
 // ### Region Security Policy Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,10 +40,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Security Policy With Ddos Protection Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,10 +70,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Security Policy With User Defined Fields
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -118,7 +113,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

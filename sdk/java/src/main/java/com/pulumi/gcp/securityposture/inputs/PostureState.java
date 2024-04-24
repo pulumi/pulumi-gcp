@@ -34,14 +34,14 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the expression
+     * Description of the posture.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the expression
+     * @return Description of the posture.
      * 
      */
     public Optional<Output<String>> description() {
@@ -79,14 +79,14 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Immutable. The name of the custom constraint. This is unique within the organization.
+     * Name of the posture.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Immutable. The name of the custom constraint. This is unique within the organization.
+     * @return Name of the posture.
      * 
      */
     public Optional<Output<String>> name() {
@@ -261,7 +261,7 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the expression
+         * @param description Description of the posture.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the expression
+         * @param description Description of the posture.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Immutable. The name of the custom constraint. This is unique within the organization.
+         * @param name Name of the posture.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Immutable. The name of the custom constraint. This is unique within the organization.
+         * @param name Name of the posture.
          * 
          * @return builder
          * 

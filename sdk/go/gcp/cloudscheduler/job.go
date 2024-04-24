@@ -24,7 +24,6 @@ import (
 //
 // ### Scheduler Job Pubsub
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,10 +67,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Scheduler Job Http
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -117,10 +114,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Scheduler Job Paused
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -167,10 +162,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Scheduler Job App Engine
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -213,10 +206,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Scheduler Job Oauth
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -256,10 +247,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Scheduler Job Oidc
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -299,7 +288,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -21,7 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetKMSKeyRing(ctx *pulumi.Context, args *GetKMSKeyRingArgs, opts ...pulumi.InvokeOption) (*GetKMSKeyRingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKMSKeyRingResult

@@ -246,7 +246,6 @@ class FirewallRule(pulumi.CustomResource):
 
         ### App Engine Firewall Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -265,7 +264,6 @@ class FirewallRule(pulumi.CustomResource):
             action="ALLOW",
             source_range="*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -328,7 +326,6 @@ class FirewallRule(pulumi.CustomResource):
 
         ### App Engine Firewall Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -347,7 +344,6 @@ class FirewallRule(pulumi.CustomResource):
             action="ALLOW",
             source_range="*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

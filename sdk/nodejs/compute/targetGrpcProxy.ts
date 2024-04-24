@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Target Grpc Proxy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -111,7 +110,6 @@ import * as utilities from "../utilities";
  *     validateForProxyless: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

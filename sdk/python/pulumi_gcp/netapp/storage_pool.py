@@ -541,7 +541,6 @@ class StoragePool(pulumi.CustomResource):
 
         ### Storage Pool Create
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -578,7 +577,6 @@ class StoragePool(pulumi.CustomResource):
             capacity_gib="2048",
             network=peering_network.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -658,7 +656,6 @@ class StoragePool(pulumi.CustomResource):
 
         ### Storage Pool Create
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -695,7 +692,6 @@ class StoragePool(pulumi.CustomResource):
             capacity_gib="2048",
             network=peering_network.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

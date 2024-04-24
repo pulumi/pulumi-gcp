@@ -18,7 +18,6 @@ import (
 //
 // ### Secret Version Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,10 +54,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Secret Version Deletion Policy Abandon
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -99,10 +96,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Secret Version Deletion Policy Disable
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -143,10 +138,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Secret Version With Base64 String Secret Data
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -194,7 +187,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -492,7 +492,6 @@ class Pipeline(pulumi.CustomResource):
 
         ### Data Pipeline Pipeline
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -543,7 +542,6 @@ class Pipeline(pulumi.CustomResource):
                 schedule="* */2 * * *",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -623,7 +621,6 @@ class Pipeline(pulumi.CustomResource):
 
         ### Data Pipeline Pipeline
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -674,7 +671,6 @@ class Pipeline(pulumi.CustomResource):
                 schedule="* */2 * * *",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

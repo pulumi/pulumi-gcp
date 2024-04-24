@@ -103,7 +103,6 @@ def get_instance_serial_port(instance: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,11 +112,9 @@ def get_instance_serial_port(instance: Optional[str] = None,
         port=1)
     pulumi.export("serialOut", serial.contents)
     ```
-    <!--End PulumiCodeChooser -->
 
     Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import json
@@ -158,7 +155,6 @@ def get_instance_serial_port(instance: Optional[str] = None,
         port=4))
     pulumi.export("serialOut", serial.contents)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name of the Compute Instance to read output from.
@@ -199,7 +195,6 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -209,11 +204,9 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
         port=1)
     pulumi.export("serialOut", serial.contents)
     ```
-    <!--End PulumiCodeChooser -->
 
     Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import json
@@ -254,7 +247,6 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
         port=4))
     pulumi.export("serialOut", serial.contents)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name of the Compute Instance to read output from.

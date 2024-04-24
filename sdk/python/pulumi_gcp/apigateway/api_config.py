@@ -499,7 +499,6 @@ class ApiConfig(pulumi.CustomResource):
 
         ### Apigateway Api Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -516,10 +515,8 @@ class ApiConfig(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigateway Api Config Grpc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -556,7 +553,6 @@ class ApiConfig(pulumi.CustomResource):
         \"\"\")).apply(lambda invoke: invoke.result),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -628,7 +624,6 @@ class ApiConfig(pulumi.CustomResource):
 
         ### Apigateway Api Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -645,10 +640,8 @@ class ApiConfig(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigateway Api Config Grpc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -685,7 +678,6 @@ class ApiConfig(pulumi.CustomResource):
         \"\"\")).apply(lambda invoke: invoke.result),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

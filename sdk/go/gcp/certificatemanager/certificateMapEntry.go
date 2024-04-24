@@ -19,7 +19,6 @@ import (
 //
 // ### Certificate Manager Certificate Map Entry Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,7 +97,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

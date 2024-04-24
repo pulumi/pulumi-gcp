@@ -726,10 +726,8 @@ func (o ClusterControlPlaneEncryptionPtrOutput) KmsStatuses() ClusterControlPlan
 }
 
 type ClusterControlPlaneEncryptionKmsStatus struct {
-	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code *int `pulumi:"code"`
-	// (Output)
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message *string `pulumi:"message"`
 }
@@ -746,10 +744,8 @@ type ClusterControlPlaneEncryptionKmsStatusInput interface {
 }
 
 type ClusterControlPlaneEncryptionKmsStatusArgs struct {
-	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code pulumi.IntPtrInput `pulumi:"code"`
-	// (Output)
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -805,13 +801,11 @@ func (o ClusterControlPlaneEncryptionKmsStatusOutput) ToClusterControlPlaneEncry
 	return o
 }
 
-// (Output)
 // The status code, which should be an enum value of google.rpc.Code.
 func (o ClusterControlPlaneEncryptionKmsStatusOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterControlPlaneEncryptionKmsStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o ClusterControlPlaneEncryptionKmsStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterControlPlaneEncryptionKmsStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
@@ -1372,8 +1366,10 @@ type ClusterMaintenanceEvent struct {
 	// (Output)
 	// The time when the maintenance event request was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The time that the window ends. The end time must take place after the
-	// start time.
+	// (Output)
+	// The time when the maintenance event ended, either successfully or not. If
+	// the maintenance event is split into multiple maintenance windows,
+	// endTime is only updated when the whole flow ends.
 	EndTime *string `pulumi:"endTime"`
 	// (Output)
 	// The operation for running the maintenance event. Specified in the format
@@ -1384,12 +1380,14 @@ type ClusterMaintenanceEvent struct {
 	// (Output)
 	// The schedule of the maintenance event.
 	Schedule *string `pulumi:"schedule"`
-	// The time that the window first starts.
+	// (Output)
+	// The time when the maintenance event started.
 	StartTime *string `pulumi:"startTime"`
 	// (Output)
 	// Indicates the maintenance event state.
 	State *string `pulumi:"state"`
-	// The target cluster version. For example: "1.5.0".
+	// (Output)
+	// The target version of the cluster.
 	TargetVersion *string `pulumi:"targetVersion"`
 	// (Output)
 	// Indicates the maintenance event type.
@@ -1417,8 +1415,10 @@ type ClusterMaintenanceEventArgs struct {
 	// (Output)
 	// The time when the maintenance event request was created.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// The time that the window ends. The end time must take place after the
-	// start time.
+	// (Output)
+	// The time when the maintenance event ended, either successfully or not. If
+	// the maintenance event is split into multiple maintenance windows,
+	// endTime is only updated when the whole flow ends.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// (Output)
 	// The operation for running the maintenance event. Specified in the format
@@ -1429,12 +1429,14 @@ type ClusterMaintenanceEventArgs struct {
 	// (Output)
 	// The schedule of the maintenance event.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
-	// The time that the window first starts.
+	// (Output)
+	// The time when the maintenance event started.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 	// (Output)
 	// Indicates the maintenance event state.
 	State pulumi.StringPtrInput `pulumi:"state"`
-	// The target cluster version. For example: "1.5.0".
+	// (Output)
+	// The target version of the cluster.
 	TargetVersion pulumi.StringPtrInput `pulumi:"targetVersion"`
 	// (Output)
 	// Indicates the maintenance event type.
@@ -1504,8 +1506,10 @@ func (o ClusterMaintenanceEventOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenanceEvent) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
-// The time that the window ends. The end time must take place after the
-// start time.
+// (Output)
+// The time when the maintenance event ended, either successfully or not. If
+// the maintenance event is split into multiple maintenance windows,
+// endTime is only updated when the whole flow ends.
 func (o ClusterMaintenanceEventOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenanceEvent) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
@@ -1525,7 +1529,8 @@ func (o ClusterMaintenanceEventOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenanceEvent) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
 
-// The time that the window first starts.
+// (Output)
+// The time when the maintenance event started.
 func (o ClusterMaintenanceEventOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenanceEvent) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -1536,7 +1541,8 @@ func (o ClusterMaintenanceEventOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenanceEvent) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// The target cluster version. For example: "1.5.0".
+// (Output)
+// The target version of the cluster.
 func (o ClusterMaintenanceEventOutput) TargetVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenanceEvent) *string { return v.TargetVersion }).(pulumi.StringPtrOutput)
 }

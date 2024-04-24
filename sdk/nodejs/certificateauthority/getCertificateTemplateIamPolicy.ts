@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     certificateTemplate: _default.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCertificateTemplateIamPolicy(args: GetCertificateTemplateIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateTemplateIamPolicyResult> {
 
@@ -72,7 +70,6 @@ export interface GetCertificateTemplateIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -81,7 +78,6 @@ export interface GetCertificateTemplateIamPolicyResult {
  *     certificateTemplate: _default.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCertificateTemplateIamPolicyOutput(args: GetCertificateTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateTemplateIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getCertificateTemplateIamPolicy(a, opts))

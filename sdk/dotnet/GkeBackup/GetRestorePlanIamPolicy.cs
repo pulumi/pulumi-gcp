@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.GkeBackup
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Gcp.GkeBackup
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRestorePlanIamPolicyResult> InvokeAsync(GetRestorePlanIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRestorePlanIamPolicyResult>("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", args ?? new GetRestorePlanIamPolicyArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Gcp.GkeBackup
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.Gcp.GkeBackup
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRestorePlanIamPolicyResult> Invoke(GetRestorePlanIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRestorePlanIamPolicyResult>("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", args ?? new GetRestorePlanIamPolicyInvokeArgs(), options.WithDefaults());

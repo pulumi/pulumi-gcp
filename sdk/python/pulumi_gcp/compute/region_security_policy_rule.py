@@ -417,7 +417,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
 
         ### Region Security Policy Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,10 +440,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Security Policy Rule Multiple Rules
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -484,10 +481,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Security Policy Rule With Network Match
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,7 +529,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -610,7 +604,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
 
         ### Region Security Policy Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -634,10 +627,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Security Policy Rule Multiple Rules
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,10 +668,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Security Policy Rule With Network Match
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -727,7 +716,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

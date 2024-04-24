@@ -308,14 +308,12 @@ class Api(pulumi.CustomResource):
 
         ### Apigateway Api Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         api = gcp.apigateway.Api("api", api_id="my-api")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -376,14 +374,12 @@ class Api(pulumi.CustomResource):
 
         ### Apigateway Api Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         api = gcp.apigateway.Api("api", api_id="my-api")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

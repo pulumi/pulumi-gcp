@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Dialogflowcx Flow Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -87,10 +86,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dialogflowcx Flow Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -374,7 +371,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -464,8 +460,8 @@ export class CxFlow extends pulumi.CustomResource {
      */
     public readonly languageCode!: pulumi.Output<string | undefined>;
     /**
-     * (Output)
-     * The unique identifier of this event handler.
+     * The unique identifier of the flow.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -589,8 +585,8 @@ export interface CxFlowState {
      */
     languageCode?: pulumi.Input<string>;
     /**
-     * (Output)
-     * The unique identifier of this event handler.
+     * The unique identifier of the flow.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     name?: pulumi.Input<string>;
     /**

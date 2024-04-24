@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### App Engine Application Url Dispatch Rules Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,7 +60,6 @@ import * as utilities from "../utilities";
  *     },
  * ]});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -108,10 +106,6 @@ export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly dispatchRules!: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRulesDispatchRule[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -151,10 +145,6 @@ export interface ApplicationUrlDispatchRulesState {
      * Structure is documented below.
      */
     dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
 }
 
@@ -167,9 +157,5 @@ export interface ApplicationUrlDispatchRulesArgs {
      * Structure is documented below.
      */
     dispatchRules: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
 }

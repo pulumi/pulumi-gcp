@@ -175,7 +175,6 @@ class DatasetIamPolicy(pulumi.CustomResource):
 
         ## google\\_bigquery\\_dataset\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -189,11 +188,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             dataset_id=dataset_dataset.dataset_id,
             policy_data=owner.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -204,11 +201,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataViewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -219,11 +214,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -237,11 +230,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             dataset_id=dataset_dataset.dataset_id,
             policy_data=owner.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -252,11 +243,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataViewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -267,7 +256,6 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -330,7 +318,6 @@ class DatasetIamPolicy(pulumi.CustomResource):
 
         ## google\\_bigquery\\_dataset\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,11 +331,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             dataset_id=dataset_dataset.dataset_id,
             policy_data=owner.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -359,11 +344,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataViewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -374,11 +357,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -392,11 +373,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             dataset_id=dataset_dataset.dataset_id,
             policy_data=owner.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -407,11 +386,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataViewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -422,7 +399,6 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

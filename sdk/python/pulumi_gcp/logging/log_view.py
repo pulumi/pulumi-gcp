@@ -287,7 +287,6 @@ class LogView(pulumi.CustomResource):
 
         ### Logging Log View Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -303,7 +302,6 @@ class LogView(pulumi.CustomResource):
             description="A logging view configured with Terraform",
             filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -348,7 +346,6 @@ class LogView(pulumi.CustomResource):
 
         ### Logging Log View Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,7 +361,6 @@ class LogView(pulumi.CustomResource):
             description="A logging view configured with Terraform",
             filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -26,7 +26,6 @@ import (
 //
 // ### Consumer Quota Override
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,10 +76,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Consumer Quota Override
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,10 +131,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Consumer Quota Override Custom Dimension
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -191,7 +186,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

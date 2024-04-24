@@ -20,9 +20,7 @@ namespace Pulumi.Gcp.Redis.Outputs
         public readonly string? Cert;
         /// <summary>
         /// (Output)
-        /// Output only. The time when the policy was created.
-        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        /// resolution and up to nine fractional digits.
+        /// The time when the certificate was created.
         /// </summary>
         public readonly string? CreateTime;
         /// <summary>

@@ -20,7 +20,6 @@ public final class ConnectionAuthConfigOauth2ClientCredentials {
     private String clientId;
     /**
      * @return Secret version reference containing the client secret.
-     * Structure is documented below.
      * 
      */
     private @Nullable ConnectionAuthConfigOauth2ClientCredentialsClientSecret clientSecret;
@@ -35,7 +34,6 @@ public final class ConnectionAuthConfigOauth2ClientCredentials {
     }
     /**
      * @return Secret version reference containing the client secret.
-     * Structure is documented below.
      * 
      */
     public Optional<ConnectionAuthConfigOauth2ClientCredentialsClientSecret> clientSecret() {

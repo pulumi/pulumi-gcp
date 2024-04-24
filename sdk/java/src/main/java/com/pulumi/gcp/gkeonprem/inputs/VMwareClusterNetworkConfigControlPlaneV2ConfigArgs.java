@@ -17,7 +17,6 @@ public final class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs extends co
 
     /**
      * Static IP addresses for the control plane nodes.
-     * Structure is documented below.
      * 
      */
     @Import(name="controlPlaneIpBlock")
@@ -25,7 +24,6 @@ public final class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs extends co
 
     /**
      * @return Static IP addresses for the control plane nodes.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs>> controlPlaneIpBlock() {
@@ -58,7 +56,6 @@ public final class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs extends co
 
         /**
          * @param controlPlaneIpBlock Static IP addresses for the control plane nodes.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -70,7 +67,6 @@ public final class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs extends co
 
         /**
          * @param controlPlaneIpBlock Static IP addresses for the control plane nodes.
-         * Structure is documented below.
          * 
          * @return builder
          * 

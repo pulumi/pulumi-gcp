@@ -155,7 +155,6 @@ def get_project(project_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -163,7 +162,6 @@ def get_project(project_id: Optional[str] = None,
     project = gcp.organizations.get_project()
     pulumi.export("projectNumber", project.number)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project_id: The project ID. If it is not provided, the provider project is used.
@@ -198,7 +196,6 @@ def get_project_output(project_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -206,7 +203,6 @@ def get_project_output(project_id: Optional[pulumi.Input[Optional[str]]] = None,
     project = gcp.organizations.get_project()
     pulumi.export("projectNumber", project.number)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project_id: The project ID. If it is not provided, the provider project is used.

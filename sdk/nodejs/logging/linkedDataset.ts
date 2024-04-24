@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Logging Linked Dataset Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,10 +35,8 @@ import * as utilities from "../utilities";
  *     description: "Linked dataset test",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Logging Linked Dataset All Params
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,7 +55,6 @@ import * as utilities from "../utilities";
  *     description: "Linked dataset test",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * ### Ml Model Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,10 +32,8 @@ import * as utilities from "../utilities";
  *     regions: "us-central1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Ml Model Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,7 +49,6 @@ import * as utilities from "../utilities";
  *     onlinePredictionConsoleLogging: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

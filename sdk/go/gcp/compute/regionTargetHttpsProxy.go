@@ -25,7 +25,6 @@ import (
 //
 // ### Region Target Https Proxy Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -128,10 +127,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Target Https Proxy Certificate Manager Certificate
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -206,7 +203,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

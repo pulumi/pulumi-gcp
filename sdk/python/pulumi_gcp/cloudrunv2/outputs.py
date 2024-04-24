@@ -1811,8 +1811,8 @@ class ServiceCondition(dict):
                How to interpret failures of this condition, one of Error, Warning, Info
         :param str state: (Output)
                State of the condition.
-        :param str type: The allocation type for this traffic target.
-               Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        :param str type: (Output)
+               The allocation type for this traffic target.
         """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
@@ -1899,8 +1899,8 @@ class ServiceCondition(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
+        (Output)
         The allocation type for this traffic target.
-        Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         return pulumi.get(self, "type")
 
@@ -3839,8 +3839,8 @@ class ServiceTerminalCondition(dict):
                How to interpret failures of this condition, one of Error, Warning, Info
         :param str state: (Output)
                State of the condition.
-        :param str type: The allocation type for this traffic target.
-               Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        :param str type: (Output)
+               The allocation type for this traffic target.
         """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
@@ -3927,8 +3927,8 @@ class ServiceTerminalCondition(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
+        (Output)
         The allocation type for this traffic target.
-        Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         return pulumi.get(self, "type")
 
@@ -3999,11 +3999,14 @@ class ServiceTrafficStatus(dict):
                  type: Optional[str] = None,
                  uri: Optional[str] = None):
         """
-        :param int percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
-        :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-        :param str tag: Indicates a string to be part of the URI to exclusively reference this target.
-        :param str type: The allocation type for this traffic target.
-               Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        :param int percent: (Output)
+               Specifies percent of the traffic to this Revision.
+        :param str revision: (Output)
+               Revision to which this traffic is sent.
+        :param str tag: (Output)
+               Indicates the string used in the URI to exclusively reference this target.
+        :param str type: (Output)
+               The allocation type for this traffic target.
         :param str uri: (Output)
                Displays the target URI.
         """
@@ -4022,7 +4025,8 @@ class ServiceTrafficStatus(dict):
     @pulumi.getter
     def percent(self) -> Optional[int]:
         """
-        Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+        (Output)
+        Specifies percent of the traffic to this Revision.
         """
         return pulumi.get(self, "percent")
 
@@ -4030,7 +4034,8 @@ class ServiceTrafficStatus(dict):
     @pulumi.getter
     def revision(self) -> Optional[str]:
         """
-        The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+        (Output)
+        Revision to which this traffic is sent.
         """
         return pulumi.get(self, "revision")
 
@@ -4038,7 +4043,8 @@ class ServiceTrafficStatus(dict):
     @pulumi.getter
     def tag(self) -> Optional[str]:
         """
-        Indicates a string to be part of the URI to exclusively reference this target.
+        (Output)
+        Indicates the string used in the URI to exclusively reference this target.
         """
         return pulumi.get(self, "tag")
 
@@ -4046,8 +4052,8 @@ class ServiceTrafficStatus(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
+        (Output)
         The allocation type for this traffic target.
-        Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         return pulumi.get(self, "type")
 

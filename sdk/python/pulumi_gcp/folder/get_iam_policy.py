@@ -84,14 +84,12 @@ def get_iam_policy(folder: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     test = gcp.folder.get_iam_policy(folder=permissiontest["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
@@ -116,14 +114,12 @@ def get_iam_policy_output(folder: Optional[pulumi.Input[str]] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     test = gcp.folder.get_iam_policy(folder=permissiontest["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.

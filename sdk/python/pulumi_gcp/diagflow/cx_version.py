@@ -235,7 +235,6 @@ class CxVersion(pulumi.CustomResource):
 
         ### Dialogflowcx Version Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -262,7 +261,6 @@ class CxVersion(pulumi.CustomResource):
             display_name="1.0.0",
             description="version 1.0.0")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -312,7 +310,6 @@ class CxVersion(pulumi.CustomResource):
 
         ### Dialogflowcx Version Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -339,7 +336,6 @@ class CxVersion(pulumi.CustomResource):
             display_name="1.0.0",
             description="version 1.0.0")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

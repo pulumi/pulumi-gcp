@@ -10966,7 +10966,7 @@ func (o UptimeCheckConfigSyntheticMonitorPtrOutput) CloudFunctionV2() UptimeChec
 }
 
 type UptimeCheckConfigSyntheticMonitorCloudFunctionV2 struct {
-	// The fully qualified name of the cloud function resource.
+	// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
 	Name string `pulumi:"name"`
 }
 
@@ -10982,7 +10982,7 @@ type UptimeCheckConfigSyntheticMonitorCloudFunctionV2Input interface {
 }
 
 type UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args struct {
-	// The fully qualified name of the cloud function resource.
+	// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -11063,7 +11063,7 @@ func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) ToUptimeCheckCon
 	}).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput)
 }
 
-// The fully qualified name of the cloud function resource.
+// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
 func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v UptimeCheckConfigSyntheticMonitorCloudFunctionV2) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11092,7 +11092,7 @@ func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) Elem() Uptime
 	}).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output)
 }
 
-// The fully qualified name of the cloud function resource.
+// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
 func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigSyntheticMonitorCloudFunctionV2) *string {
 		if v == nil {

@@ -236,7 +236,6 @@ class InstanceIamMember(pulumi.CustomResource):
 
         ### Data Fusion Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -246,10 +245,8 @@ class InstanceIamMember(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -284,10 +281,8 @@ class InstanceIamMember(pulumi.CustomResource):
                 state="ENABLED",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -311,10 +306,8 @@ class InstanceIamMember(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -325,10 +318,8 @@ class InstanceIamMember(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Event
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -343,10 +334,8 @@ class InstanceIamMember(pulumi.CustomResource):
                 topic=event_topic.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Zone
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -357,7 +346,6 @@ class InstanceIamMember(pulumi.CustomResource):
             zone="us-central1-a",
             type="DEVELOPER")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -415,7 +403,6 @@ class InstanceIamMember(pulumi.CustomResource):
 
         ### Data Fusion Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -425,10 +412,8 @@ class InstanceIamMember(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -463,10 +448,8 @@ class InstanceIamMember(pulumi.CustomResource):
                 state="ENABLED",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -490,10 +473,8 @@ class InstanceIamMember(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -504,10 +485,8 @@ class InstanceIamMember(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Event
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -522,10 +501,8 @@ class InstanceIamMember(pulumi.CustomResource):
                 topic=event_topic.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Zone
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -536,7 +513,6 @@ class InstanceIamMember(pulumi.CustomResource):
             zone="us-central1-a",
             type="DEVELOPER")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

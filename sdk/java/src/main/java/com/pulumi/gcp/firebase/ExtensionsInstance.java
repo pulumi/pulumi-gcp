@@ -131,16 +131,14 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
         return this.config;
     }
     /**
-     * (Output)
-     * The time at which the Extension Instance Config was created.
+     * The time at which the Extension Instance was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return (Output)
-     * The time at which the Extension Instance Config was created.
+     * @return The time at which the Extension Instance was created.
      * 
      */
     public Output<String> createTime() {
@@ -229,34 +227,22 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
         return this.lastOperationType;
     }
     /**
-     * (Output)
-     * The unique identifier for this configuration.
+     * The fully-qualified resource name of the Extension Instance.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (Output)
-     * The unique identifier for this configuration.
+     * @return The fully-qualified resource name of the Extension Instance.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }

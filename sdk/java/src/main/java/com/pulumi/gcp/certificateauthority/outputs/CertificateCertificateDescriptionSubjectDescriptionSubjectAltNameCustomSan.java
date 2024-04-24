@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
     /**
-     * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
-     * handle this extension, the client should consider this to be an error).
+     * @return (Output)
+     * Indicates whether or not the name constraints are marked critical.
      * 
      */
     private @Nullable Boolean critical;
@@ -35,8 +35,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
     private CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan() {}
     /**
-     * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
-     * handle this extension, the client should consider this to be an error).
+     * @return (Output)
+     * Indicates whether or not the name constraints are marked critical.
      * 
      */
     public Optional<Boolean> critical() {

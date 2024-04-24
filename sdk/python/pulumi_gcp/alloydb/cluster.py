@@ -991,7 +991,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Alloydb Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1003,10 +1002,8 @@ class Cluster(pulumi.CustomResource):
             network=default_network.id)
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb Cluster Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1050,10 +1047,8 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb Cluster Restore
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1104,10 +1099,8 @@ class Cluster(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb Secondary Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1147,7 +1140,6 @@ class Cluster(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1251,7 +1243,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Alloydb Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1263,10 +1254,8 @@ class Cluster(pulumi.CustomResource):
             network=default_network.id)
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb Cluster Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1310,10 +1299,8 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb Cluster Restore
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1364,10 +1351,8 @@ class Cluster(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb Secondary Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1407,7 +1392,6 @@ class Cluster(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

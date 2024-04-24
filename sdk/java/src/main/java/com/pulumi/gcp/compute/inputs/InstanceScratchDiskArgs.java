@@ -18,16 +18,14 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
     public static final InstanceScratchDiskArgs Empty = new InstanceScratchDiskArgs();
 
     /**
-     * Name with which the attached disk will be accessible
-     * under `/dev/disk/by-id/google-*`
+     * Name with which the attached disk is accessible under /dev/disk/by-id/
      * 
      */
     @Import(name="deviceName")
     private @Nullable Output<String> deviceName;
 
     /**
-     * @return Name with which the attached disk will be accessible
-     * under `/dev/disk/by-id/google-*`
+     * @return Name with which the attached disk is accessible under /dev/disk/by-id/
      * 
      */
     public Optional<Output<String>> deviceName() {
@@ -50,16 +48,14 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The size of the image in gigabytes. If not specified, it
-     * will inherit the size of its base image.
+     * The size of the disk in gigabytes. One of 375 or 3000.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return The size of the image in gigabytes. If not specified, it
-     * will inherit the size of its base image.
+     * @return The size of the disk in gigabytes. One of 375 or 3000.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -93,8 +89,7 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param deviceName Name with which the attached disk will be accessible
-         * under `/dev/disk/by-id/google-*`
+         * @param deviceName Name with which the attached disk is accessible under /dev/disk/by-id/
          * 
          * @return builder
          * 
@@ -105,8 +100,7 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param deviceName Name with which the attached disk will be accessible
-         * under `/dev/disk/by-id/google-*`
+         * @param deviceName Name with which the attached disk is accessible under /dev/disk/by-id/
          * 
          * @return builder
          * 
@@ -137,8 +131,7 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param size The size of the image in gigabytes. If not specified, it
-         * will inherit the size of its base image.
+         * @param size The size of the disk in gigabytes. One of 375 or 3000.
          * 
          * @return builder
          * 
@@ -149,8 +142,7 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param size The size of the image in gigabytes. If not specified, it
-         * will inherit the size of its base image.
+         * @param size The size of the disk in gigabytes. One of 375 or 3000.
          * 
          * @return builder
          * 

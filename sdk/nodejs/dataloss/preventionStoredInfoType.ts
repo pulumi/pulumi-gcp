@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Dlp Stored Info Type Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,10 +33,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Stored Info Type Dictionary
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,10 +53,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Stored Info Type Large Custom Dictionary
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,10 +83,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Stored Info Type With Id
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -107,7 +100,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -174,7 +166,7 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
      */
     public readonly largeCustomDictionary!: pulumi.Output<outputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary | undefined>;
     /**
-     * Name describing the field.
+     * The resource name of the info type. Set by the server.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -263,7 +255,7 @@ export interface PreventionStoredInfoTypeState {
      */
     largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary>;
     /**
-     * Name describing the field.
+     * The resource name of the info type. Set by the server.
      */
     name?: pulumi.Input<string>;
     /**

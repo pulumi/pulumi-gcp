@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Searching For All Projects In An Org
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,11 +20,9 @@ import * as utilities from "../utilities";
  *     assetTypes: ["cloudresourcemanager.googleapis.com/Project"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Searching For All Projects With CloudBuild API Enabled
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,11 +33,9 @@ import * as utilities from "../utilities";
  *     query: "displayName:cloudbuild.googleapis.com AND state:ENABLED",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Searching For All Service Accounts In A Project
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -50,7 +45,6 @@ import * as utilities from "../utilities";
  *     assetTypes: ["iam.googleapis.com/ServiceAccount"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResourcesSearchAll(args: GetResourcesSearchAllArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcesSearchAllResult> {
 
@@ -101,7 +95,6 @@ export interface GetResourcesSearchAllResult {
  *
  * ### Searching For All Projects In An Org
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -111,11 +104,9 @@ export interface GetResourcesSearchAllResult {
  *     assetTypes: ["cloudresourcemanager.googleapis.com/Project"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Searching For All Projects With CloudBuild API Enabled
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -126,11 +117,9 @@ export interface GetResourcesSearchAllResult {
  *     query: "displayName:cloudbuild.googleapis.com AND state:ENABLED",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Searching For All Service Accounts In A Project
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -140,7 +129,6 @@ export interface GetResourcesSearchAllResult {
  *     assetTypes: ["iam.googleapis.com/ServiceAccount"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResourcesSearchAllOutput(args: GetResourcesSearchAllOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcesSearchAllResult> {
     return pulumi.output(args).apply((a: any) => getResourcesSearchAll(a, opts))

@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     {
         /// <summary>
         /// Static IP addresses for the control plane nodes.
-        /// Structure is documented below.
         /// </summary>
         [Input("controlPlaneIpBlock")]
         public Input<Inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs>? ControlPlaneIpBlock { get; set; }

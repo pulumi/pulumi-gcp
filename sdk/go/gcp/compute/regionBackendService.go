@@ -24,7 +24,6 @@ import (
 //
 // ### Region Backend Service Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,10 +62,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Backend Service External Iap
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,10 +94,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Backend Service Cache
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -147,10 +142,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Backend Service Ilb Round Robin
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -188,10 +181,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Backend Service External
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -229,10 +220,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Backend Service External Weighted
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -271,10 +260,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Backend Service Ilb Ring Hash
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -328,10 +315,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Backend Service Balancing Mode
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -440,10 +425,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Backend Service Connection Tracking
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -489,7 +472,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

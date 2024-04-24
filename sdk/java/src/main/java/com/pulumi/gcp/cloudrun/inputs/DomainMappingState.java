@@ -36,7 +36,6 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Metadata associated with this DomainMapping.
-     * Structure is documented below.
      * 
      */
     @Import(name="metadata")
@@ -44,7 +43,6 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Metadata associated with this DomainMapping.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<DomainMappingMetadataArgs>> metadata() {
@@ -66,19 +64,9 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -169,7 +157,6 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param metadata Metadata associated with this DomainMapping.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -181,7 +168,6 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param metadata Metadata associated with this DomainMapping.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -211,25 +197,11 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

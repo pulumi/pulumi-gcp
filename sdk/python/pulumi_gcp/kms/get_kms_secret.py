@@ -103,7 +103,6 @@ def get_kms_secret(additional_authenticated_data: Optional[str] = None,
 
     First, create a KMS KeyRing and CryptoKey using the resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -116,14 +115,12 @@ def get_kms_secret(additional_authenticated_data: Optional[str] = None,
         name="my-crypto-key",
         key_ring=my_key_ring.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
     sensitive information:
 
     Finally, reference the encrypted ciphertext in your resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -144,7 +141,6 @@ def get_kms_secret(additional_authenticated_data: Optional[str] = None,
         host="me.com",
         password=sql_user_password.plaintext)
     ```
-    <!--End PulumiCodeChooser -->
 
     This will result in a Cloud SQL user being created with password `my-secret-password`.
 
@@ -191,7 +187,6 @@ def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[O
 
     First, create a KMS KeyRing and CryptoKey using the resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -204,14 +199,12 @@ def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[O
         name="my-crypto-key",
         key_ring=my_key_ring.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
     sensitive information:
 
     Finally, reference the encrypted ciphertext in your resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -232,7 +225,6 @@ def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[O
         host="me.com",
         password=sql_user_password.plaintext)
     ```
-    <!--End PulumiCodeChooser -->
 
     This will result in a Cloud SQL user being created with password `my-secret-password`.
 

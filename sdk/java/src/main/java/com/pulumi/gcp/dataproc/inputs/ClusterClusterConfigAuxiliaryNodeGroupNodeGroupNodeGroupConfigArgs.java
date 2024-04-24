@@ -20,16 +20,14 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     public static final ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs Empty = new ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs();
 
     /**
-     * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
-     * multiple times.
+     * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
      * 
      */
     @Import(name="accelerators")
     private @Nullable Output<List<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs>> accelerators;
 
     /**
-     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
-     * multiple times.
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
      * 
      */
     public Optional<Output<List<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs>>> accelerators() {
@@ -67,18 +65,14 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     }
 
     /**
-     * The name of a Google Compute Engine machine type
-     * to create for the node group. If not specified, GCP will default to a predetermined
-     * computed value (currently `n1-standard-4`).
+     * The name of a Google Compute Engine machine type to create for the master
      * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
-     * @return The name of a Google Compute Engine machine type
-     * to create for the node group. If not specified, GCP will default to a predetermined
-     * computed value (currently `n1-standard-4`).
+     * @return The name of a Google Compute Engine machine type to create for the master
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -86,20 +80,14 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     }
 
     /**
-     * The name of a minimum generation of CPU family
-     * for the node group. If not specified, GCP will default to a predetermined computed value
-     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-     * for details about which CPU families are available (and defaulted) for each zone.
+     * The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
      * 
      */
     @Import(name="minCpuPlatform")
     private @Nullable Output<String> minCpuPlatform;
 
     /**
-     * @return The name of a minimum generation of CPU family
-     * for the node group. If not specified, GCP will default to a predetermined computed value
-     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-     * for details about which CPU families are available (and defaulted) for each zone.
+     * @return The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
      * 
      */
     public Optional<Output<String>> minCpuPlatform() {
@@ -107,16 +95,14 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     }
 
     /**
-     * Specifies the number of master nodes to create.
-     * Please set a number greater than 0. Node Group must have at least 1 instance.
+     * Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
      * 
      */
     @Import(name="numInstances")
     private @Nullable Output<Integer> numInstances;
 
     /**
-     * @return Specifies the number of master nodes to create.
-     * Please set a number greater than 0. Node Group must have at least 1 instance.
+     * @return Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
      * 
      */
     public Optional<Output<Integer>> numInstances() {
@@ -153,8 +139,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
-         * multiple times.
+         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
          * 
          * @return builder
          * 
@@ -165,8 +150,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
-         * multiple times.
+         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
          * 
          * @return builder
          * 
@@ -176,8 +160,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
-         * multiple times.
+         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
          * 
          * @return builder
          * 
@@ -239,9 +222,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param machineType The name of a Google Compute Engine machine type
-         * to create for the node group. If not specified, GCP will default to a predetermined
-         * computed value (currently `n1-standard-4`).
+         * @param machineType The name of a Google Compute Engine machine type to create for the master
          * 
          * @return builder
          * 
@@ -252,9 +233,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param machineType The name of a Google Compute Engine machine type
-         * to create for the node group. If not specified, GCP will default to a predetermined
-         * computed value (currently `n1-standard-4`).
+         * @param machineType The name of a Google Compute Engine machine type to create for the master
          * 
          * @return builder
          * 
@@ -264,10 +243,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param minCpuPlatform The name of a minimum generation of CPU family
-         * for the node group. If not specified, GCP will default to a predetermined computed value
-         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-         * for details about which CPU families are available (and defaulted) for each zone.
+         * @param minCpuPlatform The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
          * 
          * @return builder
          * 
@@ -278,10 +254,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param minCpuPlatform The name of a minimum generation of CPU family
-         * for the node group. If not specified, GCP will default to a predetermined computed value
-         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-         * for details about which CPU families are available (and defaulted) for each zone.
+         * @param minCpuPlatform The name of a minimum generation of CPU family for the auxiliary node group. If not specified, GCP will default to a predetermined computed value for each zone.
          * 
          * @return builder
          * 
@@ -291,8 +264,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param numInstances Specifies the number of master nodes to create.
-         * Please set a number greater than 0. Node Group must have at least 1 instance.
+         * @param numInstances Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
          * 
          * @return builder
          * 
@@ -303,8 +275,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         }
 
         /**
-         * @param numInstances Specifies the number of master nodes to create.
-         * Please set a number greater than 0. Node Group must have at least 1 instance.
+         * @param numInstances Specifies the number of auxiliary nodes to create. If not specified, GCP will default to a predetermined computed value.
          * 
          * @return builder
          * 

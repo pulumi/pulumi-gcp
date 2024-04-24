@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * ### Volume Snapshot Create
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -51,7 +50,6 @@ import * as utilities from "../utilities";
  *     name: "testvolumesnap",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

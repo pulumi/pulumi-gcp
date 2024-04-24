@@ -18,7 +18,6 @@ import (
 //
 // ### Multi_target
 // tests creating and updating a multi-target
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,10 +69,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Run_target
 // tests creating and updating a cloud run target
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,10 +119,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Target
 // Creates a basic Cloud Deploy target
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -167,7 +162,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

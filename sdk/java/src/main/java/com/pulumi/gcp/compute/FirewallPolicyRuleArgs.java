@@ -66,14 +66,16 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -81,14 +83,18 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * &#34;goto_next&#34; rules.
      * 
      */
     @Import(name="enableLogging")
     private @Nullable Output<Boolean> enableLogging;
 
     /**
-     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * &#34;goto_next&#34; rules.
      * 
      */
     public Optional<Output<Boolean>> enableLogging() {
@@ -141,14 +147,16 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      * 
      */
     @Import(name="targetResources")
     private @Nullable Output<List<String>> targetResources;
 
     /**
-     * @return A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * @return A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      * 
      */
     public Optional<Output<List<String>>> targetResources() {
@@ -267,7 +275,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+         * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
          * 
          * @return builder
          * 
@@ -278,7 +287,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+         * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
          * 
          * @return builder
          * 
@@ -288,7 +298,9 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+         * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+         * &#34;goto_next&#34; rules.
          * 
          * @return builder
          * 
@@ -299,7 +311,9 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+         * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+         * &#34;goto_next&#34; rules.
          * 
          * @return builder
          * 
@@ -372,7 +386,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
+         * this rule. If this field is left blank, all VMs within the organization will receive the rule.
          * 
          * @return builder
          * 
@@ -383,7 +398,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
+         * this rule. If this field is left blank, all VMs within the organization will receive the rule.
          * 
          * @return builder
          * 
@@ -393,7 +409,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
+         * this rule. If this field is left blank, all VMs within the organization will receive the rule.
          * 
          * @return builder
          * 

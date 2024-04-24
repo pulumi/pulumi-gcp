@@ -39,8 +39,8 @@ public final class ClusterClusterConfigSoftwareConfig {
      */
     private @Nullable Map<String,String> overrideProperties;
     /**
-     * @return The properties to set on daemon config files. Property keys are specified in prefix:property format,
-     * for example spark:spark.kubernetes.container.image.
+     * @return A list of the properties used to set the daemon config files.
+     * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
      * 
      */
     private @Nullable Map<String,Object> properties;
@@ -77,8 +77,8 @@ public final class ClusterClusterConfigSoftwareConfig {
         return this.overrideProperties == null ? Map.of() : this.overrideProperties;
     }
     /**
-     * @return The properties to set on daemon config files. Property keys are specified in prefix:property format,
-     * for example spark:spark.kubernetes.container.image.
+     * @return A list of the properties used to set the daemon config files.
+     * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
      * 
      */
     public Map<String,Object> properties() {

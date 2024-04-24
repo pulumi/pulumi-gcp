@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Dataform Repository Workflow Config
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -95,7 +94,6 @@ import * as utilities from "../utilities";
  *     timeZone: "America/New_York",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

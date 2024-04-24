@@ -34,7 +34,6 @@ import (
 //
 // ### Access Context Manager Authorized Orgs Desc Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -79,7 +78,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Redis Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,10 +28,8 @@ import * as utilities from "../utilities";
  *     memorySizeGb: 1,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Redis Instance Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,10 +72,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Redis Instance Full With Persistence Config
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -95,10 +90,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Redis Instance Private Service
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -136,10 +129,8 @@ import * as utilities from "../utilities";
  *     displayName: "Test Instance",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Redis Instance Mrr
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -173,10 +164,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Redis Instance Cmek
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -217,7 +206,6 @@ import * as utilities from "../utilities";
  *     customerManagedKey: redisKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -308,9 +296,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly connectMode!: pulumi.Output<string | undefined>;
     /**
      * (Output)
-     * Output only. The time when the policy was created.
-     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * The time when the certificate was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -616,9 +602,7 @@ export interface InstanceState {
     connectMode?: pulumi.Input<string>;
     /**
      * (Output)
-     * Output only. The time when the policy was created.
-     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * The time when the certificate was created.
      */
     createTime?: pulumi.Input<string>;
     /**

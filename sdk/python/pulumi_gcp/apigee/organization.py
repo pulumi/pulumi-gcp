@@ -271,7 +271,7 @@ class _OrganizationState:
                Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
                of any Apigee runtime instance and can be updated only when there are no runtime instances.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
-        :param pulumi.Input[str] name: Name of the property.
+        :param pulumi.Input[str] name: Output only. Name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
                
                
@@ -432,7 +432,7 @@ class _OrganizationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the property.
+        Output only. Name of the Apigee organization.
         """
         return pulumi.get(self, "name")
 
@@ -558,7 +558,6 @@ class Organization(pulumi.CustomResource):
 
         ### Apigee Organization Cloud Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -580,10 +579,8 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             authorized_network=apigee_network.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -595,10 +592,8 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             disable_vpc_peering=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -636,10 +631,8 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             runtime_database_encryption_key_name=apigee_key.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -666,7 +659,6 @@ class Organization(pulumi.CustomResource):
             disable_vpc_peering=True,
             runtime_database_encryption_key_name=apigee_key.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -739,7 +731,6 @@ class Organization(pulumi.CustomResource):
 
         ### Apigee Organization Cloud Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -761,10 +752,8 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             authorized_network=apigee_network.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -776,10 +765,8 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             disable_vpc_peering=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -817,10 +804,8 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             runtime_database_encryption_key_name=apigee_key.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -847,7 +832,6 @@ class Organization(pulumi.CustomResource):
             disable_vpc_peering=True,
             runtime_database_encryption_key_name=apigee_key.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -966,7 +950,7 @@ class Organization(pulumi.CustomResource):
                Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
                of any Apigee runtime instance and can be updated only when there are no runtime instances.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
-        :param pulumi.Input[str] name: Name of the property.
+        :param pulumi.Input[str] name: Output only. Name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
                
                
@@ -1085,7 +1069,7 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the property.
+        Output only. Name of the Apigee organization.
         """
         return pulumi.get(self, "name")
 

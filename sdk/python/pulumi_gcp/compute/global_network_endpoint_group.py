@@ -283,7 +283,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
         ### Global Network Endpoint Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -293,10 +292,8 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Network Endpoint Group Ip Address
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -306,7 +303,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="INTERNET_IP_PORT",
             default_port=90)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -377,7 +373,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
         ### Global Network Endpoint Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -387,10 +382,8 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Network Endpoint Group Ip Address
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -400,7 +393,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="INTERNET_IP_PORT",
             default_port=90)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

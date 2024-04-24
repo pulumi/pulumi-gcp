@@ -24,7 +24,6 @@ import (
 //
 // ### Binary Authorization Attestor Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -85,10 +84,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Binary Authorization Attestor Kms
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -164,7 +161,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -195,13 +191,10 @@ type Attestor struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNoteOutput `pulumi:"attestationAuthorityNote"`
-	// A descriptive comment. This field may be updated. The field may be
-	// displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -241,13 +234,10 @@ type attestorState struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote *AttestorAttestationAuthorityNote `pulumi:"attestationAuthorityNote"`
-	// A descriptive comment. This field may be updated. The field may be
-	// displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// The resource name.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
 
@@ -255,13 +245,10 @@ type AttestorState struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNotePtrInput
-	// A descriptive comment. This field may be updated. The field may be
-	// displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// The resource name.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
 
@@ -273,13 +260,10 @@ type attestorArgs struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNote `pulumi:"attestationAuthorityNote"`
-	// A descriptive comment. This field may be updated. The field may be
-	// displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// The resource name.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
 
@@ -288,13 +272,10 @@ type AttestorArgs struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNoteInput
-	// A descriptive comment. This field may be updated. The field may be
-	// displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// The resource name.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
 
@@ -391,8 +372,7 @@ func (o AttestorOutput) AttestationAuthorityNote() AttestorAttestationAuthorityN
 	return o.ApplyT(func(v *Attestor) AttestorAttestationAuthorityNoteOutput { return v.AttestationAuthorityNote }).(AttestorAttestationAuthorityNoteOutput)
 }
 
-// A descriptive comment. This field may be updated. The field may be
-// displayed in chooser dialogs.
+// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 func (o AttestorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Attestor) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -402,8 +382,6 @@ func (o AttestorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o AttestorOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -16,7 +16,6 @@ import (
 //
 // ### Network Security Authorization Policy Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,10 +58,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Security Authorization Policy Destinations
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,7 +119,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

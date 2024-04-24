@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Edgecontainer Cluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,10 +45,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Edgecontainer Cluster With Maintenance Window
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -83,10 +80,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Edgecontainer Local Control Plane Cluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -118,7 +113,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -184,13 +178,10 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly clusterCaCertificate!: pulumi.Output<string>;
     /**
      * The configuration of the cluster control plane.
-     * Structure is documented below.
      */
     public readonly controlPlane!: pulumi.Output<outputs.edgecontainer.ClusterControlPlane | undefined>;
     /**
-     * Remote control plane disk encryption options. This field is only used when
-     * enabling CMEK support.
-     * Structure is documented below.
+     * Remote control plane disk encryption options. This field is only used when enabling CMEK support.
      */
     public readonly controlPlaneEncryption!: pulumi.Output<outputs.edgecontainer.ClusterControlPlaneEncryption>;
     /**
@@ -203,9 +194,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The default maximum number of pods per node used if a maximum value is not
-     * specified explicitly for a node pool in this cluster. If unspecified, the
-     * Kubernetes default value will be used.
+     * The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+     * cluster. If unspecified, the Kubernetes default value will be used.
      */
     public readonly defaultMaxPodsPerNode!: pulumi.Output<number>;
     /**
@@ -229,9 +219,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly fleet!: pulumi.Output<outputs.edgecontainer.ClusterFleet>;
     /**
-     * User-defined labels for the edgecloud cluster.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -246,7 +236,6 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly maintenanceEvents!: pulumi.Output<outputs.edgecontainer.ClusterMaintenanceEvent[]>;
     /**
      * Cluster-wide maintenance policy configuration.
-     * Structure is documented below.
      */
     public readonly maintenancePolicy!: pulumi.Output<outputs.edgecontainer.ClusterMaintenancePolicy>;
     /**
@@ -270,10 +259,6 @@ export class Cluster extends pulumi.CustomResource {
      * The port number of the Kubernetes API server.
      */
     public /*out*/ readonly port!: pulumi.Output<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -281,8 +266,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The release channel a cluster is subscribed to.
-     * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+     * The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
      */
     public readonly releaseChannel!: pulumi.Output<string>;
     /**
@@ -291,11 +275,11 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Config that customers are allowed to define for GDCE system add-ons.
-     * Structure is documented below.
      */
     public readonly systemAddonsConfig!: pulumi.Output<outputs.edgecontainer.ClusterSystemAddonsConfig>;
     /**
-     * The target cluster version. For example: "1.5.0".
+     * (Output)
+     * The target version of the cluster.
      */
     public readonly targetVersion!: pulumi.Output<string>;
     /**
@@ -407,13 +391,10 @@ export interface ClusterState {
     clusterCaCertificate?: pulumi.Input<string>;
     /**
      * The configuration of the cluster control plane.
-     * Structure is documented below.
      */
     controlPlane?: pulumi.Input<inputs.edgecontainer.ClusterControlPlane>;
     /**
-     * Remote control plane disk encryption options. This field is only used when
-     * enabling CMEK support.
-     * Structure is documented below.
+     * Remote control plane disk encryption options. This field is only used when enabling CMEK support.
      */
     controlPlaneEncryption?: pulumi.Input<inputs.edgecontainer.ClusterControlPlaneEncryption>;
     /**
@@ -426,9 +407,8 @@ export interface ClusterState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The default maximum number of pods per node used if a maximum value is not
-     * specified explicitly for a node pool in this cluster. If unspecified, the
-     * Kubernetes default value will be used.
+     * The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+     * cluster. If unspecified, the Kubernetes default value will be used.
      */
     defaultMaxPodsPerNode?: pulumi.Input<number>;
     /**
@@ -452,9 +432,9 @@ export interface ClusterState {
      */
     fleet?: pulumi.Input<inputs.edgecontainer.ClusterFleet>;
     /**
-     * User-defined labels for the edgecloud cluster.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -469,7 +449,6 @@ export interface ClusterState {
     maintenanceEvents?: pulumi.Input<pulumi.Input<inputs.edgecontainer.ClusterMaintenanceEvent>[]>;
     /**
      * Cluster-wide maintenance policy configuration.
-     * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.edgecontainer.ClusterMaintenancePolicy>;
     /**
@@ -493,10 +472,6 @@ export interface ClusterState {
      * The port number of the Kubernetes API server.
      */
     port?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -504,8 +479,7 @@ export interface ClusterState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The release channel a cluster is subscribed to.
-     * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+     * The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
      */
     releaseChannel?: pulumi.Input<string>;
     /**
@@ -514,11 +488,11 @@ export interface ClusterState {
     status?: pulumi.Input<string>;
     /**
      * Config that customers are allowed to define for GDCE system add-ons.
-     * Structure is documented below.
      */
     systemAddonsConfig?: pulumi.Input<inputs.edgecontainer.ClusterSystemAddonsConfig>;
     /**
-     * The target cluster version. For example: "1.5.0".
+     * (Output)
+     * The target version of the cluster.
      */
     targetVersion?: pulumi.Input<string>;
     /**
@@ -539,19 +513,15 @@ export interface ClusterArgs {
     authorization: pulumi.Input<inputs.edgecontainer.ClusterAuthorization>;
     /**
      * The configuration of the cluster control plane.
-     * Structure is documented below.
      */
     controlPlane?: pulumi.Input<inputs.edgecontainer.ClusterControlPlane>;
     /**
-     * Remote control plane disk encryption options. This field is only used when
-     * enabling CMEK support.
-     * Structure is documented below.
+     * Remote control plane disk encryption options. This field is only used when enabling CMEK support.
      */
     controlPlaneEncryption?: pulumi.Input<inputs.edgecontainer.ClusterControlPlaneEncryption>;
     /**
-     * The default maximum number of pods per node used if a maximum value is not
-     * specified explicitly for a node pool in this cluster. If unspecified, the
-     * Kubernetes default value will be used.
+     * The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+     * cluster. If unspecified, the Kubernetes default value will be used.
      */
     defaultMaxPodsPerNode?: pulumi.Input<number>;
     /**
@@ -567,9 +537,9 @@ export interface ClusterArgs {
      */
     fleet: pulumi.Input<inputs.edgecontainer.ClusterFleet>;
     /**
-     * User-defined labels for the edgecloud cluster.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -578,7 +548,6 @@ export interface ClusterArgs {
     location: pulumi.Input<string>;
     /**
      * Cluster-wide maintenance policy configuration.
-     * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.edgecontainer.ClusterMaintenancePolicy>;
     /**
@@ -593,23 +562,18 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     networking: pulumi.Input<inputs.edgecontainer.ClusterNetworking>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The release channel a cluster is subscribed to.
-     * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+     * The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
      */
     releaseChannel?: pulumi.Input<string>;
     /**
      * Config that customers are allowed to define for GDCE system add-ons.
-     * Structure is documented below.
      */
     systemAddonsConfig?: pulumi.Input<inputs.edgecontainer.ClusterSystemAddonsConfig>;
     /**
-     * The target cluster version. For example: "1.5.0".
+     * (Output)
+     * The target version of the cluster.
      */
     targetVersion?: pulumi.Input<string>;
 }

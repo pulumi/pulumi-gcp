@@ -46,7 +46,7 @@ public final class ClusterNodePool {
      */
     private @Nullable List<String> managedInstanceGroupUrls;
     /**
-     * @return NodeManagement configuration for this NodePool. Structure is documented below.
+     * @return Node management configuration, wherein auto-repair and auto-upgrade is configured.
      * 
      */
     private @Nullable ClusterNodePoolManagement management;
@@ -114,7 +114,7 @@ public final class ClusterNodePool {
      */
     private @Nullable ClusterNodePoolQueuedProvisioning queuedProvisioning;
     /**
-     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
      * 
      */
     private @Nullable ClusterNodePoolUpgradeSettings upgradeSettings;
@@ -155,7 +155,7 @@ public final class ClusterNodePool {
         return this.managedInstanceGroupUrls == null ? List.of() : this.managedInstanceGroupUrls;
     }
     /**
-     * @return NodeManagement configuration for this NodePool. Structure is documented below.
+     * @return Node management configuration, wherein auto-repair and auto-upgrade is configured.
      * 
      */
     public Optional<ClusterNodePoolManagement> management() {
@@ -243,7 +243,7 @@ public final class ClusterNodePool {
         return Optional.ofNullable(this.queuedProvisioning);
     }
     /**
-     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
      * 
      */
     public Optional<ClusterNodePoolUpgradeSettings> upgradeSettings() {

@@ -827,16 +827,16 @@ public class CxPage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.languageCode);
     }
     /**
-     * (Output)
-     * The unique identifier of this event handler.
+     * The unique identifier of the page.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (Output)
-     * The unique identifier of this event handler.
+     * @return The unique identifier of the page.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */
     public Output<String> name() {

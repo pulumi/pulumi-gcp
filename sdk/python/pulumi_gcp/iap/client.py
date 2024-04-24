@@ -168,7 +168,6 @@ class Client(pulumi.CustomResource):
 
         ### Iap Client
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -188,7 +187,6 @@ class Client(pulumi.CustomResource):
             display_name="Test Client",
             brand=project_brand.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -241,7 +239,6 @@ class Client(pulumi.CustomResource):
 
         ### Iap Client
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -261,7 +258,6 @@ class Client(pulumi.CustomResource):
             display_name="Test Client",
             brand=project_brand.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

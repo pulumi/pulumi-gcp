@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// ### Sourcerepo Repository Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,10 +37,8 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Sourcerepo Repository Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -77,7 +74,6 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

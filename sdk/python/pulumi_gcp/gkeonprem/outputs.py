@@ -4083,7 +4083,8 @@ class BareMetalClusterValidationCheckStatusResult(dict):
         """
         :param str category: (Output)
                The category of the validation.
-        :param str description: A human readable description of this Bare Metal User Cluster.
+        :param str description: (Output)
+               The description of the validation check.
         :param str details: (Output)
                Detailed failure information, which might be unformatted.
         :param str options: (Output)
@@ -4115,7 +4116,8 @@ class BareMetalClusterValidationCheckStatusResult(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        A human readable description of this Bare Metal User Cluster.
+        (Output)
+        The description of the validation check.
         """
         return pulumi.get(self, "description")
 
@@ -4769,12 +4771,8 @@ class VMwareClusterControlPlaneNodeVsphereConfig(dict):
                  datastore: Optional[str] = None,
                  storage_policy_name: Optional[str] = None):
         """
-        :param str datastore: (Output)
-               The Vsphere datastore used by the Control Plane Node.
-        :param str storage_policy_name: (Output)
-               The Vsphere storage policy used by the control plane Node.
-               
-               - - -
+        :param str datastore: The Vsphere datastore used by the Control Plane Node.
+        :param str storage_policy_name: The Vsphere storage policy used by the control plane Node.
         """
         if datastore is not None:
             pulumi.set(__self__, "datastore", datastore)
@@ -4785,7 +4783,6 @@ class VMwareClusterControlPlaneNodeVsphereConfig(dict):
     @pulumi.getter
     def datastore(self) -> Optional[str]:
         """
-        (Output)
         The Vsphere datastore used by the Control Plane Node.
         """
         return pulumi.get(self, "datastore")
@@ -4794,10 +4791,7 @@ class VMwareClusterControlPlaneNodeVsphereConfig(dict):
     @pulumi.getter(name="storagePolicyName")
     def storage_policy_name(self) -> Optional[str]:
         """
-        (Output)
         The Vsphere storage policy used by the control plane Node.
-
-        - - -
         """
         return pulumi.get(self, "storage_policy_name")
 
@@ -5001,8 +4995,7 @@ class VMwareClusterLoadBalancerF5Config(dict):
                  partition: Optional[str] = None,
                  snat_pool: Optional[str] = None):
         """
-        :param str address: (Output)
-               The vCenter IP address.
+        :param str address: The load balancer's IP address.
         :param str partition: he preexisting partition to be used by the load balancer. T
                his partition is usually created for the admin cluster for example:
                'my-f5-admin-partition'.
@@ -5019,8 +5012,7 @@ class VMwareClusterLoadBalancerF5Config(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        (Output)
-        The vCenter IP address.
+        The load balancer's IP address.
         """
         return pulumi.get(self, "address")
 
@@ -5463,7 +5455,6 @@ class VMwareClusterNetworkConfigControlPlaneV2Config(dict):
                  control_plane_ip_block: Optional['outputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock'] = None):
         """
         :param 'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs' control_plane_ip_block: Static IP addresses for the control plane nodes.
-               Structure is documented below.
         """
         if control_plane_ip_block is not None:
             pulumi.set(__self__, "control_plane_ip_block", control_plane_ip_block)
@@ -5473,7 +5464,6 @@ class VMwareClusterNetworkConfigControlPlaneV2Config(dict):
     def control_plane_ip_block(self) -> Optional['outputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock']:
         """
         Static IP addresses for the control plane nodes.
-        Structure is documented below.
         """
         return pulumi.get(self, "control_plane_ip_block")
 
@@ -6067,7 +6057,8 @@ class VMwareClusterValidationCheckStatusResult(dict):
         """
         :param str category: (Output)
                The category of the validation.
-        :param str description: A human readable description of this VMware User Cluster.
+        :param str description: (Output)
+               The description of the validation check.
         :param str details: (Output)
                Detailed failure information, which might be unformatted.
         :param str options: (Output)
@@ -6099,7 +6090,8 @@ class VMwareClusterValidationCheckStatusResult(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        A human readable description of this VMware User Cluster.
+        (Output)
+        The description of the validation check.
         """
         return pulumi.get(self, "description")
 

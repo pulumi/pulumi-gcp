@@ -30,7 +30,6 @@ import (
 //
 // ### Backend Bucket Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,10 +64,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Bucket Security Policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -112,10 +109,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Bucket Query String Whitelist
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,10 +152,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Bucket Include Http Headers
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -202,7 +195,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

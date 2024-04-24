@@ -180,14 +180,14 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * Optional. A human-readable description of scenarios this template is intended for.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * @return Optional. A human-readable description of scenarios this template is intended for.
      * 
      */
     public Output<Optional<String>> description() {
@@ -208,34 +208,34 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+     * omitted, then this template will not add restrictions on a certificate&#39;s identity.
      * 
      */
     @Export(name="identityConstraints", refs={CertificateTemplateIdentityConstraints.class}, tree="[0]")
     private Output</* @Nullable */ CertificateTemplateIdentityConstraints> identityConstraints;
 
     /**
-     * @return Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
+     * @return Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+     * omitted, then this template will not add restrictions on a certificate&#39;s identity.
      * 
      */
     public Output<Optional<CertificateTemplateIdentityConstraints>> identityConstraints() {
         return Codegen.optional(this.identityConstraints);
     }
     /**
-     * Optional. Labels with user-defined metadata.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+     * resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels with user-defined metadata.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+     * resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -270,28 +270,42 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be
+     * dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance
+     * request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions.
+     * These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
      * 
      */
     @Export(name="passthroughExtensions", refs={CertificateTemplatePassthroughExtensions.class}, tree="[0]")
     private Output</* @Nullable */ CertificateTemplatePassthroughExtensions> passthroughExtensions;
 
     /**
-     * @return Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
+     * @return Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be
+     * dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance
+     * request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions.
+     * These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
      * 
      */
     public Output<Optional<CertificateTemplatePassthroughExtensions>> passthroughExtensions() {
         return Codegen.optional(this.passthroughExtensions);
     }
     /**
-     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+     * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+     * here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the
+     * certificate issuance request will fail.
      * 
      */
     @Export(name="predefinedValues", refs={CertificateTemplatePredefinedValues.class}, tree="[0]")
     private Output</* @Nullable */ CertificateTemplatePredefinedValues> predefinedValues;
 
     /**
-     * @return Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+     * @return Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+     * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+     * here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the
+     * certificate issuance request will fail.
      * 
      */
     public Output<Optional<CertificateTemplatePredefinedValues>> predefinedValues() {

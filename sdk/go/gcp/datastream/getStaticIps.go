@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetStaticIps(ctx *pulumi.Context, args *GetStaticIpsArgs, opts ...pulumi.InvokeOption) (*GetStaticIpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStaticIpsResult

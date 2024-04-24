@@ -48,9 +48,7 @@ type EngineSplitTraffic struct {
 
 	// If set to true traffic will be migrated to this version.
 	MigrateTraffic pulumi.BoolPtrOutput `pulumi:"migrateTraffic"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project        pulumi.StringOutput  `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service pulumi.StringOutput `pulumi:"service"`
 	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
@@ -95,10 +93,8 @@ func GetEngineSplitTraffic(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EngineSplitTraffic resources.
 type engineSplitTrafficState struct {
 	// If set to true traffic will be migrated to this version.
-	MigrateTraffic *bool `pulumi:"migrateTraffic"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	MigrateTraffic *bool   `pulumi:"migrateTraffic"`
+	Project        *string `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service *string `pulumi:"service"`
 	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
@@ -109,9 +105,7 @@ type engineSplitTrafficState struct {
 type EngineSplitTrafficState struct {
 	// If set to true traffic will be migrated to this version.
 	MigrateTraffic pulumi.BoolPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project        pulumi.StringPtrInput
 	// The name of the service these settings apply to.
 	Service pulumi.StringPtrInput
 	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
@@ -125,10 +119,8 @@ func (EngineSplitTrafficState) ElementType() reflect.Type {
 
 type engineSplitTrafficArgs struct {
 	// If set to true traffic will be migrated to this version.
-	MigrateTraffic *bool `pulumi:"migrateTraffic"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	MigrateTraffic *bool   `pulumi:"migrateTraffic"`
+	Project        *string `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service string `pulumi:"service"`
 	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
@@ -140,9 +132,7 @@ type engineSplitTrafficArgs struct {
 type EngineSplitTrafficArgs struct {
 	// If set to true traffic will be migrated to this version.
 	MigrateTraffic pulumi.BoolPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project        pulumi.StringPtrInput
 	// The name of the service these settings apply to.
 	Service pulumi.StringInput
 	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
@@ -242,8 +232,6 @@ func (o EngineSplitTrafficOutput) MigrateTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EngineSplitTraffic) pulumi.BoolPtrOutput { return v.MigrateTraffic }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o EngineSplitTrafficOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EngineSplitTraffic) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

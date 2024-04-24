@@ -31,7 +31,6 @@ import (
 //
 // ### Monitoring Slo Appengine
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,10 +73,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Monitoring Slo Request Based
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,10 +117,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Monitoring Slo Windows Based Good Bad Metric Filter
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -172,10 +167,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Monitoring Slo Windows Based Metric Mean
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -229,10 +222,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Monitoring Slo Windows Based Metric Sum
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -286,10 +277,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Monitoring Slo Windows Based Ratio Threshold
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -349,7 +338,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

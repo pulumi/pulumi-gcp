@@ -22,7 +22,6 @@ import (
 //
 // ### Network Services Edge Cache Origin Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,10 +47,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Services Edge Cache Origin Advanced
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -131,10 +128,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Services Edge Cache Origin V4auth
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -182,7 +177,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -37,8 +37,6 @@ class RegionAutoscalerArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the instance group resides.
         """
         pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
@@ -112,10 +110,6 @@ class RegionAutoscalerArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -161,8 +155,6 @@ class _RegionAutoscalerState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the instance group resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
@@ -244,10 +236,6 @@ class _RegionAutoscalerState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -320,7 +308,6 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         ### Region Autoscaler Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -374,7 +361,6 @@ class RegionAutoscaler(pulumi.CustomResource):
         debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -420,8 +406,6 @@ class RegionAutoscaler(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the instance group resides.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
         """
@@ -448,7 +432,6 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         ### Region Autoscaler Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -502,7 +485,6 @@ class RegionAutoscaler(pulumi.CustomResource):
         debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -614,8 +596,6 @@ class RegionAutoscaler(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the instance group resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
@@ -678,10 +658,6 @@ class RegionAutoscaler(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

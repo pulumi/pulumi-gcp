@@ -38,7 +38,6 @@ import (
 //	the best way to be sure that you are not making dangerous changes is to start
 //	by **importing** your existing policy, and examining the diff very closely.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,11 +75,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,13 +120,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_organization\_iam\_binding
 //
 // > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,11 +152,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -194,11 +187,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_organization\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -224,11 +215,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -259,11 +248,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_organization\_iam\_audit\_config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -299,7 +286,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_organization\_iam\_policy
 //
@@ -316,7 +302,6 @@ import (
 //	the best way to be sure that you are not making dangerous changes is to start
 //	by **importing** your existing policy, and examining the diff very closely.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -354,11 +339,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -401,13 +384,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_organization\_iam\_binding
 //
 // > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -435,11 +416,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -472,11 +451,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_organization\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -502,11 +479,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -537,11 +512,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_organization\_iam\_audit\_config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -577,7 +550,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

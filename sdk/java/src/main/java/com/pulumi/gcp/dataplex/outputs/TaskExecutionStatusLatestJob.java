@@ -49,7 +49,8 @@ public final class TaskExecutionStatusLatestJob {
      */
     private @Nullable String serviceJob;
     /**
-     * @return The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+     * @return (Output)
+     * The time when the job was started.
      * 
      */
     private @Nullable String startTime;
@@ -116,7 +117,8 @@ public final class TaskExecutionStatusLatestJob {
         return Optional.ofNullable(this.serviceJob);
     }
     /**
-     * @return The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+     * @return (Output)
+     * The time when the job was started.
      * 
      */
     public Optional<String> startTime() {

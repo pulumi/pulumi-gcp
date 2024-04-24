@@ -105,7 +105,6 @@ def get_region_disk_iam_policy(name: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_region_disk_iam_policy(name: Optional[str] = None,
         region=regiondisk["region"],
         name=regiondisk["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Used to find the parent resource to bind the IAM policy to
@@ -150,7 +148,6 @@ def get_region_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -159,7 +156,6 @@ def get_region_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
         region=regiondisk["region"],
         name=regiondisk["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Used to find the parent resource to bind the IAM policy to

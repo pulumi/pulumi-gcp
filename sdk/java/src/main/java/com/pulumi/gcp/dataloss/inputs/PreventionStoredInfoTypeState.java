@@ -83,14 +83,14 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
     }
 
     /**
-     * Name describing the field.
+     * The resource name of the info type. Set by the server.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name describing the field.
+     * @return The resource name of the info type. Set by the server.
      * 
      */
     public Optional<Output<String>> name() {
@@ -280,7 +280,7 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name The resource name of the info type. Set by the server.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name The resource name of the info type. Set by the server.
          * 
          * @return builder
          * 

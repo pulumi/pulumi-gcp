@@ -462,7 +462,6 @@ class AiIndex(pulumi.CustomResource):
 
         ### Vertex Ai Index
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -503,10 +502,8 @@ class AiIndex(pulumi.CustomResource):
             ),
             index_update_method="BATCH_UPDATE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Streaming
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -544,7 +541,6 @@ class AiIndex(pulumi.CustomResource):
             ),
             index_update_method="STREAM_UPDATE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -612,7 +608,6 @@ class AiIndex(pulumi.CustomResource):
 
         ### Vertex Ai Index
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -653,10 +648,8 @@ class AiIndex(pulumi.CustomResource):
             ),
             index_update_method="BATCH_UPDATE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Streaming
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -694,7 +687,6 @@ class AiIndex(pulumi.CustomResource):
             ),
             index_update_method="STREAM_UPDATE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

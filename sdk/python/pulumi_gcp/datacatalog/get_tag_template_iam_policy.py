@@ -105,14 +105,12 @@ def get_tag_template_iam_policy(project: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.datacatalog.get_tag_template_iam_policy(tag_template=basic_tag_template["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -145,14 +143,12 @@ def get_tag_template_iam_policy_output(project: Optional[pulumi.Input[Optional[s
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.datacatalog.get_tag_template_iam_policy(tag_template=basic_tag_template["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

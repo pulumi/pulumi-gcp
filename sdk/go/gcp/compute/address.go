@@ -36,7 +36,6 @@ import (
 //
 // ### Address Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,10 +59,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Address With Subnetwork
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,10 +103,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Address With Gce Endpoint
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -135,10 +130,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Instance With Ip
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -192,10 +185,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Compute Address Ipsec Interconnect
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -231,7 +222,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

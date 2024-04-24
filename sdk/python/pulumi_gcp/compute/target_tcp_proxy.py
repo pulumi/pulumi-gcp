@@ -349,7 +349,6 @@ class TargetTCPProxy(pulumi.CustomResource):
 
         ### Target Tcp Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -370,7 +369,6 @@ class TargetTCPProxy(pulumi.CustomResource):
             name="test-proxy",
             backend_service=default_backend_service.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -440,7 +438,6 @@ class TargetTCPProxy(pulumi.CustomResource):
 
         ### Target Tcp Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -461,7 +458,6 @@ class TargetTCPProxy(pulumi.CustomResource):
             name="test-proxy",
             backend_service=default_backend_service.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

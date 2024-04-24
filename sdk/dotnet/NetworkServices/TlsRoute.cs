@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// ### Network Services Tls Route Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -76,10 +75,8 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Tls Route Mesh Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -155,10 +152,8 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Tls Route Gateway Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -240,7 +235,6 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -282,16 +276,17 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
+        /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+        /// served by the gateway. Each gateway reference should match the pattern:
+        /// projects/*/locations/global/gateways/&lt;gateway_name&gt;
         /// </summary>
         [Output("gateways")]
         public Output<ImmutableArray<string>> Gateways { get; private set; } = null!;
 
         /// <summary>
-        /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
-        /// The attached Mesh should be of a type SIDECAR
+        /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+        /// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt; The attached
+        /// Mesh should be of a type SIDECAR
         /// </summary>
         [Output("meshes")]
         public Output<ImmutableArray<string>> Meshes { get; private set; } = null!;
@@ -302,10 +297,6 @@ namespace Pulumi.Gcp.NetworkServices
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -384,8 +375,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _gateways;
 
         /// <summary>
-        /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
+        /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+        /// served by the gateway. Each gateway reference should match the pattern:
+        /// projects/*/locations/global/gateways/&lt;gateway_name&gt;
         /// </summary>
         public InputList<string> Gateways
         {
@@ -397,9 +389,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _meshes;
 
         /// <summary>
-        /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
-        /// The attached Mesh should be of a type SIDECAR
+        /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+        /// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt; The attached
+        /// Mesh should be of a type SIDECAR
         /// </summary>
         public InputList<string> Meshes
         {
@@ -413,10 +405,6 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -457,8 +445,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _gateways;
 
         /// <summary>
-        /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
+        /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+        /// served by the gateway. Each gateway reference should match the pattern:
+        /// projects/*/locations/global/gateways/&lt;gateway_name&gt;
         /// </summary>
         public InputList<string> Gateways
         {
@@ -470,9 +459,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _meshes;
 
         /// <summary>
-        /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
-        /// The attached Mesh should be of a type SIDECAR
+        /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+        /// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt; The attached
+        /// Mesh should be of a type SIDECAR
         /// </summary>
         public InputList<string> Meshes
         {
@@ -486,10 +475,6 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

@@ -427,7 +427,6 @@ class NodeTemplate(pulumi.CustomResource):
 
         ### Node Template Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -437,10 +436,8 @@ class NodeTemplate(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         ```
-        <!--End PulumiCodeChooser -->
         ### Node Template Server Binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -457,7 +454,6 @@ class NodeTemplate(pulumi.CustomResource):
                 type="RESTART_NODE_ON_MINIMAL_SERVERS",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -534,7 +530,6 @@ class NodeTemplate(pulumi.CustomResource):
 
         ### Node Template Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -544,10 +539,8 @@ class NodeTemplate(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         ```
-        <!--End PulumiCodeChooser -->
         ### Node Template Server Binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -564,7 +557,6 @@ class NodeTemplate(pulumi.CustomResource):
                 type="RESTART_NODE_ON_MINIMAL_SERVERS",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

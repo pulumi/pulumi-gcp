@@ -310,7 +310,6 @@ class Policy(pulumi.CustomResource):
 
         To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -322,11 +321,9 @@ class Policy(pulumi.CustomResource):
                 enforced=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -340,11 +337,9 @@ class Policy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Or to deny some services, use the following instead:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -359,11 +354,9 @@ class Policy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         To restore the default organization policy, use the following instead:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -375,7 +368,6 @@ class Policy(pulumi.CustomResource):
                 default=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -429,7 +421,6 @@ class Policy(pulumi.CustomResource):
 
         To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,11 +432,9 @@ class Policy(pulumi.CustomResource):
                 enforced=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -459,11 +448,9 @@ class Policy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Or to deny some services, use the following instead:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -478,11 +465,9 @@ class Policy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         To restore the default organization policy, use the following instead:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -494,7 +479,6 @@ class Policy(pulumi.CustomResource):
                 default=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

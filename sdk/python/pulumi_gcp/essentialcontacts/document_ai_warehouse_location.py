@@ -280,7 +280,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
 
         ### Document Ai Warehouse Location
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -294,7 +293,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
             kms_key="dummy_key",
             document_creator_default_role="DOCUMENT_ADMIN")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -338,7 +336,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
 
         ### Document Ai Warehouse Location
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -352,7 +349,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
             kms_key="dummy_key",
             document_creator_default_role="DOCUMENT_ADMIN")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

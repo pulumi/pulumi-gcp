@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// ### Redis Cluster Ha
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -81,7 +80,6 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -118,8 +116,8 @@ namespace Pulumi.Gcp.Redis
     {
         /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-        /// Default value is `AUTH_MODE_DISABLED`.
-        /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        /// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
+        /// "AUTH_MODE_DISABLED"]
         /// </summary>
         [Output("authorizationMode")]
         public Output<string?> AuthorizationMode { get; private set; } = null!;
@@ -149,9 +147,8 @@ namespace Pulumi.Gcp.Redis
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The nodeType for the Redis cluster.
-        /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        /// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+        /// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
@@ -162,10 +159,6 @@ namespace Pulumi.Gcp.Redis
         [Output("preciseSizeGb")]
         public Output<double> PreciseSizeGb { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -223,10 +216,9 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableArray<Outputs.ClusterStateInfo>> StateInfos { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The in-transit encryption for the Redis cluster.
-        /// If not provided, encryption is disabled for the cluster.
-        /// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-        /// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+        /// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+        /// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
+        /// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
         /// </summary>
         [Output("transitEncryptionMode")]
         public Output<string?> TransitEncryptionMode { get; private set; } = null!;
@@ -285,8 +277,8 @@ namespace Pulumi.Gcp.Redis
     {
         /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-        /// Default value is `AUTH_MODE_DISABLED`.
-        /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        /// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
+        /// "AUTH_MODE_DISABLED"]
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }
@@ -299,17 +291,12 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The nodeType for the Redis cluster.
-        /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        /// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+        /// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -347,10 +334,9 @@ namespace Pulumi.Gcp.Redis
         public Input<int> ShardCount { get; set; } = null!;
 
         /// <summary>
-        /// Optional. The in-transit encryption for the Redis cluster.
-        /// If not provided, encryption is disabled for the cluster.
-        /// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-        /// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+        /// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+        /// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
+        /// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
         /// </summary>
         [Input("transitEncryptionMode")]
         public Input<string>? TransitEncryptionMode { get; set; }
@@ -365,8 +351,8 @@ namespace Pulumi.Gcp.Redis
     {
         /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-        /// Default value is `AUTH_MODE_DISABLED`.
-        /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        /// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
+        /// "AUTH_MODE_DISABLED"]
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }
@@ -402,9 +388,8 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The nodeType for the Redis cluster.
-        /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        /// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+        /// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -415,10 +400,6 @@ namespace Pulumi.Gcp.Redis
         [Input("preciseSizeGb")]
         public Input<double>? PreciseSizeGb { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -494,10 +475,9 @@ namespace Pulumi.Gcp.Redis
         }
 
         /// <summary>
-        /// Optional. The in-transit encryption for the Redis cluster.
-        /// If not provided, encryption is disabled for the cluster.
-        /// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-        /// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+        /// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+        /// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
+        /// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
         /// </summary>
         [Input("transitEncryptionMode")]
         public Input<string>? TransitEncryptionMode { get; set; }

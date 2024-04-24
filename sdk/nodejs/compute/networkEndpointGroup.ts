@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Endpoint Group
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,10 +52,8 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Endpoint Group Non Gcp
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,7 +72,6 @@ import * as utilities from "../utilities";
  *     ipAddress: "127.0.0.1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

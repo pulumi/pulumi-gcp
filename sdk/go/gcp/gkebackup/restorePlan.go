@@ -24,7 +24,6 @@ import (
 //
 // ### Gkebackup Restoreplan All Namespaces
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,10 +92,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan Rollback Namespace
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -178,10 +175,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan Protected Application
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -256,10 +251,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan All Cluster Resources
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -327,10 +320,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan Rename Namespace
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -437,10 +428,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan Second Transformation
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -543,7 +532,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -580,19 +568,14 @@ type RestorePlan struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Description: A set of custom labels supplied by the user.
-	// A list of key->value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
+	// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The region of the Restore Plan.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The full name of the BackupPlan Resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -664,19 +647,14 @@ type restorePlanState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Description: A set of custom labels supplied by the user.
-	// A list of key->value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
+	// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Restore Plan.
 	Location *string `pulumi:"location"`
 	// The full name of the BackupPlan Resource.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -702,19 +680,14 @@ type RestorePlanState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Description: A set of custom labels supplied by the user.
-	// A list of key->value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
+	// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Restore Plan.
 	Location pulumi.StringPtrInput
 	// The full name of the BackupPlan Resource.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -742,19 +715,14 @@ type restorePlanArgs struct {
 	Cluster string `pulumi:"cluster"`
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
-	// Description: A set of custom labels supplied by the user.
-	// A list of key->value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
+	// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Restore Plan.
 	Location string `pulumi:"location"`
 	// The full name of the BackupPlan Resource.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Defines the configuration of Restores created via this RestorePlan.
 	// Structure is documented below.
@@ -770,19 +738,14 @@ type RestorePlanArgs struct {
 	Cluster pulumi.StringInput
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput
-	// Description: A set of custom labels supplied by the user.
-	// A list of key->value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
+	// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+	// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Restore Plan.
 	Location pulumi.StringInput
 	// The full name of the BackupPlan Resource.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Defines the configuration of Restores created via this RestorePlan.
 	// Structure is documented below.
@@ -897,12 +860,9 @@ func (o RestorePlanOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Description: A set of custom labels supplied by the user.
-// A list of key->value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-//
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
+// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o RestorePlanOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -917,8 +877,6 @@ func (o RestorePlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o RestorePlanOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

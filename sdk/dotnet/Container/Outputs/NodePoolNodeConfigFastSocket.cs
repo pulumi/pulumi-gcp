@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNodeConfigFastSocket
     {
         /// <summary>
-        /// Enable Confidential GKE Nodes for this cluster, to
-        /// enforce encryption of data in-use.
+        /// Whether or not NCCL Fast Socket is enabled
         /// </summary>
         public readonly bool Enabled;
 

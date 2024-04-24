@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Firestore_release
  * Creates a Firebase Rules Release to Cloud Firestore
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,10 +30,8 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Storage_release
  * Creates a Firebase Rules Release for a Storage bucket
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,7 +63,6 @@ import * as utilities from "../utilities";
  *     bucketId: bucket.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

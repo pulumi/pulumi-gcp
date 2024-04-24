@@ -150,7 +150,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -159,7 +158,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
             key="my_metadata",
             value="my_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -196,7 +194,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -205,7 +202,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
             key="my_metadata",
             value="my_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

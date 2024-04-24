@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     name: allNs.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRestorePlanIamPolicy(args: GetRestorePlanIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRestorePlanIamPolicyResult> {
 
@@ -78,7 +76,6 @@ export interface GetRestorePlanIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -89,7 +86,6 @@ export interface GetRestorePlanIamPolicyResult {
  *     name: allNs.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRestorePlanIamPolicyOutput(args: GetRestorePlanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestorePlanIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getRestorePlanIamPolicy(a, opts))

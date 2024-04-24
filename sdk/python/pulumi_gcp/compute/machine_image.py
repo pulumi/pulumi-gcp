@@ -315,7 +315,6 @@ class MachineImage(pulumi.CustomResource):
 
         ### Machine Image Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -335,10 +334,8 @@ class MachineImage(pulumi.CustomResource):
             name="my-image",
             source_instance=vm.self_link)
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Machine Image Kms
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -367,7 +364,6 @@ class MachineImage(pulumi.CustomResource):
                 kms_key_name=crypto_key.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -432,7 +428,6 @@ class MachineImage(pulumi.CustomResource):
 
         ### Machine Image Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -452,10 +447,8 @@ class MachineImage(pulumi.CustomResource):
             name="my-image",
             source_instance=vm.self_link)
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Machine Image Kms
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -484,7 +477,6 @@ class MachineImage(pulumi.CustomResource):
                 kms_key_name=crypto_key.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

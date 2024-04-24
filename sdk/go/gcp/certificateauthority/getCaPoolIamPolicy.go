@@ -15,7 +15,6 @@ import (
 //
 // ## example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupCaPoolIamPolicy(ctx *pulumi.Context, args *LookupCaPoolIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCaPoolIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCaPoolIamPolicyResult

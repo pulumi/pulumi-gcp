@@ -55,8 +55,8 @@ public final class ServiceTerminalCondition {
      */
     private @Nullable String state;
     /**
-     * @return The allocation type for this traffic target.
-     * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+     * @return (Output)
+     * The allocation type for this traffic target.
      * 
      */
     private @Nullable String type;
@@ -120,8 +120,8 @@ public final class ServiceTerminalCondition {
         return Optional.ofNullable(this.state);
     }
     /**
-     * @return The allocation type for this traffic target.
-     * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+     * @return (Output)
+     * The allocation type for this traffic target.
      * 
      */
     public Optional<String> type() {

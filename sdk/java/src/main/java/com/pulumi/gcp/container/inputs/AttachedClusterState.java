@@ -28,30 +28,24 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     public static final AttachedClusterState Empty = new AttachedClusterState();
 
     /**
-     * Optional. Annotations on the cluster. This field has the same
-     * restrictions as Kubernetes annotations. The total size of all keys and
-     * values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-     * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Optional. Annotations on the cluster. This field has the same
-     * restrictions as Kubernetes annotations. The total size of all keys and
-     * values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-     * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -60,7 +54,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * Configuration related to the cluster RBAC settings.
-     * Structure is documented below.
      * 
      */
     @Import(name="authorization")
@@ -68,7 +61,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Configuration related to the cluster RBAC settings.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AttachedClusterAuthorizationArgs>> authorization() {
@@ -77,7 +69,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * Binary Authorization configuration.
-     * Structure is documented below.
      * 
      */
     @Import(name="binaryAuthorization")
@@ -85,7 +76,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Binary Authorization configuration.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AttachedClusterBinaryAuthorizationArgs>> binaryAuthorization() {
@@ -142,16 +132,14 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A human readable description of this attached cluster. Cannot be longer
-     * than 255 UTF-8 encoded bytes.
+     * A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A human readable description of this attached cluster. Cannot be longer
-     * than 255 UTF-8 encoded bytes.
+     * @return A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      * 
      */
     public Optional<Output<String>> description() {
@@ -258,7 +246,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * Logging configuration.
-     * Structure is documented below.
      * 
      */
     @Import(name="loggingConfig")
@@ -266,7 +253,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Logging configuration.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AttachedClusterLoggingConfigArgs>> loggingConfig() {
@@ -275,7 +261,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * Monitoring configuration.
-     * Structure is documented below.
      * 
      */
     @Import(name="monitoringConfig")
@@ -283,7 +268,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Monitoring configuration.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AttachedClusterMonitoringConfigArgs>> monitoringConfig() {
@@ -353,26 +337,15 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.platformVersion);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
      * Support for proxy configuration.
-     * Structure is documented below.
      * 
      */
     @Import(name="proxyConfig")
@@ -380,7 +353,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Support for proxy configuration.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AttachedClusterProxyConfigArgs>> proxyConfig() {
@@ -517,15 +489,12 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations Optional. Annotations on the cluster. This field has the same
-         * restrictions as Kubernetes annotations. The total size of all keys and
-         * values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-         * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-         * Name must be 63 characters or less, begin and end with alphanumerics,
-         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+         * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -536,15 +505,12 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations Optional. Annotations on the cluster. This field has the same
-         * restrictions as Kubernetes annotations. The total size of all keys and
-         * values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-         * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-         * Name must be 63 characters or less, begin and end with alphanumerics,
-         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+         * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -555,7 +521,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param authorization Configuration related to the cluster RBAC settings.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -567,7 +532,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param authorization Configuration related to the cluster RBAC settings.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -578,7 +542,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param binaryAuthorization Binary Authorization configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -590,7 +553,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param binaryAuthorization Binary Authorization configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -667,8 +629,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description A human readable description of this attached cluster. Cannot be longer
-         * than 255 UTF-8 encoded bytes.
+         * @param description A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
          * 
          * @return builder
          * 
@@ -679,8 +640,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description A human readable description of this attached cluster. Cannot be longer
-         * than 255 UTF-8 encoded bytes.
+         * @param description A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
          * 
          * @return builder
          * 
@@ -836,7 +796,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param loggingConfig Logging configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -848,7 +807,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param loggingConfig Logging configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -859,7 +817,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param monitoringConfig Monitoring configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -871,7 +828,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param monitoringConfig Monitoring configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -961,32 +917,17 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
             return platformVersion(Output.of(platformVersion));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
          * @param proxyConfig Support for proxy configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -998,7 +939,6 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param proxyConfig Support for proxy configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 

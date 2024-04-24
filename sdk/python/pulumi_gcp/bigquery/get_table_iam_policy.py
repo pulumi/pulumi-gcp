@@ -105,7 +105,6 @@ def get_table_iam_policy(dataset_id: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_table_iam_policy(dataset_id: Optional[str] = None,
         dataset_id=test["datasetId"],
         table_id=test["tableId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -146,7 +144,6 @@ def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -155,7 +152,6 @@ def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
         dataset_id=test["datasetId"],
         table_id=test["tableId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

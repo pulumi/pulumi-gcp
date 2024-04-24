@@ -1659,8 +1659,6 @@ class TransferJobScheduleScheduleEndDate(dict):
                  year: int):
         """
         :param int day: Day of month. Must be from 1 to 31 and valid for the year and month.
-               
-               <a name="nested_start_time_of_day"></a>The `start_time_of_day` blocks support:
         :param int month: Month of year. Must be from 1 to 12.
         :param int year: Year of date. Must be from 1 to 9999.
         """
@@ -1673,8 +1671,6 @@ class TransferJobScheduleScheduleEndDate(dict):
     def day(self) -> int:
         """
         Day of month. Must be from 1 to 31 and valid for the year and month.
-
-        <a name="nested_start_time_of_day"></a>The `start_time_of_day` blocks support:
         """
         return pulumi.get(self, "day")
 
@@ -1703,8 +1699,6 @@ class TransferJobScheduleScheduleStartDate(dict):
                  year: int):
         """
         :param int day: Day of month. Must be from 1 to 31 and valid for the year and month.
-               
-               <a name="nested_start_time_of_day"></a>The `start_time_of_day` blocks support:
         :param int month: Month of year. Must be from 1 to 12.
         :param int year: Year of date. Must be from 1 to 9999.
         """
@@ -1717,8 +1711,6 @@ class TransferJobScheduleScheduleStartDate(dict):
     def day(self) -> int:
         """
         Day of month. Must be from 1 to 31 and valid for the year and month.
-
-        <a name="nested_start_time_of_day"></a>The `start_time_of_day` blocks support:
         """
         return pulumi.get(self, "day")
 
@@ -1747,7 +1739,7 @@ class TransferJobScheduleStartTimeOfDay(dict):
                  nanos: int,
                  seconds: int):
         """
-        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23.
         :param int minutes: Minutes of hour of day. Must be from 0 to 59.
         :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
@@ -1761,7 +1753,7 @@ class TransferJobScheduleStartTimeOfDay(dict):
     @pulumi.getter
     def hours(self) -> int:
         """
-        Hours of day in 24 hour format. Should be from 0 to 23
+        Hours of day in 24 hour format. Should be from 0 to 23.
         """
         return pulumi.get(self, "hours")
 
@@ -1995,9 +1987,9 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
                  path: Optional[str] = None,
                  role_arn: Optional[str] = None):
         """
-        :param str bucket_name: Google Cloud Storage bucket name.
+        :param str bucket_name: S3 Bucket name.
         :param 'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs' aws_access_key: AWS credentials block.
-        :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        :param str path: S3 Bucket path in bucket to transfer.
         :param str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -2012,7 +2004,7 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
         """
-        Google Cloud Storage bucket name.
+        S3 Bucket name.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -2028,7 +2020,7 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        S3 Bucket path in bucket to transfer.
         """
         return pulumi.get(self, "path")
 

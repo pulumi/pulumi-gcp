@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebasehosting Release In Site
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,10 +33,8 @@ import * as utilities from "../utilities";
  *     message: "Test release",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Release In Channel
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -67,10 +64,8 @@ import * as utilities from "../utilities";
  *     message: "Test release in channel",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Release Disable
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -85,7 +80,6 @@ import * as utilities from "../utilities";
  *     message: "Take down site",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

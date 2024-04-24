@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ### Deployment Manager Deployment Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,7 +45,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ## Import
  *
  * Deployment can be imported using any of these accepted formats:
@@ -100,24 +98,17 @@ export class Deployment extends pulumi.CustomResource {
     }
 
     /**
-     * Set the policy to use for creating new resources. Only used on
-     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-     * the deployment will fail. Note that updating this field does not
-     * actually affect the deployment, just how it is updated.
-     * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
+     * Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+     * (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+     * updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+     * Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
      */
     public readonly createPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Set the policy to use for deleting new resources on update/delete.
-     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-     * resource is deleted after removal from Deployment Manager. If
-     * `ABANDON`, the resource is only removed from Deployment Manager
-     * and is not actually deleted. Note that updating this field does not
-     * actually change the deployment, just how it is updated.
-     * Default value is `DELETE`.
-     * Possible values are: `ABANDON`, `DELETE`.
+     * Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+     * 'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+     * Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+     * just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
      */
     public readonly deletePolicy!: pulumi.Output<string | undefined>;
     /**
@@ -130,7 +121,6 @@ export class Deployment extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Key-value pairs to apply to this labels.
-     * Structure is documented below.
      */
     public readonly labels!: pulumi.Output<outputs.deploymentmanager.DeploymentLabel[] | undefined>;
     /**
@@ -143,20 +133,12 @@ export class Deployment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * If set to true, a deployment is created with "shell" resources
-     * that are not actually instantiated. This allows you to preview a
-     * deployment. It can be updated to false to actually deploy
-     * with real resources.
-     * ~>**NOTE:** Deployment Manager does not allow update
-     * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
-     * to true or if other fields are updated while preview is true.
+     * If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+     * preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+     * does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+     * deployments if either preview is updated to true or if other fields are updated while preview is true.
      */
     public readonly preview!: pulumi.Output<boolean | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Output only. Server defined URL for the resource.
@@ -220,24 +202,17 @@ export class Deployment extends pulumi.CustomResource {
  */
 export interface DeploymentState {
     /**
-     * Set the policy to use for creating new resources. Only used on
-     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-     * the deployment will fail. Note that updating this field does not
-     * actually affect the deployment, just how it is updated.
-     * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
+     * Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+     * (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+     * updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+     * Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
      */
     createPolicy?: pulumi.Input<string>;
     /**
-     * Set the policy to use for deleting new resources on update/delete.
-     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-     * resource is deleted after removal from Deployment Manager. If
-     * `ABANDON`, the resource is only removed from Deployment Manager
-     * and is not actually deleted. Note that updating this field does not
-     * actually change the deployment, just how it is updated.
-     * Default value is `DELETE`.
-     * Possible values are: `ABANDON`, `DELETE`.
+     * Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+     * 'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+     * Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+     * just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
      */
     deletePolicy?: pulumi.Input<string>;
     /**
@@ -250,7 +225,6 @@ export interface DeploymentState {
     description?: pulumi.Input<string>;
     /**
      * Key-value pairs to apply to this labels.
-     * Structure is documented below.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
     /**
@@ -263,20 +237,12 @@ export interface DeploymentState {
      */
     name?: pulumi.Input<string>;
     /**
-     * If set to true, a deployment is created with "shell" resources
-     * that are not actually instantiated. This allows you to preview a
-     * deployment. It can be updated to false to actually deploy
-     * with real resources.
-     * ~>**NOTE:** Deployment Manager does not allow update
-     * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
-     * to true or if other fields are updated while preview is true.
+     * If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+     * preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+     * does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+     * deployments if either preview is updated to true or if other fields are updated while preview is true.
      */
     preview?: pulumi.Input<boolean>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Output only. Server defined URL for the resource.
@@ -295,24 +261,17 @@ export interface DeploymentState {
  */
 export interface DeploymentArgs {
     /**
-     * Set the policy to use for creating new resources. Only used on
-     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-     * the deployment will fail. Note that updating this field does not
-     * actually affect the deployment, just how it is updated.
-     * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
+     * Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+     * (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+     * updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+     * Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
      */
     createPolicy?: pulumi.Input<string>;
     /**
-     * Set the policy to use for deleting new resources on update/delete.
-     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-     * resource is deleted after removal from Deployment Manager. If
-     * `ABANDON`, the resource is only removed from Deployment Manager
-     * and is not actually deleted. Note that updating this field does not
-     * actually change the deployment, just how it is updated.
-     * Default value is `DELETE`.
-     * Possible values are: `ABANDON`, `DELETE`.
+     * Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+     * 'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+     * Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+     * just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
      */
     deletePolicy?: pulumi.Input<string>;
     /**
@@ -321,7 +280,6 @@ export interface DeploymentArgs {
     description?: pulumi.Input<string>;
     /**
      * Key-value pairs to apply to this labels.
-     * Structure is documented below.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
     /**
@@ -329,20 +287,12 @@ export interface DeploymentArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * If set to true, a deployment is created with "shell" resources
-     * that are not actually instantiated. This allows you to preview a
-     * deployment. It can be updated to false to actually deploy
-     * with real resources.
-     * ~>**NOTE:** Deployment Manager does not allow update
-     * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
-     * to true or if other fields are updated while preview is true.
+     * If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+     * preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+     * does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+     * deployments if either preview is updated to true or if other fields are updated while preview is true.
      */
     preview?: pulumi.Input<boolean>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Parameters that define your deployment, including the deployment

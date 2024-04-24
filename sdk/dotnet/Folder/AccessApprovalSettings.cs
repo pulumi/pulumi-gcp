@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// ### Folder Access Approval Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -54,10 +53,8 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Folder Access Approval Active Key Version
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -129,7 +126,6 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -153,9 +149,9 @@ namespace Pulumi.Gcp.Folder
     public partial class AccessApprovalSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The asymmetric crypto key version to use for signing approval requests.
-        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
-        /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+        /// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+        /// Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
+        /// new non-empty values may not be set.
         /// </summary>
         [Output("activeKeyVersion")]
         public Output<string?> ActiveKeyVersion { get; private set; } = null!;
@@ -204,9 +200,9 @@ namespace Pulumi.Gcp.Folder
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of email addresses to which notifications relating to approval requests should be sent.
-        /// Notifications relating to a resource will be sent to all emails in the settings of ancestor
-        /// resources of that resource. A maximum of 50 email addresses are allowed.
+        /// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+        /// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+        /// addresses are allowed.
         /// </summary>
         [Output("notificationEmails")]
         public Output<ImmutableArray<string>> NotificationEmails { get; private set; } = null!;
@@ -258,9 +254,9 @@ namespace Pulumi.Gcp.Folder
     public sealed class AccessApprovalSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The asymmetric crypto key version to use for signing approval requests.
-        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
-        /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+        /// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+        /// Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
+        /// new non-empty values may not be set.
         /// </summary>
         [Input("activeKeyVersion")]
         public Input<string>? ActiveKeyVersion { get; set; }
@@ -291,9 +287,9 @@ namespace Pulumi.Gcp.Folder
         private InputList<string>? _notificationEmails;
 
         /// <summary>
-        /// A list of email addresses to which notifications relating to approval requests should be sent.
-        /// Notifications relating to a resource will be sent to all emails in the settings of ancestor
-        /// resources of that resource. A maximum of 50 email addresses are allowed.
+        /// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+        /// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+        /// addresses are allowed.
         /// </summary>
         public InputList<string> NotificationEmails
         {
@@ -310,9 +306,9 @@ namespace Pulumi.Gcp.Folder
     public sealed class AccessApprovalSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The asymmetric crypto key version to use for signing approval requests.
-        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
-        /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+        /// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+        /// Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
+        /// new non-empty values may not be set.
         /// </summary>
         [Input("activeKeyVersion")]
         public Input<string>? ActiveKeyVersion { get; set; }
@@ -370,9 +366,9 @@ namespace Pulumi.Gcp.Folder
         private InputList<string>? _notificationEmails;
 
         /// <summary>
-        /// A list of email addresses to which notifications relating to approval requests should be sent.
-        /// Notifications relating to a resource will be sent to all emails in the settings of ancestor
-        /// resources of that resource. A maximum of 50 email addresses are allowed.
+        /// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+        /// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+        /// addresses are allowed.
         /// </summary>
         public InputList<string> NotificationEmails
         {

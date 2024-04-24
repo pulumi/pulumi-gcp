@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     project: projectService.project,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTunnelIamPolicy(args?: GetTunnelIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelIamPolicyResult> {
     args = args || {};
@@ -64,7 +62,6 @@ export interface GetTunnelIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,7 +70,6 @@ export interface GetTunnelIamPolicyResult {
  *     project: projectService.project,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTunnelIamPolicyOutput(args?: GetTunnelIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTunnelIamPolicy(a, opts))

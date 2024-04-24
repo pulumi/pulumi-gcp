@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSKeyRingResult> {
 
@@ -83,7 +81,6 @@ export interface GetKMSKeyRingResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -93,7 +90,6 @@ export interface GetKMSKeyRingResult {
  *     location: "us-central1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKMSKeyRingOutput(args: GetKMSKeyRingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSKeyRingResult> {
     return pulumi.output(args).apply((a: any) => getKMSKeyRing(a, opts))

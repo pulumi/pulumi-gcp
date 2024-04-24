@@ -23,7 +23,6 @@ import (
 //
 // ### With Top Level Instance Template (`Google` Provider)
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,10 +89,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### With Multiple Versions (`Google-Beta` Provider)
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -133,7 +130,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

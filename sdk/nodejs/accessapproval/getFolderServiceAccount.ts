@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFolderServiceAccount(args: GetFolderServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderServiceAccountResult> {
 
@@ -79,7 +77,6 @@ export interface GetFolderServiceAccountResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -93,7 +90,6 @@ export interface GetFolderServiceAccountResult {
  *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFolderServiceAccountOutput(args: GetFolderServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderServiceAccountResult> {
     return pulumi.output(args).apply((a: any) => getFolderServiceAccount(a, opts))

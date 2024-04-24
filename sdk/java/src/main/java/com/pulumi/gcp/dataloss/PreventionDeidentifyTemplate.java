@@ -287,14 +287,14 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.displayName);
     }
     /**
-     * Name describing the field.
+     * The resource name of the template. Set by the server.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name describing the field.
+     * @return The resource name of the template. Set by the server.
      * 
      */
     public Output<String> name() {
@@ -323,18 +323,16 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
         return this.parent;
     }
     /**
-     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
-     * 100 characters. Can be empty to allow the system to generate one.
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     @Export(name="templateId", refs={String.class}, tree="[0]")
     private Output<String> templateId;
 
     /**
-     * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
-     * 100 characters. Can be empty to allow the system to generate one.
+     * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     public Output<String> templateId() {

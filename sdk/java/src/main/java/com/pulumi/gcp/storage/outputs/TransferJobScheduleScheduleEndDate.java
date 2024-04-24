@@ -13,8 +13,6 @@ public final class TransferJobScheduleScheduleEndDate {
     /**
      * @return Day of month. Must be from 1 to 31 and valid for the year and month.
      * 
-     * &lt;a name=&#34;nested_start_time_of_day&#34;&gt;&lt;/a&gt;The `start_time_of_day` blocks support:
-     * 
      */
     private Integer day;
     /**
@@ -31,8 +29,6 @@ public final class TransferJobScheduleScheduleEndDate {
     private TransferJobScheduleScheduleEndDate() {}
     /**
      * @return Day of month. Must be from 1 to 31 and valid for the year and month.
-     * 
-     * &lt;a name=&#34;nested_start_time_of_day&#34;&gt;&lt;/a&gt;The `start_time_of_day` blocks support:
      * 
      */
     public Integer day() {

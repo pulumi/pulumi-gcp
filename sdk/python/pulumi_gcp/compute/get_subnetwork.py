@@ -180,7 +180,6 @@ def get_subnetwork(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -188,7 +187,6 @@ def get_subnetwork(name: Optional[str] = None,
     my_subnetwork = gcp.compute.get_subnetwork(name="default-us-east1",
         region="us-east1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the subnetwork. One of `name` or `self_link`
@@ -234,7 +232,6 @@ def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -242,7 +239,6 @@ def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     my_subnetwork = gcp.compute.get_subnetwork(name="default-us-east1",
         region="us-east1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the subnetwork. One of `name` or `self_link`

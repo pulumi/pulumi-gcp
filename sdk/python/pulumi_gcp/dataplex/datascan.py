@@ -35,18 +35,12 @@ class DatascanArgs:
                Structure is documented below.
         :param pulumi.Input[str] location: The location where the data scan should reside.
         :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
-               Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
-               Structure is documented below.
-        :param pulumi.Input[str] description: Description of the rule.
-               The maximum length is 1,024 characters.
+        :param pulumi.Input[str] description: Description of the scan.
         :param pulumi.Input[str] display_name: User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
         """
         pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "data_scan_id", data_scan_id)
@@ -120,7 +114,6 @@ class DatascanArgs:
     def data_profile_spec(self) -> Optional[pulumi.Input['DatascanDataProfileSpecArgs']]:
         """
         DataProfileScan related setting.
-        Structure is documented below.
         """
         return pulumi.get(self, "data_profile_spec")
 
@@ -133,7 +126,6 @@ class DatascanArgs:
     def data_quality_spec(self) -> Optional[pulumi.Input['DatascanDataQualitySpecArgs']]:
         """
         DataQualityScan related setting.
-        Structure is documented below.
         """
         return pulumi.get(self, "data_quality_spec")
 
@@ -145,8 +137,7 @@ class DatascanArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the rule.
-        The maximum length is 1,024 characters.
+        Description of the scan.
         """
         return pulumi.get(self, "description")
 
@@ -170,10 +161,9 @@ class DatascanArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels for the scan. A list of key->value pairs.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+        present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -184,10 +174,6 @@ class DatascanArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -223,30 +209,20 @@ class _DatascanState:
         :param pulumi.Input['DatascanDataArgs'] data: The data source for DataScan.
                Structure is documented below.
         :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
-               Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
-               Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input[str] description: Description of the rule.
-               The maximum length is 1,024 characters.
+        :param pulumi.Input[str] description: Description of the scan.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]] execution_statuses: Status of the data scan execution.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
         :param pulumi.Input[str] location: The location where the data scan should reside.
-        :param pulumi.Input[str] name: A mutable name for the rule.
-               The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-               The maximum length is 63 characters.
-               Must start with a letter.
-               Must end with a number or a letter.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] name: The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: Current state of the DataScan.
@@ -323,7 +299,6 @@ class _DatascanState:
     def data_profile_spec(self) -> Optional[pulumi.Input['DatascanDataProfileSpecArgs']]:
         """
         DataProfileScan related setting.
-        Structure is documented below.
         """
         return pulumi.get(self, "data_profile_spec")
 
@@ -336,7 +311,6 @@ class _DatascanState:
     def data_quality_spec(self) -> Optional[pulumi.Input['DatascanDataQualitySpecArgs']]:
         """
         DataQualityScan related setting.
-        Structure is documented below.
         """
         return pulumi.get(self, "data_quality_spec")
 
@@ -360,8 +334,7 @@ class _DatascanState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the rule.
-        The maximum length is 1,024 characters.
+        Description of the scan.
         """
         return pulumi.get(self, "description")
 
@@ -423,10 +396,9 @@ class _DatascanState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels for the scan. A list of key->value pairs.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+        present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -450,11 +422,7 @@ class _DatascanState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A mutable name for the rule.
-        The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-        The maximum length is 63 characters.
-        Must start with a letter.
-        Must end with a number or a letter.
+        The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
         """
         return pulumi.get(self, "name")
 
@@ -465,10 +433,6 @@ class _DatascanState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -566,7 +530,6 @@ class Datascan(pulumi.CustomResource):
 
         ### Dataplex Datascan Basic Profile
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -585,10 +548,8 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Full Profile
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -634,10 +595,8 @@ class Datascan(pulumi.CustomResource):
             location="US",
             delete_contents_on_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Basic Quality
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -665,10 +624,8 @@ class Datascan(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Full Quality
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -766,7 +723,6 @@ class Datascan(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -803,22 +759,16 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatascanDataArgs']] data: The data source for DataScan.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']] data_profile_spec: DataProfileScan related setting.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
-               Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input[str] description: Description of the rule.
-               The maximum length is 1,024 characters.
+        :param pulumi.Input[str] description: Description of the scan.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
         :param pulumi.Input[str] location: The location where the data scan should reside.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -839,7 +789,6 @@ class Datascan(pulumi.CustomResource):
 
         ### Dataplex Datascan Basic Profile
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -858,10 +807,8 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Full Profile
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -907,10 +854,8 @@ class Datascan(pulumi.CustomResource):
             location="US",
             delete_contents_on_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Basic Quality
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -938,10 +883,8 @@ class Datascan(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Full Quality
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1039,7 +982,6 @@ class Datascan(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1174,30 +1116,20 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatascanDataArgs']] data: The data source for DataScan.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']] data_profile_spec: DataProfileScan related setting.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
-               Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input[str] description: Description of the rule.
-               The maximum length is 1,024 characters.
+        :param pulumi.Input[str] description: Description of the scan.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanExecutionStatusArgs']]]] execution_statuses: Status of the data scan execution.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
         :param pulumi.Input[str] location: The location where the data scan should reside.
-        :param pulumi.Input[str] name: A mutable name for the rule.
-               The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-               The maximum length is 63 characters.
-               Must start with a letter.
-               Must end with a number or a letter.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] name: The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: Current state of the DataScan.
@@ -1252,7 +1184,6 @@ class Datascan(pulumi.CustomResource):
     def data_profile_spec(self) -> pulumi.Output[Optional['outputs.DatascanDataProfileSpec']]:
         """
         DataProfileScan related setting.
-        Structure is documented below.
         """
         return pulumi.get(self, "data_profile_spec")
 
@@ -1261,7 +1192,6 @@ class Datascan(pulumi.CustomResource):
     def data_quality_spec(self) -> pulumi.Output[Optional['outputs.DatascanDataQualitySpec']]:
         """
         DataQualityScan related setting.
-        Structure is documented below.
         """
         return pulumi.get(self, "data_quality_spec")
 
@@ -1277,8 +1207,7 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the rule.
-        The maximum length is 1,024 characters.
+        Description of the scan.
         """
         return pulumi.get(self, "description")
 
@@ -1320,10 +1249,9 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        User-defined labels for the scan. A list of key->value pairs.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+        present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1339,21 +1267,13 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A mutable name for the rule.
-        The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-        The maximum length is 63 characters.
-        Must start with a letter.
-        Must end with a number or a letter.
+        The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

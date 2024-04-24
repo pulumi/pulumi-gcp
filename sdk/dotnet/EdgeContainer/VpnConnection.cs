@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// ### Edgecontainer Vpn Connection
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,7 +95,6 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

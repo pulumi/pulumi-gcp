@@ -13,7 +13,6 @@ import java.util.Objects;
 public final class RecordSetRoutingPolicyPrimaryBackupPrimary {
     /**
      * @return The list of internal load balancers to health check.
-     * Structure is documented below.
      * 
      */
     private List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers;
@@ -21,7 +20,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimary {
     private RecordSetRoutingPolicyPrimaryBackupPrimary() {}
     /**
      * @return The list of internal load balancers to health check.
-     * Structure is documented below.
      * 
      */
     public List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers() {

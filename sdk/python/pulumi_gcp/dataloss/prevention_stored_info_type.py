@@ -175,7 +175,7 @@ class _PreventionStoredInfoTypeState:
         :param pulumi.Input[str] display_name: User set display name of the info type.
         :param pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs'] large_custom_dictionary: Dictionary which defines the rule.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name describing the field.
+        :param pulumi.Input[str] name: The resource name of the info type. Set by the server.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
                * `projects/{{project}}`
                * `projects/{{project}}/locations/{{location}}`
@@ -261,7 +261,7 @@ class _PreventionStoredInfoTypeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name describing the field.
+        The resource name of the info type. Set by the server.
         """
         return pulumi.get(self, "name")
 
@@ -342,7 +342,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
 
         ### Dlp Stored Info Type Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -356,10 +355,8 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 group_indexes=[2],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Stored Info Type Dictionary
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -377,10 +374,8 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Stored Info Type Large Custom Dictionary
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -406,10 +401,8 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Stored Info Type With Id
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -424,7 +417,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 group_indexes=[2],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -485,7 +477,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
 
         ### Dlp Stored Info Type Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -499,10 +490,8 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 group_indexes=[2],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Stored Info Type Dictionary
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -520,10 +509,8 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Stored Info Type Large Custom Dictionary
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -549,10 +536,8 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Stored Info Type With Id
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -567,7 +552,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 group_indexes=[2],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -659,7 +643,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User set display name of the info type.
         :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] large_custom_dictionary: Dictionary which defines the rule.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name describing the field.
+        :param pulumi.Input[str] name: The resource name of the info type. Set by the server.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
                * `projects/{{project}}`
                * `projects/{{project}}/locations/{{location}}`
@@ -726,7 +710,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name describing the field.
+        The resource name of the info type. Set by the server.
         """
         return pulumi.get(self, "name")
 

@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// ### Document Ai Warehouse Document Schema Text
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,10 +65,8 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Document Ai Warehouse Document Schema Integer
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -112,10 +109,8 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Document Ai Warehouse Document Schema Float
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -158,10 +153,8 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Document Ai Warehouse Document Schema Property
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -230,10 +223,8 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Document Ai Warehouse Document Schema Property Enum
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -311,10 +302,8 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Document Ai Warehouse Document Schema Enum
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -366,10 +355,8 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Document Ai Warehouse Document Schema Map
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -412,10 +399,8 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Document Ai Warehouse Document Schema Datetime
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -458,10 +443,8 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Document Ai Warehouse Document Schema Timestamp
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -504,7 +487,6 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -546,7 +528,7 @@ namespace Pulumi.Gcp.EssentialContacts
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the metadata property.
+        /// The resource name of the document schema.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -674,7 +656,7 @@ namespace Pulumi.Gcp.EssentialContacts
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the metadata property.
+        /// The resource name of the document schema.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

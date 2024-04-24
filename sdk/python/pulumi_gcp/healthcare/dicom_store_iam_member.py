@@ -233,7 +233,6 @@ class DicomStoreIamMember(pulumi.CustomResource):
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -246,11 +245,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             dicom_store_id="your-dicom-store-id",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -260,11 +257,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -274,11 +269,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -291,11 +284,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             dicom_store_id="your-dicom-store-id",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -305,11 +296,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,7 +308,6 @@ class DicomStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -384,7 +372,6 @@ class DicomStoreIamMember(pulumi.CustomResource):
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -397,11 +384,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             dicom_store_id="your-dicom-store-id",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -411,11 +396,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -425,11 +408,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -442,11 +423,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             dicom_store_id="your-dicom-store-id",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -456,11 +435,9 @@ class DicomStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -470,7 +447,6 @@ class DicomStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

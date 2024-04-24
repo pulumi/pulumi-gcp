@@ -17,7 +17,6 @@ import (
 // and
 // [API](https://cloud.google.com/dns/api/v1/managedZones).
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetManagedZones(ctx *pulumi.Context, args *GetManagedZonesArgs, opts ...pulumi.InvokeOption) (*GetManagedZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetManagedZonesResult

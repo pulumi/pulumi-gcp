@@ -311,7 +311,6 @@ class DataExchangeIamBinding(pulumi.CustomResource):
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -326,11 +325,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             data_exchange_id=data_exchange["dataExchangeId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -342,11 +339,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,11 +353,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -377,11 +370,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             data_exchange_id=data_exchange["dataExchangeId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -393,11 +384,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -409,7 +398,6 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -494,7 +482,6 @@ class DataExchangeIamBinding(pulumi.CustomResource):
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -509,11 +496,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             data_exchange_id=data_exchange["dataExchangeId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -525,11 +510,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -541,11 +524,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -560,11 +541,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             data_exchange_id=data_exchange["dataExchangeId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -576,11 +555,9 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -592,7 +569,6 @@ class DataExchangeIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -320,7 +320,6 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
 
         ### Identity Platform Tenant Oauth Idp Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -335,7 +334,6 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
             enabled=True,
             client_secret="secret")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -393,7 +391,6 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
 
         ### Identity Platform Tenant Oauth Idp Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -408,7 +405,6 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
             enabled=True,
             client_secret="secret")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

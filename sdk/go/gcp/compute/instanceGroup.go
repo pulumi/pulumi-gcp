@@ -19,7 +19,6 @@ import (
 //
 // ### Empty Instance Group
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,11 +45,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Example Usage - With instances and named ports
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,14 +87,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Example Usage - Recreating an instance group in use
 // Recreating an instance group that's in use by another resource will give a
 // `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
 // as shown in this example to avoid this type of error.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -181,7 +176,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

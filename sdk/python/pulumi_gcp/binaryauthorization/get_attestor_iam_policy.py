@@ -95,7 +95,6 @@ def get_attestor_iam_policy(attestor: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -103,7 +102,6 @@ def get_attestor_iam_policy(attestor: Optional[str] = None,
     policy = gcp.binaryauthorization.get_attestor_iam_policy(project=attestor["project"],
         attestor=attestor["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str attestor: Used to find the parent resource to bind the IAM policy to
@@ -133,7 +131,6 @@ def get_attestor_iam_policy_output(attestor: Optional[pulumi.Input[str]] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -141,7 +138,6 @@ def get_attestor_iam_policy_output(attestor: Optional[pulumi.Input[str]] = None,
     policy = gcp.binaryauthorization.get_attestor_iam_policy(project=attestor["project"],
         attestor=attestor["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str attestor: Used to find the parent resource to bind the IAM policy to

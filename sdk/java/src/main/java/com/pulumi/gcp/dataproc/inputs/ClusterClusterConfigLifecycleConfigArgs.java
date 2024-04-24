@@ -56,14 +56,16 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+     * Time when the cluster became idle
+     * (most recent job finished) and became eligible for deletion due to idleness.
      * 
      */
     @Import(name="idleStartTime")
     private @Nullable Output<String> idleStartTime;
 
     /**
-     * @return Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+     * @return Time when the cluster became idle
+     * (most recent job finished) and became eligible for deletion due to idleness.
      * 
      */
     public Optional<Output<String>> idleStartTime() {
@@ -149,7 +151,8 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param idleStartTime Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+         * @param idleStartTime Time when the cluster became idle
+         * (most recent job finished) and became eligible for deletion due to idleness.
          * 
          * @return builder
          * 
@@ -160,7 +163,8 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param idleStartTime Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+         * @param idleStartTime Time when the cluster became idle
+         * (most recent job finished) and became eligible for deletion due to idleness.
          * 
          * @return builder
          * 

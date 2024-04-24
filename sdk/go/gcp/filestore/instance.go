@@ -26,7 +26,6 @@ import (
 //
 // ### Filestore Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,10 +63,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Filestore Instance Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,10 +121,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Filestore Instance Enterprise
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -181,7 +176,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -224,10 +218,9 @@ type Instance struct {
 	FileShares InstanceFileSharesOutput `pulumi:"fileShares"`
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
-	// Resource labels to represent user-provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -237,19 +230,14 @@ type Instance struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project  pulumi.StringOutput        `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringOutput `pulumi:"tier"`
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
-	//
-	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -314,10 +302,9 @@ type instanceState struct {
 	FileShares *InstanceFileShares `pulumi:"fileShares"`
 	// KMS key name used for data encryption.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// Resource labels to represent user-provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location *string `pulumi:"location"`
@@ -327,19 +314,14 @@ type instanceState struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project  *string           `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier *string `pulumi:"tier"`
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
-	//
-	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone *string `pulumi:"zone"`
@@ -361,10 +343,9 @@ type InstanceState struct {
 	FileShares InstanceFileSharesPtrInput
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrInput
-	// Resource labels to represent user-provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringPtrInput
@@ -374,19 +355,14 @@ type InstanceState struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringPtrInput
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
-	//
-	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone pulumi.StringPtrInput
@@ -405,10 +381,9 @@ type instanceArgs struct {
 	FileShares InstanceFileShares `pulumi:"fileShares"`
 	// KMS key name used for data encryption.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// Resource labels to represent user-provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location *string `pulumi:"location"`
@@ -418,16 +393,11 @@ type instanceArgs struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project  *string           `pulumi:"project"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier string `pulumi:"tier"`
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
-	//
-	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone *string `pulumi:"zone"`
@@ -443,10 +413,9 @@ type InstanceArgs struct {
 	FileShares InstanceFileSharesInput
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrInput
-	// Resource labels to represent user-provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringPtrInput
@@ -456,16 +425,11 @@ type InstanceArgs struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringInput
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
-	//
-	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone pulumi.StringPtrInput
@@ -591,10 +555,9 @@ func (o InstanceOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Resource labels to represent user-provided metadata.
-//
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+// resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -616,8 +579,6 @@ func (o InstanceOutput) Networks() InstanceNetworkArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkArrayOutput { return v.Networks }).(InstanceNetworkArrayOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -634,10 +595,7 @@ func (o InstanceOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }
 
-// (Optional, Deprecated)
 // The name of the Filestore zone of the instance.
-//
-// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 //
 // Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 func (o InstanceOutput) Zone() pulumi.StringOutput {

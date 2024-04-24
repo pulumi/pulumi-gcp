@@ -470,7 +470,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
         ### Sql Source Representation Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -485,10 +484,8 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
-        <!--End PulumiCodeChooser -->
         ### Sql Source Representation Instance Postgres
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -503,7 +500,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -569,7 +565,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
         ### Sql Source Representation Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -584,10 +579,8 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
-        <!--End PulumiCodeChooser -->
         ### Sql Source Representation Instance Postgres
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -602,7 +595,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

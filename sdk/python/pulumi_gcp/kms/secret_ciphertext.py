@@ -188,7 +188,6 @@ class SecretCiphertext(pulumi.CustomResource):
 
         ### Kms Secret Ciphertext Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -220,7 +219,6 @@ class SecretCiphertext(pulumi.CustomResource):
                 "password": my_password.ciphertext,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -262,7 +260,6 @@ class SecretCiphertext(pulumi.CustomResource):
 
         ### Kms Secret Ciphertext Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -294,7 +291,6 @@ class SecretCiphertext(pulumi.CustomResource):
                 "password": my_password.ciphertext,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

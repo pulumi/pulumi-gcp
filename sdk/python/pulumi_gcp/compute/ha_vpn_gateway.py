@@ -353,7 +353,6 @@ class HaVpnGateway(pulumi.CustomResource):
 
         ### Ha Vpn Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,10 +365,8 @@ class HaVpnGateway(pulumi.CustomResource):
             name="ha-vpn-1",
             network=network1.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Ha Vpn Gateway Ipv6
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -383,10 +380,8 @@ class HaVpnGateway(pulumi.CustomResource):
             network=network1.id,
             stack_type="IPV4_IPV6")
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -443,7 +438,6 @@ class HaVpnGateway(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -521,7 +515,6 @@ class HaVpnGateway(pulumi.CustomResource):
 
         ### Ha Vpn Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,10 +527,8 @@ class HaVpnGateway(pulumi.CustomResource):
             name="ha-vpn-1",
             network=network1.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Ha Vpn Gateway Ipv6
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -551,10 +542,8 @@ class HaVpnGateway(pulumi.CustomResource):
             network=network1.id,
             stack_type="IPV4_IPV6")
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -611,7 +600,6 @@ class HaVpnGateway(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

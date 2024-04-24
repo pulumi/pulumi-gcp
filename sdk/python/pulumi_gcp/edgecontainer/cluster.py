@@ -47,27 +47,19 @@ class ClusterArgs:
                consistent policies across your systems.
                Structure is documented below.
         :param pulumi.Input['ClusterControlPlaneArgs'] control_plane: The configuration of the cluster control plane.
-               Structure is documented below.
-        :param pulumi.Input['ClusterControlPlaneEncryptionArgs'] control_plane_encryption: Remote control plane disk encryption options. This field is only used when
-               enabling CMEK support.
-               Structure is documented below.
-        :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not
-               specified explicitly for a node pool in this cluster. If unspecified, the
-               Kubernetes default value will be used.
+        :param pulumi.Input['ClusterControlPlaneEncryptionArgs'] control_plane_encryption: Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+        :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+               cluster. If unspecified, the Kubernetes default value will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the edgecloud cluster.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+               resource.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Cluster-wide maintenance policy configuration.
-               Structure is documented below.
         :param pulumi.Input[str] name: The GDCE cluster name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to.
-               Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         :param pulumi.Input['ClusterSystemAddonsConfigArgs'] system_addons_config: Config that customers are allowed to define for GDCE system add-ons.
-               Structure is documented below.
-        :param pulumi.Input[str] target_version: The target cluster version. For example: "1.5.0".
+        :param pulumi.Input[str] target_version: (Output)
+               The target version of the cluster.
         """
         pulumi.set(__self__, "authorization", authorization)
         pulumi.set(__self__, "fleet", fleet)
@@ -158,7 +150,6 @@ class ClusterArgs:
     def control_plane(self) -> Optional[pulumi.Input['ClusterControlPlaneArgs']]:
         """
         The configuration of the cluster control plane.
-        Structure is documented below.
         """
         return pulumi.get(self, "control_plane")
 
@@ -170,9 +161,7 @@ class ClusterArgs:
     @pulumi.getter(name="controlPlaneEncryption")
     def control_plane_encryption(self) -> Optional[pulumi.Input['ClusterControlPlaneEncryptionArgs']]:
         """
-        Remote control plane disk encryption options. This field is only used when
-        enabling CMEK support.
-        Structure is documented below.
+        Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         """
         return pulumi.get(self, "control_plane_encryption")
 
@@ -184,9 +173,8 @@ class ClusterArgs:
     @pulumi.getter(name="defaultMaxPodsPerNode")
     def default_max_pods_per_node(self) -> Optional[pulumi.Input[int]]:
         """
-        The default maximum number of pods per node used if a maximum value is not
-        specified explicitly for a node pool in this cluster. If unspecified, the
-        Kubernetes default value will be used.
+        The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+        cluster. If unspecified, the Kubernetes default value will be used.
         """
         return pulumi.get(self, "default_max_pods_per_node")
 
@@ -210,9 +198,9 @@ class ClusterArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels for the edgecloud cluster.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -225,7 +213,6 @@ class ClusterArgs:
     def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
         """
         Cluster-wide maintenance policy configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -248,10 +235,6 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -262,8 +245,7 @@ class ClusterArgs:
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input[str]]:
         """
-        The release channel a cluster is subscribed to.
-        Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         """
         return pulumi.get(self, "release_channel")
 
@@ -276,7 +258,6 @@ class ClusterArgs:
     def system_addons_config(self) -> Optional[pulumi.Input['ClusterSystemAddonsConfigArgs']]:
         """
         Config that customers are allowed to define for GDCE system add-ons.
-        Structure is documented below.
         """
         return pulumi.get(self, "system_addons_config")
 
@@ -288,7 +269,8 @@ class ClusterArgs:
     @pulumi.getter(name="targetVersion")
     def target_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The target cluster version. For example: "1.5.0".
+        (Output)
+        The target version of the cluster.
         """
         return pulumi.get(self, "target_version")
 
@@ -333,16 +315,12 @@ class _ClusterState:
         :param pulumi.Input[str] cluster_ca_certificate: The PEM-encoded public certificate of the cluster's CA.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input['ClusterControlPlaneArgs'] control_plane: The configuration of the cluster control plane.
-               Structure is documented below.
-        :param pulumi.Input['ClusterControlPlaneEncryptionArgs'] control_plane_encryption: Remote control plane disk encryption options. This field is only used when
-               enabling CMEK support.
-               Structure is documented below.
+        :param pulumi.Input['ClusterControlPlaneEncryptionArgs'] control_plane_encryption: Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         :param pulumi.Input[str] control_plane_version: The control plane release version.
         :param pulumi.Input[str] create_time: (Output)
                The time when the maintenance event request was created.
-        :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not
-               specified explicitly for a node pool in this cluster. If unspecified, the
-               Kubernetes default value will be used.
+        :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+               cluster. If unspecified, the Kubernetes default value will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] endpoint: The IP address of the Kubernetes API server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
@@ -351,15 +329,14 @@ class _ClusterState:
                letting you use and manage multi-cluster capabilities and apply
                consistent policies across your systems.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the edgecloud cluster.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceEventArgs']]] maintenance_events: All the maintenance events scheduled for the cluster, including the ones
                ongoing, planned for the future and done in the past (up to 90 days).
                Structure is documented below.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Cluster-wide maintenance policy configuration.
-               Structure is documented below.
         :param pulumi.Input[str] name: The GDCE cluster name.
         :param pulumi.Input['ClusterNetworkingArgs'] networking: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
@@ -369,16 +346,13 @@ class _ClusterState:
         :param pulumi.Input[str] node_version: The lowest release version among all worker nodes. This field can be empty
                if the cluster does not have any worker nodes.
         :param pulumi.Input[int] port: The port number of the Kubernetes API server.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to.
-               Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         :param pulumi.Input[str] status: Indicates the status of the cluster.
         :param pulumi.Input['ClusterSystemAddonsConfigArgs'] system_addons_config: Config that customers are allowed to define for GDCE system add-ons.
-               Structure is documented below.
-        :param pulumi.Input[str] target_version: The target cluster version. For example: "1.5.0".
+        :param pulumi.Input[str] target_version: (Output)
+               The target version of the cluster.
         :param pulumi.Input[str] update_time: (Output)
                The time when the maintenance event message was updated.
         """
@@ -466,7 +440,6 @@ class _ClusterState:
     def control_plane(self) -> Optional[pulumi.Input['ClusterControlPlaneArgs']]:
         """
         The configuration of the cluster control plane.
-        Structure is documented below.
         """
         return pulumi.get(self, "control_plane")
 
@@ -478,9 +451,7 @@ class _ClusterState:
     @pulumi.getter(name="controlPlaneEncryption")
     def control_plane_encryption(self) -> Optional[pulumi.Input['ClusterControlPlaneEncryptionArgs']]:
         """
-        Remote control plane disk encryption options. This field is only used when
-        enabling CMEK support.
-        Structure is documented below.
+        Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         """
         return pulumi.get(self, "control_plane_encryption")
 
@@ -517,9 +488,8 @@ class _ClusterState:
     @pulumi.getter(name="defaultMaxPodsPerNode")
     def default_max_pods_per_node(self) -> Optional[pulumi.Input[int]]:
         """
-        The default maximum number of pods per node used if a maximum value is not
-        specified explicitly for a node pool in this cluster. If unspecified, the
-        Kubernetes default value will be used.
+        The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+        cluster. If unspecified, the Kubernetes default value will be used.
         """
         return pulumi.get(self, "default_max_pods_per_node")
 
@@ -583,9 +553,9 @@ class _ClusterState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels for the edgecloud cluster.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -624,7 +594,6 @@ class _ClusterState:
     def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
         """
         Cluster-wide maintenance policy configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -688,10 +657,6 @@ class _ClusterState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -715,8 +680,7 @@ class _ClusterState:
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input[str]]:
         """
-        The release channel a cluster is subscribed to.
-        Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         """
         return pulumi.get(self, "release_channel")
 
@@ -741,7 +705,6 @@ class _ClusterState:
     def system_addons_config(self) -> Optional[pulumi.Input['ClusterSystemAddonsConfigArgs']]:
         """
         Config that customers are allowed to define for GDCE system add-ons.
-        Structure is documented below.
         """
         return pulumi.get(self, "system_addons_config")
 
@@ -753,7 +716,8 @@ class _ClusterState:
     @pulumi.getter(name="targetVersion")
     def target_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The target cluster version. For example: "1.5.0".
+        (Output)
+        The target version of the cluster.
         """
         return pulumi.get(self, "target_version")
 
@@ -809,7 +773,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Edgecontainer Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -835,10 +798,8 @@ class Cluster(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgecontainer Cluster With Maintenance Window
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -871,10 +832,8 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgecontainer Local Control Plane Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -905,7 +864,6 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -936,38 +894,30 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterAuthorizationArgs']] authorization: RBAC policy that will be applied and managed by GEC.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterControlPlaneArgs']] control_plane: The configuration of the cluster control plane.
-               Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterControlPlaneEncryptionArgs']] control_plane_encryption: Remote control plane disk encryption options. This field is only used when
-               enabling CMEK support.
-               Structure is documented below.
-        :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not
-               specified explicitly for a node pool in this cluster. If unspecified, the
-               Kubernetes default value will be used.
+        :param pulumi.Input[pulumi.InputType['ClusterControlPlaneEncryptionArgs']] control_plane_encryption: Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+        :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+               cluster. If unspecified, the Kubernetes default value will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
         :param pulumi.Input[pulumi.InputType['ClusterFleetArgs']] fleet: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
                letting you use and manage multi-cluster capabilities and apply
                consistent policies across your systems.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the edgecloud cluster.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']] maintenance_policy: Cluster-wide maintenance policy configuration.
-               Structure is documented below.
         :param pulumi.Input[str] name: The GDCE cluster name.
         :param pulumi.Input[pulumi.InputType['ClusterNetworkingArgs']] networking: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
                letting you use and manage multi-cluster capabilities and apply
                consistent policies across your systems.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to.
-               Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         :param pulumi.Input[pulumi.InputType['ClusterSystemAddonsConfigArgs']] system_addons_config: Config that customers are allowed to define for GDCE system add-ons.
-               Structure is documented below.
-        :param pulumi.Input[str] target_version: The target cluster version. For example: "1.5.0".
+        :param pulumi.Input[str] target_version: (Output)
+               The target version of the cluster.
         """
         ...
     @overload
@@ -988,7 +938,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Edgecontainer Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1014,10 +963,8 @@ class Cluster(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgecontainer Cluster With Maintenance Window
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1050,10 +997,8 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgecontainer Local Control Plane Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1084,7 +1029,6 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1233,16 +1177,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_ca_certificate: The PEM-encoded public certificate of the cluster's CA.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[pulumi.InputType['ClusterControlPlaneArgs']] control_plane: The configuration of the cluster control plane.
-               Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterControlPlaneEncryptionArgs']] control_plane_encryption: Remote control plane disk encryption options. This field is only used when
-               enabling CMEK support.
-               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterControlPlaneEncryptionArgs']] control_plane_encryption: Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         :param pulumi.Input[str] control_plane_version: The control plane release version.
         :param pulumi.Input[str] create_time: (Output)
                The time when the maintenance event request was created.
-        :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not
-               specified explicitly for a node pool in this cluster. If unspecified, the
-               Kubernetes default value will be used.
+        :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+               cluster. If unspecified, the Kubernetes default value will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] endpoint: The IP address of the Kubernetes API server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
@@ -1251,15 +1191,14 @@ class Cluster(pulumi.CustomResource):
                letting you use and manage multi-cluster capabilities and apply
                consistent policies across your systems.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the edgecloud cluster.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMaintenanceEventArgs']]]] maintenance_events: All the maintenance events scheduled for the cluster, including the ones
                ongoing, planned for the future and done in the past (up to 90 days).
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']] maintenance_policy: Cluster-wide maintenance policy configuration.
-               Structure is documented below.
         :param pulumi.Input[str] name: The GDCE cluster name.
         :param pulumi.Input[pulumi.InputType['ClusterNetworkingArgs']] networking: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
@@ -1269,16 +1208,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] node_version: The lowest release version among all worker nodes. This field can be empty
                if the cluster does not have any worker nodes.
         :param pulumi.Input[int] port: The port number of the Kubernetes API server.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to.
-               Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        :param pulumi.Input[str] release_channel: The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         :param pulumi.Input[str] status: Indicates the status of the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterSystemAddonsConfigArgs']] system_addons_config: Config that customers are allowed to define for GDCE system add-ons.
-               Structure is documented below.
-        :param pulumi.Input[str] target_version: The target cluster version. For example: "1.5.0".
+        :param pulumi.Input[str] target_version: (Output)
+               The target version of the cluster.
         :param pulumi.Input[str] update_time: (Output)
                The time when the maintenance event message was updated.
         """
@@ -1337,7 +1273,6 @@ class Cluster(pulumi.CustomResource):
     def control_plane(self) -> pulumi.Output[Optional['outputs.ClusterControlPlane']]:
         """
         The configuration of the cluster control plane.
-        Structure is documented below.
         """
         return pulumi.get(self, "control_plane")
 
@@ -1345,9 +1280,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="controlPlaneEncryption")
     def control_plane_encryption(self) -> pulumi.Output['outputs.ClusterControlPlaneEncryption']:
         """
-        Remote control plane disk encryption options. This field is only used when
-        enabling CMEK support.
-        Structure is documented below.
+        Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         """
         return pulumi.get(self, "control_plane_encryption")
 
@@ -1372,9 +1305,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="defaultMaxPodsPerNode")
     def default_max_pods_per_node(self) -> pulumi.Output[int]:
         """
-        The default maximum number of pods per node used if a maximum value is not
-        specified explicitly for a node pool in this cluster. If unspecified, the
-        Kubernetes default value will be used.
+        The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+        cluster. If unspecified, the Kubernetes default value will be used.
         """
         return pulumi.get(self, "default_max_pods_per_node")
 
@@ -1418,9 +1350,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        User-defined labels for the edgecloud cluster.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1447,7 +1379,6 @@ class Cluster(pulumi.CustomResource):
     def maintenance_policy(self) -> pulumi.Output['outputs.ClusterMaintenancePolicy']:
         """
         Cluster-wide maintenance policy configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -1491,10 +1422,6 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -1510,8 +1437,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> pulumi.Output[str]:
         """
-        The release channel a cluster is subscribed to.
-        Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         """
         return pulumi.get(self, "release_channel")
 
@@ -1528,7 +1454,6 @@ class Cluster(pulumi.CustomResource):
     def system_addons_config(self) -> pulumi.Output['outputs.ClusterSystemAddonsConfig']:
         """
         Config that customers are allowed to define for GDCE system add-ons.
-        Structure is documented below.
         """
         return pulumi.get(self, "system_addons_config")
 
@@ -1536,7 +1461,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="targetVersion")
     def target_version(self) -> pulumi.Output[str]:
         """
-        The target cluster version. For example: "1.5.0".
+        (Output)
+        The target version of the cluster.
         """
         return pulumi.get(self, "target_version")
 

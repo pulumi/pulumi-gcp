@@ -403,52 +403,38 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
         return this.adminClusterMembership;
     }
     /**
-     * Annotations on the VMware User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Annotations on the VMware User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
         return Codegen.optional(this.annotations);
     }
     /**
-     * AAGConfig specifies whether to spread VMware User Cluster nodes across at
-     * least three physical hosts in the datacenter.
-     * Structure is documented below.
+     * AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
      * 
      */
     @Export(name="antiAffinityGroups", refs={VMwareClusterAntiAffinityGroups.class}, tree="[0]")
     private Output<VMwareClusterAntiAffinityGroups> antiAffinityGroups;
 
     /**
-     * @return AAGConfig specifies whether to spread VMware User Cluster nodes across at
-     * least three physical hosts in the datacenter.
-     * Structure is documented below.
+     * @return AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
      * 
      */
     public Output<VMwareClusterAntiAffinityGroups> antiAffinityGroups() {
@@ -456,7 +442,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * RBAC policy that will be applied and managed by GKE On-Prem.
-     * Structure is documented below.
      * 
      */
     @Export(name="authorization", refs={VMwareClusterAuthorization.class}, tree="[0]")
@@ -464,7 +449,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return RBAC policy that will be applied and managed by GKE On-Prem.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<VMwareClusterAuthorization>> authorization() {
@@ -472,7 +456,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration for auto repairing.
-     * Structure is documented below.
      * 
      */
     @Export(name="autoRepairConfig", refs={VMwareClusterAutoRepairConfig.class}, tree="[0]")
@@ -480,7 +463,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration for auto repairing.
-     * Structure is documented below.
      * 
      */
     public Output<VMwareClusterAutoRepairConfig> autoRepairConfig() {
@@ -518,7 +500,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-     * Structure is documented below.
      * 
      */
     @Export(name="dataplaneV2", refs={VMwareClusterDataplaneV2.class}, tree="[0]")
@@ -526,7 +507,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-     * Structure is documented below.
      * 
      */
     public Output<VMwareClusterDataplaneV2> dataplaneV2() {
@@ -547,14 +527,16 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
         return this.deleteTime;
     }
     /**
-     * A human readable description of this VMware User Cluster.
+     * (Output)
+     * The description of the validation check.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A human readable description of this VMware User Cluster.
+     * @return (Output)
+     * The description of the validation check.
      * 
      */
     public Output<Optional<String>> description() {
@@ -658,7 +640,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Load Balancer configuration.
-     * Structure is documented below.
      * 
      */
     @Export(name="loadBalancer", refs={VMwareClusterLoadBalancer.class}, tree="[0]")
@@ -666,7 +647,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Load Balancer configuration.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<VMwareClusterLoadBalancer>> loadBalancer() {
@@ -734,7 +714,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The VMware User Cluster network configuration.
-     * Structure is documented below.
      * 
      */
     @Export(name="networkConfig", refs={VMwareClusterNetworkConfig.class}, tree="[0]")
@@ -742,7 +721,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The VMware User Cluster network configuration.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<VMwareClusterNetworkConfig>> networkConfig() {
@@ -762,19 +740,9 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
     public Output<String> onPremVersion() {
         return this.onPremVersion;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
@@ -828,7 +796,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Storage configuration.
-     * Structure is documented below.
      * 
      */
     @Export(name="storage", refs={VMwareClusterStorage.class}, tree="[0]")
@@ -836,7 +803,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Storage configuration.
-     * Structure is documented below.
      * 
      */
     public Output<VMwareClusterStorage> storage() {
@@ -872,7 +838,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies upgrade policy for the cluster.
-     * Structure is documented below.
      * 
      */
     @Export(name="upgradePolicy", refs={VMwareClusterUpgradePolicy.class}, tree="[0]")
@@ -880,7 +845,6 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies upgrade policy for the cluster.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<VMwareClusterUpgradePolicy>> upgradePolicy() {
@@ -903,18 +867,14 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
         return this.validationChecks;
     }
     /**
-     * VmwareVCenterConfig specifies vCenter config for the user cluster.
-     * Inherited from the admin cluster.
-     * Structure is documented below.
+     * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      * 
      */
     @Export(name="vcenters", refs={List.class,VMwareClusterVcenter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VMwareClusterVcenter>> vcenters;
 
     /**
-     * @return VmwareVCenterConfig specifies vCenter config for the user cluster.
-     * Inherited from the admin cluster.
-     * Structure is documented below.
+     * @return VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      * 
      */
     public Output<Optional<List<VMwareClusterVcenter>>> vcenters() {

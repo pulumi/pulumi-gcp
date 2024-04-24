@@ -59,16 +59,14 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A filter for mirrored traffic.  If unset, all traffic is mirrored.
-     * Structure is documented below.
+     * A filter for mirrored traffic. If unset, all traffic is mirrored.
      * 
      */
     @Import(name="filter")
     private @Nullable Output<PacketMirroringFilterArgs> filter;
 
     /**
-     * @return A filter for mirrored traffic.  If unset, all traffic is mirrored.
-     * Structure is documented below.
+     * @return A filter for mirrored traffic. If unset, all traffic is mirrored.
      * 
      */
     public Optional<Output<PacketMirroringFilterArgs>> filter() {
@@ -129,52 +127,38 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Since only one rule can be active at a time, priority is
-     * used to break ties in the case of two rules that apply to
-     * the same instances.
+     * Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+     * same instances.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return Since only one rule can be active at a time, priority is
-     * used to break ties in the case of two rules that apply to
-     * the same instances.
+     * @return Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+     * same instances.
      * 
      */
     public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The Region in which the created address should reside.
-     * If it is not provided, the provider region is used.
+     * The Region in which the created address should reside. If it is not provided, the provider region is used.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The Region in which the created address should reside.
-     * If it is not provided, the provider region is used.
+     * @return The Region in which the created address should reside. If it is not provided, the provider region is used.
      * 
      */
     public Optional<Output<String>> region() {
@@ -264,8 +248,7 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filter A filter for mirrored traffic.  If unset, all traffic is mirrored.
-         * Structure is documented below.
+         * @param filter A filter for mirrored traffic. If unset, all traffic is mirrored.
          * 
          * @return builder
          * 
@@ -276,8 +259,7 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filter A filter for mirrored traffic.  If unset, all traffic is mirrored.
-         * Structure is documented below.
+         * @param filter A filter for mirrored traffic. If unset, all traffic is mirrored.
          * 
          * @return builder
          * 
@@ -358,9 +340,8 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param priority Since only one rule can be active at a time, priority is
-         * used to break ties in the case of two rules that apply to
-         * the same instances.
+         * @param priority Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+         * same instances.
          * 
          * @return builder
          * 
@@ -371,9 +352,8 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param priority Since only one rule can be active at a time, priority is
-         * used to break ties in the case of two rules that apply to
-         * the same instances.
+         * @param priority Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+         * same instances.
          * 
          * @return builder
          * 
@@ -382,32 +362,17 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
             return priority(Output.of(priority));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param region The Region in which the created address should reside.
-         * If it is not provided, the provider region is used.
+         * @param region The Region in which the created address should reside. If it is not provided, the provider region is used.
          * 
          * @return builder
          * 
@@ -418,8 +383,7 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The Region in which the created address should reside.
-         * If it is not provided, the provider region is used.
+         * @param region The Region in which the created address should reside. If it is not provided, the provider region is used.
          * 
          * @return builder
          * 

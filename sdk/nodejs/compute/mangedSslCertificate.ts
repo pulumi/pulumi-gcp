@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  *
  * ### Managed Ssl Certificate Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -89,7 +88,6 @@ import * as utilities from "../utilities";
  *     portRange: "443",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ## Import
  *
  * ManagedSslCertificate can be imported using any of these accepted formats:

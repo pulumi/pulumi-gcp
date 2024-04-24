@@ -356,7 +356,6 @@ class Endpoint(pulumi.CustomResource):
 
         ### Cloudids Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -378,7 +377,6 @@ class Endpoint(pulumi.CustomResource):
             network=default.id,
             severity="INFORMATIONAL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -436,7 +434,6 @@ class Endpoint(pulumi.CustomResource):
 
         ### Cloudids Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -458,7 +455,6 @@ class Endpoint(pulumi.CustomResource):
             network=default.id,
             severity="INFORMATIONAL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// ### Identity Platform Project Default Config
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -60,7 +59,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

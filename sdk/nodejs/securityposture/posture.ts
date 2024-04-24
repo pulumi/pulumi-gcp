@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Securityposture Posture Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -129,7 +128,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -176,7 +174,7 @@ export class Posture extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Description of the expression
+     * Description of the posture.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -188,7 +186,7 @@ export class Posture extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Immutable. The name of the custom constraint. This is unique within the organization.
+     * Name of the posture.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -292,7 +290,7 @@ export interface PostureState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Description of the expression
+     * Description of the posture.
      */
     description?: pulumi.Input<string>;
     /**
@@ -304,7 +302,7 @@ export interface PostureState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Immutable. The name of the custom constraint. This is unique within the organization.
+     * Name of the posture.
      */
     name?: pulumi.Input<string>;
     /**
@@ -345,7 +343,7 @@ export interface PostureState {
  */
 export interface PostureArgs {
     /**
-     * Description of the expression
+     * Description of the posture.
      */
     description?: pulumi.Input<string>;
     /**

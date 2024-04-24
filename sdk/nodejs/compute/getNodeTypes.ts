@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     nodeType: types.names[0],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypesResult> {
     args = args || {};
@@ -74,7 +72,6 @@ export interface GetNodeTypesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,7 +85,6 @@ export interface GetNodeTypesResult {
  *     nodeType: types.names[0],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeTypesOutput(args?: GetNodeTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTypesResult> {
     return pulumi.output(args).apply((a: any) => getNodeTypes(a, opts))

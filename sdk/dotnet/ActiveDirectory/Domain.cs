@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// ### Active Directory Domain Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

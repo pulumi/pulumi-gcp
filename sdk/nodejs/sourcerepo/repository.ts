@@ -19,17 +19,14 @@ import * as utilities from "../utilities";
  *
  * ### Sourcerepo Repository Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.sourcerepo.Repository("my-repo", {name: "my/repository"});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Sourcerepo Repository Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -48,7 +45,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

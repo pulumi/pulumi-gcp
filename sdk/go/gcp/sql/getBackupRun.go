@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBackupRun(ctx *pulumi.Context, args *GetBackupRunArgs, opts ...pulumi.InvokeOption) (*GetBackupRunResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupRunResult

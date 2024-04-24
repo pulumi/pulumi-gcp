@@ -24,7 +24,6 @@ import (
 //
 // ### Dialogflowcx Flow Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,10 +121,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dialogflowcx Flow Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -516,7 +513,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -566,8 +562,8 @@ type CxFlow struct {
 	// Flow.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
-	// (Output)
-	// The unique identifier of this event handler.
+	// The unique identifier of the flow.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// NLU related settings of the flow.
 	// Structure is documented below.
@@ -652,8 +648,8 @@ type cxFlowState struct {
 	// Flow.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
-	// (Output)
-	// The unique identifier of this event handler.
+	// The unique identifier of the flow.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	Name *string `pulumi:"name"`
 	// NLU related settings of the flow.
 	// Structure is documented below.
@@ -706,8 +702,8 @@ type CxFlowState struct {
 	// Flow.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
-	// (Output)
-	// The unique identifier of this event handler.
+	// The unique identifier of the flow.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	Name pulumi.StringPtrInput
 	// NLU related settings of the flow.
 	// Structure is documented below.
@@ -971,8 +967,8 @@ func (o CxFlowOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlow) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// The unique identifier of this event handler.
+// The unique identifier of the flow.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 func (o CxFlowOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxFlow) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -184,7 +184,6 @@ class InstanceSettings(pulumi.CustomResource):
 
         ### Instance Settings Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -197,7 +196,6 @@ class InstanceSettings(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -253,7 +251,6 @@ class InstanceSettings(pulumi.CustomResource):
 
         ### Instance Settings Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -266,7 +263,6 @@ class InstanceSettings(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

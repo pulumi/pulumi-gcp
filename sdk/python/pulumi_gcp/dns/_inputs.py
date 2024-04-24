@@ -1032,7 +1032,6 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
         """
         :param pulumi.Input[str] location: The location name defined in Google Cloud.
         :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         if health_checked_targets is not None:
@@ -1057,7 +1056,6 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
     def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']]:
         """
         For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-        Structure is documented below.
         """
         return pulumi.get(self, "health_checked_targets")
 
@@ -1218,7 +1216,6 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs:
                  internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
-               Structure is documented below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
@@ -1227,7 +1224,6 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs:
     def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]:
         """
         The list of internal load balancers to health check.
-        Structure is documented below.
         """
         return pulumi.get(self, "internal_load_balancers")
 

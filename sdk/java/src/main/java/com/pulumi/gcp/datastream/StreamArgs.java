@@ -23,7 +23,6 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Backfill strategy to automatically backfill the Stream&#39;s objects. Specific objects can be excluded.
-     * Structure is documented below.
      * 
      */
     @Import(name="backfillAll")
@@ -31,7 +30,6 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Backfill strategy to automatically backfill the Stream&#39;s objects. Specific objects can be excluded.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<StreamBackfillAllArgs>> backfillAll() {
@@ -54,16 +52,16 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+     * encrypted using an internal Stream-specific encryption key provisioned through KMS.
      * 
      */
     @Import(name="customerManagedEncryptionKey")
     private @Nullable Output<String> customerManagedEncryptionKey;
 
     /**
-     * @return A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * @return A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+     * encrypted using an internal Stream-specific encryption key provisioned through KMS.
      * 
      */
     public Optional<Output<String>> customerManagedEncryptionKey() {
@@ -71,14 +69,14 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+     * Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream.
      * 
      */
     @Import(name="desiredState")
     private @Nullable Output<String> desiredState;
 
     /**
-     * @return Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+     * @return Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream.
      * 
      */
     public Optional<Output<String>> desiredState() {
@@ -118,18 +116,16 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Labels.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -151,19 +147,9 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         return this.location;
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -236,7 +222,6 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backfillAll Backfill strategy to automatically backfill the Stream&#39;s objects. Specific objects can be excluded.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -248,7 +233,6 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backfillAll Backfill strategy to automatically backfill the Stream&#39;s objects. Specific objects can be excluded.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -279,8 +263,8 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customerManagedEncryptionKey A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-         * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+         * @param customerManagedEncryptionKey A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+         * encrypted using an internal Stream-specific encryption key provisioned through KMS.
          * 
          * @return builder
          * 
@@ -291,8 +275,8 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customerManagedEncryptionKey A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-         * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+         * @param customerManagedEncryptionKey A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+         * encrypted using an internal Stream-specific encryption key provisioned through KMS.
          * 
          * @return builder
          * 
@@ -302,7 +286,7 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+         * @param desiredState Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream.
          * 
          * @return builder
          * 
@@ -313,7 +297,7 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+         * @param desiredState Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream.
          * 
          * @return builder
          * 
@@ -367,9 +351,8 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+         * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -380,9 +363,8 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+         * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -412,25 +394,11 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
             return location(Output.of(location));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

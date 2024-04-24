@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Iap Client
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,7 +44,6 @@ import * as utilities from "../utilities";
  *     brand: projectBrand.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

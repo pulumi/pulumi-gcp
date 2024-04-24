@@ -277,14 +277,16 @@ public class FolderCustomModule extends com.pulumi.resources.CustomResource {
         return this.lastEditor;
     }
     /**
-     * Name of the property for the custom output.
+     * The resource name of the custom module. Its format is &#34;folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the property for the custom output.
+     * @return The resource name of the custom module. Its format is &#34;folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      * 
      */
     public Output<String> name() {

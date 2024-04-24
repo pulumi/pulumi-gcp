@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Apphub
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.Apphub
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDiscoveredWorkloadResult> InvokeAsync(GetDiscoveredWorkloadArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiscoveredWorkloadResult>("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args ?? new GetDiscoveredWorkloadArgs(), options.WithDefaults());
@@ -45,7 +43,6 @@ namespace Pulumi.Gcp.Apphub
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Gcp.Apphub
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDiscoveredWorkloadResult> Invoke(GetDiscoveredWorkloadInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiscoveredWorkloadResult>("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args ?? new GetDiscoveredWorkloadInvokeArgs(), options.WithDefaults());

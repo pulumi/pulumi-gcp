@@ -2989,7 +2989,6 @@ class Cluster(pulumi.CustomResource):
 
         ### With A Separately Managed Node Pool (Recommended)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3014,7 +3013,6 @@ class Cluster(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
         This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
@@ -3022,7 +3020,6 @@ class Cluster(pulumi.CustomResource):
 
         ### With The Default Node Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3046,11 +3043,9 @@ class Cluster(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Autopilot
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3063,7 +3058,6 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a",
             enable_autopilot=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -3328,7 +3322,6 @@ class Cluster(pulumi.CustomResource):
 
         ### With A Separately Managed Node Pool (Recommended)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3353,7 +3346,6 @@ class Cluster(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
         This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
@@ -3361,7 +3353,6 @@ class Cluster(pulumi.CustomResource):
 
         ### With The Default Node Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3385,11 +3376,9 @@ class Cluster(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Autopilot
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3402,7 +3391,6 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a",
             enable_autopilot=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

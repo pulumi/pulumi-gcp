@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Management Connectivity Test Instances
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,10 +70,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Management Connectivity Test Addresses
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -116,7 +113,6 @@ import * as utilities from "../utilities";
  *     protocol: "UDP",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -171,8 +167,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
     }
 
     /**
-     * The user-supplied description of the Connectivity Test.
-     * Maximum of 512 characters.
+     * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -198,20 +193,15 @@ export class ConnectivityTest extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Resource labels to represent user-provided metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Unique name for the connectivity test.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
@@ -223,9 +213,8 @@ export class ConnectivityTest extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Other projects that may be relevant for reachability analysis.
-     * This is applicable to scenarios where a test can cross project
-     * boundaries.
+     * Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
+     * project boundaries.
      */
     public readonly relatedProjects!: pulumi.Output<string[] | undefined>;
     /**
@@ -305,8 +294,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
  */
 export interface ConnectivityTestState {
     /**
-     * The user-supplied description of the Connectivity Test.
-     * Maximum of 512 characters.
+     * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -332,20 +320,15 @@ export interface ConnectivityTestState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource labels to represent user-provided metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Unique name for the connectivity test.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
@@ -357,9 +340,8 @@ export interface ConnectivityTestState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Other projects that may be relevant for reachability analysis.
-     * This is applicable to scenarios where a test can cross project
-     * boundaries.
+     * Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
+     * project boundaries.
      */
     relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -391,8 +373,7 @@ export interface ConnectivityTestState {
  */
 export interface ConnectivityTestArgs {
     /**
-     * The user-supplied description of the Connectivity Test.
-     * Maximum of 512 characters.
+     * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -414,29 +395,23 @@ export interface ConnectivityTestArgs {
      */
     destination: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
     /**
-     * Resource labels to represent user-provided metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Unique name for the connectivity test.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * Other projects that may be relevant for reachability analysis.
-     * This is applicable to scenarios where a test can cross project
-     * boundaries.
+     * Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
+     * project boundaries.
      */
     relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**

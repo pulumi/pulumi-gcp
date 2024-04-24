@@ -373,7 +373,6 @@ class User(pulumi.CustomResource):
 
         Example creating a SQL User.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -392,11 +391,9 @@ class User(pulumi.CustomResource):
             host="me.com",
             password="changeme")
         ```
-        <!--End PulumiCodeChooser -->
 
         Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -424,11 +421,9 @@ class User(pulumi.CustomResource):
             instance=main.name,
             type="CLOUD_IAM_SERVICE_ACCOUNT")
         ```
-        <!--End PulumiCodeChooser -->
 
         Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -450,7 +445,6 @@ class User(pulumi.CustomResource):
             instance=main.name,
             type="CLOUD_IAM_GROUP")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -515,7 +509,6 @@ class User(pulumi.CustomResource):
 
         Example creating a SQL User.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,11 +527,9 @@ class User(pulumi.CustomResource):
             host="me.com",
             password="changeme")
         ```
-        <!--End PulumiCodeChooser -->
 
         Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -566,11 +557,9 @@ class User(pulumi.CustomResource):
             instance=main.name,
             type="CLOUD_IAM_SERVICE_ACCOUNT")
         ```
-        <!--End PulumiCodeChooser -->
 
         Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -592,7 +581,6 @@ class User(pulumi.CustomResource):
             instance=main.name,
             type="CLOUD_IAM_GROUP")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

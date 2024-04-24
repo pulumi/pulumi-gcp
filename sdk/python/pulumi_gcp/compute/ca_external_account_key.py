@@ -178,14 +178,12 @@ class CaExternalAccountKey(pulumi.CustomResource):
 
         ### Public Ca External Account Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         prod = gcp.compute.CaExternalAccountKey("prod", project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -224,14 +222,12 @@ class CaExternalAccountKey(pulumi.CustomResource):
 
         ### Public Ca External Account Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         prod = gcp.compute.CaExternalAccountKey("prod", project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

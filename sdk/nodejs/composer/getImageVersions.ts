@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageVersionsResult> {
     args = args || {};
@@ -75,7 +73,6 @@ export interface GetImageVersionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -91,7 +88,6 @@ export interface GetImageVersionsResult {
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getImageVersionsOutput(args?: GetImageVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageVersionsResult> {
     return pulumi.output(args).apply((a: any) => getImageVersions(a, opts))

@@ -24,7 +24,6 @@ import (
 //
 // ### Uptime Check Config Http
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,10 +80,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Uptime Check Config Status Code
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -145,10 +142,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Uptime Check Config Https
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -196,10 +191,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Uptime Check Tcp
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -241,10 +234,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Uptime Check Config Synthetic Monitor
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -314,7 +305,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -346,7 +336,7 @@ type UptimeCheckConfig struct {
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrOutput `pulumi:"monitoredResource"`
-	// The fully qualified name of the cloud function resource.
+	// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
@@ -426,7 +416,7 @@ type uptimeCheckConfigState struct {
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
-	// The fully qualified name of the cloud function resource.
+	// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
 	Name *string `pulumi:"name"`
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period *string `pulumi:"period"`
@@ -471,7 +461,7 @@ type UptimeCheckConfigState struct {
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
-	// The fully qualified name of the cloud function resource.
+	// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
 	Name pulumi.StringPtrInput
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period pulumi.StringPtrInput
@@ -704,7 +694,7 @@ func (o UptimeCheckConfigOutput) MonitoredResource() UptimeCheckConfigMonitoredR
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigMonitoredResourcePtrOutput { return v.MonitoredResource }).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
 
-// The fully qualified name of the cloud function resource.
+// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
 func (o UptimeCheckConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

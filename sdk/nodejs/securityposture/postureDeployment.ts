@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Securityposture Posture Deployment Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,7 +56,6 @@ import * as utilities from "../utilities";
  *     postureRevisionId: posture1.revisionId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

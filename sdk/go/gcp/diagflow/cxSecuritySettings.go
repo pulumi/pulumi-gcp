@@ -25,7 +25,6 @@ import (
 //
 // ### Dialogflowcx Security Settings Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,10 +51,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dialogflowcx Security Settings Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -143,7 +140,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

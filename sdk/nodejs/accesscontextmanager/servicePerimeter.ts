@@ -33,7 +33,6 @@ import * as utilities from "../utilities";
  *
  * ### Access Context Manager Service Perimeter Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,10 +70,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Access Context Manager Service Perimeter Secure Data Exchange
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -185,10 +182,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Access Context Manager Service Perimeter Dry-Run
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -210,7 +205,6 @@ import * as utilities from "../utilities";
  *     useExplicitDryRunSpec: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ## Import
  *
  * ServicePerimeter can be imported using any of these accepted formats:

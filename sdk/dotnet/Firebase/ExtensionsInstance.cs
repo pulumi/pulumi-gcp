@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// ### Firebase Extentions Instance Resize Image
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -68,7 +67,6 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -105,8 +103,7 @@ namespace Pulumi.Gcp.Firebase
         public Output<Outputs.ExtensionsInstanceConfig> Config { get; private set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// The time at which the Extension Instance Config was created.
+        /// The time at which the Extension Instance was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -148,16 +145,11 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> LastOperationType { get; private set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// The unique identifier for this configuration.
+        /// The fully-qualified resource name of the Extension Instance.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -247,10 +239,6 @@ namespace Pulumi.Gcp.Firebase
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -270,8 +258,7 @@ namespace Pulumi.Gcp.Firebase
         public Input<Inputs.ExtensionsInstanceConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// The time at which the Extension Instance Config was created.
+        /// The time at which the Extension Instance was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -319,16 +306,11 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? LastOperationType { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// The unique identifier for this configuration.
+        /// The fully-qualified resource name of the Extension Instance.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

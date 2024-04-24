@@ -16,14 +16,14 @@ public final class ClusterEnableK8sBetaApisArgs extends com.pulumi.resources.Res
     public static final ClusterEnableK8sBetaApisArgs Empty = new ClusterEnableK8sBetaApisArgs();
 
     /**
-     * Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+     * Enabled Kubernetes Beta APIs.
      * 
      */
     @Import(name="enabledApis", required=true)
     private Output<List<String>> enabledApis;
 
     /**
-     * @return Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+     * @return Enabled Kubernetes Beta APIs.
      * 
      */
     public Output<List<String>> enabledApis() {
@@ -55,7 +55,7 @@ public final class ClusterEnableK8sBetaApisArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabledApis Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+         * @param enabledApis Enabled Kubernetes Beta APIs.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClusterEnableK8sBetaApisArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabledApis Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+         * @param enabledApis Enabled Kubernetes Beta APIs.
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class ClusterEnableK8sBetaApisArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabledApis Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+         * @param enabledApis Enabled Kubernetes Beta APIs.
          * 
          * @return builder
          * 

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebasehosting Customdomain Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,10 +21,8 @@ import * as utilities from "../utilities";
  *     customDomain: "custom.domain.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Customdomain Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,10 +40,8 @@ import * as utilities from "../utilities";
  *     waitDnsVerification: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Customdomain Cloud Run
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,7 +85,6 @@ import * as utilities from "../utilities";
  *     waitDnsVerification: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

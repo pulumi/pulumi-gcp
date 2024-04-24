@@ -267,7 +267,6 @@ class FirewallPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -277,7 +276,6 @@ class FirewallPolicy(pulumi.CustomResource):
             short_name="my-policy",
             description="Example Resource")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -316,7 +314,6 @@ class FirewallPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -326,7 +323,6 @@ class FirewallPolicy(pulumi.CustomResource):
             short_name="my-policy",
             description="Example Resource")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -24,7 +24,6 @@ import (
 //
 // ### Apigee Env Keystore Alias Self Signed Cert
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -147,7 +146,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -192,7 +190,6 @@ type KeystoresAliasesSelfSignedCert struct {
 	// Structure is documented below.
 	Subject KeystoresAliasesSelfSignedCertSubjectOutput `pulumi:"subject"`
 	// List of alternative host names. Maximum length is 255 characters for each value.
-	// Structure is documented below.
 	SubjectAlternativeDnsNames KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput `pulumi:"subjectAlternativeDnsNames"`
 	// Optional.Type of Alias
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -269,7 +266,6 @@ type keystoresAliasesSelfSignedCertState struct {
 	// Structure is documented below.
 	Subject *KeystoresAliasesSelfSignedCertSubject `pulumi:"subject"`
 	// List of alternative host names. Maximum length is 255 characters for each value.
-	// Structure is documented below.
 	SubjectAlternativeDnsNames *KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames `pulumi:"subjectAlternativeDnsNames"`
 	// Optional.Type of Alias
 	Type *string `pulumi:"type"`
@@ -299,7 +295,6 @@ type KeystoresAliasesSelfSignedCertState struct {
 	// Structure is documented below.
 	Subject KeystoresAliasesSelfSignedCertSubjectPtrInput
 	// List of alternative host names. Maximum length is 255 characters for each value.
-	// Structure is documented below.
 	SubjectAlternativeDnsNames KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrInput
 	// Optional.Type of Alias
 	Type pulumi.StringPtrInput
@@ -330,7 +325,6 @@ type keystoresAliasesSelfSignedCertArgs struct {
 	// Structure is documented below.
 	Subject KeystoresAliasesSelfSignedCertSubject `pulumi:"subject"`
 	// List of alternative host names. Maximum length is 255 characters for each value.
-	// Structure is documented below.
 	SubjectAlternativeDnsNames *KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames `pulumi:"subjectAlternativeDnsNames"`
 }
 
@@ -356,7 +350,6 @@ type KeystoresAliasesSelfSignedCertArgs struct {
 	// Structure is documented below.
 	Subject KeystoresAliasesSelfSignedCertSubjectInput
 	// List of alternative host names. Maximum length is 255 characters for each value.
-	// Structure is documented below.
 	SubjectAlternativeDnsNames KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrInput
 }
 
@@ -499,7 +492,6 @@ func (o KeystoresAliasesSelfSignedCertOutput) Subject() KeystoresAliasesSelfSign
 }
 
 // List of alternative host names. Maximum length is 255 characters for each value.
-// Structure is documented below.
 func (o KeystoresAliasesSelfSignedCertOutput) SubjectAlternativeDnsNames() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
 	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCert) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
 		return v.SubjectAlternativeDnsNames

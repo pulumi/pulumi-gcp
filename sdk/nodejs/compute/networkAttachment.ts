@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Attachment Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -48,10 +47,8 @@ import * as utilities from "../utilities";
  *     producerRejectLists: [rejectedProducerProject.projectId],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Attachment Instance Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -92,7 +89,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

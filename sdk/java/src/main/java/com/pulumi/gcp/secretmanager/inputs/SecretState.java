@@ -21,38 +21,28 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     public static final SecretState Empty = new SecretState();
 
     /**
-     * Custom metadata about the secret.
-     * Annotations are distinct from various forms of labels. Annotations exist to allow
-     * client tools to store their own state information without requiring a database.
-     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
-     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
-     * symbols.
-     * The total size of annotation keys and values must be less than 16KiB.
-     * An object containing a list of &#34;key&#34;: value pairs. Example:
-     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
+     * characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
+     * and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
+     * annotation keys and values must be less than 16KiB. An object containing a list of &#34;key&#34;: value pairs. Example: {
+     * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the
+     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+     * present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Custom metadata about the secret.
-     * Annotations are distinct from various forms of labels. Annotations exist to allow
-     * client tools to store their own state information without requiring a database.
-     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
-     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
-     * symbols.
-     * The total size of annotation keys and values must be less than 16KiB.
-     * An object containing a list of &#34;key&#34;: value pairs. Example:
-     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
+     * characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
+     * and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
+     * annotation keys and values must be less than 16KiB. An object containing a list of &#34;key&#34;: value pairs. Example: {
+     * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the
+     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+     * present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -107,18 +97,20 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
-     * Only one of `expire_time` or `ttl` can be provided.
+     * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
+     * on input. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;. Only one of &#39;expire_time&#39; or &#39;ttl&#39; can be
+     * provided.
      * 
      */
     @Import(name="expireTime")
     private @Nullable Output<String> expireTime;
 
     /**
-     * @return Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
-     * Only one of `expire_time` or `ttl` can be provided.
+     * @return Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
+     * on input. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;. Only one of &#39;expire_time&#39; or &#39;ttl&#39; can be
+     * provided.
      * 
      */
     public Optional<Output<String>> expireTime() {
@@ -126,34 +118,26 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The labels assigned to this Secret.
-     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-     * No more than 64 labels can be assigned to a given resource.
-     * An object containing a list of &#34;key&#34;: value pairs. Example:
-     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+     * the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+     * resource. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34;
+     * }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return The labels assigned to this Secret.
-     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-     * No more than 64 labels can be assigned to a given resource.
-     * An object containing a list of &#34;key&#34;: value pairs. Example:
-     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+     * the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+     * resource. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34;
+     * }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -161,35 +145,25 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
-     * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+     * The resource name of the Secret. Format:
+     * `projects/{{project}}/secrets/{{secret_id}}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
-     * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+     * @return The resource name of the Secret. Format:
+     * `projects/{{project}}/secrets/{{secret_id}}`
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -231,16 +205,16 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
-     * Structure is documented below.
+     * The rotation time and period for a Secret. At &#39;next_rotation_time&#39;, Secret Manager will send a Pub/Sub notification to
+     * the topics configured on the Secret. &#39;topics&#39; must be set to configure rotation.
      * 
      */
     @Import(name="rotation")
     private @Nullable Output<SecretRotationArgs> rotation;
 
     /**
-     * @return The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
-     * Structure is documented below.
+     * @return The rotation time and period for a Secret. At &#39;next_rotation_time&#39;, Secret Manager will send a Pub/Sub notification to
+     * the topics configured on the Secret. &#39;topics&#39; must be set to configure rotation.
      * 
      */
     public Optional<Output<SecretRotationArgs>> rotation() {
@@ -263,16 +237,16 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
-     * Structure is documented below.
+     * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+     * or its versions.
      * 
      */
     @Import(name="topics")
     private @Nullable Output<List<SecretTopicArgs>> topics;
 
     /**
-     * @return A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
-     * Structure is documented below.
+     * @return A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+     * or its versions.
      * 
      */
     public Optional<Output<List<SecretTopicArgs>>> topics() {
@@ -280,18 +254,16 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The TTL for the Secret.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-     * Only one of `ttl` or `expire_time` can be provided.
+     * The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of &#39;ttl&#39; or &#39;expire_time&#39; can be provided.
      * 
      */
     @Import(name="ttl")
     private @Nullable Output<String> ttl;
 
     /**
-     * @return The TTL for the Secret.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-     * Only one of `ttl` or `expire_time` can be provided.
+     * @return The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of &#39;ttl&#39; or &#39;expire_time&#39; can be provided.
      * 
      */
     public Optional<Output<String>> ttl() {
@@ -299,26 +271,20 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mapping from version alias to version name.
-     * A version alias is a string with a maximum length of 63 characters and can contain
-     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
-     * characters. An alias string must start with a letter and cannot be the string
-     * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
-     * An object containing a list of &#34;key&#34;: value pairs. Example:
-     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
+     * contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;) characters. An alias string
+     * must start with a letter and cannot be the string &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given
+     * secret. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     @Import(name="versionAliases")
     private @Nullable Output<Map<String,String>> versionAliases;
 
     /**
-     * @return Mapping from version alias to version name.
-     * A version alias is a string with a maximum length of 63 characters and can contain
-     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
-     * characters. An alias string must start with a letter and cannot be the string
-     * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
-     * An object containing a list of &#34;key&#34;: value pairs. Example:
-     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * @return Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
+     * contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;) characters. An alias string
+     * must start with a letter and cannot be the string &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given
+     * secret. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     public Optional<Output<Map<String,String>>> versionAliases() {
@@ -364,19 +330,14 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Custom metadata about the secret.
-         * Annotations are distinct from various forms of labels. Annotations exist to allow
-         * client tools to store their own state information without requiring a database.
-         * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-         * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
-         * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
-         * symbols.
-         * The total size of annotation keys and values must be less than 16KiB.
-         * An object containing a list of &#34;key&#34;: value pairs. Example:
-         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
+         * client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
+         * characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
+         * and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
+         * annotation keys and values must be less than 16KiB. An object containing a list of &#34;key&#34;: value pairs. Example: {
+         * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the
+         * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+         * present on the resource.
          * 
          * @return builder
          * 
@@ -387,19 +348,14 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Custom metadata about the secret.
-         * Annotations are distinct from various forms of labels. Annotations exist to allow
-         * client tools to store their own state information without requiring a database.
-         * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-         * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
-         * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
-         * symbols.
-         * The total size of annotation keys and values must be less than 16KiB.
-         * An object containing a list of &#34;key&#34;: value pairs. Example:
-         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
+         * client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
+         * characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
+         * and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
+         * annotation keys and values must be less than 16KiB. An object containing a list of &#34;key&#34;: value pairs. Example: {
+         * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the
+         * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+         * present on the resource.
          * 
          * @return builder
          * 
@@ -474,9 +430,10 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expireTime Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
-         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
-         * Only one of `expire_time` or `ttl` can be provided.
+         * @param expireTime Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
+         * on input. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;. Only one of &#39;expire_time&#39; or &#39;ttl&#39; can be
+         * provided.
          * 
          * @return builder
          * 
@@ -487,9 +444,10 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expireTime Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
-         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
-         * Only one of `expire_time` or `ttl` can be provided.
+         * @param expireTime Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
+         * on input. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;. Only one of &#39;expire_time&#39; or &#39;ttl&#39; can be
+         * provided.
          * 
          * @return builder
          * 
@@ -499,17 +457,13 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels The labels assigned to this Secret.
-         * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-         * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-         * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-         * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-         * No more than 64 labels can be assigned to a given resource.
-         * An object containing a list of &#34;key&#34;: value pairs. Example:
-         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+         * maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+         * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+         * the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+         * resource. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34;
+         * }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+         * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -520,17 +474,13 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels The labels assigned to this Secret.
-         * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-         * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-         * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-         * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-         * No more than 64 labels can be assigned to a given resource.
-         * An object containing a list of &#34;key&#34;: value pairs. Example:
-         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+         * maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+         * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+         * the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+         * resource. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34;
+         * }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+         * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -540,8 +490,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
-         * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+         * @param name The resource name of the Secret. Format:
+         * `projects/{{project}}/secrets/{{secret_id}}`
          * 
          * @return builder
          * 
@@ -552,8 +502,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
-         * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+         * @param name The resource name of the Secret. Format:
+         * `projects/{{project}}/secrets/{{secret_id}}`
          * 
          * @return builder
          * 
@@ -562,25 +512,11 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -634,8 +570,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotation The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
-         * Structure is documented below.
+         * @param rotation The rotation time and period for a Secret. At &#39;next_rotation_time&#39;, Secret Manager will send a Pub/Sub notification to
+         * the topics configured on the Secret. &#39;topics&#39; must be set to configure rotation.
          * 
          * @return builder
          * 
@@ -646,8 +582,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotation The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
-         * Structure is documented below.
+         * @param rotation The rotation time and period for a Secret. At &#39;next_rotation_time&#39;, Secret Manager will send a Pub/Sub notification to
+         * the topics configured on the Secret. &#39;topics&#39; must be set to configure rotation.
          * 
          * @return builder
          * 
@@ -678,8 +614,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topics A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
-         * Structure is documented below.
+         * @param topics A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+         * or its versions.
          * 
          * @return builder
          * 
@@ -690,8 +626,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topics A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
-         * Structure is documented below.
+         * @param topics A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+         * or its versions.
          * 
          * @return builder
          * 
@@ -701,8 +637,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topics A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
-         * Structure is documented below.
+         * @param topics A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+         * or its versions.
          * 
          * @return builder
          * 
@@ -712,9 +648,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl The TTL for the Secret.
-         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-         * Only one of `ttl` or `expire_time` can be provided.
+         * @param ttl The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * Only one of &#39;ttl&#39; or &#39;expire_time&#39; can be provided.
          * 
          * @return builder
          * 
@@ -725,9 +660,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl The TTL for the Secret.
-         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-         * Only one of `ttl` or `expire_time` can be provided.
+         * @param ttl The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * Only one of &#39;ttl&#39; or &#39;expire_time&#39; can be provided.
          * 
          * @return builder
          * 
@@ -737,13 +671,10 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionAliases Mapping from version alias to version name.
-         * A version alias is a string with a maximum length of 63 characters and can contain
-         * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
-         * characters. An alias string must start with a letter and cannot be the string
-         * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
-         * An object containing a list of &#34;key&#34;: value pairs. Example:
-         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * @param versionAliases Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
+         * contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;) characters. An alias string
+         * must start with a letter and cannot be the string &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given
+         * secret. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * @return builder
          * 
@@ -754,13 +685,10 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionAliases Mapping from version alias to version name.
-         * A version alias is a string with a maximum length of 63 characters and can contain
-         * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
-         * characters. An alias string must start with a letter and cannot be the string
-         * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
-         * An object containing a list of &#34;key&#34;: value pairs. Example:
-         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * @param versionAliases Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
+         * contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;) characters. An alias string
+         * must start with a letter and cannot be the string &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given
+         * secret. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * @return builder
          * 

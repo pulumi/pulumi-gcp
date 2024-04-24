@@ -370,34 +370,32 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
         return this.guestPolicyId;
     }
     /**
-     * The name of the repository.
+     * Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the repository.
+     * @return Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * A list of package repositories to configure on the VM instance.
-     * This is done before any other configs are applied so they can use these repos.
-     * Package repositories are only configured if the corresponding package manager(s) are available.
-     * Structure is documented below.
+     * A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+     * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+     * available.
      * 
      */
     @Export(name="packageRepositories", refs={List.class,GuestPoliciesPackageRepository.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GuestPoliciesPackageRepository>> packageRepositories;
 
     /**
-     * @return A list of package repositories to configure on the VM instance.
-     * This is done before any other configs are applied so they can use these repos.
-     * Package repositories are only configured if the corresponding package manager(s) are available.
-     * Structure is documented below.
+     * @return A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+     * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+     * available.
      * 
      */
     public Output<Optional<List<GuestPoliciesPackageRepository>>> packageRepositories() {
@@ -405,7 +403,6 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
     }
     /**
      * The software packages to be managed by this policy.
-     * Structure is documented below.
      * 
      */
     @Export(name="packages", refs={List.class,GuestPoliciesPackage.class}, tree="[0,1]")
@@ -413,31 +410,19 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The software packages to be managed by this policy.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<List<GuestPoliciesPackage>>> packages() {
         return Codegen.optional(this.packages);
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
     /**
      * A list of Recipes to install on the VM instance.
-     * Structure is documented below.
      * 
      */
     @Export(name="recipes", refs={List.class,GuestPoliciesRecipe.class}, tree="[0,1]")
@@ -445,7 +430,6 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of Recipes to install on the VM instance.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<List<GuestPoliciesRecipe>>> recipes() {

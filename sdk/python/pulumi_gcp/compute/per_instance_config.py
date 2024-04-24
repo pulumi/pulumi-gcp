@@ -417,7 +417,6 @@ class PerInstanceConfig(pulumi.CustomResource):
 
         ### Stateful Igm
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -479,7 +478,6 @@ class PerInstanceConfig(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -561,7 +559,6 @@ class PerInstanceConfig(pulumi.CustomResource):
 
         ### Stateful Igm
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -623,7 +620,6 @@ class PerInstanceConfig(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

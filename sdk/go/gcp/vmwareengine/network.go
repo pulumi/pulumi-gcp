@@ -22,7 +22,6 @@ import (
 //
 // ### Vmware Engine Network Standard
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,10 +48,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vmware Engine Network Legacy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,7 +104,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

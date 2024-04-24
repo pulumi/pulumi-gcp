@@ -247,7 +247,6 @@ class DomainMapping(pulumi.CustomResource):
 
         ### App Engine Domain Mapping Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -258,7 +257,6 @@ class DomainMapping(pulumi.CustomResource):
                 ssl_management_type="AUTOMATIC",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -318,7 +316,6 @@ class DomainMapping(pulumi.CustomResource):
 
         ### App Engine Domain Mapping Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -329,7 +326,6 @@ class DomainMapping(pulumi.CustomResource):
                 ssl_management_type="AUTOMATIC",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

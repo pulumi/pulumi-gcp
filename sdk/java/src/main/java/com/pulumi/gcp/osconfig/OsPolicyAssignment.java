@@ -208,16 +208,14 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.deleted;
     }
     /**
-     * OS policy assignment description. Length of the
-     * description is limited to 1024 characters.
+     * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return OS policy assignment description. Length of the
-     * description is limited to 1024 characters.
+     * @return OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
     public Output<Optional<String>> description() {
@@ -300,16 +298,14 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.osPolicies;
     }
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The project for the resource
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * @return The project for the resource
      * 
      */
     public Output<String> project() {
@@ -400,16 +396,14 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.rolloutState;
     }
     /**
-     * Set to true to skip awaiting rollout
-     * during resource creation and update.
+     * Set to true to skip awaiting rollout during resource creation and update.
      * 
      */
     @Export(name="skipAwaitRollout", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipAwaitRollout;
 
     /**
-     * @return Set to true to skip awaiting rollout
-     * during resource creation and update.
+     * @return Set to true to skip awaiting rollout during resource creation and update.
      * 
      */
     public Output<Optional<Boolean>> skipAwaitRollout() {

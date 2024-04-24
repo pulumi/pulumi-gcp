@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolQueuedProvisioning
     {
         /// <summary>
-        /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        /// Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
         /// </summary>
         public readonly bool Enabled;
 

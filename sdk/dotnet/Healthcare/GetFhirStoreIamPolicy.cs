@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFhirStoreIamPolicyResult> InvokeAsync(GetFhirStoreIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFhirStoreIamPolicyResult>("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args ?? new GetFhirStoreIamPolicyArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFhirStoreIamPolicyResult> Invoke(GetFhirStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFhirStoreIamPolicyResult>("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args ?? new GetFhirStoreIamPolicyInvokeArgs(), options.WithDefaults());

@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Network Endpoint Internet Ip Port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,10 +42,8 @@ import * as utilities from "../utilities";
  *     port: 443,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Network Endpoint Internet Fqdn Port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,7 +65,6 @@ import * as utilities from "../utilities";
  *     port: 443,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

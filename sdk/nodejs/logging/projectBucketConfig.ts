@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,11 +31,9 @@ import * as utilities from "../utilities";
  *     bucketId: "_Default",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create logging bucket with customId
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -48,11 +45,9 @@ import * as utilities from "../utilities";
  *     bucketId: "custom-bucket",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create logging bucket with Log Analytics enabled
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -65,11 +60,9 @@ import * as utilities from "../utilities";
  *     bucketId: "custom-bucket",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create logging bucket with customId and cmekSettings
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,11 +94,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create logging bucket with index configs
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -121,7 +112,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -196,7 +186,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
      */
     public readonly locked!: pulumi.Output<boolean | undefined>;
     /**
-     * The resource name of the CMEK settings.
+     * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -297,7 +287,7 @@ export interface ProjectBucketConfigState {
      */
     locked?: pulumi.Input<boolean>;
     /**
-     * The resource name of the CMEK settings.
+     * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
      */
     name?: pulumi.Input<string>;
     /**

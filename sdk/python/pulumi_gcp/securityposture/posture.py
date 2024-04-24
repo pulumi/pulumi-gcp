@@ -32,7 +32,7 @@ class PostureArgs:
         :param pulumi.Input[str] state: State of the posture. Update to state field should not be triggered along with
                with other field updates.
                Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
-        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] description: Description of the posture.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "parent", parent)
@@ -109,7 +109,7 @@ class PostureArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the expression
+        Description of the posture.
         """
         return pulumi.get(self, "description")
 
@@ -136,10 +136,10 @@ class _PostureState:
         """
         Input properties used for looking up and filtering Posture resources.
         :param pulumi.Input[str] create_time: Time the Posture was created in UTC.
-        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] description: Description of the posture.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] location: Location of the resource, eg: global.
-        :param pulumi.Input[str] name: Immutable. The name of the custom constraint. This is unique within the organization.
+        :param pulumi.Input[str] name: Name of the posture.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]] policy_sets: List of policy sets for the posture.
                Structure is documented below.
@@ -192,7 +192,7 @@ class _PostureState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the expression
+        Description of the posture.
         """
         return pulumi.get(self, "description")
 
@@ -228,7 +228,7 @@ class _PostureState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The name of the custom constraint. This is unique within the organization.
+        Name of the posture.
         """
         return pulumi.get(self, "name")
 
@@ -351,7 +351,6 @@ class Posture(pulumi.CustomResource):
 
         ### Securityposture Posture Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -458,7 +457,6 @@ class Posture(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -474,7 +472,7 @@ class Posture(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] description: Description of the posture.
         :param pulumi.Input[str] location: Location of the resource, eg: global.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosturePolicySetArgs']]]] policy_sets: List of policy sets for the posture.
@@ -505,7 +503,6 @@ class Posture(pulumi.CustomResource):
 
         ### Securityposture Posture Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -612,7 +609,6 @@ class Posture(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -708,10 +704,10 @@ class Posture(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the Posture was created in UTC.
-        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] description: Description of the posture.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] location: Location of the resource, eg: global.
-        :param pulumi.Input[str] name: Immutable. The name of the custom constraint. This is unique within the organization.
+        :param pulumi.Input[str] name: Name of the posture.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosturePolicySetArgs']]]] policy_sets: List of policy sets for the posture.
                Structure is documented below.
@@ -753,7 +749,7 @@ class Posture(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the expression
+        Description of the posture.
         """
         return pulumi.get(self, "description")
 
@@ -777,7 +773,7 @@ class Posture(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. The name of the custom constraint. This is unique within the organization.
+        Name of the posture.
         """
         return pulumi.get(self, "name")
 

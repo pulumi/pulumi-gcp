@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterAddonsConfigStatefulHaConfig {
-    /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     */
     private Boolean enabled;
 
     private ClusterAddonsConfigStatefulHaConfig() {}
-    /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     */
     public Boolean enabled() {
         return this.enabled;
     }

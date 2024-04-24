@@ -368,7 +368,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
         ### External Vpn Gateway
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -452,7 +451,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
             advertised_route_priority=100,
             interface=router1_interface2.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -518,7 +516,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
         ### External Vpn Gateway
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -602,7 +599,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
             advertised_route_priority=100,
             interface=router1_interface2.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

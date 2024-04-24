@@ -20,7 +20,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
 
     /**
      * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-     * Structure is documented below.
      * 
      */
     @Import(name="healthCheckedTargets")
@@ -28,7 +27,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
 
     /**
      * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs>> healthCheckedTargets() {
@@ -85,7 +83,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
 
         /**
          * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -97,7 +94,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
 
         /**
          * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-         * Structure is documented below.
          * 
          * @return builder
          * 

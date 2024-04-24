@@ -24,7 +24,6 @@ import (
 //
 // ### Redis Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,10 +48,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Redis Instance Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -116,10 +113,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Redis Instance Full With Persistence Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -151,10 +146,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Redis Instance Private Service
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -222,10 +215,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Redis Instance Mrr
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -278,10 +269,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Redis Instance Cmek
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -348,7 +337,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -402,9 +390,7 @@ type Instance struct {
 	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrOutput `pulumi:"connectMode"`
 	// (Output)
-	// Output only. The time when the policy was created.
-	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits.
+	// The time when the certificate was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The current zone where the Redis endpoint is placed.
 	// For Basic Tier instances, this will always be the same as the
@@ -579,9 +565,7 @@ type instanceState struct {
 	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
 	// (Output)
-	// Output only. The time when the policy was created.
-	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits.
+	// The time when the certificate was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The current zone where the Redis endpoint is placed.
 	// For Basic Tier instances, this will always be the same as the
@@ -718,9 +702,7 @@ type InstanceState struct {
 	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput
 	// (Output)
-	// Output only. The time when the policy was created.
-	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits.
+	// The time when the certificate was created.
 	CreateTime pulumi.StringPtrInput
 	// The current zone where the Redis endpoint is placed.
 	// For Basic Tier instances, this will always be the same as the
@@ -1153,9 +1135,7 @@ func (o InstanceOutput) ConnectMode() pulumi.StringPtrOutput {
 }
 
 // (Output)
-// Output only. The time when the policy was created.
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-// resolution and up to nine fractional digits.
+// The time when the certificate was created.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }

@@ -33,14 +33,14 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
     }
 
     /**
-     * Google Cloud Storage bucket name.
+     * S3 Bucket name.
      * 
      */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
     /**
-     * @return Google Cloud Storage bucket name.
+     * @return S3 Bucket name.
      * 
      */
     public Output<String> bucketName() {
@@ -48,14 +48,14 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
     }
 
     /**
-     * Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
+     * S3 Bucket path in bucket to transfer.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
+     * @return S3 Bucket path in bucket to transfer.
      * 
      */
     public Optional<Output<String>> path() {
@@ -126,7 +126,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
         }
 
         /**
-         * @param bucketName Google Cloud Storage bucket name.
+         * @param bucketName S3 Bucket name.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
         }
 
         /**
-         * @param bucketName Google Cloud Storage bucket name.
+         * @param bucketName S3 Bucket name.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
         }
 
         /**
-         * @param path Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
+         * @param path S3 Bucket path in bucket to transfer.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
         }
 
         /**
-         * @param path Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
+         * @param path S3 Bucket path in bucket to transfer.
          * 
          * @return builder
          * 

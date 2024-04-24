@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ### Bigquery Job Query
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,10 +73,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Job Query Table Reference
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -130,10 +127,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Job Load
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -189,10 +184,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Job Load Geojson
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -267,10 +260,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Job Load Parquet
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -350,10 +341,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Job Copy
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -499,10 +488,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Job Extract
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -573,7 +560,6 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -622,7 +608,6 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Copies a table.
-        /// Structure is documented below.
         /// </summary>
         [Output("copy")]
         public Output<Outputs.JobCopy?> Copy { get; private set; } = null!;
@@ -636,7 +621,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures an extract job.
-        /// Structure is documented below.
         /// </summary>
         [Output("extract")]
         public Output<Outputs.JobExtract?> Extract { get; private set; } = null!;
@@ -661,31 +645,25 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> JobType { get; private set; } = null!;
 
         /// <summary>
-        /// The labels associated with this job. You can use these to organize and group your jobs.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
+        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        /// 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Configures a load job.
-        /// Structure is documented below.
         /// </summary>
         [Output("load")]
         public Output<Outputs.JobLoad?> Load { get; private set; } = null!;
 
         /// <summary>
-        /// The geographic location of the job. The default value is US.
+        /// Specifies where the error occurred, if present.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -698,9 +676,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        /// Configures a query job.
         /// </summary>
         [Output("query")]
         public Output<Outputs.JobQuery?> Query { get; private set; } = null!;
@@ -771,14 +747,12 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Copies a table.
-        /// Structure is documented below.
         /// </summary>
         [Input("copy")]
         public Input<Inputs.JobCopyArgs>? Copy { get; set; }
 
         /// <summary>
         /// Configures an extract job.
-        /// Structure is documented below.
         /// </summary>
         [Input("extract")]
         public Input<Inputs.JobExtractArgs>? Extract { get; set; }
@@ -799,10 +773,9 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this job. You can use these to organize and group your jobs.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
+        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        /// 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -812,28 +785,21 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures a load job.
-        /// Structure is documented below.
         /// </summary>
         [Input("load")]
         public Input<Inputs.JobLoadArgs>? Load { get; set; }
 
         /// <summary>
-        /// The geographic location of the job. The default value is US.
+        /// Specifies where the error occurred, if present.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        /// Configures a query job.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryArgs>? Query { get; set; }
@@ -848,7 +814,6 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Copies a table.
-        /// Structure is documented below.
         /// </summary>
         [Input("copy")]
         public Input<Inputs.JobCopyGetArgs>? Copy { get; set; }
@@ -872,7 +837,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures an extract job.
-        /// Structure is documented below.
         /// </summary>
         [Input("extract")]
         public Input<Inputs.JobExtractGetArgs>? Extract { get; set; }
@@ -900,10 +864,9 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this job. You can use these to organize and group your jobs.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
+        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        /// 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -913,21 +876,16 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures a load job.
-        /// Structure is documented below.
         /// </summary>
         [Input("load")]
         public Input<Inputs.JobLoadGetArgs>? Load { get; set; }
 
         /// <summary>
-        /// The geographic location of the job. The default value is US.
+        /// Specifies where the error occurred, if present.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -950,9 +908,7 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        /// Configures a query job.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryGetArgs>? Query { get; set; }

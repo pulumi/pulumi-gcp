@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * To bind a tag to a Cloud Run service:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,11 +44,9 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Compute Instance
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,7 +72,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1-a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -24,7 +24,6 @@ import (
 //
 // ### Bigquery Analyticshub Listing Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,10 +73,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Analyticshub Listing Restricted
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -131,7 +128,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -167,9 +163,9 @@ type Listing struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringOutput `pulumi:"dataExchangeId"`
 	// Details of the data provider who owns the source data.
-	// Structure is documented below.
 	DataProvider ListingDataProviderPtrOutput `pulumi:"dataProvider"`
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -181,20 +177,16 @@ type Listing struct {
 	ListingId pulumi.StringOutput `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Name of the data provider.
+	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact pulumi.StringPtrOutput `pulumi:"primaryContact"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project        pulumi.StringOutput    `pulumi:"project"`
 	// Details of the publisher who owns the listing and who can share the source data.
-	// Structure is documented below.
 	Publisher ListingPublisherPtrOutput `pulumi:"publisher"`
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess pulumi.StringPtrOutput `pulumi:"requestAccess"`
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
-	// Structure is documented below.
 	RestrictedExportConfig ListingRestrictedExportConfigPtrOutput `pulumi:"restrictedExportConfig"`
 }
 
@@ -251,9 +243,9 @@ type listingState struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId *string `pulumi:"dataExchangeId"`
 	// Details of the data provider who owns the source data.
-	// Structure is documented below.
 	DataProvider *ListingDataProvider `pulumi:"dataProvider"`
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description *string `pulumi:"description"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName *string `pulumi:"displayName"`
@@ -265,20 +257,16 @@ type listingState struct {
 	ListingId *string `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location *string `pulumi:"location"`
-	// Name of the data provider.
+	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name *string `pulumi:"name"`
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact *string `pulumi:"primaryContact"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project        *string `pulumi:"project"`
 	// Details of the publisher who owns the listing and who can share the source data.
-	// Structure is documented below.
 	Publisher *ListingPublisher `pulumi:"publisher"`
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess *string `pulumi:"requestAccess"`
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
-	// Structure is documented below.
 	RestrictedExportConfig *ListingRestrictedExportConfig `pulumi:"restrictedExportConfig"`
 }
 
@@ -291,9 +279,9 @@ type ListingState struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringPtrInput
 	// Details of the data provider who owns the source data.
-	// Structure is documented below.
 	DataProvider ListingDataProviderPtrInput
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrInput
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName pulumi.StringPtrInput
@@ -305,20 +293,16 @@ type ListingState struct {
 	ListingId pulumi.StringPtrInput
 	// The name of the location this data exchange listing.
 	Location pulumi.StringPtrInput
-	// Name of the data provider.
+	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name pulumi.StringPtrInput
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project        pulumi.StringPtrInput
 	// Details of the publisher who owns the listing and who can share the source data.
-	// Structure is documented below.
 	Publisher ListingPublisherPtrInput
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess pulumi.StringPtrInput
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
-	// Structure is documented below.
 	RestrictedExportConfig ListingRestrictedExportConfigPtrInput
 }
 
@@ -335,9 +319,9 @@ type listingArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId string `pulumi:"dataExchangeId"`
 	// Details of the data provider who owns the source data.
-	// Structure is documented below.
 	DataProvider *ListingDataProvider `pulumi:"dataProvider"`
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description *string `pulumi:"description"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName string `pulumi:"displayName"`
@@ -351,16 +335,12 @@ type listingArgs struct {
 	Location string `pulumi:"location"`
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact *string `pulumi:"primaryContact"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project        *string `pulumi:"project"`
 	// Details of the publisher who owns the listing and who can share the source data.
-	// Structure is documented below.
 	Publisher *ListingPublisher `pulumi:"publisher"`
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess *string `pulumi:"requestAccess"`
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
-	// Structure is documented below.
 	RestrictedExportConfig *ListingRestrictedExportConfig `pulumi:"restrictedExportConfig"`
 }
 
@@ -374,9 +354,9 @@ type ListingArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringInput
 	// Details of the data provider who owns the source data.
-	// Structure is documented below.
 	DataProvider ListingDataProviderPtrInput
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrInput
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName pulumi.StringInput
@@ -390,16 +370,12 @@ type ListingArgs struct {
 	Location pulumi.StringInput
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project        pulumi.StringPtrInput
 	// Details of the publisher who owns the listing and who can share the source data.
-	// Structure is documented below.
 	Publisher ListingPublisherPtrInput
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess pulumi.StringPtrInput
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
-	// Structure is documented below.
 	RestrictedExportConfig ListingRestrictedExportConfigPtrInput
 }
 
@@ -507,12 +483,12 @@ func (o ListingOutput) DataExchangeId() pulumi.StringOutput {
 }
 
 // Details of the data provider who owns the source data.
-// Structure is documented below.
 func (o ListingOutput) DataProvider() ListingDataProviderPtrOutput {
 	return o.ApplyT(func(v *Listing) ListingDataProviderPtrOutput { return v.DataProvider }).(ListingDataProviderPtrOutput)
 }
 
-// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 func (o ListingOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -542,7 +518,7 @@ func (o ListingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of the data provider.
+// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 func (o ListingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -552,14 +528,11 @@ func (o ListingOutput) PrimaryContact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringPtrOutput { return v.PrimaryContact }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o ListingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Details of the publisher who owns the listing and who can share the source data.
-// Structure is documented below.
 func (o ListingOutput) Publisher() ListingPublisherPtrOutput {
 	return o.ApplyT(func(v *Listing) ListingPublisherPtrOutput { return v.Publisher }).(ListingPublisherPtrOutput)
 }
@@ -570,7 +543,6 @@ func (o ListingOutput) RequestAccess() pulumi.StringPtrOutput {
 }
 
 // If set, restricted export configuration will be propagated and enforced on the linked dataset.
-// Structure is documented below.
 func (o ListingOutput) RestrictedExportConfig() ListingRestrictedExportConfigPtrOutput {
 	return o.ApplyT(func(v *Listing) ListingRestrictedExportConfigPtrOutput { return v.RestrictedExportConfig }).(ListingRestrictedExportConfigPtrOutput)
 }

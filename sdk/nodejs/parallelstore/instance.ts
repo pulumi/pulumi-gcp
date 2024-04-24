@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Parallelstore Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,7 +43,6 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

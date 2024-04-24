@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Billing Project Info Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,7 +31,6 @@ import * as utilities from "../utilities";
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

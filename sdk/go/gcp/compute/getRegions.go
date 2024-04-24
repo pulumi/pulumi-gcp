@@ -14,7 +14,6 @@ import (
 // Provides access to available Google Compute regions for a given project.
 // See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult

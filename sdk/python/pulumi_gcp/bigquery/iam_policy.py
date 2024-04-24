@@ -189,7 +189,6 @@ class IamPolicy(pulumi.CustomResource):
 
         ## google\\_bigquery\\_table\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -204,11 +203,9 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -228,10 +225,8 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_bigquery\\_table\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -243,11 +238,9 @@ class IamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -264,10 +257,8 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_bigquery\\_table\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -279,11 +270,9 @@ class IamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -300,11 +289,9 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_table\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,11 +306,9 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -343,10 +328,8 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_bigquery\\_table\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,11 +341,9 @@ class IamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -379,10 +360,8 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_bigquery\\_table\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -394,11 +373,9 @@ class IamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -415,7 +392,6 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -487,7 +463,6 @@ class IamPolicy(pulumi.CustomResource):
 
         ## google\\_bigquery\\_table\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -502,11 +477,9 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -526,10 +499,8 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_bigquery\\_table\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -541,11 +512,9 @@ class IamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -562,10 +531,8 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_bigquery\\_table\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -577,11 +544,9 @@ class IamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -598,11 +563,9 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_table\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -617,11 +580,9 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -641,10 +602,8 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_bigquery\\_table\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -656,11 +615,9 @@ class IamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,10 +634,8 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_bigquery\\_table\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -692,11 +647,9 @@ class IamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -713,7 +666,6 @@ class IamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

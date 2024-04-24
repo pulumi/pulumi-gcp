@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Active Directory Domain Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     reservedIpRange: "192.168.255.0/24",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -160,7 +160,6 @@ def get_istio_canonical_service(canonical_service: Optional[str] = None,
 
     ### Monitoring Istio Canonical Service
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -170,7 +169,6 @@ def get_istio_canonical_service(canonical_service: Optional[str] = None,
         canonical_service_namespace="istio-system",
         canonical_service="prometheus")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str canonical_service: The name of the canonical service underlying this service.
@@ -232,7 +230,6 @@ def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[
 
     ### Monitoring Istio Canonical Service
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -242,7 +239,6 @@ def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[
         canonical_service_namespace="istio-system",
         canonical_service="prometheus")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str canonical_service: The name of the canonical service underlying this service.

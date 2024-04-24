@@ -461,7 +461,6 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
 
         ### Network Connectivity Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -485,7 +484,6 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                 limit="2",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -550,7 +548,6 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
 
         ### Network Connectivity Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -574,7 +571,6 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                 limit="2",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

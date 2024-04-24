@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Backend Bucket Signed Url Key
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,7 +39,6 @@ import * as utilities from "../utilities";
  *     backendBucket: testBackend.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

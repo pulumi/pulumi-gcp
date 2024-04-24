@@ -185,35 +185,21 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
     public Output<String> oauth2ClientId() {
         return this.oauth2ClientId;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The type of management server (management console).
-     * Default value is `BACKUP_RESTORE`.
-     * Possible values are: `BACKUP_RESTORE`.
+     * The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The type of management server (management console).
-     * Default value is `BACKUP_RESTORE`.
-     * Possible values are: `BACKUP_RESTORE`.
+     * @return The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
      * 
      */
     public Output<Optional<String>> type() {

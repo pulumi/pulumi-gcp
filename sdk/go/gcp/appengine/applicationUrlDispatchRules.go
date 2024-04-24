@@ -22,7 +22,6 @@ import (
 //
 // ### App Engine Application Url Dispatch Rules Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -99,7 +98,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -118,9 +116,7 @@ type ApplicationUrlDispatchRules struct {
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayOutput `pulumi:"dispatchRules"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project       pulumi.StringOutput                                `pulumi:"project"`
 }
 
 // NewApplicationUrlDispatchRules registers a new resource with the given unique name, arguments, and options.
@@ -159,18 +155,14 @@ type applicationUrlDispatchRulesState struct {
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules []ApplicationUrlDispatchRulesDispatchRule `pulumi:"dispatchRules"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project       *string                                   `pulumi:"project"`
 }
 
 type ApplicationUrlDispatchRulesState struct {
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project       pulumi.StringPtrInput
 }
 
 func (ApplicationUrlDispatchRulesState) ElementType() reflect.Type {
@@ -181,9 +173,7 @@ type applicationUrlDispatchRulesArgs struct {
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules []ApplicationUrlDispatchRulesDispatchRule `pulumi:"dispatchRules"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project       *string                                   `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ApplicationUrlDispatchRules resource.
@@ -191,9 +181,7 @@ type ApplicationUrlDispatchRulesArgs struct {
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project       pulumi.StringPtrInput
 }
 
 func (ApplicationUrlDispatchRulesArgs) ElementType() reflect.Type {
@@ -291,8 +279,6 @@ func (o ApplicationUrlDispatchRulesOutput) DispatchRules() ApplicationUrlDispatc
 	}).(ApplicationUrlDispatchRulesDispatchRuleArrayOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o ApplicationUrlDispatchRulesOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationUrlDispatchRules) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

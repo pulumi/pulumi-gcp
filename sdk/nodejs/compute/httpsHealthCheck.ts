@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  *
  * ### Https Health Check Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

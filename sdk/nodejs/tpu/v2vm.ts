@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Tpu V2 Vm Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,10 +22,8 @@ import * as utilities from "../utilities";
  *     runtimeVersion: "tpu-vm-tf-2.13.0",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Tpu V2 Vm Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -96,7 +93,6 @@ import * as utilities from "../utilities";
  * // Wait after service account creation to limit eventual consistency errors.
  * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -67,20 +67,14 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Enables the private cluster feature,
-     * creating a private endpoint on the cluster. In a private cluster, nodes only
-     * have RFC 1918 private addresses and communicate with the master&#39;s private
-     * endpoint via private networking.
+     * Whether nodes have internal IP addresses only.
      * 
      */
     @Import(name="enablePrivateNodes")
     private @Nullable Output<Boolean> enablePrivateNodes;
 
     /**
-     * @return Enables the private cluster feature,
-     * creating a private endpoint on the cluster. In a private cluster, nodes only
-     * have RFC 1918 private addresses and communicate with the master&#39;s private
-     * endpoint via private networking.
+     * @return Whether nodes have internal IP addresses only.
      * 
      */
     public Optional<Output<Boolean>> enablePrivateNodes() {
@@ -262,10 +256,7 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enablePrivateNodes Enables the private cluster feature,
-         * creating a private endpoint on the cluster. In a private cluster, nodes only
-         * have RFC 1918 private addresses and communicate with the master&#39;s private
-         * endpoint via private networking.
+         * @param enablePrivateNodes Whether nodes have internal IP addresses only.
          * 
          * @return builder
          * 
@@ -276,10 +267,7 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enablePrivateNodes Enables the private cluster feature,
-         * creating a private endpoint on the cluster. In a private cluster, nodes only
-         * have RFC 1918 private addresses and communicate with the master&#39;s private
-         * endpoint via private networking.
+         * @param enablePrivateNodes Whether nodes have internal IP addresses only.
          * 
          * @return builder
          * 

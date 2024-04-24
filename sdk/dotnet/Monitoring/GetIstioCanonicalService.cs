@@ -32,7 +32,6 @@ namespace Pulumi.Gcp.Monitoring
         /// ### Monitoring Istio Canonical Service
         /// 
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,7 +50,6 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIstioCanonicalServiceResult> InvokeAsync(GetIstioCanonicalServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIstioCanonicalServiceResult>("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args ?? new GetIstioCanonicalServiceArgs(), options.WithDefaults());
@@ -77,7 +75,6 @@ namespace Pulumi.Gcp.Monitoring
         /// ### Monitoring Istio Canonical Service
         /// 
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -96,7 +93,6 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIstioCanonicalServiceResult> Invoke(GetIstioCanonicalServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIstioCanonicalServiceResult>("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args ?? new GetIstioCanonicalServiceInvokeArgs(), options.WithDefaults());

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Memcache Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,7 +70,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -132,15 +130,11 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The full name of the GCE network to connect the instance to.  If not provided,
-     * 'default' will be used.
+     * The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
      */
     public readonly authorizedNetwork!: pulumi.Output<string>;
     /**
-     * (Output)
-     * Output only. The time when the policy was created.
-     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-     * resolution and up to nine fractional digits
+     * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -156,15 +150,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Resource labels to represent user-provided metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Maintenance policy for an instance.
-     * Structure is documented below.
      */
     public readonly maintenancePolicy!: pulumi.Output<outputs.memcache.InstanceMaintenancePolicy | undefined>;
     /**
@@ -183,15 +175,12 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly memcacheNodes!: pulumi.Output<outputs.memcache.InstanceMemcacheNode[]>;
     /**
      * User-specified parameters for this memcache instance.
-     * Structure is documented below.
      */
     public readonly memcacheParameters!: pulumi.Output<outputs.memcache.InstanceMemcacheParameters | undefined>;
     /**
-     * The major version of Memcached software. If not provided, latest supported version will be used.
-     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
-     * determined by our system based on the latest supported minor version.
-     * Default value is `MEMCACHE_1_5`.
-     * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
+     * The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
+     * supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
+     * latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
      */
     public readonly memcacheVersion!: pulumi.Output<string | undefined>;
     /**
@@ -207,10 +196,6 @@ export class Instance extends pulumi.CustomResource {
      * Number of nodes in the memcache instance.
      */
     public readonly nodeCount!: pulumi.Output<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -222,14 +207,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Contains the name of allocated IP address ranges associated with
-     * the private service access connection for example, "test-default"
-     * associated with IP range 10.0.0.0/29.
+     * Contains the name of allocated IP address ranges associated with the private service access connection for example,
+     * "test-default" associated with IP range 10.0.0.0/29.
      */
     public readonly reservedIpRangeIds!: pulumi.Output<string[] | undefined>;
     /**
-     * Zones where memcache nodes should be provisioned.  If not
-     * provided, all zones will be used.
+     * Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
      */
     public readonly zones!: pulumi.Output<string[]>;
 
@@ -307,15 +290,11 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The full name of the GCE network to connect the instance to.  If not provided,
-     * 'default' will be used.
+     * The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
      */
     authorizedNetwork?: pulumi.Input<string>;
     /**
-     * (Output)
-     * Output only. The time when the policy was created.
-     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-     * resolution and up to nine fractional digits
+     * Creation timestamp in RFC3339 text format.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -331,15 +310,13 @@ export interface InstanceState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource labels to represent user-provided metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Maintenance policy for an instance.
-     * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.memcache.InstanceMaintenancePolicy>;
     /**
@@ -358,15 +335,12 @@ export interface InstanceState {
     memcacheNodes?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMemcacheNode>[]>;
     /**
      * User-specified parameters for this memcache instance.
-     * Structure is documented below.
      */
     memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
     /**
-     * The major version of Memcached software. If not provided, latest supported version will be used.
-     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
-     * determined by our system based on the latest supported minor version.
-     * Default value is `MEMCACHE_1_5`.
-     * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
+     * The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
+     * supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
+     * latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
      */
     memcacheVersion?: pulumi.Input<string>;
     /**
@@ -382,10 +356,6 @@ export interface InstanceState {
      * Number of nodes in the memcache instance.
      */
     nodeCount?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -397,14 +367,12 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Contains the name of allocated IP address ranges associated with
-     * the private service access connection for example, "test-default"
-     * associated with IP range 10.0.0.0/29.
+     * Contains the name of allocated IP address ranges associated with the private service access connection for example,
+     * "test-default" associated with IP range 10.0.0.0/29.
      */
     reservedIpRangeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Zones where memcache nodes should be provisioned.  If not
-     * provided, all zones will be used.
+     * Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
      */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -414,8 +382,7 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The full name of the GCE network to connect the instance to.  If not provided,
-     * 'default' will be used.
+     * The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
      */
     authorizedNetwork?: pulumi.Input<string>;
     /**
@@ -423,28 +390,23 @@ export interface InstanceArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Resource labels to represent user-provided metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Maintenance policy for an instance.
-     * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.memcache.InstanceMaintenancePolicy>;
     /**
      * User-specified parameters for this memcache instance.
-     * Structure is documented below.
      */
     memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
     /**
-     * The major version of Memcached software. If not provided, latest supported version will be used.
-     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
-     * determined by our system based on the latest supported minor version.
-     * Default value is `MEMCACHE_1_5`.
-     * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
+     * The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
+     * supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
+     * latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
      */
     memcacheVersion?: pulumi.Input<string>;
     /**
@@ -460,24 +422,18 @@ export interface InstanceArgs {
      * Number of nodes in the memcache instance.
      */
     nodeCount: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
     /**
-     * Contains the name of allocated IP address ranges associated with
-     * the private service access connection for example, "test-default"
-     * associated with IP range 10.0.0.0/29.
+     * Contains the name of allocated IP address ranges associated with the private service access connection for example,
+     * "test-default" associated with IP range 10.0.0.0/29.
      */
     reservedIpRangeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Zones where memcache nodes should be provisioned.  If not
-     * provided, all zones will be used.
+     * Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
      */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

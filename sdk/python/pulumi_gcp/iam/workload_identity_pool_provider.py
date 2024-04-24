@@ -719,7 +719,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
 
         ### Iam Workload Identity Pool Provider Aws Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -732,10 +731,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 account_id="999999999999",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Aws Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -757,10 +754,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 account_id="999999999999",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -776,10 +771,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -809,10 +802,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Saml Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -831,10 +822,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Saml Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -856,10 +845,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -890,7 +877,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 jwks_json="{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1015,7 +1001,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
 
         ### Iam Workload Identity Pool Provider Aws Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1028,10 +1013,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 account_id="999999999999",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Aws Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1053,10 +1036,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 account_id="999999999999",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1072,10 +1053,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1105,10 +1084,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Saml Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1127,10 +1104,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Saml Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1152,10 +1127,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1186,7 +1159,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 jwks_json="{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

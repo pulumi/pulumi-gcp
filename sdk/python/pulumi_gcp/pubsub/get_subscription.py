@@ -217,14 +217,12 @@ def get_subscription(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_pubsub_subscription = gcp.pubsub.get_subscription(name="my-pubsub-subscription")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Cloud Pub/Sub Subscription.
@@ -272,14 +270,12 @@ def get_subscription_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_pubsub_subscription = gcp.pubsub.get_subscription(name="my-pubsub-subscription")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Cloud Pub/Sub Subscription.

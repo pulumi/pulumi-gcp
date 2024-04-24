@@ -26,13 +26,16 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         }
 
         /// <summary>
-        /// is *
+        /// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+        /// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+        /// strings, and 0 for digits.
         /// </summary>
         [Input("maskingCharacter")]
         public Input<string>? MaskingCharacter { get; set; }
 
         /// <summary>
-        /// is -4
+        /// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+        /// If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
         /// </summary>
         [Input("numberToMask")]
         public Input<int>? NumberToMask { get; set; }

@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDiscoveredWorkload(ctx *pulumi.Context, args *GetDiscoveredWorkloadArgs, opts ...pulumi.InvokeOption) (*GetDiscoveredWorkloadResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDiscoveredWorkloadResult

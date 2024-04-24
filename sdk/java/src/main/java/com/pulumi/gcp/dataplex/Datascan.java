@@ -407,7 +407,6 @@ public class Datascan extends com.pulumi.resources.CustomResource {
     }
     /**
      * DataProfileScan related setting.
-     * Structure is documented below.
      * 
      */
     @Export(name="dataProfileSpec", refs={DatascanDataProfileSpec.class}, tree="[0]")
@@ -415,7 +414,6 @@ public class Datascan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return DataProfileScan related setting.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<DatascanDataProfileSpec>> dataProfileSpec() {
@@ -423,7 +421,6 @@ public class Datascan extends com.pulumi.resources.CustomResource {
     }
     /**
      * DataQualityScan related setting.
-     * Structure is documented below.
      * 
      */
     @Export(name="dataQualitySpec", refs={DatascanDataQualitySpec.class}, tree="[0]")
@@ -431,7 +428,6 @@ public class Datascan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return DataQualityScan related setting.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<DatascanDataQualitySpec>> dataQualitySpec() {
@@ -452,16 +448,14 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return this.dataScanId;
     }
     /**
-     * Description of the rule.
-     * The maximum length is 1,024 characters.
+     * Description of the scan.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the rule.
-     * The maximum length is 1,024 characters.
+     * @return Description of the scan.
      * 
      */
     public Output<Optional<String>> description() {
@@ -528,20 +522,18 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return this.executionStatuses;
     }
     /**
-     * User-defined labels for the scan. A list of key-&gt;value pairs.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * User-defined labels for the scan. A list of key-&gt;value pairs. **Note**: This field is non-authoritative, and will only
+     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
+     * present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for the scan. A list of key-&gt;value pairs.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return User-defined labels for the scan. A list of key-&gt;value pairs. **Note**: This field is non-authoritative, and will only
+     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
+     * present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -562,40 +554,22 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * A mutable name for the rule.
-     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-     * The maximum length is 63 characters.
-     * Must start with a letter.
-     * Must end with a number or a letter.
+     * The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A mutable name for the rule.
-     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-     * The maximum length is 63 characters.
-     * Must start with a letter.
-     * Must end with a number or a letter.
+     * @return The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }

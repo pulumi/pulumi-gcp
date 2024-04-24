@@ -171,28 +171,34 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
         return this.direction;
     }
     /**
-     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
-     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     public Output<Optional<Boolean>> disabled() {
         return Codegen.optional(this.disabled);
     }
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * &#34;goto_next&#34; rules.
      * 
      */
     @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
-     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * &#34;goto_next&#34; rules.
      * 
      */
     public Output<Optional<Boolean>> enableLogging() {
@@ -269,14 +275,16 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
         return this.ruleTupleCount;
     }
     /**
-     * A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      * 
      */
     @Export(name="targetResources", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetResources;
 
     /**
-     * @return A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * @return A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      * 
      */
     public Output<Optional<List<String>>> targetResources() {

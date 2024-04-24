@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,7 +29,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetManagementServerResult> InvokeAsync(GetManagementServerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetManagementServerResult>("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args ?? new GetManagementServerArgs(), options.WithDefaults());
@@ -38,7 +36,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,7 +51,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetManagementServerResult> Invoke(GetManagementServerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagementServerResult>("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args ?? new GetManagementServerInvokeArgs(), options.WithDefaults());

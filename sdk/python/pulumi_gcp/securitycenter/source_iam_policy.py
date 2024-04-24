@@ -157,7 +157,6 @@ class SourceIamPolicy(pulumi.CustomResource):
 
         ### Scc Source Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -167,7 +166,6 @@ class SourceIamPolicy(pulumi.CustomResource):
             organization="123456789",
             description="My custom Cloud Security Command Center Finding Source")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -217,7 +215,6 @@ class SourceIamPolicy(pulumi.CustomResource):
 
         ### Scc Source Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -227,7 +224,6 @@ class SourceIamPolicy(pulumi.CustomResource):
             organization="123456789",
             description="My custom Cloud Security Command Center Finding Source")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

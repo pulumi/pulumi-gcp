@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Data Catalog Tag Template Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,7 +67,6 @@ import * as utilities from "../utilities";
  *     forceDelete: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -120,18 +118,14 @@ export class TagTemplate extends pulumi.CustomResource {
      */
     public readonly fields!: pulumi.Output<outputs.datacatalog.TagTemplateField[]>;
     /**
-     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+     * template.
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
-     * (Output)
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Template location region.
@@ -197,18 +191,14 @@ export interface TagTemplateState {
      */
     fields?: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;
     /**
-     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+     * template.
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * (Output)
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Template location region.
@@ -234,13 +224,10 @@ export interface TagTemplateArgs {
      */
     fields: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;
     /**
-     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+     * template.
      */
     forceDelete?: pulumi.Input<boolean>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Template location region.

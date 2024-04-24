@@ -189,7 +189,6 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
 
         ### Firebase App Check Play Integrity Config Minimal
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -208,10 +207,8 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             project="my-project-name",
             app_id=default.app_id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase App Check Play Integrity Config Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -231,7 +228,6 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             app_id=default.app_id,
             token_ttl="7200s")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -290,7 +286,6 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
 
         ### Firebase App Check Play Integrity Config Minimal
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -309,10 +304,8 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             project="my-project-name",
             app_id=default.app_id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase App Check Play Integrity Config Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -332,7 +325,6 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             app_id=default.app_id,
             token_ttl="7200s")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

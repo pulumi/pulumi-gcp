@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Dialogflowcx Environment Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,7 +57,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -107,7 +105,8 @@ export class CxEnvironment extends pulumi.CustomResource {
     }
 
     /**
-     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
+     * rejected.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -119,8 +118,7 @@ export class CxEnvironment extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The Agent to create an Environment for.
-     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+     * The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
     public readonly parent!: pulumi.Output<string | undefined>;
     /**
@@ -177,7 +175,8 @@ export class CxEnvironment extends pulumi.CustomResource {
  */
 export interface CxEnvironmentState {
     /**
-     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
+     * rejected.
      */
     description?: pulumi.Input<string>;
     /**
@@ -189,8 +188,7 @@ export interface CxEnvironmentState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Agent to create an Environment for.
-     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+     * The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
     parent?: pulumi.Input<string>;
     /**
@@ -209,7 +207,8 @@ export interface CxEnvironmentState {
  */
 export interface CxEnvironmentArgs {
     /**
-     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
+     * rejected.
      */
     description?: pulumi.Input<string>;
     /**
@@ -217,8 +216,7 @@ export interface CxEnvironmentArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * The Agent to create an Environment for.
-     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+     * The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
     parent?: pulumi.Input<string>;
     /**

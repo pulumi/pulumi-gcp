@@ -305,7 +305,6 @@ class BackupVault(pulumi.CustomResource):
 
         ### Netapp Backup Vault
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -318,7 +317,6 @@ class BackupVault(pulumi.CustomResource):
                 "creator": "testuser",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -379,7 +377,6 @@ class BackupVault(pulumi.CustomResource):
 
         ### Netapp Backup Vault
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -392,7 +389,6 @@ class BackupVault(pulumi.CustomResource):
                 "creator": "testuser",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

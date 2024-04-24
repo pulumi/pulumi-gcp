@@ -27,11 +27,7 @@ class ManagementServerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[str] name: The name of management server (management console)
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] type: The type of management server (management console).
-               Default value is `BACKUP_RESTORE`.
-               Possible values are: `BACKUP_RESTORE`.
+        :param pulumi.Input[str] type: The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "networks", networks)
@@ -82,10 +78,6 @@ class ManagementServerArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -96,9 +88,7 @@ class ManagementServerArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of management server (management console).
-        Default value is `BACKUP_RESTORE`.
-        Possible values are: `BACKUP_RESTORE`.
+        The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         """
         return pulumi.get(self, "type")
 
@@ -126,11 +116,7 @@ class _ManagementServerState:
         :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[str] oauth2_client_id: The oauth2ClientId of management console.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] type: The type of management server (management console).
-               Default value is `BACKUP_RESTORE`.
-               Possible values are: `BACKUP_RESTORE`.
+        :param pulumi.Input[str] type: The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -212,10 +198,6 @@ class _ManagementServerState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -226,9 +208,7 @@ class _ManagementServerState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of management server (management console).
-        Default value is `BACKUP_RESTORE`.
-        Possible values are: `BACKUP_RESTORE`.
+        The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         """
         return pulumi.get(self, "type")
 
@@ -253,7 +233,6 @@ class ManagementServer(pulumi.CustomResource):
 
         ### Backup Dr Management Server
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -278,7 +257,6 @@ class ManagementServer(pulumi.CustomResource):
                 peering_mode="PRIVATE_SERVICE_ACCESS",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -310,11 +288,7 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of management server (management console)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]] networks: Network details to create management server (management console).
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] type: The type of management server (management console).
-               Default value is `BACKUP_RESTORE`.
-               Possible values are: `BACKUP_RESTORE`.
+        :param pulumi.Input[str] type: The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         """
         ...
     @overload
@@ -327,7 +301,6 @@ class ManagementServer(pulumi.CustomResource):
 
         ### Backup Dr Management Server
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -352,7 +325,6 @@ class ManagementServer(pulumi.CustomResource):
                 peering_mode="PRIVATE_SERVICE_ACCESS",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -449,11 +421,7 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[str] oauth2_client_id: The oauth2ClientId of management console.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] type: The type of management server (management console).
-               Default value is `BACKUP_RESTORE`.
-               Possible values are: `BACKUP_RESTORE`.
+        :param pulumi.Input[str] type: The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -513,19 +481,13 @@ class ManagementServer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of management server (management console).
-        Default value is `BACKUP_RESTORE`.
-        Possible values are: `BACKUP_RESTORE`.
+        The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         """
         return pulumi.get(self, "type")
 

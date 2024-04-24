@@ -34,20 +34,15 @@ class PolicyBasedRouteArgs:
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs'] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
-               Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the policy based route.
         :param pulumi.Input[str] next_hop_ilb_ip: The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
-        :param pulumi.Input[str] next_hop_other_routes: Other routes that will be referenced to determine the next hop of the packet.
-               Possible values are: `DEFAULT_ROUTING`.
-        :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] next_hop_other_routes: Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+        :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+               policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+               priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         :param pulumi.Input['PolicyBasedRouteVirtualMachineArgs'] virtual_machine: VM instances to which this policy-based route applies to.
-               Structure is documented below.
         """
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "network", network)
@@ -112,7 +107,6 @@ class PolicyBasedRouteArgs:
     def interconnect_attachment(self) -> Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs']]:
         """
         The interconnect attachments that this policy-based route applies to.
-        Structure is documented below.
         """
         return pulumi.get(self, "interconnect_attachment")
 
@@ -124,10 +118,8 @@ class PolicyBasedRouteArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -163,8 +155,7 @@ class PolicyBasedRouteArgs:
     @pulumi.getter(name="nextHopOtherRoutes")
     def next_hop_other_routes(self) -> Optional[pulumi.Input[str]]:
         """
-        Other routes that will be referenced to determine the next hop of the packet.
-        Possible values are: `DEFAULT_ROUTING`.
+        Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
         """
         return pulumi.get(self, "next_hop_other_routes")
 
@@ -176,7 +167,9 @@ class PolicyBasedRouteArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+        The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+        policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+        priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         """
         return pulumi.get(self, "priority")
 
@@ -187,10 +180,6 @@ class PolicyBasedRouteArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -202,7 +191,6 @@ class PolicyBasedRouteArgs:
     def virtual_machine(self) -> Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArgs']]:
         """
         VM instances to which this policy-based route applies to.
-        Structure is documented below.
         """
         return pulumi.get(self, "virtual_machine")
 
@@ -239,25 +227,20 @@ class _PolicyBasedRouteState:
         :param pulumi.Input['PolicyBasedRouteFilterArgs'] filter: The filter to match L4 traffic.
                Structure is documented below.
         :param pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs'] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
-               Structure is documented below.
         :param pulumi.Input[str] kind: Type of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the policy based route.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[str] next_hop_ilb_ip: The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
-        :param pulumi.Input[str] next_hop_other_routes: Other routes that will be referenced to determine the next hop of the packet.
-               Possible values are: `DEFAULT_ROUTING`.
-        :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] next_hop_other_routes: Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+        :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+               policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+               priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time when the policy-based route was created.
         :param pulumi.Input['PolicyBasedRouteVirtualMachineArgs'] virtual_machine: VM instances to which this policy-based route applies to.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyBasedRouteWarningArgs']]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
                Structure is documented below.
         """
@@ -350,7 +333,6 @@ class _PolicyBasedRouteState:
     def interconnect_attachment(self) -> Optional[pulumi.Input['PolicyBasedRouteInterconnectAttachmentArgs']]:
         """
         The interconnect attachments that this policy-based route applies to.
-        Structure is documented below.
         """
         return pulumi.get(self, "interconnect_attachment")
 
@@ -374,10 +356,8 @@ class _PolicyBasedRouteState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -425,8 +405,7 @@ class _PolicyBasedRouteState:
     @pulumi.getter(name="nextHopOtherRoutes")
     def next_hop_other_routes(self) -> Optional[pulumi.Input[str]]:
         """
-        Other routes that will be referenced to determine the next hop of the packet.
-        Possible values are: `DEFAULT_ROUTING`.
+        Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
         """
         return pulumi.get(self, "next_hop_other_routes")
 
@@ -438,7 +417,9 @@ class _PolicyBasedRouteState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+        The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+        policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+        priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         """
         return pulumi.get(self, "priority")
 
@@ -449,10 +430,6 @@ class _PolicyBasedRouteState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -489,7 +466,6 @@ class _PolicyBasedRouteState:
     def virtual_machine(self) -> Optional[pulumi.Input['PolicyBasedRouteVirtualMachineArgs']]:
         """
         VM instances to which this policy-based route applies to.
-        Structure is documented below.
         """
         return pulumi.get(self, "virtual_machine")
 
@@ -541,7 +517,6 @@ class PolicyBasedRoute(pulumi.CustomResource):
 
         ### Network Connectivity Policy Based Route Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -557,10 +532,8 @@ class PolicyBasedRoute(pulumi.CustomResource):
             ),
             next_hop_other_routes="DEFAULT_ROUTING")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Connectivity Policy Based Route Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -591,7 +564,6 @@ class PolicyBasedRoute(pulumi.CustomResource):
                 "env": "default",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -623,21 +595,16 @@ class PolicyBasedRoute(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArgs']] filter: The filter to match L4 traffic.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArgs']] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
-               Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the policy based route.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[str] next_hop_ilb_ip: The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
-        :param pulumi.Input[str] next_hop_other_routes: Other routes that will be referenced to determine the next hop of the packet.
-               Possible values are: `DEFAULT_ROUTING`.
-        :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] next_hop_other_routes: Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+        :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+               policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+               priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         :param pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArgs']] virtual_machine: VM instances to which this policy-based route applies to.
-               Structure is documented below.
         """
         ...
     @overload
@@ -658,7 +625,6 @@ class PolicyBasedRoute(pulumi.CustomResource):
 
         ### Network Connectivity Policy Based Route Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -674,10 +640,8 @@ class PolicyBasedRoute(pulumi.CustomResource):
             ),
             next_hop_other_routes="DEFAULT_ROUTING")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Connectivity Policy Based Route Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -708,7 +672,6 @@ class PolicyBasedRoute(pulumi.CustomResource):
                 "env": "default",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -832,25 +795,20 @@ class PolicyBasedRoute(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PolicyBasedRouteFilterArgs']] filter: The filter to match L4 traffic.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['PolicyBasedRouteInterconnectAttachmentArgs']] interconnect_attachment: The interconnect attachments that this policy-based route applies to.
-               Structure is documented below.
         :param pulumi.Input[str] kind: Type of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the policy based route.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[str] next_hop_ilb_ip: The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
-        :param pulumi.Input[str] next_hop_other_routes: Other routes that will be referenced to determine the next hop of the packet.
-               Possible values are: `DEFAULT_ROUTING`.
-        :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] next_hop_other_routes: Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+        :param pulumi.Input[int] priority: The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+               policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+               priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time when the policy-based route was created.
         :param pulumi.Input[pulumi.InputType['PolicyBasedRouteVirtualMachineArgs']] virtual_machine: VM instances to which this policy-based route applies to.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyBasedRouteWarningArgs']]]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
                Structure is documented below.
         """
@@ -915,7 +873,6 @@ class PolicyBasedRoute(pulumi.CustomResource):
     def interconnect_attachment(self) -> pulumi.Output[Optional['outputs.PolicyBasedRouteInterconnectAttachment']]:
         """
         The interconnect attachments that this policy-based route applies to.
-        Structure is documented below.
         """
         return pulumi.get(self, "interconnect_attachment")
 
@@ -931,10 +888,8 @@ class PolicyBasedRoute(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        User-defined labels.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -966,8 +921,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
     @pulumi.getter(name="nextHopOtherRoutes")
     def next_hop_other_routes(self) -> pulumi.Output[Optional[str]]:
         """
-        Other routes that will be referenced to determine the next hop of the packet.
-        Possible values are: `DEFAULT_ROUTING`.
+        Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
         """
         return pulumi.get(self, "next_hop_other_routes")
 
@@ -975,17 +929,15 @@ class PolicyBasedRoute(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[Optional[int]]:
         """
-        The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+        The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+        policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+        priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -1010,7 +962,6 @@ class PolicyBasedRoute(pulumi.CustomResource):
     def virtual_machine(self) -> pulumi.Output[Optional['outputs.PolicyBasedRouteVirtualMachine']]:
         """
         VM instances to which this policy-based route applies to.
-        Structure is documented below.
         """
         return pulumi.get(self, "virtual_machine")
 

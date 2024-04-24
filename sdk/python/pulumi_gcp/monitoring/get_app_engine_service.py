@@ -140,7 +140,6 @@ def get_app_engine_service(module_id: Optional[str] = None,
 
     ### Monitoring App Engine Service
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -171,7 +170,6 @@ def get_app_engine_service(module_id: Optional[str] = None,
     # Monitors the default AppEngine service
     srv = gcp.monitoring.get_app_engine_service_output(module_id=myapp.service)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str module_id: The ID of the App Engine module underlying this
@@ -223,7 +221,6 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
 
     ### Monitoring App Engine Service
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -254,7 +251,6 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
     # Monitors the default AppEngine service
     srv = gcp.monitoring.get_app_engine_service_output(module_id=myapp.service)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str module_id: The ID of the App Engine module underlying this

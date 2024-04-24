@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase App Check Play Integrity Config Minimal
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,10 +38,8 @@ import * as utilities from "../utilities";
  *     appId: _default.appId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebase App Check Play Integrity Config Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,7 +61,6 @@ import * as utilities from "../utilities";
  *     tokenTtl: "7200s",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

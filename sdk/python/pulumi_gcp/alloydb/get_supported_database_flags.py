@@ -83,14 +83,12 @@ def get_supported_database_flags(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.alloydb.get_supported_database_flags(location="us-central1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The canonical id of the location. For example: `us-east1`.
@@ -118,14 +116,12 @@ def get_supported_database_flags_output(location: Optional[pulumi.Input[str]] = 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.alloydb.get_supported_database_flags(location="us-central1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The canonical id of the location. For example: `us-east1`.

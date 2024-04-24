@@ -26,7 +26,6 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// ### Scc Organization Custom Module Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -61,10 +60,8 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Scc Organization Custom Module Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -119,7 +116,6 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -181,7 +177,8 @@ namespace Pulumi.Gcp.SecurityCenter
         public Output<string> LastEditor { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the property for the custom output.
+        /// The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+        /// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -323,7 +320,8 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? LastEditor { get; set; }
 
         /// <summary>
-        /// Name of the property for the custom output.
+        /// The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+        /// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

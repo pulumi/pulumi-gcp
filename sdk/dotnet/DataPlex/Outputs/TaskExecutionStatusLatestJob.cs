@@ -44,7 +44,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly string? ServiceJob;
         /// <summary>
-        /// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+        /// (Output)
+        /// The time when the job was started.
         /// </summary>
         public readonly string? StartTime;
         /// <summary>

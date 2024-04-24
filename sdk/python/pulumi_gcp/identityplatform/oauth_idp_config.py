@@ -289,7 +289,6 @@ class OauthIdpConfig(pulumi.CustomResource):
 
         ### Identity Platform Oauth Idp Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -302,7 +301,6 @@ class OauthIdpConfig(pulumi.CustomResource):
             enabled=True,
             client_secret="secret")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -359,7 +357,6 @@ class OauthIdpConfig(pulumi.CustomResource):
 
         ### Identity Platform Oauth Idp Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -372,7 +369,6 @@ class OauthIdpConfig(pulumi.CustomResource):
             enabled=True,
             client_secret="secret")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

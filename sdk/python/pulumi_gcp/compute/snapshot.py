@@ -666,7 +666,6 @@ class Snapshot(pulumi.CustomResource):
 
         ### Snapshot Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -688,10 +687,8 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Snapshot Chainname
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -714,7 +711,6 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -813,7 +809,6 @@ class Snapshot(pulumi.CustomResource):
 
         ### Snapshot Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -835,10 +830,8 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Snapshot Chainname
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -861,7 +854,6 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

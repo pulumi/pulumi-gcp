@@ -24,7 +24,6 @@ import (
 //
 // ### Firebase App Check Service Config Off
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,10 +57,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebase App Check Service Config Enforced
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -96,10 +93,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebase App Check Service Config Unenforced
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,7 +129,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -17,37 +17,43 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateCertificateDescriptionX509Description {
     /**
-     * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+     * @return (Output)
+     * Describes custom X.509 extensions.
      * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtension> additionalExtensions;
     /**
-     * @return Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+     * @return (Output)
+     * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
      * &#34;Authority Information Access&#34; extension in the certificate.
      * 
      */
     private @Nullable List<String> aiaOcspServers;
     /**
-     * @return Describes values that are relevant in a CA certificate.
+     * @return (Output)
+     * Describes values that are relevant in a CA certificate.
      * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateCertificateDescriptionX509DescriptionCaOption> caOptions;
     /**
-     * @return Indicates the intended use for keys that correspond to a certificate.
+     * @return (Output)
+     * Indicates the intended use for keys that correspond to a certificate.
      * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsage> keyUsages;
     /**
-     * @return Describes the X.509 name constraints extension.
+     * @return (Output)
+     * Describes the X.509 name constraints extension.
      * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateCertificateDescriptionX509DescriptionNameConstraint> nameConstraints;
     /**
-     * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * @return (Output)
+     * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
      */
@@ -55,7 +61,8 @@ public final class CertificateCertificateDescriptionX509Description {
 
     private CertificateCertificateDescriptionX509Description() {}
     /**
-     * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+     * @return (Output)
+     * Describes custom X.509 extensions.
      * Structure is documented below.
      * 
      */
@@ -63,7 +70,8 @@ public final class CertificateCertificateDescriptionX509Description {
         return this.additionalExtensions == null ? List.of() : this.additionalExtensions;
     }
     /**
-     * @return Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+     * @return (Output)
+     * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
      * &#34;Authority Information Access&#34; extension in the certificate.
      * 
      */
@@ -71,7 +79,8 @@ public final class CertificateCertificateDescriptionX509Description {
         return this.aiaOcspServers == null ? List.of() : this.aiaOcspServers;
     }
     /**
-     * @return Describes values that are relevant in a CA certificate.
+     * @return (Output)
+     * Describes values that are relevant in a CA certificate.
      * Structure is documented below.
      * 
      */
@@ -79,7 +88,8 @@ public final class CertificateCertificateDescriptionX509Description {
         return this.caOptions == null ? List.of() : this.caOptions;
     }
     /**
-     * @return Indicates the intended use for keys that correspond to a certificate.
+     * @return (Output)
+     * Indicates the intended use for keys that correspond to a certificate.
      * Structure is documented below.
      * 
      */
@@ -87,7 +97,8 @@ public final class CertificateCertificateDescriptionX509Description {
         return this.keyUsages == null ? List.of() : this.keyUsages;
     }
     /**
-     * @return Describes the X.509 name constraints extension.
+     * @return (Output)
+     * Describes the X.509 name constraints extension.
      * Structure is documented below.
      * 
      */
@@ -95,7 +106,8 @@ public final class CertificateCertificateDescriptionX509Description {
         return this.nameConstraints == null ? List.of() : this.nameConstraints;
     }
     /**
-     * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * @return (Output)
+     * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
      */

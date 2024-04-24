@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// ### Biglake Table
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -114,7 +113,6 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

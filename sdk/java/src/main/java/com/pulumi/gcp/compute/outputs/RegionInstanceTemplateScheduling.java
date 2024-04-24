@@ -38,7 +38,7 @@ public final class RegionInstanceTemplateScheduling {
      */
     private @Nullable List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
      * 
      */
     private @Nullable String maintenanceInterval;
@@ -111,7 +111,7 @@ public final class RegionInstanceTemplateScheduling {
         return this.localSsdRecoveryTimeouts == null ? List.of() : this.localSsdRecoveryTimeouts;
     }
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
      * 
      */
     public Optional<String> maintenanceInterval() {

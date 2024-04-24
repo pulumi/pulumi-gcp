@@ -360,7 +360,6 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         ### Target Http Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -395,10 +394,8 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Http Proxy Http Keep Alive Timeout
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -435,10 +432,8 @@ class TargetHttpProxy(pulumi.CustomResource):
             http_keep_alive_timeout_sec=610,
             url_map=default_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Http Proxy Https Redirect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -453,7 +448,6 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-https-redirect-proxy",
             url_map=default_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -525,7 +519,6 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         ### Target Http Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -560,10 +553,8 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Http Proxy Http Keep Alive Timeout
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -600,10 +591,8 @@ class TargetHttpProxy(pulumi.CustomResource):
             http_keep_alive_timeout_sec=610,
             url_map=default_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Http Proxy Https Redirect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -618,7 +607,6 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-https-redirect-proxy",
             url_map=default_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

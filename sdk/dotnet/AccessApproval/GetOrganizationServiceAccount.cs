@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOrganizationServiceAccountResult> InvokeAsync(GetOrganizationServiceAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationServiceAccountResult>("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args ?? new GetOrganizationServiceAccountArgs(), options.WithDefaults());
@@ -61,7 +59,6 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOrganizationServiceAccountResult> Invoke(GetOrganizationServiceAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationServiceAccountResult>("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args ?? new GetOrganizationServiceAccountInvokeArgs(), options.WithDefaults());

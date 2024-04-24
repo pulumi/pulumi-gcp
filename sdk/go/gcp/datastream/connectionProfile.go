@@ -24,7 +24,6 @@ import (
 //
 // ### Datastream Connection Profile Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,10 +53,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Datastream Connection Profile Postgresql Private Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -169,10 +166,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Datastream Connection Profile Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -211,10 +206,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Datastream Connection Profile Postgres
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -301,7 +294,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -16,7 +16,6 @@ import (
 //
 // ### Region Security Policy Rule Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,10 +61,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Security Policy Rule Multiple Rules
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -131,10 +128,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Security Policy Rule With Network Match
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -217,7 +212,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

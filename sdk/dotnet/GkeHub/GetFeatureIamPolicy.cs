@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.GkeHub
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Gcp.GkeHub
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFeatureIamPolicyResult> InvokeAsync(GetFeatureIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeatureIamPolicyResult>("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Gcp.GkeHub
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.Gcp.GkeHub
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFeatureIamPolicyResult> Invoke(GetFeatureIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureIamPolicyResult>("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyInvokeArgs(), options.WithDefaults());

@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     parent: "project/my-project/locations/us-west1-a/networkPolicies/my-network-policy",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExternalAccessRule(args: GetExternalAccessRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalAccessRuleResult> {
 
@@ -80,7 +78,6 @@ export interface GetExternalAccessRuleResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,7 +87,6 @@ export interface GetExternalAccessRuleResult {
  *     parent: "project/my-project/locations/us-west1-a/networkPolicies/my-network-policy",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExternalAccessRuleOutput(args: GetExternalAccessRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalAccessRuleResult> {
     return pulumi.output(args).apply((a: any) => getExternalAccessRule(a, opts))

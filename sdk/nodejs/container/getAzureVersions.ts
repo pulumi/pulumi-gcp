@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstAvailableVersion = versions.validVersions[0];
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAzureVersions(args?: GetAzureVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureVersionsResult> {
     args = args || {};
@@ -71,7 +69,6 @@ export interface GetAzureVersionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -82,7 +79,6 @@ export interface GetAzureVersionsResult {
  * });
  * export const firstAvailableVersion = versions.validVersions[0];
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAzureVersionsOutput(args?: GetAzureVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVersionsResult> {
     return pulumi.output(args).apply((a: any) => getAzureVersions(a, opts))

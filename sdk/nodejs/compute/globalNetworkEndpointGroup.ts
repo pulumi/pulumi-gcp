@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * ### Global Network Endpoint Group
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,10 +32,8 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Global Network Endpoint Group Ip Address
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,7 +44,6 @@ import * as utilities from "../utilities";
  *     defaultPort: 90,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

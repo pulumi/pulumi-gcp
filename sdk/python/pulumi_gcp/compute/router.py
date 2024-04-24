@@ -354,7 +354,6 @@ class Router(pulumi.CustomResource):
 
         ### Router Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -379,10 +378,8 @@ class Router(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Router Encrypted Interconnect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -398,7 +395,6 @@ class Router(pulumi.CustomResource):
                 asn=64514,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -470,7 +466,6 @@ class Router(pulumi.CustomResource):
 
         ### Router Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -495,10 +490,8 @@ class Router(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Router Encrypted Interconnect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,7 +507,6 @@ class Router(pulumi.CustomResource):
                 asn=64514,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

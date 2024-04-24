@@ -266,7 +266,6 @@ class SecretIamMember(pulumi.CustomResource):
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -280,11 +279,9 @@ class SecretIamMember(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -295,11 +292,9 @@ class SecretIamMember(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -310,11 +305,9 @@ class SecretIamMember(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -328,11 +321,9 @@ class SecretIamMember(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -343,11 +334,9 @@ class SecretIamMember(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,7 +347,6 @@ class SecretIamMember(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -438,7 +426,6 @@ class SecretIamMember(pulumi.CustomResource):
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -452,11 +439,9 @@ class SecretIamMember(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -467,11 +452,9 @@ class SecretIamMember(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -482,11 +465,9 @@ class SecretIamMember(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -500,11 +481,9 @@ class SecretIamMember(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -515,11 +494,9 @@ class SecretIamMember(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_secret\\_manager\\_secret\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -530,7 +507,6 @@ class SecretIamMember(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -22,7 +22,6 @@ import (
 //
 // ### Vmware Engine Private Cloud Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,10 +69,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vmware Engine Private Cloud Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,7 +120,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -171,16 +167,13 @@ type PrivateCloud struct {
 	Nsxes PrivateCloudNsxArrayOutput `pulumi:"nsxes"`
 	// The preferred single failure domain within a region.
 	PreferredZone pulumi.StringPtrOutput `pulumi:"preferredZone"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project       pulumi.StringOutput    `pulumi:"project"`
 	// The secondary single failure domain within a region.
 	SecondaryZone pulumi.StringPtrOutput `pulumi:"secondaryZone"`
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Initial type of the private cloud.
-	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -248,16 +241,13 @@ type privateCloudState struct {
 	Nsxes []PrivateCloudNsx `pulumi:"nsxes"`
 	// The preferred single failure domain within a region.
 	PreferredZone *string `pulumi:"preferredZone"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project       *string `pulumi:"project"`
 	// The secondary single failure domain within a region.
 	SecondaryZone *string `pulumi:"secondaryZone"`
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State *string `pulumi:"state"`
-	// Initial type of the private cloud.
-	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
 	Type *string `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid *string `pulumi:"uid"`
@@ -287,16 +277,13 @@ type PrivateCloudState struct {
 	Nsxes PrivateCloudNsxArrayInput
 	// The preferred single failure domain within a region.
 	PreferredZone pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project       pulumi.StringPtrInput
 	// The secondary single failure domain within a region.
 	SecondaryZone pulumi.StringPtrInput
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringPtrInput
-	// Initial type of the private cloud.
-	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
 	Type pulumi.StringPtrInput
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringPtrInput
@@ -324,13 +311,10 @@ type privateCloudArgs struct {
 	NetworkConfig PrivateCloudNetworkConfig `pulumi:"networkConfig"`
 	// The preferred single failure domain within a region.
 	PreferredZone *string `pulumi:"preferredZone"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project       *string `pulumi:"project"`
 	// The secondary single failure domain within a region.
 	SecondaryZone *string `pulumi:"secondaryZone"`
-	// Initial type of the private cloud.
-	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
 	Type *string `pulumi:"type"`
 }
 
@@ -350,13 +334,10 @@ type PrivateCloudArgs struct {
 	NetworkConfig PrivateCloudNetworkConfigInput
 	// The preferred single failure domain within a region.
 	PreferredZone pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project       pulumi.StringPtrInput
 	// The secondary single failure domain within a region.
 	SecondaryZone pulumi.StringPtrInput
-	// Initial type of the private cloud.
-	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
 	Type pulumi.StringPtrInput
 }
 
@@ -491,8 +472,6 @@ func (o PrivateCloudOutput) PreferredZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringPtrOutput { return v.PreferredZone }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o PrivateCloudOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -508,8 +487,7 @@ func (o PrivateCloudOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Initial type of the private cloud.
-// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
 func (o PrivateCloudOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

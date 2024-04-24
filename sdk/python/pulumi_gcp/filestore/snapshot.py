@@ -377,7 +377,6 @@ class Snapshot(pulumi.CustomResource):
 
         ### Filestore Snapshot Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -399,10 +398,8 @@ class Snapshot(pulumi.CustomResource):
             instance=instance.name,
             location="us-east1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Filestore Snapshot Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -428,7 +425,6 @@ class Snapshot(pulumi.CustomResource):
                 "my_label": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -496,7 +492,6 @@ class Snapshot(pulumi.CustomResource):
 
         ### Filestore Snapshot Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -518,10 +513,8 @@ class Snapshot(pulumi.CustomResource):
             instance=instance.name,
             location="us-east1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Filestore Snapshot Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -547,7 +540,6 @@ class Snapshot(pulumi.CustomResource):
                 "my_label": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -227,7 +227,6 @@ class Schema(pulumi.CustomResource):
 
         ### Pubsub Schema Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -251,10 +250,8 @@ class Schema(pulumi.CustomResource):
         }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Schema Protobuf
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -276,7 +273,6 @@ class Schema(pulumi.CustomResource):
                 encoding="JSON",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -341,7 +337,6 @@ class Schema(pulumi.CustomResource):
 
         ### Pubsub Schema Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -365,10 +360,8 @@ class Schema(pulumi.CustomResource):
         }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Schema Protobuf
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -390,7 +383,6 @@ class Schema(pulumi.CustomResource):
                 encoding="JSON",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

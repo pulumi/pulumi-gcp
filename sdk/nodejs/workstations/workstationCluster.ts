@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Workstation Cluster Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,10 +39,8 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Workstation Cluster Private
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,10 +72,8 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Workstation Cluster Custom Domain
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -113,7 +108,6 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

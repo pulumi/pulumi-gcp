@@ -440,7 +440,6 @@ class NetworkAttachment(pulumi.CustomResource):
 
         ### Network Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -472,10 +471,8 @@ class NetworkAttachment(pulumi.CustomResource):
             producer_accept_lists=[accepted_producer_project.project_id],
             producer_reject_lists=[rejected_producer_project.project_id])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Attachment Instance Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -512,7 +509,6 @@ class NetworkAttachment(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -571,7 +567,6 @@ class NetworkAttachment(pulumi.CustomResource):
 
         ### Network Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -603,10 +598,8 @@ class NetworkAttachment(pulumi.CustomResource):
             producer_accept_lists=[accepted_producer_project.project_id],
             producer_reject_lists=[rejected_producer_project.project_id])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Attachment Instance Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -643,7 +636,6 @@ class NetworkAttachment(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

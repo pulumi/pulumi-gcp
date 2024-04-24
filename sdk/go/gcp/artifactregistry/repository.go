@@ -24,7 +24,6 @@ import (
 //
 // ### Artifact Registry Repository Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,10 +50,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Docker
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,10 +81,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Cmek
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -131,10 +126,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Virtual
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -194,10 +187,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Remote
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -231,10 +222,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Remote Apt
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -271,10 +260,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Remote Yum
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -311,10 +298,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Cleanup
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -382,10 +367,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Remote Custom
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -457,7 +440,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

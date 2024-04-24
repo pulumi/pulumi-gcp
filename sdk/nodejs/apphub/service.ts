@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Apphub Service Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -95,10 +94,8 @@ import * as utilities from "../utilities";
  *     discoveredService: catalog_service.apply(catalog_service => catalog_service.name),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apphub Service Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -202,7 +199,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

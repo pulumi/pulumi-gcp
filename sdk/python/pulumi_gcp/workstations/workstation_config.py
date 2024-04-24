@@ -863,7 +863,6 @@ class WorkstationConfig(pulumi.CustomResource):
 
         ### Workstation Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -912,10 +911,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -959,10 +956,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Persistent Directories
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1011,10 +1006,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Source Snapshot
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1053,10 +1046,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Shielded Instance Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1096,10 +1087,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Accelerators
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1139,10 +1128,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Boost
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1192,10 +1179,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Encryption Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1248,7 +1233,6 @@ class WorkstationConfig(pulumi.CustomResource):
                 kms_key_service_account=default_account.email,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1326,7 +1310,6 @@ class WorkstationConfig(pulumi.CustomResource):
 
         ### Workstation Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1375,10 +1358,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1422,10 +1403,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Persistent Directories
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1474,10 +1453,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Source Snapshot
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1516,10 +1493,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Shielded Instance Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1559,10 +1534,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Accelerators
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1602,10 +1575,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Boost
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1655,10 +1626,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workstation Config Encryption Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1711,7 +1680,6 @@ class WorkstationConfig(pulumi.CustomResource):
                 kms_key_service_account=default_account.email,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

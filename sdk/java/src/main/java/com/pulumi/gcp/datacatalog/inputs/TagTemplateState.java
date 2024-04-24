@@ -51,14 +51,16 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+     * template.
      * 
      */
     @Import(name="forceDelete")
     private @Nullable Output<Boolean> forceDelete;
 
     /**
-     * @return This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+     * @return This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+     * template.
      * 
      */
     public Optional<Output<Boolean>> forceDelete() {
@@ -66,35 +68,23 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Output)
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (Output)
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * @return The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -215,7 +205,8 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+         * @param forceDelete This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+         * template.
          * 
          * @return builder
          * 
@@ -226,7 +217,8 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+         * @param forceDelete This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+         * template.
          * 
          * @return builder
          * 
@@ -236,8 +228,7 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name (Output)
-         * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+         * @param name The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
          * 
          * @return builder
          * 
@@ -248,8 +239,7 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name (Output)
-         * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+         * @param name The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
          * 
          * @return builder
          * 
@@ -258,25 +248,11 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

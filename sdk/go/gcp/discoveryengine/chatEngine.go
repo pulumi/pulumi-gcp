@@ -24,7 +24,6 @@ import (
 //
 // ### Discoveryengine Chat Engine Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,7 +91,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -129,7 +127,6 @@ type ChatEngine struct {
 	// The collection ID.
 	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
-	// Structure is documented below.
 	CommonConfig ChatEngineCommonConfigPtrOutput `pulumi:"commonConfig"`
 	// Timestamp the Engine was created at.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -139,9 +136,8 @@ type ChatEngine struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The ID to use for chat engine.
 	EngineId pulumi.StringOutput `pulumi:"engineId"`
-	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-	// Default value is `GENERIC`.
-	// Possible values are: `GENERIC`.
+	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+	// to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
 	IndustryVertical pulumi.StringPtrOutput `pulumi:"industryVertical"`
 	// Location.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -149,9 +145,7 @@ type ChatEngine struct {
 	// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
 	// This field must be a UTF-8 encoded string with a length limit of 1024
 	// characters.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Timestamp the Engine was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -214,7 +208,6 @@ type chatEngineState struct {
 	// The collection ID.
 	CollectionId *string `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
-	// Structure is documented below.
 	CommonConfig *ChatEngineCommonConfig `pulumi:"commonConfig"`
 	// Timestamp the Engine was created at.
 	CreateTime *string `pulumi:"createTime"`
@@ -224,9 +217,8 @@ type chatEngineState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The ID to use for chat engine.
 	EngineId *string `pulumi:"engineId"`
-	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-	// Default value is `GENERIC`.
-	// Possible values are: `GENERIC`.
+	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+	// to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
 	IndustryVertical *string `pulumi:"industryVertical"`
 	// Location.
 	Location *string `pulumi:"location"`
@@ -234,9 +226,7 @@ type chatEngineState struct {
 	// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
 	// This field must be a UTF-8 encoded string with a length limit of 1024
 	// characters.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Timestamp the Engine was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -252,7 +242,6 @@ type ChatEngineState struct {
 	// The collection ID.
 	CollectionId pulumi.StringPtrInput
 	// Common config spec that specifies the metadata of the engine.
-	// Structure is documented below.
 	CommonConfig ChatEngineCommonConfigPtrInput
 	// Timestamp the Engine was created at.
 	CreateTime pulumi.StringPtrInput
@@ -262,9 +251,8 @@ type ChatEngineState struct {
 	DisplayName pulumi.StringPtrInput
 	// The ID to use for chat engine.
 	EngineId pulumi.StringPtrInput
-	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-	// Default value is `GENERIC`.
-	// Possible values are: `GENERIC`.
+	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+	// to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
 	IndustryVertical pulumi.StringPtrInput
 	// Location.
 	Location pulumi.StringPtrInput
@@ -272,9 +260,7 @@ type ChatEngineState struct {
 	// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
 	// This field must be a UTF-8 encoded string with a length limit of 1024
 	// characters.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Timestamp the Engine was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -291,7 +277,6 @@ type chatEngineArgs struct {
 	// The collection ID.
 	CollectionId string `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
-	// Structure is documented below.
 	CommonConfig *ChatEngineCommonConfig `pulumi:"commonConfig"`
 	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
@@ -299,15 +284,12 @@ type chatEngineArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The ID to use for chat engine.
 	EngineId string `pulumi:"engineId"`
-	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-	// Default value is `GENERIC`.
-	// Possible values are: `GENERIC`.
+	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+	// to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
 	IndustryVertical *string `pulumi:"industryVertical"`
 	// Location.
-	Location string `pulumi:"location"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ChatEngine resource.
@@ -318,7 +300,6 @@ type ChatEngineArgs struct {
 	// The collection ID.
 	CollectionId pulumi.StringInput
 	// Common config spec that specifies the metadata of the engine.
-	// Structure is documented below.
 	CommonConfig ChatEngineCommonConfigPtrInput
 	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
 	DataStoreIds pulumi.StringArrayInput
@@ -326,15 +307,12 @@ type ChatEngineArgs struct {
 	DisplayName pulumi.StringInput
 	// The ID to use for chat engine.
 	EngineId pulumi.StringInput
-	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-	// Default value is `GENERIC`.
-	// Possible values are: `GENERIC`.
+	// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+	// to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
 	IndustryVertical pulumi.StringPtrInput
 	// Location.
 	Location pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 }
 
 func (ChatEngineArgs) ElementType() reflect.Type {
@@ -442,7 +420,6 @@ func (o ChatEngineOutput) CollectionId() pulumi.StringOutput {
 }
 
 // Common config spec that specifies the metadata of the engine.
-// Structure is documented below.
 func (o ChatEngineOutput) CommonConfig() ChatEngineCommonConfigPtrOutput {
 	return o.ApplyT(func(v *ChatEngine) ChatEngineCommonConfigPtrOutput { return v.CommonConfig }).(ChatEngineCommonConfigPtrOutput)
 }
@@ -467,9 +444,8 @@ func (o ChatEngineOutput) EngineId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ChatEngine) pulumi.StringOutput { return v.EngineId }).(pulumi.StringOutput)
 }
 
-// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-// Default value is `GENERIC`.
-// Possible values are: `GENERIC`.
+// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+// to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
 func (o ChatEngineOutput) IndustryVertical() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ChatEngine) pulumi.StringPtrOutput { return v.IndustryVertical }).(pulumi.StringPtrOutput)
 }
@@ -487,8 +463,6 @@ func (o ChatEngineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ChatEngine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o ChatEngineOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ChatEngine) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

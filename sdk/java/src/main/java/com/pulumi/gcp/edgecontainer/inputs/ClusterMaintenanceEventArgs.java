@@ -33,16 +33,20 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The time that the window ends. The end time must take place after the
-     * start time.
+     * (Output)
+     * The time when the maintenance event ended, either successfully or not. If
+     * the maintenance event is split into multiple maintenance windows,
+     * end_time is only updated when the whole flow ends.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
     /**
-     * @return The time that the window ends. The end time must take place after the
-     * start time.
+     * @return (Output)
+     * The time when the maintenance event ended, either successfully or not. If
+     * the maintenance event is split into multiple maintenance windows,
+     * end_time is only updated when the whole flow ends.
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -90,14 +94,16 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The time that the window first starts.
+     * (Output)
+     * The time when the maintenance event started.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return The time that the window first starts.
+     * @return (Output)
+     * The time when the maintenance event started.
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -122,14 +128,16 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The target cluster version. For example: &#34;1.5.0&#34;.
+     * (Output)
+     * The target version of the cluster.
      * 
      */
     @Import(name="targetVersion")
     private @Nullable Output<String> targetVersion;
 
     /**
-     * @return The target cluster version. For example: &#34;1.5.0&#34;.
+     * @return (Output)
+     * The target version of the cluster.
      * 
      */
     public Optional<Output<String>> targetVersion() {
@@ -244,8 +252,10 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param endTime The time that the window ends. The end time must take place after the
-         * start time.
+         * @param endTime (Output)
+         * The time when the maintenance event ended, either successfully or not. If
+         * the maintenance event is split into multiple maintenance windows,
+         * end_time is only updated when the whole flow ends.
          * 
          * @return builder
          * 
@@ -256,8 +266,10 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param endTime The time that the window ends. The end time must take place after the
-         * start time.
+         * @param endTime (Output)
+         * The time when the maintenance event ended, either successfully or not. If
+         * the maintenance event is split into multiple maintenance windows,
+         * end_time is only updated when the whole flow ends.
          * 
          * @return builder
          * 
@@ -319,7 +331,8 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param startTime The time that the window first starts.
+         * @param startTime (Output)
+         * The time when the maintenance event started.
          * 
          * @return builder
          * 
@@ -330,7 +343,8 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param startTime The time that the window first starts.
+         * @param startTime (Output)
+         * The time when the maintenance event started.
          * 
          * @return builder
          * 
@@ -363,7 +377,8 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param targetVersion The target cluster version. For example: &#34;1.5.0&#34;.
+         * @param targetVersion (Output)
+         * The target version of the cluster.
          * 
          * @return builder
          * 
@@ -374,7 +389,8 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param targetVersion The target cluster version. For example: &#34;1.5.0&#34;.
+         * @param targetVersion (Output)
+         * The target version of the cluster.
          * 
          * @return builder
          * 

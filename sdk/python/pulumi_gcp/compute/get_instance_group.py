@@ -154,7 +154,6 @@ def get_instance_group(name: Optional[str] = None,
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -162,7 +161,6 @@ def get_instance_group(name: Optional[str] = None,
     all = gcp.compute.get_instance_group(name="instance-group-name",
         zone="us-central1-a")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
@@ -204,7 +202,6 @@ def get_instance_group_output(name: Optional[pulumi.Input[Optional[str]]] = None
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -212,7 +209,6 @@ def get_instance_group_output(name: Optional[pulumi.Input[Optional[str]]] = None
     all = gcp.compute.get_instance_group(name="instance-group-name",
         zone="us-central1-a")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the instance group. Either `name` or `self_link` must be provided.

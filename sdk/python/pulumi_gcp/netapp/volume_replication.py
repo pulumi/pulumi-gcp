@@ -711,7 +711,6 @@ class VolumeReplication(pulumi.CustomResource):
 
         ### Netapp Volume Replication Create
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -752,7 +751,6 @@ class VolumeReplication(pulumi.CustomResource):
             delete_destination_volume=True,
             wait_for_mirror=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -825,7 +823,6 @@ class VolumeReplication(pulumi.CustomResource):
 
         ### Netapp Volume Replication Create
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -866,7 +863,6 @@ class VolumeReplication(pulumi.CustomResource):
             delete_destination_volume=True,
             wait_for_mirror=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

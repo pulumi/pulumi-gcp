@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ### Logging Folder Settings Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     folder: "my-folder-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFolderSettings(args: GetFolderSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderSettingsResult> {
 
@@ -97,7 +95,6 @@ export interface GetFolderSettingsResult {
  *
  * ### Logging Folder Settings Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -106,7 +103,6 @@ export interface GetFolderSettingsResult {
  *     folder: "my-folder-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFolderSettingsOutput(args: GetFolderSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderSettingsResult> {
     return pulumi.output(args).apply((a: any) => getFolderSettings(a, opts))

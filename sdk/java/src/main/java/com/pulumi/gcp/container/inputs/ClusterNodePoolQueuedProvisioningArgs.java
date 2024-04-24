@@ -15,14 +15,14 @@ public final class ClusterNodePoolQueuedProvisioningArgs extends com.pulumi.reso
     public static final ClusterNodePoolQueuedProvisioningArgs Empty = new ClusterNodePoolQueuedProvisioningArgs();
 
     /**
-     * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
      * 
      */
     public Output<Boolean> enabled() {
@@ -54,7 +54,7 @@ public final class ClusterNodePoolQueuedProvisioningArgs extends com.pulumi.reso
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * @param enabled Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ClusterNodePoolQueuedProvisioningArgs extends com.pulumi.reso
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * @param enabled Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
          * 
          * @return builder
          * 

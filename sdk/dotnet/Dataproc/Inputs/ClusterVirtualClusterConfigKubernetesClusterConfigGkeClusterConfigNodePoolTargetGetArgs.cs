@@ -13,16 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The target GKE node pool.
+        /// The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}'
         /// </summary>
         [Input("nodePool", required: true)]
         public Input<string> NodePool { get; set; } = null!;
 
         /// <summary>
-        /// The configuration for the GKE node pool. 
-        /// If specified, Dataproc attempts to create a node pool with the specified shape.
-        /// If one with the same name already exists, it is verified against all specified fields.
-        /// If a field differs, the virtual cluster creation will fail.
+        /// Input only. The configuration for the GKE node pool.
         /// </summary>
         [Input("nodePoolConfig")]
         public Input<Inputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigGetArgs>? NodePoolConfig { get; set; }
@@ -31,8 +28,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Node group roles. 
-        /// One of `"DRIVER"`.
+        /// The roles associated with the GKE node pool.
         /// </summary>
         public InputList<string> Roles
         {

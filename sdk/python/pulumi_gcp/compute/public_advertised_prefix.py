@@ -261,7 +261,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
 
         ### Public Advertised Prefixes Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -272,7 +271,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -334,7 +332,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
 
         ### Public Advertised Prefixes Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -345,7 +342,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

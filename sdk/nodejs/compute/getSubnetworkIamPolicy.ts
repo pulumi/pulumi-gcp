@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     subnetwork: network_with_private_secondary_ip_ranges.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnetworkIamPolicy(args: GetSubnetworkIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkIamPolicyResult> {
 
@@ -80,7 +78,6 @@ export interface GetSubnetworkIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -91,7 +88,6 @@ export interface GetSubnetworkIamPolicyResult {
  *     subnetwork: network_with_private_secondary_ip_ranges.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnetworkIamPolicyOutput(args: GetSubnetworkIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getSubnetworkIamPolicy(a, opts))

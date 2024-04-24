@@ -70,7 +70,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Details of the data provider who owns the source data.
-     * Structure is documented below.
      * 
      */
     @Import(name="dataProvider")
@@ -78,7 +77,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Details of the data provider who owns the source data.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ListingDataProviderArgs>> dataProvider() {
@@ -86,14 +84,16 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * @return Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
     public Optional<Output<String>> description() {
@@ -190,26 +190,15 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.primaryContact);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
      * Details of the publisher who owns the listing and who can share the source data.
-     * Structure is documented below.
      * 
      */
     @Import(name="publisher")
@@ -217,7 +206,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Details of the publisher who owns the listing and who can share the source data.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ListingPublisherArgs>> publisher() {
@@ -241,7 +229,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     * Structure is documented below.
      * 
      */
     @Import(name="restrictedExportConfig")
@@ -249,7 +236,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ListingRestrictedExportConfigArgs>> restrictedExportConfig() {
@@ -371,7 +357,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataProvider Details of the data provider who owns the source data.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -383,7 +368,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataProvider Details of the data provider who owns the source data.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -393,7 +377,8 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+         * @param description Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+         * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
          * 
          * @return builder
          * 
@@ -404,7 +389,8 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+         * @param description Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+         * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
          * 
          * @return builder
          * 
@@ -539,32 +525,17 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
             return primaryContact(Output.of(primaryContact));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
          * @param publisher Details of the publisher who owns the listing and who can share the source data.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -576,7 +547,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param publisher Details of the publisher who owns the listing and who can share the source data.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -608,7 +578,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param restrictedExportConfig If set, restricted export configuration will be propagated and enforced on the linked dataset.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -620,7 +589,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param restrictedExportConfig If set, restricted export configuration will be propagated and enforced on the linked dataset.
-         * Structure is documented below.
          * 
          * @return builder
          * 

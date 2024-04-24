@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// ### Edgenetwork Subnet
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,10 +58,8 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Edgenetwork Subnet With Vlan Id
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -105,7 +105,6 @@ def get_service_iam_policy(location: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_service_iam_policy(location: Optional[str] = None,
         project=default["project"],
         service=default["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
@@ -148,7 +146,6 @@ def get_service_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -157,7 +154,6 @@ def get_service_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
         project=default["project"],
         service=default["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to

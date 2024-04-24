@@ -2562,19 +2562,14 @@ func (o ConfigSignInEmailPtrOutput) PasswordRequired() pulumi.BoolPtrOutput {
 }
 
 type ConfigSignInHashConfig struct {
-	// (Output)
 	// Different password hash algorithms used in Identity Toolkit.
 	Algorithm *string `pulumi:"algorithm"`
-	// (Output)
 	// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
 	MemoryCost *int `pulumi:"memoryCost"`
-	// (Output)
 	// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
 	Rounds *int `pulumi:"rounds"`
-	// (Output)
 	// Non-printable character to be inserted between the salt and plain text password in base64.
 	SaltSeparator *string `pulumi:"saltSeparator"`
-	// (Output)
 	// Signer key in base64.
 	SignerKey *string `pulumi:"signerKey"`
 }
@@ -2591,19 +2586,14 @@ type ConfigSignInHashConfigInput interface {
 }
 
 type ConfigSignInHashConfigArgs struct {
-	// (Output)
 	// Different password hash algorithms used in Identity Toolkit.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
-	// (Output)
 	// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
 	MemoryCost pulumi.IntPtrInput `pulumi:"memoryCost"`
-	// (Output)
 	// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
 	Rounds pulumi.IntPtrInput `pulumi:"rounds"`
-	// (Output)
 	// Non-printable character to be inserted between the salt and plain text password in base64.
 	SaltSeparator pulumi.StringPtrInput `pulumi:"saltSeparator"`
-	// (Output)
 	// Signer key in base64.
 	SignerKey pulumi.StringPtrInput `pulumi:"signerKey"`
 }
@@ -2659,31 +2649,26 @@ func (o ConfigSignInHashConfigOutput) ToConfigSignInHashConfigOutputWithContext(
 	return o
 }
 
-// (Output)
 // Different password hash algorithms used in Identity Toolkit.
 func (o ConfigSignInHashConfigOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigSignInHashConfig) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
 func (o ConfigSignInHashConfigOutput) MemoryCost() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConfigSignInHashConfig) *int { return v.MemoryCost }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
 // How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
 func (o ConfigSignInHashConfigOutput) Rounds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConfigSignInHashConfig) *int { return v.Rounds }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
 // Non-printable character to be inserted between the salt and plain text password in base64.
 func (o ConfigSignInHashConfigOutput) SaltSeparator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigSignInHashConfig) *string { return v.SaltSeparator }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // Signer key in base64.
 func (o ConfigSignInHashConfigOutput) SignerKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigSignInHashConfig) *string { return v.SignerKey }).(pulumi.StringPtrOutput)
@@ -3792,7 +3777,7 @@ func (o InboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrOutput 
 }
 
 type InboundSamlConfigSpConfigSpCertificate struct {
-	// The IdP's x509 certificate.
+	// The x509 certificate
 	X509Certificate *string `pulumi:"x509Certificate"`
 }
 
@@ -3808,7 +3793,7 @@ type InboundSamlConfigSpConfigSpCertificateInput interface {
 }
 
 type InboundSamlConfigSpConfigSpCertificateArgs struct {
-	// The IdP's x509 certificate.
+	// The x509 certificate
 	X509Certificate pulumi.StringPtrInput `pulumi:"x509Certificate"`
 }
 
@@ -3863,7 +3848,7 @@ func (o InboundSamlConfigSpConfigSpCertificateOutput) ToInboundSamlConfigSpConfi
 	return o
 }
 
-// The IdP's x509 certificate.
+// The x509 certificate
 func (o InboundSamlConfigSpConfigSpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }
@@ -4431,19 +4416,14 @@ func (o ProjectDefaultConfigSignInEmailPtrOutput) PasswordRequired() pulumi.Bool
 }
 
 type ProjectDefaultConfigSignInHashConfig struct {
-	// (Output)
 	// Different password hash algorithms used in Identity Toolkit.
 	Algorithm *string `pulumi:"algorithm"`
-	// (Output)
 	// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
 	MemoryCost *int `pulumi:"memoryCost"`
-	// (Output)
 	// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
 	Rounds *int `pulumi:"rounds"`
-	// (Output)
 	// Non-printable character to be inserted between the salt and plain text password in base64.
 	SaltSeparator *string `pulumi:"saltSeparator"`
-	// (Output)
 	// Signer key in base64.
 	SignerKey *string `pulumi:"signerKey"`
 }
@@ -4460,19 +4440,14 @@ type ProjectDefaultConfigSignInHashConfigInput interface {
 }
 
 type ProjectDefaultConfigSignInHashConfigArgs struct {
-	// (Output)
 	// Different password hash algorithms used in Identity Toolkit.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
-	// (Output)
 	// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
 	MemoryCost pulumi.IntPtrInput `pulumi:"memoryCost"`
-	// (Output)
 	// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
 	Rounds pulumi.IntPtrInput `pulumi:"rounds"`
-	// (Output)
 	// Non-printable character to be inserted between the salt and plain text password in base64.
 	SaltSeparator pulumi.StringPtrInput `pulumi:"saltSeparator"`
-	// (Output)
 	// Signer key in base64.
 	SignerKey pulumi.StringPtrInput `pulumi:"signerKey"`
 }
@@ -4528,31 +4503,26 @@ func (o ProjectDefaultConfigSignInHashConfigOutput) ToProjectDefaultConfigSignIn
 	return o
 }
 
-// (Output)
 // Different password hash algorithms used in Identity Toolkit.
 func (o ProjectDefaultConfigSignInHashConfigOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
 func (o ProjectDefaultConfigSignInHashConfigOutput) MemoryCost() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *int { return v.MemoryCost }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
 // How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
 func (o ProjectDefaultConfigSignInHashConfigOutput) Rounds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *int { return v.Rounds }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
 // Non-printable character to be inserted between the salt and plain text password in base64.
 func (o ProjectDefaultConfigSignInHashConfigOutput) SaltSeparator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *string { return v.SaltSeparator }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // Signer key in base64.
 func (o ProjectDefaultConfigSignInHashConfigOutput) SignerKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *string { return v.SignerKey }).(pulumi.StringPtrOutput)

@@ -283,7 +283,6 @@ def get_trigger(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -292,7 +291,6 @@ def get_trigger(location: Optional[str] = None,
         trigger_id=filename_trigger["triggerId"],
         location="location of trigger build")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The Cloud Build location for the trigger.
@@ -351,7 +349,6 @@ def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -360,7 +357,6 @@ def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
         trigger_id=filename_trigger["triggerId"],
         location="location of trigger build")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The Cloud Build location for the trigger.

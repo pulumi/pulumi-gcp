@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Target Https Proxy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -74,10 +73,8 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultRegionSslCertificate.id],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Target Https Proxy Certificate Manager Certificate
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -113,7 +110,6 @@ import * as utilities from "../utilities";
  *     certificateManagerCertificates: [pulumi.interpolate`//certificatemanager.googleapis.com/${defaultCertificate.id}`],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

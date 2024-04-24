@@ -282,7 +282,6 @@ class DataPolicy(pulumi.CustomResource):
 
         ### Bigquery Datapolicy Data Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -302,7 +301,6 @@ class DataPolicy(pulumi.CustomResource):
             policy_tag=policy_tag.name,
             data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -362,7 +360,6 @@ class DataPolicy(pulumi.CustomResource):
 
         ### Bigquery Datapolicy Data Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -382,7 +379,6 @@ class DataPolicy(pulumi.CustomResource):
             policy_tag=policy_tag.name,
             data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

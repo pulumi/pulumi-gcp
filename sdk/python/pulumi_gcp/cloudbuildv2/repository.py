@@ -332,7 +332,6 @@ class Repository(pulumi.CustomResource):
 
         ### Cloudbuildv2 Repository Ghe Doc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -381,10 +380,8 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.id,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuildv2 Repository Github Doc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -420,7 +417,6 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.name,
             remote_uri="https://github.com/myuser/myrepo.git")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -480,7 +476,6 @@ class Repository(pulumi.CustomResource):
 
         ### Cloudbuildv2 Repository Ghe Doc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -529,10 +524,8 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.id,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuildv2 Repository Github Doc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -568,7 +561,6 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.name,
             remote_uri="https://github.com/myuser/myrepo.git")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -351,7 +351,6 @@ class TrustConfig(pulumi.CustomResource):
 
         ### Certificate Manager Trust Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -373,7 +372,6 @@ class TrustConfig(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -435,7 +433,6 @@ class TrustConfig(pulumi.CustomResource):
 
         ### Certificate Manager Trust Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -457,7 +454,6 @@ class TrustConfig(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

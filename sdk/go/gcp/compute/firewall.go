@@ -35,7 +35,6 @@ import (
 //
 // ### Firewall Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,10 +81,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firewall With Target Tags
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -128,7 +125,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

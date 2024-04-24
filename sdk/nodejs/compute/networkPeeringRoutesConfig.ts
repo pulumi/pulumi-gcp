@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Peering Routes Config Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,10 +51,8 @@ import * as utilities from "../utilities";
  *     peerNetwork: networkPrimary.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Peering Routes Config Gke
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -106,7 +103,6 @@ import * as utilities from "../utilities";
  *     exportCustomRoutes: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -28,7 +28,6 @@ import (
 //
 // ### Region Network Endpoint Internet Ip Port
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -71,10 +70,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Internet Fqdn Port
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -117,7 +114,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

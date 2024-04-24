@@ -153,7 +153,6 @@ class Config(pulumi.CustomResource):
 
         Example creating a RuntimeConfig resource.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -162,7 +161,6 @@ class Config(pulumi.CustomResource):
             name="my-service-runtime-config",
             description="Runtime configuration values for my service")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -205,7 +203,6 @@ class Config(pulumi.CustomResource):
 
         Example creating a RuntimeConfig resource.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -214,7 +211,6 @@ class Config(pulumi.CustomResource):
             name="my-service-runtime-config",
             description="Runtime configuration values for my service")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -27,14 +27,13 @@ class TlsRouteArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
-               The attached Mesh should be of a type SIDECAR
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+               served by the gateway. Each gateway reference should match the pattern:
+               projects/*/locations/global/gateways/<gateway_name>
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+               by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
+               Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TlsRoute resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "rules", rules)
         if description is not None:
@@ -77,8 +76,9 @@ class TlsRouteArgs:
     @pulumi.getter
     def gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+        served by the gateway. Each gateway reference should match the pattern:
+        projects/*/locations/global/gateways/<gateway_name>
         """
         return pulumi.get(self, "gateways")
 
@@ -90,9 +90,9 @@ class TlsRouteArgs:
     @pulumi.getter
     def meshes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
-        The attached Mesh should be of a type SIDECAR
+        Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+        by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
+        Mesh should be of a type SIDECAR
         """
         return pulumi.get(self, "meshes")
 
@@ -115,10 +115,6 @@ class TlsRouteArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -142,14 +138,13 @@ class _TlsRouteState:
         Input properties used for looking up and filtering TlsRoute resources.
         :param pulumi.Input[str] create_time: Time the TlsRoute was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
-               The attached Mesh should be of a type SIDECAR
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+               served by the gateway. Each gateway reference should match the pattern:
+               projects/*/locations/global/gateways/<gateway_name>
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+               by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
+               Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TlsRoute resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
@@ -202,8 +197,9 @@ class _TlsRouteState:
     @pulumi.getter
     def gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+        served by the gateway. Each gateway reference should match the pattern:
+        projects/*/locations/global/gateways/<gateway_name>
         """
         return pulumi.get(self, "gateways")
 
@@ -215,9 +211,9 @@ class _TlsRouteState:
     @pulumi.getter
     def meshes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
-        The attached Mesh should be of a type SIDECAR
+        Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+        by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
+        Mesh should be of a type SIDECAR
         """
         return pulumi.get(self, "meshes")
 
@@ -240,10 +236,6 @@ class _TlsRouteState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -305,7 +297,6 @@ class TlsRoute(pulumi.CustomResource):
 
         ### Network Services Tls Route Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -334,10 +325,8 @@ class TlsRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Tls Route Mesh Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -373,10 +362,8 @@ class TlsRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Tls Route Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -415,7 +402,6 @@ class TlsRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -444,14 +430,13 @@ class TlsRoute(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
-               The attached Mesh should be of a type SIDECAR
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+               served by the gateway. Each gateway reference should match the pattern:
+               projects/*/locations/global/gateways/<gateway_name>
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+               by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
+               Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TlsRoute resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         """
@@ -466,7 +451,6 @@ class TlsRoute(pulumi.CustomResource):
 
         ### Network Services Tls Route Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -495,10 +479,8 @@ class TlsRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Tls Route Mesh Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,10 +516,8 @@ class TlsRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Tls Route Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -576,7 +556,6 @@ class TlsRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -671,14 +650,13 @@ class TlsRoute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the TlsRoute was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
-               The attached Mesh should be of a type SIDECAR
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+               served by the gateway. Each gateway reference should match the pattern:
+               projects/*/locations/global/gateways/<gateway_name>
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+               by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
+               Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TlsRoute resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
@@ -719,8 +697,9 @@ class TlsRoute(pulumi.CustomResource):
     @pulumi.getter
     def gateways(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
+        served by the gateway. Each gateway reference should match the pattern:
+        projects/*/locations/global/gateways/<gateway_name>
         """
         return pulumi.get(self, "gateways")
 
@@ -728,9 +707,9 @@ class TlsRoute(pulumi.CustomResource):
     @pulumi.getter
     def meshes(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
-        The attached Mesh should be of a type SIDECAR
+        Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
+        by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
+        Mesh should be of a type SIDECAR
         """
         return pulumi.get(self, "meshes")
 
@@ -745,10 +724,6 @@ class TlsRoute(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

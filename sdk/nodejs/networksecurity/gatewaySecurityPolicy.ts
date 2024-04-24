@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Security Gateway Security Policy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -26,10 +25,8 @@ import * as utilities from "../utilities";
  *     description: "my description",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Security Gateway Security Policy Tls Inspection Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -110,7 +107,6 @@ import * as utilities from "../utilities";
  *     tlsInspectionPolicy: defaultTlsInspectionPolicy.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

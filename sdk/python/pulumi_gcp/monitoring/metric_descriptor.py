@@ -505,7 +505,6 @@ class MetricDescriptor(pulumi.CustomResource):
 
         ### Monitoring Metric Descriptor Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -528,10 +527,8 @@ class MetricDescriptor(pulumi.CustomResource):
                 ingest_delay="30s",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Metric Descriptor Alert
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -555,7 +552,6 @@ class MetricDescriptor(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -626,7 +622,6 @@ class MetricDescriptor(pulumi.CustomResource):
 
         ### Monitoring Metric Descriptor Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -649,10 +644,8 @@ class MetricDescriptor(pulumi.CustomResource):
                 ingest_delay="30s",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Metric Descriptor Alert
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -676,7 +669,6 @@ class MetricDescriptor(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

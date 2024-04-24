@@ -206,7 +206,6 @@ class ApiKey(pulumi.CustomResource):
 
         ### Android_key
         A basic example of a android api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -232,10 +231,8 @@ class ApiKey(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Basic_key
         A basic example of a api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -258,10 +255,8 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Ios_key
         A basic example of a ios api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -284,10 +279,8 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Minimal_key
         A minimal example of a api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -301,10 +294,8 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name)
         ```
-        <!--End PulumiCodeChooser -->
         ### Server_key
         A basic example of a server api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -327,7 +318,6 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -373,7 +363,6 @@ class ApiKey(pulumi.CustomResource):
 
         ### Android_key
         A basic example of a android api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -399,10 +388,8 @@ class ApiKey(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Basic_key
         A basic example of a api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -425,10 +412,8 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Ios_key
         A basic example of a ios api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -451,10 +436,8 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Minimal_key
         A minimal example of a api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -468,10 +451,8 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name)
         ```
-        <!--End PulumiCodeChooser -->
         ### Server_key
         A basic example of a server api keys key
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -494,7 +475,6 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

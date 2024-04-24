@@ -45,7 +45,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The configuration of the cluster control plane.
-     * Structure is documented below.
      * 
      */
     @Import(name="controlPlane")
@@ -53,7 +52,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The configuration of the cluster control plane.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterControlPlaneArgs>> controlPlane() {
@@ -61,18 +59,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Remote control plane disk encryption options. This field is only used when
-     * enabling CMEK support.
-     * Structure is documented below.
+     * Remote control plane disk encryption options. This field is only used when enabling CMEK support.
      * 
      */
     @Import(name="controlPlaneEncryption")
     private @Nullable Output<ClusterControlPlaneEncryptionArgs> controlPlaneEncryption;
 
     /**
-     * @return Remote control plane disk encryption options. This field is only used when
-     * enabling CMEK support.
-     * Structure is documented below.
+     * @return Remote control plane disk encryption options. This field is only used when enabling CMEK support.
      * 
      */
     public Optional<Output<ClusterControlPlaneEncryptionArgs>> controlPlaneEncryption() {
@@ -80,18 +74,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The default maximum number of pods per node used if a maximum value is not
-     * specified explicitly for a node pool in this cluster. If unspecified, the
-     * Kubernetes default value will be used.
+     * The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+     * cluster. If unspecified, the Kubernetes default value will be used.
      * 
      */
     @Import(name="defaultMaxPodsPerNode")
     private @Nullable Output<Integer> defaultMaxPodsPerNode;
 
     /**
-     * @return The default maximum number of pods per node used if a maximum value is not
-     * specified explicitly for a node pool in this cluster. If unspecified, the
-     * Kubernetes default value will be used.
+     * @return The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+     * cluster. If unspecified, the Kubernetes default value will be used.
      * 
      */
     public Optional<Output<Integer>> defaultMaxPodsPerNode() {
@@ -137,18 +129,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-defined labels for the edgecloud cluster.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for the edgecloud cluster.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -172,7 +164,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Cluster-wide maintenance policy configuration.
-     * Structure is documented below.
      * 
      */
     @Import(name="maintenancePolicy")
@@ -180,7 +171,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Cluster-wide maintenance policy configuration.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterMaintenancePolicyArgs>> maintenancePolicy() {
@@ -225,34 +215,22 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return this.networking;
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The release channel a cluster is subscribed to.
-     * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+     * The release channel a cluster is subscribed to. Possible values: [&#34;RELEASE_CHANNEL_UNSPECIFIED&#34;, &#34;NONE&#34;, &#34;REGULAR&#34;]
      * 
      */
     @Import(name="releaseChannel")
     private @Nullable Output<String> releaseChannel;
 
     /**
-     * @return The release channel a cluster is subscribed to.
-     * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+     * @return The release channel a cluster is subscribed to. Possible values: [&#34;RELEASE_CHANNEL_UNSPECIFIED&#34;, &#34;NONE&#34;, &#34;REGULAR&#34;]
      * 
      */
     public Optional<Output<String>> releaseChannel() {
@@ -261,7 +239,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Config that customers are allowed to define for GDCE system add-ons.
-     * Structure is documented below.
      * 
      */
     @Import(name="systemAddonsConfig")
@@ -269,7 +246,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Config that customers are allowed to define for GDCE system add-ons.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterSystemAddonsConfigArgs>> systemAddonsConfig() {
@@ -277,14 +253,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The target cluster version. For example: &#34;1.5.0&#34;.
+     * (Output)
+     * The target version of the cluster.
      * 
      */
     @Import(name="targetVersion")
     private @Nullable Output<String> targetVersion;
 
     /**
-     * @return The target cluster version. For example: &#34;1.5.0&#34;.
+     * @return (Output)
+     * The target version of the cluster.
      * 
      */
     public Optional<Output<String>> targetVersion() {
@@ -354,7 +332,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param controlPlane The configuration of the cluster control plane.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -366,7 +343,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param controlPlane The configuration of the cluster control plane.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -376,9 +352,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param controlPlaneEncryption Remote control plane disk encryption options. This field is only used when
-         * enabling CMEK support.
-         * Structure is documented below.
+         * @param controlPlaneEncryption Remote control plane disk encryption options. This field is only used when enabling CMEK support.
          * 
          * @return builder
          * 
@@ -389,9 +363,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param controlPlaneEncryption Remote control plane disk encryption options. This field is only used when
-         * enabling CMEK support.
-         * Structure is documented below.
+         * @param controlPlaneEncryption Remote control plane disk encryption options. This field is only used when enabling CMEK support.
          * 
          * @return builder
          * 
@@ -401,9 +373,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultMaxPodsPerNode The default maximum number of pods per node used if a maximum value is not
-         * specified explicitly for a node pool in this cluster. If unspecified, the
-         * Kubernetes default value will be used.
+         * @param defaultMaxPodsPerNode The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+         * cluster. If unspecified, the Kubernetes default value will be used.
          * 
          * @return builder
          * 
@@ -414,9 +385,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultMaxPodsPerNode The default maximum number of pods per node used if a maximum value is not
-         * specified explicitly for a node pool in this cluster. If unspecified, the
-         * Kubernetes default value will be used.
+         * @param defaultMaxPodsPerNode The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+         * cluster. If unspecified, the Kubernetes default value will be used.
          * 
          * @return builder
          * 
@@ -486,9 +456,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User-defined labels for the edgecloud cluster.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+         * resource.
          * 
          * @return builder
          * 
@@ -499,9 +469,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User-defined labels for the edgecloud cluster.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+         * resource.
          * 
          * @return builder
          * 
@@ -533,7 +503,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintenancePolicy Cluster-wide maintenance policy configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -545,7 +514,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintenancePolicy Cluster-wide maintenance policy configuration.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -604,32 +572,17 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return networking(Output.of(networking));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param releaseChannel The release channel a cluster is subscribed to.
-         * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+         * @param releaseChannel The release channel a cluster is subscribed to. Possible values: [&#34;RELEASE_CHANNEL_UNSPECIFIED&#34;, &#34;NONE&#34;, &#34;REGULAR&#34;]
          * 
          * @return builder
          * 
@@ -640,8 +593,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param releaseChannel The release channel a cluster is subscribed to.
-         * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+         * @param releaseChannel The release channel a cluster is subscribed to. Possible values: [&#34;RELEASE_CHANNEL_UNSPECIFIED&#34;, &#34;NONE&#34;, &#34;REGULAR&#34;]
          * 
          * @return builder
          * 
@@ -652,7 +604,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param systemAddonsConfig Config that customers are allowed to define for GDCE system add-ons.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -664,7 +615,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param systemAddonsConfig Config that customers are allowed to define for GDCE system add-ons.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -674,7 +624,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetVersion The target cluster version. For example: &#34;1.5.0&#34;.
+         * @param targetVersion (Output)
+         * The target version of the cluster.
          * 
          * @return builder
          * 
@@ -685,7 +636,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetVersion The target cluster version. For example: &#34;1.5.0&#34;.
+         * @param targetVersion (Output)
+         * The target version of the cluster.
          * 
          * @return builder
          * 

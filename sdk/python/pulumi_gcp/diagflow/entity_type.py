@@ -269,7 +269,6 @@ class EntityType(pulumi.CustomResource):
 
         ### Dialogflow Entity Type Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -298,7 +297,6 @@ class EntityType(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -349,7 +347,6 @@ class EntityType(pulumi.CustomResource):
 
         ### Dialogflow Entity Type Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -378,7 +375,6 @@ class EntityType(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

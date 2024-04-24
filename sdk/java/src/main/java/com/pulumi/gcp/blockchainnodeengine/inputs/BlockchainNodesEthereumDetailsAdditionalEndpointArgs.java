@@ -16,7 +16,6 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
     public static final BlockchainNodesEthereumDetailsAdditionalEndpointArgs Empty = new BlockchainNodesEthereumDetailsAdditionalEndpointArgs();
 
     /**
-     * (Output)
      * The assigned URL for the node&#39;s Beacon API endpoint.
      * 
      */
@@ -24,8 +23,7 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
     private @Nullable Output<String> beaconApiEndpoint;
 
     /**
-     * @return (Output)
-     * The assigned URL for the node&#39;s Beacon API endpoint.
+     * @return The assigned URL for the node&#39;s Beacon API endpoint.
      * 
      */
     public Optional<Output<String>> beaconApiEndpoint() {
@@ -33,7 +31,6 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
     }
 
     /**
-     * (Output)
      * The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
      * 
      */
@@ -41,8 +38,7 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
     private @Nullable Output<String> beaconPrometheusMetricsApiEndpoint;
 
     /**
-     * @return (Output)
-     * The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
+     * @return The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
      * 
      */
     public Optional<Output<String>> beaconPrometheusMetricsApiEndpoint() {
@@ -50,7 +46,6 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
     }
 
     /**
-     * (Output)
      * The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
      * 
      */
@@ -58,8 +53,7 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
     private @Nullable Output<String> executionClientPrometheusMetricsApiEndpoint;
 
     /**
-     * @return (Output)
-     * The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
+     * @return The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
      * 
      */
     public Optional<Output<String>> executionClientPrometheusMetricsApiEndpoint() {
@@ -93,8 +87,7 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
         }
 
         /**
-         * @param beaconApiEndpoint (Output)
-         * The assigned URL for the node&#39;s Beacon API endpoint.
+         * @param beaconApiEndpoint The assigned URL for the node&#39;s Beacon API endpoint.
          * 
          * @return builder
          * 
@@ -105,8 +98,7 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
         }
 
         /**
-         * @param beaconApiEndpoint (Output)
-         * The assigned URL for the node&#39;s Beacon API endpoint.
+         * @param beaconApiEndpoint The assigned URL for the node&#39;s Beacon API endpoint.
          * 
          * @return builder
          * 
@@ -116,8 +108,7 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
         }
 
         /**
-         * @param beaconPrometheusMetricsApiEndpoint (Output)
-         * The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
+         * @param beaconPrometheusMetricsApiEndpoint The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
          * 
          * @return builder
          * 
@@ -128,8 +119,7 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
         }
 
         /**
-         * @param beaconPrometheusMetricsApiEndpoint (Output)
-         * The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
+         * @param beaconPrometheusMetricsApiEndpoint The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
          * 
          * @return builder
          * 
@@ -139,8 +129,7 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
         }
 
         /**
-         * @param executionClientPrometheusMetricsApiEndpoint (Output)
-         * The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
+         * @param executionClientPrometheusMetricsApiEndpoint The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
          * 
          * @return builder
          * 
@@ -151,8 +140,7 @@ public final class BlockchainNodesEthereumDetailsAdditionalEndpointArgs extends 
         }
 
         /**
-         * @param executionClientPrometheusMetricsApiEndpoint (Output)
-         * The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
+         * @param executionClientPrometheusMetricsApiEndpoint The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
          * 
          * @return builder
          * 

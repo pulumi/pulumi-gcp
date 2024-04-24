@@ -2341,7 +2341,6 @@ func (o BackupPlanRetentionPolicyPtrOutput) Locked() pulumi.BoolPtrOutput {
 }
 
 type RestorePlanIamBindingCondition struct {
-	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
@@ -2359,7 +2358,6 @@ type RestorePlanIamBindingConditionInput interface {
 }
 
 type RestorePlanIamBindingConditionArgs struct {
-	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
@@ -2442,7 +2440,6 @@ func (o RestorePlanIamBindingConditionOutput) ToRestorePlanIamBindingConditionPt
 	}).(RestorePlanIamBindingConditionPtrOutput)
 }
 
-// User specified descriptive string for this RestorePlan.
 func (o RestorePlanIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2479,7 +2476,6 @@ func (o RestorePlanIamBindingConditionPtrOutput) Elem() RestorePlanIamBindingCon
 	}).(RestorePlanIamBindingConditionOutput)
 }
 
-// User specified descriptive string for this RestorePlan.
 func (o RestorePlanIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePlanIamBindingCondition) *string {
 		if v == nil {
@@ -2508,7 +2504,6 @@ func (o RestorePlanIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput 
 }
 
 type RestorePlanIamMemberCondition struct {
-	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
@@ -2526,7 +2521,6 @@ type RestorePlanIamMemberConditionInput interface {
 }
 
 type RestorePlanIamMemberConditionArgs struct {
-	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
@@ -2609,7 +2603,6 @@ func (o RestorePlanIamMemberConditionOutput) ToRestorePlanIamMemberConditionPtrO
 	}).(RestorePlanIamMemberConditionPtrOutput)
 }
 
-// User specified descriptive string for this RestorePlan.
 func (o RestorePlanIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2646,7 +2639,6 @@ func (o RestorePlanIamMemberConditionPtrOutput) Elem() RestorePlanIamMemberCondi
 	}).(RestorePlanIamMemberConditionOutput)
 }
 
-// User specified descriptive string for this RestorePlan.
 func (o RestorePlanIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePlanIamMemberCondition) *string {
 		if v == nil {

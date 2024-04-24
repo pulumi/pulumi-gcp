@@ -37,7 +37,6 @@ import (
 //
 // ### Disk Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,10 +67,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Disk Async
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -110,10 +107,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Disk Features
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,7 +152,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -304,10 +298,13 @@ type Disk struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -502,10 +499,13 @@ type diskState struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -666,10 +666,13 @@ type DiskState struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -816,10 +819,13 @@ type diskArgs struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -943,10 +949,13 @@ type DiskArgs struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -1248,10 +1257,13 @@ func (o DiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-//   - 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-//     'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+// The source snapshot used to create this disk. You can provide this as
+// a partial or full URL to the resource. If the snapshot is in another
+// project than this disk, you must supply a full URL. For example, the
+// following are valid values:
+// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+// * `projects/project/global/snapshots/snapshot`
+// * `global/snapshots/snapshot`
 func (o DiskOutput) Snapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Snapshot }).(pulumi.StringPtrOutput)
 }

@@ -19,12 +19,12 @@ public final class TransferJobTransferSpecAwsS3DataSource {
      */
     private @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey;
     /**
-     * @return Google Cloud Storage bucket name.
+     * @return S3 Bucket name.
      * 
      */
     private String bucketName;
     /**
-     * @return Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
+     * @return S3 Bucket path in bucket to transfer.
      * 
      */
     private @Nullable String path;
@@ -43,14 +43,14 @@ public final class TransferJobTransferSpecAwsS3DataSource {
         return Optional.ofNullable(this.awsAccessKey);
     }
     /**
-     * @return Google Cloud Storage bucket name.
+     * @return S3 Bucket name.
      * 
      */
     public String bucketName() {
         return this.bucketName;
     }
     /**
-     * @return Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
+     * @return S3 Bucket path in bucket to transfer.
      * 
      */
     public Optional<String> path() {

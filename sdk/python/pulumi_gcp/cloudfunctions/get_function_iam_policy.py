@@ -105,7 +105,6 @@ def get_function_iam_policy(cloud_function: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_function_iam_policy(cloud_function: Optional[str] = None,
         region=function["region"],
         cloud_function=function["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cloud_function: Used to find the parent resource to bind the IAM policy to
@@ -150,7 +148,6 @@ def get_function_iam_policy_output(cloud_function: Optional[pulumi.Input[str]] =
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -159,7 +156,6 @@ def get_function_iam_policy_output(cloud_function: Optional[pulumi.Input[str]] =
         region=function["region"],
         cloud_function=function["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cloud_function: Used to find the parent resource to bind the IAM policy to

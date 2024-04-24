@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Basic_asset
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,7 +89,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -132,10 +130,9 @@ type Asset struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
-	// Optional. User defined labels for the asset.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
+	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The lake for the resource
 	Lake pulumi.StringOutput `pulumi:"lake"`
@@ -225,10 +222,9 @@ type assetState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
-	// Optional. User defined labels for the asset.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
+	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake *string `pulumi:"lake"`
@@ -269,10 +265,9 @@ type AssetState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
-	// Optional. User defined labels for the asset.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
+	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringPtrInput
@@ -311,10 +306,9 @@ type assetArgs struct {
 	DiscoverySpec AssetDiscoverySpec `pulumi:"discoverySpec"`
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
-	// Optional. User defined labels for the asset.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
+	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake string `pulumi:"lake"`
@@ -338,10 +332,9 @@ type AssetArgs struct {
 	DiscoverySpec AssetDiscoverySpecInput
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
-	// Optional. User defined labels for the asset.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
+	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringInput
@@ -477,10 +470,9 @@ func (o AssetOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }
 
-// Optional. User defined labels for the asset.
-//
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
+// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+// resource.
 func (o AssetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

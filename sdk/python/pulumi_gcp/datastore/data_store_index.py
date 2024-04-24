@@ -229,7 +229,6 @@ class DataStoreIndex(pulumi.CustomResource):
 
         ### Datastore Index
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -254,7 +253,6 @@ class DataStoreIndex(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -319,7 +317,6 @@ class DataStoreIndex(pulumi.CustomResource):
 
         ### Datastore Index
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,7 +341,6 @@ class DataStoreIndex(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

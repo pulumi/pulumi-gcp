@@ -616,7 +616,6 @@ class Job(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -660,7 +659,6 @@ class Job(pulumi.CustomResource):
         pulumi.export("sparkStatus", spark.statuses[0].state)
         pulumi.export("pysparkStatus", pyspark.statuses[0].state)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -703,7 +701,6 @@ class Job(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -747,7 +744,6 @@ class Job(pulumi.CustomResource):
         pulumi.export("sparkStatus", spark.statuses[0].state)
         pulumi.export("pysparkStatus", pyspark.statuses[0].state)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

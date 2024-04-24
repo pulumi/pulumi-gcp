@@ -845,8 +845,7 @@ class InstanceUpgradeHistory(dict):
                  vm_image: Optional[str] = None):
         """
         :param str action: Optional. Action. Rolloback or Upgrade.
-        :param str container_image: Use a container image to start the workbench instance.
-               Structure is documented below.
+        :param str container_image: Optional. The container image before this instance upgrade.
         :param str create_time: An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
                The milliseconds portion (".SSS") is optional.
         :param str framework: Optional. The framework of this workbench instance.
@@ -855,9 +854,7 @@ class InstanceUpgradeHistory(dict):
                Output only. The state of this instance upgrade history entry.
         :param str target_version: Optional. Target VM Version, like m63.
         :param str version: Optional. The version of the workbench instance before this upgrade.
-        :param str vm_image: Definition of a custom Compute Engine virtual machine image for starting
-               a workbench instance with the environment installed directly on the VM.
-               Structure is documented below.
+        :param str vm_image: Optional. The VM image before this instance upgrade.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -890,8 +887,7 @@ class InstanceUpgradeHistory(dict):
     @pulumi.getter(name="containerImage")
     def container_image(self) -> Optional[str]:
         """
-        Use a container image to start the workbench instance.
-        Structure is documented below.
+        Optional. The container image before this instance upgrade.
         """
         return pulumi.get(self, "container_image")
 
@@ -949,9 +945,7 @@ class InstanceUpgradeHistory(dict):
     @pulumi.getter(name="vmImage")
     def vm_image(self) -> Optional[str]:
         """
-        Definition of a custom Compute Engine virtual machine image for starting
-        a workbench instance with the environment installed directly on the VM.
-        Structure is documented below.
+        Optional. The VM image before this instance upgrade.
         """
         return pulumi.get(self, "vm_image")
 

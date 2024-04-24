@@ -26,7 +26,6 @@ import (
 //
 // ### Beyondcorp App Connection Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,10 +76,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Beyondcorp App Connection Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -147,7 +144,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -191,17 +187,13 @@ type AppConnection struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Gateway used by the AppConnection.
-	// Structure is documented below.
 	Gateway AppConnectionGatewayOutput `pulumi:"gateway"`
-	// Resource labels to represent user provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// ID of the AppConnection.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -209,8 +201,8 @@ type AppConnection struct {
 	// The region of the AppConnection.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The type of network connectivity used by the AppConnection. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-	// for a list of possible values.
+	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
+	// values.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -262,17 +254,13 @@ type appConnectionState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Gateway used by the AppConnection.
-	// Structure is documented below.
 	Gateway *AppConnectionGateway `pulumi:"gateway"`
-	// Resource labels to represent user provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the AppConnection.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -280,8 +268,8 @@ type appConnectionState struct {
 	// The region of the AppConnection.
 	Region *string `pulumi:"region"`
 	// The type of network connectivity used by the AppConnection. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-	// for a list of possible values.
+	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
+	// values.
 	Type *string `pulumi:"type"`
 }
 
@@ -296,17 +284,13 @@ type AppConnectionState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Gateway used by the AppConnection.
-	// Structure is documented below.
 	Gateway AppConnectionGatewayPtrInput
-	// Resource labels to represent user provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// ID of the AppConnection.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -314,8 +298,8 @@ type AppConnectionState struct {
 	// The region of the AppConnection.
 	Region pulumi.StringPtrInput
 	// The type of network connectivity used by the AppConnection. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-	// for a list of possible values.
+	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
+	// values.
 	Type pulumi.StringPtrInput
 }
 
@@ -332,23 +316,19 @@ type appConnectionArgs struct {
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName *string `pulumi:"displayName"`
 	// Gateway used by the AppConnection.
-	// Structure is documented below.
 	Gateway *AppConnectionGateway `pulumi:"gateway"`
-	// Resource labels to represent user provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the AppConnection.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The region of the AppConnection.
 	Region *string `pulumi:"region"`
 	// The type of network connectivity used by the AppConnection. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-	// for a list of possible values.
+	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
+	// values.
 	Type *string `pulumi:"type"`
 }
 
@@ -362,23 +342,19 @@ type AppConnectionArgs struct {
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName pulumi.StringPtrInput
 	// Gateway used by the AppConnection.
-	// Structure is documented below.
 	Gateway AppConnectionGatewayPtrInput
-	// Resource labels to represent user provided metadata.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// ID of the AppConnection.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The region of the AppConnection.
 	Region pulumi.StringPtrInput
 	// The type of network connectivity used by the AppConnection. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-	// for a list of possible values.
+	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
+	// values.
 	Type pulumi.StringPtrInput
 }
 
@@ -491,15 +467,13 @@ func (o AppConnectionOutput) EffectiveLabels() pulumi.StringMapOutput {
 }
 
 // Gateway used by the AppConnection.
-// Structure is documented below.
 func (o AppConnectionOutput) Gateway() AppConnectionGatewayOutput {
 	return o.ApplyT(func(v *AppConnection) AppConnectionGatewayOutput { return v.Gateway }).(AppConnectionGatewayOutput)
 }
 
-// Resource labels to represent user provided metadata.
-//
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
+// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+// resource.
 func (o AppConnectionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -509,8 +483,6 @@ func (o AppConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o AppConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -527,8 +499,8 @@ func (o AppConnectionOutput) Region() pulumi.StringPtrOutput {
 }
 
 // The type of network connectivity used by the AppConnection. Refer to
-// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-// for a list of possible values.
+// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
+// values.
 func (o AppConnectionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

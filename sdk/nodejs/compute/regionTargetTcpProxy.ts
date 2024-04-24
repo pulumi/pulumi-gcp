@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Target Tcp Proxy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,7 +46,6 @@ import * as utilities from "../utilities";
  *     backendService: defaultRegionBackendService.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

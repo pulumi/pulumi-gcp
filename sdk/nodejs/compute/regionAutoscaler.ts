@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Autoscaler Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -82,7 +81,6 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -167,10 +165,6 @@ export class RegionAutoscaler extends pulumi.CustomResource {
      * character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * URL of the region where the instance group resides.
@@ -257,10 +251,6 @@ export interface RegionAutoscalerState {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * URL of the region where the instance group resides.
@@ -301,10 +291,6 @@ export interface RegionAutoscalerArgs {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * URL of the region where the instance group resides.

@@ -268,7 +268,6 @@ class AzureClient(pulumi.CustomResource):
 
         ### Basic_azure_client
         A basic example of a containerazure azure client
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -280,7 +279,6 @@ class AzureClient(pulumi.CustomResource):
             tenant_id="12345678-1234-1234-1234-123456789111",
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -333,7 +331,6 @@ class AzureClient(pulumi.CustomResource):
 
         ### Basic_azure_client
         A basic example of a containerazure azure client
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -345,7 +342,6 @@ class AzureClient(pulumi.CustomResource):
             tenant_id="12345678-1234-1234-1234-123456789111",
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

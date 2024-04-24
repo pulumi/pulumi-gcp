@@ -34,14 +34,14 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlowArgs extends com.pulumi
     }
 
     /**
-     * Secret version of Password for Authentication.
+     * Client ID for user-provided OAuth app.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return Secret version of Password for Authentication.
+     * @return Client ID for user-provided OAuth app.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -49,16 +49,14 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlowArgs extends com.pulumi
     }
 
     /**
-     * Secret version reference containing the client secret.
-     * Structure is documented below.
+     * Client secret for user-provided OAuth app.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs> clientSecret;
 
     /**
-     * @return Secret version reference containing the client secret.
-     * Structure is documented below.
+     * @return Client secret for user-provided OAuth app.
      * 
      */
     public Optional<Output<ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs>> clientSecret() {
@@ -145,7 +143,7 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlowArgs extends com.pulumi
         }
 
         /**
-         * @param clientId Secret version of Password for Authentication.
+         * @param clientId Client ID for user-provided OAuth app.
          * 
          * @return builder
          * 
@@ -156,7 +154,7 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlowArgs extends com.pulumi
         }
 
         /**
-         * @param clientId Secret version of Password for Authentication.
+         * @param clientId Client ID for user-provided OAuth app.
          * 
          * @return builder
          * 
@@ -166,8 +164,7 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlowArgs extends com.pulumi
         }
 
         /**
-         * @param clientSecret Secret version reference containing the client secret.
-         * Structure is documented below.
+         * @param clientSecret Client secret for user-provided OAuth app.
          * 
          * @return builder
          * 
@@ -178,8 +175,7 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlowArgs extends com.pulumi
         }
 
         /**
-         * @param clientSecret Secret version reference containing the client secret.
-         * Structure is documented below.
+         * @param clientSecret Client secret for user-provided OAuth app.
          * 
          * @return builder
          * 

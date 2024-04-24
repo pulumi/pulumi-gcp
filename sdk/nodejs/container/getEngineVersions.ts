@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  * export const stableChannelDefaultVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion?.STABLE);
  * export const stableChannelLatestVersion = central1b.then(central1b => central1b.releaseChannelLatestVersion?.STABLE);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};
@@ -124,7 +122,6 @@ export interface GetEngineVersionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -142,7 +139,6 @@ export interface GetEngineVersionsResult {
  * export const stableChannelDefaultVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion?.STABLE);
  * export const stableChannelLatestVersion = central1b.then(central1b => central1b.releaseChannelLatestVersion?.STABLE);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEngineVersionsOutput(args?: GetEngineVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineVersionsResult> {
     return pulumi.output(args).apply((a: any) => getEngineVersions(a, opts))

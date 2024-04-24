@@ -344,7 +344,6 @@ class AiFeatureGroup(pulumi.CustomResource):
 
         ### Vertex Ai Feature Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -385,7 +384,6 @@ class AiFeatureGroup(pulumi.CustomResource):
                 entity_id_columns=["feature_id"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -449,7 +447,6 @@ class AiFeatureGroup(pulumi.CustomResource):
 
         ### Vertex Ai Feature Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -490,7 +487,6 @@ class AiFeatureGroup(pulumi.CustomResource):
                 entity_id_columns=["feature_id"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

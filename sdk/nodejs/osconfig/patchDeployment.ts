@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Os Config Patch Deployment Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,10 +34,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Os Config Patch Deployment Daily
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,10 +58,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Os Config Patch Deployment Daily Midnight
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -87,10 +82,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Os Config Patch Deployment Instance
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -148,10 +141,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Os Config Patch Deployment Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -259,7 +250,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -323,8 +313,8 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Duration of the patch. After the duration ends, the patch times out.
-     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+     * Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+     * digits, terminated by 's'. Example: "3.5s"
      */
     public readonly duration!: pulumi.Output<string | undefined>;
     /**
@@ -333,8 +323,7 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly instanceFilter!: pulumi.Output<outputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
-     * (Output)
-     * The time the last patch job ran successfully.
+     * The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly lastExecuteTime!: pulumi.Output<string>;
@@ -345,12 +334,10 @@ export class PatchDeployment extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Schedule a one-time execution.
-     * Structure is documented below.
      */
     public readonly oneTimeSchedule!: pulumi.Output<outputs.osconfig.PatchDeploymentOneTimeSchedule | undefined>;
     /**
      * Patch configuration that is applied.
-     * Structure is documented below.
      */
     public readonly patchConfig!: pulumi.Output<outputs.osconfig.PatchDeploymentPatchConfig | undefined>;
     /**
@@ -362,19 +349,13 @@ export class PatchDeployment extends pulumi.CustomResource {
      * * Must be unique within the project.
      */
     public readonly patchDeploymentId!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Schedule recurring executions.
-     * Structure is documented below.
      */
     public readonly recurringSchedule!: pulumi.Output<outputs.osconfig.PatchDeploymentRecurringSchedule | undefined>;
     /**
      * Rollout strategy of the patch job.
-     * Structure is documented below.
      */
     public readonly rollout!: pulumi.Output<outputs.osconfig.PatchDeploymentRollout | undefined>;
     /**
@@ -450,8 +431,8 @@ export interface PatchDeploymentState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Duration of the patch. After the duration ends, the patch times out.
-     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+     * Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+     * digits, terminated by 's'. Example: "3.5s"
      */
     duration?: pulumi.Input<string>;
     /**
@@ -460,8 +441,7 @@ export interface PatchDeploymentState {
      */
     instanceFilter?: pulumi.Input<inputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
-     * (Output)
-     * The time the last patch job ran successfully.
+     * The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     lastExecuteTime?: pulumi.Input<string>;
@@ -472,12 +452,10 @@ export interface PatchDeploymentState {
     name?: pulumi.Input<string>;
     /**
      * Schedule a one-time execution.
-     * Structure is documented below.
      */
     oneTimeSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentOneTimeSchedule>;
     /**
      * Patch configuration that is applied.
-     * Structure is documented below.
      */
     patchConfig?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfig>;
     /**
@@ -489,19 +467,13 @@ export interface PatchDeploymentState {
      * * Must be unique within the project.
      */
     patchDeploymentId?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Schedule recurring executions.
-     * Structure is documented below.
      */
     recurringSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringSchedule>;
     /**
      * Rollout strategy of the patch job.
-     * Structure is documented below.
      */
     rollout?: pulumi.Input<inputs.osconfig.PatchDeploymentRollout>;
     /**
@@ -520,8 +492,8 @@ export interface PatchDeploymentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Duration of the patch. After the duration ends, the patch times out.
-     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+     * Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+     * digits, terminated by 's'. Example: "3.5s"
      */
     duration?: pulumi.Input<string>;
     /**
@@ -531,12 +503,10 @@ export interface PatchDeploymentArgs {
     instanceFilter: pulumi.Input<inputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
      * Schedule a one-time execution.
-     * Structure is documented below.
      */
     oneTimeSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentOneTimeSchedule>;
     /**
      * Patch configuration that is applied.
-     * Structure is documented below.
      */
     patchConfig?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfig>;
     /**
@@ -548,19 +518,13 @@ export interface PatchDeploymentArgs {
      * * Must be unique within the project.
      */
     patchDeploymentId: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Schedule recurring executions.
-     * Structure is documented below.
      */
     recurringSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringSchedule>;
     /**
      * Rollout strategy of the patch job.
-     * Structure is documented below.
      */
     rollout?: pulumi.Input<inputs.osconfig.PatchDeploymentRollout>;
 }

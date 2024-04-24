@@ -91,7 +91,6 @@ def get_project_service_account(project_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -102,7 +101,6 @@ def get_project_service_account(project_id: Optional[str] = None,
         role="roles/cloudkms.signerVerifier",
         member=f"serviceAccount:{service_account.account_email}")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project_id: The project ID the service account was created for.
@@ -133,7 +131,6 @@ def get_project_service_account_output(project_id: Optional[pulumi.Input[str]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -144,7 +141,6 @@ def get_project_service_account_output(project_id: Optional[pulumi.Input[str]] =
         role="roles/cloudkms.signerVerifier",
         member=f"serviceAccount:{service_account.account_email}")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project_id: The project ID the service account was created for.

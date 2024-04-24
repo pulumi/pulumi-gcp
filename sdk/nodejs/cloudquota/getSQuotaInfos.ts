@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     service: "compute.googleapis.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSQuotaInfos(args: GetSQuotaInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetSQuotaInfosResult> {
 
@@ -66,7 +64,6 @@ export interface GetSQuotaInfosResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -76,7 +73,6 @@ export interface GetSQuotaInfosResult {
  *     service: "compute.googleapis.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSQuotaInfosOutput(args: GetSQuotaInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSQuotaInfosResult> {
     return pulumi.output(args).apply((a: any) => getSQuotaInfos(a, opts))

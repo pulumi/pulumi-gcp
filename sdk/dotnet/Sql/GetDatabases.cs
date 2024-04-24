@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Sql
         /// Use this data source to get information about a list of databases in a Cloud SQL instance.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.Gcp.Sql
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabasesResult> InvokeAsync(GetDatabasesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("gcp:sql/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
@@ -40,7 +38,6 @@ namespace Pulumi.Gcp.Sql
         /// Use this data source to get information about a list of databases in a Cloud SQL instance.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,7 +53,6 @@ namespace Pulumi.Gcp.Sql
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("gcp:sql/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());

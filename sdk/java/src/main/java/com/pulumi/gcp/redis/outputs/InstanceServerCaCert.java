@@ -19,9 +19,7 @@ public final class InstanceServerCaCert {
     private @Nullable String cert;
     /**
      * @return (Output)
-     * Output only. The time when the policy was created.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * The time when the certificate was created.
      * 
      */
     private @Nullable String createTime;
@@ -55,9 +53,7 @@ public final class InstanceServerCaCert {
     }
     /**
      * @return (Output)
-     * Output only. The time when the policy was created.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * The time when the certificate was created.
      * 
      */
     public Optional<String> createTime() {

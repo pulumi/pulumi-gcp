@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHl7V2StoreIamPolicyResult> InvokeAsync(GetHl7V2StoreIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHl7V2StoreIamPolicyResult>("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args ?? new GetHl7V2StoreIamPolicyArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHl7V2StoreIamPolicyResult> Invoke(GetHl7V2StoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHl7V2StoreIamPolicyResult>("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args ?? new GetHl7V2StoreIamPolicyInvokeArgs(), options.WithDefaults());

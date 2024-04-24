@@ -18,16 +18,14 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     public static final ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs Empty = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs();
 
     /**
-     * The number of local SSD disks to attach to the node,
-     * which is limited by the maximum number of disks allowable per zone.
+     * The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
      * 
      */
     @Import(name="localSsdCount")
     private @Nullable Output<Integer> localSsdCount;
 
     /**
-     * @return The number of local SSD disks to attach to the node,
-     * which is limited by the maximum number of disks allowable per zone.
+     * @return The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
      * 
      */
     public Optional<Output<Integer>> localSsdCount() {
@@ -35,18 +33,14 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     }
 
     /**
-     * The name of a Google Compute Engine machine type
-     * to create for the node group. If not specified, GCP will default to a predetermined
-     * computed value (currently `n1-standard-4`).
+     * The name of a Compute Engine machine type.
      * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
-     * @return The name of a Google Compute Engine machine type
-     * to create for the node group. If not specified, GCP will default to a predetermined
-     * computed value (currently `n1-standard-4`).
+     * @return The name of a Compute Engine machine type.
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -54,20 +48,14 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     }
 
     /**
-     * The name of a minimum generation of CPU family
-     * for the node group. If not specified, GCP will default to a predetermined computed value
-     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-     * for details about which CPU families are available (and defaulted) for each zone.
+     * Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
      * 
      */
     @Import(name="minCpuPlatform")
     private @Nullable Output<String> minCpuPlatform;
 
     /**
-     * @return The name of a minimum generation of CPU family
-     * for the node group. If not specified, GCP will default to a predetermined computed value
-     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-     * for details about which CPU families are available (and defaulted) for each zone.
+     * @return Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
      * 
      */
     public Optional<Output<String>> minCpuPlatform() {
@@ -75,18 +63,14 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     }
 
     /**
-     * Whether the nodes are created as preemptible VM instances.
-     * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
-     * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+     * Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
      * 
      */
     @Import(name="preemptible")
     private @Nullable Output<Boolean> preemptible;
 
     /**
-     * @return Whether the nodes are created as preemptible VM instances.
-     * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
-     * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+     * @return Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
      * 
      */
     public Optional<Output<Boolean>> preemptible() {
@@ -137,8 +121,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param localSsdCount The number of local SSD disks to attach to the node,
-         * which is limited by the maximum number of disks allowable per zone.
+         * @param localSsdCount The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
          * 
          * @return builder
          * 
@@ -149,8 +132,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param localSsdCount The number of local SSD disks to attach to the node,
-         * which is limited by the maximum number of disks allowable per zone.
+         * @param localSsdCount The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
          * 
          * @return builder
          * 
@@ -160,9 +142,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param machineType The name of a Google Compute Engine machine type
-         * to create for the node group. If not specified, GCP will default to a predetermined
-         * computed value (currently `n1-standard-4`).
+         * @param machineType The name of a Compute Engine machine type.
          * 
          * @return builder
          * 
@@ -173,9 +153,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param machineType The name of a Google Compute Engine machine type
-         * to create for the node group. If not specified, GCP will default to a predetermined
-         * computed value (currently `n1-standard-4`).
+         * @param machineType The name of a Compute Engine machine type.
          * 
          * @return builder
          * 
@@ -185,10 +163,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param minCpuPlatform The name of a minimum generation of CPU family
-         * for the node group. If not specified, GCP will default to a predetermined computed value
-         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-         * for details about which CPU families are available (and defaulted) for each zone.
+         * @param minCpuPlatform Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
          * 
          * @return builder
          * 
@@ -199,10 +174,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param minCpuPlatform The name of a minimum generation of CPU family
-         * for the node group. If not specified, GCP will default to a predetermined computed value
-         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-         * for details about which CPU families are available (and defaulted) for each zone.
+         * @param minCpuPlatform Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
          * 
          * @return builder
          * 
@@ -212,9 +184,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param preemptible Whether the nodes are created as preemptible VM instances.
-         * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
-         * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+         * @param preemptible Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
          * 
          * @return builder
          * 
@@ -225,9 +195,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param preemptible Whether the nodes are created as preemptible VM instances.
-         * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
-         * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+         * @param preemptible Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
          * 
          * @return builder
          * 

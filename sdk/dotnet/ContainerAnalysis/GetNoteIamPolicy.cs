@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNoteIamPolicyResult> InvokeAsync(GetNoteIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNoteIamPolicyResult>("gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy", args ?? new GetNoteIamPolicyArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNoteIamPolicyResult> Invoke(GetNoteIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNoteIamPolicyResult>("gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy", args ?? new GetNoteIamPolicyInvokeArgs(), options.WithDefaults());

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Secure Source Manager Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,10 +31,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Secure Source Manager Instance Cmek
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,10 +57,8 @@ import * as utilities from "../utilities";
  *     kmsKey: cryptoKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Secure Source Manager Instance Private
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -128,7 +123,6 @@ import * as utilities from "../utilities";
  * // ca pool IAM permissions can take time to propagate
  * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

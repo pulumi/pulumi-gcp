@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,11 +43,9 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create logging bucket with customId
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,11 +64,9 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create logging bucket with Log Analytics enabled
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -91,11 +86,9 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create logging bucket with customId and cmekSettings
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -146,11 +139,9 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create logging bucket with index configs
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -174,7 +165,6 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -240,7 +230,7 @@ namespace Pulumi.Gcp.Logging
         public Output<bool?> Locked { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the CMEK settings.
+        /// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -426,7 +416,7 @@ namespace Pulumi.Gcp.Logging
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
-        /// The resource name of the CMEK settings.
+        /// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

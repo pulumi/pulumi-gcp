@@ -582,7 +582,6 @@ class Intent(pulumi.CustomResource):
 
         ### Dialogflow Intent Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -593,10 +592,8 @@ class Intent(pulumi.CustomResource):
             time_zone="America/New_York")
         basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent")
         ```
-        <!--End PulumiCodeChooser -->
         ### Dialogflow Intent Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -635,7 +632,6 @@ class Intent(pulumi.CustomResource):
                 "SLACK",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -704,7 +700,6 @@ class Intent(pulumi.CustomResource):
 
         ### Dialogflow Intent Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -715,10 +710,8 @@ class Intent(pulumi.CustomResource):
             time_zone="America/New_York")
         basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent")
         ```
-        <!--End PulumiCodeChooser -->
         ### Dialogflow Intent Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -757,7 +750,6 @@ class Intent(pulumi.CustomResource):
                 "SLACK",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// ### Vertex Ai Index
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,10 +79,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Vertex Ai Index Streaming
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -139,7 +136,6 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

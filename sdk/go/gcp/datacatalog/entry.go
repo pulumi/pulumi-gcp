@@ -29,7 +29,6 @@ import (
 //
 // ### Data Catalog Entry Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,10 +61,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Catalog Entry Fileset
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -102,10 +99,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Catalog Entry Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -180,7 +175,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

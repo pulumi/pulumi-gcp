@@ -554,7 +554,6 @@ class CxIntent(pulumi.CustomResource):
 
         ### Dialogflowcx Intent Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -604,7 +603,6 @@ class CxIntent(pulumi.CustomResource):
                 "label2": "value2",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -680,7 +678,6 @@ class CxIntent(pulumi.CustomResource):
 
         ### Dialogflowcx Intent Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -730,7 +727,6 @@ class CxIntent(pulumi.CustomResource):
                 "label2": "value2",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

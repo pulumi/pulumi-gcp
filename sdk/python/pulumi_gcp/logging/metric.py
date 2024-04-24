@@ -483,7 +483,6 @@ class Metric(pulumi.CustomResource):
 
         ### Logging Metric Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -522,10 +521,8 @@ class Metric(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Metric Counter Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -538,10 +535,8 @@ class Metric(pulumi.CustomResource):
                 value_type="INT64",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Metric Counter Labels
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -562,10 +557,8 @@ class Metric(pulumi.CustomResource):
                 "mass": "EXTRACT(jsonPayload.request)",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Metric Logging Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -579,10 +572,8 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Metric Disabled
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -596,7 +587,6 @@ class Metric(pulumi.CustomResource):
             ),
             disabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -676,7 +666,6 @@ class Metric(pulumi.CustomResource):
 
         ### Logging Metric Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -715,10 +704,8 @@ class Metric(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Metric Counter Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -731,10 +718,8 @@ class Metric(pulumi.CustomResource):
                 value_type="INT64",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Metric Counter Labels
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -755,10 +740,8 @@ class Metric(pulumi.CustomResource):
                 "mass": "EXTRACT(jsonPayload.request)",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Metric Logging Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -772,10 +755,8 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Logging Metric Disabled
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -789,7 +770,6 @@ class Metric(pulumi.CustomResource):
             ),
             disabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

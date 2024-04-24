@@ -22,7 +22,6 @@ import (
 //
 // ### Cloudfunctions2 Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,10 +85,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudfunctions2 Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -183,10 +180,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudfunctions2 Scheduler Auth
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -304,10 +299,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudfunctions2 Basic Gcs
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -450,10 +443,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudfunctions2 Basic Auditlogs
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -601,10 +592,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudfunctions2 Secret Env
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -697,10 +686,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudfunctions2 Secret Volume
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -792,10 +779,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudfunctions2 Private Workerpool
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -870,10 +855,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudfunctions2 Cmek Docs
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -995,7 +978,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

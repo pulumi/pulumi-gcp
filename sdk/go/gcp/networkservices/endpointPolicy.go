@@ -16,7 +16,6 @@ import (
 //
 // ### Network Services Endpoint Policy Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,10 +60,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Services Endpoint Policy Empty Match
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -103,7 +100,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -131,9 +127,11 @@ import (
 type EndpointPolicy struct {
 	pulumi.CustomResourceState
 
-	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
+	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
+	// at the matched endpoints.
 	AuthorizationPolicy pulumi.StringPtrOutput `pulumi:"authorizationPolicy"`
-	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
+	// the proxy to the actual endpoints.
 	ClientTlsPolicy pulumi.StringPtrOutput `pulumi:"clientTlsPolicy"`
 	// Time the TcpRoute was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -144,22 +142,20 @@ type EndpointPolicy struct {
 	// Required. A matcher that selects endpoints to which the policies should be applied.
 	// Structure is documented below.
 	EndpointMatcher EndpointPolicyEndpointMatcherOutput `pulumi:"endpointMatcher"`
-	// Set of label tags associated with the TcpRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the EndpointPolicy resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
+	// applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
-	// Structure is documented below.
 	TrafficPortSelector EndpointPolicyTrafficPortSelectorPtrOutput `pulumi:"trafficPortSelector"`
 	// The type of endpoint policy. This is primarily used to validate the configuration.
 	// Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
@@ -209,9 +205,11 @@ func GetEndpointPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EndpointPolicy resources.
 type endpointPolicyState struct {
-	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
+	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
+	// at the matched endpoints.
 	AuthorizationPolicy *string `pulumi:"authorizationPolicy"`
-	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
+	// the proxy to the actual endpoints.
 	ClientTlsPolicy *string `pulumi:"clientTlsPolicy"`
 	// Time the TcpRoute was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
@@ -222,22 +220,20 @@ type endpointPolicyState struct {
 	// Required. A matcher that selects endpoints to which the policies should be applied.
 	// Structure is documented below.
 	EndpointMatcher *EndpointPolicyEndpointMatcher `pulumi:"endpointMatcher"`
-	// Set of label tags associated with the TcpRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the EndpointPolicy resource.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
+	// applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
-	// Structure is documented below.
 	TrafficPortSelector *EndpointPolicyTrafficPortSelector `pulumi:"trafficPortSelector"`
 	// The type of endpoint policy. This is primarily used to validate the configuration.
 	// Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
@@ -247,9 +243,11 @@ type endpointPolicyState struct {
 }
 
 type EndpointPolicyState struct {
-	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
+	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
+	// at the matched endpoints.
 	AuthorizationPolicy pulumi.StringPtrInput
-	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
+	// the proxy to the actual endpoints.
 	ClientTlsPolicy pulumi.StringPtrInput
 	// Time the TcpRoute was created in UTC.
 	CreateTime pulumi.StringPtrInput
@@ -260,22 +258,20 @@ type EndpointPolicyState struct {
 	// Required. A matcher that selects endpoints to which the policies should be applied.
 	// Structure is documented below.
 	EndpointMatcher EndpointPolicyEndpointMatcherPtrInput
-	// Set of label tags associated with the TcpRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels pulumi.StringMapInput
 	// Name of the EndpointPolicy resource.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
+	// applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy pulumi.StringPtrInput
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
-	// Structure is documented below.
 	TrafficPortSelector EndpointPolicyTrafficPortSelectorPtrInput
 	// The type of endpoint policy. This is primarily used to validate the configuration.
 	// Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
@@ -289,28 +285,28 @@ func (EndpointPolicyState) ElementType() reflect.Type {
 }
 
 type endpointPolicyArgs struct {
-	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
+	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
+	// at the matched endpoints.
 	AuthorizationPolicy *string `pulumi:"authorizationPolicy"`
-	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
+	// the proxy to the actual endpoints.
 	ClientTlsPolicy *string `pulumi:"clientTlsPolicy"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Required. A matcher that selects endpoints to which the policies should be applied.
 	// Structure is documented below.
 	EndpointMatcher EndpointPolicyEndpointMatcher `pulumi:"endpointMatcher"`
-	// Set of label tags associated with the TcpRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the EndpointPolicy resource.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
+	// applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
-	// Structure is documented below.
 	TrafficPortSelector *EndpointPolicyTrafficPortSelector `pulumi:"trafficPortSelector"`
 	// The type of endpoint policy. This is primarily used to validate the configuration.
 	// Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
@@ -319,28 +315,28 @@ type endpointPolicyArgs struct {
 
 // The set of arguments for constructing a EndpointPolicy resource.
 type EndpointPolicyArgs struct {
-	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
+	// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
+	// at the matched endpoints.
 	AuthorizationPolicy pulumi.StringPtrInput
-	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+	// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
+	// the proxy to the actual endpoints.
 	ClientTlsPolicy pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Required. A matcher that selects endpoints to which the policies should be applied.
 	// Structure is documented below.
 	EndpointMatcher EndpointPolicyEndpointMatcherInput
-	// Set of label tags associated with the TcpRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels pulumi.StringMapInput
 	// Name of the EndpointPolicy resource.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
+	// applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy pulumi.StringPtrInput
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
-	// Structure is documented below.
 	TrafficPortSelector EndpointPolicyTrafficPortSelectorPtrInput
 	// The type of endpoint policy. This is primarily used to validate the configuration.
 	// Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
@@ -434,12 +430,14 @@ func (o EndpointPolicyOutput) ToEndpointPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
-// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
+// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
+// at the matched endpoints.
 func (o EndpointPolicyOutput) AuthorizationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringPtrOutput { return v.AuthorizationPolicy }).(pulumi.StringPtrOutput)
 }
 
-// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
+// the proxy to the actual endpoints.
 func (o EndpointPolicyOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringPtrOutput { return v.ClientTlsPolicy }).(pulumi.StringPtrOutput)
 }
@@ -465,9 +463,9 @@ func (o EndpointPolicyOutput) EndpointMatcher() EndpointPolicyEndpointMatcherOut
 	return o.ApplyT(func(v *EndpointPolicy) EndpointPolicyEndpointMatcherOutput { return v.EndpointMatcher }).(EndpointPolicyEndpointMatcherOutput)
 }
 
-// Set of label tags associated with the TcpRoute resource.
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+// the resource.
 func (o EndpointPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -477,8 +475,6 @@ func (o EndpointPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o EndpointPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -489,13 +485,13 @@ func (o EndpointPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
+// applied to terminate the inbound traffic at the identified backends.
 func (o EndpointPolicyOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringPtrOutput { return v.ServerTlsPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
-// Structure is documented below.
 func (o EndpointPolicyOutput) TrafficPortSelector() EndpointPolicyTrafficPortSelectorPtrOutput {
 	return o.ApplyT(func(v *EndpointPolicy) EndpointPolicyTrafficPortSelectorPtrOutput { return v.TrafficPortSelector }).(EndpointPolicyTrafficPortSelectorPtrOutput)
 }

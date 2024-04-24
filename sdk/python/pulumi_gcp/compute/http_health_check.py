@@ -495,7 +495,6 @@ class HttpHealthCheck(pulumi.CustomResource):
 
         ### Http Health Check Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -506,7 +505,6 @@ class HttpHealthCheck(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -591,7 +589,6 @@ class HttpHealthCheck(pulumi.CustomResource):
 
         ### Http Health Check Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -602,7 +599,6 @@ class HttpHealthCheck(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

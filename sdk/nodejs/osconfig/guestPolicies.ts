@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Os Config Guest Policies Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -62,10 +61,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Os Config Guest Policies Packages
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -126,10 +123,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Os Config Guest Policies Recipes
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -161,7 +156,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -249,29 +243,22 @@ export class GuestPolicies extends pulumi.CustomResource {
      */
     public readonly guestPolicyId!: pulumi.Output<string>;
     /**
-     * The name of the repository.
+     * Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * A list of package repositories to configure on the VM instance.
-     * This is done before any other configs are applied so they can use these repos.
-     * Package repositories are only configured if the corresponding package manager(s) are available.
-     * Structure is documented below.
+     * A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+     * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+     * available.
      */
     public readonly packageRepositories!: pulumi.Output<outputs.osconfig.GuestPoliciesPackageRepository[] | undefined>;
     /**
      * The software packages to be managed by this policy.
-     * Structure is documented below.
      */
     public readonly packages!: pulumi.Output<outputs.osconfig.GuestPoliciesPackage[] | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * A list of Recipes to install on the VM instance.
-     * Structure is documented below.
      */
     public readonly recipes!: pulumi.Output<outputs.osconfig.GuestPoliciesRecipe[] | undefined>;
     /**
@@ -367,29 +354,22 @@ export interface GuestPoliciesState {
      */
     guestPolicyId?: pulumi.Input<string>;
     /**
-     * The name of the repository.
+     * Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of package repositories to configure on the VM instance.
-     * This is done before any other configs are applied so they can use these repos.
-     * Package repositories are only configured if the corresponding package manager(s) are available.
-     * Structure is documented below.
+     * A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+     * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+     * available.
      */
     packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepository>[]>;
     /**
      * The software packages to be managed by this policy.
-     * Structure is documented below.
      */
     packages?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackage>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * A list of Recipes to install on the VM instance.
-     * Structure is documented below.
      */
     recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipe>[]>;
     /**
@@ -432,25 +412,18 @@ export interface GuestPoliciesArgs {
      */
     guestPolicyId: pulumi.Input<string>;
     /**
-     * A list of package repositories to configure on the VM instance.
-     * This is done before any other configs are applied so they can use these repos.
-     * Package repositories are only configured if the corresponding package manager(s) are available.
-     * Structure is documented below.
+     * A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+     * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+     * available.
      */
     packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepository>[]>;
     /**
      * The software packages to be managed by this policy.
-     * Structure is documented below.
      */
     packages?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackage>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * A list of Recipes to install on the VM instance.
-     * Structure is documented below.
      */
     recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipe>[]>;
 }

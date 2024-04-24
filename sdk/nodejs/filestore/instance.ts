@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Filestore Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,10 +39,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Filestore Instance Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -77,10 +74,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Filestore Instance Enterprise
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -108,7 +103,6 @@ import * as utilities from "../utilities";
  *     kmsKeyName: filestoreKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -190,10 +184,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
-     * Resource labels to represent user-provided metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -210,10 +203,6 @@ export class Instance extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly networks!: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -226,10 +215,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tier!: pulumi.Output<string>;
     /**
-     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
-     *
-     * > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      *
      * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
@@ -327,10 +313,9 @@ export interface InstanceState {
      */
     kmsKeyName?: pulumi.Input<string>;
     /**
-     * Resource labels to represent user-provided metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -347,10 +332,6 @@ export interface InstanceState {
      * Structure is documented below.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -363,10 +344,7 @@ export interface InstanceState {
      */
     tier?: pulumi.Input<string>;
     /**
-     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
-     *
-     * > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      *
      * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
@@ -392,10 +370,9 @@ export interface InstanceArgs {
      */
     kmsKeyName?: pulumi.Input<string>;
     /**
-     * Resource labels to represent user-provided metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -412,10 +389,6 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
@@ -423,10 +396,7 @@ export interface InstanceArgs {
      */
     tier: pulumi.Input<string>;
     /**
-     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
-     *
-     * > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      *
      * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */

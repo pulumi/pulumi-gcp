@@ -177,7 +177,6 @@ public class ChatEngine extends com.pulumi.resources.CustomResource {
     }
     /**
      * Common config spec that specifies the metadata of the engine.
-     * Structure is documented below.
      * 
      */
     @Export(name="commonConfig", refs={ChatEngineCommonConfig.class}, tree="[0]")
@@ -185,7 +184,6 @@ public class ChatEngine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Common config spec that specifies the metadata of the engine.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<ChatEngineCommonConfig>> commonConfig() {
@@ -248,18 +246,16 @@ public class ChatEngine extends com.pulumi.resources.CustomResource {
         return this.engineId;
     }
     /**
-     * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-     * Default value is `GENERIC`.
-     * Possible values are: `GENERIC`.
+     * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+     * to the engine. Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;]
      * 
      */
     @Export(name="industryVertical", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> industryVertical;
 
     /**
-     * @return The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-     * Default value is `GENERIC`.
-     * Possible values are: `GENERIC`.
+     * @return The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+     * to the engine. Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;]
      * 
      */
     public Output<Optional<String>> industryVertical() {
@@ -299,19 +295,9 @@ public class ChatEngine extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }

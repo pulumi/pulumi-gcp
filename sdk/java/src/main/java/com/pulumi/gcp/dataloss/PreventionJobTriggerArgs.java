@@ -20,14 +20,14 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
     public static final PreventionJobTriggerArgs Empty = new PreventionJobTriggerArgs();
 
     /**
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * A description of the job trigger.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * @return A description of the job trigger.
      * 
      */
     public Optional<Output<String>> description() {
@@ -51,7 +51,6 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
 
     /**
      * Controls what and how to inspect for findings.
-     * Structure is documented below.
      * 
      */
     @Import(name="inspectJob")
@@ -59,7 +58,6 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Controls what and how to inspect for findings.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<PreventionJobTriggerInspectJobArgs>> inspectJob() {
@@ -84,18 +82,14 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether the trigger is currently active.
-     * Default value is `HEALTHY`.
-     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+     * Whether the trigger is currently active. Default value: &#34;HEALTHY&#34; Possible values: [&#34;PAUSED&#34;, &#34;HEALTHY&#34;, &#34;CANCELLED&#34;]
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Whether the trigger is currently active.
-     * Default value is `HEALTHY`.
-     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+     * @return Whether the trigger is currently active. Default value: &#34;HEALTHY&#34; Possible values: [&#34;PAUSED&#34;, &#34;HEALTHY&#34;, &#34;CANCELLED&#34;]
      * 
      */
     public Optional<Output<String>> status() {
@@ -103,18 +97,16 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
-     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     @Import(name="triggerId")
     private @Nullable Output<String> triggerId;
 
     /**
-     * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
-     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     public Optional<Output<String>> triggerId() {
@@ -169,7 +161,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+         * @param description A description of the job trigger.
          * 
          * @return builder
          * 
@@ -180,7 +172,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+         * @param description A description of the job trigger.
          * 
          * @return builder
          * 
@@ -212,7 +204,6 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param inspectJob Controls what and how to inspect for findings.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -224,7 +215,6 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param inspectJob Controls what and how to inspect for findings.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -257,9 +247,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status Whether the trigger is currently active.
-         * Default value is `HEALTHY`.
-         * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+         * @param status Whether the trigger is currently active. Default value: &#34;HEALTHY&#34; Possible values: [&#34;PAUSED&#34;, &#34;HEALTHY&#34;, &#34;CANCELLED&#34;]
          * 
          * @return builder
          * 
@@ -270,9 +258,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status Whether the trigger is currently active.
-         * Default value is `HEALTHY`.
-         * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+         * @param status Whether the trigger is currently active. Default value: &#34;HEALTHY&#34; Possible values: [&#34;PAUSED&#34;, &#34;HEALTHY&#34;, &#34;CANCELLED&#34;]
          * 
          * @return builder
          * 
@@ -282,9 +268,8 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param triggerId The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-         * that is, it must match the regular expression: [a-zA-Z\d-_]+.
-         * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+         * @param triggerId The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+         * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder
          * 
@@ -295,9 +280,8 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param triggerId The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-         * that is, it must match the regular expression: [a-zA-Z\d-_]+.
-         * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+         * @param triggerId The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+         * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder
          * 

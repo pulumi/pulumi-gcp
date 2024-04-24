@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  *
  * ### Storage Default Object Access Control Public
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,7 +45,6 @@ import * as utilities from "../utilities";
  *     entity: "allUsers",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

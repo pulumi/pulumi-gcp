@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Gkeonprem Bare Metal Cluster Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,10 +89,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkeonprem Bare Metal Cluster Manuallb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -161,10 +158,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkeonprem Bare Metal Cluster Bgplb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -301,7 +296,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -361,17 +355,12 @@ export class BareMetalCluster extends pulumi.CustomResource {
      */
     public readonly adminClusterMembership!: pulumi.Output<string>;
     /**
-     * Annotations on the Bare Metal User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
+     * size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * 'effective_annotations' for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -380,12 +369,10 @@ export class BareMetalCluster extends pulumi.CustomResource {
     public readonly bareMetalVersion!: pulumi.Output<string>;
     /**
      * Binary Authorization related configurations.
-     * Structure is documented below.
      */
     public readonly binaryAuthorization!: pulumi.Output<outputs.gkeonprem.BareMetalClusterBinaryAuthorization | undefined>;
     /**
      * Specifies the User Cluster's observability infrastructure.
-     * Structure is documented below.
      */
     public readonly clusterOperations!: pulumi.Output<outputs.gkeonprem.BareMetalClusterClusterOperations | undefined>;
     /**
@@ -402,7 +389,8 @@ export class BareMetalCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
-     * A human readable description of this Bare Metal User Cluster.
+     * (Output)
+     * The description of the validation check.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -456,7 +444,6 @@ export class BareMetalCluster extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Specifies the workload node configurations.
-     * Structure is documented below.
      */
     public readonly maintenanceConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterMaintenanceConfig | undefined>;
     /**
@@ -470,27 +457,19 @@ export class BareMetalCluster extends pulumi.CustomResource {
     public readonly networkConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterNetworkConfig>;
     /**
      * Specifies the node access related settings for the bare metal user cluster.
-     * Structure is documented below.
      */
     public readonly nodeAccessConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterNodeAccessConfig | undefined>;
     /**
      * Specifies the workload node configurations.
-     * Structure is documented below.
      */
     public readonly nodeConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterNodeConfig | undefined>;
     /**
      * OS environment related configurations.
-     * Structure is documented below.
      */
     public readonly osEnvironmentConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterOsEnvironmentConfig | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Specifies the cluster proxy configuration.
-     * Structure is documented below.
      */
     public readonly proxy!: pulumi.Output<outputs.gkeonprem.BareMetalClusterProxy | undefined>;
     /**
@@ -499,7 +478,6 @@ export class BareMetalCluster extends pulumi.CustomResource {
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
      * Specifies the security related settings for the Bare Metal User Cluster.
-     * Structure is documented below.
      */
     public readonly securityConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterSecurityConfig | undefined>;
     /**
@@ -528,7 +506,6 @@ export class BareMetalCluster extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * The cluster upgrade policy.
-     * Structure is documented below.
      */
     public readonly upgradePolicy!: pulumi.Output<outputs.gkeonprem.BareMetalClusterUpgradePolicy | undefined>;
     /**
@@ -655,17 +632,12 @@ export interface BareMetalClusterState {
      */
     adminClusterMembership?: pulumi.Input<string>;
     /**
-     * Annotations on the Bare Metal User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
+     * size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * 'effective_annotations' for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -674,12 +646,10 @@ export interface BareMetalClusterState {
     bareMetalVersion?: pulumi.Input<string>;
     /**
      * Binary Authorization related configurations.
-     * Structure is documented below.
      */
     binaryAuthorization?: pulumi.Input<inputs.gkeonprem.BareMetalClusterBinaryAuthorization>;
     /**
      * Specifies the User Cluster's observability infrastructure.
-     * Structure is documented below.
      */
     clusterOperations?: pulumi.Input<inputs.gkeonprem.BareMetalClusterClusterOperations>;
     /**
@@ -696,7 +666,8 @@ export interface BareMetalClusterState {
      */
     deleteTime?: pulumi.Input<string>;
     /**
-     * A human readable description of this Bare Metal User Cluster.
+     * (Output)
+     * The description of the validation check.
      */
     description?: pulumi.Input<string>;
     /**
@@ -750,7 +721,6 @@ export interface BareMetalClusterState {
     location?: pulumi.Input<string>;
     /**
      * Specifies the workload node configurations.
-     * Structure is documented below.
      */
     maintenanceConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterMaintenanceConfig>;
     /**
@@ -764,27 +734,19 @@ export interface BareMetalClusterState {
     networkConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterNetworkConfig>;
     /**
      * Specifies the node access related settings for the bare metal user cluster.
-     * Structure is documented below.
      */
     nodeAccessConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterNodeAccessConfig>;
     /**
      * Specifies the workload node configurations.
-     * Structure is documented below.
      */
     nodeConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterNodeConfig>;
     /**
      * OS environment related configurations.
-     * Structure is documented below.
      */
     osEnvironmentConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterOsEnvironmentConfig>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Specifies the cluster proxy configuration.
-     * Structure is documented below.
      */
     proxy?: pulumi.Input<inputs.gkeonprem.BareMetalClusterProxy>;
     /**
@@ -793,7 +755,6 @@ export interface BareMetalClusterState {
     reconciling?: pulumi.Input<boolean>;
     /**
      * Specifies the security related settings for the Bare Metal User Cluster.
-     * Structure is documented below.
      */
     securityConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterSecurityConfig>;
     /**
@@ -822,7 +783,6 @@ export interface BareMetalClusterState {
     updateTime?: pulumi.Input<string>;
     /**
      * The cluster upgrade policy.
-     * Structure is documented below.
      */
     upgradePolicy?: pulumi.Input<inputs.gkeonprem.BareMetalClusterUpgradePolicy>;
     /**
@@ -842,17 +802,12 @@ export interface BareMetalClusterArgs {
      */
     adminClusterMembership: pulumi.Input<string>;
     /**
-     * Annotations on the Bare Metal User Cluster.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
+     * size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * 'effective_annotations' for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -861,12 +816,10 @@ export interface BareMetalClusterArgs {
     bareMetalVersion: pulumi.Input<string>;
     /**
      * Binary Authorization related configurations.
-     * Structure is documented below.
      */
     binaryAuthorization?: pulumi.Input<inputs.gkeonprem.BareMetalClusterBinaryAuthorization>;
     /**
      * Specifies the User Cluster's observability infrastructure.
-     * Structure is documented below.
      */
     clusterOperations?: pulumi.Input<inputs.gkeonprem.BareMetalClusterClusterOperations>;
     /**
@@ -875,7 +828,8 @@ export interface BareMetalClusterArgs {
      */
     controlPlane: pulumi.Input<inputs.gkeonprem.BareMetalClusterControlPlane>;
     /**
-     * A human readable description of this Bare Metal User Cluster.
+     * (Output)
+     * The description of the validation check.
      */
     description?: pulumi.Input<string>;
     /**
@@ -889,7 +843,6 @@ export interface BareMetalClusterArgs {
     location: pulumi.Input<string>;
     /**
      * Specifies the workload node configurations.
-     * Structure is documented below.
      */
     maintenanceConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterMaintenanceConfig>;
     /**
@@ -903,32 +856,23 @@ export interface BareMetalClusterArgs {
     networkConfig: pulumi.Input<inputs.gkeonprem.BareMetalClusterNetworkConfig>;
     /**
      * Specifies the node access related settings for the bare metal user cluster.
-     * Structure is documented below.
      */
     nodeAccessConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterNodeAccessConfig>;
     /**
      * Specifies the workload node configurations.
-     * Structure is documented below.
      */
     nodeConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterNodeConfig>;
     /**
      * OS environment related configurations.
-     * Structure is documented below.
      */
     osEnvironmentConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterOsEnvironmentConfig>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Specifies the cluster proxy configuration.
-     * Structure is documented below.
      */
     proxy?: pulumi.Input<inputs.gkeonprem.BareMetalClusterProxy>;
     /**
      * Specifies the security related settings for the Bare Metal User Cluster.
-     * Structure is documented below.
      */
     securityConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterSecurityConfig>;
     /**
@@ -938,7 +882,6 @@ export interface BareMetalClusterArgs {
     storage: pulumi.Input<inputs.gkeonprem.BareMetalClusterStorage>;
     /**
      * The cluster upgrade policy.
-     * Structure is documented below.
      */
     upgradePolicy?: pulumi.Input<inputs.gkeonprem.BareMetalClusterUpgradePolicy>;
 }

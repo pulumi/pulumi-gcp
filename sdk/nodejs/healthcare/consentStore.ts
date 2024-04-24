@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Healthcare Consent Store Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,10 +30,8 @@ import * as utilities from "../utilities";
  *     name: "my-consent-store",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Healthcare Consent Store Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,10 +50,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Healthcare Consent Store Iam
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -80,7 +75,6 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${test_account.email}`,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

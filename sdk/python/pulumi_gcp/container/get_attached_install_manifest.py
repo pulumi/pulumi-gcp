@@ -102,7 +102,6 @@ def get_attached_install_manifest(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,7 +112,6 @@ def get_attached_install_manifest(cluster_id: Optional[str] = None,
         platform_version="1.25.0-gke.1")
     pulumi.export("installManifest", manifest)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The name that will be used when creating the attached cluster resource.
@@ -150,7 +148,6 @@ def get_attached_install_manifest_output(cluster_id: Optional[pulumi.Input[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -161,7 +158,6 @@ def get_attached_install_manifest_output(cluster_id: Optional[pulumi.Input[str]]
         platform_version="1.25.0-gke.1")
     pulumi.export("installManifest", manifest)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The name that will be used when creating the attached cluster resource.

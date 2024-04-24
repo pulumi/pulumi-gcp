@@ -813,7 +813,6 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ### SQL Second Generation Instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -826,12 +825,10 @@ class DatabaseInstance(pulumi.CustomResource):
                 tier="db-f1-micro",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Private IP Instance
         > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -862,11 +859,9 @@ class DatabaseInstance(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### ENTERPRISE_PLUS Instance with data_cache_config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -882,11 +877,9 @@ class DatabaseInstance(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Cloud SQL Instance with PSC connectivity
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -910,7 +903,6 @@ class DatabaseInstance(pulumi.CustomResource):
                 availability_type="REGIONAL",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1014,7 +1006,6 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ### SQL Second Generation Instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1027,12 +1018,10 @@ class DatabaseInstance(pulumi.CustomResource):
                 tier="db-f1-micro",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Private IP Instance
         > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1063,11 +1052,9 @@ class DatabaseInstance(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### ENTERPRISE_PLUS Instance with data_cache_config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1083,11 +1070,9 @@ class DatabaseInstance(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Cloud SQL Instance with PSC connectivity
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1111,7 +1096,6 @@ class DatabaseInstance(pulumi.CustomResource):
                 availability_type="REGIONAL",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

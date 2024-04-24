@@ -19,20 +19,14 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs extends c
     public static final ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs Empty = new ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs();
 
     /**
-     * The name of the cluster, unique within the project and
-     * zone.
-     * 
-     * ***
+     * The Node group resource name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the cluster, unique within the project and
-     * zone.
-     * 
-     * ***
+     * @return The Node group resource name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -98,10 +92,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs extends c
         }
 
         /**
-         * @param name The name of the cluster, unique within the project and
-         * zone.
-         * 
-         * ***
+         * @param name The Node group resource name.
          * 
          * @return builder
          * 
@@ -112,10 +103,7 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs extends c
         }
 
         /**
-         * @param name The name of the cluster, unique within the project and
-         * zone.
-         * 
-         * ***
+         * @param name The Node group resource name.
          * 
          * @return builder
          * 

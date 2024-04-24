@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     public sealed class VMwareClusterLoadBalancerF5ConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
-        /// The vCenter IP address.
+        /// The load balancer's IP address.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }

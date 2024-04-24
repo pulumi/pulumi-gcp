@@ -13,9 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigWorkerConfigDiskConfig {
     /**
-     * @return Size of the primary disk attached to each node, specified
-     * in GB. The primary disk contains the boot volume and system libraries, and the
-     * smallest allowed disk size is 10GB. GCP will default to a predetermined
+     * @return Size of the primary disk attached to each worker node, specified
+     * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
      * computed value if not set (currently 500GB). Note: If SSDs are not
      * attached, it also contains the HDFS data blocks and Hadoop working directories.
      * 
@@ -28,17 +27,16 @@ public final class ClusterClusterConfigWorkerConfigDiskConfig {
      */
     private @Nullable String bootDiskType;
     /**
-     * @return The amount of local SSD disks that will be attached to each master cluster node.
-     * Defaults to 0.
+     * @return The amount of local SSD disks that will be
+     * attached to each worker cluster node. Defaults to 0.
      * 
      */
     private @Nullable Integer numLocalSsds;
 
     private ClusterClusterConfigWorkerConfigDiskConfig() {}
     /**
-     * @return Size of the primary disk attached to each node, specified
-     * in GB. The primary disk contains the boot volume and system libraries, and the
-     * smallest allowed disk size is 10GB. GCP will default to a predetermined
+     * @return Size of the primary disk attached to each worker node, specified
+     * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
      * computed value if not set (currently 500GB). Note: If SSDs are not
      * attached, it also contains the HDFS data blocks and Hadoop working directories.
      * 
@@ -55,8 +53,8 @@ public final class ClusterClusterConfigWorkerConfigDiskConfig {
         return Optional.ofNullable(this.bootDiskType);
     }
     /**
-     * @return The amount of local SSD disks that will be attached to each master cluster node.
-     * Defaults to 0.
+     * @return The amount of local SSD disks that will be
+     * attached to each worker cluster node. Defaults to 0.
      * 
      */
     public Optional<Integer> numLocalSsds() {

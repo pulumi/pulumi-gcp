@@ -16,7 +16,6 @@ import (
 //
 // !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,11 +21,9 @@ import * as utilities from "../utilities";
  * });
  * const vm = new gcp.compute.Instance("vm", {name: "vm"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Full Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,7 +43,6 @@ import * as utilities from "../utilities";
  *     },
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectSignedUrlResult> {
 
@@ -136,7 +132,6 @@ export interface GetObjectSignedUrlResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -147,11 +142,9 @@ export interface GetObjectSignedUrlResult {
  * });
  * const vm = new gcp.compute.Instance("vm", {name: "vm"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Full Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -171,7 +164,6 @@ export interface GetObjectSignedUrlResult {
  *     },
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getObjectSignedUrlOutput(args: GetObjectSignedUrlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectSignedUrlResult> {
     return pulumi.output(args).apply((a: any) => getObjectSignedUrl(a, opts))

@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,7 +69,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -255,21 +253,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly requirePartitionFilter!: pulumi.Output<boolean | undefined>;
     /**
-     * A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn't changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
-     *
-     * ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * A JSON schema for the table.
      */
     public readonly schema!: pulumi.Output<string>;
     /**
@@ -296,8 +280,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly timePartitioning!: pulumi.Output<outputs.bigquery.TableTimePartitioning | undefined>;
     /**
-     * The supported types are DAY, HOUR, MONTH, and YEAR,
-     * which will generate one partition per day, hour, month, and year, respectively.
+     * Describes the table type.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -532,21 +515,7 @@ export interface TableState {
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
     /**
-     * A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn't changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
-     *
-     * ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * A JSON schema for the table.
      */
     schema?: pulumi.Input<string>;
     /**
@@ -573,8 +542,7 @@ export interface TableState {
      */
     timePartitioning?: pulumi.Input<inputs.bigquery.TableTimePartitioning>;
     /**
-     * The supported types are DAY, HOUR, MONTH, and YEAR,
-     * which will generate one partition per day, hour, month, and year, respectively.
+     * Describes the table type.
      */
     type?: pulumi.Input<string>;
     /**
@@ -668,21 +636,7 @@ export interface TableArgs {
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
     /**
-     * A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn't changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
-     *
-     * ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * A JSON schema for the table.
      */
     schema?: pulumi.Input<string>;
     /**

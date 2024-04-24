@@ -237,7 +237,6 @@ class FolderSettings(pulumi.CustomResource):
 
         ### Logging Folder Settings All
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -256,7 +255,6 @@ class FolderSettings(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=settings.apply(lambda settings: f"serviceAccount:{settings.kms_service_account_id}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -305,7 +303,6 @@ class FolderSettings(pulumi.CustomResource):
 
         ### Logging Folder Settings All
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -324,7 +321,6 @@ class FolderSettings(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=settings.apply(lambda settings: f"serviceAccount:{settings.kms_service_account_id}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

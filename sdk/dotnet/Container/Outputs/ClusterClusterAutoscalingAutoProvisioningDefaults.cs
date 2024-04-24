@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig? ShieldedInstanceConfig;
         /// <summary>
-        /// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        /// Specifies the upgrade settings for NAP created node pools
         /// </summary>
         public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings? UpgradeSettings;
 

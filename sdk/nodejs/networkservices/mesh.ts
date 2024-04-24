@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Services Mesh Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,10 +22,8 @@ import * as utilities from "../utilities";
  *     interceptionPort: 443,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Services Mesh No Port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,7 +36,6 @@ import * as utilities from "../utilities";
  *     description: "my description",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

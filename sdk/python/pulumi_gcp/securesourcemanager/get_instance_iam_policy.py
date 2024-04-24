@@ -105,7 +105,6 @@ def get_instance_iam_policy(instance_id: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_instance_iam_policy(instance_id: Optional[str] = None,
         location=default["location"],
         instance_id=default["instanceId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance_id: The name for the Instance.
@@ -150,7 +148,6 @@ def get_instance_iam_policy_output(instance_id: Optional[pulumi.Input[str]] = No
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -159,7 +156,6 @@ def get_instance_iam_policy_output(instance_id: Optional[pulumi.Input[str]] = No
         location=default["location"],
         instance_id=default["instanceId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance_id: The name for the Instance.

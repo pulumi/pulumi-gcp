@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * });
  * export const ipList = datastreamIps.then(datastreamIps => datastreamIps.staticIps);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getStaticIps(args: GetStaticIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticIpsResult> {
 
@@ -67,7 +65,6 @@ export interface GetStaticIpsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -78,7 +75,6 @@ export interface GetStaticIpsResult {
  * });
  * export const ipList = datastreamIps.then(datastreamIps => datastreamIps.staticIps);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getStaticIpsOutput(args: GetStaticIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticIpsResult> {
     return pulumi.output(args).apply((a: any) => getStaticIps(a, opts))

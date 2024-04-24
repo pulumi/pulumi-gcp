@@ -14,14 +14,12 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
     public sealed class CertificateManagedProvisioningIssue
     {
         /// <summary>
-        /// (Output)
-        /// Human readable explanation for reaching the state. Provided to help
-        /// address the configuration issues.
-        /// Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+        /// Human readable explanation about the issue. Provided to help address
+        /// the configuration issues.
+        /// Not guaranteed to be stable. For programmatic access use 'reason' field.
         /// </summary>
         public readonly string? Details;
         /// <summary>
-        /// (Output)
         /// Reason for provisioning failures.
         /// </summary>
         public readonly string? Reason;

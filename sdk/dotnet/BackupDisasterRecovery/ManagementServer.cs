@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// ### Backup Dr Management Server
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -64,7 +63,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -125,17 +123,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Output("oauth2ClientId")]
         public Output<string> Oauth2ClientId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The type of management server (management console).
-        /// Default value is `BACKUP_RESTORE`.
-        /// Possible values are: `BACKUP_RESTORE`.
+        /// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -211,17 +203,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             set => _networks = value;
         }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The type of management server (management console).
-        /// Default value is `BACKUP_RESTORE`.
-        /// Possible values are: `BACKUP_RESTORE`.
+        /// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -278,17 +264,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Input("oauth2ClientId")]
         public Input<string>? Oauth2ClientId { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The type of management server (management console).
-        /// Default value is `BACKUP_RESTORE`.
-        /// Possible values are: `BACKUP_RESTORE`.
+        /// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase App Check Debug Token Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,7 +39,6 @@ import * as utilities from "../utilities";
  *     token: "00000000-AAAA-BBBB-CCCC-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

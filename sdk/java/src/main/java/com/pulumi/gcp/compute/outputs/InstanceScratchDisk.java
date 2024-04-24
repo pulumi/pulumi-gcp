@@ -14,8 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceScratchDisk {
     /**
-     * @return Name with which the attached disk will be accessible
-     * under `/dev/disk/by-id/google-*`
+     * @return Name with which the attached disk is accessible under /dev/disk/by-id/
      * 
      */
     private @Nullable String deviceName;
@@ -25,16 +24,14 @@ public final class InstanceScratchDisk {
      */
     private String interface_;
     /**
-     * @return The size of the image in gigabytes. If not specified, it
-     * will inherit the size of its base image.
+     * @return The size of the disk in gigabytes. One of 375 or 3000.
      * 
      */
     private @Nullable Integer size;
 
     private InstanceScratchDisk() {}
     /**
-     * @return Name with which the attached disk will be accessible
-     * under `/dev/disk/by-id/google-*`
+     * @return Name with which the attached disk is accessible under /dev/disk/by-id/
      * 
      */
     public Optional<String> deviceName() {
@@ -48,8 +45,7 @@ public final class InstanceScratchDisk {
         return this.interface_;
     }
     /**
-     * @return The size of the image in gigabytes. If not specified, it
-     * will inherit the size of its base image.
+     * @return The size of the disk in gigabytes. One of 375 or 3000.
      * 
      */
     public Optional<Integer> size() {

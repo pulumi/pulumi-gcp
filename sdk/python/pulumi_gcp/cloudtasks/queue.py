@@ -332,7 +332,6 @@ class Queue(pulumi.CustomResource):
 
         ### Queue Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -341,10 +340,8 @@ class Queue(pulumi.CustomResource):
             name="cloud-tasks-queue-test",
             location="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloud Tasks Queue Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -372,7 +369,6 @@ class Queue(pulumi.CustomResource):
                 sampling_ratio=0.9,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -436,7 +432,6 @@ class Queue(pulumi.CustomResource):
 
         ### Queue Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -445,10 +440,8 @@ class Queue(pulumi.CustomResource):
             name="cloud-tasks-queue-test",
             location="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloud Tasks Queue Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -476,7 +469,6 @@ class Queue(pulumi.CustomResource):
                 sampling_ratio=0.9,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

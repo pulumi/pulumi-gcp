@@ -20,7 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,11 +55,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Create logging bucket with customId
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -87,11 +84,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Create logging bucket with Log Analytics enabled
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -119,11 +114,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Create logging bucket with customId and cmekSettings
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -187,11 +180,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Create logging bucket with index configs
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -222,7 +213,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -254,7 +244,7 @@ type ProjectBucketConfig struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
-	// The resource name of the CMEK settings.
+	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent resource that contains the logging bucket.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -317,7 +307,7 @@ type projectBucketConfigState struct {
 	Location *string `pulumi:"location"`
 	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 	Locked *bool `pulumi:"locked"`
-	// The resource name of the CMEK settings.
+	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 	Name *string `pulumi:"name"`
 	// The parent resource that contains the logging bucket.
 	Project *string `pulumi:"project"`
@@ -342,7 +332,7 @@ type ProjectBucketConfigState struct {
 	Location pulumi.StringPtrInput
 	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 	Locked pulumi.BoolPtrInput
-	// The resource name of the CMEK settings.
+	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 	Name pulumi.StringPtrInput
 	// The parent resource that contains the logging bucket.
 	Project pulumi.StringPtrInput
@@ -524,7 +514,7 @@ func (o ProjectBucketConfigOutput) Locked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.BoolPtrOutput { return v.Locked }).(pulumi.BoolPtrOutput)
 }
 
-// The resource name of the CMEK settings.
+// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 func (o ProjectBucketConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

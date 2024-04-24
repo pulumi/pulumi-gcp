@@ -25,7 +25,6 @@ import (
 //
 // ### Target Https Proxy Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,10 +122,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Target Https Proxy Http Keep Alive Timeout
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -226,10 +223,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Target Https Proxy Mtls
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -389,10 +384,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Target Https Proxy Certificate Manager Certificate
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -489,7 +482,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

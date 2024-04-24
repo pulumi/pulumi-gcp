@@ -322,7 +322,6 @@ class Database(pulumi.CustomResource):
 
         ### Sql Database Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -340,10 +339,8 @@ class Database(pulumi.CustomResource):
             name="my-database",
             instance=instance.name)
         ```
-        <!--End PulumiCodeChooser -->
         ### Sql Database Deletion Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -362,7 +359,6 @@ class Database(pulumi.CustomResource):
             instance=instance.name,
             deletion_policy="ABANDON")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -440,7 +436,6 @@ class Database(pulumi.CustomResource):
 
         ### Sql Database Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -458,10 +453,8 @@ class Database(pulumi.CustomResource):
             name="my-database",
             instance=instance.name)
         ```
-        <!--End PulumiCodeChooser -->
         ### Sql Database Deletion Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -480,7 +473,6 @@ class Database(pulumi.CustomResource):
             instance=instance.name,
             deletion_policy="ABANDON")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -27,8 +27,7 @@ public final class DatabaseInstanceServerCaCert {
      */
     private @Nullable String createTime;
     /**
-     * @return The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-     * formatted date time string indicating when this whitelist expires.
+     * @return Expiration time of the CA Cert.
      * 
      */
     private @Nullable String expirationTime;
@@ -61,8 +60,7 @@ public final class DatabaseInstanceServerCaCert {
         return Optional.ofNullable(this.createTime);
     }
     /**
-     * @return The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-     * formatted date time string indicating when this whitelist expires.
+     * @return Expiration time of the CA Cert.
      * 
      */
     public Optional<String> expirationTime() {

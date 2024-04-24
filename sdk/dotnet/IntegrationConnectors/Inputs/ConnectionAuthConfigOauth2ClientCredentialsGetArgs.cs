@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
 
         /// <summary>
         /// Secret version reference containing the client secret.
-        /// Structure is documented below.
         /// </summary>
         [Input("clientSecret")]
         public Input<Inputs.ConnectionAuthConfigOauth2ClientCredentialsClientSecretGetArgs>? ClientSecret { get; set; }

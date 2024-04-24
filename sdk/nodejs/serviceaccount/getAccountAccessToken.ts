@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,13 +26,11 @@ import * as utilities from "../utilities";
  *     members: ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
  *
  * In the example below, `gcp.organizations.Project` will run as `service_B`.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -54,7 +51,6 @@ import * as utilities from "../utilities";
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
  */
@@ -120,7 +116,6 @@ export interface GetAccountAccessTokenResult {
  *
  * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -131,13 +126,11 @@ export interface GetAccountAccessTokenResult {
  *     members: ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
  *
  * In the example below, `gcp.organizations.Project` will run as `service_B`.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -158,7 +151,6 @@ export interface GetAccountAccessTokenResult {
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
  */

@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// ### Gkeonprem Vmware Cluster Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -92,10 +91,8 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkeonprem Vmware Cluster F5lb
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -203,10 +200,8 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkeonprem Vmware Cluster Manuallb
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -355,7 +350,6 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -394,39 +388,30 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<string> AdminClusterMembership { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations on the VMware User Cluster.
-        /// This field has the same restrictions as Kubernetes annotations.
-        /// The total size of all keys and values combined is limited to 256k.
-        /// Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/).
-        /// Prefix must be a DNS subdomain.
-        /// Name must be 63 characters or less, begin and end with alphanumerics,
-        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+        /// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        /// 'effective_annotations' for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
-        /// least three physical hosts in the datacenter.
-        /// Structure is documented below.
+        /// AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         /// </summary>
         [Output("antiAffinityGroups")]
         public Output<Outputs.VMwareClusterAntiAffinityGroups> AntiAffinityGroups { get; private set; } = null!;
 
         /// <summary>
         /// RBAC policy that will be applied and managed by GKE On-Prem.
-        /// Structure is documented below.
         /// </summary>
         [Output("authorization")]
         public Output<Outputs.VMwareClusterAuthorization?> Authorization { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for auto repairing.
-        /// Structure is documented below.
         /// </summary>
         [Output("autoRepairConfig")]
         public Output<Outputs.VMwareClusterAutoRepairConfig> AutoRepairConfig { get; private set; } = null!;
@@ -446,7 +431,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-        /// Structure is documented below.
         /// </summary>
         [Output("dataplaneV2")]
         public Output<Outputs.VMwareClusterDataplaneV2> DataplaneV2 { get; private set; } = null!;
@@ -458,7 +442,8 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// A human readable description of this VMware User Cluster.
+        /// (Output)
+        /// The description of the validation check.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -507,7 +492,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Load Balancer configuration.
-        /// Structure is documented below.
         /// </summary>
         [Output("loadBalancer")]
         public Output<Outputs.VMwareClusterLoadBalancer?> LoadBalancer { get; private set; } = null!;
@@ -541,7 +525,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The VMware User Cluster network configuration.
-        /// Structure is documented below.
         /// </summary>
         [Output("networkConfig")]
         public Output<Outputs.VMwareClusterNetworkConfig?> NetworkConfig { get; private set; } = null!;
@@ -552,10 +535,6 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Output("onPremVersion")]
         public Output<string> OnPremVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -582,7 +561,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Storage configuration.
-        /// Structure is documented below.
         /// </summary>
         [Output("storage")]
         public Output<Outputs.VMwareClusterStorage> Storage { get; private set; } = null!;
@@ -601,7 +579,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies upgrade policy for the cluster.
-        /// Structure is documented below.
         /// </summary>
         [Output("upgradePolicy")]
         public Output<Outputs.VMwareClusterUpgradePolicy?> UpgradePolicy { get; private set; } = null!;
@@ -614,9 +591,7 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<ImmutableArray<Outputs.VMwareClusterValidationCheck>> ValidationChecks { get; private set; } = null!;
 
         /// <summary>
-        /// VmwareVCenterConfig specifies vCenter config for the user cluster.
-        /// Inherited from the admin cluster.
-        /// Structure is documented below.
+        /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         /// </summary>
         [Output("vcenters")]
         public Output<ImmutableArray<Outputs.VMwareClusterVcenter>> Vcenters { get; private set; } = null!;
@@ -686,17 +661,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations on the VMware User Cluster.
-        /// This field has the same restrictions as Kubernetes annotations.
-        /// The total size of all keys and values combined is limited to 256k.
-        /// Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/).
-        /// Prefix must be a DNS subdomain.
-        /// Name must be 63 characters or less, begin and end with alphanumerics,
-        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+        /// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        /// 'effective_annotations' for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -705,23 +675,19 @@ namespace Pulumi.Gcp.GkeOnPrem
         }
 
         /// <summary>
-        /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
-        /// least three physical hosts in the datacenter.
-        /// Structure is documented below.
+        /// AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         /// </summary>
         [Input("antiAffinityGroups")]
         public Input<Inputs.VMwareClusterAntiAffinityGroupsArgs>? AntiAffinityGroups { get; set; }
 
         /// <summary>
         /// RBAC policy that will be applied and managed by GKE On-Prem.
-        /// Structure is documented below.
         /// </summary>
         [Input("authorization")]
         public Input<Inputs.VMwareClusterAuthorizationArgs>? Authorization { get; set; }
 
         /// <summary>
         /// Configuration for auto repairing.
-        /// Structure is documented below.
         /// </summary>
         [Input("autoRepairConfig")]
         public Input<Inputs.VMwareClusterAutoRepairConfigArgs>? AutoRepairConfig { get; set; }
@@ -735,13 +701,13 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-        /// Structure is documented below.
         /// </summary>
         [Input("dataplaneV2")]
         public Input<Inputs.VMwareClusterDataplaneV2Args>? DataplaneV2 { get; set; }
 
         /// <summary>
-        /// A human readable description of this VMware User Cluster.
+        /// (Output)
+        /// The description of the validation check.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -760,7 +726,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Load Balancer configuration.
-        /// Structure is documented below.
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.VMwareClusterLoadBalancerArgs>? LoadBalancer { get; set; }
@@ -779,7 +744,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The VMware User Cluster network configuration.
-        /// Structure is documented below.
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.VMwareClusterNetworkConfigArgs>? NetworkConfig { get; set; }
@@ -790,23 +754,17 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Input("onPremVersion", required: true)]
         public Input<string> OnPremVersion { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Storage configuration.
-        /// Structure is documented below.
         /// </summary>
         [Input("storage")]
         public Input<Inputs.VMwareClusterStorageArgs>? Storage { get; set; }
 
         /// <summary>
         /// Specifies upgrade policy for the cluster.
-        /// Structure is documented below.
         /// </summary>
         [Input("upgradePolicy")]
         public Input<Inputs.VMwareClusterUpgradePolicyArgs>? UpgradePolicy { get; set; }
@@ -815,9 +773,7 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputList<Inputs.VMwareClusterVcenterArgs>? _vcenters;
 
         /// <summary>
-        /// VmwareVCenterConfig specifies vCenter config for the user cluster.
-        /// Inherited from the admin cluster.
-        /// Structure is documented below.
+        /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         /// </summary>
         public InputList<Inputs.VMwareClusterVcenterArgs> Vcenters
         {
@@ -852,17 +808,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations on the VMware User Cluster.
-        /// This field has the same restrictions as Kubernetes annotations.
-        /// The total size of all keys and values combined is limited to 256k.
-        /// Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/).
-        /// Prefix must be a DNS subdomain.
-        /// Name must be 63 characters or less, begin and end with alphanumerics,
-        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+        /// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        /// 'effective_annotations' for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -871,23 +822,19 @@ namespace Pulumi.Gcp.GkeOnPrem
         }
 
         /// <summary>
-        /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
-        /// least three physical hosts in the datacenter.
-        /// Structure is documented below.
+        /// AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         /// </summary>
         [Input("antiAffinityGroups")]
         public Input<Inputs.VMwareClusterAntiAffinityGroupsGetArgs>? AntiAffinityGroups { get; set; }
 
         /// <summary>
         /// RBAC policy that will be applied and managed by GKE On-Prem.
-        /// Structure is documented below.
         /// </summary>
         [Input("authorization")]
         public Input<Inputs.VMwareClusterAuthorizationGetArgs>? Authorization { get; set; }
 
         /// <summary>
         /// Configuration for auto repairing.
-        /// Structure is documented below.
         /// </summary>
         [Input("autoRepairConfig")]
         public Input<Inputs.VMwareClusterAutoRepairConfigGetArgs>? AutoRepairConfig { get; set; }
@@ -907,7 +854,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-        /// Structure is documented below.
         /// </summary>
         [Input("dataplaneV2")]
         public Input<Inputs.VMwareClusterDataplaneV2GetArgs>? DataplaneV2 { get; set; }
@@ -919,7 +865,8 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Input<string>? DeleteTime { get; set; }
 
         /// <summary>
-        /// A human readable description of this VMware User Cluster.
+        /// (Output)
+        /// The description of the validation check.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -980,7 +927,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Load Balancer configuration.
-        /// Structure is documented below.
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.VMwareClusterLoadBalancerGetArgs>? LoadBalancer { get; set; }
@@ -1014,7 +960,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The VMware User Cluster network configuration.
-        /// Structure is documented below.
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.VMwareClusterNetworkConfigGetArgs>? NetworkConfig { get; set; }
@@ -1025,10 +970,6 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Input("onPremVersion")]
         public Input<string>? OnPremVersion { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -1061,7 +1002,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Storage configuration.
-        /// Structure is documented below.
         /// </summary>
         [Input("storage")]
         public Input<Inputs.VMwareClusterStorageGetArgs>? Storage { get; set; }
@@ -1080,7 +1020,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies upgrade policy for the cluster.
-        /// Structure is documented below.
         /// </summary>
         [Input("upgradePolicy")]
         public Input<Inputs.VMwareClusterUpgradePolicyGetArgs>? UpgradePolicy { get; set; }
@@ -1102,9 +1041,7 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputList<Inputs.VMwareClusterVcenterGetArgs>? _vcenters;
 
         /// <summary>
-        /// VmwareVCenterConfig specifies vCenter config for the user cluster.
-        /// Inherited from the admin cluster.
-        /// Structure is documented below.
+        /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         /// </summary>
         public InputList<Inputs.VMwareClusterVcenterGetArgs> Vcenters
         {

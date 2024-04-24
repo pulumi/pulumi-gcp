@@ -27,7 +27,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,11 +88,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,10 +131,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // An example of more complex GC policy:
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -212,7 +207,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // This is equivalent to running the following `cbt` command:
 //
 // ## Import

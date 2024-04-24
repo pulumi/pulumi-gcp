@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -134,7 +133,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

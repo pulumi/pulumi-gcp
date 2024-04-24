@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### App Engine Firewall Rule Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,7 +39,6 @@ import * as utilities from "../utilities";
  *     sourceRange: "*",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

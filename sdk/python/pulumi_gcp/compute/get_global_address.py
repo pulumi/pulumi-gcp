@@ -170,7 +170,6 @@ def get_global_address(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -186,7 +185,6 @@ def get_global_address(name: Optional[str] = None,
         managed_zone=prod.name,
         rrdatas=[my_address.address])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: A unique name for the resource, required by GCE.
@@ -227,7 +225,6 @@ def get_global_address_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -243,7 +240,6 @@ def get_global_address_output(name: Optional[pulumi.Input[str]] = None,
         managed_zone=prod.name,
         rrdatas=[my_address.address])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: A unique name for the resource, required by GCE.

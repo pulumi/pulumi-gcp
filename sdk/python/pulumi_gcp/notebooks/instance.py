@@ -1393,7 +1393,6 @@ class Instance(pulumi.CustomResource):
 
         ### Notebook Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1407,10 +1406,8 @@ class Instance(pulumi.CustomResource):
                 image_family="tf-latest-cpu",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Stopped
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1425,10 +1422,8 @@ class Instance(pulumi.CustomResource):
             ),
             desired_state="STOPPED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1445,10 +1440,8 @@ class Instance(pulumi.CustomResource):
                 tag="latest",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Gpu
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1467,10 +1460,8 @@ class Instance(pulumi.CustomResource):
                 image_family="tf-latest-gpu",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1515,7 +1506,6 @@ class Instance(pulumi.CustomResource):
             kms_key="my-crypto-key",
             desired_state="ACTIVE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1647,7 +1637,6 @@ class Instance(pulumi.CustomResource):
 
         ### Notebook Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1661,10 +1650,8 @@ class Instance(pulumi.CustomResource):
                 image_family="tf-latest-cpu",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Stopped
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1679,10 +1666,8 @@ class Instance(pulumi.CustomResource):
             ),
             desired_state="STOPPED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1699,10 +1684,8 @@ class Instance(pulumi.CustomResource):
                 tag="latest",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Gpu
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1721,10 +1704,8 @@ class Instance(pulumi.CustomResource):
                 image_family="tf-latest-gpu",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1769,7 +1750,6 @@ class Instance(pulumi.CustomResource):
             kms_key="my-crypto-key",
             desired_state="ACTIVE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

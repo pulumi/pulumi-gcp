@@ -336,7 +336,6 @@ class DomainTrust(pulumi.CustomResource):
 
         ### Active Directory Domain Trust Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -349,7 +348,6 @@ class DomainTrust(pulumi.CustomResource):
             trust_type="FOREST",
             trust_handshake_secret="Testing1!")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -413,7 +411,6 @@ class DomainTrust(pulumi.CustomResource):
 
         ### Active Directory Domain Trust Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -426,7 +423,6 @@ class DomainTrust(pulumi.CustomResource):
             trust_type="FOREST",
             trust_handshake_secret="Testing1!")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

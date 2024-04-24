@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  *
  * ### Scc Folder Custom Module Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -49,10 +48,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Scc Folder Custom Module Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -92,7 +89,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -173,7 +169,8 @@ export class FolderCustomModule extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastEditor!: pulumi.Output<string>;
     /**
-     * Name of the property for the custom output.
+     * The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -269,7 +266,8 @@ export interface FolderCustomModuleState {
      */
     lastEditor?: pulumi.Input<string>;
     /**
-     * Name of the property for the custom output.
+     * The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      */
     name?: pulumi.Input<string>;
     /**

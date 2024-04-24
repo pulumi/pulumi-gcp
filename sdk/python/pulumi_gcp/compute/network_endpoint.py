@@ -290,7 +290,6 @@ class NetworkEndpoint(pulumi.CustomResource):
 
         ### Network Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -329,7 +328,6 @@ class NetworkEndpoint(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -407,7 +405,6 @@ class NetworkEndpoint(pulumi.CustomResource):
 
         ### Network Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,7 +443,6 @@ class NetworkEndpoint(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

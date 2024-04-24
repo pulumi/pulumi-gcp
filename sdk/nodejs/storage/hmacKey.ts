@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Storage Hmac Key
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * //Create the HMAC key for the associated service account
  * const key = new gcp.storage.HmacKey("key", {serviceAccountEmail: serviceAccount.email});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -25,7 +25,6 @@ import (
 //
 // ### Bigquerydatatransfer Config Scheduled Query
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -83,7 +82,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

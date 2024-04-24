@@ -453,7 +453,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         ### Vertex Ai Featureonlinestore Featureview
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,10 +513,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             ))
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featureonlinestore Featureview Feature Registry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -597,10 +594,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featureonlinestore Featureview With Vector Search
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -698,7 +693,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             ))
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -772,7 +766,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         ### Vertex Ai Featureonlinestore Featureview
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -833,10 +826,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             ))
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featureonlinestore Featureview Feature Registry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -916,10 +907,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featureonlinestore Featureview With Vector Search
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1017,7 +1006,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             ))
         project = gcp.organizations.get_project()
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -249,10 +249,8 @@ class ClusterControlPlaneEncryptionKmsStatus(dict):
                  code: Optional[int] = None,
                  message: Optional[str] = None):
         """
-        :param int code: (Output)
-               The status code, which should be an enum value of google.rpc.Code.
-        :param str message: (Output)
-               A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -263,7 +261,6 @@ class ClusterControlPlaneEncryptionKmsStatus(dict):
     @pulumi.getter
     def code(self) -> Optional[int]:
         """
-        (Output)
         The status code, which should be an enum value of google.rpc.Code.
         """
         return pulumi.get(self, "code")
@@ -272,7 +269,6 @@ class ClusterControlPlaneEncryptionKmsStatus(dict):
     @pulumi.getter
     def message(self) -> Optional[str]:
         """
-        (Output)
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
@@ -485,8 +481,10 @@ class ClusterMaintenanceEvent(dict):
         """
         :param str create_time: (Output)
                The time when the maintenance event request was created.
-        :param str end_time: The time that the window ends. The end time must take place after the
-               start time.
+        :param str end_time: (Output)
+               The time when the maintenance event ended, either successfully or not. If
+               the maintenance event is split into multiple maintenance windows,
+               end_time is only updated when the whole flow ends.
         :param str operation: (Output)
                The operation for running the maintenance event. Specified in the format
                projects/*/locations/*/operations/*. If the maintenance event is split
@@ -494,10 +492,12 @@ class ClusterMaintenanceEvent(dict):
                one is recorded.
         :param str schedule: (Output)
                The schedule of the maintenance event.
-        :param str start_time: The time that the window first starts.
+        :param str start_time: (Output)
+               The time when the maintenance event started.
         :param str state: (Output)
                Indicates the maintenance event state.
-        :param str target_version: The target cluster version. For example: "1.5.0".
+        :param str target_version: (Output)
+               The target version of the cluster.
         :param str type: (Output)
                Indicates the maintenance event type.
         :param str update_time: (Output)
@@ -539,8 +539,10 @@ class ClusterMaintenanceEvent(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[str]:
         """
-        The time that the window ends. The end time must take place after the
-        start time.
+        (Output)
+        The time when the maintenance event ended, either successfully or not. If
+        the maintenance event is split into multiple maintenance windows,
+        end_time is only updated when the whole flow ends.
         """
         return pulumi.get(self, "end_time")
 
@@ -569,7 +571,8 @@ class ClusterMaintenanceEvent(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[str]:
         """
-        The time that the window first starts.
+        (Output)
+        The time when the maintenance event started.
         """
         return pulumi.get(self, "start_time")
 
@@ -586,7 +589,8 @@ class ClusterMaintenanceEvent(dict):
     @pulumi.getter(name="targetVersion")
     def target_version(self) -> Optional[str]:
         """
-        The target cluster version. For example: "1.5.0".
+        (Output)
+        The target version of the cluster.
         """
         return pulumi.get(self, "target_version")
 

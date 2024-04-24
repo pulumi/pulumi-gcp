@@ -437,14 +437,14 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * Name of the property.
+     * Output only. Name of the Apigee organization.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the property.
+     * @return Output only. Name of the Apigee organization.
      * 
      */
     public Output<String> name() {

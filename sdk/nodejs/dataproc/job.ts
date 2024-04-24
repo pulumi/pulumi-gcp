@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,7 +60,6 @@ import * as utilities from "../utilities";
  * export const sparkStatus = spark.statuses.apply(statuses => statuses[0].state);
  * export const pysparkStatus = pyspark.statuses.apply(statuses => statuses[0].state);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
