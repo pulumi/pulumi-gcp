@@ -139,16 +139,13 @@ namespace Pulumi.Gcp.Dataproc
         /// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
         /// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
         /// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-        /// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-        /// cluster is deleted.
+        /// on a [managed
+        /// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+        /// the cluster is deleted.
         /// </summary>
         [Output("dagTimeout")]
         public Output<string?> DagTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
-        /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
 
@@ -274,8 +271,9 @@ namespace Pulumi.Gcp.Dataproc
         /// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
         /// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
         /// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-        /// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-        /// cluster is deleted.
+        /// on a [managed
+        /// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+        /// the cluster is deleted.
         /// </summary>
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
@@ -371,19 +369,15 @@ namespace Pulumi.Gcp.Dataproc
         /// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
         /// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
         /// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-        /// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-        /// cluster is deleted.
+        /// on a [managed
+        /// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+        /// the cluster is deleted.
         /// </summary>
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<object>? _effectiveLabels;
-
-        /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
-        /// </summary>
         public InputMap<object> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());

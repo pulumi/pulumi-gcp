@@ -137,9 +137,6 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
     public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-     */
     public readonly name!: pulumi.Output<string>;
     /**
      * Creates a unique name beginning with the specified
@@ -388,9 +385,6 @@ export interface RegionInstanceTemplateState {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
     minCpuPlatform?: pulumi.Input<string>;
-    /**
-     * The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-     */
     name?: pulumi.Input<string>;
     /**
      * Creates a unique name beginning with the specified
@@ -541,9 +535,6 @@ export interface RegionInstanceTemplateArgs {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
     minCpuPlatform?: pulumi.Input<string>;
-    /**
-     * The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-     */
     name?: pulumi.Input<string>;
     /**
      * Creates a unique name beginning with the specified

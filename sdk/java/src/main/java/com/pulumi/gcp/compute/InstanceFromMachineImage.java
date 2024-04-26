@@ -93,19 +93,9 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
     public Output<InstanceFromMachineImageAdvancedMachineFeatures> advancedMachineFeatures() {
         return this.advancedMachineFeatures;
     }
-    /**
-     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-     * stopping the instance without setting this field, the update will fail.
-     * 
-     */
     @Export(name="allowStoppingForUpdate", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowStoppingForUpdate;
 
-    /**
-     * @return If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-     * stopping the instance without setting this field, the update will fail.
-     * 
-     */
     public Output<Boolean> allowStoppingForUpdate() {
         return this.allowStoppingForUpdate;
     }
@@ -241,19 +231,9 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
     public Output<String> desiredStatus() {
         return this.desiredStatus;
     }
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     * 
-     */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
-    /**
-     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     * 
-     */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
@@ -287,8 +267,8 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
     }
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+     * exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
@@ -296,8 +276,8 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
 
     /**
      * @return A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+     * exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> hostname() {

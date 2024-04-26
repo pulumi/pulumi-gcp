@@ -132,9 +132,7 @@ type Workstation struct {
 	// Time when this resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human-readable name for this resource.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -226,9 +224,7 @@ type workstationState struct {
 	// Time when this resource was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Human-readable name for this resource.
-	DisplayName *string `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          *string           `pulumi:"displayName"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -274,9 +270,7 @@ type WorkstationState struct {
 	// Time when this resource was created.
 	CreateTime pulumi.StringPtrInput
 	// Human-readable name for this resource.
-	DisplayName pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -479,8 +473,6 @@ func (o WorkstationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o WorkstationOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

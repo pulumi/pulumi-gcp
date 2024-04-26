@@ -144,8 +144,6 @@ class _RepositoryState:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
@@ -208,10 +206,6 @@ class _RepositoryState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -661,8 +655,6 @@ class Repository(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
@@ -712,10 +704,6 @@ class Repository(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

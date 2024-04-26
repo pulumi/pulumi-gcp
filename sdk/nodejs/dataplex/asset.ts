@@ -142,7 +142,7 @@ export class Asset extends pulumi.CustomResource {
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+     * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
      * resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -301,7 +301,7 @@ export interface AssetState {
     effectiveLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+     * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
      * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -373,7 +373,7 @@ export interface AssetArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+     * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
      * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

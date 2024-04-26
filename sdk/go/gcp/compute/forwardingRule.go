@@ -1891,9 +1891,8 @@ type ForwardingRule struct {
 	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-	RecreateClosedPsc pulumi.BoolPtrOutput `pulumi:"recreateClosedPsc"`
+	PulumiLabels      pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	RecreateClosedPsc pulumi.BoolPtrOutput   `pulumi:"recreateClosedPsc"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -2169,9 +2168,8 @@ type forwardingRuleState struct {
 	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-	RecreateClosedPsc *bool `pulumi:"recreateClosedPsc"`
+	PulumiLabels      map[string]string `pulumi:"pulumiLabels"`
+	RecreateClosedPsc *bool             `pulumi:"recreateClosedPsc"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region *string `pulumi:"region"`
@@ -2413,8 +2411,7 @@ type ForwardingRuleState struct {
 	PscConnectionStatus pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	PulumiLabels pulumi.StringMapInput
-	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+	PulumiLabels      pulumi.StringMapInput
 	RecreateClosedPsc pulumi.BoolPtrInput
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
@@ -2645,9 +2642,8 @@ type forwardingRuleArgs struct {
 	Ports []string `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
-	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-	RecreateClosedPsc *bool `pulumi:"recreateClosedPsc"`
+	Project           *string `pulumi:"project"`
+	RecreateClosedPsc *bool   `pulumi:"recreateClosedPsc"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region *string `pulumi:"region"`
@@ -2869,8 +2865,7 @@ type ForwardingRuleArgs struct {
 	Ports pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
-	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+	Project           pulumi.StringPtrInput
 	RecreateClosedPsc pulumi.BoolPtrInput
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
@@ -3270,7 +3265,6 @@ func (o ForwardingRuleOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
 func (o ForwardingRuleOutput) RecreateClosedPsc() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.BoolPtrOutput { return v.RecreateClosedPsc }).(pulumi.BoolPtrOutput)
 }

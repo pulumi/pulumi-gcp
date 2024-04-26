@@ -200,7 +200,7 @@ type Spoke struct {
 	// Optional labels in key:value format. For more information about labels, see [Requirements for
 	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
 	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
@@ -280,7 +280,7 @@ type spokeState struct {
 	// Optional labels in key:value format. For more information about labels, see [Requirements for
 	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
 	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
@@ -320,7 +320,7 @@ type SpokeState struct {
 	// Optional labels in key:value format. For more information about labels, see [Requirements for
 	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
 	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
@@ -360,7 +360,7 @@ type spokeArgs struct {
 	// Optional labels in key:value format. For more information about labels, see [Requirements for
 	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
 	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
@@ -389,7 +389,7 @@ type SpokeArgs struct {
 	// Optional labels in key:value format. For more information about labels, see [Requirements for
 	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
 	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
@@ -519,7 +519,7 @@ func (o SpokeOutput) Hub() pulumi.StringOutput {
 // Optional labels in key:value format. For more information about labels, see [Requirements for
 // labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
 // non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-// `effective_labels` for all of the labels present on the resource.
+// `effectiveLabels` for all of the labels present on the resource.
 func (o SpokeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

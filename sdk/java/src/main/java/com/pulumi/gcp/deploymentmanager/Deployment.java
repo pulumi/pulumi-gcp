@@ -220,23 +220,9 @@ public class Deployment extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * If set to true, a deployment is created with &#34;shell&#34; resources that are not actually instantiated. This allows you to
-     * preview a deployment. It can be updated to false to actually deploy with real resources. ~&gt;**NOTE:** Deployment Manager
-     * does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
-     * deployments if either preview is updated to true or if other fields are updated while preview is true.
-     * 
-     */
     @Export(name="preview", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> preview;
 
-    /**
-     * @return If set to true, a deployment is created with &#34;shell&#34; resources that are not actually instantiated. This allows you to
-     * preview a deployment. It can be updated to false to actually deploy with real resources. ~&gt;**NOTE:** Deployment Manager
-     * does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
-     * deployments if either preview is updated to true or if other fields are updated while preview is true.
-     * 
-     */
     public Output<Optional<Boolean>> preview() {
         return Codegen.optional(this.preview);
     }

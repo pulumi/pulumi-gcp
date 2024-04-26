@@ -330,8 +330,6 @@ class _AttachedClusterState:
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]] errors: A set of errors found in the cluster.
                Structure is documented below.
         :param pulumi.Input['AttachedClusterFleetArgs'] fleet: Fleet configuration.
@@ -520,10 +518,6 @@ class _AttachedClusterState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1214,8 +1208,6 @@ class AttachedCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArgs']]]] errors: A set of errors found in the cluster.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']] fleet: Fleet configuration.
@@ -1352,10 +1344,6 @@ class AttachedCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

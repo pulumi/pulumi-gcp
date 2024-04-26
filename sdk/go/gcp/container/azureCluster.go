@@ -217,7 +217,7 @@ type AzureCluster struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AzureClusterAuthorizationOutput `pulumi:"authorization"`
@@ -235,10 +235,8 @@ type AzureCluster struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	EffectiveAnnotations pulumi.MapOutput       `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -325,7 +323,7 @@ type azureClusterState struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization *AzureClusterAuthorization `pulumi:"authorization"`
@@ -343,9 +341,7 @@ type azureClusterState struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description *string `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          *string                `pulumi:"description"`
 	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
@@ -383,7 +379,7 @@ type AzureClusterState struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AzureClusterAuthorizationPtrInput
@@ -401,9 +397,7 @@ type AzureClusterState struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringPtrInput
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.MapInput
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringPtrInput
@@ -445,7 +439,7 @@ type azureClusterArgs struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AzureClusterAuthorization `pulumi:"authorization"`
@@ -485,7 +479,7 @@ type AzureClusterArgs struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AzureClusterAuthorizationInput
@@ -610,7 +604,7 @@ func (o AzureClusterOutput) ToAzureClusterOutputWithContext(ctx context.Context)
 // separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 // alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 // non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// `effective_annotations` for all of the annotations present on the resource.
+// `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AzureClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -655,8 +649,6 @@ func (o AzureClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o AzureClusterOutput) EffectiveAnnotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }

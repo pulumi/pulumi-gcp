@@ -262,19 +262,9 @@ public final class ActiveDirectoryArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.organizationalUnit);
     }
 
-    /**
-     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-     * re-apply the password, unless you use a new password in Terraform.
-     * 
-     */
     @Import(name="password", required=true)
     private Output<String> password;
 
-    /**
-     * @return Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-     * re-apply the password, unless you use a new password in Terraform.
-     * 
-     */
     public Output<String> password() {
         return this.password;
     }
@@ -729,25 +719,11 @@ public final class ActiveDirectoryArgs extends com.pulumi.resources.ResourceArgs
             return organizationalUnit(Output.of(organizationalUnit));
         }
 
-        /**
-         * @param password Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-         * re-apply the password, unless you use a new password in Terraform.
-         * 
-         * @return builder
-         * 
-         */
         public Builder password(Output<String> password) {
             $.password = password;
             return this;
         }
 
-        /**
-         * @param password Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-         * re-apply the password, unless you use a new password in Terraform.
-         * 
-         * @return builder
-         * 
-         */
         public Builder password(String password) {
             return password(Output.of(password));
         }

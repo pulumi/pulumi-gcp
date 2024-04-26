@@ -130,7 +130,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
     /**
      * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
      * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * "goto_next" rules.
+     * "gotoNext" rules.
      */
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     /**
@@ -247,7 +247,7 @@ export interface FirewallPolicyRuleState {
     /**
      * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
      * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * "goto_next" rules.
+     * "gotoNext" rules.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
@@ -305,7 +305,7 @@ export interface FirewallPolicyRuleArgs {
     /**
      * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
      * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * "goto_next" rules.
+     * "gotoNext" rules.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**

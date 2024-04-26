@@ -147,7 +147,7 @@ export class DatasetAccess extends pulumi.CustomResource {
     }
 
     /**
-     * If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+     * If true, represents that that the iamMember in the config was translated to a different member type by the API, and is
      * stored in state as a different member type
      */
     public /*out*/ readonly apiUpdatedMember!: pulumi.Output<boolean>;
@@ -274,7 +274,7 @@ export class DatasetAccess extends pulumi.CustomResource {
  */
 export interface DatasetAccessState {
     /**
-     * If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+     * If true, represents that that the iamMember in the config was translated to a different member type by the API, and is
      * stored in state as a different member type
      */
     apiUpdatedMember?: pulumi.Input<boolean>;

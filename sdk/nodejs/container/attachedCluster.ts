@@ -229,10 +229,6 @@ export class AttachedCluster extends pulumi.CustomResource {
      * "eks", "aks".
      */
     public readonly distribution!: pulumi.Output<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * A set of errors found in the cluster.
@@ -440,10 +436,6 @@ export interface AttachedClusterState {
      * "eks", "aks".
      */
     distribution?: pulumi.Input<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A set of errors found in the cluster.

@@ -692,9 +692,7 @@ type WorkstationConfig struct {
 	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
 	DisableTcpConnections pulumi.BoolPtrOutput `pulumi:"disableTcpConnections"`
 	// Human-readable name for this resource.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -815,9 +813,7 @@ type workstationConfigState struct {
 	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
 	DisableTcpConnections *bool `pulumi:"disableTcpConnections"`
 	// Human-readable name for this resource.
-	DisplayName *string `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          *string           `pulumi:"displayName"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -895,9 +891,7 @@ type WorkstationConfigState struct {
 	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
 	DisableTcpConnections pulumi.BoolPtrInput
 	// Human-readable name for this resource.
-	DisplayName pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -1204,8 +1198,6 @@ func (o WorkstationConfigOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o WorkstationConfigOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

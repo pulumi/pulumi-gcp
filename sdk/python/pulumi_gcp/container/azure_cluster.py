@@ -298,8 +298,6 @@ class _AzureClusterState:
         :param pulumi.Input['AzureClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AzureClusterFleetArgs'] fleet: Fleet configuration.
@@ -469,10 +467,6 @@ class _AzureClusterState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1084,8 +1078,6 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
@@ -1205,10 +1197,6 @@ class AzureCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

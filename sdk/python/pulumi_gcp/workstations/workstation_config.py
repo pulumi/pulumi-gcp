@@ -389,8 +389,6 @@ class _WorkstationConfigState:
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         :param pulumi.Input[bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input['WorkstationConfigEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -576,10 +574,6 @@ class _WorkstationConfigState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1837,8 +1831,6 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         :param pulumi.Input[bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -1974,10 +1966,6 @@ class WorkstationConfig(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

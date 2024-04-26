@@ -213,13 +213,9 @@ type Instance struct {
 	// in length.
 	//
 	// If not provided, a random string starting with `tf-` will be selected.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-	// terraform.
-	NumNodes pulumi.IntOutput `pulumi:"numNodes"`
-	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-	// in terraform.
-	ProcessingUnits pulumi.IntOutput `pulumi:"processingUnits"`
+	Name            pulumi.StringOutput `pulumi:"name"`
+	NumNodes        pulumi.IntOutput    `pulumi:"numNodes"`
+	ProcessingUnits pulumi.IntOutput    `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -305,13 +301,9 @@ type instanceState struct {
 	// in length.
 	//
 	// If not provided, a random string starting with `tf-` will be selected.
-	Name *string `pulumi:"name"`
-	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-	// terraform.
-	NumNodes *int `pulumi:"numNodes"`
-	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-	// in terraform.
-	ProcessingUnits *int `pulumi:"processingUnits"`
+	Name            *string `pulumi:"name"`
+	NumNodes        *int    `pulumi:"numNodes"`
+	ProcessingUnits *int    `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -357,12 +349,8 @@ type InstanceState struct {
 	// in length.
 	//
 	// If not provided, a random string starting with `tf-` will be selected.
-	Name pulumi.StringPtrInput
-	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-	// terraform.
-	NumNodes pulumi.IntPtrInput
-	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-	// in terraform.
+	Name            pulumi.StringPtrInput
+	NumNodes        pulumi.IntPtrInput
 	ProcessingUnits pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -411,13 +399,9 @@ type instanceArgs struct {
 	// in length.
 	//
 	// If not provided, a random string starting with `tf-` will be selected.
-	Name *string `pulumi:"name"`
-	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-	// terraform.
-	NumNodes *int `pulumi:"numNodes"`
-	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-	// in terraform.
-	ProcessingUnits *int `pulumi:"processingUnits"`
+	Name            *string `pulumi:"name"`
+	NumNodes        *int    `pulumi:"numNodes"`
+	ProcessingUnits *int    `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -457,12 +441,8 @@ type InstanceArgs struct {
 	// in length.
 	//
 	// If not provided, a random string starting with `tf-` will be selected.
-	Name pulumi.StringPtrInput
-	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-	// terraform.
-	NumNodes pulumi.IntPtrInput
-	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-	// in terraform.
+	Name            pulumi.StringPtrInput
+	NumNodes        pulumi.IntPtrInput
 	ProcessingUnits pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -612,14 +592,10 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-// terraform.
 func (o InstanceOutput) NumNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.NumNodes }).(pulumi.IntOutput)
 }
 
-// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-// in terraform.
 func (o InstanceOutput) ProcessingUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ProcessingUnits }).(pulumi.IntOutput)
 }

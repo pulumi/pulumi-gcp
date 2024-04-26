@@ -250,8 +250,6 @@ class _AwsNodePoolState:
         :param pulumi.Input[str] cluster: The awsCluster for the resource
         :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AwsNodePoolManagementArgs'] management: The Management configuration for this node pool.
@@ -373,10 +371,6 @@ class _AwsNodePoolState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1491,8 +1485,6 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] cluster: The awsCluster for the resource
         :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']] management: The Management configuration for this node pool.
@@ -1580,10 +1572,6 @@ class AwsNodePool(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

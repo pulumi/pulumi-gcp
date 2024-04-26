@@ -71,19 +71,9 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.containerSpecGcsPath);
     }
 
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     * 
-     */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
-    /**
-     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     * 
-     */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
     }
@@ -378,21 +368,9 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.serviceAccountEmail);
     }
 
-    /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
-     * 
-     */
     @Import(name="skipWaitOnJobTermination")
     private @Nullable Output<Boolean> skipWaitOnJobTermination;
 
-    /**
-     * @return If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
-     * 
-     */
     public Optional<Output<Boolean>> skipWaitOnJobTermination() {
         return Optional.ofNullable(this.skipWaitOnJobTermination);
     }
@@ -618,25 +596,11 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
             return containerSpecGcsPath(Output.of(containerSpecGcsPath));
         }
 
-        /**
-         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-         * clients and services.
-         * 
-         * @return builder
-         * 
-         */
         public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
             $.effectiveLabels = effectiveLabels;
             return this;
         }
 
-        /**
-         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-         * clients and services.
-         * 
-         * @return builder
-         * 
-         */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
         }
@@ -1039,27 +1003,11 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
             return serviceAccountEmail(Output.of(serviceAccountEmail));
         }
 
-        /**
-         * @param skipWaitOnJobTermination If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-         * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-         * different, e.g. by embedding a release ID or by using a random_id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder skipWaitOnJobTermination(@Nullable Output<Boolean> skipWaitOnJobTermination) {
             $.skipWaitOnJobTermination = skipWaitOnJobTermination;
             return this;
         }
 
-        /**
-         * @param skipWaitOnJobTermination If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-         * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-         * different, e.g. by embedding a release ID or by using a random_id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder skipWaitOnJobTermination(Boolean skipWaitOnJobTermination) {
             return skipWaitOnJobTermination(Output.of(skipWaitOnJobTermination));
         }

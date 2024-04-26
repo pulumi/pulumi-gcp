@@ -379,7 +379,7 @@ type Instance struct {
 	// instance. If set to "true" AUTH is enabled on the instance.
 	// Default value is "false" meaning AUTH is disabled.
 	AuthEnabled pulumi.BoolPtrOutput `pulumi:"authEnabled"`
-	// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+	// AUTH String set on the instance. This field will only be populated if authEnabled is true.
 	AuthString pulumi.StringOutput `pulumi:"authString"`
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
@@ -554,7 +554,7 @@ type instanceState struct {
 	// instance. If set to "true" AUTH is enabled on the instance.
 	// Default value is "false" meaning AUTH is disabled.
 	AuthEnabled *bool `pulumi:"authEnabled"`
-	// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+	// AUTH String set on the instance. This field will only be populated if authEnabled is true.
 	AuthString *string `pulumi:"authString"`
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
@@ -691,7 +691,7 @@ type InstanceState struct {
 	// instance. If set to "true" AUTH is enabled on the instance.
 	// Default value is "false" meaning AUTH is disabled.
 	AuthEnabled pulumi.BoolPtrInput
-	// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+	// AUTH String set on the instance. This field will only be populated if authEnabled is true.
 	AuthString pulumi.StringPtrInput
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
@@ -1115,7 +1115,7 @@ func (o InstanceOutput) AuthEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AuthEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+// AUTH String set on the instance. This field will only be populated if authEnabled is true.
 func (o InstanceOutput) AuthString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthString }).(pulumi.StringOutput)
 }

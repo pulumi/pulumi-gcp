@@ -186,10 +186,6 @@ export class Repository extends pulumi.CustomResource {
      * Output only. Server assigned timestamp for when the connection was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -285,10 +281,6 @@ export interface RepositoryState {
      * Output only. Server assigned timestamp for when the connection was created.
      */
     createTime?: pulumi.Input<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

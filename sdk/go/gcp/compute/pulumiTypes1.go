@@ -7796,8 +7796,6 @@ type GetForwardingRulesRule struct {
 	// For internal forwarding rules within the same VPC network, two or more
 	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
 	// cannot have overlapping 'portRange's.
-	//
-	// @pattern: \d+(?:-\d+)?
 	PortRange string `pulumi:"portRange"`
 	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -7819,8 +7817,6 @@ type GetForwardingRulesRule struct {
 	// For internal forwarding rules within the same VPC network, two or more
 	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
 	// they share at least one port number.
-	//
-	// @pattern: \d+(?:-\d+)?
 	Ports []string `pulumi:"ports"`
 	// The name of the project.
 	Project string `pulumi:"project"`
@@ -8078,8 +8074,6 @@ type GetForwardingRulesRuleArgs struct {
 	// For internal forwarding rules within the same VPC network, two or more
 	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
 	// cannot have overlapping 'portRange's.
-	//
-	// @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringInput `pulumi:"portRange"`
 	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -8101,8 +8095,6 @@ type GetForwardingRulesRuleArgs struct {
 	// For internal forwarding rules within the same VPC network, two or more
 	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
 	// they share at least one port number.
-	//
-	// @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
 	// The name of the project.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -8456,8 +8448,6 @@ func (o GetForwardingRulesRuleOutput) NoAutomateDnsZone() pulumi.BoolOutput {
 // For internal forwarding rules within the same VPC network, two or more
 // forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
 // cannot have overlapping 'portRange's.
-//
-// @pattern: \d+(?:-\d+)?
 func (o GetForwardingRulesRuleOutput) PortRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.PortRange }).(pulumi.StringOutput)
 }
@@ -8482,8 +8472,6 @@ func (o GetForwardingRulesRuleOutput) PortRange() pulumi.StringOutput {
 // For internal forwarding rules within the same VPC network, two or more
 // forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
 // they share at least one port number.
-//
-// @pattern: \d+(?:-\d+)?
 func (o GetForwardingRulesRuleOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesRule) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }

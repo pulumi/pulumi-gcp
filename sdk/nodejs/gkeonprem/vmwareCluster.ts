@@ -339,10 +339,6 @@ export class VMwareCluster extends pulumi.CustomResource {
      * Disable bundled ingress.
      */
     public readonly disableBundledIngress!: pulumi.Output<boolean | undefined>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Enable control plane V2. Default to false.
@@ -601,10 +597,6 @@ export interface VMwareClusterState {
      * Disable bundled ingress.
      */
     disableBundledIngress?: pulumi.Input<boolean>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Enable control plane V2. Default to false.

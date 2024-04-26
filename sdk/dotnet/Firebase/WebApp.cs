@@ -118,10 +118,6 @@ namespace Pulumi.Gcp.Firebase
         [Output("appUrls")]
         public Output<ImmutableArray<string>> AppUrls { get; private set; } = null!;
 
-        /// <summary>
-        /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
-        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -202,10 +198,6 @@ namespace Pulumi.Gcp.Firebase
         [Input("apiKeyId")]
         public Input<string>? ApiKeyId { get; set; }
 
-        /// <summary>
-        /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
-        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -260,10 +252,6 @@ namespace Pulumi.Gcp.Firebase
             set => _appUrls = value;
         }
 
-        /// <summary>
-        /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
-        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 

@@ -282,8 +282,6 @@ class _TargetState:
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -416,10 +414,6 @@ class _TargetState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1021,8 +1015,6 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -1119,10 +1111,6 @@ class Target(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

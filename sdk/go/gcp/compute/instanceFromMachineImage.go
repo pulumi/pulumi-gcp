@@ -57,17 +57,15 @@ type InstanceFromMachineImage struct {
 
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures InstanceFromMachineImageAdvancedMachineFeaturesOutput `pulumi:"advancedMachineFeatures"`
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate pulumi.BoolOutput `pulumi:"allowStoppingForUpdate"`
+	AllowStoppingForUpdate  pulumi.BoolOutput                                     `pulumi:"allowStoppingForUpdate"`
 	// List of disks attached to the instance
 	AttachedDisks InstanceFromMachineImageAttachedDiskArrayOutput `pulumi:"attachedDisks"`
 	// The boot disk for the instance.
 	BootDisks InstanceFromMachineImageBootDiskArrayOutput `pulumi:"bootDisks"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolOutput `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig InstanceFromMachineImageConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
@@ -80,17 +78,15 @@ type InstanceFromMachineImage struct {
 	// A brief description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
-	DesiredStatus pulumi.StringOutput `pulumi:"desiredStatus"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	DesiredStatus   pulumi.StringOutput    `pulumi:"desiredStatus"`
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolOutput `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromMachineImageGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -120,14 +116,14 @@ type InstanceFromMachineImage struct {
 	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigOutput `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromMachineImageParamsOutput `pulumi:"params"`
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromMachineImageReservationAffinityOutput `pulumi:"reservationAffinity"`
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromMachineImageSchedulingOutput `pulumi:"scheduling"`
@@ -199,17 +195,15 @@ func GetInstanceFromMachineImage(ctx *pulumi.Context,
 type instanceFromMachineImageState struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures *InstanceFromMachineImageAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
+	AllowStoppingForUpdate  *bool                                            `pulumi:"allowStoppingForUpdate"`
 	// List of disks attached to the instance
 	AttachedDisks []InstanceFromMachineImageAttachedDisk `pulumi:"attachedDisks"`
 	// The boot disk for the instance.
 	BootDisks []InstanceFromMachineImageBootDisk `pulumi:"bootDisks"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig *InstanceFromMachineImageConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
@@ -222,17 +216,15 @@ type instanceFromMachineImageState struct {
 	// A brief description of the resource.
 	Description *string `pulumi:"description"`
 	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
-	DesiredStatus *string `pulumi:"desiredStatus"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	DesiredStatus   *string           `pulumi:"desiredStatus"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators []InstanceFromMachineImageGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -262,14 +254,14 @@ type instanceFromMachineImageState struct {
 	NetworkPerformanceConfig *InstanceFromMachineImageNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromMachineImageParams `pulumi:"params"`
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *InstanceFromMachineImageReservationAffinity `pulumi:"reservationAffinity"`
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromMachineImageScheduling `pulumi:"scheduling"`
@@ -304,17 +296,15 @@ type instanceFromMachineImageState struct {
 type InstanceFromMachineImageState struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures InstanceFromMachineImageAdvancedMachineFeaturesPtrInput
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate pulumi.BoolPtrInput
+	AllowStoppingForUpdate  pulumi.BoolPtrInput
 	// List of disks attached to the instance
 	AttachedDisks InstanceFromMachineImageAttachedDiskArrayInput
 	// The boot disk for the instance.
 	BootDisks InstanceFromMachineImageBootDiskArrayInput
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolPtrInput
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig InstanceFromMachineImageConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
@@ -327,17 +317,15 @@ type InstanceFromMachineImageState struct {
 	// A brief description of the resource.
 	Description pulumi.StringPtrInput
 	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
-	DesiredStatus pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	DesiredStatus   pulumi.StringPtrInput
 	EffectiveLabels pulumi.StringMapInput
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromMachineImageGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringPtrInput
@@ -367,14 +355,14 @@ type InstanceFromMachineImageState struct {
 	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromMachineImageParamsPtrInput
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromMachineImageReservationAffinityPtrInput
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromMachineImageSchedulingPtrInput
@@ -413,13 +401,11 @@ func (InstanceFromMachineImageState) ElementType() reflect.Type {
 type instanceFromMachineImageArgs struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures *InstanceFromMachineImageAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
+	AllowStoppingForUpdate  *bool                                            `pulumi:"allowStoppingForUpdate"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig *InstanceFromMachineImageConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -432,8 +418,8 @@ type instanceFromMachineImageArgs struct {
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators []InstanceFromMachineImageGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
 	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
 	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
@@ -457,12 +443,12 @@ type instanceFromMachineImageArgs struct {
 	NetworkPerformanceConfig *InstanceFromMachineImageNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromMachineImageParams `pulumi:"params"`
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *InstanceFromMachineImageReservationAffinity `pulumi:"reservationAffinity"`
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromMachineImageScheduling `pulumi:"scheduling"`
@@ -492,13 +478,11 @@ type instanceFromMachineImageArgs struct {
 type InstanceFromMachineImageArgs struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures InstanceFromMachineImageAdvancedMachineFeaturesPtrInput
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate pulumi.BoolPtrInput
+	AllowStoppingForUpdate  pulumi.BoolPtrInput
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolPtrInput
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig InstanceFromMachineImageConfidentialInstanceConfigPtrInput
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolPtrInput
@@ -511,8 +495,8 @@ type InstanceFromMachineImageArgs struct {
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromMachineImageGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
 	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
 	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
@@ -536,12 +520,12 @@ type InstanceFromMachineImageArgs struct {
 	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromMachineImageParamsPtrInput
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromMachineImageReservationAffinityPtrInput
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromMachineImageSchedulingPtrInput
@@ -661,8 +645,6 @@ func (o InstanceFromMachineImageOutput) AdvancedMachineFeatures() InstanceFromMa
 	}).(InstanceFromMachineImageAdvancedMachineFeaturesOutput)
 }
 
-// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-// stopping the instance without setting this field, the update will fail.
 func (o InstanceFromMachineImageOutput) AllowStoppingForUpdate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.BoolOutput { return v.AllowStoppingForUpdate }).(pulumi.BoolOutput)
 }
@@ -684,8 +666,8 @@ func (o InstanceFromMachineImageOutput) CanIpForward() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.BoolOutput { return v.CanIpForward }).(pulumi.BoolOutput)
 }
 
-// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-// to create.
+// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+// create.
 func (o InstanceFromMachineImageOutput) ConfidentialInstanceConfig() InstanceFromMachineImageConfidentialInstanceConfigOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) InstanceFromMachineImageConfidentialInstanceConfigOutput {
 		return v.ConfidentialInstanceConfig
@@ -719,8 +701,6 @@ func (o InstanceFromMachineImageOutput) DesiredStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.DesiredStatus }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
 func (o InstanceFromMachineImageOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -738,8 +718,8 @@ func (o InstanceFromMachineImageOutput) GuestAccelerators() InstanceFromMachineI
 }
 
 // A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+// exceed 253 characters. Changing this forces a new resource to be created.
 func (o InstanceFromMachineImageOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -812,8 +792,8 @@ func (o InstanceFromMachineImageOutput) Params() InstanceFromMachineImageParamsO
 	return o.ApplyT(func(v *InstanceFromMachineImage) InstanceFromMachineImageParamsOutput { return v.Params }).(InstanceFromMachineImageParamsOutput)
 }
 
-// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-// self_link nor project are provided, the provider project is used.
+// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+// nor project are provided, the provider project is used.
 func (o InstanceFromMachineImageOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -830,7 +810,7 @@ func (o InstanceFromMachineImageOutput) ReservationAffinity() InstanceFromMachin
 	}).(InstanceFromMachineImageReservationAffinityOutput)
 }
 
-// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 func (o InstanceFromMachineImageOutput) ResourcePolicies() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.ResourcePolicies }).(pulumi.StringOutput)
 }

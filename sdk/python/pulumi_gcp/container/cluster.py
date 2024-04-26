@@ -120,8 +120,6 @@ class ClusterArgs:
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-               Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
@@ -609,10 +607,6 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-        Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -1507,8 +1501,6 @@ class _ClusterState:
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-               Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
@@ -2023,10 +2015,6 @@ class _ClusterState:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-        Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -3126,8 +3114,6 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-               Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
@@ -3719,8 +3705,6 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-               Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
@@ -4112,10 +4096,6 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-        Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @property

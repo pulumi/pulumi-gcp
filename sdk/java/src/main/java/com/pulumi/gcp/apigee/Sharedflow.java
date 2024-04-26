@@ -64,19 +64,9 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
     public Output<String> configBundle() {
         return this.configBundle;
     }
-    /**
-     * A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-     * will trigger an update.
-     * 
-     */
     @Export(name="detectMd5hash", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detectMd5hash;
 
-    /**
-     * @return A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-     * will trigger an update.
-     * 
-     */
     public Output<Optional<String>> detectMd5hash() {
         return Codegen.optional(this.detectMd5hash);
     }

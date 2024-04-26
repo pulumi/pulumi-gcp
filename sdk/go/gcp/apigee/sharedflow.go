@@ -43,9 +43,7 @@ type Sharedflow struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle pulumi.StringOutput `pulumi:"configBundle"`
-	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-	// will trigger an update.
+	ConfigBundle  pulumi.StringOutput    `pulumi:"configBundle"`
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this shared flow.
 	LatestRevisionId pulumi.StringOutput `pulumi:"latestRevisionId"`
@@ -101,9 +99,7 @@ type sharedflowState struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle *string `pulumi:"configBundle"`
-	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-	// will trigger an update.
+	ConfigBundle  *string `pulumi:"configBundle"`
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this shared flow.
 	LatestRevisionId *string `pulumi:"latestRevisionId"`
@@ -124,9 +120,7 @@ type SharedflowState struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle pulumi.StringPtrInput
-	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-	// will trigger an update.
+	ConfigBundle  pulumi.StringPtrInput
 	DetectMd5hash pulumi.StringPtrInput
 	// The id of the most recently created revision for this shared flow.
 	LatestRevisionId pulumi.StringPtrInput
@@ -151,9 +145,7 @@ type sharedflowArgs struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle string `pulumi:"configBundle"`
-	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-	// will trigger an update.
+	ConfigBundle  string  `pulumi:"configBundle"`
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The ID of the shared flow.
 	Name *string `pulumi:"name"`
@@ -166,9 +158,7 @@ type SharedflowArgs struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle pulumi.StringInput
-	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-	// will trigger an update.
+	ConfigBundle  pulumi.StringInput
 	DetectMd5hash pulumi.StringPtrInput
 	// The ID of the shared flow.
 	Name pulumi.StringPtrInput
@@ -270,8 +260,6 @@ func (o SharedflowOutput) ConfigBundle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.ConfigBundle }).(pulumi.StringOutput)
 }
 
-// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-// will trigger an update.
 func (o SharedflowOutput) DetectMd5hash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringPtrOutput { return v.DetectMd5hash }).(pulumi.StringPtrOutput)
 }

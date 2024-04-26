@@ -53,19 +53,9 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         return this.config;
     }
 
-    /**
-     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-     * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
-     * 
-     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
-    /**
-     * @return Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-     * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
-     * 
-     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -273,7 +263,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Type of this CertificateAuthority. ~&gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
+     * The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
      * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
      * 
      */
@@ -281,7 +271,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return The Type of this CertificateAuthority. ~&gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
+     * @return The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
      * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
      * 
      */
@@ -372,25 +362,11 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
             return config(Output.of(config));
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-         * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-         * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }
@@ -666,7 +642,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The Type of this CertificateAuthority. ~&gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
+         * @param type The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
          * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
          * 
          * @return builder
@@ -678,7 +654,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The Type of this CertificateAuthority. ~&gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
+         * @param type The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
          * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
          * 
          * @return builder

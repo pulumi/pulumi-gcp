@@ -420,8 +420,6 @@ class _BucketState:
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
         :param pulumi.Input[bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -557,10 +555,6 @@ class _BucketState:
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
-        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -1260,8 +1254,6 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
         :param pulumi.Input[bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -1359,10 +1351,6 @@ class Bucket(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
-        """
         return pulumi.get(self, "effective_labels")
 
     @property

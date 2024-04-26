@@ -158,7 +158,7 @@ export class AzureNodePool extends pulumi.CustomResource {
      * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
      * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
      * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effective_annotations` for all of the annotations present on the resource.
+     * `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -181,10 +181,6 @@ export class AzureNodePool extends pulumi.CustomResource {
      * Output only. The time at which this node pool was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -325,7 +321,7 @@ export interface AzureNodePoolState {
      * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
      * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
      * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effective_annotations` for all of the annotations present on the resource.
+     * `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -348,10 +344,6 @@ export interface AzureNodePoolState {
      * Output only. The time at which this node pool was created.
      */
     createTime?: pulumi.Input<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -413,7 +405,7 @@ export interface AzureNodePoolArgs {
      * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
      * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
      * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effective_annotations` for all of the annotations present on the resource.
+     * `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

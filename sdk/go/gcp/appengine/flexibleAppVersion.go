@@ -224,10 +224,8 @@ type FlexibleAppVersion struct {
 	// Code and application artifacts that make up this version.
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrOutput `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.
-	Entrypoint FlexibleAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
-	EnvVariables pulumi.StringMapOutput `pulumi:"envVariables"`
+	Entrypoint   FlexibleAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
+	EnvVariables pulumi.StringMapOutput                `pulumi:"envVariables"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
 	Handlers FlexibleAppVersionHandlerArrayOutput `pulumi:"handlers"`
@@ -342,10 +340,8 @@ type flexibleAppVersionState struct {
 	// Code and application artifacts that make up this version.
 	EndpointsApiService *FlexibleAppVersionEndpointsApiService `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.
-	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
-	EnvVariables map[string]string `pulumi:"envVariables"`
+	Entrypoint   *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
+	EnvVariables map[string]string             `pulumi:"envVariables"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
 	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
@@ -419,9 +415,7 @@ type FlexibleAppVersionState struct {
 	// Code and application artifacts that make up this version.
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrInput
 	// The entrypoint for the application.
-	Entrypoint FlexibleAppVersionEntrypointPtrInput
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
+	Entrypoint   FlexibleAppVersionEntrypointPtrInput
 	EnvVariables pulumi.StringMapInput
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
@@ -500,10 +494,8 @@ type flexibleAppVersionArgs struct {
 	// Code and application artifacts that make up this version.
 	EndpointsApiService *FlexibleAppVersionEndpointsApiService `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.
-	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
-	EnvVariables map[string]string `pulumi:"envVariables"`
+	Entrypoint   *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
+	EnvVariables map[string]string             `pulumi:"envVariables"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
 	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
@@ -576,9 +568,7 @@ type FlexibleAppVersionArgs struct {
 	// Code and application artifacts that make up this version.
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrInput
 	// The entrypoint for the application.
-	Entrypoint FlexibleAppVersionEntrypointPtrInput
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
+	Entrypoint   FlexibleAppVersionEntrypointPtrInput
 	EnvVariables pulumi.StringMapInput
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 	// request and other request handlers are not attempted.
@@ -764,8 +754,6 @@ func (o FlexibleAppVersionOutput) Entrypoint() FlexibleAppVersionEntrypointPtrOu
 	return o.ApplyT(func(v *FlexibleAppVersion) FlexibleAppVersionEntrypointPtrOutput { return v.Entrypoint }).(FlexibleAppVersionEntrypointPtrOutput)
 }
 
-// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-// detect any changes made outside of the Terraform config.
 func (o FlexibleAppVersionOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringMapOutput { return v.EnvVariables }).(pulumi.StringMapOutput)
 }

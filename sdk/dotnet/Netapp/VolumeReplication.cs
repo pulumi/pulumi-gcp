@@ -113,13 +113,6 @@ namespace Pulumi.Gcp.Netapp
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-        /// management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-        /// to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-        /// direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-        /// avoid accidental volume deletion. Handle with care. Default is false.
-        /// </summary>
         [Output("deleteDestinationVolume")]
         public Output<bool?> DeleteDestinationVolume { get; private set; } = null!;
 
@@ -267,11 +260,6 @@ namespace Pulumi.Gcp.Netapp
         [Output("volumeName")]
         public Output<string> VolumeName { get; private set; } = null!;
 
-        /// <summary>
-        /// Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-        /// reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-        /// parameter to true. Default is false.
-        /// </summary>
         [Output("waitForMirror")]
         public Output<bool?> WaitForMirror { get; private set; } = null!;
 
@@ -326,13 +314,6 @@ namespace Pulumi.Gcp.Netapp
 
     public sealed class VolumeReplicationArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-        /// management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-        /// to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-        /// direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-        /// avoid accidental volume deletion. Handle with care. Default is false.
-        /// </summary>
         [Input("deleteDestinationVolume")]
         public Input<bool>? DeleteDestinationVolume { get; set; }
 
@@ -417,11 +398,6 @@ namespace Pulumi.Gcp.Netapp
         [Input("volumeName", required: true)]
         public Input<string> VolumeName { get; set; } = null!;
 
-        /// <summary>
-        /// Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-        /// reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-        /// parameter to true. Default is false.
-        /// </summary>
         [Input("waitForMirror")]
         public Input<bool>? WaitForMirror { get; set; }
 
@@ -439,13 +415,6 @@ namespace Pulumi.Gcp.Netapp
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
-        /// <summary>
-        /// A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-        /// management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-        /// to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-        /// direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-        /// avoid accidental volume deletion. Handle with care. Default is false.
-        /// </summary>
         [Input("deleteDestinationVolume")]
         public Input<bool>? DeleteDestinationVolume { get; set; }
 
@@ -625,11 +594,6 @@ namespace Pulumi.Gcp.Netapp
         [Input("volumeName")]
         public Input<string>? VolumeName { get; set; }
 
-        /// <summary>
-        /// Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-        /// reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-        /// parameter to true. Default is false.
-        /// </summary>
         [Input("waitForMirror")]
         public Input<bool>? WaitForMirror { get; set; }
 

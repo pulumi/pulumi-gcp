@@ -143,9 +143,7 @@ type ActiveDirectory struct {
 	// Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
 	// Defaults to `CN=Computers` if left empty.
 	OrganizationalUnit pulumi.StringOutput `pulumi:"organizationalUnit"`
-	// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-	// re-apply the password, unless you use a new password in Terraform.
-	Password pulumi.StringOutput `pulumi:"password"`
+	Password           pulumi.StringOutput `pulumi:"password"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -265,9 +263,7 @@ type activeDirectoryState struct {
 	// Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
 	// Defaults to `CN=Computers` if left empty.
 	OrganizationalUnit *string `pulumi:"organizationalUnit"`
-	// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-	// re-apply the password, unless you use a new password in Terraform.
-	Password *string `pulumi:"password"`
+	Password           *string `pulumi:"password"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -331,9 +327,7 @@ type ActiveDirectoryState struct {
 	// Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
 	// Defaults to `CN=Computers` if left empty.
 	OrganizationalUnit pulumi.StringPtrInput
-	// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-	// re-apply the password, unless you use a new password in Terraform.
-	Password pulumi.StringPtrInput
+	Password           pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -397,9 +391,7 @@ type activeDirectoryArgs struct {
 	// Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
 	// Defaults to `CN=Computers` if left empty.
 	OrganizationalUnit *string `pulumi:"organizationalUnit"`
-	// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-	// re-apply the password, unless you use a new password in Terraform.
-	Password string `pulumi:"password"`
+	Password           string  `pulumi:"password"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -453,9 +445,7 @@ type ActiveDirectoryArgs struct {
 	// Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
 	// Defaults to `CN=Computers` if left empty.
 	OrganizationalUnit pulumi.StringPtrInput
-	// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-	// re-apply the password, unless you use a new password in Terraform.
-	Password pulumi.StringInput
+	Password           pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -649,8 +639,6 @@ func (o ActiveDirectoryOutput) OrganizationalUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *ActiveDirectory) pulumi.StringOutput { return v.OrganizationalUnit }).(pulumi.StringOutput)
 }
 
-// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-// re-apply the password, unless you use a new password in Terraform.
 func (o ActiveDirectoryOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ActiveDirectory) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }

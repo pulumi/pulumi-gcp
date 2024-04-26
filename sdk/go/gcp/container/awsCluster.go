@@ -369,7 +369,7 @@ type AwsCluster struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationOutput `pulumi:"authorization"`
@@ -382,10 +382,8 @@ type AwsCluster struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	EffectiveAnnotations pulumi.MapOutput       `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -467,7 +465,7 @@ type awsClusterState struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization *AwsClusterAuthorization `pulumi:"authorization"`
@@ -480,9 +478,7 @@ type awsClusterState struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description *string `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          *string                `pulumi:"description"`
 	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
@@ -518,7 +514,7 @@ type AwsClusterState struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationPtrInput
@@ -531,9 +527,7 @@ type AwsClusterState struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringPtrInput
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.MapInput
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringPtrInput
@@ -573,7 +567,7 @@ type awsClusterArgs struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorization `pulumi:"authorization"`
@@ -606,7 +600,7 @@ type AwsClusterArgs struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationInput
@@ -724,7 +718,7 @@ func (o AwsClusterOutput) ToAwsClusterOutputWithContext(ctx context.Context) Aws
 // separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 // alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 // non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// `effective_annotations` for all of the annotations present on the resource.
+// `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AwsClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -759,8 +753,6 @@ func (o AwsClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o AwsClusterOutput) EffectiveAnnotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }

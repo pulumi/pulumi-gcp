@@ -27,8 +27,9 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
      * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
      * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
      * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-     * on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-     * cluster is deleted.
+     * on a [managed
+     * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+     * the cluster is deleted.
      * 
      */
     @Import(name="dagTimeout")
@@ -39,8 +40,9 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
      * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
      * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
      * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-     * on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-     * cluster is deleted.
+     * on a [managed
+     * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+     * the cluster is deleted.
      * 
      */
     public Optional<Output<String>> dagTimeout() {
@@ -224,8 +226,9 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
          * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
          * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
          * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-         * on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-         * cluster is deleted.
+         * on a [managed
+         * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+         * the cluster is deleted.
          * 
          * @return builder
          * 
@@ -240,8 +243,9 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
          * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
          * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
          * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-         * on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-         * cluster is deleted.
+         * on a [managed
+         * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+         * the cluster is deleted.
          * 
          * @return builder
          * 

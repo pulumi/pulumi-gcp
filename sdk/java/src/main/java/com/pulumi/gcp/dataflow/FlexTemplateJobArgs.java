@@ -332,21 +332,9 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.serviceAccountEmail);
     }
 
-    /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
-     * 
-     */
     @Import(name="skipWaitOnJobTermination")
     private @Nullable Output<Boolean> skipWaitOnJobTermination;
 
-    /**
-     * @return If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
-     * 
-     */
     public Optional<Output<Boolean>> skipWaitOnJobTermination() {
         return Optional.ofNullable(this.skipWaitOnJobTermination);
     }
@@ -893,27 +881,11 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
             return serviceAccountEmail(Output.of(serviceAccountEmail));
         }
 
-        /**
-         * @param skipWaitOnJobTermination If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-         * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-         * different, e.g. by embedding a release ID or by using a random_id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder skipWaitOnJobTermination(@Nullable Output<Boolean> skipWaitOnJobTermination) {
             $.skipWaitOnJobTermination = skipWaitOnJobTermination;
             return this;
         }
 
-        /**
-         * @param skipWaitOnJobTermination If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-         * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-         * different, e.g. by embedding a release ID or by using a random_id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder skipWaitOnJobTermination(Boolean skipWaitOnJobTermination) {
             return skipWaitOnJobTermination(Output.of(skipWaitOnJobTermination));
         }

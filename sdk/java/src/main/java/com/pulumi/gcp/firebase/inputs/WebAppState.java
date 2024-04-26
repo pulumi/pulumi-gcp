@@ -67,19 +67,9 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.appUrls);
     }
 
-    /**
-     * Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
-     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;DELETE&#39;
-     * 
-     */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
-    /**
-     * @return Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
-     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;DELETE&#39;
-     * 
-     */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
@@ -246,25 +236,11 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
             return appUrls(List.of(appUrls));
         }
 
-        /**
-         * @param deletionPolicy Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
-         * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;DELETE&#39;
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
-        /**
-         * @param deletionPolicy Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
-         * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;DELETE&#39;
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }

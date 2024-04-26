@@ -302,9 +302,7 @@ type BareMetalNodePool struct {
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// The display name for the Bare Metal Node Pool.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -387,9 +385,7 @@ type bareMetalNodePoolState struct {
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// The display name for the Bare Metal Node Pool.
-	DisplayName *string `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          *string           `pulumi:"displayName"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -434,9 +430,7 @@ type BareMetalNodePoolState struct {
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringPtrInput
 	// The display name for the Bare Metal Node Pool.
-	DisplayName pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -632,8 +626,6 @@ func (o BareMetalNodePoolOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalNodePool) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o BareMetalNodePoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalNodePool) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

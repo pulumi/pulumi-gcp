@@ -194,8 +194,6 @@ class _DeliveryPipelineState:
         :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
@@ -301,10 +299,6 @@ class _DeliveryPipelineState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1052,8 +1046,6 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeliveryPipelineConditionArgs']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
@@ -1132,10 +1124,6 @@ class DeliveryPipeline(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

@@ -121,10 +121,6 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * - - -
      */
     public readonly containerSpecGcsPath!: pulumi.Output<string>;
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Immutable. Indicates if the job should use the streaming engine feature.
@@ -208,11 +204,6 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * Service account email to run the workers as.
      */
     public readonly serviceAccountEmail!: pulumi.Output<string>;
-    /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
-     */
     public readonly skipWaitOnJobTermination!: pulumi.Output<boolean | undefined>;
     /**
      * The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -342,10 +333,6 @@ export interface FlexTemplateJobState {
      * - - -
      */
     containerSpecGcsPath?: pulumi.Input<string>;
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. Indicates if the job should use the streaming engine feature.
@@ -429,11 +416,6 @@ export interface FlexTemplateJobState {
      * Service account email to run the workers as.
      */
     serviceAccountEmail?: pulumi.Input<string>;
-    /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
-     */
     skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**
      * The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -554,11 +536,6 @@ export interface FlexTemplateJobArgs {
      * Service account email to run the workers as.
      */
     serviceAccountEmail?: pulumi.Input<string>;
-    /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
-     */
     skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**
      * The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.

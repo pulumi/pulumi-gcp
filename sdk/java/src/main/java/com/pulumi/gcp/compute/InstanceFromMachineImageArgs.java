@@ -44,19 +44,9 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.advancedMachineFeatures);
     }
 
-    /**
-     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-     * stopping the instance without setting this field, the update will fail.
-     * 
-     */
     @Import(name="allowStoppingForUpdate")
     private @Nullable Output<Boolean> allowStoppingForUpdate;
 
-    /**
-     * @return If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-     * stopping the instance without setting this field, the update will fail.
-     * 
-     */
     public Optional<Output<Boolean>> allowStoppingForUpdate() {
         return Optional.ofNullable(this.allowStoppingForUpdate);
     }
@@ -170,8 +160,8 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
 
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+     * exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
     @Import(name="hostname")
@@ -179,8 +169,8 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
 
     /**
      * @return A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+     * exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -559,25 +549,11 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
             return advancedMachineFeatures(Output.of(advancedMachineFeatures));
         }
 
-        /**
-         * @param allowStoppingForUpdate If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-         * stopping the instance without setting this field, the update will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowStoppingForUpdate(@Nullable Output<Boolean> allowStoppingForUpdate) {
             $.allowStoppingForUpdate = allowStoppingForUpdate;
             return this;
         }
 
-        /**
-         * @param allowStoppingForUpdate If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-         * stopping the instance without setting this field, the update will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowStoppingForUpdate(Boolean allowStoppingForUpdate) {
             return allowStoppingForUpdate(Output.of(allowStoppingForUpdate));
         }
@@ -743,8 +719,8 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
 
         /**
          * @param hostname A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-         * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-         * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+         * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+         * exceed 253 characters. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -756,8 +732,8 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
 
         /**
          * @param hostname A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-         * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-         * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+         * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+         * exceed 253 characters. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 

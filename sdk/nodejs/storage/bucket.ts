@@ -169,10 +169,6 @@ export class Bucket extends pulumi.CustomResource {
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     public readonly defaultEventBasedHold!: pulumi.Output<boolean | undefined>;
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
@@ -369,10 +365,6 @@ export interface BucketState {
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     defaultEventBasedHold?: pulumi.Input<boolean>;
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.

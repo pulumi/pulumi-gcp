@@ -733,9 +733,7 @@ type Service struct {
 	// The deletion time.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrOutput `pulumi:"description"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -878,9 +876,7 @@ type serviceState struct {
 	// The deletion time.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
-	Description *string `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          *string           `pulumi:"description"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -983,9 +979,7 @@ type ServiceState struct {
 	// The deletion time.
 	DeleteTime pulumi.StringPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
-	Description pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -1322,8 +1316,6 @@ func (o ServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o ServiceOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

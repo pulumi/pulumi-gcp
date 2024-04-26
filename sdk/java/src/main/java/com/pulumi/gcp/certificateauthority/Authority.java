@@ -443,19 +443,9 @@ public class Authority extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
-    /**
-     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-     * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
-     * 
-     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
-    /**
-     * @return Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-     * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
-     * 
-     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
@@ -730,7 +720,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.subordinateConfig);
     }
     /**
-     * The Type of this CertificateAuthority. ~&gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
+     * The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
      * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
      * 
      */
@@ -738,7 +728,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The Type of this CertificateAuthority. ~&gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
+     * @return The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
      * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
      * 
      */

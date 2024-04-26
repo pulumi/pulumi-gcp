@@ -272,10 +272,6 @@ export class BareMetalNodePool extends pulumi.CustomResource {
      * The display name for the Bare Metal Node Pool.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other
@@ -413,10 +409,6 @@ export interface BareMetalNodePoolState {
      * The display name for the Bare Metal Node Pool.
      */
     displayName?: pulumi.Input<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This checksum is computed by the server based on the value of other

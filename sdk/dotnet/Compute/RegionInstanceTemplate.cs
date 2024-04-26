@@ -145,9 +145,6 @@ namespace Pulumi.Gcp.Compute
         [Output("minCpuPlatform")]
         public Output<string?> MinCpuPlatform { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -425,9 +422,6 @@ namespace Pulumi.Gcp.Compute
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
-        /// <summary>
-        /// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -684,9 +678,6 @@ namespace Pulumi.Gcp.Compute
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
-        /// <summary>
-        /// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

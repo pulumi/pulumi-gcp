@@ -183,9 +183,7 @@ type Secret struct {
 	// present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The time at which the Secret was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -282,9 +280,7 @@ type secretState struct {
 	// present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The time at which the Secret was created.
-	CreateTime *string `pulumi:"createTime"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	CreateTime           *string           `pulumi:"createTime"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -341,9 +337,7 @@ type SecretState struct {
 	// present on the resource.
 	Annotations pulumi.StringMapInput
 	// The time at which the Secret was created.
-	CreateTime pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	CreateTime           pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -590,8 +584,6 @@ func (o SecretOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o SecretOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

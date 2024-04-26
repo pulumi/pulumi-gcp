@@ -186,9 +186,7 @@ type Cluster struct {
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
-	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
+	EffectiveLabels             pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	GracefulDecommissionTimeout pulumi.StringPtrOutput `pulumi:"gracefulDecommissionTimeout"`
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
@@ -253,10 +251,8 @@ type clusterState struct {
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
-	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
-	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
+	EffectiveLabels             map[string]string `pulumi:"effectiveLabels"`
+	GracefulDecommissionTimeout *string           `pulumi:"gracefulDecommissionTimeout"`
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
 	// to the field 'effective_labels' for all of the labels present on the resource.
@@ -286,9 +282,7 @@ type ClusterState struct {
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
-	EffectiveLabels pulumi.StringMapInput
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
+	EffectiveLabels             pulumi.StringMapInput
 	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
@@ -319,10 +313,8 @@ func (ClusterState) ElementType() reflect.Type {
 type clusterArgs struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
-	ClusterConfig *ClusterClusterConfig `pulumi:"clusterConfig"`
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
-	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
+	ClusterConfig               *ClusterClusterConfig `pulumi:"clusterConfig"`
+	GracefulDecommissionTimeout *string               `pulumi:"gracefulDecommissionTimeout"`
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
 	// to the field 'effective_labels' for all of the labels present on the resource.
@@ -347,9 +339,7 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
-	ClusterConfig ClusterClusterConfigPtrInput
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
+	ClusterConfig               ClusterClusterConfigPtrInput
 	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
@@ -471,8 +461,6 @@ func (o ClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-// terraform apply
 func (o ClusterOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.GracefulDecommissionTimeout }).(pulumi.StringPtrOutput)
 }

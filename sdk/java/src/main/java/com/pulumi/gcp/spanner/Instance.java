@@ -351,35 +351,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-     * terraform.
-     * 
-     */
     @Export(name="numNodes", refs={Integer.class}, tree="[0]")
     private Output<Integer> numNodes;
 
-    /**
-     * @return The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-     * terraform.
-     * 
-     */
     public Output<Integer> numNodes() {
         return this.numNodes;
     }
-    /**
-     * The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-     * in terraform.
-     * 
-     */
     @Export(name="processingUnits", refs={Integer.class}, tree="[0]")
     private Output<Integer> processingUnits;
 
-    /**
-     * @return The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-     * in terraform.
-     * 
-     */
     public Output<Integer> processingUnits() {
         return this.processingUnits;
     }

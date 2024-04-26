@@ -281,21 +281,9 @@ namespace Pulumi.Gcp.Firestore
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
-        /// default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
-        /// **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
-        /// Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
-        /// </summary>
         [Output("deleteProtectionState")]
         public Output<string> DeleteProtectionState { get; private set; } = null!;
 
-        /// <summary>
-        /// Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
-        /// state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
-        /// removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
-        /// 'delete_protection'.
-        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -463,21 +451,9 @@ namespace Pulumi.Gcp.Firestore
         [Input("concurrencyMode")]
         public Input<string>? ConcurrencyMode { get; set; }
 
-        /// <summary>
-        /// State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
-        /// default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
-        /// **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
-        /// Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
-        /// </summary>
         [Input("deleteProtectionState")]
         public Input<string>? DeleteProtectionState { get; set; }
 
-        /// <summary>
-        /// Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
-        /// state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
-        /// removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
-        /// 'delete_protection'.
-        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -567,21 +543,9 @@ namespace Pulumi.Gcp.Firestore
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
-        /// <summary>
-        /// State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
-        /// default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
-        /// **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
-        /// Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
-        /// </summary>
         [Input("deleteProtectionState")]
         public Input<string>? DeleteProtectionState { get; set; }
 
-        /// <summary>
-        /// Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
-        /// state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
-        /// removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
-        /// 'delete_protection'.
-        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 

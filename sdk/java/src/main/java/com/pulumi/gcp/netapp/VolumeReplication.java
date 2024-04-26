@@ -145,25 +145,9 @@ public class VolumeReplication extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
-    /**
-     * A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-     * management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-     * to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-     * direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-     * avoid accidental volume deletion. Handle with care. Default is false.
-     * 
-     */
     @Export(name="deleteDestinationVolume", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteDestinationVolume;
 
-    /**
-     * @return A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-     * management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-     * to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-     * direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-     * avoid accidental volume deletion. Handle with care. Default is false.
-     * 
-     */
     public Output<Optional<Boolean>> deleteDestinationVolume() {
         return Codegen.optional(this.deleteDestinationVolume);
     }
@@ -493,21 +477,9 @@ public class VolumeReplication extends com.pulumi.resources.CustomResource {
     public Output<String> volumeName() {
         return this.volumeName;
     }
-    /**
-     * Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-     * reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-     * parameter to true. Default is false.
-     * 
-     */
     @Export(name="waitForMirror", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForMirror;
 
-    /**
-     * @return Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-     * reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-     * parameter to true. Default is false.
-     * 
-     */
     public Output<Optional<Boolean>> waitForMirror() {
         return Codegen.optional(this.waitForMirror);
     }

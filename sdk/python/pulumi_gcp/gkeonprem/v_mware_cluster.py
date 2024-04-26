@@ -412,8 +412,6 @@ class _VMwareClusterState:
         :param pulumi.Input[str] description: (Output)
                The description of the validation check.
         :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[str] endpoint: The DNS name of VMware User Cluster's API server.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
@@ -665,10 +663,6 @@ class _VMwareClusterState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1659,8 +1653,6 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: (Output)
                The description of the validation check.
         :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[str] endpoint: The DNS name of VMware User Cluster's API server.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
@@ -1840,10 +1832,6 @@ class VMwareCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

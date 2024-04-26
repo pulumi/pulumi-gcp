@@ -342,11 +342,6 @@ namespace Pulumi.Gcp.Firebase
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-        /// wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-        /// Terraform state.
-        /// </summary>
         [Output("waitDnsVerification")]
         public Output<bool?> WaitDnsVerification { get; private set; } = null!;
 
@@ -436,11 +431,6 @@ namespace Pulumi.Gcp.Firebase
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
-        /// <summary>
-        /// If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-        /// wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-        /// Terraform state.
-        /// </summary>
         [Input("waitDnsVerification")]
         public Input<bool>? WaitDnsVerification { get; set; }
 
@@ -648,11 +638,6 @@ namespace Pulumi.Gcp.Firebase
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 
-        /// <summary>
-        /// If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-        /// wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-        /// Terraform state.
-        /// </summary>
         [Input("waitDnsVerification")]
         public Input<bool>? WaitDnsVerification { get; set; }
 

@@ -273,19 +273,9 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     * 
-     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> effectiveAnnotations;
 
-    /**
-     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     * 
-     */
     public Output<Map<String,Object>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

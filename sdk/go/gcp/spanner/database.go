@@ -112,12 +112,7 @@ type Database struct {
 	Ddls pulumi.StringArrayOutput `pulumi:"ddls"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-	// "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-	// deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-	// interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-	// database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+	DeletionProtection   pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	EnableDropProtection pulumi.BoolPtrOutput `pulumi:"enableDropProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -186,12 +181,7 @@ type databaseState struct {
 	Ddls []string `pulumi:"ddls"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-	// "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-	// deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-	// interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-	// database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+	DeletionProtection   *bool `pulumi:"deletionProtection"`
 	EnableDropProtection *bool `pulumi:"enableDropProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -228,12 +218,7 @@ type DatabaseState struct {
 	Ddls pulumi.StringArrayInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection pulumi.BoolPtrInput
-	// Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-	// "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-	// deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-	// interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-	// database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+	DeletionProtection   pulumi.BoolPtrInput
 	EnableDropProtection pulumi.BoolPtrInput
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -274,12 +259,7 @@ type databaseArgs struct {
 	Ddls []string `pulumi:"ddls"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-	// "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-	// deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-	// interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-	// database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+	DeletionProtection   *bool `pulumi:"deletionProtection"`
 	EnableDropProtection *bool `pulumi:"enableDropProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -315,12 +295,7 @@ type DatabaseArgs struct {
 	Ddls pulumi.StringArrayInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection pulumi.BoolPtrInput
-	// Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-	// "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-	// deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-	// interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-	// database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+	DeletionProtection   pulumi.BoolPtrInput
 	EnableDropProtection pulumi.BoolPtrInput
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -451,11 +426,6 @@ func (o DatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
-// Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-// "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-// deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-// interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-// database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
 func (o DatabaseOutput) EnableDropProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.EnableDropProtection }).(pulumi.BoolPtrOutput)
 }

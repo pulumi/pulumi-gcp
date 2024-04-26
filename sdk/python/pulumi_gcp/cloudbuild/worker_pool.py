@@ -166,8 +166,6 @@ class _WorkerPoolState:
         :param pulumi.Input[str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
                
@@ -260,10 +258,6 @@ class _WorkerPoolState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -644,8 +638,6 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
                
@@ -714,10 +706,6 @@ class WorkerPool(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

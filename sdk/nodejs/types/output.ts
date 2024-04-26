@@ -21354,8 +21354,6 @@ export namespace compute {
          * For internal forwarding rules within the same VPC network, two or more
          * forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
          * cannot have overlapping 'portRange's.
-         *
-         * @pattern: \d+(?:-\d+)?
          */
         portRange: string;
         /**
@@ -21379,8 +21377,6 @@ export namespace compute {
          * For internal forwarding rules within the same VPC network, two or more
          * forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
          * they share at least one port number.
-         *
-         * @pattern: \d+(?:-\d+)?
          */
         ports: string[];
         /**

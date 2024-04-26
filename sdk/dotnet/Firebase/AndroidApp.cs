@@ -143,11 +143,6 @@ namespace Pulumi.Gcp.Firebase
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-        /// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-        /// AndroidApp. Defaults to 'DELETE'.
-        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -254,11 +249,6 @@ namespace Pulumi.Gcp.Firebase
         [Input("apiKeyId")]
         public Input<string>? ApiKeyId { get; set; }
 
-        /// <summary>
-        /// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-        /// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-        /// AndroidApp. Defaults to 'DELETE'.
-        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -332,11 +322,6 @@ namespace Pulumi.Gcp.Firebase
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
-        /// <summary>
-        /// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-        /// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-        /// AndroidApp. Defaults to 'DELETE'.
-        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 

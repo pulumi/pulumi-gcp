@@ -361,9 +361,7 @@ type Authority struct {
 	// The time at which this CertificateAuthority was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
@@ -418,7 +416,7 @@ type Authority struct {
 	// If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
 	// describes its issuers.
 	SubordinateConfig AuthoritySubordinateConfigPtrOutput `pulumi:"subordinateConfig"`
-	// The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+	// The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
 	// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The time at which this CertificateAuthority was updated.
@@ -488,10 +486,8 @@ type authorityState struct {
 	// The time at which this CertificateAuthority was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime *string `pulumi:"createTime"`
-	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
+	CreateTime         *string `pulumi:"createTime"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
 	DesiredState *string `pulumi:"desiredState"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -545,7 +541,7 @@ type authorityState struct {
 	// If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
 	// describes its issuers.
 	SubordinateConfig *AuthoritySubordinateConfig `pulumi:"subordinateConfig"`
-	// The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+	// The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
 	// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
 	Type *string `pulumi:"type"`
 	// The time at which this CertificateAuthority was updated.
@@ -566,9 +562,7 @@ type AuthorityState struct {
 	// The time at which this CertificateAuthority was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime pulumi.StringPtrInput
-	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	CreateTime         pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
 	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
 	DesiredState pulumi.StringPtrInput
@@ -623,7 +617,7 @@ type AuthorityState struct {
 	// If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
 	// describes its issuers.
 	SubordinateConfig AuthoritySubordinateConfigPtrInput
-	// The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+	// The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
 	// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
 	Type pulumi.StringPtrInput
 	// The time at which this CertificateAuthority was updated.
@@ -641,10 +635,8 @@ type authorityArgs struct {
 	CertificateAuthorityId string `pulumi:"certificateAuthorityId"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
-	Config AuthorityConfig `pulumi:"config"`
-	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
+	Config             AuthorityConfig `pulumi:"config"`
+	DeletionProtection *bool           `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
 	DesiredState *string `pulumi:"desiredState"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
@@ -683,7 +675,7 @@ type authorityArgs struct {
 	// If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
 	// describes its issuers.
 	SubordinateConfig *AuthoritySubordinateConfig `pulumi:"subordinateConfig"`
-	// The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+	// The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
 	// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
 	Type *string `pulumi:"type"`
 }
@@ -694,9 +686,7 @@ type AuthorityArgs struct {
 	CertificateAuthorityId pulumi.StringInput
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
-	Config AuthorityConfigInput
-	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	Config             AuthorityConfigInput
 	DeletionProtection pulumi.BoolPtrInput
 	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
 	DesiredState pulumi.StringPtrInput
@@ -736,7 +726,7 @@ type AuthorityArgs struct {
 	// If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
 	// describes its issuers.
 	SubordinateConfig AuthoritySubordinateConfigPtrInput
-	// The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+	// The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
 	// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
 	Type pulumi.StringPtrInput
 }
@@ -852,8 +842,6 @@ func (o AuthorityOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
 func (o AuthorityOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -962,7 +950,7 @@ func (o AuthorityOutput) SubordinateConfig() AuthoritySubordinateConfigPtrOutput
 	return o.ApplyT(func(v *Authority) AuthoritySubordinateConfigPtrOutput { return v.SubordinateConfig }).(AuthoritySubordinateConfigPtrOutput)
 }
 
-// The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+// The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
 // before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
 func (o AuthorityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)

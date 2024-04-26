@@ -40,10 +40,6 @@ class DeploymentArgs:
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
         :param pulumi.Input[str] name: Unique name for the deployment
-        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
-               preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
-               does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
-               deployments if either preview is updated to true or if other fields are updated while preview is true.
         """
         pulumi.set(__self__, "target", target)
         if create_policy is not None:
@@ -144,12 +140,6 @@ class DeploymentArgs:
     @property
     @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
-        preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
-        does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
-        deployments if either preview is updated to true or if other fields are updated while preview is true.
-        """
         return pulumi.get(self, "preview")
 
     @preview.setter
@@ -196,10 +186,6 @@ class _DeploymentState:
         :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that
                was successfully deployed.
         :param pulumi.Input[str] name: Unique name for the deployment
-        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
-               preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
-               does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
-               deployments if either preview is updated to true or if other fields are updated while preview is true.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
         :param pulumi.Input['DeploymentTargetArgs'] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
@@ -322,12 +308,6 @@ class _DeploymentState:
     @property
     @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
-        preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
-        does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
-        deployments if either preview is updated to true or if other fields are updated while preview is true.
-        """
         return pulumi.get(self, "preview")
 
     @preview.setter
@@ -457,10 +437,6 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
         :param pulumi.Input[str] name: Unique name for the deployment
-        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
-               preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
-               does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
-               deployments if either preview is updated to true or if other fields are updated while preview is true.
         :param pulumi.Input[pulumi.InputType['DeploymentTargetArgs']] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
@@ -618,10 +594,6 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that
                was successfully deployed.
         :param pulumi.Input[str] name: Unique name for the deployment
-        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
-               preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
-               does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
-               deployments if either preview is updated to true or if other fields are updated while preview is true.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['DeploymentTargetArgs']] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
@@ -710,12 +682,6 @@ class Deployment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def preview(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
-        preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
-        does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
-        deployments if either preview is updated to true or if other fields are updated while preview is true.
-        """
         return pulumi.get(self, "preview")
 
     @property

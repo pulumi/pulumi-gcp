@@ -190,15 +190,7 @@ export class Instance extends pulumi.CustomResource {
      * If not provided, a random string starting with `tf-` will be selected.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-     * terraform.
-     */
     public readonly numNodes!: pulumi.Output<number>;
-    /**
-     * The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-     * in terraform.
-     */
     public readonly processingUnits!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
@@ -322,15 +314,7 @@ export interface InstanceState {
      * If not provided, a random string starting with `tf-` will be selected.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-     * terraform.
-     */
     numNodes?: pulumi.Input<number>;
-    /**
-     * The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-     * in terraform.
-     */
     processingUnits?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
@@ -398,15 +382,7 @@ export interface InstanceArgs {
      * If not provided, a random string starting with `tf-` will be selected.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-     * terraform.
-     */
     numNodes?: pulumi.Input<number>;
-    /**
-     * The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-     * in terraform.
-     */
     processingUnits?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.

@@ -165,10 +165,6 @@ export class CustomTargetType extends pulumi.CustomResource {
      * Description of the `CustomTargetType`. Max length is 255 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -297,10 +293,6 @@ export interface CustomTargetTypeState {
      * Description of the `CustomTargetType`. Max length is 255 characters.
      */
     description?: pulumi.Input<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

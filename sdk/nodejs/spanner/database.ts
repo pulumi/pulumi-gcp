@@ -122,13 +122,6 @@ export class Database extends pulumi.CustomResource {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
-    /**
-     * Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-     * "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-     * interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-     * database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-     */
     public readonly enableDropProtection!: pulumi.Output<boolean | undefined>;
     /**
      * Encryption configuration for the database
@@ -231,13 +224,6 @@ export interface DatabaseState {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
-    /**
-     * Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-     * "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-     * interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-     * database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-     */
     enableDropProtection?: pulumi.Input<boolean>;
     /**
      * Encryption configuration for the database
@@ -297,13 +283,6 @@ export interface DatabaseArgs {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
-    /**
-     * Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-     * "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-     * interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-     * database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-     */
     enableDropProtection?: pulumi.Input<boolean>;
     /**
      * Encryption configuration for the database

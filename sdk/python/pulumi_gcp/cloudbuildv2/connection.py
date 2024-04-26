@@ -190,8 +190,6 @@ class _ConnectionState:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
                Structure is documented below.
@@ -281,10 +279,6 @@ class _ConnectionState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -814,8 +808,6 @@ class Connection(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']] github_config: Configuration for connections to github.com.
                Structure is documented below.
@@ -884,10 +876,6 @@ class Connection(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

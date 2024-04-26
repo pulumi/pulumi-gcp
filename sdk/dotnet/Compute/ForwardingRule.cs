@@ -1924,9 +1924,6 @@ namespace Pulumi.Gcp.Compute
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
-        /// <summary>
-        /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-        /// </summary>
         [Output("recreateClosedPsc")]
         public Output<bool?> RecreateClosedPsc { get; private set; } = null!;
 
@@ -2321,9 +2318,6 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        /// <summary>
-        /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-        /// </summary>
         [Input("recreateClosedPsc")]
         public Input<bool>? RecreateClosedPsc { get; set; }
 
@@ -2732,9 +2726,6 @@ namespace Pulumi.Gcp.Compute
             }
         }
 
-        /// <summary>
-        /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-        /// </summary>
         [Input("recreateClosedPsc")]
         public Input<bool>? RecreateClosedPsc { get; set; }
 

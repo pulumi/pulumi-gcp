@@ -164,19 +164,9 @@ public class WebApp extends com.pulumi.resources.CustomResource {
     public Output<List<String>> appUrls() {
         return this.appUrls;
     }
-    /**
-     * Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
-     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;DELETE&#39;
-     * 
-     */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
-    /**
-     * @return Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
-     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;DELETE&#39;
-     * 
-     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }

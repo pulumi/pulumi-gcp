@@ -302,17 +302,9 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
     public Output<Optional<String>> minCpuPlatform() {
         return Codegen.optional(this.minCpuPlatform);
     }
-    /**
-     * The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }

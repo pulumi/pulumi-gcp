@@ -126,10 +126,6 @@ namespace Pulumi.Gcp.Dataflow
         [Output("containerSpecGcsPath")]
         public Output<string> ContainerSpecGcsPath { get; private set; } = null!;
 
-        /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
-        /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
@@ -251,11 +247,6 @@ namespace Pulumi.Gcp.Dataflow
         [Output("serviceAccountEmail")]
         public Output<string> ServiceAccountEmail { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        /// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        /// different, e.g. by embedding a release ID or by using a random_id.
-        /// </summary>
         [Output("skipWaitOnJobTermination")]
         public Output<bool?> SkipWaitOnJobTermination { get; private set; } = null!;
 
@@ -491,11 +482,6 @@ namespace Pulumi.Gcp.Dataflow
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
-        /// <summary>
-        /// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        /// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        /// different, e.g. by embedding a release ID or by using a random_id.
-        /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
 
@@ -566,11 +552,6 @@ namespace Pulumi.Gcp.Dataflow
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
-
-        /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
-        /// </summary>
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
@@ -721,11 +702,6 @@ namespace Pulumi.Gcp.Dataflow
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
-        /// <summary>
-        /// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        /// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        /// different, e.g. by embedding a release ID or by using a random_id.
-        /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
 

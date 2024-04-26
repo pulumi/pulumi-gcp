@@ -149,7 +149,7 @@ import (
 type AccessApprovalSettings struct {
 	pulumi.CustomResourceState
 
-	// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
 	// Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
 	// new non-empty values may not be set.
 	ActiveKeyVersion pulumi.StringPtrOutput `pulumi:"activeKeyVersion"`
@@ -218,7 +218,7 @@ func GetAccessApprovalSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessApprovalSettings resources.
 type accessApprovalSettingsState struct {
-	// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
 	// Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
 	// new non-empty values may not be set.
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
@@ -252,7 +252,7 @@ type accessApprovalSettingsState struct {
 }
 
 type AccessApprovalSettingsState struct {
-	// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
 	// Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
 	// new non-empty values may not be set.
 	ActiveKeyVersion pulumi.StringPtrInput
@@ -290,7 +290,7 @@ func (AccessApprovalSettingsState) ElementType() reflect.Type {
 }
 
 type accessApprovalSettingsArgs struct {
-	// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
 	// Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
 	// new non-empty values may not be set.
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
@@ -314,7 +314,7 @@ type accessApprovalSettingsArgs struct {
 
 // The set of arguments for constructing a AccessApprovalSettings resource.
 type AccessApprovalSettingsArgs struct {
-	// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
 	// Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
 	// new non-empty values may not be set.
 	ActiveKeyVersion pulumi.StringPtrInput
@@ -423,7 +423,7 @@ func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsOutputWithContext(
 	return o
 }
 
-// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
 // Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
 // new non-empty values may not be set.
 func (o AccessApprovalSettingsOutput) ActiveKeyVersion() pulumi.StringPtrOutput {

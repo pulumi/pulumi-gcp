@@ -305,7 +305,7 @@ export class AwsCluster extends pulumi.CustomResource {
      * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
      * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
      * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effective_annotations` for all of the annotations present on the resource.
+     * `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -332,10 +332,6 @@ export class AwsCluster extends pulumi.CustomResource {
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
     /**
      * Output only. The endpoint of the cluster's API server.
@@ -481,7 +477,7 @@ export interface AwsClusterState {
      * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
      * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
      * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effective_annotations` for all of the annotations present on the resource.
+     * `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -508,10 +504,6 @@ export interface AwsClusterState {
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
     description?: pulumi.Input<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Output only. The endpoint of the cluster's API server.
@@ -577,7 +569,7 @@ export interface AwsClusterArgs {
      * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
      * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
      * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effective_annotations` for all of the annotations present on the resource.
+     * `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

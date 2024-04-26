@@ -85,17 +85,15 @@ type InstanceFromTemplate struct {
 
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures InstanceFromTemplateAdvancedMachineFeaturesOutput `pulumi:"advancedMachineFeatures"`
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate pulumi.BoolOutput `pulumi:"allowStoppingForUpdate"`
+	AllowStoppingForUpdate  pulumi.BoolOutput                                 `pulumi:"allowStoppingForUpdate"`
 	// List of disks attached to the instance
 	AttachedDisks InstanceFromTemplateAttachedDiskArrayOutput `pulumi:"attachedDisks"`
 	// The boot disk for the instance.
 	BootDisk InstanceFromTemplateBootDiskOutput `pulumi:"bootDisk"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolOutput `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
@@ -108,17 +106,15 @@ type InstanceFromTemplate struct {
 	// A brief description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
-	DesiredStatus pulumi.StringOutput `pulumi:"desiredStatus"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	DesiredStatus   pulumi.StringOutput    `pulumi:"desiredStatus"`
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolOutput `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -148,14 +144,14 @@ type InstanceFromTemplate struct {
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigOutput `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromTemplateParamsOutput `pulumi:"params"`
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromTemplateReservationAffinityOutput `pulumi:"reservationAffinity"`
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromTemplateSchedulingOutput `pulumi:"scheduling"`
@@ -226,17 +222,15 @@ func GetInstanceFromTemplate(ctx *pulumi.Context,
 type instanceFromTemplateState struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures *InstanceFromTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
+	AllowStoppingForUpdate  *bool                                        `pulumi:"allowStoppingForUpdate"`
 	// List of disks attached to the instance
 	AttachedDisks []InstanceFromTemplateAttachedDisk `pulumi:"attachedDisks"`
 	// The boot disk for the instance.
 	BootDisk *InstanceFromTemplateBootDisk `pulumi:"bootDisk"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig *InstanceFromTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
@@ -249,17 +243,15 @@ type instanceFromTemplateState struct {
 	// A brief description of the resource.
 	Description *string `pulumi:"description"`
 	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
-	DesiredStatus *string `pulumi:"desiredStatus"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	DesiredStatus   *string           `pulumi:"desiredStatus"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators []InstanceFromTemplateGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -289,14 +281,14 @@ type instanceFromTemplateState struct {
 	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromTemplateParams `pulumi:"params"`
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *InstanceFromTemplateReservationAffinity `pulumi:"reservationAffinity"`
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromTemplateScheduling `pulumi:"scheduling"`
@@ -330,17 +322,15 @@ type instanceFromTemplateState struct {
 type InstanceFromTemplateState struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures InstanceFromTemplateAdvancedMachineFeaturesPtrInput
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate pulumi.BoolPtrInput
+	AllowStoppingForUpdate  pulumi.BoolPtrInput
 	// List of disks attached to the instance
 	AttachedDisks InstanceFromTemplateAttachedDiskArrayInput
 	// The boot disk for the instance.
 	BootDisk InstanceFromTemplateBootDiskPtrInput
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolPtrInput
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
@@ -353,17 +343,15 @@ type InstanceFromTemplateState struct {
 	// A brief description of the resource.
 	Description pulumi.StringPtrInput
 	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
-	DesiredStatus pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	DesiredStatus   pulumi.StringPtrInput
 	EffectiveLabels pulumi.StringMapInput
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringPtrInput
@@ -393,14 +381,14 @@ type InstanceFromTemplateState struct {
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromTemplateParamsPtrInput
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromTemplateReservationAffinityPtrInput
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromTemplateSchedulingPtrInput
@@ -438,17 +426,15 @@ func (InstanceFromTemplateState) ElementType() reflect.Type {
 type instanceFromTemplateArgs struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures *InstanceFromTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
+	AllowStoppingForUpdate  *bool                                        `pulumi:"allowStoppingForUpdate"`
 	// List of disks attached to the instance
 	AttachedDisks []InstanceFromTemplateAttachedDisk `pulumi:"attachedDisks"`
 	// The boot disk for the instance.
 	BootDisk *InstanceFromTemplateBootDisk `pulumi:"bootDisk"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig *InstanceFromTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -461,8 +447,8 @@ type instanceFromTemplateArgs struct {
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators []InstanceFromTemplateGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
 	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
 	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
@@ -486,12 +472,12 @@ type instanceFromTemplateArgs struct {
 	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromTemplateParams `pulumi:"params"`
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *InstanceFromTemplateReservationAffinity `pulumi:"reservationAffinity"`
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromTemplateScheduling `pulumi:"scheduling"`
@@ -522,17 +508,15 @@ type instanceFromTemplateArgs struct {
 type InstanceFromTemplateArgs struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures InstanceFromTemplateAdvancedMachineFeaturesPtrInput
-	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-	// stopping the instance without setting this field, the update will fail.
-	AllowStoppingForUpdate pulumi.BoolPtrInput
+	AllowStoppingForUpdate  pulumi.BoolPtrInput
 	// List of disks attached to the instance
 	AttachedDisks InstanceFromTemplateAttachedDiskArrayInput
 	// The boot disk for the instance.
 	BootDisk InstanceFromTemplateBootDiskPtrInput
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolPtrInput
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+	// create.
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigPtrInput
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolPtrInput
@@ -545,8 +529,8 @@ type InstanceFromTemplateArgs struct {
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
 	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
 	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
@@ -570,12 +554,12 @@ type InstanceFromTemplateArgs struct {
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromTemplateParamsPtrInput
-	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-	// self_link nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+	// nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromTemplateReservationAffinityPtrInput
-	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromTemplateSchedulingPtrInput
@@ -696,8 +680,6 @@ func (o InstanceFromTemplateOutput) AdvancedMachineFeatures() InstanceFromTempla
 	}).(InstanceFromTemplateAdvancedMachineFeaturesOutput)
 }
 
-// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-// stopping the instance without setting this field, the update will fail.
 func (o InstanceFromTemplateOutput) AllowStoppingForUpdate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.BoolOutput { return v.AllowStoppingForUpdate }).(pulumi.BoolOutput)
 }
@@ -717,8 +699,8 @@ func (o InstanceFromTemplateOutput) CanIpForward() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.BoolOutput { return v.CanIpForward }).(pulumi.BoolOutput)
 }
 
-// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-// to create.
+// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+// create.
 func (o InstanceFromTemplateOutput) ConfidentialInstanceConfig() InstanceFromTemplateConfidentialInstanceConfigOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateConfidentialInstanceConfigOutput {
 		return v.ConfidentialInstanceConfig
@@ -752,8 +734,6 @@ func (o InstanceFromTemplateOutput) DesiredStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.DesiredStatus }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
 func (o InstanceFromTemplateOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -771,8 +751,8 @@ func (o InstanceFromTemplateOutput) GuestAccelerators() InstanceFromTemplateGues
 }
 
 // A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+// exceed 253 characters. Changing this forces a new resource to be created.
 func (o InstanceFromTemplateOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -845,8 +825,8 @@ func (o InstanceFromTemplateOutput) Params() InstanceFromTemplateParamsOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateParamsOutput { return v.Params }).(InstanceFromTemplateParamsOutput)
 }
 
-// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-// self_link nor project are provided, the provider project is used.
+// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+// nor project are provided, the provider project is used.
 func (o InstanceFromTemplateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -863,7 +843,7 @@ func (o InstanceFromTemplateOutput) ReservationAffinity() InstanceFromTemplateRe
 	}).(InstanceFromTemplateReservationAffinityOutput)
 }
 
-// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 func (o InstanceFromTemplateOutput) ResourcePolicies() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.ResourcePolicies }).(pulumi.StringOutput)
 }

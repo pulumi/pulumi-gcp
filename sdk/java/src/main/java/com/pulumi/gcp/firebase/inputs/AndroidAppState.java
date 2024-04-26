@@ -52,21 +52,9 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.appId);
     }
 
-    /**
-     * (Optional) Set to &#39;ABANDON&#39; to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-     * &#39;terraform destroy&#39;. This is useful because the AndroidApp may be serving traffic. Set to &#39;DELETE&#39; to delete the
-     * AndroidApp. Defaults to &#39;DELETE&#39;.
-     * 
-     */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
-    /**
-     * @return (Optional) Set to &#39;ABANDON&#39; to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-     * &#39;terraform destroy&#39;. This is useful because the AndroidApp may be serving traffic. Set to &#39;DELETE&#39; to delete the
-     * AndroidApp. Defaults to &#39;DELETE&#39;.
-     * 
-     */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
@@ -269,27 +257,11 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
             return appId(Output.of(appId));
         }
 
-        /**
-         * @param deletionPolicy (Optional) Set to &#39;ABANDON&#39; to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-         * &#39;terraform destroy&#39;. This is useful because the AndroidApp may be serving traffic. Set to &#39;DELETE&#39; to delete the
-         * AndroidApp. Defaults to &#39;DELETE&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
-        /**
-         * @param deletionPolicy (Optional) Set to &#39;ABANDON&#39; to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-         * &#39;terraform destroy&#39;. This is useful because the AndroidApp may be serving traffic. Set to &#39;DELETE&#39; to delete the
-         * AndroidApp. Defaults to &#39;DELETE&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }

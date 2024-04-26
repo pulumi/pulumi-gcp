@@ -442,9 +442,7 @@ type BareMetalCluster struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// (Output)
 	// The description of the validation check.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrOutput `pulumi:"description"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// The IP address name of Bare Metal User Cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
@@ -595,9 +593,7 @@ type bareMetalClusterState struct {
 	DeleteTime *string `pulumi:"deleteTime"`
 	// (Output)
 	// The description of the validation check.
-	Description *string `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          *string           `pulumi:"description"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// The IP address name of Bare Metal User Cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
@@ -698,9 +694,7 @@ type BareMetalClusterState struct {
 	DeleteTime pulumi.StringPtrInput
 	// (Output)
 	// The description of the validation check.
-	Description pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// The IP address name of Bare Metal User Cluster's API server.
 	Endpoint pulumi.StringPtrInput
@@ -1026,8 +1020,6 @@ func (o BareMetalClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o BareMetalClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

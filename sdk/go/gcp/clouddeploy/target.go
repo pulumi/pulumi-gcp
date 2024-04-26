@@ -201,10 +201,8 @@ type Target struct {
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapOutput `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	EffectiveAnnotations pulumi.MapOutput       `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -292,9 +290,7 @@ type targetState struct {
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
-	Description *string `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          *string                `pulumi:"description"`
 	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
@@ -346,9 +342,7 @@ type TargetState struct {
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
-	Description pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.MapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
@@ -581,8 +575,6 @@ func (o TargetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o TargetOutput) EffectiveAnnotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }

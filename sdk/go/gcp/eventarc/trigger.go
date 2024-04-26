@@ -142,7 +142,7 @@ type Trigger struct {
 	EventDataContentType pulumi.StringOutput `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -234,7 +234,7 @@ type triggerState struct {
 	EventDataContentType *string `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -283,7 +283,7 @@ type TriggerState struct {
 	EventDataContentType pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -328,7 +328,7 @@ type triggerArgs struct {
 	EventDataContentType *string `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
@@ -364,7 +364,7 @@ type TriggerArgs struct {
 	EventDataContentType pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
 	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effective_labels` for all of the labels present on the resource.
+	// `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
@@ -514,7 +514,7 @@ func (o TriggerOutput) EventDataContentType() pulumi.StringOutput {
 
 // Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
 // non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-// `effective_labels` for all of the labels present on the resource.
+// `effectiveLabels` for all of the labels present on the resource.
 func (o TriggerOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

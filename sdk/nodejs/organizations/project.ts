@@ -96,7 +96,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
      * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set auto_create_network to false, since the network will exist momentarily.
+     * if you set autoCreateNetwork to false, since the network will exist momentarily.
      */
     public readonly autoCreateNetwork!: pulumi.Output<boolean | undefined>;
     /**
@@ -208,7 +208,7 @@ export interface ProjectState {
     /**
      * Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
      * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set auto_create_network to false, since the network will exist momentarily.
+     * if you set autoCreateNetwork to false, since the network will exist momentarily.
      */
     autoCreateNetwork?: pulumi.Input<boolean>;
     /**
@@ -276,7 +276,7 @@ export interface ProjectArgs {
     /**
      * Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
      * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set auto_create_network to false, since the network will exist momentarily.
+     * if you set autoCreateNetwork to false, since the network will exist momentarily.
      */
     autoCreateNetwork?: pulumi.Input<boolean>;
     /**

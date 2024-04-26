@@ -141,19 +141,9 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     * 
-     */
     @Import(name="effectiveAnnotations")
     private @Nullable Output<Map<String,Object>> effectiveAnnotations;
 
-    /**
-     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> effectiveAnnotations() {
         return Optional.ofNullable(this.effectiveAnnotations);
     }
@@ -554,25 +544,11 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
-        /**
-         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-         * Terraform, other clients and services.
-         * 
-         * @return builder
-         * 
-         */
         public Builder effectiveAnnotations(@Nullable Output<Map<String,Object>> effectiveAnnotations) {
             $.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
 
-        /**
-         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-         * Terraform, other clients and services.
-         * 
-         * @return builder
-         * 
-         */
         public Builder effectiveAnnotations(Map<String,Object> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }

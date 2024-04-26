@@ -209,21 +209,9 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
     public Output<String> bundleId() {
         return this.bundleId;
     }
-    /**
-     * (Optional) Set to &#39;ABANDON&#39; to allow the Apple to be untracked from terraform state rather than deleted upon &#39;terraform
-     * destroy&#39;. This is useful because the Apple may be serving traffic. Set to &#39;DELETE&#39; to delete the Apple. Defaults to
-     * &#39;DELETE&#39;.
-     * 
-     */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
-    /**
-     * @return (Optional) Set to &#39;ABANDON&#39; to allow the Apple to be untracked from terraform state rather than deleted upon &#39;terraform
-     * destroy&#39;. This is useful because the Apple may be serving traffic. Set to &#39;DELETE&#39; to delete the Apple. Defaults to
-     * &#39;DELETE&#39;.
-     * 
-     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }

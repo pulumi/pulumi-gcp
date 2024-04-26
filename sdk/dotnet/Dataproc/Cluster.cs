@@ -188,10 +188,6 @@ namespace Pulumi.Gcp.Dataproc
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
-        /// <summary>
-        /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-        /// terraform apply
-        /// </summary>
         [Output("gracefulDecommissionTimeout")]
         public Output<string?> GracefulDecommissionTimeout { get; private set; } = null!;
 
@@ -297,10 +293,6 @@ namespace Pulumi.Gcp.Dataproc
         [Input("clusterConfig")]
         public Input<Inputs.ClusterClusterConfigArgs>? ClusterConfig { get; set; }
 
-        /// <summary>
-        /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-        /// terraform apply
-        /// </summary>
         [Input("gracefulDecommissionTimeout")]
         public Input<string>? GracefulDecommissionTimeout { get; set; }
 
@@ -381,10 +373,6 @@ namespace Pulumi.Gcp.Dataproc
             }
         }
 
-        /// <summary>
-        /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-        /// terraform apply
-        /// </summary>
         [Input("gracefulDecommissionTimeout")]
         public Input<string>? GracefulDecommissionTimeout { get; set; }
 

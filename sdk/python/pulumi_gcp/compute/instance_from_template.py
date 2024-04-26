@@ -55,8 +55,6 @@ class InstanceFromTemplateArgs:
                
                - - -
         :param pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
-        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-               stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateAttachedDiskArgs']]] attached_disks: List of disks attached to the instance
         :param pulumi.Input['InstanceFromTemplateBootDiskArgs'] boot_disk: The boot disk for the instance.
         :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -68,8 +66,8 @@ class InstanceFromTemplateArgs:
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-               labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-               entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+               labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+               exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
                the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
                the resource.
@@ -192,10 +190,6 @@ class InstanceFromTemplateArgs:
     @property
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-        stopping the instance without setting this field, the update will fail.
-        """
         return pulumi.get(self, "allow_stopping_for_update")
 
     @allow_stopping_for_update.setter
@@ -316,8 +310,8 @@ class InstanceFromTemplateArgs:
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
         A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-        entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+        exceed 253 characters. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "hostname")
 
@@ -598,8 +592,6 @@ class _InstanceFromTemplateState:
         """
         Input properties used for looking up and filtering InstanceFromTemplate resources.
         :param pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
-        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-               stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateAttachedDiskArgs']]] attached_disks: List of disks attached to the instance
         :param pulumi.Input['InstanceFromTemplateBootDiskArgs'] boot_disk: The boot disk for the instance.
         :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -612,13 +604,11 @@ class _InstanceFromTemplateState:
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-               labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-               entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+               labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+               exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
@@ -755,10 +745,6 @@ class _InstanceFromTemplateState:
     @property
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-        stopping the instance without setting this field, the update will fail.
-        """
         return pulumi.get(self, "allow_stopping_for_update")
 
     @allow_stopping_for_update.setter
@@ -879,10 +865,6 @@ class _InstanceFromTemplateState:
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
-        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -918,8 +900,8 @@ class _InstanceFromTemplateState:
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
         A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-        entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+        exceed 253 characters. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "hostname")
 
@@ -1328,8 +1310,6 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
-        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-               stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateAttachedDiskArgs']]]] attached_disks: List of disks attached to the instance
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateBootDiskArgs']] boot_disk: The boot disk for the instance.
         :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -1341,8 +1321,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-               labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-               entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+               labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+               exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
                the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
                the resource.
@@ -1586,8 +1566,6 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
-        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-               stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateAttachedDiskArgs']]]] attached_disks: List of disks attached to the instance
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateBootDiskArgs']] boot_disk: The boot disk for the instance.
         :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -1600,13 +1578,11 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-               labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-               entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+               labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+               exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
@@ -1704,10 +1680,6 @@ class InstanceFromTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> pulumi.Output[bool]:
-        """
-        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-        stopping the instance without setting this field, the update will fail.
-        """
         return pulumi.get(self, "allow_stopping_for_update")
 
     @property
@@ -1788,10 +1760,6 @@ class InstanceFromTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
-        """
         return pulumi.get(self, "effective_labels")
 
     @property
@@ -1815,8 +1783,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
     def hostname(self) -> pulumi.Output[str]:
         """
         A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-        entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+        exceed 253 characters. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "hostname")
 

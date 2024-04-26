@@ -47,10 +47,6 @@ namespace Pulumi.Gcp.Apigee
         [Output("configBundle")]
         public Output<string> ConfigBundle { get; private set; } = null!;
 
-        /// <summary>
-        /// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-        /// will trigger an update.
-        /// </summary>
         [Output("detectMd5hash")]
         public Output<string?> DetectMd5hash { get; private set; } = null!;
 
@@ -145,10 +141,6 @@ namespace Pulumi.Gcp.Apigee
         [Input("configBundle", required: true)]
         public Input<string> ConfigBundle { get; set; } = null!;
 
-        /// <summary>
-        /// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-        /// will trigger an update.
-        /// </summary>
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 
@@ -180,10 +172,6 @@ namespace Pulumi.Gcp.Apigee
         [Input("configBundle")]
         public Input<string>? ConfigBundle { get; set; }
 
-        /// <summary>
-        /// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-        /// will trigger an update.
-        /// </summary>
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 

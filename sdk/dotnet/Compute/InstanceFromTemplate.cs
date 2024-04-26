@@ -85,10 +85,6 @@ namespace Pulumi.Gcp.Compute
         [Output("advancedMachineFeatures")]
         public Output<Outputs.InstanceFromTemplateAdvancedMachineFeatures> AdvancedMachineFeatures { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-        /// stopping the instance without setting this field, the update will fail.
-        /// </summary>
         [Output("allowStoppingForUpdate")]
         public Output<bool> AllowStoppingForUpdate { get; private set; } = null!;
 
@@ -149,10 +145,6 @@ namespace Pulumi.Gcp.Compute
         [Output("desiredStatus")]
         public Output<string> DesiredStatus { get; private set; } = null!;
 
-        /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
-        /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
@@ -170,8 +162,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        /// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-        /// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        /// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+        /// exceed 253 characters. Changing this forces a new resource to be created.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
@@ -397,10 +389,6 @@ namespace Pulumi.Gcp.Compute
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceFromTemplateAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
 
-        /// <summary>
-        /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-        /// stopping the instance without setting this field, the update will fail.
-        /// </summary>
         [Input("allowStoppingForUpdate")]
         public Input<bool>? AllowStoppingForUpdate { get; set; }
 
@@ -473,8 +461,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        /// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-        /// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        /// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+        /// exceed 253 characters. Changing this forces a new resource to be created.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -651,10 +639,6 @@ namespace Pulumi.Gcp.Compute
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceFromTemplateAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
 
-        /// <summary>
-        /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-        /// stopping the instance without setting this field, the update will fail.
-        /// </summary>
         [Input("allowStoppingForUpdate")]
         public Input<bool>? AllowStoppingForUpdate { get; set; }
 
@@ -723,11 +707,6 @@ namespace Pulumi.Gcp.Compute
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
-
-        /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
-        /// </summary>
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
@@ -758,8 +737,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        /// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-        /// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        /// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+        /// exceed 253 characters. Changing this forces a new resource to be created.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }

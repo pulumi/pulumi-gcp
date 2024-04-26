@@ -106,19 +106,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:servicenetworking/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
-    /**
-     * When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
-     * failures with CloudSQL. Note: The resource will still exist.
-     * 
-     */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
-    /**
-     * @return When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
-     * failures with CloudSQL. Note: The resource will still exist.
-     * 
-     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }

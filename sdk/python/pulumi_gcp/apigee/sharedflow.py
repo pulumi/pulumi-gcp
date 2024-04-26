@@ -26,8 +26,6 @@ class SharedflowArgs:
                
                - - -
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
-        :param pulumi.Input[str] detect_md5hash: A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-               will trigger an update.
         :param pulumi.Input[str] name: The ID of the shared flow.
         """
         pulumi.set(__self__, "config_bundle", config_bundle)
@@ -66,10 +64,6 @@ class SharedflowArgs:
     @property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> Optional[pulumi.Input[str]]:
-        """
-        A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-        will trigger an update.
-        """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
@@ -105,8 +99,6 @@ class _SharedflowState:
         :param pulumi.Input[str] config_bundle: Path to the config zip bundle.
                
                - - -
-        :param pulumi.Input[str] detect_md5hash: A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-               will trigger an update.
         :param pulumi.Input[str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]] meta_datas: Metadata describing the shared flow.
@@ -149,10 +141,6 @@ class _SharedflowState:
     @property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> Optional[pulumi.Input[str]]:
-        """
-        A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-        will trigger an update.
-        """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
@@ -275,8 +263,6 @@ class Sharedflow(pulumi.CustomResource):
         :param pulumi.Input[str] config_bundle: Path to the config zip bundle.
                
                - - -
-        :param pulumi.Input[str] detect_md5hash: A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-               will trigger an update.
         :param pulumi.Input[str] name: The ID of the shared flow.
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
         """
@@ -381,8 +367,6 @@ class Sharedflow(pulumi.CustomResource):
         :param pulumi.Input[str] config_bundle: Path to the config zip bundle.
                
                - - -
-        :param pulumi.Input[str] detect_md5hash: A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-               will trigger an update.
         :param pulumi.Input[str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SharedflowMetaDataArgs']]]] meta_datas: Metadata describing the shared flow.
@@ -418,10 +402,6 @@ class Sharedflow(pulumi.CustomResource):
     @property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> pulumi.Output[Optional[str]]:
-        """
-        A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-        will trigger an update.
-        """
         return pulumi.get(self, "detect_md5hash")
 
     @property

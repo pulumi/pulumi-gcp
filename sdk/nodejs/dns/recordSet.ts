@@ -287,12 +287,6 @@ export class RecordSet extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly routingPolicy!: pulumi.Output<outputs.dns.RecordSetRoutingPolicy | undefined>;
-    /**
-     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-     * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-     * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-     * string (e.g. "first255characters\"\"morecharacters").
-     */
     public readonly rrdatas!: pulumi.Output<string[] | undefined>;
     /**
      * The time-to-live of this record set (seconds).
@@ -373,12 +367,6 @@ export interface RecordSetState {
      * Structure is documented below.
      */
     routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy>;
-    /**
-     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-     * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-     * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-     * string (e.g. "first255characters\"\"morecharacters").
-     */
     rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time-to-live of this record set (seconds).
@@ -416,12 +404,6 @@ export interface RecordSetArgs {
      * Structure is documented below.
      */
     routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy>;
-    /**
-     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-     * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-     * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-     * string (e.g. "first255characters\"\"morecharacters").
-     */
     rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time-to-live of this record set (seconds).

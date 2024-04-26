@@ -341,17 +341,15 @@ type DeliveryPipeline struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
 	// https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. Information around the state of the Delivery Pipeline.
 	Conditions DeliveryPipelineConditionArrayOutput `pulumi:"conditions"`
 	// Output only. Time at which the pipeline was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	EffectiveAnnotations pulumi.MapOutput       `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -361,7 +359,7 @@ type DeliveryPipeline struct {
 	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
 	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
 	// are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
@@ -423,16 +421,14 @@ type deliveryPipelineState struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
 	// https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. Information around the state of the Delivery Pipeline.
 	Conditions []DeliveryPipelineCondition `pulumi:"conditions"`
 	// Output only. Time at which the pipeline was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
-	Description *string `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          *string                `pulumi:"description"`
 	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
@@ -443,7 +439,7 @@ type deliveryPipelineState struct {
 	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
 	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
 	// are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
@@ -468,16 +464,14 @@ type DeliveryPipelineState struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
 	// https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Output only. Information around the state of the Delivery Pipeline.
 	Conditions DeliveryPipelineConditionArrayInput
 	// Output only. Time at which the pipeline was created.
 	CreateTime pulumi.StringPtrInput
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
-	Description pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.MapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
@@ -488,7 +482,7 @@ type DeliveryPipelineState struct {
 	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
 	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
 	// are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
@@ -517,7 +511,7 @@ type deliveryPipelineArgs struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
 	// https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
@@ -526,7 +520,7 @@ type deliveryPipelineArgs struct {
 	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
 	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
 	// are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
@@ -546,7 +540,7 @@ type DeliveryPipelineArgs struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
 	// https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
@@ -555,7 +549,7 @@ type DeliveryPipelineArgs struct {
 	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
 	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
 	// are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
@@ -660,7 +654,7 @@ func (o DeliveryPipelineOutput) ToDeliveryPipelineOutputWithContext(ctx context.
 // User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
 // https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
 // non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// `effective_annotations` for all of the annotations present on the resource.
+// `effectiveAnnotations` for all of the annotations present on the resource.
 func (o DeliveryPipelineOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -680,8 +674,6 @@ func (o DeliveryPipelineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o DeliveryPipelineOutput) EffectiveAnnotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }
@@ -701,7 +693,7 @@ func (o DeliveryPipelineOutput) Etag() pulumi.StringOutput {
 // dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
 // lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
 // are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-// labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+// labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 // resource.
 func (o DeliveryPipelineOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
