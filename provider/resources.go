@@ -469,20 +469,19 @@ func Provider() tfbridge.ProviderInfo {
 	var credentialsValidationRun atomic.Bool
 
 	prov := tfbridge.ProviderInfo{
-		P:                           p,
-		Name:                        "google-beta",
-		ResourcePrefix:              "google",
-		GitHubOrg:                   "hashicorp",
-		Description:                 "A Pulumi package for creating and managing Google Cloud Platform resources.",
-		Keywords:                    []string{"pulumi", "gcp"},
-		License:                     "Apache-2.0",
-		Homepage:                    "https://pulumi.io",
-		Repository:                  "https://github.com/pulumi/pulumi-gcp",
-		Version:                     version.Version,
-		MetadataInfo:                tfbridge.NewProviderMetadata(metadata),
-		UpstreamRepoPath:            "./upstream",
-		DocRules:                    &tfbridge.DocRuleInfo{EditRules: editRules},
-		XSkipDetailedDiffForChanges: true,
+		P:                p,
+		Name:             "google-beta",
+		ResourcePrefix:   "google",
+		GitHubOrg:        "hashicorp",
+		Description:      "A Pulumi package for creating and managing Google Cloud Platform resources.",
+		Keywords:         []string{"pulumi", "gcp"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-gcp",
+		Version:          version.Version,
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		UpstreamRepoPath: "./upstream",
+		DocRules:         &tfbridge.DocRuleInfo{EditRules: editRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"project": {
 				Default: &tfbridge.DefaultInfo{
