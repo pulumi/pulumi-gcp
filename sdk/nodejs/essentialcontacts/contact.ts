@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  *
  * ### Essential Contact
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  *     notificationCategorySubscriptions: ["ALL"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -237,7 +237,6 @@ class OrganizationSettings(pulumi.CustomResource):
 
         ### Logging Organization Settings All
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -253,7 +252,6 @@ class OrganizationSettings(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{settings.kms_service_account_id}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -302,7 +300,6 @@ class OrganizationSettings(pulumi.CustomResource):
 
         ### Logging Organization Settings All
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -318,7 +315,6 @@ class OrganizationSettings(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{settings.kms_service_account_id}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

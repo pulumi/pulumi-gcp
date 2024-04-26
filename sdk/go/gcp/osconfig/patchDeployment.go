@@ -25,7 +25,6 @@ import (
 //
 // ### Os Config Patch Deployment Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,10 +54,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Os Config Patch Deployment Daily
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -96,10 +93,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Os Config Patch Deployment Daily Midnight
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -137,10 +132,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Os Config Patch Deployment Instance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -226,10 +219,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Os Config Patch Deployment Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -364,7 +355,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -397,24 +387,21 @@ type PatchDeployment struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Duration of the patch. After the duration ends, the patch times out.
-	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	// Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+	// digits, terminated by 's'. Example: "3.5s"
 	Duration pulumi.StringPtrOutput `pulumi:"duration"`
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter PatchDeploymentInstanceFilterOutput `pulumi:"instanceFilter"`
-	// (Output)
-	// The time the last patch job ran successfully.
+	// The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime pulumi.StringOutput `pulumi:"lastExecuteTime"`
 	// Unique name for the patch deployment resource in a project.
 	// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Schedule a one-time execution.
-	// Structure is documented below.
 	OneTimeSchedule PatchDeploymentOneTimeSchedulePtrOutput `pulumi:"oneTimeSchedule"`
 	// Patch configuration that is applied.
-	// Structure is documented below.
 	PatchConfig PatchDeploymentPatchConfigPtrOutput `pulumi:"patchConfig"`
 	// A name for the patch deployment in the project. When creating a name the following rules apply:
 	// * Must contain only lowercase letters, numbers, and hyphens.
@@ -423,14 +410,10 @@ type PatchDeployment struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	PatchDeploymentId pulumi.StringOutput `pulumi:"patchDeploymentId"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project           pulumi.StringOutput `pulumi:"project"`
 	// Schedule recurring executions.
-	// Structure is documented below.
 	RecurringSchedule PatchDeploymentRecurringSchedulePtrOutput `pulumi:"recurringSchedule"`
 	// Rollout strategy of the patch job.
-	// Structure is documented below.
 	Rollout PatchDeploymentRolloutPtrOutput `pulumi:"rollout"`
 	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -478,24 +461,21 @@ type patchDeploymentState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
-	// Duration of the patch. After the duration ends, the patch times out.
-	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	// Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+	// digits, terminated by 's'. Example: "3.5s"
 	Duration *string `pulumi:"duration"`
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter *PatchDeploymentInstanceFilter `pulumi:"instanceFilter"`
-	// (Output)
-	// The time the last patch job ran successfully.
+	// The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime *string `pulumi:"lastExecuteTime"`
 	// Unique name for the patch deployment resource in a project.
 	// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
 	Name *string `pulumi:"name"`
 	// Schedule a one-time execution.
-	// Structure is documented below.
 	OneTimeSchedule *PatchDeploymentOneTimeSchedule `pulumi:"oneTimeSchedule"`
 	// Patch configuration that is applied.
-	// Structure is documented below.
 	PatchConfig *PatchDeploymentPatchConfig `pulumi:"patchConfig"`
 	// A name for the patch deployment in the project. When creating a name the following rules apply:
 	// * Must contain only lowercase letters, numbers, and hyphens.
@@ -504,14 +484,10 @@ type patchDeploymentState struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	PatchDeploymentId *string `pulumi:"patchDeploymentId"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project           *string `pulumi:"project"`
 	// Schedule recurring executions.
-	// Structure is documented below.
 	RecurringSchedule *PatchDeploymentRecurringSchedule `pulumi:"recurringSchedule"`
 	// Rollout strategy of the patch job.
-	// Structure is documented below.
 	Rollout *PatchDeploymentRollout `pulumi:"rollout"`
 	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -524,24 +500,21 @@ type PatchDeploymentState struct {
 	CreateTime pulumi.StringPtrInput
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
-	// Duration of the patch. After the duration ends, the patch times out.
-	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	// Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+	// digits, terminated by 's'. Example: "3.5s"
 	Duration pulumi.StringPtrInput
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter PatchDeploymentInstanceFilterPtrInput
-	// (Output)
-	// The time the last patch job ran successfully.
+	// The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime pulumi.StringPtrInput
 	// Unique name for the patch deployment resource in a project.
 	// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
 	Name pulumi.StringPtrInput
 	// Schedule a one-time execution.
-	// Structure is documented below.
 	OneTimeSchedule PatchDeploymentOneTimeSchedulePtrInput
 	// Patch configuration that is applied.
-	// Structure is documented below.
 	PatchConfig PatchDeploymentPatchConfigPtrInput
 	// A name for the patch deployment in the project. When creating a name the following rules apply:
 	// * Must contain only lowercase letters, numbers, and hyphens.
@@ -550,14 +523,10 @@ type PatchDeploymentState struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	PatchDeploymentId pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project           pulumi.StringPtrInput
 	// Schedule recurring executions.
-	// Structure is documented below.
 	RecurringSchedule PatchDeploymentRecurringSchedulePtrInput
 	// Rollout strategy of the patch job.
-	// Structure is documented below.
 	Rollout PatchDeploymentRolloutPtrInput
 	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -571,17 +540,15 @@ func (PatchDeploymentState) ElementType() reflect.Type {
 type patchDeploymentArgs struct {
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
-	// Duration of the patch. After the duration ends, the patch times out.
-	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	// Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+	// digits, terminated by 's'. Example: "3.5s"
 	Duration *string `pulumi:"duration"`
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter PatchDeploymentInstanceFilter `pulumi:"instanceFilter"`
 	// Schedule a one-time execution.
-	// Structure is documented below.
 	OneTimeSchedule *PatchDeploymentOneTimeSchedule `pulumi:"oneTimeSchedule"`
 	// Patch configuration that is applied.
-	// Structure is documented below.
 	PatchConfig *PatchDeploymentPatchConfig `pulumi:"patchConfig"`
 	// A name for the patch deployment in the project. When creating a name the following rules apply:
 	// * Must contain only lowercase letters, numbers, and hyphens.
@@ -589,15 +556,11 @@ type patchDeploymentArgs struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
-	PatchDeploymentId string `pulumi:"patchDeploymentId"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	PatchDeploymentId string  `pulumi:"patchDeploymentId"`
+	Project           *string `pulumi:"project"`
 	// Schedule recurring executions.
-	// Structure is documented below.
 	RecurringSchedule *PatchDeploymentRecurringSchedule `pulumi:"recurringSchedule"`
 	// Rollout strategy of the patch job.
-	// Structure is documented below.
 	Rollout *PatchDeploymentRollout `pulumi:"rollout"`
 }
 
@@ -605,17 +568,15 @@ type patchDeploymentArgs struct {
 type PatchDeploymentArgs struct {
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
-	// Duration of the patch. After the duration ends, the patch times out.
-	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	// Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+	// digits, terminated by 's'. Example: "3.5s"
 	Duration pulumi.StringPtrInput
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter PatchDeploymentInstanceFilterInput
 	// Schedule a one-time execution.
-	// Structure is documented below.
 	OneTimeSchedule PatchDeploymentOneTimeSchedulePtrInput
 	// Patch configuration that is applied.
-	// Structure is documented below.
 	PatchConfig PatchDeploymentPatchConfigPtrInput
 	// A name for the patch deployment in the project. When creating a name the following rules apply:
 	// * Must contain only lowercase letters, numbers, and hyphens.
@@ -624,14 +585,10 @@ type PatchDeploymentArgs struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	PatchDeploymentId pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project           pulumi.StringPtrInput
 	// Schedule recurring executions.
-	// Structure is documented below.
 	RecurringSchedule PatchDeploymentRecurringSchedulePtrInput
 	// Rollout strategy of the patch job.
-	// Structure is documented below.
 	Rollout PatchDeploymentRolloutPtrInput
 }
 
@@ -733,8 +690,8 @@ func (o PatchDeploymentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Duration of the patch. After the duration ends, the patch times out.
-// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+// Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+// digits, terminated by 's'. Example: "3.5s"
 func (o PatchDeploymentOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringPtrOutput { return v.Duration }).(pulumi.StringPtrOutput)
 }
@@ -745,8 +702,7 @@ func (o PatchDeploymentOutput) InstanceFilter() PatchDeploymentInstanceFilterOut
 	return o.ApplyT(func(v *PatchDeployment) PatchDeploymentInstanceFilterOutput { return v.InstanceFilter }).(PatchDeploymentInstanceFilterOutput)
 }
 
-// (Output)
-// The time the last patch job ran successfully.
+// The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentOutput) LastExecuteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.LastExecuteTime }).(pulumi.StringOutput)
@@ -759,13 +715,11 @@ func (o PatchDeploymentOutput) Name() pulumi.StringOutput {
 }
 
 // Schedule a one-time execution.
-// Structure is documented below.
 func (o PatchDeploymentOutput) OneTimeSchedule() PatchDeploymentOneTimeSchedulePtrOutput {
 	return o.ApplyT(func(v *PatchDeployment) PatchDeploymentOneTimeSchedulePtrOutput { return v.OneTimeSchedule }).(PatchDeploymentOneTimeSchedulePtrOutput)
 }
 
 // Patch configuration that is applied.
-// Structure is documented below.
 func (o PatchDeploymentOutput) PatchConfig() PatchDeploymentPatchConfigPtrOutput {
 	return o.ApplyT(func(v *PatchDeployment) PatchDeploymentPatchConfigPtrOutput { return v.PatchConfig }).(PatchDeploymentPatchConfigPtrOutput)
 }
@@ -780,20 +734,16 @@ func (o PatchDeploymentOutput) PatchDeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.PatchDeploymentId }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o PatchDeploymentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Schedule recurring executions.
-// Structure is documented below.
 func (o PatchDeploymentOutput) RecurringSchedule() PatchDeploymentRecurringSchedulePtrOutput {
 	return o.ApplyT(func(v *PatchDeployment) PatchDeploymentRecurringSchedulePtrOutput { return v.RecurringSchedule }).(PatchDeploymentRecurringSchedulePtrOutput)
 }
 
 // Rollout strategy of the patch job.
-// Structure is documented below.
 func (o PatchDeploymentOutput) Rollout() PatchDeploymentRolloutPtrOutput {
 	return o.ApplyT(func(v *PatchDeployment) PatchDeploymentRolloutPtrOutput { return v.Rollout }).(PatchDeploymentRolloutPtrOutput)
 }

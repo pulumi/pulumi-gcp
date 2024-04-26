@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     name: custom_target_type.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomTargetTypeIamPolicy(args: GetCustomTargetTypeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomTargetTypeIamPolicyResult> {
 
@@ -77,7 +75,6 @@ export interface GetCustomTargetTypeIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,7 +85,6 @@ export interface GetCustomTargetTypeIamPolicyResult {
  *     name: custom_target_type.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomTargetTypeIamPolicyOutput(args: GetCustomTargetTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomTargetTypeIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getCustomTargetTypeIamPolicy(a, opts))

@@ -25,7 +25,6 @@ import (
 //
 // ### Healthcare Dicom Store Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,10 +69,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Healthcare Dicom Store Bq Stream
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -151,7 +148,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -16,14 +16,14 @@ public final class ClusterNodePoolNodeConfigEffectiveTaintArgs extends com.pulum
     public static final ClusterNodePoolNodeConfigEffectiveTaintArgs Empty = new ClusterNodePoolNodeConfigEffectiveTaintArgs();
 
     /**
-     * Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+     * Effect for taint.
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+     * @return Effect for taint.
      * 
      */
     public Optional<Output<String>> effect() {
@@ -31,14 +31,14 @@ public final class ClusterNodePoolNodeConfigEffectiveTaintArgs extends com.pulum
     }
 
     /**
-     * The default or custom node affinity label key name.
+     * Key for taint.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The default or custom node affinity label key name.
+     * @return Key for taint.
      * 
      */
     public Optional<Output<String>> key() {
@@ -87,7 +87,7 @@ public final class ClusterNodePoolNodeConfigEffectiveTaintArgs extends com.pulum
         }
 
         /**
-         * @param effect Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+         * @param effect Effect for taint.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ClusterNodePoolNodeConfigEffectiveTaintArgs extends com.pulum
         }
 
         /**
-         * @param effect Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+         * @param effect Effect for taint.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ClusterNodePoolNodeConfigEffectiveTaintArgs extends com.pulum
         }
 
         /**
-         * @param key The default or custom node affinity label key name.
+         * @param key Key for taint.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ClusterNodePoolNodeConfigEffectiveTaintArgs extends com.pulum
         }
 
         /**
-         * @param key The default or custom node affinity label key name.
+         * @param key Key for taint.
          * 
          * @return builder
          * 

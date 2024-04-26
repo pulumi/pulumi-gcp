@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Organization Security Policy Rule Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,7 +52,6 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -105,14 +103,13 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are: `INGRESS`, `EGRESS`.
+     * The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+     * "EGRESS"]
      */
     public readonly direction!: pulumi.Output<string | undefined>;
     /**
-     * Denotes whether to enable logging for a particular rule.
-     * If logging is enabled, logs will be exported to the
-     * configured export destination in Stackdriver.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver.
      */
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     /**
@@ -135,15 +132,12 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * A list of network resource URLs to which this rule applies.
-     * This field allows you to control which network's VMs get
-     * this rule. If this field is left blank, all VMs
-     * within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
     public readonly targetResources!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of service accounts indicating the sets of
-     * instances that are applied with this rule.
+     * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     public readonly targetServiceAccounts!: pulumi.Output<string[] | undefined>;
 
@@ -214,14 +208,13 @@ export interface OrganizationSecurityPolicyRuleState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are: `INGRESS`, `EGRESS`.
+     * The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+     * "EGRESS"]
      */
     direction?: pulumi.Input<string>;
     /**
-     * Denotes whether to enable logging for a particular rule.
-     * If logging is enabled, logs will be exported to the
-     * configured export destination in Stackdriver.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
@@ -244,15 +237,12 @@ export interface OrganizationSecurityPolicyRuleState {
      */
     priority?: pulumi.Input<number>;
     /**
-     * A list of network resource URLs to which this rule applies.
-     * This field allows you to control which network's VMs get
-     * this rule. If this field is left blank, all VMs
-     * within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
     targetResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of service accounts indicating the sets of
-     * instances that are applied with this rule.
+     * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -271,14 +261,13 @@ export interface OrganizationSecurityPolicyRuleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are: `INGRESS`, `EGRESS`.
+     * The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+     * "EGRESS"]
      */
     direction?: pulumi.Input<string>;
     /**
-     * Denotes whether to enable logging for a particular rule.
-     * If logging is enabled, logs will be exported to the
-     * configured export destination in Stackdriver.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
@@ -301,15 +290,12 @@ export interface OrganizationSecurityPolicyRuleArgs {
      */
     priority: pulumi.Input<number>;
     /**
-     * A list of network resource URLs to which this rule applies.
-     * This field allows you to control which network's VMs get
-     * this rule. If this field is left blank, all VMs
-     * within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
     targetResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of service accounts indicating the sets of
-     * instances that are applied with this rule.
+     * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
 }

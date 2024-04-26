@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// ### Basic_certificate_template
     /// An example of a basic privateca certificate template
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -146,7 +145,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -182,7 +180,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// Optional. A human-readable description of scenarios this template is intended for.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -194,16 +192,16 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+        /// omitted, then this template will not add restrictions on a certificate's identity.
         /// </summary>
         [Output("identityConstraints")]
         public Output<Outputs.CertificateTemplateIdentityConstraints?> IdentityConstraints { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels with user-defined metadata.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+        /// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+        /// resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -221,13 +219,20 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+        /// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+        /// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+        /// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+        /// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         /// </summary>
         [Output("passthroughExtensions")]
         public Output<Outputs.CertificateTemplatePassthroughExtensions?> PassthroughExtensions { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+        /// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+        /// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+        /// certificate issuance request will fail.
         /// </summary>
         [Output("predefinedValues")]
         public Output<Outputs.CertificateTemplatePredefinedValues?> PredefinedValues { get; private set; } = null!;
@@ -302,13 +307,14 @@ namespace Pulumi.Gcp.CertificateAuthority
     public sealed class CertificateTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// Optional. A human-readable description of scenarios this template is intended for.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+        /// omitted, then this template will not add restrictions on a certificate's identity.
         /// </summary>
         [Input("identityConstraints")]
         public Input<Inputs.CertificateTemplateIdentityConstraintsArgs>? IdentityConstraints { get; set; }
@@ -317,10 +323,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels with user-defined metadata.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+        /// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+        /// resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -341,13 +346,20 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+        /// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+        /// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+        /// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+        /// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         /// </summary>
         [Input("passthroughExtensions")]
         public Input<Inputs.CertificateTemplatePassthroughExtensionsArgs>? PassthroughExtensions { get; set; }
 
         /// <summary>
-        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+        /// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+        /// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+        /// certificate issuance request will fail.
         /// </summary>
         [Input("predefinedValues")]
         public Input<Inputs.CertificateTemplatePredefinedValuesArgs>? PredefinedValues { get; set; }
@@ -373,7 +385,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// Optional. A human-readable description of scenarios this template is intended for.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -395,7 +407,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
 
         /// <summary>
-        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+        /// omitted, then this template will not add restrictions on a certificate's identity.
         /// </summary>
         [Input("identityConstraints")]
         public Input<Inputs.CertificateTemplateIdentityConstraintsGetArgs>? IdentityConstraints { get; set; }
@@ -404,10 +417,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels with user-defined metadata.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+        /// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+        /// resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -428,13 +440,20 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+        /// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+        /// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+        /// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+        /// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         /// </summary>
         [Input("passthroughExtensions")]
         public Input<Inputs.CertificateTemplatePassthroughExtensionsGetArgs>? PassthroughExtensions { get; set; }
 
         /// <summary>
-        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+        /// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+        /// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+        /// certificate issuance request will fail.
         /// </summary>
         [Input("predefinedValues")]
         public Input<Inputs.CertificateTemplatePredefinedValuesGetArgs>? PredefinedValues { get; set; }

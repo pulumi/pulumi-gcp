@@ -33,6 +33,40 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Cloud KMS key name used for encrypting API consumer data.
+     * 
+     */
+    @Import(name="apiConsumerDataEncryptionKeyName")
+    private @Nullable Output<String> apiConsumerDataEncryptionKeyName;
+
+    /**
+     * @return Cloud KMS key name used for encrypting API consumer data.
+     * 
+     */
+    public Optional<Output<String>> apiConsumerDataEncryptionKeyName() {
+        return Optional.ofNullable(this.apiConsumerDataEncryptionKeyName);
+    }
+
+    /**
+     * This field is needed only for customers using non-default data residency regions.
+     * Apigee stores some control plane data only in single region.
+     * This field determines which single region Apigee should use.
+     * 
+     */
+    @Import(name="apiConsumerDataLocation")
+    private @Nullable Output<String> apiConsumerDataLocation;
+
+    /**
+     * @return This field is needed only for customers using non-default data residency regions.
+     * Apigee stores some control plane data only in single region.
+     * This field determines which single region Apigee should use.
+     * 
+     */
+    public Optional<Output<String>> apiConsumerDataLocation() {
+        return Optional.ofNullable(this.apiConsumerDataLocation);
+    }
+
+    /**
      * Output only. Project ID of the Apigee Tenant Project.
      * 
      */
@@ -99,6 +133,23 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+     * Only used for the data residency region &#34;US&#34; or &#34;EU&#34;.
+     * 
+     */
+    @Import(name="controlPlaneEncryptionKeyName")
+    private @Nullable Output<String> controlPlaneEncryptionKeyName;
+
+    /**
+     * @return Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+     * Only used for the data residency region &#34;US&#34; or &#34;EU&#34;.
+     * 
+     */
+    public Optional<Output<String>> controlPlaneEncryptionKeyName() {
+        return Optional.ofNullable(this.controlPlaneEncryptionKeyName);
+    }
+
+    /**
      * Description of the Apigee organization.
      * 
      */
@@ -152,14 +203,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the property.
+     * Output only. Name of the Apigee organization.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the property.
+     * @return Output only. Name of the Apigee organization.
      * 
      */
     public Optional<Output<String>> name() {
@@ -288,10 +339,13 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
 
     private OrganizationState(OrganizationState $) {
         this.analyticsRegion = $.analyticsRegion;
+        this.apiConsumerDataEncryptionKeyName = $.apiConsumerDataEncryptionKeyName;
+        this.apiConsumerDataLocation = $.apiConsumerDataLocation;
         this.apigeeProjectId = $.apigeeProjectId;
         this.authorizedNetwork = $.authorizedNetwork;
         this.billingType = $.billingType;
         this.caCertificate = $.caCertificate;
+        this.controlPlaneEncryptionKeyName = $.controlPlaneEncryptionKeyName;
         this.description = $.description;
         this.disableVpcPeering = $.disableVpcPeering;
         this.displayName = $.displayName;
@@ -341,6 +395,52 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder analyticsRegion(String analyticsRegion) {
             return analyticsRegion(Output.of(analyticsRegion));
+        }
+
+        /**
+         * @param apiConsumerDataEncryptionKeyName Cloud KMS key name used for encrypting API consumer data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiConsumerDataEncryptionKeyName(@Nullable Output<String> apiConsumerDataEncryptionKeyName) {
+            $.apiConsumerDataEncryptionKeyName = apiConsumerDataEncryptionKeyName;
+            return this;
+        }
+
+        /**
+         * @param apiConsumerDataEncryptionKeyName Cloud KMS key name used for encrypting API consumer data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiConsumerDataEncryptionKeyName(String apiConsumerDataEncryptionKeyName) {
+            return apiConsumerDataEncryptionKeyName(Output.of(apiConsumerDataEncryptionKeyName));
+        }
+
+        /**
+         * @param apiConsumerDataLocation This field is needed only for customers using non-default data residency regions.
+         * Apigee stores some control plane data only in single region.
+         * This field determines which single region Apigee should use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiConsumerDataLocation(@Nullable Output<String> apiConsumerDataLocation) {
+            $.apiConsumerDataLocation = apiConsumerDataLocation;
+            return this;
+        }
+
+        /**
+         * @param apiConsumerDataLocation This field is needed only for customers using non-default data residency regions.
+         * Apigee stores some control plane data only in single region.
+         * This field determines which single region Apigee should use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiConsumerDataLocation(String apiConsumerDataLocation) {
+            return apiConsumerDataLocation(Output.of(apiConsumerDataLocation));
         }
 
         /**
@@ -434,6 +534,29 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param controlPlaneEncryptionKeyName Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+         * Only used for the data residency region &#34;US&#34; or &#34;EU&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneEncryptionKeyName(@Nullable Output<String> controlPlaneEncryptionKeyName) {
+            $.controlPlaneEncryptionKeyName = controlPlaneEncryptionKeyName;
+            return this;
+        }
+
+        /**
+         * @param controlPlaneEncryptionKeyName Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+         * Only used for the data residency region &#34;US&#34; or &#34;EU&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneEncryptionKeyName(String controlPlaneEncryptionKeyName) {
+            return controlPlaneEncryptionKeyName(Output.of(controlPlaneEncryptionKeyName));
+        }
+
+        /**
          * @param description Description of the Apigee organization.
          * 
          * @return builder
@@ -505,7 +628,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the property.
+         * @param name Output only. Name of the Apigee organization.
          * 
          * @return builder
          * 
@@ -516,7 +639,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the property.
+         * @param name Output only. Name of the Apigee organization.
          * 
          * @return builder
          * 

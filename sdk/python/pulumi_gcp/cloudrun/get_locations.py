@@ -78,14 +78,12 @@ def get_locations(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     available = gcp.cloudrun.get_locations()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to list versions for. If it
@@ -116,14 +114,12 @@ def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     available = gcp.cloudrun.get_locations()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to list versions for. If it

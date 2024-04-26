@@ -17,12 +17,10 @@ namespace Pulumi.Gcp.IntegrationConnectors.Outputs
         /// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
         /// This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
         /// Specified in the form as: projects/*/secrets/*/versions/*.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConnectionAuthConfigOauth2JwtBearerClientKey? ClientKey;
         /// <summary>
         /// JwtClaims providers fields to generate the token.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConnectionAuthConfigOauth2JwtBearerJwtClaims? JwtClaims;
 

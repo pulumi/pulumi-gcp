@@ -307,7 +307,6 @@ class IamMember(pulumi.CustomResource):
 
         ## google\\_cloud\\_run\\_service\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -322,11 +321,9 @@ class IamMember(pulumi.CustomResource):
             service=default["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -338,11 +335,9 @@ class IamMember(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -354,11 +349,9 @@ class IamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -373,11 +366,9 @@ class IamMember(pulumi.CustomResource):
             service=default["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -389,11 +380,9 @@ class IamMember(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -405,7 +394,6 @@ class IamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -489,7 +477,6 @@ class IamMember(pulumi.CustomResource):
 
         ## google\\_cloud\\_run\\_service\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -504,11 +491,9 @@ class IamMember(pulumi.CustomResource):
             service=default["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -520,11 +505,9 @@ class IamMember(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -536,11 +519,9 @@ class IamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -555,11 +536,9 @@ class IamMember(pulumi.CustomResource):
             service=default["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -571,11 +550,9 @@ class IamMember(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloud\\_run\\_service\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -587,7 +564,6 @@ class IamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

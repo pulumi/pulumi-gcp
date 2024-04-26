@@ -239,7 +239,6 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
         > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -259,11 +258,9 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             crypto_key_id=key.id,
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -278,9 +275,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             ),
         )])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -290,11 +285,9 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -309,9 +302,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -321,11 +312,9 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -340,7 +329,6 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -404,7 +392,6 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
         > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -424,11 +411,9 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             crypto_key_id=key.id,
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -443,9 +428,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             ),
         )])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,11 +438,9 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -474,9 +455,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -486,11 +465,9 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,7 +482,6 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

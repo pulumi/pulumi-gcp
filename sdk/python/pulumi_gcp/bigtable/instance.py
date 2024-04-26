@@ -386,7 +386,6 @@ class Instance(pulumi.CustomResource):
 
         ### Simple Instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -402,11 +401,9 @@ class Instance(pulumi.CustomResource):
                 "my-label": "prod-label",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Replicated Instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -435,7 +432,6 @@ class Instance(pulumi.CustomResource):
                 "my-label": "prod-label",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -510,7 +506,6 @@ class Instance(pulumi.CustomResource):
 
         ### Simple Instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -526,11 +521,9 @@ class Instance(pulumi.CustomResource):
                 "my-label": "prod-label",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Replicated Instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -559,7 +552,6 @@ class Instance(pulumi.CustomResource):
                 "my-label": "prod-label",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountKeyResult> InvokeAsync(GetAccountKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountKeyResult>("gcp:serviceaccount/getAccountKey:getAccountKey", args ?? new GetAccountKeyArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountKeyResult> Invoke(GetAccountKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountKeyResult>("gcp:serviceaccount/getAccountKey:getAccountKey", args ?? new GetAccountKeyInvokeArgs(), options.WithDefaults());

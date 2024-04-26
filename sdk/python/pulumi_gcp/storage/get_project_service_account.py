@@ -128,7 +128,6 @@ def get_project_service_account(project: Optional[str] = None,
 
     ### Pub/Sub Notifications
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -139,11 +138,9 @@ def get_project_service_account(project: Optional[str] = None,
         role="roles/pubsub.publisher",
         members=[f"serviceAccount:{gcs_account.email_address}"])
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Cloud KMS Keys
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -160,7 +157,6 @@ def get_project_service_account(project: Optional[str] = None,
             default_kms_key_name="your-crypto-key-id",
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.
@@ -223,7 +219,6 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
 
     ### Pub/Sub Notifications
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -234,11 +229,9 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
         role="roles/pubsub.publisher",
         members=[f"serviceAccount:{gcs_account.email_address}"])
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Cloud KMS Keys
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -255,7 +248,6 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
             default_kms_key_name="your-crypto-key-id",
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.

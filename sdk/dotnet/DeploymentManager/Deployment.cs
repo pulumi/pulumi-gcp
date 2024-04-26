@@ -28,7 +28,6 @@ namespace Pulumi.Gcp.DeploymentManager
     /// 
     /// ### Deployment Manager Deployment Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,7 +62,6 @@ namespace Pulumi.Gcp.DeploymentManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ## Import
     /// 
     /// Deployment can be imported using any of these accepted formats:
@@ -92,26 +90,19 @@ namespace Pulumi.Gcp.DeploymentManager
     public partial class Deployment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Set the policy to use for creating new resources. Only used on
-        /// create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-        /// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-        /// the deployment will fail. Note that updating this field does not
-        /// actually affect the deployment, just how it is updated.
-        /// Default value is `CREATE_OR_ACQUIRE`.
-        /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
+        /// Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+        /// (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+        /// updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+        /// Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
         /// </summary>
         [Output("createPolicy")]
         public Output<string?> CreatePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Set the policy to use for deleting new resources on update/delete.
-        /// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-        /// resource is deleted after removal from Deployment Manager. If
-        /// `ABANDON`, the resource is only removed from Deployment Manager
-        /// and is not actually deleted. Note that updating this field does not
-        /// actually change the deployment, just how it is updated.
-        /// Default value is `DELETE`.
-        /// Possible values are: `ABANDON`, `DELETE`.
+        /// Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+        /// 'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+        /// Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+        /// just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         /// </summary>
         [Output("deletePolicy")]
         public Output<string?> DeletePolicy { get; private set; } = null!;
@@ -130,7 +121,6 @@ namespace Pulumi.Gcp.DeploymentManager
 
         /// <summary>
         /// Key-value pairs to apply to this labels.
-        /// Structure is documented below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.DeploymentLabel>> Labels { get; private set; } = null!;
@@ -149,22 +139,14 @@ namespace Pulumi.Gcp.DeploymentManager
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// If set to true, a deployment is created with "shell" resources
-        /// that are not actually instantiated. This allows you to preview a
-        /// deployment. It can be updated to false to actually deploy
-        /// with real resources.
-        /// ~&gt;**NOTE:** Deployment Manager does not allow update
-        /// of a deployment in preview (unless updating to preview=false). Thus,
-        /// the provider will force-recreate deployments if either preview is updated
-        /// to true or if other fields are updated while preview is true.
+        /// If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+        /// preview a deployment. It can be updated to false to actually deploy with real resources. ~&gt;**NOTE:** Deployment Manager
+        /// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+        /// deployments if either preview is updated to true or if other fields are updated while preview is true.
         /// </summary>
         [Output("preview")]
         public Output<bool?> Preview { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -229,26 +211,19 @@ namespace Pulumi.Gcp.DeploymentManager
     public sealed class DeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the policy to use for creating new resources. Only used on
-        /// create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-        /// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-        /// the deployment will fail. Note that updating this field does not
-        /// actually affect the deployment, just how it is updated.
-        /// Default value is `CREATE_OR_ACQUIRE`.
-        /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
+        /// Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+        /// (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+        /// updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+        /// Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
         /// </summary>
         [Input("createPolicy")]
         public Input<string>? CreatePolicy { get; set; }
 
         /// <summary>
-        /// Set the policy to use for deleting new resources on update/delete.
-        /// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-        /// resource is deleted after removal from Deployment Manager. If
-        /// `ABANDON`, the resource is only removed from Deployment Manager
-        /// and is not actually deleted. Note that updating this field does not
-        /// actually change the deployment, just how it is updated.
-        /// Default value is `DELETE`.
-        /// Possible values are: `ABANDON`, `DELETE`.
+        /// Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+        /// 'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+        /// Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+        /// just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         /// </summary>
         [Input("deletePolicy")]
         public Input<string>? DeletePolicy { get; set; }
@@ -264,7 +239,6 @@ namespace Pulumi.Gcp.DeploymentManager
 
         /// <summary>
         /// Key-value pairs to apply to this labels.
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeploymentLabelArgs> Labels
         {
@@ -279,22 +253,14 @@ namespace Pulumi.Gcp.DeploymentManager
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// If set to true, a deployment is created with "shell" resources
-        /// that are not actually instantiated. This allows you to preview a
-        /// deployment. It can be updated to false to actually deploy
-        /// with real resources.
-        /// ~&gt;**NOTE:** Deployment Manager does not allow update
-        /// of a deployment in preview (unless updating to preview=false). Thus,
-        /// the provider will force-recreate deployments if either preview is updated
-        /// to true or if other fields are updated while preview is true.
+        /// If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+        /// preview a deployment. It can be updated to false to actually deploy with real resources. ~&gt;**NOTE:** Deployment Manager
+        /// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+        /// deployments if either preview is updated to true or if other fields are updated while preview is true.
         /// </summary>
         [Input("preview")]
         public Input<bool>? Preview { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -315,26 +281,19 @@ namespace Pulumi.Gcp.DeploymentManager
     public sealed class DeploymentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the policy to use for creating new resources. Only used on
-        /// create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-        /// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-        /// the deployment will fail. Note that updating this field does not
-        /// actually affect the deployment, just how it is updated.
-        /// Default value is `CREATE_OR_ACQUIRE`.
-        /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
+        /// Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+        /// (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+        /// updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+        /// Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
         /// </summary>
         [Input("createPolicy")]
         public Input<string>? CreatePolicy { get; set; }
 
         /// <summary>
-        /// Set the policy to use for deleting new resources on update/delete.
-        /// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-        /// resource is deleted after removal from Deployment Manager. If
-        /// `ABANDON`, the resource is only removed from Deployment Manager
-        /// and is not actually deleted. Note that updating this field does not
-        /// actually change the deployment, just how it is updated.
-        /// Default value is `DELETE`.
-        /// Possible values are: `ABANDON`, `DELETE`.
+        /// Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+        /// 'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+        /// Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+        /// just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         /// </summary>
         [Input("deletePolicy")]
         public Input<string>? DeletePolicy { get; set; }
@@ -356,7 +315,6 @@ namespace Pulumi.Gcp.DeploymentManager
 
         /// <summary>
         /// Key-value pairs to apply to this labels.
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeploymentLabelGetArgs> Labels
         {
@@ -378,22 +336,14 @@ namespace Pulumi.Gcp.DeploymentManager
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// If set to true, a deployment is created with "shell" resources
-        /// that are not actually instantiated. This allows you to preview a
-        /// deployment. It can be updated to false to actually deploy
-        /// with real resources.
-        /// ~&gt;**NOTE:** Deployment Manager does not allow update
-        /// of a deployment in preview (unless updating to preview=false). Thus,
-        /// the provider will force-recreate deployments if either preview is updated
-        /// to true or if other fields are updated while preview is true.
+        /// If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+        /// preview a deployment. It can be updated to false to actually deploy with real resources. ~&gt;**NOTE:** Deployment Manager
+        /// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+        /// deployments if either preview is updated to true or if other fields are updated while preview is true.
         /// </summary>
         [Input("preview")]
         public Input<bool>? Preview { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### With Top Level Instance Template (`Google` Provider)
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,10 +60,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### With Multiple Versions (`Google-Beta` Provider)
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -89,7 +86,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -213,6 +209,12 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     public readonly namedPorts!: pulumi.Output<outputs.compute.InstanceGroupManagerNamedPort[] | undefined>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     *
+     * - - -
+     */
+    public readonly params!: pulumi.Output<outputs.compute.InstanceGroupManagerParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -249,9 +251,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly targetSize!: pulumi.Output<number>;
     /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     *
-     * - - -
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      */
     public readonly updatePolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -306,6 +306,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namedPorts"] = state ? state.namedPorts : undefined;
             resourceInputs["operation"] = state ? state.operation : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["statefulDisks"] = state ? state.statefulDisks : undefined;
@@ -335,6 +336,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["statefulDisks"] = args ? args.statefulDisks : undefined;
             resourceInputs["statefulExternalIps"] = args ? args.statefulExternalIps : undefined;
@@ -426,6 +428,12 @@ export interface InstanceGroupManagerState {
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerNamedPort>[]>;
     operation?: pulumi.Input<string>;
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     *
+     * - - -
+     */
+    params?: pulumi.Input<inputs.compute.InstanceGroupManagerParams>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -462,9 +470,7 @@ export interface InstanceGroupManagerState {
      */
     targetSize?: pulumi.Input<number>;
     /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     *
-     * - - -
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      */
     updatePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -550,6 +556,12 @@ export interface InstanceGroupManagerArgs {
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerNamedPort>[]>;
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     *
+     * - - -
+     */
+    params?: pulumi.Input<inputs.compute.InstanceGroupManagerParams>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -578,9 +590,7 @@ export interface InstanceGroupManagerArgs {
      */
     targetSize?: pulumi.Input<number>;
     /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     *
-     * - - -
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      */
     updatePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**

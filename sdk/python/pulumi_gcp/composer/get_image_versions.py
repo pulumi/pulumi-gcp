@@ -83,7 +83,6 @@ def get_image_versions(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -98,7 +97,6 @@ def get_image_versions(project: Optional[str] = None,
             ),
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project to list versions in.
@@ -128,7 +126,6 @@ def get_image_versions_output(project: Optional[pulumi.Input[Optional[str]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -143,7 +140,6 @@ def get_image_versions_output(project: Optional[pulumi.Input[Optional[str]]] = N
             ),
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project to list versions in.

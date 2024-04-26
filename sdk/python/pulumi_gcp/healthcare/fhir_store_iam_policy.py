@@ -142,7 +142,6 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -155,11 +154,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -169,11 +166,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -183,11 +178,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -200,11 +193,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -214,11 +205,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -228,7 +217,6 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -284,7 +272,6 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -297,11 +284,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -311,11 +296,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -325,11 +308,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -342,11 +323,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -356,11 +335,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -370,7 +347,6 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -24,7 +24,6 @@ import (
 //
 // ### Gkehub Membership Regional
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,10 +69,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkehub Membership Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -121,10 +118,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkehub Membership Issuer
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -175,7 +170,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

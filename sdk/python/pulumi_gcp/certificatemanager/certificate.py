@@ -420,7 +420,6 @@ class Certificate(pulumi.CustomResource):
 
         ### Certificate Manager Google Managed Certificate Dns
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -451,10 +450,8 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Issuance Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -519,10 +516,8 @@ class Certificate(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Certificate Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -550,10 +545,8 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Self Managed Certificate Regional
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -568,10 +561,8 @@ class Certificate(pulumi.CustomResource):
                 pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -636,10 +627,8 @@ class Certificate(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -667,10 +656,8 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Regional Certificate Dns Auth
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -689,7 +676,6 @@ class Certificate(pulumi.CustomResource):
                 dns_authorizations=[instance.id],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -759,7 +745,6 @@ class Certificate(pulumi.CustomResource):
 
         ### Certificate Manager Google Managed Certificate Dns
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -790,10 +775,8 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Issuance Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -858,10 +841,8 @@ class Certificate(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Certificate Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -889,10 +870,8 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Self Managed Certificate Regional
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -907,10 +886,8 @@ class Certificate(pulumi.CustomResource):
                 pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -975,10 +952,8 @@ class Certificate(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1006,10 +981,8 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Regional Certificate Dns Auth
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1028,7 +1001,6 @@ class Certificate(pulumi.CustomResource):
                 dns_authorizations=[instance.id],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

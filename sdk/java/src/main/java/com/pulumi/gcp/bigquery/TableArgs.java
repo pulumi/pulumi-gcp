@@ -285,42 +285,33 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
+     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
+     * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
      * 
-     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     */
+    @Import(name="resourceTags")
+    private @Nullable Output<Map<String,String>> resourceTags;
+
+    /**
+     * @return The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+     * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
+     * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> resourceTags() {
+        return Optional.ofNullable(this.resourceTags);
+    }
+
+    /**
+     * A JSON schema for the table.
      * 
      */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
     /**
-     * @return A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
-     * 
-     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * @return A JSON schema for the table.
      * 
      */
     public Optional<Output<String>> schema() {
@@ -427,6 +418,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.rangePartitioning = $.rangePartitioning;
         this.requirePartitionFilter = $.requirePartitionFilter;
+        this.resourceTags = $.resourceTags;
         this.schema = $.schema;
         this.tableConstraints = $.tableConstraints;
         this.tableId = $.tableId;
@@ -806,21 +798,32 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schema A JSON schema for the external table. Schema is required
-         * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-         * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-         * string will create a diff, even if the JSON itself hasn&#39;t changed.
-         * Furthermore drift for this field cannot not be detected because BigQuery
-         * only uses this schema to compute the effective schema for the table, therefore
-         * any changes on the configured value will force the table to be recreated.
-         * This schema is effectively only applied when creating a table from an external
-         * datasource, after creation the computed schema will be stored in
-         * `google_bigquery_table.schema`
+         * @param resourceTags The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+         * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
+         * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
          * 
-         * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * @return builder
+         * 
+         */
+        public Builder resourceTags(@Nullable Output<Map<String,String>> resourceTags) {
+            $.resourceTags = resourceTags;
+            return this;
+        }
+
+        /**
+         * @param resourceTags The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+         * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the parent organization or project resource for this
+         * tag key. Tag value is expected to be the short name, for example &#34;Production&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceTags(Map<String,String> resourceTags) {
+            return resourceTags(Output.of(resourceTags));
+        }
+
+        /**
+         * @param schema A JSON schema for the table.
          * 
          * @return builder
          * 
@@ -831,21 +834,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schema A JSON schema for the external table. Schema is required
-         * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-         * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-         * string will create a diff, even if the JSON itself hasn&#39;t changed.
-         * Furthermore drift for this field cannot not be detected because BigQuery
-         * only uses this schema to compute the effective schema for the table, therefore
-         * any changes on the configured value will force the table to be recreated.
-         * This schema is effectively only applied when creating a table from an external
-         * datasource, after creation the computed schema will be stored in
-         * `google_bigquery_table.schema`
-         * 
-         * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * @param schema A JSON schema for the table.
          * 
          * @return builder
          * 

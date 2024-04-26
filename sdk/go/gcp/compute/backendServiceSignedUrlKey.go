@@ -24,7 +24,6 @@ import (
 //
 // ### Backend Service Signed Url Key
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -117,7 +116,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

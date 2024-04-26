@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// ### Basic_hub
     /// A basic test of a networkconnectivity hub
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

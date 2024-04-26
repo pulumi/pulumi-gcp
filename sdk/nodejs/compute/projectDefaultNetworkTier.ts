@@ -14,14 +14,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.ProjectDefaultNetworkTier("default", {networkTier: "PREMIUM"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

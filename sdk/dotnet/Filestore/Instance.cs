@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// ### Filestore Instance Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,10 +57,8 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Filestore Instance Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -119,10 +116,8 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Filestore Instance Enterprise
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -169,7 +164,6 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -238,10 +232,9 @@ namespace Pulumi.Gcp.Filestore
         public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        /// resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -266,10 +259,6 @@ namespace Pulumi.Gcp.Filestore
         [Output("networks")]
         public Output<ImmutableArray<Outputs.InstanceNetwork>> Networks { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -288,10 +277,7 @@ namespace Pulumi.Gcp.Filestore
         public Output<string> Tier { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
-        /// 
-        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -371,10 +357,9 @@ namespace Pulumi.Gcp.Filestore
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        /// resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -408,10 +393,6 @@ namespace Pulumi.Gcp.Filestore
             set => _networks = value;
         }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -423,10 +404,7 @@ namespace Pulumi.Gcp.Filestore
         public Input<string> Tier { get; set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
-        /// 
-        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -492,10 +470,9 @@ namespace Pulumi.Gcp.Filestore
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        /// resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -529,10 +506,6 @@ namespace Pulumi.Gcp.Filestore
             set => _networks = value;
         }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -561,10 +534,7 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Tier { get; set; }
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
-        /// 
-        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

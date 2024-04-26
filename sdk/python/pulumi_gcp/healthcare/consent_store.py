@@ -308,7 +308,6 @@ class ConsentStore(pulumi.CustomResource):
 
         ### Healthcare Consent Store Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -320,10 +319,8 @@ class ConsentStore(pulumi.CustomResource):
             dataset=dataset.id,
             name="my-consent-store")
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Consent Store Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -340,10 +337,8 @@ class ConsentStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Consent Store Iam
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -363,7 +358,6 @@ class ConsentStore(pulumi.CustomResource):
             role="roles/editor",
             member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -420,7 +414,6 @@ class ConsentStore(pulumi.CustomResource):
 
         ### Healthcare Consent Store Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -432,10 +425,8 @@ class ConsentStore(pulumi.CustomResource):
             dataset=dataset.id,
             name="my-consent-store")
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Consent Store Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -452,10 +443,8 @@ class ConsentStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Consent Store Iam
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -475,7 +464,6 @@ class ConsentStore(pulumi.CustomResource):
             role="roles/editor",
             member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

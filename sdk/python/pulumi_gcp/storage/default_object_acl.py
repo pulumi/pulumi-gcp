@@ -125,7 +125,6 @@ class DefaultObjectACL(pulumi.CustomResource):
 
         Example creating a default object ACL on a bucket with one owner, and one reader.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -140,7 +139,6 @@ class DefaultObjectACL(pulumi.CustomResource):
                 "READER:group-mygroup",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -178,7 +176,6 @@ class DefaultObjectACL(pulumi.CustomResource):
 
         Example creating a default object ACL on a bucket with one owner, and one reader.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -193,7 +190,6 @@ class DefaultObjectACL(pulumi.CustomResource):
                 "READER:group-mygroup",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

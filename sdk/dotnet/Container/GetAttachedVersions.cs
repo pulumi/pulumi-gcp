@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Container
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAttachedVersionsResult> InvokeAsync(GetAttachedVersionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAttachedVersionsResult>("gcp:container/getAttachedVersions:getAttachedVersions", args ?? new GetAttachedVersionsArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.Gcp.Container
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAttachedVersionsResult> Invoke(GetAttachedVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttachedVersionsResult>("gcp:container/getAttachedVersions:getAttachedVersions", args ?? new GetAttachedVersionsInvokeArgs(), options.WithDefaults());

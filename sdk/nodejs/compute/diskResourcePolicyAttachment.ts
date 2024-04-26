@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ### Disk Resource Policy Attachment Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -48,7 +47,6 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

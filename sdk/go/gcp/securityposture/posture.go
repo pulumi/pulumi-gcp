@@ -26,7 +26,6 @@ import (
 //
 // ### Securityposture Posture Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -159,7 +158,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -177,13 +175,13 @@ type Posture struct {
 
 	// Time the Posture was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Description of the expression
+	// Description of the posture.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Location of the resource, eg: global.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Immutable. The name of the custom constraint. This is unique within the organization.
+	// Name of the posture.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -251,13 +249,13 @@ func GetPosture(ctx *pulumi.Context,
 type postureState struct {
 	// Time the Posture was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// Description of the expression
+	// Description of the posture.
 	Description *string `pulumi:"description"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag *string `pulumi:"etag"`
 	// Location of the resource, eg: global.
 	Location *string `pulumi:"location"`
-	// Immutable. The name of the custom constraint. This is unique within the organization.
+	// Name of the posture.
 	Name *string `pulumi:"name"`
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent *string `pulumi:"parent"`
@@ -281,13 +279,13 @@ type postureState struct {
 type PostureState struct {
 	// Time the Posture was created in UTC.
 	CreateTime pulumi.StringPtrInput
-	// Description of the expression
+	// Description of the posture.
 	Description pulumi.StringPtrInput
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringPtrInput
 	// Location of the resource, eg: global.
 	Location pulumi.StringPtrInput
-	// Immutable. The name of the custom constraint. This is unique within the organization.
+	// Name of the posture.
 	Name pulumi.StringPtrInput
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent pulumi.StringPtrInput
@@ -313,7 +311,7 @@ func (PostureState) ElementType() reflect.Type {
 }
 
 type postureArgs struct {
-	// Description of the expression
+	// Description of the posture.
 	Description *string `pulumi:"description"`
 	// Location of the resource, eg: global.
 	Location string `pulumi:"location"`
@@ -332,7 +330,7 @@ type postureArgs struct {
 
 // The set of arguments for constructing a Posture resource.
 type PostureArgs struct {
-	// Description of the expression
+	// Description of the posture.
 	Description pulumi.StringPtrInput
 	// Location of the resource, eg: global.
 	Location pulumi.StringInput
@@ -441,7 +439,7 @@ func (o PostureOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Description of the expression
+// Description of the posture.
 func (o PostureOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -456,7 +454,7 @@ func (o PostureOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Immutable. The name of the custom constraint. This is unique within the organization.
+// Name of the posture.
 func (o PostureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

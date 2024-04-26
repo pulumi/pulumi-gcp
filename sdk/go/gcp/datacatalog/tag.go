@@ -26,7 +26,6 @@ import (
 //
 // ### Data Catalog Entry Tag Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -117,10 +116,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Catalog Entry Group Tag
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -220,10 +217,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Catalog Entry Tag Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -380,7 +375,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -396,10 +390,9 @@ import (
 type Tag struct {
 	pulumi.CustomResourceState
 
-	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-	// individual column based on that schema.
-	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
-	// `outer_column.inner_column`
+	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+	// column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+	// 'outer_column.inner_column'
 	Column pulumi.StringPtrOutput `pulumi:"column"`
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
@@ -410,8 +403,8 @@ type Tag struct {
 	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
 	// where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-	// all entries in that group.
+	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+	// the tag will be attached to all entries in that group.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The resource name of the tag template that this tag uses. Example:
 	// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
@@ -457,10 +450,9 @@ func GetTag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Tag resources.
 type tagState struct {
-	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-	// individual column based on that schema.
-	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
-	// `outer_column.inner_column`
+	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+	// column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+	// 'outer_column.inner_column'
 	Column *string `pulumi:"column"`
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
@@ -471,8 +463,8 @@ type tagState struct {
 	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
 	// where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
 	Name *string `pulumi:"name"`
-	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-	// all entries in that group.
+	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+	// the tag will be attached to all entries in that group.
 	Parent *string `pulumi:"parent"`
 	// The resource name of the tag template that this tag uses. Example:
 	// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
@@ -483,10 +475,9 @@ type tagState struct {
 }
 
 type TagState struct {
-	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-	// individual column based on that schema.
-	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
-	// `outer_column.inner_column`
+	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+	// column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+	// 'outer_column.inner_column'
 	Column pulumi.StringPtrInput
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
@@ -497,8 +488,8 @@ type TagState struct {
 	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
 	// where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
 	Name pulumi.StringPtrInput
-	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-	// all entries in that group.
+	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+	// the tag will be attached to all entries in that group.
 	Parent pulumi.StringPtrInput
 	// The resource name of the tag template that this tag uses. Example:
 	// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
@@ -513,17 +504,16 @@ func (TagState) ElementType() reflect.Type {
 }
 
 type tagArgs struct {
-	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-	// individual column based on that schema.
-	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
-	// `outer_column.inner_column`
+	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+	// column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+	// 'outer_column.inner_column'
 	Column *string `pulumi:"column"`
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
 	// Structure is documented below.
 	Fields []TagField `pulumi:"fields"`
-	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-	// all entries in that group.
+	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+	// the tag will be attached to all entries in that group.
 	Parent *string `pulumi:"parent"`
 	// The resource name of the tag template that this tag uses. Example:
 	// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
@@ -533,17 +523,16 @@ type tagArgs struct {
 
 // The set of arguments for constructing a Tag resource.
 type TagArgs struct {
-	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-	// individual column based on that schema.
-	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
-	// `outer_column.inner_column`
+	// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+	// column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+	// 'outer_column.inner_column'
 	Column pulumi.StringPtrInput
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
 	// Structure is documented below.
 	Fields TagFieldArrayInput
-	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-	// all entries in that group.
+	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+	// the tag will be attached to all entries in that group.
 	Parent pulumi.StringPtrInput
 	// The resource name of the tag template that this tag uses. Example:
 	// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
@@ -638,10 +627,9 @@ func (o TagOutput) ToTagOutputWithContext(ctx context.Context) TagOutput {
 	return o
 }
 
-// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-// individual column based on that schema.
-// For attaching a tag to a nested column, use `.` to separate the column names. Example:
-// `outer_column.inner_column`
+// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+// column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+// 'outer_column.inner_column'
 func (o TagOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Tag) pulumi.StringPtrOutput { return v.Column }).(pulumi.StringPtrOutput)
 }
@@ -661,8 +649,8 @@ func (o TagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-// all entries in that group.
+// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+// the tag will be attached to all entries in that group.
 func (o TagOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Tag) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }

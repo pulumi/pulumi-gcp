@@ -463,7 +463,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
 
         ### Vertex Ai Index Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -489,10 +488,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[vertex_range.name])
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Endpoint With Psc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -510,10 +507,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 project_allowlists=[project.number],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Endpoint With Public Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -527,7 +522,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
             },
             public_endpoint_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -597,7 +591,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
 
         ### Vertex Ai Index Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -623,10 +616,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[vertex_range.name])
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Endpoint With Psc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -644,10 +635,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 project_allowlists=[project.number],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Endpoint With Public Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -661,7 +650,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
             },
             public_endpoint_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * ### Router Peer Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,10 +35,8 @@ import * as utilities from "../utilities";
  *     "interface": "interface-1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Router Peer Disabled
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,10 +52,8 @@ import * as utilities from "../utilities";
  *     enable: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Router Peer Bfd
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -79,10 +74,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Router Peer Router Appliance
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -176,7 +169,6 @@ import * as utilities from "../utilities";
  *     peerIpAddress: addrPeer.address,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

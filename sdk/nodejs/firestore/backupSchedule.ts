@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  *
  * ### Firestore Backup Schedule Daily
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,10 +45,8 @@ import * as utilities from "../utilities";
  *     dailyRecurrence: {},
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firestore Backup Schedule Weekly
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,7 +68,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

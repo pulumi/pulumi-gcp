@@ -222,7 +222,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Vmware Engine Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -255,10 +254,8 @@ class Cluster(pulumi.CustomResource):
                 node_count=3,
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine Cluster Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -293,7 +290,6 @@ class Cluster(pulumi.CustomResource):
                 custom_core_count=32,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -337,7 +333,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Vmware Engine Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -370,10 +365,8 @@ class Cluster(pulumi.CustomResource):
                 node_count=3,
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine Cluster Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -408,7 +401,6 @@ class Cluster(pulumi.CustomResource):
                 custom_core_count=32,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

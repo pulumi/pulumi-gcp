@@ -56,7 +56,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * DataProfileScan related setting.
-     * Structure is documented below.
      * 
      */
     @Import(name="dataProfileSpec")
@@ -64,7 +63,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return DataProfileScan related setting.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<DatascanDataProfileSpecArgs>> dataProfileSpec() {
@@ -73,7 +71,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * DataQualityScan related setting.
-     * Structure is documented below.
      * 
      */
     @Import(name="dataQualitySpec")
@@ -81,7 +78,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return DataQualityScan related setting.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<DatascanDataQualitySpecArgs>> dataQualitySpec() {
@@ -104,16 +100,14 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the rule.
-     * The maximum length is 1,024 characters.
+     * Description of the scan.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the rule.
-     * The maximum length is 1,024 characters.
+     * @return Description of the scan.
      * 
      */
     public Optional<Output<String>> description() {
@@ -185,20 +179,18 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-defined labels for the scan. A list of key-&gt;value pairs.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * User-defined labels for the scan. A list of key-&gt;value pairs. **Note**: This field is non-authoritative, and will only
+     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
+     * present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for the scan. A list of key-&gt;value pairs.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return User-defined labels for the scan. A list of key-&gt;value pairs. **Note**: This field is non-authoritative, and will only
+     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
+     * present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -221,41 +213,23 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mutable name for the rule.
-     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-     * The maximum length is 63 characters.
-     * Must start with a letter.
-     * Must end with a number or a letter.
+     * The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A mutable name for the rule.
-     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-     * The maximum length is 63 characters.
-     * Must start with a letter.
-     * Must end with a number or a letter.
+     * @return The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -425,7 +399,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataProfileSpec DataProfileScan related setting.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -437,7 +410,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataProfileSpec DataProfileScan related setting.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -448,7 +420,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataQualitySpec DataQualityScan related setting.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -460,7 +431,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataQualitySpec DataQualityScan related setting.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -491,8 +461,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the rule.
-         * The maximum length is 1,024 characters.
+         * @param description Description of the scan.
          * 
          * @return builder
          * 
@@ -503,8 +472,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the rule.
-         * The maximum length is 1,024 characters.
+         * @param description Description of the scan.
          * 
          * @return builder
          * 
@@ -613,10 +581,9 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User-defined labels for the scan. A list of key-&gt;value pairs.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels User-defined labels for the scan. A list of key-&gt;value pairs. **Note**: This field is non-authoritative, and will only
+         * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
+         * present on the resource.
          * 
          * @return builder
          * 
@@ -627,10 +594,9 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User-defined labels for the scan. A list of key-&gt;value pairs.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels User-defined labels for the scan. A list of key-&gt;value pairs. **Note**: This field is non-authoritative, and will only
+         * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
+         * present on the resource.
          * 
          * @return builder
          * 
@@ -661,11 +627,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A mutable name for the rule.
-         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-         * The maximum length is 63 characters.
-         * Must start with a letter.
-         * Must end with a number or a letter.
+         * @param name The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
          * 
          * @return builder
          * 
@@ -676,11 +638,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A mutable name for the rule.
-         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-         * The maximum length is 63 characters.
-         * Must start with a letter.
-         * Must end with a number or a letter.
+         * @param name The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
          * 
          * @return builder
          * 
@@ -689,25 +647,11 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

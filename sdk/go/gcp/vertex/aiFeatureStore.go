@@ -23,7 +23,6 @@ import (
 //
 // ### Vertex Ai Featurestore
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,10 +57,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Featurestore With Beta Fields
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,10 +94,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Featurestore Scaling
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -138,7 +133,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

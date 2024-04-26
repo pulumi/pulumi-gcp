@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterTpuConfig
     {
         /// <summary>
-        /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        /// Whether Cloud TPU integration is enabled or not
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

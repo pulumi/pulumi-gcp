@@ -175,7 +175,6 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
 
         ## google\\_pubsub\\_subscription\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -188,11 +187,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -202,11 +199,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -216,11 +211,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -233,11 +226,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -247,11 +238,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -261,7 +250,6 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -318,7 +306,6 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
 
         ## google\\_pubsub\\_subscription\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -331,11 +318,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -345,11 +330,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -359,11 +342,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -376,11 +357,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -390,11 +369,9 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -404,7 +381,6 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

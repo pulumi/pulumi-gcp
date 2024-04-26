@@ -348,7 +348,6 @@ class Network(pulumi.CustomResource):
 
         ### Edgenetwork Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -363,7 +362,6 @@ class Network(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -434,7 +432,6 @@ class Network(pulumi.CustomResource):
 
         ### Edgenetwork Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -449,7 +446,6 @@ class Network(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

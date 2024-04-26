@@ -26,7 +26,6 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// This snippet creates a service account in a project.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

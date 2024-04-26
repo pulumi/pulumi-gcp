@@ -186,7 +186,8 @@ class EdgeCacheOriginAwsV4AuthenticationArgs:
         :param pulumi.Input[str] access_key_id: The access key ID your origin uses to identify the key.
         :param pulumi.Input[str] origin_region: The name of the AWS region that your origin is in.
         :param pulumi.Input[str] secret_access_key_version: The Secret Manager secret version of the secret access key used by your origin.
-               This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+               
+               This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
         """
         pulumi.set(__self__, "access_key_id", access_key_id)
         pulumi.set(__self__, "origin_region", origin_region)
@@ -221,7 +222,8 @@ class EdgeCacheOriginAwsV4AuthenticationArgs:
     def secret_access_key_version(self) -> pulumi.Input[str]:
         """
         The Secret Manager secret version of the secret access key used by your origin.
-        This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+
+        This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
         """
         return pulumi.get(self, "secret_access_key_version")
 

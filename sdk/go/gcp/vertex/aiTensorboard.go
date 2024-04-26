@@ -24,7 +24,6 @@ import (
 //
 // ### Vertex Ai Tensorboard
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,10 +53,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Tensorboard Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,7 +103,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

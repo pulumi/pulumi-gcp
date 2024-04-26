@@ -24,7 +24,6 @@ import (
 //
 // ## google\_kms\_key\_ring\_iam\_policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,11 +69,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,11 +122,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_kms\_key\_ring\_iam\_binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,11 +152,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -194,11 +187,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_kms\_key\_ring\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -224,11 +215,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -259,11 +248,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_kms\_key\_ring\_iam\_policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -309,11 +296,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -364,11 +349,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_kms\_key\_ring\_iam\_binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -396,11 +379,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -433,11 +414,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_kms\_key\_ring\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -463,11 +442,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -498,7 +475,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

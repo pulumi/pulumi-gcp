@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class TransferJobScheduleStartTimeOfDay
     {
         /// <summary>
-        /// Hours of day in 24 hour format. Should be from 0 to 23
+        /// Hours of day in 24 hour format. Should be from 0 to 23.
         /// </summary>
         public readonly int Hours;
         /// <summary>

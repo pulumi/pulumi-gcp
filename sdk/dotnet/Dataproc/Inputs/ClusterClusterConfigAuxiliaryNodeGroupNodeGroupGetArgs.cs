@@ -13,10 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the cluster, unique within the project and
-        /// zone.
-        /// 
-        /// - - -
+        /// The Node group resource name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -18,20 +18,12 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreCo
     /**
      * Resource name of an existing Dataproc Metastore service.
      * 
-     * Only resource names including projectid and location (region) are valid. Examples:
-     * 
-     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
-     * 
      */
     @Import(name="dataprocMetastoreService")
     private @Nullable Output<String> dataprocMetastoreService;
 
     /**
      * @return Resource name of an existing Dataproc Metastore service.
-     * 
-     * Only resource names including projectid and location (region) are valid. Examples:
-     * 
-     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
      * 
      */
     public Optional<Output<String>> dataprocMetastoreService() {
@@ -65,10 +57,6 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreCo
         /**
          * @param dataprocMetastoreService Resource name of an existing Dataproc Metastore service.
          * 
-         * Only resource names including projectid and location (region) are valid. Examples:
-         * 
-         * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
-         * 
          * @return builder
          * 
          */
@@ -79,10 +67,6 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreCo
 
         /**
          * @param dataprocMetastoreService Resource name of an existing Dataproc Metastore service.
-         * 
-         * Only resource names including projectid and location (region) are valid. Examples:
-         * 
-         * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
          * 
          * @return builder
          * 

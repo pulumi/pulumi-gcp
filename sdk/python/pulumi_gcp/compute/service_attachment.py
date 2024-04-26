@@ -578,7 +578,6 @@ class ServiceAttachment(pulumi.CustomResource):
 
         ### Service Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -638,10 +637,8 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Attachment Explicit Projects
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -709,10 +706,8 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Attachment Explicit Networks
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -784,10 +779,8 @@ class ServiceAttachment(pulumi.CustomResource):
             subnetwork=psc_ilb_consumer_subnetwork.id,
             ip_address=psc_ilb_consumer_address.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Attachment Reconcile Connections
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -844,7 +837,6 @@ class ServiceAttachment(pulumi.CustomResource):
             )],
             reconcile_connections=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -931,7 +923,6 @@ class ServiceAttachment(pulumi.CustomResource):
 
         ### Service Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -991,10 +982,8 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Attachment Explicit Projects
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1062,10 +1051,8 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Attachment Explicit Networks
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1137,10 +1124,8 @@ class ServiceAttachment(pulumi.CustomResource):
             subnetwork=psc_ilb_consumer_subnetwork.id,
             ip_address=psc_ilb_consumer_address.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Attachment Reconcile Connections
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1197,7 +1182,6 @@ class ServiceAttachment(pulumi.CustomResource):
             )],
             reconcile_connections=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

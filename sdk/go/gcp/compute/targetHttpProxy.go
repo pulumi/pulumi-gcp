@@ -25,7 +25,6 @@ import (
 //
 // ### Target Http Proxy Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,10 +97,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Target Http Proxy Http Keep Alive Timeout
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -176,10 +173,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Target Http Proxy Https Redirect
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -214,7 +209,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

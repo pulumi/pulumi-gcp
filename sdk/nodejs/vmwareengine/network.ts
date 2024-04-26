@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Vmware Engine Network Standard
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,10 +28,8 @@ import * as utilities from "../utilities";
  *     description: "VMwareEngine standard network sample",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vmware Engine Network Legacy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -59,7 +56,6 @@ import * as utilities from "../utilities";
  * });
  * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -6307,6 +6307,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "projects/iamMemberRemove",
+  "fqn": "pulumi_gcp.projects",
+  "classes": {
+   "gcp:projects/iamMemberRemove:IamMemberRemove": "IamMemberRemove"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "projects/organizationPolicy",
   "fqn": "pulumi_gcp.projects",
   "classes": {

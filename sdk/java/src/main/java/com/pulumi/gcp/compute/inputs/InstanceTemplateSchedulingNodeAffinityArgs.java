@@ -47,17 +47,9 @@ public final class InstanceTemplateSchedulingNodeAffinityArgs extends com.pulumi
         return this.operator;
     }
 
-    /**
-     * Corresponds to the label values of a reservation resource.
-     * 
-     */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
-    /**
-     * @return Corresponds to the label values of a reservation resource.
-     * 
-     */
     public Output<List<String>> values() {
         return this.values;
     }
@@ -132,33 +124,15 @@ public final class InstanceTemplateSchedulingNodeAffinityArgs extends com.pulumi
             return operator(Output.of(operator));
         }
 
-        /**
-         * @param values Corresponds to the label values of a reservation resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values Corresponds to the label values of a reservation resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values Corresponds to the label values of a reservation resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

@@ -11,6 +11,7 @@ import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigN
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigPythonRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigUpstreamCredentials;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigYumRepository;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,12 @@ public final class RepositoryRemoteRepositoryConfig {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return If true, the remote repository upstream and upstream credentials will
+     * not be validated.
+     * 
+     */
+    private @Nullable Boolean disableUpstreamValidation;
     /**
      * @return Specific settings for a Docker remote repository.
      * Structure is documented below.
@@ -81,6 +88,14 @@ public final class RepositoryRemoteRepositoryConfig {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return If true, the remote repository upstream and upstream credentials will
+     * not be validated.
+     * 
+     */
+    public Optional<Boolean> disableUpstreamValidation() {
+        return Optional.ofNullable(this.disableUpstreamValidation);
     }
     /**
      * @return Specific settings for a Docker remote repository.
@@ -142,6 +157,7 @@ public final class RepositoryRemoteRepositoryConfig {
     public static final class Builder {
         private @Nullable RepositoryRemoteRepositoryConfigAptRepository aptRepository;
         private @Nullable String description;
+        private @Nullable Boolean disableUpstreamValidation;
         private @Nullable RepositoryRemoteRepositoryConfigDockerRepository dockerRepository;
         private @Nullable RepositoryRemoteRepositoryConfigMavenRepository mavenRepository;
         private @Nullable RepositoryRemoteRepositoryConfigNpmRepository npmRepository;
@@ -153,6 +169,7 @@ public final class RepositoryRemoteRepositoryConfig {
     	      Objects.requireNonNull(defaults);
     	      this.aptRepository = defaults.aptRepository;
     	      this.description = defaults.description;
+    	      this.disableUpstreamValidation = defaults.disableUpstreamValidation;
     	      this.dockerRepository = defaults.dockerRepository;
     	      this.mavenRepository = defaults.mavenRepository;
     	      this.npmRepository = defaults.npmRepository;
@@ -171,6 +188,12 @@ public final class RepositoryRemoteRepositoryConfig {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableUpstreamValidation(@Nullable Boolean disableUpstreamValidation) {
+
+            this.disableUpstreamValidation = disableUpstreamValidation;
             return this;
         }
         @CustomType.Setter
@@ -213,6 +236,7 @@ public final class RepositoryRemoteRepositoryConfig {
             final var _resultValue = new RepositoryRemoteRepositoryConfig();
             _resultValue.aptRepository = aptRepository;
             _resultValue.description = description;
+            _resultValue.disableUpstreamValidation = disableUpstreamValidation;
             _resultValue.dockerRepository = dockerRepository;
             _resultValue.mavenRepository = mavenRepository;
             _resultValue.npmRepository = npmRepository;

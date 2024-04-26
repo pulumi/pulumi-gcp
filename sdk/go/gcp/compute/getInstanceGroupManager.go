@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupInstanceGroupManager(ctx *pulumi.Context, args *LookupInstanceGroupManagerArgs, opts ...pulumi.InvokeOption) (*LookupInstanceGroupManagerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceGroupManagerResult
@@ -87,6 +85,7 @@ type LookupInstanceGroupManagerResult struct {
 	Name                        *string                                          `pulumi:"name"`
 	NamedPorts                  []GetInstanceGroupManagerNamedPort               `pulumi:"namedPorts"`
 	Operation                   string                                           `pulumi:"operation"`
+	Params                      []GetInstanceGroupManagerParam                   `pulumi:"params"`
 	Project                     *string                                          `pulumi:"project"`
 	SelfLink                    *string                                          `pulumi:"selfLink"`
 	StatefulDisks               []GetInstanceGroupManagerStatefulDisk            `pulumi:"statefulDisks"`
@@ -203,6 +202,10 @@ func (o LookupInstanceGroupManagerResultOutput) NamedPorts() GetInstanceGroupMan
 
 func (o LookupInstanceGroupManagerResultOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceGroupManagerResultOutput) Params() GetInstanceGroupManagerParamArrayOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) []GetInstanceGroupManagerParam { return v.Params }).(GetInstanceGroupManagerParamArrayOutput)
 }
 
 func (o LookupInstanceGroupManagerResultOutput) Project() pulumi.StringPtrOutput {

@@ -65,36 +65,22 @@ public final class ManagementServerArgs extends com.pulumi.resources.ResourceArg
         return this.networks;
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The type of management server (management console).
-     * Default value is `BACKUP_RESTORE`.
-     * Possible values are: `BACKUP_RESTORE`.
+     * The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of management server (management console).
-     * Default value is `BACKUP_RESTORE`.
-     * Possible values are: `BACKUP_RESTORE`.
+     * @return The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
      * 
      */
     public Optional<Output<String>> type() {
@@ -205,33 +191,17 @@ public final class ManagementServerArgs extends com.pulumi.resources.ResourceArg
             return networks(List.of(networks));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param type The type of management server (management console).
-         * Default value is `BACKUP_RESTORE`.
-         * Possible values are: `BACKUP_RESTORE`.
+         * @param type The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
          * 
          * @return builder
          * 
@@ -242,9 +212,7 @@ public final class ManagementServerArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type The type of management server (management console).
-         * Default value is `BACKUP_RESTORE`.
-         * Possible values are: `BACKUP_RESTORE`.
+         * @param type The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
          * 
          * @return builder
          * 

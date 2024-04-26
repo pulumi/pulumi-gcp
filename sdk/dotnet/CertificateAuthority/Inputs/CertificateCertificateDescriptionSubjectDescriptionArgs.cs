@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs>? _subjectAltNames;
 
         /// <summary>
+        /// (Output)
         /// The subject alternative name fields.
         /// Structure is documented below.
         /// </summary>
@@ -58,6 +59,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectArgs>? _subjects;
 
         /// <summary>
+        /// (Output)
         /// Contains distinguished name fields such as the location and organization.
         /// Structure is documented below.
         /// </summary>

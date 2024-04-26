@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     secret: "my-secret",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSecretVersionAccess(args: GetSecretVersionAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionAccessResult> {
 
@@ -76,7 +74,6 @@ export interface GetSecretVersionAccessResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -85,7 +82,6 @@ export interface GetSecretVersionAccessResult {
  *     secret: "my-secret",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSecretVersionAccessOutput(args: GetSecretVersionAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionAccessResult> {
     return pulumi.output(args).apply((a: any) => getSecretVersionAccess(a, opts))

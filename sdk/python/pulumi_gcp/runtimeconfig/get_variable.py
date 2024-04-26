@@ -105,7 +105,6 @@ def get_variable(name: Optional[str] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,7 +112,6 @@ def get_variable(name: Optional[str] = None,
     run_service = gcp.runtimeconfig.get_variable(parent="my-service",
         name="prod-variables/hostname")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Runtime Configurator configuration.
@@ -148,7 +146,6 @@ def get_variable_output(name: Optional[pulumi.Input[str]] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -156,7 +153,6 @@ def get_variable_output(name: Optional[pulumi.Input[str]] = None,
     run_service = gcp.runtimeconfig.get_variable(parent="my-service",
         name="prod-variables/hostname")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Runtime Configurator configuration.

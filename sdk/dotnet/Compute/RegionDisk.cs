@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ### Region Disk Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -77,10 +76,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Region Disk Async
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -121,10 +118,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Region Disk Features
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -167,7 +162,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -363,10 +357,12 @@ namespace Pulumi.Gcp.Compute
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        /// example, the following are valid values: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        /// The source snapshot used to create this disk. You can provide this as
+        /// a partial or full URL to the resource. For example, the following are
+        /// valid values:
+        /// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        /// * `projects/project/global/snapshots/snapshot`
+        /// * `global/snapshots/snapshot`
         /// </summary>
         [Output("snapshot")]
         public Output<string?> Snapshot { get; private set; } = null!;
@@ -618,10 +614,12 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        /// example, the following are valid values: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        /// The source snapshot used to create this disk. You can provide this as
+        /// a partial or full URL to the resource. For example, the following are
+        /// valid values:
+        /// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        /// * `projects/project/global/snapshots/snapshot`
+        /// * `global/snapshots/snapshot`
         /// </summary>
         [Input("snapshot")]
         public Input<string>? Snapshot { get; set; }
@@ -868,10 +866,12 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        /// example, the following are valid values: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        /// The source snapshot used to create this disk. You can provide this as
+        /// a partial or full URL to the resource. For example, the following are
+        /// valid values:
+        /// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        /// * `projects/project/global/snapshots/snapshot`
+        /// * `global/snapshots/snapshot`
         /// </summary>
         [Input("snapshot")]
         public Input<string>? Snapshot { get; set; }

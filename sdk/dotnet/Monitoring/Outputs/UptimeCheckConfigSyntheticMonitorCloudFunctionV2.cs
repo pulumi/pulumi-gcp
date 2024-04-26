@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class UptimeCheckConfigSyntheticMonitorCloudFunctionV2
     {
         /// <summary>
-        /// The fully qualified name of the cloud function resource.
+        /// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         /// </summary>
         public readonly string Name;
 

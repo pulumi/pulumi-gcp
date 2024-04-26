@@ -12,6 +12,7 @@ import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConf
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigPythonRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredential;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigYumRepository;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +29,12 @@ public final class GetRepositoryRemoteRepositoryConfig {
      * 
      */
     private String description;
+    /**
+     * @return If true, the remote repository upstream and upstream credentials will
+     * not be validated.
+     * 
+     */
+    private Boolean disableUpstreamValidation;
     /**
      * @return Specific settings for a Docker remote repository.
      * 
@@ -73,6 +80,14 @@ public final class GetRepositoryRemoteRepositoryConfig {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return If true, the remote repository upstream and upstream credentials will
+     * not be validated.
+     * 
+     */
+    public Boolean disableUpstreamValidation() {
+        return this.disableUpstreamValidation;
     }
     /**
      * @return Specific settings for a Docker remote repository.
@@ -128,6 +143,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
     public static final class Builder {
         private List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories;
         private String description;
+        private Boolean disableUpstreamValidation;
         private List<GetRepositoryRemoteRepositoryConfigDockerRepository> dockerRepositories;
         private List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories;
         private List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories;
@@ -139,6 +155,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
     	      Objects.requireNonNull(defaults);
     	      this.aptRepositories = defaults.aptRepositories;
     	      this.description = defaults.description;
+    	      this.disableUpstreamValidation = defaults.disableUpstreamValidation;
     	      this.dockerRepositories = defaults.dockerRepositories;
     	      this.mavenRepositories = defaults.mavenRepositories;
     	      this.npmRepositories = defaults.npmRepositories;
@@ -164,6 +181,14 @@ public final class GetRepositoryRemoteRepositoryConfig {
               throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableUpstreamValidation(Boolean disableUpstreamValidation) {
+            if (disableUpstreamValidation == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "disableUpstreamValidation");
+            }
+            this.disableUpstreamValidation = disableUpstreamValidation;
             return this;
         }
         @CustomType.Setter
@@ -236,6 +261,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
             final var _resultValue = new GetRepositoryRemoteRepositoryConfig();
             _resultValue.aptRepositories = aptRepositories;
             _resultValue.description = description;
+            _resultValue.disableUpstreamValidation = disableUpstreamValidation;
             _resultValue.dockerRepositories = dockerRepositories;
             _resultValue.mavenRepositories = mavenRepositories;
             _resultValue.npmRepositories = npmRepositories;

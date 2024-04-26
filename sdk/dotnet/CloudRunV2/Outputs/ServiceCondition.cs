@@ -50,8 +50,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string? State;
         /// <summary>
+        /// (Output)
         /// The allocation type for this traffic target.
-        /// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         /// </summary>
         public readonly string? Type;
 

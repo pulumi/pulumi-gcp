@@ -351,7 +351,6 @@ class Key(pulumi.CustomResource):
 
         ### Creating A New Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -363,11 +362,9 @@ class Key(pulumi.CustomResource):
             service_account_id=myaccount.name,
             public_key_type="TYPE_X509_PEM_FILE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating And Regularly Rotating A Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -384,11 +381,9 @@ class Key(pulumi.CustomResource):
                 "rotation_time": mykey_rotation.rotation_rfc3339,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Save Key In Kubernetes Secret - DEPRECATED
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -409,7 +404,6 @@ class Key(pulumi.CustomResource):
                 "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -443,7 +437,6 @@ class Key(pulumi.CustomResource):
 
         ### Creating A New Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,11 +448,9 @@ class Key(pulumi.CustomResource):
             service_account_id=myaccount.name,
             public_key_type="TYPE_X509_PEM_FILE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating And Regularly Rotating A Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -476,11 +467,9 @@ class Key(pulumi.CustomResource):
                 "rotation_time": mykey_rotation.rotation_rfc3339,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Save Key In Kubernetes Secret - DEPRECATED
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -501,7 +490,6 @@ class Key(pulumi.CustomResource):
                 "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

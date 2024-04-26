@@ -541,7 +541,6 @@ class ConnectionProfile(pulumi.CustomResource):
 
         ### Database Migration Service Connection Profile Cloudsql
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -611,10 +610,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Database Migration Service Connection Profile Postgres
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -653,10 +650,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 cloud_sql_id="my-database",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Database Migration Service Connection Profile Oracle
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,10 +672,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArgs(),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Database Migration Service Connection Profile Alloydb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -728,7 +721,6 @@ class ConnectionProfile(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -798,7 +790,6 @@ class ConnectionProfile(pulumi.CustomResource):
 
         ### Database Migration Service Connection Profile Cloudsql
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -868,10 +859,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Database Migration Service Connection Profile Postgres
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -910,10 +899,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 cloud_sql_id="my-database",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Database Migration Service Connection Profile Oracle
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -934,10 +921,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArgs(),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Database Migration Service Connection Profile Alloydb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -985,7 +970,6 @@ class ConnectionProfile(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

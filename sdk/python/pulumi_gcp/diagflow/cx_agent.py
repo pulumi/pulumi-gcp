@@ -627,7 +627,6 @@ class CxAgent(pulumi.CustomResource):
 
         ### Dialogflowcx Agent Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -688,7 +687,6 @@ class CxAgent(pulumi.CustomResource):
                 }),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -765,7 +763,6 @@ class CxAgent(pulumi.CustomResource):
 
         ### Dialogflowcx Agent Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -826,7 +823,6 @@ class CxAgent(pulumi.CustomResource):
                 }),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

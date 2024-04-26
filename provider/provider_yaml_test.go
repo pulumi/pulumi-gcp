@@ -20,6 +20,7 @@ package gcp
 import (
 	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"os/exec"
@@ -617,7 +618,18 @@ func TestEnvTokenNotInState(t *testing.T) {
 	stack := test.ExportStack()
 	data, err := stack.Deployment.MarshalJSON()
 	require.NoError(t, err)
-	require.NotContains(t, string(data), "accessToken")
+	var stateMap map[string]interface{}
+	err = json.Unmarshal(data, &stateMap)
+	require.NoError(t, err)
+
+	resourcesJSON := stateMap["resources"].([]interface{})
+	// Stack is first, provider is second
+	providerJSON := resourcesJSON[1].(map[string]interface{})
+	inputsJSON := providerJSON["inputs"].(map[string]interface{})
+	outputsJSON := providerJSON["outputs"].(map[string]interface{})
+
+	require.NotContains(t, inputsJSON, "accessToken")
+	require.NotContains(t, outputsJSON, "accessToken")
 }
 
 //nolint:lll

@@ -36,15 +36,17 @@ class AwsClusterArgs:
         :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "authorization", authorization)
         pulumi.set(__self__, "aws_region", aws_region)
@@ -141,10 +143,12 @@ class AwsClusterArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -204,7 +208,7 @@ class AwsClusterArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of the Fleet host project where this cluster will be registered.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 
@@ -239,10 +243,12 @@ class _AwsClusterState:
                  workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AwsCluster resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
@@ -258,7 +264,7 @@ class _AwsClusterState:
         :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
@@ -312,10 +318,12 @@ class _AwsClusterState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -496,7 +504,7 @@ class _AwsClusterState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of the Fleet host project where this cluster will be registered.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 
@@ -592,7 +600,6 @@ class AwsCluster(pulumi.CustomResource):
 
         ### Basic_aws_cluster
         A basic example of a containeraws cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -664,10 +671,8 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -736,10 +741,8 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Beta_basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums (beta)
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -819,7 +822,6 @@ class AwsCluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -847,10 +849,12 @@ class AwsCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         :param pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']] binary_authorization: Configuration options for the Binary Authorization feature.
@@ -861,7 +865,7 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         """
         ...
     @overload
@@ -878,7 +882,6 @@ class AwsCluster(pulumi.CustomResource):
 
         ### Basic_aws_cluster
         A basic example of a containeraws cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -950,10 +953,8 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1022,10 +1023,8 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Beta_basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums (beta)
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1105,7 +1104,6 @@ class AwsCluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1238,10 +1236,12 @@ class AwsCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         :param pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']] binary_authorization: Configuration options for the Binary Authorization feature.
@@ -1257,7 +1257,7 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
@@ -1295,10 +1295,12 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1419,7 +1421,7 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The number of the Fleet host project where this cluster will be registered.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 

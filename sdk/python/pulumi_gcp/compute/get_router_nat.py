@@ -257,7 +257,6 @@ def get_router_nat(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -265,7 +264,6 @@ def get_router_nat(name: Optional[str] = None,
     foo = gcp.compute.get_router_nat(name="my-nat",
         router="my-router")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the NAT service. The name must be 1-63 characters long and
@@ -326,7 +324,6 @@ def get_router_nat_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -334,7 +331,6 @@ def get_router_nat_output(name: Optional[pulumi.Input[str]] = None,
     foo = gcp.compute.get_router_nat(name="my-nat",
         router="my-router")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the NAT service. The name must be 1-63 characters long and

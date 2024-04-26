@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAttestorIamPolicyResult> InvokeAsync(GetAttestorIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAttestorIamPolicyResult>("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAttestorIamPolicyResult> Invoke(GetAttestorIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttestorIamPolicyResult>("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyInvokeArgs(), options.WithDefaults());

@@ -392,7 +392,6 @@ class DnsAuthorization(pulumi.CustomResource):
 
         ### Certificate Manager Dns Authorization Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -406,10 +405,8 @@ class DnsAuthorization(pulumi.CustomResource):
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
         pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Dns Authorization Regional
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -421,7 +418,6 @@ class DnsAuthorization(pulumi.CustomResource):
             type="PER_PROJECT_RECORD",
             domain="subdomain.hashicorptest.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -486,7 +482,6 @@ class DnsAuthorization(pulumi.CustomResource):
 
         ### Certificate Manager Dns Authorization Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -500,10 +495,8 @@ class DnsAuthorization(pulumi.CustomResource):
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
         pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
         ```
-        <!--End PulumiCodeChooser -->
         ### Certificate Manager Dns Authorization Regional
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -515,7 +508,6 @@ class DnsAuthorization(pulumi.CustomResource):
             type="PER_PROJECT_RECORD",
             domain="subdomain.hashicorptest.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

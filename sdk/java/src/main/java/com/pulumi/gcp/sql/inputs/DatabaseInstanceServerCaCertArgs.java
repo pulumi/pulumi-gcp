@@ -61,16 +61,14 @@ public final class DatabaseInstanceServerCaCertArgs extends com.pulumi.resources
     }
 
     /**
-     * The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-     * formatted date time string indicating when this whitelist expires.
+     * Expiration time of the CA Cert.
      * 
      */
     @Import(name="expirationTime")
     private @Nullable Output<String> expirationTime;
 
     /**
-     * @return The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-     * formatted date time string indicating when this whitelist expires.
+     * @return Expiration time of the CA Cert.
      * 
      */
     public Optional<Output<String>> expirationTime() {
@@ -184,8 +182,7 @@ public final class DatabaseInstanceServerCaCertArgs extends com.pulumi.resources
         }
 
         /**
-         * @param expirationTime The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-         * formatted date time string indicating when this whitelist expires.
+         * @param expirationTime Expiration time of the CA Cert.
          * 
          * @return builder
          * 
@@ -196,8 +193,7 @@ public final class DatabaseInstanceServerCaCertArgs extends com.pulumi.resources
         }
 
         /**
-         * @param expirationTime The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-         * formatted date time string indicating when this whitelist expires.
+         * @param expirationTime Expiration time of the CA Cert.
          * 
          * @return builder
          * 

@@ -168,7 +168,6 @@ class KeyRing(pulumi.CustomResource):
 
         ### Kms Key Ring Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -177,7 +176,6 @@ class KeyRing(pulumi.CustomResource):
             name="keyring-example",
             location="global")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -237,7 +235,6 @@ class KeyRing(pulumi.CustomResource):
 
         ### Kms Key Ring Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -246,7 +243,6 @@ class KeyRing(pulumi.CustomResource):
             name="keyring-example",
             location="global")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

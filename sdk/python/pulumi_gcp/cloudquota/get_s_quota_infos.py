@@ -83,7 +83,6 @@ def get_s_quota_infos(parent: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -91,7 +90,6 @@ def get_s_quota_infos(parent: Optional[str] = None,
     my_quota_infos = gcp.cloudquota.get_s_quota_infos(parent="projects/my-project",
         service="compute.googleapis.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str parent: Parent value of QuotaInfo resources. Listing across different resource containers (such as 'projects/-') is not allowed. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].
@@ -119,7 +117,6 @@ def get_s_quota_infos_output(parent: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -127,7 +124,6 @@ def get_s_quota_infos_output(parent: Optional[pulumi.Input[str]] = None,
     my_quota_infos = gcp.cloudquota.get_s_quota_infos(parent="projects/my-project",
         service="compute.googleapis.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str parent: Parent value of QuotaInfo resources. Listing across different resource containers (such as 'projects/-') is not allowed. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].

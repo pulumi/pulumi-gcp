@@ -197,7 +197,6 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -207,7 +206,6 @@ class Service(pulumi.CustomResource):
             service="iam.googleapis.com",
             disable_dependent_services=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -265,7 +263,6 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -275,7 +272,6 @@ class Service(pulumi.CustomResource):
             service="iam.googleapis.com",
             disable_dependent_services=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

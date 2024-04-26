@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Cloudfunctions2 Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,10 +54,8 @@ import * as utilities from "../utilities";
  * });
  * export const functionUri = _function.serviceConfig.apply(serviceConfig => serviceConfig?.uri);
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudfunctions2 Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -118,10 +115,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudfunctions2 Scheduler Auth
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -192,10 +187,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudfunctions2 Basic Gcs
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -283,10 +276,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudfunctions2 Basic Auditlogs
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -385,10 +376,70 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
+ * ### Cloudfunctions2 Basic Builder
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const project = "my-project-name";
+ * const account = new gcp.serviceaccount.Account("account", {
+ *     accountId: "gcf-sa",
+ *     displayName: "Test Service Account",
+ * });
+ * const logWriter = new gcp.projects.IAMMember("log_writer", {
+ *     project: account.project,
+ *     role: "roles/logging.logWriter",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * });
+ * const artifactRegistryWriter = new gcp.projects.IAMMember("artifact_registry_writer", {
+ *     project: account.project,
+ *     role: "roles/artifactregistry.writer",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * });
+ * const storageObjectAdmin = new gcp.projects.IAMMember("storage_object_admin", {
+ *     project: account.project,
+ *     role: "roles/storage.objectAdmin",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * });
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * // builder permissions need to stablize before it can pull the source zip
+ * const wait60s = new time.index.Sleep("wait_60s", {createDuration: "60s"});
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "function-v2",
+ *     location: "us-central1",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloHttp",
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *         serviceAccount: account.id,
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *     },
+ * });
+ * export const functionUri = _function.serviceConfig.apply(serviceConfig => serviceConfig?.uri);
+ * ```
  * ### Cloudfunctions2 Secret Env
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -446,10 +497,8 @@ import * as utilities from "../utilities";
  *     enabled: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudfunctions2 Secret Volume
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -506,10 +555,8 @@ import * as utilities from "../utilities";
  *     enabled: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudfunctions2 Private Workerpool
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -556,10 +603,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudfunctions2 Cmek Docs
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -631,7 +676,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

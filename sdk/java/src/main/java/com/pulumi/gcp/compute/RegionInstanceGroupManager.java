@@ -14,6 +14,7 @@ import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerAllInstancesConf
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerAutoHealingPolicies;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerNamedPort;
+import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerParams;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulExternalIp;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulInternalIp;
@@ -399,6 +400,24 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.namedPorts);
     }
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * 
+     * ***
+     * 
+     */
+    @Export(name="params", refs={RegionInstanceGroupManagerParams.class}, tree="[0]")
+    private Output</* @Nullable */ RegionInstanceGroupManagerParams> params;
+
+    /**
+     * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * 
+     * ***
+     * 
+     */
+    public Output<Optional<RegionInstanceGroupManagerParams>> params() {
+        return Codegen.optional(this.params);
+    }
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -463,16 +482,12 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Export(name="statefulExternalIps", refs={List.class,RegionInstanceGroupManagerStatefulExternalIp.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RegionInstanceGroupManagerStatefulExternalIp>> statefulExternalIps;
 
     /**
      * @return External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Output<Optional<List<RegionInstanceGroupManagerStatefulExternalIp>>> statefulExternalIps() {

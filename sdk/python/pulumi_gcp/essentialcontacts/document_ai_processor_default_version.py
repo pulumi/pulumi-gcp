@@ -120,7 +120,6 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
 
         ### Documentai Default Version
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -133,7 +132,6 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
             processor=processor.id,
             version=processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -169,7 +167,6 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
 
         ### Documentai Default Version
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -182,7 +179,6 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
             processor=processor.id,
             version=processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

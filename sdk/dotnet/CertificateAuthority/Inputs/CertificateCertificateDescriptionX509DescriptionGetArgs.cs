@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionAdditionalExtensionGetArgs>? _additionalExtensions;
 
         /// <summary>
-        /// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        /// (Output)
+        /// Describes custom X.509 extensions.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionX509DescriptionAdditionalExtensionGetArgs> AdditionalExtensions
@@ -29,6 +30,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<string>? _aiaOcspServers;
 
         /// <summary>
+        /// (Output)
         /// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
         /// "Authority Information Access" extension in the certificate.
         /// </summary>
@@ -42,6 +44,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionCaOptionGetArgs>? _caOptions;
 
         /// <summary>
+        /// (Output)
         /// Describes values that are relevant in a CA certificate.
         /// Structure is documented below.
         /// </summary>
@@ -55,6 +58,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionKeyUsageGetArgs>? _keyUsages;
 
         /// <summary>
+        /// (Output)
         /// Indicates the intended use for keys that correspond to a certificate.
         /// Structure is documented below.
         /// </summary>
@@ -68,6 +72,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionNameConstraintGetArgs>? _nameConstraints;
 
         /// <summary>
+        /// (Output)
         /// Describes the X.509 name constraints extension.
         /// Structure is documented below.
         /// </summary>
@@ -81,6 +86,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionPolicyIdGetArgs>? _policyIds;
 
         /// <summary>
+        /// (Output)
         /// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         /// Structure is documented below.
         /// </summary>

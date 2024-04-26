@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### App Engine Service Split Traffic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -77,7 +76,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -135,10 +133,6 @@ export class EngineSplitTraffic extends pulumi.CustomResource {
      * If set to true traffic will be migrated to this version.
      */
     public readonly migrateTraffic!: pulumi.Output<boolean | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The name of the service these settings apply to.
@@ -193,10 +187,6 @@ export interface EngineSplitTrafficState {
      * If set to true traffic will be migrated to this version.
      */
     migrateTraffic?: pulumi.Input<boolean>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The name of the service these settings apply to.
@@ -217,10 +207,6 @@ export interface EngineSplitTrafficArgs {
      * If set to true traffic will be migrated to this version.
      */
     migrateTraffic?: pulumi.Input<boolean>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The name of the service these settings apply to.

@@ -26,7 +26,6 @@ import (
 //
 // ### Compute Packet Mirroring Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -142,7 +141,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -184,8 +182,7 @@ type PacketMirroring struct {
 	CollectorIlb PacketMirroringCollectorIlbOutput `pulumi:"collectorIlb"`
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
-	// Structure is documented below.
+	// A filter for mirrored traffic. If unset, all traffic is mirrored.
 	Filter PacketMirroringFilterPtrOutput `pulumi:"filter"`
 	// A means of specifying which resources to mirror.
 	// Structure is documented below.
@@ -197,15 +194,11 @@ type PacketMirroring struct {
 	// network. All mirrored subnetworks should belong to the given network.
 	// Structure is documented below.
 	Network PacketMirroringNetworkOutput `pulumi:"network"`
-	// Since only one rule can be active at a time, priority is
-	// used to break ties in the case of two rules that apply to
-	// the same instances.
-	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
+	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+	// same instances.
+	Priority pulumi.IntOutput    `pulumi:"priority"`
+	Project  pulumi.StringOutput `pulumi:"project"`
+	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -256,8 +249,7 @@ type packetMirroringState struct {
 	CollectorIlb *PacketMirroringCollectorIlb `pulumi:"collectorIlb"`
 	// A human-readable description of the rule.
 	Description *string `pulumi:"description"`
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
-	// Structure is documented below.
+	// A filter for mirrored traffic. If unset, all traffic is mirrored.
 	Filter *PacketMirroringFilter `pulumi:"filter"`
 	// A means of specifying which resources to mirror.
 	// Structure is documented below.
@@ -269,15 +261,11 @@ type packetMirroringState struct {
 	// network. All mirrored subnetworks should belong to the given network.
 	// Structure is documented below.
 	Network *PacketMirroringNetwork `pulumi:"network"`
-	// Since only one rule can be active at a time, priority is
-	// used to break ties in the case of two rules that apply to
-	// the same instances.
-	Priority *int `pulumi:"priority"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
+	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+	// same instances.
+	Priority *int    `pulumi:"priority"`
+	Project  *string `pulumi:"project"`
+	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 }
 
@@ -290,8 +278,7 @@ type PacketMirroringState struct {
 	CollectorIlb PacketMirroringCollectorIlbPtrInput
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrInput
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
-	// Structure is documented below.
+	// A filter for mirrored traffic. If unset, all traffic is mirrored.
 	Filter PacketMirroringFilterPtrInput
 	// A means of specifying which resources to mirror.
 	// Structure is documented below.
@@ -303,15 +290,11 @@ type PacketMirroringState struct {
 	// network. All mirrored subnetworks should belong to the given network.
 	// Structure is documented below.
 	Network PacketMirroringNetworkPtrInput
-	// Since only one rule can be active at a time, priority is
-	// used to break ties in the case of two rules that apply to
-	// the same instances.
+	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+	// same instances.
 	Priority pulumi.IntPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
+	Project  pulumi.StringPtrInput
+	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 }
 
@@ -328,8 +311,7 @@ type packetMirroringArgs struct {
 	CollectorIlb PacketMirroringCollectorIlb `pulumi:"collectorIlb"`
 	// A human-readable description of the rule.
 	Description *string `pulumi:"description"`
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
-	// Structure is documented below.
+	// A filter for mirrored traffic. If unset, all traffic is mirrored.
 	Filter *PacketMirroringFilter `pulumi:"filter"`
 	// A means of specifying which resources to mirror.
 	// Structure is documented below.
@@ -341,15 +323,11 @@ type packetMirroringArgs struct {
 	// network. All mirrored subnetworks should belong to the given network.
 	// Structure is documented below.
 	Network PacketMirroringNetwork `pulumi:"network"`
-	// Since only one rule can be active at a time, priority is
-	// used to break ties in the case of two rules that apply to
-	// the same instances.
-	Priority *int `pulumi:"priority"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
+	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+	// same instances.
+	Priority *int    `pulumi:"priority"`
+	Project  *string `pulumi:"project"`
+	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 }
 
@@ -363,8 +341,7 @@ type PacketMirroringArgs struct {
 	CollectorIlb PacketMirroringCollectorIlbInput
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrInput
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
-	// Structure is documented below.
+	// A filter for mirrored traffic. If unset, all traffic is mirrored.
 	Filter PacketMirroringFilterPtrInput
 	// A means of specifying which resources to mirror.
 	// Structure is documented below.
@@ -376,15 +353,11 @@ type PacketMirroringArgs struct {
 	// network. All mirrored subnetworks should belong to the given network.
 	// Structure is documented below.
 	Network PacketMirroringNetworkInput
-	// Since only one rule can be active at a time, priority is
-	// used to break ties in the case of two rules that apply to
-	// the same instances.
+	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+	// same instances.
 	Priority pulumi.IntPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
+	Project  pulumi.StringPtrInput
+	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 }
 
@@ -489,8 +462,7 @@ func (o PacketMirroringOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PacketMirroring) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A filter for mirrored traffic.  If unset, all traffic is mirrored.
-// Structure is documented below.
+// A filter for mirrored traffic. If unset, all traffic is mirrored.
 func (o PacketMirroringOutput) Filter() PacketMirroringFilterPtrOutput {
 	return o.ApplyT(func(v *PacketMirroring) PacketMirroringFilterPtrOutput { return v.Filter }).(PacketMirroringFilterPtrOutput)
 }
@@ -514,21 +486,17 @@ func (o PacketMirroringOutput) Network() PacketMirroringNetworkOutput {
 	return o.ApplyT(func(v *PacketMirroring) PacketMirroringNetworkOutput { return v.Network }).(PacketMirroringNetworkOutput)
 }
 
-// Since only one rule can be active at a time, priority is
-// used to break ties in the case of two rules that apply to
-// the same instances.
+// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+// same instances.
 func (o PacketMirroringOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *PacketMirroring) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o PacketMirroringOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PacketMirroring) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The Region in which the created address should reside.
-// If it is not provided, the provider region is used.
+// The Region in which the created address should reside. If it is not provided, the provider region is used.
 func (o PacketMirroringOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *PacketMirroring) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

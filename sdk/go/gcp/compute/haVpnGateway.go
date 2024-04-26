@@ -27,7 +27,6 @@ import (
 //
 // ### Ha Vpn Gateway Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,10 +59,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Ha Vpn Gateway Ipv6
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,10 +94,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Compute Ha Vpn Gateway Encrypted Interconnect
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -201,7 +196,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

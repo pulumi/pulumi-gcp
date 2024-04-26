@@ -189,14 +189,14 @@ public class Posture extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Description of the expression
+     * Description of the posture.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the expression
+     * @return Description of the posture.
      * 
      */
     public Output<Optional<String>> description() {
@@ -231,14 +231,14 @@ public class Posture extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Immutable. The name of the custom constraint. This is unique within the organization.
+     * Name of the posture.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Immutable. The name of the custom constraint. This is unique within the organization.
+     * @return Name of the posture.
      * 
      */
     public Output<String> name() {

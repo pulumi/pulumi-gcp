@@ -25,7 +25,6 @@ import (
 //
 // ### Org Policy Custom Constraint Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,10 +58,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Org Policy Custom Constraint Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -116,7 +113,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

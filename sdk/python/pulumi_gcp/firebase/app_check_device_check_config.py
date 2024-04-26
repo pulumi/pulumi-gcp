@@ -275,7 +275,6 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
 
         ### Firebase App Check Device Check Config Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -297,7 +296,6 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
             key_id="Key ID",
             private_key=std.file(input="path/to/private-key.p8").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -359,7 +357,6 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
 
         ### Firebase App Check Device Check Config Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -381,7 +378,6 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
             key_id="Key ID",
             private_key=std.file(input="path/to/private-key.p8").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

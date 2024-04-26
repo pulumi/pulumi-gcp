@@ -317,7 +317,6 @@ class ObjectAccessControl(pulumi.CustomResource):
 
         ### Storage Object Access Control Public Object
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -335,7 +334,6 @@ class ObjectAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -398,7 +396,6 @@ class ObjectAccessControl(pulumi.CustomResource):
 
         ### Storage Object Access Control Public Object
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -416,7 +413,6 @@ class ObjectAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

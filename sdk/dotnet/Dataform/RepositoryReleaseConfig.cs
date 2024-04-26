@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// ### Dataform Repository Release Config
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,7 +87,6 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

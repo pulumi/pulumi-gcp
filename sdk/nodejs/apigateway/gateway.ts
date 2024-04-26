@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Apigateway Gateway Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,7 +40,6 @@ import * as utilities from "../utilities";
  *     gatewayId: "my-gateway",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

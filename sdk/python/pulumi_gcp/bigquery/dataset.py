@@ -921,7 +921,6 @@ class Dataset(pulumi.CustomResource):
 
         ### Bigquery Dataset Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -947,10 +946,8 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -971,10 +968,8 @@ class Dataset(pulumi.CustomResource):
                 kms_key_name=crypto_key.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Authorized Dataset
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1028,10 +1023,8 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Authorized Routine
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1078,10 +1071,8 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset External Reference Aws Docs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1096,7 +1087,6 @@ class Dataset(pulumi.CustomResource):
                 connection="projects/project/locations/aws-us-east-1/connections/connection",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1215,7 +1205,6 @@ class Dataset(pulumi.CustomResource):
 
         ### Bigquery Dataset Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1241,10 +1230,8 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1265,10 +1252,8 @@ class Dataset(pulumi.CustomResource):
                 kms_key_name=crypto_key.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Authorized Dataset
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1322,10 +1307,8 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Authorized Routine
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1372,10 +1355,8 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset External Reference Aws Docs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1390,7 +1371,6 @@ class Dataset(pulumi.CustomResource):
                 connection="projects/project/locations/aws-us-east-1/connections/connection",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

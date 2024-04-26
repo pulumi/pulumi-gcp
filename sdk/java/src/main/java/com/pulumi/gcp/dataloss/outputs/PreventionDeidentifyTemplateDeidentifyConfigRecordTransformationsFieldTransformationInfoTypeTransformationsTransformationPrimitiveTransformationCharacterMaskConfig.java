@@ -22,12 +22,15 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
      */
     private @Nullable List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore> charactersToIgnores;
     /**
-     * @return is *
+     * @return Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+     * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+     * strings, and 0 for digits.
      * 
      */
     private @Nullable String maskingCharacter;
     /**
-     * @return is -4
+     * @return Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+     * If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
      * 
      */
     private @Nullable Integer numberToMask;
@@ -48,14 +51,17 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         return this.charactersToIgnores == null ? List.of() : this.charactersToIgnores;
     }
     /**
-     * @return is *
+     * @return Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+     * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+     * strings, and 0 for digits.
      * 
      */
     public Optional<String> maskingCharacter() {
         return Optional.ofNullable(this.maskingCharacter);
     }
     /**
-     * @return is -4
+     * @return Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+     * If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
      * 
      */
     public Optional<Integer> numberToMask() {

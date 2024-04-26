@@ -31,16 +31,14 @@ public final class InstanceUpgradeHistoryArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Use a container image to start the workbench instance.
-     * Structure is documented below.
+     * Optional. The container image before this instance upgrade.
      * 
      */
     @Import(name="containerImage")
     private @Nullable Output<String> containerImage;
 
     /**
-     * @return Use a container image to start the workbench instance.
-     * Structure is documented below.
+     * @return Optional. The container image before this instance upgrade.
      * 
      */
     public Optional<Output<String>> containerImage() {
@@ -142,18 +140,14 @@ public final class InstanceUpgradeHistoryArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Definition of a custom Compute Engine virtual machine image for starting
-     * a workbench instance with the environment installed directly on the VM.
-     * Structure is documented below.
+     * Optional. The VM image before this instance upgrade.
      * 
      */
     @Import(name="vmImage")
     private @Nullable Output<String> vmImage;
 
     /**
-     * @return Definition of a custom Compute Engine virtual machine image for starting
-     * a workbench instance with the environment installed directly on the VM.
-     * Structure is documented below.
+     * @return Optional. The VM image before this instance upgrade.
      * 
      */
     public Optional<Output<String>> vmImage() {
@@ -214,8 +208,7 @@ public final class InstanceUpgradeHistoryArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param containerImage Use a container image to start the workbench instance.
-         * Structure is documented below.
+         * @param containerImage Optional. The container image before this instance upgrade.
          * 
          * @return builder
          * 
@@ -226,8 +219,7 @@ public final class InstanceUpgradeHistoryArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param containerImage Use a container image to start the workbench instance.
-         * Structure is documented below.
+         * @param containerImage Optional. The container image before this instance upgrade.
          * 
          * @return builder
          * 
@@ -367,9 +359,7 @@ public final class InstanceUpgradeHistoryArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param vmImage Definition of a custom Compute Engine virtual machine image for starting
-         * a workbench instance with the environment installed directly on the VM.
-         * Structure is documented below.
+         * @param vmImage Optional. The VM image before this instance upgrade.
          * 
          * @return builder
          * 
@@ -380,9 +370,7 @@ public final class InstanceUpgradeHistoryArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param vmImage Definition of a custom Compute Engine virtual machine image for starting
-         * a workbench instance with the environment installed directly on the VM.
-         * Structure is documented below.
+         * @param vmImage Optional. The VM image before this instance upgrade.
          * 
          * @return builder
          * 

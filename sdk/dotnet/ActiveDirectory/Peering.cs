@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// ### Active Directory Peering Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -75,7 +74,6 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -7,11 +7,28 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetActiveFolderPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetActiveFolderPlainArgs Empty = new GetActiveFolderPlainArgs();
+
+    /**
+     * The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](&lt;https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the&gt;) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
+     * 
+     */
+    @Import(name="apiMethod")
+    private @Nullable String apiMethod;
+
+    /**
+     * @return The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](&lt;https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the&gt;) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
+     * 
+     */
+    public Optional<String> apiMethod() {
+        return Optional.ofNullable(this.apiMethod);
+    }
 
     /**
      * The folder&#39;s display name.
@@ -46,6 +63,7 @@ public final class GetActiveFolderPlainArgs extends com.pulumi.resources.InvokeA
     private GetActiveFolderPlainArgs() {}
 
     private GetActiveFolderPlainArgs(GetActiveFolderPlainArgs $) {
+        this.apiMethod = $.apiMethod;
         this.displayName = $.displayName;
         this.parent = $.parent;
     }
@@ -66,6 +84,17 @@ public final class GetActiveFolderPlainArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetActiveFolderPlainArgs defaults) {
             $ = new GetActiveFolderPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiMethod The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](&lt;https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the&gt;) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiMethod(@Nullable String apiMethod) {
+            $.apiMethod = apiMethod;
+            return this;
         }
 
         /**

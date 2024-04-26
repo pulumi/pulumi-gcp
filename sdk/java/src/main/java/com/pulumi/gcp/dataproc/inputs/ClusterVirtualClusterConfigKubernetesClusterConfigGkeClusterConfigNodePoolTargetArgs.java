@@ -19,14 +19,14 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     public static final ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs Empty = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs();
 
     /**
-     * The target GKE node pool.
+     * The target GKE node pool. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}&#39;
      * 
      */
     @Import(name="nodePool", required=true)
     private Output<String> nodePool;
 
     /**
-     * @return The target GKE node pool.
+     * @return The target GKE node pool. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}&#39;
      * 
      */
     public Output<String> nodePool() {
@@ -34,20 +34,14 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     }
 
     /**
-     * The configuration for the GKE node pool.
-     * If specified, Dataproc attempts to create a node pool with the specified shape.
-     * If one with the same name already exists, it is verified against all specified fields.
-     * If a field differs, the virtual cluster creation will fail.
+     * Input only. The configuration for the GKE node pool.
      * 
      */
     @Import(name="nodePoolConfig")
     private @Nullable Output<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs> nodePoolConfig;
 
     /**
-     * @return The configuration for the GKE node pool.
-     * If specified, Dataproc attempts to create a node pool with the specified shape.
-     * If one with the same name already exists, it is verified against all specified fields.
-     * If a field differs, the virtual cluster creation will fail.
+     * @return Input only. The configuration for the GKE node pool.
      * 
      */
     public Optional<Output<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs>> nodePoolConfig() {
@@ -55,16 +49,14 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     }
 
     /**
-     * Node group roles.
-     * One of `&#34;DRIVER&#34;`.
+     * The roles associated with the GKE node pool.
      * 
      */
     @Import(name="roles", required=true)
     private Output<List<String>> roles;
 
     /**
-     * @return Node group roles.
-     * One of `&#34;DRIVER&#34;`.
+     * @return The roles associated with the GKE node pool.
      * 
      */
     public Output<List<String>> roles() {
@@ -98,7 +90,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param nodePool The target GKE node pool.
+         * @param nodePool The target GKE node pool. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}&#39;
          * 
          * @return builder
          * 
@@ -109,7 +101,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param nodePool The target GKE node pool.
+         * @param nodePool The target GKE node pool. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}&#39;
          * 
          * @return builder
          * 
@@ -119,10 +111,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param nodePoolConfig The configuration for the GKE node pool.
-         * If specified, Dataproc attempts to create a node pool with the specified shape.
-         * If one with the same name already exists, it is verified against all specified fields.
-         * If a field differs, the virtual cluster creation will fail.
+         * @param nodePoolConfig Input only. The configuration for the GKE node pool.
          * 
          * @return builder
          * 
@@ -133,10 +122,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param nodePoolConfig The configuration for the GKE node pool.
-         * If specified, Dataproc attempts to create a node pool with the specified shape.
-         * If one with the same name already exists, it is verified against all specified fields.
-         * If a field differs, the virtual cluster creation will fail.
+         * @param nodePoolConfig Input only. The configuration for the GKE node pool.
          * 
          * @return builder
          * 
@@ -146,8 +132,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param roles Node group roles.
-         * One of `&#34;DRIVER&#34;`.
+         * @param roles The roles associated with the GKE node pool.
          * 
          * @return builder
          * 
@@ -158,8 +143,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param roles Node group roles.
-         * One of `&#34;DRIVER&#34;`.
+         * @param roles The roles associated with the GKE node pool.
          * 
          * @return builder
          * 
@@ -169,8 +153,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param roles Node group roles.
-         * One of `&#34;DRIVER&#34;`.
+         * @param roles The roles associated with the GKE node pool.
          * 
          * @return builder
          * 

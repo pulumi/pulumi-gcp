@@ -56,18 +56,18 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * User-defined labels for the metastore federation.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for the metastore federation.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -89,19 +89,9 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.location);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -210,9 +200,9 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels User-defined labels for the metastore federation.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+         * resource.
          * 
          * @return builder
          * 
@@ -223,9 +213,9 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels User-defined labels for the metastore federation.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+         * resource.
          * 
          * @return builder
          * 
@@ -255,25 +245,11 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
             return location(Output.of(location));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

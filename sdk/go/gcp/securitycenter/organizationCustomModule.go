@@ -28,7 +28,6 @@ import (
 //
 // ### Scc Organization Custom Module Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,10 +66,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Scc Organization Custom Module Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,7 +122,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -165,7 +161,8 @@ type OrganizationCustomModule struct {
 	EnablementState pulumi.StringOutput `pulumi:"enablementState"`
 	// The editor that last updated the custom module.
 	LastEditor pulumi.StringOutput `pulumi:"lastEditor"`
-	// Name of the property for the custom output.
+	// The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+	// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Numerical ID of the parent organization.
 	Organization pulumi.StringOutput `pulumi:"organization"`
@@ -235,7 +232,8 @@ type organizationCustomModuleState struct {
 	EnablementState *string `pulumi:"enablementState"`
 	// The editor that last updated the custom module.
 	LastEditor *string `pulumi:"lastEditor"`
-	// Name of the property for the custom output.
+	// The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+	// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 	Name *string `pulumi:"name"`
 	// Numerical ID of the parent organization.
 	Organization *string `pulumi:"organization"`
@@ -264,7 +262,8 @@ type OrganizationCustomModuleState struct {
 	EnablementState pulumi.StringPtrInput
 	// The editor that last updated the custom module.
 	LastEditor pulumi.StringPtrInput
-	// Name of the property for the custom output.
+	// The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+	// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 	Name pulumi.StringPtrInput
 	// Numerical ID of the parent organization.
 	Organization pulumi.StringPtrInput
@@ -433,7 +432,8 @@ func (o OrganizationCustomModuleOutput) LastEditor() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationCustomModule) pulumi.StringOutput { return v.LastEditor }).(pulumi.StringOutput)
 }
 
-// Name of the property for the custom output.
+// The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 func (o OrganizationCustomModuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationCustomModule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

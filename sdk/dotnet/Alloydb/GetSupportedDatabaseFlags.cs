@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Alloydb
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Gcp.Alloydb
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSupportedDatabaseFlagsResult> InvokeAsync(GetSupportedDatabaseFlagsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSupportedDatabaseFlagsResult>("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args ?? new GetSupportedDatabaseFlagsArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Gcp.Alloydb
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Gcp.Alloydb
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSupportedDatabaseFlagsResult> Invoke(GetSupportedDatabaseFlagsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSupportedDatabaseFlagsResult>("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args ?? new GetSupportedDatabaseFlagsInvokeArgs(), options.WithDefaults());

@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// ### Edgecontainer Node Pool
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -77,10 +76,8 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Edgecontainer Node Pool With Cmek
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -153,10 +150,8 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Edgecontainer Local Control Plane Node Pool
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -220,7 +215,6 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

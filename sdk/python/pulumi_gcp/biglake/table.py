@@ -314,7 +314,6 @@ class Table(pulumi.CustomResource):
 
         ### Biglake Table
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,7 +367,6 @@ class Table(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -414,7 +412,6 @@ class Table(pulumi.CustomResource):
 
         ### Biglake Table
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -468,7 +465,6 @@ class Table(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

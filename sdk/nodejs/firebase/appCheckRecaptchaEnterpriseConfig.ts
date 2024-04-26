@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase App Check Recaptcha Enterprise Config Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  *     tokenTtl: "7200s",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

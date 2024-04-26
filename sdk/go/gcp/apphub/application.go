@@ -18,7 +18,6 @@ import (
 //
 // ### Application Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,10 +45,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Application Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,7 +102,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -136,21 +132,18 @@ type Application struct {
 	// Required. The Application identifier.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Consumer provided attributes.
-	// Structure is documented below.
 	Attributes ApplicationAttributesPtrOutput `pulumi:"attributes"`
 	// Output only. Create time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. User-defined description of an Application.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Optional. Contact's name.
+	// Optional. User-defined name for the Application.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. The resource name of an Application. Format:
 	// "projects/{host-project-id}/locations/{location}/applications/{application-id}"
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Scope of an application.
 	// Structure is documented below.
@@ -210,21 +203,18 @@ type applicationState struct {
 	// Required. The Application identifier.
 	ApplicationId *string `pulumi:"applicationId"`
 	// Consumer provided attributes.
-	// Structure is documented below.
 	Attributes *ApplicationAttributes `pulumi:"attributes"`
 	// Output only. Create time.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. User-defined description of an Application.
 	Description *string `pulumi:"description"`
-	// Optional. Contact's name.
+	// Optional. User-defined name for the Application.
 	DisplayName *string `pulumi:"displayName"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location *string `pulumi:"location"`
 	// Identifier. The resource name of an Application. Format:
 	// "projects/{host-project-id}/locations/{location}/applications/{application-id}"
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Scope of an application.
 	// Structure is documented below.
@@ -246,21 +236,18 @@ type ApplicationState struct {
 	// Required. The Application identifier.
 	ApplicationId pulumi.StringPtrInput
 	// Consumer provided attributes.
-	// Structure is documented below.
 	Attributes ApplicationAttributesPtrInput
 	// Output only. Create time.
 	CreateTime pulumi.StringPtrInput
 	// Optional. User-defined description of an Application.
 	Description pulumi.StringPtrInput
-	// Optional. Contact's name.
+	// Optional. User-defined name for the Application.
 	DisplayName pulumi.StringPtrInput
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringPtrInput
 	// Identifier. The resource name of an Application. Format:
 	// "projects/{host-project-id}/locations/{location}/applications/{application-id}"
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Scope of an application.
 	// Structure is documented below.
@@ -286,17 +273,14 @@ type applicationArgs struct {
 	// Required. The Application identifier.
 	ApplicationId string `pulumi:"applicationId"`
 	// Consumer provided attributes.
-	// Structure is documented below.
 	Attributes *ApplicationAttributes `pulumi:"attributes"`
 	// Optional. User-defined description of an Application.
 	Description *string `pulumi:"description"`
-	// Optional. Contact's name.
+	// Optional. User-defined name for the Application.
 	DisplayName *string `pulumi:"displayName"`
 	// Part of `parent`. See documentation of `projectsId`.
-	Location string `pulumi:"location"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 	// Scope of an application.
 	// Structure is documented below.
 	Scope ApplicationScope `pulumi:"scope"`
@@ -307,17 +291,14 @@ type ApplicationArgs struct {
 	// Required. The Application identifier.
 	ApplicationId pulumi.StringInput
 	// Consumer provided attributes.
-	// Structure is documented below.
 	Attributes ApplicationAttributesPtrInput
 	// Optional. User-defined description of an Application.
 	Description pulumi.StringPtrInput
-	// Optional. Contact's name.
+	// Optional. User-defined name for the Application.
 	DisplayName pulumi.StringPtrInput
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// Scope of an application.
 	// Structure is documented below.
 	Scope ApplicationScopeInput
@@ -416,7 +397,6 @@ func (o ApplicationOutput) ApplicationId() pulumi.StringOutput {
 }
 
 // Consumer provided attributes.
-// Structure is documented below.
 func (o ApplicationOutput) Attributes() ApplicationAttributesPtrOutput {
 	return o.ApplyT(func(v *Application) ApplicationAttributesPtrOutput { return v.Attributes }).(ApplicationAttributesPtrOutput)
 }
@@ -431,7 +411,7 @@ func (o ApplicationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Contact's name.
+// Optional. User-defined name for the Application.
 func (o ApplicationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -447,8 +427,6 @@ func (o ApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o ApplicationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -932,9 +932,11 @@ class TriggerBuildArtifactsObjectsTimingArgs:
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] end_time: End of time span.
+               
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
                nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] start_time: Start of time span.
+               
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
                nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -948,6 +950,7 @@ class TriggerBuildArtifactsObjectsTimingArgs:
     def end_time(self) -> Optional[pulumi.Input[str]]:
         """
         End of time span.
+
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
         nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -962,6 +965,7 @@ class TriggerBuildArtifactsObjectsTimingArgs:
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
         Start of time span.
+
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
         nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """

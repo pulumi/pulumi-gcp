@@ -160,7 +160,6 @@ class EnvGroup(pulumi.CustomResource):
 
         ### Apigee Environment Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -186,7 +185,6 @@ class EnvGroup(pulumi.CustomResource):
             hostnames=["abc.foo.com"],
             org_id=apigee_org.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -235,7 +233,6 @@ class EnvGroup(pulumi.CustomResource):
 
         ### Apigee Environment Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -261,7 +258,6 @@ class EnvGroup(pulumi.CustomResource):
             hostnames=["abc.foo.com"],
             org_id=apigee_org.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

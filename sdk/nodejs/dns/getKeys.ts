@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -38,7 +37,6 @@ import * as utilities from "../utilities";
  * });
  * export const fooDnsDsRecord = fooDnsKeys.apply(fooDnsKeys => fooDnsKeys.keySigningKeys?.[0]?.dsRecord);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeys(args: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
 
@@ -68,7 +66,7 @@ export interface GetKeysArgs {
  */
 export interface GetKeysResult {
     /**
-     * Unique identifier for the resource; defined by the server.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
@@ -96,7 +94,6 @@ export interface GetKeysResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -114,7 +111,6 @@ export interface GetKeysResult {
  * });
  * export const fooDnsDsRecord = fooDnsKeys.apply(fooDnsKeys => fooDnsKeys.keySigningKeys?.[0]?.dsRecord);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeysOutput(args: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
     return pulumi.output(args).apply((a: any) => getKeys(a, opts))

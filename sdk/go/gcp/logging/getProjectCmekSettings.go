@@ -22,7 +22,6 @@ import (
 //
 // ### Logging Project Cmek Settings Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetProjectCmekSettings(ctx *pulumi.Context, args *GetProjectCmekSettingsArgs, opts ...pulumi.InvokeOption) (*GetProjectCmekSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectCmekSettingsResult

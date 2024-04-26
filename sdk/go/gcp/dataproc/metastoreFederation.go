@@ -16,7 +16,6 @@ import (
 //
 // ### Dataproc Metastore Federation Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,10 +60,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataproc Metastore Federation Bigquery
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -119,7 +116,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -158,16 +154,14 @@ type MetastoreFederation struct {
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
 	FederationId pulumi.StringOutput `pulumi:"federationId"`
-	// User-defined labels for the metastore federation.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the metastore federation should reside.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The relative resource name of the metastore federation.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -237,16 +231,14 @@ type metastoreFederationState struct {
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
 	FederationId *string `pulumi:"federationId"`
-	// User-defined labels for the metastore federation.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the metastore federation should reside.
 	Location *string `pulumi:"location"`
-	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The relative resource name of the metastore federation.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -273,16 +265,14 @@ type MetastoreFederationState struct {
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
 	FederationId pulumi.StringPtrInput
-	// User-defined labels for the metastore federation.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// The location where the metastore federation should reside.
 	Location pulumi.StringPtrInput
-	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The relative resource name of the metastore federation.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -309,15 +299,13 @@ type metastoreFederationArgs struct {
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
 	FederationId string `pulumi:"federationId"`
-	// User-defined labels for the metastore federation.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the metastore federation should reside.
 	Location *string `pulumi:"location"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
 	Version string `pulumi:"version"`
 }
@@ -331,15 +319,13 @@ type MetastoreFederationArgs struct {
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
 	FederationId pulumi.StringInput
-	// User-defined labels for the metastore federation.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// The location where the metastore federation should reside.
 	Location pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
 	Version pulumi.StringInput
 }
@@ -456,9 +442,9 @@ func (o MetastoreFederationOutput) FederationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.FederationId }).(pulumi.StringOutput)
 }
 
-// User-defined labels for the metastore federation.
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+// resource.
 func (o MetastoreFederationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -468,13 +454,11 @@ func (o MetastoreFederationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
+// The relative resource name of the metastore federation.
 func (o MetastoreFederationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o MetastoreFederationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

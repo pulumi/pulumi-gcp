@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
     /**
-     * @return The fully qualified name of the cloud function resource.
+     * @return A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      * 
      */
     private String name;
 
     private UptimeCheckConfigSyntheticMonitorCloudFunctionV2() {}
     /**
-     * @return The fully qualified name of the cloud function resource.
+     * @return A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      * 
      */
     public String name() {

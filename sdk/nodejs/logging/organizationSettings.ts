@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Logging Organization Settings All
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  *     member: settings.then(settings => `serviceAccount:${settings.kmsServiceAccountId}`),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupExternalAccessRule(ctx *pulumi.Context, args *LookupExternalAccessRuleArgs, opts ...pulumi.InvokeOption) (*LookupExternalAccessRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupExternalAccessRuleResult

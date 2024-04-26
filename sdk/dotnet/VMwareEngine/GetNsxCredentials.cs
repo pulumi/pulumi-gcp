@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNsxCredentialsResult> InvokeAsync(GetNsxCredentialsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNsxCredentialsResult>("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args ?? new GetNsxCredentialsArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNsxCredentialsResult> Invoke(GetNsxCredentialsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNsxCredentialsResult>("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args ?? new GetNsxCredentialsInvokeArgs(), options.WithDefaults());

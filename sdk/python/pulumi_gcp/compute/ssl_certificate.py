@@ -376,7 +376,6 @@ class SSLCertificate(pulumi.CustomResource):
 
         ### Ssl Certificate Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -388,10 +387,8 @@ class SSLCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Ssl Certificate Random Provider
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -411,10 +408,8 @@ class SSLCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Ssl Certificate Target Https Proxies
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -461,7 +456,6 @@ class SSLCertificate(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -534,7 +528,6 @@ class SSLCertificate(pulumi.CustomResource):
 
         ### Ssl Certificate Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -546,10 +539,8 @@ class SSLCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Ssl Certificate Random Provider
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -569,10 +560,8 @@ class SSLCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Ssl Certificate Target Https Proxies
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -619,7 +608,6 @@ class SSLCertificate(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

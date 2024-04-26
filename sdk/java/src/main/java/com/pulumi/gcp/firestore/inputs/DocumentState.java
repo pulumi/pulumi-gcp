@@ -95,7 +95,7 @@ public final class DocumentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A server defined name for this index. Format:
+     * A server defined name for this document. Format:
      * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      * 
      */
@@ -103,7 +103,7 @@ public final class DocumentState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return A server defined name for this index. Format:
+     * @return A server defined name for this document. Format:
      * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      * 
      */
@@ -300,7 +300,7 @@ public final class DocumentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A server defined name for this index. Format:
+         * @param name A server defined name for this document. Format:
          * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
          * 
          * @return builder
@@ -312,7 +312,7 @@ public final class DocumentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A server defined name for this index. Format:
+         * @param name A server defined name for this document. Format:
          * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
          * 
          * @return builder

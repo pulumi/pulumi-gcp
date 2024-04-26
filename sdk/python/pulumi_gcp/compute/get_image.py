@@ -291,7 +291,6 @@ def get_image(family: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -304,7 +303,6 @@ def get_image(family: Optional[str] = None,
         ),
     ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str family: The family name of the image.
@@ -368,7 +366,6 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -381,7 +378,6 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
         ),
     ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str family: The family name of the image.

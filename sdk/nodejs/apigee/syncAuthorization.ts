@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Apigee Sync Authorization Basic Test
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -51,7 +50,6 @@ import * as utilities from "../utilities";
  *     identities: [pulumi.interpolate`serviceAccount:${serviceAccount.email}`],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

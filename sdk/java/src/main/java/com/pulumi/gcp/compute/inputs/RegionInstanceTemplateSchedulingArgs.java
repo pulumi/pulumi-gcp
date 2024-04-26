@@ -77,14 +77,14 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
-     * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
      * 
      */
     @Import(name="maintenanceInterval")
     private @Nullable Output<String> maintenanceInterval;
 
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
      * 
      */
     public Optional<Output<String>> maintenanceInterval() {
@@ -321,7 +321,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
          * 
          * @return builder
          * 

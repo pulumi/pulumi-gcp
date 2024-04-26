@@ -16,7 +16,6 @@ import (
 //
 // ### Firebasehosting Customdomain Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,10 +41,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebasehosting Customdomain Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,10 +78,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebasehosting Customdomain Cloud Run
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -160,7 +155,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

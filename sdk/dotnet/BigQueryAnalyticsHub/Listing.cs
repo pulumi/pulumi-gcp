@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// ### Bigquery Analyticshub Listing Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -62,10 +61,8 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Analyticshub Listing Restricted
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -110,7 +107,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -160,13 +156,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Details of the data provider who owns the source data.
-        /// Structure is documented below.
         /// </summary>
         [Output("dataProvider")]
         public Output<Outputs.ListingDataProvider?> DataProvider { get; private set; } = null!;
 
         /// <summary>
-        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+        /// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -202,7 +198,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the data provider.
+        /// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -213,16 +209,11 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Output("primaryContact")]
         public Output<string?> PrimaryContact { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Details of the publisher who owns the listing and who can share the source data.
-        /// Structure is documented below.
         /// </summary>
         [Output("publisher")]
         public Output<Outputs.ListingPublisher?> Publisher { get; private set; } = null!;
@@ -235,7 +226,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        /// Structure is documented below.
         /// </summary>
         [Output("restrictedExportConfig")]
         public Output<Outputs.ListingRestrictedExportConfig?> RestrictedExportConfig { get; private set; } = null!;
@@ -313,13 +303,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Details of the data provider who owns the source data.
-        /// Structure is documented below.
         /// </summary>
         [Input("dataProvider")]
         public Input<Inputs.ListingDataProviderArgs>? DataProvider { get; set; }
 
         /// <summary>
-        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+        /// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -360,16 +350,11 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Input("primaryContact")]
         public Input<string>? PrimaryContact { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Details of the publisher who owns the listing and who can share the source data.
-        /// Structure is documented below.
         /// </summary>
         [Input("publisher")]
         public Input<Inputs.ListingPublisherArgs>? Publisher { get; set; }
@@ -382,7 +367,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        /// Structure is documented below.
         /// </summary>
         [Input("restrictedExportConfig")]
         public Input<Inputs.ListingRestrictedExportConfigArgs>? RestrictedExportConfig { get; set; }
@@ -422,13 +406,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Details of the data provider who owns the source data.
-        /// Structure is documented below.
         /// </summary>
         [Input("dataProvider")]
         public Input<Inputs.ListingDataProviderGetArgs>? DataProvider { get; set; }
 
         /// <summary>
-        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+        /// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -464,7 +448,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Name of the data provider.
+        /// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -475,16 +459,11 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Input("primaryContact")]
         public Input<string>? PrimaryContact { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Details of the publisher who owns the listing and who can share the source data.
-        /// Structure is documented below.
         /// </summary>
         [Input("publisher")]
         public Input<Inputs.ListingPublisherGetArgs>? Publisher { get; set; }
@@ -497,7 +476,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        /// Structure is documented below.
         /// </summary>
         [Input("restrictedExportConfig")]
         public Input<Inputs.ListingRestrictedExportConfigGetArgs>? RestrictedExportConfig { get; set; }

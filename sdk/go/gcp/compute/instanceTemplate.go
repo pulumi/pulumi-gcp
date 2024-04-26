@@ -21,7 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,11 +126,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Automatic Envoy Deployment
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -234,7 +231,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Deploying the Latest Image
 //

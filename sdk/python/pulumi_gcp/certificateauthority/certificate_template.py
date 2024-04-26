@@ -27,15 +27,22 @@ class CertificateTemplateArgs:
         """
         The set of arguments for constructing a CertificateTemplate resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
+        :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+               omitted, then this template will not add restrictions on a certificate's identity.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+               resource.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
-        :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
-        :param pulumi.Input['CertificateTemplatePredefinedValuesArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+               If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+               dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+               request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+               These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        :param pulumi.Input['CertificateTemplatePredefinedValuesArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+               certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+               here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+               certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "location", location)
@@ -70,7 +77,7 @@ class CertificateTemplateArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        Optional. A human-readable description of scenarios this template is intended for.
         """
         return pulumi.get(self, "description")
 
@@ -82,7 +89,8 @@ class CertificateTemplateArgs:
     @pulumi.getter(name="identityConstraints")
     def identity_constraints(self) -> Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']]:
         """
-        Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+        omitted, then this template will not add restrictions on a certificate's identity.
         """
         return pulumi.get(self, "identity_constraints")
 
@@ -94,10 +102,9 @@ class CertificateTemplateArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels with user-defined metadata.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -121,7 +128,11 @@ class CertificateTemplateArgs:
     @pulumi.getter(name="passthroughExtensions")
     def passthrough_extensions(self) -> Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']]:
         """
-        Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+        If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+        dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+        request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+        These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         """
         return pulumi.get(self, "passthrough_extensions")
 
@@ -133,7 +144,10 @@ class CertificateTemplateArgs:
     @pulumi.getter(name="predefinedValues")
     def predefined_values(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']]:
         """
-        Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+        certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+        here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+        certificate issuance request will fail.
         """
         return pulumi.get(self, "predefined_values")
 
@@ -172,17 +186,24 @@ class _CertificateTemplateState:
         """
         Input properties used for looking up and filtering CertificateTemplate resources.
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateTemplate was created.
-        :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+               omitted, then this template will not add restrictions on a certificate's identity.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
-        :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
-        :param pulumi.Input['CertificateTemplatePredefinedValuesArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+               If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+               dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+               request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+               These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        :param pulumi.Input['CertificateTemplatePredefinedValuesArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+               certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+               here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+               certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateTemplate was updated.
@@ -228,7 +249,7 @@ class _CertificateTemplateState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        Optional. A human-readable description of scenarios this template is intended for.
         """
         return pulumi.get(self, "description")
 
@@ -252,7 +273,8 @@ class _CertificateTemplateState:
     @pulumi.getter(name="identityConstraints")
     def identity_constraints(self) -> Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']]:
         """
-        Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+        omitted, then this template will not add restrictions on a certificate's identity.
         """
         return pulumi.get(self, "identity_constraints")
 
@@ -264,10 +286,9 @@ class _CertificateTemplateState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels with user-defined metadata.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -303,7 +324,11 @@ class _CertificateTemplateState:
     @pulumi.getter(name="passthroughExtensions")
     def passthrough_extensions(self) -> Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']]:
         """
-        Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+        If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+        dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+        request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+        These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         """
         return pulumi.get(self, "passthrough_extensions")
 
@@ -315,7 +340,10 @@ class _CertificateTemplateState:
     @pulumi.getter(name="predefinedValues")
     def predefined_values(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']]:
         """
-        Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+        certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+        here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+        certificate issuance request will fail.
         """
         return pulumi.get(self, "predefined_values")
 
@@ -384,7 +412,6 @@ class CertificateTemplate(pulumi.CustomResource):
 
         ### Basic_certificate_template
         An example of a basic privateca certificate template
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -467,7 +494,6 @@ class CertificateTemplate(pulumi.CustomResource):
                 "label-two": "value-two",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -495,16 +521,23 @@ class CertificateTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
+        :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+               omitted, then this template will not add restrictions on a certificate's identity.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+               If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+               dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+               request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+               These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        :param pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+               certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+               here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+               certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
         """
         ...
@@ -523,7 +556,6 @@ class CertificateTemplate(pulumi.CustomResource):
 
         ### Basic_certificate_template
         An example of a basic privateca certificate template
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -606,7 +638,6 @@ class CertificateTemplate(pulumi.CustomResource):
                 "label-two": "value-two",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -710,17 +741,24 @@ class CertificateTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateTemplate was created.
-        :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+               omitted, then this template will not add restrictions on a certificate's identity.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+               If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+               dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+               request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+               These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        :param pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+               certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+               here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+               certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateTemplate was updated.
@@ -755,7 +793,7 @@ class CertificateTemplate(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        Optional. A human-readable description of scenarios this template is intended for.
         """
         return pulumi.get(self, "description")
 
@@ -771,7 +809,8 @@ class CertificateTemplate(pulumi.CustomResource):
     @pulumi.getter(name="identityConstraints")
     def identity_constraints(self) -> pulumi.Output[Optional['outputs.CertificateTemplateIdentityConstraints']]:
         """
-        Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+        omitted, then this template will not add restrictions on a certificate's identity.
         """
         return pulumi.get(self, "identity_constraints")
 
@@ -779,10 +818,9 @@ class CertificateTemplate(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. Labels with user-defined metadata.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -806,7 +844,11 @@ class CertificateTemplate(pulumi.CustomResource):
     @pulumi.getter(name="passthroughExtensions")
     def passthrough_extensions(self) -> pulumi.Output[Optional['outputs.CertificateTemplatePassthroughExtensions']]:
         """
-        Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+        If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+        dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+        request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+        These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         """
         return pulumi.get(self, "passthrough_extensions")
 
@@ -814,7 +856,10 @@ class CertificateTemplate(pulumi.CustomResource):
     @pulumi.getter(name="predefinedValues")
     def predefined_values(self) -> pulumi.Output[Optional['outputs.CertificateTemplatePredefinedValues']]:
         """
-        Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+        certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+        here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+        certificate issuance request will fail.
         """
         return pulumi.get(self, "predefined_values")
 

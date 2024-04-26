@@ -5,11 +5,18 @@ package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigPythonRepository {
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * 
+     */
+    private List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository> customRepositories;
     /**
      * @return Address of the remote repository. Default value: &#34;PYPI&#34; Possible values: [&#34;PYPI&#34;]
      * 
@@ -17,6 +24,13 @@ public final class GetRepositoryRemoteRepositoryConfigPythonRepository {
     private String publicRepository;
 
     private GetRepositoryRemoteRepositoryConfigPythonRepository() {}
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * 
+     */
+    public List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository> customRepositories() {
+        return this.customRepositories;
+    }
     /**
      * @return Address of the remote repository. Default value: &#34;PYPI&#34; Possible values: [&#34;PYPI&#34;]
      * 
@@ -34,13 +48,26 @@ public final class GetRepositoryRemoteRepositoryConfigPythonRepository {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository> customRepositories;
         private String publicRepository;
         public Builder() {}
         public Builder(GetRepositoryRemoteRepositoryConfigPythonRepository defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customRepositories = defaults.customRepositories;
     	      this.publicRepository = defaults.publicRepository;
         }
 
+        @CustomType.Setter
+        public Builder customRepositories(List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository> customRepositories) {
+            if (customRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfigPythonRepository", "customRepositories");
+            }
+            this.customRepositories = customRepositories;
+            return this;
+        }
+        public Builder customRepositories(GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository... customRepositories) {
+            return customRepositories(List.of(customRepositories));
+        }
         @CustomType.Setter
         public Builder publicRepository(String publicRepository) {
             if (publicRepository == null) {
@@ -51,6 +78,7 @@ public final class GetRepositoryRemoteRepositoryConfigPythonRepository {
         }
         public GetRepositoryRemoteRepositoryConfigPythonRepository build() {
             final var _resultValue = new GetRepositoryRemoteRepositoryConfigPythonRepository();
+            _resultValue.customRepositories = customRepositories;
             _resultValue.publicRepository = publicRepository;
             return _resultValue;
         }

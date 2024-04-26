@@ -116,7 +116,6 @@ def get_database(instance: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -124,7 +123,6 @@ def get_database(instance: Optional[str] = None,
     qa = gcp.sql.get_database(name="test-sql-database",
         instance=main["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.
@@ -159,7 +157,6 @@ def get_database_output(instance: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -167,7 +164,6 @@ def get_database_output(instance: Optional[pulumi.Input[str]] = None,
     qa = gcp.sql.get_database(name="test-sql-database",
         instance=main["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.

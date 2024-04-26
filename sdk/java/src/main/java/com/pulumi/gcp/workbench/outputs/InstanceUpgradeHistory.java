@@ -17,8 +17,7 @@ public final class InstanceUpgradeHistory {
      */
     private @Nullable String action;
     /**
-     * @return Use a container image to start the workbench instance.
-     * Structure is documented below.
+     * @return Optional. The container image before this instance upgrade.
      * 
      */
     private @Nullable String containerImage;
@@ -55,9 +54,7 @@ public final class InstanceUpgradeHistory {
      */
     private @Nullable String version;
     /**
-     * @return Definition of a custom Compute Engine virtual machine image for starting
-     * a workbench instance with the environment installed directly on the VM.
-     * Structure is documented below.
+     * @return Optional. The VM image before this instance upgrade.
      * 
      */
     private @Nullable String vmImage;
@@ -71,8 +68,7 @@ public final class InstanceUpgradeHistory {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return Use a container image to start the workbench instance.
-     * Structure is documented below.
+     * @return Optional. The container image before this instance upgrade.
      * 
      */
     public Optional<String> containerImage() {
@@ -123,9 +119,7 @@ public final class InstanceUpgradeHistory {
         return Optional.ofNullable(this.version);
     }
     /**
-     * @return Definition of a custom Compute Engine virtual machine image for starting
-     * a workbench instance with the environment installed directly on the VM.
-     * Structure is documented below.
+     * @return Optional. The VM image before this instance upgrade.
      * 
      */
     public Optional<String> vmImage() {

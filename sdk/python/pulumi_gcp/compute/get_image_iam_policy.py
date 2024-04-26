@@ -95,7 +95,6 @@ def get_image_iam_policy(image: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -103,7 +102,6 @@ def get_image_iam_policy(image: Optional[str] = None,
     policy = gcp.compute.get_image_iam_policy(project=example["project"],
         image=example["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str image: Used to find the parent resource to bind the IAM policy to
@@ -133,7 +131,6 @@ def get_image_iam_policy_output(image: Optional[pulumi.Input[str]] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -141,7 +138,6 @@ def get_image_iam_policy_output(image: Optional[pulumi.Input[str]] = None,
     policy = gcp.compute.get_image_iam_policy(project=example["project"],
         image=example["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str image: Used to find the parent resource to bind the IAM policy to

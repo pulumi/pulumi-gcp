@@ -24,7 +24,6 @@ import (
 //
 // ### Document Ai Warehouse Document Schema Text
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,10 +74,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Integer
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -128,10 +125,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Float
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -181,10 +176,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Property
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -255,10 +248,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Property Enum
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -336,10 +327,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Enum
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -396,10 +385,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Map
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -449,10 +436,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Datetime
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -502,10 +487,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Timestamp
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -555,7 +538,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -583,7 +565,7 @@ type DocumentAiWarehouseDocumentSchema struct {
 	DocumentIsFolder pulumi.BoolPtrOutput `pulumi:"documentIsFolder"`
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the metadata property.
+	// The resource name of the document schema.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique identifier of the project.
 	ProjectNumber pulumi.StringOutput `pulumi:"projectNumber"`
@@ -640,7 +622,7 @@ type documentAiWarehouseDocumentSchemaState struct {
 	DocumentIsFolder *bool `pulumi:"documentIsFolder"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the metadata property.
+	// The resource name of the document schema.
 	Name *string `pulumi:"name"`
 	// The unique identifier of the project.
 	ProjectNumber *string `pulumi:"projectNumber"`
@@ -656,7 +638,7 @@ type DocumentAiWarehouseDocumentSchemaState struct {
 	DocumentIsFolder pulumi.BoolPtrInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the metadata property.
+	// The resource name of the document schema.
 	Name pulumi.StringPtrInput
 	// The unique identifier of the project.
 	ProjectNumber pulumi.StringPtrInput
@@ -800,7 +782,7 @@ func (o DocumentAiWarehouseDocumentSchemaOutput) Location() pulumi.StringOutput 
 	return o.ApplyT(func(v *DocumentAiWarehouseDocumentSchema) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the metadata property.
+// The resource name of the document schema.
 func (o DocumentAiWarehouseDocumentSchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DocumentAiWarehouseDocumentSchema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

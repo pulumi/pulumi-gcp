@@ -335,7 +335,6 @@ class DicomStore(pulumi.CustomResource):
 
         ### Healthcare Dicom Store Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -354,10 +353,8 @@ class DicomStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Dicom Store Bq Stream
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -391,7 +388,6 @@ class DicomStore(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -457,7 +453,6 @@ class DicomStore(pulumi.CustomResource):
 
         ### Healthcare Dicom Store Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -476,10 +471,8 @@ class DicomStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Dicom Store Bq Stream
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -513,7 +506,6 @@ class DicomStore(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

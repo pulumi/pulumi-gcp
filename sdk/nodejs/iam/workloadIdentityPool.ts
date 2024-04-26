@@ -18,17 +18,14 @@ import * as utilities from "../utilities";
  *
  * ### Iam Workload Identity Pool Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.iam.WorkloadIdentityPool("example", {workloadIdentityPoolId: "example-pool"});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Iam Workload Identity Pool Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,7 +37,6 @@ import * as utilities from "../utilities";
  *     disabled: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

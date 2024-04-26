@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase Apple App Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,10 +19,8 @@ import * as utilities from "../utilities";
  *     bundleId: "apple.app.12345",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebase Apple App Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,7 +44,6 @@ import * as utilities from "../utilities";
  *     apiKeyId: apple.uid,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

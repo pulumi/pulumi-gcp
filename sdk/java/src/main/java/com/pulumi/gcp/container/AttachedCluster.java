@@ -277,30 +277,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:container/attachedCluster:AttachedCluster")
 public class AttachedCluster extends com.pulumi.resources.CustomResource {
     /**
-     * Optional. Annotations on the cluster. This field has the same
-     * restrictions as Kubernetes annotations. The total size of all keys and
-     * values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-     * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Optional. Annotations on the cluster. This field has the same
-     * restrictions as Kubernetes annotations. The total size of all keys and
-     * values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-     * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -308,7 +302,6 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration related to the cluster RBAC settings.
-     * Structure is documented below.
      * 
      */
     @Export(name="authorization", refs={AttachedClusterAuthorization.class}, tree="[0]")
@@ -316,7 +309,6 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration related to the cluster RBAC settings.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<AttachedClusterAuthorization>> authorization() {
@@ -324,7 +316,6 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Binary Authorization configuration.
-     * Structure is documented below.
      * 
      */
     @Export(name="binaryAuthorization", refs={AttachedClusterBinaryAuthorization.class}, tree="[0]")
@@ -332,7 +323,6 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Binary Authorization configuration.
-     * Structure is documented below.
      * 
      */
     public Output<AttachedClusterBinaryAuthorization> binaryAuthorization() {
@@ -385,16 +375,14 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionPolicy);
     }
     /**
-     * A human readable description of this attached cluster. Cannot be longer
-     * than 255 UTF-8 encoded bytes.
+     * A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A human readable description of this attached cluster. Cannot be longer
-     * than 255 UTF-8 encoded bytes.
+     * @return A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      * 
      */
     public Output<Optional<String>> description() {
@@ -494,7 +482,6 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Logging configuration.
-     * Structure is documented below.
      * 
      */
     @Export(name="loggingConfig", refs={AttachedClusterLoggingConfig.class}, tree="[0]")
@@ -502,7 +489,6 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Logging configuration.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<AttachedClusterLoggingConfig>> loggingConfig() {
@@ -510,7 +496,6 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Monitoring configuration.
-     * Structure is documented below.
      * 
      */
     @Export(name="monitoringConfig", refs={AttachedClusterMonitoringConfig.class}, tree="[0]")
@@ -518,7 +503,6 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Monitoring configuration.
-     * Structure is documented below.
      * 
      */
     public Output<AttachedClusterMonitoringConfig> monitoringConfig() {
@@ -584,25 +568,14 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     public Output<String> platformVersion() {
         return this.platformVersion;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
     /**
      * Support for proxy configuration.
-     * Structure is documented below.
      * 
      */
     @Export(name="proxyConfig", refs={AttachedClusterProxyConfig.class}, tree="[0]")
@@ -610,7 +583,6 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Support for proxy configuration.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<AttachedClusterProxyConfig>> proxyConfig() {

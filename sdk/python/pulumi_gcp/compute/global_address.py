@@ -571,17 +571,14 @@ class GlobalAddress(pulumi.CustomResource):
 
         ### Global Address Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         default = gcp.compute.GlobalAddress("default", name="global-appserver-ip")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Address Private Services Connect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -596,7 +593,6 @@ class GlobalAddress(pulumi.CustomResource):
             network=network.id,
             address="100.100.100.105")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -683,17 +679,14 @@ class GlobalAddress(pulumi.CustomResource):
 
         ### Global Address Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         default = gcp.compute.GlobalAddress("default", name="global-appserver-ip")
         ```
-        <!--End PulumiCodeChooser -->
         ### Global Address Private Services Connect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -708,7 +701,6 @@ class GlobalAddress(pulumi.CustomResource):
             network=network.id,
             address="100.100.100.105")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

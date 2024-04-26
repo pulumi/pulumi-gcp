@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class TransferJobScheduleStartTimeOfDay {
     /**
-     * @return Hours of day in 24 hour format. Should be from 0 to 23
+     * @return Hours of day in 24 hour format. Should be from 0 to 23.
      * 
      */
     private Integer hours;
@@ -33,7 +33,7 @@ public final class TransferJobScheduleStartTimeOfDay {
 
     private TransferJobScheduleStartTimeOfDay() {}
     /**
-     * @return Hours of day in 24 hour format. Should be from 0 to 23
+     * @return Hours of day in 24 hour format. Should be from 0 to 23.
      * 
      */
     public Integer hours() {

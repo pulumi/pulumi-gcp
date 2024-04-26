@@ -95,7 +95,6 @@ def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
 
     First, create a KMS KeyRing and CryptoKey using the resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -108,11 +107,9 @@ def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
         name="my-crypto-key",
         key_ring=my_key_ring.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -136,7 +133,6 @@ def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
             "password": my_password.ciphertext,
         })
     ```
-    <!--End PulumiCodeChooser -->
 
     The resulting instance can then access the encrypted password from its metadata
     and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
@@ -182,7 +178,6 @@ def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[str]] = N
 
     First, create a KMS KeyRing and CryptoKey using the resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -195,11 +190,9 @@ def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[str]] = N
         name="my-crypto-key",
         key_ring=my_key_ring.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -223,7 +216,6 @@ def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[str]] = N
             "password": my_password.ciphertext,
         })
     ```
-    <!--End PulumiCodeChooser -->
 
     The resulting instance can then access the encrypted password from its metadata
     and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):

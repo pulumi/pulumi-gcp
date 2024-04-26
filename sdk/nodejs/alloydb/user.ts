@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Alloydb User Builtin
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,10 +56,8 @@ import * as utilities from "../utilities";
  *     databaseRoles: ["alloydbsuperuser"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Alloydb User Iam
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -99,7 +96,6 @@ import * as utilities from "../utilities";
  *     databaseRoles: ["alloydbiamuser"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Discoveryengine Searchengine Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,7 +41,6 @@ import * as utilities from "../utilities";
  *     searchEngineConfig: {},
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -102,7 +100,6 @@ export class SearchEngine extends pulumi.CustomResource {
     public readonly collectionId!: pulumi.Output<string>;
     /**
      * Common config spec that specifies the metadata of the engine.
-     * Structure is documented below.
      */
     public readonly commonConfig!: pulumi.Output<outputs.discoveryengine.SearchEngineCommonConfig | undefined>;
     /**
@@ -122,9 +119,9 @@ export class SearchEngine extends pulumi.CustomResource {
      */
     public readonly engineId!: pulumi.Output<string>;
     /**
-     * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value is `GENERIC`.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
+     * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+     * Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
      */
     public readonly industryVertical!: pulumi.Output<string | undefined>;
     /**
@@ -138,10 +135,6 @@ export class SearchEngine extends pulumi.CustomResource {
      * characters.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Configurations for a Search Engine.
@@ -226,7 +219,6 @@ export interface SearchEngineState {
     collectionId?: pulumi.Input<string>;
     /**
      * Common config spec that specifies the metadata of the engine.
-     * Structure is documented below.
      */
     commonConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineCommonConfig>;
     /**
@@ -246,9 +238,9 @@ export interface SearchEngineState {
      */
     engineId?: pulumi.Input<string>;
     /**
-     * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value is `GENERIC`.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
+     * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+     * Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
      */
     industryVertical?: pulumi.Input<string>;
     /**
@@ -262,10 +254,6 @@ export interface SearchEngineState {
      * characters.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Configurations for a Search Engine.
@@ -288,7 +276,6 @@ export interface SearchEngineArgs {
     collectionId: pulumi.Input<string>;
     /**
      * Common config spec that specifies the metadata of the engine.
-     * Structure is documented below.
      */
     commonConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineCommonConfig>;
     /**
@@ -304,19 +291,15 @@ export interface SearchEngineArgs {
      */
     engineId: pulumi.Input<string>;
     /**
-     * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value is `GENERIC`.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
+     * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+     * Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
      */
     industryVertical?: pulumi.Input<string>;
     /**
      * Location.
      */
     location: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Configurations for a Search Engine.

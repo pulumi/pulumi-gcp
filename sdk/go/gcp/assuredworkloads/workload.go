@@ -18,7 +18,6 @@ import (
 //
 // ### Basic_workload
 // A basic test of a assuredworkloads api
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,10 +67,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Sovereign_controls_workload
 // A Sovereign Controls test of the assuredworkloads api
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -119,7 +116,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -788,7 +788,6 @@ class Instance(pulumi.CustomResource):
 
         ### Looker Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -802,10 +801,8 @@ class Instance(pulumi.CustomResource):
                 client_secret="my-client-secret",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Looker Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -850,10 +847,8 @@ class Instance(pulumi.CustomResource):
                 client_secret="my-client-secret",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Looker Instance Enterprise Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -920,10 +915,8 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Looker Instance Custom Domain
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -940,7 +933,6 @@ class Instance(pulumi.CustomResource):
                 domain="my-custom-domain.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1042,7 +1034,6 @@ class Instance(pulumi.CustomResource):
 
         ### Looker Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1056,10 +1047,8 @@ class Instance(pulumi.CustomResource):
                 client_secret="my-client-secret",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Looker Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1104,10 +1093,8 @@ class Instance(pulumi.CustomResource):
                 client_secret="my-client-secret",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Looker Instance Enterprise Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1174,10 +1161,8 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Looker Instance Custom Domain
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1194,7 +1179,6 @@ class Instance(pulumi.CustomResource):
                 domain="my-custom-domain.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

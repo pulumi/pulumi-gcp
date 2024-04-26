@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> {
     args = args || {};
@@ -100,7 +98,6 @@ export interface GetInstanceGroupResult {
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -110,7 +107,6 @@ export interface GetInstanceGroupResult {
  *     zone: "us-central1-a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceGroupOutput(args?: GetInstanceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupResult> {
     return pulumi.output(args).apply((a: any) => getInstanceGroup(a, opts))

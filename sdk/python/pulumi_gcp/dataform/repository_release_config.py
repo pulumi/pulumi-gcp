@@ -341,7 +341,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         ### Dataform Repository Release Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -389,7 +388,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -448,7 +446,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         ### Dataform Repository Release Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -496,7 +493,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

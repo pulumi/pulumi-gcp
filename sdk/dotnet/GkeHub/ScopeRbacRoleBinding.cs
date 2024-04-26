@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// ### Gkehub Scope Rbac Role Binding Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,7 +52,6 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -101,18 +99,15 @@ namespace Pulumi.Gcp.GkeHub
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Principal that is be authorized in the cluster (at least of one the oneof
-        /// is required). Updating one will unset the other automatically.
-        /// group is the group, as seen by the kubernetes cluster.
+        /// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        /// other automatically. group is the group, as seen by the kubernetes cluster.
         /// </summary>
         [Output("group")]
         public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for this ScopeRBACRoleBinding.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+        /// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -123,10 +118,6 @@ namespace Pulumi.Gcp.GkeHub
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -176,10 +167,9 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Principal that is be authorized in the cluster (at least of one the oneof
-        /// is required). Updating one will unset the other automatically.
-        /// user is the name of the user as seen by the kubernetes cluster, example
-        /// "alice" or "alice@domain.tld"
+        /// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        /// other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+        /// "alice@domain.tld"
         /// </summary>
         [Output("user")]
         public Output<string?> User { get; private set; } = null!;
@@ -236,9 +226,8 @@ namespace Pulumi.Gcp.GkeHub
     public sealed class ScopeRbacRoleBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Principal that is be authorized in the cluster (at least of one the oneof
-        /// is required). Updating one will unset the other automatically.
-        /// group is the group, as seen by the kubernetes cluster.
+        /// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        /// other automatically. group is the group, as seen by the kubernetes cluster.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -247,10 +236,8 @@ namespace Pulumi.Gcp.GkeHub
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels for this ScopeRBACRoleBinding.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+        /// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -258,10 +245,6 @@ namespace Pulumi.Gcp.GkeHub
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -285,10 +268,9 @@ namespace Pulumi.Gcp.GkeHub
         public Input<string> ScopeRbacRoleBindingId { get; set; } = null!;
 
         /// <summary>
-        /// Principal that is be authorized in the cluster (at least of one the oneof
-        /// is required). Updating one will unset the other automatically.
-        /// user is the name of the user as seen by the kubernetes cluster, example
-        /// "alice" or "alice@domain.tld"
+        /// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        /// other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+        /// "alice@domain.tld"
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
@@ -330,9 +312,8 @@ namespace Pulumi.Gcp.GkeHub
         }
 
         /// <summary>
-        /// Principal that is be authorized in the cluster (at least of one the oneof
-        /// is required). Updating one will unset the other automatically.
-        /// group is the group, as seen by the kubernetes cluster.
+        /// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        /// other automatically. group is the group, as seen by the kubernetes cluster.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -341,10 +322,8 @@ namespace Pulumi.Gcp.GkeHub
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels for this ScopeRBACRoleBinding.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+        /// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -358,10 +337,6 @@ namespace Pulumi.Gcp.GkeHub
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -427,10 +402,9 @@ namespace Pulumi.Gcp.GkeHub
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Principal that is be authorized in the cluster (at least of one the oneof
-        /// is required). Updating one will unset the other automatically.
-        /// user is the name of the user as seen by the kubernetes cluster, example
-        /// "alice" or "alice@domain.tld"
+        /// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        /// other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+        /// "alice@domain.tld"
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }

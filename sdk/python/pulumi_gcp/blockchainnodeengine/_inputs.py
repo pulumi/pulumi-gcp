@@ -280,12 +280,9 @@ class BlockchainNodesEthereumDetailsAdditionalEndpointArgs:
                  beacon_prometheus_metrics_api_endpoint: Optional[pulumi.Input[str]] = None,
                  execution_client_prometheus_metrics_api_endpoint: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] beacon_api_endpoint: (Output)
-               The assigned URL for the node's Beacon API endpoint.
-        :param pulumi.Input[str] beacon_prometheus_metrics_api_endpoint: (Output)
-               The assigned URL for the node's Beacon Prometheus metrics endpoint.
-        :param pulumi.Input[str] execution_client_prometheus_metrics_api_endpoint: (Output)
-               The assigned URL for the node's execution client's Prometheus metrics endpoint.
+        :param pulumi.Input[str] beacon_api_endpoint: The assigned URL for the node's Beacon API endpoint.
+        :param pulumi.Input[str] beacon_prometheus_metrics_api_endpoint: The assigned URL for the node's Beacon Prometheus metrics endpoint.
+        :param pulumi.Input[str] execution_client_prometheus_metrics_api_endpoint: The assigned URL for the node's execution client's Prometheus metrics endpoint.
         """
         if beacon_api_endpoint is not None:
             pulumi.set(__self__, "beacon_api_endpoint", beacon_api_endpoint)
@@ -298,7 +295,6 @@ class BlockchainNodesEthereumDetailsAdditionalEndpointArgs:
     @pulumi.getter(name="beaconApiEndpoint")
     def beacon_api_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         The assigned URL for the node's Beacon API endpoint.
         """
         return pulumi.get(self, "beacon_api_endpoint")
@@ -311,7 +307,6 @@ class BlockchainNodesEthereumDetailsAdditionalEndpointArgs:
     @pulumi.getter(name="beaconPrometheusMetricsApiEndpoint")
     def beacon_prometheus_metrics_api_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         The assigned URL for the node's Beacon Prometheus metrics endpoint.
         """
         return pulumi.get(self, "beacon_prometheus_metrics_api_endpoint")
@@ -324,7 +319,6 @@ class BlockchainNodesEthereumDetailsAdditionalEndpointArgs:
     @pulumi.getter(name="executionClientPrometheusMetricsApiEndpoint")
     def execution_client_prometheus_metrics_api_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         The assigned URL for the node's execution client's Prometheus metrics endpoint.
         """
         return pulumi.get(self, "execution_client_prometheus_metrics_api_endpoint")

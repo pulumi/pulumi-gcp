@@ -18,8 +18,7 @@ namespace Pulumi.Gcp.Workbench.Outputs
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// Use a container image to start the workbench instance.
-        /// Structure is documented below.
+        /// Optional. The container image before this instance upgrade.
         /// </summary>
         public readonly string? ContainerImage;
         /// <summary>
@@ -49,9 +48,7 @@ namespace Pulumi.Gcp.Workbench.Outputs
         /// </summary>
         public readonly string? Version;
         /// <summary>
-        /// Definition of a custom Compute Engine virtual machine image for starting
-        /// a workbench instance with the environment installed directly on the VM.
-        /// Structure is documented below.
+        /// Optional. The VM image before this instance upgrade.
         /// </summary>
         public readonly string? VmImage;
 

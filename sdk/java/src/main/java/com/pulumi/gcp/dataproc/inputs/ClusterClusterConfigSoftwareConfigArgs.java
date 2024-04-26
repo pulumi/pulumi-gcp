@@ -82,16 +82,16 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
     }
 
     /**
-     * The properties to set on daemon config files. Property keys are specified in prefix:property format,
-     * for example spark:spark.kubernetes.container.image.
+     * A list of the properties used to set the daemon config files.
+     * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,Object>> properties;
 
     /**
-     * @return The properties to set on daemon config files. Property keys are specified in prefix:property format,
-     * for example spark:spark.kubernetes.container.image.
+     * @return A list of the properties used to set the daemon config files.
+     * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
      * 
      */
     public Optional<Output<Map<String,Object>>> properties() {
@@ -219,8 +219,8 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param properties The properties to set on daemon config files. Property keys are specified in prefix:property format,
-         * for example spark:spark.kubernetes.container.image.
+         * @param properties A list of the properties used to set the daemon config files.
+         * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
          * 
          * @return builder
          * 
@@ -231,8 +231,8 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param properties The properties to set on daemon config files. Property keys are specified in prefix:property format,
-         * for example spark:spark.kubernetes.container.image.
+         * @param properties A list of the properties used to set the daemon config files.
+         * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
          * 
          * @return builder
          * 

@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly int? ObservedGeneration;
         /// <summary>
+        /// (Output)
         /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
         /// and Configurations
         /// Structure is documented below.

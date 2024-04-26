@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// ### Privateca Certificate Generated Key
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -198,10 +197,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Privateca Certificate With Template
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -396,10 +393,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Privateca Certificate Csr
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -482,10 +477,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Privateca Certificate No Authority
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -608,7 +601,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

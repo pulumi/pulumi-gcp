@@ -179,7 +179,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         ## google\\_bigtable\\_instance\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -193,11 +192,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             instance="your-bigtable-instance",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -207,11 +204,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             role="roles/bigtable.user",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -221,11 +216,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             role="roles/bigtable.user",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -239,11 +232,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             instance="your-bigtable-instance",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -253,11 +244,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             role="roles/bigtable.user",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -267,7 +256,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
             role="roles/bigtable.user",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -325,7 +313,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         ## google\\_bigtable\\_instance\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -339,11 +326,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             instance="your-bigtable-instance",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -353,11 +338,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             role="roles/bigtable.user",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -367,11 +350,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             role="roles/bigtable.user",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -385,11 +366,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             instance="your-bigtable-instance",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -399,11 +378,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
             role="roles/bigtable.user",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_bigtable\\_instance\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -413,7 +390,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
             role="roles/bigtable.user",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

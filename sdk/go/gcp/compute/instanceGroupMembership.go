@@ -35,7 +35,6 @@ import (
 //
 // ### Instance Group Membership
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,7 +88,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

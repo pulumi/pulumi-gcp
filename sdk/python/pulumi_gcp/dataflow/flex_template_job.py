@@ -969,7 +969,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -981,7 +980,6 @@ class FlexTemplateJob(pulumi.CustomResource):
                 "inputSubscription": "messages",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Note on "destroy" / "apply"
 
@@ -1012,7 +1010,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         random_id
         resource, for example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1037,7 +1034,6 @@ class FlexTemplateJob(pulumi.CustomResource):
                 "inputSubscription": big_data_job_subscription_id,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1094,7 +1090,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1106,7 +1101,6 @@ class FlexTemplateJob(pulumi.CustomResource):
                 "inputSubscription": "messages",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Note on "destroy" / "apply"
 
@@ -1137,7 +1131,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         random_id
         resource, for example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1162,7 +1155,6 @@ class FlexTemplateJob(pulumi.CustomResource):
                 "inputSubscription": big_data_job_subscription_id,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

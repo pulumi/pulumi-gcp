@@ -15,7 +15,6 @@ import (
 //
 // ## example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetManagedZoneIamPolicy(ctx *pulumi.Context, args *GetManagedZoneIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetManagedZoneIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetManagedZoneIamPolicyResult

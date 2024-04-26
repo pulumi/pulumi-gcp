@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// ### Data Fusion Instance Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,10 +39,8 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Data Fusion Instance Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -105,10 +102,8 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Data Fusion Instance Cmek
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -151,10 +146,8 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Data Fusion Instance Enterprise
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -173,10 +166,8 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Data Fusion Instance Event
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -204,10 +195,8 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Data Fusion Instance Zone
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -226,7 +215,6 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -420,8 +408,13 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> ServiceEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The type of an accelator for a CDF instance.
-        /// Possible values are: `ENABLED`, `DISABLED`.
+        /// The current state of this Data Fusion instance.
+        /// - CREATING: Instance is being created
+        /// - RUNNING: Instance is running and ready for requests
+        /// - FAILED: Instance creation failed
+        /// - DELETING: Instance is being deleted
+        /// - UPGRADING: Instance is being upgraded
+        /// - RESTARTING: Instance is being restarted
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -889,8 +882,13 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? ServiceEndpoint { get; set; }
 
         /// <summary>
-        /// The type of an accelator for a CDF instance.
-        /// Possible values are: `ENABLED`, `DISABLED`.
+        /// The current state of this Data Fusion instance.
+        /// - CREATING: Instance is being created
+        /// - RUNNING: Instance is running and ready for requests
+        /// - FAILED: Instance creation failed
+        /// - DELETING: Instance is being deleted
+        /// - UPGRADING: Instance is being upgraded
+        /// - RESTARTING: Instance is being restarted
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

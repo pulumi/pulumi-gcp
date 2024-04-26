@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Vmware Engine Network Policy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,10 +34,8 @@ import * as utilities from "../utilities";
  *     vmwareEngineNetwork: network_policy_nw.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vmware Engine Network Policy Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -63,7 +60,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

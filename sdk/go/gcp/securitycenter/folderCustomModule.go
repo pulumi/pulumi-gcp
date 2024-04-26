@@ -28,7 +28,6 @@ import (
 //
 // ### Scc Folder Custom Module Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,10 +74,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Scc Folder Custom Module Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -141,7 +138,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -183,7 +179,8 @@ type FolderCustomModule struct {
 	Folder pulumi.StringOutput `pulumi:"folder"`
 	// The editor that last updated the custom module.
 	LastEditor pulumi.StringOutput `pulumi:"lastEditor"`
-	// Name of the property for the custom output.
+	// The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+	// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The time at which the custom module was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -253,7 +250,8 @@ type folderCustomModuleState struct {
 	Folder *string `pulumi:"folder"`
 	// The editor that last updated the custom module.
 	LastEditor *string `pulumi:"lastEditor"`
-	// Name of the property for the custom output.
+	// The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+	// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 	Name *string `pulumi:"name"`
 	// The time at which the custom module was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -282,7 +280,8 @@ type FolderCustomModuleState struct {
 	Folder pulumi.StringPtrInput
 	// The editor that last updated the custom module.
 	LastEditor pulumi.StringPtrInput
-	// Name of the property for the custom output.
+	// The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+	// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 	Name pulumi.StringPtrInput
 	// The time at which the custom module was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -454,7 +453,8 @@ func (o FolderCustomModuleOutput) LastEditor() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderCustomModule) pulumi.StringOutput { return v.LastEditor }).(pulumi.StringOutput)
 }
 
-// Name of the property for the custom output.
+// The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 func (o FolderCustomModuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderCustomModule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -325,7 +325,6 @@ class CxTestCase(pulumi.CustomResource):
 
         ### Dialogflowcx Test Case Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -454,7 +453,6 @@ class CxTestCase(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -503,7 +501,6 @@ class CxTestCase(pulumi.CustomResource):
 
         ### Dialogflowcx Test Case Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -632,7 +629,6 @@ class CxTestCase(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -82,18 +82,15 @@ def get_tensorflow_versions(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     available = gcp.tpu.get_tensorflow_versions()
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Configure Basic TPU Node With Available Version
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -106,7 +103,6 @@ def get_tensorflow_versions(project: Optional[str] = None,
         tensorflow_version=available.versions[0],
         cidr_block="10.2.0.0/29")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to list versions for. If it
@@ -136,18 +132,15 @@ def get_tensorflow_versions_output(project: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     available = gcp.tpu.get_tensorflow_versions()
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Configure Basic TPU Node With Available Version
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -160,7 +153,6 @@ def get_tensorflow_versions_output(project: Optional[pulumi.Input[Optional[str]]
         tensorflow_version=available.versions[0],
         cidr_block="10.2.0.0/29")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to list versions for. If it

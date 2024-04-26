@@ -38,18 +38,12 @@ class InstanceArgs:
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the instance.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] zone: (Optional, Deprecated)
-               The name of the Filestore zone of the instance.
-               
-               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
         """
         pulumi.set(__self__, "file_shares", file_shares)
         pulumi.set(__self__, "networks", networks)
@@ -141,10 +135,9 @@ class InstanceArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Resource labels to represent user-provided metadata.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -179,10 +172,6 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -193,10 +182,7 @@ class InstanceArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The name of the Filestore zone of the instance.
-
-        > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
         pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
@@ -236,25 +222,19 @@ class _InstanceState:
                single file share is supported.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
-        :param pulumi.Input[str] zone: (Optional, Deprecated)
-               The name of the Filestore zone of the instance.
-               
-               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -367,10 +347,9 @@ class _InstanceState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Resource labels to represent user-provided metadata.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -419,10 +398,6 @@ class _InstanceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -459,10 +434,7 @@ class _InstanceState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The name of the Filestore zone of the instance.
-
-        > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
         pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
@@ -505,7 +477,6 @@ class Instance(pulumi.CustomResource):
 
         ### Filestore Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -523,10 +494,8 @@ class Instance(pulumi.CustomResource):
                 modes=["MODE_IPV4"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Filestore Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -559,10 +528,8 @@ class Instance(pulumi.CustomResource):
                 connect_mode="DIRECT_PEERING",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Filestore Instance Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -587,7 +554,6 @@ class Instance(pulumi.CustomResource):
             )],
             kms_key_name=filestore_key.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -620,23 +586,17 @@ class Instance(pulumi.CustomResource):
                single file share is supported.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
-        :param pulumi.Input[str] zone: (Optional, Deprecated)
-               The name of the Filestore zone of the instance.
-               
-               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
         """
         ...
     @overload
@@ -659,7 +619,6 @@ class Instance(pulumi.CustomResource):
 
         ### Filestore Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,10 +636,8 @@ class Instance(pulumi.CustomResource):
                 modes=["MODE_IPV4"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Filestore Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -713,10 +670,8 @@ class Instance(pulumi.CustomResource):
                 connect_mode="DIRECT_PEERING",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Filestore Instance Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -741,7 +696,6 @@ class Instance(pulumi.CustomResource):
             )],
             kms_key_name=filestore_key.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -863,25 +817,19 @@ class Instance(pulumi.CustomResource):
                single file share is supported.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+               resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
-        :param pulumi.Input[str] zone: (Optional, Deprecated)
-               The name of the Filestore zone of the instance.
-               
-               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -958,10 +906,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Resource labels to represent user-provided metadata.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -994,10 +941,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -1022,10 +965,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        (Optional, Deprecated)
         The name of the Filestore zone of the instance.
-
-        > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
         pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")

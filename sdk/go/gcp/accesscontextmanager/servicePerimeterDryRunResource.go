@@ -38,7 +38,6 @@ import (
 //
 // ### Access Context Manager Service Perimeter Dry Run Resource Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,7 +89,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

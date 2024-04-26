@@ -24,7 +24,6 @@ import (
 //
 // ### Dataplex Datascan Basic Profile
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,10 +58,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataplex Datascan Full Profile
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -133,10 +130,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataplex Datascan Basic Quality
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -182,10 +177,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataplex Datascan Full Quality
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -299,7 +292,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -339,15 +331,12 @@ type Datascan struct {
 	// Structure is documented below.
 	Data DatascanDataOutput `pulumi:"data"`
 	// DataProfileScan related setting.
-	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrOutput `pulumi:"dataProfileSpec"`
 	// DataQualityScan related setting.
-	// Structure is documented below.
 	DataQualitySpec DatascanDataQualitySpecPtrOutput `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringOutput `pulumi:"dataScanId"`
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -359,21 +348,14 @@ type Datascan struct {
 	// Status of the data scan execution.
 	// Structure is documented below.
 	ExecutionStatuses DatascanExecutionStatusArrayOutput `pulumi:"executionStatuses"`
-	// User-defined labels for the scan. A list of key->value pairs.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the data scan should reside.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// A mutable name for the rule.
-	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-	// The maximum length is 63 characters.
-	// Must start with a letter.
-	// Must end with a number or a letter.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -441,15 +423,12 @@ type datascanState struct {
 	// Structure is documented below.
 	Data *DatascanData `pulumi:"data"`
 	// DataProfileScan related setting.
-	// Structure is documented below.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
 	// DataQualityScan related setting.
-	// Structure is documented below.
 	DataQualitySpec *DatascanDataQualitySpec `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId *string `pulumi:"dataScanId"`
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -461,21 +440,14 @@ type datascanState struct {
 	// Status of the data scan execution.
 	// Structure is documented below.
 	ExecutionStatuses []DatascanExecutionStatus `pulumi:"executionStatuses"`
-	// User-defined labels for the scan. A list of key->value pairs.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the data scan should reside.
 	Location *string `pulumi:"location"`
-	// A mutable name for the rule.
-	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-	// The maximum length is 63 characters.
-	// Must start with a letter.
-	// Must end with a number or a letter.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -497,15 +469,12 @@ type DatascanState struct {
 	// Structure is documented below.
 	Data DatascanDataPtrInput
 	// DataProfileScan related setting.
-	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
 	// DataQualityScan related setting.
-	// Structure is documented below.
 	DataQualitySpec DatascanDataQualitySpecPtrInput
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringPtrInput
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
 	DisplayName pulumi.StringPtrInput
@@ -517,21 +486,14 @@ type DatascanState struct {
 	// Status of the data scan execution.
 	// Structure is documented below.
 	ExecutionStatuses DatascanExecutionStatusArrayInput
-	// User-defined labels for the scan. A list of key->value pairs.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the data scan should reside.
 	Location pulumi.StringPtrInput
-	// A mutable name for the rule.
-	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-	// The maximum length is 63 characters.
-	// Must start with a letter.
-	// Must end with a number or a letter.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -555,31 +517,25 @@ type datascanArgs struct {
 	// Structure is documented below.
 	Data DatascanData `pulumi:"data"`
 	// DataProfileScan related setting.
-	// Structure is documented below.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
 	// DataQualityScan related setting.
-	// Structure is documented below.
 	DataQualitySpec *DatascanDataQualitySpec `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId string `pulumi:"dataScanId"`
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpec `pulumi:"executionSpec"`
-	// User-defined labels for the scan. A list of key->value pairs.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the data scan should reside.
-	Location string `pulumi:"location"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Datascan resource.
@@ -588,31 +544,25 @@ type DatascanArgs struct {
 	// Structure is documented below.
 	Data DatascanDataInput
 	// DataProfileScan related setting.
-	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
 	// DataQualityScan related setting.
-	// Structure is documented below.
 	DataQualitySpec DatascanDataQualitySpecPtrInput
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringInput
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpecInput
-	// User-defined labels for the scan. A list of key->value pairs.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the data scan should reside.
 	Location pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 }
 
 func (DatascanArgs) ElementType() reflect.Type {
@@ -714,13 +664,11 @@ func (o DatascanOutput) Data() DatascanDataOutput {
 }
 
 // DataProfileScan related setting.
-// Structure is documented below.
 func (o DatascanOutput) DataProfileSpec() DatascanDataProfileSpecPtrOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataProfileSpecPtrOutput { return v.DataProfileSpec }).(DatascanDataProfileSpecPtrOutput)
 }
 
 // DataQualityScan related setting.
-// Structure is documented below.
 func (o DatascanOutput) DataQualitySpec() DatascanDataQualitySpecPtrOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataQualitySpecPtrOutput { return v.DataQualitySpec }).(DatascanDataQualitySpecPtrOutput)
 }
@@ -730,8 +678,7 @@ func (o DatascanOutput) DataScanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.DataScanId }).(pulumi.StringOutput)
 }
 
-// Description of the rule.
-// The maximum length is 1,024 characters.
+// Description of the scan.
 func (o DatascanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -758,10 +705,9 @@ func (o DatascanOutput) ExecutionStatuses() DatascanExecutionStatusArrayOutput {
 	return o.ApplyT(func(v *Datascan) DatascanExecutionStatusArrayOutput { return v.ExecutionStatuses }).(DatascanExecutionStatusArrayOutput)
 }
 
-// User-defined labels for the scan. A list of key->value pairs.
-//
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
+// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+// present on the resource.
 func (o DatascanOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -771,17 +717,11 @@ func (o DatascanOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// A mutable name for the rule.
-// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-// The maximum length is 63 characters.
-// Must start with a letter.
-// Must end with a number or a letter.
+// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
 func (o DatascanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o DatascanOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

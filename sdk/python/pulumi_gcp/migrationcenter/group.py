@@ -342,7 +342,6 @@ class Group(pulumi.CustomResource):
 
         ### Migration Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -356,7 +355,6 @@ class Group(pulumi.CustomResource):
                 "key": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -410,7 +408,6 @@ class Group(pulumi.CustomResource):
 
         ### Migration Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -424,7 +421,6 @@ class Group(pulumi.CustomResource):
                 "key": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

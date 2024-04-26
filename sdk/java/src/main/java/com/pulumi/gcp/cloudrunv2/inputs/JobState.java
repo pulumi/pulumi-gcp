@@ -25,24 +25,26 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     public static final JobState Empty = new JobState();
 
     /**
-     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-     * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
-     * All system annotations in v1 now have a corresponding field in v2 Job.
-     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+     * should be preserved when modifying objects. Cloud Run API v2 does not support annotations with &#39;run.googleapis.com&#39;,
+     * &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected on new
+     * resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
+     * annotations&#39; namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+     * present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-     * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
-     * All system annotations in v1 now have a corresponding field in v2 Job.
-     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+     * should be preserved when modifying objects. Cloud Run API v2 does not support annotations with &#39;run.googleapis.com&#39;,
+     * &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected on new
+     * resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
+     * annotations&#39; namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+     * present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -51,7 +53,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Settings for the Binary Authorization feature.
-     * Structure is documented below.
      * 
      */
     @Import(name="binaryAuthorization")
@@ -59,7 +60,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Settings for the Binary Authorization feature.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<JobBinaryAuthorizationArgs>> binaryAuthorization() {
@@ -255,24 +255,28 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component,
-     * environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-     * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-     * All system labels in v1 now have a corresponding field in v2 Job.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+     * Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+     * state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+     * https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+     * &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they
+     * will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component,
-     * environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-     * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-     * All system labels in v1 now have a corresponding field in v2 Job.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+     * Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+     * state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+     * https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+     * &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they
+     * will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -312,20 +316,24 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-     * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+     * The launch stage as defined by [Google Cloud Platform Launch
+     * Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+     * specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+     * stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+     * input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+     * [&#34;UNIMPLEMENTED&#34;, &#34;PRELAUNCH&#34;, &#34;EARLY_ACCESS&#34;, &#34;ALPHA&#34;, &#34;BETA&#34;, &#34;GA&#34;, &#34;DEPRECATED&#34;]
      * 
      */
     @Import(name="launchStage")
     private @Nullable Output<String> launchStage;
 
     /**
-     * @return The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-     * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+     * @return The launch stage as defined by [Google Cloud Platform Launch
+     * Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+     * specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+     * stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+     * input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+     * [&#34;UNIMPLEMENTED&#34;, &#34;PRELAUNCH&#34;, &#34;EARLY_ACCESS&#34;, &#34;ALPHA&#34;, &#34;BETA&#34;, &#34;GA&#34;, &#34;DEPRECATED&#34;]
      * 
      */
     public Optional<Output<String>> launchStage() {
@@ -377,19 +385,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.observedGeneration);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -548,12 +546,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-         * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
-         * All system annotations in v1 now have a corresponding field in v2 Job.
-         * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+         * should be preserved when modifying objects. Cloud Run API v2 does not support annotations with &#39;run.googleapis.com&#39;,
+         * &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected on new
+         * resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
+         * annotations&#39; namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+         * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+         * present on the resource.
          * 
          * @return builder
          * 
@@ -564,12 +563,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-         * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
-         * All system annotations in v1 now have a corresponding field in v2 Job.
-         * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+         * should be preserved when modifying objects. Cloud Run API v2 does not support annotations with &#39;run.googleapis.com&#39;,
+         * &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected on new
+         * resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
+         * annotations&#39; namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+         * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+         * present on the resource.
          * 
          * @return builder
          * 
@@ -580,7 +580,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param binaryAuthorization Settings for the Binary Authorization feature.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -592,7 +591,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param binaryAuthorization Settings for the Binary Authorization feature.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -873,12 +871,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component,
-         * environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-         * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-         * All system labels in v1 now have a corresponding field in v2 Job.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+         * Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+         * state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+         * https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+         * &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they
+         * will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
+         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+         * &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -889,12 +889,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component,
-         * environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-         * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-         * All system labels in v1 now have a corresponding field in v2 Job.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+         * Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+         * state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+         * https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+         * &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they
+         * will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
+         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+         * &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -959,10 +961,12 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchStage The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-         * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-         * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-         * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+         * @param launchStage The launch stage as defined by [Google Cloud Platform Launch
+         * Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+         * specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+         * stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+         * input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+         * [&#34;UNIMPLEMENTED&#34;, &#34;PRELAUNCH&#34;, &#34;EARLY_ACCESS&#34;, &#34;ALPHA&#34;, &#34;BETA&#34;, &#34;GA&#34;, &#34;DEPRECATED&#34;]
          * 
          * @return builder
          * 
@@ -973,10 +977,12 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchStage The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-         * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-         * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-         * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+         * @param launchStage The launch stage as defined by [Google Cloud Platform Launch
+         * Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+         * specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+         * stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+         * input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+         * [&#34;UNIMPLEMENTED&#34;, &#34;PRELAUNCH&#34;, &#34;EARLY_ACCESS&#34;, &#34;ALPHA&#34;, &#34;BETA&#34;, &#34;GA&#34;, &#34;DEPRECATED&#34;]
          * 
          * @return builder
          * 
@@ -1048,25 +1054,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return observedGeneration(Output.of(observedGeneration));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

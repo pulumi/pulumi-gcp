@@ -284,7 +284,6 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
 
         ### Region Network Firewall Policy Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -293,7 +292,6 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
             name="tf-test-policy",
             description="Terraform test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -349,7 +347,6 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
 
         ### Region Network Firewall Policy Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,7 +355,6 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
             name="tf-test-policy",
             description="Terraform test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

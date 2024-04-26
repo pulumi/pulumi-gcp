@@ -33,7 +33,6 @@ import (
 //
 // ### Access Context Manager Service Perimeter Ingress Policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,7 +105,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -499,7 +499,6 @@ class Workstation(pulumi.CustomResource):
 
         ### Workstation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -549,7 +548,6 @@ class Workstation(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -606,7 +604,6 @@ class Workstation(pulumi.CustomResource):
 
         ### Workstation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -656,7 +653,6 @@ class Workstation(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

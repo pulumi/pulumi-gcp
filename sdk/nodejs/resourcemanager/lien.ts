@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Resource Manager Lien
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     reason: "This project is an important environment",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

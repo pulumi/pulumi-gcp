@@ -207,17 +207,14 @@ class Repository(pulumi.CustomResource):
 
         ### Sourcerepo Repository Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         my_repo = gcp.sourcerepo.Repository("my-repo", name="my/repository")
         ```
-        <!--End PulumiCodeChooser -->
         ### Sourcerepo Repository Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -234,7 +231,6 @@ class Repository(pulumi.CustomResource):
                 service_account_email=test_account.email,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -286,17 +282,14 @@ class Repository(pulumi.CustomResource):
 
         ### Sourcerepo Repository Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         my_repo = gcp.sourcerepo.Repository("my-repo", name="my/repository")
         ```
-        <!--End PulumiCodeChooser -->
         ### Sourcerepo Repository Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -313,7 +306,6 @@ class Repository(pulumi.CustomResource):
                 service_account_email=test_account.email,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

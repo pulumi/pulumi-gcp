@@ -16,6 +16,7 @@ public final class GroupAdditionalGroupKeyArgs extends com.pulumi.resources.Reso
     public static final GroupAdditionalGroupKeyArgs Empty = new GroupAdditionalGroupKeyArgs();
 
     /**
+     * (Output)
      * The ID of the entity.
      * For Google-managed entities, the id must be the email address of an existing
      * group or user.
@@ -28,7 +29,8 @@ public final class GroupAdditionalGroupKeyArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> id;
 
     /**
-     * @return The ID of the entity.
+     * @return (Output)
+     * The ID of the entity.
      * For Google-managed entities, the id must be the email address of an existing
      * group or user.
      * For external-identity-mapped entities, the id must be a string conforming
@@ -41,6 +43,7 @@ public final class GroupAdditionalGroupKeyArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * The namespace in which the entity exists.
      * If not specified, the EntityKey represents a Google-managed entity
      * such as a Google user or a Google Group.
@@ -48,21 +51,18 @@ public final class GroupAdditionalGroupKeyArgs extends com.pulumi.resources.Reso
      * The namespace must correspond to an identity source created in Admin Console
      * and must be in the form of `identitysources/{identity_source_id}`.
      * 
-     * ***
-     * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return The namespace in which the entity exists.
+     * @return (Output)
+     * The namespace in which the entity exists.
      * If not specified, the EntityKey represents a Google-managed entity
      * such as a Google user or a Google Group.
      * If specified, the EntityKey represents an external-identity-mapped group.
      * The namespace must correspond to an identity source created in Admin Console
      * and must be in the form of `identitysources/{identity_source_id}`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -95,7 +95,8 @@ public final class GroupAdditionalGroupKeyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param id The ID of the entity.
+         * @param id (Output)
+         * The ID of the entity.
          * For Google-managed entities, the id must be the email address of an existing
          * group or user.
          * For external-identity-mapped entities, the id must be a string conforming
@@ -111,7 +112,8 @@ public final class GroupAdditionalGroupKeyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param id The ID of the entity.
+         * @param id (Output)
+         * The ID of the entity.
          * For Google-managed entities, the id must be the email address of an existing
          * group or user.
          * For external-identity-mapped entities, the id must be a string conforming
@@ -126,14 +128,13 @@ public final class GroupAdditionalGroupKeyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param namespace The namespace in which the entity exists.
+         * @param namespace (Output)
+         * The namespace in which the entity exists.
          * If not specified, the EntityKey represents a Google-managed entity
          * such as a Google user or a Google Group.
          * If specified, the EntityKey represents an external-identity-mapped group.
          * The namespace must correspond to an identity source created in Admin Console
          * and must be in the form of `identitysources/{identity_source_id}`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -144,14 +145,13 @@ public final class GroupAdditionalGroupKeyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param namespace The namespace in which the entity exists.
+         * @param namespace (Output)
+         * The namespace in which the entity exists.
          * If not specified, the EntityKey represents a Google-managed entity
          * such as a Google user or a Google Group.
          * If specified, the EntityKey represents an external-identity-mapped group.
          * The namespace must correspond to an identity source created in Admin Console
          * and must be in the form of `identitysources/{identity_source_id}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

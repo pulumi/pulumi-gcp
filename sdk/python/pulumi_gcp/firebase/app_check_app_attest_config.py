@@ -189,7 +189,6 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
 
         ### Firebase App Check App Attest Config Minimal
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -207,10 +206,8 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             project="my-project-name",
             app_id=default.app_id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase App Check App Attest Config Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -229,7 +226,6 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             app_id=default.app_id,
             token_ttl="7200s")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -288,7 +284,6 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
 
         ### Firebase App Check App Attest Config Minimal
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -306,10 +301,8 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             project="my-project-name",
             app_id=default.app_id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase App Check App Attest Config Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -328,7 +321,6 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             app_id=default.app_id,
             token_ttl="7200s")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -28,7 +28,6 @@ import (
 //
 // ### Scc Project Custom Module Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,10 +65,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Scc Project Custom Module Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,7 +120,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -169,10 +165,9 @@ type ProjectCustomModule struct {
 	EnablementState pulumi.StringOutput `pulumi:"enablementState"`
 	// The editor that last updated the custom module.
 	LastEditor pulumi.StringOutput `pulumi:"lastEditor"`
-	// Name of the property for the custom output.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The resource name of the custom module. Its format is "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}".
+	// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The time at which the custom module was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -237,10 +232,9 @@ type projectCustomModuleState struct {
 	EnablementState *string `pulumi:"enablementState"`
 	// The editor that last updated the custom module.
 	LastEditor *string `pulumi:"lastEditor"`
-	// Name of the property for the custom output.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The resource name of the custom module. Its format is "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}".
+	// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The time at which the custom module was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -267,10 +261,9 @@ type ProjectCustomModuleState struct {
 	EnablementState pulumi.StringPtrInput
 	// The editor that last updated the custom module.
 	LastEditor pulumi.StringPtrInput
-	// Name of the property for the custom output.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The resource name of the custom module. Its format is "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}".
+	// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The time at which the custom module was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -294,10 +287,8 @@ type projectCustomModuleArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The enablement state of the custom module.
 	// Possible values are: `ENABLED`, `DISABLED`.
-	EnablementState string `pulumi:"enablementState"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	EnablementState string  `pulumi:"enablementState"`
+	Project         *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProjectCustomModule resource.
@@ -314,9 +305,7 @@ type ProjectCustomModuleArgs struct {
 	// The enablement state of the custom module.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	EnablementState pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project         pulumi.StringPtrInput
 }
 
 func (ProjectCustomModuleArgs) ElementType() reflect.Type {
@@ -439,13 +428,12 @@ func (o ProjectCustomModuleOutput) LastEditor() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectCustomModule) pulumi.StringOutput { return v.LastEditor }).(pulumi.StringOutput)
 }
 
-// Name of the property for the custom output.
+// The resource name of the custom module. Its format is "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}".
+// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 func (o ProjectCustomModuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectCustomModule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o ProjectCustomModuleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectCustomModule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

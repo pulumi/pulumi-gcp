@@ -2317,7 +2317,8 @@ class TaskExecutionStatusLatestJob(dict):
                The underlying service running a job.
         :param str service_job: (Output)
                The full resource name for the job run under a particular service.
-        :param str start_time: The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+        :param str start_time: (Output)
+               The time when the job was started.
         :param str state: (Output)
                Execution state for the job.
         :param str uid: (Output)
@@ -2400,7 +2401,8 @@ class TaskExecutionStatusLatestJob(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[str]:
         """
-        The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+        (Output)
+        The time when the job was started.
         """
         return pulumi.get(self, "start_time")
 

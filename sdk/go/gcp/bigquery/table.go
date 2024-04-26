@@ -22,7 +22,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -100,7 +99,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -212,21 +210,11 @@ type Table struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrOutput `pulumi:"requirePartitionFilter"`
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
-	//
-	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-	// table schema must be specified using the top-level `schema` field
-	// documented above.
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags pulumi.StringMapOutput `pulumi:"resourceTags"`
+	// A JSON schema for the table.
 	Schema pulumi.StringOutput `pulumi:"schema"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -241,8 +229,7 @@ type Table struct {
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning TableTimePartitioningPtrOutput `pulumi:"timePartitioning"`
-	// The supported types are DAY, HOUR, MONTH, and YEAR,
-	// which will generate one partition per day, hour, month, and year, respectively.
+	// Describes the table type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// If specified, configures this table as a view.
 	// Structure is documented below.
@@ -374,21 +361,11 @@ type tableState struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
-	//
-	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-	// table schema must be specified using the top-level `schema` field
-	// documented above.
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags map[string]string `pulumi:"resourceTags"`
+	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -403,8 +380,7 @@ type tableState struct {
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning *TableTimePartitioning `pulumi:"timePartitioning"`
-	// The supported types are DAY, HOUR, MONTH, and YEAR,
-	// which will generate one partition per day, hour, month, and year, respectively.
+	// Describes the table type.
 	Type *string `pulumi:"type"`
 	// If specified, configures this table as a view.
 	// Structure is documented below.
@@ -496,21 +472,11 @@ type TableState struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
-	//
-	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-	// table schema must be specified using the top-level `schema` field
-	// documented above.
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags pulumi.StringMapInput
+	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -525,8 +491,7 @@ type TableState struct {
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning TableTimePartitioningPtrInput
-	// The supported types are DAY, HOUR, MONTH, and YEAR,
-	// which will generate one partition per day, hour, month, and year, respectively.
+	// Describes the table type.
 	Type pulumi.StringPtrInput
 	// If specified, configures this table as a view.
 	// Structure is documented below.
@@ -589,21 +554,11 @@ type tableArgs struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
-	//
-	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-	// table schema must be specified using the top-level `schema` field
-	// documented above.
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags map[string]string `pulumi:"resourceTags"`
+	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
 	// Defines the primary key and foreign keys.
 	// Structure is documented below.
@@ -674,21 +629,11 @@ type TableArgs struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
-	//
-	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-	// table schema must be specified using the top-level `schema` field
-	// documented above.
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags pulumi.StringMapInput
+	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
 	// Defines the primary key and foreign keys.
 	// Structure is documented below.
@@ -946,21 +891,14 @@ func (o TableOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
 }
 
-// A JSON schema for the external table. Schema is required
-// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-// string will create a diff, even if the JSON itself hasn't changed.
-// Furthermore drift for this field cannot not be detected because BigQuery
-// only uses this schema to compute the effective schema for the table, therefore
-// any changes on the configured value will force the table to be recreated.
-// This schema is effectively only applied when creating a table from an external
-// datasource, after creation the computed schema will be stored in
-// `google_bigquery_table.schema`
-//
-// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-// table schema must be specified using the top-level `schema` field
-// documented above.
+// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+// tag key. Tag value is expected to be the short name, for example "Production".
+func (o TableOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.ResourceTags }).(pulumi.StringMapOutput)
+}
+
+// A JSON schema for the table.
 func (o TableOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
 }
@@ -993,8 +931,7 @@ func (o TableOutput) TimePartitioning() TableTimePartitioningPtrOutput {
 	return o.ApplyT(func(v *Table) TableTimePartitioningPtrOutput { return v.TimePartitioning }).(TableTimePartitioningPtrOutput)
 }
 
-// The supported types are DAY, HOUR, MONTH, and YEAR,
-// which will generate one partition per day, hour, month, and year, respectively.
+// Describes the table type.
 func (o TableOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

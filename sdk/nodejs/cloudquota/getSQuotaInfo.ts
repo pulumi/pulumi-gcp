@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  *     quotaId: "CPUS-per-project-region",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSQuotaInfo(args: GetSQuotaInfoArgs, opts?: pulumi.InvokeOptions): Promise<GetSQuotaInfoResult> {
 
@@ -125,7 +123,6 @@ export interface GetSQuotaInfoResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -136,7 +133,6 @@ export interface GetSQuotaInfoResult {
  *     quotaId: "CPUS-per-project-region",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSQuotaInfoOutput(args: GetSQuotaInfoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSQuotaInfoResult> {
     return pulumi.output(args).apply((a: any) => getSQuotaInfo(a, opts))

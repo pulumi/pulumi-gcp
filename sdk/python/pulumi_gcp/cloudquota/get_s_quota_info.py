@@ -249,7 +249,6 @@ def get_s_quota_info(parent: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -258,7 +257,6 @@ def get_s_quota_info(parent: Optional[str] = None,
         service="compute.googleapis.com",
         quota_id="CPUS-per-project-region")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str parent: The parent of the quota info. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].
@@ -303,7 +301,6 @@ def get_s_quota_info_output(parent: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -312,7 +309,6 @@ def get_s_quota_info_output(parent: Optional[pulumi.Input[str]] = None,
         service="compute.googleapis.com",
         quota_id="CPUS-per-project-region")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str parent: The parent of the quota info. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].

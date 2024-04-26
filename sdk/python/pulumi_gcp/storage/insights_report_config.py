@@ -30,11 +30,7 @@ class InsightsReportConfigArgs:
                must be in the same location.
         :param pulumi.Input[str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
         :param pulumi.Input['InsightsReportConfigFrequencyOptionsArgs'] frequency_options: Options for configuring how inventory reports are generated.
-               Structure is documented below.
         :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs'] object_metadata_report_options: Options for including metadata in an inventory report.
-               Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "csv_options", csv_options)
         pulumi.set(__self__, "location", location)
@@ -90,7 +86,6 @@ class InsightsReportConfigArgs:
     def frequency_options(self) -> Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']]:
         """
         Options for configuring how inventory reports are generated.
-        Structure is documented below.
         """
         return pulumi.get(self, "frequency_options")
 
@@ -103,7 +98,6 @@ class InsightsReportConfigArgs:
     def object_metadata_report_options(self) -> Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']]:
         """
         Options for including metadata in an inventory report.
-        Structure is documented below.
         """
         return pulumi.get(self, "object_metadata_report_options")
 
@@ -114,10 +108,6 @@ class InsightsReportConfigArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -141,14 +131,10 @@ class _InsightsReportConfigState:
                Structure is documented below.
         :param pulumi.Input[str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
         :param pulumi.Input['InsightsReportConfigFrequencyOptionsArgs'] frequency_options: Options for configuring how inventory reports are generated.
-               Structure is documented below.
         :param pulumi.Input[str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
         :param pulumi.Input[str] name: The UUID of the inventory report configuration.
         :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs'] object_metadata_report_options: Options for including metadata in an inventory report.
-               Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
@@ -195,7 +181,6 @@ class _InsightsReportConfigState:
     def frequency_options(self) -> Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']]:
         """
         Options for configuring how inventory reports are generated.
-        Structure is documented below.
         """
         return pulumi.get(self, "frequency_options")
 
@@ -233,7 +218,6 @@ class _InsightsReportConfigState:
     def object_metadata_report_options(self) -> Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']]:
         """
         Options for including metadata in an inventory report.
-        Structure is documented below.
         """
         return pulumi.get(self, "object_metadata_report_options")
 
@@ -244,10 +228,6 @@ class _InsightsReportConfigState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -280,7 +260,6 @@ class InsightsReportConfig(pulumi.CustomResource):
 
         ### Storage Insights Report Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -331,7 +310,6 @@ class InsightsReportConfig(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -363,13 +341,9 @@ class InsightsReportConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
         :param pulumi.Input[pulumi.InputType['InsightsReportConfigFrequencyOptionsArgs']] frequency_options: Options for configuring how inventory reports are generated.
-               Structure is documented below.
         :param pulumi.Input[str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
         :param pulumi.Input[pulumi.InputType['InsightsReportConfigObjectMetadataReportOptionsArgs']] object_metadata_report_options: Options for including metadata in an inventory report.
-               Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -390,7 +364,6 @@ class InsightsReportConfig(pulumi.CustomResource):
 
         ### Storage Insights Report Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,7 +414,6 @@ class InsightsReportConfig(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -536,14 +508,10 @@ class InsightsReportConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
         :param pulumi.Input[pulumi.InputType['InsightsReportConfigFrequencyOptionsArgs']] frequency_options: Options for configuring how inventory reports are generated.
-               Structure is documented below.
         :param pulumi.Input[str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
         :param pulumi.Input[str] name: The UUID of the inventory report configuration.
         :param pulumi.Input[pulumi.InputType['InsightsReportConfigObjectMetadataReportOptionsArgs']] object_metadata_report_options: Options for including metadata in an inventory report.
-               Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -580,7 +548,6 @@ class InsightsReportConfig(pulumi.CustomResource):
     def frequency_options(self) -> pulumi.Output[Optional['outputs.InsightsReportConfigFrequencyOptions']]:
         """
         Options for configuring how inventory reports are generated.
-        Structure is documented below.
         """
         return pulumi.get(self, "frequency_options")
 
@@ -606,16 +573,11 @@ class InsightsReportConfig(pulumi.CustomResource):
     def object_metadata_report_options(self) -> pulumi.Output[Optional['outputs.InsightsReportConfigObjectMetadataReportOptions']]:
         """
         Options for including metadata in an inventory report.
-        Structure is documented below.
         """
         return pulumi.get(self, "object_metadata_report_options")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 

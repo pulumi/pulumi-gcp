@@ -29,7 +29,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// First, create a KMS KeyRing and CryptoKey using the resource definitions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,11 +52,9 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -103,7 +100,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// The resulting instance can then access the encrypted password from its metadata
         /// and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
@@ -141,7 +137,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// First, create a KMS KeyRing and CryptoKey using the resource definitions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -165,11 +160,9 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -215,7 +208,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// The resulting instance can then access the encrypted password from its metadata
         /// and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):

@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult
     {
         /// <summary>
+        /// Settings for a remote repository with a custom uri.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryResult> CustomRepositories;
+        /// <summary>
         /// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
         /// </summary>
         public readonly string PublicRepository;
 
         [OutputConstructor]
-        private GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(string publicRepository)
+        private GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(
+            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryResult> customRepositories,
+
+            string publicRepository)
         {
+            CustomRepositories = customRepositories;
             PublicRepository = publicRepository;
         }
     }

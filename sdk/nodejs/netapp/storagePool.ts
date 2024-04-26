@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  *
  * ### Storage Pool Create
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,7 +67,6 @@ import * as utilities from "../utilities";
  *     network: peeringNetwork.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

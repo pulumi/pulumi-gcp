@@ -35,10 +35,9 @@ class ZoneArgs:
         :param pulumi.Input[str] type: Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
         :param pulumi.Input[str] description: Optional. Description of the zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
+               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+               resource.
         :param pulumi.Input[str] name: The name of the zone.
         :param pulumi.Input[str] project: The project for the resource
         """
@@ -146,10 +145,9 @@ class ZoneArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. User defined labels for the zone.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
+        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -210,10 +208,9 @@ class _ZoneState:
         :param pulumi.Input['ZoneDiscoverySpecArgs'] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
+               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+               resource.
         :param pulumi.Input[str] lake: The lake for the resource
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of the zone.
@@ -336,10 +333,9 @@ class _ZoneState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. User defined labels for the zone.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
+        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 
@@ -491,7 +487,6 @@ class Zone(pulumi.CustomResource):
 
         ### Basic_zone
         A basic example of a dataplex zone
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,7 +516,6 @@ class Zone(pulumi.CustomResource):
             project="my-project-name",
             labels={})
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -552,10 +546,9 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Description of the zone.
         :param pulumi.Input[pulumi.InputType['ZoneDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
+               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+               resource.
         :param pulumi.Input[str] lake: The lake for the resource
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of the zone.
@@ -576,7 +569,6 @@ class Zone(pulumi.CustomResource):
 
         ### Basic_zone
         A basic example of a dataplex zone
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -606,7 +598,6 @@ class Zone(pulumi.CustomResource):
             project="my-project-name",
             labels={})
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -735,10 +726,9 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ZoneDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
+               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+               resource.
         :param pulumi.Input[str] lake: The lake for the resource
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of the zone.
@@ -825,10 +815,9 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. User defined labels for the zone.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
+        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+        resource.
         """
         return pulumi.get(self, "labels")
 

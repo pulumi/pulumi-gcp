@@ -434,7 +434,6 @@ class BackendBucket(pulumi.CustomResource):
 
         ### Backend Bucket Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -448,10 +447,8 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Backend Bucket Security Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -470,10 +467,8 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn=True,
             edge_security_policy=policy.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Backend Bucket Query String Whitelist
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -492,10 +487,8 @@ class BackendBucket(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Backend Bucket Include Http Headers
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,7 +507,6 @@ class BackendBucket(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -590,7 +582,6 @@ class BackendBucket(pulumi.CustomResource):
 
         ### Backend Bucket Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -604,10 +595,8 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Backend Bucket Security Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -626,10 +615,8 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn=True,
             edge_security_policy=policy.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Backend Bucket Query String Whitelist
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -648,10 +635,8 @@ class BackendBucket(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Backend Bucket Include Http Headers
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -670,7 +655,6 @@ class BackendBucket(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// ### Multi_target
     /// tests creating and updating a multi-target
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,10 +66,8 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Run_target
     /// tests creating and updating a cloud run target
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -117,10 +114,8 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Target
     /// Creates a basic Cloud Deploy target
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -158,7 +153,6 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

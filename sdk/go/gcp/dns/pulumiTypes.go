@@ -3256,7 +3256,6 @@ func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) TrickleRatio() pulumi.Floa
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeo struct {
 	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-	// Structure is documented below.
 	HealthCheckedTargets *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
 	Location string   `pulumi:"location"`
@@ -3276,7 +3275,6 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeoInput interface {
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs struct {
 	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-	// Structure is documented below.
 	HealthCheckedTargets RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
 	Location pulumi.StringInput      `pulumi:"location"`
@@ -3335,7 +3333,6 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ToRecordSetRoutingPo
 }
 
 // For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) HealthCheckedTargets() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
 		return v.HealthCheckedTargets
@@ -3681,7 +3678,6 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternal
 
 type RecordSetRoutingPolicyPrimaryBackupPrimary struct {
 	// The list of internal load balancers to health check.
-	// Structure is documented below.
 	InternalLoadBalancers []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer `pulumi:"internalLoadBalancers"`
 }
 
@@ -3698,7 +3694,6 @@ type RecordSetRoutingPolicyPrimaryBackupPrimaryInput interface {
 
 type RecordSetRoutingPolicyPrimaryBackupPrimaryArgs struct {
 	// The list of internal load balancers to health check.
-	// Structure is documented below.
 	InternalLoadBalancers RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
 }
 
@@ -3780,7 +3775,6 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ToRecordSetRoutingPoli
 }
 
 // The list of internal load balancers to health check.
-// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimary) []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
 		return v.InternalLoadBalancers
@@ -3812,7 +3806,6 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) Elem() RecordSetRou
 }
 
 // The list of internal load balancers to health check.
-// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackupPrimary) []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
 		if v == nil {
@@ -5048,9 +5041,9 @@ func (o GetKeysKeySigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeySign
 
 type GetKeysKeySigningKeyDigest struct {
 	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	Digest string `pulumi:"digest"`
+	Digest *string `pulumi:"digest"`
 	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 }
 
 // GetKeysKeySigningKeyDigestInput is an input type that accepts GetKeysKeySigningKeyDigestArgs and GetKeysKeySigningKeyDigestOutput values.
@@ -5066,9 +5059,9 @@ type GetKeysKeySigningKeyDigestInput interface {
 
 type GetKeysKeySigningKeyDigestArgs struct {
 	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	Digest pulumi.StringInput `pulumi:"digest"`
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-	Type pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetKeysKeySigningKeyDigestArgs) ElementType() reflect.Type {
@@ -5123,13 +5116,13 @@ func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutputWith
 }
 
 // The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-func (o GetKeysKeySigningKeyDigestOutput) Digest() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) string { return v.Digest }).(pulumi.StringOutput)
+func (o GetKeysKeySigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-func (o GetKeysKeySigningKeyDigestOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) string { return v.Type }).(pulumi.StringOutput)
+func (o GetKeysKeySigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type GetKeysKeySigningKeyDigestArrayOutput struct{ *pulumi.OutputState }
@@ -5323,9 +5316,9 @@ func (o GetKeysZoneSigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSi
 
 type GetKeysZoneSigningKeyDigest struct {
 	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	Digest string `pulumi:"digest"`
+	Digest *string `pulumi:"digest"`
 	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 }
 
 // GetKeysZoneSigningKeyDigestInput is an input type that accepts GetKeysZoneSigningKeyDigestArgs and GetKeysZoneSigningKeyDigestOutput values.
@@ -5341,9 +5334,9 @@ type GetKeysZoneSigningKeyDigestInput interface {
 
 type GetKeysZoneSigningKeyDigestArgs struct {
 	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	Digest pulumi.StringInput `pulumi:"digest"`
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-	Type pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetKeysZoneSigningKeyDigestArgs) ElementType() reflect.Type {
@@ -5398,13 +5391,13 @@ func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutputWi
 }
 
 // The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-func (o GetKeysZoneSigningKeyDigestOutput) Digest() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) string { return v.Digest }).(pulumi.StringOutput)
+func (o GetKeysZoneSigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-func (o GetKeysZoneSigningKeyDigestOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) string { return v.Type }).(pulumi.StringOutput)
+func (o GetKeysZoneSigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type GetKeysZoneSigningKeyDigestArrayOutput struct{ *pulumi.OutputState }
@@ -5428,22 +5421,15 @@ func (o GetKeysZoneSigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeys
 }
 
 type GetManagedZonesManagedZone struct {
-	// A textual description field.
-	Description string `pulumi:"description"`
-	// The fully qualified DNS name of this zone.
-	DnsName string `pulumi:"dnsName"`
-	// DNS managed zone identifier
-	Id string `pulumi:"id"`
-	// Unique identifier for the resource; defined by the server.
-	ManagedZoneId int `pulumi:"managedZoneId"`
-	// A unique name for the resource.
-	Name string `pulumi:"name"`
-	// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-	NameServers []string `pulumi:"nameServers"`
+	Description   string   `pulumi:"description"`
+	DnsName       string   `pulumi:"dnsName"`
+	Id            string   `pulumi:"id"`
+	ManagedZoneId int      `pulumi:"managedZoneId"`
+	Name          *string  `pulumi:"name"`
+	NameServers   []string `pulumi:"nameServers"`
 	// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-	Project string `pulumi:"project"`
-	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-	Visibility string `pulumi:"visibility"`
+	Project    *string `pulumi:"project"`
+	Visibility string  `pulumi:"visibility"`
 }
 
 // GetManagedZonesManagedZoneInput is an input type that accepts GetManagedZonesManagedZoneArgs and GetManagedZonesManagedZoneOutput values.
@@ -5458,22 +5444,15 @@ type GetManagedZonesManagedZoneInput interface {
 }
 
 type GetManagedZonesManagedZoneArgs struct {
-	// A textual description field.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The fully qualified DNS name of this zone.
-	DnsName pulumi.StringInput `pulumi:"dnsName"`
-	// DNS managed zone identifier
-	Id pulumi.StringInput `pulumi:"id"`
-	// Unique identifier for the resource; defined by the server.
-	ManagedZoneId pulumi.IntInput `pulumi:"managedZoneId"`
-	// A unique name for the resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
+	Description   pulumi.StringInput      `pulumi:"description"`
+	DnsName       pulumi.StringInput      `pulumi:"dnsName"`
+	Id            pulumi.StringInput      `pulumi:"id"`
+	ManagedZoneId pulumi.IntInput         `pulumi:"managedZoneId"`
+	Name          pulumi.StringPtrInput   `pulumi:"name"`
+	NameServers   pulumi.StringArrayInput `pulumi:"nameServers"`
 	// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-	Project pulumi.StringInput `pulumi:"project"`
-	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-	Visibility pulumi.StringInput `pulumi:"visibility"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+	Visibility pulumi.StringInput    `pulumi:"visibility"`
 }
 
 func (GetManagedZonesManagedZoneArgs) ElementType() reflect.Type {
@@ -5527,42 +5506,35 @@ func (o GetManagedZonesManagedZoneOutput) ToGetManagedZonesManagedZoneOutputWith
 	return o
 }
 
-// A textual description field.
 func (o GetManagedZonesManagedZoneOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The fully qualified DNS name of this zone.
 func (o GetManagedZonesManagedZoneOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.DnsName }).(pulumi.StringOutput)
 }
 
-// DNS managed zone identifier
 func (o GetManagedZonesManagedZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier for the resource; defined by the server.
 func (o GetManagedZonesManagedZoneOutput) ManagedZoneId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) int { return v.ManagedZoneId }).(pulumi.IntOutput)
 }
 
-// A unique name for the resource.
-func (o GetManagedZonesManagedZoneOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Name }).(pulumi.StringOutput)
+func (o GetManagedZonesManagedZoneOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
 func (o GetManagedZonesManagedZoneOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) []string { return v.NameServers }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-func (o GetManagedZonesManagedZoneOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Project }).(pulumi.StringOutput)
+func (o GetManagedZonesManagedZoneOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
 func (o GetManagedZonesManagedZoneOutput) Visibility() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Visibility }).(pulumi.StringOutput)
 }

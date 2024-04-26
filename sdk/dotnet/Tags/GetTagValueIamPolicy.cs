@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTagValueIamPolicyResult> InvokeAsync(GetTagValueIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagValueIamPolicyResult>("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", args ?? new GetTagValueIamPolicyArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTagValueIamPolicyResult> Invoke(GetTagValueIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagValueIamPolicyResult>("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", args ?? new GetTagValueIamPolicyInvokeArgs(), options.WithDefaults());

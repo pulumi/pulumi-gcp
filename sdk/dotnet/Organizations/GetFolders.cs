@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ### Searching For Folders At The Root Of An Org
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("gcp:organizations/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
@@ -55,7 +53,6 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ### Searching For Folders At The Root Of An Org
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("gcp:organizations/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());

@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
     public sealed class RepositoryRemoteRepositoryConfigNpmRepositoryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Settings for a remote repository with a custom uri.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customRepository")]
+        public Input<Inputs.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryGetArgs>? CustomRepository { get; set; }
+
+        /// <summary>
         /// Address of the remote repository.
         /// Default value is `NPMJS`.
         /// Possible values are: `NPMJS`.

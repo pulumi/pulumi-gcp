@@ -283,7 +283,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
 
         ### Network Security Tls Inspection Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -355,7 +354,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             ca_pool=default.id,
             exclude_public_ca_set=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -405,7 +403,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
 
         ### Network Security Tls Inspection Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -477,7 +474,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             ca_pool=default.id,
             exclude_public_ca_set=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -511,7 +511,6 @@ class NodeGroup(pulumi.CustomResource):
 
         ### Node Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -527,10 +526,8 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Node Group Maintenance Interval
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -547,10 +544,8 @@ class NodeGroup(pulumi.CustomResource):
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
-        <!--End PulumiCodeChooser -->
         ### Node Group Autoscaling Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -575,10 +570,8 @@ class NodeGroup(pulumi.CustomResource):
                 max_nodes=10,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Node Group Share Settings
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -605,7 +598,6 @@ class NodeGroup(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -687,7 +679,6 @@ class NodeGroup(pulumi.CustomResource):
 
         ### Node Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -703,10 +694,8 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Node Group Maintenance Interval
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -723,10 +712,8 @@ class NodeGroup(pulumi.CustomResource):
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
-        <!--End PulumiCodeChooser -->
         ### Node Group Autoscaling Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -751,10 +738,8 @@ class NodeGroup(pulumi.CustomResource):
                 max_nodes=10,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Node Group Share Settings
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -781,7 +766,6 @@ class NodeGroup(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

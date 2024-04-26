@@ -286,7 +286,6 @@ class HostingRelease(pulumi.CustomResource):
 
         ### Firebasehosting Release In Site
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -308,10 +307,8 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Release In Channel
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -337,10 +334,8 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release in channel")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Release Disable
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -353,7 +348,6 @@ class HostingRelease(pulumi.CustomResource):
             type="SITE_DISABLE",
             message="Take down site")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -416,7 +410,6 @@ class HostingRelease(pulumi.CustomResource):
 
         ### Firebasehosting Release In Site
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -438,10 +431,8 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Release In Channel
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -467,10 +458,8 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release in channel")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Release Disable
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -483,7 +472,6 @@ class HostingRelease(pulumi.CustomResource):
             type="SITE_DISABLE",
             message="Take down site")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

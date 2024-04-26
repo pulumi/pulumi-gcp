@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Vertex Ai Index Endpoint
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,10 +45,8 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [vertexRange.name],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Index Endpoint With Psc
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,10 +65,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Index Endpoint With Public Endpoint
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -86,7 +81,6 @@ import * as utilities from "../utilities";
  *     publicEndpointEnabled: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

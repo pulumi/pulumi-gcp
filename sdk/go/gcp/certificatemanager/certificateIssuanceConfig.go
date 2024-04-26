@@ -24,7 +24,6 @@ import (
 //
 // ### Certificate Manager Certificate Issuance Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,7 +110,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -153,11 +151,10 @@ type CertificateIssuanceConfig struct {
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm pulumi.StringOutput `pulumi:"keyAlgorithm"`
-	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
+	// pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -166,9 +163,7 @@ type CertificateIssuanceConfig struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// A user-defined name of the certificate issuance config.
 	// CertificateIssuanceConfig names must be unique globally.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -245,11 +240,10 @@ type certificateIssuanceConfigState struct {
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
-	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
+	// pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -258,9 +252,7 @@ type certificateIssuanceConfigState struct {
 	Location *string `pulumi:"location"`
 	// A user-defined name of the certificate issuance config.
 	// CertificateIssuanceConfig names must be unique globally.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -291,11 +283,10 @@ type CertificateIssuanceConfigState struct {
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm pulumi.StringPtrInput
-	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
+	// pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -304,9 +295,7 @@ type CertificateIssuanceConfigState struct {
 	Location pulumi.StringPtrInput
 	// A user-defined name of the certificate issuance config.
 	// CertificateIssuanceConfig names must be unique globally.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -335,11 +324,10 @@ type certificateIssuanceConfigArgs struct {
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm string `pulumi:"keyAlgorithm"`
-	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
+	// pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -348,9 +336,7 @@ type certificateIssuanceConfigArgs struct {
 	Location *string `pulumi:"location"`
 	// A user-defined name of the certificate issuance config.
 	// CertificateIssuanceConfig names must be unique globally.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
@@ -369,11 +355,10 @@ type CertificateIssuanceConfigArgs struct {
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm pulumi.StringInput
-	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
+	// pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -382,9 +367,7 @@ type CertificateIssuanceConfigArgs struct {
 	Location pulumi.StringPtrInput
 	// A user-defined name of the certificate issuance config.
 	// CertificateIssuanceConfig names must be unique globally.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
@@ -511,11 +494,10 @@ func (o CertificateIssuanceConfigOutput) KeyAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringOutput { return v.KeyAlgorithm }).(pulumi.StringOutput)
 }
 
-// 'Set of label tags associated with the CertificateIssuanceConfig resource.
-// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
-//
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
+// pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
+// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+// resource.
 func (o CertificateIssuanceConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -537,8 +519,6 @@ func (o CertificateIssuanceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o CertificateIssuanceConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

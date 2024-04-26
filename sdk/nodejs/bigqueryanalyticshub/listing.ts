@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Bigquery Analyticshub Listing Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,10 +46,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigquery Analyticshub Listing Restricted
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -82,7 +79,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -151,11 +147,11 @@ export class Listing extends pulumi.CustomResource {
     public readonly dataExchangeId!: pulumi.Output<string>;
     /**
      * Details of the data provider who owns the source data.
-     * Structure is documented below.
      */
     public readonly dataProvider!: pulumi.Output<outputs.bigqueryanalyticshub.ListingDataProvider | undefined>;
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -179,21 +175,16 @@ export class Listing extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Name of the data provider.
+     * The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Email or URL of the primary point of contact of the listing.
      */
     public readonly primaryContact!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Details of the publisher who owns the listing and who can share the source data.
-     * Structure is documented below.
      */
     public readonly publisher!: pulumi.Output<outputs.bigqueryanalyticshub.ListingPublisher | undefined>;
     /**
@@ -202,7 +193,6 @@ export class Listing extends pulumi.CustomResource {
     public readonly requestAccess!: pulumi.Output<string | undefined>;
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     * Structure is documented below.
      */
     public readonly restrictedExportConfig!: pulumi.Output<outputs.bigqueryanalyticshub.ListingRestrictedExportConfig | undefined>;
 
@@ -293,11 +283,11 @@ export interface ListingState {
     dataExchangeId?: pulumi.Input<string>;
     /**
      * Details of the data provider who owns the source data.
-     * Structure is documented below.
      */
     dataProvider?: pulumi.Input<inputs.bigqueryanalyticshub.ListingDataProvider>;
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     description?: pulumi.Input<string>;
     /**
@@ -321,21 +311,16 @@ export interface ListingState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Name of the data provider.
+     * The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
      */
     name?: pulumi.Input<string>;
     /**
      * Email or URL of the primary point of contact of the listing.
      */
     primaryContact?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Details of the publisher who owns the listing and who can share the source data.
-     * Structure is documented below.
      */
     publisher?: pulumi.Input<inputs.bigqueryanalyticshub.ListingPublisher>;
     /**
@@ -344,7 +329,6 @@ export interface ListingState {
     requestAccess?: pulumi.Input<string>;
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     * Structure is documented below.
      */
     restrictedExportConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingRestrictedExportConfig>;
 }
@@ -368,11 +352,11 @@ export interface ListingArgs {
     dataExchangeId: pulumi.Input<string>;
     /**
      * Details of the data provider who owns the source data.
-     * Structure is documented below.
      */
     dataProvider?: pulumi.Input<inputs.bigqueryanalyticshub.ListingDataProvider>;
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     description?: pulumi.Input<string>;
     /**
@@ -399,14 +383,9 @@ export interface ListingArgs {
      * Email or URL of the primary point of contact of the listing.
      */
     primaryContact?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Details of the publisher who owns the listing and who can share the source data.
-     * Structure is documented below.
      */
     publisher?: pulumi.Input<inputs.bigqueryanalyticshub.ListingPublisher>;
     /**
@@ -415,7 +394,6 @@ export interface ListingArgs {
     requestAccess?: pulumi.Input<string>;
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     * Structure is documented below.
      */
     restrictedExportConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingRestrictedExportConfig>;
 }

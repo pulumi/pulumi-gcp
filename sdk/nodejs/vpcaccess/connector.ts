@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Vpc Access Connector
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,10 +29,8 @@ import * as utilities from "../utilities";
  *     network: "default",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vpc Access Connector Shared Vpc
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,7 +53,6 @@ import * as utilities from "../utilities";
  *     machineType: "e2-standard-4",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

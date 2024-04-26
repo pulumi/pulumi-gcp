@@ -24,7 +24,6 @@ import (
 //
 // ### Dlp Stored Info Type Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,10 +55,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Stored Info Type Dictionary
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,10 +90,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Stored Info Type Large Custom Dictionary
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -155,10 +150,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Stored Info Type With Id
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -191,7 +184,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -223,7 +215,7 @@ type PreventionStoredInfoType struct {
 	// Dictionary which defines the rule.
 	// Structure is documented below.
 	LargeCustomDictionary PreventionStoredInfoTypeLargeCustomDictionaryPtrOutput `pulumi:"largeCustomDictionary"`
-	// Name describing the field.
+	// The resource name of the info type. Set by the server.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the info type in any of the following formats:
 	// * `projects/{{project}}`
@@ -285,7 +277,7 @@ type preventionStoredInfoTypeState struct {
 	// Dictionary which defines the rule.
 	// Structure is documented below.
 	LargeCustomDictionary *PreventionStoredInfoTypeLargeCustomDictionary `pulumi:"largeCustomDictionary"`
-	// Name describing the field.
+	// The resource name of the info type. Set by the server.
 	Name *string `pulumi:"name"`
 	// The parent of the info type in any of the following formats:
 	// * `projects/{{project}}`
@@ -315,7 +307,7 @@ type PreventionStoredInfoTypeState struct {
 	// Dictionary which defines the rule.
 	// Structure is documented below.
 	LargeCustomDictionary PreventionStoredInfoTypeLargeCustomDictionaryPtrInput
-	// Name describing the field.
+	// The resource name of the info type. Set by the server.
 	Name pulumi.StringPtrInput
 	// The parent of the info type in any of the following formats:
 	// * `projects/{{project}}`
@@ -506,7 +498,7 @@ func (o PreventionStoredInfoTypeOutput) LargeCustomDictionary() PreventionStored
 	}).(PreventionStoredInfoTypeLargeCustomDictionaryPtrOutput)
 }
 
-// Name describing the field.
+// The resource name of the info type. Set by the server.
 func (o PreventionStoredInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionStoredInfoType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

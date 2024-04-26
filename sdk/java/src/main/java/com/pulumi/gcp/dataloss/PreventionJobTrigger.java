@@ -875,7 +875,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dataloss/preventionJobTrigger:PreventionJobTrigger")
 public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
     /**
-     * (Output)
      * The creation timestamp of an inspectTemplate. Set by the server.
      * 
      */
@@ -883,22 +882,21 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
     private Output<String> createTime;
 
     /**
-     * @return (Output)
-     * The creation timestamp of an inspectTemplate. Set by the server.
+     * @return The creation timestamp of an inspectTemplate. Set by the server.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * A description of the job trigger.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * @return A description of the job trigger.
      * 
      */
     public Output<Optional<String>> description() {
@@ -920,7 +918,6 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * Controls what and how to inspect for findings.
-     * Structure is documented below.
      * 
      */
     @Export(name="inspectJob", refs={PreventionJobTriggerInspectJob.class}, tree="[0]")
@@ -928,7 +925,6 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Controls what and how to inspect for findings.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<PreventionJobTriggerInspectJob>> inspectJob() {
@@ -949,14 +945,14 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
         return this.lastRunTime;
     }
     /**
-     * Name describing the field excluded from scanning.
+     * The resource name of the job trigger. Set by the server.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name describing the field excluded from scanning.
+     * @return The resource name of the job trigger. Set by the server.
      * 
      */
     public Output<String> name() {
@@ -979,36 +975,30 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
         return this.parent;
     }
     /**
-     * Whether the trigger is currently active.
-     * Default value is `HEALTHY`.
-     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+     * Whether the trigger is currently active. Default value: &#34;HEALTHY&#34; Possible values: [&#34;PAUSED&#34;, &#34;HEALTHY&#34;, &#34;CANCELLED&#34;]
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
-     * @return Whether the trigger is currently active.
-     * Default value is `HEALTHY`.
-     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+     * @return Whether the trigger is currently active. Default value: &#34;HEALTHY&#34; Possible values: [&#34;PAUSED&#34;, &#34;HEALTHY&#34;, &#34;CANCELLED&#34;]
      * 
      */
     public Output<Optional<String>> status() {
         return Codegen.optional(this.status);
     }
     /**
-     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
-     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     @Export(name="triggerId", refs={String.class}, tree="[0]")
     private Output<String> triggerId;
 
     /**
-     * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
-     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     public Output<String> triggerId() {

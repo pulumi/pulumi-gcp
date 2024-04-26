@@ -34,7 +34,6 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Consumer provided attributes.
-     * Structure is documented below.
      * 
      */
     @Import(name="attributes")
@@ -42,7 +41,6 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Consumer provided attributes.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ApplicationAttributesArgs>> attributes() {
@@ -80,14 +78,14 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Contact&#39;s name.
+     * Optional. User-defined name for the Application.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Optional. Contact&#39;s name.
+     * @return Optional. User-defined name for the Application.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -126,19 +124,9 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -273,7 +261,6 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param attributes Consumer provided attributes.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -285,7 +272,6 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param attributes Consumer provided attributes.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -337,7 +323,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Optional. Contact&#39;s name.
+         * @param displayName Optional. User-defined name for the Application.
          * 
          * @return builder
          * 
@@ -348,7 +334,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Optional. Contact&#39;s name.
+         * @param displayName Optional. User-defined name for the Application.
          * 
          * @return builder
          * 
@@ -401,25 +387,11 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

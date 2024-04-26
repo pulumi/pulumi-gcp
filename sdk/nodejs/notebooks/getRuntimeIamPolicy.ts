@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     runtimeName: runtime.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRuntimeIamPolicy(args: GetRuntimeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRuntimeIamPolicyResult> {
 
@@ -77,7 +75,6 @@ export interface GetRuntimeIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,7 +85,6 @@ export interface GetRuntimeIamPolicyResult {
  *     runtimeName: runtime.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRuntimeIamPolicyOutput(args: GetRuntimeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuntimeIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getRuntimeIamPolicy(a, opts))

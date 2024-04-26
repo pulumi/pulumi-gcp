@@ -22,7 +22,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy? InstanceFlexibilityPolicy;
         /// <summary>
-        /// List of preemptible instance names which have been assigned to the cluster.
+        /// List of preemptible instance names which have been assigned
+        /// to the cluster.
         /// </summary>
         public readonly ImmutableArray<string> InstanceNames;
         /// <summary>

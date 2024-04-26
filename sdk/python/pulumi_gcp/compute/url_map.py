@@ -547,7 +547,6 @@ class URLMap(pulumi.CustomResource):
 
         ### Url Map Bucket And Service
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -614,10 +613,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Traffic Director Route
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -696,10 +693,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Traffic Director Route Partial
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -749,10 +744,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Traffic Director Path
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -854,10 +847,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Traffic Director Path Partial
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -925,10 +916,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Header Based Routing
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -995,10 +984,8 @@ class URLMap(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Parameter Based Routing
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1065,10 +1052,8 @@ class URLMap(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Path Template Match
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1133,7 +1118,6 @@ class URLMap(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1216,7 +1200,6 @@ class URLMap(pulumi.CustomResource):
 
         ### Url Map Bucket And Service
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1283,10 +1266,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Traffic Director Route
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1365,10 +1346,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Traffic Director Route Partial
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1418,10 +1397,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Traffic Director Path
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1523,10 +1500,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Traffic Director Path Partial
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1594,10 +1569,8 @@ class URLMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Header Based Routing
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1664,10 +1637,8 @@ class URLMap(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Parameter Based Routing
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1734,10 +1705,8 @@ class URLMap(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Url Map Path Template Match
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1802,7 +1771,6 @@ class URLMap(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

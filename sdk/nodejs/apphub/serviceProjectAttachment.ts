@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Service Project Attachment Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,10 +24,8 @@ import * as utilities from "../utilities";
  * const example = new gcp.apphub.ServiceProjectAttachment("example", {serviceProjectAttachmentId: serviceProject.projectId});
  * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Service Project Attachment Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,7 +42,6 @@ import * as utilities from "../utilities";
  * });
  * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

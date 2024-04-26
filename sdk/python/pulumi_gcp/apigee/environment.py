@@ -383,7 +383,6 @@ class Environment(pulumi.CustomResource):
 
         ### Apigee Environment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -410,7 +409,6 @@ class Environment(pulumi.CustomResource):
             display_name="environment-1",
             org_id=apigee_org.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -478,7 +476,6 @@ class Environment(pulumi.CustomResource):
 
         ### Apigee Environment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,7 +502,6 @@ class Environment(pulumi.CustomResource):
             display_name="environment-1",
             org_id=apigee_org.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

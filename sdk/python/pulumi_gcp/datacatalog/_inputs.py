@@ -291,10 +291,8 @@ class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
                  file_path: Optional[pulumi.Input[str]] = None,
                  size_bytes: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] file_path: (Output)
-               The full file path
-        :param pulumi.Input[int] size_bytes: (Output)
-               The size of the file, in bytes.
+        :param pulumi.Input[str] file_path: The full file path
+        :param pulumi.Input[int] size_bytes: The size of the file, in bytes.
         """
         if file_path is not None:
             pulumi.set(__self__, "file_path", file_path)
@@ -305,7 +303,6 @@ class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
     @pulumi.getter(name="filePath")
     def file_path(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         The full file path
         """
         return pulumi.get(self, "file_path")
@@ -318,7 +315,6 @@ class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
     @pulumi.getter(name="sizeBytes")
     def size_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        (Output)
         The size of the file, in bytes.
         """
         return pulumi.get(self, "size_bytes")

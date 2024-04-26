@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Security Policy Rule Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,10 +36,8 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Security Policy Rule Multiple Rules
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -83,10 +80,8 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Security Policy Rule With Network Match
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -137,7 +132,6 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  *
  * ### Notification Channel Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -49,10 +48,8 @@ import * as utilities from "../utilities";
  *     forceDelete: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Notification Channel Sensitive
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,7 +65,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

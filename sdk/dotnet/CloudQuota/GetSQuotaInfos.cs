@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.CloudQuota
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Gcp.CloudQuota
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSQuotaInfosResult> InvokeAsync(GetSQuotaInfosArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSQuotaInfosResult>("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", args ?? new GetSQuotaInfosArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Gcp.CloudQuota
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Gcp.CloudQuota
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSQuotaInfosResult> Invoke(GetSQuotaInfosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSQuotaInfosResult>("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", args ?? new GetSQuotaInfosInvokeArgs(), options.WithDefaults());

@@ -319,7 +319,6 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
         ### Storage Default Object Access Control Public
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -332,7 +331,6 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -396,7 +394,6 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
         ### Storage Default Object Access Control Public
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -409,7 +406,6 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

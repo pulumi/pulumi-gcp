@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     dicomStoreId: dicomStore.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDicomStoreIamPolicy(args: GetDicomStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDicomStoreIamPolicyResult> {
 
@@ -64,7 +62,6 @@ export interface GetDicomStoreIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,7 +70,6 @@ export interface GetDicomStoreIamPolicyResult {
  *     dicomStoreId: dicomStore.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDicomStoreIamPolicyOutput(args: GetDicomStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDicomStoreIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getDicomStoreIamPolicy(a, opts))

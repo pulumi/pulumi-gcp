@@ -413,7 +413,6 @@ class RegionSslCertificate(pulumi.CustomResource):
 
         ### Region Ssl Certificate Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -426,10 +425,8 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Ssl Certificate Random Provider
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -450,10 +447,8 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Ssl Certificate Target Https Proxies
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -509,7 +504,6 @@ class RegionSslCertificate(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -590,7 +584,6 @@ class RegionSslCertificate(pulumi.CustomResource):
 
         ### Region Ssl Certificate Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -603,10 +596,8 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Ssl Certificate Random Provider
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -627,10 +618,8 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Ssl Certificate Target Https Proxies
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -686,7 +675,6 @@ class RegionSslCertificate(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

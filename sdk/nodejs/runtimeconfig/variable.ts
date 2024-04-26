@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * Example creating a RuntimeConfig variable.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -24,14 +23,12 @@ import * as utilities from "../utilities";
  *     text: "example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * You can also encode binary content using the `value` argument instead. The
  * value must be base64 encoded.
  *
  * Example of using the `value` argument.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -49,7 +46,6 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

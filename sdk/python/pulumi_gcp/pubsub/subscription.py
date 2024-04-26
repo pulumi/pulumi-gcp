@@ -889,7 +889,6 @@ class Subscription(pulumi.CustomResource):
 
         ### Pubsub Subscription Push
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -909,10 +908,8 @@ class Subscription(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Pull
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -935,10 +932,8 @@ class Subscription(pulumi.CustomResource):
             ),
             enable_message_ordering=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Dead Letter
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -953,10 +948,8 @@ class Subscription(pulumi.CustomResource):
                 max_delivery_attempts=10,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Bq
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -992,10 +985,8 @@ class Subscription(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Bq Table Schema
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1032,10 +1023,8 @@ class Subscription(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Cloudstorage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1061,10 +1050,8 @@ class Subscription(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Cloudstorage Avro
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1093,7 +1080,6 @@ class Subscription(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1230,7 +1216,6 @@ class Subscription(pulumi.CustomResource):
 
         ### Pubsub Subscription Push
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1250,10 +1235,8 @@ class Subscription(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Pull
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1276,10 +1259,8 @@ class Subscription(pulumi.CustomResource):
             ),
             enable_message_ordering=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Dead Letter
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1294,10 +1275,8 @@ class Subscription(pulumi.CustomResource):
                 max_delivery_attempts=10,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Bq
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1333,10 +1312,8 @@ class Subscription(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Bq Table Schema
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1373,10 +1350,8 @@ class Subscription(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Cloudstorage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1402,10 +1377,8 @@ class Subscription(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Cloudstorage Avro
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1434,7 +1407,6 @@ class Subscription(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

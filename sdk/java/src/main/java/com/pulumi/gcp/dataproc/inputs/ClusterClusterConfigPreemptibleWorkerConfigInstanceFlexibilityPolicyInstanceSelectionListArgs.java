@@ -18,14 +18,14 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     public static final ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs Empty = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs();
 
     /**
-     * Full machine-type names, e.g. `&#34;n1-standard-16&#34;`.
+     * Full machine-type names, e.g. &#34;n1-standard-16&#34;.
      * 
      */
     @Import(name="machineTypes")
     private @Nullable Output<List<String>> machineTypes;
 
     /**
-     * @return Full machine-type names, e.g. `&#34;n1-standard-16&#34;`.
+     * @return Full machine-type names, e.g. &#34;n1-standard-16&#34;.
      * 
      */
     public Optional<Output<List<String>>> machineTypes() {
@@ -33,18 +33,14 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     }
 
     /**
-     * Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-     * 
-     * ***
+     * Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
      * 
      */
     @Import(name="rank")
     private @Nullable Output<Integer> rank;
 
     /**
-     * @return Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-     * 
-     * ***
+     * @return Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
      * 
      */
     public Optional<Output<Integer>> rank() {
@@ -77,7 +73,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param machineTypes Full machine-type names, e.g. `&#34;n1-standard-16&#34;`.
+         * @param machineTypes Full machine-type names, e.g. &#34;n1-standard-16&#34;.
          * 
          * @return builder
          * 
@@ -88,7 +84,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param machineTypes Full machine-type names, e.g. `&#34;n1-standard-16&#34;`.
+         * @param machineTypes Full machine-type names, e.g. &#34;n1-standard-16&#34;.
          * 
          * @return builder
          * 
@@ -98,7 +94,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param machineTypes Full machine-type names, e.g. `&#34;n1-standard-16&#34;`.
+         * @param machineTypes Full machine-type names, e.g. &#34;n1-standard-16&#34;.
          * 
          * @return builder
          * 
@@ -108,9 +104,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param rank Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-         * 
-         * ***
+         * @param rank Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
          * 
          * @return builder
          * 
@@ -121,9 +115,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param rank Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-         * 
-         * ***
+         * @param rank Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
          * 
          * @return builder
          * 

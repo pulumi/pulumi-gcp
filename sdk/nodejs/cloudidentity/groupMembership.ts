@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ### Cloud Identity Group Membership
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,10 +59,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloud Identity Group Membership User
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -93,7 +90,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -145,17 +141,14 @@ export class GroupMembership extends pulumi.CustomResource {
     public readonly group!: pulumi.Output<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     public readonly memberKey!: pulumi.Output<outputs.cloudidentity.GroupMembershipMemberKey>;
     /**
-     * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+     * The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     public readonly preferredMemberKey!: pulumi.Output<outputs.cloudidentity.GroupMembershipPreferredMemberKey>;
     /**
@@ -230,17 +223,14 @@ export interface GroupMembershipState {
     group?: pulumi.Input<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
     /**
-     * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+     * The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
      */
     name?: pulumi.Input<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     preferredMemberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipPreferredMemberKey>;
     /**
@@ -269,12 +259,10 @@ export interface GroupMembershipArgs {
     group: pulumi.Input<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     preferredMemberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipPreferredMemberKey>;
     /**

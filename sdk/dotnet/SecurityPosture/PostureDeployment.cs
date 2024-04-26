@@ -25,7 +25,6 @@ namespace Pulumi.Gcp.SecurityPosture
     /// 
     /// ### Securityposture Posture Deployment Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -85,7 +84,6 @@ namespace Pulumi.Gcp.SecurityPosture
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

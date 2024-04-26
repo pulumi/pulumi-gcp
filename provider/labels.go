@@ -53,7 +53,7 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 		return tfbridge.PropertyVisitResult{HasEffect: true}, nil
 	}
 
-	prov.MustTraverseProperties("fix-label-names", visitor)
+	tfbridge.MustTraverseProperties(prov, "fix-label-names", visitor)
 
 	for token, labelPaths := range toUpdate {
 		prov.Resources[token].TransformFromState =

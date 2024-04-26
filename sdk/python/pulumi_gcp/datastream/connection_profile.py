@@ -539,7 +539,6 @@ class ConnectionProfile(pulumi.CustomResource):
 
         ### Datastream Connection Profile Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -553,10 +552,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 root_path="/path",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Postgresql Private Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -625,10 +622,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 private_connection=private_connection.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -651,10 +646,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 "key": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Postgres
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -708,7 +701,6 @@ class ConnectionProfile(pulumi.CustomResource):
                 database=db.name,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -780,7 +772,6 @@ class ConnectionProfile(pulumi.CustomResource):
 
         ### Datastream Connection Profile Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -794,10 +785,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 root_path="/path",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Postgresql Private Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -866,10 +855,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 private_connection=private_connection.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -892,10 +879,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 "key": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Postgres
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -949,7 +934,6 @@ class ConnectionProfile(pulumi.CustomResource):
                 database=db.name,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

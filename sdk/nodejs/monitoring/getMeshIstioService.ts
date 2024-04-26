@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ### Monitoring Mesh Istio Service
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  *     serviceName: "prometheus",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMeshIstioService(args: GetMeshIstioServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetMeshIstioServiceResult> {
 
@@ -127,7 +125,6 @@ export interface GetMeshIstioServiceResult {
  *
  * ### Monitoring Mesh Istio Service
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -139,7 +136,6 @@ export interface GetMeshIstioServiceResult {
  *     serviceName: "prometheus",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMeshIstioServiceOutput(args: GetMeshIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMeshIstioServiceResult> {
     return pulumi.output(args).apply((a: any) => getMeshIstioService(a, opts))

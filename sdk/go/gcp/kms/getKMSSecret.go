@@ -26,7 +26,6 @@ import (
 //
 // First, create a KMS KeyRing and CryptoKey using the resource definitions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,14 +58,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
 // sensitive information:
 //
 // Finally, reference the encrypted ciphertext in your resource definitions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,7 +119,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // This will result in a Cloud SQL user being created with password `my-secret-password`.
 func GetKMSSecret(ctx *pulumi.Context, args *GetKMSSecretArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretResult, error) {

@@ -135,8 +135,7 @@ class _PreventionInspectTemplateState:
         :param pulumi.Input[str] display_name: User set display name of the inspect template.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input[str] name: The resource name of the inspect template. Set by the server.
         :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
                * `projects/{{project}}`
                * `projects/{{project}}/locations/{{location}}`
@@ -203,8 +202,7 @@ class _PreventionInspectTemplateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        The resource name of the inspect template. Set by the server.
         """
         return pulumi.get(self, "name")
 
@@ -270,7 +268,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
 
         ### Dlp Inspect Template Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -383,10 +380,8 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Inspect Template Custom Type
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -448,10 +443,8 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Inspect Template Custom Type Surrogate
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -511,7 +504,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -568,7 +560,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
 
         ### Dlp Inspect Template Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -681,10 +672,8 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Inspect Template Custom Type
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -746,10 +735,8 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dlp Inspect Template Custom Type Surrogate
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -809,7 +796,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -893,8 +879,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User set display name of the inspect template.
         :param pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']] inspect_config: The core content of the template.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input[str] name: The resource name of the inspect template. Set by the server.
         :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
                * `projects/{{project}}`
                * `projects/{{project}}/locations/{{location}}`
@@ -948,8 +933,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        The resource name of the inspect template. Set by the server.
         """
         return pulumi.get(self, "name")
 

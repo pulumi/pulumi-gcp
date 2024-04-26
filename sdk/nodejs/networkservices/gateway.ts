@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Services Gateway Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,10 +29,8 @@ import * as utilities from "../utilities";
  *     ports: [443],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Services Gateway Advanced
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -49,10 +46,8 @@ import * as utilities from "../utilities";
  *     scope: "default-scope-advance",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Services Gateway Secure Web Proxy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -118,10 +113,8 @@ import * as utilities from "../utilities";
  *     deleteSwgAutogenRouterOnDestroy: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Services Gateway Multiple Swp Same Network
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -200,7 +193,6 @@ import * as utilities from "../utilities";
  *     deleteSwgAutogenRouterOnDestroy: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

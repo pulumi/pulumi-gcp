@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Services Edge Cache Origin Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,10 +27,8 @@ import * as utilities from "../utilities";
  *     description: "The default bucket for media edge test",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Services Edge Cache Origin Advanced
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -91,10 +88,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Services Edge Cache Origin V4auth
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -120,7 +115,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

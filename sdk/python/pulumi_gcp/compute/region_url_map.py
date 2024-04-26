@@ -555,7 +555,6 @@ class RegionUrlMap(pulumi.CustomResource):
 
         ### Region Url Map Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -612,10 +611,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map Default Route Action
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -772,10 +769,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map L7 Ilb Path
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -875,10 +870,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map L7 Ilb Path Partial
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -946,10 +939,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map L7 Ilb Route
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1027,10 +1018,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map L7 Ilb Route Partial
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1083,10 +1072,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Int Https Lb Https Redirect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1320,10 +1307,8 @@ class RegionUrlMap(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             network_tier="PREMIUM")
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map Path Template Match
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1396,7 +1381,6 @@ class RegionUrlMap(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1484,7 +1468,6 @@ class RegionUrlMap(pulumi.CustomResource):
 
         ### Region Url Map Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1541,10 +1524,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map Default Route Action
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1701,10 +1682,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map L7 Ilb Path
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1804,10 +1783,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map L7 Ilb Path Partial
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1875,10 +1852,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map L7 Ilb Route
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1956,10 +1931,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map L7 Ilb Route Partial
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2012,10 +1985,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 path="/home",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Int Https Lb Https Redirect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2249,10 +2220,8 @@ class RegionUrlMap(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             network_tier="PREMIUM")
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Url Map Path Template Match
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2325,7 +2294,6 @@ class RegionUrlMap(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -144,7 +144,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
 
         ### Access Context Manager Service Perimeter Resource Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -163,7 +162,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
             perimeter_name=service_perimeter_resource_service_perimeter.name,
             resource="projects/987654321")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -220,7 +218,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
 
         ### Access Context Manager Service Perimeter Resource Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -239,7 +236,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
             perimeter_name=service_perimeter_resource_service_perimeter.name,
             resource="projects/987654321")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

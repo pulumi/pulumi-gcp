@@ -1139,7 +1139,6 @@ class Function(pulumi.CustomResource):
 
         ### Public Function
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1168,11 +1167,9 @@ class Function(pulumi.CustomResource):
             role="roles/cloudfunctions.invoker",
             member="allUsers")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Single User
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1209,7 +1206,6 @@ class Function(pulumi.CustomResource):
             role="roles/cloudfunctions.invoker",
             member="user:myFunctionInvoker@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1293,7 +1289,6 @@ class Function(pulumi.CustomResource):
 
         ### Public Function
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1322,11 +1317,9 @@ class Function(pulumi.CustomResource):
             role="roles/cloudfunctions.invoker",
             member="allUsers")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Single User
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1363,7 +1356,6 @@ class Function(pulumi.CustomResource):
             role="roles/cloudfunctions.invoker",
             member="user:myFunctionInvoker@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

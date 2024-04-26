@@ -266,8 +266,8 @@ class _CxPageState:
                Page.transition_routes.trigger_fulfillment.messages
                Page.transition_routes.trigger_fulfillment.conditional_cases
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: (Output)
-               The unique identifier of this event handler.
+        :param pulumi.Input[str] name: The unique identifier of the page.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
         :param pulumi.Input[str] parent: The flow to create a page for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
@@ -400,8 +400,8 @@ class _CxPageState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
-        The unique identifier of this event handler.
+        The unique identifier of the page.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
         """
         return pulumi.get(self, "name")
 
@@ -486,7 +486,6 @@ class CxPage(pulumi.CustomResource):
 
         ### Dialogflowcx Page Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1051,7 +1050,6 @@ class CxPage(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1133,7 +1131,6 @@ class CxPage(pulumi.CustomResource):
 
         ### Dialogflowcx Page Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1698,7 +1695,6 @@ class CxPage(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1815,8 +1811,8 @@ class CxPage(pulumi.CustomResource):
                Page.transition_routes.trigger_fulfillment.messages
                Page.transition_routes.trigger_fulfillment.conditional_cases
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: (Output)
-               The unique identifier of this event handler.
+        :param pulumi.Input[str] name: The unique identifier of the page.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
         :param pulumi.Input[str] parent: The flow to create a page for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
@@ -1920,8 +1916,8 @@ class CxPage(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        (Output)
-        The unique identifier of this event handler.
+        The unique identifier of the page.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
         """
         return pulumi.get(self, "name")
 

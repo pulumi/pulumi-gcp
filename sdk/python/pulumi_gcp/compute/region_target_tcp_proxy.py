@@ -386,7 +386,6 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
 
         ### Region Target Tcp Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -411,7 +410,6 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             backend_service=default_region_backend_service.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -489,7 +487,6 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
 
         ### Region Target Tcp Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,7 +511,6 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             backend_service=default_region_backend_service.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// Example creating a RuntimeConfig variable.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,14 +37,12 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// You can also encode binary content using the `value` argument instead. The
     /// value must be base64 encoded.
     /// 
     /// Example of using the `value` argument.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,7 +70,6 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

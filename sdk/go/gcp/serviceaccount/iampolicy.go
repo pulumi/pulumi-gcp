@@ -28,7 +28,6 @@ import (
 //
 // ### Service Account IAM Policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,11 +73,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Service Account IAM Binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,11 +110,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Service Account IAM Binding With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,11 +152,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Service Account IAM Member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -212,11 +205,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Service Account IAM Member With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -254,13 +245,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Additional Examples
 //
 // ### Service Account IAM Policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -306,11 +295,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Service Account IAM Binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -345,11 +332,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Service Account IAM Binding With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -389,11 +374,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Service Account IAM Member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -444,11 +427,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Service Account IAM Member With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -486,7 +467,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

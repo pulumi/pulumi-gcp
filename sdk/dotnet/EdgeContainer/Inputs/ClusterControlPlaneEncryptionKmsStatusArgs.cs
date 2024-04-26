@@ -13,14 +13,12 @@ namespace Pulumi.Gcp.EdgeContainer.Inputs
     public sealed class ClusterControlPlaneEncryptionKmsStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
         /// The status code, which should be an enum value of google.rpc.Code.
         /// </summary>
         [Input("code")]
         public Input<int>? Code { get; set; }
 
         /// <summary>
-        /// (Output)
         /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         /// </summary>
         [Input("message")]

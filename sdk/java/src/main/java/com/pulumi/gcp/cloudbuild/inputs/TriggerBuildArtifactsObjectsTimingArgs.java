@@ -17,6 +17,7 @@ public final class TriggerBuildArtifactsObjectsTimingArgs extends com.pulumi.res
 
     /**
      * End of time span.
+     * 
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
      * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -26,6 +27,7 @@ public final class TriggerBuildArtifactsObjectsTimingArgs extends com.pulumi.res
 
     /**
      * @return End of time span.
+     * 
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
      * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -36,6 +38,7 @@ public final class TriggerBuildArtifactsObjectsTimingArgs extends com.pulumi.res
 
     /**
      * Start of time span.
+     * 
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
      * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -45,6 +48,7 @@ public final class TriggerBuildArtifactsObjectsTimingArgs extends com.pulumi.res
 
     /**
      * @return Start of time span.
+     * 
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
      * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -80,6 +84,7 @@ public final class TriggerBuildArtifactsObjectsTimingArgs extends com.pulumi.res
 
         /**
          * @param endTime End of time span.
+         * 
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
          * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
@@ -93,6 +98,7 @@ public final class TriggerBuildArtifactsObjectsTimingArgs extends com.pulumi.res
 
         /**
          * @param endTime End of time span.
+         * 
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
          * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
@@ -105,6 +111,7 @@ public final class TriggerBuildArtifactsObjectsTimingArgs extends com.pulumi.res
 
         /**
          * @param startTime Start of time span.
+         * 
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
          * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
@@ -118,6 +125,7 @@ public final class TriggerBuildArtifactsObjectsTimingArgs extends com.pulumi.res
 
         /**
          * @param startTime Start of time span.
+         * 
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
          * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 

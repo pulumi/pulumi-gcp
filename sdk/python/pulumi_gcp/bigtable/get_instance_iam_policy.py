@@ -94,14 +94,12 @@ def get_instance_iam_policy(instance: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.bigtable.get_instance_iam_policy(instance=instance["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name or relative resource id of the instance to manage IAM policies for.
@@ -129,14 +127,12 @@ def get_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.bigtable.get_instance_iam_policy(instance=instance["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name or relative resource id of the instance to manage IAM policies for.

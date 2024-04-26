@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Vertex Ai Metadata Store
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

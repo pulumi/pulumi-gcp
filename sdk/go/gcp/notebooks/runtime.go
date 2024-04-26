@@ -28,7 +28,6 @@ import (
 //
 // ### Notebook Runtime Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,10 +67,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Notebook Runtime Basic Gpu
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -118,10 +115,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Notebook Runtime Basic Container
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -171,10 +166,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Notebook Runtime Kernels
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -225,10 +218,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Notebook Runtime Script
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -274,7 +265,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

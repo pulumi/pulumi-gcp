@@ -444,7 +444,6 @@ class TargetPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -462,7 +461,6 @@ class TargetPool(pulumi.CustomResource):
             ],
             health_checks=default_http_health_check.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -536,7 +534,6 @@ class TargetPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -554,7 +551,6 @@ class TargetPool(pulumi.CustomResource):
             ],
             health_checks=default_http_health_check.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

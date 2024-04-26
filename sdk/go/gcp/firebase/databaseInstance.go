@@ -16,7 +16,6 @@ import (
 //
 // ### Firebase Database Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,10 +41,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebase Database Instance Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,10 +70,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebase Database Instance Default Database
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -129,7 +124,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

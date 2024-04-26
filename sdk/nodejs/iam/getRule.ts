@@ -7,7 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get information about a Google IAM Role.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -17,7 +16,6 @@ import * as utilities from "../utilities";
  * });
  * export const theRolePermissions = roleinfo.then(roleinfo => roleinfo.includedPermissions);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRule(args: GetRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleResult> {
 
@@ -62,7 +60,6 @@ export interface GetRuleResult {
 /**
  * Use this data source to get information about a Google IAM Role.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -72,7 +69,6 @@ export interface GetRuleResult {
  * });
  * export const theRolePermissions = roleinfo.then(roleinfo => roleinfo.includedPermissions);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRuleOutput(args: GetRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleResult> {
     return pulumi.output(args).apply((a: any) => getRule(a, opts))

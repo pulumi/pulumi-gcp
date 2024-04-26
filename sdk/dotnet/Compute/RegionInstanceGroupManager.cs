@@ -26,7 +26,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ### With Top Level Instance Template (`Google` Provider)
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -99,10 +98,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### With Multiple Versions
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -136,7 +133,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -251,6 +247,14 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerNamedPort>> NamedPorts { get; private set; } = null!;
 
         /// <summary>
+        /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.RegionInstanceGroupManagerParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -279,8 +283,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Output("statefulExternalIps")]
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulExternalIp>> StatefulExternalIps { get; private set; } = null!;
@@ -481,6 +483,14 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.RegionInstanceGroupManagerParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -512,8 +522,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpArgs> StatefulExternalIps
         {
@@ -709,6 +717,14 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.RegionInstanceGroupManagerParamsGetArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -746,8 +762,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpGetArgs> StatefulExternalIps
         {

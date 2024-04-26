@@ -35,14 +35,16 @@ public final class EkmConnectionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+     * KeyManagementMode is CLOUD_KMS.
      * 
      */
     @Import(name="cryptoSpacePath")
     private @Nullable Output<String> cryptoSpacePath;
 
     /**
-     * @return Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+     * @return Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+     * KeyManagementMode is CLOUD_KMS.
      * 
      */
     public Optional<Output<String>> cryptoSpacePath() {
@@ -65,18 +67,16 @@ public final class EkmConnectionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-     * Default value is `MANUAL`.
-     * Possible values are: `MANUAL`, `CLOUD_KMS`.
+     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+     * value: &#34;MANUAL&#34; Possible values: [&#34;MANUAL&#34;, &#34;CLOUD_KMS&#34;]
      * 
      */
     @Import(name="keyManagementMode")
     private @Nullable Output<String> keyManagementMode;
 
     /**
-     * @return Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-     * Default value is `MANUAL`.
-     * Possible values are: `MANUAL`, `CLOUD_KMS`.
+     * @return Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+     * value: &#34;MANUAL&#34; Possible values: [&#34;MANUAL&#34;, &#34;CLOUD_KMS&#34;]
      * 
      */
     public Optional<Output<String>> keyManagementMode() {
@@ -115,19 +115,9 @@ public final class EkmConnectionState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -204,7 +194,8 @@ public final class EkmConnectionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cryptoSpacePath Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+         * @param cryptoSpacePath Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+         * KeyManagementMode is CLOUD_KMS.
          * 
          * @return builder
          * 
@@ -215,7 +206,8 @@ public final class EkmConnectionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cryptoSpacePath Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+         * @param cryptoSpacePath Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+         * KeyManagementMode is CLOUD_KMS.
          * 
          * @return builder
          * 
@@ -246,9 +238,8 @@ public final class EkmConnectionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keyManagementMode Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-         * Default value is `MANUAL`.
-         * Possible values are: `MANUAL`, `CLOUD_KMS`.
+         * @param keyManagementMode Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+         * value: &#34;MANUAL&#34; Possible values: [&#34;MANUAL&#34;, &#34;CLOUD_KMS&#34;]
          * 
          * @return builder
          * 
@@ -259,9 +250,8 @@ public final class EkmConnectionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keyManagementMode Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-         * Default value is `MANUAL`.
-         * Possible values are: `MANUAL`, `CLOUD_KMS`.
+         * @param keyManagementMode Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+         * value: &#34;MANUAL&#34; Possible values: [&#34;MANUAL&#34;, &#34;CLOUD_KMS&#34;]
          * 
          * @return builder
          * 
@@ -314,25 +304,11 @@ public final class EkmConnectionState extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

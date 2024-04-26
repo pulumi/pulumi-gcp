@@ -25,7 +25,6 @@ import (
 //
 // ### Healthcare Hl7 V2 Store Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,10 +72,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Healthcare Hl7 V2 Store Parser Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -193,10 +190,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Healthcare Hl7 V2 Store Unschematized
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -233,7 +228,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

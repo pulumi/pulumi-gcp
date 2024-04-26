@@ -406,7 +406,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
 
         ### Network Security Client Tls Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -419,10 +418,8 @@ class ClientTlsPolicy(pulumi.CustomResource):
             description="my description",
             sni="secure.example.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Client Tls Policy Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -451,7 +448,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -508,7 +504,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
 
         ### Network Security Client Tls Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,10 +516,8 @@ class ClientTlsPolicy(pulumi.CustomResource):
             description="my description",
             sni="secure.example.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Client Tls Policy Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -553,7 +546,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

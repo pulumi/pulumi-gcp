@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId
     {
         /// <summary>
+        /// (Output)
         /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         /// </summary>
         public readonly ImmutableArray<int> ObjectIdPaths;

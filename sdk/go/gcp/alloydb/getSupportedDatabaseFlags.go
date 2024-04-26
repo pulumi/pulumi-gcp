@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSupportedDatabaseFlags(ctx *pulumi.Context, args *GetSupportedDatabaseFlagsArgs, opts ...pulumi.InvokeOption) (*GetSupportedDatabaseFlagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSupportedDatabaseFlagsResult

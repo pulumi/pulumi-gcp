@@ -289,7 +289,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
 
         ### Network Security Gateway Security Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -299,10 +298,8 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Gateway Security Policy Tls Inspection Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -378,7 +375,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             description="my description",
             tls_inspection_policy=default_tls_inspection_policy.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -435,7 +431,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
 
         ### Network Security Gateway Security Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -445,10 +440,8 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Gateway Security Policy Tls Inspection Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -524,7 +517,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             description="my description",
             tls_inspection_policy=default_tls_inspection_policy.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

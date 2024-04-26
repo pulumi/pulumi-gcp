@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Sql
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.Sql
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseInstanceLatestRecoveryTimeResult> InvokeAsync(GetDatabaseInstanceLatestRecoveryTimeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstanceLatestRecoveryTimeResult>("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args ?? new GetDatabaseInstanceLatestRecoveryTimeArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.Gcp.Sql
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.Gcp.Sql
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> Invoke(GetDatabaseInstanceLatestRecoveryTimeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceLatestRecoveryTimeResult>("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args ?? new GetDatabaseInstanceLatestRecoveryTimeInvokeArgs(), options.WithDefaults());

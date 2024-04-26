@@ -16,7 +16,6 @@ import (
 //
 // Example creating a RuntimeConfig variable.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,14 +48,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // You can also encode binary content using the `value` argument instead. The
 // value must be base64 encoded.
 //
 // Example of using the `value` argument.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -96,7 +93,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -24,7 +24,6 @@ import (
 //
 // ### Firebase App Check Recaptcha Enterprise Config Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,7 +66,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

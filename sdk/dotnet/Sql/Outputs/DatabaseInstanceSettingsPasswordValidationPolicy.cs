@@ -23,9 +23,6 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly bool? DisallowUsernameSubstring;
         /// <summary>
         /// Enables or disable the password validation policy.
-        /// 
-        /// The optional `replica_configuration` block must have `master_instance_name` set
-        /// to work, cannot be updated, and supports:
         /// </summary>
         public readonly bool EnablePasswordPolicy;
         /// <summary>

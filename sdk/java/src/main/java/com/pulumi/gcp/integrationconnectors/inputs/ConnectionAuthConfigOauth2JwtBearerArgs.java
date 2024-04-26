@@ -20,7 +20,6 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
      * Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
      * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
      * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
-     * Structure is documented below.
      * 
      */
     @Import(name="clientKey")
@@ -30,7 +29,6 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
      * @return Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
      * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
      * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ConnectionAuthConfigOauth2JwtBearerClientKeyArgs>> clientKey() {
@@ -39,7 +37,6 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
 
     /**
      * JwtClaims providers fields to generate the token.
-     * Structure is documented below.
      * 
      */
     @Import(name="jwtClaims")
@@ -47,7 +44,6 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
 
     /**
      * @return JwtClaims providers fields to generate the token.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs>> jwtClaims() {
@@ -83,7 +79,6 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
          * @param clientKey Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
          * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
          * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -97,7 +92,6 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
          * @param clientKey Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
          * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
          * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -108,7 +102,6 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
 
         /**
          * @param jwtClaims JwtClaims providers fields to generate the token.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -120,7 +113,6 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
 
         /**
          * @param jwtClaims JwtClaims providers fields to generate the token.
-         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -188,7 +188,6 @@ class Folder(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -202,7 +201,6 @@ class Folder(pulumi.CustomResource):
             display_name="Team ABC",
             parent=department1.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -252,7 +250,6 @@ class Folder(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -266,7 +263,6 @@ class Folder(pulumi.CustomResource):
             display_name="Team ABC",
             parent=department1.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

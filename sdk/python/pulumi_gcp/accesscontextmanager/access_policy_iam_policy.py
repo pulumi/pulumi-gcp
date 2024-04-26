@@ -135,7 +135,6 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -148,11 +147,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             name=access_policy["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -162,11 +159,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             role="roles/accesscontextmanager.policyAdmin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -176,11 +171,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             role="roles/accesscontextmanager.policyAdmin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -193,11 +186,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             name=access_policy["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -207,11 +198,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             role="roles/accesscontextmanager.policyAdmin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -221,7 +210,6 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             role="roles/accesscontextmanager.policyAdmin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -286,7 +274,6 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -299,11 +286,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             name=access_policy["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -313,11 +298,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             role="roles/accesscontextmanager.policyAdmin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -327,11 +310,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             role="roles/accesscontextmanager.policyAdmin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,11 +325,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             name=access_policy["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,11 +337,9 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             role="roles/accesscontextmanager.policyAdmin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -372,7 +349,6 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
             role="roles/accesscontextmanager.policyAdmin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

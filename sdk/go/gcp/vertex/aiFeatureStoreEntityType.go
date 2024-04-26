@@ -24,7 +24,6 @@ import (
 //
 // ### Vertex Ai Featurestore Entitytype
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,10 +85,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Featurestore Entitytype With Beta Fields
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -146,7 +143,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

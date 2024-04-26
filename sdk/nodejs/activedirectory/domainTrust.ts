@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Active Directory Domain Trust Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  *     trustHandshakeSecret: "Testing1!",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

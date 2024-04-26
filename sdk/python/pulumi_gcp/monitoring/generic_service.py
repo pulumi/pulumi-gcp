@@ -305,7 +305,6 @@ class GenericService(pulumi.CustomResource):
 
         ### Monitoring Service Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -324,7 +323,6 @@ class GenericService(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -395,7 +393,6 @@ class GenericService(pulumi.CustomResource):
 
         ### Monitoring Service Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -414,7 +411,6 @@ class GenericService(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

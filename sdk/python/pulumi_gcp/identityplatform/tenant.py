@@ -251,7 +251,6 @@ class Tenant(pulumi.CustomResource):
 
         ### Identity Platform Tenant Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -260,7 +259,6 @@ class Tenant(pulumi.CustomResource):
             display_name="tenant",
             allow_password_signup=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -320,7 +318,6 @@ class Tenant(pulumi.CustomResource):
 
         ### Identity Platform Tenant Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -329,7 +326,6 @@ class Tenant(pulumi.CustomResource):
             display_name="tenant",
             allow_password_signup=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

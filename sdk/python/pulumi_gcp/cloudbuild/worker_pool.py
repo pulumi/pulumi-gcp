@@ -388,7 +388,6 @@ class WorkerPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -402,11 +401,9 @@ class WorkerPool(pulumi.CustomResource):
                 no_external_ip=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Network Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,7 +437,6 @@ class WorkerPool(pulumi.CustomResource):
                 peered_network_ip_range="/29",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -492,7 +488,6 @@ class WorkerPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -506,11 +501,9 @@ class WorkerPool(pulumi.CustomResource):
                 no_external_ip=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Network Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -544,7 +537,6 @@ class WorkerPool(pulumi.CustomResource):
                 peered_network_ip_range="/29",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

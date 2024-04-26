@@ -64,16 +64,18 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+     * Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
+     * served by the gateway. Each gateway reference should match the pattern:
+     * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     @Import(name="gateways")
     private @Nullable Output<List<String>> gateways;
 
     /**
-     * @return Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+     * @return Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
+     * served by the gateway. Each gateway reference should match the pattern:
+     * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     public Optional<Output<List<String>>> gateways() {
@@ -81,18 +83,18 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of label tags associated with the TcpRoute resource.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+     * the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the TcpRoute resource.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+     * the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -100,18 +102,18 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt;
-     * The attached Mesh should be of a type SIDECAR
+     * Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
+     * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+     * Mesh should be of a type SIDECAR
      * 
      */
     @Import(name="meshes")
     private @Nullable Output<List<String>> meshes;
 
     /**
-     * @return Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt;
-     * The attached Mesh should be of a type SIDECAR
+     * @return Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
+     * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+     * Mesh should be of a type SIDECAR
      * 
      */
     public Optional<Output<List<String>>> meshes() {
@@ -133,19 +135,9 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -315,8 +307,9 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gateways Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-         * Each gateway reference should match the pattern: projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+         * @param gateways Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
+         * served by the gateway. Each gateway reference should match the pattern:
+         * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
          * 
          * @return builder
          * 
@@ -327,8 +320,9 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gateways Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-         * Each gateway reference should match the pattern: projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+         * @param gateways Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
+         * served by the gateway. Each gateway reference should match the pattern:
+         * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
          * 
          * @return builder
          * 
@@ -338,8 +332,9 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gateways Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-         * Each gateway reference should match the pattern: projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+         * @param gateways Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
+         * served by the gateway. Each gateway reference should match the pattern:
+         * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
          * 
          * @return builder
          * 
@@ -349,9 +344,9 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of label tags associated with the TcpRoute resource.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+         * the resource.
          * 
          * @return builder
          * 
@@ -362,9 +357,9 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of label tags associated with the TcpRoute resource.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+         * the resource.
          * 
          * @return builder
          * 
@@ -374,9 +369,9 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshes Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-         * Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt;
-         * The attached Mesh should be of a type SIDECAR
+         * @param meshes Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
+         * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+         * Mesh should be of a type SIDECAR
          * 
          * @return builder
          * 
@@ -387,9 +382,9 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshes Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-         * Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt;
-         * The attached Mesh should be of a type SIDECAR
+         * @param meshes Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
+         * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+         * Mesh should be of a type SIDECAR
          * 
          * @return builder
          * 
@@ -399,9 +394,9 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshes Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-         * Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt;
-         * The attached Mesh should be of a type SIDECAR
+         * @param meshes Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
+         * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+         * Mesh should be of a type SIDECAR
          * 
          * @return builder
          * 
@@ -431,25 +426,11 @@ public final class TcpRouteState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

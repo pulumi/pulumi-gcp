@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Vertex Ai Featureonlinestore Featureview
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -84,10 +83,8 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Featureonlinestore Featureview Feature Registry
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -173,10 +170,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Featureonlinestore Featureview With Vector Search
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -278,7 +273,6 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

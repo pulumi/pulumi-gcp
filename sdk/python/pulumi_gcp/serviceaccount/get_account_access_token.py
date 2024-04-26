@@ -109,7 +109,6 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
 
     In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -119,13 +118,11 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
         role="roles/iam.serviceAccountTokenCreator",
         members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"])
     ```
-    <!--End PulumiCodeChooser -->
 
     Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
 
     In the example below, `organizations.Project` will run as `service_B`.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -140,7 +137,6 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
     me = gcp.organizations.get_client_open_id_user_info()
     pulumi.export("target-email", me.email)
     ```
-    <!--End PulumiCodeChooser -->
 
     > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
 
@@ -185,7 +181,6 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
 
     In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -195,13 +190,11 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
         role="roles/iam.serviceAccountTokenCreator",
         members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"])
     ```
-    <!--End PulumiCodeChooser -->
 
     Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
 
     In the example below, `organizations.Project` will run as `service_B`.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -216,7 +209,6 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
     me = gcp.organizations.get_client_open_id_user_info()
     pulumi.export("target-email", me.email)
     ```
-    <!--End PulumiCodeChooser -->
 
     > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
 

@@ -16,7 +16,6 @@ import (
 //
 // ### Firebasehosting Version Redirect
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,10 +63,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebasehosting Version Cloud Run
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,10 +131,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebasehosting Version Cloud Functions
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -217,7 +212,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

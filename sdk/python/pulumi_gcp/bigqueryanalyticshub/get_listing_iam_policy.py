@@ -115,7 +115,6 @@ def get_listing_iam_policy(data_exchange_id: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -125,7 +124,6 @@ def get_listing_iam_policy(data_exchange_id: Optional[str] = None,
         data_exchange_id=listing["dataExchangeId"],
         listing_id=listing["listingId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
@@ -164,7 +162,6 @@ def get_listing_iam_policy_output(data_exchange_id: Optional[pulumi.Input[str]] 
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -174,7 +171,6 @@ def get_listing_iam_policy_output(data_exchange_id: Optional[pulumi.Input[str]] 
         data_exchange_id=listing["dataExchangeId"],
         listing_id=listing["listingId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to

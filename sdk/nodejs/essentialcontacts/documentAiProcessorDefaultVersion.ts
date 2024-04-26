@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Documentai Default Version
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  *     version: pulumi.interpolate`${processor.id}/processorVersions/stable`,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

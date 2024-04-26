@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,13 +43,11 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
         /// 
         /// In the example below, `gcp.organizations.Project` will run as `service_B`.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
         /// </summary>
@@ -99,7 +95,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -120,13 +115,11 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
         /// 
         /// In the example below, `gcp.organizations.Project` will run as `service_B`.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -156,7 +149,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
         /// </summary>

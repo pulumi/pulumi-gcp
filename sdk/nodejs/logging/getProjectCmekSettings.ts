@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ### Logging Project Cmek Settings Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectCmekSettings(args: GetProjectCmekSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectCmekSettingsResult> {
 
@@ -105,7 +103,6 @@ export interface GetProjectCmekSettingsResult {
  *
  * ### Logging Project Cmek Settings Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -114,7 +111,6 @@ export interface GetProjectCmekSettingsResult {
  *     project: "my-project-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectCmekSettingsOutput(args: GetProjectCmekSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectCmekSettingsResult> {
     return pulumi.output(args).apply((a: any) => getProjectCmekSettings(a, opts))

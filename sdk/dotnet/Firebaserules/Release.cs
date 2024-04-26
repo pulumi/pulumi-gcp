@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     /// ### Firestore_release
     /// Creates a Firebase Rules Release to Cloud Firestore
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,10 +49,8 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Storage_release
     /// Creates a Firebase Rules Release for a Storage bucket
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -103,7 +100,6 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

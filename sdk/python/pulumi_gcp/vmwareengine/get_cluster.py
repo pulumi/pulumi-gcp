@@ -110,7 +110,6 @@ def get_cluster(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -118,7 +117,6 @@ def get_cluster(name: Optional[str] = None,
     my_cluster = gcp.vmwareengine.get_cluster(name="my-cluster",
         parent="project/locations/us-west1-a/privateClouds/my-cloud")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.
@@ -152,7 +150,6 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -160,7 +157,6 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
     my_cluster = gcp.vmwareengine.get_cluster(name="my-cluster",
         parent="project/locations/us-west1-a/privateClouds/my-cloud")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.

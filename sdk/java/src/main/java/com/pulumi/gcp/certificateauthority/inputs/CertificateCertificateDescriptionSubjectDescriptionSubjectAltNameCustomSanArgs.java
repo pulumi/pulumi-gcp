@@ -19,16 +19,16 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     public static final CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs Empty = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs();
 
     /**
-     * Indicates whether or not this extension is critical (i.e., if the client does not know how to
-     * handle this extension, the client should consider this to be an error).
+     * (Output)
+     * Indicates whether or not the name constraints are marked critical.
      * 
      */
     @Import(name="critical")
     private @Nullable Output<Boolean> critical;
 
     /**
-     * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
-     * handle this extension, the client should consider this to be an error).
+     * @return (Output)
+     * Indicates whether or not the name constraints are marked critical.
      * 
      */
     public Optional<Output<Boolean>> critical() {
@@ -96,8 +96,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param critical Indicates whether or not this extension is critical (i.e., if the client does not know how to
-         * handle this extension, the client should consider this to be an error).
+         * @param critical (Output)
+         * Indicates whether or not the name constraints are marked critical.
          * 
          * @return builder
          * 
@@ -108,8 +108,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param critical Indicates whether or not this extension is critical (i.e., if the client does not know how to
-         * handle this extension, the client should consider this to be an error).
+         * @param critical (Output)
+         * Indicates whether or not the name constraints are marked critical.
          * 
          * @return builder
          * 

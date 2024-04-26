@@ -246,7 +246,6 @@ class AppCheckDebugToken(pulumi.CustomResource):
 
         ### Firebase App Check Debug Token Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -264,7 +263,6 @@ class AppCheckDebugToken(pulumi.CustomResource):
             display_name="Debug Token",
             token="00000000-AAAA-BBBB-CCCC-000000000000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -332,7 +330,6 @@ class AppCheckDebugToken(pulumi.CustomResource):
 
         ### Firebase App Check Debug Token Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -350,7 +347,6 @@ class AppCheckDebugToken(pulumi.CustomResource):
             display_name="Debug Token",
             token="00000000-AAAA-BBBB-CCCC-000000000000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

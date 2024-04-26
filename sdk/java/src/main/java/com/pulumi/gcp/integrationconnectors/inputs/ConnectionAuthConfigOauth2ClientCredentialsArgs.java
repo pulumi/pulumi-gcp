@@ -34,7 +34,6 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
 
     /**
      * Secret version reference containing the client secret.
-     * Structure is documented below.
      * 
      */
     @Import(name="clientSecret")
@@ -42,7 +41,6 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
 
     /**
      * @return Secret version reference containing the client secret.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs>> clientSecret() {
@@ -97,7 +95,6 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
 
         /**
          * @param clientSecret Secret version reference containing the client secret.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -109,7 +106,6 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
 
         /**
          * @param clientSecret Secret version reference containing the client secret.
-         * Structure is documented below.
          * 
          * @return builder
          * 

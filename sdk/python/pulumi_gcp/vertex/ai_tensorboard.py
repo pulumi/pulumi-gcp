@@ -391,7 +391,6 @@ class AiTensorboard(pulumi.CustomResource):
 
         ### Vertex Ai Tensorboard
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -405,10 +404,8 @@ class AiTensorboard(pulumi.CustomResource):
             },
             region="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Tensorboard Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -430,7 +427,6 @@ class AiTensorboard(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -498,7 +494,6 @@ class AiTensorboard(pulumi.CustomResource):
 
         ### Vertex Ai Tensorboard
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -512,10 +507,8 @@ class AiTensorboard(pulumi.CustomResource):
             },
             region="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Tensorboard Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -537,7 +530,6 @@ class AiTensorboard(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

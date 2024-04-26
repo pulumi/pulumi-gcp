@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// ### Filestore Backup Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -72,7 +71,6 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

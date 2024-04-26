@@ -260,7 +260,6 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
     }
     /**
      * Gateway used by the AppConnection.
-     * Structure is documented below.
      * 
      */
     @Export(name="gateway", refs={AppConnectionGateway.class}, tree="[0]")
@@ -268,27 +267,24 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Gateway used by the AppConnection.
-     * Structure is documented below.
      * 
      */
     public Output<AppConnectionGateway> gateway() {
         return this.gateway;
     }
     /**
-     * Resource labels to represent user provided metadata.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Resource labels to represent user provided metadata.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -308,19 +304,9 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
@@ -356,8 +342,8 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of network connectivity used by the AppConnection. Refer to
-     * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-     * for a list of possible values.
+     * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
+     * values.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -365,8 +351,8 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of network connectivity used by the AppConnection. Refer to
-     * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-     * for a list of possible values.
+     * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
+     * values.
      * 
      */
     public Output<Optional<String>> type() {

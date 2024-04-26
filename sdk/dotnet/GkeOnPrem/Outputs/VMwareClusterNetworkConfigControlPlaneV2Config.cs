@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
     {
         /// <summary>
         /// Static IP addresses for the control plane nodes.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock? ControlPlaneIpBlock;
 

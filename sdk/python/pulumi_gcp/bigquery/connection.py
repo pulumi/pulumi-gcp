@@ -497,7 +497,6 @@ class Connection(pulumi.CustomResource):
 
         ### Bigquery Connection Cloud Resource
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -509,10 +508,8 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -550,10 +547,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -592,10 +587,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Aws
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -611,10 +604,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Azure
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -629,10 +620,8 @@ class Connection(pulumi.CustomResource):
                 federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Cloudspanner
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -647,10 +636,8 @@ class Connection(pulumi.CustomResource):
                 database_role="database_role",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Cloudspanner Databoost
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -667,10 +654,8 @@ class Connection(pulumi.CustomResource):
                 max_parallelism=100,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Spark
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -703,7 +688,6 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -775,7 +759,6 @@ class Connection(pulumi.CustomResource):
 
         ### Bigquery Connection Cloud Resource
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -787,10 +770,8 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -828,10 +809,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -870,10 +849,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Aws
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -889,10 +866,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Azure
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -907,10 +882,8 @@ class Connection(pulumi.CustomResource):
                 federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Cloudspanner
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -925,10 +898,8 @@ class Connection(pulumi.CustomResource):
                 database_role="database_role",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Cloudspanner Databoost
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -945,10 +916,8 @@ class Connection(pulumi.CustomResource):
                 max_parallelism=100,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Connection Spark
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -981,7 +950,6 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

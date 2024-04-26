@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.Logging
         /// ### Logging Project Cmek Settings Basic
         /// 
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectCmekSettingsResult> InvokeAsync(GetProjectCmekSettingsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectCmekSettingsResult>("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args ?? new GetProjectCmekSettingsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.Gcp.Logging
         /// ### Logging Project Cmek Settings Basic
         /// 
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectCmekSettingsResult> Invoke(GetProjectCmekSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectCmekSettingsResult>("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args ?? new GetProjectCmekSettingsInvokeArgs(), options.WithDefaults());

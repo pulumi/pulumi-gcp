@@ -591,6 +591,114 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloudfunctions2 Basic Builder
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.Function;
+ * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = &#34;my-project-name&#34;;
+ * 
+ *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;gcf-sa&#34;)
+ *             .displayName(&#34;Test Service Account&#34;)
+ *             .build());
+ * 
+ *         var logWriter = new IAMMember(&#34;logWriter&#34;, IAMMemberArgs.builder()        
+ *             .project(account.project())
+ *             .role(&#34;roles/logging.logWriter&#34;)
+ *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var artifactRegistryWriter = new IAMMember(&#34;artifactRegistryWriter&#34;, IAMMemberArgs.builder()        
+ *             .project(account.project())
+ *             .role(&#34;roles/artifactregistry.writer&#34;)
+ *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var storageObjectAdmin = new IAMMember(&#34;storageObjectAdmin&#34;, IAMMemberArgs.builder()        
+ *             .project(account.project())
+ *             .role(&#34;roles/storage.objectAdmin&#34;)
+ *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(String.format(&#34;%s-gcf-source&#34;, project))
+ *             .location(&#34;US&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;function-source.zip&#34;)
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset(&#34;function-source.zip&#34;))
+ *             .build());
+ * 
+ *         // builder permissions need to stablize before it can pull the source zip
+ *         var wait60s = new Sleep(&#34;wait60s&#34;, SleepArgs.builder()        
+ *             .createDuration(&#34;60s&#34;)
+ *             .build());
+ * 
+ *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
+ *             .name(&#34;function-v2&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;a new function&#34;)
+ *             .buildConfig(FunctionBuildConfigArgs.builder()
+ *                 .runtime(&#34;nodejs16&#34;)
+ *                 .entryPoint(&#34;helloHttp&#34;)
+ *                 .source(FunctionBuildConfigSourceArgs.builder()
+ *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
+ *                         .bucket(bucket.name())
+ *                         .object(object.name())
+ *                         .build())
+ *                     .build())
+ *                 .serviceAccount(account.id())
+ *                 .build())
+ *             .serviceConfig(FunctionServiceConfigArgs.builder()
+ *                 .maxInstanceCount(1)
+ *                 .availableMemory(&#34;256M&#34;)
+ *                 .timeoutSeconds(60)
+ *                 .build())
+ *             .build());
+ * 
+ *         ctx.export(&#34;functionUri&#34;, function.serviceConfig().applyValue(serviceConfig -&gt; serviceConfig.uri()));
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudfunctions2 Secret Env
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

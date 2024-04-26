@@ -8,11 +8,28 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetActiveFolderArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetActiveFolderArgs Empty = new GetActiveFolderArgs();
+
+    /**
+     * The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](&lt;https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the&gt;) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
+     * 
+     */
+    @Import(name="apiMethod")
+    private @Nullable Output<String> apiMethod;
+
+    /**
+     * @return The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](&lt;https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the&gt;) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
+     * 
+     */
+    public Optional<Output<String>> apiMethod() {
+        return Optional.ofNullable(this.apiMethod);
+    }
 
     /**
      * The folder&#39;s display name.
@@ -47,6 +64,7 @@ public final class GetActiveFolderArgs extends com.pulumi.resources.InvokeArgs {
     private GetActiveFolderArgs() {}
 
     private GetActiveFolderArgs(GetActiveFolderArgs $) {
+        this.apiMethod = $.apiMethod;
         this.displayName = $.displayName;
         this.parent = $.parent;
     }
@@ -67,6 +85,27 @@ public final class GetActiveFolderArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetActiveFolderArgs defaults) {
             $ = new GetActiveFolderArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiMethod The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](&lt;https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the&gt;) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiMethod(@Nullable Output<String> apiMethod) {
+            $.apiMethod = apiMethod;
+            return this;
+        }
+
+        /**
+         * @param apiMethod The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](&lt;https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the&gt;) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiMethod(String apiMethod) {
+            return apiMethod(Output.of(apiMethod));
         }
 
         /**

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Database Migration Service Private Connection
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,7 +39,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -108,9 +106,8 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly errors!: pulumi.Output<outputs.databasemigrationservice.PrivateConnectionError[]>;
     /**
-     * Labels.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+     * refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -125,10 +122,6 @@ export class PrivateConnection extends pulumi.CustomResource {
      * The private connectivity identifier.
      */
     public readonly privateConnectionId!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -218,9 +211,8 @@ export interface PrivateConnectionState {
      */
     errors?: pulumi.Input<pulumi.Input<inputs.databasemigrationservice.PrivateConnectionError>[]>;
     /**
-     * Labels.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+     * refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -235,10 +227,6 @@ export interface PrivateConnectionState {
      * The private connectivity identifier.
      */
     privateConnectionId?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -266,9 +254,8 @@ export interface PrivateConnectionArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Labels.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+     * refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -279,10 +266,6 @@ export interface PrivateConnectionArgs {
      * The private connectivity identifier.
      */
     privateConnectionId: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The VPC Peering configuration is used to create VPC peering

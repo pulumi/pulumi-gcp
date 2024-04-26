@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// ### Apigee Sync Authorization Basic Test
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -76,7 +75,6 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

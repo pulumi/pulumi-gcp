@@ -14,10 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup
     {
         /// <summary>
-        /// The name of the cluster, unique within the project and
-        /// zone.
-        /// 
-        /// - - -
+        /// The Node group resource name.
         /// </summary>
         public readonly string? Name;
         /// <summary>

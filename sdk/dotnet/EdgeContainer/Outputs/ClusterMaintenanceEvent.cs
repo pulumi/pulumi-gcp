@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.EdgeContainer.Outputs
         /// </summary>
         public readonly string? CreateTime;
         /// <summary>
-        /// The time that the window ends. The end time must take place after the
-        /// start time.
+        /// (Output)
+        /// The time when the maintenance event ended, either successfully or not. If
+        /// the maintenance event is split into multiple maintenance windows,
+        /// end_time is only updated when the whole flow ends.
         /// </summary>
         public readonly string? EndTime;
         /// <summary>
@@ -37,7 +39,8 @@ namespace Pulumi.Gcp.EdgeContainer.Outputs
         /// </summary>
         public readonly string? Schedule;
         /// <summary>
-        /// The time that the window first starts.
+        /// (Output)
+        /// The time when the maintenance event started.
         /// </summary>
         public readonly string? StartTime;
         /// <summary>
@@ -46,7 +49,8 @@ namespace Pulumi.Gcp.EdgeContainer.Outputs
         /// </summary>
         public readonly string? State;
         /// <summary>
-        /// The target cluster version. For example: "1.5.0".
+        /// (Output)
+        /// The target version of the cluster.
         /// </summary>
         public readonly string? TargetVersion;
         /// <summary>

@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// First, create a KMS KeyRing and CryptoKey using the resource definitions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,7 +50,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
         /// sensitive information:
@@ -70,7 +68,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// Finally, reference the encrypted ciphertext in your resource definitions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -111,7 +108,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// This will result in a Cloud SQL user being created with password `my-secret-password`.
         /// </summary>
@@ -134,7 +130,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// First, create a KMS KeyRing and CryptoKey using the resource definitions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -158,7 +153,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
         /// sensitive information:
@@ -177,7 +171,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// Finally, reference the encrypted ciphertext in your resource definitions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -218,7 +211,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// This will result in a Cloud SQL user being created with password `my-secret-password`.
         /// </summary>

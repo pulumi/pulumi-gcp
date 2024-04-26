@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * ### Ha Vpn Gateway Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,10 +36,8 @@ import * as utilities from "../utilities";
  *     network: network1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Ha Vpn Gateway Ipv6
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,10 +53,8 @@ import * as utilities from "../utilities";
  *     stackType: "IPV4_IPV6",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Compute Ha Vpn Gateway Encrypted Interconnect
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -123,7 +118,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceScratchDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name with which the attached disk will be accessible
-        /// under `/dev/disk/by-id/google-*`
+        /// Name with which the attached disk is accessible under /dev/disk/by-id/
         /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
@@ -26,8 +25,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string> Interface { get; set; } = null!;
 
         /// <summary>
-        /// The size of the image in gigabytes. If not specified, it
-        /// will inherit the size of its base image.
+        /// The size of the disk in gigabytes. One of 375 or 3000.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

@@ -50,8 +50,6 @@ public final class DatabaseInstanceSettingsMaintenanceWindowArgs extends com.pul
      * Receive updates earlier (`canary`) or later
      * (`stable`)
      * 
-     * The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
-     * 
      */
     @Import(name="updateTrack")
     private @Nullable Output<String> updateTrack;
@@ -59,8 +57,6 @@ public final class DatabaseInstanceSettingsMaintenanceWindowArgs extends com.pul
     /**
      * @return Receive updates earlier (`canary`) or later
      * (`stable`)
-     * 
-     * The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
      * 
      */
     public Optional<Output<String>> updateTrack() {
@@ -139,8 +135,6 @@ public final class DatabaseInstanceSettingsMaintenanceWindowArgs extends com.pul
          * @param updateTrack Receive updates earlier (`canary`) or later
          * (`stable`)
          * 
-         * The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
-         * 
          * @return builder
          * 
          */
@@ -152,8 +146,6 @@ public final class DatabaseInstanceSettingsMaintenanceWindowArgs extends com.pul
         /**
          * @param updateTrack Receive updates earlier (`canary`) or later
          * (`stable`)
-         * 
-         * The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
          * 
          * @return builder
          * 

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Services Service Binding Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,7 +34,6 @@ import * as utilities from "../utilities";
  *     service: defaultService.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

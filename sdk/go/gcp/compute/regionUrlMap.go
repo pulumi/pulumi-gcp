@@ -18,7 +18,6 @@ import (
 //
 // ### Region Url Map Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -115,10 +114,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Url Map Default Route Action
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -333,10 +330,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Url Map L7 Ilb Path
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -490,10 +485,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Url Map L7 Ilb Path Partial
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -601,10 +594,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Url Map L7 Ilb Route
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -734,10 +725,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Url Map L7 Ilb Route Partial
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -832,10 +821,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Int Https Lb Https Redirect
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1200,10 +1187,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Url Map Path Template Match
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1318,7 +1303,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -64,16 +64,14 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
     }
 
     /**
-     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * The resource name of the inspect template. Set by the server.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * @return The resource name of the inspect template. Set by the server.
      * 
      */
     public Optional<Output<String>> name() {
@@ -221,8 +219,7 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * @param name The resource name of the inspect template. Set by the server.
          * 
          * @return builder
          * 
@@ -233,8 +230,7 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * @param name The resource name of the inspect template. Set by the server.
          * 
          * @return builder
          * 

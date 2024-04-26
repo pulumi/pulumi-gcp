@@ -447,7 +447,6 @@ class Connection(pulumi.CustomResource):
 
         ### Cloudbuildv2 Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -462,10 +461,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuildv2 Connection Ghe
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -509,10 +506,8 @@ class Connection(pulumi.CustomResource):
                 app_installation_id=300,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuildv2 Connection Github
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -543,7 +538,6 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -614,7 +608,6 @@ class Connection(pulumi.CustomResource):
 
         ### Cloudbuildv2 Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -629,10 +622,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuildv2 Connection Ghe
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -676,10 +667,8 @@ class Connection(pulumi.CustomResource):
                 app_installation_id=300,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuildv2 Connection Github
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -710,7 +699,6 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

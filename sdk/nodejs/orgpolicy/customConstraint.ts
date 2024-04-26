@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Org Policy Custom Constraint Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,10 +34,8 @@ import * as utilities from "../utilities";
  *     resourceTypes: ["container.googleapis.com/NodePool"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Org Policy Custom Constraint Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,7 +63,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

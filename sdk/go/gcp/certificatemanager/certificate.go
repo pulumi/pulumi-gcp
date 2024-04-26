@@ -17,7 +17,6 @@ import (
 //
 // ### Certificate Manager Google Managed Certificate Dns
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,10 +71,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Certificate Manager Google Managed Certificate Issuance Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -173,10 +170,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Certificate Manager Certificate Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -228,10 +223,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Certificate Manager Self Managed Certificate Regional
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -274,10 +267,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -375,10 +366,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Certificate Manager Google Managed Certificate Dns All Regions
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -430,10 +419,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Certificate Manager Google Managed Regional Certificate Dns Auth
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -476,7 +463,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

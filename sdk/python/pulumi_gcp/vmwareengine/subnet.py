@@ -341,7 +341,6 @@ class Subnet(pulumi.CustomResource):
 
         ### Vmware Engine Subnet User Defined
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -371,7 +370,6 @@ class Subnet(pulumi.CustomResource):
             parent=subnet_pc.id,
             ip_cidr_range="192.168.100.0/26")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -416,7 +414,6 @@ class Subnet(pulumi.CustomResource):
 
         ### Vmware Engine Subnet User Defined
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,7 +443,6 @@ class Subnet(pulumi.CustomResource):
             parent=subnet_pc.id,
             ip_cidr_range="192.168.100.0/26")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

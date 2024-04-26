@@ -21,7 +21,10 @@ class GetActiveFolderResult:
     """
     A collection of values returned by getActiveFolder.
     """
-    def __init__(__self__, display_name=None, id=None, name=None, parent=None):
+    def __init__(__self__, api_method=None, display_name=None, id=None, name=None, parent=None):
+        if api_method and not isinstance(api_method, str):
+            raise TypeError("Expected argument 'api_method' to be a str")
+        pulumi.set(__self__, "api_method", api_method)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -34,6 +37,11 @@ class GetActiveFolderResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter(name="apiMethod")
+    def api_method(self) -> Optional[str]:
+        return pulumi.get(self, "api_method")
 
     @property
     @pulumi.getter(name="displayName")
@@ -68,13 +76,15 @@ class AwaitableGetActiveFolderResult(GetActiveFolderResult):
         if False:
             yield self
         return GetActiveFolderResult(
+            api_method=self.api_method,
             display_name=self.display_name,
             id=self.id,
             name=self.name,
             parent=self.parent)
 
 
-def get_active_folder(display_name: Optional[str] = None,
+def get_active_folder(api_method: Optional[str] = None,
+                      display_name: Optional[str] = None,
                       parent: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetActiveFolderResult:
     """
@@ -83,16 +93,19 @@ def get_active_folder(display_name: Optional[str] = None,
     ## Example Usage
 
 
+    :param str api_method: The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
     :param str display_name: The folder's display name.
     :param str parent: The resource name of the parent Folder or Organization.
     """
     __args__ = dict()
+    __args__['apiMethod'] = api_method
     __args__['displayName'] = display_name
     __args__['parent'] = parent
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__, opts=opts, typ=GetActiveFolderResult).value
 
     return AwaitableGetActiveFolderResult(
+        api_method=pulumi.get(__ret__, 'api_method'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -100,7 +113,8 @@ def get_active_folder(display_name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_active_folder)
-def get_active_folder_output(display_name: Optional[pulumi.Input[str]] = None,
+def get_active_folder_output(api_method: Optional[pulumi.Input[Optional[str]]] = None,
+                             display_name: Optional[pulumi.Input[str]] = None,
                              parent: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetActiveFolderResult]:
     """
@@ -109,6 +123,7 @@ def get_active_folder_output(display_name: Optional[pulumi.Input[str]] = None,
     ## Example Usage
 
 
+    :param str api_method: The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
     :param str display_name: The folder's display name.
     :param str parent: The resource name of the parent Folder or Organization.
     """

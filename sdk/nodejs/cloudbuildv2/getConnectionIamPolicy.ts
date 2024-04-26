@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     name: my_connection.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnectionIamPolicy(args: GetConnectionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionIamPolicyResult> {
 
@@ -77,7 +75,6 @@ export interface GetConnectionIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,7 +85,6 @@ export interface GetConnectionIamPolicyResult {
  *     name: my_connection.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getConnectionIamPolicy(a, opts))

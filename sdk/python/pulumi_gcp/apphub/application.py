@@ -30,11 +30,8 @@ class ApplicationArgs:
         :param pulumi.Input['ApplicationScopeArgs'] scope: Scope of an application.
                Structure is documented below.
         :param pulumi.Input['ApplicationAttributesArgs'] attributes: Consumer provided attributes.
-               Structure is documented below.
         :param pulumi.Input[str] description: Optional. User-defined description of an Application.
-        :param pulumi.Input[str] display_name: Optional. Contact's name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] display_name: Optional. User-defined name for the Application.
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "location", location)
@@ -90,7 +87,6 @@ class ApplicationArgs:
     def attributes(self) -> Optional[pulumi.Input['ApplicationAttributesArgs']]:
         """
         Consumer provided attributes.
-        Structure is documented below.
         """
         return pulumi.get(self, "attributes")
 
@@ -114,7 +110,7 @@ class ApplicationArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Contact's name.
+        Optional. User-defined name for the Application.
         """
         return pulumi.get(self, "display_name")
 
@@ -125,10 +121,6 @@ class ApplicationArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -155,15 +147,12 @@ class _ApplicationState:
         Input properties used for looking up and filtering Application resources.
         :param pulumi.Input[str] application_id: Required. The Application identifier.
         :param pulumi.Input['ApplicationAttributesArgs'] attributes: Consumer provided attributes.
-               Structure is documented below.
         :param pulumi.Input[str] create_time: Output only. Create time.
         :param pulumi.Input[str] description: Optional. User-defined description of an Application.
-        :param pulumi.Input[str] display_name: Optional. Contact's name.
+        :param pulumi.Input[str] display_name: Optional. User-defined name for the Application.
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[str] name: Identifier. The resource name of an Application. Format:
                "projects/{host-project-id}/locations/{location}/applications/{application-id}"
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input['ApplicationScopeArgs'] scope: Scope of an application.
                Structure is documented below.
         :param pulumi.Input[str] state: Output only. Application state.
@@ -217,7 +206,6 @@ class _ApplicationState:
     def attributes(self) -> Optional[pulumi.Input['ApplicationAttributesArgs']]:
         """
         Consumer provided attributes.
-        Structure is documented below.
         """
         return pulumi.get(self, "attributes")
 
@@ -253,7 +241,7 @@ class _ApplicationState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Contact's name.
+        Optional. User-defined name for the Application.
         """
         return pulumi.get(self, "display_name")
 
@@ -289,10 +277,6 @@ class _ApplicationState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -374,7 +358,6 @@ class Application(pulumi.CustomResource):
 
         ### Application Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -386,10 +369,8 @@ class Application(pulumi.CustomResource):
                 type="REGIONAL",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Application Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -423,7 +404,6 @@ class Application(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -453,12 +433,9 @@ class Application(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: Required. The Application identifier.
         :param pulumi.Input[pulumi.InputType['ApplicationAttributesArgs']] attributes: Consumer provided attributes.
-               Structure is documented below.
         :param pulumi.Input[str] description: Optional. User-defined description of an Application.
-        :param pulumi.Input[str] display_name: Optional. Contact's name.
+        :param pulumi.Input[str] display_name: Optional. User-defined name for the Application.
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ApplicationScopeArgs']] scope: Scope of an application.
                Structure is documented below.
         """
@@ -475,7 +452,6 @@ class Application(pulumi.CustomResource):
 
         ### Application Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -487,10 +463,8 @@ class Application(pulumi.CustomResource):
                 type="REGIONAL",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Application Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -524,7 +498,6 @@ class Application(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -630,15 +603,12 @@ class Application(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: Required. The Application identifier.
         :param pulumi.Input[pulumi.InputType['ApplicationAttributesArgs']] attributes: Consumer provided attributes.
-               Structure is documented below.
         :param pulumi.Input[str] create_time: Output only. Create time.
         :param pulumi.Input[str] description: Optional. User-defined description of an Application.
-        :param pulumi.Input[str] display_name: Optional. Contact's name.
+        :param pulumi.Input[str] display_name: Optional. User-defined name for the Application.
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[str] name: Identifier. The resource name of an Application. Format:
                "projects/{host-project-id}/locations/{location}/applications/{application-id}"
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ApplicationScopeArgs']] scope: Scope of an application.
                Structure is documented below.
         :param pulumi.Input[str] state: Output only. Application state.
@@ -681,7 +651,6 @@ class Application(pulumi.CustomResource):
     def attributes(self) -> pulumi.Output[Optional['outputs.ApplicationAttributes']]:
         """
         Consumer provided attributes.
-        Structure is documented below.
         """
         return pulumi.get(self, "attributes")
 
@@ -705,7 +674,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. Contact's name.
+        Optional. User-defined name for the Application.
         """
         return pulumi.get(self, "display_name")
 
@@ -729,10 +698,6 @@ class Application(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

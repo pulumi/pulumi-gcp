@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * Example creating a SQL User.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,11 +33,9 @@ import * as utilities from "../utilities";
  *     password: "changeme",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,11 +68,9 @@ import * as utilities from "../utilities";
  *     type: "CLOUD_IAM_SERVICE_ACCOUNT",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -99,7 +94,6 @@ import * as utilities from "../utilities";
  *     type: "CLOUD_IAM_GROUP",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

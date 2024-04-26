@@ -277,7 +277,6 @@ class Namespace(pulumi.CustomResource):
 
         ### Service Directory Namespace Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -290,7 +289,6 @@ class Namespace(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -355,7 +353,6 @@ class Namespace(pulumi.CustomResource):
 
         ### Service Directory Namespace Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,7 +365,6 @@ class Namespace(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

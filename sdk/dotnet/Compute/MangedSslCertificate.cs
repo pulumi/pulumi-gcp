@@ -40,7 +40,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ### Managed Ssl Certificate Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -134,7 +133,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ## Import
     /// 
     /// ManagedSslCertificate can be imported using any of these accepted formats:

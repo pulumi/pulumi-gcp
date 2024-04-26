@@ -13,30 +13,26 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
     public sealed class CertificateManagedAuthorizationAttemptInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
         /// Human readable explanation for reaching the state. Provided to help
         /// address the configuration issues.
-        /// Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+        /// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
         /// </summary>
         [Input("details")]
         public Input<string>? Details { get; set; }
 
         /// <summary>
-        /// (Output)
         /// Domain name of the authorization attempt.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// (Output)
         /// Reason for failure of the authorization attempt for the domain.
         /// </summary>
         [Input("failureReason")]
         public Input<string>? FailureReason { get; set; }
 
         /// <summary>
-        /// (Output)
         /// State of the domain for managed certificate issuance.
         /// </summary>
         [Input("state")]

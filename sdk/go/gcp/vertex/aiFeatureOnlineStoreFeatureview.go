@@ -24,7 +24,6 @@ import (
 //
 // ### Vertex Ai Featureonlinestore Featureview
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -129,10 +128,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Featureonlinestore Featureview Feature Registry
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -264,10 +261,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Featureonlinestore Featureview With Vector Search
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -418,7 +413,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

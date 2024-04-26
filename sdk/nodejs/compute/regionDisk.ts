@@ -33,7 +33,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Disk Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -62,10 +61,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Disk Async
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -94,10 +91,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Disk Features
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -125,7 +120,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -308,10 +302,12 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+     * * `projects/project/global/snapshots/snapshot`
+     * * `global/snapshots/snapshot`
      */
     public readonly snapshot!: pulumi.Output<string | undefined>;
     /**
@@ -565,10 +561,12 @@ export interface RegionDiskState {
      */
     size?: pulumi.Input<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+     * * `projects/project/global/snapshots/snapshot`
+     * * `global/snapshots/snapshot`
      */
     snapshot?: pulumi.Input<string>;
     /**
@@ -713,10 +711,12 @@ export interface RegionDiskArgs {
      */
     size?: pulumi.Input<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+     * * `projects/project/global/snapshots/snapshot`
+     * * `global/snapshots/snapshot`
      */
     snapshot?: pulumi.Input<string>;
     /**

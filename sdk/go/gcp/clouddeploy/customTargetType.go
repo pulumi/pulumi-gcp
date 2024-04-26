@@ -25,7 +25,6 @@ import (
 //
 // ### Clouddeploy Custom Target Type Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,10 +62,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Clouddeploy Custom Target Type Git Skaffold Modules
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -108,10 +105,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Clouddeploy Custom Target Type Gcs Skaffold Modules
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -152,7 +147,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

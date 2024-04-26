@@ -182,7 +182,6 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Options for configuring how inventory reports are generated.
-     * Structure is documented below.
      * 
      */
     @Export(name="frequencyOptions", refs={InsightsReportConfigFrequencyOptions.class}, tree="[0]")
@@ -190,7 +189,6 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Options for configuring how inventory reports are generated.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<InsightsReportConfigFrequencyOptions>> frequencyOptions() {
@@ -228,7 +226,6 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Options for including metadata in an inventory report.
-     * Structure is documented below.
      * 
      */
     @Export(name="objectMetadataReportOptions", refs={InsightsReportConfigObjectMetadataReportOptions.class}, tree="[0]")
@@ -236,25 +233,14 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Options for including metadata in an inventory report.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<InsightsReportConfigObjectMetadataReportOptions>> objectMetadataReportOptions() {
         return Codegen.optional(this.objectMetadataReportOptions);
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }

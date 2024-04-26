@@ -472,7 +472,6 @@ class NotificationChannel(pulumi.CustomResource):
 
         ### Notification Channel Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -485,10 +484,8 @@ class NotificationChannel(pulumi.CustomResource):
             },
             force_delete=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Notification Channel Sensitive
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -503,7 +500,6 @@ class NotificationChannel(pulumi.CustomResource):
                 auth_token="one",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -583,7 +579,6 @@ class NotificationChannel(pulumi.CustomResource):
 
         ### Notification Channel Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -596,10 +591,8 @@ class NotificationChannel(pulumi.CustomResource):
             },
             force_delete=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Notification Channel Sensitive
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -614,7 +607,6 @@ class NotificationChannel(pulumi.CustomResource):
                 auth_token="one",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -45,10 +45,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs ext
      * is only applicable for UDP or TCP protocol. Each entry must be
      * either an integer or a range. If not specified, this rule
      * applies to connections through any port.
+     * 
      * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
      * [&#34;12345-12349&#34;].
-     * 
-     * ***
      * 
      */
     @Import(name="ports")
@@ -59,10 +58,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs ext
      * is only applicable for UDP or TCP protocol. Each entry must be
      * either an integer or a range. If not specified, this rule
      * applies to connections through any port.
+     * 
      * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
      * [&#34;12345-12349&#34;].
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> ports() {
@@ -128,10 +126,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs ext
          * is only applicable for UDP or TCP protocol. Each entry must be
          * either an integer or a range. If not specified, this rule
          * applies to connections through any port.
+         * 
          * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
          * [&#34;12345-12349&#34;].
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -146,10 +143,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs ext
          * is only applicable for UDP or TCP protocol. Each entry must be
          * either an integer or a range. If not specified, this rule
          * applies to connections through any port.
+         * 
          * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
          * [&#34;12345-12349&#34;].
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -163,10 +159,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs ext
          * is only applicable for UDP or TCP protocol. Each entry must be
          * either an integer or a range. If not specified, this rule
          * applies to connections through any port.
+         * 
          * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
          * [&#34;12345-12349&#34;].
-         * 
-         * ***
          * 
          * @return builder
          * 

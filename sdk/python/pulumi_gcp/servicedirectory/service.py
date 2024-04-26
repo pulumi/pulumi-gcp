@@ -189,7 +189,6 @@ class Service(pulumi.CustomResource):
 
         ### Service Directory Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -205,7 +204,6 @@ class Service(pulumi.CustomResource):
                 "region": "us-central1",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -263,7 +261,6 @@ class Service(pulumi.CustomResource):
 
         ### Service Directory Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -279,7 +276,6 @@ class Service(pulumi.CustomResource):
                 "region": "us-central1",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

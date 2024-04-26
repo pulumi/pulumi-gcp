@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Cloudbuild Trigger Filename
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,10 +38,8 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Build
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -141,10 +138,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Service Account
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -170,10 +165,8 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Include Build Logs
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -192,10 +185,8 @@ import * as utilities from "../utilities";
  *     includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Pubsub Config
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -225,10 +216,8 @@ import * as utilities from "../utilities";
  *     filter: "_ACTION.matches('INSERT')",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Webhook Config
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -278,10 +267,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Manual
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -304,10 +291,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Manual Github Enterprise
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -329,10 +314,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Manual Bitbucket Server
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -354,10 +337,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Repo
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -388,10 +369,8 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Bitbucket Server Push
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -411,10 +390,8 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Bitbucket Server Pull Request
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -435,10 +412,8 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Github Enterprise
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -457,10 +432,8 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Allow Failure
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -536,10 +509,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Allow Exit Codes
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -618,10 +589,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Pubsub With Repo
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -661,7 +630,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     name: access_policy.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessPolicyIamPolicy(args: GetAccessPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyIamPolicyResult> {
 
@@ -62,7 +60,6 @@ export interface GetAccessPolicyIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,7 +68,6 @@ export interface GetAccessPolicyIamPolicyResult {
  *     name: access_policy.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessPolicyIamPolicyOutput(args: GetAccessPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPolicyIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAccessPolicyIamPolicy(a, opts))

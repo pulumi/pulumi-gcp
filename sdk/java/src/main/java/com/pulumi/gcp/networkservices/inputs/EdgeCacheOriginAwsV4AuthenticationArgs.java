@@ -46,7 +46,8 @@ public final class EdgeCacheOriginAwsV4AuthenticationArgs extends com.pulumi.res
 
     /**
      * The Secret Manager secret version of the secret access key used by your origin.
-     * This is the resource name of the secret version in the format `projects/*{@literal /}secrets/*{@literal /}versions/*` where the `*` values are replaced by the project, secret, and version you require.
+     * 
+     * This is the resource name of the secret version in the format &#39;projects/*{@literal /}secrets/*{@literal /}versions/*&#39; where the &#39;*&#39; values are replaced by the project, secret, and version you require.
      * 
      */
     @Import(name="secretAccessKeyVersion", required=true)
@@ -54,7 +55,8 @@ public final class EdgeCacheOriginAwsV4AuthenticationArgs extends com.pulumi.res
 
     /**
      * @return The Secret Manager secret version of the secret access key used by your origin.
-     * This is the resource name of the secret version in the format `projects/*{@literal /}secrets/*{@literal /}versions/*` where the `*` values are replaced by the project, secret, and version you require.
+     * 
+     * This is the resource name of the secret version in the format &#39;projects/*{@literal /}secrets/*{@literal /}versions/*&#39; where the &#39;*&#39; values are replaced by the project, secret, and version you require.
      * 
      */
     public Output<String> secretAccessKeyVersion() {
@@ -131,7 +133,8 @@ public final class EdgeCacheOriginAwsV4AuthenticationArgs extends com.pulumi.res
 
         /**
          * @param secretAccessKeyVersion The Secret Manager secret version of the secret access key used by your origin.
-         * This is the resource name of the secret version in the format `projects/*{@literal /}secrets/*{@literal /}versions/*` where the `*` values are replaced by the project, secret, and version you require.
+         * 
+         * This is the resource name of the secret version in the format &#39;projects/*{@literal /}secrets/*{@literal /}versions/*&#39; where the &#39;*&#39; values are replaced by the project, secret, and version you require.
          * 
          * @return builder
          * 
@@ -143,7 +146,8 @@ public final class EdgeCacheOriginAwsV4AuthenticationArgs extends com.pulumi.res
 
         /**
          * @param secretAccessKeyVersion The Secret Manager secret version of the secret access key used by your origin.
-         * This is the resource name of the secret version in the format `projects/*{@literal /}secrets/*{@literal /}versions/*` where the `*` values are replaced by the project, secret, and version you require.
+         * 
+         * This is the resource name of the secret version in the format &#39;projects/*{@literal /}secrets/*{@literal /}versions/*&#39; where the &#39;*&#39; values are replaced by the project, secret, and version you require.
          * 
          * @return builder
          * 

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Global Network Endpoint
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,7 +34,6 @@ import * as utilities from "../utilities";
  *     port: 90,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

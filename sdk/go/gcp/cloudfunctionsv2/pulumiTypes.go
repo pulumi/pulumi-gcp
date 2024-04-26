@@ -31,6 +31,8 @@ type FunctionBuildConfig struct {
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
 	Runtime *string `pulumi:"runtime"`
+	// The fully-qualified name of the service account to be used for building the container.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The location of the function source code.
 	// Structure is documented below.
 	Source *FunctionBuildConfigSource `pulumi:"source"`
@@ -67,6 +69,8 @@ type FunctionBuildConfigArgs struct {
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
 	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
+	// The fully-qualified name of the service account to be used for building the container.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// The location of the function source code.
 	// Structure is documented below.
 	Source FunctionBuildConfigSourcePtrInput `pulumi:"source"`
@@ -183,6 +187,11 @@ func (o FunctionBuildConfigOutput) Runtime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionBuildConfig) *string { return v.Runtime }).(pulumi.StringPtrOutput)
 }
 
+// The fully-qualified name of the service account to be used for building the container.
+func (o FunctionBuildConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionBuildConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
 // The location of the function source code.
 // Structure is documented below.
 func (o FunctionBuildConfigOutput) Source() FunctionBuildConfigSourcePtrOutput {
@@ -272,6 +281,16 @@ func (o FunctionBuildConfigPtrOutput) Runtime() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Runtime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified name of the service account to be used for building the container.
+func (o FunctionBuildConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2522,6 +2541,8 @@ type GetFunctionBuildConfig struct {
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
 	Runtime string `pulumi:"runtime"`
+	// The fully-qualified name of the service account to be used for building the container.
+	ServiceAccount string `pulumi:"serviceAccount"`
 	// The location of the function source code.
 	Sources []GetFunctionBuildConfigSource `pulumi:"sources"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -2556,6 +2577,8 @@ type GetFunctionBuildConfigArgs struct {
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
 	Runtime pulumi.StringInput `pulumi:"runtime"`
+	// The fully-qualified name of the service account to be used for building the container.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	// The location of the function source code.
 	Sources GetFunctionBuildConfigSourceArrayInput `pulumi:"sources"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -2642,6 +2665,11 @@ func (o GetFunctionBuildConfigOutput) EnvironmentVariables() pulumi.StringMapOut
 // function, optional when updating an existing function.
 func (o GetFunctionBuildConfigOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionBuildConfig) string { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// The fully-qualified name of the service account to be used for building the container.
+func (o GetFunctionBuildConfigOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 // The location of the function source code.

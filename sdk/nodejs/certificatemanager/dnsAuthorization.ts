@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Certificate Manager Dns Authorization Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,10 +27,8 @@ import * as utilities from "../utilities";
  * export const recordTypeToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].type);
  * export const recordDataToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].data);
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Certificate Manager Dns Authorization Regional
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,7 +41,6 @@ import * as utilities from "../utilities";
  *     domain: "subdomain.hashicorptest.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

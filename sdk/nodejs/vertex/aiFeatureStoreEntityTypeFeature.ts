@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Vertex Ai Featurestore Entitytype Feature
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -48,10 +47,8 @@ import * as utilities from "../utilities";
  *     valueType: "INT64_ARRAY",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -94,7 +91,6 @@ import * as utilities from "../utilities";
  *     valueType: "INT64_ARRAY",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

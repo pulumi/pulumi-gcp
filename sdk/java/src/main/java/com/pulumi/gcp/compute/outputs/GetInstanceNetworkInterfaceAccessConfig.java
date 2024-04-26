@@ -11,8 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceNetworkInterfaceAccessConfig {
     /**
-     * @return The IP address that is be 1:1 mapped to the instance&#39;s
-     * network ip.
+     * @return If the instance has an access config, either the given external ip (in the `nat_ip` field) or the ephemeral (generated) ip (if you didn&#39;t provide one).
      * 
      */
     private String natIp;
@@ -34,8 +33,7 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
 
     private GetInstanceNetworkInterfaceAccessConfig() {}
     /**
-     * @return The IP address that is be 1:1 mapped to the instance&#39;s
-     * network ip.
+     * @return If the instance has an access config, either the given external ip (in the `nat_ip` field) or the ephemeral (generated) ip (if you didn&#39;t provide one).
      * 
      */
     public String natIp() {

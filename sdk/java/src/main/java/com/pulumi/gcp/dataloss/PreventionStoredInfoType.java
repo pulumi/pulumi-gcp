@@ -299,14 +299,14 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.largeCustomDictionary);
     }
     /**
-     * Name describing the field.
+     * The resource name of the info type. Set by the server.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name describing the field.
+     * @return The resource name of the info type. Set by the server.
      * 
      */
     public Output<String> name() {

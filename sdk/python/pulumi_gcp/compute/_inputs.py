@@ -128,6 +128,7 @@ __all__ = [
     'InstanceGroupManagerAutoHealingPoliciesArgs',
     'InstanceGroupManagerInstanceLifecyclePolicyArgs',
     'InstanceGroupManagerNamedPortArgs',
+    'InstanceGroupManagerParamsArgs',
     'InstanceGroupManagerStatefulDiskArgs',
     'InstanceGroupManagerStatefulExternalIpArgs',
     'InstanceGroupManagerStatefulInternalIpArgs',
@@ -259,6 +260,7 @@ __all__ = [
     'RegionInstanceGroupManagerAutoHealingPoliciesArgs',
     'RegionInstanceGroupManagerInstanceLifecyclePolicyArgs',
     'RegionInstanceGroupManagerNamedPortArgs',
+    'RegionInstanceGroupManagerParamsArgs',
     'RegionInstanceGroupManagerStatefulDiskArgs',
     'RegionInstanceGroupManagerStatefulExternalIpArgs',
     'RegionInstanceGroupManagerStatefulInternalIpArgs',
@@ -4274,8 +4276,6 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
         """
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-               
-               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -4298,8 +4298,6 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -4653,21 +4651,30 @@ class HealthCheckHttp2HealthCheckArgs:
                  request_path: Optional[pulumi.Input[str]] = None,
                  response: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] host: The value of the host header in the HTTP health check request.
+        :param pulumi.Input[str] host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param pulumi.Input[int] port: The port number for the health check request.
-               Must be specified if portName and portSpecification are not set
-               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        :param pulumi.Input[int] port: The TCP port number for the HTTP2 health check request.
+               The default value is 443.
         :param pulumi.Input[str] port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param pulumi.Input[str] port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               
+                 * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+               
+                 * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+               
+                 * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+                 network endpoint is used for health checking. For other backends, the
+                 port or named port specified in the Backend Service is used for health
+                 checking.
+               
+               If not specified, HTTP2 health check follows behavior specified in 'port' and
+               'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
-               backend.
-               Default value is `NONE`.
-               Possible values are: `NONE`, `PROXY_V1`.
-        :param pulumi.Input[str] request_path: The request path of the HTTP health check request.
+               backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+        :param pulumi.Input[str] request_path: The request path of the HTTP2 health check request.
                The default value is /.
         :param pulumi.Input[str] response: The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
@@ -4692,7 +4699,7 @@ class HealthCheckHttp2HealthCheckArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the host header in the HTTP health check request.
+        The value of the host header in the HTTP2 health check request.
         If left empty (default value), the public IP on behalf of which this health
         check is performed will be used.
         """
@@ -4706,9 +4713,8 @@ class HealthCheckHttp2HealthCheckArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port number for the health check request.
-        Must be specified if portName and portSpecification are not set
-        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        The TCP port number for the HTTP2 health check request.
+        The default value is 443.
         """
         return pulumi.get(self, "port")
 
@@ -4735,6 +4741,18 @@ class HealthCheckHttp2HealthCheckArgs:
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+
+          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+
+          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+
+          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+          network endpoint is used for health checking. For other backends, the
+          port or named port specified in the Backend Service is used for health
+          checking.
+
+        If not specified, HTTP2 health check follows behavior specified in 'port' and
+        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
         """
         return pulumi.get(self, "port_specification")
 
@@ -4747,9 +4765,7 @@ class HealthCheckHttp2HealthCheckArgs:
     def proxy_header(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the type of proxy header to append before sending data to the
-        backend.
-        Default value is `NONE`.
-        Possible values are: `NONE`, `PROXY_V1`.
+        backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
         """
         return pulumi.get(self, "proxy_header")
 
@@ -4761,7 +4777,7 @@ class HealthCheckHttp2HealthCheckArgs:
     @pulumi.getter(name="requestPath")
     def request_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The request path of the HTTP health check request.
+        The request path of the HTTP2 health check request.
         The default value is /.
         """
         return pulumi.get(self, "request_path")
@@ -9432,6 +9448,29 @@ class InstanceGroupManagerNamedPortArgs:
 
 
 @pulumi.input_type
+class InstanceGroupManagerParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+
+@pulumi.input_type
 class InstanceGroupManagerStatefulDiskArgs:
     def __init__(__self__, *,
                  device_name: pulumi.Input[str],
@@ -10630,17 +10669,12 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
                  public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
-        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated
-               with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
-               To use a static external IP address, it must be unused and in the same region as the instance's zone.
-               If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
         :param pulumi.Input[str] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6
-               records for the external IPv6 ranges..
+        :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
         :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         pulumi.set(__self__, "network_tier", network_tier)
@@ -10659,8 +10693,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> pulumi.Input[str]:
         """
-        The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
         """
         return pulumi.get(self, "network_tier")
 
@@ -10672,10 +10705,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[pulumi.Input[str]]:
         """
-        The first IPv6 address of the external IPv6 range associated
-        with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
-        To use a static external IP address, it must be unused and in the same region as the instance's zone.
-        If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
         """
         return pulumi.get(self, "external_ipv6")
 
@@ -10712,8 +10742,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain name to be used when creating DNSv6
-        records for the external IPv6 ranges..
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
         """
         return pulumi.get(self, "public_ptr_domain_name")
 
@@ -11065,13 +11094,12 @@ class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] seconds: Span of time at a resolution of a second. Must be from 0 to
-               315,576,000,000 inclusive. Note: these bounds are computed from: 60
-               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
         :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented with a 0
-               `seconds` field and a positive `nanos` field. Must be from 0 to
-               999,999,999 inclusive.
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -11081,9 +11109,8 @@ class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
         """
-        Span of time at a resolution of a second. Must be from 0 to
-        315,576,000,000 inclusive. Note: these bounds are computed from: 60
-        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
         """
         return pulumi.get(self, "seconds")
 
@@ -11096,9 +11123,9 @@ class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented with a 0
-        `seconds` field and a positive `nanos` field. Must be from 0 to
-        999,999,999 inclusive.
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -11113,13 +11140,12 @@ class InstanceSchedulingMaxRunDurationArgs:
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] seconds: Span of time at a resolution of a second. Must be from 0 to
-               315,576,000,000 inclusive. Note: these bounds are computed from: 60
-               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
         :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented with a 0
-               `seconds` field and a positive `nanos` field. Must be from 0 to
-               999,999,999 inclusive.
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -11129,9 +11155,8 @@ class InstanceSchedulingMaxRunDurationArgs:
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
         """
-        Span of time at a resolution of a second. Must be from 0 to
-        315,576,000,000 inclusive. Note: these bounds are computed from: 60
-        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
         """
         return pulumi.get(self, "seconds")
 
@@ -11144,9 +11169,9 @@ class InstanceSchedulingMaxRunDurationArgs:
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented with a 0
-        `seconds` field and a positive `nanos` field. Must be from 0 to
-        999,999,999 inclusive.
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -11217,10 +11242,8 @@ class InstanceScratchDiskArgs:
                  size: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] interface: The disk interface to use for attaching this disk; either SCSI or NVME.
-        :param pulumi.Input[str] device_name: Name with which the attached disk will be accessible
-               under `/dev/disk/by-id/google-*`
-        :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
-               will inherit the size of its base image.
+        :param pulumi.Input[str] device_name: Name with which the attached disk is accessible under /dev/disk/by-id/
+        :param pulumi.Input[int] size: The size of the disk in gigabytes. One of 375 or 3000.
         """
         pulumi.set(__self__, "interface", interface)
         if device_name is not None:
@@ -11244,8 +11267,7 @@ class InstanceScratchDiskArgs:
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name with which the attached disk will be accessible
-        under `/dev/disk/by-id/google-*`
+        Name with which the attached disk is accessible under /dev/disk/by-id/
         """
         return pulumi.get(self, "device_name")
 
@@ -11257,8 +11279,7 @@ class InstanceScratchDiskArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of the image in gigabytes. If not specified, it
-        will inherit the size of its base image.
+        The size of the disk in gigabytes. One of 375 or 3000.
         """
         return pulumi.get(self, "size")
 
@@ -12432,8 +12453,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
         :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
         :param pulumi.Input[str] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
         :param pulumi.Input[str] name: The name of the instance template. If you leave
@@ -12454,8 +12474,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> pulumi.Input[str]:
         """
-        The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
         """
         return pulumi.get(self, "network_tier")
 
@@ -12817,13 +12836,12 @@ class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] seconds: Span of time at a resolution of a second. Must be from 0 to
-               315,576,000,000 inclusive. Note: these bounds are computed from: 60
-               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
         :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented with a 0
-               `seconds` field and a positive `nanos` field. Must be from 0 to
-               999,999,999 inclusive.
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -12833,9 +12851,8 @@ class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
         """
-        Span of time at a resolution of a second. Must be from 0 to
-        315,576,000,000 inclusive. Note: these bounds are computed from: 60
-        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
         """
         return pulumi.get(self, "seconds")
 
@@ -12848,9 +12865,9 @@ class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented with a 0
-        `seconds` field and a positive `nanos` field. Must be from 0 to
-        999,999,999 inclusive.
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -12865,13 +12882,12 @@ class InstanceTemplateSchedulingMaxRunDurationArgs:
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] seconds: Span of time at a resolution of a second. Must be from 0 to
-               315,576,000,000 inclusive. Note: these bounds are computed from: 60
-               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
         :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented with a 0
-               `seconds` field and a positive `nanos` field. Must be from 0 to
-               999,999,999 inclusive.
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -12881,9 +12897,8 @@ class InstanceTemplateSchedulingMaxRunDurationArgs:
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
         """
-        Span of time at a resolution of a second. Must be from 0 to
-        315,576,000,000 inclusive. Note: these bounds are computed from: 60
-        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
         """
         return pulumi.get(self, "seconds")
 
@@ -12896,9 +12911,9 @@ class InstanceTemplateSchedulingMaxRunDurationArgs:
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented with a 0
-        `seconds` field and a positive `nanos` field. Must be from 0 to
-        999,999,999 inclusive.
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -12917,7 +12932,6 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
         :param pulumi.Input[str] key: The key for the node affinity label.
         :param pulumi.Input[str] operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -12951,9 +12965,6 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Corresponds to the label values of a reservation resource.
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -13707,8 +13718,6 @@ class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
         """
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-               
-               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -13731,8 +13740,6 @@ class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -14233,10 +14240,9 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs:
                is only applicable for UDP or TCP protocol. Each entry must be
                either an integer or a range. If not specified, this rule
                applies to connections through any port.
+               
                Example inputs include: ["22"], ["80","443"], and
                ["12345-12349"].
-               
-               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -14266,10 +14272,9 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs:
         is only applicable for UDP or TCP protocol. Each entry must be
         either an integer or a range. If not specified, this rule
         applies to connections through any port.
+
         Example inputs include: ["22"], ["80","443"], and
         ["12345-12349"].
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -17828,21 +17833,30 @@ class RegionHealthCheckHttp2HealthCheckArgs:
                  request_path: Optional[pulumi.Input[str]] = None,
                  response: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] host: The value of the host header in the HTTP health check request.
+        :param pulumi.Input[str] host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param pulumi.Input[int] port: The port number for the health check request.
-               Must be specified if portName and portSpecification are not set
-               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        :param pulumi.Input[int] port: The TCP port number for the HTTP2 health check request.
+               The default value is 443.
         :param pulumi.Input[str] port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param pulumi.Input[str] port_specification: Specifies how port is selected for health checking, can be one of the
                following values:
+               
+                 * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+               
+                 * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+               
+                 * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+                 network endpoint is used for health checking. For other backends, the
+                 port or named port specified in the Backend Service is used for health
+                 checking.
+               
+               If not specified, HTTP2 health check follows behavior specified in 'port' and
+               'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
-               backend.
-               Default value is `NONE`.
-               Possible values are: `NONE`, `PROXY_V1`.
-        :param pulumi.Input[str] request_path: The request path of the HTTP health check request.
+               backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+        :param pulumi.Input[str] request_path: The request path of the HTTP2 health check request.
                The default value is /.
         :param pulumi.Input[str] response: The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
@@ -17867,7 +17881,7 @@ class RegionHealthCheckHttp2HealthCheckArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the host header in the HTTP health check request.
+        The value of the host header in the HTTP2 health check request.
         If left empty (default value), the public IP on behalf of which this health
         check is performed will be used.
         """
@@ -17881,9 +17895,8 @@ class RegionHealthCheckHttp2HealthCheckArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port number for the health check request.
-        Must be specified if portName and portSpecification are not set
-        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        The TCP port number for the HTTP2 health check request.
+        The default value is 443.
         """
         return pulumi.get(self, "port")
 
@@ -17910,6 +17923,18 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         """
         Specifies how port is selected for health checking, can be one of the
         following values:
+
+          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+
+          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+
+          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+          network endpoint is used for health checking. For other backends, the
+          port or named port specified in the Backend Service is used for health
+          checking.
+
+        If not specified, HTTP2 health check follows behavior specified in 'port' and
+        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
         """
         return pulumi.get(self, "port_specification")
 
@@ -17922,9 +17947,7 @@ class RegionHealthCheckHttp2HealthCheckArgs:
     def proxy_header(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the type of proxy header to append before sending data to the
-        backend.
-        Default value is `NONE`.
-        Possible values are: `NONE`, `PROXY_V1`.
+        backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
         """
         return pulumi.get(self, "proxy_header")
 
@@ -17936,7 +17959,7 @@ class RegionHealthCheckHttp2HealthCheckArgs:
     @pulumi.getter(name="requestPath")
     def request_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The request path of the HTTP health check request.
+        The request path of the HTTP2 health check request.
         The default value is /.
         """
         return pulumi.get(self, "request_path")
@@ -18679,6 +18702,29 @@ class RegionInstanceGroupManagerNamedPortArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class RegionInstanceGroupManagerParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 @pulumi.input_type
@@ -20269,8 +20315,7 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
         :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
         :param pulumi.Input[str] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
         :param pulumi.Input[str] name: The name of this access configuration.
@@ -20290,8 +20335,7 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> pulumi.Input[str]:
         """
-        The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
         """
         return pulumi.get(self, "network_tier")
 
@@ -20469,7 +20513,7 @@ class RegionInstanceTemplateSchedulingArgs:
                  recovery of the Local Ssd state is attempted. Its value should be in
                  between 0 and 168 hours with hour granularity and the default value being 1
                  hour.
-        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
         :param pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         :param pulumi.Input[int] min_node_cpus: Minimum number of cpus for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
@@ -20553,7 +20597,7 @@ class RegionInstanceTemplateSchedulingArgs:
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -20650,13 +20694,12 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] seconds: Span of time at a resolution of a second. Must be from 0 to
-               315,576,000,000 inclusive. Note: these bounds are computed from: 60
-               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
         :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented with a 0
-               `seconds` field and a positive `nanos` field. Must be from 0 to
-               999,999,999 inclusive.
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -20666,9 +20709,8 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
         """
-        Span of time at a resolution of a second. Must be from 0 to
-        315,576,000,000 inclusive. Note: these bounds are computed from: 60
-        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
         """
         return pulumi.get(self, "seconds")
 
@@ -20681,9 +20723,9 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented with a 0
-        `seconds` field and a positive `nanos` field. Must be from 0 to
-        999,999,999 inclusive.
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -20750,7 +20792,6 @@ class RegionInstanceTemplateSchedulingNodeAffinityArgs:
         :param pulumi.Input[str] key: The key for the node affinity label.
         :param pulumi.Input[str] operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -20784,9 +20825,6 @@ class RegionInstanceTemplateSchedulingNodeAffinityArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Corresponds to the label values of a reservation resource.
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -21406,8 +21444,6 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
         """
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-               
-               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -21430,8 +21466,6 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -28813,7 +28847,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
                  rule_visibility: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enable: If set to true, enables CAAP for L7 DDoS detection.
-        :param pulumi.Input[str] rule_visibility: Rule visibility can be one of the following:
+        :param pulumi.Input[str] rule_visibility: Rule visibility. Supported values include: "STANDARD", "PREMIUM".
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -28836,7 +28870,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     @pulumi.getter(name="ruleVisibility")
     def rule_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule visibility can be one of the following:
+        Rule visibility. Supported values include: "STANDARD", "PREMIUM".
         """
         return pulumi.get(self, "rule_visibility")
 
@@ -29432,9 +29466,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
-        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-               The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
+        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -29444,7 +29477,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
         """
-        You can specify an exact match or a partial match by using a field operator and a field value.
+        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -29456,8 +29489,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-        The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         return pulumi.get(self, "value")
 
@@ -29472,9 +29504,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
-        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-               The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
+        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -29484,7 +29515,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
         """
-        You can specify an exact match or a partial match by using a field operator and a field value.
+        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -29496,8 +29527,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-        The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         return pulumi.get(self, "value")
 
@@ -29512,9 +29542,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
-        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-               The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
+        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -29524,7 +29553,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
         """
-        You can specify an exact match or a partial match by using a field operator and a field value.
+        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -29536,8 +29565,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-        The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         return pulumi.get(self, "value")
 
@@ -29552,9 +29580,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
-        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-               The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
+        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -29564,7 +29591,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
         """
-        You can specify an exact match or a partial match by using a field operator and a field value.
+        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -29576,8 +29603,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-        The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         return pulumi.get(self, "value")
 
@@ -29613,9 +29639,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
                
                **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types:
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
-               
-               <a name="nested_threshold"></a>The `{ban/rate_limit}_threshold` block supports:
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         """
         pulumi.set(__self__, "conform_action", conform_action)
         pulumi.set(__self__, "exceed_action", exceed_action)
@@ -29739,9 +29763,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="exceedRedirectOptions")
     def exceed_redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']]:
         """
-        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
-
-        <a name="nested_threshold"></a>The `{ban/rate_limit}_threshold` block supports:
+        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         """
         return pulumi.get(self, "exceed_redirect_options")
 

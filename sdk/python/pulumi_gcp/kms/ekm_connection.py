@@ -29,14 +29,12 @@ class EkmConnectionArgs:
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
                Structure is documented below.
-        :param pulumi.Input[str] crypto_space_path: Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        :param pulumi.Input[str] crypto_space_path: Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+               KeyManagementMode is CLOUD_KMS.
         :param pulumi.Input[str] etag: Optional. Etag of the currently stored EkmConnection.
-        :param pulumi.Input[str] key_management_mode: Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-               Default value is `MANUAL`.
-               Possible values are: `MANUAL`, `CLOUD_KMS`.
+        :param pulumi.Input[str] key_management_mode: Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+               value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
         :param pulumi.Input[str] name: The resource name for the EkmConnection.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "service_resolvers", service_resolvers)
@@ -81,7 +79,8 @@ class EkmConnectionArgs:
     @pulumi.getter(name="cryptoSpacePath")
     def crypto_space_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+        KeyManagementMode is CLOUD_KMS.
         """
         return pulumi.get(self, "crypto_space_path")
 
@@ -105,9 +104,8 @@ class EkmConnectionArgs:
     @pulumi.getter(name="keyManagementMode")
     def key_management_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-        Default value is `MANUAL`.
-        Possible values are: `MANUAL`, `CLOUD_KMS`.
+        Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+        value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
         """
         return pulumi.get(self, "key_management_mode")
 
@@ -130,10 +128,6 @@ class EkmConnectionArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -156,16 +150,14 @@ class _EkmConnectionState:
         Input properties used for looking up and filtering EkmConnection resources.
         :param pulumi.Input[str] create_time: Output only. The time at which the EkmConnection was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] crypto_space_path: Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        :param pulumi.Input[str] crypto_space_path: Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+               KeyManagementMode is CLOUD_KMS.
         :param pulumi.Input[str] etag: Optional. Etag of the currently stored EkmConnection.
-        :param pulumi.Input[str] key_management_mode: Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-               Default value is `MANUAL`.
-               Possible values are: `MANUAL`, `CLOUD_KMS`.
+        :param pulumi.Input[str] key_management_mode: Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+               value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
         :param pulumi.Input[str] location: The location for the EkmConnection.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[str] name: The resource name for the EkmConnection.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
                Structure is documented below.
         """
@@ -203,7 +195,8 @@ class _EkmConnectionState:
     @pulumi.getter(name="cryptoSpacePath")
     def crypto_space_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+        KeyManagementMode is CLOUD_KMS.
         """
         return pulumi.get(self, "crypto_space_path")
 
@@ -227,9 +220,8 @@ class _EkmConnectionState:
     @pulumi.getter(name="keyManagementMode")
     def key_management_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-        Default value is `MANUAL`.
-        Possible values are: `MANUAL`, `CLOUD_KMS`.
+        Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+        value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
         """
         return pulumi.get(self, "key_management_mode")
 
@@ -265,10 +257,6 @@ class _EkmConnectionState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -318,7 +306,6 @@ class EkmConnection(pulumi.CustomResource):
 
         ### Kms Ekm Connection Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -335,7 +322,6 @@ class EkmConnection(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -363,16 +349,14 @@ class EkmConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] crypto_space_path: Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        :param pulumi.Input[str] crypto_space_path: Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+               KeyManagementMode is CLOUD_KMS.
         :param pulumi.Input[str] etag: Optional. Etag of the currently stored EkmConnection.
-        :param pulumi.Input[str] key_management_mode: Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-               Default value is `MANUAL`.
-               Possible values are: `MANUAL`, `CLOUD_KMS`.
+        :param pulumi.Input[str] key_management_mode: Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+               value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
         :param pulumi.Input[str] location: The location for the EkmConnection.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[str] name: The resource name for the EkmConnection.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EkmConnectionServiceResolverArgs']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
                Structure is documented below.
         """
@@ -398,7 +382,6 @@ class EkmConnection(pulumi.CustomResource):
 
         ### Kms Ekm Connection Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -415,7 +398,6 @@ class EkmConnection(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -511,16 +493,14 @@ class EkmConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time at which the EkmConnection was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] crypto_space_path: Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        :param pulumi.Input[str] crypto_space_path: Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+               KeyManagementMode is CLOUD_KMS.
         :param pulumi.Input[str] etag: Optional. Etag of the currently stored EkmConnection.
-        :param pulumi.Input[str] key_management_mode: Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-               Default value is `MANUAL`.
-               Possible values are: `MANUAL`, `CLOUD_KMS`.
+        :param pulumi.Input[str] key_management_mode: Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+               value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
         :param pulumi.Input[str] location: The location for the EkmConnection.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[str] name: The resource name for the EkmConnection.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EkmConnectionServiceResolverArgs']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
                Structure is documented below.
         """
@@ -551,7 +531,8 @@ class EkmConnection(pulumi.CustomResource):
     @pulumi.getter(name="cryptoSpacePath")
     def crypto_space_path(self) -> pulumi.Output[str]:
         """
-        Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+        KeyManagementMode is CLOUD_KMS.
         """
         return pulumi.get(self, "crypto_space_path")
 
@@ -567,9 +548,8 @@ class EkmConnection(pulumi.CustomResource):
     @pulumi.getter(name="keyManagementMode")
     def key_management_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
-        Default value is `MANUAL`.
-        Possible values are: `MANUAL`, `CLOUD_KMS`.
+        Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
+        value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
         """
         return pulumi.get(self, "key_management_mode")
 
@@ -593,10 +573,6 @@ class EkmConnection(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

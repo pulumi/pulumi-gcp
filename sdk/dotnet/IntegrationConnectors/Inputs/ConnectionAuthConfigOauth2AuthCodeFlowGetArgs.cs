@@ -19,14 +19,13 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
         public Input<string>? AuthUri { get; set; }
 
         /// <summary>
-        /// Secret version of Password for Authentication.
+        /// Client ID for user-provided OAuth app.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
-        /// Secret version reference containing the client secret.
-        /// Structure is documented below.
+        /// Client secret for user-provided OAuth app.
         /// </summary>
         [Input("clientSecret")]
         public Input<Inputs.ConnectionAuthConfigOauth2AuthCodeFlowClientSecretGetArgs>? ClientSecret { get; set; }

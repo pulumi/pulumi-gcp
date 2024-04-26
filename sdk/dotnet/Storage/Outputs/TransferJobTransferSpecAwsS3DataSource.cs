@@ -18,11 +18,11 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey? AwsAccessKey;
         /// <summary>
-        /// Google Cloud Storage bucket name.
+        /// S3 Bucket name.
         /// </summary>
         public readonly string BucketName;
         /// <summary>
-        /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        /// S3 Bucket path in bucket to transfer.
         /// </summary>
         public readonly string? Path;
         /// <summary>

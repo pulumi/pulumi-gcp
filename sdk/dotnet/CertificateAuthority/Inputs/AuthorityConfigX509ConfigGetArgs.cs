@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AuthorityConfigX509ConfigAdditionalExtensionGetArgs> AdditionalExtensions
         {
@@ -40,21 +39,18 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// Describes values that are relevant in a CA certificate.
-        /// Structure is documented below.
         /// </summary>
         [Input("caOptions", required: true)]
         public Input<Inputs.AuthorityConfigX509ConfigCaOptionsGetArgs> CaOptions { get; set; } = null!;
 
         /// <summary>
         /// Indicates the intended use for keys that correspond to a certificate.
-        /// Structure is documented below.
         /// </summary>
         [Input("keyUsage", required: true)]
         public Input<Inputs.AuthorityConfigX509ConfigKeyUsageGetArgs> KeyUsage { get; set; } = null!;
 
         /// <summary>
         /// Describes the X.509 name constraints extension.
-        /// Structure is documented below.
         /// </summary>
         [Input("nameConstraints")]
         public Input<Inputs.AuthorityConfigX509ConfigNameConstraintsGetArgs>? NameConstraints { get; set; }
@@ -64,7 +60,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AuthorityConfigX509ConfigPolicyIdGetArgs> PolicyIds
         {

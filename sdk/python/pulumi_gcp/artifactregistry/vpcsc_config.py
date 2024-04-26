@@ -163,7 +163,6 @@ class VpcscConfig(pulumi.CustomResource):
 
         ### Artifact Registry Vpcsc Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -172,7 +171,6 @@ class VpcscConfig(pulumi.CustomResource):
             location="us-central1",
             vpcsc_policy="ALLOW")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -217,7 +215,6 @@ class VpcscConfig(pulumi.CustomResource):
 
         ### Artifact Registry Vpcsc Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -226,7 +223,6 @@ class VpcscConfig(pulumi.CustomResource):
             location="us-central1",
             vpcsc_policy="ALLOW")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

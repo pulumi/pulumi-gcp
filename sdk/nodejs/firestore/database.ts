@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ### Firestore Default Database
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,10 +36,8 @@ import * as utilities from "../utilities";
  *     type: "FIRESTORE_NATIVE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firestore Database
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,10 +54,8 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firestore Cmek Database
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -95,10 +90,8 @@ import * as utilities from "../utilities";
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-firestore.iam.gserviceaccount.com`)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firestore Default Database In Datastore Mode
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -110,10 +103,8 @@ import * as utilities from "../utilities";
  *     type: "DATASTORE_MODE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firestore Database In Datastore Mode
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -130,10 +121,8 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firestore Cmek Database In Datastore Mode
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -168,7 +157,6 @@ import * as utilities from "../utilities";
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-firestore.iam.gserviceaccount.com`)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -40,13 +40,15 @@ public final class CertificateCertificateDescriptionSubjectDescription {
      */
     private @Nullable String notBeforeTime;
     /**
-     * @return The subject alternative name fields.
+     * @return (Output)
+     * The subject alternative name fields.
      * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> subjectAltNames;
     /**
-     * @return Contains distinguished name fields such as the location and organization.
+     * @return (Output)
+     * Contains distinguished name fields such as the location and organization.
      * Structure is documented below.
      * 
      */
@@ -87,7 +89,8 @@ public final class CertificateCertificateDescriptionSubjectDescription {
         return Optional.ofNullable(this.notBeforeTime);
     }
     /**
-     * @return The subject alternative name fields.
+     * @return (Output)
+     * The subject alternative name fields.
      * Structure is documented below.
      * 
      */
@@ -95,7 +98,8 @@ public final class CertificateCertificateDescriptionSubjectDescription {
         return this.subjectAltNames == null ? List.of() : this.subjectAltNames;
     }
     /**
-     * @return Contains distinguished name fields such as the location and organization.
+     * @return (Output)
+     * Contains distinguished name fields such as the location and organization.
      * Structure is documented below.
      * 
      */

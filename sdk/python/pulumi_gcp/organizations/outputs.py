@@ -546,10 +546,6 @@ class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
     def __init__(__self__, *,
                  log_type: str,
                  exempted_members: Optional[Sequence[str]] = None):
-        """
-        :param str log_type: Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-        :param Sequence[str] exempted_members: Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
-        """
         pulumi.set(__self__, "log_type", log_type)
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -557,17 +553,11 @@ class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
     @property
     @pulumi.getter(name="logType")
     def log_type(self) -> str:
-        """
-        Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-        """
         return pulumi.get(self, "log_type")
 
     @property
     @pulumi.getter(name="exemptedMembers")
     def exempted_members(self) -> Optional[Sequence[str]]:
-        """
-        Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
-        """
         return pulumi.get(self, "exempted_members")
 
 

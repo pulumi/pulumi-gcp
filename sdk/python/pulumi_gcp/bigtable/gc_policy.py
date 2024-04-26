@@ -365,7 +365,6 @@ class GCPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -397,11 +396,9 @@ class GCPolicy(pulumi.CustomResource):
           }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -424,10 +421,8 @@ class GCPolicy(pulumi.CustomResource):
           }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         An example of more complex GC policy:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -472,7 +467,6 @@ class GCPolicy(pulumi.CustomResource):
           }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
         This is equivalent to running the following `cbt` command:
 
         ## Import
@@ -518,7 +512,6 @@ class GCPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -550,11 +543,9 @@ class GCPolicy(pulumi.CustomResource):
           }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -577,10 +568,8 @@ class GCPolicy(pulumi.CustomResource):
           }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         An example of more complex GC policy:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -625,7 +614,6 @@ class GCPolicy(pulumi.CustomResource):
           }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
         This is equivalent to running the following `cbt` command:
 
         ## Import

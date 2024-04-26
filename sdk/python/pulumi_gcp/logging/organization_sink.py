@@ -400,7 +400,6 @@ class OrganizationSink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -419,7 +418,6 @@ class OrganizationSink(pulumi.CustomResource):
             role="roles/storage.objectCreator",
             member=my_sink.writer_identity)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -470,7 +468,6 @@ class OrganizationSink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -489,7 +486,6 @@ class OrganizationSink(pulumi.CustomResource):
             role="roles/storage.objectCreator",
             member=my_sink.writer_identity)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -148,16 +148,16 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Output)
-     * The unique identifier of this event handler.
+     * The unique identifier of the page.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (Output)
-     * The unique identifier of this event handler.
+     * @return The unique identifier of the page.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -440,8 +440,8 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name (Output)
-         * The unique identifier of this event handler.
+         * @param name The unique identifier of the page.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
          * 
          * @return builder
          * 
@@ -452,8 +452,8 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name (Output)
-         * The unique identifier of this event handler.
+         * @param name The unique identifier of the page.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
          * 
          * @return builder
          * 

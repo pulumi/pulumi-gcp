@@ -30,12 +30,23 @@ class WorkflowTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: Required. WorkflowTemplate scheduling information.
-        :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+               duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+               minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+               the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+               on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+               cluster is deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+               by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+               1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+               characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+               associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+               configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+               when the template is instantiated.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        :param pulumi.Input[int] version: Output only. The current version of this workflow template.
         """
         pulumi.set(__self__, "jobs", jobs)
         pulumi.set(__self__, "location", location)
@@ -96,7 +107,12 @@ class WorkflowTemplateArgs:
     @pulumi.getter(name="dagTimeout")
     def dag_timeout(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+        duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+        minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+        the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+        on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+        cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
 
@@ -108,7 +124,12 @@ class WorkflowTemplateArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+        by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+        1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+        characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+        associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+        configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -132,7 +153,8 @@ class WorkflowTemplateArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]:
         """
-        Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+        when the template is instantiated.
         """
         return pulumi.get(self, "parameters")
 
@@ -156,7 +178,7 @@ class WorkflowTemplateArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[int]]:
         """
-        Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        Output only. The current version of this workflow template.
         """
         warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
         pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
@@ -187,19 +209,30 @@ class _WorkflowTemplateState:
         """
         Input properties used for looking up and filtering WorkflowTemplate resources.
         :param pulumi.Input[str] create_time: Output only. The time template was created.
-        :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+               duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+               minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+               the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+               on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+               cluster is deleted.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
                clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+               by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+               1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+               characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+               associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+               configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+               when the template is instantiated.
         :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.
-        :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        :param pulumi.Input[int] version: Output only. The current version of this workflow template.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -247,7 +280,12 @@ class _WorkflowTemplateState:
     @pulumi.getter(name="dagTimeout")
     def dag_timeout(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+        duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+        minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+        the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+        on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+        cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
 
@@ -284,7 +322,12 @@ class _WorkflowTemplateState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+        by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+        1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+        characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+        associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+        configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -320,7 +363,8 @@ class _WorkflowTemplateState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]:
         """
-        Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+        when the template is instantiated.
         """
         return pulumi.get(self, "parameters")
 
@@ -380,7 +424,7 @@ class _WorkflowTemplateState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[int]]:
         """
-        Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        Output only. The current version of this workflow template.
         """
         warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
         pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
@@ -412,7 +456,6 @@ class WorkflowTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -472,7 +515,6 @@ class WorkflowTemplate(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -500,15 +542,26 @@ class WorkflowTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+               duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+               minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+               the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+               on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+               cluster is deleted.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+               by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+               1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+               characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+               associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+               configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+               when the template is instantiated.
         :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        :param pulumi.Input[int] version: Output only. The current version of this workflow template.
         """
         ...
     @overload
@@ -521,7 +574,6 @@ class WorkflowTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -581,7 +633,6 @@ class WorkflowTemplate(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -692,19 +743,30 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time template was created.
-        :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+               duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+               minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+               the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+               on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+               cluster is deleted.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
                clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+               by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+               1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+               characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+               associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+               configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+               when the template is instantiated.
         :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.
-        :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        :param pulumi.Input[int] version: Output only. The current version of this workflow template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -737,7 +799,12 @@ class WorkflowTemplate(pulumi.CustomResource):
     @pulumi.getter(name="dagTimeout")
     def dag_timeout(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
+        duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
+        minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
+        the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
+        on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
+        cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
 
@@ -762,7 +829,12 @@ class WorkflowTemplate(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
+        by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
+        1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
+        characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+        associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
+        configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -786,7 +858,8 @@ class WorkflowTemplate(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.WorkflowTemplateParameter']]]:
         """
-        Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
+        when the template is instantiated.
         """
         return pulumi.get(self, "parameters")
 
@@ -826,7 +899,7 @@ class WorkflowTemplate(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[int]:
         """
-        Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        Output only. The current version of this workflow template.
         """
         warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
         pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")

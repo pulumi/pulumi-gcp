@@ -233,7 +233,6 @@ class BiReservation(pulumi.CustomResource):
 
         ### Bigquery Reservation Bi Reservation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -242,7 +241,6 @@ class BiReservation(pulumi.CustomResource):
             location="us-west2",
             size=3000000000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -299,7 +297,6 @@ class BiReservation(pulumi.CustomResource):
 
         ### Bigquery Reservation Bi Reservation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -308,7 +305,6 @@ class BiReservation(pulumi.CustomResource):
             location="us-west2",
             size=3000000000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

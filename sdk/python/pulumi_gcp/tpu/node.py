@@ -567,7 +567,6 @@ class Node(pulumi.CustomResource):
 
         ### Tpu Node Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -580,10 +579,8 @@ class Node(pulumi.CustomResource):
             tensorflow_version=available.versions[0],
             cidr_block="10.2.0.0/29")
         ```
-        <!--End PulumiCodeChooser -->
         ### Tpu Node Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -615,7 +612,6 @@ class Node(pulumi.CustomResource):
                 preemptible=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -700,7 +696,6 @@ class Node(pulumi.CustomResource):
 
         ### Tpu Node Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -713,10 +708,8 @@ class Node(pulumi.CustomResource):
             tensorflow_version=available.versions[0],
             cidr_block="10.2.0.0/29")
         ```
-        <!--End PulumiCodeChooser -->
         ### Tpu Node Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -748,7 +741,6 @@ class Node(pulumi.CustomResource):
                 preemptible=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

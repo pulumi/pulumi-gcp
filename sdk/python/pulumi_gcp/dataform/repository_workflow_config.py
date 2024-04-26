@@ -341,7 +341,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
 
         ### Dataform Repository Workflow Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -419,7 +418,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -478,7 +476,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
 
         ### Dataform Repository Workflow Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -556,7 +553,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

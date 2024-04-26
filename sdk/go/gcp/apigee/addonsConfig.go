@@ -24,7 +24,6 @@ import (
 //
 // ### Apigee Addons Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,10 +55,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Apigee Addons Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -166,7 +163,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -202,7 +202,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["accessApprovalCustomEndpoint"] = args ? args.accessApprovalCustomEndpoint : undefined;
             resourceInputs["accessContextManagerCustomEndpoint"] = args ? args.accessContextManagerCustomEndpoint : undefined;
-            resourceInputs["accessToken"] = args ? args.accessToken : undefined;
+            resourceInputs["accessToken"] = args?.accessToken ? pulumi.secret(args.accessToken) : undefined;
             resourceInputs["activeDirectoryCustomEndpoint"] = args ? args.activeDirectoryCustomEndpoint : undefined;
             resourceInputs["addTerraformAttributionLabel"] = pulumi.output(args ? args.addTerraformAttributionLabel : undefined).apply(JSON.stringify);
             resourceInputs["alloydbCustomEndpoint"] = args ? args.alloydbCustomEndpoint : undefined;
@@ -370,6 +370,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["zone"] = (args ? args.zone : undefined) ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accessToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

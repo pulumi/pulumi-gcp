@@ -46,43 +46,26 @@ class VMwareClusterArgs:
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware User Cluster.
-               This field has the same restrictions as Kubernetes annotations.
-               The total size of all keys and values combined is limited to 256k.
-               Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/).
-               Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['VMwareClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
-               least three physical hosts in the datacenter.
-               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input['VMwareClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         :param pulumi.Input['VMwareClusterAuthorizationArgs'] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
-               Structure is documented below.
         :param pulumi.Input['VMwareClusterAutoRepairConfigArgs'] auto_repair_config: Configuration for auto repairing.
-               Structure is documented below.
         :param pulumi.Input['VMwareClusterDataplaneV2Args'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-               Structure is documented below.
-        :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[str] description: (Output)
+               The description of the validation check.
         :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input['VMwareClusterLoadBalancerArgs'] load_balancer: Load Balancer configuration.
-               Structure is documented below.
         :param pulumi.Input[str] name: The VMware cluster name.
         :param pulumi.Input['VMwareClusterNetworkConfigArgs'] network_config: The VMware User Cluster network configuration.
-               Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input['VMwareClusterStorageArgs'] storage: Storage configuration.
-               Structure is documented below.
         :param pulumi.Input['VMwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
-               Inherited from the admin cluster.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
         pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
@@ -178,17 +161,12 @@ class VMwareClusterArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations on the VMware User Cluster.
-        This field has the same restrictions as Kubernetes annotations.
-        The total size of all keys and values combined is limited to 256k.
-        Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/).
-        Prefix must be a DNS subdomain.
-        Name must be 63 characters or less, begin and end with alphanumerics,
-        with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+        of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        'effective_annotations' for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -200,9 +178,7 @@ class VMwareClusterArgs:
     @pulumi.getter(name="antiAffinityGroups")
     def anti_affinity_groups(self) -> Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']]:
         """
-        AAGConfig specifies whether to spread VMware User Cluster nodes across at
-        least three physical hosts in the datacenter.
-        Structure is documented below.
+        AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         """
         return pulumi.get(self, "anti_affinity_groups")
 
@@ -215,7 +191,6 @@ class VMwareClusterArgs:
     def authorization(self) -> Optional[pulumi.Input['VMwareClusterAuthorizationArgs']]:
         """
         RBAC policy that will be applied and managed by GKE On-Prem.
-        Structure is documented below.
         """
         return pulumi.get(self, "authorization")
 
@@ -228,7 +203,6 @@ class VMwareClusterArgs:
     def auto_repair_config(self) -> Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']]:
         """
         Configuration for auto repairing.
-        Structure is documented below.
         """
         return pulumi.get(self, "auto_repair_config")
 
@@ -241,7 +215,6 @@ class VMwareClusterArgs:
     def dataplane_v2(self) -> Optional[pulumi.Input['VMwareClusterDataplaneV2Args']]:
         """
         VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-        Structure is documented below.
         """
         return pulumi.get(self, "dataplane_v2")
 
@@ -253,7 +226,8 @@ class VMwareClusterArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human readable description of this VMware User Cluster.
+        (Output)
+        The description of the validation check.
         """
         return pulumi.get(self, "description")
 
@@ -290,7 +264,6 @@ class VMwareClusterArgs:
     def load_balancer(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']]:
         """
         Load Balancer configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "load_balancer")
 
@@ -315,7 +288,6 @@ class VMwareClusterArgs:
     def network_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']]:
         """
         The VMware User Cluster network configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "network_config")
 
@@ -326,10 +298,6 @@ class VMwareClusterArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -341,7 +309,6 @@ class VMwareClusterArgs:
     def storage(self) -> Optional[pulumi.Input['VMwareClusterStorageArgs']]:
         """
         Storage configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "storage")
 
@@ -354,7 +321,6 @@ class VMwareClusterArgs:
     def upgrade_policy(self) -> Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]:
         """
         Specifies upgrade policy for the cluster.
-        Structure is documented below.
         """
         return pulumi.get(self, "upgrade_policy")
 
@@ -366,9 +332,7 @@ class VMwareClusterArgs:
     @pulumi.getter
     def vcenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]]:
         """
-        VmwareVCenterConfig specifies vCenter config for the user cluster.
-        Inherited from the admin cluster.
-        Structure is documented below.
+        VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         """
         return pulumi.get(self, "vcenters")
 
@@ -431,31 +395,22 @@ class _VMwareClusterState:
                This is the full resource name of the admin cluster's hub membership.
                In the future, references to other resource types might be allowed if
                admin clusters are modeled as their own resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware User Cluster.
-               This field has the same restrictions as Kubernetes annotations.
-               The total size of all keys and values combined is limited to 256k.
-               Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/).
-               Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['VMwareClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
-               least three physical hosts in the datacenter.
-               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input['VMwareClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         :param pulumi.Input['VMwareClusterAuthorizationArgs'] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
-               Structure is documented below.
         :param pulumi.Input['VMwareClusterAutoRepairConfigArgs'] auto_repair_config: Configuration for auto repairing.
-               Structure is documented below.
         :param pulumi.Input['VMwareClusterControlPlaneNodeArgs'] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which VMware User Cluster was created.
         :param pulumi.Input['VMwareClusterDataplaneV2Args'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-               Structure is documented below.
         :param pulumi.Input[str] delete_time: The time at which VMware User Cluster was deleted.
-        :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[str] description: (Output)
+               The description of the validation check.
         :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
@@ -469,7 +424,6 @@ class _VMwareClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArgs']]] fleets: Fleet configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input['VMwareClusterLoadBalancerArgs'] load_balancer: Load Balancer configuration.
-               Structure is documented below.
         :param pulumi.Input[str] local_name: The object name of the VMware OnPremUserCluster custom resource on the
                associated admin cluster. This field is used to support conflicting
                names when enrolling existing clusters to the API. When used as a part of
@@ -483,10 +437,7 @@ class _VMwareClusterState:
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The VMware cluster name.
         :param pulumi.Input['VMwareClusterNetworkConfigArgs'] network_config: The VMware User Cluster network configuration.
-               Structure is documented below.
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the VMware User Cluster.
         :param pulumi.Input[str] state: (Output)
                The lifecycle state of the condition.
@@ -494,16 +445,12 @@ class _VMwareClusterState:
                Specifies the detailed validation check status
                Structure is documented below.
         :param pulumi.Input['VMwareClusterStorageArgs'] storage: Storage configuration.
-               Structure is documented below.
         :param pulumi.Input[str] uid: The unique identifier of the VMware User Cluster.
         :param pulumi.Input[str] update_time: The time at which VMware User Cluster was last updated.
         :param pulumi.Input['VMwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]] validation_checks: ValidationCheck represents the result of the preflight check job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
-               Inherited from the admin cluster.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
         if admin_cluster_membership is not None:
@@ -592,17 +539,12 @@ class _VMwareClusterState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations on the VMware User Cluster.
-        This field has the same restrictions as Kubernetes annotations.
-        The total size of all keys and values combined is limited to 256k.
-        Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/).
-        Prefix must be a DNS subdomain.
-        Name must be 63 characters or less, begin and end with alphanumerics,
-        with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+        of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        'effective_annotations' for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -614,9 +556,7 @@ class _VMwareClusterState:
     @pulumi.getter(name="antiAffinityGroups")
     def anti_affinity_groups(self) -> Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']]:
         """
-        AAGConfig specifies whether to spread VMware User Cluster nodes across at
-        least three physical hosts in the datacenter.
-        Structure is documented below.
+        AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         """
         return pulumi.get(self, "anti_affinity_groups")
 
@@ -629,7 +569,6 @@ class _VMwareClusterState:
     def authorization(self) -> Optional[pulumi.Input['VMwareClusterAuthorizationArgs']]:
         """
         RBAC policy that will be applied and managed by GKE On-Prem.
-        Structure is documented below.
         """
         return pulumi.get(self, "authorization")
 
@@ -642,7 +581,6 @@ class _VMwareClusterState:
     def auto_repair_config(self) -> Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']]:
         """
         Configuration for auto repairing.
-        Structure is documented below.
         """
         return pulumi.get(self, "auto_repair_config")
 
@@ -680,7 +618,6 @@ class _VMwareClusterState:
     def dataplane_v2(self) -> Optional[pulumi.Input['VMwareClusterDataplaneV2Args']]:
         """
         VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-        Structure is documented below.
         """
         return pulumi.get(self, "dataplane_v2")
 
@@ -704,7 +641,8 @@ class _VMwareClusterState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human readable description of this VMware User Cluster.
+        (Output)
+        The description of the validation check.
         """
         return pulumi.get(self, "description")
 
@@ -795,7 +733,6 @@ class _VMwareClusterState:
     def load_balancer(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']]:
         """
         Load Balancer configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "load_balancer")
 
@@ -853,7 +790,6 @@ class _VMwareClusterState:
     def network_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']]:
         """
         The VMware User Cluster network configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "network_config")
 
@@ -876,10 +812,6 @@ class _VMwareClusterState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -930,7 +862,6 @@ class _VMwareClusterState:
     def storage(self) -> Optional[pulumi.Input['VMwareClusterStorageArgs']]:
         """
         Storage configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "storage")
 
@@ -967,7 +898,6 @@ class _VMwareClusterState:
     def upgrade_policy(self) -> Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]:
         """
         Specifies upgrade policy for the cluster.
-        Structure is documented below.
         """
         return pulumi.get(self, "upgrade_policy")
 
@@ -992,9 +922,7 @@ class _VMwareClusterState:
     @pulumi.getter
     def vcenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]]:
         """
-        VmwareVCenterConfig specifies vCenter config for the user cluster.
-        Inherited from the admin cluster.
-        Structure is documented below.
+        VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         """
         return pulumi.get(self, "vcenters")
 
@@ -1048,7 +976,6 @@ class VMwareCluster(pulumi.CustomResource):
 
         ### Gkeonprem Vmware Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1095,10 +1022,8 @@ class VMwareCluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkeonprem Vmware Cluster F5lb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1170,10 +1095,8 @@ class VMwareCluster(pulumi.CustomResource):
                 vsphere_csi_disabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkeonprem Vmware Cluster Manuallb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1269,7 +1192,6 @@ class VMwareCluster(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1301,47 +1223,30 @@ class VMwareCluster(pulumi.CustomResource):
                This is the full resource name of the admin cluster's hub membership.
                In the future, references to other resource types might be allowed if
                admin clusters are modeled as their own resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware User Cluster.
-               This field has the same restrictions as Kubernetes annotations.
-               The total size of all keys and values combined is limited to 256k.
-               Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/).
-               Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
-               least three physical hosts in the datacenter.
-               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         :param pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArgs']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArgs']] auto_repair_config: Configuration for auto repairing.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArgs']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-               Structure is documented below.
-        :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[str] description: (Output)
+               The description of the validation check.
         :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']] load_balancer: Load Balancer configuration.
-               Structure is documented below.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The VMware cluster name.
         :param pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArgs']] network_config: The VMware User Cluster network configuration.
-               Structure is documented below.
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']] storage: Storage configuration.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']] upgrade_policy: Specifies upgrade policy for the cluster.
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArgs']]]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
-               Inherited from the admin cluster.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArgs']]]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
         ...
@@ -1357,7 +1262,6 @@ class VMwareCluster(pulumi.CustomResource):
 
         ### Gkeonprem Vmware Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1404,10 +1308,8 @@ class VMwareCluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkeonprem Vmware Cluster F5lb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1479,10 +1381,8 @@ class VMwareCluster(pulumi.CustomResource):
                 vsphere_csi_disabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkeonprem Vmware Cluster Manuallb
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1578,7 +1478,6 @@ class VMwareCluster(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1743,31 +1642,22 @@ class VMwareCluster(pulumi.CustomResource):
                This is the full resource name of the admin cluster's hub membership.
                In the future, references to other resource types might be allowed if
                admin clusters are modeled as their own resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware User Cluster.
-               This field has the same restrictions as Kubernetes annotations.
-               The total size of all keys and values combined is limited to 256k.
-               Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/).
-               Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
-               least three physical hosts in the datacenter.
-               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         :param pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArgs']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArgs']] auto_repair_config: Configuration for auto repairing.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArgs']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which VMware User Cluster was created.
         :param pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-               Structure is documented below.
         :param pulumi.Input[str] delete_time: The time at which VMware User Cluster was deleted.
-        :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[str] description: (Output)
+               The description of the validation check.
         :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
@@ -1781,7 +1671,6 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterFleetArgs']]]] fleets: Fleet configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']] load_balancer: Load Balancer configuration.
-               Structure is documented below.
         :param pulumi.Input[str] local_name: The object name of the VMware OnPremUserCluster custom resource on the
                associated admin cluster. This field is used to support conflicting
                names when enrolling existing clusters to the API. When used as a part of
@@ -1795,10 +1684,7 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The VMware cluster name.
         :param pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArgs']] network_config: The VMware User Cluster network configuration.
-               Structure is documented below.
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the VMware User Cluster.
         :param pulumi.Input[str] state: (Output)
                The lifecycle state of the condition.
@@ -1806,16 +1692,12 @@ class VMwareCluster(pulumi.CustomResource):
                Specifies the detailed validation check status
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']] storage: Storage configuration.
-               Structure is documented below.
         :param pulumi.Input[str] uid: The unique identifier of the VMware User Cluster.
         :param pulumi.Input[str] update_time: The time at which VMware User Cluster was last updated.
         :param pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']] upgrade_policy: Specifies upgrade policy for the cluster.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterValidationCheckArgs']]]] validation_checks: ValidationCheck represents the result of the preflight check job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArgs']]]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
-               Inherited from the admin cluster.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArgs']]]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1872,17 +1754,12 @@ class VMwareCluster(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Annotations on the VMware User Cluster.
-        This field has the same restrictions as Kubernetes annotations.
-        The total size of all keys and values combined is limited to 256k.
-        Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/).
-        Prefix must be a DNS subdomain.
-        Name must be 63 characters or less, begin and end with alphanumerics,
-        with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
+        of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        'effective_annotations' for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1890,9 +1767,7 @@ class VMwareCluster(pulumi.CustomResource):
     @pulumi.getter(name="antiAffinityGroups")
     def anti_affinity_groups(self) -> pulumi.Output['outputs.VMwareClusterAntiAffinityGroups']:
         """
-        AAGConfig specifies whether to spread VMware User Cluster nodes across at
-        least three physical hosts in the datacenter.
-        Structure is documented below.
+        AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
         """
         return pulumi.get(self, "anti_affinity_groups")
 
@@ -1901,7 +1776,6 @@ class VMwareCluster(pulumi.CustomResource):
     def authorization(self) -> pulumi.Output[Optional['outputs.VMwareClusterAuthorization']]:
         """
         RBAC policy that will be applied and managed by GKE On-Prem.
-        Structure is documented below.
         """
         return pulumi.get(self, "authorization")
 
@@ -1910,7 +1784,6 @@ class VMwareCluster(pulumi.CustomResource):
     def auto_repair_config(self) -> pulumi.Output['outputs.VMwareClusterAutoRepairConfig']:
         """
         Configuration for auto repairing.
-        Structure is documented below.
         """
         return pulumi.get(self, "auto_repair_config")
 
@@ -1936,7 +1809,6 @@ class VMwareCluster(pulumi.CustomResource):
     def dataplane_v2(self) -> pulumi.Output['outputs.VMwareClusterDataplaneV2']:
         """
         VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-        Structure is documented below.
         """
         return pulumi.get(self, "dataplane_v2")
 
@@ -1952,7 +1824,8 @@ class VMwareCluster(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A human readable description of this VMware User Cluster.
+        (Output)
+        The description of the validation check.
         """
         return pulumi.get(self, "description")
 
@@ -2015,7 +1888,6 @@ class VMwareCluster(pulumi.CustomResource):
     def load_balancer(self) -> pulumi.Output[Optional['outputs.VMwareClusterLoadBalancer']]:
         """
         Load Balancer configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "load_balancer")
 
@@ -2057,7 +1929,6 @@ class VMwareCluster(pulumi.CustomResource):
     def network_config(self) -> pulumi.Output[Optional['outputs.VMwareClusterNetworkConfig']]:
         """
         The VMware User Cluster network configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "network_config")
 
@@ -2072,10 +1943,6 @@ class VMwareCluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -2110,7 +1977,6 @@ class VMwareCluster(pulumi.CustomResource):
     def storage(self) -> pulumi.Output['outputs.VMwareClusterStorage']:
         """
         Storage configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "storage")
 
@@ -2135,7 +2001,6 @@ class VMwareCluster(pulumi.CustomResource):
     def upgrade_policy(self) -> pulumi.Output[Optional['outputs.VMwareClusterUpgradePolicy']]:
         """
         Specifies upgrade policy for the cluster.
-        Structure is documented below.
         """
         return pulumi.get(self, "upgrade_policy")
 
@@ -2152,9 +2017,7 @@ class VMwareCluster(pulumi.CustomResource):
     @pulumi.getter
     def vcenters(self) -> pulumi.Output[Optional[Sequence['outputs.VMwareClusterVcenter']]]:
         """
-        VmwareVCenterConfig specifies vCenter config for the user cluster.
-        Inherited from the admin cluster.
-        Structure is documented below.
+        VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         """
         return pulumi.get(self, "vcenters")
 

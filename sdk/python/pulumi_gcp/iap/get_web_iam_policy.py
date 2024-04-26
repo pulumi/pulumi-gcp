@@ -85,14 +85,12 @@ def get_web_iam_policy(project: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.iap.get_web_iam_policy(project=project_service["project"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -118,14 +116,12 @@ def get_web_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = N
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.iap.get_web_iam_policy(project=project_service["project"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

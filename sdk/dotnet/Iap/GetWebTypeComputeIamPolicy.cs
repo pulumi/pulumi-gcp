@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWebTypeComputeIamPolicyResult> InvokeAsync(GetWebTypeComputeIamPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebTypeComputeIamPolicyResult>("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", args ?? new GetWebTypeComputeIamPolicyArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWebTypeComputeIamPolicyResult> Invoke(GetWebTypeComputeIamPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebTypeComputeIamPolicyResult>("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", args ?? new GetWebTypeComputeIamPolicyInvokeArgs(), options.WithDefaults());

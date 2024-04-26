@@ -405,7 +405,6 @@ class DataStore(pulumi.CustomResource):
 
         ### Discoveryengine Datastore Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -419,7 +418,6 @@ class DataStore(pulumi.CustomResource):
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -488,7 +486,6 @@ class DataStore(pulumi.CustomResource):
 
         ### Discoveryengine Datastore Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -502,7 +499,6 @@ class DataStore(pulumi.CustomResource):
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class JobStatusErrorResultGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The geographic location of the job. The default value is US.
+        /// Specifies where the error occurred, if present.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

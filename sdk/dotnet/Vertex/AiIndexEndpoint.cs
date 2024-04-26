@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// ### Vertex Ai Index Endpoint
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,10 +73,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Vertex Ai Index Endpoint With Psc
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -109,10 +106,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Vertex Ai Index Endpoint With Public Endpoint
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -135,7 +130,6 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

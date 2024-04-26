@@ -24,7 +24,6 @@ import (
 //
 // ### Clouddeploy Automation Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,10 +81,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Clouddeploy Automation Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -168,7 +165,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -196,15 +192,21 @@ import (
 type Automation struct {
 	pulumi.CustomResourceState
 
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
+	// must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
+	// optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
+	// beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
+	// and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
+	// labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
+	// details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. Time at which the automation was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The deliveryPipeline for the resource
 	DeliveryPipeline pulumi.StringOutput `pulumi:"deliveryPipeline"`
-	// Optional. Description of the `Automation`. Max length is 255 characters.
+	// Optional. Description of the 'Automation'. Max length is 255 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
@@ -213,16 +215,18 @@ type Automation struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. The weak etag of the `Automation` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+	// following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
+	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
+	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
+	// are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the `Automation`.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -293,15 +297,21 @@ func GetAutomation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Automation resources.
 type automationState struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
+	// must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
+	// optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
+	// beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
+	// and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
+	// labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
+	// details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. Time at which the automation was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The deliveryPipeline for the resource
 	DeliveryPipeline *string `pulumi:"deliveryPipeline"`
-	// Optional. Description of the `Automation`. Max length is 255 characters.
+	// Optional. Description of the 'Automation'. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
@@ -310,16 +320,18 @@ type automationState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. The weak etag of the `Automation` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
-	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+	// following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
+	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
+	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
+	// are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Name of the `Automation`.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -341,15 +353,21 @@ type automationState struct {
 }
 
 type AutomationState struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
+	// must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
+	// optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
+	// beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
+	// and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
+	// labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
+	// details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Output only. Time at which the automation was created.
 	CreateTime pulumi.StringPtrInput
 	// The deliveryPipeline for the resource
 	DeliveryPipeline pulumi.StringPtrInput
-	// Optional. Description of the `Automation`. Max length is 255 characters.
+	// Optional. Description of the 'Automation'. Max length is 255 characters.
 	Description pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
@@ -358,16 +376,18 @@ type AutomationState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// Optional. The weak etag of the `Automation` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
-	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+	// following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
+	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
+	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
+	// are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Name of the `Automation`.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -393,24 +413,32 @@ func (AutomationState) ElementType() reflect.Type {
 }
 
 type automationArgs struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
+	// must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
+	// optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
+	// beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
+	// and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
+	// labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
+	// details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The deliveryPipeline for the resource
 	DeliveryPipeline string `pulumi:"deliveryPipeline"`
-	// Optional. Description of the `Automation`. Max length is 255 characters.
+	// Optional. Description of the 'Automation'. Max length is 255 characters.
 	Description *string `pulumi:"description"`
-	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+	// following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
+	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
+	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
+	// are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// Name of the `Automation`.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
 	// Structure is documented below.
@@ -426,24 +454,32 @@ type automationArgs struct {
 
 // The set of arguments for constructing a Automation resource.
 type AutomationArgs struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
+	// must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
+	// optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
+	// beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
+	// and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
+	// labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
+	// details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The deliveryPipeline for the resource
 	DeliveryPipeline pulumi.StringInput
-	// Optional. Description of the `Automation`. Max length is 255 characters.
+	// Optional. Description of the 'Automation'. Max length is 255 characters.
 	Description pulumi.StringPtrInput
-	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+	// following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
+	// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
+	// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
+	// are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
+	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+	// resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
 	// Name of the `Automation`.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
 	// Structure is documented below.
@@ -544,9 +580,15 @@ func (o AutomationOutput) ToAutomationOutputWithContext(ctx context.Context) Aut
 	return o
 }
 
-// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
-// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
+// must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
+// optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
+// beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
+// and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
+// labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
+// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
+// details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
 func (o AutomationOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -561,7 +603,7 @@ func (o AutomationOutput) DeliveryPipeline() pulumi.StringOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.DeliveryPipeline }).(pulumi.StringOutput)
 }
 
-// Optional. Description of the `Automation`. Max length is 255 characters.
+// Optional. Description of the 'Automation'. Max length is 255 characters.
 func (o AutomationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -582,9 +624,13 @@ func (o AutomationOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+// following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
+// dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
+// lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
+// are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
+// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+// resource.
 func (o AutomationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -599,8 +645,6 @@ func (o AutomationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o AutomationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

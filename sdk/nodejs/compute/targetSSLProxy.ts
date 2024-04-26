@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Target Ssl Proxy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,7 +52,6 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultSSLCertificate.id],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

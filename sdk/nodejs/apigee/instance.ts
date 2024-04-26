@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Apigee Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,10 +46,8 @@ import * as utilities from "../utilities";
  *     orgId: apigeeOrg.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apigee Instance Cidr Range
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -81,10 +78,8 @@ import * as utilities from "../utilities";
  *     peeringCidrRange: "SLASH_22",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apigee Instance Ip Range
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -115,10 +110,8 @@ import * as utilities from "../utilities";
  *     ipRange: "10.87.8.0/22",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apigee Instance Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -171,7 +164,6 @@ import * as utilities from "../utilities";
  *     diskEncryptionKeyName: apigeeKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

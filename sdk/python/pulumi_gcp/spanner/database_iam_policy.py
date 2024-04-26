@@ -202,7 +202,6 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
 
         ## google\\_spanner\\_database\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -216,11 +215,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -239,11 +236,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -254,11 +249,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -274,11 +267,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -289,11 +280,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -309,11 +298,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -327,11 +314,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -350,11 +335,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -365,11 +348,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -385,11 +366,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -400,11 +379,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -420,7 +397,6 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -479,7 +455,6 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
 
         ## google\\_spanner\\_database\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -493,11 +468,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -516,11 +489,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -531,11 +502,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -551,11 +520,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -566,11 +533,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -586,11 +551,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -604,11 +567,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -627,11 +588,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -642,11 +601,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -662,11 +619,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,11 +632,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -697,7 +650,6 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

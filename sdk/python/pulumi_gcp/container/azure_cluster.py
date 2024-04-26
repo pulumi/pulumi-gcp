@@ -39,16 +39,21 @@ class AzureClusterArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AzureClusterAzureServicesAuthenticationArgs'] azure_services_authentication: Azure authentication configuration for management of Azure resources
-        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+               `AzureCluster`. `AzureClient` names are formatted as
+               `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+               (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "authorization", authorization)
         pulumi.set(__self__, "azure_region", azure_region)
@@ -160,10 +165,12 @@ class AzureClusterArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -187,7 +194,10 @@ class AzureClusterArgs:
     @pulumi.getter
     def client(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+        `AzureCluster`. `AzureClient` names are formatted as
+        `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+        (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         """
         return pulumi.get(self, "client")
 
@@ -235,7 +245,7 @@ class AzureClusterArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of the Fleet host project where this cluster will be registered.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 
@@ -272,14 +282,19 @@ class _AzureClusterState:
                  workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AzureCluster resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AzureClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
         :param pulumi.Input['AzureClusterAzureServicesAuthenticationArgs'] azure_services_authentication: Azure authentication configuration for management of Azure resources
-        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+               `AzureCluster`. `AzureClient` names are formatted as
+               `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+               (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input['AzureClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
@@ -292,7 +307,7 @@ class _AzureClusterState:
         :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
@@ -351,10 +366,12 @@ class _AzureClusterState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -402,7 +419,10 @@ class _AzureClusterState:
     @pulumi.getter
     def client(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+        `AzureCluster`. `AzureClient` names are formatted as
+        `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+        (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         """
         return pulumi.get(self, "client")
 
@@ -547,7 +567,7 @@ class _AzureClusterState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of the Fleet host project where this cluster will be registered.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 
@@ -657,7 +677,6 @@ class AzureCluster(pulumi.CustomResource):
 
         ### Basic_azure_cluster
         A basic example of a containerazure azure cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -701,10 +720,8 @@ class AzureCluster(pulumi.CustomResource):
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Beta_basic_enum_azure_cluster
         A basic example of a containerazure azure cluster with lowercase enums (beta)
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -753,7 +770,6 @@ class AzureCluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -781,14 +797,19 @@ class AzureCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
         :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
-        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+               `AzureCluster`. `AzureClient` names are formatted as
+               `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+               (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
@@ -796,7 +817,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         """
         ...
@@ -814,7 +835,6 @@ class AzureCluster(pulumi.CustomResource):
 
         ### Basic_azure_cluster
         A basic example of a containerazure azure cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -858,10 +878,8 @@ class AzureCluster(pulumi.CustomResource):
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Beta_basic_enum_azure_cluster
         A basic example of a containerazure azure cluster with lowercase enums (beta)
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -910,7 +928,6 @@ class AzureCluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1051,14 +1068,19 @@ class AzureCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
         :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
-        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+               `AzureCluster`. `AzureClient` names are formatted as
+               `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+               (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
@@ -1071,7 +1093,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
@@ -1112,10 +1134,12 @@ class AzureCluster(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1147,7 +1171,10 @@ class AzureCluster(pulumi.CustomResource):
     @pulumi.getter
     def client(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
+        `AzureCluster`. `AzureClient` names are formatted as
+        `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
+        (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         """
         return pulumi.get(self, "client")
 
@@ -1244,7 +1271,7 @@ class AzureCluster(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The number of the Fleet host project where this cluster will be registered.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 

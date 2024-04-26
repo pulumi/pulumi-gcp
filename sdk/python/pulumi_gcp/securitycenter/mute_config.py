@@ -292,7 +292,6 @@ class MuteConfig(pulumi.CustomResource):
 
         ### Scc Mute Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -303,7 +302,6 @@ class MuteConfig(pulumi.CustomResource):
             filter="category: \\"OS_VULNERABILITY\\"",
             description="My Mute Config")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -353,7 +351,6 @@ class MuteConfig(pulumi.CustomResource):
 
         ### Scc Mute Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,7 +361,6 @@ class MuteConfig(pulumi.CustomResource):
             filter="category: \\"OS_VULNERABILITY\\"",
             description="My Mute Config")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

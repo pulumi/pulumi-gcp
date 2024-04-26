@@ -940,7 +940,6 @@ class RouterNat(pulumi.CustomResource):
 
         ### Router Nat Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -969,10 +968,8 @@ class RouterNat(pulumi.CustomResource):
                 filter="ERRORS_ONLY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Nat Manual Ips
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1004,10 +1001,8 @@ class RouterNat(pulumi.CustomResource):
                 source_ip_ranges_to_nats=["ALL_IP_RANGES"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Nat Rules
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1057,10 +1052,8 @@ class RouterNat(pulumi.CustomResource):
             )],
             enable_endpoint_independent_mapping=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Nat Private
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1113,7 +1106,6 @@ class RouterNat(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1231,7 +1223,6 @@ class RouterNat(pulumi.CustomResource):
 
         ### Router Nat Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1260,10 +1251,8 @@ class RouterNat(pulumi.CustomResource):
                 filter="ERRORS_ONLY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Nat Manual Ips
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1295,10 +1284,8 @@ class RouterNat(pulumi.CustomResource):
                 source_ip_ranges_to_nats=["ALL_IP_RANGES"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Nat Rules
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1348,10 +1335,8 @@ class RouterNat(pulumi.CustomResource):
             )],
             enable_endpoint_independent_mapping=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Router Nat Private
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1404,7 +1389,6 @@ class RouterNat(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

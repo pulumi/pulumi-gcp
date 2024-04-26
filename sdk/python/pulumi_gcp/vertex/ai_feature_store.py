@@ -418,7 +418,6 @@ class AiFeatureStore(pulumi.CustomResource):
 
         ### Vertex Ai Featurestore
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -437,10 +436,8 @@ class AiFeatureStore(pulumi.CustomResource):
             ),
             force_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featurestore With Beta Fields
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -460,10 +457,8 @@ class AiFeatureStore(pulumi.CustomResource):
             online_storage_ttl_days=30,
             force_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featurestore Scaling
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -485,7 +480,6 @@ class AiFeatureStore(pulumi.CustomResource):
             ),
             force_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -553,7 +547,6 @@ class AiFeatureStore(pulumi.CustomResource):
 
         ### Vertex Ai Featurestore
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -572,10 +565,8 @@ class AiFeatureStore(pulumi.CustomResource):
             ),
             force_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featurestore With Beta Fields
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -595,10 +586,8 @@ class AiFeatureStore(pulumi.CustomResource):
             online_storage_ttl_days=30,
             force_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featurestore Scaling
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -620,7 +609,6 @@ class AiFeatureStore(pulumi.CustomResource):
             ),
             force_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

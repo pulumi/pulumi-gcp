@@ -20,7 +20,6 @@ import (
 //
 // ### Basic_aws_cluster
 // A basic example of a containeraws cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,10 +124,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Basic_enum_aws_cluster
 // A basic example of a containeraws cluster with lowercase enums
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -228,10 +225,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Beta_basic_enum_aws_cluster
 // A basic example of a containeraws cluster with lowercase enums (beta)
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -342,7 +337,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -370,10 +364,12 @@ import (
 type AwsCluster struct {
 	pulumi.CustomResourceState
 
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationOutput `pulumi:"authorization"`
@@ -404,7 +400,7 @@ type AwsCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingOutput `pulumi:"networking"`
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
@@ -466,10 +462,12 @@ func GetAwsCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsCluster resources.
 type awsClusterState struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization *AwsClusterAuthorization `pulumi:"authorization"`
@@ -500,7 +498,7 @@ type awsClusterState struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking *AwsClusterNetworking `pulumi:"networking"`
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
@@ -515,10 +513,12 @@ type awsClusterState struct {
 }
 
 type AwsClusterState struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationPtrInput
@@ -549,7 +549,7 @@ type AwsClusterState struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingPtrInput
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
@@ -568,10 +568,12 @@ func (AwsClusterState) ElementType() reflect.Type {
 }
 
 type awsClusterArgs struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorization `pulumi:"authorization"`
@@ -593,16 +595,18 @@ type awsClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworking `pulumi:"networking"`
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AwsCluster resource.
 type AwsClusterArgs struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationInput
@@ -624,7 +628,7 @@ type AwsClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingInput
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project pulumi.StringPtrInput
 }
 
@@ -715,10 +719,12 @@ func (o AwsClusterOutput) ToAwsClusterOutputWithContext(ctx context.Context) Aws
 	return o
 }
 
-// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-//
-// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+// `effective_annotations` for all of the annotations present on the resource.
 func (o AwsClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -794,7 +800,7 @@ func (o AwsClusterOutput) Networking() AwsClusterNetworkingOutput {
 	return o.ApplyT(func(v *AwsCluster) AwsClusterNetworkingOutput { return v.Networking }).(AwsClusterNetworkingOutput)
 }
 
-// The number of the Fleet host project where this cluster will be registered.
+// The project for the resource
 func (o AwsClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

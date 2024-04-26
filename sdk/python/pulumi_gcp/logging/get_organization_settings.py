@@ -145,14 +145,12 @@ def get_organization_settings(organization: Optional[str] = None,
 
     ### Logging Organization Settings Basic
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     settings = gcp.logging.get_organization_settings(organization="my-organization-name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str organization: The ID of the organization for which to retrieve settings.
@@ -188,14 +186,12 @@ def get_organization_settings_output(organization: Optional[pulumi.Input[str]] =
 
     ### Logging Organization Settings Basic
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     settings = gcp.logging.get_organization_settings(organization="my-organization-name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str organization: The ID of the organization for which to retrieve settings.

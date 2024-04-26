@@ -226,7 +226,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
 
         ### Network Peering Routes Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -253,10 +252,8 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             network=network_secondary.id,
             peer_network=network_primary.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Peering Routes Config Gke
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -303,7 +300,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             import_custom_routes=True,
             export_custom_routes=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -363,7 +359,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
 
         ### Network Peering Routes Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -390,10 +385,8 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             network=network_secondary.id,
             peer_network=network_primary.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Peering Routes Config Gke
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,7 +433,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             import_custom_routes=True,
             export_custom_routes=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -26,7 +26,6 @@ import (
 //
 // ### Region Ssl Certificate Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,10 +66,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Ssl Certificate Random Provider
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -135,10 +132,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Ssl Certificate Target Https Proxies
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -250,7 +245,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

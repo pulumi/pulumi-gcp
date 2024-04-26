@@ -105,7 +105,6 @@ def get_runtime_iam_policy(location: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_runtime_iam_policy(location: Optional[str] = None,
         location=runtime["location"],
         runtime_name=runtime["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
@@ -148,7 +146,6 @@ def get_runtime_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -157,7 +154,6 @@ def get_runtime_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
         location=runtime["location"],
         runtime_name=runtime["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to

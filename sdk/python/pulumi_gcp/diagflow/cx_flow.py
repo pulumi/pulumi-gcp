@@ -277,8 +277,8 @@ class _CxFlowState:
                Flow.transition_routes.trigger_fulfillment.messages
                Flow.transition_routes.trigger_fulfillment.conditional_cases
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: (Output)
-               The unique identifier of this event handler.
+        :param pulumi.Input[str] name: The unique identifier of the flow.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input['CxFlowNluSettingsArgs'] nlu_settings: NLU related settings of the flow.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create a flow for.
@@ -412,8 +412,8 @@ class _CxFlowState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
-        The unique identifier of this event handler.
+        The unique identifier of the flow.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         """
         return pulumi.get(self, "name")
 
@@ -511,7 +511,6 @@ class CxFlow(pulumi.CustomResource):
 
         ### Dialogflowcx Flow Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -577,10 +576,8 @@ class CxFlow(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Dialogflowcx Flow Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -862,7 +859,6 @@ class CxFlow(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -943,7 +939,6 @@ class CxFlow(pulumi.CustomResource):
 
         ### Dialogflowcx Flow Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1009,10 +1004,8 @@ class CxFlow(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Dialogflowcx Flow Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1294,7 +1287,6 @@ class CxFlow(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1412,8 +1404,8 @@ class CxFlow(pulumi.CustomResource):
                Flow.transition_routes.trigger_fulfillment.messages
                Flow.transition_routes.trigger_fulfillment.conditional_cases
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: (Output)
-               The unique identifier of this event handler.
+        :param pulumi.Input[str] name: The unique identifier of the flow.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[pulumi.InputType['CxFlowNluSettingsArgs']] nlu_settings: NLU related settings of the flow.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create a flow for.
@@ -1517,8 +1509,8 @@ class CxFlow(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        (Output)
-        The unique identifier of this event handler.
+        The unique identifier of the flow.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         """
         return pulumi.get(self, "name")
 

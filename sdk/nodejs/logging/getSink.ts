@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ### Retrieve Project Logging Sink Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     id: "projects/0123456789/sinks/my-sink-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSink(args: GetSinkArgs, opts?: pulumi.InvokeOptions): Promise<GetSinkResult> {
 
@@ -99,7 +97,6 @@ export interface GetSinkResult {
  *
  * ### Retrieve Project Logging Sink Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -108,7 +105,6 @@ export interface GetSinkResult {
  *     id: "projects/0123456789/sinks/my-sink-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSinkOutput(args: GetSinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSinkResult> {
     return pulumi.output(args).apply((a: any) => getSink(a, opts))

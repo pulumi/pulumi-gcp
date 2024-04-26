@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Dlp Inspect Template Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -133,10 +132,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Inspect Template Custom Type
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -199,10 +196,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Inspect Template Custom Type Surrogate
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -263,7 +258,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -325,8 +319,7 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
      */
     public readonly inspectConfig!: pulumi.Output<outputs.dataloss.PreventionInspectTemplateInspectConfig | undefined>;
     /**
-     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * The resource name of the inspect template. Set by the server.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -401,8 +394,7 @@ export interface PreventionInspectTemplateState {
      */
     inspectConfig?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfig>;
     /**
-     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * The resource name of the inspect template. Set by the server.
      */
     name?: pulumi.Input<string>;
     /**

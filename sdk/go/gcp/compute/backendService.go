@@ -28,7 +28,6 @@ import (
 //
 // ### Backend Service Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,10 +61,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service External Iap
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,10 +92,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache Simple
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -136,10 +131,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache Include Http Headers
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -175,10 +168,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache Include Named Cookies
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -218,10 +209,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -264,10 +253,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache Bypass Cache On Request Headers
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -318,10 +305,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service Traffic Director Round Robin
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -357,10 +342,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service Traffic Director Ring Hash
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -412,10 +395,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service Network Endpoint
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -473,10 +454,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Backend Service External Managed
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -511,7 +490,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -411,7 +411,6 @@ class Repository(pulumi.CustomResource):
 
         ### Dataform Repository
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -442,7 +441,6 @@ class Repository(pulumi.CustomResource):
                 table_prefix="prefix_",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -507,7 +505,6 @@ class Repository(pulumi.CustomResource):
 
         ### Dataform Repository
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -538,7 +535,6 @@ class Repository(pulumi.CustomResource):
                 table_prefix="prefix_",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

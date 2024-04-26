@@ -26,7 +26,6 @@ import (
 //
 // ### Ssl Certificate Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,10 +65,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Ssl Certificate Random Provider
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -133,10 +130,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Ssl Certificate Target Https Proxies
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -239,7 +234,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

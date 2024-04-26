@@ -15,7 +15,6 @@ import (
 //
 // ## example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupTunnelDestGroupIamPolicy(ctx *pulumi.Context, args *LookupTunnelDestGroupIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTunnelDestGroupIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTunnelDestGroupIamPolicyResult

@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  *
  * ### Firewall Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,10 +54,8 @@ import * as utilities from "../utilities";
  *     sourceTags: ["web"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firewall With Target Tags
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -80,7 +77,6 @@ import * as utilities from "../utilities";
  *     targetTags: ["web"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

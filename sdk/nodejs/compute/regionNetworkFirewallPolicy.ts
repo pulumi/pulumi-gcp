@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Network Firewall Policy Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     description: "Terraform test",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

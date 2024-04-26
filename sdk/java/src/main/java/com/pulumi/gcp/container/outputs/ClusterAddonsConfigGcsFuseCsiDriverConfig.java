@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterAddonsConfigGcsFuseCsiDriverConfig {
-    /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     */
     private Boolean enabled;
 
     private ClusterAddonsConfigGcsFuseCsiDriverConfig() {}
-    /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     */
     public Boolean enabled() {
         return this.enabled;
     }

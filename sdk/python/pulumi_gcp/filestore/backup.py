@@ -473,7 +473,6 @@ class Backup(pulumi.CustomResource):
 
         ### Filestore Backup Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -502,7 +501,6 @@ class Backup(pulumi.CustomResource):
                 "other-label": "label2",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -571,7 +569,6 @@ class Backup(pulumi.CustomResource):
 
         ### Filestore Backup Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -600,7 +597,6 @@ class Backup(pulumi.CustomResource):
                 "other-label": "label2",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,46 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
     /**
-     * @return The target GKE node pool.
+     * @return The target GKE node pool. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}&#39;
      * 
      */
     private String nodePool;
     /**
-     * @return The configuration for the GKE node pool.
-     * If specified, Dataproc attempts to create a node pool with the specified shape.
-     * If one with the same name already exists, it is verified against all specified fields.
-     * If a field differs, the virtual cluster creation will fail.
+     * @return Input only. The configuration for the GKE node pool.
      * 
      */
     private @Nullable ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig nodePoolConfig;
     /**
-     * @return Node group roles.
-     * One of `&#34;DRIVER&#34;`.
+     * @return The roles associated with the GKE node pool.
      * 
      */
     private List<String> roles;
 
     private ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget() {}
     /**
-     * @return The target GKE node pool.
+     * @return The target GKE node pool. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}&#39;
      * 
      */
     public String nodePool() {
         return this.nodePool;
     }
     /**
-     * @return The configuration for the GKE node pool.
-     * If specified, Dataproc attempts to create a node pool with the specified shape.
-     * If one with the same name already exists, it is verified against all specified fields.
-     * If a field differs, the virtual cluster creation will fail.
+     * @return Input only. The configuration for the GKE node pool.
      * 
      */
     public Optional<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig> nodePoolConfig() {
         return Optional.ofNullable(this.nodePoolConfig);
     }
     /**
-     * @return Node group roles.
-     * One of `&#34;DRIVER&#34;`.
+     * @return The roles associated with the GKE node pool.
      * 
      */
     public List<String> roles() {

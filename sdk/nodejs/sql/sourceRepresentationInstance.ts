@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### Sql Source Representation Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,10 +30,8 @@ import * as utilities from "../utilities";
  *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Sql Source Representation Instance Postgres
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -50,7 +47,6 @@ import * as utilities from "../utilities";
  *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

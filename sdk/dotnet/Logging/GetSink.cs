@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Logging
         /// ### Retrieve Project Logging Sink Basic
         /// 
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSinkResult> InvokeAsync(GetSinkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSinkResult>("gcp:logging/getSink:getSink", args ?? new GetSinkArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.Gcp.Logging
         /// ### Retrieve Project Logging Sink Basic
         /// 
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSinkResult> Invoke(GetSinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSinkResult>("gcp:logging/getSink:getSink", args ?? new GetSinkInvokeArgs(), options.WithDefaults());

@@ -12,34 +12,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateManagedProvisioningIssue {
     /**
-     * @return (Output)
-     * Human readable explanation for reaching the state. Provided to help
-     * address the configuration issues.
-     * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+     * @return Human readable explanation about the issue. Provided to help address
+     * the configuration issues.
+     * Not guaranteed to be stable. For programmatic access use &#39;reason&#39; field.
      * 
      */
     private @Nullable String details;
     /**
-     * @return (Output)
-     * Reason for provisioning failures.
+     * @return Reason for provisioning failures.
      * 
      */
     private @Nullable String reason;
 
     private CertificateManagedProvisioningIssue() {}
     /**
-     * @return (Output)
-     * Human readable explanation for reaching the state. Provided to help
-     * address the configuration issues.
-     * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+     * @return Human readable explanation about the issue. Provided to help address
+     * the configuration issues.
+     * Not guaranteed to be stable. For programmatic access use &#39;reason&#39; field.
      * 
      */
     public Optional<String> details() {
         return Optional.ofNullable(this.details);
     }
     /**
-     * @return (Output)
-     * Reason for provisioning failures.
+     * @return Reason for provisioning failures.
      * 
      */
     public Optional<String> reason() {

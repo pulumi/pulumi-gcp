@@ -909,8 +909,7 @@ type DatabaseInstanceServerCaCert struct {
 	CommonName *string `pulumi:"commonName"`
 	// Creation time of the CA Cert.
 	CreateTime *string `pulumi:"createTime"`
-	// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-	// formatted date time string indicating when this whitelist expires.
+	// Expiration time of the CA Cert.
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// SHA Fingerprint of the CA Cert.
 	Sha1Fingerprint *string `pulumi:"sha1Fingerprint"`
@@ -934,8 +933,7 @@ type DatabaseInstanceServerCaCertArgs struct {
 	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Creation time of the CA Cert.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-	// formatted date time string indicating when this whitelist expires.
+	// Expiration time of the CA Cert.
 	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
 	// SHA Fingerprint of the CA Cert.
 	Sha1Fingerprint pulumi.StringPtrInput `pulumi:"sha1Fingerprint"`
@@ -1007,8 +1005,7 @@ func (o DatabaseInstanceServerCaCertOutput) CreateTime() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
-// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-// formatted date time string indicating when this whitelist expires.
+// Expiration time of the CA Cert.
 func (o DatabaseInstanceServerCaCertOutput) ExpirationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
 }
@@ -2829,8 +2826,6 @@ type DatabaseInstanceSettingsInsightsConfig struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled *bool `pulumi:"queryInsightsEnabled"`
 	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
-	//
-	// The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
 	QueryPlansPerMinute *int `pulumi:"queryPlansPerMinute"`
 	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
 	QueryStringLength *int `pulumi:"queryStringLength"`
@@ -2855,8 +2850,6 @@ type DatabaseInstanceSettingsInsightsConfigArgs struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolPtrInput `pulumi:"queryInsightsEnabled"`
 	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
-	//
-	// The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
 	QueryPlansPerMinute pulumi.IntPtrInput `pulumi:"queryPlansPerMinute"`
 	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
 	QueryStringLength pulumi.IntPtrInput `pulumi:"queryStringLength"`
@@ -2949,8 +2942,6 @@ func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryInsightsEnabled() pul
 }
 
 // Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
-//
-// The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
 func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *int { return v.QueryPlansPerMinute }).(pulumi.IntPtrOutput)
 }
@@ -3005,8 +2996,6 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryInsightsEnabled() 
 }
 
 // Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
-//
-// The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
 func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *int {
 		if v == nil {
@@ -3589,10 +3578,6 @@ type DatabaseInstanceSettingsLocationPreference struct {
 	// in. Must be in the same region as this instance.
 	FollowGaeApplication *string `pulumi:"followGaeApplication"`
 	// The preferred Compute Engine zone for the secondary/failover.
-	//
-	// The optional `settings.maintenance_window` subblock for instances declares a one-hour
-	// [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
-	// when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
 	SecondaryZone *string `pulumi:"secondaryZone"`
 	// The preferred compute engine
 	// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
@@ -3615,10 +3600,6 @@ type DatabaseInstanceSettingsLocationPreferenceArgs struct {
 	// in. Must be in the same region as this instance.
 	FollowGaeApplication pulumi.StringPtrInput `pulumi:"followGaeApplication"`
 	// The preferred Compute Engine zone for the secondary/failover.
-	//
-	// The optional `settings.maintenance_window` subblock for instances declares a one-hour
-	// [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
-	// when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
 	SecondaryZone pulumi.StringPtrInput `pulumi:"secondaryZone"`
 	// The preferred compute engine
 	// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
@@ -3709,10 +3690,6 @@ func (o DatabaseInstanceSettingsLocationPreferenceOutput) FollowGaeApplication()
 }
 
 // The preferred Compute Engine zone for the secondary/failover.
-//
-// The optional `settings.maintenance_window` subblock for instances declares a one-hour
-// [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
-// when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
 func (o DatabaseInstanceSettingsLocationPreferenceOutput) SecondaryZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *string { return v.SecondaryZone }).(pulumi.StringPtrOutput)
 }
@@ -3759,10 +3736,6 @@ func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) FollowGaeApplicatio
 }
 
 // The preferred Compute Engine zone for the secondary/failover.
-//
-// The optional `settings.maintenance_window` subblock for instances declares a one-hour
-// [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
-// when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
 func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) SecondaryZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsLocationPreference) *string {
 		if v == nil {
@@ -3790,8 +3763,6 @@ type DatabaseInstanceSettingsMaintenanceWindow struct {
 	Hour *int `pulumi:"hour"`
 	// Receive updates earlier (`canary`) or later
 	// (`stable`)
-	//
-	// The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
 	UpdateTrack *string `pulumi:"updateTrack"`
 }
 
@@ -3813,8 +3784,6 @@ type DatabaseInstanceSettingsMaintenanceWindowArgs struct {
 	Hour pulumi.IntPtrInput `pulumi:"hour"`
 	// Receive updates earlier (`canary`) or later
 	// (`stable`)
-	//
-	// The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
 	UpdateTrack pulumi.StringPtrInput `pulumi:"updateTrack"`
 }
 
@@ -3907,8 +3876,6 @@ func (o DatabaseInstanceSettingsMaintenanceWindowOutput) Hour() pulumi.IntPtrOut
 
 // Receive updates earlier (`canary`) or later
 // (`stable`)
-//
-// The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
 func (o DatabaseInstanceSettingsMaintenanceWindowOutput) UpdateTrack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *string { return v.UpdateTrack }).(pulumi.StringPtrOutput)
 }
@@ -3959,8 +3926,6 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Hour() pulumi.IntPtr
 
 // Receive updates earlier (`canary`) or later
 // (`stable`)
-//
-// The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) UpdateTrack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsMaintenanceWindow) *string {
 		if v == nil {
@@ -3976,9 +3941,6 @@ type DatabaseInstanceSettingsPasswordValidationPolicy struct {
 	// Prevents the use of the username in the password.
 	DisallowUsernameSubstring *bool `pulumi:"disallowUsernameSubstring"`
 	// Enables or disable the password validation policy.
-	//
-	// The optional `replicaConfiguration` block must have `masterInstanceName` set
-	// to work, cannot be updated, and supports:
 	EnablePasswordPolicy bool `pulumi:"enablePasswordPolicy"`
 	// Specifies the minimum number of characters that the password must have.
 	MinLength *int `pulumi:"minLength"`
@@ -4005,9 +3967,6 @@ type DatabaseInstanceSettingsPasswordValidationPolicyArgs struct {
 	// Prevents the use of the username in the password.
 	DisallowUsernameSubstring pulumi.BoolPtrInput `pulumi:"disallowUsernameSubstring"`
 	// Enables or disable the password validation policy.
-	//
-	// The optional `replicaConfiguration` block must have `masterInstanceName` set
-	// to work, cannot be updated, and supports:
 	EnablePasswordPolicy pulumi.BoolInput `pulumi:"enablePasswordPolicy"`
 	// Specifies the minimum number of characters that the password must have.
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
@@ -4105,9 +4064,6 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) DisallowUsername
 }
 
 // Enables or disable the password validation policy.
-//
-// The optional `replicaConfiguration` block must have `masterInstanceName` set
-// to work, cannot be updated, and supports:
 func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) EnablePasswordPolicy() pulumi.BoolOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsPasswordValidationPolicy) bool { return v.EnablePasswordPolicy }).(pulumi.BoolOutput)
 }
@@ -4172,9 +4128,6 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) DisallowUsern
 }
 
 // Enables or disable the password validation policy.
-//
-// The optional `replicaConfiguration` block must have `masterInstanceName` set
-// to work, cannot be updated, and supports:
 func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) EnablePasswordPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsPasswordValidationPolicy) *bool {
 		if v == nil {

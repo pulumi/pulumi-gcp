@@ -41,7 +41,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _instanceNames;
 
         /// <summary>
-        /// List of master instance names which have been assigned to the cluster.
+        /// List of master instance names which
+        /// have been assigned to the cluster.
         /// </summary>
         public InputList<string> InstanceNames
         {

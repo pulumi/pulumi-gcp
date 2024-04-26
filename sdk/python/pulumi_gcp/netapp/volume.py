@@ -991,7 +991,6 @@ class Volume(pulumi.CustomResource):
 
         ### Netapp Volume Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1012,7 +1011,6 @@ class Volume(pulumi.CustomResource):
             protocols=["NFSV3"],
             deletion_policy="DEFAULT")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1102,7 +1100,6 @@ class Volume(pulumi.CustomResource):
 
         ### Netapp Volume Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1123,7 +1120,6 @@ class Volume(pulumi.CustomResource):
             protocols=["NFSV3"],
             deletion_policy="DEFAULT")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -194,7 +194,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
 
         ### Region Disk Resource Policy Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -237,7 +236,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -297,7 +295,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
 
         ### Region Disk Resource Policy Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -340,7 +337,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

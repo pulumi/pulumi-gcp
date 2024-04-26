@@ -310,7 +310,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
         ### Identity Platform Tenant Default Supported Idp Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -323,7 +322,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
             client_id="my-client-id",
             client_secret="secret")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -389,7 +387,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
         ### Identity Platform Tenant Default Supported Idp Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -402,7 +399,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
             client_id="my-client-id",
             client_secret="secret")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// ### Edgecontainer Cluster
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -68,10 +67,8 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Edgecontainer Cluster With Maintenance Window
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -127,10 +124,8 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Edgecontainer Local Control Plane Cluster
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -185,7 +180,6 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -230,15 +224,12 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// The configuration of the cluster control plane.
-        /// Structure is documented below.
         /// </summary>
         [Output("controlPlane")]
         public Output<Outputs.ClusterControlPlane?> ControlPlane { get; private set; } = null!;
 
         /// <summary>
-        /// Remote control plane disk encryption options. This field is only used when
-        /// enabling CMEK support.
-        /// Structure is documented below.
+        /// Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         /// </summary>
         [Output("controlPlaneEncryption")]
         public Output<Outputs.ClusterControlPlaneEncryption> ControlPlaneEncryption { get; private set; } = null!;
@@ -257,9 +248,8 @@ namespace Pulumi.Gcp.EdgeContainer
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The default maximum number of pods per node used if a maximum value is not
-        /// specified explicitly for a node pool in this cluster. If unspecified, the
-        /// Kubernetes default value will be used.
+        /// The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+        /// cluster. If unspecified, the Kubernetes default value will be used.
         /// </summary>
         [Output("defaultMaxPodsPerNode")]
         public Output<int> DefaultMaxPodsPerNode { get; private set; } = null!;
@@ -293,9 +283,9 @@ namespace Pulumi.Gcp.EdgeContainer
         public Output<Outputs.ClusterFleet> Fleet { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined labels for the edgecloud cluster.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        /// resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -316,7 +306,6 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Cluster-wide maintenance policy configuration.
-        /// Structure is documented below.
         /// </summary>
         [Output("maintenancePolicy")]
         public Output<Outputs.ClusterMaintenancePolicy> MaintenancePolicy { get; private set; } = null!;
@@ -350,10 +339,6 @@ namespace Pulumi.Gcp.EdgeContainer
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -365,8 +350,7 @@ namespace Pulumi.Gcp.EdgeContainer
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The release channel a cluster is subscribed to.
-        /// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        /// The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         /// </summary>
         [Output("releaseChannel")]
         public Output<string> ReleaseChannel { get; private set; } = null!;
@@ -379,13 +363,13 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Config that customers are allowed to define for GDCE system add-ons.
-        /// Structure is documented below.
         /// </summary>
         [Output("systemAddonsConfig")]
         public Output<Outputs.ClusterSystemAddonsConfig> SystemAddonsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The target cluster version. For example: "1.5.0".
+        /// (Output)
+        /// The target version of the cluster.
         /// </summary>
         [Output("targetVersion")]
         public Output<string> TargetVersion { get; private set; } = null!;
@@ -458,23 +442,19 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// The configuration of the cluster control plane.
-        /// Structure is documented below.
         /// </summary>
         [Input("controlPlane")]
         public Input<Inputs.ClusterControlPlaneArgs>? ControlPlane { get; set; }
 
         /// <summary>
-        /// Remote control plane disk encryption options. This field is only used when
-        /// enabling CMEK support.
-        /// Structure is documented below.
+        /// Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         /// </summary>
         [Input("controlPlaneEncryption")]
         public Input<Inputs.ClusterControlPlaneEncryptionArgs>? ControlPlaneEncryption { get; set; }
 
         /// <summary>
-        /// The default maximum number of pods per node used if a maximum value is not
-        /// specified explicitly for a node pool in this cluster. If unspecified, the
-        /// Kubernetes default value will be used.
+        /// The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+        /// cluster. If unspecified, the Kubernetes default value will be used.
         /// </summary>
         [Input("defaultMaxPodsPerNode")]
         public Input<int>? DefaultMaxPodsPerNode { get; set; }
@@ -505,9 +485,9 @@ namespace Pulumi.Gcp.EdgeContainer
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for the edgecloud cluster.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        /// resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -523,7 +503,6 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Cluster-wide maintenance policy configuration.
-        /// Structure is documented below.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.ClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
@@ -544,29 +523,24 @@ namespace Pulumi.Gcp.EdgeContainer
         [Input("networking", required: true)]
         public Input<Inputs.ClusterNetworkingArgs> Networking { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The release channel a cluster is subscribed to.
-        /// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        /// The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         /// </summary>
         [Input("releaseChannel")]
         public Input<string>? ReleaseChannel { get; set; }
 
         /// <summary>
         /// Config that customers are allowed to define for GDCE system add-ons.
-        /// Structure is documented below.
         /// </summary>
         [Input("systemAddonsConfig")]
         public Input<Inputs.ClusterSystemAddonsConfigArgs>? SystemAddonsConfig { get; set; }
 
         /// <summary>
-        /// The target cluster version. For example: "1.5.0".
+        /// (Output)
+        /// The target version of the cluster.
         /// </summary>
         [Input("targetVersion")]
         public Input<string>? TargetVersion { get; set; }
@@ -605,15 +579,12 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// The configuration of the cluster control plane.
-        /// Structure is documented below.
         /// </summary>
         [Input("controlPlane")]
         public Input<Inputs.ClusterControlPlaneGetArgs>? ControlPlane { get; set; }
 
         /// <summary>
-        /// Remote control plane disk encryption options. This field is only used when
-        /// enabling CMEK support.
-        /// Structure is documented below.
+        /// Remote control plane disk encryption options. This field is only used when enabling CMEK support.
         /// </summary>
         [Input("controlPlaneEncryption")]
         public Input<Inputs.ClusterControlPlaneEncryptionGetArgs>? ControlPlaneEncryption { get; set; }
@@ -632,9 +603,8 @@ namespace Pulumi.Gcp.EdgeContainer
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The default maximum number of pods per node used if a maximum value is not
-        /// specified explicitly for a node pool in this cluster. If unspecified, the
-        /// Kubernetes default value will be used.
+        /// The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
+        /// cluster. If unspecified, the Kubernetes default value will be used.
         /// </summary>
         [Input("defaultMaxPodsPerNode")]
         public Input<int>? DefaultMaxPodsPerNode { get; set; }
@@ -687,9 +657,9 @@ namespace Pulumi.Gcp.EdgeContainer
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for the edgecloud cluster.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
+        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+        /// resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -719,7 +689,6 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Cluster-wide maintenance policy configuration.
-        /// Structure is documented below.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.ClusterMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
@@ -753,10 +722,6 @@ namespace Pulumi.Gcp.EdgeContainer
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -778,8 +743,7 @@ namespace Pulumi.Gcp.EdgeContainer
         }
 
         /// <summary>
-        /// The release channel a cluster is subscribed to.
-        /// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
+        /// The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
         /// </summary>
         [Input("releaseChannel")]
         public Input<string>? ReleaseChannel { get; set; }
@@ -792,13 +756,13 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Config that customers are allowed to define for GDCE system add-ons.
-        /// Structure is documented below.
         /// </summary>
         [Input("systemAddonsConfig")]
         public Input<Inputs.ClusterSystemAddonsConfigGetArgs>? SystemAddonsConfig { get; set; }
 
         /// <summary>
-        /// The target cluster version. For example: "1.5.0".
+        /// (Output)
+        /// The target version of the cluster.
         /// </summary>
         [Input("targetVersion")]
         public Input<string>? TargetVersion { get; set; }

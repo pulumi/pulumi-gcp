@@ -22,7 +22,6 @@ import (
 //
 // ### Url Map Bucket And Service
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,10 +133,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Url Map Traffic Director Route
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -268,10 +265,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Url Map Traffic Director Route Partial
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -359,10 +354,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Url Map Traffic Director Path
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -520,10 +513,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Url Map Traffic Director Path Partial
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -647,10 +638,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Url Map Header Based Routing
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -763,10 +752,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Url Map Parameter Based Routing
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -879,10 +866,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Url Map Path Template Match
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -994,7 +979,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

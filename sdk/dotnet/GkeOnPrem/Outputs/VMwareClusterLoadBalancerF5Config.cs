@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
     public sealed class VMwareClusterLoadBalancerF5Config
     {
         /// <summary>
-        /// (Output)
-        /// The vCenter IP address.
+        /// The load balancer's IP address.
         /// </summary>
         public readonly string? Address;
         /// <summary>

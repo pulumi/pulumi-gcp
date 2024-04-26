@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Dialogflowcx Page Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -587,7 +586,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -679,8 +677,8 @@ export class CxPage extends pulumi.CustomResource {
      */
     public readonly languageCode!: pulumi.Output<string | undefined>;
     /**
-     * (Output)
-     * The unique identifier of this event handler.
+     * The unique identifier of the page.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -800,8 +798,8 @@ export interface CxPageState {
      */
     languageCode?: pulumi.Input<string>;
     /**
-     * (Output)
-     * The unique identifier of this event handler.
+     * The unique identifier of the page.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
      */
     name?: pulumi.Input<string>;
     /**

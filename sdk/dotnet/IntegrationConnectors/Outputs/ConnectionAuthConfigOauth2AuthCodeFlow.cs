@@ -18,12 +18,11 @@ namespace Pulumi.Gcp.IntegrationConnectors.Outputs
         /// </summary>
         public readonly string? AuthUri;
         /// <summary>
-        /// Secret version of Password for Authentication.
+        /// Client ID for user-provided OAuth app.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// Secret version reference containing the client secret.
-        /// Structure is documented below.
+        /// Client secret for user-provided OAuth app.
         /// </summary>
         public readonly Outputs.ConnectionAuthConfigOauth2AuthCodeFlowClientSecret? ClientSecret;
         /// <summary>

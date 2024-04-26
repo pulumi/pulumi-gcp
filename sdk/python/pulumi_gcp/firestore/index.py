@@ -32,15 +32,10 @@ class IndexArgs:
                composite index is not directional, the `__name__` will be ordered
                `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
-        :param pulumi.Input[str] api_scope: The API scope at which a query is run.
-               Default value is `ANY_API`.
-               Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
-        :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] query_scope: The scope at which a query is run.
-               Default value is `COLLECTION`.
-               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
+        :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
+        :param pulumi.Input[str] query_scope: The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+               "COLLECTION_RECURSIVE"]
         """
         pulumi.set(__self__, "collection", collection)
         pulumi.set(__self__, "fields", fields)
@@ -87,9 +82,7 @@ class IndexArgs:
     @pulumi.getter(name="apiScope")
     def api_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The API scope at which a query is run.
-        Default value is `ANY_API`.
-        Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         """
         return pulumi.get(self, "api_scope")
 
@@ -101,7 +94,7 @@ class IndexArgs:
     @pulumi.getter
     def database(self) -> Optional[pulumi.Input[str]]:
         """
-        The Firestore database id. Defaults to `"(default)"`.
+        The Firestore database id. Defaults to '"(default)"'.
         """
         return pulumi.get(self, "database")
 
@@ -112,10 +105,6 @@ class IndexArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -126,9 +115,8 @@ class IndexArgs:
     @pulumi.getter(name="queryScope")
     def query_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The scope at which a query is run.
-        Default value is `COLLECTION`.
-        Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+        "COLLECTION_RECURSIVE"]
         """
         return pulumi.get(self, "query_scope")
 
@@ -149,11 +137,9 @@ class _IndexState:
                  query_scope: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Index resources.
-        :param pulumi.Input[str] api_scope: The API scope at which a query is run.
-               Default value is `ANY_API`.
-               Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        :param pulumi.Input[str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         :param pulumi.Input[str] collection: The collection being indexed.
-        :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
         :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the same
@@ -163,11 +149,8 @@ class _IndexState:
                Structure is documented below.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] query_scope: The scope at which a query is run.
-               Default value is `COLLECTION`.
-               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[str] query_scope: The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+               "COLLECTION_RECURSIVE"]
         """
         if api_scope is not None:
             pulumi.set(__self__, "api_scope", api_scope)
@@ -188,9 +171,7 @@ class _IndexState:
     @pulumi.getter(name="apiScope")
     def api_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The API scope at which a query is run.
-        Default value is `ANY_API`.
-        Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         """
         return pulumi.get(self, "api_scope")
 
@@ -214,7 +195,7 @@ class _IndexState:
     @pulumi.getter
     def database(self) -> Optional[pulumi.Input[str]]:
         """
-        The Firestore database id. Defaults to `"(default)"`.
+        The Firestore database id. Defaults to '"(default)"'.
         """
         return pulumi.get(self, "database")
 
@@ -256,10 +237,6 @@ class _IndexState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -270,9 +247,8 @@ class _IndexState:
     @pulumi.getter(name="queryScope")
     def query_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The scope at which a query is run.
-        Default value is `COLLECTION`.
-        Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+        "COLLECTION_RECURSIVE"]
         """
         return pulumi.get(self, "query_scope")
 
@@ -316,7 +292,6 @@ class Index(pulumi.CustomResource):
 
         ### Firestore Index Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -343,10 +318,8 @@ class Index(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Index Datastore Mode
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -375,10 +348,8 @@ class Index(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Index Vector
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -412,7 +383,6 @@ class Index(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -428,11 +398,9 @@ class Index(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_scope: The API scope at which a query is run.
-               Default value is `ANY_API`.
-               Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        :param pulumi.Input[str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         :param pulumi.Input[str] collection: The collection being indexed.
-        :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the same
@@ -440,11 +408,8 @@ class Index(pulumi.CustomResource):
                composite index is not directional, the `__name__` will be ordered
                `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] query_scope: The scope at which a query is run.
-               Default value is `COLLECTION`.
-               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[str] query_scope: The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+               "COLLECTION_RECURSIVE"]
         """
         ...
     @overload
@@ -475,7 +440,6 @@ class Index(pulumi.CustomResource):
 
         ### Firestore Index Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -502,10 +466,8 @@ class Index(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Index Datastore Mode
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,10 +496,8 @@ class Index(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Index Vector
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -571,7 +531,6 @@ class Index(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -650,11 +609,9 @@ class Index(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_scope: The API scope at which a query is run.
-               Default value is `ANY_API`.
-               Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        :param pulumi.Input[str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         :param pulumi.Input[str] collection: The collection being indexed.
-        :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the same
@@ -664,11 +621,8 @@ class Index(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] query_scope: The scope at which a query is run.
-               Default value is `COLLECTION`.
-               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[str] query_scope: The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+               "COLLECTION_RECURSIVE"]
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -687,9 +641,7 @@ class Index(pulumi.CustomResource):
     @pulumi.getter(name="apiScope")
     def api_scope(self) -> pulumi.Output[Optional[str]]:
         """
-        The API scope at which a query is run.
-        Default value is `ANY_API`.
-        Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         """
         return pulumi.get(self, "api_scope")
 
@@ -705,7 +657,7 @@ class Index(pulumi.CustomResource):
     @pulumi.getter
     def database(self) -> pulumi.Output[Optional[str]]:
         """
-        The Firestore database id. Defaults to `"(default)"`.
+        The Firestore database id. Defaults to '"(default)"'.
         """
         return pulumi.get(self, "database")
 
@@ -735,19 +687,14 @@ class Index(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="queryScope")
     def query_scope(self) -> pulumi.Output[Optional[str]]:
         """
-        The scope at which a query is run.
-        Default value is `COLLECTION`.
-        Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+        "COLLECTION_RECURSIVE"]
         """
         return pulumi.get(self, "query_scope")
 

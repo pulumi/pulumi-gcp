@@ -59,16 +59,14 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * OS policy assignment description. Length of the
-     * description is limited to 1024 characters.
+     * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return OS policy assignment description. Length of the
-     * description is limited to 1024 characters.
+     * @return OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -157,16 +155,14 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The project for the resource
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * @return The project for the resource
      * 
      */
     public Optional<Output<String>> project() {
@@ -263,16 +259,14 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Set to true to skip awaiting rollout
-     * during resource creation and update.
+     * Set to true to skip awaiting rollout during resource creation and update.
      * 
      */
     @Import(name="skipAwaitRollout")
     private @Nullable Output<Boolean> skipAwaitRollout;
 
     /**
-     * @return Set to true to skip awaiting rollout
-     * during resource creation and update.
+     * @return Set to true to skip awaiting rollout during resource creation and update.
      * 
      */
     public Optional<Output<Boolean>> skipAwaitRollout() {
@@ -386,8 +380,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description OS policy assignment description. Length of the
-         * description is limited to 1024 characters.
+         * @param description OS policy assignment description. Length of the description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -398,8 +391,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description OS policy assignment description. Length of the
-         * description is limited to 1024 characters.
+         * @param description OS policy assignment description. Length of the description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -531,8 +523,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * @param project The project for the resource
          * 
          * @return builder
          * 
@@ -543,8 +534,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * @param project The project for the resource
          * 
          * @return builder
          * 
@@ -673,8 +663,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param skipAwaitRollout Set to true to skip awaiting rollout
-         * during resource creation and update.
+         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
          * 
          * @return builder
          * 
@@ -685,8 +674,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param skipAwaitRollout Set to true to skip awaiting rollout
-         * during resource creation and update.
+         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
          * 
          * @return builder
          * 

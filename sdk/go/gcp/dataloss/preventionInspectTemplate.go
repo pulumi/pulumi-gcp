@@ -24,7 +24,6 @@ import (
 //
 // ### Dlp Inspect Template Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -165,10 +164,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Inspect Template Custom Type
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -258,10 +255,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Inspect Template Custom Type Surrogate
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -349,7 +344,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -378,8 +372,7 @@ type PreventionInspectTemplate struct {
 	// The core content of the template.
 	// Structure is documented below.
 	InspectConfig PreventionInspectTemplateInspectConfigPtrOutput `pulumi:"inspectConfig"`
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// The resource name of the inspect template. Set by the server.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the inspect template in any of the following formats:
 	// * `projects/{{project}}`
@@ -435,8 +428,7 @@ type preventionInspectTemplateState struct {
 	// The core content of the template.
 	// Structure is documented below.
 	InspectConfig *PreventionInspectTemplateInspectConfig `pulumi:"inspectConfig"`
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// The resource name of the inspect template. Set by the server.
 	Name *string `pulumi:"name"`
 	// The parent of the inspect template in any of the following formats:
 	// * `projects/{{project}}`
@@ -460,8 +452,7 @@ type PreventionInspectTemplateState struct {
 	// The core content of the template.
 	// Structure is documented below.
 	InspectConfig PreventionInspectTemplateInspectConfigPtrInput
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// The resource name of the inspect template. Set by the server.
 	Name pulumi.StringPtrInput
 	// The parent of the inspect template in any of the following formats:
 	// * `projects/{{project}}`
@@ -631,8 +622,7 @@ func (o PreventionInspectTemplateOutput) InspectConfig() PreventionInspectTempla
 	}).(PreventionInspectTemplateInspectConfigPtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+// The resource name of the inspect template. Set by the server.
 func (o PreventionInspectTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

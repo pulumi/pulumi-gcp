@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// ### Apigateway Api Config Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,10 +58,8 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Apigateway Api Config Grpc
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -126,7 +123,6 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

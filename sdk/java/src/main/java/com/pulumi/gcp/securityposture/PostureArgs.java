@@ -19,14 +19,14 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
     public static final PostureArgs Empty = new PostureArgs();
 
     /**
-     * Description of the expression
+     * Description of the posture.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the expression
+     * @return Description of the posture.
      * 
      */
     public Optional<Output<String>> description() {
@@ -144,7 +144,7 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the expression
+         * @param description Description of the posture.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the expression
+         * @param description Description of the posture.
          * 
          * @return builder
          * 

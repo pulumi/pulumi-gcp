@@ -427,7 +427,6 @@ class SSLPolicy(pulumi.CustomResource):
 
         ### Ssl Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -448,7 +447,6 @@ class SSLPolicy(pulumi.CustomResource):
                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -532,7 +530,6 @@ class SSLPolicy(pulumi.CustomResource):
 
         ### Ssl Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -553,7 +550,6 @@ class SSLPolicy(pulumi.CustomResource):
                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

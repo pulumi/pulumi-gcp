@@ -171,7 +171,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         ### Organization Security Policy Association Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -210,7 +209,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             attachment_id=policy.parent,
             policy_id=policy.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -252,7 +250,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         ### Organization Security Policy Association Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -291,7 +288,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             attachment_id=policy.parent,
             policy_id=policy.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

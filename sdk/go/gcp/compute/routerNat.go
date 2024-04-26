@@ -24,7 +24,6 @@ import (
 //
 // ### Router Nat Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,10 +81,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Router Nat Manual Ips
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -164,10 +161,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Router Nat Rules
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -265,10 +260,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Router Nat Private
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -367,7 +360,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

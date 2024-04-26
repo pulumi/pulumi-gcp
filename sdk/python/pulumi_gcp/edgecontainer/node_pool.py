@@ -496,7 +496,6 @@ class NodePool(pulumi.CustomResource):
 
         ### Edgecontainer Node Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -528,10 +527,8 @@ class NodePool(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgecontainer Node Pool With Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -572,10 +569,8 @@ class NodePool(pulumi.CustomResource):
                 kms_key=crypto_key_crypto_key.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgecontainer Local Control Plane Node Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -612,7 +607,6 @@ class NodePool(pulumi.CustomResource):
             node_location="us-central1-edge-example-edgesite",
             node_count=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -680,7 +674,6 @@ class NodePool(pulumi.CustomResource):
 
         ### Edgecontainer Node Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -712,10 +705,8 @@ class NodePool(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgecontainer Node Pool With Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -756,10 +747,8 @@ class NodePool(pulumi.CustomResource):
                 kms_key=crypto_key_crypto_key.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgecontainer Local Control Plane Node Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -796,7 +785,6 @@ class NodePool(pulumi.CustomResource):
             node_location="us-central1-edge-example-edgesite",
             node_count=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

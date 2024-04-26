@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     mostRecent: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegionInstanceTemplate(args?: GetRegionInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceTemplateResult> {
     args = args || {};
@@ -214,7 +212,6 @@ export interface GetRegionInstanceTemplateResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -229,7 +226,6 @@ export interface GetRegionInstanceTemplateResult {
  *     mostRecent: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegionInstanceTemplateOutput(args?: GetRegionInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceTemplateResult> {
     return pulumi.output(args).apply((a: any) => getRegionInstanceTemplate(a, opts))

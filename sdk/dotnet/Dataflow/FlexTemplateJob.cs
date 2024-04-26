@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.Dataflow
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Note on "destroy" / "apply"
     /// 
@@ -64,7 +62,6 @@ namespace Pulumi.Gcp.Dataflow
     /// random_id
     /// resource, for example:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

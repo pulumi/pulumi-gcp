@@ -46,6 +46,12 @@ namespace Pulumi.Gcp.Organizations
     public sealed class GetActiveFolderArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
+        /// </summary>
+        [Input("apiMethod")]
+        public string? ApiMethod { get; set; }
+
+        /// <summary>
         /// The folder's display name.
         /// </summary>
         [Input("displayName", required: true)]
@@ -65,6 +71,12 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class GetActiveFolderInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The API method to use to search for the folder. Valid values are `LIST` and `SEARCH`. Default Value is `LIST`. `LIST` is [strongly consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#:~:text=list()%20provides%20a-,strongly%20consistent,-view%20of%20the) and requires `resourcemanager.folders.list` on the parent folder, while `SEARCH` is [eventually consistent](https://cloud.google.com/resource-manager/reference/rest/v3/folders/search#:~:text=eventually%20consistent) and only returns folders that the user has `resourcemanager.folders.get` permission on.
+        /// </summary>
+        [Input("apiMethod")]
+        public Input<string>? ApiMethod { get; set; }
+
         /// <summary>
         /// The folder's display name.
         /// </summary>
@@ -87,6 +99,7 @@ namespace Pulumi.Gcp.Organizations
     [OutputType]
     public sealed class GetActiveFolderResult
     {
+        public readonly string? ApiMethod;
         public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -100,6 +113,8 @@ namespace Pulumi.Gcp.Organizations
 
         [OutputConstructor]
         private GetActiveFolderResult(
+            string? apiMethod,
+
             string displayName,
 
             string id,
@@ -108,6 +123,7 @@ namespace Pulumi.Gcp.Organizations
 
             string parent)
         {
+            ApiMethod = apiMethod;
             DisplayName = displayName;
             Id = id;
             Name = name;

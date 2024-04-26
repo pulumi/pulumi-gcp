@@ -15,7 +15,6 @@ import (
 //
 // ## example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupMetastoreServiceIamPolicy(ctx *pulumi.Context, args *LookupMetastoreServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreServiceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetastoreServiceIamPolicyResult

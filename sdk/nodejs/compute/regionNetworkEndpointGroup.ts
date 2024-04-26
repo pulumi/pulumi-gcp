@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Network Endpoint Group Functions
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,10 +54,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Network Endpoint Group Cloudrun
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,10 +85,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Network Endpoint Group Appengine
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -155,10 +150,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Network Endpoint Group Appengine Empty
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -171,10 +164,8 @@ import * as utilities from "../utilities";
  *     appEngine: {},
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Network Endpoint Group Psc
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -186,10 +177,8 @@ import * as utilities from "../utilities";
  *     pscTargetService: "asia-northeast3-cloudkms.googleapis.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Network Endpoint Group Psc Service Attachment
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -248,10 +237,8 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.selfLink,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Network Endpoint Group Internet Ip Port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -264,10 +251,8 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_IP_PORT",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Network Endpoint Group Internet Fqdn Port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -280,7 +265,6 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

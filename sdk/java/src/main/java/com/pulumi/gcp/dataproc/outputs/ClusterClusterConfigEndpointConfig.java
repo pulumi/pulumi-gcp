@@ -21,7 +21,8 @@ public final class ClusterClusterConfigEndpointConfig {
      */
     private Boolean enableHttpPortAccess;
     /**
-     * @return The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+     * @return The map of port descriptions to URLs. Will only be populated if
+     * `enable_http_port_access` is true.
      * 
      */
     private @Nullable Map<String,Object> httpPorts;
@@ -36,7 +37,8 @@ public final class ClusterClusterConfigEndpointConfig {
         return this.enableHttpPortAccess;
     }
     /**
-     * @return The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+     * @return The map of port descriptions to URLs. Will only be populated if
+     * `enable_http_port_access` is true.
      * 
      */
     public Map<String,Object> httpPorts() {

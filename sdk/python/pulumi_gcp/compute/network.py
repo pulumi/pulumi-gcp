@@ -554,17 +554,14 @@ class Network(pulumi.CustomResource):
 
         ### Network Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Custom Mtu
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -575,10 +572,8 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             mtu=1460)
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Custom Firewall Enforcement Order
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -589,7 +584,6 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -679,17 +673,14 @@ class Network(pulumi.CustomResource):
 
         ### Network Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Custom Mtu
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -700,10 +691,8 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             mtu=1460)
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Custom Firewall Enforcement Order
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -714,7 +703,6 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

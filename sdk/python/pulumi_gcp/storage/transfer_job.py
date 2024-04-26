@@ -371,7 +371,6 @@ class TransferJob(pulumi.CustomResource):
 
         Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -442,7 +441,6 @@ class TransferJob(pulumi.CustomResource):
                 payload_format="JSON",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -490,7 +488,6 @@ class TransferJob(pulumi.CustomResource):
 
         Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -561,7 +558,6 @@ class TransferJob(pulumi.CustomResource):
                 payload_format="JSON",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

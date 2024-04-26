@@ -113,7 +113,7 @@ class _DocumentAiWarehouseDocumentSchemaState:
         :param pulumi.Input[str] display_name: Name of the schema given by the user.
         :param pulumi.Input[bool] document_is_folder: Tells whether the document is a folder or a typical document.
         :param pulumi.Input[str] location: The location of the resource.
-        :param pulumi.Input[str] name: The name of the metadata property.
+        :param pulumi.Input[str] name: The resource name of the document schema.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
@@ -171,7 +171,7 @@ class _DocumentAiWarehouseDocumentSchemaState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the metadata property.
+        The resource name of the document schema.
         """
         return pulumi.get(self, "name")
 
@@ -229,7 +229,6 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
 
         ### Document Ai Warehouse Document Schema Text
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -256,10 +255,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Integer
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -285,10 +282,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 integer_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Float
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -314,10 +309,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 float_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Property
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -360,10 +353,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Property Enum
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -413,10 +404,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Enum
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -449,10 +438,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Map
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -478,10 +465,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 map_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Datetime
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -507,10 +492,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 date_time_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Timestamp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -536,7 +519,6 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 timestamp_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -584,7 +566,6 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
 
         ### Document Ai Warehouse Document Schema Text
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -611,10 +592,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Integer
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -640,10 +619,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 integer_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Float
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -669,10 +646,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 float_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Property
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -715,10 +690,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Property Enum
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -768,10 +741,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Enum
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -804,10 +775,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Map
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -833,10 +802,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 map_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Datetime
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -862,10 +829,8 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 date_time_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Timestamp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -891,7 +856,6 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 timestamp_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs(),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -980,7 +944,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name of the schema given by the user.
         :param pulumi.Input[bool] document_is_folder: Tells whether the document is a folder or a typical document.
         :param pulumi.Input[str] location: The location of the resource.
-        :param pulumi.Input[str] name: The name of the metadata property.
+        :param pulumi.Input[str] name: The resource name of the document schema.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
@@ -1025,7 +989,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the metadata property.
+        The resource name of the document schema.
         """
         return pulumi.get(self, "name")
 

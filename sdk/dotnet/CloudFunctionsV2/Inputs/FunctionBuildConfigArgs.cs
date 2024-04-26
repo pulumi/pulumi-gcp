@@ -56,6 +56,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public Input<string>? Runtime { get; set; }
 
         /// <summary>
+        /// The fully-qualified name of the service account to be used for building the container.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
         /// The location of the function source code.
         /// Structure is documented below.
         /// </summary>

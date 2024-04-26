@@ -24,7 +24,6 @@ import (
 //
 // ### Data Fusion Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,10 +49,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,10 +123,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Cmek
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -188,10 +183,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Enterprise
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -218,10 +211,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Event
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -258,10 +249,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Zone
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -288,7 +277,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -386,8 +374,13 @@ type Instance struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringOutput `pulumi:"serviceEndpoint"`
-	// The type of an accelator for a CDF instance.
-	// Possible values are: `ENABLED`, `DISABLED`.
+	// The current state of this Data Fusion instance.
+	// - CREATING: Instance is being created
+	// - RUNNING: Instance is running and ready for requests
+	// - FAILED: Instance creation failed
+	// - DELETING: Instance is being deleted
+	// - UPGRADING: Instance is being upgraded
+	// - RESTARTING: Instance is being restarted
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
@@ -517,8 +510,13 @@ type instanceState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
-	// The type of an accelator for a CDF instance.
-	// Possible values are: `ENABLED`, `DISABLED`.
+	// The current state of this Data Fusion instance.
+	// - CREATING: Instance is being created
+	// - RUNNING: Instance is running and ready for requests
+	// - FAILED: Instance creation failed
+	// - DELETING: Instance is being deleted
+	// - UPGRADING: Instance is being upgraded
+	// - RESTARTING: Instance is being restarted
 	State *string `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage *string `pulumi:"stateMessage"`
@@ -611,8 +609,13 @@ type InstanceState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringPtrInput
-	// The type of an accelator for a CDF instance.
-	// Possible values are: `ENABLED`, `DISABLED`.
+	// The current state of this Data Fusion instance.
+	// - CREATING: Instance is being created
+	// - RUNNING: Instance is running and ready for requests
+	// - FAILED: Instance creation failed
+	// - DELETING: Instance is being deleted
+	// - UPGRADING: Instance is being upgraded
+	// - RESTARTING: Instance is being restarted
 	State pulumi.StringPtrInput
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringPtrInput
@@ -1000,8 +1003,13 @@ func (o InstanceOutput) ServiceEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceEndpoint }).(pulumi.StringOutput)
 }
 
-// The type of an accelator for a CDF instance.
-// Possible values are: `ENABLED`, `DISABLED`.
+// The current state of this Data Fusion instance.
+// - CREATING: Instance is being created
+// - RUNNING: Instance is running and ready for requests
+// - FAILED: Instance creation failed
+// - DELETING: Instance is being deleted
+// - UPGRADING: Instance is being upgraded
+// - RESTARTING: Instance is being restarted
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

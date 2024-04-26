@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * ### Basic
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -38,7 +37,6 @@ import * as utilities from "../utilities";
  *     cryptoKeyName: key1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

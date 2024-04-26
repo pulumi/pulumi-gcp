@@ -266,7 +266,6 @@ class Client(pulumi.CustomResource):
 
         ### Integrations Client Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -275,10 +274,8 @@ class Client(pulumi.CustomResource):
             location="us-central1",
             provision_gmek=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Integrations Client Advance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -307,7 +304,6 @@ class Client(pulumi.CustomResource):
                 kms_project_id=test_project.project_id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -367,7 +363,6 @@ class Client(pulumi.CustomResource):
 
         ### Integrations Client Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -376,10 +371,8 @@ class Client(pulumi.CustomResource):
             location="us-central1",
             provision_gmek=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Integrations Client Advance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -408,7 +401,6 @@ class Client(pulumi.CustomResource):
                 kms_project_id=test_project.project_id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

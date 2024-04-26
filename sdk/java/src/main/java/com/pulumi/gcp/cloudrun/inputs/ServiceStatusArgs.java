@@ -104,6 +104,7 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * Traffic specifies how to distribute traffic over a collection of Knative Revisions
      * and Configurations
      * Structure is documented below.
@@ -113,7 +114,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<ServiceStatusTrafficArgs>> traffics;
 
     /**
-     * @return Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * @return (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
      * and Configurations
      * Structure is documented below.
      * 
@@ -293,7 +295,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param traffics Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * @param traffics (Output)
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
          * and Configurations
          * Structure is documented below.
          * 
@@ -306,7 +309,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param traffics Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * @param traffics (Output)
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
          * and Configurations
          * Structure is documented below.
          * 
@@ -318,7 +322,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param traffics Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * @param traffics (Output)
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
          * and Configurations
          * Structure is documented below.
          * 

@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTagTemplateIamPolicyResult> InvokeAsync(GetTagTemplateIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagTemplateIamPolicyResult>("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTagTemplateIamPolicyResult> Invoke(GetTagTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagTemplateIamPolicyResult>("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyInvokeArgs(), options.WithDefaults());

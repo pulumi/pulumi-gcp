@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * ### Linked_vpc_network
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,9 +44,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Router_appliance
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -104,7 +101,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -175,14 +171,16 @@ export class Spoke extends pulumi.CustomResource {
      */
     public readonly hub!: pulumi.Output<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for
+     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * `effective_labels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+     * advertising the same prefixes.
      */
     public readonly linkedInterconnectAttachments!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedInterconnectAttachments | undefined>;
     /**
@@ -308,14 +306,16 @@ export interface SpokeState {
      */
     hub?: pulumi.Input<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for
+     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * `effective_labels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+     * advertising the same prefixes.
      */
     linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments>;
     /**
@@ -373,14 +373,16 @@ export interface SpokeArgs {
      */
     hub: pulumi.Input<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for
+     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * `effective_labels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+     * advertising the same prefixes.
      */
     linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments>;
     /**

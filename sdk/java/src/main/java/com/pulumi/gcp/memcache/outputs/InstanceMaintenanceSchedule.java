@@ -29,8 +29,10 @@ public final class InstanceMaintenanceSchedule {
      */
     private @Nullable String scheduleDeadlineTime;
     /**
-     * @return Required. Start time of the window in UTC time.
-     * Structure is documented below.
+     * @return (Output)
+     * Output only. The start time of any upcoming scheduled maintenance for this instance.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
      * 
      */
     private @Nullable String startTime;
@@ -58,8 +60,10 @@ public final class InstanceMaintenanceSchedule {
         return Optional.ofNullable(this.scheduleDeadlineTime);
     }
     /**
-     * @return Required. Start time of the window in UTC time.
-     * Structure is documented below.
+     * @return (Output)
+     * Output only. The start time of any upcoming scheduled maintenance for this instance.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
      * 
      */
     public Optional<String> startTime() {

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Apigee Organization Cloud Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,10 +43,8 @@ import * as utilities from "../utilities";
  *     authorizedNetwork: apigeeNetwork.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apigee Organization Cloud Basic Disable Vpc Peering
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,10 +57,8 @@ import * as utilities from "../utilities";
  *     disableVpcPeering: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apigee Organization Cloud Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -108,10 +103,8 @@ import * as utilities from "../utilities";
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apigee Organization Cloud Full Disable Vpc Peering
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -143,7 +136,6 @@ import * as utilities from "../utilities";
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -196,6 +188,16 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly analyticsRegion!: pulumi.Output<string | undefined>;
     /**
+     * Cloud KMS key name used for encrypting API consumer data.
+     */
+    public readonly apiConsumerDataEncryptionKeyName!: pulumi.Output<string | undefined>;
+    /**
+     * This field is needed only for customers using non-default data residency regions.
+     * Apigee stores some control plane data only in single region.
+     * This field determines which single region Apigee should use.
+     */
+    public readonly apiConsumerDataLocation!: pulumi.Output<string | undefined>;
+    /**
      * Output only. Project ID of the Apigee Tenant Project.
      */
     public /*out*/ readonly apigeeProjectId!: pulumi.Output<string>;
@@ -215,6 +217,11 @@ export class Organization extends pulumi.CustomResource {
      */
     public /*out*/ readonly caCertificate!: pulumi.Output<string>;
     /**
+     * Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+     * Only used for the data residency region "US" or "EU".
+     */
+    public readonly controlPlaneEncryptionKeyName!: pulumi.Output<string | undefined>;
+    /**
      * Description of the Apigee organization.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -231,7 +238,7 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Name of the property.
+     * Output only. Name of the Apigee organization.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -288,10 +295,13 @@ export class Organization extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
             resourceInputs["analyticsRegion"] = state ? state.analyticsRegion : undefined;
+            resourceInputs["apiConsumerDataEncryptionKeyName"] = state ? state.apiConsumerDataEncryptionKeyName : undefined;
+            resourceInputs["apiConsumerDataLocation"] = state ? state.apiConsumerDataLocation : undefined;
             resourceInputs["apigeeProjectId"] = state ? state.apigeeProjectId : undefined;
             resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
             resourceInputs["billingType"] = state ? state.billingType : undefined;
             resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
+            resourceInputs["controlPlaneEncryptionKeyName"] = state ? state.controlPlaneEncryptionKeyName : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disableVpcPeering"] = state ? state.disableVpcPeering : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -308,8 +318,11 @@ export class Organization extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
+            resourceInputs["apiConsumerDataEncryptionKeyName"] = args ? args.apiConsumerDataEncryptionKeyName : undefined;
+            resourceInputs["apiConsumerDataLocation"] = args ? args.apiConsumerDataLocation : undefined;
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             resourceInputs["billingType"] = args ? args.billingType : undefined;
+            resourceInputs["controlPlaneEncryptionKeyName"] = args ? args.controlPlaneEncryptionKeyName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disableVpcPeering"] = args ? args.disableVpcPeering : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -337,6 +350,16 @@ export interface OrganizationState {
      */
     analyticsRegion?: pulumi.Input<string>;
     /**
+     * Cloud KMS key name used for encrypting API consumer data.
+     */
+    apiConsumerDataEncryptionKeyName?: pulumi.Input<string>;
+    /**
+     * This field is needed only for customers using non-default data residency regions.
+     * Apigee stores some control plane data only in single region.
+     * This field determines which single region Apigee should use.
+     */
+    apiConsumerDataLocation?: pulumi.Input<string>;
+    /**
      * Output only. Project ID of the Apigee Tenant Project.
      */
     apigeeProjectId?: pulumi.Input<string>;
@@ -356,6 +379,11 @@ export interface OrganizationState {
      */
     caCertificate?: pulumi.Input<string>;
     /**
+     * Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+     * Only used for the data residency region "US" or "EU".
+     */
+    controlPlaneEncryptionKeyName?: pulumi.Input<string>;
+    /**
      * Description of the Apigee organization.
      */
     description?: pulumi.Input<string>;
@@ -372,7 +400,7 @@ export interface OrganizationState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Name of the property.
+     * Output only. Name of the Apigee organization.
      */
     name?: pulumi.Input<string>;
     /**
@@ -425,6 +453,16 @@ export interface OrganizationArgs {
      */
     analyticsRegion?: pulumi.Input<string>;
     /**
+     * Cloud KMS key name used for encrypting API consumer data.
+     */
+    apiConsumerDataEncryptionKeyName?: pulumi.Input<string>;
+    /**
+     * This field is needed only for customers using non-default data residency regions.
+     * Apigee stores some control plane data only in single region.
+     * This field determines which single region Apigee should use.
+     */
+    apiConsumerDataLocation?: pulumi.Input<string>;
+    /**
      * Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
      * See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
@@ -434,6 +472,11 @@ export interface OrganizationArgs {
      * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
      */
     billingType?: pulumi.Input<string>;
+    /**
+     * Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+     * Only used for the data residency region "US" or "EU".
+     */
+    controlPlaneEncryptionKeyName?: pulumi.Input<string>;
     /**
      * Description of the Apigee organization.
      */

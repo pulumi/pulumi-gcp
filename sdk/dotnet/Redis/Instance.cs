@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// ### Redis Instance Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,10 +38,8 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Redis Instance Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -101,10 +98,8 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Redis Instance Full With Persistence Config
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -129,10 +124,8 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Redis Instance Private Service
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -188,10 +181,8 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Redis Instance Mrr
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -235,10 +226,8 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Redis Instance Cmek
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -293,7 +282,6 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -369,9 +357,7 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// (Output)
-        /// Output only. The time when the policy was created.
-        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        /// resolution and up to nine fractional digits.
+        /// The time when the certificate was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -909,9 +895,7 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// (Output)
-        /// Output only. The time when the policy was created.
-        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        /// resolution and up to nine fractional digits.
+        /// The time when the certificate was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }

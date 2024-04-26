@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ### Organization Security Policy Rule Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,7 +73,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -105,16 +103,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        /// Possible values are: `INGRESS`, `EGRESS`.
+        /// The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+        /// "EGRESS"]
         /// </summary>
         [Output("direction")]
         public Output<string?> Direction { get; private set; } = null!;
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule.
-        /// If logging is enabled, logs will be exported to the
-        /// configured export destination in Stackdriver.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        /// export destination in Stackdriver.
         /// </summary>
         [Output("enableLogging")]
         public Output<bool?> EnableLogging { get; private set; } = null!;
@@ -147,17 +144,14 @@ namespace Pulumi.Gcp.Compute
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// A list of network resource URLs to which this rule applies.
-        /// This field allows you to control which network's VMs get
-        /// this rule. If this field is left blank, all VMs
-        /// within the organization will receive the rule.
+        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+        /// this rule. If this field is left blank, all VMs within the organization will receive the rule.
         /// </summary>
         [Output("targetResources")]
         public Output<ImmutableArray<string>> TargetResources { get; private set; } = null!;
 
         /// <summary>
-        /// A list of service accounts indicating the sets of
-        /// instances that are applied with this rule.
+        /// A list of service accounts indicating the sets of instances that are applied with this rule.
         /// </summary>
         [Output("targetServiceAccounts")]
         public Output<ImmutableArray<string>> TargetServiceAccounts { get; private set; } = null!;
@@ -222,16 +216,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        /// Possible values are: `INGRESS`, `EGRESS`.
+        /// The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+        /// "EGRESS"]
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule.
-        /// If logging is enabled, logs will be exported to the
-        /// configured export destination in Stackdriver.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        /// export destination in Stackdriver.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -267,10 +260,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetResources;
 
         /// <summary>
-        /// A list of network resource URLs to which this rule applies.
-        /// This field allows you to control which network's VMs get
-        /// this rule. If this field is left blank, all VMs
-        /// within the organization will receive the rule.
+        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+        /// this rule. If this field is left blank, all VMs within the organization will receive the rule.
         /// </summary>
         public InputList<string> TargetResources
         {
@@ -282,8 +273,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetServiceAccounts;
 
         /// <summary>
-        /// A list of service accounts indicating the sets of
-        /// instances that are applied with this rule.
+        /// A list of service accounts indicating the sets of instances that are applied with this rule.
         /// </summary>
         public InputList<string> TargetServiceAccounts
         {
@@ -313,16 +303,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        /// Possible values are: `INGRESS`, `EGRESS`.
+        /// The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+        /// "EGRESS"]
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule.
-        /// If logging is enabled, logs will be exported to the
-        /// configured export destination in Stackdriver.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        /// export destination in Stackdriver.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -358,10 +347,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetResources;
 
         /// <summary>
-        /// A list of network resource URLs to which this rule applies.
-        /// This field allows you to control which network's VMs get
-        /// this rule. If this field is left blank, all VMs
-        /// within the organization will receive the rule.
+        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+        /// this rule. If this field is left blank, all VMs within the organization will receive the rule.
         /// </summary>
         public InputList<string> TargetResources
         {
@@ -373,8 +360,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _targetServiceAccounts;
 
         /// <summary>
-        /// A list of service accounts indicating the sets of
-        /// instances that are applied with this rule.
+        /// A list of service accounts indicating the sets of instances that are applied with this rule.
         /// </summary>
         public InputList<string> TargetServiceAccounts
         {

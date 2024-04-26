@@ -30,7 +30,6 @@ import (
 //
 // ### Firestore Default Database
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,10 +56,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Database
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,10 +89,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Cmek Database
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -163,10 +158,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Default Database In Datastore Mode
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -193,10 +186,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Database In Datastore Mode
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -228,10 +219,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Cmek Database In Datastore Mode
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -299,7 +288,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

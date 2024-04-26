@@ -496,7 +496,6 @@ class Function(pulumi.CustomResource):
 
         ### Cloudfunctions2 Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -531,10 +530,8 @@ class Function(pulumi.CustomResource):
             ))
         pulumi.export("functionUri", function.service_config.uri)
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -590,10 +587,8 @@ class Function(pulumi.CustomResource):
                 retry_policy="RETRY_POLICY_RETRY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Scheduler Auth
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -657,10 +652,8 @@ class Function(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Basic Gcs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -739,10 +732,8 @@ class Function(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Basic Auditlogs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -833,10 +824,63 @@ class Function(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
+        ### Cloudfunctions2 Basic Builder
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        log_writer = gcp.projects.IAMMember("log_writer",
+            project=account.project,
+            role="roles/logging.logWriter",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        artifact_registry_writer = gcp.projects.IAMMember("artifact_registry_writer",
+            project=account.project,
+            role="roles/artifactregistry.writer",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_object_admin = gcp.projects.IAMMember("storage_object_admin",
+            project=account.project,
+            role="roles/storage.objectAdmin",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        # builder permissions need to stablize before it can pull the source zip
+        wait60s = time.index.Sleep("wait_60s", create_duration=60s)
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-v2",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+                service_account=account.id,
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
+        pulumi.export("functionUri", function.service_config.uri)
+        ```
         ### Cloudfunctions2 Secret Env
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -889,10 +933,8 @@ class Function(pulumi.CustomResource):
             secret_data="secret",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Secret Volume
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -944,10 +986,8 @@ class Function(pulumi.CustomResource):
             secret_data="secret",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Private Workerpool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -990,10 +1030,8 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Cmek Docs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1057,7 +1095,6 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1126,7 +1163,6 @@ class Function(pulumi.CustomResource):
 
         ### Cloudfunctions2 Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1161,10 +1197,8 @@ class Function(pulumi.CustomResource):
             ))
         pulumi.export("functionUri", function.service_config.uri)
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1220,10 +1254,8 @@ class Function(pulumi.CustomResource):
                 retry_policy="RETRY_POLICY_RETRY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Scheduler Auth
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1287,10 +1319,8 @@ class Function(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Basic Gcs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1369,10 +1399,8 @@ class Function(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Basic Auditlogs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1463,10 +1491,63 @@ class Function(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
+        ### Cloudfunctions2 Basic Builder
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        log_writer = gcp.projects.IAMMember("log_writer",
+            project=account.project,
+            role="roles/logging.logWriter",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        artifact_registry_writer = gcp.projects.IAMMember("artifact_registry_writer",
+            project=account.project,
+            role="roles/artifactregistry.writer",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_object_admin = gcp.projects.IAMMember("storage_object_admin",
+            project=account.project,
+            role="roles/storage.objectAdmin",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        # builder permissions need to stablize before it can pull the source zip
+        wait60s = time.index.Sleep("wait_60s", create_duration=60s)
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-v2",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+                service_account=account.id,
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
+        pulumi.export("functionUri", function.service_config.uri)
+        ```
         ### Cloudfunctions2 Secret Env
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1519,10 +1600,8 @@ class Function(pulumi.CustomResource):
             secret_data="secret",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Secret Volume
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1574,10 +1653,8 @@ class Function(pulumi.CustomResource):
             secret_data="secret",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Private Workerpool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1620,10 +1697,8 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Cmek Docs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1687,7 +1762,6 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

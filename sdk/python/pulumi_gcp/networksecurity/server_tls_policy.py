@@ -418,7 +418,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
 
         ### Network Security Server Tls Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,10 +454,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -475,10 +472,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Server Cert
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -497,10 +492,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Mtls
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -535,7 +528,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -595,7 +587,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
 
         ### Network Security Server Tls Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -632,10 +623,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -652,10 +641,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Server Cert
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -674,10 +661,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Mtls
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -712,7 +697,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -312,7 +312,6 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -324,7 +323,6 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="_Default")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with index configs
 
@@ -367,7 +365,6 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -379,7 +376,6 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="_Default")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with index configs
 

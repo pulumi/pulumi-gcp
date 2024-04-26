@@ -397,7 +397,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
 
         ### Region Security Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -407,10 +406,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="basic region security policy",
             type="CLOUD_ARMOR")
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Security Policy With Ddos Protection Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -423,10 +420,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 ddos_protection="ADVANCED_PREVIEW",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Security Policy With User Defined Fields
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -452,7 +447,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -520,7 +514,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
 
         ### Region Security Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -530,10 +523,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="basic region security policy",
             type="CLOUD_ARMOR")
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Security Policy With Ddos Protection Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -546,10 +537,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 ddos_protection="ADVANCED_PREVIEW",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Security Policy With User Defined Fields
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -575,7 +564,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

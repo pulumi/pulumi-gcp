@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// ### Workbench Instance Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,10 +32,8 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Workbench Instance Basic Container
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -61,10 +58,8 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Workbench Instance Basic Gpu
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -90,18 +85,16 @@ namespace Pulumi.Gcp.Workbench
     ///             },
     ///             VmImage = new Gcp.Workbench.Inputs.InstanceGceSetupVmImageArgs
     ///             {
-    ///                 Project = "deeplearning-platform-release",
-    ///                 Family = "tf-latest-gpu",
+    ///                 Project = "cloud-notebooks-managed",
+    ///                 Family = "workbench-instances",
     ///             },
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Workbench Instance Labels Stopped
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -148,10 +141,8 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Workbench Instance Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -251,7 +242,6 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

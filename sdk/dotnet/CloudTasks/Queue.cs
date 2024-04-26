@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// ### Queue Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,10 +32,8 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloud Tasks Queue Advanced
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

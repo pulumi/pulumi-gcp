@@ -17,14 +17,14 @@ public final class WorkloadResourceArgs extends com.pulumi.resources.ResourceArg
     public static final WorkloadResourceArgs Empty = new WorkloadResourceArgs();
 
     /**
-     * Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+     * Resource identifier. For a project this represents project_number.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<Integer> resourceId;
 
     /**
-     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+     * @return Resource identifier. For a project this represents project_number.
      * 
      */
     public Optional<Output<Integer>> resourceId() {
@@ -32,14 +32,14 @@ public final class WorkloadResourceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+     * Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+     * @return Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -72,7 +72,7 @@ public final class WorkloadResourceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+         * @param resourceId Resource identifier. For a project this represents project_number.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class WorkloadResourceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+         * @param resourceId Resource identifier. For a project this represents project_number.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class WorkloadResourceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceType Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+         * @param resourceType Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class WorkloadResourceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceType Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+         * @param resourceType Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
          * 
          * @return builder
          * 

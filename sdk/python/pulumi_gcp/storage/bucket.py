@@ -882,7 +882,6 @@ class Bucket(pulumi.CustomResource):
 
         ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -909,11 +908,9 @@ class Bucket(pulumi.CustomResource):
                 max_age_seconds=3600,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Life Cycle Settings For Storage Bucket Objects
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -941,11 +938,9 @@ class Bucket(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Enabling Public Access Prevention
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -956,7 +951,6 @@ class Bucket(pulumi.CustomResource):
             force_destroy=True,
             public_access_prevention="enforced")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1041,7 +1035,6 @@ class Bucket(pulumi.CustomResource):
 
         ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1068,11 +1061,9 @@ class Bucket(pulumi.CustomResource):
                 max_age_seconds=3600,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Life Cycle Settings For Storage Bucket Objects
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1100,11 +1091,9 @@ class Bucket(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Enabling Public Access Prevention
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1115,7 +1104,6 @@ class Bucket(pulumi.CustomResource):
             force_destroy=True,
             public_access_prevention="enforced")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -52,7 +52,6 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
 
     /**
      * Connected Bitbucket Server repositories for this config.
-     * Structure is documented below.
      * 
      */
     @Import(name="connectedRepositories")
@@ -60,7 +59,6 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
 
     /**
      * @return Connected Bitbucket Server repositories for this config.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<List<BitbucketServerConfigConnectedRepositoryArgs>>> connectedRepositories() {
@@ -115,39 +113,31 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-     * This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-     * no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-     * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+     * The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+     * service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+     * public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+     * will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+     * {project} is a project number or id and {network} is the name of a VPC network in the project.
      * 
      */
     @Import(name="peeredNetwork")
     private @Nullable Output<String> peeredNetwork;
 
     /**
-     * @return The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-     * This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-     * no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-     * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+     * @return The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+     * service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+     * public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+     * will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+     * {project} is a project number or id and {network} is the name of a VPC network in the project.
      * 
      */
     public Optional<Output<String>> peeredNetwork() {
         return Optional.ofNullable(this.peeredNetwork);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -170,14 +160,16 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
     }
 
     /**
-     * SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+     * SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+     * .pem, .cer, or .crt.
      * 
      */
     @Import(name="sslCa")
     private @Nullable Output<String> sslCa;
 
     /**
-     * @return SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+     * @return SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+     * .pem, .cer, or .crt.
      * 
      */
     public Optional<Output<String>> sslCa() {
@@ -295,7 +287,6 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
 
         /**
          * @param connectedRepositories Connected Bitbucket Server repositories for this config.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -307,7 +298,6 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
 
         /**
          * @param connectedRepositories Connected Bitbucket Server repositories for this config.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -318,7 +308,6 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
 
         /**
          * @param connectedRepositories Connected Bitbucket Server repositories for this config.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -393,10 +382,11 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param peeredNetwork The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-         * This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-         * no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-         * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+         * @param peeredNetwork The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+         * service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+         * public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+         * will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+         * {project} is a project number or id and {network} is the name of a VPC network in the project.
          * 
          * @return builder
          * 
@@ -407,10 +397,11 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param peeredNetwork The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-         * This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-         * no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-         * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+         * @param peeredNetwork The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+         * service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+         * public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+         * will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+         * {project} is a project number or id and {network} is the name of a VPC network in the project.
          * 
          * @return builder
          * 
@@ -419,25 +410,11 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
             return peeredNetwork(Output.of(peeredNetwork));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -466,7 +443,8 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param sslCa SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+         * @param sslCa SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+         * .pem, .cer, or .crt.
          * 
          * @return builder
          * 
@@ -477,7 +455,8 @@ public final class BitbucketServerConfigState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param sslCa SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+         * @param sslCa SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+         * .pem, .cer, or .crt.
          * 
          * @return builder
          * 

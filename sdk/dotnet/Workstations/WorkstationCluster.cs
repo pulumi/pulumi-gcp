@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// ### Workstation Cluster Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,10 +56,8 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Workstation Cluster Private
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -107,10 +104,8 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Workstation Cluster Custom Domain
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -161,7 +156,6 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -204,6 +198,13 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Output("conditions")]
         public Output<ImmutableArray<Outputs.WorkstationClusterCondition>> Conditions { get; private set; } = null!;
+
+        /// <summary>
+        /// The private IP address of the control plane for this workstation cluster.
+        /// Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        /// </summary>
+        [Output("controlPlaneIp")]
+        public Output<string> ControlPlaneIp { get; private set; } = null!;
 
         /// <summary>
         /// Time when this resource was created.
@@ -490,6 +491,13 @@ namespace Pulumi.Gcp.Workstations
             get => _conditions ?? (_conditions = new InputList<Inputs.WorkstationClusterConditionGetArgs>());
             set => _conditions = value;
         }
+
+        /// <summary>
+        /// The private IP address of the control plane for this workstation cluster.
+        /// Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        /// </summary>
+        [Input("controlPlaneIp")]
+        public Input<string>? ControlPlaneIp { get; set; }
 
         /// <summary>
         /// Time when this resource was created.

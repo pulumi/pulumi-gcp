@@ -18,7 +18,7 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
      */
     private List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
     /**
-     * @return Whether master is accessbile via Google Compute Engine Public IP addresses.
+     * @return Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
      * 
      */
     private Boolean gcpPublicCidrsAccessEnabled;
@@ -32,7 +32,7 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
         return this.cidrBlocks;
     }
     /**
-     * @return Whether master is accessbile via Google Compute Engine Public IP addresses.
+     * @return Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
      * 
      */
     public Boolean gcpPublicCidrsAccessEnabled() {

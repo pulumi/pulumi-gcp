@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ### Logging Organization Settings Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     organization: "my-organization-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationSettings(args: GetOrganizationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationSettingsResult> {
 
@@ -97,7 +95,6 @@ export interface GetOrganizationSettingsResult {
  *
  * ### Logging Organization Settings Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -106,7 +103,6 @@ export interface GetOrganizationSettingsResult {
  *     organization: "my-organization-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationSettingsOutput(args: GetOrganizationSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationSettingsResult> {
     return pulumi.output(args).apply((a: any) => getOrganizationSettings(a, opts))

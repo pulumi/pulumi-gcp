@@ -84,7 +84,6 @@ def get_registry_repository(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -92,7 +91,6 @@ def get_registry_repository(project: Optional[str] = None,
     foo = gcp.container.get_registry_repository()
     pulumi.export("gcrLocation", foo.repository_url)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project ID that this repository is attached to.  If not provided, provider project will be used instead.
@@ -122,7 +120,6 @@ def get_registry_repository_output(project: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -130,7 +127,6 @@ def get_registry_repository_output(project: Optional[pulumi.Input[Optional[str]]
     foo = gcp.container.get_registry_repository()
     pulumi.export("gcrLocation", foo.repository_url)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project ID that this repository is attached to.  If not provided, provider project will be used instead.

@@ -25,7 +25,6 @@ import (
 //
 // ### Firebase App Check App Attest Config Minimal
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,10 +67,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebase App Check App Attest Config Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -115,7 +112,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

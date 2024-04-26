@@ -292,7 +292,6 @@ class Endpoint(pulumi.CustomResource):
 
         ### Service Directory Endpoint Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -313,10 +312,8 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Directory Endpoint With Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -340,7 +337,6 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -402,7 +398,6 @@ class Endpoint(pulumi.CustomResource):
 
         ### Service Directory Endpoint Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -423,10 +418,8 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Directory Endpoint With Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -450,7 +443,6 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

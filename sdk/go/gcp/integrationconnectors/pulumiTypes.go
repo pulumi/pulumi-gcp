@@ -773,10 +773,9 @@ func (o ConnectionAuthConfigAdditionalVariableSecretValuePtrOutput) SecretVersio
 type ConnectionAuthConfigOauth2AuthCodeFlow struct {
 	// Auth URL for Authorization Code Flow.
 	AuthUri *string `pulumi:"authUri"`
-	// Secret version of Password for Authentication.
+	// Client ID for user-provided OAuth app.
 	ClientId *string `pulumi:"clientId"`
-	// Secret version reference containing the client secret.
-	// Structure is documented below.
+	// Client secret for user-provided OAuth app.
 	ClientSecret *ConnectionAuthConfigOauth2AuthCodeFlowClientSecret `pulumi:"clientSecret"`
 	// Whether to enable PKCE when the user performs the auth code flow.
 	EnablePkce *bool `pulumi:"enablePkce"`
@@ -798,10 +797,9 @@ type ConnectionAuthConfigOauth2AuthCodeFlowInput interface {
 type ConnectionAuthConfigOauth2AuthCodeFlowArgs struct {
 	// Auth URL for Authorization Code Flow.
 	AuthUri pulumi.StringPtrInput `pulumi:"authUri"`
-	// Secret version of Password for Authentication.
+	// Client ID for user-provided OAuth app.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Secret version reference containing the client secret.
-	// Structure is documented below.
+	// Client secret for user-provided OAuth app.
 	ClientSecret ConnectionAuthConfigOauth2AuthCodeFlowClientSecretPtrInput `pulumi:"clientSecret"`
 	// Whether to enable PKCE when the user performs the auth code flow.
 	EnablePkce pulumi.BoolPtrInput `pulumi:"enablePkce"`
@@ -891,13 +889,12 @@ func (o ConnectionAuthConfigOauth2AuthCodeFlowOutput) AuthUri() pulumi.StringPtr
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2AuthCodeFlow) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
 }
 
-// Secret version of Password for Authentication.
+// Client ID for user-provided OAuth app.
 func (o ConnectionAuthConfigOauth2AuthCodeFlowOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2AuthCodeFlow) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// Secret version reference containing the client secret.
-// Structure is documented below.
+// Client secret for user-provided OAuth app.
 func (o ConnectionAuthConfigOauth2AuthCodeFlowOutput) ClientSecret() ConnectionAuthConfigOauth2AuthCodeFlowClientSecretPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2AuthCodeFlow) *ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
 		return v.ClientSecret
@@ -948,7 +945,7 @@ func (o ConnectionAuthConfigOauth2AuthCodeFlowPtrOutput) AuthUri() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secret version of Password for Authentication.
+// Client ID for user-provided OAuth app.
 func (o ConnectionAuthConfigOauth2AuthCodeFlowPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2AuthCodeFlow) *string {
 		if v == nil {
@@ -958,8 +955,7 @@ func (o ConnectionAuthConfigOauth2AuthCodeFlowPtrOutput) ClientId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secret version reference containing the client secret.
-// Structure is documented below.
+// Client secret for user-provided OAuth app.
 func (o ConnectionAuthConfigOauth2AuthCodeFlowPtrOutput) ClientSecret() ConnectionAuthConfigOauth2AuthCodeFlowClientSecretPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2AuthCodeFlow) *ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
 		if v == nil {
@@ -1134,7 +1130,6 @@ type ConnectionAuthConfigOauth2ClientCredentials struct {
 	// Secret version of Password for Authentication.
 	ClientId string `pulumi:"clientId"`
 	// Secret version reference containing the client secret.
-	// Structure is documented below.
 	ClientSecret *ConnectionAuthConfigOauth2ClientCredentialsClientSecret `pulumi:"clientSecret"`
 }
 
@@ -1153,7 +1148,6 @@ type ConnectionAuthConfigOauth2ClientCredentialsArgs struct {
 	// Secret version of Password for Authentication.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 	// Secret version reference containing the client secret.
-	// Structure is documented below.
 	ClientSecret ConnectionAuthConfigOauth2ClientCredentialsClientSecretPtrInput `pulumi:"clientSecret"`
 }
 
@@ -1240,7 +1234,6 @@ func (o ConnectionAuthConfigOauth2ClientCredentialsOutput) ClientId() pulumi.Str
 }
 
 // Secret version reference containing the client secret.
-// Structure is documented below.
 func (o ConnectionAuthConfigOauth2ClientCredentialsOutput) ClientSecret() ConnectionAuthConfigOauth2ClientCredentialsClientSecretPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2ClientCredentials) *ConnectionAuthConfigOauth2ClientCredentialsClientSecret {
 		return v.ClientSecret
@@ -1282,7 +1275,6 @@ func (o ConnectionAuthConfigOauth2ClientCredentialsPtrOutput) ClientId() pulumi.
 }
 
 // Secret version reference containing the client secret.
-// Structure is documented below.
 func (o ConnectionAuthConfigOauth2ClientCredentialsPtrOutput) ClientSecret() ConnectionAuthConfigOauth2ClientCredentialsClientSecretPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2ClientCredentials) *ConnectionAuthConfigOauth2ClientCredentialsClientSecret {
 		if v == nil {
@@ -1437,10 +1429,8 @@ type ConnectionAuthConfigOauth2JwtBearer struct {
 	// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
 	// This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
 	// Specified in the form as: projects/*/secrets/*/versions/*.
-	// Structure is documented below.
 	ClientKey *ConnectionAuthConfigOauth2JwtBearerClientKey `pulumi:"clientKey"`
 	// JwtClaims providers fields to generate the token.
-	// Structure is documented below.
 	JwtClaims *ConnectionAuthConfigOauth2JwtBearerJwtClaims `pulumi:"jwtClaims"`
 }
 
@@ -1459,10 +1449,8 @@ type ConnectionAuthConfigOauth2JwtBearerArgs struct {
 	// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
 	// This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
 	// Specified in the form as: projects/*/secrets/*/versions/*.
-	// Structure is documented below.
 	ClientKey ConnectionAuthConfigOauth2JwtBearerClientKeyPtrInput `pulumi:"clientKey"`
 	// JwtClaims providers fields to generate the token.
-	// Structure is documented below.
 	JwtClaims ConnectionAuthConfigOauth2JwtBearerJwtClaimsPtrInput `pulumi:"jwtClaims"`
 }
 
@@ -1546,7 +1534,6 @@ func (o ConnectionAuthConfigOauth2JwtBearerOutput) ToConnectionAuthConfigOauth2J
 // Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
 // This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
 // Specified in the form as: projects/*/secrets/*/versions/*.
-// Structure is documented below.
 func (o ConnectionAuthConfigOauth2JwtBearerOutput) ClientKey() ConnectionAuthConfigOauth2JwtBearerClientKeyPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2JwtBearer) *ConnectionAuthConfigOauth2JwtBearerClientKey {
 		return v.ClientKey
@@ -1554,7 +1541,6 @@ func (o ConnectionAuthConfigOauth2JwtBearerOutput) ClientKey() ConnectionAuthCon
 }
 
 // JwtClaims providers fields to generate the token.
-// Structure is documented below.
 func (o ConnectionAuthConfigOauth2JwtBearerOutput) JwtClaims() ConnectionAuthConfigOauth2JwtBearerJwtClaimsPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2JwtBearer) *ConnectionAuthConfigOauth2JwtBearerJwtClaims {
 		return v.JwtClaims
@@ -1588,7 +1574,6 @@ func (o ConnectionAuthConfigOauth2JwtBearerPtrOutput) Elem() ConnectionAuthConfi
 // Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
 // This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
 // Specified in the form as: projects/*/secrets/*/versions/*.
-// Structure is documented below.
 func (o ConnectionAuthConfigOauth2JwtBearerPtrOutput) ClientKey() ConnectionAuthConfigOauth2JwtBearerClientKeyPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2JwtBearer) *ConnectionAuthConfigOauth2JwtBearerClientKey {
 		if v == nil {
@@ -1599,7 +1584,6 @@ func (o ConnectionAuthConfigOauth2JwtBearerPtrOutput) ClientKey() ConnectionAuth
 }
 
 // JwtClaims providers fields to generate the token.
-// Structure is documented below.
 func (o ConnectionAuthConfigOauth2JwtBearerPtrOutput) JwtClaims() ConnectionAuthConfigOauth2JwtBearerJwtClaimsPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2JwtBearer) *ConnectionAuthConfigOauth2JwtBearerJwtClaims {
 		if v == nil {

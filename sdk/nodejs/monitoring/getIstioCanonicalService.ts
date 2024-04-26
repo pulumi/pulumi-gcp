@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ### Monitoring Istio Canonical Service
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  *     canonicalService: "prometheus",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIstioCanonicalService(args: GetIstioCanonicalServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetIstioCanonicalServiceResult> {
 
@@ -127,7 +125,6 @@ export interface GetIstioCanonicalServiceResult {
  *
  * ### Monitoring Istio Canonical Service
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -139,7 +136,6 @@ export interface GetIstioCanonicalServiceResult {
  *     canonicalService: "prometheus",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIstioCanonicalServiceOutput(args: GetIstioCanonicalServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIstioCanonicalServiceResult> {
     return pulumi.output(args).apply((a: any) => getIstioCanonicalService(a, opts))

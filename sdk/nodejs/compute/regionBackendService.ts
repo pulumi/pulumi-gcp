@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Backend Service Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,10 +40,8 @@ import * as utilities from "../utilities";
  *     sessionAffinity: "CLIENT_IP",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Backend Service External Iap
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,10 +57,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Backend Service Cache
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -92,10 +87,8 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Backend Service Ilb Round Robin
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -115,10 +108,8 @@ import * as utilities from "../utilities";
  *     localityLbPolicy: "ROUND_ROBIN",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Backend Service External
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -138,10 +129,8 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "EXTERNAL",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Backend Service External Weighted
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -162,10 +151,8 @@ import * as utilities from "../utilities";
  *     localityLbPolicy: "WEIGHTED_MAGLEV",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Backend Service Ilb Ring Hash
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -201,10 +188,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Backend Service Balancing Mode
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -272,10 +257,8 @@ import * as utilities from "../utilities";
  *     healthChecks: defaultRegionHealthCheck.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Backend Service Connection Tracking
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -303,7 +286,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

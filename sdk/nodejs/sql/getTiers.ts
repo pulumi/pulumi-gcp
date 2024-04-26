@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * const allAvailableTiers = tiers.then(tiers => .map(v => (v.tier)));
  * export const avaialbleTiers = allAvailableTiers;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTiers(args?: GetTiersArgs, opts?: pulumi.InvokeOptions): Promise<GetTiersResult> {
     args = args || {};
@@ -68,7 +66,6 @@ export interface GetTiersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -79,7 +76,6 @@ export interface GetTiersResult {
  * const allAvailableTiers = tiers.then(tiers => .map(v => (v.tier)));
  * export const avaialbleTiers = allAvailableTiers;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTiersOutput(args?: GetTiersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTiersResult> {
     return pulumi.output(args).apply((a: any) => getTiers(a, opts))

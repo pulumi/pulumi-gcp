@@ -13,9 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of a Google Compute Engine machine type
-        /// to create for the node group. If not specified, GCP will default to a predetermined
-        /// computed value (currently `n1-standard-4`).
+        /// Full machine-type names, e.g. "n1-standard-16".
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }

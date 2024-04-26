@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// ### Vertex Ai Featurestore
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,10 +51,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Vertex Ai Featurestore With Beta Fields
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -86,10 +83,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Vertex Ai Featurestore Scaling
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -123,7 +118,6 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

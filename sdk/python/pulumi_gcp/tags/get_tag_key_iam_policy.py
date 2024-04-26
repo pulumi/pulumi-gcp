@@ -85,14 +85,12 @@ def get_tag_key_iam_policy(tag_key: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.tags.get_tag_key_iam_policy(tag_key=key["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str tag_key: Used to find the parent resource to bind the IAM policy to
@@ -117,14 +115,12 @@ def get_tag_key_iam_policy_output(tag_key: Optional[pulumi.Input[str]] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.tags.get_tag_key_iam_policy(tag_key=key["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str tag_key: Used to find the parent resource to bind the IAM policy to

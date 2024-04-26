@@ -278,7 +278,6 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
 
         ### Identity Platform Default Supported Idp Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -289,7 +288,6 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
             client_id="client-id",
             client_secret="secret")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -354,7 +352,6 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
 
         ### Identity Platform Default Supported Idp Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -365,7 +362,6 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
             client_id="client-id",
             client_secret="secret")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

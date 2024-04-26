@@ -33,7 +33,6 @@ import (
 //
 // ### Region Health Check Tcp
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,10 +61,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Tcp Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -101,10 +98,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Ssl
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -133,10 +128,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Ssl Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -172,10 +165,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -204,10 +195,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http Logs
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -239,10 +228,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -279,10 +266,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Https
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -311,10 +296,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Https Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -351,10 +334,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http2
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -383,10 +364,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http2 Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -423,10 +402,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Grpc
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -455,10 +432,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Region Health Check Grpc Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -489,7 +464,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -148,48 +148,38 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
         return this.fields;
     }
     /**
-     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+     * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+     * template.
      * 
      */
     @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
-     * @return This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+     * @return This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
+     * template.
      * 
      */
     public Output<Optional<Boolean>> forceDelete() {
         return Codegen.optional(this.forceDelete);
     }
     /**
-     * (Output)
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (Output)
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * @return The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
      * 
      */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }

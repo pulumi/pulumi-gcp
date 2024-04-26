@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
 
         /// <summary>
         /// The Secret Manager secret version of the secret access key used by your origin.
-        /// This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+        /// 
+        /// This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
         /// </summary>
         [Input("secretAccessKeyVersion", required: true)]
         public Input<string> SecretAccessKeyVersion { get; set; } = null!;

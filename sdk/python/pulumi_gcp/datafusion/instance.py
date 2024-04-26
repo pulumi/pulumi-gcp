@@ -450,8 +450,13 @@ class _InstanceState:
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] service_account: Service account which will be used to access resources in the customer project.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
-        :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
-               Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[str] state: The current state of this Data Fusion instance.
+               - CREATING: Instance is being created
+               - RUNNING: Instance is running and ready for requests
+               - FAILED: Instance creation failed
+               - DELETING: Instance is being deleted
+               - UPGRADING: Instance is being upgraded
+               - RESTARTING: Instance is being restarted
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
@@ -847,8 +852,13 @@ class _InstanceState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of an accelator for a CDF instance.
-        Possible values are: `ENABLED`, `DISABLED`.
+        The current state of this Data Fusion instance.
+        - CREATING: Instance is being created
+        - RUNNING: Instance is running and ready for requests
+        - FAILED: Instance creation failed
+        - DELETING: Instance is being deleted
+        - UPGRADING: Instance is being upgraded
+        - RESTARTING: Instance is being restarted
         """
         return pulumi.get(self, "state")
 
@@ -980,7 +990,6 @@ class Instance(pulumi.CustomResource):
 
         ### Data Fusion Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -990,10 +999,8 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1028,10 +1035,8 @@ class Instance(pulumi.CustomResource):
                 state="ENABLED",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1055,10 +1060,8 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1069,10 +1072,8 @@ class Instance(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Event
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1087,10 +1088,8 @@ class Instance(pulumi.CustomResource):
                 topic=event_topic.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Zone
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1101,7 +1100,6 @@ class Instance(pulumi.CustomResource):
             zone="us-central1-a",
             type="DEVELOPER")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1200,7 +1198,6 @@ class Instance(pulumi.CustomResource):
 
         ### Data Fusion Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1210,10 +1207,8 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1248,10 +1243,8 @@ class Instance(pulumi.CustomResource):
                 state="ENABLED",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1275,10 +1268,8 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1289,10 +1280,8 @@ class Instance(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Event
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1307,10 +1296,8 @@ class Instance(pulumi.CustomResource):
                 topic=event_topic.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Zone
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1321,7 +1308,6 @@ class Instance(pulumi.CustomResource):
             zone="us-central1-a",
             type="DEVELOPER")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1517,8 +1503,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] service_account: Service account which will be used to access resources in the customer project.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
-        :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
-               Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[str] state: The current state of this Data Fusion instance.
+               - CREATING: Instance is being created
+               - RUNNING: Instance is running and ready for requests
+               - FAILED: Instance creation failed
+               - DELETING: Instance is being deleted
+               - UPGRADING: Instance is being upgraded
+               - RESTARTING: Instance is being restarted
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
@@ -1789,8 +1780,13 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The type of an accelator for a CDF instance.
-        Possible values are: `ENABLED`, `DISABLED`.
+        The current state of this Data Fusion instance.
+        - CREATING: Instance is being created
+        - RUNNING: Instance is running and ready for requests
+        - FAILED: Instance creation failed
+        - DELETING: Instance is being deleted
+        - UPGRADING: Instance is being upgraded
+        - RESTARTING: Instance is being restarted
         """
         return pulumi.get(self, "state")
 

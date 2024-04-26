@@ -29,14 +29,18 @@ class SQuotaPreferenceArgs:
         The set of arguments for constructing a SQuotaPreference resource.
         :param pulumi.Input['SQuotaPreferenceQuotaConfigArgs'] quota_config: The preferred quota configuration.
                Structure is documented below.
-        :param pulumi.Input[str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-               The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-               NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-               Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
-        :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored.
-               Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-               Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        :param pulumi.Input[str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the
+               Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+               account for the email address must have quota update permission for the project, folder or organization this quota
+               preference is for.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+               "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+               the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+               preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+               and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+               Inc"}' where "provider" is a service specific dimension.
+        :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+               ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
         :param pulumi.Input[str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
@@ -79,8 +83,10 @@ class SQuotaPreferenceArgs:
     @pulumi.getter(name="contactEmail")
     def contact_email(self) -> Optional[pulumi.Input[str]]:
         """
-        An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-        The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
+        An email address that can be used for quota related communication between the Google Cloud and the user in case the
+        Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+        account for the email address must have quota update permission for the project, folder or organization this quota
+        preference is for.
         """
         return pulumi.get(self, "contact_email")
 
@@ -92,9 +98,12 @@ class SQuotaPreferenceArgs:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-        NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-        Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
+        The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+        "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+        the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+        preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+        and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+        Inc"}' where "provider" is a service specific dimension.
         """
         return pulumi.get(self, "dimensions")
 
@@ -106,9 +115,8 @@ class SQuotaPreferenceArgs:
     @pulumi.getter(name="ignoreSafetyChecks")
     def ignore_safety_checks(self) -> Optional[pulumi.Input[str]]:
         """
-        The list of quota safety checks to be ignored.
-        Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-        Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+        ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
         """
         return pulumi.get(self, "ignore_safety_checks")
 
@@ -196,17 +204,21 @@ class _SQuotaPreferenceState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SQuotaPreference resources.
-        :param pulumi.Input[str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-               The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
+        :param pulumi.Input[str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the
+               Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+               account for the email address must have quota update permission for the project, folder or organization this quota
+               preference is for.
         :param pulumi.Input[str] create_time: Create time stamp.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-               NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-               Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+               "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+               the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+               preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+               and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+               Inc"}' where "provider" is a service specific dimension.
         :param pulumi.Input[str] etag: The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
-        :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored.
-               Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-               Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+               ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
         :param pulumi.Input[str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
@@ -250,8 +262,10 @@ class _SQuotaPreferenceState:
     @pulumi.getter(name="contactEmail")
     def contact_email(self) -> Optional[pulumi.Input[str]]:
         """
-        An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-        The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
+        An email address that can be used for quota related communication between the Google Cloud and the user in case the
+        Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+        account for the email address must have quota update permission for the project, folder or organization this quota
+        preference is for.
         """
         return pulumi.get(self, "contact_email")
 
@@ -276,9 +290,12 @@ class _SQuotaPreferenceState:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-        NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-        Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
+        The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+        "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+        the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+        preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+        and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+        Inc"}' where "provider" is a service specific dimension.
         """
         return pulumi.get(self, "dimensions")
 
@@ -302,9 +319,8 @@ class _SQuotaPreferenceState:
     @pulumi.getter(name="ignoreSafetyChecks")
     def ignore_safety_checks(self) -> Optional[pulumi.Input[str]]:
         """
-        The list of quota safety checks to be ignored.
-        Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-        Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+        ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
         """
         return pulumi.get(self, "ignore_safety_checks")
 
@@ -440,7 +456,6 @@ class SQuotaPreference(pulumi.CustomResource):
 
         ### Cloudquotas Quota Preference Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -458,7 +473,6 @@ class SQuotaPreference(pulumi.CustomResource):
                 preferred_value="200",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -474,14 +488,18 @@ class SQuotaPreference(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-               The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-               NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-               Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
-        :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored.
-               Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-               Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        :param pulumi.Input[str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the
+               Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+               account for the email address must have quota update permission for the project, folder or organization this quota
+               preference is for.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+               "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+               the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+               preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+               and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+               Inc"}' where "provider" is a service specific dimension.
+        :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+               ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
         :param pulumi.Input[str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
@@ -510,7 +528,6 @@ class SQuotaPreference(pulumi.CustomResource):
 
         ### Cloudquotas Quota Preference Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -528,7 +545,6 @@ class SQuotaPreference(pulumi.CustomResource):
                 preferred_value="200",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -620,17 +636,21 @@ class SQuotaPreference(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-               The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
+        :param pulumi.Input[str] contact_email: An email address that can be used for quota related communication between the Google Cloud and the user in case the
+               Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+               account for the email address must have quota update permission for the project, folder or organization this quota
+               preference is for.
         :param pulumi.Input[str] create_time: Create time stamp.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-               NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-               Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+               "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+               the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+               preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+               and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+               Inc"}' where "provider" is a service specific dimension.
         :param pulumi.Input[str] etag: The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
-        :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored.
-               Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-               Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+               ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
         :param pulumi.Input[str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
@@ -666,8 +686,10 @@ class SQuotaPreference(pulumi.CustomResource):
     @pulumi.getter(name="contactEmail")
     def contact_email(self) -> pulumi.Output[Optional[str]]:
         """
-        An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-        The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
+        An email address that can be used for quota related communication between the Google Cloud and the user in case the
+        Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+        account for the email address must have quota update permission for the project, folder or organization this quota
+        preference is for.
         """
         return pulumi.get(self, "contact_email")
 
@@ -684,9 +706,12 @@ class SQuotaPreference(pulumi.CustomResource):
     @pulumi.getter
     def dimensions(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-        NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-        Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
+        The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+        "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+        the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+        preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+        and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+        Inc"}' where "provider" is a service specific dimension.
         """
         return pulumi.get(self, "dimensions")
 
@@ -702,9 +727,8 @@ class SQuotaPreference(pulumi.CustomResource):
     @pulumi.getter(name="ignoreSafetyChecks")
     def ignore_safety_checks(self) -> pulumi.Output[Optional[str]]:
         """
-        The list of quota safety checks to be ignored.
-        Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-        Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+        ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
         """
         return pulumi.get(self, "ignore_safety_checks")
 

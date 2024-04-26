@@ -264,7 +264,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
 
         ### Dns Response Policy Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -298,7 +297,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -355,7 +353,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
 
         ### Dns Response Policy Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -389,7 +386,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

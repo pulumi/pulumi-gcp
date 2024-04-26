@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountJwtResult> InvokeAsync(GetAccountJwtArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountJwtResult>("gcp:serviceaccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountJwtResult> Invoke(GetAccountJwtInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountJwtResult>("gcp:serviceaccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtInvokeArgs(), options.WithDefaults());

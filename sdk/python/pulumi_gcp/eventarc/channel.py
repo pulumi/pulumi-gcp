@@ -315,7 +315,6 @@ class Channel(pulumi.CustomResource):
         ## Example Usage
 
         ### Basic
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -336,7 +335,6 @@ class Channel(pulumi.CustomResource):
             crypto_key_name=key1["id"],
             third_party_provider=f"projects/{test_project.project_id}/locations/us-west1/providers/datadog")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -386,7 +384,6 @@ class Channel(pulumi.CustomResource):
         ## Example Usage
 
         ### Basic
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -407,7 +404,6 @@ class Channel(pulumi.CustomResource):
             crypto_key_name=key1["id"],
             third_party_provider=f"projects/{test_project.project_id}/locations/us-west1/providers/datadog")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

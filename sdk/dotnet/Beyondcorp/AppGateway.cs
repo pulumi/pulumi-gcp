@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// ### Beyondcorp App Gateway Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,10 +42,8 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Beyondcorp App Gateway Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -71,7 +68,6 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

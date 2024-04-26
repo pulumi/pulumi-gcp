@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Container Analysis Note Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,10 +34,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Container Analysis Note Attestation Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,7 +61,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -151,10 +147,6 @@ export class Note extends pulumi.CustomResource {
      * The name of the note.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Names of other notes related to this note.
@@ -162,7 +154,6 @@ export class Note extends pulumi.CustomResource {
     public readonly relatedNoteNames!: pulumi.Output<string[] | undefined>;
     /**
      * URLs associated with this note and related metadata.
-     * Structure is documented below.
      */
     public readonly relatedUrls!: pulumi.Output<outputs.containeranalysis.NoteRelatedUrl[] | undefined>;
     /**
@@ -257,10 +248,6 @@ export interface NoteState {
      * The name of the note.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Names of other notes related to this note.
@@ -268,7 +255,6 @@ export interface NoteState {
     relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * URLs associated with this note and related metadata.
-     * Structure is documented below.
      */
     relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[]>;
     /**
@@ -310,10 +296,6 @@ export interface NoteArgs {
      * The name of the note.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Names of other notes related to this note.
@@ -321,7 +303,6 @@ export interface NoteArgs {
     relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * URLs associated with this note and related metadata.
-     * Structure is documented below.
      */
     relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[]>;
     /**

@@ -1065,6 +1065,7 @@
         "projects/getOrganizationPolicy.ts",
         "projects/getProject.ts",
         "projects/getProjectService.ts",
+        "projects/iamMemberRemove.ts",
         "projects/iamauditConfig.ts",
         "projects/iambinding.ts",
         "projects/iamcustomRole.ts",

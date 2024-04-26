@@ -31,7 +31,6 @@ import (
 //
 // ### Firestore Backup Schedule Daily
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -69,10 +68,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Backup Schedule Weekly
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -112,7 +109,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

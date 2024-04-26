@@ -24,7 +24,6 @@ import (
 //
 // ### Secure Source Manager Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,10 +51,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Secure Source Manager Instance Cmek
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,10 +108,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Secure Source Manager Instance Private
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -217,7 +212,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

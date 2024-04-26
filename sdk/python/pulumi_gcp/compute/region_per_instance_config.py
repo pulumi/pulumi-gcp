@@ -418,7 +418,6 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
         ### Stateful Rigm
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -485,7 +484,6 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -568,7 +566,6 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
         ### Stateful Rigm
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -635,7 +632,6 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

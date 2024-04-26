@@ -4,9 +4,7 @@
 package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.dns.inputs.GetManagedZonesManagedZone;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,21 +13,6 @@ import javax.annotation.Nullable;
 public final class GetManagedZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetManagedZonesPlainArgs Empty = new GetManagedZonesPlainArgs();
-
-    /**
-     * A list of managed zones.
-     * 
-     */
-    @Import(name="managedZones")
-    private @Nullable List<GetManagedZonesManagedZone> managedZones;
-
-    /**
-     * @return A list of managed zones.
-     * 
-     */
-    public Optional<List<GetManagedZonesManagedZone>> managedZones() {
-        return Optional.ofNullable(this.managedZones);
-    }
 
     /**
      * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
@@ -49,7 +32,6 @@ public final class GetManagedZonesPlainArgs extends com.pulumi.resources.InvokeA
     private GetManagedZonesPlainArgs() {}
 
     private GetManagedZonesPlainArgs(GetManagedZonesPlainArgs $) {
-        this.managedZones = $.managedZones;
         this.project = $.project;
     }
 
@@ -69,27 +51,6 @@ public final class GetManagedZonesPlainArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetManagedZonesPlainArgs defaults) {
             $ = new GetManagedZonesPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param managedZones A list of managed zones.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder managedZones(@Nullable List<GetManagedZonesManagedZone> managedZones) {
-            $.managedZones = managedZones;
-            return this;
-        }
-
-        /**
-         * @param managedZones A list of managed zones.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder managedZones(GetManagedZonesManagedZone... managedZones) {
-            return managedZones(List.of(managedZones));
         }
 
         /**

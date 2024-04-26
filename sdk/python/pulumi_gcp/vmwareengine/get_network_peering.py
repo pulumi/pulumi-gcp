@@ -199,14 +199,12 @@ def get_network_peering(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_network_peering = gcp.vmwareengine.get_network_peering(name="my-network-peering")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.
@@ -249,14 +247,12 @@ def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_network_peering = gcp.vmwareengine.get_network_peering(name="my-network-peering")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.

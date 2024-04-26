@@ -24,8 +24,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-     * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
+     * &#34;AUTH_MODE_DISABLED&#34;]
      * 
      */
     @Import(name="authorizationMode")
@@ -33,8 +33,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-     * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
+     * &#34;AUTH_MODE_DISABLED&#34;]
      * 
      */
     public Optional<Output<String>> authorizationMode() {
@@ -99,18 +99,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The nodeType for the Redis cluster.
-     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+     * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
      * 
      */
     @Import(name="nodeType")
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return The nodeType for the Redis cluster.
-     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * @return The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+     * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
      * 
      */
     public Optional<Output<String>> nodeType() {
@@ -132,19 +130,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.preciseSizeGb);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -280,20 +268,18 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. The in-transit encryption for the Redis cluster.
-     * If not provided, encryption is disabled for the cluster.
-     * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-     * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+     * Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+     * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
+     * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
      * 
      */
     @Import(name="transitEncryptionMode")
     private @Nullable Output<String> transitEncryptionMode;
 
     /**
-     * @return Optional. The in-transit encryption for the Redis cluster.
-     * If not provided, encryption is disabled for the cluster.
-     * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-     * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+     * @return Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+     * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
+     * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
      * 
      */
     public Optional<Output<String>> transitEncryptionMode() {
@@ -357,8 +343,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param authorizationMode Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-         * Default value is `AUTH_MODE_DISABLED`.
-         * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+         * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
+         * &#34;AUTH_MODE_DISABLED&#34;]
          * 
          * @return builder
          * 
@@ -370,8 +356,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param authorizationMode Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-         * Default value is `AUTH_MODE_DISABLED`.
-         * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+         * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
+         * &#34;AUTH_MODE_DISABLED&#34;]
          * 
          * @return builder
          * 
@@ -469,9 +455,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType The nodeType for the Redis cluster.
-         * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+         * @param nodeType The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+         * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
          * 
          * @return builder
          * 
@@ -482,9 +467,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType The nodeType for the Redis cluster.
-         * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+         * @param nodeType The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+         * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
          * 
          * @return builder
          * 
@@ -514,25 +498,11 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return preciseSizeGb(Output.of(preciseSizeGb));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -751,10 +721,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transitEncryptionMode Optional. The in-transit encryption for the Redis cluster.
-         * If not provided, encryption is disabled for the cluster.
-         * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-         * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+         * @param transitEncryptionMode Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+         * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
+         * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
          * 
          * @return builder
          * 
@@ -765,10 +734,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transitEncryptionMode Optional. The in-transit encryption for the Redis cluster.
-         * If not provided, encryption is disabled for the cluster.
-         * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-         * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+         * @param transitEncryptionMode Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+         * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
+         * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
          * 
          * @return builder
          * 

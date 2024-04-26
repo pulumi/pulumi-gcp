@@ -444,7 +444,6 @@ class Lake(pulumi.CustomResource):
 
         ### Basic_lake
         A basic example of a dataplex lake
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -459,7 +458,6 @@ class Lake(pulumi.CustomResource):
                 "my-lake": "exists",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -515,7 +513,6 @@ class Lake(pulumi.CustomResource):
 
         ### Basic_lake
         A basic example of a dataplex lake
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -530,7 +527,6 @@ class Lake(pulumi.CustomResource):
                 "my-lake": "exists",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -124,14 +124,12 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         default = gcp.compute.ProjectDefaultNetworkTier("default", network_tier="PREMIUM")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -170,14 +168,12 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         default = gcp.compute.ProjectDefaultNetworkTier("default", network_tier="PREMIUM")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

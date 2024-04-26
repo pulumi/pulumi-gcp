@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### External Ssl Proxy Lb Mig Backend
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -98,15 +97,15 @@ import * as utilities from "../utilities";
  * sudo a2ensite default-ssl
  * sudo a2enmod ssl
  * sudo service apache2 restart
- * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
- * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
- * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * NAME=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
  * cat <<EOF > /var/www/html/index.html
  * <h1>SSL Load Balancer</h1>
  * <pre>
- * Name: $NAME
- * IP: $IP
- * Metadata: $METADATA
+ * Name: NAME
+ * IP: IP
+ * Metadata: METADATA
  * </pre>
  * EOF
  * `,
@@ -171,10 +170,8 @@ import * as utilities from "../utilities";
  *     targetTags: ["allow-health-check"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### External Tcp Proxy Lb Mig Backend
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -223,14 +220,14 @@ import * as utilities from "../utilities";
  * export DEBIAN_FRONTEND=noninteractive
  * apt-get update
  * apt-get install -y nginx-light jq
- * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
- * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
- * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * NAME=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
  * cat <<EOF > /var/www/html/index.html
  * <pre>
- * Name: $NAME
- * IP: $IP
- * Metadata: $METADATA
+ * Name: NAME
+ * IP: IP
+ * Metadata: METADATA
  * </pre>
  * EOF
  * `,
@@ -294,10 +291,8 @@ import * as utilities from "../utilities";
  *     targetTags: ["allow-health-check"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### External Http Lb Mig Backend Custom Header
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -348,15 +343,15 @@ import * as utilities from "../utilities";
  * apt-get update
  * apt-get install -y nginx-light jq
  *
- * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
- * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
- * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * NAME=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
  *
  * cat <<EOF > /var/www/html/index.html
  * <pre>
- * Name: $NAME
- * IP: $IP
- * Metadata: $METADATA
+ * Name: NAME
+ * IP: IP
+ * Metadata: METADATA
  * </pre>
  * EOF
  * `,
@@ -428,10 +423,8 @@ import * as utilities from "../utilities";
  *     targetTags: ["allow-health-check"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Global Forwarding Rule Http
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -477,10 +470,8 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Global Forwarding Rule Internal
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -570,10 +561,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Global Forwarding Rule External Managed
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -614,10 +603,8 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Global Forwarding Rule Hybrid
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -733,10 +720,8 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Global Internal Http Lb With Mig Backend
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -793,15 +778,15 @@ import * as utilities from "../utilities";
  * apt-get update
  * apt-get install -y nginx-light jq
  *
- * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
- * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
- * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * NAME=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
  *
  * cat <<EOF > /var/www/html/index.html
  * <pre>
- * Name: $NAME
- * IP: $IP
- * Metadata: $METADATA
+ * Name: NAME
+ * IP: IP
+ * Metadata: METADATA
  * </pre>
  * EOF
  * `,
@@ -897,10 +882,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Private Service Connect Google Apis
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -939,10 +922,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Private Service Connect Google Apis No Automate Dns
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -978,7 +959,6 @@ import * as utilities from "../utilities";
  *     noAutomateDnsZone: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

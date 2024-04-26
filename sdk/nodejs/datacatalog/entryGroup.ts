@@ -17,17 +17,14 @@ import * as utilities from "../utilities";
  *
  * ### Data Catalog Entry Group Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {entryGroupId: "my_group"});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Data Catalog Entry Group Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -38,7 +35,6 @@ import * as utilities from "../utilities";
  *     description: "example entry group",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

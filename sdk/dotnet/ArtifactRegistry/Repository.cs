@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// ### Artifact Registry Repository Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -41,10 +40,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Artifact Registry Repository Docker
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,10 +64,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Artifact Registry Repository Cmek
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -99,10 +94,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Artifact Registry Repository Virtual
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -156,10 +149,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Artifact Registry Repository Remote
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -187,10 +178,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Artifact Registry Repository Remote Apt
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -222,10 +211,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Artifact Registry Repository Remote Yum
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -257,10 +244,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Artifact Registry Repository Cleanup
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -331,10 +316,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// ### Artifact Registry Repository Remote Custom
+    /// ### Artifact Registry Repository Remote Dockerhub Auth
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -345,7 +328,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var example_custom_remote_secret = new Gcp.SecretManager.Secret("example-custom-remote-secret", new()
+    ///     var example_remote_secret = new Gcp.SecretManager.Secret("example-remote-secret", new()
     ///     {
     ///         SecretId = "example-secret",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
@@ -354,15 +337,15 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///         },
     ///     });
     /// 
-    ///     var example_custom_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-custom-remote-secret_version", new()
+    ///     var example_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-remote-secret_version", new()
     ///     {
-    ///         Secret = example_custom_remote_secret.Id,
+    ///         Secret = example_remote_secret.Id,
     ///         SecretData = "remote-password",
     ///     });
     /// 
     ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
     ///     {
-    ///         SecretId = example_custom_remote_secret.Id,
+    ///         SecretId = example_remote_secret.Id,
     ///         Role = "roles/secretmanager.secretAccessor",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
     ///     });
@@ -370,13 +353,14 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
     ///         Location = "us-central1",
-    ///         RepositoryId = "example-custom-remote",
-    ///         Description = "example remote docker repository with credentials",
+    ///         RepositoryId = "example-dockerhub-remote",
+    ///         Description = "example remote dockerhub repository with credentials",
     ///         Format = "DOCKER",
     ///         Mode = "REMOTE_REPOSITORY",
     ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
     ///         {
     ///             Description = "docker hub with custom credentials",
+    ///             DisableUpstreamValidation = true,
     ///             DockerRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs
     ///             {
     ///                 PublicRepository = "DOCKER_HUB",
@@ -386,7 +370,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///                 UsernamePasswordCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs
     ///                 {
     ///                     Username = "remote-username",
-    ///                     PasswordSecretVersion = example_custom_remote_secretVersion.Name,
+    ///                     PasswordSecretVersion = example_remote_secretVersion.Name,
     ///                 },
     ///             },
     ///         },
@@ -394,7 +378,266 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Artifact Registry Repository Remote Docker Custom With Auth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example_remote_secret = new Gcp.SecretManager.Secret("example-remote-secret", new()
+    ///     {
+    ///         SecretId = "example-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var example_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-remote-secret_version", new()
+    ///     {
+    ///         Secret = example_remote_secret.Id,
+    ///         SecretData = "remote-password",
+    ///     });
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = example_remote_secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "example-docker-custom-remote",
+    ///         Description = "example remote custom docker repository with credentials",
+    ///         Format = "DOCKER",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "custom docker remote with credentials",
+    ///             DisableUpstreamValidation = true,
+    ///             DockerRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs
+    ///             {
+    ///                 CustomRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs
+    ///                 {
+    ///                     Uri = "https://registry-1.docker.io",
+    ///                 },
+    ///             },
+    ///             UpstreamCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs
+    ///             {
+    ///                 UsernamePasswordCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs
+    ///                 {
+    ///                     Username = "remote-username",
+    ///                     PasswordSecretVersion = example_remote_secretVersion.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Artifact Registry Repository Remote Maven Custom With Auth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example_remote_secret = new Gcp.SecretManager.Secret("example-remote-secret", new()
+    ///     {
+    ///         SecretId = "example-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var example_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-remote-secret_version", new()
+    ///     {
+    ///         Secret = example_remote_secret.Id,
+    ///         SecretData = "remote-password",
+    ///     });
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = example_remote_secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "example-maven-custom-remote",
+    ///         Description = "example remote custom maven repository with credentials",
+    ///         Format = "MAVEN",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "custom maven remote with credentials",
+    ///             DisableUpstreamValidation = true,
+    ///             MavenRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigMavenRepositoryArgs
+    ///             {
+    ///                 CustomRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs
+    ///                 {
+    ///                     Uri = "https://my.maven.registry",
+    ///                 },
+    ///             },
+    ///             UpstreamCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs
+    ///             {
+    ///                 UsernamePasswordCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs
+    ///                 {
+    ///                     Username = "remote-username",
+    ///                     PasswordSecretVersion = example_remote_secretVersion.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Artifact Registry Repository Remote Npm Custom With Auth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example_remote_secret = new Gcp.SecretManager.Secret("example-remote-secret", new()
+    ///     {
+    ///         SecretId = "example-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var example_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-remote-secret_version", new()
+    ///     {
+    ///         Secret = example_remote_secret.Id,
+    ///         SecretData = "remote-password",
+    ///     });
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = example_remote_secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "example-npm-custom-remote",
+    ///         Description = "example remote custom npm repository with credentials",
+    ///         Format = "NPM",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "custom npm with credentials",
+    ///             DisableUpstreamValidation = true,
+    ///             NpmRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigNpmRepositoryArgs
+    ///             {
+    ///                 CustomRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs
+    ///                 {
+    ///                     Uri = "https://my.npm.registry",
+    ///                 },
+    ///             },
+    ///             UpstreamCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs
+    ///             {
+    ///                 UsernamePasswordCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs
+    ///                 {
+    ///                     Username = "remote-username",
+    ///                     PasswordSecretVersion = example_remote_secretVersion.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Artifact Registry Repository Remote Python Custom With Auth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example_remote_secret = new Gcp.SecretManager.Secret("example-remote-secret", new()
+    ///     {
+    ///         SecretId = "example-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var example_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-remote-secret_version", new()
+    ///     {
+    ///         Secret = example_remote_secret.Id,
+    ///         SecretData = "remote-password",
+    ///     });
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = example_remote_secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "example-python-custom-remote",
+    ///         Description = "example remote custom python repository with credentials",
+    ///         Format = "PYTHON",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "custom npm with credentials",
+    ///             DisableUpstreamValidation = true,
+    ///             PythonRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigPythonRepositoryArgs
+    ///             {
+    ///                 CustomRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs
+    ///                 {
+    ///                     Uri = "https://my.python.registry",
+    ///                 },
+    ///             },
+    ///             UpstreamCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs
+    ///             {
+    ///                 UsernamePasswordCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs
+    ///                 {
+    ///                     Username = "remote-username",
+    ///                     PasswordSecretVersion = example_remote_secretVersion.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

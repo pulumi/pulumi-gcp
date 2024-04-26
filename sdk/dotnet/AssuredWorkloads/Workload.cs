@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// 
     /// ### Basic_workload
     /// A basic test of a assuredworkloads api
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -64,10 +63,8 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Sovereign_controls_workload
     /// A Sovereign Controls test of the assuredworkloads api
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -113,7 +110,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

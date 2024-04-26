@@ -13,16 +13,14 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
     public sealed class CertificateManagedProvisioningIssueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
-        /// Human readable explanation for reaching the state. Provided to help
-        /// address the configuration issues.
-        /// Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+        /// Human readable explanation about the issue. Provided to help address
+        /// the configuration issues.
+        /// Not guaranteed to be stable. For programmatic access use 'reason' field.
         /// </summary>
         [Input("details")]
         public Input<string>? Details { get; set; }
 
         /// <summary>
-        /// (Output)
         /// Reason for provisioning failures.
         /// </summary>
         [Input("reason")]

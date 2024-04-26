@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// ### Netapp Volume Replication Create
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,7 +79,6 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

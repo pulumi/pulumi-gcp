@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Gkeonprem Bare Metal Node Pool Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -99,10 +98,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkeonprem Bare Metal Node Pool Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -197,7 +194,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -252,17 +248,12 @@ export class BareMetalNodePool extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations on the Bare Metal Node Pool.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * 'effective_annotations' for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -307,10 +298,6 @@ export class BareMetalNodePool extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly nodePoolConfig!: pulumi.Output<outputs.gkeonprem.BareMetalNodePoolNodePoolConfig>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * If set, there are currently changes in flight to the Bare Metal User Cluster.
@@ -402,17 +389,12 @@ export class BareMetalNodePool extends pulumi.CustomResource {
  */
 export interface BareMetalNodePoolState {
     /**
-     * Annotations on the Bare Metal Node Pool.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * 'effective_annotations' for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -457,10 +439,6 @@ export interface BareMetalNodePoolState {
      * Structure is documented below.
      */
     nodePoolConfig?: pulumi.Input<inputs.gkeonprem.BareMetalNodePoolNodePoolConfig>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * If set, there are currently changes in flight to the Bare Metal User Cluster.
@@ -491,17 +469,12 @@ export interface BareMetalNodePoolState {
  */
 export interface BareMetalNodePoolArgs {
     /**
-     * Annotations on the Bare Metal Node Pool.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * 'effective_annotations' for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -525,9 +498,5 @@ export interface BareMetalNodePoolArgs {
      * Structure is documented below.
      */
     nodePoolConfig: pulumi.Input<inputs.gkeonprem.BareMetalNodePoolNodePoolConfig>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
 }

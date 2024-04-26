@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * ### Target Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -49,10 +48,8 @@ import * as utilities from "../utilities";
  *     instance: target_vm.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Target Instance Custom Network
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -83,10 +80,8 @@ import * as utilities from "../utilities";
  *     network: target_vm.then(target_vm => target_vm.selfLink),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Target Instance With Security Policy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -151,7 +146,6 @@ import * as utilities from "../utilities";
  *     securityPolicy: regionsecuritypolicy.selfLink,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

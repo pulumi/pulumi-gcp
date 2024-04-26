@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAllInstancesConfi
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAutoHealingPoliciesArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerInstanceLifecyclePolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerNamedPortArgs;
+import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerParamsArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulExternalIpArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulInternalIpArgs;
@@ -217,6 +218,25 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * 
+     * ***
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<RegionInstanceGroupManagerParamsArgs> params;
+
+    /**
+     * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<RegionInstanceGroupManagerParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -270,16 +290,12 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="statefulExternalIps")
     private @Nullable Output<List<RegionInstanceGroupManagerStatefulExternalIpArgs>> statefulExternalIps;
 
     /**
      * @return External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<RegionInstanceGroupManagerStatefulExternalIpArgs>>> statefulExternalIps() {
@@ -424,6 +440,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         this.listManagedInstancesResults = $.listManagedInstancesResults;
         this.name = $.name;
         this.namedPorts = $.namedPorts;
+        this.params = $.params;
         this.project = $.project;
         this.region = $.region;
         this.statefulDisks = $.statefulDisks;
@@ -726,6 +743,31 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<RegionInstanceGroupManagerParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(RegionInstanceGroupManagerParamsArgs params) {
+            return params(Output.of(params));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs. If it
          * is not provided, the provider project is used.
          * 
@@ -807,8 +849,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         /**
          * @param statefulExternalIps External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -820,8 +860,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         /**
          * @param statefulExternalIps External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -831,8 +869,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
         /**
          * @param statefulExternalIps External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 

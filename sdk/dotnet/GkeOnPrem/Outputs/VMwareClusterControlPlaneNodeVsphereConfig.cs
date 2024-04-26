@@ -14,15 +14,11 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
     public sealed class VMwareClusterControlPlaneNodeVsphereConfig
     {
         /// <summary>
-        /// (Output)
         /// The Vsphere datastore used by the Control Plane Node.
         /// </summary>
         public readonly string? Datastore;
         /// <summary>
-        /// (Output)
         /// The Vsphere storage policy used by the control plane Node.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? StoragePolicyName;
 

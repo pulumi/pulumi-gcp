@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * ### Iam Workforce Pool Provider Saml Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,10 +43,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Iam Workforce Pool Provider Saml Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,10 +70,8 @@ import * as utilities from "../utilities";
  *     attributeCondition: "true",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Iam Workforce Pool Provider Oidc Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -108,10 +103,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Iam Workforce Pool Provider Oidc Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -151,7 +144,6 @@ import * as utilities from "../utilities";
  *     attributeCondition: "true",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

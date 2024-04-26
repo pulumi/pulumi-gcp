@@ -24,7 +24,6 @@ import (
 //
 // ### Gkebackup Restoreplan All Namespaces
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,10 +92,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan Rollback Namespace
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -178,10 +175,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan Protected Application
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -256,10 +251,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan All Cluster Resources
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -327,10 +320,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan Rename Namespace
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -437,10 +428,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Restoreplan Second Transformation
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -543,7 +532,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -577,9 +565,7 @@ type RestorePlanIamMember struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	Member   pulumi.StringOutput `pulumi:"member"`
 	// The full name of the BackupPlan Resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	Role    pulumi.StringOutput `pulumi:"role"`
 }
@@ -626,9 +612,7 @@ type restorePlanIamMemberState struct {
 	Location *string `pulumi:"location"`
 	Member   *string `pulumi:"member"`
 	// The full name of the BackupPlan Resource.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	Role    *string `pulumi:"role"`
 }
@@ -640,9 +624,7 @@ type RestorePlanIamMemberState struct {
 	Location pulumi.StringPtrInput
 	Member   pulumi.StringPtrInput
 	// The full name of the BackupPlan Resource.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	Role    pulumi.StringPtrInput
 }
@@ -657,9 +639,7 @@ type restorePlanIamMemberArgs struct {
 	Location *string `pulumi:"location"`
 	Member   string  `pulumi:"member"`
 	// The full name of the BackupPlan Resource.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	Role    string  `pulumi:"role"`
 }
@@ -671,9 +651,7 @@ type RestorePlanIamMemberArgs struct {
 	Location pulumi.StringPtrInput
 	Member   pulumi.StringInput
 	// The full name of the BackupPlan Resource.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	Role    pulumi.StringInput
 }
@@ -787,8 +765,6 @@ func (o RestorePlanIamMemberOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlanIamMember) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o RestorePlanIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlanIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

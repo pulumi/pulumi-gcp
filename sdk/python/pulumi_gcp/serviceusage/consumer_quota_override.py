@@ -319,7 +319,6 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
 
         ### Consumer Quota Override
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -337,10 +336,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="95",
             force=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Consumer Quota Override
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -361,10 +358,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="8",
             force=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Consumer Quota Override Custom Dimension
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -385,7 +380,6 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
                 "author": "larry",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -449,7 +443,6 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
 
         ### Consumer Quota Override
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -467,10 +460,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="95",
             force=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Consumer Quota Override
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -491,10 +482,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="8",
             force=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Consumer Quota Override Custom Dimension
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -515,7 +504,6 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
                 "author": "larry",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

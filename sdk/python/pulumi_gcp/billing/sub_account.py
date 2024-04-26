@@ -195,7 +195,6 @@ class SubAccount(pulumi.CustomResource):
 
         !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -204,7 +203,6 @@ class SubAccount(pulumi.CustomResource):
             display_name="My Billing Account",
             master_billing_account="012345-567890-ABCDEF")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -238,7 +236,6 @@ class SubAccount(pulumi.CustomResource):
 
         !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -247,7 +244,6 @@ class SubAccount(pulumi.CustomResource):
             display_name="My Billing Account",
             master_billing_account="012345-567890-ABCDEF")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

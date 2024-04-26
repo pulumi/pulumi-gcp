@@ -124,7 +124,6 @@ class StorageBucket(pulumi.CustomResource):
 
         ### Firebasestorage Bucket Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -137,7 +136,6 @@ class StorageBucket(pulumi.CustomResource):
             project="my-project-name",
             bucket_id=default.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -180,7 +178,6 @@ class StorageBucket(pulumi.CustomResource):
 
         ### Firebasestorage Bucket Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -193,7 +190,6 @@ class StorageBucket(pulumi.CustomResource):
             project="my-project-name",
             bucket_id=default.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

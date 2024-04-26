@@ -305,7 +305,6 @@ class Field(pulumi.CustomResource):
 
         ### Firestore Field Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -334,10 +333,8 @@ class Field(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Field Timestamp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -357,10 +354,8 @@ class Field(pulumi.CustomResource):
             ttl_config=gcp.firestore.FieldTtlConfigArgs(),
             index_config=gcp.firestore.FieldIndexConfigArgs())
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Field Match Override
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -391,7 +386,6 @@ class Field(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -449,7 +443,6 @@ class Field(pulumi.CustomResource):
 
         ### Firestore Field Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -478,10 +471,8 @@ class Field(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Field Timestamp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -501,10 +492,8 @@ class Field(pulumi.CustomResource):
             ttl_config=gcp.firestore.FieldTtlConfigArgs(),
             index_config=gcp.firestore.FieldIndexConfigArgs())
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Field Match Override
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -535,7 +524,6 @@ class Field(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

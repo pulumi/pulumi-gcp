@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### Vmware Engine Network Peering Ven
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,10 +41,8 @@ import * as utilities from "../utilities";
  *     importCustomRoutesWithPublicIp: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vmware Engine Network Peering Standard
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,7 +61,6 @@ import * as utilities from "../utilities";
  *     vmwareEngineNetwork: network_peering_standard_nw.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

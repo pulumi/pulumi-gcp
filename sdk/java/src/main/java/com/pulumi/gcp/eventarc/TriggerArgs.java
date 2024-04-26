@@ -22,14 +22,18 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     public static final TriggerArgs Empty = new TriggerArgs();
 
     /**
-     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     * Optional. The name of the channel associated with the trigger in
+     * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+     * Eventarc SaaS partners.
      * 
      */
     @Import(name="channel")
     private @Nullable Output<String> channel;
 
     /**
-     * @return Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     * @return Optional. The name of the channel associated with the trigger in
+     * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+     * Eventarc SaaS partners.
      * 
      */
     public Optional<Output<String>> channel() {
@@ -52,14 +56,16 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
+     * field. This is set to `application/json` if the value is not defined.
      * 
      */
     @Import(name="eventDataContentType")
     private @Nullable Output<String> eventDataContentType;
 
     /**
-     * @return Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+     * @return Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
+     * field. This is set to `application/json` if the value is not defined.
      * 
      */
     public Optional<Output<String>> eventDataContentType() {
@@ -67,20 +73,18 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. User labels attached to the triggers that can be used to group resources.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. User labels attached to the triggers that can be used to group resources.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -148,14 +152,26 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+     * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
+     * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+     * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
+     * destinations, this service account is used to generate identity tokens when invoking the service. See
+     * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
+     * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
+     * `roles/eventarc.eventReceiver` IAM role.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+     * @return Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
+     * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+     * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
+     * destinations, this service account is used to generate identity tokens when invoking the service. See
+     * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
+     * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
+     * `roles/eventarc.eventReceiver` IAM role.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -163,14 +179,16 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
+     * contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
     @Import(name="transport")
     private @Nullable Output<TriggerTransportArgs> transport;
 
     /**
-     * @return Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     * @return Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
+     * contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
     public Optional<Output<TriggerTransportArgs>> transport() {
@@ -211,7 +229,9 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param channel Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+         * @param channel Optional. The name of the channel associated with the trigger in
+         * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+         * Eventarc SaaS partners.
          * 
          * @return builder
          * 
@@ -222,7 +242,9 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param channel Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+         * @param channel Optional. The name of the channel associated with the trigger in
+         * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+         * Eventarc SaaS partners.
          * 
          * @return builder
          * 
@@ -253,7 +275,8 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventDataContentType Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+         * @param eventDataContentType Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
+         * field. This is set to `application/json` if the value is not defined.
          * 
          * @return builder
          * 
@@ -264,7 +287,8 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventDataContentType Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+         * @param eventDataContentType Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
+         * field. This is set to `application/json` if the value is not defined.
          * 
          * @return builder
          * 
@@ -274,10 +298,9 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Optional. User labels attached to the triggers that can be used to group resources.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
+         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+         * `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -288,10 +311,9 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Optional. User labels attached to the triggers that can be used to group resources.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
+         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+         * `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -395,7 +417,13 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+         * @param serviceAccount Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
+         * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+         * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
+         * destinations, this service account is used to generate identity tokens when invoking the service. See
+         * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
+         * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
+         * `roles/eventarc.eventReceiver` IAM role.
          * 
          * @return builder
          * 
@@ -406,7 +434,13 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+         * @param serviceAccount Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
+         * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+         * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
+         * destinations, this service account is used to generate identity tokens when invoking the service. See
+         * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
+         * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
+         * `roles/eventarc.eventReceiver` IAM role.
          * 
          * @return builder
          * 
@@ -416,7 +450,8 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
+         * contains a reference to that transport intermediary. This information can be used for debugging purposes.
          * 
          * @return builder
          * 
@@ -427,7 +462,8 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
+         * contains a reference to that transport intermediary. This information can be used for debugging purposes.
          * 
          * @return builder
          * 

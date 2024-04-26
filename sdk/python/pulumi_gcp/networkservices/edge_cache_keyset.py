@@ -352,7 +352,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
 
         ### Network Services Edge Cache Keyset Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -371,10 +370,8 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Keyset Dual Token
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -398,7 +395,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                 secret_version=secret_version_basic.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -470,7 +466,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
 
         ### Network Services Edge Cache Keyset Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -489,10 +484,8 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Keyset Dual Token
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -516,7 +509,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                 secret_version=secret_version_basic.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

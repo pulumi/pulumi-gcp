@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Node Template Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,10 +31,8 @@ import * as utilities from "../utilities";
  *     nodeType: "n1-node-96-624",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Node Template Server Binding
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,7 +52,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

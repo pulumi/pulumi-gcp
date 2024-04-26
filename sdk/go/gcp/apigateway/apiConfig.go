@@ -24,7 +24,6 @@ import (
 //
 // ### Apigateway Api Config Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,10 +69,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Apigateway Api Config Grpc
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -155,7 +152,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

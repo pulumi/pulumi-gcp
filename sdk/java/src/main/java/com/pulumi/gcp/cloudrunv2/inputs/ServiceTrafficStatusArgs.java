@@ -17,14 +17,16 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
     public static final ServiceTrafficStatusArgs Empty = new ServiceTrafficStatusArgs();
 
     /**
-     * Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+     * (Output)
+     * Specifies percent of the traffic to this Revision.
      * 
      */
     @Import(name="percent")
     private @Nullable Output<Integer> percent;
 
     /**
-     * @return Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+     * @return (Output)
+     * Specifies percent of the traffic to this Revision.
      * 
      */
     public Optional<Output<Integer>> percent() {
@@ -32,14 +34,16 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * (Output)
+     * Revision to which this traffic is sent.
      * 
      */
     @Import(name="revision")
     private @Nullable Output<String> revision;
 
     /**
-     * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * @return (Output)
+     * Revision to which this traffic is sent.
      * 
      */
     public Optional<Output<String>> revision() {
@@ -47,14 +51,16 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Indicates a string to be part of the URI to exclusively reference this target.
+     * (Output)
+     * Indicates the string used in the URI to exclusively reference this target.
      * 
      */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
     /**
-     * @return Indicates a string to be part of the URI to exclusively reference this target.
+     * @return (Output)
+     * Indicates the string used in the URI to exclusively reference this target.
      * 
      */
     public Optional<Output<String>> tag() {
@@ -62,16 +68,16 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * The allocation type for this traffic target.
-     * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The allocation type for this traffic target.
-     * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+     * @return (Output)
+     * The allocation type for this traffic target.
      * 
      */
     public Optional<Output<String>> type() {
@@ -124,7 +130,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param percent Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+         * @param percent (Output)
+         * Specifies percent of the traffic to this Revision.
          * 
          * @return builder
          * 
@@ -135,7 +142,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param percent Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+         * @param percent (Output)
+         * Specifies percent of the traffic to this Revision.
          * 
          * @return builder
          * 
@@ -145,7 +153,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param revision The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+         * @param revision (Output)
+         * Revision to which this traffic is sent.
          * 
          * @return builder
          * 
@@ -156,7 +165,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param revision The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+         * @param revision (Output)
+         * Revision to which this traffic is sent.
          * 
          * @return builder
          * 
@@ -166,7 +176,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tag Indicates a string to be part of the URI to exclusively reference this target.
+         * @param tag (Output)
+         * Indicates the string used in the URI to exclusively reference this target.
          * 
          * @return builder
          * 
@@ -177,7 +188,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tag Indicates a string to be part of the URI to exclusively reference this target.
+         * @param tag (Output)
+         * Indicates the string used in the URI to exclusively reference this target.
          * 
          * @return builder
          * 
@@ -187,8 +199,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type The allocation type for this traffic target.
-         * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         * @param type (Output)
+         * The allocation type for this traffic target.
          * 
          * @return builder
          * 
@@ -199,8 +211,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type The allocation type for this traffic target.
-         * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         * @param type (Output)
+         * The allocation type for this traffic target.
          * 
          * @return builder
          * 

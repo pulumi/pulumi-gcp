@@ -34,7 +34,6 @@ import (
 //
 // ### Firestore Document Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,10 +94,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Document Nested Document
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -185,7 +182,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -213,7 +209,7 @@ type Document struct {
 	DocumentId pulumi.StringOutput `pulumi:"documentId"`
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields pulumi.StringOutput `pulumi:"fields"`
-	// A server defined name for this index. Format:
+	// A server defined name for this document. Format:
 	// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A relative path to the collection this document exists within
@@ -276,7 +272,7 @@ type documentState struct {
 	DocumentId *string `pulumi:"documentId"`
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields *string `pulumi:"fields"`
-	// A server defined name for this index. Format:
+	// A server defined name for this document. Format:
 	// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
 	Name *string `pulumi:"name"`
 	// A relative path to the collection this document exists within
@@ -301,7 +297,7 @@ type DocumentState struct {
 	DocumentId pulumi.StringPtrInput
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields pulumi.StringPtrInput
-	// A server defined name for this index. Format:
+	// A server defined name for this document. Format:
 	// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
 	Name pulumi.StringPtrInput
 	// A relative path to the collection this document exists within
@@ -464,7 +460,7 @@ func (o DocumentOutput) Fields() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Fields }).(pulumi.StringOutput)
 }
 
-// A server defined name for this index. Format:
+// A server defined name for this document. Format:
 // `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
 func (o DocumentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

@@ -859,7 +859,6 @@ class Connection(pulumi.CustomResource):
 
         ### Integration Connectors Connection Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -881,10 +880,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Integration Connectors Connection Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1116,7 +1113,6 @@ class Connection(pulumi.CustomResource):
                 enrichment_enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1197,7 +1193,6 @@ class Connection(pulumi.CustomResource):
 
         ### Integration Connectors Connection Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1219,10 +1214,8 @@ class Connection(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Integration Connectors Connection Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1454,7 +1447,6 @@ class Connection(pulumi.CustomResource):
                 enrichment_enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

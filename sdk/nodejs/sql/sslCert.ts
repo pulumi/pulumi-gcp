@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * Example creating a SQL Client Certificate.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,7 +29,6 @@ import * as utilities from "../utilities";
  *     instance: main.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

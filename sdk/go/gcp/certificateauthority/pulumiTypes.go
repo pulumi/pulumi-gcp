@@ -935,22 +935,17 @@ func (o AuthorityConfigSubjectConfigSubjectAltNamePtrOutput) Uris() pulumi.Strin
 
 type AuthorityConfigX509Config struct {
 	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-	// Structure is documented below.
 	AdditionalExtensions []AuthorityConfigX509ConfigAdditionalExtension `pulumi:"additionalExtensions"`
 	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 	// "Authority Information Access" extension in the certificate.
 	AiaOcspServers []string `pulumi:"aiaOcspServers"`
 	// Describes values that are relevant in a CA certificate.
-	// Structure is documented below.
 	CaOptions AuthorityConfigX509ConfigCaOptions `pulumi:"caOptions"`
 	// Indicates the intended use for keys that correspond to a certificate.
-	// Structure is documented below.
 	KeyUsage AuthorityConfigX509ConfigKeyUsage `pulumi:"keyUsage"`
 	// Describes the X.509 name constraints extension.
-	// Structure is documented below.
 	NameConstraints *AuthorityConfigX509ConfigNameConstraints `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-	// Structure is documented below.
 	PolicyIds []AuthorityConfigX509ConfigPolicyId `pulumi:"policyIds"`
 }
 
@@ -967,22 +962,17 @@ type AuthorityConfigX509ConfigInput interface {
 
 type AuthorityConfigX509ConfigArgs struct {
 	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-	// Structure is documented below.
 	AdditionalExtensions AuthorityConfigX509ConfigAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
 	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 	// "Authority Information Access" extension in the certificate.
 	AiaOcspServers pulumi.StringArrayInput `pulumi:"aiaOcspServers"`
 	// Describes values that are relevant in a CA certificate.
-	// Structure is documented below.
 	CaOptions AuthorityConfigX509ConfigCaOptionsInput `pulumi:"caOptions"`
 	// Indicates the intended use for keys that correspond to a certificate.
-	// Structure is documented below.
 	KeyUsage AuthorityConfigX509ConfigKeyUsageInput `pulumi:"keyUsage"`
 	// Describes the X.509 name constraints extension.
-	// Structure is documented below.
 	NameConstraints AuthorityConfigX509ConfigNameConstraintsPtrInput `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-	// Structure is documented below.
 	PolicyIds AuthorityConfigX509ConfigPolicyIdArrayInput `pulumi:"policyIds"`
 }
 
@@ -1064,7 +1054,6 @@ func (o AuthorityConfigX509ConfigOutput) ToAuthorityConfigX509ConfigPtrOutputWit
 }
 
 // Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigOutput) AdditionalExtensions() AuthorityConfigX509ConfigAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v AuthorityConfigX509Config) []AuthorityConfigX509ConfigAdditionalExtension {
 		return v.AdditionalExtensions
@@ -1078,25 +1067,21 @@ func (o AuthorityConfigX509ConfigOutput) AiaOcspServers() pulumi.StringArrayOutp
 }
 
 // Describes values that are relevant in a CA certificate.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigOutput) CaOptions() AuthorityConfigX509ConfigCaOptionsOutput {
 	return o.ApplyT(func(v AuthorityConfigX509Config) AuthorityConfigX509ConfigCaOptions { return v.CaOptions }).(AuthorityConfigX509ConfigCaOptionsOutput)
 }
 
 // Indicates the intended use for keys that correspond to a certificate.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigOutput) KeyUsage() AuthorityConfigX509ConfigKeyUsageOutput {
 	return o.ApplyT(func(v AuthorityConfigX509Config) AuthorityConfigX509ConfigKeyUsage { return v.KeyUsage }).(AuthorityConfigX509ConfigKeyUsageOutput)
 }
 
 // Describes the X.509 name constraints extension.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigOutput) NameConstraints() AuthorityConfigX509ConfigNameConstraintsPtrOutput {
 	return o.ApplyT(func(v AuthorityConfigX509Config) *AuthorityConfigX509ConfigNameConstraints { return v.NameConstraints }).(AuthorityConfigX509ConfigNameConstraintsPtrOutput)
 }
 
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigOutput) PolicyIds() AuthorityConfigX509ConfigPolicyIdArrayOutput {
 	return o.ApplyT(func(v AuthorityConfigX509Config) []AuthorityConfigX509ConfigPolicyId { return v.PolicyIds }).(AuthorityConfigX509ConfigPolicyIdArrayOutput)
 }
@@ -1126,7 +1111,6 @@ func (o AuthorityConfigX509ConfigPtrOutput) Elem() AuthorityConfigX509ConfigOutp
 }
 
 // Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigPtrOutput) AdditionalExtensions() AuthorityConfigX509ConfigAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v *AuthorityConfigX509Config) []AuthorityConfigX509ConfigAdditionalExtension {
 		if v == nil {
@@ -1148,7 +1132,6 @@ func (o AuthorityConfigX509ConfigPtrOutput) AiaOcspServers() pulumi.StringArrayO
 }
 
 // Describes values that are relevant in a CA certificate.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigPtrOutput) CaOptions() AuthorityConfigX509ConfigCaOptionsPtrOutput {
 	return o.ApplyT(func(v *AuthorityConfigX509Config) *AuthorityConfigX509ConfigCaOptions {
 		if v == nil {
@@ -1159,7 +1142,6 @@ func (o AuthorityConfigX509ConfigPtrOutput) CaOptions() AuthorityConfigX509Confi
 }
 
 // Indicates the intended use for keys that correspond to a certificate.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigPtrOutput) KeyUsage() AuthorityConfigX509ConfigKeyUsagePtrOutput {
 	return o.ApplyT(func(v *AuthorityConfigX509Config) *AuthorityConfigX509ConfigKeyUsage {
 		if v == nil {
@@ -1170,7 +1152,6 @@ func (o AuthorityConfigX509ConfigPtrOutput) KeyUsage() AuthorityConfigX509Config
 }
 
 // Describes the X.509 name constraints extension.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigPtrOutput) NameConstraints() AuthorityConfigX509ConfigNameConstraintsPtrOutput {
 	return o.ApplyT(func(v *AuthorityConfigX509Config) *AuthorityConfigX509ConfigNameConstraints {
 		if v == nil {
@@ -1181,7 +1162,6 @@ func (o AuthorityConfigX509ConfigPtrOutput) NameConstraints() AuthorityConfigX50
 }
 
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-// Structure is documented below.
 func (o AuthorityConfigX509ConfigPtrOutput) PolicyIds() AuthorityConfigX509ConfigPolicyIdArrayOutput {
 	return o.ApplyT(func(v *AuthorityConfigX509Config) []AuthorityConfigX509ConfigPolicyId {
 		if v == nil {
@@ -7091,10 +7071,9 @@ type CertificateCertificateDescription struct {
 	// (Output)
 	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
 	CrlDistributionPoints []string `pulumi:"crlDistributionPoints"`
+	// (Output)
 	// A PublicKey describes a public key.
 	// Structure is documented below.
-	//
-	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	PublicKeys []CertificateCertificateDescriptionPublicKey `pulumi:"publicKeys"`
 	// (Output)
 	// Describes some of the values in a certificate that are related to the subject and lifetime.
@@ -7136,10 +7115,9 @@ type CertificateCertificateDescriptionArgs struct {
 	// (Output)
 	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
 	CrlDistributionPoints pulumi.StringArrayInput `pulumi:"crlDistributionPoints"`
+	// (Output)
 	// A PublicKey describes a public key.
 	// Structure is documented below.
-	//
-	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	PublicKeys CertificateCertificateDescriptionPublicKeyArrayInput `pulumi:"publicKeys"`
 	// (Output)
 	// Describes some of the values in a certificate that are related to the subject and lifetime.
@@ -7236,10 +7214,9 @@ func (o CertificateCertificateDescriptionOutput) CrlDistributionPoints() pulumi.
 	return o.ApplyT(func(v CertificateCertificateDescription) []string { return v.CrlDistributionPoints }).(pulumi.StringArrayOutput)
 }
 
+// (Output)
 // A PublicKey describes a public key.
 // Structure is documented below.
-//
-// <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o CertificateCertificateDescriptionOutput) PublicKeys() CertificateCertificateDescriptionPublicKeyArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionPublicKey {
 		return v.PublicKeys
@@ -7616,9 +7593,11 @@ type CertificateCertificateDescriptionSubjectDescription struct {
 	// (Output)
 	// The time at which the certificate becomes valid.
 	NotBeforeTime *string `pulumi:"notBeforeTime"`
+	// (Output)
 	// The subject alternative name fields.
 	// Structure is documented below.
 	SubjectAltNames []CertificateCertificateDescriptionSubjectDescriptionSubjectAltName `pulumi:"subjectAltNames"`
+	// (Output)
 	// Contains distinguished name fields such as the location and organization.
 	// Structure is documented below.
 	Subjects []CertificateCertificateDescriptionSubjectDescriptionSubject `pulumi:"subjects"`
@@ -7649,9 +7628,11 @@ type CertificateCertificateDescriptionSubjectDescriptionArgs struct {
 	// (Output)
 	// The time at which the certificate becomes valid.
 	NotBeforeTime pulumi.StringPtrInput `pulumi:"notBeforeTime"`
+	// (Output)
 	// The subject alternative name fields.
 	// Structure is documented below.
 	SubjectAltNames CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayInput `pulumi:"subjectAltNames"`
+	// (Output)
 	// Contains distinguished name fields such as the location and organization.
 	// Structure is documented below.
 	Subjects CertificateCertificateDescriptionSubjectDescriptionSubjectArrayInput `pulumi:"subjects"`
@@ -7733,6 +7714,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionOutput) NotBeforeTime
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.NotBeforeTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The subject alternative name fields.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionSubjectDescriptionOutput) SubjectAltNames() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayOutput {
@@ -7741,6 +7723,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionOutput) SubjectAltNam
 	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayOutput)
 }
 
+// (Output)
 // Contains distinguished name fields such as the location and organization.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionSubjectDescriptionOutput) Subjects() CertificateCertificateDescriptionSubjectDescriptionSubjectArrayOutput {
@@ -8077,8 +8060,8 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayOu
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan struct {
-	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
-	// handle this extension, the client should consider this to be an error).
+	// (Output)
+	// Indicates whether or not the name constraints are marked critical.
 	Critical *bool `pulumi:"critical"`
 	// (Output)
 	// Describes how some of the technical fields in a certificate should be populated.
@@ -8100,8 +8083,8 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanI
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs struct {
-	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
-	// handle this extension, the client should consider this to be an error).
+	// (Output)
+	// Indicates whether or not the name constraints are marked critical.
 	Critical pulumi.BoolPtrInput `pulumi:"critical"`
 	// (Output)
 	// Describes how some of the technical fields in a certificate should be populated.
@@ -8162,8 +8145,8 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 	return o
 }
 
-// Indicates whether or not this extension is critical (i.e., if the client does not know how to
-// handle this extension, the client should consider this to be an error).
+// (Output)
+// Indicates whether or not the name constraints are marked critical.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) Critical() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan) *bool {
 		return v.Critical
@@ -8207,6 +8190,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId struct {
+	// (Output)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
@@ -8223,6 +8207,7 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanO
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs struct {
+	// (Output)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
@@ -8278,6 +8263,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 	return o
 }
 
+// (Output)
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId) []int {
@@ -8406,21 +8392,27 @@ func (o CertificateCertificateDescriptionSubjectKeyIdArrayOutput) Index(i pulumi
 }
 
 type CertificateCertificateDescriptionX509Description struct {
-	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+	// (Output)
+	// Describes custom X.509 extensions.
 	// Structure is documented below.
 	AdditionalExtensions []CertificateCertificateDescriptionX509DescriptionAdditionalExtension `pulumi:"additionalExtensions"`
+	// (Output)
 	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 	// "Authority Information Access" extension in the certificate.
 	AiaOcspServers []string `pulumi:"aiaOcspServers"`
+	// (Output)
 	// Describes values that are relevant in a CA certificate.
 	// Structure is documented below.
 	CaOptions []CertificateCertificateDescriptionX509DescriptionCaOption `pulumi:"caOptions"`
+	// (Output)
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsages []CertificateCertificateDescriptionX509DescriptionKeyUsage `pulumi:"keyUsages"`
+	// (Output)
 	// Describes the X.509 name constraints extension.
 	// Structure is documented below.
 	NameConstraints []CertificateCertificateDescriptionX509DescriptionNameConstraint `pulumi:"nameConstraints"`
+	// (Output)
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds []CertificateCertificateDescriptionX509DescriptionPolicyId `pulumi:"policyIds"`
@@ -8438,21 +8430,27 @@ type CertificateCertificateDescriptionX509DescriptionInput interface {
 }
 
 type CertificateCertificateDescriptionX509DescriptionArgs struct {
-	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+	// (Output)
+	// Describes custom X.509 extensions.
 	// Structure is documented below.
 	AdditionalExtensions CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
+	// (Output)
 	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 	// "Authority Information Access" extension in the certificate.
 	AiaOcspServers pulumi.StringArrayInput `pulumi:"aiaOcspServers"`
+	// (Output)
 	// Describes values that are relevant in a CA certificate.
 	// Structure is documented below.
 	CaOptions CertificateCertificateDescriptionX509DescriptionCaOptionArrayInput `pulumi:"caOptions"`
+	// (Output)
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsages CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput `pulumi:"keyUsages"`
+	// (Output)
 	// Describes the X.509 name constraints extension.
 	// Structure is documented below.
 	NameConstraints CertificateCertificateDescriptionX509DescriptionNameConstraintArrayInput `pulumi:"nameConstraints"`
+	// (Output)
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput `pulumi:"policyIds"`
@@ -8509,7 +8507,8 @@ func (o CertificateCertificateDescriptionX509DescriptionOutput) ToCertificateCer
 	return o
 }
 
-// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+// (Output)
+// Describes custom X.509 extensions.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionX509DescriptionOutput) AdditionalExtensions() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
@@ -8517,12 +8516,14 @@ func (o CertificateCertificateDescriptionX509DescriptionOutput) AdditionalExtens
 	}).(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput)
 }
 
+// (Output)
 // Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 // "Authority Information Access" extension in the certificate.
 func (o CertificateCertificateDescriptionX509DescriptionOutput) AiaOcspServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []string { return v.AiaOcspServers }).(pulumi.StringArrayOutput)
 }
 
+// (Output)
 // Describes values that are relevant in a CA certificate.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionX509DescriptionOutput) CaOptions() CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput {
@@ -8531,6 +8532,7 @@ func (o CertificateCertificateDescriptionX509DescriptionOutput) CaOptions() Cert
 	}).(CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput)
 }
 
+// (Output)
 // Indicates the intended use for keys that correspond to a certificate.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionX509DescriptionOutput) KeyUsages() CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput {
@@ -8539,6 +8541,7 @@ func (o CertificateCertificateDescriptionX509DescriptionOutput) KeyUsages() Cert
 	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput)
 }
 
+// (Output)
 // Describes the X.509 name constraints extension.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionX509DescriptionOutput) NameConstraints() CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput {
@@ -8547,6 +8550,7 @@ func (o CertificateCertificateDescriptionX509DescriptionOutput) NameConstraints(
 	}).(CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput)
 }
 
+// (Output)
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionX509DescriptionOutput) PolicyIds() CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput {
@@ -10810,21 +10814,27 @@ func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) Uris() pulumi.Str
 }
 
 type CertificateConfigX509Config struct {
-	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+	// (Output)
+	// Describes custom X.509 extensions.
 	// Structure is documented below.
 	AdditionalExtensions []CertificateConfigX509ConfigAdditionalExtension `pulumi:"additionalExtensions"`
+	// (Output)
 	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 	// "Authority Information Access" extension in the certificate.
 	AiaOcspServers []string `pulumi:"aiaOcspServers"`
+	// (Output)
 	// Describes values that are relevant in a CA certificate.
 	// Structure is documented below.
 	CaOptions *CertificateConfigX509ConfigCaOptions `pulumi:"caOptions"`
+	// (Output)
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage CertificateConfigX509ConfigKeyUsage `pulumi:"keyUsage"`
+	// (Output)
 	// Describes the X.509 name constraints extension.
 	// Structure is documented below.
 	NameConstraints *CertificateConfigX509ConfigNameConstraints `pulumi:"nameConstraints"`
+	// (Output)
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds []CertificateConfigX509ConfigPolicyId `pulumi:"policyIds"`
@@ -10842,21 +10852,27 @@ type CertificateConfigX509ConfigInput interface {
 }
 
 type CertificateConfigX509ConfigArgs struct {
-	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+	// (Output)
+	// Describes custom X.509 extensions.
 	// Structure is documented below.
 	AdditionalExtensions CertificateConfigX509ConfigAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
+	// (Output)
 	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 	// "Authority Information Access" extension in the certificate.
 	AiaOcspServers pulumi.StringArrayInput `pulumi:"aiaOcspServers"`
+	// (Output)
 	// Describes values that are relevant in a CA certificate.
 	// Structure is documented below.
 	CaOptions CertificateConfigX509ConfigCaOptionsPtrInput `pulumi:"caOptions"`
+	// (Output)
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage CertificateConfigX509ConfigKeyUsageInput `pulumi:"keyUsage"`
+	// (Output)
 	// Describes the X.509 name constraints extension.
 	// Structure is documented below.
 	NameConstraints CertificateConfigX509ConfigNameConstraintsPtrInput `pulumi:"nameConstraints"`
+	// (Output)
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds CertificateConfigX509ConfigPolicyIdArrayInput `pulumi:"policyIds"`
@@ -10939,7 +10955,8 @@ func (o CertificateConfigX509ConfigOutput) ToCertificateConfigX509ConfigPtrOutpu
 	}).(CertificateConfigX509ConfigPtrOutput)
 }
 
-// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+// (Output)
+// Describes custom X.509 extensions.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigOutput) AdditionalExtensions() CertificateConfigX509ConfigAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v CertificateConfigX509Config) []CertificateConfigX509ConfigAdditionalExtension {
@@ -10947,24 +10964,28 @@ func (o CertificateConfigX509ConfigOutput) AdditionalExtensions() CertificateCon
 	}).(CertificateConfigX509ConfigAdditionalExtensionArrayOutput)
 }
 
+// (Output)
 // Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 // "Authority Information Access" extension in the certificate.
 func (o CertificateConfigX509ConfigOutput) AiaOcspServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateConfigX509Config) []string { return v.AiaOcspServers }).(pulumi.StringArrayOutput)
 }
 
+// (Output)
 // Describes values that are relevant in a CA certificate.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigOutput) CaOptions() CertificateConfigX509ConfigCaOptionsPtrOutput {
 	return o.ApplyT(func(v CertificateConfigX509Config) *CertificateConfigX509ConfigCaOptions { return v.CaOptions }).(CertificateConfigX509ConfigCaOptionsPtrOutput)
 }
 
+// (Output)
 // Indicates the intended use for keys that correspond to a certificate.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigOutput) KeyUsage() CertificateConfigX509ConfigKeyUsageOutput {
 	return o.ApplyT(func(v CertificateConfigX509Config) CertificateConfigX509ConfigKeyUsage { return v.KeyUsage }).(CertificateConfigX509ConfigKeyUsageOutput)
 }
 
+// (Output)
 // Describes the X.509 name constraints extension.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigOutput) NameConstraints() CertificateConfigX509ConfigNameConstraintsPtrOutput {
@@ -10973,6 +10994,7 @@ func (o CertificateConfigX509ConfigOutput) NameConstraints() CertificateConfigX5
 	}).(CertificateConfigX509ConfigNameConstraintsPtrOutput)
 }
 
+// (Output)
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigOutput) PolicyIds() CertificateConfigX509ConfigPolicyIdArrayOutput {
@@ -11003,7 +11025,8 @@ func (o CertificateConfigX509ConfigPtrOutput) Elem() CertificateConfigX509Config
 	}).(CertificateConfigX509ConfigOutput)
 }
 
-// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+// (Output)
+// Describes custom X.509 extensions.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigPtrOutput) AdditionalExtensions() CertificateConfigX509ConfigAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v *CertificateConfigX509Config) []CertificateConfigX509ConfigAdditionalExtension {
@@ -11014,6 +11037,7 @@ func (o CertificateConfigX509ConfigPtrOutput) AdditionalExtensions() Certificate
 	}).(CertificateConfigX509ConfigAdditionalExtensionArrayOutput)
 }
 
+// (Output)
 // Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 // "Authority Information Access" extension in the certificate.
 func (o CertificateConfigX509ConfigPtrOutput) AiaOcspServers() pulumi.StringArrayOutput {
@@ -11025,6 +11049,7 @@ func (o CertificateConfigX509ConfigPtrOutput) AiaOcspServers() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// (Output)
 // Describes values that are relevant in a CA certificate.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigPtrOutput) CaOptions() CertificateConfigX509ConfigCaOptionsPtrOutput {
@@ -11036,6 +11061,7 @@ func (o CertificateConfigX509ConfigPtrOutput) CaOptions() CertificateConfigX509C
 	}).(CertificateConfigX509ConfigCaOptionsPtrOutput)
 }
 
+// (Output)
 // Indicates the intended use for keys that correspond to a certificate.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigPtrOutput) KeyUsage() CertificateConfigX509ConfigKeyUsagePtrOutput {
@@ -11047,6 +11073,7 @@ func (o CertificateConfigX509ConfigPtrOutput) KeyUsage() CertificateConfigX509Co
 	}).(CertificateConfigX509ConfigKeyUsagePtrOutput)
 }
 
+// (Output)
 // Describes the X.509 name constraints extension.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigPtrOutput) NameConstraints() CertificateConfigX509ConfigNameConstraintsPtrOutput {
@@ -11058,6 +11085,7 @@ func (o CertificateConfigX509ConfigPtrOutput) NameConstraints() CertificateConfi
 	}).(CertificateConfigX509ConfigNameConstraintsPtrOutput)
 }
 
+// (Output)
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigPtrOutput) PolicyIds() CertificateConfigX509ConfigPolicyIdArrayOutput {

@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  *
  * ### Firestore Index Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,10 +57,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firestore Index Datastore Mode
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -92,10 +89,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firestore Index Vector
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -131,7 +126,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -174,9 +168,7 @@ export class Index extends pulumi.CustomResource {
     }
 
     /**
-     * The API scope at which a query is run.
-     * Default value is `ANY_API`.
-     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
      */
     public readonly apiScope!: pulumi.Output<string | undefined>;
     /**
@@ -184,7 +176,7 @@ export class Index extends pulumi.CustomResource {
      */
     public readonly collection!: pulumi.Output<string>;
     /**
-     * The Firestore database id. Defaults to `"(default)"`.
+     * The Firestore database id. Defaults to '"(default)"'.
      */
     public readonly database!: pulumi.Output<string | undefined>;
     /**
@@ -202,15 +194,10 @@ export class Index extends pulumi.CustomResource {
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The scope at which a query is run.
-     * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+     * The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+     * "COLLECTION_RECURSIVE"]
      */
     public readonly queryScope!: pulumi.Output<string | undefined>;
 
@@ -260,9 +247,7 @@ export class Index extends pulumi.CustomResource {
  */
 export interface IndexState {
     /**
-     * The API scope at which a query is run.
-     * Default value is `ANY_API`.
-     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
      */
     apiScope?: pulumi.Input<string>;
     /**
@@ -270,7 +255,7 @@ export interface IndexState {
      */
     collection?: pulumi.Input<string>;
     /**
-     * The Firestore database id. Defaults to `"(default)"`.
+     * The Firestore database id. Defaults to '"(default)"'.
      */
     database?: pulumi.Input<string>;
     /**
@@ -288,15 +273,10 @@ export interface IndexState {
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The scope at which a query is run.
-     * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+     * The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+     * "COLLECTION_RECURSIVE"]
      */
     queryScope?: pulumi.Input<string>;
 }
@@ -306,9 +286,7 @@ export interface IndexState {
  */
 export interface IndexArgs {
     /**
-     * The API scope at which a query is run.
-     * Default value is `ANY_API`.
-     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
      */
     apiScope?: pulumi.Input<string>;
     /**
@@ -316,7 +294,7 @@ export interface IndexArgs {
      */
     collection: pulumi.Input<string>;
     /**
-     * The Firestore database id. Defaults to `"(default)"`.
+     * The Firestore database id. Defaults to '"(default)"'.
      */
     database?: pulumi.Input<string>;
     /**
@@ -329,15 +307,10 @@ export interface IndexArgs {
      * Structure is documented below.
      */
     fields: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The scope at which a query is run.
-     * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+     * The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+     * "COLLECTION_RECURSIVE"]
      */
     queryScope?: pulumi.Input<string>;
 }

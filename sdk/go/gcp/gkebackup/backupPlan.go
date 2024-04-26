@@ -24,7 +24,6 @@ import (
 //
 // ### Gkebackup Backupplan Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,10 +74,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Backupplan Autopilot
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,10 +127,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Backupplan Cmek
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -207,10 +202,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Backupplan Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -279,10 +272,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Backupplan Rpo Daily Window
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -366,10 +357,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkebackup Backupplan Rpo Weekly Window
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -468,7 +457,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

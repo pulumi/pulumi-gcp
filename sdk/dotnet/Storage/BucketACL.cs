@@ -25,7 +25,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// Example creating an ACL on a bucket with one owner, and one reader.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,7 +51,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

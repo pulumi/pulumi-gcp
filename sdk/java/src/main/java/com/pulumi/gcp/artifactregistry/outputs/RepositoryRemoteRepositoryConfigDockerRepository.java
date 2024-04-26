@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RepositoryRemoteRepositoryConfigDockerRepository {
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository customRepository;
     /**
      * @return Address of the remote repository.
      * Default value is `DOCKER_HUB`.
@@ -20,6 +27,14 @@ public final class RepositoryRemoteRepositoryConfigDockerRepository {
     private @Nullable String publicRepository;
 
     private RepositoryRemoteRepositoryConfigDockerRepository() {}
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository> customRepository() {
+        return Optional.ofNullable(this.customRepository);
+    }
     /**
      * @return Address of the remote repository.
      * Default value is `DOCKER_HUB`.
@@ -39,13 +54,21 @@ public final class RepositoryRemoteRepositoryConfigDockerRepository {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository customRepository;
         private @Nullable String publicRepository;
         public Builder() {}
         public Builder(RepositoryRemoteRepositoryConfigDockerRepository defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customRepository = defaults.customRepository;
     	      this.publicRepository = defaults.publicRepository;
         }
 
+        @CustomType.Setter
+        public Builder customRepository(@Nullable RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository customRepository) {
+
+            this.customRepository = customRepository;
+            return this;
+        }
         @CustomType.Setter
         public Builder publicRepository(@Nullable String publicRepository) {
 
@@ -54,6 +77,7 @@ public final class RepositoryRemoteRepositoryConfigDockerRepository {
         }
         public RepositoryRemoteRepositoryConfigDockerRepository build() {
             final var _resultValue = new RepositoryRemoteRepositoryConfigDockerRepository();
+            _resultValue.customRepository = customRepository;
             _resultValue.publicRepository = publicRepository;
             return _resultValue;
         }

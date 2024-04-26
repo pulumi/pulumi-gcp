@@ -60,9 +60,7 @@ public final class SecurityPolicyRuleRateLimitOptions {
      */
     private String exceedAction;
     /**
-     * @return Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_threshold&#34;&gt;&lt;/a&gt;The `{ban/rate_limit}_threshold` block supports:
+     * @return Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
      * 
      */
     private @Nullable SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions exceedRedirectOptions;
@@ -129,9 +127,7 @@ public final class SecurityPolicyRuleRateLimitOptions {
         return this.exceedAction;
     }
     /**
-     * @return Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_threshold&#34;&gt;&lt;/a&gt;The `{ban/rate_limit}_threshold` block supports:
+     * @return Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
      * 
      */
     public Optional<SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions> exceedRedirectOptions() {

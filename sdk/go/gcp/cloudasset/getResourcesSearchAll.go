@@ -15,7 +15,6 @@ import (
 //
 // ### Searching For All Projects In An Org
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,11 +41,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Searching For All Projects With CloudBuild API Enabled
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,11 +71,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Searching For All Service Accounts In A Project
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,7 +100,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupResourcesSearchAll(ctx *pulumi.Context, args *LookupResourcesSearchAllArgs, opts ...pulumi.InvokeOption) (*LookupResourcesSearchAllResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourcesSearchAllResult

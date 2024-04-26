@@ -188,14 +188,12 @@ def get_secret(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.secretmanager.get_secret(secret_id="foobar")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -235,14 +233,12 @@ def get_secret_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.secretmanager.get_secret(secret_id="foobar")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

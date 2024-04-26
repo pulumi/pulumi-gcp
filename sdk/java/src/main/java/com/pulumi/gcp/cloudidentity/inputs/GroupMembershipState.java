@@ -51,7 +51,6 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      * 
      */
     @Import(name="memberKey")
@@ -59,7 +58,6 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return EntityKey of the member.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<GroupMembershipMemberKeyArgs>> memberKey() {
@@ -67,16 +65,14 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+     * The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+     * @return The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
      * 
      */
     public Optional<Output<String>> name() {
@@ -85,7 +81,6 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      * 
      */
     @Import(name="preferredMemberKey")
@@ -93,7 +88,6 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return EntityKey of the member.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<GroupMembershipPreferredMemberKeyArgs>> preferredMemberKey() {
@@ -224,7 +218,6 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param memberKey EntityKey of the member.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -236,7 +229,6 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param memberKey EntityKey of the member.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -246,8 +238,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-         * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+         * @param name The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
          * 
          * @return builder
          * 
@@ -258,8 +249,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-         * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+         * @param name The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
          * 
          * @return builder
          * 
@@ -270,7 +260,6 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param preferredMemberKey EntityKey of the member.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -282,7 +271,6 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param preferredMemberKey EntityKey of the member.
-         * Structure is documented below.
          * 
          * @return builder
          * 

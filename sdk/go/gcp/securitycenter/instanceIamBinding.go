@@ -24,7 +24,6 @@ import (
 //
 // ### Data Fusion Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,10 +49,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,10 +123,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Cmek
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -188,10 +183,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Enterprise
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -218,10 +211,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Event
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -258,10 +249,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Data Fusion Instance Zone
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -288,7 +277,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

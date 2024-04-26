@@ -218,7 +218,6 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
 
         ## google\\_compute\\_subnetwork\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -233,11 +232,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -257,10 +254,8 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_subnetwork\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -272,11 +267,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -293,10 +286,8 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_subnetwork\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -308,11 +299,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -329,11 +318,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_subnetwork\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -348,11 +335,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -372,10 +357,8 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_subnetwork\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -387,11 +370,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -408,10 +389,8 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_subnetwork\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -423,11 +402,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -444,7 +421,6 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -521,7 +497,6 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
 
         ## google\\_compute\\_subnetwork\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -536,11 +511,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -560,10 +533,8 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_subnetwork\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -575,11 +546,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -596,10 +565,8 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_subnetwork\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -611,11 +578,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -632,11 +597,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_subnetwork\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -651,11 +614,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -675,10 +636,8 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_subnetwork\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -690,11 +649,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -711,10 +668,8 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_subnetwork\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -726,11 +681,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -747,7 +700,6 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

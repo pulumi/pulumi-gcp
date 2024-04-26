@@ -214,16 +214,12 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
                  failure_reason: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] details: (Output)
-               Human readable explanation for reaching the state. Provided to help
+        :param pulumi.Input[str] details: Human readable explanation for reaching the state. Provided to help
                address the configuration issues.
-               Not guaranteed to be stable. For programmatic access use `failure_reason` field.
-        :param pulumi.Input[str] domain: (Output)
-               Domain name of the authorization attempt.
-        :param pulumi.Input[str] failure_reason: (Output)
-               Reason for failure of the authorization attempt for the domain.
-        :param pulumi.Input[str] state: (Output)
-               State of the domain for managed certificate issuance.
+               Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+        :param pulumi.Input[str] domain: Domain name of the authorization attempt.
+        :param pulumi.Input[str] failure_reason: Reason for failure of the authorization attempt for the domain.
+        :param pulumi.Input[str] state: State of the domain for managed certificate issuance.
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
@@ -238,10 +234,9 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
     @pulumi.getter
     def details(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Human readable explanation for reaching the state. Provided to help
         address the configuration issues.
-        Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+        Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
         """
         return pulumi.get(self, "details")
 
@@ -253,7 +248,6 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Domain name of the authorization attempt.
         """
         return pulumi.get(self, "domain")
@@ -266,7 +260,6 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
     @pulumi.getter(name="failureReason")
     def failure_reason(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Reason for failure of the authorization attempt for the domain.
         """
         return pulumi.get(self, "failure_reason")
@@ -279,7 +272,6 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         State of the domain for managed certificate issuance.
         """
         return pulumi.get(self, "state")
@@ -295,12 +287,10 @@ class CertificateManagedProvisioningIssueArgs:
                  details: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] details: (Output)
-               Human readable explanation for reaching the state. Provided to help
-               address the configuration issues.
-               Not guaranteed to be stable. For programmatic access use `failure_reason` field.
-        :param pulumi.Input[str] reason: (Output)
-               Reason for provisioning failures.
+        :param pulumi.Input[str] details: Human readable explanation about the issue. Provided to help address
+               the configuration issues.
+               Not guaranteed to be stable. For programmatic access use 'reason' field.
+        :param pulumi.Input[str] reason: Reason for provisioning failures.
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
@@ -311,10 +301,9 @@ class CertificateManagedProvisioningIssueArgs:
     @pulumi.getter
     def details(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
-        Human readable explanation for reaching the state. Provided to help
-        address the configuration issues.
-        Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+        Human readable explanation about the issue. Provided to help address
+        the configuration issues.
+        Not guaranteed to be stable. For programmatic access use 'reason' field.
         """
         return pulumi.get(self, "details")
 
@@ -326,7 +315,6 @@ class CertificateManagedProvisioningIssueArgs:
     @pulumi.getter
     def reason(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Reason for provisioning failures.
         """
         return pulumi.get(self, "reason")

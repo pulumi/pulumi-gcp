@@ -7,7 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get information about a Google Cloud Folder.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * export const myFolder1Organization = myFolder1.then(myFolder1 => myFolder1.organization);
  * export const myFolder2Parent = myFolder2.then(myFolder2 => myFolder2.parent);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
 
@@ -86,7 +84,6 @@ export interface GetFolderResult {
 /**
  * Use this data source to get information about a Google Cloud Folder.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,7 +98,6 @@ export interface GetFolderResult {
  * export const myFolder1Organization = myFolder1.then(myFolder1 => myFolder1.organization);
  * export const myFolder2Parent = myFolder2.then(myFolder2 => myFolder2.parent);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
     return pulumi.output(args).apply((a: any) => getFolder(a, opts))

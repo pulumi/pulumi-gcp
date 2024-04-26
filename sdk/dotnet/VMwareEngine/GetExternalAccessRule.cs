@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetExternalAccessRuleResult> InvokeAsync(GetExternalAccessRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalAccessRuleResult>("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", args ?? new GetExternalAccessRuleArgs(), options.WithDefaults());
@@ -49,7 +47,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetExternalAccessRuleResult> Invoke(GetExternalAccessRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalAccessRuleResult>("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", args ?? new GetExternalAccessRuleInvokeArgs(), options.WithDefaults());

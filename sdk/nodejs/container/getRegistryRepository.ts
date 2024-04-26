@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  * const foo = gcp.container.getRegistryRepository({});
  * export const gcrLocation = foo.then(foo => foo.repositoryUrl);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryRepositoryResult> {
     args = args || {};
@@ -67,7 +65,6 @@ export interface GetRegistryRepositoryResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,7 +72,6 @@ export interface GetRegistryRepositoryResult {
  * const foo = gcp.container.getRegistryRepository({});
  * export const gcrLocation = foo.then(foo => foo.repositoryUrl);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegistryRepositoryOutput(args?: GetRegistryRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryRepositoryResult> {
     return pulumi.output(args).apply((a: any) => getRegistryRepository(a, opts))

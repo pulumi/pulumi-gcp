@@ -406,7 +406,6 @@ class MembershipBinding(pulumi.CustomResource):
 
         ### Gkehub Membership Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -437,7 +436,6 @@ class MembershipBinding(pulumi.CustomResource):
                 "keyc": "valuec",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -499,7 +497,6 @@ class MembershipBinding(pulumi.CustomResource):
 
         ### Gkehub Membership Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -530,7 +527,6 @@ class MembershipBinding(pulumi.CustomResource):
                 "keyc": "valuec",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

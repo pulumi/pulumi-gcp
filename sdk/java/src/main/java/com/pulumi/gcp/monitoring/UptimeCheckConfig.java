@@ -462,14 +462,14 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.monitoredResource);
     }
     /**
-     * The fully qualified name of the cloud function resource.
+     * A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The fully qualified name of the cloud function resource.
+     * @return A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      * 
      */
     public Output<String> name() {

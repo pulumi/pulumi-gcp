@@ -1041,7 +1041,6 @@ class Trigger(pulumi.CustomResource):
 
         ### Cloudbuild Trigger Filename
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1058,10 +1057,8 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Build
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1159,10 +1156,8 @@ class Trigger(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Service Account
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1185,10 +1180,8 @@ class Trigger(pulumi.CustomResource):
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Include Build Logs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1206,10 +1199,8 @@ class Trigger(pulumi.CustomResource):
             ),
             include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Pubsub Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1238,10 +1229,8 @@ class Trigger(pulumi.CustomResource):
             },
             filter="_ACTION.matches('INSERT')")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Webhook Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1285,10 +1274,8 @@ class Trigger(pulumi.CustomResource):
                 repo_type="GITHUB",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Manual
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1310,10 +1297,8 @@ class Trigger(pulumi.CustomResource):
                 approval_required=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Manual Github Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1334,10 +1319,8 @@ class Trigger(pulumi.CustomResource):
                 github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Manual Bitbucket Server
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1358,10 +1341,8 @@ class Trigger(pulumi.CustomResource):
                 bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Repo
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1389,10 +1370,8 @@ class Trigger(pulumi.CustomResource):
             ),
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Bitbucket Server Push
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1411,10 +1390,8 @@ class Trigger(pulumi.CustomResource):
             ),
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Bitbucket Server Pull Request
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1434,10 +1411,8 @@ class Trigger(pulumi.CustomResource):
             ),
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Github Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1455,10 +1430,8 @@ class Trigger(pulumi.CustomResource):
             ),
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Allow Failure
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1533,10 +1506,8 @@ class Trigger(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Allow Exit Codes
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1614,10 +1585,8 @@ class Trigger(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Pubsub With Repo
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1654,7 +1623,6 @@ class Trigger(pulumi.CustomResource):
                 repo_type="GITHUB",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1783,7 +1751,6 @@ class Trigger(pulumi.CustomResource):
 
         ### Cloudbuild Trigger Filename
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1800,10 +1767,8 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Build
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1901,10 +1866,8 @@ class Trigger(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Service Account
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1927,10 +1890,8 @@ class Trigger(pulumi.CustomResource):
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Include Build Logs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1948,10 +1909,8 @@ class Trigger(pulumi.CustomResource):
             ),
             include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Pubsub Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1980,10 +1939,8 @@ class Trigger(pulumi.CustomResource):
             },
             filter="_ACTION.matches('INSERT')")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Webhook Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2027,10 +1984,8 @@ class Trigger(pulumi.CustomResource):
                 repo_type="GITHUB",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Manual
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2052,10 +2007,8 @@ class Trigger(pulumi.CustomResource):
                 approval_required=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Manual Github Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2076,10 +2029,8 @@ class Trigger(pulumi.CustomResource):
                 github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Manual Bitbucket Server
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2100,10 +2051,8 @@ class Trigger(pulumi.CustomResource):
                 bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Repo
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2131,10 +2080,8 @@ class Trigger(pulumi.CustomResource):
             ),
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Bitbucket Server Push
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2153,10 +2100,8 @@ class Trigger(pulumi.CustomResource):
             ),
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Bitbucket Server Pull Request
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2176,10 +2121,8 @@ class Trigger(pulumi.CustomResource):
             ),
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Github Enterprise
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2197,10 +2140,8 @@ class Trigger(pulumi.CustomResource):
             ),
             filename="cloudbuild.yaml")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Allow Failure
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2275,10 +2216,8 @@ class Trigger(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Allow Exit Codes
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2356,10 +2295,8 @@ class Trigger(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Trigger Pubsub With Repo
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2396,7 +2333,6 @@ class Trigger(pulumi.CustomResource):
                 repo_type="GITHUB",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

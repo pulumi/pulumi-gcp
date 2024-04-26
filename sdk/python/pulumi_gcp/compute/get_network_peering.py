@@ -145,7 +145,6 @@ def get_network_peering(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -167,7 +166,6 @@ def get_network_peering(name: Optional[str] = None,
     peering1_ds = gcp.compute.get_network_peering_output(name=peering1.name,
         network=peering1.network)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the peering.
@@ -205,7 +203,6 @@ def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -227,7 +224,6 @@ def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
     peering1_ds = gcp.compute.get_network_peering_output(name=peering1.name,
         network=peering1.network)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the peering.

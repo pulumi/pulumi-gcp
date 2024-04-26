@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Workflow Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,7 +46,7 @@ import * as utilities from "../utilities";
  * #   from currentTime
  * # - returns the list of articles as an output of the workflow
  * #
- * # Note: In Terraform you need to escape the $$ or it will cause errors.
+ * # Note: In Terraform you need to escape the  or it will cause errors.
  *
  * - getCurrentTime:
  *     call: http.get
@@ -67,7 +66,6 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

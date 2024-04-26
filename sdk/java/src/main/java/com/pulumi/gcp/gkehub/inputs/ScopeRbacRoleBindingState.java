@@ -65,18 +65,16 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Principal that is be authorized in the cluster (at least of one the oneof
-     * is required). Updating one will unset the other automatically.
-     * group is the group, as seen by the kubernetes cluster.
+     * Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+     * other automatically. group is the group, as seen by the kubernetes cluster.
      * 
      */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return Principal that is be authorized in the cluster (at least of one the oneof
-     * is required). Updating one will unset the other automatically.
-     * group is the group, as seen by the kubernetes cluster.
+     * @return Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+     * other automatically. group is the group, as seen by the kubernetes cluster.
      * 
      */
     public Optional<Output<String>> group() {
@@ -84,20 +82,16 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Labels for this ScopeRBACRoleBinding.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+     * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels for this ScopeRBACRoleBinding.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+     * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -119,19 +113,9 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -248,20 +232,18 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Principal that is be authorized in the cluster (at least of one the oneof
-     * is required). Updating one will unset the other automatically.
-     * user is the name of the user as seen by the kubernetes cluster, example
-     * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+     * Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+     * other automatically. user is the name of the user as seen by the kubernetes cluster, example &#34;alice&#34; or
+     * &#34;alice@domain.tld&#34;
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return Principal that is be authorized in the cluster (at least of one the oneof
-     * is required). Updating one will unset the other automatically.
-     * user is the name of the user as seen by the kubernetes cluster, example
-     * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+     * @return Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+     * other automatically. user is the name of the user as seen by the kubernetes cluster, example &#34;alice&#34; or
+     * &#34;alice@domain.tld&#34;
      * 
      */
     public Optional<Output<String>> user() {
@@ -370,9 +352,8 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param group Principal that is be authorized in the cluster (at least of one the oneof
-         * is required). Updating one will unset the other automatically.
-         * group is the group, as seen by the kubernetes cluster.
+         * @param group Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+         * other automatically. group is the group, as seen by the kubernetes cluster.
          * 
          * @return builder
          * 
@@ -383,9 +364,8 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param group Principal that is be authorized in the cluster (at least of one the oneof
-         * is required). Updating one will unset the other automatically.
-         * group is the group, as seen by the kubernetes cluster.
+         * @param group Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+         * other automatically. group is the group, as seen by the kubernetes cluster.
          * 
          * @return builder
          * 
@@ -395,10 +375,8 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param labels Labels for this ScopeRBACRoleBinding.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+         * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -409,10 +387,8 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param labels Labels for this ScopeRBACRoleBinding.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+         * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -442,25 +418,11 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -630,10 +592,9 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param user Principal that is be authorized in the cluster (at least of one the oneof
-         * is required). Updating one will unset the other automatically.
-         * user is the name of the user as seen by the kubernetes cluster, example
-         * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+         * @param user Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+         * other automatically. user is the name of the user as seen by the kubernetes cluster, example &#34;alice&#34; or
+         * &#34;alice@domain.tld&#34;
          * 
          * @return builder
          * 
@@ -644,10 +605,9 @@ public final class ScopeRbacRoleBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param user Principal that is be authorized in the cluster (at least of one the oneof
-         * is required). Updating one will unset the other automatically.
-         * user is the name of the user as seen by the kubernetes cluster, example
-         * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+         * @param user Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+         * other automatically. user is the name of the user as seen by the kubernetes cluster, example &#34;alice&#34; or
+         * &#34;alice@domain.tld&#34;
          * 
          * @return builder
          * 

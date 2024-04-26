@@ -17,14 +17,12 @@ import * as utilities from "../utilities";
  *
  * ### Apigateway Api Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const api = new gcp.apigateway.Api("api", {apiId: "my-api"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -263,7 +263,6 @@ class AiMetadataStore(pulumi.CustomResource):
 
         ### Vertex Ai Metadata Store
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -273,7 +272,6 @@ class AiMetadataStore(pulumi.CustomResource):
             description="Store to test the terraform module",
             region="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -326,7 +324,6 @@ class AiMetadataStore(pulumi.CustomResource):
 
         ### Vertex Ai Metadata Store
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -336,7 +333,6 @@ class AiMetadataStore(pulumi.CustomResource):
             description="Store to test the terraform module",
             region="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

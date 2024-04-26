@@ -335,7 +335,6 @@ class AppleApp(pulumi.CustomResource):
 
         ### Firebase Apple App Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -345,10 +344,8 @@ class AppleApp(pulumi.CustomResource):
             display_name="Display Name Basic",
             bundle_id="apple.app.12345")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase Apple App Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -370,7 +367,6 @@ class AppleApp(pulumi.CustomResource):
             team_id="9987654321",
             api_key_id=apple.uid)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -437,7 +433,6 @@ class AppleApp(pulumi.CustomResource):
 
         ### Firebase Apple App Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -447,10 +442,8 @@ class AppleApp(pulumi.CustomResource):
             display_name="Display Name Basic",
             bundle_id="apple.app.12345")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase Apple App Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -472,7 +465,6 @@ class AppleApp(pulumi.CustomResource):
             team_id="9987654321",
             api_key_id=apple.uid)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

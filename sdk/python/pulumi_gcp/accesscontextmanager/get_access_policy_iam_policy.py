@@ -85,14 +85,12 @@ def get_access_policy_iam_policy(name: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=access_policy["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Used to find the parent resource to bind the IAM policy to
@@ -117,14 +115,12 @@ def get_access_policy_iam_policy_output(name: Optional[pulumi.Input[str]] = None
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=access_policy["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Used to find the parent resource to bind the IAM policy to

@@ -105,7 +105,6 @@ def get_membership_iam_policy(location: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_membership_iam_policy(location: Optional[str] = None,
         location=membership["location"],
         membership_id=membership["membershipId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: Location of the membership.
@@ -149,7 +147,6 @@ def get_membership_iam_policy_output(location: Optional[pulumi.Input[Optional[st
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -158,7 +155,6 @@ def get_membership_iam_policy_output(location: Optional[pulumi.Input[Optional[st
         location=membership["location"],
         membership_id=membership["membershipId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: Location of the membership.

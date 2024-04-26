@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  *
  * ### Iam Workforce Pool Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,10 +33,8 @@ import * as utilities from "../utilities";
  *     location: "global",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Iam Workforce Pool Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,7 +55,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

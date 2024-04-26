@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ### Interconnect Attachment Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -38,10 +37,8 @@ import * as utilities from "../utilities";
  *     mtu: "1500",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Compute Interconnect Attachment Ipsec Encryption
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,7 +72,6 @@ import * as utilities from "../utilities";
  *     ipsecInternalAddresses: [address.selfLink],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

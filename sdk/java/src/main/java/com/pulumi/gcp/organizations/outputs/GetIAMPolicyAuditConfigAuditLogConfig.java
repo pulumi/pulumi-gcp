@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIAMPolicyAuditConfigAuditLogConfig {
-    /**
-     * @return Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
-     * 
-     */
     private @Nullable List<String> exemptedMembers;
-    /**
-     * @return Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-     * 
-     */
     private String logType;
 
     private GetIAMPolicyAuditConfigAuditLogConfig() {}
-    /**
-     * @return Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
-     * 
-     */
     public List<String> exemptedMembers() {
         return this.exemptedMembers == null ? List.of() : this.exemptedMembers;
     }
-    /**
-     * @return Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-     * 
-     */
     public String logType() {
         return this.logType;
     }

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     masterBillingAccount: "012345-567890-ABCDEF",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

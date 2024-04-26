@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### Empty Instance Group
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,11 +26,9 @@ import * as utilities from "../utilities";
  *     network: _default.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Example Usage - With instances and named ports
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,14 +53,12 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Example Usage - Recreating an instance group in use
  * Recreating an instance group that's in use by another resource will give a
  * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
  * as shown in this example to avoid this type of error.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -114,7 +109,6 @@ import * as utilities from "../utilities";
  *     healthChecks: stagingHealth.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

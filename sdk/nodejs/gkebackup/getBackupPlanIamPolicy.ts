@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     name: basic.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBackupPlanIamPolicy(args: GetBackupPlanIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPlanIamPolicyResult> {
 
@@ -78,7 +76,6 @@ export interface GetBackupPlanIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -89,7 +86,6 @@ export interface GetBackupPlanIamPolicyResult {
  *     name: basic.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBackupPlanIamPolicyOutput(args: GetBackupPlanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlanIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getBackupPlanIamPolicy(a, opts))

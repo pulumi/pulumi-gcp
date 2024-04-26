@@ -921,7 +921,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
 
         ### Gkeonprem Bare Metal Admin Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -986,10 +985,8 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 login_user="root",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkeonprem Bare Metal Admin Cluster Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1090,7 +1087,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 no_proxies=["127.0.0.1"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1172,7 +1168,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
 
         ### Gkeonprem Bare Metal Admin Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1237,10 +1232,8 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 login_user="root",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkeonprem Bare Metal Admin Cluster Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1341,7 +1334,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 no_proxies=["127.0.0.1"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

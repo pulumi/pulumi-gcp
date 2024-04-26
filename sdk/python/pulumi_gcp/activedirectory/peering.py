@@ -328,7 +328,6 @@ class Peering(pulumi.CustomResource):
 
         ### Active Directory Peering Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,7 +357,6 @@ class Peering(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -388,7 +386,6 @@ class Peering(pulumi.CustomResource):
 
         ### Active Directory Peering Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -418,7 +415,6 @@ class Peering(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

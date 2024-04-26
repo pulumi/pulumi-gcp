@@ -25,7 +25,6 @@ import (
 //
 // ### Internal Http Lb With Mig Backend
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -267,10 +266,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Internal Tcp Udp Lb With Mig Backend
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -505,10 +502,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Externallb
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -557,10 +552,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Global Internallb
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -627,10 +620,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -662,10 +653,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule L3 Default
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -712,10 +701,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Internallb
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -782,10 +769,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Http Lb
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1034,10 +1019,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Regional Http Xlb
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1294,10 +1277,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Vpc Psc
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1426,10 +1407,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Vpc Psc No Automate Dns
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1556,10 +1535,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Regional Steering
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1616,10 +1593,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Internallb Ipv6
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1689,7 +1664,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

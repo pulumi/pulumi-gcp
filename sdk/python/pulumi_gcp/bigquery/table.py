@@ -31,6 +31,7 @@ class TableArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  table_replication_info: Optional[pulumi.Input['TableTableReplicationInfoArgs']] = None,
@@ -77,21 +78,10 @@ class TableArgs:
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
-        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
-               for CSV and JSON formats if autodetect is not on. Schema is disallowed
-               for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               Furthermore drift for this field cannot not be detected because BigQuery
-               only uses this schema to compute the effective schema for the table, therefore
-               any changes on the configured value will force the table to be recreated.
-               This schema is effectively only applied when creating a table from an external
-               datasource, after creation the computed schema will be stored in
-               `google_bigquery_table.schema`
-               
-               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-               table schema must be specified using the top-level `schema` field
-               documented above.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+               example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+               tag key. Tag value is expected to be the short name, for example "Production".
+        :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
         :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
@@ -128,6 +118,8 @@ class TableArgs:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if require_partition_filter is not None:
             pulumi.set(__self__, "require_partition_filter", require_partition_filter)
+        if resource_tags is not None:
+            pulumi.set(__self__, "resource_tags", resource_tags)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if table_constraints is not None:
@@ -344,24 +336,24 @@ class TableArgs:
         pulumi.set(self, "require_partition_filter", value)
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+        example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+        tag key. Tag value is expected to be the short name, for example "Production".
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @resource_tags.setter
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_tags", value)
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
-        A JSON schema for the external table. Schema is required
-        for CSV and JSON formats if autodetect is not on. Schema is disallowed
-        for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        Furthermore drift for this field cannot not be detected because BigQuery
-        only uses this schema to compute the effective schema for the table, therefore
-        any changes on the configured value will force the table to be recreated.
-        This schema is effectively only applied when creating a table from an external
-        datasource, after creation the computed schema will be stored in
-        `google_bigquery_table.schema`
-
-        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-        table schema must be specified using the top-level `schema` field
-        documented above.
+        A JSON schema for the table.
         """
         return pulumi.get(self, "schema")
 
@@ -447,6 +439,7 @@ class _TableState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
@@ -518,21 +511,10 @@ class _TableState:
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
-        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
-               for CSV and JSON formats if autodetect is not on. Schema is disallowed
-               for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               Furthermore drift for this field cannot not be detected because BigQuery
-               only uses this schema to compute the effective schema for the table, therefore
-               any changes on the configured value will force the table to be recreated.
-               This schema is effectively only applied when creating a table from an external
-               datasource, after creation the computed schema will be stored in
-               `google_bigquery_table.schema`
-               
-               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-               table schema must be specified using the top-level `schema` field
-               documented above.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+               example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+               tag key. Tag value is expected to be the short name, for example "Production".
+        :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
@@ -541,8 +523,7 @@ class _TableState:
         :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
         :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] type: The supported types are DAY, HOUR, MONTH, and YEAR,
-               which will generate one partition per day, hour, month, and year, respectively.
+        :param pulumi.Input[str] type: Describes the table type.
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
                Structure is documented below.
         """
@@ -592,6 +573,8 @@ class _TableState:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if require_partition_filter is not None:
             pulumi.set(__self__, "require_partition_filter", require_partition_filter)
+        if resource_tags is not None:
+            pulumi.set(__self__, "resource_tags", resource_tags)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if self_link is not None:
@@ -924,24 +907,24 @@ class _TableState:
         pulumi.set(self, "require_partition_filter", value)
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+        example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+        tag key. Tag value is expected to be the short name, for example "Production".
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @resource_tags.setter
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_tags", value)
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
-        A JSON schema for the external table. Schema is required
-        for CSV and JSON formats if autodetect is not on. Schema is disallowed
-        for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        Furthermore drift for this field cannot not be detected because BigQuery
-        only uses this schema to compute the effective schema for the table, therefore
-        any changes on the configured value will force the table to be recreated.
-        This schema is effectively only applied when creating a table from an external
-        datasource, after creation the computed schema will be stored in
-        `google_bigquery_table.schema`
-
-        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-        table schema must be specified using the top-level `schema` field
-        documented above.
+        A JSON schema for the table.
         """
         return pulumi.get(self, "schema")
 
@@ -1016,8 +999,7 @@ class _TableState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The supported types are DAY, HOUR, MONTH, and YEAR,
-        which will generate one partition per day, hour, month, and year, respectively.
+        Describes the table type.
         """
         return pulumi.get(self, "type")
 
@@ -1058,6 +1040,7 @@ class Table(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
@@ -1076,7 +1059,6 @@ class Table(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1126,7 +1108,6 @@ class Table(pulumi.CustomResource):
                 source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1191,21 +1172,10 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
-        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
-               for CSV and JSON formats if autodetect is not on. Schema is disallowed
-               for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               Furthermore drift for this field cannot not be detected because BigQuery
-               only uses this schema to compute the effective schema for the table, therefore
-               any changes on the configured value will force the table to be recreated.
-               This schema is effectively only applied when creating a table from an external
-               datasource, after creation the computed schema will be stored in
-               `google_bigquery_table.schema`
-               
-               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-               table schema must be specified using the top-level `schema` field
-               documented above.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+               example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+               tag key. Tag value is expected to be the short name, for example "Production".
+        :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
@@ -1233,7 +1203,6 @@ class Table(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1283,7 +1252,6 @@ class Table(pulumi.CustomResource):
                 source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1338,6 +1306,7 @@ class Table(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
@@ -1369,6 +1338,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["require_partition_filter"] = require_partition_filter
+            __props__.__dict__["resource_tags"] = resource_tags
             __props__.__dict__["schema"] = schema
             __props__.__dict__["table_constraints"] = table_constraints
             if table_id is None and not opts.urn:
@@ -1423,6 +1393,7 @@ class Table(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
             require_partition_filter: Optional[pulumi.Input[bool]] = None,
+            resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
@@ -1499,21 +1470,10 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
-        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
-               for CSV and JSON formats if autodetect is not on. Schema is disallowed
-               for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               Furthermore drift for this field cannot not be detected because BigQuery
-               only uses this schema to compute the effective schema for the table, therefore
-               any changes on the configured value will force the table to be recreated.
-               This schema is effectively only applied when creating a table from an external
-               datasource, after creation the computed schema will be stored in
-               `google_bigquery_table.schema`
-               
-               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-               table schema must be specified using the top-level `schema` field
-               documented above.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+               example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+               tag key. Tag value is expected to be the short name, for example "Production".
+        :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
@@ -1522,8 +1482,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']] table_replication_info: Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] type: The supported types are DAY, HOUR, MONTH, and YEAR,
-               which will generate one partition per day, hour, month, and year, respectively.
+        :param pulumi.Input[str] type: Describes the table type.
         :param pulumi.Input[pulumi.InputType['TableViewArgs']] view: If specified, configures this table as a view.
                Structure is documented below.
         """
@@ -1554,6 +1513,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["range_partitioning"] = range_partitioning
         __props__.__dict__["require_partition_filter"] = require_partition_filter
+        __props__.__dict__["resource_tags"] = resource_tags
         __props__.__dict__["schema"] = schema
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["table_constraints"] = table_constraints
@@ -1787,24 +1747,20 @@ class Table(pulumi.CustomResource):
         return pulumi.get(self, "require_partition_filter")
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+        example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+        tag key. Tag value is expected to be the short name, for example "Production".
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @property
     @pulumi.getter
     def schema(self) -> pulumi.Output[str]:
         """
-        A JSON schema for the external table. Schema is required
-        for CSV and JSON formats if autodetect is not on. Schema is disallowed
-        for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        Furthermore drift for this field cannot not be detected because BigQuery
-        only uses this schema to compute the effective schema for the table, therefore
-        any changes on the configured value will force the table to be recreated.
-        This schema is effectively only applied when creating a table from an external
-        datasource, after creation the computed schema will be stored in
-        `google_bigquery_table.schema`
-
-        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-        table schema must be specified using the top-level `schema` field
-        documented above.
+        A JSON schema for the table.
         """
         return pulumi.get(self, "schema")
 
@@ -1855,8 +1811,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The supported types are DAY, HOUR, MONTH, and YEAR,
-        which will generate one partition per day, hour, month, and year, respectively.
+        Describes the table type.
         """
         return pulumi.get(self, "type")
 

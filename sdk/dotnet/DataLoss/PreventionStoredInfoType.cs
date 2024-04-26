@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// ### Dlp Stored Info Type Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,10 +47,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Stored Info Type Dictionary
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,10 +77,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Stored Info Type Large Custom Dictionary
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -131,10 +126,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Stored Info Type With Id
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -161,7 +154,6 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -211,7 +203,7 @@ namespace Pulumi.Gcp.DataLoss
         public Output<Outputs.PreventionStoredInfoTypeLargeCustomDictionary?> LargeCustomDictionary { get; private set; } = null!;
 
         /// <summary>
-        /// Name describing the field.
+        /// The resource name of the info type. Set by the server.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -379,7 +371,7 @@ namespace Pulumi.Gcp.DataLoss
         public Input<Inputs.PreventionStoredInfoTypeLargeCustomDictionaryGetArgs>? LargeCustomDictionary { get; set; }
 
         /// <summary>
-        /// Name describing the field.
+        /// The resource name of the info type. Set by the server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

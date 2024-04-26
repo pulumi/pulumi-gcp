@@ -402,7 +402,6 @@ class CxWebhook(pulumi.CustomResource):
 
         ### Dialogflowcx Webhook Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -431,7 +430,6 @@ class CxWebhook(pulumi.CustomResource):
                 uri="https://example.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -488,7 +486,6 @@ class CxWebhook(pulumi.CustomResource):
 
         ### Dialogflowcx Webhook Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -517,7 +514,6 @@ class CxWebhook(pulumi.CustomResource):
                 uri="https://example.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

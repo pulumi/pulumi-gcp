@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * ### Certificate Manager Certificate Map Entry Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -62,7 +61,6 @@ import * as utilities from "../utilities";
  *     matcher: "PRIMARY",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

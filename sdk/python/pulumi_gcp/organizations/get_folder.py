@@ -149,7 +149,6 @@ def get_folder(folder: Optional[str] = None,
     """
     Use this data source to get information about a Google Cloud Folder.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -160,7 +159,6 @@ def get_folder(folder: Optional[str] = None,
     pulumi.export("myFolder1Organization", my_folder1.organization)
     pulumi.export("myFolder2Parent", my_folder2.parent)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str folder: The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
@@ -192,7 +190,6 @@ def get_folder_output(folder: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to get information about a Google Cloud Folder.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -203,7 +200,6 @@ def get_folder_output(folder: Optional[pulumi.Input[str]] = None,
     pulumi.export("myFolder1Organization", my_folder1.organization)
     pulumi.export("myFolder2Parent", my_folder2.parent)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str folder: The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.

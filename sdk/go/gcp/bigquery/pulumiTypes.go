@@ -9669,7 +9669,7 @@ func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
 }
 
 type JobStatusError struct {
-	// The geographic location of the job. The default value is US.
+	// Specifies where the error occurred, if present.
 	Location *string `pulumi:"location"`
 	// A human-readable description of the error.
 	Message *string `pulumi:"message"`
@@ -9689,7 +9689,7 @@ type JobStatusErrorInput interface {
 }
 
 type JobStatusErrorArgs struct {
-	// The geographic location of the job. The default value is US.
+	// Specifies where the error occurred, if present.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// A human-readable description of the error.
 	Message pulumi.StringPtrInput `pulumi:"message"`
@@ -9748,7 +9748,7 @@ func (o JobStatusErrorOutput) ToJobStatusErrorOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The geographic location of the job. The default value is US.
+// Specifies where the error occurred, if present.
 func (o JobStatusErrorOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatusError) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -9784,7 +9784,7 @@ func (o JobStatusErrorArrayOutput) Index(i pulumi.IntInput) JobStatusErrorOutput
 }
 
 type JobStatusErrorResult struct {
-	// The geographic location of the job. The default value is US.
+	// Specifies where the error occurred, if present.
 	Location *string `pulumi:"location"`
 	// A human-readable description of the error.
 	Message *string `pulumi:"message"`
@@ -9804,7 +9804,7 @@ type JobStatusErrorResultInput interface {
 }
 
 type JobStatusErrorResultArgs struct {
-	// The geographic location of the job. The default value is US.
+	// Specifies where the error occurred, if present.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// A human-readable description of the error.
 	Message pulumi.StringPtrInput `pulumi:"message"`
@@ -9863,7 +9863,7 @@ func (o JobStatusErrorResultOutput) ToJobStatusErrorResultOutputWithContext(ctx 
 	return o
 }
 
-// The geographic location of the job. The default value is US.
+// Specifies where the error occurred, if present.
 func (o JobStatusErrorResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatusErrorResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }

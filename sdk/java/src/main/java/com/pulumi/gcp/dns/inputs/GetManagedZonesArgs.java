@@ -5,9 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.dns.inputs.GetManagedZonesManagedZoneArgs;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,21 +14,6 @@ import javax.annotation.Nullable;
 public final class GetManagedZonesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetManagedZonesArgs Empty = new GetManagedZonesArgs();
-
-    /**
-     * A list of managed zones.
-     * 
-     */
-    @Import(name="managedZones")
-    private @Nullable Output<List<GetManagedZonesManagedZoneArgs>> managedZones;
-
-    /**
-     * @return A list of managed zones.
-     * 
-     */
-    public Optional<Output<List<GetManagedZonesManagedZoneArgs>>> managedZones() {
-        return Optional.ofNullable(this.managedZones);
-    }
 
     /**
      * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
@@ -50,7 +33,6 @@ public final class GetManagedZonesArgs extends com.pulumi.resources.InvokeArgs {
     private GetManagedZonesArgs() {}
 
     private GetManagedZonesArgs(GetManagedZonesArgs $) {
-        this.managedZones = $.managedZones;
         this.project = $.project;
     }
 
@@ -70,37 +52,6 @@ public final class GetManagedZonesArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetManagedZonesArgs defaults) {
             $ = new GetManagedZonesArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param managedZones A list of managed zones.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder managedZones(@Nullable Output<List<GetManagedZonesManagedZoneArgs>> managedZones) {
-            $.managedZones = managedZones;
-            return this;
-        }
-
-        /**
-         * @param managedZones A list of managed zones.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder managedZones(List<GetManagedZonesManagedZoneArgs> managedZones) {
-            return managedZones(Output.of(managedZones));
-        }
-
-        /**
-         * @param managedZones A list of managed zones.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder managedZones(GetManagedZonesManagedZoneArgs... managedZones) {
-            return managedZones(List.of(managedZones));
         }
 
         /**

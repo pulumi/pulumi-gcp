@@ -352,7 +352,6 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
 
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,11 +367,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -393,10 +390,8 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -409,11 +404,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -431,10 +424,8 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -447,11 +438,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -469,11 +458,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -489,11 +476,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,10 +499,8 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -530,11 +513,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -552,10 +533,8 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -568,11 +547,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -590,7 +567,6 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -679,7 +655,6 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
 
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -695,11 +670,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -720,10 +693,8 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -736,11 +707,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -758,10 +727,8 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -774,11 +741,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -796,11 +761,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -816,11 +779,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -841,10 +802,8 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -857,11 +816,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -879,10 +836,8 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -895,11 +850,9 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -917,7 +870,6 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

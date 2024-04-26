@@ -91,7 +91,6 @@ def get_folder_service_account(folder_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -102,7 +101,6 @@ def get_folder_service_account(folder_id: Optional[str] = None,
         role="roles/cloudkms.signerVerifier",
         member=f"serviceAccount:{service_account.account_email}")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str folder_id: The folder ID the service account was created for.
@@ -133,7 +131,6 @@ def get_folder_service_account_output(folder_id: Optional[pulumi.Input[str]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -144,7 +141,6 @@ def get_folder_service_account_output(folder_id: Optional[pulumi.Input[str]] = N
         role="roles/cloudkms.signerVerifier",
         member=f"serviceAccount:{service_account.account_email}")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str folder_id: The folder ID the service account was created for.

@@ -384,7 +384,6 @@ class Reservation(pulumi.CustomResource):
 
         ### Bigquery Reservation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -400,7 +399,6 @@ class Reservation(pulumi.CustomResource):
                 max_slots=100,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -467,7 +465,6 @@ class Reservation(pulumi.CustomResource):
 
         ### Bigquery Reservation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -483,7 +480,6 @@ class Reservation(pulumi.CustomResource):
                 max_slots=100,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

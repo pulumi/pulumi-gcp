@@ -24,7 +24,6 @@ import (
 //
 // ### Alloydb User Builtin
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,10 +105,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Alloydb User Iam
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -190,7 +187,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

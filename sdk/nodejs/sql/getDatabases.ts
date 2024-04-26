@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Use this data source to get information about a list of databases in a Cloud SQL instance.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     instance: main.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
 
@@ -62,7 +60,6 @@ export interface GetDatabasesResult {
  * Use this data source to get information about a list of databases in a Cloud SQL instance.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,7 +68,6 @@ export interface GetDatabasesResult {
  *     instance: main.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabasesOutput(args: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
     return pulumi.output(args).apply((a: any) => getDatabases(a, opts))

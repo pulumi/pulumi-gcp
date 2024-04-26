@@ -32,7 +32,6 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// ### Firestore Index Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,10 +72,8 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firestore Index Datastore Mode
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -119,10 +116,8 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firestore Index Vector
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -172,7 +167,6 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -190,9 +184,7 @@ namespace Pulumi.Gcp.Firestore
     public partial class Index : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The API scope at which a query is run.
-        /// Default value is `ANY_API`.
-        /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         /// </summary>
         [Output("apiScope")]
         public Output<string?> ApiScope { get; private set; } = null!;
@@ -204,7 +196,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Collection { get; private set; } = null!;
 
         /// <summary>
-        /// The Firestore database id. Defaults to `"(default)"`.
+        /// The Firestore database id. Defaults to '"(default)"'.
         /// </summary>
         [Output("database")]
         public Output<string?> Database { get; private set; } = null!;
@@ -228,17 +220,12 @@ namespace Pulumi.Gcp.Firestore
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The scope at which a query is run.
-        /// Default value is `COLLECTION`.
-        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        /// The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+        /// "COLLECTION_RECURSIVE"]
         /// </summary>
         [Output("queryScope")]
         public Output<string?> QueryScope { get; private set; } = null!;
@@ -290,9 +277,7 @@ namespace Pulumi.Gcp.Firestore
     public sealed class IndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The API scope at which a query is run.
-        /// Default value is `ANY_API`.
-        /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         /// </summary>
         [Input("apiScope")]
         public Input<string>? ApiScope { get; set; }
@@ -304,7 +289,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string> Collection { get; set; } = null!;
 
         /// <summary>
-        /// The Firestore database id. Defaults to `"(default)"`.
+        /// The Firestore database id. Defaults to '"(default)"'.
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
@@ -327,17 +312,12 @@ namespace Pulumi.Gcp.Firestore
             set => _fields = value;
         }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The scope at which a query is run.
-        /// Default value is `COLLECTION`.
-        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        /// The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+        /// "COLLECTION_RECURSIVE"]
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
@@ -351,9 +331,7 @@ namespace Pulumi.Gcp.Firestore
     public sealed class IndexState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The API scope at which a query is run.
-        /// Default value is `ANY_API`.
-        /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
         /// </summary>
         [Input("apiScope")]
         public Input<string>? ApiScope { get; set; }
@@ -365,7 +343,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Collection { get; set; }
 
         /// <summary>
-        /// The Firestore database id. Defaults to `"(default)"`.
+        /// The Firestore database id. Defaults to '"(default)"'.
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
@@ -395,17 +373,12 @@ namespace Pulumi.Gcp.Firestore
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The scope at which a query is run.
-        /// Default value is `COLLECTION`.
-        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        /// The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
+        /// "COLLECTION_RECURSIVE"]
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }

@@ -282,7 +282,6 @@ class ExternalAddress(pulumi.CustomResource):
 
         ### Vmware Engine External Address Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -318,7 +317,6 @@ class ExternalAddress(pulumi.CustomResource):
             internal_ip="192.168.0.66",
             description="Sample description.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -361,7 +359,6 @@ class ExternalAddress(pulumi.CustomResource):
 
         ### Vmware Engine External Address Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -397,7 +394,6 @@ class ExternalAddress(pulumi.CustomResource):
             internal_ip="192.168.0.66",
             description="Sample description.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

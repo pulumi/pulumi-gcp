@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * });
  * export const gcrLocation = debian.then(debian => debian.imageUrl);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegistryImage(args: GetRegistryImageArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryImageResult> {
 
@@ -86,7 +84,6 @@ export interface GetRegistryImageResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -96,7 +93,6 @@ export interface GetRegistryImageResult {
  * });
  * export const gcrLocation = debian.then(debian => debian.imageUrl);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegistryImageOutput(args: GetRegistryImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryImageResult> {
     return pulumi.output(args).apply((a: any) => getRegistryImage(a, opts))

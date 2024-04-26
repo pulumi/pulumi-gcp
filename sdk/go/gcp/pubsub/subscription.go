@@ -28,7 +28,6 @@ import (
 //
 // ### Pubsub Subscription Push
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -69,10 +68,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Pull
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -116,10 +113,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Dead Letter
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -160,10 +155,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Push Bq
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -252,10 +245,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Push Bq Table Schema
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -345,10 +336,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Push Cloudstorage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -410,10 +399,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Push Cloudstorage Avro
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -478,7 +465,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

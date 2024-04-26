@@ -19,18 +19,14 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
     public static final IndexArgs Empty = new IndexArgs();
 
     /**
-     * The API scope at which a query is run.
-     * Default value is `ANY_API`.
-     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
      * 
      */
     @Import(name="apiScope")
     private @Nullable Output<String> apiScope;
 
     /**
-     * @return The API scope at which a query is run.
-     * Default value is `ANY_API`.
-     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * @return The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
      * 
      */
     public Optional<Output<String>> apiScope() {
@@ -53,14 +49,14 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Firestore database id. Defaults to `&#34;(default)&#34;`.
+     * The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
      * 
      */
     @Import(name="database")
     private @Nullable Output<String> database;
 
     /**
-     * @return The Firestore database id. Defaults to `&#34;(default)&#34;`.
+     * @return The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
      * 
      */
     public Optional<Output<String>> database() {
@@ -94,36 +90,24 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         return this.fields;
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The scope at which a query is run.
-     * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+     * The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
+     * &#34;COLLECTION_RECURSIVE&#34;]
      * 
      */
     @Import(name="queryScope")
     private @Nullable Output<String> queryScope;
 
     /**
-     * @return The scope at which a query is run.
-     * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+     * @return The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
+     * &#34;COLLECTION_RECURSIVE&#34;]
      * 
      */
     public Optional<Output<String>> queryScope() {
@@ -160,9 +144,7 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiScope The API scope at which a query is run.
-         * Default value is `ANY_API`.
-         * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+         * @param apiScope The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
          * 
          * @return builder
          * 
@@ -173,9 +155,7 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiScope The API scope at which a query is run.
-         * Default value is `ANY_API`.
-         * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+         * @param apiScope The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
          * 
          * @return builder
          * 
@@ -206,7 +186,7 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param database The Firestore database id. Defaults to `&#34;(default)&#34;`.
+         * @param database The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
          * 
          * @return builder
          * 
@@ -217,7 +197,7 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param database The Firestore database id. Defaults to `&#34;(default)&#34;`.
+         * @param database The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
          * 
          * @return builder
          * 
@@ -275,33 +255,18 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
             return fields(List.of(fields));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param queryScope The scope at which a query is run.
-         * Default value is `COLLECTION`.
-         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+         * @param queryScope The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
+         * &#34;COLLECTION_RECURSIVE&#34;]
          * 
          * @return builder
          * 
@@ -312,9 +277,8 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryScope The scope at which a query is run.
-         * Default value is `COLLECTION`.
-         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+         * @param queryScope The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
+         * &#34;COLLECTION_RECURSIVE&#34;]
          * 
          * @return builder
          * 

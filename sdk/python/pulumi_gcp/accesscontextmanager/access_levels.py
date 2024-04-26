@@ -135,7 +135,6 @@ class AccessLevels(pulumi.CustomResource):
 
         ### Access Context Manager Access Levels Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -186,7 +185,6 @@ class AccessLevels(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -237,7 +235,6 @@ class AccessLevels(pulumi.CustomResource):
 
         ### Access Context Manager Access Levels Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -288,7 +285,6 @@ class AccessLevels(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

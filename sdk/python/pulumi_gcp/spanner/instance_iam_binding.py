@@ -261,7 +261,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         ## google\\_spanner\\_instance\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -274,11 +273,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             instance="your-instance-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -288,11 +285,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             role="roles/spanner.databaseAdmin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -302,11 +297,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             role="roles/spanner.databaseAdmin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,11 +312,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             instance="your-instance-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -333,11 +324,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             role="roles/spanner.databaseAdmin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -347,7 +336,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
             role="roles/spanner.databaseAdmin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -414,7 +402,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         ## google\\_spanner\\_instance\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -427,11 +414,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             instance="your-instance-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,11 +426,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             role="roles/spanner.databaseAdmin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,11 +438,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             role="roles/spanner.databaseAdmin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -472,11 +453,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             instance="your-instance-name",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -486,11 +465,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
             role="roles/spanner.databaseAdmin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_instance\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -500,7 +477,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
             role="roles/spanner.databaseAdmin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

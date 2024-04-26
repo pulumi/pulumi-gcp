@@ -16,7 +16,6 @@ import (
 //
 // ### Netapp Volume Replication Create
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,7 +92,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

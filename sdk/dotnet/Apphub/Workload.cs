@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// ### Apphub Workload Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -176,10 +175,8 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Apphub Workload Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -376,7 +373,6 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

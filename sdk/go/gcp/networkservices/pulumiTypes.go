@@ -258,7 +258,8 @@ type EdgeCacheOriginAwsV4Authentication struct {
 	// The name of the AWS region that your origin is in.
 	OriginRegion string `pulumi:"originRegion"`
 	// The Secret Manager secret version of the secret access key used by your origin.
-	// This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+	//
+	// This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
 	SecretAccessKeyVersion string `pulumi:"secretAccessKeyVersion"`
 }
 
@@ -279,7 +280,8 @@ type EdgeCacheOriginAwsV4AuthenticationArgs struct {
 	// The name of the AWS region that your origin is in.
 	OriginRegion pulumi.StringInput `pulumi:"originRegion"`
 	// The Secret Manager secret version of the secret access key used by your origin.
-	// This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+	//
+	// This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
 	SecretAccessKeyVersion pulumi.StringInput `pulumi:"secretAccessKeyVersion"`
 }
 
@@ -371,7 +373,8 @@ func (o EdgeCacheOriginAwsV4AuthenticationOutput) OriginRegion() pulumi.StringOu
 }
 
 // The Secret Manager secret version of the secret access key used by your origin.
-// This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+//
+// This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
 func (o EdgeCacheOriginAwsV4AuthenticationOutput) SecretAccessKeyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeCacheOriginAwsV4Authentication) string { return v.SecretAccessKeyVersion }).(pulumi.StringOutput)
 }
@@ -421,7 +424,8 @@ func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) OriginRegion() pulumi.Strin
 }
 
 // The Secret Manager secret version of the secret access key used by your origin.
-// This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+//
+// This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
 func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) SecretAccessKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheOriginAwsV4Authentication) *string {
 		if v == nil {

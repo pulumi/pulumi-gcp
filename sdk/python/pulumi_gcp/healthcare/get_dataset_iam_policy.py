@@ -84,14 +84,12 @@ def get_dataset_iam_policy(dataset_id: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.healthcare.get_dataset_iam_policy(dataset_id=dataset["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str dataset_id: The dataset ID, in the form
@@ -119,14 +117,12 @@ def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.healthcare.get_dataset_iam_policy(dataset_id=dataset["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str dataset_id: The dataset ID, in the form

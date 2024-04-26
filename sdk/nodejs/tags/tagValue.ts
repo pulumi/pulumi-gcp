@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Tag Value Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  *     description: "For valuename resources.",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

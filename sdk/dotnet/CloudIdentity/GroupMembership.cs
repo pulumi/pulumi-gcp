@@ -28,7 +28,6 @@ namespace Pulumi.Gcp.CloudIdentity
     /// 
     /// ### Cloud Identity Group Membership
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -83,10 +82,8 @@ namespace Pulumi.Gcp.CloudIdentity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloud Identity Group Membership User
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -131,7 +128,6 @@ namespace Pulumi.Gcp.CloudIdentity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -162,21 +158,18 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// EntityKey of the member.
-        /// Structure is documented below.
         /// </summary>
         [Output("memberKey")]
         public Output<Outputs.GroupMembershipMemberKey> MemberKey { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-        /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+        /// The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// EntityKey of the member.
-        /// Structure is documented below.
         /// </summary>
         [Output("preferredMemberKey")]
         public Output<Outputs.GroupMembershipPreferredMemberKey> PreferredMemberKey { get; private set; } = null!;
@@ -255,14 +248,12 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// EntityKey of the member.
-        /// Structure is documented below.
         /// </summary>
         [Input("memberKey")]
         public Input<Inputs.GroupMembershipMemberKeyArgs>? MemberKey { get; set; }
 
         /// <summary>
         /// EntityKey of the member.
-        /// Structure is documented below.
         /// </summary>
         [Input("preferredMemberKey")]
         public Input<Inputs.GroupMembershipPreferredMemberKeyArgs>? PreferredMemberKey { get; set; }
@@ -303,21 +294,18 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// EntityKey of the member.
-        /// Structure is documented below.
         /// </summary>
         [Input("memberKey")]
         public Input<Inputs.GroupMembershipMemberKeyGetArgs>? MemberKey { get; set; }
 
         /// <summary>
-        /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-        /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+        /// The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// EntityKey of the member.
-        /// Structure is documented below.
         /// </summary>
         [Input("preferredMemberKey")]
         public Input<Inputs.GroupMembershipPreferredMemberKeyGetArgs>? PreferredMemberKey { get; set; }

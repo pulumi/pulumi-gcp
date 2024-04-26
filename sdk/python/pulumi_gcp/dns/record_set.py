@@ -304,7 +304,6 @@ class RecordSet(pulumi.CustomResource):
 
         ### Binding a DNS name to the ephemeral IP of a new instance:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -332,11 +331,9 @@ class RecordSet(pulumi.CustomResource):
             managed_zone=prod.name,
             rrdatas=[frontend_instance.network_interfaces[0].access_configs[0].nat_ip])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding an A record
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -351,11 +348,9 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["8.8.8.8"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding an MX record
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -376,13 +371,11 @@ class RecordSet(pulumi.CustomResource):
                 "10 alt4.aspmx.l.google.com.",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding an SPF record
 
         Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -397,13 +390,11 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["\\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\\""])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding a CNAME record
 
          The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -418,12 +409,10 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["frontend.mydomain.com."])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Setting Routing Policy instead of using rrdatas
         ### Geolocation
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,11 +435,9 @@ class RecordSet(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Primary-Backup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -502,7 +489,6 @@ class RecordSet(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -560,7 +546,6 @@ class RecordSet(pulumi.CustomResource):
 
         ### Binding a DNS name to the ephemeral IP of a new instance:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -588,11 +573,9 @@ class RecordSet(pulumi.CustomResource):
             managed_zone=prod.name,
             rrdatas=[frontend_instance.network_interfaces[0].access_configs[0].nat_ip])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding an A record
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -607,11 +590,9 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["8.8.8.8"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding an MX record
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -632,13 +613,11 @@ class RecordSet(pulumi.CustomResource):
                 "10 alt4.aspmx.l.google.com.",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding an SPF record
 
         Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -653,13 +632,11 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["\\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\\""])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding a CNAME record
 
          The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -674,12 +651,10 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["frontend.mydomain.com."])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Setting Routing Policy instead of using rrdatas
         ### Geolocation
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -702,11 +677,9 @@ class RecordSet(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Primary-Backup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -758,7 +731,6 @@ class RecordSet(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

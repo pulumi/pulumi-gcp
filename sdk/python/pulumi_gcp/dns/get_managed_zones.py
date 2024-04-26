@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetManagedZonesResult',
@@ -41,7 +40,7 @@ class GetManagedZonesResult:
 
     @property
     @pulumi.getter(name="managedZones")
-    def managed_zones(self) -> Optional[Sequence['outputs.GetManagedZonesManagedZoneResult']]:
+    def managed_zones(self) -> Sequence['outputs.GetManagedZonesManagedZoneResult']:
         """
         A list of managed zones.
         """
@@ -64,8 +63,7 @@ class AwaitableGetManagedZonesResult(GetManagedZonesResult):
             project=self.project)
 
 
-def get_managed_zones(managed_zones: Optional[Sequence[pulumi.InputType['GetManagedZonesManagedZoneArgs']]] = None,
-                      project: Optional[str] = None,
+def get_managed_zones(project: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetManagedZonesResult:
     """
     Provides access to a list of zones within Google Cloud DNS.
@@ -74,21 +72,17 @@ def get_managed_zones(managed_zones: Optional[Sequence[pulumi.InputType['GetMana
     and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     zones = gcp.dns.get_managed_zones(project="my-project-id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param Sequence[pulumi.InputType['GetManagedZonesManagedZoneArgs']] managed_zones: A list of managed zones.
     :param str project: The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
     """
     __args__ = dict()
-    __args__['managedZones'] = managed_zones
     __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:dns/getManagedZones:getManagedZones', __args__, opts=opts, typ=GetManagedZonesResult).value
@@ -100,8 +94,7 @@ def get_managed_zones(managed_zones: Optional[Sequence[pulumi.InputType['GetMana
 
 
 @_utilities.lift_output_func(get_managed_zones)
-def get_managed_zones_output(managed_zones: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetManagedZonesManagedZoneArgs']]]]] = None,
-                             project: Optional[pulumi.Input[Optional[str]]] = None,
+def get_managed_zones_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedZonesResult]:
     """
     Provides access to a list of zones within Google Cloud DNS.
@@ -110,17 +103,14 @@ def get_managed_zones_output(managed_zones: Optional[pulumi.Input[Optional[Seque
     and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     zones = gcp.dns.get_managed_zones(project="my-project-id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param Sequence[pulumi.InputType['GetManagedZonesManagedZoneArgs']] managed_zones: A list of managed zones.
     :param str project: The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
     """
     ...

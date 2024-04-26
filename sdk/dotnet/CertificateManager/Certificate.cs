@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// ### Certificate Manager Google Managed Certificate Dns
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,10 +64,8 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Certificate Manager Google Managed Certificate Issuance Config
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -169,10 +166,8 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Certificate Manager Certificate Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -217,10 +212,8 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Certificate Manager Self Managed Certificate Regional
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -250,10 +243,8 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Certificate Manager Google Managed Certificate Issuance Config All Regions
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -354,10 +345,8 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Certificate Manager Google Managed Certificate Dns All Regions
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -402,10 +391,8 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Certificate Manager Google Managed Regional Certificate Dns Auth
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -442,7 +429,6 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

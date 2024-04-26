@@ -343,7 +343,6 @@ class Account(pulumi.CustomResource):
 
         This snippet creates a service account in a project.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -352,7 +351,6 @@ class Account(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -405,7 +403,6 @@ class Account(pulumi.CustomResource):
 
         This snippet creates a service account in a project.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -414,7 +411,6 @@ class Account(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

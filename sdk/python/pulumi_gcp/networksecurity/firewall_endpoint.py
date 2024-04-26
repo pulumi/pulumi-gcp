@@ -364,7 +364,6 @@ class FirewallEndpoint(pulumi.CustomResource):
 
         ### Network Security Firewall Endpoint Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -378,7 +377,6 @@ class FirewallEndpoint(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -418,7 +416,6 @@ class FirewallEndpoint(pulumi.CustomResource):
 
         ### Network Security Firewall Endpoint Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -432,7 +429,6 @@ class FirewallEndpoint(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

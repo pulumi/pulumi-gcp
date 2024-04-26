@@ -30,11 +30,8 @@ class PrivateConnectionArgs:
                between databasemigrationservice and the consumer's VPC.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+               refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "private_connection_id", private_connection_id)
@@ -100,9 +97,8 @@ class PrivateConnectionArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+        refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -113,10 +109,6 @@ class PrivateConnectionArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -144,14 +136,11 @@ class _PrivateConnectionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]] errors: The PrivateConnection error in case of failure.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+               refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] name: The resource's name.
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: State of the PrivateConnection.
@@ -223,9 +212,8 @@ class _PrivateConnectionState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+        refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -272,10 +260,6 @@ class _PrivateConnectionState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -347,7 +331,6 @@ class PrivateConnection(pulumi.CustomResource):
 
         ### Database Migration Service Private Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -365,7 +348,6 @@ class PrivateConnection(pulumi.CustomResource):
                 subnet="10.0.0.0/29",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -394,13 +376,10 @@ class PrivateConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+               refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
                Structure is documented below.
@@ -424,7 +403,6 @@ class PrivateConnection(pulumi.CustomResource):
 
         ### Database Migration Service Private Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -442,7 +420,6 @@ class PrivateConnection(pulumi.CustomResource):
                 subnet="10.0.0.0/29",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -549,14 +526,11 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArgs']]]] errors: The PrivateConnection error in case of failure.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+               refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] name: The resource's name.
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: State of the PrivateConnection.
@@ -610,9 +584,8 @@ class PrivateConnection(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Labels.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+        refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -643,10 +616,6 @@ class PrivateConnection(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

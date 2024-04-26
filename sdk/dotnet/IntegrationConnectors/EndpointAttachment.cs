@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// ### Integration Connectors Endpoint Attachment
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

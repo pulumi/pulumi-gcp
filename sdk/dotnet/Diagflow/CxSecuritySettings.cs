@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ### Dialogflowcx Security Settings Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,10 +41,8 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dialogflowcx Security Settings Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -133,7 +130,6 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

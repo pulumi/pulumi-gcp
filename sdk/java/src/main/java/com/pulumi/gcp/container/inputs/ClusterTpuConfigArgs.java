@@ -18,14 +18,14 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterTpuConfigArgs Empty = new ClusterTpuConfigArgs();
 
     /**
-     * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * Whether Cloud TPU integration is enabled or not
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return Whether Cloud TPU integration is enabled or not
      * 
      */
     public Output<Boolean> enabled() {
@@ -89,7 +89,7 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * @param enabled Whether Cloud TPU integration is enabled or not
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * @param enabled Whether Cloud TPU integration is enabled or not
          * 
          * @return builder
          * 

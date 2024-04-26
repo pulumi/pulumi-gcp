@@ -24,7 +24,6 @@ import (
 //
 // ### Database Migration Service Connection Profile Cloudsql
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -135,10 +134,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Database Migration Service Connection Profile Postgres
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -208,10 +205,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Database Migration Service Connection Profile Oracle
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -248,10 +243,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Database Migration Service Connection Profile Alloydb
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -336,7 +329,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

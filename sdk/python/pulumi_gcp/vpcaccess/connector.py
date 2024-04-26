@@ -507,7 +507,6 @@ class Connector(pulumi.CustomResource):
 
         ### Vpc Access Connector
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -517,10 +516,8 @@ class Connector(pulumi.CustomResource):
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
-        <!--End PulumiCodeChooser -->
         ### Vpc Access Connector Shared Vpc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -540,7 +537,6 @@ class Connector(pulumi.CustomResource):
             ),
             machine_type="e2-standard-4")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -617,7 +613,6 @@ class Connector(pulumi.CustomResource):
 
         ### Vpc Access Connector
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -627,10 +622,8 @@ class Connector(pulumi.CustomResource):
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
-        <!--End PulumiCodeChooser -->
         ### Vpc Access Connector Shared Vpc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -650,7 +643,6 @@ class Connector(pulumi.CustomResource):
             ),
             machine_type="e2-standard-4")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

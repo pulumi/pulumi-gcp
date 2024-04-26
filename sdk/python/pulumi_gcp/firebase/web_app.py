@@ -257,7 +257,6 @@ class WebApp(pulumi.CustomResource):
 
         ### Firebase Web App Custom Api Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -277,7 +276,6 @@ class WebApp(pulumi.CustomResource):
             api_key_id=web.uid,
             deletion_policy="DELETE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -348,7 +346,6 @@ class WebApp(pulumi.CustomResource):
 
         ### Firebase Web App Custom Api Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,7 +365,6 @@ class WebApp(pulumi.CustomResource):
             api_key_id=web.uid,
             deletion_policy="DELETE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

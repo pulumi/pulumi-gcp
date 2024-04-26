@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Dns.Outputs
     {
         /// <summary>
         /// The list of internal load balancers to health check.
-        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> InternalLoadBalancers;
 

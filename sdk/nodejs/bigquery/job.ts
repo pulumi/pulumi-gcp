@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Bigquery Job Query
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,10 +55,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigquery Job Query Table Reference
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -96,10 +93,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigquery Job Load
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -137,10 +132,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigquery Job Load Geojson
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -188,10 +181,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigquery Job Load Parquet
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -243,10 +234,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigquery Job Copy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -362,10 +351,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigquery Job Extract
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -418,7 +405,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -492,7 +478,6 @@ export class Job extends pulumi.CustomResource {
 
     /**
      * Copies a table.
-     * Structure is documented below.
      */
     public readonly copy!: pulumi.Output<outputs.bigquery.JobCopy | undefined>;
     /**
@@ -502,7 +487,6 @@ export class Job extends pulumi.CustomResource {
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Configures an extract job.
-     * Structure is documented below.
      */
     public readonly extract!: pulumi.Output<outputs.bigquery.JobExtract | undefined>;
     /**
@@ -519,25 +503,19 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly jobType!: pulumi.Output<string>;
     /**
-     * The labels associated with this job. You can use these to organize and group your jobs.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configures a load job.
-     * Structure is documented below.
      */
     public readonly load!: pulumi.Output<outputs.bigquery.JobLoad | undefined>;
     /**
-     * The geographic location of the job. The default value is US.
+     * Specifies where the error occurred, if present.
      */
     public readonly location!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * (Output)
@@ -546,9 +524,7 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+     * Configures a query job.
      */
     public readonly query!: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
     /**
@@ -621,7 +597,6 @@ export class Job extends pulumi.CustomResource {
 export interface JobState {
     /**
      * Copies a table.
-     * Structure is documented below.
      */
     copy?: pulumi.Input<inputs.bigquery.JobCopy>;
     /**
@@ -631,7 +606,6 @@ export interface JobState {
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configures an extract job.
-     * Structure is documented below.
      */
     extract?: pulumi.Input<inputs.bigquery.JobExtract>;
     /**
@@ -648,25 +622,19 @@ export interface JobState {
      */
     jobType?: pulumi.Input<string>;
     /**
-     * The labels associated with this job. You can use these to organize and group your jobs.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configures a load job.
-     * Structure is documented below.
      */
     load?: pulumi.Input<inputs.bigquery.JobLoad>;
     /**
-     * The geographic location of the job. The default value is US.
+     * Specifies where the error occurred, if present.
      */
     location?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * (Output)
@@ -675,9 +643,7 @@ export interface JobState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+     * Configures a query job.
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
     /**
@@ -697,12 +663,10 @@ export interface JobState {
 export interface JobArgs {
     /**
      * Copies a table.
-     * Structure is documented below.
      */
     copy?: pulumi.Input<inputs.bigquery.JobCopy>;
     /**
      * Configures an extract job.
-     * Structure is documented below.
      */
     extract?: pulumi.Input<inputs.bigquery.JobExtract>;
     /**
@@ -714,30 +678,22 @@ export interface JobArgs {
      */
     jobTimeoutMs?: pulumi.Input<string>;
     /**
-     * The labels associated with this job. You can use these to organize and group your jobs.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configures a load job.
-     * Structure is documented below.
      */
     load?: pulumi.Input<inputs.bigquery.JobLoad>;
     /**
-     * The geographic location of the job. The default value is US.
+     * Specifies where the error occurred, if present.
      */
     location?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+     * Configures a query job.
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
 }

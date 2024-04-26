@@ -14,31 +14,37 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateConfigX509Config
     {
         /// <summary>
-        /// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        /// (Output)
+        /// Describes custom X.509 extensions.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateConfigX509ConfigAdditionalExtension> AdditionalExtensions;
         /// <summary>
+        /// (Output)
         /// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
         /// "Authority Information Access" extension in the certificate.
         /// </summary>
         public readonly ImmutableArray<string> AiaOcspServers;
         /// <summary>
+        /// (Output)
         /// Describes values that are relevant in a CA certificate.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CertificateConfigX509ConfigCaOptions? CaOptions;
         /// <summary>
+        /// (Output)
         /// Indicates the intended use for keys that correspond to a certificate.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CertificateConfigX509ConfigKeyUsage KeyUsage;
         /// <summary>
+        /// (Output)
         /// Describes the X.509 name constraints extension.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CertificateConfigX509ConfigNameConstraints? NameConstraints;
         /// <summary>
+        /// (Output)
         /// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         /// Structure is documented below.
         /// </summary>

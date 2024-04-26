@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
     public sealed class RepositoryRemoteRepositoryConfigPythonRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Settings for a remote repository with a custom uri.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customRepository")]
+        public Input<Inputs.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs>? CustomRepository { get; set; }
+
+        /// <summary>
         /// Address of the remote repository.
         /// Default value is `PYPI`.
         /// Possible values are: `PYPI`.

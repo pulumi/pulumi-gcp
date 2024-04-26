@@ -246,7 +246,6 @@ class Variable(pulumi.CustomResource):
 
         Example creating a RuntimeConfig variable.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -259,14 +258,12 @@ class Variable(pulumi.CustomResource):
             name="prod-variables/hostname",
             text="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         You can also encode binary content using the `value` argument instead. The
         value must be base64 encoded.
 
         Example of using the `value` argument.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -280,7 +277,6 @@ class Variable(pulumi.CustomResource):
             name="secret",
             value=std.filebase64(input="my-encrypted-secret.dat").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -328,7 +324,6 @@ class Variable(pulumi.CustomResource):
 
         Example creating a RuntimeConfig variable.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -341,14 +336,12 @@ class Variable(pulumi.CustomResource):
             name="prod-variables/hostname",
             text="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         You can also encode binary content using the `value` argument instead. The
         value must be base64 encoded.
 
         Example of using the `value` argument.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -362,7 +355,6 @@ class Variable(pulumi.CustomResource):
             name="secret",
             value=std.filebase64(input="my-encrypted-secret.dat").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

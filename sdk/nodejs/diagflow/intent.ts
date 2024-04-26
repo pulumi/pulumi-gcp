@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Dialogflow Intent Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,10 +31,8 @@ import * as utilities from "../utilities";
  * });
  * const basicIntent = new gcp.diagflow.Intent("basic_intent", {displayName: "basic-intent"});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dialogflow Intent Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -79,7 +76,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

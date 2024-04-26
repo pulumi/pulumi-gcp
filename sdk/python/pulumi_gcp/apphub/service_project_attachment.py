@@ -226,7 +226,6 @@ class ServiceProjectAttachment(pulumi.CustomResource):
 
         ### Service Project Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -239,10 +238,8 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id)
         wait120s = time.index.Sleep("wait_120s", create_duration=120s)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Project Attachment Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -257,7 +254,6 @@ class ServiceProjectAttachment(pulumi.CustomResource):
             service_project=service_project_full.project_id)
         wait120s = time.index.Sleep("wait_120s", create_duration=120s)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -308,7 +304,6 @@ class ServiceProjectAttachment(pulumi.CustomResource):
 
         ### Service Project Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -321,10 +316,8 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id)
         wait120s = time.index.Sleep("wait_120s", create_duration=120s)
         ```
-        <!--End PulumiCodeChooser -->
         ### Service Project Attachment Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -339,7 +332,6 @@ class ServiceProjectAttachment(pulumi.CustomResource):
             service_project=service_project_full.project_id)
         wait120s = time.index.Sleep("wait_120s", create_duration=120s)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -5,11 +5,18 @@ package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigDockerRepository {
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * 
+     */
+    private List<GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository> customRepositories;
     /**
      * @return Address of the remote repository. Default value: &#34;DOCKER_HUB&#34; Possible values: [&#34;DOCKER_HUB&#34;]
      * 
@@ -17,6 +24,13 @@ public final class GetRepositoryRemoteRepositoryConfigDockerRepository {
     private String publicRepository;
 
     private GetRepositoryRemoteRepositoryConfigDockerRepository() {}
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * 
+     */
+    public List<GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository> customRepositories() {
+        return this.customRepositories;
+    }
     /**
      * @return Address of the remote repository. Default value: &#34;DOCKER_HUB&#34; Possible values: [&#34;DOCKER_HUB&#34;]
      * 
@@ -34,13 +48,26 @@ public final class GetRepositoryRemoteRepositoryConfigDockerRepository {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository> customRepositories;
         private String publicRepository;
         public Builder() {}
         public Builder(GetRepositoryRemoteRepositoryConfigDockerRepository defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customRepositories = defaults.customRepositories;
     	      this.publicRepository = defaults.publicRepository;
         }
 
+        @CustomType.Setter
+        public Builder customRepositories(List<GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository> customRepositories) {
+            if (customRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfigDockerRepository", "customRepositories");
+            }
+            this.customRepositories = customRepositories;
+            return this;
+        }
+        public Builder customRepositories(GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository... customRepositories) {
+            return customRepositories(List.of(customRepositories));
+        }
         @CustomType.Setter
         public Builder publicRepository(String publicRepository) {
             if (publicRepository == null) {
@@ -51,6 +78,7 @@ public final class GetRepositoryRemoteRepositoryConfigDockerRepository {
         }
         public GetRepositoryRemoteRepositoryConfigDockerRepository build() {
             final var _resultValue = new GetRepositoryRemoteRepositoryConfigDockerRepository();
+            _resultValue.customRepositories = customRepositories;
             _resultValue.publicRepository = publicRepository;
             return _resultValue;
         }

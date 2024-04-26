@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// ### Secret Config Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,10 +56,8 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Secret With Annotations
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -92,10 +89,8 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Secret With Automatic Cmek
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -130,7 +125,6 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -160,19 +154,14 @@ namespace Pulumi.Gcp.SecretManager
     public partial class Secret : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Custom metadata about the secret.
-        /// Annotations are distinct from various forms of labels. Annotations exist to allow
-        /// client tools to store their own state information without requiring a database.
-        /// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        /// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
-        /// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
-        /// symbols.
-        /// The total size of annotation keys and values must be less than 16KiB.
-        /// An object containing a list of "key": value pairs. Example:
-        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
+        /// client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
+        /// characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
+        /// and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
+        /// annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
+        /// "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
+        /// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+        /// present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -197,40 +186,33 @@ namespace Pulumi.Gcp.SecretManager
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
-        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        /// Only one of `expire_time` or `ttl` can be provided.
+        /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
+        /// on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
+        /// provided.
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// The labels assigned to this Secret.
-        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-        /// No more than 64 labels can be assigned to a given resource.
-        /// An object containing a list of "key": value pairs. Example:
-        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        /// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+        /// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+        /// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
+        /// }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+        /// refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
-        /// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+        /// The resource name of the Secret. Format:
+        /// `projects/{{project}}/secrets/{{secret_id}}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -250,8 +232,8 @@ namespace Pulumi.Gcp.SecretManager
         public Output<Outputs.SecretReplication> Replication { get; private set; } = null!;
 
         /// <summary>
-        /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
-        /// Structure is documented below.
+        /// The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
+        /// the topics configured on the Secret. 'topics' must be set to configure rotation.
         /// </summary>
         [Output("rotation")]
         public Output<Outputs.SecretRotation?> Rotation { get; private set; } = null!;
@@ -263,28 +245,24 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> SecretId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
-        /// Structure is documented below.
+        /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+        /// or its versions.
         /// </summary>
         [Output("topics")]
         public Output<ImmutableArray<Outputs.SecretTopic>> Topics { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL for the Secret.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        /// Only one of `ttl` or `expire_time` can be provided.
+        /// The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// Only one of 'ttl' or 'expire_time' can be provided.
         /// </summary>
         [Output("ttl")]
         public Output<string?> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// Mapping from version alias to version name.
-        /// A version alias is a string with a maximum length of 63 characters and can contain
-        /// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
-        /// characters. An alias string must start with a letter and cannot be the string
-        /// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
-        /// An object containing a list of "key": value pairs. Example:
-        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
+        /// contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
+        /// must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
+        /// secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         [Output("versionAliases")]
         public Output<ImmutableDictionary<string, string>?> VersionAliases { get; private set; } = null!;
@@ -344,19 +322,14 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Custom metadata about the secret.
-        /// Annotations are distinct from various forms of labels. Annotations exist to allow
-        /// client tools to store their own state information without requiring a database.
-        /// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        /// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
-        /// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
-        /// symbols.
-        /// The total size of annotation keys and values must be less than 16KiB.
-        /// An object containing a list of "key": value pairs. Example:
-        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
+        /// client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
+        /// characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
+        /// and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
+        /// annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
+        /// "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
+        /// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+        /// present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -365,9 +338,10 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
-        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        /// Only one of `expire_time` or `ttl` can be provided.
+        /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
+        /// on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
+        /// provided.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -376,17 +350,13 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels assigned to this Secret.
-        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-        /// No more than 64 labels can be assigned to a given resource.
-        /// An object containing a list of "key": value pairs. Example:
-        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        /// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+        /// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+        /// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
+        /// }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+        /// refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -394,10 +364,6 @@ namespace Pulumi.Gcp.SecretManager
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -410,8 +376,8 @@ namespace Pulumi.Gcp.SecretManager
         public Input<Inputs.SecretReplicationArgs> Replication { get; set; } = null!;
 
         /// <summary>
-        /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
-        /// Structure is documented below.
+        /// The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
+        /// the topics configured on the Secret. 'topics' must be set to configure rotation.
         /// </summary>
         [Input("rotation")]
         public Input<Inputs.SecretRotationArgs>? Rotation { get; set; }
@@ -426,8 +392,8 @@ namespace Pulumi.Gcp.SecretManager
         private InputList<Inputs.SecretTopicArgs>? _topics;
 
         /// <summary>
-        /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
-        /// Structure is documented below.
+        /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+        /// or its versions.
         /// </summary>
         public InputList<Inputs.SecretTopicArgs> Topics
         {
@@ -436,9 +402,8 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// The TTL for the Secret.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        /// Only one of `ttl` or `expire_time` can be provided.
+        /// The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// Only one of 'ttl' or 'expire_time' can be provided.
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }
@@ -447,13 +412,10 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _versionAliases;
 
         /// <summary>
-        /// Mapping from version alias to version name.
-        /// A version alias is a string with a maximum length of 63 characters and can contain
-        /// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
-        /// characters. An alias string must start with a letter and cannot be the string
-        /// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
-        /// An object containing a list of "key": value pairs. Example:
-        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
+        /// contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
+        /// must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
+        /// secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> VersionAliases
         {
@@ -473,19 +435,14 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Custom metadata about the secret.
-        /// Annotations are distinct from various forms of labels. Annotations exist to allow
-        /// client tools to store their own state information without requiring a database.
-        /// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        /// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
-        /// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
-        /// symbols.
-        /// The total size of annotation keys and values must be less than 16KiB.
-        /// An object containing a list of "key": value pairs. Example:
-        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
+        /// client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
+        /// characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
+        /// and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
+        /// annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
+        /// "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
+        /// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+        /// present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -529,9 +486,10 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
-        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        /// Only one of `expire_time` or `ttl` can be provided.
+        /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
+        /// on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
+        /// provided.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -540,17 +498,13 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels assigned to this Secret.
-        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
-        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-        /// No more than 64 labels can be assigned to a given resource.
-        /// An object containing a list of "key": value pairs. Example:
-        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        /// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+        /// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+        /// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
+        /// }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+        /// refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -559,16 +513,12 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
-        /// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+        /// The resource name of the Secret. Format:
+        /// `projects/{{project}}/secrets/{{secret_id}}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -598,8 +548,8 @@ namespace Pulumi.Gcp.SecretManager
         public Input<Inputs.SecretReplicationGetArgs>? Replication { get; set; }
 
         /// <summary>
-        /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
-        /// Structure is documented below.
+        /// The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
+        /// the topics configured on the Secret. 'topics' must be set to configure rotation.
         /// </summary>
         [Input("rotation")]
         public Input<Inputs.SecretRotationGetArgs>? Rotation { get; set; }
@@ -614,8 +564,8 @@ namespace Pulumi.Gcp.SecretManager
         private InputList<Inputs.SecretTopicGetArgs>? _topics;
 
         /// <summary>
-        /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
-        /// Structure is documented below.
+        /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
+        /// or its versions.
         /// </summary>
         public InputList<Inputs.SecretTopicGetArgs> Topics
         {
@@ -624,9 +574,8 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// The TTL for the Secret.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        /// Only one of `ttl` or `expire_time` can be provided.
+        /// The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// Only one of 'ttl' or 'expire_time' can be provided.
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }
@@ -635,13 +584,10 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _versionAliases;
 
         /// <summary>
-        /// Mapping from version alias to version name.
-        /// A version alias is a string with a maximum length of 63 characters and can contain
-        /// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
-        /// characters. An alias string must start with a letter and cannot be the string
-        /// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
-        /// An object containing a list of "key": value pairs. Example:
-        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
+        /// contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
+        /// must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
+        /// secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> VersionAliases
         {

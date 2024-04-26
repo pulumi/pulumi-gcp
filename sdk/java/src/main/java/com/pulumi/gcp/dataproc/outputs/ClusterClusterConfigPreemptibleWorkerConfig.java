@@ -26,7 +26,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
      */
     private @Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
     /**
-     * @return List of preemptible instance names which have been assigned to the cluster.
+     * @return List of preemptible instance names which have been assigned
+     * to the cluster.
      * 
      */
     private @Nullable List<String> instanceNames;
@@ -62,7 +63,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
         return Optional.ofNullable(this.instanceFlexibilityPolicy);
     }
     /**
-     * @return List of preemptible instance names which have been assigned to the cluster.
+     * @return List of preemptible instance names which have been assigned
+     * to the cluster.
      * 
      */
     public List<String> instanceNames() {

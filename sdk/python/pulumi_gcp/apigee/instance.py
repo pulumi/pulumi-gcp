@@ -453,7 +453,6 @@ class Instance(pulumi.CustomResource):
 
         ### Apigee Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -479,10 +478,8 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             org_id=apigee_org.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Instance Cidr Range
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -509,10 +506,8 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             peering_cidr_range="SLASH_22")
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Instance Ip Range
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -539,10 +534,8 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             ip_range="10.87.8.0/22")
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -587,7 +580,6 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             disk_encryption_key_name=apigee_key.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -653,7 +645,6 @@ class Instance(pulumi.CustomResource):
 
         ### Apigee Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -679,10 +670,8 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             org_id=apigee_org.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Instance Cidr Range
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -709,10 +698,8 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             peering_cidr_range="SLASH_22")
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Instance Ip Range
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -739,10 +726,8 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             ip_range="10.87.8.0/22")
         ```
-        <!--End PulumiCodeChooser -->
         ### Apigee Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -787,7 +772,6 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             disk_encryption_key_name=apigee_key.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

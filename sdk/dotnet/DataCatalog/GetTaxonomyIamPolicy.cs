@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTaxonomyIamPolicyResult> InvokeAsync(GetTaxonomyIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTaxonomyIamPolicyResult>("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTaxonomyIamPolicyResult> Invoke(GetTaxonomyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTaxonomyIamPolicyResult>("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyInvokeArgs(), options.WithDefaults());

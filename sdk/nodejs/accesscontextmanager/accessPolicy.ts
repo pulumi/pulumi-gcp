@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  *
  * ### Access Context Manager Access Policy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,10 +36,8 @@ import * as utilities from "../utilities";
  *     title: "Org Access Policy",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Access Context Manager Access Policy Scoped
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,7 +53,6 @@ import * as utilities from "../utilities";
  *     scopes: pulumi.interpolate`projects/${project.number}`,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

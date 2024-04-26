@@ -31,7 +31,6 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// ### Kms Crypto Key Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,10 +54,8 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Kms Crypto Key Asymmetric Sign
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -86,7 +83,6 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

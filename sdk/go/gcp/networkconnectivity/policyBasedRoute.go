@@ -24,7 +24,6 @@ import (
 //
 // ### Network Connectivity Policy Based Route Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,10 +60,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Connectivity Policy Based Route Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,7 +120,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -161,14 +157,11 @@ type PolicyBasedRoute struct {
 	// Structure is documented below.
 	Filter PolicyBasedRouteFilterOutput `pulumi:"filter"`
 	// The interconnect attachments that this policy-based route applies to.
-	// Structure is documented below.
 	InterconnectAttachment PolicyBasedRouteInterconnectAttachmentPtrOutput `pulumi:"interconnectAttachment"`
 	// Type of this resource.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// User-defined labels.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the policy based route.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -176,21 +169,19 @@ type PolicyBasedRoute struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
 	NextHopIlbIp pulumi.StringPtrOutput `pulumi:"nextHopIlbIp"`
-	// Other routes that will be referenced to determine the next hop of the packet.
-	// Possible values are: `DEFAULT_ROUTING`.
+	// Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
 	NextHopOtherRoutes pulumi.StringPtrOutput `pulumi:"nextHopOtherRoutes"`
-	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+	// policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+	// priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Time when the policy-based route was created.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// VM instances to which this policy-based route applies to.
-	// Structure is documented below.
 	VirtualMachine PolicyBasedRouteVirtualMachinePtrOutput `pulumi:"virtualMachine"`
 	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
 	// Structure is documented below.
@@ -248,14 +239,11 @@ type policyBasedRouteState struct {
 	// Structure is documented below.
 	Filter *PolicyBasedRouteFilter `pulumi:"filter"`
 	// The interconnect attachments that this policy-based route applies to.
-	// Structure is documented below.
 	InterconnectAttachment *PolicyBasedRouteInterconnectAttachment `pulumi:"interconnectAttachment"`
 	// Type of this resource.
 	Kind *string `pulumi:"kind"`
-	// User-defined labels.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the policy based route.
 	Name *string `pulumi:"name"`
@@ -263,21 +251,19 @@ type policyBasedRouteState struct {
 	Network *string `pulumi:"network"`
 	// The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
 	NextHopIlbIp *string `pulumi:"nextHopIlbIp"`
-	// Other routes that will be referenced to determine the next hop of the packet.
-	// Possible values are: `DEFAULT_ROUTING`.
+	// Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
 	NextHopOtherRoutes *string `pulumi:"nextHopOtherRoutes"`
-	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
-	Priority *int `pulumi:"priority"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+	// policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+	// priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+	Priority *int    `pulumi:"priority"`
+	Project  *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Time when the policy-based route was created.
 	UpdateTime *string `pulumi:"updateTime"`
 	// VM instances to which this policy-based route applies to.
-	// Structure is documented below.
 	VirtualMachine *PolicyBasedRouteVirtualMachine `pulumi:"virtualMachine"`
 	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
 	// Structure is documented below.
@@ -295,14 +281,11 @@ type PolicyBasedRouteState struct {
 	// Structure is documented below.
 	Filter PolicyBasedRouteFilterPtrInput
 	// The interconnect attachments that this policy-based route applies to.
-	// Structure is documented below.
 	InterconnectAttachment PolicyBasedRouteInterconnectAttachmentPtrInput
 	// Type of this resource.
 	Kind pulumi.StringPtrInput
-	// User-defined labels.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the policy based route.
 	Name pulumi.StringPtrInput
@@ -310,21 +293,19 @@ type PolicyBasedRouteState struct {
 	Network pulumi.StringPtrInput
 	// The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
 	NextHopIlbIp pulumi.StringPtrInput
-	// Other routes that will be referenced to determine the next hop of the packet.
-	// Possible values are: `DEFAULT_ROUTING`.
+	// Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
 	NextHopOtherRoutes pulumi.StringPtrInput
-	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+	// policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+	// priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
 	Priority pulumi.IntPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Time when the policy-based route was created.
 	UpdateTime pulumi.StringPtrInput
 	// VM instances to which this policy-based route applies to.
-	// Structure is documented below.
 	VirtualMachine PolicyBasedRouteVirtualMachinePtrInput
 	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
 	// Structure is documented below.
@@ -342,12 +323,9 @@ type policyBasedRouteArgs struct {
 	// Structure is documented below.
 	Filter PolicyBasedRouteFilter `pulumi:"filter"`
 	// The interconnect attachments that this policy-based route applies to.
-	// Structure is documented below.
 	InterconnectAttachment *PolicyBasedRouteInterconnectAttachment `pulumi:"interconnectAttachment"`
-	// User-defined labels.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the policy based route.
 	Name *string `pulumi:"name"`
@@ -355,16 +333,14 @@ type policyBasedRouteArgs struct {
 	Network string `pulumi:"network"`
 	// The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
 	NextHopIlbIp *string `pulumi:"nextHopIlbIp"`
-	// Other routes that will be referenced to determine the next hop of the packet.
-	// Possible values are: `DEFAULT_ROUTING`.
+	// Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
 	NextHopOtherRoutes *string `pulumi:"nextHopOtherRoutes"`
-	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
-	Priority *int `pulumi:"priority"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+	// policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+	// priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+	Priority *int    `pulumi:"priority"`
+	Project  *string `pulumi:"project"`
 	// VM instances to which this policy-based route applies to.
-	// Structure is documented below.
 	VirtualMachine *PolicyBasedRouteVirtualMachine `pulumi:"virtualMachine"`
 }
 
@@ -376,12 +352,9 @@ type PolicyBasedRouteArgs struct {
 	// Structure is documented below.
 	Filter PolicyBasedRouteFilterInput
 	// The interconnect attachments that this policy-based route applies to.
-	// Structure is documented below.
 	InterconnectAttachment PolicyBasedRouteInterconnectAttachmentPtrInput
-	// User-defined labels.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the policy based route.
 	Name pulumi.StringPtrInput
@@ -389,16 +362,14 @@ type PolicyBasedRouteArgs struct {
 	Network pulumi.StringInput
 	// The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
 	NextHopIlbIp pulumi.StringPtrInput
-	// Other routes that will be referenced to determine the next hop of the packet.
-	// Possible values are: `DEFAULT_ROUTING`.
+	// Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
 	NextHopOtherRoutes pulumi.StringPtrInput
-	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+	// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+	// policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+	// priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
 	Priority pulumi.IntPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// VM instances to which this policy-based route applies to.
-	// Structure is documented below.
 	VirtualMachine PolicyBasedRouteVirtualMachinePtrInput
 }
 
@@ -511,7 +482,6 @@ func (o PolicyBasedRouteOutput) Filter() PolicyBasedRouteFilterOutput {
 }
 
 // The interconnect attachments that this policy-based route applies to.
-// Structure is documented below.
 func (o PolicyBasedRouteOutput) InterconnectAttachment() PolicyBasedRouteInterconnectAttachmentPtrOutput {
 	return o.ApplyT(func(v *PolicyBasedRoute) PolicyBasedRouteInterconnectAttachmentPtrOutput {
 		return v.InterconnectAttachment
@@ -523,10 +493,8 @@ func (o PolicyBasedRouteOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyBasedRoute) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// User-defined labels.
-//
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
+// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o PolicyBasedRouteOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PolicyBasedRoute) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -546,19 +514,18 @@ func (o PolicyBasedRouteOutput) NextHopIlbIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBasedRoute) pulumi.StringPtrOutput { return v.NextHopIlbIp }).(pulumi.StringPtrOutput)
 }
 
-// Other routes that will be referenced to determine the next hop of the packet.
-// Possible values are: `DEFAULT_ROUTING`.
+// Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
 func (o PolicyBasedRouteOutput) NextHopOtherRoutes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBasedRoute) pulumi.StringPtrOutput { return v.NextHopOtherRoutes }).(pulumi.StringPtrOutput)
 }
 
-// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
+// policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
+// priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
 func (o PolicyBasedRouteOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PolicyBasedRoute) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o PolicyBasedRouteOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyBasedRoute) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -575,7 +542,6 @@ func (o PolicyBasedRouteOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // VM instances to which this policy-based route applies to.
-// Structure is documented below.
 func (o PolicyBasedRouteOutput) VirtualMachine() PolicyBasedRouteVirtualMachinePtrOutput {
 	return o.ApplyT(func(v *PolicyBasedRoute) PolicyBasedRouteVirtualMachinePtrOutput { return v.VirtualMachine }).(PolicyBasedRouteVirtualMachinePtrOutput)
 }

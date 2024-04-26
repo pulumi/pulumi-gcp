@@ -67,14 +67,16 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * List of master/worker instance names which have been assigned to the cluster.
+     * List of worker instance names which have been assigned
+     * to the cluster.
      * 
      */
     @Import(name="instanceNames")
     private @Nullable Output<List<String>> instanceNames;
 
     /**
-     * @return List of master/worker instance names which have been assigned to the cluster.
+     * @return List of worker instance names which have been assigned
+     * to the cluster.
      * 
      */
     public Optional<Output<List<String>>> instanceNames() {
@@ -270,7 +272,8 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param instanceNames List of master/worker instance names which have been assigned to the cluster.
+         * @param instanceNames List of worker instance names which have been assigned
+         * to the cluster.
          * 
          * @return builder
          * 
@@ -281,7 +284,8 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param instanceNames List of master/worker instance names which have been assigned to the cluster.
+         * @param instanceNames List of worker instance names which have been assigned
+         * to the cluster.
          * 
          * @return builder
          * 
@@ -291,7 +295,8 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param instanceNames List of master/worker instance names which have been assigned to the cluster.
+         * @param instanceNames List of worker instance names which have been assigned
+         * to the cluster.
          * 
          * @return builder
          * 

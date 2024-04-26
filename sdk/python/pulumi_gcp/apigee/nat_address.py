@@ -160,7 +160,6 @@ class NatAddress(pulumi.CustomResource):
 
         ### Apigee Nat Address Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -208,7 +207,6 @@ class NatAddress(pulumi.CustomResource):
             name="my-nat-address",
             instance_id=apigee_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -257,7 +255,6 @@ class NatAddress(pulumi.CustomResource):
 
         ### Apigee Nat Address Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -305,7 +302,6 @@ class NatAddress(pulumi.CustomResource):
             name="my-nat-address",
             instance_id=apigee_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

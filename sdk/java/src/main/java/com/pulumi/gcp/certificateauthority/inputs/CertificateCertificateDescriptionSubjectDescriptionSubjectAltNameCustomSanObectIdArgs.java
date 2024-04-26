@@ -17,6 +17,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     public static final CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs Empty = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs();
 
     /**
+     * (Output)
      * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
@@ -24,7 +25,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     private @Nullable Output<List<Integer>> objectIdPaths;
 
     /**
-     * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * @return (Output)
+     * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
     public Optional<Output<List<Integer>>> objectIdPaths() {
@@ -56,7 +58,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param objectIdPaths An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * @param objectIdPaths (Output)
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          * 
          * @return builder
          * 
@@ -67,7 +70,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param objectIdPaths An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * @param objectIdPaths (Output)
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          * 
          * @return builder
          * 
@@ -77,7 +81,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param objectIdPaths An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * @param objectIdPaths (Output)
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          * 
          * @return builder
          * 

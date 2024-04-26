@@ -16,7 +16,6 @@ import (
 //
 // ### Gkehub Membership Rbac Role Binding Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,7 +77,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -117,9 +115,7 @@ type MembershipRbacRoleBinding struct {
 	// The client-provided identifier of the RBAC Role Binding.
 	MembershipRbacRoleBindingId pulumi.StringOutput `pulumi:"membershipRbacRoleBindingId"`
 	// The resource name for the RBAC Role Binding
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -194,9 +190,7 @@ type membershipRbacRoleBindingState struct {
 	// The client-provided identifier of the RBAC Role Binding.
 	MembershipRbacRoleBindingId *string `pulumi:"membershipRbacRoleBindingId"`
 	// The resource name for the RBAC Role Binding
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -227,9 +221,7 @@ type MembershipRbacRoleBindingState struct {
 	// The client-provided identifier of the RBAC Role Binding.
 	MembershipRbacRoleBindingId pulumi.StringPtrInput
 	// The resource name for the RBAC Role Binding
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -258,10 +250,8 @@ type membershipRbacRoleBindingArgs struct {
 	// Id of the membership
 	MembershipId string `pulumi:"membershipId"`
 	// The client-provided identifier of the RBAC Role Binding.
-	MembershipRbacRoleBindingId string `pulumi:"membershipRbacRoleBindingId"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	MembershipRbacRoleBindingId string  `pulumi:"membershipRbacRoleBindingId"`
+	Project                     *string `pulumi:"project"`
 	// Role to bind to the principal.
 	// Structure is documented below.
 	Role MembershipRbacRoleBindingRole `pulumi:"role"`
@@ -280,9 +270,7 @@ type MembershipRbacRoleBindingArgs struct {
 	MembershipId pulumi.StringInput
 	// The client-provided identifier of the RBAC Role Binding.
 	MembershipRbacRoleBindingId pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project                     pulumi.StringPtrInput
 	// Role to bind to the principal.
 	// Structure is documented below.
 	Role MembershipRbacRoleBindingRoleInput
@@ -410,8 +398,6 @@ func (o MembershipRbacRoleBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipRbacRoleBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o MembershipRbacRoleBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipRbacRoleBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

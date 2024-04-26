@@ -338,7 +338,6 @@ class CustomConstraint(pulumi.CustomResource):
 
         ### Org Policy Custom Constraint Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -354,10 +353,8 @@ class CustomConstraint(pulumi.CustomResource):
             ],
             resource_types=["container.googleapis.com/NodePool"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Org Policy Custom Constraint Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -383,7 +380,6 @@ class CustomConstraint(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -432,7 +428,6 @@ class CustomConstraint(pulumi.CustomResource):
 
         ### Org Policy Custom Constraint Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -448,10 +443,8 @@ class CustomConstraint(pulumi.CustomResource):
             ],
             resource_types=["container.googleapis.com/NodePool"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Org Policy Custom Constraint Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -477,7 +470,6 @@ class CustomConstraint(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

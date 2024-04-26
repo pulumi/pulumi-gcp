@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceGroupManagerResult> InvokeAsync(GetInstanceGroupManagerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupManagerResult>("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args ?? new GetInstanceGroupManagerArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceGroupManagerResult> Invoke(GetInstanceGroupManagerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceGroupManagerResult>("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args ?? new GetInstanceGroupManagerInvokeArgs(), options.WithDefaults());
@@ -165,6 +161,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Name;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerNamedPortResult> NamedPorts;
         public readonly string Operation;
+        public readonly ImmutableArray<Outputs.GetInstanceGroupManagerParamResult> Params;
         public readonly string? Project;
         public readonly string? SelfLink;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatefulDiskResult> StatefulDisks;
@@ -207,6 +204,8 @@ namespace Pulumi.Gcp.Compute
 
             string operation,
 
+            ImmutableArray<Outputs.GetInstanceGroupManagerParamResult> @params,
+
             string? project,
 
             string? selfLink,
@@ -246,6 +245,7 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             NamedPorts = namedPorts;
             Operation = operation;
+            Params = @params;
             Project = project;
             SelfLink = selfLink;
             StatefulDisks = statefulDisks;

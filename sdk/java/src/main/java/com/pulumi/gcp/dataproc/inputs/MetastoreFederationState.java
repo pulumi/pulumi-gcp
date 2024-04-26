@@ -85,18 +85,18 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * User-defined labels for the metastore federation.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for the metastore federation.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -119,33 +119,23 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
+     * The relative resource name of the metastore federation.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
+     * @return The relative resource name of the metastore federation.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -365,9 +355,9 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param labels User-defined labels for the metastore federation.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+         * resource.
          * 
          * @return builder
          * 
@@ -378,9 +368,9 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param labels User-defined labels for the metastore federation.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+         * resource.
          * 
          * @return builder
          * 
@@ -411,7 +401,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
+         * @param name The relative resource name of the metastore federation.
          * 
          * @return builder
          * 
@@ -422,7 +412,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
+         * @param name The relative resource name of the metastore federation.
          * 
          * @return builder
          * 
@@ -431,25 +421,11 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

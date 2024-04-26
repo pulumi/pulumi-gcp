@@ -256,7 +256,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
 
         ### Kms Crypto Key Version Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -270,7 +269,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
             rotation_period="7776000s")
         example_key = gcp.kms.CryptoKeyVersion("example-key", crypto_key=cryptokey.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -317,7 +315,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
 
         ### Kms Crypto Key Version Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -331,7 +328,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
             rotation_period="7776000s")
         example_key = gcp.kms.CryptoKeyVersion("example-key", crypto_key=cryptokey.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

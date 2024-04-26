@@ -105,7 +105,6 @@ def get_metastore_service_iam_policy(location: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_metastore_service_iam_policy(location: Optional[str] = None,
         location=default["location"],
         service_id=default["serviceId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location where the metastore service should reside.
@@ -149,7 +147,6 @@ def get_metastore_service_iam_policy_output(location: Optional[pulumi.Input[Opti
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -158,7 +155,6 @@ def get_metastore_service_iam_policy_output(location: Optional[pulumi.Input[Opti
         location=default["location"],
         service_id=default["serviceId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location where the metastore service should reside.

@@ -29,7 +29,6 @@ import (
 //
 // ### Node Group Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,10 +64,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Node Group Maintenance Interval
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,10 +102,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Node Group Autoscaling Policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -153,10 +148,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Node Group Share Settings
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -210,7 +203,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

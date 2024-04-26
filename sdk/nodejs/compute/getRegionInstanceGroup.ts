@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Get a Compute Region Instance Group within GCE.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     name: "instance-group-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
  */
@@ -91,7 +89,6 @@ export interface GetRegionInstanceGroupResult {
  * Get a Compute Region Instance Group within GCE.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -100,7 +97,6 @@ export interface GetRegionInstanceGroupResult {
  *     name: "instance-group-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
  */

@@ -16,7 +16,6 @@ import (
 //
 // ### Binding a DNS name to the ephemeral IP of a new instance:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,11 +80,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Adding an A record
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,11 +123,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Adding an MX record
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -171,13 +166,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Adding an SPF record
 //
 // Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -218,13 +211,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Adding a CNAME record
 //
 //	The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -265,12 +256,10 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Setting Routing Policy instead of using rrdatas
 // ### Geolocation
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -315,11 +304,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Primary-Backup
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -415,7 +402,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

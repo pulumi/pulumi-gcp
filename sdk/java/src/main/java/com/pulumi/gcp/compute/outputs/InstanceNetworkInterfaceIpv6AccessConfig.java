@@ -13,10 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceNetworkInterfaceIpv6AccessConfig {
     /**
-     * @return The first IPv6 address of the external IPv6 range associated
-     * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
-     * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
-     * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
      * 
      */
     private @Nullable String externalIpv6;
@@ -32,14 +29,12 @@ public final class InstanceNetworkInterfaceIpv6AccessConfig {
      */
     private @Nullable String name;
     /**
-     * @return The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+     * @return The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
      * 
      */
     private String networkTier;
     /**
-     * @return The domain name to be used when creating DNSv6
-     * records for the external IPv6 ranges..
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
      * 
      */
     private @Nullable String publicPtrDomainName;
@@ -51,10 +46,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfig {
 
     private InstanceNetworkInterfaceIpv6AccessConfig() {}
     /**
-     * @return The first IPv6 address of the external IPv6 range associated
-     * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
-     * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
-     * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
      * 
      */
     public Optional<String> externalIpv6() {
@@ -76,16 +68,14 @@ public final class InstanceNetworkInterfaceIpv6AccessConfig {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+     * @return The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
      * 
      */
     public String networkTier() {
         return this.networkTier;
     }
     /**
-     * @return The domain name to be used when creating DNSv6
-     * records for the external IPv6 ranges..
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
      * 
      */
     public Optional<String> publicPtrDomainName() {

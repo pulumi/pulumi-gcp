@@ -134,51 +134,11 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.nsxes);
     }
 
-    /**
-     * The preferred single failure domain within a region.
-     * 
-     */
-    @Import(name="preferredZone")
-    private @Nullable Output<String> preferredZone;
-
-    /**
-     * @return The preferred single failure domain within a region.
-     * 
-     */
-    public Optional<Output<String>> preferredZone() {
-        return Optional.ofNullable(this.preferredZone);
-    }
-
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
-    }
-
-    /**
-     * The secondary single failure domain within a region.
-     * 
-     */
-    @Import(name="secondaryZone")
-    private @Nullable Output<String> secondaryZone;
-
-    /**
-     * @return The secondary single failure domain within a region.
-     * 
-     */
-    public Optional<Output<String>> secondaryZone() {
-        return Optional.ofNullable(this.secondaryZone);
     }
 
     /**
@@ -199,16 +159,14 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Initial type of the private cloud.
-     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+     * Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Initial type of the private cloud.
-     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+     * @return Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
      * 
      */
     public Optional<Output<String>> type() {
@@ -257,9 +215,7 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.networkConfig = $.networkConfig;
         this.nsxes = $.nsxes;
-        this.preferredZone = $.preferredZone;
         this.project = $.project;
-        this.secondaryZone = $.secondaryZone;
         this.state = $.state;
         this.type = $.type;
         this.uid = $.uid;
@@ -461,69 +417,13 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
             return nsxes(List.of(nsxes));
         }
 
-        /**
-         * @param preferredZone The preferred single failure domain within a region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder preferredZone(@Nullable Output<String> preferredZone) {
-            $.preferredZone = preferredZone;
-            return this;
-        }
-
-        /**
-         * @param preferredZone The preferred single failure domain within a region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder preferredZone(String preferredZone) {
-            return preferredZone(Output.of(preferredZone));
-        }
-
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param secondaryZone The secondary single failure domain within a region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secondaryZone(@Nullable Output<String> secondaryZone) {
-            $.secondaryZone = secondaryZone;
-            return this;
-        }
-
-        /**
-         * @param secondaryZone The secondary single failure domain within a region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secondaryZone(String secondaryZone) {
-            return secondaryZone(Output.of(secondaryZone));
         }
 
         /**
@@ -550,8 +450,7 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Initial type of the private cloud.
-         * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+         * @param type Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
          * 
          * @return builder
          * 
@@ -562,8 +461,7 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Initial type of the private cloud.
-         * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+         * @param type Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
          * 
          * @return builder
          * 

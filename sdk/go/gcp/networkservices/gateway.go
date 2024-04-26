@@ -25,7 +25,6 @@ import (
 //
 // ### Network Services Gateway Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,10 +53,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Services Gateway Advanced
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,10 +87,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Services Gateway Secure Web Proxy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -209,10 +204,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Services Gateway Multiple Swp Same Network
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -350,7 +343,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

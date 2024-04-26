@@ -200,28 +200,34 @@ public class RegionNetworkFirewallPolicyRule extends com.pulumi.resources.Custom
         return this.direction;
     }
     /**
-     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
-     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     public Output<Optional<Boolean>> disabled() {
         return Codegen.optional(this.disabled);
     }
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * &#34;goto_next&#34; rules.
      * 
      */
     @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
-     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * &#34;goto_next&#34; rules.
      * 
      */
     public Output<Optional<Boolean>> enableLogging() {
@@ -340,14 +346,24 @@ public class RegionNetworkFirewallPolicyRule extends com.pulumi.resources.Custom
         return this.ruleTupleCount;
     }
     /**
-     * A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+     * A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+     * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+     * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+     * instances on the specified network. Maximum number of target label tags allowed is 256.
      * 
      */
     @Export(name="targetSecureTags", refs={List.class,RegionNetworkFirewallPolicyRuleTargetSecureTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RegionNetworkFirewallPolicyRuleTargetSecureTag>> targetSecureTags;
 
     /**
-     * @return A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+     * @return A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+     * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+     * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+     * instances on the specified network. Maximum number of target label tags allowed is 256.
      * 
      */
     public Output<Optional<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>>> targetSecureTags() {

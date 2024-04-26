@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// ### App Engine Firewall Rule Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,7 +55,6 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

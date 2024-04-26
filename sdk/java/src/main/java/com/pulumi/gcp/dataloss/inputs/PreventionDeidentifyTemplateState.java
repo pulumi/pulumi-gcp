@@ -79,14 +79,14 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
     }
 
     /**
-     * Name describing the field.
+     * The resource name of the template. Set by the server.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name describing the field.
+     * @return The resource name of the template. Set by the server.
      * 
      */
     public Optional<Output<String>> name() {
@@ -117,18 +117,16 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
     }
 
     /**
-     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
-     * 100 characters. Can be empty to allow the system to generate one.
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     @Import(name="templateId")
     private @Nullable Output<String> templateId;
 
     /**
-     * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
-     * 100 characters. Can be empty to allow the system to generate one.
+     * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     public Optional<Output<String>> templateId() {
@@ -268,7 +266,7 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name The resource name of the template. Set by the server.
          * 
          * @return builder
          * 
@@ -279,7 +277,7 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name The resource name of the template. Set by the server.
          * 
          * @return builder
          * 
@@ -318,9 +316,8 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
         }
 
         /**
-         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
-         * 100 characters. Can be empty to allow the system to generate one.
+         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+         * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder
          * 
@@ -331,9 +328,8 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
         }
 
         /**
-         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
-         * 100 characters. Can be empty to allow the system to generate one.
+         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+         * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder
          * 

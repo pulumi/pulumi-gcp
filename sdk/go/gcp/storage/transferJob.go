@@ -25,7 +25,6 @@ import (
 //
 // Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -139,7 +138,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

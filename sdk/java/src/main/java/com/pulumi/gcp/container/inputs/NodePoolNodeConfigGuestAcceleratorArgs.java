@@ -80,18 +80,14 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
     }
 
     /**
-     * The type of the policy. Supports a single value: COMPACT.
-     * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
-     * physical proximity in order to reduce network latency between nodes.
+     * The accelerator type resource name.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of the policy. Supports a single value: COMPACT.
-     * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
-     * physical proximity in order to reduce network latency between nodes.
+     * @return The accelerator type resource name.
      * 
      */
     public Output<String> type() {
@@ -211,9 +207,7 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
         }
 
         /**
-         * @param type The type of the policy. Supports a single value: COMPACT.
-         * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
-         * physical proximity in order to reduce network latency between nodes.
+         * @param type The accelerator type resource name.
          * 
          * @return builder
          * 
@@ -224,9 +218,7 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
         }
 
         /**
-         * @param type The type of the policy. Supports a single value: COMPACT.
-         * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
-         * physical proximity in order to reduce network latency between nodes.
+         * @param type The accelerator type resource name.
          * 
          * @return builder
          * 

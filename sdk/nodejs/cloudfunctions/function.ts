@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  *
  * ### Public Function
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,11 +55,9 @@ import * as utilities from "../utilities";
  *     member: "allUsers",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Single User
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,7 +98,6 @@ import * as utilities from "../utilities";
  *     member: "user:myFunctionInvoker@example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

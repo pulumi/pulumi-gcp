@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Instance Group Named Port Gke
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,7 +59,6 @@ import * as utilities from "../utilities";
  *     port: 4443,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

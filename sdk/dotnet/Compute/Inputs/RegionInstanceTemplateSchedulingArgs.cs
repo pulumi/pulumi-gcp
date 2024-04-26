@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
-        /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
         /// </summary>
         [Input("maintenanceInterval")]
         public Input<string>? MaintenanceInterval { get; set; }

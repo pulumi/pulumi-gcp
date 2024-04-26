@@ -794,7 +794,6 @@ class Job(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -808,11 +807,9 @@ class Job(pulumi.CustomResource):
                 "baz": "qux",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Streaming Job
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -841,7 +838,6 @@ class Job(pulumi.CustomResource):
             },
             on_delete="cancel")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Note on "destroy" / "apply"
 
@@ -853,7 +849,6 @@ class Job(pulumi.CustomResource):
 
         You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -878,7 +873,6 @@ class Job(pulumi.CustomResource):
                 "inputSubscription": big_data_job_subscription_id,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -932,7 +926,6 @@ class Job(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -946,11 +939,9 @@ class Job(pulumi.CustomResource):
                 "baz": "qux",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Streaming Job
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -979,7 +970,6 @@ class Job(pulumi.CustomResource):
             },
             on_delete="cancel")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Note on "destroy" / "apply"
 
@@ -991,7 +981,6 @@ class Job(pulumi.CustomResource):
 
         You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1016,7 +1005,6 @@ class Job(pulumi.CustomResource):
                 "inputSubscription": big_data_job_subscription_id,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

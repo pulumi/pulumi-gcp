@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTestablePermissions(args: GetTestablePermissionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTestablePermissionsResult> {
 
@@ -82,7 +80,6 @@ export interface GetTestablePermissionsResult {
  *
  * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -95,7 +92,6 @@ export interface GetTestablePermissionsResult {
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTestablePermissionsOutput(args: GetTestablePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestablePermissionsResult> {
     return pulumi.output(args).apply((a: any) => getTestablePermissions(a, opts))

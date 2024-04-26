@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebasehosting Channel Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,10 +22,8 @@ import * as utilities from "../utilities";
  *     channelId: "channel-basic",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Channel Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,7 +42,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
