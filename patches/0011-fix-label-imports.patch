@@ -4,216 +4,8 @@ Date: Wed, 24 Apr 2024 12:49:49 +0100
 Subject: [PATCH] fix label imports
 
 
-diff --git a/google-beta/services/bigquery/resource_bigquery_table.go b/google-beta/services/bigquery/resource_bigquery_table.go
-index 55afca223..47572d98c 100644
---- a/google-beta/services/bigquery/resource_bigquery_table.go
-+++ b/google-beta/services/bigquery/resource_bigquery_table.go
-@@ -1558,10 +1558,10 @@ func resourceBigQueryTableRead(d *schema.ResourceData, meta interface{}) error {
- 	if err := d.Set("max_staleness", res.MaxStaleness); err != nil {
- 		return fmt.Errorf("Error setting max_staleness: %s", err)
- 	}
--	if err := tpgresource.SetLabels(res.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(res.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return fmt.Errorf("Error setting labels: %s", err)
- 	}
--	if err := tpgresource.SetLabels(res.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(res.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", res.Labels); err != nil {
-diff --git a/google-beta/services/bigtable/resource_bigtable_instance.go b/google-beta/services/bigtable/resource_bigtable_instance.go
-index 113a5e20b..a19ea9dea 100644
---- a/google-beta/services/bigtable/resource_bigtable_instance.go
-+++ b/google-beta/services/bigtable/resource_bigtable_instance.go
-@@ -331,10 +331,10 @@ func resourceBigtableInstanceRead(d *schema.ResourceData, meta interface{}) erro
- 	if err := d.Set("display_name", instance.DisplayName); err != nil {
- 		return fmt.Errorf("Error setting display_name: %s", err)
- 	}
--	if err := tpgresource.SetLabels(instance.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(instance.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return fmt.Errorf("Error setting labels: %s", err)
- 	}
--	if err := tpgresource.SetLabels(instance.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(instance.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", instance.Labels); err != nil {
-diff --git a/google-beta/services/cloudfunctions/resource_cloudfunctions_function.go b/google-beta/services/cloudfunctions/resource_cloudfunctions_function.go
-index 3a60002e7..c21e2b258 100644
---- a/google-beta/services/cloudfunctions/resource_cloudfunctions_function.go
-+++ b/google-beta/services/cloudfunctions/resource_cloudfunctions_function.go
-@@ -701,10 +701,10 @@ func resourceCloudFunctionsRead(d *schema.ResourceData, meta interface{}) error
- 	if err := d.Set("ingress_settings", function.IngressSettings); err != nil {
- 		return fmt.Errorf("Error setting ingress_settings: %s", err)
- 	}
--	if err := tpgresource.SetLabels(function.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(function.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return fmt.Errorf("Error setting labels: %s", err)
- 	}
--	if err := tpgresource.SetLabels(function.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(function.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", function.Labels); err != nil {
-diff --git a/google-beta/services/composer/resource_composer_environment.go b/google-beta/services/composer/resource_composer_environment.go
-index caf0ec85f..d51e3a51f 100644
---- a/google-beta/services/composer/resource_composer_environment.go
-+++ b/google-beta/services/composer/resource_composer_environment.go
-@@ -1159,10 +1159,10 @@ func resourceComposerEnvironmentRead(d *schema.ResourceData, meta interface{}) e
- 	if err := d.Set("config", flattenComposerEnvironmentConfig(res.Config)); err != nil {
- 		return fmt.Errorf("Error setting Environment: %s", err)
- 	}
--	if err := tpgresource.SetLabels(res.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(res.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return fmt.Errorf("Error setting Environment labels: %s", err)
- 	}
--	if err := tpgresource.SetLabels(res.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(res.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", res.Labels); err != nil {
-diff --git a/google-beta/services/compute/resource_compute_instance.go b/google-beta/services/compute/resource_compute_instance.go
-index 39b6ba85f..2dab8cab4 100644
---- a/google-beta/services/compute/resource_compute_instance.go
-+++ b/google-beta/services/compute/resource_compute_instance.go
-@@ -1480,11 +1480,11 @@ func resourceComputeInstanceRead(d *schema.ResourceData, meta interface{}) error
- 		}
- 	}
- 
--	if err := tpgresource.SetLabels(instance.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(instance.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return err
- 	}
- 
--	if err := tpgresource.SetLabels(instance.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(instance.Labels, d, "terraform_labels", nil); err != nil {
- 		return err
- 	}
- 
-diff --git a/google-beta/services/compute/resource_compute_instance_template.go b/google-beta/services/compute/resource_compute_instance_template.go
-index cab14563a..9a8048398 100644
---- a/google-beta/services/compute/resource_compute_instance_template.go
-+++ b/google-beta/services/compute/resource_compute_instance_template.go
-@@ -1702,11 +1702,11 @@ func resourceComputeInstanceTemplateRead(d *schema.ResourceData, meta interface{
- 		}
- 	}
- 	if instanceTemplate.Properties.Labels != nil {
--		if err := tpgresource.SetLabels(instanceTemplate.Properties.Labels, d, "labels"); err != nil {
-+		if err := tpgresource.SetLabels(instanceTemplate.Properties.Labels, d, "labels", config.DefaultLabels); err != nil {
- 			return fmt.Errorf("Error setting labels: %s", err)
- 		}
- 	}
--	if err := tpgresource.SetLabels(instanceTemplate.Properties.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(instanceTemplate.Properties.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", instanceTemplate.Properties.Labels); err != nil {
-diff --git a/google-beta/services/compute/resource_compute_region_instance_template.go b/google-beta/services/compute/resource_compute_region_instance_template.go
-index 1c61d40b5..c8a5aa730 100644
---- a/google-beta/services/compute/resource_compute_region_instance_template.go
-+++ b/google-beta/services/compute/resource_compute_region_instance_template.go
-@@ -1205,11 +1205,11 @@ func resourceComputeRegionInstanceTemplateRead(d *schema.ResourceData, meta inte
- 		}
- 	}
- 	if instanceProperties.Labels != nil {
--		if err := tpgresource.SetLabels(instanceProperties.Labels, d, "labels"); err != nil {
-+		if err := tpgresource.SetLabels(instanceProperties.Labels, d, "labels", config.DefaultLabels); err != nil {
- 			return fmt.Errorf("Error setting labels: %s", err)
- 		}
- 	}
--	if err := tpgresource.SetLabels(instanceProperties.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(instanceProperties.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", instanceProperties.Labels); err != nil {
-diff --git a/google-beta/services/dataflow/resource_dataflow_flex_template_job.go b/google-beta/services/dataflow/resource_dataflow_flex_template_job.go
-index ff7a8838a..5c1bb5e0d 100644
---- a/google-beta/services/dataflow/resource_dataflow_flex_template_job.go
-+++ b/google-beta/services/dataflow/resource_dataflow_flex_template_job.go
-@@ -444,10 +444,10 @@ func resourceDataflowFlexTemplateJobRead(d *schema.ResourceData, meta interface{
- 	if err := d.Set("project", project); err != nil {
- 		return fmt.Errorf("Error setting project: %s", err)
- 	}
--	if err := tpgresource.SetLabels(job.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(job.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return fmt.Errorf("Error setting labels: %s", err)
- 	}
--	if err := tpgresource.SetLabels(job.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(job.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", job.Labels); err != nil {
-diff --git a/google-beta/services/dataflow/resource_dataflow_job.go b/google-beta/services/dataflow/resource_dataflow_job.go
-index 421308835..d386a430e 100644
---- a/google-beta/services/dataflow/resource_dataflow_job.go
-+++ b/google-beta/services/dataflow/resource_dataflow_job.go
-@@ -363,10 +363,10 @@ func resourceDataflowJobRead(d *schema.ResourceData, meta interface{}) error {
- 	if err := d.Set("project", project); err != nil {
- 		return fmt.Errorf("Error setting project: %s", err)
- 	}
--	if err := tpgresource.SetLabels(job.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(job.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return fmt.Errorf("Error setting labels: %s", err)
- 	}
--	if err := tpgresource.SetLabels(job.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(job.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", job.Labels); err != nil {
-diff --git a/google-beta/services/dataproc/resource_dataproc_cluster.go b/google-beta/services/dataproc/resource_dataproc_cluster.go
-index fabf576af..fd56c8e9f 100644
---- a/google-beta/services/dataproc/resource_dataproc_cluster.go
-+++ b/google-beta/services/dataproc/resource_dataproc_cluster.go
-@@ -2642,11 +2642,11 @@ func resourceDataprocClusterRead(d *schema.ResourceData, meta interface{}) error
- 		return fmt.Errorf("Error setting region: %s", err)
- 	}
- 
--	if err := tpgresource.SetLabels(cluster.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(cluster.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return fmt.Errorf("Error setting labels: %s", err)
- 	}
- 
--	if err := tpgresource.SetLabels(cluster.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(cluster.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 
-diff --git a/google-beta/services/dataproc/resource_dataproc_job.go b/google-beta/services/dataproc/resource_dataproc_job.go
-index 8a9c485ee..3f00044dd 100644
---- a/google-beta/services/dataproc/resource_dataproc_job.go
-+++ b/google-beta/services/dataproc/resource_dataproc_job.go
-@@ -335,10 +335,10 @@ func resourceDataprocJobRead(d *schema.ResourceData, meta interface{}) error {
- 	if err := d.Set("force_delete", d.Get("force_delete")); err != nil {
- 		return fmt.Errorf("Error setting force_delete: %s", err)
- 	}
--	if err := tpgresource.SetLabels(job.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(job.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return fmt.Errorf("Error setting labels: %s", err)
- 	}
--	if err := tpgresource.SetLabels(job.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(job.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", job.Labels); err != nil {
-diff --git a/google-beta/services/resourcemanager/resource_google_project.go b/google-beta/services/resourcemanager/resource_google_project.go
-index d77086e64..f2da47782 100644
---- a/google-beta/services/resourcemanager/resource_google_project.go
-+++ b/google-beta/services/resourcemanager/resource_google_project.go
-@@ -316,10 +316,10 @@ func resourceGoogleProjectRead(d *schema.ResourceData, meta interface{}) error {
- 	if err := d.Set("name", p.Name); err != nil {
- 		return fmt.Errorf("Error setting name: %s", err)
- 	}
--	if err := tpgresource.SetLabels(p.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(p.Labels, d, "labels", config.DefaultLabels); err != nil {
- 		return fmt.Errorf("Error setting labels: %s", err)
- 	}
--	if err := tpgresource.SetLabels(p.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(p.Labels, d, "terraform_labels", nil); err != nil {
- 		return fmt.Errorf("Error setting terraform_labels: %s", err)
- 	}
- 	if err := d.Set("effective_labels", p.Labels); err != nil {
 diff --git a/google-beta/services/storage/resource_storage_bucket.go b/google-beta/services/storage/resource_storage_bucket.go
-index 3baddab29..180e45a13 100644
+index 3baddab29..b26de57d9 100644
 --- a/google-beta/services/storage/resource_storage_bucket.go
 +++ b/google-beta/services/storage/resource_storage_bucket.go
 @@ -1778,10 +1778,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
@@ -221,49 +13,46 @@ index 3baddab29..180e45a13 100644
  		return fmt.Errorf("Error setting lifecycle_rule: %s", err)
  	}
 -	if err := tpgresource.SetLabels(res.Labels, d, "labels"); err != nil {
-+	if err := tpgresource.SetLabels(res.Labels, d, "labels", config.DefaultLabels); err != nil {
++	if err := tpgresource.SetLabelsNoDefaults(res.Labels, d, "labels", config.DefaultLabels); err != nil {
  		return fmt.Errorf("Error setting labels: %s", err)
  	}
 -	if err := tpgresource.SetLabels(res.Labels, d, "terraform_labels"); err != nil {
-+	if err := tpgresource.SetLabels(res.Labels, d, "terraform_labels", nil); err != nil {
++	if err := tpgresource.SetLabelsNoDefaults(res.Labels, d, "terraform_labels", config.DefaultLabels); err != nil {
  		return fmt.Errorf("Error setting terraform_labels: %s", err)
  	}
  	if err := d.Set("effective_labels", res.Labels); err != nil {
 diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
-index 42bd5647d..3ccba6c10 100644
+index 42bd5647d..d02317610 100644
 --- a/google-beta/tpgresource/labels.go
 +++ b/google-beta/tpgresource/labels.go
-@@ -6,6 +6,7 @@ import (
- 	"context"
- 	"fmt"
- 	"log"
-+	"q"
- 	"strings"
+@@ -31,6 +31,30 @@ func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string)
+ 	return d.Set(lineage, transformed)
+ }
  
- 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-@@ -17,15 +18,24 @@ import (
- // So the field "labels" and "terraform_labels" in the state will only have the user defined labels.
- // param "labels" is all of labels returned from API read reqeust.
- // param "lineage" is the terraform lineage of the field and could be "labels" or "terraform_labels".
--func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string) error {
-+func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string, skippedLabels map[string]string) error {
-+	q.Q(lineage, labels, skippedLabels)
- 	transformed := make(map[string]interface{})
- 
- 	if v, ok := d.GetOk(lineage); ok {
++// Like SetLabels but also takes defaultLabels and skips them
++// if we are setting the labels field.
++func SetLabelsNoDefaults(labels map[string]string, d *schema.ResourceData, lineage string, defaultLabels map[string]string) error {
++	transformed := make(map[string]interface{})
++
++	if v, ok := d.GetOk(lineage); ok {
 +		// We are reading after an update, so populate just the user defined labels.
- 		if labels != nil {
- 			for k := range v.(map[string]interface{}) {
- 				transformed[k] = labels[k]
- 			}
- 		}
++		if labels != nil {
++			for k := range v.(map[string]interface{}) {
++				transformed[k] = labels[k]
++			}
++		}
 +	} else {
 +		// We are reading for an import, so populate all of the labels, except the skipped ones.
 +		for k, v := range labels {
-+			if _, ok := skippedLabels[k]; !ok {
++			if _, ok := defaultLabels[k]; !ok || lineage != "labels" {
 +				transformed[k] = v
 +			}
 +		}
- 	}
- 
- 	return d.Set(lineage, transformed)
++	}
++
++	return d.Set(lineage, transformed)
++}
++
+ // Sets the "labels" field and "terraform_labels" with the value of the field "effective_labels" for data sources.
+ // When reading data source, as the labels field is unavailable in the configuration of the data source,
+ // the "labels" field will be empty. With this funciton, the labels "field" will have all of labels in the resource.
