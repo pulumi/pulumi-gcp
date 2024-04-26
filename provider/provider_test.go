@@ -140,7 +140,7 @@ func pulumiTest(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.Pu
 
 	cwd, err := os.Getwd()
 	require.NoError(t, err)
-	
+
 	options := []opttest.Option{
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 	}
