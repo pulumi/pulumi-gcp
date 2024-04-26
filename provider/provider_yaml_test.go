@@ -873,12 +873,14 @@ func pulumiTestExec(ptest *pulumitest.PulumiTest, args ...string) {
 	require.NoError(t, err)
 }
 
-func pulumiTestImport(ptest *pulumitest.PulumiTest, resourceType, resourceName, resourceID string, providerString string) {
+func pulumiTestImport(
+	ptest *pulumitest.PulumiTest, resourceType, resourceName, resourceID string, providerUrn string,
+) {
 	arguments := []string{
 		"import", resourceType, resourceName, resourceID, "--yes", "--protect=false", "-s", ptest.CurrentStack().Name(),
 	}
-	if providerString != "" {
-		arguments = append(arguments, "--provider", providerString)
+	if providerUrn != "" {
+		arguments = append(arguments, "--provider="+providerUrn)
 	}
 	pulumiTestExec(ptest, arguments...)
 }
@@ -906,6 +908,7 @@ func TestLabelImport(t *testing.T) {
 			testName:     "bucket-with-defaults",
 			programPath:  filepath.Join("test-programs", "labeled-bucket-with-defaults"),
 			resourceType: "gcp:storage/bucket:Bucket",
+			explicitProvider: true,
 		},
 	} {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -915,14 +918,13 @@ func TestLabelImport(t *testing.T) {
 			resourceID := res.Outputs["resourceId"].Value.(string)
 			resourceUrn := res.Outputs["resourceUrn"].Value.(string)
 
-			providerString := ""
+			providerUrn := ""
 			if tc.explicitProvider {
-				providerUrn := res.Outputs["providerUrn"].Value.(string)
-				providerString = "prov=" + providerUrn
+				providerUrn = res.Outputs["providerUrn"].Value.(string)
 			}
 
 			pulumiTestDeleteFromState(test, resourceUrn)
-			pulumiTestImport(test, tc.resourceType, "resource", resourceID, providerString)
+			pulumiTestImport(test, tc.resourceType, "resource", resourceID, providerUrn)
 
 			prevResult := test.Preview()
 			assertpreview.HasNoChanges(t, prevResult)
