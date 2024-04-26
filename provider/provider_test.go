@@ -132,3 +132,23 @@ func providerServer(t *testing.T) pulumirpc.ResourceProviderServer {
 	require.NoError(t, err)
 	return p
 }
+
+func pulumiTest(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.PulumiTest {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+
+	options := []opttest.Option{
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	}
+	options = append(options, opts...)
+
+	test := pulumitest.NewPulumiTest(t, dir, options...)
+
+	googleProj := getProject()
+	test.SetConfig("gcp:config:project", googleProj)
+	return test
+}

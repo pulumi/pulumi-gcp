@@ -18,6 +18,8 @@
 package gcp
 
 import (
+	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -861,4 +863,83 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 		}
 	}
 	]`, proj, proj))
+}
+
+func pulumiTestExec(ptest *pulumitest.PulumiTest, args ...string) {
+	t := ptest.T()
+	workspace := ptest.CurrentStack().Workspace()
+	ctx := context.Background()
+	workdir := workspace.WorkDir()
+	var env []string
+	for k, v := range workspace.GetEnvVars() {
+		env = append(env, fmt.Sprintf("%s=%s", k, v))
+	}
+	stdin := bytes.NewReader([]byte{})
+
+	s1, s2, code, err := workspace.PulumiCommand().Run(ctx, workdir, stdin, nil, nil, env, args...)
+	t.Logf("cmd: %s", args)
+	t.Logf("stdout: %s", s1)
+	t.Logf("stderr: %s", s2)
+	t.Logf("code=%v", code)
+
+	require.NoError(t, err)
+}
+
+func pulumiTestImport(
+	ptest *pulumitest.PulumiTest, resourceType, resourceName, resourceID string, providerUrn string,
+) {
+	arguments := []string{
+		"import", resourceType, resourceName, resourceID, "--yes", "--protect=false", "-s", ptest.CurrentStack().Name(),
+	}
+	if providerUrn != "" {
+		arguments = append(arguments, "--provider="+providerUrn)
+	}
+	pulumiTestExec(ptest, arguments...)
+}
+
+func pulumiTestDeleteFromState(ptest *pulumitest.PulumiTest, resourceURN string) {
+	arguments := []string{
+		"state", "delete", resourceURN, "--yes", "-s", ptest.CurrentStack().Name(),
+	}
+	pulumiTestExec(ptest, arguments...)
+}
+
+func TestLabelImport(t *testing.T) {
+	for _, tc := range []struct {
+		testName         string
+		programPath      string
+		resourceType     string
+		explicitProvider bool
+	}{
+		{
+			testName:     "bucket",
+			programPath:  filepath.Join("test-programs", "labeled-bucket"),
+			resourceType: "gcp:storage/bucket:Bucket",
+		},
+		{
+			testName:         "bucket-with-defaults",
+			programPath:      filepath.Join("test-programs", "labeled-bucket-with-defaults"),
+			resourceType:     "gcp:storage/bucket:Bucket",
+			explicitProvider: true,
+		},
+	} {
+		t.Run(tc.testName, func(t *testing.T) {
+			test := pulumiTest(t, tc.programPath)
+
+			res := test.Up()
+			resourceID := res.Outputs["resourceId"].Value.(string)
+			resourceUrn := res.Outputs["resourceUrn"].Value.(string)
+
+			providerUrn := ""
+			if tc.explicitProvider {
+				providerUrn = res.Outputs["providerUrn"].Value.(string)
+			}
+
+			pulumiTestDeleteFromState(test, resourceUrn)
+			pulumiTestImport(test, tc.resourceType, "resource", resourceID, providerUrn)
+
+			prevResult := test.Preview()
+			assertpreview.HasNoChanges(t, prevResult)
+		})
+	}
 }
