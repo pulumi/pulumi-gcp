@@ -296,10 +296,7 @@ type HostingCustomDomain struct {
 	// The ID of the site in which to create this custom domain association.
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The last time the `CustomDomain` was updated.
-	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-	// wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-	// Terraform state.
+	UpdateTime          pulumi.StringOutput  `pulumi:"updateTime"`
 	WaitDnsVerification pulumi.BoolPtrOutput `pulumi:"waitDnsVerification"`
 }
 
@@ -447,11 +444,8 @@ type hostingCustomDomainState struct {
 	// The ID of the site in which to create this custom domain association.
 	SiteId *string `pulumi:"siteId"`
 	// The last time the `CustomDomain` was updated.
-	UpdateTime *string `pulumi:"updateTime"`
-	// If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-	// wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-	// Terraform state.
-	WaitDnsVerification *bool `pulumi:"waitDnsVerification"`
+	UpdateTime          *string `pulumi:"updateTime"`
+	WaitDnsVerification *bool   `pulumi:"waitDnsVerification"`
 }
 
 type HostingCustomDomainState struct {
@@ -563,10 +557,7 @@ type HostingCustomDomainState struct {
 	// The ID of the site in which to create this custom domain association.
 	SiteId pulumi.StringPtrInput
 	// The last time the `CustomDomain` was updated.
-	UpdateTime pulumi.StringPtrInput
-	// If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-	// wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-	// Terraform state.
+	UpdateTime          pulumi.StringPtrInput
 	WaitDnsVerification pulumi.BoolPtrInput
 }
 
@@ -593,11 +584,8 @@ type hostingCustomDomainArgs struct {
 	// instead.
 	RedirectTarget *string `pulumi:"redirectTarget"`
 	// The ID of the site in which to create this custom domain association.
-	SiteId string `pulumi:"siteId"`
-	// If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-	// wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-	// Terraform state.
-	WaitDnsVerification *bool `pulumi:"waitDnsVerification"`
+	SiteId              string `pulumi:"siteId"`
+	WaitDnsVerification *bool  `pulumi:"waitDnsVerification"`
 }
 
 // The set of arguments for constructing a HostingCustomDomain resource.
@@ -620,10 +608,7 @@ type HostingCustomDomainArgs struct {
 	// instead.
 	RedirectTarget pulumi.StringPtrInput
 	// The ID of the site in which to create this custom domain association.
-	SiteId pulumi.StringInput
-	// If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-	// wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-	// Terraform state.
+	SiteId              pulumi.StringInput
 	WaitDnsVerification pulumi.BoolPtrInput
 }
 
@@ -876,9 +861,6 @@ func (o HostingCustomDomainOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingCustomDomain) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-// wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-// Terraform state.
 func (o HostingCustomDomainOutput) WaitDnsVerification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostingCustomDomain) pulumi.BoolPtrOutput { return v.WaitDnsVerification }).(pulumi.BoolPtrOutput)
 }

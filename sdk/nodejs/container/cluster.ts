@@ -234,10 +234,6 @@ export class Cluster extends pulumi.CustomResource {
      * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      */
     public readonly defaultSnatStatus!: pulumi.Output<outputs.container.ClusterDefaultSnatStatus>;
-    /**
-     * Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-     * Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
-     */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * Description of the cluster.
@@ -854,10 +850,6 @@ export interface ClusterState {
      * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      */
     defaultSnatStatus?: pulumi.Input<inputs.container.ClusterDefaultSnatStatus>;
-    /**
-     * Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-     * Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
-     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the cluster.
@@ -1302,10 +1294,6 @@ export interface ClusterArgs {
      * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      */
     defaultSnatStatus?: pulumi.Input<inputs.container.ClusterDefaultSnatStatus>;
-    /**
-     * Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
-     * Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
-     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the cluster.

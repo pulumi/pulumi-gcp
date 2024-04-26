@@ -158,10 +158,6 @@ export class Cluster extends pulumi.CustomResource {
      * which is the name of the cluster.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
-    /**
-     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-     * terraform apply
-     */
     public readonly gracefulDecommissionTimeout!: pulumi.Output<string | undefined>;
     /**
      * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
@@ -252,10 +248,6 @@ export interface ClusterState {
      * which is the name of the cluster.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-     * terraform apply
-     */
     gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
      * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
@@ -300,10 +292,6 @@ export interface ClusterArgs {
      * Structure defined below.
      */
     clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
-    /**
-     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-     * terraform apply
-     */
     gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
      * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.

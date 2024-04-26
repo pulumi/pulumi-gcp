@@ -243,19 +243,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
-    /**
-     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-     * terraform apply
-     * 
-     */
     @Export(name="gracefulDecommissionTimeout", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gracefulDecommissionTimeout;
 
-    /**
-     * @return The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-     * terraform apply
-     * 
-     */
     public Output<Optional<String>> gracefulDecommissionTimeout() {
         return Codegen.optional(this.gracefulDecommissionTimeout);
     }

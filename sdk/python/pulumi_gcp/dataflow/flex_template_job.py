@@ -72,9 +72,6 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
-        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-               different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -372,11 +369,6 @@ class FlexTemplateJobArgs:
     @property
     @pulumi.getter(name="skipWaitOnJobTermination")
     def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        different, e.g. by embedding a release ID or by using a random_id.
-        """
         return pulumi.get(self, "skip_wait_on_job_termination")
 
     @skip_wait_on_job_termination.setter
@@ -472,8 +464,6 @@ class _FlexTemplateJobState:
                Template.
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
         :param pulumi.Input[bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
@@ -502,9 +492,6 @@ class _FlexTemplateJobState:
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
-        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-               different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -613,10 +600,6 @@ class _FlexTemplateJobState:
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
-        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -852,11 +835,6 @@ class _FlexTemplateJobState:
     @property
     @pulumi.getter(name="skipWaitOnJobTermination")
     def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        different, e.g. by embedding a release ID or by using a random_id.
-        """
         return pulumi.get(self, "skip_wait_on_job_termination")
 
     @skip_wait_on_job_termination.setter
@@ -1073,9 +1051,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
-        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-               different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -1293,8 +1268,6 @@ class FlexTemplateJob(pulumi.CustomResource):
                Template.
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
         :param pulumi.Input[bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
@@ -1323,9 +1296,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
-        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-               different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -1398,10 +1368,6 @@ class FlexTemplateJob(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
-        """
         return pulumi.get(self, "effective_labels")
 
     @property
@@ -1561,11 +1527,6 @@ class FlexTemplateJob(pulumi.CustomResource):
     @property
     @pulumi.getter(name="skipWaitOnJobTermination")
     def skip_wait_on_job_termination(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        different, e.g. by embedding a release ID or by using a random_id.
-        """
         return pulumi.get(self, "skip_wait_on_job_termination")
 
     @property

@@ -166,8 +166,9 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
      * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
      * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
      * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-     * on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-     * cluster is deleted.
+     * on a [managed
+     * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+     * the cluster is deleted.
      * 
      */
     @Export(name="dagTimeout", refs={String.class}, tree="[0]")
@@ -178,26 +179,17 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
      * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
      * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
      * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-     * on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-     * cluster is deleted.
+     * on a [managed
+     * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+     * the cluster is deleted.
      * 
      */
     public Output<Optional<String>> dagTimeout() {
         return Codegen.optional(this.dagTimeout);
     }
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     * 
-     */
     @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> effectiveLabels;
 
-    /**
-     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     * 
-     */
     public Output<Map<String,Object>> effectiveLabels() {
         return this.effectiveLabels;
     }

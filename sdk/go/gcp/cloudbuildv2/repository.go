@@ -251,9 +251,7 @@ type Repository struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. Server assigned timestamp for when the connection was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -315,9 +313,7 @@ type repositoryState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. Server assigned timestamp for when the connection was created.
-	CreateTime *string `pulumi:"createTime"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	CreateTime           *string           `pulumi:"createTime"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -344,9 +340,7 @@ type RepositoryState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Output only. Server assigned timestamp for when the connection was created.
-	CreateTime pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	CreateTime           pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -511,8 +505,6 @@ func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o RepositoryOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

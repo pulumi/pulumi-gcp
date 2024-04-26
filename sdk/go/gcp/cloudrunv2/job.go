@@ -520,9 +520,7 @@ type Job struct {
 	// Email address of the authenticated creator.
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// The deletion time.
-	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DeleteTime           pulumi.StringOutput    `pulumi:"deleteTime"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -647,9 +645,7 @@ type jobState struct {
 	// Email address of the authenticated creator.
 	Creator *string `pulumi:"creator"`
 	// The deletion time.
-	DeleteTime *string `pulumi:"deleteTime"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DeleteTime           *string           `pulumi:"deleteTime"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -734,9 +730,7 @@ type JobState struct {
 	// Email address of the authenticated creator.
 	Creator pulumi.StringPtrInput
 	// The deletion time.
-	DeleteTime pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DeleteTime           pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -1019,8 +1013,6 @@ func (o JobOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o JobOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

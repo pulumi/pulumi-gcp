@@ -123,9 +123,7 @@ type GlobalAddress struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	Description     pulumi.StringPtrOutput `pulumi:"description"`
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
@@ -218,9 +216,7 @@ type globalAddressState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
-	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	Description     *string           `pulumi:"description"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
@@ -279,9 +275,7 @@ type GlobalAddressState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
-	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	Description     pulumi.StringPtrInput
 	EffectiveLabels pulumi.StringMapInput
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
@@ -544,8 +538,6 @@ func (o GlobalAddressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
 func (o GlobalAddressOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

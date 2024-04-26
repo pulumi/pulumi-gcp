@@ -39,9 +39,6 @@ class HostingCustomDomainArgs:
                specified, Hosting will respond to requests against this CustomDomain
                with an HTTP 301 code, and route traffic to the specified `redirect_target`
                instead.
-        :param pulumi.Input[bool] wait_dns_verification: If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-               wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-               Terraform state.
         """
         pulumi.set(__self__, "custom_domain", custom_domain)
         pulumi.set(__self__, "site_id", site_id)
@@ -127,11 +124,6 @@ class HostingCustomDomainArgs:
     @property
     @pulumi.getter(name="waitDnsVerification")
     def wait_dns_verification(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-        wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-        Terraform state.
-        """
         return pulumi.get(self, "wait_dns_verification")
 
     @wait_dns_verification.setter
@@ -255,9 +247,6 @@ class _HostingCustomDomainState:
                Structure is documented below.
         :param pulumi.Input[str] site_id: The ID of the site in which to create this custom domain association.
         :param pulumi.Input[str] update_time: The last time the `CustomDomain` was updated.
-        :param pulumi.Input[bool] wait_dns_verification: If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-               wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-               Terraform state.
         """
         if cert_preference is not None:
             pulumi.set(__self__, "cert_preference", cert_preference)
@@ -579,11 +568,6 @@ class _HostingCustomDomainState:
     @property
     @pulumi.getter(name="waitDnsVerification")
     def wait_dns_verification(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-        wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-        Terraform state.
-        """
         return pulumi.get(self, "wait_dns_verification")
 
     @wait_dns_verification.setter
@@ -722,9 +706,6 @@ class HostingCustomDomain(pulumi.CustomResource):
                with an HTTP 301 code, and route traffic to the specified `redirect_target`
                instead.
         :param pulumi.Input[str] site_id: The ID of the site in which to create this custom domain association.
-        :param pulumi.Input[bool] wait_dns_verification: If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-               wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-               Terraform state.
         """
         ...
     @overload
@@ -1014,9 +995,6 @@ class HostingCustomDomain(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] site_id: The ID of the site in which to create this custom domain association.
         :param pulumi.Input[str] update_time: The last time the `CustomDomain` was updated.
-        :param pulumi.Input[bool] wait_dns_verification: If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-               wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-               Terraform state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1257,10 +1235,5 @@ class HostingCustomDomain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="waitDnsVerification")
     def wait_dns_verification(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-        wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-        Terraform state.
-        """
         return pulumi.get(self, "wait_dns_verification")
 

@@ -40,11 +40,6 @@ class DatabaseArgs:
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
-        :param pulumi.Input[bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-               "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-               deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-               interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-               database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
@@ -135,13 +130,6 @@ class DatabaseArgs:
     @property
     @pulumi.getter(name="enableDropProtection")
     def enable_drop_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-        "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-        deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-        interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-        database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-        """
         return pulumi.get(self, "enable_drop_protection")
 
     @enable_drop_protection.setter
@@ -228,11 +216,6 @@ class _DatabaseState:
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
-        :param pulumi.Input[bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-               "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-               deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-               interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-               database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
@@ -316,13 +299,6 @@ class _DatabaseState:
     @property
     @pulumi.getter(name="enableDropProtection")
     def enable_drop_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-        "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-        deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-        interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-        database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-        """
         return pulumi.get(self, "enable_drop_protection")
 
     @enable_drop_protection.setter
@@ -506,11 +482,6 @@ class Database(pulumi.CustomResource):
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
-        :param pulumi.Input[bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-               "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-               deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-               interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-               database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
         :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
@@ -682,11 +653,6 @@ class Database(pulumi.CustomResource):
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
-        :param pulumi.Input[bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-               "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-               deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-               interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-               database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
         :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
@@ -753,13 +719,6 @@ class Database(pulumi.CustomResource):
     @property
     @pulumi.getter(name="enableDropProtection")
     def enable_drop_protection(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
-        "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
-        deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
-        interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
-        database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-        """
         return pulumi.get(self, "enable_drop_protection")
 
     @property

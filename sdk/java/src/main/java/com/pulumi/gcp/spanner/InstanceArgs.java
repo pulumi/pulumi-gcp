@@ -152,36 +152,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-     * terraform.
-     * 
-     */
     @Import(name="numNodes")
     private @Nullable Output<Integer> numNodes;
 
-    /**
-     * @return The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-     * terraform.
-     * 
-     */
     public Optional<Output<Integer>> numNodes() {
         return Optional.ofNullable(this.numNodes);
     }
 
-    /**
-     * The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-     * in terraform.
-     * 
-     */
     @Import(name="processingUnits")
     private @Nullable Output<Integer> processingUnits;
 
-    /**
-     * @return The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-     * in terraform.
-     * 
-     */
     public Optional<Output<Integer>> processingUnits() {
         return Optional.ofNullable(this.processingUnits);
     }
@@ -403,48 +383,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param numNodes The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-         * terraform.
-         * 
-         * @return builder
-         * 
-         */
         public Builder numNodes(@Nullable Output<Integer> numNodes) {
             $.numNodes = numNodes;
             return this;
         }
 
-        /**
-         * @param numNodes The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
-         * terraform.
-         * 
-         * @return builder
-         * 
-         */
         public Builder numNodes(Integer numNodes) {
             return numNodes(Output.of(numNodes));
         }
 
-        /**
-         * @param processingUnits The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-         * in terraform.
-         * 
-         * @return builder
-         * 
-         */
         public Builder processingUnits(@Nullable Output<Integer> processingUnits) {
             $.processingUnits = processingUnits;
             return this;
         }
 
-        /**
-         * @param processingUnits The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
-         * in terraform.
-         * 
-         * @return builder
-         * 
-         */
         public Builder processingUnits(Integer processingUnits) {
             return processingUnits(Output.of(processingUnits));
         }

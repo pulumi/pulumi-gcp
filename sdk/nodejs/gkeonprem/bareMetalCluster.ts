@@ -393,10 +393,6 @@ export class BareMetalCluster extends pulumi.CustomResource {
      * The description of the validation check.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The IP address name of Bare Metal User Cluster's API server.
@@ -670,10 +666,6 @@ export interface BareMetalClusterState {
      * The description of the validation check.
      */
     description?: pulumi.Input<string>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The IP address name of Bare Metal User Cluster's API server.

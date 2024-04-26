@@ -34,11 +34,6 @@ class VolumeReplicationArgs:
         :param pulumi.Input[str] replication_schedule: Specifies the replication interval.
                Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
         :param pulumi.Input[str] volume_name: The name of the existing source volume.
-        :param pulumi.Input[bool] delete_destination_volume: A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-               management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-               to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-               direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-               avoid accidental volume deletion. Handle with care. Default is false.
         :param pulumi.Input[str] description: An description of this resource.
         :param pulumi.Input['VolumeReplicationDestinationVolumeParametersArgs'] destination_volume_parameters: Destination volume parameters.
                Structure is documented below.
@@ -60,9 +55,6 @@ class VolumeReplicationArgs:
                and act independently from the source volume.
                Set to true to enable/resume the mirror. WARNING: Resuming a mirror overwrites any changes
                done to the destination volume with the content of the source volume.
-        :param pulumi.Input[bool] wait_for_mirror: Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-               reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-               parameter to true. Default is false.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "replication_schedule", replication_schedule)
@@ -126,13 +118,6 @@ class VolumeReplicationArgs:
     @property
     @pulumi.getter(name="deleteDestinationVolume")
     def delete_destination_volume(self) -> Optional[pulumi.Input[bool]]:
-        """
-        A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-        management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-        to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-        direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-        avoid accidental volume deletion. Handle with care. Default is false.
-        """
         return pulumi.get(self, "delete_destination_volume")
 
     @delete_destination_volume.setter
@@ -240,11 +225,6 @@ class VolumeReplicationArgs:
     @property
     @pulumi.getter(name="waitForMirror")
     def wait_for_mirror(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-        reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-        parameter to true. Default is false.
-        """
         return pulumi.get(self, "wait_for_mirror")
 
     @wait_for_mirror.setter
@@ -281,11 +261,6 @@ class _VolumeReplicationState:
         """
         Input properties used for looking up and filtering VolumeReplication resources.
         :param pulumi.Input[str] create_time: Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-        :param pulumi.Input[bool] delete_destination_volume: A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-               management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-               to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-               direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-               avoid accidental volume deletion. Handle with care. Default is false.
         :param pulumi.Input[str] description: An description of this resource.
         :param pulumi.Input[str] destination_volume: Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
         :param pulumi.Input['VolumeReplicationDestinationVolumeParametersArgs'] destination_volume_parameters: Destination volume parameters.
@@ -330,9 +305,6 @@ class _VolumeReplicationState:
         :param pulumi.Input[Sequence[pulumi.Input['VolumeReplicationTransferStatArgs']]] transfer_stats: Replication transfer statistics. All statistics are updated every 5 minutes.
                Structure is documented below.
         :param pulumi.Input[str] volume_name: The name of the existing source volume.
-        :param pulumi.Input[bool] wait_for_mirror: Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-               reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-               parameter to true. Default is false.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -396,13 +368,6 @@ class _VolumeReplicationState:
     @property
     @pulumi.getter(name="deleteDestinationVolume")
     def delete_destination_volume(self) -> Optional[pulumi.Input[bool]]:
-        """
-        A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-        management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-        to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-        direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-        avoid accidental volume deletion. Handle with care. Default is false.
-        """
         return pulumi.get(self, "delete_destination_volume")
 
     @delete_destination_volume.setter
@@ -676,11 +641,6 @@ class _VolumeReplicationState:
     @property
     @pulumi.getter(name="waitForMirror")
     def wait_for_mirror(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-        reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-        parameter to true. Default is false.
-        """
         return pulumi.get(self, "wait_for_mirror")
 
     @wait_for_mirror.setter
@@ -778,11 +738,6 @@ class VolumeReplication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] delete_destination_volume: A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-               management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-               to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-               direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-               avoid accidental volume deletion. Handle with care. Default is false.
         :param pulumi.Input[str] description: An description of this resource.
         :param pulumi.Input[pulumi.InputType['VolumeReplicationDestinationVolumeParametersArgs']] destination_volume_parameters: Destination volume parameters.
                Structure is documented below.
@@ -808,9 +763,6 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[str] replication_schedule: Specifies the replication interval.
                Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
         :param pulumi.Input[str] volume_name: The name of the existing source volume.
-        :param pulumi.Input[bool] wait_for_mirror: Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-               reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-               parameter to true. Default is false.
         """
         ...
     @overload
@@ -996,11 +948,6 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-        :param pulumi.Input[bool] delete_destination_volume: A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-               management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-               to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-               direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-               avoid accidental volume deletion. Handle with care. Default is false.
         :param pulumi.Input[str] description: An description of this resource.
         :param pulumi.Input[str] destination_volume: Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
         :param pulumi.Input[pulumi.InputType['VolumeReplicationDestinationVolumeParametersArgs']] destination_volume_parameters: Destination volume parameters.
@@ -1045,9 +992,6 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeReplicationTransferStatArgs']]]] transfer_stats: Replication transfer statistics. All statistics are updated every 5 minutes.
                Structure is documented below.
         :param pulumi.Input[str] volume_name: The name of the existing source volume.
-        :param pulumi.Input[bool] wait_for_mirror: Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-               reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-               parameter to true. Default is false.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1089,13 +1033,6 @@ class VolumeReplication(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deleteDestinationVolume")
     def delete_destination_volume(self) -> pulumi.Output[Optional[bool]]:
-        """
-        A destination volume is created as part of replication creation. The destination volume will not became under Terraform
-        management unless you import it manually. If you delete the replication, this volume will remain. Setting this parameter
-        to true will delete the *current* destination volume when destroying the replication. If you reversed the replication
-        direction, this will be your former source volume! For production use, it is recommended to keep this parameter false to
-        avoid accidental volume deletion. Handle with care. Default is false.
-        """
         return pulumi.get(self, "delete_destination_volume")
 
     @property
@@ -1285,10 +1222,5 @@ class VolumeReplication(pulumi.CustomResource):
     @property
     @pulumi.getter(name="waitForMirror")
     def wait_for_mirror(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Replication resource state is independent of mirror_state. With enough data, it can take many hours for mirror_state to
-        reach MIRRORED. If you want Terraform to wait for the mirror to finish on create/stop/resume operations, set this
-        parameter to true. Default is false.
-        """
         return pulumi.get(self, "wait_for_mirror")
 

@@ -217,9 +217,7 @@ type Backup struct {
 	// User-provided description of the backup.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User-settable and human-readable display name for the Backup.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -337,9 +335,7 @@ type backupState struct {
 	// User-provided description of the backup.
 	Description *string `pulumi:"description"`
 	// User-settable and human-readable display name for the Backup.
-	DisplayName *string `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          *string           `pulumi:"displayName"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -414,9 +410,7 @@ type BackupState struct {
 	// User-provided description of the backup.
 	Description pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Backup.
-	DisplayName pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -677,8 +671,6 @@ func (o BackupOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o BackupOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

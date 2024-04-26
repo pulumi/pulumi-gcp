@@ -143,7 +143,7 @@ export class NetworkFirewallPolicyRule extends pulumi.CustomResource {
     /**
      * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
      * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * "goto_next" rules.
+     * "gotoNext" rules.
      */
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     /**
@@ -177,10 +177,10 @@ export class NetworkFirewallPolicyRule extends pulumi.CustomResource {
     /**
      * A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
      * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-     * <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither
-     * <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all
-     * instances on the specified network. Maximum number of target label tags allowed is 256.
+     * tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
+     * may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor
+     * <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum
+     * number of target label tags allowed is 256.
      */
     public readonly targetSecureTags!: pulumi.Output<outputs.compute.NetworkFirewallPolicyRuleTargetSecureTag[] | undefined>;
     /**
@@ -276,7 +276,7 @@ export interface NetworkFirewallPolicyRuleState {
     /**
      * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
      * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * "goto_next" rules.
+     * "gotoNext" rules.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
@@ -310,10 +310,10 @@ export interface NetworkFirewallPolicyRuleState {
     /**
      * A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
      * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-     * <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither
-     * <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all
-     * instances on the specified network. Maximum number of target label tags allowed is 256.
+     * tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
+     * may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor
+     * <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum
+     * number of target label tags allowed is 256.
      */
     targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleTargetSecureTag>[]>;
     /**
@@ -346,7 +346,7 @@ export interface NetworkFirewallPolicyRuleArgs {
     /**
      * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
      * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * "goto_next" rules.
+     * "gotoNext" rules.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
@@ -372,10 +372,10 @@ export interface NetworkFirewallPolicyRuleArgs {
     /**
      * A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
      * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-     * <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither
-     * <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all
-     * instances on the specified network. Maximum number of target label tags allowed is 256.
+     * tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
+     * may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor
+     * <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum
+     * number of target label tags allowed is 256.
      */
     targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleTargetSecureTag>[]>;
     /**

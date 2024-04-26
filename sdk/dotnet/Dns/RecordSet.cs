@@ -392,12 +392,6 @@ namespace Pulumi.Gcp.Dns
         [Output("routingPolicy")]
         public Output<Outputs.RecordSetRoutingPolicy?> RoutingPolicy { get; private set; } = null!;
 
-        /// <summary>
-        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        /// string (e.g. "first255characters\"\"morecharacters").
-        /// </summary>
         [Output("rrdatas")]
         public Output<ImmutableArray<string>> Rrdatas { get; private set; } = null!;
 
@@ -491,13 +485,6 @@ namespace Pulumi.Gcp.Dns
 
         [Input("rrdatas")]
         private InputList<string>? _rrdatas;
-
-        /// <summary>
-        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        /// string (e.g. "first255characters\"\"morecharacters").
-        /// </summary>
         public InputList<string> Rrdatas
         {
             get => _rrdatas ?? (_rrdatas = new InputList<string>());
@@ -556,13 +543,6 @@ namespace Pulumi.Gcp.Dns
 
         [Input("rrdatas")]
         private InputList<string>? _rrdatas;
-
-        /// <summary>
-        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        /// string (e.g. "first255characters\"\"morecharacters").
-        /// </summary>
         public InputList<string> Rrdatas
         {
             get => _rrdatas ?? (_rrdatas = new InputList<string>());

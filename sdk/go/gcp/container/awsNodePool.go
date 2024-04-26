@@ -531,7 +531,7 @@ type AwsNodePool struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingOutput `pulumi:"autoscaling"`
@@ -540,10 +540,8 @@ type AwsNodePool struct {
 	// The configuration of the node pool.
 	Config AwsNodePoolConfigOutput `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	CreateTime           pulumi.StringOutput `pulumi:"createTime"`
+	EffectiveAnnotations pulumi.MapOutput    `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location for the resource
@@ -628,7 +626,7 @@ type awsNodePoolState struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling *AwsNodePoolAutoscaling `pulumi:"autoscaling"`
@@ -637,9 +635,7 @@ type awsNodePoolState struct {
 	// The configuration of the node pool.
 	Config *AwsNodePoolConfig `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
-	CreateTime *string `pulumi:"createTime"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	CreateTime           *string                `pulumi:"createTime"`
 	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -675,7 +671,7 @@ type AwsNodePoolState struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingPtrInput
@@ -684,9 +680,7 @@ type AwsNodePoolState struct {
 	// The configuration of the node pool.
 	Config AwsNodePoolConfigPtrInput
 	// Output only. The time at which this node pool was created.
-	CreateTime pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	CreateTime           pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.MapInput
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -726,7 +720,7 @@ type awsNodePoolArgs struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscaling `pulumi:"autoscaling"`
@@ -759,7 +753,7 @@ type AwsNodePoolArgs struct {
 	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effective_annotations` for all of the annotations present on the resource.
+	// `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingInput
@@ -877,7 +871,7 @@ func (o AwsNodePoolOutput) ToAwsNodePoolOutputWithContext(ctx context.Context) A
 // separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
 // alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
 // non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// `effective_annotations` for all of the annotations present on the resource.
+// `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AwsNodePoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -902,8 +896,6 @@ func (o AwsNodePoolOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o AwsNodePoolOutput) EffectiveAnnotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }

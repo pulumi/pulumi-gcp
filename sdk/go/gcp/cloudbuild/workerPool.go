@@ -147,17 +147,15 @@ type WorkerPool struct {
 
 	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
 	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	EffectiveAnnotations pulumi.MapOutput       `pulumi:"effectiveAnnotations"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
@@ -213,16 +211,14 @@ func GetWorkerPool(ctx *pulumi.Context,
 type workerPoolState struct {
 	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
 	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          *string                `pulumi:"displayName"`
 	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -247,16 +243,14 @@ type workerPoolState struct {
 type WorkerPoolState struct {
 	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
 	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringPtrInput
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringPtrInput
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-	DisplayName pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DisplayName          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.MapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -285,7 +279,7 @@ func (WorkerPoolState) ElementType() reflect.Type {
 type workerPoolArgs struct {
 	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
 	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -307,7 +301,7 @@ type workerPoolArgs struct {
 type WorkerPoolArgs struct {
 	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
 	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName pulumi.StringPtrInput
@@ -414,7 +408,7 @@ func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) Wor
 
 // User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
 // limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-// configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o WorkerPoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -434,8 +428,6 @@ func (o WorkerPoolOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o WorkerPoolOutput) EffectiveAnnotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }

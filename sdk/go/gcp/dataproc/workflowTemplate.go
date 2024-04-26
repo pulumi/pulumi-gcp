@@ -126,12 +126,11 @@ type WorkflowTemplate struct {
 	// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
 	// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
 	// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-	// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-	// cluster is deleted.
-	DagTimeout pulumi.StringPtrOutput `pulumi:"dagTimeout"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	// on a [managed
+	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+	// the cluster is deleted.
+	DagTimeout      pulumi.StringPtrOutput `pulumi:"dagTimeout"`
+	EffectiveLabels pulumi.MapOutput       `pulumi:"effectiveLabels"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayOutput `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
@@ -139,7 +138,7 @@ type WorkflowTemplate struct {
 	// 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
 	// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
 	// associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+	// configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -212,11 +211,10 @@ type workflowTemplateState struct {
 	// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
 	// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
 	// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-	// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-	// cluster is deleted.
-	DagTimeout *string `pulumi:"dagTimeout"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// on a [managed
+	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+	// the cluster is deleted.
+	DagTimeout      *string                `pulumi:"dagTimeout"`
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs []WorkflowTemplateJob `pulumi:"jobs"`
@@ -225,7 +223,7 @@ type workflowTemplateState struct {
 	// 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
 	// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
 	// associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+	// configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -255,11 +253,10 @@ type WorkflowTemplateState struct {
 	// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
 	// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
 	// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-	// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-	// cluster is deleted.
-	DagTimeout pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// on a [managed
+	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+	// the cluster is deleted.
+	DagTimeout      pulumi.StringPtrInput
 	EffectiveLabels pulumi.MapInput
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayInput
@@ -268,7 +265,7 @@ type WorkflowTemplateState struct {
 	// 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
 	// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
 	// associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+	// configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -300,8 +297,9 @@ type workflowTemplateArgs struct {
 	// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
 	// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
 	// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-	// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-	// cluster is deleted.
+	// on a [managed
+	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+	// the cluster is deleted.
 	DagTimeout *string `pulumi:"dagTimeout"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs []WorkflowTemplateJob `pulumi:"jobs"`
@@ -310,7 +308,7 @@ type workflowTemplateArgs struct {
 	// 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
 	// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
 	// associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+	// configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
@@ -335,8 +333,9 @@ type WorkflowTemplateArgs struct {
 	// duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
 	// minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
 	// the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-	// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-	// cluster is deleted.
+	// on a [managed
+	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+	// the cluster is deleted.
 	DagTimeout pulumi.StringPtrInput
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayInput
@@ -345,7 +344,7 @@ type WorkflowTemplateArgs struct {
 	// 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
 	// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
 	// associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+	// configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
@@ -460,14 +459,13 @@ func (o WorkflowTemplateOutput) CreateTime() pulumi.StringOutput {
 // duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
 // minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
 // the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-// on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-// cluster is deleted.
+// on a [managed
+// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+// the cluster is deleted.
 func (o WorkflowTemplateOutput) DagTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringPtrOutput { return v.DagTimeout }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
 func (o WorkflowTemplateOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }
@@ -482,7 +480,7 @@ func (o WorkflowTemplateOutput) Jobs() WorkflowTemplateJobArrayOutput {
 // 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
 // characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
 // associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-// configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+// configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o WorkflowTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

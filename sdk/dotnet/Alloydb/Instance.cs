@@ -236,10 +236,6 @@ namespace Pulumi.Gcp.Alloydb
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
-        /// <summary>
-        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        /// Terraform, other clients and services.
-        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -264,17 +260,6 @@ namespace Pulumi.Gcp.Alloydb
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
-        /// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
-        /// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
-        /// google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
-        /// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
-        /// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
-        /// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
-        /// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
-        /// "SECONDARY"]
-        /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
@@ -474,17 +459,6 @@ namespace Pulumi.Gcp.Alloydb
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
-        /// <summary>
-        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
-        /// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
-        /// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
-        /// google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
-        /// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
-        /// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
-        /// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
-        /// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
-        /// "SECONDARY"]
-        /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
@@ -597,11 +571,6 @@ namespace Pulumi.Gcp.Alloydb
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
-
-        /// <summary>
-        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        /// Terraform, other clients and services.
-        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
@@ -639,17 +608,6 @@ namespace Pulumi.Gcp.Alloydb
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
-        /// <summary>
-        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
-        /// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
-        /// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
-        /// google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
-        /// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
-        /// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
-        /// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
-        /// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
-        /// "SECONDARY"]
-        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 

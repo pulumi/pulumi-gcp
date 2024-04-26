@@ -67,10 +67,6 @@ export class Sharedflow extends pulumi.CustomResource {
      * - - -
      */
     public readonly configBundle!: pulumi.Output<string>;
-    /**
-     * A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-     * will trigger an update.
-     */
     public readonly detectMd5hash!: pulumi.Output<string | undefined>;
     /**
      * The id of the most recently created revision for this shared flow.
@@ -151,10 +147,6 @@ export interface SharedflowState {
      * - - -
      */
     configBundle?: pulumi.Input<string>;
-    /**
-     * A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-     * will trigger an update.
-     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * The id of the most recently created revision for this shared flow.
@@ -193,10 +185,6 @@ export interface SharedflowArgs {
      * - - -
      */
     configBundle: pulumi.Input<string>;
-    /**
-     * A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-     * will trigger an update.
-     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * The ID of the shared flow.

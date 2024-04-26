@@ -36,19 +36,9 @@ public final class SharedflowState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.configBundle);
     }
 
-    /**
-     * A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-     * will trigger an update.
-     * 
-     */
     @Import(name="detectMd5hash")
     private @Nullable Output<String> detectMd5hash;
 
-    /**
-     * @return A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-     * will trigger an update.
-     * 
-     */
     public Optional<Output<String>> detectMd5hash() {
         return Optional.ofNullable(this.detectMd5hash);
     }
@@ -201,25 +191,11 @@ public final class SharedflowState extends com.pulumi.resources.ResourceArgs {
             return configBundle(Output.of(configBundle));
         }
 
-        /**
-         * @param detectMd5hash A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-         * will trigger an update.
-         * 
-         * @return builder
-         * 
-         */
         public Builder detectMd5hash(@Nullable Output<String> detectMd5hash) {
             $.detectMd5hash = detectMd5hash;
             return this;
         }
 
-        /**
-         * @param detectMd5hash A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
-         * will trigger an update.
-         * 
-         * @return builder
-         * 
-         */
         public Builder detectMd5hash(String detectMd5hash) {
             return detectMd5hash(Output.of(detectMd5hash));
         }

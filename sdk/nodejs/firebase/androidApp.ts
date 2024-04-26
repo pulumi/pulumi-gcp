@@ -125,11 +125,6 @@ export class AndroidApp extends pulumi.CustomResource {
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     public /*out*/ readonly appId!: pulumi.Output<string>;
-    /**
-     * (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-     * 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-     * AndroidApp. Defaults to 'DELETE'.
-     */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the AndroidApp.
@@ -229,11 +224,6 @@ export interface AndroidAppState {
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     appId?: pulumi.Input<string>;
-    /**
-     * (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-     * 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-     * AndroidApp. Defaults to 'DELETE'.
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the AndroidApp.
@@ -282,11 +272,6 @@ export interface AndroidAppArgs {
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
     apiKeyId?: pulumi.Input<string>;
-    /**
-     * (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
-     * 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-     * AndroidApp. Defaults to 'DELETE'.
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the AndroidApp.

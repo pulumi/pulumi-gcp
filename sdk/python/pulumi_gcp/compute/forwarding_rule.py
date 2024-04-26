@@ -205,7 +205,6 @@ class ForwardingRuleArgs:
                they share at least one port number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] recreate_closed_psc: This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs'] service_directory_registrations: Service Directory resources to register this forwarding rule with.
@@ -654,9 +653,6 @@ class ForwardingRuleArgs:
     @property
     @pulumi.getter(name="recreateClosedPsc")
     def recreate_closed_psc(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-        """
         return pulumi.get(self, "recreate_closed_psc")
 
     @recreate_closed_psc.setter
@@ -973,7 +969,6 @@ class _ForwardingRuleState:
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] recreate_closed_psc: This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1529,9 +1524,6 @@ class _ForwardingRuleState:
     @property
     @pulumi.getter(name="recreateClosedPsc")
     def recreate_closed_psc(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-        """
         return pulumi.get(self, "recreate_closed_psc")
 
     @recreate_closed_psc.setter
@@ -2848,7 +2840,6 @@ class ForwardingRule(pulumi.CustomResource):
                they share at least one port number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] recreate_closed_psc: This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
@@ -4186,7 +4177,6 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] recreate_closed_psc: This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -4613,9 +4603,6 @@ class ForwardingRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="recreateClosedPsc")
     def recreate_closed_psc(self) -> pulumi.Output[Optional[bool]]:
-        """
-        This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-        """
         return pulumi.get(self, "recreate_closed_psc")
 
     @property

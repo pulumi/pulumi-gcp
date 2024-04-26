@@ -169,8 +169,6 @@ class _BareMetalNodePoolState:
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[str] display_name: The display name for the Bare Metal Node Pool.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -289,10 +287,6 @@ class _BareMetalNodePoolState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -972,8 +966,6 @@ class BareMetalNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[str] display_name: The display name for the Bare Metal Node Pool.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -1061,10 +1053,6 @@ class BareMetalNodePool(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

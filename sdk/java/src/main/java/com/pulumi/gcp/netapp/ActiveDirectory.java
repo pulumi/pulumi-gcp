@@ -366,19 +366,9 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
     public Output<String> organizationalUnit() {
         return this.organizationalUnit;
     }
-    /**
-     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-     * re-apply the password, unless you use a new password in Terraform.
-     * 
-     */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
-    /**
-     * @return Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-     * re-apply the password, unless you use a new password in Terraform.
-     * 
-     */
     public Output<String> password() {
         return this.password;
     }

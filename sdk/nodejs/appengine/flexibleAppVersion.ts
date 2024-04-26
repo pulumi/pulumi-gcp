@@ -202,10 +202,6 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
      * The entrypoint for the application.
      */
     public readonly entrypoint!: pulumi.Output<outputs.appengine.FlexibleAppVersionEntrypoint | undefined>;
-    /**
-     * Environment variables available to the application. As these are not returned in the API request, Terraform will not
-     * detect any changes made outside of the Terraform config.
-     */
     public readonly envVariables!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
@@ -432,10 +428,6 @@ export interface FlexibleAppVersionState {
      * The entrypoint for the application.
      */
     entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
-    /**
-     * Environment variables available to the application. As these are not returned in the API request, Terraform will not
-     * detect any changes made outside of the Terraform config.
-     */
     envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
@@ -570,10 +562,6 @@ export interface FlexibleAppVersionArgs {
      * The entrypoint for the application.
      */
     entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
-    /**
-     * Environment variables available to the application. As these are not returned in the API request, Terraform will not
-     * detect any changes made outside of the Terraform config.
-     */
     envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the

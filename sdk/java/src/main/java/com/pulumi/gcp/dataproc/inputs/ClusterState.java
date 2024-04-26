@@ -54,19 +54,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.effectiveLabels);
     }
 
-    /**
-     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-     * terraform apply
-     * 
-     */
     @Import(name="gracefulDecommissionTimeout")
     private @Nullable Output<String> gracefulDecommissionTimeout;
 
-    /**
-     * @return The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-     * terraform apply
-     * 
-     */
     public Optional<Output<String>> gracefulDecommissionTimeout() {
         return Optional.ofNullable(this.gracefulDecommissionTimeout);
     }
@@ -257,25 +247,11 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return effectiveLabels(Output.of(effectiveLabels));
         }
 
-        /**
-         * @param gracefulDecommissionTimeout The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-         * terraform apply
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracefulDecommissionTimeout(@Nullable Output<String> gracefulDecommissionTimeout) {
             $.gracefulDecommissionTimeout = gracefulDecommissionTimeout;
             return this;
         }
 
-        /**
-         * @param gracefulDecommissionTimeout The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-         * terraform apply
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracefulDecommissionTimeout(String gracefulDecommissionTimeout) {
             return gracefulDecommissionTimeout(Output.of(gracefulDecommissionTimeout));
         }

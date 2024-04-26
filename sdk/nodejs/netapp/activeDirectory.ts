@@ -182,10 +182,6 @@ export class ActiveDirectory extends pulumi.CustomResource {
      * Defaults to `CN=Computers` if left empty.
      */
     public readonly organizationalUnit!: pulumi.Output<string>;
-    /**
-     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-     * re-apply the password, unless you use a new password in Terraform.
-     */
     public readonly password!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -392,10 +388,6 @@ export interface ActiveDirectoryState {
      * Defaults to `CN=Computers` if left empty.
      */
     organizationalUnit?: pulumi.Input<string>;
-    /**
-     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-     * re-apply the password, unless you use a new password in Terraform.
-     */
     password?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -504,10 +496,6 @@ export interface ActiveDirectoryArgs {
      * Defaults to `CN=Computers` if left empty.
      */
     organizationalUnit?: pulumi.Input<string>;
-    /**
-     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-     * re-apply the password, unless you use a new password in Terraform.
-     */
     password: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

@@ -190,10 +190,8 @@ type Bucket struct {
 	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
 	CustomPlacementConfig BucketCustomPlacementConfigPtrOutput `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
-	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
-	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	DefaultEventBasedHold pulumi.BoolPtrOutput   `pulumi:"defaultEventBasedHold"`
+	EffectiveLabels       pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention pulumi.BoolPtrOutput `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
@@ -291,10 +289,8 @@ type bucketState struct {
 	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
 	CustomPlacementConfig *BucketCustomPlacementConfig `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
-	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
-	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	DefaultEventBasedHold *bool             `pulumi:"defaultEventBasedHold"`
+	EffectiveLabels       map[string]string `pulumi:"effectiveLabels"`
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention *bool `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
@@ -356,9 +352,7 @@ type BucketState struct {
 	CustomPlacementConfig BucketCustomPlacementConfigPtrInput
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
-	EffectiveLabels pulumi.StringMapInput
+	EffectiveLabels       pulumi.StringMapInput
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
@@ -629,8 +623,6 @@ func (o BucketOutput) DefaultEventBasedHold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.DefaultEventBasedHold }).(pulumi.BoolPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
 func (o BucketOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

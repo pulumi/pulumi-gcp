@@ -195,10 +195,6 @@ export class WorkstationCluster extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly domainConfig!: pulumi.Output<outputs.workstations.WorkstationClusterDomainConfig | undefined>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -370,10 +366,6 @@ export interface WorkstationClusterState {
      * Structure is documented below.
      */
     domainConfig?: pulumi.Input<inputs.workstations.WorkstationClusterDomainConfig>;
-    /**
-     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-     * Terraform, other clients and services.
-     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

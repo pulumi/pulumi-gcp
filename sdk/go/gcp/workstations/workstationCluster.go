@@ -237,10 +237,8 @@ type WorkstationCluster struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Configuration options for a custom domain.
 	// Structure is documented below.
-	DomainConfig WorkstationClusterDomainConfigPtrOutput `pulumi:"domainConfig"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	DomainConfig         WorkstationClusterDomainConfigPtrOutput `pulumi:"domainConfig"`
+	EffectiveAnnotations pulumi.StringMapOutput                  `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Checksum computed by the server.
@@ -340,10 +338,8 @@ type workstationClusterState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration options for a custom domain.
 	// Structure is documented below.
-	DomainConfig *WorkstationClusterDomainConfig `pulumi:"domainConfig"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	DomainConfig         *WorkstationClusterDomainConfig `pulumi:"domainConfig"`
+	EffectiveAnnotations map[string]string               `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Checksum computed by the server.
@@ -400,9 +396,7 @@ type WorkstationClusterState struct {
 	DisplayName pulumi.StringPtrInput
 	// Configuration options for a custom domain.
 	// Structure is documented below.
-	DomainConfig WorkstationClusterDomainConfigPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	DomainConfig         WorkstationClusterDomainConfigPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -641,8 +635,6 @@ func (o WorkstationClusterOutput) DomainConfig() WorkstationClusterDomainConfigP
 	return o.ApplyT(func(v *WorkstationCluster) WorkstationClusterDomainConfigPtrOutput { return v.DomainConfig }).(WorkstationClusterDomainConfigPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o WorkstationClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

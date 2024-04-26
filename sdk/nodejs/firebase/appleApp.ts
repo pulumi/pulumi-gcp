@@ -131,11 +131,6 @@ export class AppleApp extends pulumi.CustomResource {
      * - - -
      */
     public readonly bundleId!: pulumi.Output<string>;
-    /**
-     * (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
-     * destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
-     * 'DELETE'.
-     */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the App.
@@ -227,11 +222,6 @@ export interface AppleAppState {
      * - - -
      */
     bundleId?: pulumi.Input<string>;
-    /**
-     * (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
-     * destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
-     * 'DELETE'.
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.
@@ -274,11 +264,6 @@ export interface AppleAppArgs {
      * - - -
      */
     bundleId: pulumi.Input<string>;
-    /**
-     * (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
-     * destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
-     * 'DELETE'.
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.

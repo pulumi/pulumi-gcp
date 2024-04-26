@@ -65,10 +65,6 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      * Controls for advanced machine-related behavior features.
      */
     public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
-    /**
-     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-     * stopping the instance without setting this field, the update will fail.
-     */
     public readonly allowStoppingForUpdate!: pulumi.Output<boolean>;
     /**
      * List of disks attached to the instance
@@ -83,8 +79,8 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      */
     public readonly canIpForward!: pulumi.Output<boolean>;
     /**
-     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+     * create.
      */
     public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.InstanceFromMachineImageConfidentialInstanceConfig>;
     /**
@@ -109,10 +105,6 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      * Desired status of the instance. Either "RUNNING" or "TERMINATED".
      */
     public readonly desiredStatus!: pulumi.Output<string>;
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether the instance has virtual displays enabled.
@@ -124,8 +116,8 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
     public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceFromMachineImageGuestAccelerator[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+     * exceed 253 characters. Changing this forces a new resource to be created.
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
@@ -181,8 +173,8 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      */
     public readonly params!: pulumi.Output<outputs.compute.InstanceFromMachineImageParams>;
     /**
-     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-     * self_link nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+     * nor project are provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -194,7 +186,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceFromMachineImageReservationAffinity>;
     /**
-     * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      */
     public readonly resourcePolicies!: pulumi.Output<string>;
     /**
@@ -358,10 +350,6 @@ export interface InstanceFromMachineImageState {
      * Controls for advanced machine-related behavior features.
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
-    /**
-     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-     * stopping the instance without setting this field, the update will fail.
-     */
     allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * List of disks attached to the instance
@@ -376,8 +364,8 @@ export interface InstanceFromMachineImageState {
      */
     canIpForward?: pulumi.Input<boolean>;
     /**
-     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+     * create.
      */
     confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageConfidentialInstanceConfig>;
     /**
@@ -402,10 +390,6 @@ export interface InstanceFromMachineImageState {
      * Desired status of the instance. Either "RUNNING" or "TERMINATED".
      */
     desiredStatus?: pulumi.Input<string>;
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether the instance has virtual displays enabled.
@@ -417,8 +401,8 @@ export interface InstanceFromMachineImageState {
     guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+     * exceed 253 characters. Changing this forces a new resource to be created.
      */
     hostname?: pulumi.Input<string>;
     /**
@@ -474,8 +458,8 @@ export interface InstanceFromMachineImageState {
      */
     params?: pulumi.Input<inputs.compute.InstanceFromMachineImageParams>;
     /**
-     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-     * self_link nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+     * nor project are provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -487,7 +471,7 @@ export interface InstanceFromMachineImageState {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceFromMachineImageReservationAffinity>;
     /**
-     * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**
@@ -546,18 +530,14 @@ export interface InstanceFromMachineImageArgs {
      * Controls for advanced machine-related behavior features.
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
-    /**
-     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-     * stopping the instance without setting this field, the update will fail.
-     */
     allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      */
     canIpForward?: pulumi.Input<boolean>;
     /**
-     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
+     * create.
      */
     confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageConfidentialInstanceConfig>;
     /**
@@ -582,8 +562,8 @@ export interface InstanceFromMachineImageArgs {
     guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
-     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
+     * exceed 253 characters. Changing this forces a new resource to be created.
      */
     hostname?: pulumi.Input<string>;
     /**
@@ -627,8 +607,8 @@ export interface InstanceFromMachineImageArgs {
      */
     params?: pulumi.Input<inputs.compute.InstanceFromMachineImageParams>;
     /**
-     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-     * self_link nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
+     * nor project are provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -636,7 +616,7 @@ export interface InstanceFromMachineImageArgs {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceFromMachineImageReservationAffinity>;
     /**
-     * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**

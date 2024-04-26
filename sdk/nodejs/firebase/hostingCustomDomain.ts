@@ -288,11 +288,6 @@ export class HostingCustomDomain extends pulumi.CustomResource {
      * The last time the `CustomDomain` was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-     * wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-     * Terraform state.
-     */
     public readonly waitDnsVerification!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -506,11 +501,6 @@ export interface HostingCustomDomainState {
      * The last time the `CustomDomain` was updated.
      */
     updateTime?: pulumi.Input<string>;
-    /**
-     * If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-     * wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-     * Terraform state.
-     */
     waitDnsVerification?: pulumi.Input<boolean>;
 }
 
@@ -548,10 +538,5 @@ export interface HostingCustomDomainArgs {
      * The ID of the site in which to create this custom domain association.
      */
     siteId: pulumi.Input<string>;
-    /**
-     * If true, Terraform will wait for DNS records to be fully resolved on the 'CustomDomain'. If false, Terraform will not
-     * wait for DNS records on the 'CustomDomain'. Any issues in the 'CustomDomain' will be returned and stored in the
-     * Terraform state.
-     */
     waitDnsVerification?: pulumi.Input<boolean>;
 }

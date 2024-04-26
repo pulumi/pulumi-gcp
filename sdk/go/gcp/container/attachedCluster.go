@@ -267,9 +267,7 @@ type AttachedCluster struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks".
-	Distribution pulumi.StringOutput `pulumi:"distribution"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Distribution         pulumi.StringOutput    `pulumi:"distribution"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// A set of errors found in the cluster.
 	// Structure is documented below.
@@ -386,9 +384,7 @@ type attachedClusterState struct {
 	Description *string `pulumi:"description"`
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks".
-	Distribution *string `pulumi:"distribution"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Distribution         *string           `pulumi:"distribution"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// A set of errors found in the cluster.
 	// Structure is documented below.
@@ -461,9 +457,7 @@ type AttachedClusterState struct {
 	Description pulumi.StringPtrInput
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks".
-	Distribution pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Distribution         pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// A set of errors found in the cluster.
 	// Structure is documented below.
@@ -748,8 +742,6 @@ func (o AttachedClusterOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.Distribution }).(pulumi.StringOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o AttachedClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

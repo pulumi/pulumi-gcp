@@ -603,21 +603,9 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
     public Output<String> updateTime() {
         return this.updateTime;
     }
-    /**
-     * If true, Terraform will wait for DNS records to be fully resolved on the &#39;CustomDomain&#39;. If false, Terraform will not
-     * wait for DNS records on the &#39;CustomDomain&#39;. Any issues in the &#39;CustomDomain&#39; will be returned and stored in the
-     * Terraform state.
-     * 
-     */
     @Export(name="waitDnsVerification", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitDnsVerification;
 
-    /**
-     * @return If true, Terraform will wait for DNS records to be fully resolved on the &#39;CustomDomain&#39;. If false, Terraform will not
-     * wait for DNS records on the &#39;CustomDomain&#39;. Any issues in the &#39;CustomDomain&#39; will be returned and stored in the
-     * Terraform state.
-     * 
-     */
     public Output<Optional<Boolean>> waitDnsVerification() {
         return Codegen.optional(this.waitDnsVerification);
     }

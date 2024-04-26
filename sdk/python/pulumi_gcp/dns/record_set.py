@@ -36,10 +36,6 @@ class RecordSetArgs:
         :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-               data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
-               record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
-               string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
@@ -123,12 +119,6 @@ class RecordSetArgs:
     @property
     @pulumi.getter
     def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
-        record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
-        string (e.g. "first255characters\\"\\"morecharacters").
-        """
         return pulumi.get(self, "rrdatas")
 
     @rrdatas.setter
@@ -168,10 +158,6 @@ class _RecordSetState:
         :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-               data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
-               record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
-               string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
                
@@ -247,12 +233,6 @@ class _RecordSetState:
     @property
     @pulumi.getter
     def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
-        record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
-        string (e.g. "first255characters\\"\\"morecharacters").
-        """
         return pulumi.get(self, "rrdatas")
 
     @rrdatas.setter
@@ -526,10 +506,6 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-               data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
-               record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
-               string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
                
@@ -834,10 +810,6 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-               data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
-               record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
-               string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
                
@@ -895,12 +867,6 @@ class RecordSet(pulumi.CustomResource):
     @property
     @pulumi.getter
     def rrdatas(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
-        record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
-        string (e.g. "first255characters\\"\\"morecharacters").
-        """
         return pulumi.get(self, "rrdatas")
 
     @property

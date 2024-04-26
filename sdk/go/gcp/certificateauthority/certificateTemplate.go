@@ -168,7 +168,7 @@ type CertificateTemplate struct {
 	// omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrOutput `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
@@ -177,14 +177,14 @@ type CertificateTemplate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
 	// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
-	// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+	// dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance
 	// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
 	// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
 	PassthroughExtensions CertificateTemplatePassthroughExtensionsPtrOutput `pulumi:"passthroughExtensions"`
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
 	// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-	// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
-	// certificate issuance request will fail.
+	// here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate
+	// issuance request will fail.
 	PredefinedValues CertificateTemplatePredefinedValuesPtrOutput `pulumi:"predefinedValues"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -242,7 +242,7 @@ type certificateTemplateState struct {
 	// omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints *CertificateTemplateIdentityConstraints `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
@@ -251,14 +251,14 @@ type certificateTemplateState struct {
 	Name *string `pulumi:"name"`
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
 	// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
-	// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+	// dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance
 	// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
 	// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
 	PassthroughExtensions *CertificateTemplatePassthroughExtensions `pulumi:"passthroughExtensions"`
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
 	// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-	// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
-	// certificate issuance request will fail.
+	// here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate
+	// issuance request will fail.
 	PredefinedValues *CertificateTemplatePredefinedValues `pulumi:"predefinedValues"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -279,7 +279,7 @@ type CertificateTemplateState struct {
 	// omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrInput
 	// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
@@ -288,14 +288,14 @@ type CertificateTemplateState struct {
 	Name pulumi.StringPtrInput
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
 	// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
-	// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+	// dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance
 	// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
 	// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
 	PassthroughExtensions CertificateTemplatePassthroughExtensionsPtrInput
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
 	// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-	// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
-	// certificate issuance request will fail.
+	// here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate
+	// issuance request will fail.
 	PredefinedValues CertificateTemplatePredefinedValuesPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -316,7 +316,7 @@ type certificateTemplateArgs struct {
 	// omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints *CertificateTemplateIdentityConstraints `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
@@ -325,14 +325,14 @@ type certificateTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
 	// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
-	// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+	// dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance
 	// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
 	// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
 	PassthroughExtensions *CertificateTemplatePassthroughExtensions `pulumi:"passthroughExtensions"`
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
 	// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-	// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
-	// certificate issuance request will fail.
+	// here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate
+	// issuance request will fail.
 	PredefinedValues *CertificateTemplatePredefinedValues `pulumi:"predefinedValues"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -346,7 +346,7 @@ type CertificateTemplateArgs struct {
 	// omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrInput
 	// Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
@@ -355,14 +355,14 @@ type CertificateTemplateArgs struct {
 	Name pulumi.StringPtrInput
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
 	// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
-	// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+	// dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance
 	// request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
 	// These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
 	PassthroughExtensions CertificateTemplatePassthroughExtensionsPtrInput
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
 	// certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-	// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
-	// certificate issuance request will fail.
+	// here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate
+	// issuance request will fail.
 	PredefinedValues CertificateTemplatePredefinedValuesPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -479,7 +479,7 @@ func (o CertificateTemplateOutput) IdentityConstraints() CertificateTemplateIden
 }
 
 // Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
-// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 // resource.
 func (o CertificateTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -497,7 +497,7 @@ func (o CertificateTemplateOutput) Name() pulumi.StringOutput {
 
 // Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
 // If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
-// dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+// dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance
 // request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
 // These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
 func (o CertificateTemplateOutput) PassthroughExtensions() CertificateTemplatePassthroughExtensionsPtrOutput {
@@ -508,8 +508,8 @@ func (o CertificateTemplateOutput) PassthroughExtensions() CertificateTemplatePa
 
 // Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
 // certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
-// here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
-// certificate issuance request will fail.
+// here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate
+// issuance request will fail.
 func (o CertificateTemplateOutput) PredefinedValues() CertificateTemplatePredefinedValuesPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplate) CertificateTemplatePredefinedValuesPtrOutput { return v.PredefinedValues }).(CertificateTemplatePredefinedValuesPtrOutput)
 }

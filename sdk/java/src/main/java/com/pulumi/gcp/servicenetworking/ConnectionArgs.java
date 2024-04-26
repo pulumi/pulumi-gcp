@@ -17,19 +17,9 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionArgs Empty = new ConnectionArgs();
 
-    /**
-     * When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
-     * failures with CloudSQL. Note: The resource will still exist.
-     * 
-     */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
-    /**
-     * @return When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
-     * failures with CloudSQL. Note: The resource will still exist.
-     * 
-     */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
@@ -114,25 +104,11 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ConnectionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param deletionPolicy When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
-         * failures with CloudSQL. Note: The resource will still exist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
-        /**
-         * @param deletionPolicy When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
-         * failures with CloudSQL. Note: The resource will still exist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }

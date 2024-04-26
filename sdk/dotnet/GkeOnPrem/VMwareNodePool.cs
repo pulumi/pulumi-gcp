@@ -164,10 +164,6 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
-        /// <summary>
-        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        /// Terraform, other clients and services.
-        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -401,11 +397,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
-
-        /// <summary>
-        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        /// Terraform, other clients and services.
-        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

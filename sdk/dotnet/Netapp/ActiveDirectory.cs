@@ -206,10 +206,6 @@ namespace Pulumi.Gcp.Netapp
         [Output("organizationalUnit")]
         public Output<string> OrganizationalUnit { get; private set; } = null!;
 
-        /// <summary>
-        /// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-        /// re-apply the password, unless you use a new password in Terraform.
-        /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
@@ -424,11 +420,6 @@ namespace Pulumi.Gcp.Netapp
 
         [Input("password", required: true)]
         private Input<string>? _password;
-
-        /// <summary>
-        /// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-        /// re-apply the password, unless you use a new password in Terraform.
-        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -615,11 +606,6 @@ namespace Pulumi.Gcp.Netapp
 
         [Input("password")]
         private Input<string>? _password;
-
-        /// <summary>
-        /// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-        /// re-apply the password, unless you use a new password in Terraform.
-        /// </summary>
         public Input<string>? Password
         {
             get => _password;

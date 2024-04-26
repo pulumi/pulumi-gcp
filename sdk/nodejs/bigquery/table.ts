@@ -277,7 +277,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly tableId!: pulumi.Output<string>;
     /**
-     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
      */
     public readonly tableReplicationInfo!: pulumi.Output<outputs.bigquery.TableTableReplicationInfo | undefined>;
     /**
@@ -547,7 +547,7 @@ export interface TableState {
      */
     tableId?: pulumi.Input<string>;
     /**
-     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
      */
     tableReplicationInfo?: pulumi.Input<inputs.bigquery.TableTableReplicationInfo>;
     /**
@@ -670,7 +670,7 @@ export interface TableArgs {
      */
     tableId: pulumi.Input<string>;
     /**
-     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
      */
     tableReplicationInfo?: pulumi.Input<inputs.bigquery.TableTableReplicationInfo>;
     /**

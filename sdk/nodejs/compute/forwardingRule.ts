@@ -1375,9 +1375,6 @@ export class ForwardingRule extends pulumi.CustomResource {
      * and default labels configured on the provider.
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
-    /**
-     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-     */
     public readonly recreateClosedPsc!: pulumi.Output<boolean | undefined>;
     /**
      * A reference to the region where the regional forwarding rule resides.
@@ -1781,9 +1778,6 @@ export interface ForwardingRuleState {
      * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-     */
     recreateClosedPsc?: pulumi.Input<boolean>;
     /**
      * A reference to the region where the regional forwarding rule resides.
@@ -2067,9 +2061,6 @@ export interface ForwardingRuleArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
-    /**
-     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-     */
     recreateClosedPsc?: pulumi.Input<boolean>;
     /**
      * A reference to the region where the regional forwarding rule resides.

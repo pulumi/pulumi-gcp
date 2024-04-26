@@ -42,8 +42,6 @@ class ActiveDirectoryArgs:
         :param pulumi.Input[str] net_bios_prefix: NetBIOS name prefix of the server to be created.
                A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
                `\\\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\\SHARE_NAME`
-        :param pulumi.Input[str] password: Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-               re-apply the password, unless you use a new password in Terraform.
         :param pulumi.Input[str] username: Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
         :param pulumi.Input[bool] aes_encryption: Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_operators: Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
@@ -158,10 +156,6 @@ class ActiveDirectoryArgs:
     @property
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
-        """
-        Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-        re-apply the password, unless you use a new password in Terraform.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -416,8 +410,6 @@ class _ActiveDirectoryState:
                This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
         :param pulumi.Input[str] organizational_unit: Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
                Defaults to `CN=Computers` if left empty.
-        :param pulumi.Input[str] password: Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-               re-apply the password, unless you use a new password in Terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -697,10 +689,6 @@ class _ActiveDirectoryState:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
-        """
-        Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-        re-apply the password, unless you use a new password in Terraform.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -919,8 +907,6 @@ class ActiveDirectory(pulumi.CustomResource):
                This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
         :param pulumi.Input[str] organizational_unit: Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
                Defaults to `CN=Computers` if left empty.
-        :param pulumi.Input[str] password: Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-               re-apply the password, unless you use a new password in Terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_operators: Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
@@ -1157,8 +1143,6 @@ class ActiveDirectory(pulumi.CustomResource):
                This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
         :param pulumi.Input[str] organizational_unit: Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
                Defaults to `CN=Computers` if left empty.
-        :param pulumi.Input[str] password: Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-               re-apply the password, unless you use a new password in Terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1350,10 +1334,6 @@ class ActiveDirectory(pulumi.CustomResource):
     @property
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
-        """
-        Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not
-        re-apply the password, unless you use a new password in Terraform.
-        """
         return pulumi.get(self, "password")
 
     @property

@@ -372,10 +372,8 @@ type VMwareCluster struct {
 	// The description of the validation check.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable bundled ingress.
-	DisableBundledIngress pulumi.BoolPtrOutput `pulumi:"disableBundledIngress"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	DisableBundledIngress pulumi.BoolPtrOutput   `pulumi:"disableBundledIngress"`
+	EffectiveAnnotations  pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrOutput `pulumi:"enableControlPlaneV2"`
 	// The DNS name of VMware User Cluster's API server.
@@ -510,10 +508,8 @@ type vmwareClusterState struct {
 	// The description of the validation check.
 	Description *string `pulumi:"description"`
 	// Disable bundled ingress.
-	DisableBundledIngress *bool `pulumi:"disableBundledIngress"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	DisableBundledIngress *bool             `pulumi:"disableBundledIngress"`
+	EffectiveAnnotations  map[string]string `pulumi:"effectiveAnnotations"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 *bool `pulumi:"enableControlPlaneV2"`
 	// The DNS name of VMware User Cluster's API server.
@@ -608,9 +604,7 @@ type VMwareClusterState struct {
 	Description pulumi.StringPtrInput
 	// Disable bundled ingress.
 	DisableBundledIngress pulumi.BoolPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.StringMapInput
+	EffectiveAnnotations  pulumi.StringMapInput
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrInput
 	// The DNS name of VMware User Cluster's API server.
@@ -933,8 +927,6 @@ func (o VMwareClusterOutput) DisableBundledIngress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.BoolPtrOutput { return v.DisableBundledIngress }).(pulumi.BoolPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o VMwareClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

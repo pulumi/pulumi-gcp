@@ -186,19 +186,9 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     public Output<String> containerSpecGcsPath() {
         return this.containerSpecGcsPath;
     }
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     * 
-     */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
-    /**
-     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
-     * 
-     */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
@@ -474,21 +464,9 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     public Output<String> serviceAccountEmail() {
         return this.serviceAccountEmail;
     }
-    /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
-     * 
-     */
     @Export(name="skipWaitOnJobTermination", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipWaitOnJobTermination;
 
-    /**
-     * @return If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
-     * 
-     */
     public Output<Optional<Boolean>> skipWaitOnJobTermination() {
         return Codegen.optional(this.skipWaitOnJobTermination);
     }

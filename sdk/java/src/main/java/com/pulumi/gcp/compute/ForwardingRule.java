@@ -2296,17 +2296,9 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
-    /**
-     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-     * 
-     */
     @Export(name="recreateClosedPsc", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> recreateClosedPsc;
 
-    /**
-     * @return This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
-     * 
-     */
     public Output<Optional<Boolean>> recreateClosedPsc() {
         return Codegen.optional(this.recreateClosedPsc);
     }

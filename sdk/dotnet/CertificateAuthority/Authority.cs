@@ -393,10 +393,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-        /// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -520,7 +516,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<Outputs.AuthoritySubordinateConfig?> SubordinateConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Type of this CertificateAuthority. ~&gt; **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        /// The Type of this CertificateAuthority. &gt; **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
         /// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         /// </summary>
         [Output("type")]
@@ -598,10 +594,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("config", required: true)]
         public Input<Inputs.AuthorityConfigArgs> Config { get; set; } = null!;
 
-        /// <summary>
-        /// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-        /// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -696,7 +688,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<Inputs.AuthoritySubordinateConfigArgs>? SubordinateConfig { get; set; }
 
         /// <summary>
-        /// The Type of this CertificateAuthority. ~&gt; **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        /// The Type of this CertificateAuthority. &gt; **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
         /// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         /// </summary>
         [Input("type")]
@@ -744,10 +736,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
-        /// <summary>
-        /// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-        /// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -903,7 +891,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<Inputs.AuthoritySubordinateConfigGetArgs>? SubordinateConfig { get; set; }
 
         /// <summary>
-        /// The Type of this CertificateAuthority. ~&gt; **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        /// The Type of this CertificateAuthority. &gt; **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
         /// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         /// </summary>
         [Input("type")]

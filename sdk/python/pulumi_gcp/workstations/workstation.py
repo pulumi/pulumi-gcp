@@ -202,8 +202,6 @@ class _WorkstationState:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: 'Client-specified environment variables passed to the workstation container's entrypoint.'
         :param pulumi.Input[str] host: Host to which clients can send HTTPS traffic that will be received by the workstation.
@@ -303,10 +301,6 @@ class _WorkstationState:
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -777,8 +771,6 @@ class Workstation(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-               Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: 'Client-specified environment variables passed to the workstation container's entrypoint.'
         :param pulumi.Input[str] host: Host to which clients can send HTTPS traffic that will be received by the workstation.
@@ -854,10 +846,6 @@ class Workstation(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        Terraform, other clients and services.
-        """
         return pulumi.get(self, "effective_annotations")
 
     @property

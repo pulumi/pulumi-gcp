@@ -36,11 +36,11 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
      * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-     * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
-     * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-     * associated with a given environment. Both keys and values must be &lt;= 128 bytes in size. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
+     * conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
+     * and values must be &lt;= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
+     * present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     @Import(name="labels")
@@ -49,11 +49,11 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
      * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-     * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
-     * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-     * associated with a given environment. Both keys and values must be &lt;= 128 bytes in size. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
+     * conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
+     * and values must be &lt;= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
+     * present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -173,11 +173,11 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
          * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-         * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
-         * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-         * associated with a given environment. Both keys and values must be &lt;= 128 bytes in size. **Note**: This field is
-         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * &#39;effective_labels&#39; for all of the labels present on the resource.
+         * must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
+         * conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
+         * and values must be &lt;= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
+         * present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+         * resource.
          * 
          * @return builder
          * 
@@ -190,11 +190,11 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
          * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-         * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
-         * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-         * associated with a given environment. Both keys and values must be &lt;= 128 bytes in size. **Note**: This field is
-         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * &#39;effective_labels&#39; for all of the labels present on the resource.
+         * must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
+         * conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
+         * and values must be &lt;= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
+         * present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+         * resource.
          * 
          * @return builder
          * 

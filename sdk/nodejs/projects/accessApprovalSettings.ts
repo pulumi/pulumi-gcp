@@ -119,7 +119,7 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
     }
 
     /**
-     * The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+     * The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
      * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
      * new non-empty values may not be set.
      */
@@ -218,7 +218,7 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
  */
 export interface AccessApprovalSettingsState {
     /**
-     * The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+     * The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
      * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
      * new non-empty values may not be set.
      */
@@ -273,7 +273,7 @@ export interface AccessApprovalSettingsState {
  */
 export interface AccessApprovalSettingsArgs {
     /**
-     * The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+     * The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
      * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
      * new non-empty values may not be set.
      */

@@ -186,9 +186,7 @@ type CustomTargetType struct {
 	// Resource id of the `CustomTargetType`.
 	CustomTargetTypeId pulumi.StringOutput `pulumi:"customTargetTypeId"`
 	// Description of the `CustomTargetType`. Max length is 255 characters.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrOutput `pulumi:"description"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -266,9 +264,7 @@ type customTargetTypeState struct {
 	// Resource id of the `CustomTargetType`.
 	CustomTargetTypeId *string `pulumi:"customTargetTypeId"`
 	// Description of the `CustomTargetType`. Max length is 255 characters.
-	Description *string `pulumi:"description"`
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          *string           `pulumi:"description"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -309,9 +305,7 @@ type CustomTargetTypeState struct {
 	// Resource id of the `CustomTargetType`.
 	CustomTargetTypeId pulumi.StringPtrInput
 	// Description of the `CustomTargetType`. Max length is 255 characters.
-	Description pulumi.StringPtrInput
-	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-	// Terraform, other clients and services.
+	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -509,8 +503,6 @@ func (o CustomTargetTypeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomTargetType) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-// Terraform, other clients and services.
 func (o CustomTargetTypeOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CustomTargetType) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

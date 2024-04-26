@@ -118,10 +118,6 @@ export class WebApp extends pulumi.CustomResource {
      * The URLs where the `WebApp` is hosted.
      */
     public /*out*/ readonly appUrls!: pulumi.Output<string[]>;
-    /**
-     * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
-     */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the App.
@@ -198,10 +194,6 @@ export interface WebAppState {
      * The URLs where the `WebApp` is hosted.
      */
     appUrls?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.
@@ -232,10 +224,6 @@ export interface WebAppArgs {
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
     apiKeyId?: pulumi.Input<string>;
-    /**
-     * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.

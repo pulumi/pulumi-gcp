@@ -628,10 +628,6 @@ namespace Pulumi.Gcp.Container
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        /// Terraform, other clients and services.
-        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, object>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -893,11 +889,6 @@ namespace Pulumi.Gcp.Container
 
         [Input("effectiveAnnotations")]
         private InputMap<object>? _effectiveAnnotations;
-
-        /// <summary>
-        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
-        /// Terraform, other clients and services.
-        /// </summary>
         public InputMap<object> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<object>());

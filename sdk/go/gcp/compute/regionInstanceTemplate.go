@@ -86,8 +86,7 @@ type RegionInstanceTemplate struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrOutput `pulumi:"minCpuPlatform"`
-	// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput    `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
@@ -222,8 +221,7 @@ type regionInstanceTemplateState struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-	Name *string `pulumi:"name"`
+	Name           *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -318,8 +316,7 @@ type RegionInstanceTemplateState struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrInput
-	// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-	Name pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
@@ -414,8 +411,7 @@ type regionInstanceTemplateArgs struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-	Name *string `pulumi:"name"`
+	Name           *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -501,8 +497,7 @@ type RegionInstanceTemplateArgs struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrInput
-	// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
-	Name pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
@@ -728,7 +723,6 @@ func (o RegionInstanceTemplateOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringPtrOutput { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
-// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
 func (o RegionInstanceTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

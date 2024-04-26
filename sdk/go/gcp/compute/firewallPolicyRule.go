@@ -142,7 +142,7 @@ type FirewallPolicyRule struct {
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
 	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-	// "goto_next" rules.
+	// "gotoNext" rules.
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
@@ -217,7 +217,7 @@ type firewallPolicyRuleState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
 	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-	// "goto_next" rules.
+	// "gotoNext" rules.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
@@ -248,7 +248,7 @@ type FirewallPolicyRuleState struct {
 	Disabled pulumi.BoolPtrInput
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
 	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-	// "goto_next" rules.
+	// "gotoNext" rules.
 	EnableLogging pulumi.BoolPtrInput
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringPtrInput
@@ -283,7 +283,7 @@ type firewallPolicyRuleArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
 	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-	// "goto_next" rules.
+	// "gotoNext" rules.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy string `pulumi:"firewallPolicy"`
@@ -311,7 +311,7 @@ type FirewallPolicyRuleArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
 	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-	// "goto_next" rules.
+	// "gotoNext" rules.
 	EnableLogging pulumi.BoolPtrInput
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringInput
@@ -436,7 +436,7 @@ func (o FirewallPolicyRuleOutput) Disabled() pulumi.BoolPtrOutput {
 
 // Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
 // export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-// "goto_next" rules.
+// "gotoNext" rules.
 func (o FirewallPolicyRuleOutput) EnableLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.BoolPtrOutput { return v.EnableLogging }).(pulumi.BoolPtrOutput)
 }

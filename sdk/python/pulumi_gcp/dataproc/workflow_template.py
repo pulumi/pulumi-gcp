@@ -34,8 +34,9 @@ class WorkflowTemplateArgs:
                duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
                minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
                the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-               on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-               cluster is deleted.
+               on a [managed
+               cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+               the cluster is deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
                1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
@@ -111,8 +112,9 @@ class WorkflowTemplateArgs:
         duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
         minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
         the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-        on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-        cluster is deleted.
+        on a [managed
+        cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+        the cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
 
@@ -213,10 +215,9 @@ class _WorkflowTemplateState:
                duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
                minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
                the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-               on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-               cluster is deleted.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+               on a [managed
+               cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+               the cluster is deleted.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
@@ -284,8 +285,9 @@ class _WorkflowTemplateState:
         duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
         minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
         the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-        on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-        cluster is deleted.
+        on a [managed
+        cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+        the cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
 
@@ -296,10 +298,6 @@ class _WorkflowTemplateState:
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
-        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -546,8 +544,9 @@ class WorkflowTemplate(pulumi.CustomResource):
                duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
                minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
                the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-               on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-               cluster is deleted.
+               on a [managed
+               cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+               the cluster is deleted.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
@@ -747,10 +746,9 @@ class WorkflowTemplate(pulumi.CustomResource):
                duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
                minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
                the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-               on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-               cluster is deleted.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+               on a [managed
+               cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+               the cluster is deleted.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
@@ -803,18 +801,15 @@ class WorkflowTemplate(pulumi.CustomResource):
         duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
         minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
         the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-        on a [managed cluster](/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the
-        cluster is deleted.
+        on a [managed
+        cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
+        the cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
 
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
-        """
         return pulumi.get(self, "effective_labels")
 
     @property

@@ -302,10 +302,6 @@ export class Authority extends pulumi.CustomResource {
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
-    /**
-     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-     * state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-     */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
@@ -393,7 +389,7 @@ export class Authority extends pulumi.CustomResource {
      */
     public readonly subordinateConfig!: pulumi.Output<outputs.certificateauthority.AuthoritySubordinateConfig | undefined>;
     /**
-     * The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+     * The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
      * before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
      */
     public readonly type!: pulumi.Output<string | undefined>;
@@ -514,10 +510,6 @@ export interface AuthorityState {
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
-    /**
-     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-     * state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
@@ -605,7 +597,7 @@ export interface AuthorityState {
      */
     subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig>;
     /**
-     * The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+     * The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
      * before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
      */
     type?: pulumi.Input<string>;
@@ -630,10 +622,6 @@ export interface AuthorityArgs {
      * Structure is documented below.
      */
     config: pulumi.Input<inputs.certificateauthority.AuthorityConfig>;
-    /**
-     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-     * state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
@@ -696,7 +684,7 @@ export interface AuthorityArgs {
      */
     subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig>;
     /**
-     * The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+     * The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
      * before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
      */
     type?: pulumi.Input<string>;

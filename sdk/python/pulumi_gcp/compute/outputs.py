@@ -40302,8 +40302,6 @@ class GetForwardingRulesRuleResult(dict):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
                cannot have overlapping 'portRange's.
-               
-               @pattern: \\d+(?:-\\d+)?
         :param Sequence[str] ports: The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
                Only packets addressed to ports in the specified range will be forwarded
                to the backends configured with this forwarding rule.
@@ -40324,8 +40322,6 @@ class GetForwardingRulesRuleResult(dict):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
                they share at least one port number.
-               
-               @pattern: \\d+(?:-\\d+)?
         :param str project: The name of the project.
         :param str psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param str psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
@@ -40711,8 +40707,6 @@ class GetForwardingRulesRuleResult(dict):
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
         cannot have overlapping 'portRange's.
-
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "port_range")
 
@@ -40740,8 +40734,6 @@ class GetForwardingRulesRuleResult(dict):
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
         they share at least one port number.
-
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "ports")
 

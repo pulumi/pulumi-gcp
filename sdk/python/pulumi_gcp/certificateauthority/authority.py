@@ -44,8 +44,6 @@ class AuthorityArgs:
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-               state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
                CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
@@ -65,7 +63,7 @@ class AuthorityArgs:
                'false'.
         :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
                describes its issuers.
-        :param pulumi.Input[str] type: The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        :param pulumi.Input[str] type: The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
                before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
@@ -164,10 +162,6 @@ class AuthorityArgs:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-        state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -294,7 +288,7 @@ class AuthorityArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
         before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         return pulumi.get(self, "type")
@@ -341,8 +335,6 @@ class _AuthorityState:
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-               state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
@@ -379,7 +371,7 @@ class _AuthorityState:
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
         :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
                describes its issuers.
-        :param pulumi.Input[str] type: The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        :param pulumi.Input[str] type: The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
                before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -489,10 +481,6 @@ class _AuthorityState:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-        state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -724,7 +712,7 @@ class _AuthorityState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
         before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         return pulumi.get(self, "type")
@@ -1017,8 +1005,6 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
         :param pulumi.Input[pulumi.InputType['AuthorityConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-               state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
                CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
@@ -1045,7 +1031,7 @@ class Authority(pulumi.CustomResource):
                'false'.
         :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
                describes its issuers.
-        :param pulumi.Input[str] type: The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        :param pulumi.Input[str] type: The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
                before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         ...
@@ -1421,8 +1407,6 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-               state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
@@ -1459,7 +1443,7 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
         :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
                describes its issuers.
-        :param pulumi.Input[str] type: The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        :param pulumi.Input[str] type: The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
                before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -1534,10 +1518,6 @@ class Authority(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
-        state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @property
@@ -1697,7 +1677,7 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
         before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         return pulumi.get(self, "type")

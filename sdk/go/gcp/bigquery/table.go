@@ -224,7 +224,7 @@ type Table struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringOutput `pulumi:"tableId"`
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
 	TableReplicationInfo TableTableReplicationInfoPtrOutput `pulumi:"tableReplicationInfo"`
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -375,7 +375,7 @@ type tableState struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId *string `pulumi:"tableId"`
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
 	TableReplicationInfo *TableTableReplicationInfo `pulumi:"tableReplicationInfo"`
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -486,7 +486,7 @@ type TableState struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringPtrInput
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
 	TableReplicationInfo TableTableReplicationInfoPtrInput
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -566,7 +566,7 @@ type tableArgs struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId string `pulumi:"tableId"`
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
 	TableReplicationInfo *TableTableReplicationInfo `pulumi:"tableReplicationInfo"`
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -641,7 +641,7 @@ type TableArgs struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringInput
-	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+	// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
 	TableReplicationInfo TableTableReplicationInfoPtrInput
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
@@ -920,7 +920,7 @@ func (o TableOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.TableId }).(pulumi.StringOutput)
 }
 
-// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv".
 func (o TableOutput) TableReplicationInfo() TableTableReplicationInfoPtrOutput {
 	return o.ApplyT(func(v *Table) TableTableReplicationInfoPtrOutput { return v.TableReplicationInfo }).(TableTableReplicationInfoPtrOutput)
 }
