@@ -512,6 +512,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"access_token": {
+				Secret: tfbridge.True(),
+			},
 		},
 		ExtraConfig: map[string]*tfbridge.ConfigInfo{
 			"skipRegionValidation": {
