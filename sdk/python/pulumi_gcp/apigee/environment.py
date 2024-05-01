@@ -21,6 +21,7 @@ class EnvironmentArgs:
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -44,6 +45,7 @@ class EnvironmentArgs:
                Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
+        :param pulumi.Input[str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
         :param pulumi.Input[str] name: The resource ID of the environment.
         :param pulumi.Input['EnvironmentNodeConfigArgs'] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
@@ -62,6 +64,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if forward_proxy_uri is not None:
+            pulumi.set(__self__, "forward_proxy_uri", forward_proxy_uri)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_config is not None:
@@ -143,6 +147,18 @@ class EnvironmentArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="forwardProxyUri")
+    def forward_proxy_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+        """
+        return pulumi.get(self, "forward_proxy_uri")
+
+    @forward_proxy_uri.setter
+    def forward_proxy_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forward_proxy_uri", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -191,6 +207,7 @@ class _EnvironmentState:
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -210,6 +227,7 @@ class _EnvironmentState:
                Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
+        :param pulumi.Input[str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
         :param pulumi.Input[str] name: The resource ID of the environment.
         :param pulumi.Input['EnvironmentNodeConfigArgs'] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
@@ -232,6 +250,8 @@ class _EnvironmentState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if forward_proxy_uri is not None:
+            pulumi.set(__self__, "forward_proxy_uri", forward_proxy_uri)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_config is not None:
@@ -297,6 +317,18 @@ class _EnvironmentState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="forwardProxyUri")
+    def forward_proxy_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+        """
+        return pulumi.get(self, "forward_proxy_uri")
+
+    @forward_proxy_uri.setter
+    def forward_proxy_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forward_proxy_uri", value)
 
     @property
     @pulumi.getter
@@ -365,6 +397,7 @@ class Environment(pulumi.CustomResource):
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -443,6 +476,7 @@ class Environment(pulumi.CustomResource):
                Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
+        :param pulumi.Input[str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
         :param pulumi.Input[str] name: The resource ID of the environment.
         :param pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
@@ -540,6 +574,7 @@ class Environment(pulumi.CustomResource):
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -557,6 +592,7 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["deployment_type"] = deployment_type
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["forward_proxy_uri"] = forward_proxy_uri
             __props__.__dict__["name"] = name
             __props__.__dict__["node_config"] = node_config
             if org_id is None and not opts.urn:
@@ -577,6 +613,7 @@ class Environment(pulumi.CustomResource):
             deployment_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            forward_proxy_uri: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -601,6 +638,7 @@ class Environment(pulumi.CustomResource):
                Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
+        :param pulumi.Input[str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
         :param pulumi.Input[str] name: The resource ID of the environment.
         :param pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
@@ -623,6 +661,7 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["deployment_type"] = deployment_type
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["forward_proxy_uri"] = forward_proxy_uri
         __props__.__dict__["name"] = name
         __props__.__dict__["node_config"] = node_config
         __props__.__dict__["org_id"] = org_id
@@ -669,6 +708,14 @@ class Environment(pulumi.CustomResource):
         Display name of the environment.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="forwardProxyUri")
+    def forward_proxy_uri(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+        """
+        return pulumi.get(self, "forward_proxy_uri")
 
     @property
     @pulumi.getter

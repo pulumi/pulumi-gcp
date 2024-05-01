@@ -181,6 +181,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
@@ -205,6 +206,9 @@ import javax.annotation.Nullable;
  *                 .port(&#34;443&#34;)
  *                 .useSsl(true)
  *                 .validateSsl(true)
+ *                 .serviceAgentAuthentication(UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs.builder()
+ *                     .type(&#34;OIDC_TOKEN&#34;)
+ *                     .build())
  *                 .build())
  *             .monitoredResource(UptimeCheckConfigMonitoredResourceArgs.builder()
  *                 .type(&#34;uptime_url&#34;)

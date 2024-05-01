@@ -73,6 +73,98 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultRegionSslCertificate.id],
  * });
  * ```
+ * ### Region Target Https Proxy Mtls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
+ *     location: "us-central1",
+ *     name: "my-trust-config",
+ *     description: "sample description for trust config",
+ *     trustStores: [{
+ *         trustAnchors: [{
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
+ *         }],
+ *         intermediateCas: [{
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
+ *         }],
+ *     }],
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const defaultServerTlsPolicy = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     location: "us-central1",
+ *     name: "my-tls-policy",
+ *     description: "my description",
+ *     allowOpen: false,
+ *     mtlsPolicy: {
+ *         clientValidationMode: "REJECT_INVALID",
+ *         clientValidationTrustConfig: pulumi.all([project, defaultTrustConfig.name]).apply(([project, name]) => `projects/${project.number}/locations/us-central1/trustConfigs/${name}`),
+ *     },
+ * });
+ * const defaultRegionSslCertificate = new gcp.compute.RegionSslCertificate("default", {
+ *     region: "us-central1",
+ *     name: "my-certificate",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "http-health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: defaultRegionHealthCheck.id,
+ * });
+ * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("default", {
+ *     region: "us-central1",
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultRegionBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultRegionBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultRegionBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const _default = new gcp.compute.RegionTargetHttpsProxy("default", {
+ *     region: "us-central1",
+ *     name: "test-mtls-proxy",
+ *     urlMap: defaultRegionUrlMap.id,
+ *     sslCertificates: [defaultRegionSslCertificate.id],
+ *     serverTlsPolicy: defaultServerTlsPolicy.id,
+ * });
+ * ```
  * ### Region Target Https Proxy Certificate Manager Certificate
  *
  * ```typescript
@@ -213,6 +305,18 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     */
+    public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
+    /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
      * sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -254,6 +358,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["proxyId"] = state ? state.proxyId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serverTlsPolicy"] = state ? state.serverTlsPolicy : undefined;
             resourceInputs["sslCertificates"] = state ? state.sslCertificates : undefined;
             resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
             resourceInputs["urlMap"] = state ? state.urlMap : undefined;
@@ -267,6 +372,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
             resourceInputs["sslCertificates"] = args ? args.sslCertificates : undefined;
             resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             resourceInputs["urlMap"] = args ? args.urlMap : undefined;
@@ -327,6 +433,18 @@ export interface RegionTargetHttpsProxyState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     */
+    serverTlsPolicy?: pulumi.Input<string>;
+    /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
      * sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -383,6 +501,18 @@ export interface RegionTargetHttpsProxyArgs {
      * If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     */
+    serverTlsPolicy?: pulumi.Input<string>;
     /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.

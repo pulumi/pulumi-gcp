@@ -116,6 +116,42 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
+    /// ### Filestore Instance Protocol
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Filestore.Instance("instance", new()
+    ///     {
+    ///         Name = "test-instance",
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///         Protocol = "NFS_V4_1",
+    ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+    ///         {
+    ///             CapacityGb = 1024,
+    ///             Name = "share1",
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new Gcp.Filestore.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 Modes = new[]
+    ///                 {
+    ///                     "MODE_IPV4",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Filestore Instance Enterprise
     /// 
     /// ```csharp
@@ -263,6 +299,14 @@ namespace Pulumi.Gcp.Filestore
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+        /// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+        /// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        /// </summary>
+        [Output("protocol")]
+        public Output<string?> Protocol { get; private set; } = null!;
+
+        /// <summary>
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
@@ -397,6 +441,14 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+        /// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+        /// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        /// </summary>
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
+
+        /// <summary>
         /// The service tier of the instance.
         /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         /// </summary>
@@ -508,6 +560,14 @@ namespace Pulumi.Gcp.Filestore
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+        /// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+        /// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        /// </summary>
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
 
         [Input("pulumiLabels")]
         private InputMap<string>? _pulumiLabels;

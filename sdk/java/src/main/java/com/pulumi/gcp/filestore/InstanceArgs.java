@@ -145,6 +145,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+     * &#34;NFS_V3&#34; Possible values: [&#34;NFS_V3&#34;, &#34;NFS_V4_1&#34;]
+     * 
+     */
+    @Import(name="protocol")
+    private @Nullable Output<String> protocol;
+
+    /**
+     * @return Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+     * &#34;NFS_V3&#34; Possible values: [&#34;NFS_V3&#34;, &#34;NFS_V4_1&#34;]
+     * 
+     */
+    public Optional<Output<String>> protocol() {
+        return Optional.ofNullable(this.protocol);
+    }
+
+    /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
      * 
@@ -195,6 +214,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.networks = $.networks;
         this.project = $.project;
+        this.protocol = $.protocol;
         this.tier = $.tier;
         this.zone = $.zone;
     }
@@ -395,6 +415,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param protocol Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+         * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+         * &#34;NFS_V3&#34; Possible values: [&#34;NFS_V3&#34;, &#34;NFS_V4_1&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protocol(@Nullable Output<String> protocol) {
+            $.protocol = protocol;
+            return this;
+        }
+
+        /**
+         * @param protocol Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+         * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+         * &#34;NFS_V3&#34; Possible values: [&#34;NFS_V3&#34;, &#34;NFS_V4_1&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protocol(String protocol) {
+            return protocol(Output.of(protocol));
         }
 
         /**

@@ -5,9 +5,10 @@ package com.pulumi.gcp.bigquerydatapolicy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DataPolicyDataMaskingPolicyArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,22 +20,38 @@ public final class DataPolicyDataMaskingPolicyArgs extends com.pulumi.resources.
      * Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
      * 
      */
-    @Import(name="predefinedExpression", required=true)
-    private Output<String> predefinedExpression;
+    @Import(name="predefinedExpression")
+    private @Nullable Output<String> predefinedExpression;
 
     /**
      * @return The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
      * Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
      * 
      */
-    public Output<String> predefinedExpression() {
-        return this.predefinedExpression;
+    public Optional<Output<String>> predefinedExpression() {
+        return Optional.ofNullable(this.predefinedExpression);
+    }
+
+    /**
+     * The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+     * 
+     */
+    @Import(name="routine")
+    private @Nullable Output<String> routine;
+
+    /**
+     * @return The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+     * 
+     */
+    public Optional<Output<String>> routine() {
+        return Optional.ofNullable(this.routine);
     }
 
     private DataPolicyDataMaskingPolicyArgs() {}
 
     private DataPolicyDataMaskingPolicyArgs(DataPolicyDataMaskingPolicyArgs $) {
         this.predefinedExpression = $.predefinedExpression;
+        this.routine = $.routine;
     }
 
     public static Builder builder() {
@@ -62,7 +79,7 @@ public final class DataPolicyDataMaskingPolicyArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder predefinedExpression(Output<String> predefinedExpression) {
+        public Builder predefinedExpression(@Nullable Output<String> predefinedExpression) {
             $.predefinedExpression = predefinedExpression;
             return this;
         }
@@ -78,10 +95,28 @@ public final class DataPolicyDataMaskingPolicyArgs extends com.pulumi.resources.
             return predefinedExpression(Output.of(predefinedExpression));
         }
 
+        /**
+         * @param routine The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routine(@Nullable Output<String> routine) {
+            $.routine = routine;
+            return this;
+        }
+
+        /**
+         * @param routine The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routine(String routine) {
+            return routine(Output.of(routine));
+        }
+
         public DataPolicyDataMaskingPolicyArgs build() {
-            if ($.predefinedExpression == null) {
-                throw new MissingRequiredPropertyException("DataPolicyDataMaskingPolicyArgs", "predefinedExpression");
-            }
             return $;
         }
     }

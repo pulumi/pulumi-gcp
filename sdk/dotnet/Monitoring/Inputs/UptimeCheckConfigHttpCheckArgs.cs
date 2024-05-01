@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         }
 
         /// <summary>
-        /// The authentication information. Optional when creating an HTTP check; defaults to empty.
+        /// The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
         /// Structure is documented below.
         /// </summary>
         [Input("authInfo")]
@@ -95,6 +95,13 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// </summary>
         [Input("requestMethod")]
         public Input<string>? RequestMethod { get; set; }
+
+        /// <summary>
+        /// The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceAgentAuthentication")]
+        public Input<Inputs.UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs>? ServiceAgentAuthentication { get; set; }
 
         /// <summary>
         /// If true, use HTTPS instead of HTTP to run the check.

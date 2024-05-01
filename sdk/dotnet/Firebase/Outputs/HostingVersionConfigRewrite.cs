@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// </summary>
         public readonly string? Glob;
         /// <summary>
+        /// The URL path to rewrite the request to.
+        /// </summary>
+        public readonly string? Path;
+        /// <summary>
         /// The user-supplied RE2 regular expression to match against the request URL path.
         /// </summary>
         public readonly string? Regex;
@@ -37,12 +41,15 @@ namespace Pulumi.Gcp.Firebase.Outputs
 
             string? glob,
 
+            string? path,
+
             string? regex,
 
             Outputs.HostingVersionConfigRewriteRun? run)
         {
             Function = function;
             Glob = glob;
+            Path = path;
             Regex = regex;
             Run = run;
         }

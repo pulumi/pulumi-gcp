@@ -17,29 +17,34 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
     /**
-     * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+     * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky> requestCookies;
     /**
-     * @return Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+     * @return Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader> requestHeaders;
     /**
-     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Note that the parameter can be in the query string or in the POST body.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam> requestQueryParams;
     /**
-     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+     * When specifying this field, the query or fragment part should be excluded.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri> requestUris;
     /**
-     * @return A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-     * 
-     * &lt;a name=&#34;nested_field_params&#34;&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+     * @return A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+     * If omitted, it refers to all the rule IDs under the WAF rule set.
      * 
      */
     private @Nullable List<String> targetRuleIds;
@@ -51,37 +56,42 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
 
     private SecurityPolicyRulePreconfiguredWafConfigExclusion() {}
     /**
-     * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+     * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     public List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky> requestCookies() {
         return this.requestCookies == null ? List.of() : this.requestCookies;
     }
     /**
-     * @return Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+     * @return Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     public List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader> requestHeaders() {
         return this.requestHeaders == null ? List.of() : this.requestHeaders;
     }
     /**
-     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Note that the parameter can be in the query string or in the POST body.
+     * Structure is documented below.
      * 
      */
     public List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam> requestQueryParams() {
         return this.requestQueryParams == null ? List.of() : this.requestQueryParams;
     }
     /**
-     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+     * When specifying this field, the query or fragment part should be excluded.
+     * Structure is documented below.
      * 
      */
     public List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri> requestUris() {
         return this.requestUris == null ? List.of() : this.requestUris;
     }
     /**
-     * @return A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-     * 
-     * &lt;a name=&#34;nested_field_params&#34;&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+     * @return A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+     * If omitted, it refers to all the rule IDs under the WAF rule set.
      * 
      */
     public List<String> targetRuleIds() {

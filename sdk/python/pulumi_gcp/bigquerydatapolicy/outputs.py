@@ -35,21 +35,34 @@ class DataPolicyDataMaskingPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 predefined_expression: str):
+                 predefined_expression: Optional[str] = None,
+                 routine: Optional[str] = None):
         """
         :param str predefined_expression: The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
                Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
+        :param str routine: The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
         """
-        pulumi.set(__self__, "predefined_expression", predefined_expression)
+        if predefined_expression is not None:
+            pulumi.set(__self__, "predefined_expression", predefined_expression)
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
 
     @property
     @pulumi.getter(name="predefinedExpression")
-    def predefined_expression(self) -> str:
+    def predefined_expression(self) -> Optional[str]:
         """
         The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
         Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
         """
         return pulumi.get(self, "predefined_expression")
+
+    @property
+    @pulumi.getter
+    def routine(self) -> Optional[str]:
+        """
+        The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+        """
+        return pulumi.get(self, "routine")
 
 
 @pulumi.output_type

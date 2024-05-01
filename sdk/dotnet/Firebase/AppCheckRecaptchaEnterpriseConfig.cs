@@ -31,6 +31,14 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Enables the reCAPTCHA Enterprise API
+    ///     var recaptchaEnterprise = new Gcp.Projects.Service("recaptcha_enterprise", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         ServiceName = "recaptchaenterprise.googleapis.com",
+    ///         DisableOnDestroy = false,
+    ///     });
+    /// 
     ///     var @default = new Gcp.Firebase.WebApp("default", new()
     ///     {
     ///         Project = "my-project-name",

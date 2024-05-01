@@ -63,6 +63,7 @@ export interface GetInstanceResult {
     readonly name: string;
     readonly networks: outputs.filestore.GetInstanceNetwork[];
     readonly project?: string;
+    readonly protocol: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly tier: string;
     readonly zone: string;

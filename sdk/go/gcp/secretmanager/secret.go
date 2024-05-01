@@ -98,6 +98,35 @@ import (
 //	}
 //
 // ```
+// ### Secret With Version Destroy Ttl
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-with-version-destroy-ttl", &secretmanager.SecretArgs{
+//				SecretId:          pulumi.String("secret"),
+//				VersionDestroyTtl: pulumi.String("2592000s"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: nil,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Secret With Automatic Cmek
 //
 // ```go
@@ -227,6 +256,10 @@ type Secret struct {
 	// must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
 	// secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	VersionAliases pulumi.StringMapOutput `pulumi:"versionAliases"`
+	// Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+	// with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+	// a disabled state and the actual destruction happens after this TTL expires.
+	VersionDestroyTtl pulumi.StringPtrOutput `pulumi:"versionDestroyTtl"`
 }
 
 // NewSecret registers a new resource with the given unique name, arguments, and options.
@@ -324,6 +357,10 @@ type secretState struct {
 	// must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
 	// secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	VersionAliases map[string]string `pulumi:"versionAliases"`
+	// Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+	// with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+	// a disabled state and the actual destruction happens after this TTL expires.
+	VersionDestroyTtl *string `pulumi:"versionDestroyTtl"`
 }
 
 type SecretState struct {
@@ -381,6 +418,10 @@ type SecretState struct {
 	// must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
 	// secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	VersionAliases pulumi.StringMapInput
+	// Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+	// with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+	// a disabled state and the actual destruction happens after this TTL expires.
+	VersionDestroyTtl pulumi.StringPtrInput
 }
 
 func (SecretState) ElementType() reflect.Type {
@@ -431,6 +472,10 @@ type secretArgs struct {
 	// must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
 	// secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	VersionAliases map[string]string `pulumi:"versionAliases"`
+	// Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+	// with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+	// a disabled state and the actual destruction happens after this TTL expires.
+	VersionDestroyTtl *string `pulumi:"versionDestroyTtl"`
 }
 
 // The set of arguments for constructing a Secret resource.
@@ -478,6 +523,10 @@ type SecretArgs struct {
 	// must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
 	// secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	VersionAliases pulumi.StringMapInput
+	// Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+	// with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+	// a disabled state and the actual destruction happens after this TTL expires.
+	VersionDestroyTtl pulumi.StringPtrInput
 }
 
 func (SecretArgs) ElementType() reflect.Type {
@@ -664,6 +713,13 @@ func (o SecretOutput) Ttl() pulumi.StringPtrOutput {
 // secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o SecretOutput) VersionAliases() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.VersionAliases }).(pulumi.StringMapOutput)
+}
+
+// Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+// with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+// a disabled state and the actual destruction happens after this TTL expires.
+func (o SecretOutput) VersionDestroyTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.VersionDestroyTtl }).(pulumi.StringPtrOutput)
 }
 
 type SecretArrayOutput struct{ *pulumi.OutputState }

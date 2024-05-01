@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.InstanceClientConnectionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.InstanceNetworkConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceQueryInsightsConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceReadPoolConfigArgs;
 import java.lang.Boolean;
@@ -276,6 +277,42 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Instance level network configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkConfig")
+    private @Nullable Output<InstanceNetworkConfigArgs> networkConfig;
+
+    /**
+     * @return Instance level network configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceNetworkConfigArgs>> networkConfig() {
+        return Optional.ofNullable(this.networkConfig);
+    }
+
+    /**
+     * The public IP addresses for the Instance. This is available ONLY when
+     * networkConfig.enablePublicIp is set to true. This is the connection
+     * endpoint for an end-user application.
+     * 
+     */
+    @Import(name="publicIpAddress")
+    private @Nullable Output<String> publicIpAddress;
+
+    /**
+     * @return The public IP addresses for the Instance. This is available ONLY when
+     * networkConfig.enablePublicIp is set to true. This is the connection
+     * endpoint for an end-user application.
+     * 
+     */
+    public Optional<Output<String>> publicIpAddress() {
+        return Optional.ofNullable(this.publicIpAddress);
+    }
+
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      * 
@@ -405,6 +442,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.machineConfig = $.machineConfig;
         this.name = $.name;
+        this.networkConfig = $.networkConfig;
+        this.publicIpAddress = $.publicIpAddress;
         this.pulumiLabels = $.pulumiLabels;
         this.queryInsightsConfig = $.queryInsightsConfig;
         this.readPoolConfig = $.readPoolConfig;
@@ -772,6 +811,54 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param networkConfig Instance level network configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(@Nullable Output<InstanceNetworkConfigArgs> networkConfig) {
+            $.networkConfig = networkConfig;
+            return this;
+        }
+
+        /**
+         * @param networkConfig Instance level network configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(InstanceNetworkConfigArgs networkConfig) {
+            return networkConfig(Output.of(networkConfig));
+        }
+
+        /**
+         * @param publicIpAddress The public IP addresses for the Instance. This is available ONLY when
+         * networkConfig.enablePublicIp is set to true. This is the connection
+         * endpoint for an end-user application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicIpAddress(@Nullable Output<String> publicIpAddress) {
+            $.publicIpAddress = publicIpAddress;
+            return this;
+        }
+
+        /**
+         * @param publicIpAddress The public IP addresses for the Instance. This is available ONLY when
+         * networkConfig.enablePublicIp is set to true. This is the connection
+         * endpoint for an end-user application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicIpAddress(String publicIpAddress) {
+            return publicIpAddress(Output.of(publicIpAddress));
         }
 
         /**

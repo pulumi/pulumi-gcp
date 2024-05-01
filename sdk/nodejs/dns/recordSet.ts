@@ -155,7 +155,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Primary-Backup
+ * ### Failover
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

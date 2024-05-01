@@ -74,6 +74,27 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Filestore Instance Protocol
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     name: "test-instance",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     protocol: "NFS_V4_1",
+ *     fileShares: {
+ *         capacityGb: 1024,
+ *         name: "share1",
+ *     },
+ *     networks: [{
+ *         network: "default",
+ *         modes: ["MODE_IPV4"],
+ *     }],
+ * });
+ * ```
  * ### Filestore Instance Enterprise
  *
  * ```typescript
@@ -205,6 +226,12 @@ export class Instance extends pulumi.CustomResource {
     public readonly networks!: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+     * "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+     */
+    public readonly protocol!: pulumi.Output<string | undefined>;
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
@@ -245,6 +272,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networks"] = state ? state.networks : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -267,6 +295,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -334,6 +363,12 @@ export interface InstanceState {
     networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     project?: pulumi.Input<string>;
     /**
+     * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+     * "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+     */
+    protocol?: pulumi.Input<string>;
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
@@ -390,6 +425,12 @@ export interface InstanceArgs {
      */
     networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     project?: pulumi.Input<string>;
+    /**
+     * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+     * "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+     */
+    protocol?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE

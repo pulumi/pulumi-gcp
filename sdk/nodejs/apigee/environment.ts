@@ -122,6 +122,10 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+     */
+    public readonly forwardProxyUri!: pulumi.Output<string | undefined>;
+    /**
      * The resource ID of the environment.
      */
     public readonly name!: pulumi.Output<string>;
@@ -164,6 +168,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["deploymentType"] = state ? state.deploymentType : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["forwardProxyUri"] = state ? state.forwardProxyUri : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -177,6 +182,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["forwardProxyUri"] = args ? args.forwardProxyUri : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -216,6 +222,10 @@ export interface EnvironmentState {
      * Display name of the environment.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+     */
+    forwardProxyUri?: pulumi.Input<string>;
     /**
      * The resource ID of the environment.
      */
@@ -272,6 +282,10 @@ export interface EnvironmentArgs {
      * Display name of the environment.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+     */
+    forwardProxyUri?: pulumi.Input<string>;
     /**
      * The resource ID of the environment.
      */

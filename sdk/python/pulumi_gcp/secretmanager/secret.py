@@ -25,7 +25,8 @@ class SecretArgs:
                  rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
-                 version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 version_destroy_ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Secret resource.
         :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
@@ -61,6 +62,9 @@ class SecretArgs:
                contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
                must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
                secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] version_destroy_ttl: Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+               with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+               a disabled state and the actual destruction happens after this TTL expires.
         """
         pulumi.set(__self__, "replication", replication)
         pulumi.set(__self__, "secret_id", secret_id)
@@ -80,6 +84,8 @@ class SecretArgs:
             pulumi.set(__self__, "ttl", ttl)
         if version_aliases is not None:
             pulumi.set(__self__, "version_aliases", version_aliases)
+        if version_destroy_ttl is not None:
+            pulumi.set(__self__, "version_destroy_ttl", version_destroy_ttl)
 
     @property
     @pulumi.getter
@@ -222,6 +228,20 @@ class SecretArgs:
     def version_aliases(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "version_aliases", value)
 
+    @property
+    @pulumi.getter(name="versionDestroyTtl")
+    def version_destroy_ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+        with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+        a disabled state and the actual destruction happens after this TTL expires.
+        """
+        return pulumi.get(self, "version_destroy_ttl")
+
+    @version_destroy_ttl.setter
+    def version_destroy_ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_destroy_ttl", value)
+
 
 @pulumi.input_type
 class _SecretState:
@@ -240,7 +260,8 @@ class _SecretState:
                  secret_id: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
-                 version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 version_destroy_ttl: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
@@ -282,6 +303,9 @@ class _SecretState:
                contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
                must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
                secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] version_destroy_ttl: Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+               with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+               a disabled state and the actual destruction happens after this TTL expires.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -313,6 +337,8 @@ class _SecretState:
             pulumi.set(__self__, "ttl", ttl)
         if version_aliases is not None:
             pulumi.set(__self__, "version_aliases", version_aliases)
+        if version_destroy_ttl is not None:
+            pulumi.set(__self__, "version_destroy_ttl", version_destroy_ttl)
 
     @property
     @pulumi.getter
@@ -514,6 +540,20 @@ class _SecretState:
     def version_aliases(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "version_aliases", value)
 
+    @property
+    @pulumi.getter(name="versionDestroyTtl")
+    def version_destroy_ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+        with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+        a disabled state and the actual destruction happens after this TTL expires.
+        """
+        return pulumi.get(self, "version_destroy_ttl")
+
+    @version_destroy_ttl.setter
+    def version_destroy_ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_destroy_ttl", value)
+
 
 class Secret(pulumi.CustomResource):
     @overload
@@ -530,6 +570,7 @@ class Secret(pulumi.CustomResource):
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 version_destroy_ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         A Secret is a logical secret whose value and versions can be accessed.
@@ -582,6 +623,19 @@ class Secret(pulumi.CustomResource):
                 "key4": "someval4",
                 "key5": "someval5",
             },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        ```
+        ### Secret With Version Destroy Ttl
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_with_version_destroy_ttl = gcp.secretmanager.Secret("secret-with-version-destroy-ttl",
+            secret_id="secret",
+            version_destroy_ttl="2592000s",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
@@ -667,6 +721,9 @@ class Secret(pulumi.CustomResource):
                contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
                must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
                secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] version_destroy_ttl: Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+               with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+               a disabled state and the actual destruction happens after this TTL expires.
         """
         ...
     @overload
@@ -725,6 +782,19 @@ class Secret(pulumi.CustomResource):
                 "key4": "someval4",
                 "key5": "someval5",
             },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        ```
+        ### Secret With Version Destroy Ttl
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_with_version_destroy_ttl = gcp.secretmanager.Secret("secret-with-version-destroy-ttl",
+            secret_id="secret",
+            version_destroy_ttl="2592000s",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
@@ -800,6 +870,7 @@ class Secret(pulumi.CustomResource):
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 version_destroy_ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -823,6 +894,7 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["topics"] = topics
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["version_aliases"] = version_aliases
+            __props__.__dict__["version_destroy_ttl"] = version_destroy_ttl
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
@@ -854,7 +926,8 @@ class Secret(pulumi.CustomResource):
             secret_id: Optional[pulumi.Input[str]] = None,
             topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
             ttl: Optional[pulumi.Input[str]] = None,
-            version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Secret':
+            version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            version_destroy_ttl: Optional[pulumi.Input[str]] = None) -> 'Secret':
         """
         Get an existing Secret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -901,6 +974,9 @@ class Secret(pulumi.CustomResource):
                contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
                must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
                secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] version_destroy_ttl: Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+               with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+               a disabled state and the actual destruction happens after this TTL expires.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -921,6 +997,7 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["topics"] = topics
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["version_aliases"] = version_aliases
+        __props__.__dict__["version_destroy_ttl"] = version_destroy_ttl
         return Secret(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1062,4 +1139,14 @@ class Secret(pulumi.CustomResource):
         secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "version_aliases")
+
+    @property
+    @pulumi.getter(name="versionDestroyTtl")
+    def version_destroy_ttl(self) -> pulumi.Output[Optional[str]]:
+        """
+        Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+        with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+        a disabled state and the actual destruction happens after this TTL expires.
+        """
+        return pulumi.get(self, "version_destroy_ttl")
 

@@ -67,6 +67,7 @@ __all__ = [
     'GetBucketObjectContentRetentionResult',
     'GetBucketObjectCustomerEncryptionResult',
     'GetBucketObjectRetentionResult',
+    'GetBucketObjectsBucketObjectResult',
     'GetBucketRetentionPolicyResult',
     'GetBucketSoftDeletePolicyResult',
     'GetBucketVersioningResult',
@@ -3053,6 +3054,68 @@ class GetBucketObjectRetentionResult(dict):
         Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
         """
         return pulumi.get(self, "retain_until_time")
+
+
+@pulumi.output_type
+class GetBucketObjectsBucketObjectResult(dict):
+    def __init__(__self__, *,
+                 content_type: str,
+                 media_link: str,
+                 name: str,
+                 self_link: str,
+                 storage_class: str):
+        """
+        :param str content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
+        :param str media_link: A url reference to download this object.
+        :param str name: The name of the object.
+        :param str self_link: A url reference to this object.
+        :param str storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
+        """
+        pulumi.set(__self__, "content_type", content_type)
+        pulumi.set(__self__, "media_link", media_link)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "storage_class", storage_class)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> str:
+        """
+        [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter(name="mediaLink")
+    def media_link(self) -> str:
+        """
+        A url reference to download this object.
+        """
+        return pulumi.get(self, "media_link")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the object.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        A url reference to this object.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
+        """
+        return pulumi.get(self, "storage_class")
 
 
 @pulumi.output_type

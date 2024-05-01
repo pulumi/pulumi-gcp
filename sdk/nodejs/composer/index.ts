@@ -20,6 +20,11 @@ export const getImageVersions: typeof import("./getImageVersions").getImageVersi
 export const getImageVersionsOutput: typeof import("./getImageVersions").getImageVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getImageVersions","getImageVersionsOutput"], () => require("./getImageVersions"));
 
+export { UserWorkloadsSecretArgs, UserWorkloadsSecretState } from "./userWorkloadsSecret";
+export type UserWorkloadsSecret = import("./userWorkloadsSecret").UserWorkloadsSecret;
+export const UserWorkloadsSecret: typeof import("./userWorkloadsSecret").UserWorkloadsSecret = null as any;
+utilities.lazyLoad(exports, ["UserWorkloadsSecret"], () => require("./userWorkloadsSecret"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -27,9 +32,12 @@ const _module = {
         switch (type) {
             case "gcp:composer/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "gcp:composer/userWorkloadsSecret:UserWorkloadsSecret":
+                return new UserWorkloadsSecret(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "composer/environment", _module)
+pulumi.runtime.registerResourceModule("gcp", "composer/userWorkloadsSecret", _module)

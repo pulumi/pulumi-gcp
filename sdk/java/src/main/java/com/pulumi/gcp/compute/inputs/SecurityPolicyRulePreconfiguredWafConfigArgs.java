@@ -17,14 +17,16 @@ public final class SecurityPolicyRulePreconfiguredWafConfigArgs extends com.pulu
     public static final SecurityPolicyRulePreconfiguredWafConfigArgs Empty = new SecurityPolicyRulePreconfiguredWafConfigArgs();
 
     /**
-     * An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+     * An exclusion to apply during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     @Import(name="exclusions")
     private @Nullable Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionArgs>> exclusions;
 
     /**
-     * @return An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+     * @return An exclusion to apply during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionArgs>>> exclusions() {
@@ -56,7 +58,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigArgs extends com.pulu
         }
 
         /**
-         * @param exclusions An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+         * @param exclusions An exclusion to apply during preconfigured WAF evaluation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -67,7 +70,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigArgs extends com.pulu
         }
 
         /**
-         * @param exclusions An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+         * @param exclusions An exclusion to apply during preconfigured WAF evaluation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -77,7 +81,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigArgs extends com.pulu
         }
 
         /**
-         * @param exclusions An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+         * @param exclusions An exclusion to apply during preconfigured WAF evaluation.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -47,6 +47,21 @@ public final class HostingVersionConfigRewriteArgs extends com.pulumi.resources.
     }
 
     /**
+     * The URL path to rewrite the request to.
+     * 
+     */
+    @Import(name="path")
+    private @Nullable Output<String> path;
+
+    /**
+     * @return The URL path to rewrite the request to.
+     * 
+     */
+    public Optional<Output<String>> path() {
+        return Optional.ofNullable(this.path);
+    }
+
+    /**
      * The user-supplied RE2 regular expression to match against the request URL path.
      * 
      */
@@ -83,6 +98,7 @@ public final class HostingVersionConfigRewriteArgs extends com.pulumi.resources.
     private HostingVersionConfigRewriteArgs(HostingVersionConfigRewriteArgs $) {
         this.function = $.function;
         this.glob = $.glob;
+        this.path = $.path;
         this.regex = $.regex;
         this.run = $.run;
     }
@@ -145,6 +161,27 @@ public final class HostingVersionConfigRewriteArgs extends com.pulumi.resources.
          */
         public Builder glob(String glob) {
             return glob(Output.of(glob));
+        }
+
+        /**
+         * @param path The URL path to rewrite the request to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder path(@Nullable Output<String> path) {
+            $.path = path;
+            return this;
+        }
+
+        /**
+         * @param path The URL path to rewrite the request to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder path(String path) {
+            return path(Output.of(path));
         }
 
         /**

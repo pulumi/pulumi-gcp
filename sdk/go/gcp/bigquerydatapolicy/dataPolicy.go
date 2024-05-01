@@ -70,6 +70,83 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Datapolicy Data Policy Routine
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquerydatapolicy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			taxonomy, err := datacatalog.NewTaxonomy(ctx, "taxonomy", &datacatalog.TaxonomyArgs{
+//				Region:      pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("taxonomy"),
+//				Description: pulumi.String("A collection of policy tags"),
+//				ActivatedPolicyTypes: pulumi.StringArray{
+//					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policyTag, err := datacatalog.NewPolicyTag(ctx, "policy_tag", &datacatalog.PolicyTagArgs{
+//				Taxonomy:    taxonomy.ID(),
+//				DisplayName: pulumi.String("Low security"),
+//				Description: pulumi.String("A policy tag normally associated with low security items"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("dataset_id"),
+//				Location:  pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			customMaskingRoutine, err := bigquery.NewRoutine(ctx, "custom_masking_routine", &bigquery.RoutineArgs{
+//				DatasetId:          test.DatasetId,
+//				RoutineId:          pulumi.String("custom_masking_routine"),
+//				RoutineType:        pulumi.String("SCALAR_FUNCTION"),
+//				Language:           pulumi.String("SQL"),
+//				DataGovernanceType: pulumi.String("DATA_MASKING"),
+//				DefinitionBody:     pulumi.String("SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')"),
+//				ReturnType:         pulumi.String("{\"typeKind\" :  \"STRING\"}"),
+//				Arguments: bigquery.RoutineArgumentArray{
+//					&bigquery.RoutineArgumentArgs{
+//						Name:     pulumi.String("ssn"),
+//						DataType: pulumi.String("{\"typeKind\" :  \"STRING\"}"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquerydatapolicy.NewDataPolicy(ctx, "data_policy", &bigquerydatapolicy.DataPolicyArgs{
+//				Location:       pulumi.String("us-central1"),
+//				DataPolicyId:   pulumi.String("data_policy"),
+//				PolicyTag:      policyTag.Name,
+//				DataPolicyType: pulumi.String("DATA_MASKING_POLICY"),
+//				DataMaskingPolicy: &bigquerydatapolicy.DataPolicyDataMaskingPolicyArgs{
+//					Routine: customMaskingRoutine.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -229,6 +229,62 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Privateca Certificate Authority Custom Ski
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificateauthority.Authority("default", {
+ *     pool: "ca-pool",
+ *     certificateAuthorityId: "my-certificate-authority",
+ *     location: "us-central1",
+ *     deletionProtection: true,
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         subjectKeyId: {
+ *             keyId: "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *                 maxIssuerPathLength: 10,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     digitalSignature: true,
+ *                     contentCommitment: true,
+ *                     keyEncipherment: false,
+ *                     dataEncipherment: true,
+ *                     keyAgreement: true,
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                     decipherOnly: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                     clientAuth: false,
+ *                     emailProtection: true,
+ *                     codeSigning: true,
+ *                     timeStamping: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     lifetime: "86400s",
+ *     keySpec: {
+ *         cloudKmsKeyVersion: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

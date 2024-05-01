@@ -117,6 +117,9 @@ import * as utilities from "../utilities";
  *         port: 443,
  *         useSsl: true,
  *         validateSsl: true,
+ *         serviceAgentAuthentication: {
+ *             type: "OIDC_TOKEN",
+ *         },
  *     },
  *     monitoredResource: {
  *         type: "uptime_url",

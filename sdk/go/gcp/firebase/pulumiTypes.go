@@ -3167,6 +3167,8 @@ type HostingVersionConfigRewrite struct {
 	Function *string `pulumi:"function"`
 	// The user-supplied glob to match against the request URL path.
 	Glob *string `pulumi:"glob"`
+	// The URL path to rewrite the request to.
+	Path *string `pulumi:"path"`
 	// The user-supplied RE2 regular expression to match against the request URL path.
 	Regex *string `pulumi:"regex"`
 	// The request will be forwarded to Cloud Run.
@@ -3190,6 +3192,8 @@ type HostingVersionConfigRewriteArgs struct {
 	Function pulumi.StringPtrInput `pulumi:"function"`
 	// The user-supplied glob to match against the request URL path.
 	Glob pulumi.StringPtrInput `pulumi:"glob"`
+	// The URL path to rewrite the request to.
+	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The user-supplied RE2 regular expression to match against the request URL path.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 	// The request will be forwarded to Cloud Run.
@@ -3256,6 +3260,11 @@ func (o HostingVersionConfigRewriteOutput) Function() pulumi.StringPtrOutput {
 // The user-supplied glob to match against the request URL path.
 func (o HostingVersionConfigRewriteOutput) Glob() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostingVersionConfigRewrite) *string { return v.Glob }).(pulumi.StringPtrOutput)
+}
+
+// The URL path to rewrite the request to.
+func (o HostingVersionConfigRewriteOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingVersionConfigRewrite) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 // The user-supplied RE2 regular expression to match against the request URL path.

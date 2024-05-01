@@ -4,30 +4,26 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SecurityPolicyRuleMatchConfig {
     /**
-     * @return Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-     * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-     * (can be used to override the default behavior).
+     * @return CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
      * 
      */
-    private List<String> srcIpRanges;
+    private @Nullable List<String> srcIpRanges;
 
     private SecurityPolicyRuleMatchConfig() {}
     /**
-     * @return Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-     * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-     * (can be used to override the default behavior).
+     * @return CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
      * 
      */
     public List<String> srcIpRanges() {
-        return this.srcIpRanges;
+        return this.srcIpRanges == null ? List.of() : this.srcIpRanges;
     }
 
     public static Builder builder() {
@@ -39,7 +35,7 @@ public final class SecurityPolicyRuleMatchConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> srcIpRanges;
+        private @Nullable List<String> srcIpRanges;
         public Builder() {}
         public Builder(SecurityPolicyRuleMatchConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,10 +43,8 @@ public final class SecurityPolicyRuleMatchConfig {
         }
 
         @CustomType.Setter
-        public Builder srcIpRanges(List<String> srcIpRanges) {
-            if (srcIpRanges == null) {
-              throw new MissingRequiredPropertyException("SecurityPolicyRuleMatchConfig", "srcIpRanges");
-            }
+        public Builder srcIpRanges(@Nullable List<String> srcIpRanges) {
+
             this.srcIpRanges = srcIpRanges;
             return this;
         }

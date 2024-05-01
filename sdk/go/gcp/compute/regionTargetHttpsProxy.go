@@ -127,6 +127,175 @@ import (
 //	}
 //
 // ```
+// ### Region Target Https Proxy Mtls
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/ca_cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/ca_cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultTrustConfig, err := certificatemanager.NewTrustConfig(ctx, "default", &certificatemanager.TrustConfigArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-trust-config"),
+//				Description: pulumi.String("sample description for trust config"),
+//				TrustStores: certificatemanager.TrustConfigTrustStoreArray{
+//					&certificatemanager.TrustConfigTrustStoreArgs{
+//						TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
+//							&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
+//								PemCertificate: invokeFile.Result,
+//							},
+//						},
+//						IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
+//							&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
+//								PemCertificate: invokeFile1.Result,
+//							},
+//						},
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServerTlsPolicy, err := networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-tls-policy"),
+//				Description: pulumi.String("my description"),
+//				AllowOpen:   pulumi.Bool(false),
+//				MtlsPolicy: &networksecurity.ServerTlsPolicyMtlsPolicyArgs{
+//					ClientValidationMode: pulumi.String("REJECT_INVALID"),
+//					ClientValidationTrustConfig: defaultTrustConfig.Name.ApplyT(func(name string) (string, error) {
+//						return fmt.Sprintf("projects/%v/locations/us-central1/trustConfigs/%v", project.Number, name), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile2, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/private.key",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile3, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/certificate.crt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionSslCertificate, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
+//				Region:      pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-certificate"),
+//				PrivateKey:  invokeFile2.Result,
+//				Certificate: invokeFile3.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Region:           pulumi.String("us-central1"),
+//				Name:             pulumi.String("http-health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Name:                pulumi.String("backend-service"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
+//				Region:         pulumi.String("us-central1"),
+//				Name:           pulumi.String("url-map"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: defaultRegionBackendService.ID(),
+//				HostRules: compute.RegionUrlMapHostRuleArray{
+//					&compute.RegionUrlMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.RegionUrlMapPathMatcherArray{
+//					&compute.RegionUrlMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: defaultRegionBackendService.ID(),
+//						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
+//							&compute.RegionUrlMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/*"),
+//								},
+//								Service: defaultRegionBackendService.ID(),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionTargetHttpsProxy(ctx, "default", &compute.RegionTargetHttpsProxyArgs{
+//				Region: pulumi.String("us-central1"),
+//				Name:   pulumi.String("test-mtls-proxy"),
+//				UrlMap: defaultRegionUrlMap.ID(),
+//				SslCertificates: pulumi.StringArray{
+//					defaultRegionSslCertificate.ID(),
+//				},
+//				ServerTlsPolicy: defaultServerTlsPolicy.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Region Target Https Proxy Certificate Manager Certificate
 //
 // ```go
@@ -263,6 +432,16 @@ type RegionTargetHttpsProxy struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
 	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -338,6 +517,16 @@ type regionTargetHttpsProxyState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
 	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -381,6 +570,16 @@ type RegionTargetHttpsProxyState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy pulumi.StringPtrInput
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
 	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -422,6 +621,16 @@ type regionTargetHttpsProxyArgs struct {
 	// The Region in which the created target https proxy should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
 	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -460,6 +669,16 @@ type RegionTargetHttpsProxyArgs struct {
 	// The Region in which the created target https proxy should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy pulumi.StringPtrInput
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
 	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -611,6 +830,19 @@ func (o RegionTargetHttpsProxyOutput) Region() pulumi.StringOutput {
 // The URI of the created resource.
 func (o RegionTargetHttpsProxyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// A URL referring to a networksecurity.ServerTlsPolicy
+// resource that describes how the proxy should authenticate inbound
+// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+// attached to globalForwardingRules with the loadBalancingScheme
+// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+// For details which ServerTlsPolicy resources are accepted with
+// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+// loadBalancingScheme consult ServerTlsPolicy documentation.
+// If left blank, communications are not encrypted.
+func (o RegionTargetHttpsProxyOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringPtrOutput { return v.ServerTlsPolicy }).(pulumi.StringPtrOutput)
 }
 
 // URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.

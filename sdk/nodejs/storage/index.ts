@@ -70,6 +70,11 @@ export const getBucketObjectContent: typeof import("./getBucketObjectContent").g
 export const getBucketObjectContentOutput: typeof import("./getBucketObjectContent").getBucketObjectContentOutput = null as any;
 utilities.lazyLoad(exports, ["getBucketObjectContent","getBucketObjectContentOutput"], () => require("./getBucketObjectContent"));
 
+export { GetBucketObjectsArgs, GetBucketObjectsResult, GetBucketObjectsOutputArgs } from "./getBucketObjects";
+export const getBucketObjects: typeof import("./getBucketObjects").getBucketObjects = null as any;
+export const getBucketObjectsOutput: typeof import("./getBucketObjects").getBucketObjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getBucketObjects","getBucketObjectsOutput"], () => require("./getBucketObjects"));
+
 export { GetObjectSignedUrlArgs, GetObjectSignedUrlResult, GetObjectSignedUrlOutputArgs } from "./getObjectSignedUrl";
 export const getObjectSignedUrl: typeof import("./getObjectSignedUrl").getObjectSignedUrl = null as any;
 export const getObjectSignedUrlOutput: typeof import("./getObjectSignedUrl").getObjectSignedUrlOutput = null as any;

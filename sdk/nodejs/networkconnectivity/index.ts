@@ -10,6 +10,11 @@ export type Hub = import("./hub").Hub;
 export const Hub: typeof import("./hub").Hub = null as any;
 utilities.lazyLoad(exports, ["Hub"], () => require("./hub"));
 
+export { InternalRangeArgs, InternalRangeState } from "./internalRange";
+export type InternalRange = import("./internalRange").InternalRange;
+export const InternalRange: typeof import("./internalRange").InternalRange = null as any;
+utilities.lazyLoad(exports, ["InternalRange"], () => require("./internalRange"));
+
 export { PolicyBasedRouteArgs, PolicyBasedRouteState } from "./policyBasedRoute";
 export type PolicyBasedRoute = import("./policyBasedRoute").PolicyBasedRoute;
 export const PolicyBasedRoute: typeof import("./policyBasedRoute").PolicyBasedRoute = null as any;
@@ -32,6 +37,8 @@ const _module = {
         switch (type) {
             case "gcp:networkconnectivity/hub:Hub":
                 return new Hub(name, <any>undefined, { urn })
+            case "gcp:networkconnectivity/internalRange:InternalRange":
+                return new InternalRange(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute":
                 return new PolicyBasedRoute(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy":
@@ -44,6 +51,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hub", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/internalRange", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/policyBasedRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/serviceConnectionPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/spoke", _module)

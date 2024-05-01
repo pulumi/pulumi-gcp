@@ -351,6 +351,95 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Privateca Certificate Authority Custom Ski
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectKeyIdArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Authority(&#34;default&#34;, AuthorityArgs.builder()        
+ *             .pool(&#34;ca-pool&#34;)
+ *             .certificateAuthorityId(&#34;my-certificate-authority&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .deletionProtection(&#34;true&#34;)
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization(&#34;HashiCorp&#34;)
+ *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .build())
+ *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
+ *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .subjectKeyId(AuthorityConfigSubjectKeyIdArgs.builder()
+ *                     .keyId(&#34;4cf3372289b1d411b999dbb9ebcd44744b6b2fca&#34;)
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .maxIssuerPathLength(10)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .digitalSignature(true)
+ *                             .contentCommitment(true)
+ *                             .keyEncipherment(false)
+ *                             .dataEncipherment(true)
+ *                             .keyAgreement(true)
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .decipherOnly(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .clientAuth(false)
+ *                             .emailProtection(true)
+ *                             .codeSigning(true)
+ *                             .timeStamping(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .lifetime(&#34;86400s&#34;)
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .cloudKmsKeyVersion(&#34;projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

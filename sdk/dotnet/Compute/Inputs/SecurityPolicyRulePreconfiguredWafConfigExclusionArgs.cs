@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs>? _requestCookies;
 
         /// <summary>
-        /// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+        /// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs> RequestCookies
         {
@@ -28,7 +29,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs>? _requestHeaders;
 
         /// <summary>
-        /// Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+        /// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs> RequestHeaders
         {
@@ -40,7 +42,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs>? _requestQueryParams;
 
         /// <summary>
-        /// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+        /// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+        /// Note that the parameter can be in the query string or in the POST body.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs> RequestQueryParams
         {
@@ -52,7 +56,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs>? _requestUris;
 
         /// <summary>
-        /// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+        /// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+        /// When specifying this field, the query or fragment part should be excluded.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs> RequestUris
         {
@@ -64,9 +70,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _targetRuleIds;
 
         /// <summary>
-        /// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-        /// 
-        /// &lt;a name="nested_field_params"&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+        /// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+        /// If omitted, it refers to all the rule IDs under the WAF rule set.
         /// </summary>
         public InputList<string> TargetRuleIds
         {

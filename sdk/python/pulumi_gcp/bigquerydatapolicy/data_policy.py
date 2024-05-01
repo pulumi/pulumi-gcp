@@ -301,6 +301,45 @@ class DataPolicy(pulumi.CustomResource):
             policy_tag=policy_tag.name,
             data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
         ```
+        ### Bigquery Datapolicy Data Policy Routine
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        taxonomy = gcp.datacatalog.Taxonomy("taxonomy",
+            region="us-central1",
+            display_name="taxonomy",
+            description="A collection of policy tags",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
+        policy_tag = gcp.datacatalog.PolicyTag("policy_tag",
+            taxonomy=taxonomy.id,
+            display_name="Low security",
+            description="A policy tag normally associated with low security items")
+        test = gcp.bigquery.Dataset("test",
+            dataset_id="dataset_id",
+            location="us-central1")
+        custom_masking_routine = gcp.bigquery.Routine("custom_masking_routine",
+            dataset_id=test.dataset_id,
+            routine_id="custom_masking_routine",
+            routine_type="SCALAR_FUNCTION",
+            language="SQL",
+            data_governance_type="DATA_MASKING",
+            definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
+            return_type="{\\"typeKind\\" :  \\"STRING\\"}",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="ssn",
+                data_type="{\\"typeKind\\" :  \\"STRING\\"}",
+            )])
+        data_policy = gcp.bigquerydatapolicy.DataPolicy("data_policy",
+            location="us-central1",
+            data_policy_id="data_policy",
+            policy_tag=policy_tag.name,
+            data_policy_type="DATA_MASKING_POLICY",
+            data_masking_policy=gcp.bigquerydatapolicy.DataPolicyDataMaskingPolicyArgs(
+                routine=custom_masking_routine.id,
+            ))
+        ```
 
         ## Import
 
@@ -378,6 +417,45 @@ class DataPolicy(pulumi.CustomResource):
             data_policy_id="data_policy",
             policy_tag=policy_tag.name,
             data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
+        ```
+        ### Bigquery Datapolicy Data Policy Routine
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        taxonomy = gcp.datacatalog.Taxonomy("taxonomy",
+            region="us-central1",
+            display_name="taxonomy",
+            description="A collection of policy tags",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
+        policy_tag = gcp.datacatalog.PolicyTag("policy_tag",
+            taxonomy=taxonomy.id,
+            display_name="Low security",
+            description="A policy tag normally associated with low security items")
+        test = gcp.bigquery.Dataset("test",
+            dataset_id="dataset_id",
+            location="us-central1")
+        custom_masking_routine = gcp.bigquery.Routine("custom_masking_routine",
+            dataset_id=test.dataset_id,
+            routine_id="custom_masking_routine",
+            routine_type="SCALAR_FUNCTION",
+            language="SQL",
+            data_governance_type="DATA_MASKING",
+            definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
+            return_type="{\\"typeKind\\" :  \\"STRING\\"}",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="ssn",
+                data_type="{\\"typeKind\\" :  \\"STRING\\"}",
+            )])
+        data_policy = gcp.bigquerydatapolicy.DataPolicy("data_policy",
+            location="us-central1",
+            data_policy_id="data_policy",
+            policy_tag=policy_tag.name,
+            data_policy_type="DATA_MASKING_POLICY",
+            data_masking_policy=gcp.bigquerydatapolicy.DataPolicyDataMaskingPolicyArgs(
+                routine=custom_masking_routine.id,
+            ))
         ```
 
         ## Import

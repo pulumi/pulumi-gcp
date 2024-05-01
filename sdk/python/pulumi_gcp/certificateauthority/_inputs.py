@@ -15,6 +15,7 @@ __all__ = [
     'AuthorityConfigSubjectConfigArgs',
     'AuthorityConfigSubjectConfigSubjectArgs',
     'AuthorityConfigSubjectConfigSubjectAltNameArgs',
+    'AuthorityConfigSubjectKeyIdArgs',
     'AuthorityConfigX509ConfigArgs',
     'AuthorityConfigX509ConfigAdditionalExtensionArgs',
     'AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs',
@@ -73,6 +74,7 @@ __all__ = [
     'CertificateConfigSubjectConfigArgs',
     'CertificateConfigSubjectConfigSubjectArgs',
     'CertificateConfigSubjectConfigSubjectAltNameArgs',
+    'CertificateConfigSubjectKeyIdArgs',
     'CertificateConfigX509ConfigArgs',
     'CertificateConfigX509ConfigAdditionalExtensionArgs',
     'CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs',
@@ -152,18 +154,20 @@ class AuthorityAccessUrlArgs:
 class AuthorityConfigArgs:
     def __init__(__self__, *,
                  subject_config: pulumi.Input['AuthorityConfigSubjectConfigArgs'],
-                 x509_config: pulumi.Input['AuthorityConfigX509ConfigArgs']):
+                 x509_config: pulumi.Input['AuthorityConfigX509ConfigArgs'],
+                 subject_key_id: Optional[pulumi.Input['AuthorityConfigSubjectKeyIdArgs']] = None):
         """
         :param pulumi.Input['AuthorityConfigSubjectConfigArgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
-               
-               
-               <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param pulumi.Input['AuthorityConfigX509ConfigArgs'] x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
+               Structure is documented below.
+        :param pulumi.Input['AuthorityConfigSubjectKeyIdArgs'] subject_key_id: When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
                Structure is documented below.
         """
         pulumi.set(__self__, "subject_config", subject_config)
         pulumi.set(__self__, "x509_config", x509_config)
+        if subject_key_id is not None:
+            pulumi.set(__self__, "subject_key_id", subject_key_id)
 
     @property
     @pulumi.getter(name="subjectConfig")
@@ -171,9 +175,6 @@ class AuthorityConfigArgs:
         """
         Specifies some of the values in a certificate that are related to the subject.
         Structure is documented below.
-
-
-        <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "subject_config")
 
@@ -193,6 +194,19 @@ class AuthorityConfigArgs:
     @x509_config.setter
     def x509_config(self, value: pulumi.Input['AuthorityConfigX509ConfigArgs']):
         pulumi.set(self, "x509_config", value)
+
+    @property
+    @pulumi.getter(name="subjectKeyId")
+    def subject_key_id(self) -> Optional[pulumi.Input['AuthorityConfigSubjectKeyIdArgs']]:
+        """
+        When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject_key_id")
+
+    @subject_key_id.setter
+    def subject_key_id(self, value: Optional[pulumi.Input['AuthorityConfigSubjectKeyIdArgs']]):
+        pulumi.set(self, "subject_key_id", value)
 
 
 @pulumi.input_type
@@ -439,6 +453,33 @@ class AuthorityConfigSubjectConfigSubjectAltNameArgs:
     @uris.setter
     def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "uris", value)
+
+
+@pulumi.input_type
+class AuthorityConfigSubjectKeyIdArgs:
+    def __init__(__self__, *,
+                 key_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexidecimal.
+               
+               <a name="nested_x509_config"></a>The `x509_config` block supports:
+        """
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the KeyId in lowercase hexidecimal.
+
+        <a name="nested_x509_config"></a>The `x509_config` block supports:
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
 
 
 @pulumi.input_type
@@ -3449,8 +3490,7 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key_id: (Output)
-               Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexidecimal.
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -3459,8 +3499,7 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
-        Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        The value of the KeyId in lowercase hexidecimal.
         """
         return pulumi.get(self, "key_id")
 
@@ -4284,7 +4323,8 @@ class CertificateConfigArgs:
     def __init__(__self__, *,
                  public_key: pulumi.Input['CertificateConfigPublicKeyArgs'],
                  subject_config: pulumi.Input['CertificateConfigSubjectConfigArgs'],
-                 x509_config: pulumi.Input['CertificateConfigX509ConfigArgs']):
+                 x509_config: pulumi.Input['CertificateConfigX509ConfigArgs'],
+                 subject_key_id: Optional[pulumi.Input['CertificateConfigSubjectKeyIdArgs']] = None):
         """
         :param pulumi.Input['CertificateConfigPublicKeyArgs'] public_key: A PublicKey describes a public key.
                Structure is documented below.
@@ -4295,10 +4335,14 @@ class CertificateConfigArgs:
                Structure is documented below.
         :param pulumi.Input['CertificateConfigX509ConfigArgs'] x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
+        :param pulumi.Input['CertificateConfigSubjectKeyIdArgs'] subject_key_id: When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+               Structure is documented below.
         """
         pulumi.set(__self__, "public_key", public_key)
         pulumi.set(__self__, "subject_config", subject_config)
         pulumi.set(__self__, "x509_config", x509_config)
+        if subject_key_id is not None:
+            pulumi.set(__self__, "subject_key_id", subject_key_id)
 
     @property
     @pulumi.getter(name="publicKey")
@@ -4341,6 +4385,19 @@ class CertificateConfigArgs:
     @x509_config.setter
     def x509_config(self, value: pulumi.Input['CertificateConfigX509ConfigArgs']):
         pulumi.set(self, "x509_config", value)
+
+    @property
+    @pulumi.getter(name="subjectKeyId")
+    def subject_key_id(self) -> Optional[pulumi.Input['CertificateConfigSubjectKeyIdArgs']]:
+        """
+        When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject_key_id")
+
+    @subject_key_id.setter
+    def subject_key_id(self, value: Optional[pulumi.Input['CertificateConfigSubjectKeyIdArgs']]):
+        pulumi.set(self, "subject_key_id", value)
 
 
 @pulumi.input_type
@@ -4627,6 +4684,29 @@ class CertificateConfigSubjectConfigSubjectAltNameArgs:
     @uris.setter
     def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "uris", value)
+
+
+@pulumi.input_type
+class CertificateConfigSubjectKeyIdArgs:
+    def __init__(__self__, *,
+                 key_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexidecimal.
+        """
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the KeyId in lowercase hexidecimal.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
 
 
 @pulumi.input_type

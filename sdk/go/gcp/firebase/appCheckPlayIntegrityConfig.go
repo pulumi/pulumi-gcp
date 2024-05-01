@@ -31,6 +31,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -38,7 +39,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewAndroidApp(ctx, "default", &firebase.AndroidAppArgs{
+//			// Enables the Play Integrity API
+//			_, err := projects.NewService(ctx, "play_integrity", &projects.ServiceArgs{
+//				Project:          pulumi.String("my-project-name"),
+//				Service:          pulumi.String("playintegrity.googleapis.com"),
+//				DisableOnDestroy: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAndroidApp(ctx, "default", &firebase.AndroidAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Play Integrity app"),
 //				PackageName: pulumi.String("package.name.playintegrity"),
@@ -80,6 +90,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -87,7 +98,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewAndroidApp(ctx, "default", &firebase.AndroidAppArgs{
+//			// Enables the Play Integrity API
+//			_, err := projects.NewService(ctx, "play_integrity", &projects.ServiceArgs{
+//				Project:          pulumi.String("my-project-name"),
+//				Service:          pulumi.String("playintegrity.googleapis.com"),
+//				DisableOnDestroy: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAndroidApp(ctx, "default", &firebase.AndroidAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Play Integrity app"),
 //				PackageName: pulumi.String("package.name.playintegrity"),

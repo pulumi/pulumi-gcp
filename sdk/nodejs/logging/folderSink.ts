@@ -125,6 +125,11 @@ export class FolderSink extends pulumi.CustomResource {
      */
     public readonly includeChildren!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     */
+    public readonly interceptChildren!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of the logging sink.
      */
     public readonly name!: pulumi.Output<string>;
@@ -155,6 +160,7 @@ export class FolderSink extends pulumi.CustomResource {
             resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["folder"] = state ? state.folder : undefined;
             resourceInputs["includeChildren"] = state ? state.includeChildren : undefined;
+            resourceInputs["interceptChildren"] = state ? state.interceptChildren : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["writerIdentity"] = state ? state.writerIdentity : undefined;
         } else {
@@ -173,6 +179,7 @@ export class FolderSink extends pulumi.CustomResource {
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["folder"] = args ? args.folder : undefined;
             resourceInputs["includeChildren"] = args ? args.includeChildren : undefined;
+            resourceInputs["interceptChildren"] = args ? args.interceptChildren : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
@@ -229,6 +236,11 @@ export interface FolderSinkState {
      * associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
      */
     includeChildren?: pulumi.Input<boolean>;
+    /**
+     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     */
+    interceptChildren?: pulumi.Input<boolean>;
     /**
      * The name of the logging sink.
      */
@@ -288,6 +300,11 @@ export interface FolderSinkArgs {
      * associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
      */
     includeChildren?: pulumi.Input<boolean>;
+    /**
+     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     */
+    interceptChildren?: pulumi.Input<boolean>;
     /**
      * The name of the logging sink.
      */

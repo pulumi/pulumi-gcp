@@ -209,6 +209,31 @@ __all__ = [
     'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue',
     'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue',
     'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue',
+    'PreventionDiscoveryConfigAction',
+    'PreventionDiscoveryConfigActionExportData',
+    'PreventionDiscoveryConfigActionExportDataProfileTable',
+    'PreventionDiscoveryConfigActionPubSubNotification',
+    'PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition',
+    'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions',
+    'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition',
+    'PreventionDiscoveryConfigError',
+    'PreventionDiscoveryConfigErrorDetails',
+    'PreventionDiscoveryConfigOrgConfig',
+    'PreventionDiscoveryConfigOrgConfigLocation',
+    'PreventionDiscoveryConfigTarget',
+    'PreventionDiscoveryConfigTargetBigQueryTarget',
+    'PreventionDiscoveryConfigTargetBigQueryTargetCadence',
+    'PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence',
+    'PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence',
+    'PreventionDiscoveryConfigTargetBigQueryTargetConditions',
+    'PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions',
+    'PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes',
+    'PreventionDiscoveryConfigTargetBigQueryTargetDisabled',
+    'PreventionDiscoveryConfigTargetBigQueryTargetFilter',
+    'PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables',
+    'PreventionDiscoveryConfigTargetBigQueryTargetFilterTables',
+    'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes',
+    'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern',
     'PreventionInspectTemplateInspectConfig',
     'PreventionInspectTemplateInspectConfigCustomInfoType',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary',
@@ -11164,6 +11189,1104 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exportData":
+            suggest = "export_data"
+        elif key == "pubSubNotification":
+            suggest = "pub_sub_notification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 export_data: Optional['outputs.PreventionDiscoveryConfigActionExportData'] = None,
+                 pub_sub_notification: Optional['outputs.PreventionDiscoveryConfigActionPubSubNotification'] = None):
+        """
+        :param 'PreventionDiscoveryConfigActionExportDataArgs' export_data: Export data profiles into a provided location
+               Structure is documented below.
+        :param 'PreventionDiscoveryConfigActionPubSubNotificationArgs' pub_sub_notification: Publish a message into the Pub/Sub topic.
+               Structure is documented below.
+        """
+        if export_data is not None:
+            pulumi.set(__self__, "export_data", export_data)
+        if pub_sub_notification is not None:
+            pulumi.set(__self__, "pub_sub_notification", pub_sub_notification)
+
+    @property
+    @pulumi.getter(name="exportData")
+    def export_data(self) -> Optional['outputs.PreventionDiscoveryConfigActionExportData']:
+        """
+        Export data profiles into a provided location
+        Structure is documented below.
+        """
+        return pulumi.get(self, "export_data")
+
+    @property
+    @pulumi.getter(name="pubSubNotification")
+    def pub_sub_notification(self) -> Optional['outputs.PreventionDiscoveryConfigActionPubSubNotification']:
+        """
+        Publish a message into the Pub/Sub topic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pub_sub_notification")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigActionExportData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "profileTable":
+            suggest = "profile_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigActionExportData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigActionExportData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigActionExportData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 profile_table: Optional['outputs.PreventionDiscoveryConfigActionExportDataProfileTable'] = None):
+        """
+        :param 'PreventionDiscoveryConfigActionExportDataProfileTableArgs' profile_table: Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+               Structure is documented below.
+        """
+        if profile_table is not None:
+            pulumi.set(__self__, "profile_table", profile_table)
+
+    @property
+    @pulumi.getter(name="profileTable")
+    def profile_table(self) -> Optional['outputs.PreventionDiscoveryConfigActionExportDataProfileTable']:
+        """
+        Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+        Structure is documented below.
+        """
+        return pulumi.get(self, "profile_table")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigActionExportDataProfileTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigActionExportDataProfileTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigActionExportDataProfileTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigActionExportDataProfileTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 table_id: Optional[str] = None):
+        """
+        :param str dataset_id: Dataset Id of the table
+        :param str project_id: The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
+        :param str table_id: Name of the table
+        """
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if table_id is not None:
+            pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> Optional[str]:
+        """
+        Dataset Id of the table
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> Optional[str]:
+        """
+        Name of the table
+        """
+        return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigActionPubSubNotification(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detailOfMessage":
+            suggest = "detail_of_message"
+        elif key == "pubsubCondition":
+            suggest = "pubsub_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigActionPubSubNotification. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigActionPubSubNotification.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigActionPubSubNotification.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 detail_of_message: Optional[str] = None,
+                 event: Optional[str] = None,
+                 pubsub_condition: Optional['outputs.PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition'] = None,
+                 topic: Optional[str] = None):
+        """
+        :param str detail_of_message: How much data to include in the pub/sub message.
+               Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+        :param str event: The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
+               Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
+        :param 'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgs' pubsub_condition: Conditions for triggering pubsub
+               Structure is documented below.
+        :param str topic: Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+        """
+        if detail_of_message is not None:
+            pulumi.set(__self__, "detail_of_message", detail_of_message)
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if pubsub_condition is not None:
+            pulumi.set(__self__, "pubsub_condition", pubsub_condition)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="detailOfMessage")
+    def detail_of_message(self) -> Optional[str]:
+        """
+        How much data to include in the pub/sub message.
+        Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+        """
+        return pulumi.get(self, "detail_of_message")
+
+    @property
+    @pulumi.getter
+    def event(self) -> Optional[str]:
+        """
+        The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
+        Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
+        """
+        return pulumi.get(self, "event")
+
+    @property
+    @pulumi.getter(name="pubsubCondition")
+    def pubsub_condition(self) -> Optional['outputs.PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition']:
+        """
+        Conditions for triggering pubsub
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pubsub_condition")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[str]:
+        """
+        Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+        """
+        return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition(dict):
+    def __init__(__self__, *,
+                 expressions: Optional['outputs.PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions'] = None):
+        """
+        :param 'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgs' expressions: An expression
+               Structure is documented below.
+        """
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> Optional['outputs.PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions']:
+        """
+        An expression
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expressions")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logicalOperator":
+            suggest = "logical_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conditions: Optional[Sequence['outputs.PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition']] = None,
+                 logical_operator: Optional[str] = None):
+        """
+        :param Sequence['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgs'] conditions: Conditions to apply to the expression
+               Structure is documented below.
+        :param str logical_operator: The operator to apply to the collection of conditions
+               Possible values are: `OR`, `AND`.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if logical_operator is not None:
+            pulumi.set(__self__, "logical_operator", logical_operator)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition']]:
+        """
+        Conditions to apply to the expression
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="logicalOperator")
+    def logical_operator(self) -> Optional[str]:
+        """
+        The operator to apply to the collection of conditions
+        Possible values are: `OR`, `AND`.
+        """
+        return pulumi.get(self, "logical_operator")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minimumRiskScore":
+            suggest = "minimum_risk_score"
+        elif key == "minimumSensitivityScore":
+            suggest = "minimum_sensitivity_score"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 minimum_risk_score: Optional[str] = None,
+                 minimum_sensitivity_score: Optional[str] = None):
+        """
+        :param str minimum_risk_score: The minimum data risk score that triggers the condition.
+               Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
+        :param str minimum_sensitivity_score: The minimum sensitivity level that triggers the condition.
+               Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
+        """
+        if minimum_risk_score is not None:
+            pulumi.set(__self__, "minimum_risk_score", minimum_risk_score)
+        if minimum_sensitivity_score is not None:
+            pulumi.set(__self__, "minimum_sensitivity_score", minimum_sensitivity_score)
+
+    @property
+    @pulumi.getter(name="minimumRiskScore")
+    def minimum_risk_score(self) -> Optional[str]:
+        """
+        The minimum data risk score that triggers the condition.
+        Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
+        """
+        return pulumi.get(self, "minimum_risk_score")
+
+    @property
+    @pulumi.getter(name="minimumSensitivityScore")
+    def minimum_sensitivity_score(self) -> Optional[str]:
+        """
+        The minimum sensitivity level that triggers the condition.
+        Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
+        """
+        return pulumi.get(self, "minimum_sensitivity_score")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigError(dict):
+    def __init__(__self__, *,
+                 details: Optional['outputs.PreventionDiscoveryConfigErrorDetails'] = None,
+                 timestamp: Optional[str] = None):
+        """
+        :param 'PreventionDiscoveryConfigErrorDetailsArgs' details: A list of messages that carry the error details.
+        :param str timestamp: The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+        """
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional['outputs.PreventionDiscoveryConfigErrorDetails']:
+        """
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> Optional[str]:
+        """
+        The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+        """
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigErrorDetails(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 details: Optional[Sequence[Mapping[str, Any]]] = None,
+                 message: Optional[str] = None):
+        """
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details.
+        :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+        """
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigOrgConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigOrgConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigOrgConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigOrgConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 location: Optional['outputs.PreventionDiscoveryConfigOrgConfigLocation'] = None,
+                 project_id: Optional[str] = None):
+        """
+        :param 'PreventionDiscoveryConfigOrgConfigLocationArgs' location: The data to scan folder org or project
+               Structure is documented below.
+        :param str project_id: The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the cloud DLP API must be enabled.
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.PreventionDiscoveryConfigOrgConfigLocation']:
+        """
+        The data to scan folder org or project
+        Structure is documented below.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the cloud DLP API must be enabled.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigOrgConfigLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "folderId":
+            suggest = "folder_id"
+        elif key == "organizationId":
+            suggest = "organization_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigOrgConfigLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigOrgConfigLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigOrgConfigLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 folder_id: Optional[str] = None,
+                 organization_id: Optional[str] = None):
+        """
+        :param str folder_id: The ID for the folder within an organization to scan
+        :param str organization_id: The ID of an organization to scan
+        """
+        if folder_id is not None:
+            pulumi.set(__self__, "folder_id", folder_id)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> Optional[str]:
+        """
+        The ID for the folder within an organization to scan
+        """
+        return pulumi.get(self, "folder_id")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional[str]:
+        """
+        The ID of an organization to scan
+        """
+        return pulumi.get(self, "organization_id")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigQueryTarget":
+            suggest = "big_query_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 big_query_target: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTarget'] = None):
+        """
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetArgs' big_query_target: BigQuery target for Discovery. The first target to match a table will be the one applied.
+               Structure is documented below.
+        """
+        if big_query_target is not None:
+            pulumi.set(__self__, "big_query_target", big_query_target)
+
+    @property
+    @pulumi.getter(name="bigQueryTarget")
+    def big_query_target(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTarget']:
+        """
+        BigQuery target for Discovery. The first target to match a table will be the one applied.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "big_query_target")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTarget(dict):
+    def __init__(__self__, *,
+                 cadence: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadence'] = None,
+                 conditions: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetConditions'] = None,
+                 disabled: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetDisabled'] = None,
+                 filter: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilter'] = None):
+        """
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs' cadence: How often and when to update profiles. New tables that match both the fiter and conditions are scanned as quickly as possible depending on system capacity.
+               Structure is documented below.
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs' conditions: In addition to matching the filter, these conditions must be true before a profile is generated
+               Structure is documented below.
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgs' disabled: Tables that match this filter will not have profiles created.
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetFilterArgs' filter: Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table
+               Structure is documented below.
+        """
+        if cadence is not None:
+            pulumi.set(__self__, "cadence", cadence)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def cadence(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadence']:
+        """
+        How often and when to update profiles. New tables that match both the fiter and conditions are scanned as quickly as possible depending on system capacity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cadence")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetConditions']:
+        """
+        In addition to matching the filter, these conditions must be true before a profile is generated
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetDisabled']:
+        """
+        Tables that match this filter will not have profiles created.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilter']:
+        """
+        Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetCadence(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemaModifiedCadence":
+            suggest = "schema_modified_cadence"
+        elif key == "tableModifiedCadence":
+            suggest = "table_modified_cadence"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetBigQueryTargetCadence. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetCadence.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetCadence.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema_modified_cadence: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence'] = None,
+                 table_modified_cadence: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence'] = None):
+        """
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs' schema_modified_cadence: Governs when to update data profiles when a schema is modified
+               Structure is documented below.
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs' table_modified_cadence: Governs when to update profile when a table is modified.
+               Structure is documented below.
+        """
+        if schema_modified_cadence is not None:
+            pulumi.set(__self__, "schema_modified_cadence", schema_modified_cadence)
+        if table_modified_cadence is not None:
+            pulumi.set(__self__, "table_modified_cadence", table_modified_cadence)
+
+    @property
+    @pulumi.getter(name="schemaModifiedCadence")
+    def schema_modified_cadence(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence']:
+        """
+        Governs when to update data profiles when a schema is modified
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema_modified_cadence")
+
+    @property
+    @pulumi.getter(name="tableModifiedCadence")
+    def table_modified_cadence(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence']:
+        """
+        Governs when to update profile when a table is modified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_modified_cadence")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence(dict):
+    def __init__(__self__, *,
+                 frequency: Optional[str] = None,
+                 types: Optional[Sequence[str]] = None):
+        """
+        :param str frequency: How frequently profiles may be updated when schemas are modified. Default to monthly
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        :param Sequence[str] types: The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
+               Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+        """
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[str]:
+        """
+        How frequently profiles may be updated when schemas are modified. Default to monthly
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter
+    def types(self) -> Optional[Sequence[str]]:
+        """
+        The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
+        Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+        """
+        return pulumi.get(self, "types")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence(dict):
+    def __init__(__self__, *,
+                 frequency: Optional[str] = None,
+                 types: Optional[Sequence[str]] = None):
+        """
+        :param str frequency: How frequently data profiles can be updated when tables are modified. Defaults to never.
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        :param Sequence[str] types: The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP
+               Each value may be one of: `TABLE_MODIFIED_TIMESTAMP`.
+        """
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[str]:
+        """
+        How frequently data profiles can be updated when tables are modified. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter
+    def types(self) -> Optional[Sequence[str]]:
+        """
+        The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP
+        Each value may be one of: `TABLE_MODIFIED_TIMESTAMP`.
+        """
+        return pulumi.get(self, "types")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetConditions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAfter":
+            suggest = "created_after"
+        elif key == "orConditions":
+            suggest = "or_conditions"
+        elif key == "typeCollection":
+            suggest = "type_collection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetBigQueryTargetConditions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetConditions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetConditions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_after: Optional[str] = None,
+                 or_conditions: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions'] = None,
+                 type_collection: Optional[str] = None,
+                 types: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes'] = None):
+        """
+        :param str created_after: A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgs' or_conditions: At least one of the conditions must be true for a table to be scanned.
+               Structure is documented below.
+        :param str type_collection: Restrict discovery to categories of table types. Currently view, materialized view, snapshot and non-biglake external tables are supported.
+               Possible values are: `BIG_QUERY_COLLECTION_ALL_TYPES`, `BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES`.
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs' types: Restrict discovery to specific table type
+               Structure is documented below.
+        """
+        if created_after is not None:
+            pulumi.set(__self__, "created_after", created_after)
+        if or_conditions is not None:
+            pulumi.set(__self__, "or_conditions", or_conditions)
+        if type_collection is not None:
+            pulumi.set(__self__, "type_collection", type_collection)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter(name="createdAfter")
+    def created_after(self) -> Optional[str]:
+        """
+        A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+        """
+        return pulumi.get(self, "created_after")
+
+    @property
+    @pulumi.getter(name="orConditions")
+    def or_conditions(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions']:
+        """
+        At least one of the conditions must be true for a table to be scanned.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "or_conditions")
+
+    @property
+    @pulumi.getter(name="typeCollection")
+    def type_collection(self) -> Optional[str]:
+        """
+        Restrict discovery to categories of table types. Currently view, materialized view, snapshot and non-biglake external tables are supported.
+        Possible values are: `BIG_QUERY_COLLECTION_ALL_TYPES`, `BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES`.
+        """
+        return pulumi.get(self, "type_collection")
+
+    @property
+    @pulumi.getter
+    def types(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes']:
+        """
+        Restrict discovery to specific table type
+        Structure is documented below.
+        """
+        return pulumi.get(self, "types")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minAge":
+            suggest = "min_age"
+        elif key == "minRowCount":
+            suggest = "min_row_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 min_age: Optional[str] = None,
+                 min_row_count: Optional[int] = None):
+        """
+        :param str min_age: Duration format. The minimum age a table must have before Cloud DLP can profile it. Value greater than 1.
+        :param int min_row_count: Minimum number of rows that should be present before Cloud DLP profiles as a table.
+        """
+        if min_age is not None:
+            pulumi.set(__self__, "min_age", min_age)
+        if min_row_count is not None:
+            pulumi.set(__self__, "min_row_count", min_row_count)
+
+    @property
+    @pulumi.getter(name="minAge")
+    def min_age(self) -> Optional[str]:
+        """
+        Duration format. The minimum age a table must have before Cloud DLP can profile it. Value greater than 1.
+        """
+        return pulumi.get(self, "min_age")
+
+    @property
+    @pulumi.getter(name="minRowCount")
+    def min_row_count(self) -> Optional[int]:
+        """
+        Minimum number of rows that should be present before Cloud DLP profiles as a table.
+        """
+        return pulumi.get(self, "min_row_count")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes(dict):
+    def __init__(__self__, *,
+                 types: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] types: A set of BiqQuery table types
+               Each value may be one of: `BIG_QUERY_TABLE_TYPE_TABLE`, `BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE`.
+        """
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter
+    def types(self) -> Optional[Sequence[str]]:
+        """
+        A set of BiqQuery table types
+        Each value may be one of: `BIG_QUERY_TABLE_TYPE_TABLE`, `BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE`.
+        """
+        return pulumi.get(self, "types")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetDisabled(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "otherTables":
+            suggest = "other_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetBigQueryTargetFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 other_tables: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables'] = None,
+                 tables: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTables'] = None):
+        """
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgs' other_tables: Catch-all. This should always be the last filter in the list because anything above it will apply first.
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgs' tables: A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
+               Structure is documented below.
+        """
+        if other_tables is not None:
+            pulumi.set(__self__, "other_tables", other_tables)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter(name="otherTables")
+    def other_tables(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables']:
+        """
+        Catch-all. This should always be the last filter in the list because anything above it will apply first.
+        """
+        return pulumi.get(self, "other_tables")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTables']:
+        """
+        A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterTables(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeRegexes":
+            suggest = "include_regexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetBigQueryTargetFilterTables. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetFilterTables.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetFilterTables.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 include_regexes: Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes'] = None):
+        """
+        :param 'PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgs' include_regexes: A collection of regular expressions to match a BQ table against.
+               Structure is documented below.
+        """
+        if include_regexes is not None:
+            pulumi.set(__self__, "include_regexes", include_regexes)
+
+    @property
+    @pulumi.getter(name="includeRegexes")
+    def include_regexes(self) -> Optional['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes']:
+        """
+        A collection of regular expressions to match a BQ table against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_regexes")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes(dict):
+    def __init__(__self__, *,
+                 patterns: Optional[Sequence['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern']] = None):
+        """
+        :param Sequence['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs'] patterns: A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+               Structure is documented below.
+        """
+        if patterns is not None:
+            pulumi.set(__self__, "patterns", patterns)
+
+    @property
+    @pulumi.getter
+    def patterns(self) -> Optional[Sequence['outputs.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern']]:
+        """
+        A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "patterns")
+
+
+@pulumi.output_type
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetIdRegex":
+            suggest = "dataset_id_regex"
+        elif key == "projectIdRegex":
+            suggest = "project_id_regex"
+        elif key == "tableIdRegex":
+            suggest = "table_id_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id_regex: Optional[str] = None,
+                 project_id_regex: Optional[str] = None,
+                 table_id_regex: Optional[str] = None):
+        """
+        :param str dataset_id_regex: if unset, this property matches all datasets
+        :param str project_id_regex: For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+        :param str table_id_regex: if unset, this property matches all tables
+        """
+        if dataset_id_regex is not None:
+            pulumi.set(__self__, "dataset_id_regex", dataset_id_regex)
+        if project_id_regex is not None:
+            pulumi.set(__self__, "project_id_regex", project_id_regex)
+        if table_id_regex is not None:
+            pulumi.set(__self__, "table_id_regex", table_id_regex)
+
+    @property
+    @pulumi.getter(name="datasetIdRegex")
+    def dataset_id_regex(self) -> Optional[str]:
+        """
+        if unset, this property matches all datasets
+        """
+        return pulumi.get(self, "dataset_id_regex")
+
+    @property
+    @pulumi.getter(name="projectIdRegex")
+    def project_id_regex(self) -> Optional[str]:
+        """
+        For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+        """
+        return pulumi.get(self, "project_id_regex")
+
+    @property
+    @pulumi.getter(name="tableIdRegex")
+    def table_id_regex(self) -> Optional[str]:
+        """
+        if unset, this property matches all tables
+        """
+        return pulumi.get(self, "table_id_regex")
 
 
 @pulumi.output_type

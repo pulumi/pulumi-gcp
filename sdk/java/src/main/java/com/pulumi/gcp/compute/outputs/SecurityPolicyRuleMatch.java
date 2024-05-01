@@ -14,30 +14,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecurityPolicyRuleMatch {
     /**
-     * @return The configuration options available when specifying `versioned_expr`.
-     * This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+     * @return The configuration options available when specifying versionedExpr.
+     * This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
      * Structure is documented below.
      * 
      */
     private @Nullable SecurityPolicyRuleMatchConfig config;
     /**
-     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-     * such as `origin.ip`, `source.region_code` and `contents` in the request header.
+     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
      * Structure is documented below.
      * 
      */
     private @Nullable SecurityPolicyRuleMatchExpr expr;
     /**
-     * @return Predefined rule expression. If this field is specified, `config` must also be specified.
-     * Available options:
+     * @return Preconfigured versioned expression. If this field is specified, config must also be specified.
+     * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+     * Possible values are: `SRC_IPS_V1`.
      * 
      */
     private @Nullable String versionedExpr;
 
     private SecurityPolicyRuleMatch() {}
     /**
-     * @return The configuration options available when specifying `versioned_expr`.
-     * This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+     * @return The configuration options available when specifying versionedExpr.
+     * This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
      * Structure is documented below.
      * 
      */
@@ -45,8 +45,7 @@ public final class SecurityPolicyRuleMatch {
         return Optional.ofNullable(this.config);
     }
     /**
-     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-     * such as `origin.ip`, `source.region_code` and `contents` in the request header.
+     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
      * Structure is documented below.
      * 
      */
@@ -54,8 +53,9 @@ public final class SecurityPolicyRuleMatch {
         return Optional.ofNullable(this.expr);
     }
     /**
-     * @return Predefined rule expression. If this field is specified, `config` must also be specified.
-     * Available options:
+     * @return Preconfigured versioned expression. If this field is specified, config must also be specified.
+     * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+     * Possible values are: `SRC_IPS_V1`.
      * 
      */
     public Optional<String> versionedExpr() {

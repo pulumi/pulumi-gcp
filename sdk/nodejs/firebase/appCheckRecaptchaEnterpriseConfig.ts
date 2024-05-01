@@ -22,6 +22,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as time from "@pulumi/time";
  *
+ * // Enables the reCAPTCHA Enterprise API
+ * const recaptchaEnterprise = new gcp.projects.Service("recaptcha_enterprise", {
+ *     project: "my-project-name",
+ *     service: "recaptchaenterprise.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
  * const _default = new gcp.firebase.WebApp("default", {
  *     project: "my-project-name",
  *     displayName: "Web App for reCAPTCHA Enterprise",

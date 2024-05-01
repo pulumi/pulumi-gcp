@@ -7,8 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectKeyIdArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,8 +22,6 @@ public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs
      * Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
-     * 
      */
     @Import(name="subjectConfig", required=true)
     private Output<AuthorityConfigSubjectConfigArgs> subjectConfig;
@@ -29,11 +30,26 @@ public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs
      * @return Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
-     * 
      */
     public Output<AuthorityConfigSubjectConfigArgs> subjectConfig() {
         return this.subjectConfig;
+    }
+
+    /**
+     * When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="subjectKeyId")
+    private @Nullable Output<AuthorityConfigSubjectKeyIdArgs> subjectKeyId;
+
+    /**
+     * @return When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AuthorityConfigSubjectKeyIdArgs>> subjectKeyId() {
+        return Optional.ofNullable(this.subjectKeyId);
     }
 
     /**
@@ -57,6 +73,7 @@ public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs
 
     private AuthorityConfigArgs(AuthorityConfigArgs $) {
         this.subjectConfig = $.subjectConfig;
+        this.subjectKeyId = $.subjectKeyId;
         this.x509Config = $.x509Config;
     }
 
@@ -82,8 +99,6 @@ public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs
          * @param subjectConfig Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
-         * 
          * @return builder
          * 
          */
@@ -96,13 +111,34 @@ public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs
          * @param subjectConfig Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
-         * 
          * @return builder
          * 
          */
         public Builder subjectConfig(AuthorityConfigSubjectConfigArgs subjectConfig) {
             return subjectConfig(Output.of(subjectConfig));
+        }
+
+        /**
+         * @param subjectKeyId When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectKeyId(@Nullable Output<AuthorityConfigSubjectKeyIdArgs> subjectKeyId) {
+            $.subjectKeyId = subjectKeyId;
+            return this;
+        }
+
+        /**
+         * @param subjectKeyId When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectKeyId(AuthorityConfigSubjectKeyIdArgs subjectKeyId) {
+            return subjectKeyId(Output.of(subjectKeyId));
         }
 
         /**

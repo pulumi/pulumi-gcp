@@ -23,6 +23,11 @@ public final class HostingVersionConfigRewrite {
      */
     private @Nullable String glob;
     /**
+     * @return The URL path to rewrite the request to.
+     * 
+     */
+    private @Nullable String path;
+    /**
      * @return The user-supplied RE2 regular expression to match against the request URL path.
      * 
      */
@@ -48,6 +53,13 @@ public final class HostingVersionConfigRewrite {
      */
     public Optional<String> glob() {
         return Optional.ofNullable(this.glob);
+    }
+    /**
+     * @return The URL path to rewrite the request to.
+     * 
+     */
+    public Optional<String> path() {
+        return Optional.ofNullable(this.path);
     }
     /**
      * @return The user-supplied RE2 regular expression to match against the request URL path.
@@ -76,6 +88,7 @@ public final class HostingVersionConfigRewrite {
     public static final class Builder {
         private @Nullable String function;
         private @Nullable String glob;
+        private @Nullable String path;
         private @Nullable String regex;
         private @Nullable HostingVersionConfigRewriteRun run;
         public Builder() {}
@@ -83,6 +96,7 @@ public final class HostingVersionConfigRewrite {
     	      Objects.requireNonNull(defaults);
     	      this.function = defaults.function;
     	      this.glob = defaults.glob;
+    	      this.path = defaults.path;
     	      this.regex = defaults.regex;
     	      this.run = defaults.run;
         }
@@ -97,6 +111,12 @@ public final class HostingVersionConfigRewrite {
         public Builder glob(@Nullable String glob) {
 
             this.glob = glob;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder path(@Nullable String path) {
+
+            this.path = path;
             return this;
         }
         @CustomType.Setter
@@ -115,6 +135,7 @@ public final class HostingVersionConfigRewrite {
             final var _resultValue = new HostingVersionConfigRewrite();
             _resultValue.function = function;
             _resultValue.glob = glob;
+            _resultValue.path = path;
             _resultValue.regex = regex;
             _resultValue.run = run;
             return _resultValue;

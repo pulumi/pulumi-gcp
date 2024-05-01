@@ -15,6 +15,8 @@ import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectContentPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
+import com.pulumi.gcp.storage.inputs.GetBucketObjectsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
 import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlPlainArgs;
@@ -27,6 +29,7 @@ import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountPlainArgs;
 import com.pulumi.gcp.storage.outputs.GetBucketIamPolicyResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectContentResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectResult;
+import com.pulumi.gcp.storage.outputs.GetBucketObjectsResult;
 import com.pulumi.gcp.storage.outputs.GetBucketResult;
 import com.pulumi.gcp.storage.outputs.GetObjectSignedUrlResult;
 import com.pulumi.gcp.storage.outputs.GetProjectServiceAccountResult;
@@ -838,6 +841,182 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetBucketObjectContentResult> getBucketObjectContentPlain(GetBucketObjectContentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBucketObjectContent:getBucketObjectContent", TypeShape.of(GetBucketObjectContentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and [API](https://cloud.google.com/storage/docs/json_api/v1/objects/list).
+     * 
+     * ## Example Usage
+     * 
+     * Example files stored within a bucket.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var files = StorageFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
+     *             .bucket(&#34;file-store&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBucketObjectsResult> getBucketObjects(GetBucketObjectsArgs args) {
+        return getBucketObjects(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and [API](https://cloud.google.com/storage/docs/json_api/v1/objects/list).
+     * 
+     * ## Example Usage
+     * 
+     * Example files stored within a bucket.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var files = StorageFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
+     *             .bucket(&#34;file-store&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetBucketObjectsResult> getBucketObjectsPlain(GetBucketObjectsPlainArgs args) {
+        return getBucketObjectsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and [API](https://cloud.google.com/storage/docs/json_api/v1/objects/list).
+     * 
+     * ## Example Usage
+     * 
+     * Example files stored within a bucket.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var files = StorageFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
+     *             .bucket(&#34;file-store&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBucketObjectsResult> getBucketObjects(GetBucketObjectsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBucketObjects:getBucketObjects", TypeShape.of(GetBucketObjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and [API](https://cloud.google.com/storage/docs/json_api/v1/objects/list).
+     * 
+     * ## Example Usage
+     * 
+     * Example files stored within a bucket.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var files = StorageFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
+     *             .bucket(&#34;file-store&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetBucketObjectsResult> getBucketObjectsPlain(GetBucketObjectsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getBucketObjects:getBucketObjects", TypeShape.of(GetBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.

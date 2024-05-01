@@ -229,6 +229,11 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_time as time
 
+        # Enables the reCAPTCHA Enterprise API
+        recaptcha_enterprise = gcp.projects.Service("recaptcha_enterprise",
+            project="my-project-name",
+            service="recaptchaenterprise.googleapis.com",
+            disable_on_destroy=False)
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Web App for reCAPTCHA Enterprise")
@@ -305,6 +310,11 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_time as time
 
+        # Enables the reCAPTCHA Enterprise API
+        recaptcha_enterprise = gcp.projects.Service("recaptcha_enterprise",
+            project="my-project-name",
+            service="recaptchaenterprise.googleapis.com",
+            disable_on_destroy=False)
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Web App for reCAPTCHA Enterprise")

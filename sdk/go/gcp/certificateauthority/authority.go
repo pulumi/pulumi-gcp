@@ -323,6 +323,79 @@ import (
 //	}
 //
 // ```
+// ### Privateca Certificate Authority Custom Ski
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//				Pool:                   pulumi.String("ca-pool"),
+//				CertificateAuthorityId: pulumi.String("my-certificate-authority"),
+//				Location:               pulumi.String("us-central1"),
+//				DeletionProtection:     pulumi.Bool(true),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("HashiCorp"),
+//							CommonName:   pulumi.String("my-certificate-authority"),
+//						},
+//						SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
+//							DnsNames: pulumi.StringArray{
+//								pulumi.String("hashicorp.com"),
+//							},
+//						},
+//					},
+//					SubjectKeyId: &certificateauthority.AuthorityConfigSubjectKeyIdArgs{
+//						KeyId: pulumi.String("4cf3372289b1d411b999dbb9ebcd44744b6b2fca"),
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa:                pulumi.Bool(true),
+//							MaxIssuerPathLength: pulumi.Int(10),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								DigitalSignature:  pulumi.Bool(true),
+//								ContentCommitment: pulumi.Bool(true),
+//								KeyEncipherment:   pulumi.Bool(false),
+//								DataEncipherment:  pulumi.Bool(true),
+//								KeyAgreement:      pulumi.Bool(true),
+//								CertSign:          pulumi.Bool(true),
+//								CrlSign:           pulumi.Bool(true),
+//								DecipherOnly:      pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth:      pulumi.Bool(true),
+//								ClientAuth:      pulumi.Bool(false),
+//								EmailProtection: pulumi.Bool(true),
+//								CodeSigning:     pulumi.Bool(true),
+//								TimeStamping:    pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//				Lifetime: pulumi.String("86400s"),
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					CloudKmsKeyVersion: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

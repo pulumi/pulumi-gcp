@@ -58,6 +58,73 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// 
     /// });
     /// ```
+    /// ### Bigquery Datapolicy Data Policy Routine
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var taxonomy = new Gcp.DataCatalog.Taxonomy("taxonomy", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         DisplayName = "taxonomy",
+    ///         Description = "A collection of policy tags",
+    ///         ActivatedPolicyTypes = new[]
+    ///         {
+    ///             "FINE_GRAINED_ACCESS_CONTROL",
+    ///         },
+    ///     });
+    /// 
+    ///     var policyTag = new Gcp.DataCatalog.PolicyTag("policy_tag", new()
+    ///     {
+    ///         Taxonomy = taxonomy.Id,
+    ///         DisplayName = "Low security",
+    ///         Description = "A policy tag normally associated with low security items",
+    ///     });
+    /// 
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
+    ///     {
+    ///         DatasetId = "dataset_id",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var customMaskingRoutine = new Gcp.BigQuery.Routine("custom_masking_routine", new()
+    ///     {
+    ///         DatasetId = test.DatasetId,
+    ///         RoutineId = "custom_masking_routine",
+    ///         RoutineType = "SCALAR_FUNCTION",
+    ///         Language = "SQL",
+    ///         DataGovernanceType = "DATA_MASKING",
+    ///         DefinitionBody = "SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
+    ///         ReturnType = "{\"typeKind\" :  \"STRING\"}",
+    ///         Arguments = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///             {
+    ///                 Name = "ssn",
+    ///                 DataType = "{\"typeKind\" :  \"STRING\"}",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var dataPolicy = new Gcp.BigQueryDataPolicy.DataPolicy("data_policy", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataPolicyId = "data_policy",
+    ///         PolicyTag = policyTag.Name,
+    ///         DataPolicyType = "DATA_MASKING_POLICY",
+    ///         DataMaskingPolicy = new Gcp.BigQueryDataPolicy.Inputs.DataPolicyDataMaskingPolicyArgs
+    ///         {
+    ///             Routine = customMaskingRoutine.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

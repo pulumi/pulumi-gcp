@@ -305,7 +305,7 @@ import (
 //
 // ```
 //
-// ### Primary-Backup
+// ### Failover
 //
 // ```go
 // package main

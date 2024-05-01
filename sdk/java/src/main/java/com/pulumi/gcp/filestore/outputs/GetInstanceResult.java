@@ -32,6 +32,7 @@ public final class GetInstanceResult {
     private String name;
     private List<GetInstanceNetwork> networks;
     private @Nullable String project;
+    private String protocol;
     private Map<String,String> pulumiLabels;
     private String tier;
     private String zone;
@@ -77,6 +78,9 @@ public final class GetInstanceResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public String protocol() {
+        return this.protocol;
+    }
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
@@ -108,6 +112,7 @@ public final class GetInstanceResult {
         private String name;
         private List<GetInstanceNetwork> networks;
         private @Nullable String project;
+        private String protocol;
         private Map<String,String> pulumiLabels;
         private String tier;
         private String zone;
@@ -126,6 +131,7 @@ public final class GetInstanceResult {
     	      this.name = defaults.name;
     	      this.networks = defaults.networks;
     	      this.project = defaults.project;
+    	      this.protocol = defaults.protocol;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.tier = defaults.tier;
     	      this.zone = defaults.zone;
@@ -230,6 +236,14 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder protocol(String protocol) {
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "protocol");
+            }
+            this.protocol = protocol;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             if (pulumiLabels == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "pulumiLabels");
@@ -267,6 +281,7 @@ public final class GetInstanceResult {
             _resultValue.name = name;
             _resultValue.networks = networks;
             _resultValue.project = project;
+            _resultValue.protocol = protocol;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.tier = tier;
             _resultValue.zone = zone;

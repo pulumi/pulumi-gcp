@@ -134,9 +134,10 @@ func (o AuthorityAccessUrlArrayOutput) Index(i pulumi.IntInput) AuthorityAccessU
 type AuthorityConfig struct {
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
-	//
-	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	SubjectConfig AuthorityConfigSubjectConfig `pulumi:"subjectConfig"`
+	// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+	// Structure is documented below.
+	SubjectKeyId *AuthorityConfigSubjectKeyId `pulumi:"subjectKeyId"`
 	// Describes how some of the technical X.509 fields in a certificate should be populated.
 	// Structure is documented below.
 	X509Config AuthorityConfigX509Config `pulumi:"x509Config"`
@@ -156,9 +157,10 @@ type AuthorityConfigInput interface {
 type AuthorityConfigArgs struct {
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
-	//
-	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	SubjectConfig AuthorityConfigSubjectConfigInput `pulumi:"subjectConfig"`
+	// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+	// Structure is documented below.
+	SubjectKeyId AuthorityConfigSubjectKeyIdPtrInput `pulumi:"subjectKeyId"`
 	// Describes how some of the technical X.509 fields in a certificate should be populated.
 	// Structure is documented below.
 	X509Config AuthorityConfigX509ConfigInput `pulumi:"x509Config"`
@@ -243,10 +245,14 @@ func (o AuthorityConfigOutput) ToAuthorityConfigPtrOutputWithContext(ctx context
 
 // Specifies some of the values in a certificate that are related to the subject.
 // Structure is documented below.
-//
-// <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o AuthorityConfigOutput) SubjectConfig() AuthorityConfigSubjectConfigOutput {
 	return o.ApplyT(func(v AuthorityConfig) AuthorityConfigSubjectConfig { return v.SubjectConfig }).(AuthorityConfigSubjectConfigOutput)
+}
+
+// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+// Structure is documented below.
+func (o AuthorityConfigOutput) SubjectKeyId() AuthorityConfigSubjectKeyIdPtrOutput {
+	return o.ApplyT(func(v AuthorityConfig) *AuthorityConfigSubjectKeyId { return v.SubjectKeyId }).(AuthorityConfigSubjectKeyIdPtrOutput)
 }
 
 // Describes how some of the technical X.509 fields in a certificate should be populated.
@@ -281,8 +287,6 @@ func (o AuthorityConfigPtrOutput) Elem() AuthorityConfigOutput {
 
 // Specifies some of the values in a certificate that are related to the subject.
 // Structure is documented below.
-//
-// <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o AuthorityConfigPtrOutput) SubjectConfig() AuthorityConfigSubjectConfigPtrOutput {
 	return o.ApplyT(func(v *AuthorityConfig) *AuthorityConfigSubjectConfig {
 		if v == nil {
@@ -290,6 +294,17 @@ func (o AuthorityConfigPtrOutput) SubjectConfig() AuthorityConfigSubjectConfigPt
 		}
 		return &v.SubjectConfig
 	}).(AuthorityConfigSubjectConfigPtrOutput)
+}
+
+// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+// Structure is documented below.
+func (o AuthorityConfigPtrOutput) SubjectKeyId() AuthorityConfigSubjectKeyIdPtrOutput {
+	return o.ApplyT(func(v *AuthorityConfig) *AuthorityConfigSubjectKeyId {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectKeyId
+	}).(AuthorityConfigSubjectKeyIdPtrOutput)
 }
 
 // Describes how some of the technical X.509 fields in a certificate should be populated.
@@ -931,6 +946,151 @@ func (o AuthorityConfigSubjectConfigSubjectAltNamePtrOutput) Uris() pulumi.Strin
 		}
 		return v.Uris
 	}).(pulumi.StringArrayOutput)
+}
+
+type AuthorityConfigSubjectKeyId struct {
+	// The value of the KeyId in lowercase hexidecimal.
+	//
+	// <a name="nestedX509Config"></a>The `x509Config` block supports:
+	KeyId *string `pulumi:"keyId"`
+}
+
+// AuthorityConfigSubjectKeyIdInput is an input type that accepts AuthorityConfigSubjectKeyIdArgs and AuthorityConfigSubjectKeyIdOutput values.
+// You can construct a concrete instance of `AuthorityConfigSubjectKeyIdInput` via:
+//
+//	AuthorityConfigSubjectKeyIdArgs{...}
+type AuthorityConfigSubjectKeyIdInput interface {
+	pulumi.Input
+
+	ToAuthorityConfigSubjectKeyIdOutput() AuthorityConfigSubjectKeyIdOutput
+	ToAuthorityConfigSubjectKeyIdOutputWithContext(context.Context) AuthorityConfigSubjectKeyIdOutput
+}
+
+type AuthorityConfigSubjectKeyIdArgs struct {
+	// The value of the KeyId in lowercase hexidecimal.
+	//
+	// <a name="nestedX509Config"></a>The `x509Config` block supports:
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+}
+
+func (AuthorityConfigSubjectKeyIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorityConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (i AuthorityConfigSubjectKeyIdArgs) ToAuthorityConfigSubjectKeyIdOutput() AuthorityConfigSubjectKeyIdOutput {
+	return i.ToAuthorityConfigSubjectKeyIdOutputWithContext(context.Background())
+}
+
+func (i AuthorityConfigSubjectKeyIdArgs) ToAuthorityConfigSubjectKeyIdOutputWithContext(ctx context.Context) AuthorityConfigSubjectKeyIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigSubjectKeyIdOutput)
+}
+
+func (i AuthorityConfigSubjectKeyIdArgs) ToAuthorityConfigSubjectKeyIdPtrOutput() AuthorityConfigSubjectKeyIdPtrOutput {
+	return i.ToAuthorityConfigSubjectKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (i AuthorityConfigSubjectKeyIdArgs) ToAuthorityConfigSubjectKeyIdPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectKeyIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigSubjectKeyIdOutput).ToAuthorityConfigSubjectKeyIdPtrOutputWithContext(ctx)
+}
+
+// AuthorityConfigSubjectKeyIdPtrInput is an input type that accepts AuthorityConfigSubjectKeyIdArgs, AuthorityConfigSubjectKeyIdPtr and AuthorityConfigSubjectKeyIdPtrOutput values.
+// You can construct a concrete instance of `AuthorityConfigSubjectKeyIdPtrInput` via:
+//
+//	        AuthorityConfigSubjectKeyIdArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthorityConfigSubjectKeyIdPtrInput interface {
+	pulumi.Input
+
+	ToAuthorityConfigSubjectKeyIdPtrOutput() AuthorityConfigSubjectKeyIdPtrOutput
+	ToAuthorityConfigSubjectKeyIdPtrOutputWithContext(context.Context) AuthorityConfigSubjectKeyIdPtrOutput
+}
+
+type authorityConfigSubjectKeyIdPtrType AuthorityConfigSubjectKeyIdArgs
+
+func AuthorityConfigSubjectKeyIdPtr(v *AuthorityConfigSubjectKeyIdArgs) AuthorityConfigSubjectKeyIdPtrInput {
+	return (*authorityConfigSubjectKeyIdPtrType)(v)
+}
+
+func (*authorityConfigSubjectKeyIdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (i *authorityConfigSubjectKeyIdPtrType) ToAuthorityConfigSubjectKeyIdPtrOutput() AuthorityConfigSubjectKeyIdPtrOutput {
+	return i.ToAuthorityConfigSubjectKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (i *authorityConfigSubjectKeyIdPtrType) ToAuthorityConfigSubjectKeyIdPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectKeyIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigSubjectKeyIdPtrOutput)
+}
+
+type AuthorityConfigSubjectKeyIdOutput struct{ *pulumi.OutputState }
+
+func (AuthorityConfigSubjectKeyIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorityConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (o AuthorityConfigSubjectKeyIdOutput) ToAuthorityConfigSubjectKeyIdOutput() AuthorityConfigSubjectKeyIdOutput {
+	return o
+}
+
+func (o AuthorityConfigSubjectKeyIdOutput) ToAuthorityConfigSubjectKeyIdOutputWithContext(ctx context.Context) AuthorityConfigSubjectKeyIdOutput {
+	return o
+}
+
+func (o AuthorityConfigSubjectKeyIdOutput) ToAuthorityConfigSubjectKeyIdPtrOutput() AuthorityConfigSubjectKeyIdPtrOutput {
+	return o.ToAuthorityConfigSubjectKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorityConfigSubjectKeyIdOutput) ToAuthorityConfigSubjectKeyIdPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectKeyIdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigSubjectKeyId) *AuthorityConfigSubjectKeyId {
+		return &v
+	}).(AuthorityConfigSubjectKeyIdPtrOutput)
+}
+
+// The value of the KeyId in lowercase hexidecimal.
+//
+// <a name="nestedX509Config"></a>The `x509Config` block supports:
+func (o AuthorityConfigSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorityConfigSubjectKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+type AuthorityConfigSubjectKeyIdPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorityConfigSubjectKeyIdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (o AuthorityConfigSubjectKeyIdPtrOutput) ToAuthorityConfigSubjectKeyIdPtrOutput() AuthorityConfigSubjectKeyIdPtrOutput {
+	return o
+}
+
+func (o AuthorityConfigSubjectKeyIdPtrOutput) ToAuthorityConfigSubjectKeyIdPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectKeyIdPtrOutput {
+	return o
+}
+
+func (o AuthorityConfigSubjectKeyIdPtrOutput) Elem() AuthorityConfigSubjectKeyIdOutput {
+	return o.ApplyT(func(v *AuthorityConfigSubjectKeyId) AuthorityConfigSubjectKeyId {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigSubjectKeyId
+		return ret
+	}).(AuthorityConfigSubjectKeyIdOutput)
+}
+
+// The value of the KeyId in lowercase hexidecimal.
+//
+// <a name="nestedX509Config"></a>The `x509Config` block supports:
+func (o AuthorityConfigSubjectKeyIdPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorityConfigSubjectKeyId) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyId
+	}).(pulumi.StringPtrOutput)
 }
 
 type AuthorityConfigX509Config struct {
@@ -8292,8 +8452,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 }
 
 type CertificateCertificateDescriptionSubjectKeyId struct {
-	// (Output)
-	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+	// The value of the KeyId in lowercase hexidecimal.
 	KeyId *string `pulumi:"keyId"`
 }
 
@@ -8309,8 +8468,7 @@ type CertificateCertificateDescriptionSubjectKeyIdInput interface {
 }
 
 type CertificateCertificateDescriptionSubjectKeyIdArgs struct {
-	// (Output)
-	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+	// The value of the KeyId in lowercase hexidecimal.
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 }
 
@@ -8365,8 +8523,7 @@ func (o CertificateCertificateDescriptionSubjectKeyIdOutput) ToCertificateCertif
 	return o
 }
 
-// (Output)
-// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+// The value of the KeyId in lowercase hexidecimal.
 func (o CertificateCertificateDescriptionSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
@@ -9837,6 +9994,9 @@ type CertificateConfig struct {
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
 	SubjectConfig CertificateConfigSubjectConfig `pulumi:"subjectConfig"`
+	// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+	// Structure is documented below.
+	SubjectKeyId *CertificateConfigSubjectKeyId `pulumi:"subjectKeyId"`
 	// Describes how some of the technical X.509 fields in a certificate should be populated.
 	// Structure is documented below.
 	X509Config CertificateConfigX509Config `pulumi:"x509Config"`
@@ -9862,6 +10022,9 @@ type CertificateConfigArgs struct {
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
 	SubjectConfig CertificateConfigSubjectConfigInput `pulumi:"subjectConfig"`
+	// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+	// Structure is documented below.
+	SubjectKeyId CertificateConfigSubjectKeyIdPtrInput `pulumi:"subjectKeyId"`
 	// Describes how some of the technical X.509 fields in a certificate should be populated.
 	// Structure is documented below.
 	X509Config CertificateConfigX509ConfigInput `pulumi:"x509Config"`
@@ -9958,6 +10121,12 @@ func (o CertificateConfigOutput) SubjectConfig() CertificateConfigSubjectConfigO
 	return o.ApplyT(func(v CertificateConfig) CertificateConfigSubjectConfig { return v.SubjectConfig }).(CertificateConfigSubjectConfigOutput)
 }
 
+// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+// Structure is documented below.
+func (o CertificateConfigOutput) SubjectKeyId() CertificateConfigSubjectKeyIdPtrOutput {
+	return o.ApplyT(func(v CertificateConfig) *CertificateConfigSubjectKeyId { return v.SubjectKeyId }).(CertificateConfigSubjectKeyIdPtrOutput)
+}
+
 // Describes how some of the technical X.509 fields in a certificate should be populated.
 // Structure is documented below.
 func (o CertificateConfigOutput) X509Config() CertificateConfigX509ConfigOutput {
@@ -10010,6 +10179,17 @@ func (o CertificateConfigPtrOutput) SubjectConfig() CertificateConfigSubjectConf
 		}
 		return &v.SubjectConfig
 	}).(CertificateConfigSubjectConfigPtrOutput)
+}
+
+// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+// Structure is documented below.
+func (o CertificateConfigPtrOutput) SubjectKeyId() CertificateConfigSubjectKeyIdPtrOutput {
+	return o.ApplyT(func(v *CertificateConfig) *CertificateConfigSubjectKeyId {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectKeyId
+	}).(CertificateConfigSubjectKeyIdPtrOutput)
 }
 
 // Describes how some of the technical X.509 fields in a certificate should be populated.
@@ -10811,6 +10991,143 @@ func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) Uris() pulumi.Str
 		}
 		return v.Uris
 	}).(pulumi.StringArrayOutput)
+}
+
+type CertificateConfigSubjectKeyId struct {
+	// The value of the KeyId in lowercase hexidecimal.
+	KeyId *string `pulumi:"keyId"`
+}
+
+// CertificateConfigSubjectKeyIdInput is an input type that accepts CertificateConfigSubjectKeyIdArgs and CertificateConfigSubjectKeyIdOutput values.
+// You can construct a concrete instance of `CertificateConfigSubjectKeyIdInput` via:
+//
+//	CertificateConfigSubjectKeyIdArgs{...}
+type CertificateConfigSubjectKeyIdInput interface {
+	pulumi.Input
+
+	ToCertificateConfigSubjectKeyIdOutput() CertificateConfigSubjectKeyIdOutput
+	ToCertificateConfigSubjectKeyIdOutputWithContext(context.Context) CertificateConfigSubjectKeyIdOutput
+}
+
+type CertificateConfigSubjectKeyIdArgs struct {
+	// The value of the KeyId in lowercase hexidecimal.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+}
+
+func (CertificateConfigSubjectKeyIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (i CertificateConfigSubjectKeyIdArgs) ToCertificateConfigSubjectKeyIdOutput() CertificateConfigSubjectKeyIdOutput {
+	return i.ToCertificateConfigSubjectKeyIdOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigSubjectKeyIdArgs) ToCertificateConfigSubjectKeyIdOutputWithContext(ctx context.Context) CertificateConfigSubjectKeyIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectKeyIdOutput)
+}
+
+func (i CertificateConfigSubjectKeyIdArgs) ToCertificateConfigSubjectKeyIdPtrOutput() CertificateConfigSubjectKeyIdPtrOutput {
+	return i.ToCertificateConfigSubjectKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigSubjectKeyIdArgs) ToCertificateConfigSubjectKeyIdPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectKeyIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectKeyIdOutput).ToCertificateConfigSubjectKeyIdPtrOutputWithContext(ctx)
+}
+
+// CertificateConfigSubjectKeyIdPtrInput is an input type that accepts CertificateConfigSubjectKeyIdArgs, CertificateConfigSubjectKeyIdPtr and CertificateConfigSubjectKeyIdPtrOutput values.
+// You can construct a concrete instance of `CertificateConfigSubjectKeyIdPtrInput` via:
+//
+//	        CertificateConfigSubjectKeyIdArgs{...}
+//
+//	or:
+//
+//	        nil
+type CertificateConfigSubjectKeyIdPtrInput interface {
+	pulumi.Input
+
+	ToCertificateConfigSubjectKeyIdPtrOutput() CertificateConfigSubjectKeyIdPtrOutput
+	ToCertificateConfigSubjectKeyIdPtrOutputWithContext(context.Context) CertificateConfigSubjectKeyIdPtrOutput
+}
+
+type certificateConfigSubjectKeyIdPtrType CertificateConfigSubjectKeyIdArgs
+
+func CertificateConfigSubjectKeyIdPtr(v *CertificateConfigSubjectKeyIdArgs) CertificateConfigSubjectKeyIdPtrInput {
+	return (*certificateConfigSubjectKeyIdPtrType)(v)
+}
+
+func (*certificateConfigSubjectKeyIdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (i *certificateConfigSubjectKeyIdPtrType) ToCertificateConfigSubjectKeyIdPtrOutput() CertificateConfigSubjectKeyIdPtrOutput {
+	return i.ToCertificateConfigSubjectKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateConfigSubjectKeyIdPtrType) ToCertificateConfigSubjectKeyIdPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectKeyIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectKeyIdPtrOutput)
+}
+
+type CertificateConfigSubjectKeyIdOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigSubjectKeyIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (o CertificateConfigSubjectKeyIdOutput) ToCertificateConfigSubjectKeyIdOutput() CertificateConfigSubjectKeyIdOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectKeyIdOutput) ToCertificateConfigSubjectKeyIdOutputWithContext(ctx context.Context) CertificateConfigSubjectKeyIdOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectKeyIdOutput) ToCertificateConfigSubjectKeyIdPtrOutput() CertificateConfigSubjectKeyIdPtrOutput {
+	return o.ToCertificateConfigSubjectKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateConfigSubjectKeyIdOutput) ToCertificateConfigSubjectKeyIdPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectKeyIdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigSubjectKeyId) *CertificateConfigSubjectKeyId {
+		return &v
+	}).(CertificateConfigSubjectKeyIdPtrOutput)
+}
+
+// The value of the KeyId in lowercase hexidecimal.
+func (o CertificateConfigSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+type CertificateConfigSubjectKeyIdPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigSubjectKeyIdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (o CertificateConfigSubjectKeyIdPtrOutput) ToCertificateConfigSubjectKeyIdPtrOutput() CertificateConfigSubjectKeyIdPtrOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectKeyIdPtrOutput) ToCertificateConfigSubjectKeyIdPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectKeyIdPtrOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectKeyIdPtrOutput) Elem() CertificateConfigSubjectKeyIdOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectKeyId) CertificateConfigSubjectKeyId {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigSubjectKeyId
+		return ret
+	}).(CertificateConfigSubjectKeyIdOutput)
+}
+
+// The value of the KeyId in lowercase hexidecimal.
+func (o CertificateConfigSubjectKeyIdPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectKeyId) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyId
+	}).(pulumi.StringPtrOutput)
 }
 
 type CertificateConfigX509Config struct {
@@ -15420,6 +15737,8 @@ func (o GetAuthorityAccessUrlArrayOutput) Index(i pulumi.IntInput) GetAuthorityA
 type GetAuthorityConfig struct {
 	// Specifies some of the values in a certificate that are related to the subject.
 	SubjectConfigs []GetAuthorityConfigSubjectConfig `pulumi:"subjectConfigs"`
+	// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+	SubjectKeyIds []GetAuthorityConfigSubjectKeyId `pulumi:"subjectKeyIds"`
 	// Describes how some of the technical X.509 fields in a certificate should be populated.
 	X509Configs []GetAuthorityConfigX509Config `pulumi:"x509Configs"`
 }
@@ -15438,6 +15757,8 @@ type GetAuthorityConfigInput interface {
 type GetAuthorityConfigArgs struct {
 	// Specifies some of the values in a certificate that are related to the subject.
 	SubjectConfigs GetAuthorityConfigSubjectConfigArrayInput `pulumi:"subjectConfigs"`
+	// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+	SubjectKeyIds GetAuthorityConfigSubjectKeyIdArrayInput `pulumi:"subjectKeyIds"`
 	// Describes how some of the technical X.509 fields in a certificate should be populated.
 	X509Configs GetAuthorityConfigX509ConfigArrayInput `pulumi:"x509Configs"`
 }
@@ -15496,6 +15817,11 @@ func (o GetAuthorityConfigOutput) ToGetAuthorityConfigOutputWithContext(ctx cont
 // Specifies some of the values in a certificate that are related to the subject.
 func (o GetAuthorityConfigOutput) SubjectConfigs() GetAuthorityConfigSubjectConfigArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfig) []GetAuthorityConfigSubjectConfig { return v.SubjectConfigs }).(GetAuthorityConfigSubjectConfigArrayOutput)
+}
+
+// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+func (o GetAuthorityConfigOutput) SubjectKeyIds() GetAuthorityConfigSubjectKeyIdArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfig) []GetAuthorityConfigSubjectKeyId { return v.SubjectKeyIds }).(GetAuthorityConfigSubjectKeyIdArrayOutput)
 }
 
 // Describes how some of the technical X.509 fields in a certificate should be populated.
@@ -15913,6 +16239,103 @@ func (o GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigSubjectConfigSubjectAltName {
 		return vs[0].([]GetAuthorityConfigSubjectConfigSubjectAltName)[vs[1].(int)]
 	}).(GetAuthorityConfigSubjectConfigSubjectAltNameOutput)
+}
+
+type GetAuthorityConfigSubjectKeyId struct {
+	// The value of the KeyId in lowercase hexidecimal.
+	KeyId string `pulumi:"keyId"`
+}
+
+// GetAuthorityConfigSubjectKeyIdInput is an input type that accepts GetAuthorityConfigSubjectKeyIdArgs and GetAuthorityConfigSubjectKeyIdOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigSubjectKeyIdInput` via:
+//
+//	GetAuthorityConfigSubjectKeyIdArgs{...}
+type GetAuthorityConfigSubjectKeyIdInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigSubjectKeyIdOutput() GetAuthorityConfigSubjectKeyIdOutput
+	ToGetAuthorityConfigSubjectKeyIdOutputWithContext(context.Context) GetAuthorityConfigSubjectKeyIdOutput
+}
+
+type GetAuthorityConfigSubjectKeyIdArgs struct {
+	// The value of the KeyId in lowercase hexidecimal.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+}
+
+func (GetAuthorityConfigSubjectKeyIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigSubjectKeyIdArgs) ToGetAuthorityConfigSubjectKeyIdOutput() GetAuthorityConfigSubjectKeyIdOutput {
+	return i.ToGetAuthorityConfigSubjectKeyIdOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigSubjectKeyIdArgs) ToGetAuthorityConfigSubjectKeyIdOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectKeyIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigSubjectKeyIdOutput)
+}
+
+// GetAuthorityConfigSubjectKeyIdArrayInput is an input type that accepts GetAuthorityConfigSubjectKeyIdArray and GetAuthorityConfigSubjectKeyIdArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigSubjectKeyIdArrayInput` via:
+//
+//	GetAuthorityConfigSubjectKeyIdArray{ GetAuthorityConfigSubjectKeyIdArgs{...} }
+type GetAuthorityConfigSubjectKeyIdArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigSubjectKeyIdArrayOutput() GetAuthorityConfigSubjectKeyIdArrayOutput
+	ToGetAuthorityConfigSubjectKeyIdArrayOutputWithContext(context.Context) GetAuthorityConfigSubjectKeyIdArrayOutput
+}
+
+type GetAuthorityConfigSubjectKeyIdArray []GetAuthorityConfigSubjectKeyIdInput
+
+func (GetAuthorityConfigSubjectKeyIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigSubjectKeyIdArray) ToGetAuthorityConfigSubjectKeyIdArrayOutput() GetAuthorityConfigSubjectKeyIdArrayOutput {
+	return i.ToGetAuthorityConfigSubjectKeyIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigSubjectKeyIdArray) ToGetAuthorityConfigSubjectKeyIdArrayOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectKeyIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigSubjectKeyIdArrayOutput)
+}
+
+type GetAuthorityConfigSubjectKeyIdOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigSubjectKeyIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigSubjectKeyIdOutput) ToGetAuthorityConfigSubjectKeyIdOutput() GetAuthorityConfigSubjectKeyIdOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectKeyIdOutput) ToGetAuthorityConfigSubjectKeyIdOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectKeyIdOutput {
+	return o
+}
+
+// The value of the KeyId in lowercase hexidecimal.
+func (o GetAuthorityConfigSubjectKeyIdOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectKeyId) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+type GetAuthorityConfigSubjectKeyIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigSubjectKeyIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigSubjectKeyId)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigSubjectKeyIdArrayOutput) ToGetAuthorityConfigSubjectKeyIdArrayOutput() GetAuthorityConfigSubjectKeyIdArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectKeyIdArrayOutput) ToGetAuthorityConfigSubjectKeyIdArrayOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectKeyIdArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectKeyIdArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigSubjectKeyIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigSubjectKeyId {
+		return vs[0].([]GetAuthorityConfigSubjectKeyId)[vs[1].(int)]
+	}).(GetAuthorityConfigSubjectKeyIdOutput)
 }
 
 type GetAuthorityConfigX509Config struct {
@@ -17627,6 +18050,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectConfigSubjectPtrInput)(nil)).Elem(), AuthorityConfigSubjectConfigSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectConfigSubjectAltNameInput)(nil)).Elem(), AuthorityConfigSubjectConfigSubjectAltNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectConfigSubjectAltNamePtrInput)(nil)).Elem(), AuthorityConfigSubjectConfigSubjectAltNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectKeyIdInput)(nil)).Elem(), AuthorityConfigSubjectKeyIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectKeyIdPtrInput)(nil)).Elem(), AuthorityConfigSubjectKeyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigInput)(nil)).Elem(), AuthorityConfigX509ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigPtrInput)(nil)).Elem(), AuthorityConfigX509ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigAdditionalExtensionInput)(nil)).Elem(), AuthorityConfigX509ConfigAdditionalExtensionArgs{})
@@ -17741,6 +18166,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigSubjectConfigSubjectPtrInput)(nil)).Elem(), CertificateConfigSubjectConfigSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigSubjectConfigSubjectAltNameInput)(nil)).Elem(), CertificateConfigSubjectConfigSubjectAltNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigSubjectConfigSubjectAltNamePtrInput)(nil)).Elem(), CertificateConfigSubjectConfigSubjectAltNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigSubjectKeyIdInput)(nil)).Elem(), CertificateConfigSubjectKeyIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigSubjectKeyIdPtrInput)(nil)).Elem(), CertificateConfigSubjectKeyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigInput)(nil)).Elem(), CertificateConfigX509ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigPtrInput)(nil)).Elem(), CertificateConfigX509ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigAdditionalExtensionInput)(nil)).Elem(), CertificateConfigX509ConfigAdditionalExtensionArgs{})
@@ -17801,6 +18228,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubjectArrayInput)(nil)).Elem(), GetAuthorityConfigSubjectConfigSubjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubjectAltNameInput)(nil)).Elem(), GetAuthorityConfigSubjectConfigSubjectAltNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput)(nil)).Elem(), GetAuthorityConfigSubjectConfigSubjectAltNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectKeyIdInput)(nil)).Elem(), GetAuthorityConfigSubjectKeyIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectKeyIdArrayInput)(nil)).Elem(), GetAuthorityConfigSubjectKeyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigInput)(nil)).Elem(), GetAuthorityConfigX509ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigAdditionalExtensionInput)(nil)).Elem(), GetAuthorityConfigX509ConfigAdditionalExtensionArgs{})
@@ -17837,6 +18266,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthorityConfigSubjectConfigSubjectPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigSubjectConfigSubjectAltNameOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigSubjectConfigSubjectAltNamePtrOutput{})
+	pulumi.RegisterOutputType(AuthorityConfigSubjectKeyIdOutput{})
+	pulumi.RegisterOutputType(AuthorityConfigSubjectKeyIdPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigAdditionalExtensionOutput{})
@@ -17951,6 +18382,8 @@ func init() {
 	pulumi.RegisterOutputType(CertificateConfigSubjectConfigSubjectPtrOutput{})
 	pulumi.RegisterOutputType(CertificateConfigSubjectConfigSubjectAltNameOutput{})
 	pulumi.RegisterOutputType(CertificateConfigSubjectConfigSubjectAltNamePtrOutput{})
+	pulumi.RegisterOutputType(CertificateConfigSubjectKeyIdOutput{})
+	pulumi.RegisterOutputType(CertificateConfigSubjectKeyIdPtrOutput{})
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigOutput{})
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigPtrOutput{})
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigAdditionalExtensionOutput{})
@@ -18011,6 +18444,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAuthorityConfigSubjectConfigSubjectArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthorityConfigSubjectConfigSubjectAltNameOutput{})
 	pulumi.RegisterOutputType(GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigSubjectKeyIdOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigSubjectKeyIdArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigOutput{})
 	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigAdditionalExtensionOutput{})

@@ -121,6 +121,143 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Target Https Proxy Mtls
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.certificatemanager.TrustConfig;
+ * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+ * import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
+ * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionSslCertificate;
+ * import com.pulumi.gcp.compute.RegionSslCertificateArgs;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.RegionTargetHttpsProxy;
+ * import com.pulumi.gcp.compute.RegionTargetHttpsProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var defaultTrustConfig = new TrustConfig(&#34;defaultTrustConfig&#34;, TrustConfigArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-trust-config&#34;)
+ *             .description(&#34;sample description for trust config&#34;)
+ *             .trustStores(TrustConfigTrustStoreArgs.builder()
+ *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .build()).result())
+ *                     .build())
+ *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .build()).result())
+ *                     .build())
+ *                 .build())
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build());
+ * 
+ *         var defaultServerTlsPolicy = new ServerTlsPolicy(&#34;defaultServerTlsPolicy&#34;, ServerTlsPolicyArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-tls-policy&#34;)
+ *             .description(&#34;my description&#34;)
+ *             .allowOpen(&#34;false&#34;)
+ *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
+ *                 .clientValidationMode(&#34;REJECT_INVALID&#34;)
+ *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/us-central1/trustConfigs/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionSslCertificate = new RegionSslCertificate(&#34;defaultRegionSslCertificate&#34;, RegionSslCertificateArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;my-certificate&#34;)
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/private.key&#34;)
+ *                 .build()).result())
+ *             .certificate(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;http-health-check&#34;)
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;backend-service&#34;)
+ *             .portName(&#34;http&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .build());
+ * 
+ *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;url-map&#34;)
+ *             .description(&#34;a description&#34;)
+ *             .defaultService(defaultRegionBackendService.id())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts(&#34;mysite.com&#34;)
+ *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name(&#34;allpaths&#34;)
+ *                 .defaultService(defaultRegionBackendService.id())
+ *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
+ *                     .paths(&#34;/*&#34;)
+ *                     .service(defaultRegionBackendService.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new RegionTargetHttpsProxy(&#34;default&#34;, RegionTargetHttpsProxyArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;test-mtls-proxy&#34;)
+ *             .urlMap(defaultRegionUrlMap.id())
+ *             .sslCertificates(defaultRegionSslCertificate.id())
+ *             .serverTlsPolicy(defaultServerTlsPolicy.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Target Https Proxy Certificate Manager Certificate
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -356,6 +493,36 @@ public class RegionTargetHttpsProxy extends com.pulumi.resources.CustomResource 
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     * 
+     */
+    @Export(name="serverTlsPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serverTlsPolicy;
+
+    /**
+     * @return A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     * 
+     */
+    public Output<Optional<String>> serverTlsPolicy() {
+        return Codegen.optional(this.serverTlsPolicy);
     }
     /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.

@@ -54,6 +54,47 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// ### Firebasehosting Version Path
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         SiteId = "site-id",
+    ///     });
+    /// 
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("default", new()
+    ///     {
+    ///         SiteId = @default.SiteId,
+    ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
+    ///         {
+    ///             Rewrites = new[]
+    ///             {
+    ///                 new Gcp.Firebase.Inputs.HostingVersionConfigRewriteArgs
+    ///                 {
+    ///                     Glob = "**",
+    ///                     Path = "/index.html",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("default", new()
+    ///     {
+    ///         SiteId = @default.SiteId,
+    ///         VersionName = defaultHostingVersion.Name,
+    ///         Message = "Path Rewrite",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Firebasehosting Version Cloud Run
     /// 
     /// ```csharp

@@ -9705,7 +9705,7 @@ type UptimeCheckConfigHttpCheck struct {
 	// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
 	// Structure is documented below.
 	AcceptedResponseStatusCodes []UptimeCheckConfigHttpCheckAcceptedResponseStatusCode `pulumi:"acceptedResponseStatusCodes"`
-	// The authentication information. Optional when creating an HTTP check; defaults to empty.
+	// The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
 	// Structure is documented below.
 	AuthInfo *UptimeCheckConfigHttpCheckAuthInfo `pulumi:"authInfo"`
 	// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
@@ -9730,6 +9730,9 @@ type UptimeCheckConfigHttpCheck struct {
 	// Default value is `GET`.
 	// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 	RequestMethod *string `pulumi:"requestMethod"`
+	// The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+	// Structure is documented below.
+	ServiceAgentAuthentication *UptimeCheckConfigHttpCheckServiceAgentAuthentication `pulumi:"serviceAgentAuthentication"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl *bool `pulumi:"useSsl"`
 	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitoredResource` is set to `uptimeUrl`. If `useSsl` is `false`, setting `validateSsl` to `true` has no effect.
@@ -9751,7 +9754,7 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
 	// Structure is documented below.
 	AcceptedResponseStatusCodes UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayInput `pulumi:"acceptedResponseStatusCodes"`
-	// The authentication information. Optional when creating an HTTP check; defaults to empty.
+	// The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
 	// Structure is documented below.
 	AuthInfo UptimeCheckConfigHttpCheckAuthInfoPtrInput `pulumi:"authInfo"`
 	// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
@@ -9776,6 +9779,9 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	// Default value is `GET`.
 	// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 	RequestMethod pulumi.StringPtrInput `pulumi:"requestMethod"`
+	// The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+	// Structure is documented below.
+	ServiceAgentAuthentication UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrInput `pulumi:"serviceAgentAuthentication"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
 	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitoredResource` is set to `uptimeUrl`. If `useSsl` is `false`, setting `validateSsl` to `true` has no effect.
@@ -9867,7 +9873,7 @@ func (o UptimeCheckConfigHttpCheckOutput) AcceptedResponseStatusCodes() UptimeCh
 	}).(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput)
 }
 
-// The authentication information. Optional when creating an HTTP check; defaults to empty.
+// The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
 // Structure is documented below.
 func (o UptimeCheckConfigHttpCheckOutput) AuthInfo() UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo { return v.AuthInfo }).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
@@ -9922,6 +9928,14 @@ func (o UptimeCheckConfigHttpCheckOutput) RequestMethod() pulumi.StringPtrOutput
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.RequestMethod }).(pulumi.StringPtrOutput)
 }
 
+// The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+// Structure is documented below.
+func (o UptimeCheckConfigHttpCheckOutput) ServiceAgentAuthentication() UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckServiceAgentAuthentication {
+		return v.ServiceAgentAuthentication
+	}).(UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput)
+}
+
 // If true, use HTTPS instead of HTTP to run the check.
 func (o UptimeCheckConfigHttpCheckOutput) UseSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
@@ -9967,7 +9981,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) AcceptedResponseStatusCodes() Uptim
 	}).(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput)
 }
 
-// The authentication information. Optional when creating an HTTP check; defaults to empty.
+// The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
 // Structure is documented below.
 func (o UptimeCheckConfigHttpCheckPtrOutput) AuthInfo() UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo {
@@ -10070,6 +10084,17 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) RequestMethod() pulumi.StringPtrOut
 		}
 		return v.RequestMethod
 	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+// Structure is documented below.
+func (o UptimeCheckConfigHttpCheckPtrOutput) ServiceAgentAuthentication() UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckServiceAgentAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAgentAuthentication
+	}).(UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput)
 }
 
 // If true, use HTTPS instead of HTTP to run the check.
@@ -10496,6 +10521,147 @@ func (o UptimeCheckConfigHttpCheckPingConfigPtrOutput) PingsCount() pulumi.IntPt
 		}
 		return &v.PingsCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type UptimeCheckConfigHttpCheckServiceAgentAuthentication struct {
+	// The type of authentication to use.
+	// Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
+	Type *string `pulumi:"type"`
+}
+
+// UptimeCheckConfigHttpCheckServiceAgentAuthenticationInput is an input type that accepts UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs and UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigHttpCheckServiceAgentAuthenticationInput` via:
+//
+//	UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs{...}
+type UptimeCheckConfigHttpCheckServiceAgentAuthenticationInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput() UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput
+	ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationOutputWithContext(context.Context) UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput
+}
+
+type UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs struct {
+	// The type of authentication to use.
+	// Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigHttpCheckServiceAgentAuthentication)(nil)).Elem()
+}
+
+func (i UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput() UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput {
+	return i.ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput)
+}
+
+func (i UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput() UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return i.ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput).ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutputWithContext(ctx)
+}
+
+// UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrInput is an input type that accepts UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs, UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtr and UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrInput` via:
+//
+//	        UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput() UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput
+	ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutputWithContext(context.Context) UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput
+}
+
+type uptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrType UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs
+
+func UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtr(v *UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs) UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrInput {
+	return (*uptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrType)(v)
+}
+
+func (*uptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfigHttpCheckServiceAgentAuthentication)(nil)).Elem()
+}
+
+func (i *uptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrType) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput() UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return i.ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *uptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrType) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput)
+}
+
+type UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigHttpCheckServiceAgentAuthentication)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput() UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput {
+	return o
+}
+
+func (o UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput {
+	return o
+}
+
+func (o UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput() UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return o.ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigHttpCheckServiceAgentAuthentication) *UptimeCheckConfigHttpCheckServiceAgentAuthentication {
+		return &v
+	}).(UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput)
+}
+
+// The type of authentication to use.
+// Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
+func (o UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckServiceAgentAuthentication) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfigHttpCheckServiceAgentAuthentication)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput() UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput) ToUptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput) Elem() UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckServiceAgentAuthentication) UptimeCheckConfigHttpCheckServiceAgentAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigHttpCheckServiceAgentAuthentication
+		return ret
+	}).(UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput)
+}
+
+// The type of authentication to use.
+// Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
+func (o UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckServiceAgentAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type UptimeCheckConfigMonitoredResource struct {
@@ -12154,6 +12320,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckAuthInfoPtrInput)(nil)).Elem(), UptimeCheckConfigHttpCheckAuthInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckPingConfigInput)(nil)).Elem(), UptimeCheckConfigHttpCheckPingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckPingConfigPtrInput)(nil)).Elem(), UptimeCheckConfigHttpCheckPingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckServiceAgentAuthenticationInput)(nil)).Elem(), UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrInput)(nil)).Elem(), UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigMonitoredResourceInput)(nil)).Elem(), UptimeCheckConfigMonitoredResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigMonitoredResourcePtrInput)(nil)).Elem(), UptimeCheckConfigMonitoredResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigResourceGroupInput)(nil)).Elem(), UptimeCheckConfigResourceGroupArgs{})
@@ -12278,6 +12446,8 @@ func init() {
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckAuthInfoPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckPingConfigOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckPingConfigPtrOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckServiceAgentAuthenticationOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckServiceAgentAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigMonitoredResourceOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigMonitoredResourcePtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigResourceGroupOutput{})

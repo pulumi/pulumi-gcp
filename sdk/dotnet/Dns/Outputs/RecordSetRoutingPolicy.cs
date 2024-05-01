@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RecordSetRoutingPolicyGeo> Geos;
         /// <summary>
-        /// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+        /// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RecordSetRoutingPolicyPrimaryBackup? PrimaryBackup;

@@ -119,6 +119,44 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Secret With Version Destroy Ttl
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_with_version_destroy_ttl = new Secret(&#34;secret-with-version-destroy-ttl&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret&#34;)
+ *             .versionDestroyTtl(&#34;2592000s&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto()
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secret With Automatic Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -446,6 +484,24 @@ public class Secret extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> versionAliases() {
         return Codegen.optional(this.versionAliases);
+    }
+    /**
+     * Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+     * with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately on calling destroy instead the version goes to
+     * a disabled state and the actual destruction happens after this TTL expires.
+     * 
+     */
+    @Export(name="versionDestroyTtl", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> versionDestroyTtl;
+
+    /**
+     * @return Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+     * with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately on calling destroy instead the version goes to
+     * a disabled state and the actual destruction happens after this TTL expires.
+     * 
+     */
+    public Output<Optional<String>> versionDestroyTtl() {
+        return Codegen.optional(this.versionDestroyTtl);
     }
 
     /**

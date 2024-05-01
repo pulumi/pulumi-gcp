@@ -613,7 +613,8 @@ class GetSecretsSecretResult(dict):
                  secret_id: str,
                  topics: Sequence['outputs.GetSecretsSecretTopicResult'],
                  ttl: str,
-                 version_aliases: Mapping[str, str]):
+                 version_aliases: Mapping[str, str],
+                 version_destroy_ttl: str):
         """
         :param Mapping[str, str] annotations: Custom metadata about the secret.
         :param str create_time: The time at which the Secret was created.
@@ -634,6 +635,11 @@ class GetSecretsSecretResult(dict):
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
                Only one of 'ttl' or 'expire_time' can be provided.
         :param Mapping[str, str] version_aliases: Mapping from version alias to version name.
+        :param str version_destroy_ttl: Secret Version TTL after destruction request.
+               This is a part of the delayed delete feature on Secret Version.
+               For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+               on calling destroy instead the version goes to a disabled state and
+               the actual destruction happens after this TTL expires.
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "create_time", create_time)
@@ -650,6 +656,7 @@ class GetSecretsSecretResult(dict):
         pulumi.set(__self__, "topics", topics)
         pulumi.set(__self__, "ttl", ttl)
         pulumi.set(__self__, "version_aliases", version_aliases)
+        pulumi.set(__self__, "version_destroy_ttl", version_destroy_ttl)
 
     @property
     @pulumi.getter
@@ -770,6 +777,18 @@ class GetSecretsSecretResult(dict):
         Mapping from version alias to version name.
         """
         return pulumi.get(self, "version_aliases")
+
+    @property
+    @pulumi.getter(name="versionDestroyTtl")
+    def version_destroy_ttl(self) -> str:
+        """
+        Secret Version TTL after destruction request.
+        This is a part of the delayed delete feature on Secret Version.
+        For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+        on calling destroy instead the version goes to a disabled state and
+        the actual destruction happens after this TTL expires.
+        """
+        return pulumi.get(self, "version_destroy_ttl")
 
 
 @pulumi.output_type

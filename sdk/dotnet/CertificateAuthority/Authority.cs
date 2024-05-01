@@ -337,6 +337,83 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// ### Privateca Certificate Authority Custom Ski
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateAuthority.Authority("default", new()
+    ///     {
+    ///         Pool = "ca-pool",
+    ///         CertificateAuthorityId = "my-certificate-authority",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = true,
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "HashiCorp",
+    ///                     CommonName = "my-certificate-authority",
+    ///                 },
+    ///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
+    ///                 {
+    ///                     DnsNames = new[]
+    ///                     {
+    ///                         "hashicorp.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SubjectKeyId = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectKeyIdArgs
+    ///             {
+    ///                 KeyId = "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                     MaxIssuerPathLength = 10,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         DigitalSignature = true,
+    ///                         ContentCommitment = true,
+    ///                         KeyEncipherment = false,
+    ///                         DataEncipherment = true,
+    ///                         KeyAgreement = true,
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                         DecipherOnly = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                         ClientAuth = false,
+    ///                         EmailProtection = true,
+    ///                         CodeSigning = true,
+    ///                         TimeStamping = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Lifetime = "86400s",
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             CloudKmsKeyVersion = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

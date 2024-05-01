@@ -37,6 +37,7 @@ public final class GetSecretResult {
     private List<GetSecretTopic> topics;
     private String ttl;
     private Map<String,String> versionAliases;
+    private String versionDestroyTtl;
 
     private GetSecretResult() {}
     public Map<String,String> annotations() {
@@ -91,6 +92,9 @@ public final class GetSecretResult {
     public Map<String,String> versionAliases() {
         return this.versionAliases;
     }
+    public String versionDestroyTtl() {
+        return this.versionDestroyTtl;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -117,6 +121,7 @@ public final class GetSecretResult {
         private List<GetSecretTopic> topics;
         private String ttl;
         private Map<String,String> versionAliases;
+        private String versionDestroyTtl;
         public Builder() {}
         public Builder(GetSecretResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -136,6 +141,7 @@ public final class GetSecretResult {
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
     	      this.versionAliases = defaults.versionAliases;
+    	      this.versionDestroyTtl = defaults.versionDestroyTtl;
         }
 
         @CustomType.Setter
@@ -273,6 +279,14 @@ public final class GetSecretResult {
             this.versionAliases = versionAliases;
             return this;
         }
+        @CustomType.Setter
+        public Builder versionDestroyTtl(String versionDestroyTtl) {
+            if (versionDestroyTtl == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "versionDestroyTtl");
+            }
+            this.versionDestroyTtl = versionDestroyTtl;
+            return this;
+        }
         public GetSecretResult build() {
             final var _resultValue = new GetSecretResult();
             _resultValue.annotations = annotations;
@@ -291,6 +305,7 @@ public final class GetSecretResult {
             _resultValue.topics = topics;
             _resultValue.ttl = ttl;
             _resultValue.versionAliases = versionAliases;
+            _resultValue.versionDestroyTtl = versionDestroyTtl;
             return _resultValue;
         }
     }

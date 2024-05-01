@@ -61,6 +61,7 @@ __all__ = [
     'UptimeCheckConfigHttpCheckAcceptedResponseStatusCode',
     'UptimeCheckConfigHttpCheckAuthInfo',
     'UptimeCheckConfigHttpCheckPingConfig',
+    'UptimeCheckConfigHttpCheckServiceAgentAuthentication',
     'UptimeCheckConfigMonitoredResource',
     'UptimeCheckConfigResourceGroup',
     'UptimeCheckConfigSyntheticMonitor',
@@ -3825,6 +3826,8 @@ class UptimeCheckConfigHttpCheck(dict):
             suggest = "ping_config"
         elif key == "requestMethod":
             suggest = "request_method"
+        elif key == "serviceAgentAuthentication":
+            suggest = "service_agent_authentication"
         elif key == "useSsl":
             suggest = "use_ssl"
         elif key == "validateSsl":
@@ -3853,12 +3856,13 @@ class UptimeCheckConfigHttpCheck(dict):
                  ping_config: Optional['outputs.UptimeCheckConfigHttpCheckPingConfig'] = None,
                  port: Optional[int] = None,
                  request_method: Optional[str] = None,
+                 service_agent_authentication: Optional['outputs.UptimeCheckConfigHttpCheckServiceAgentAuthentication'] = None,
                  use_ssl: Optional[bool] = None,
                  validate_ssl: Optional[bool] = None):
         """
         :param Sequence['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs'] accepted_response_status_codes: If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
                Structure is documented below.
-        :param 'UptimeCheckConfigHttpCheckAuthInfoArgs' auth_info: The authentication information. Optional when creating an HTTP check; defaults to empty.
+        :param 'UptimeCheckConfigHttpCheckAuthInfoArgs' auth_info: The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
                Structure is documented below.
         :param str body: The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
         :param str content_type: The content type to use for the check.
@@ -3873,6 +3877,8 @@ class UptimeCheckConfigHttpCheck(dict):
         :param str request_method: The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `request_method` defaults to `GET`.
                Default value is `GET`.
                Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
+        :param 'UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs' service_agent_authentication: The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+               Structure is documented below.
         :param bool use_ssl: If true, use HTTPS instead of HTTP to run the check.
         :param bool validate_ssl: Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`, setting `validate_ssl` to `true` has no effect.
         """
@@ -3898,6 +3904,8 @@ class UptimeCheckConfigHttpCheck(dict):
             pulumi.set(__self__, "port", port)
         if request_method is not None:
             pulumi.set(__self__, "request_method", request_method)
+        if service_agent_authentication is not None:
+            pulumi.set(__self__, "service_agent_authentication", service_agent_authentication)
         if use_ssl is not None:
             pulumi.set(__self__, "use_ssl", use_ssl)
         if validate_ssl is not None:
@@ -3916,7 +3924,7 @@ class UptimeCheckConfigHttpCheck(dict):
     @pulumi.getter(name="authInfo")
     def auth_info(self) -> Optional['outputs.UptimeCheckConfigHttpCheckAuthInfo']:
         """
-        The authentication information. Optional when creating an HTTP check; defaults to empty.
+        The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
         Structure is documented below.
         """
         return pulumi.get(self, "auth_info")
@@ -3996,6 +4004,15 @@ class UptimeCheckConfigHttpCheck(dict):
         Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
         """
         return pulumi.get(self, "request_method")
+
+    @property
+    @pulumi.getter(name="serviceAgentAuthentication")
+    def service_agent_authentication(self) -> Optional['outputs.UptimeCheckConfigHttpCheckServiceAgentAuthentication']:
+        """
+        The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_agent_authentication")
 
     @property
     @pulumi.getter(name="useSsl")
@@ -4130,6 +4147,27 @@ class UptimeCheckConfigHttpCheckPingConfig(dict):
         Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
         """
         return pulumi.get(self, "pings_count")
+
+
+@pulumi.output_type
+class UptimeCheckConfigHttpCheckServiceAgentAuthentication(dict):
+    def __init__(__self__, *,
+                 type: Optional[str] = None):
+        """
+        :param str type: The type of authentication to use.
+               Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of authentication to use.
+        Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

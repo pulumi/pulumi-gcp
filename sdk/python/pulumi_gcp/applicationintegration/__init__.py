@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .auth_config import *
 from .client import *
 from ._inputs import *
 from . import outputs

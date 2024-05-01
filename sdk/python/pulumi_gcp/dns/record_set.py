@@ -416,7 +416,7 @@ class RecordSet(pulumi.CustomResource):
             ))
         ```
 
-        ### Primary-Backup
+        ### Failover
 
         ```python
         import pulumi
@@ -654,7 +654,7 @@ class RecordSet(pulumi.CustomResource):
             ))
         ```
 
-        ### Primary-Backup
+        ### Failover
 
         ```python
         import pulumi

@@ -54,6 +54,7 @@ type LookupInstanceResult struct {
 	Name         string               `pulumi:"name"`
 	Networks     []GetInstanceNetwork `pulumi:"networks"`
 	Project      *string              `pulumi:"project"`
+	Protocol     string               `pulumi:"protocol"`
 	PulumiLabels map[string]string    `pulumi:"pulumiLabels"`
 	Tier         string               `pulumi:"tier"`
 	Zone         string               `pulumi:"zone"`
@@ -153,6 +154,10 @@ func (o LookupInstanceResultOutput) Networks() GetInstanceNetworkArrayOutput {
 
 func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) PulumiLabels() pulumi.StringMapOutput {

@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionArgs>? _exclusions;
 
         /// <summary>
-        /// An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+        /// An exclusion to apply during preconfigured WAF evaluation.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionArgs> Exclusions
         {

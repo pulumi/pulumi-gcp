@@ -63,6 +63,54 @@ import (
 //	}
 //
 // ```
+// ### Firebasehosting Version Path
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
+//				Project: pulumi.String("my-project-name"),
+//				SiteId:  pulumi.String("site-id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "default", &firebase.HostingVersionArgs{
+//				SiteId: _default.SiteId,
+//				Config: &firebase.HostingVersionConfigArgs{
+//					Rewrites: firebase.HostingVersionConfigRewriteArray{
+//						&firebase.HostingVersionConfigRewriteArgs{
+//							Glob: pulumi.String("**"),
+//							Path: pulumi.String("/index.html"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewHostingRelease(ctx, "default", &firebase.HostingReleaseArgs{
+//				SiteId:      _default.SiteId,
+//				VersionName: defaultHostingVersion.Name,
+//				Message:     pulumi.String("Path Rewrite"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Firebasehosting Version Cloud Run
 //
 // ```go

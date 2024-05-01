@@ -64,17 +64,18 @@ type LookupSecretResult struct {
 	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	ExpireTime           string            `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                 `pulumi:"id"`
-	Labels         map[string]string      `pulumi:"labels"`
-	Name           string                 `pulumi:"name"`
-	Project        *string                `pulumi:"project"`
-	PulumiLabels   map[string]string      `pulumi:"pulumiLabels"`
-	Replications   []GetSecretReplication `pulumi:"replications"`
-	Rotations      []GetSecretRotation    `pulumi:"rotations"`
-	SecretId       string                 `pulumi:"secretId"`
-	Topics         []GetSecretTopic       `pulumi:"topics"`
-	Ttl            string                 `pulumi:"ttl"`
-	VersionAliases map[string]string      `pulumi:"versionAliases"`
+	Id                string                 `pulumi:"id"`
+	Labels            map[string]string      `pulumi:"labels"`
+	Name              string                 `pulumi:"name"`
+	Project           *string                `pulumi:"project"`
+	PulumiLabels      map[string]string      `pulumi:"pulumiLabels"`
+	Replications      []GetSecretReplication `pulumi:"replications"`
+	Rotations         []GetSecretRotation    `pulumi:"rotations"`
+	SecretId          string                 `pulumi:"secretId"`
+	Topics            []GetSecretTopic       `pulumi:"topics"`
+	Ttl               string                 `pulumi:"ttl"`
+	VersionAliases    map[string]string      `pulumi:"versionAliases"`
+	VersionDestroyTtl string                 `pulumi:"versionDestroyTtl"`
 }
 
 func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
@@ -180,6 +181,10 @@ func (o LookupSecretResultOutput) Ttl() pulumi.StringOutput {
 
 func (o LookupSecretResultOutput) VersionAliases() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.VersionAliases }).(pulumi.StringMapOutput)
+}
+
+func (o LookupSecretResultOutput) VersionDestroyTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.VersionDestroyTtl }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -116,6 +116,11 @@ export class OrganizationSink extends pulumi.CustomResource {
      */
     public readonly includeChildren!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     */
+    public readonly interceptChildren!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of the logging sink.
      */
     public readonly name!: pulumi.Output<string>;
@@ -149,6 +154,7 @@ export class OrganizationSink extends pulumi.CustomResource {
             resourceInputs["exclusions"] = state ? state.exclusions : undefined;
             resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["includeChildren"] = state ? state.includeChildren : undefined;
+            resourceInputs["interceptChildren"] = state ? state.interceptChildren : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["writerIdentity"] = state ? state.writerIdentity : undefined;
@@ -167,6 +173,7 @@ export class OrganizationSink extends pulumi.CustomResource {
             resourceInputs["exclusions"] = args ? args.exclusions : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["includeChildren"] = args ? args.includeChildren : undefined;
+            resourceInputs["interceptChildren"] = args ? args.interceptChildren : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["writerIdentity"] = undefined /*out*/;
@@ -219,6 +226,11 @@ export interface OrganizationSinkState {
      * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
      */
     includeChildren?: pulumi.Input<boolean>;
+    /**
+     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     */
+    interceptChildren?: pulumi.Input<boolean>;
     /**
      * The name of the logging sink.
      */
@@ -277,6 +289,11 @@ export interface OrganizationSinkArgs {
      * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
      */
     includeChildren?: pulumi.Input<boolean>;
+    /**
+     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     */
+    interceptChildren?: pulumi.Input<boolean>;
     /**
      * The name of the logging sink.
      */

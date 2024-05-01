@@ -855,6 +855,11 @@ export type SecurityPolicy = import("./securityPolicy").SecurityPolicy;
 export const SecurityPolicy: typeof import("./securityPolicy").SecurityPolicy = null as any;
 utilities.lazyLoad(exports, ["SecurityPolicy"], () => require("./securityPolicy"));
 
+export { SecurityPolicyRuleArgs, SecurityPolicyRuleState } from "./securityPolicyRule";
+export type SecurityPolicyRule = import("./securityPolicyRule").SecurityPolicyRule;
+export const SecurityPolicyRule: typeof import("./securityPolicyRule").SecurityPolicyRule = null as any;
+utilities.lazyLoad(exports, ["SecurityPolicyRule"], () => require("./securityPolicyRule"));
+
 export { SecurityScanConfigArgs, SecurityScanConfigState } from "./securityScanConfig";
 export type SecurityScanConfig = import("./securityScanConfig").SecurityScanConfig;
 export const SecurityScanConfig: typeof import("./securityScanConfig").SecurityScanConfig = null as any;
@@ -1216,6 +1221,8 @@ const _module = {
                 return new SSLPolicy(name, <any>undefined, { urn })
             case "gcp:compute/securityPolicy:SecurityPolicy":
                 return new SecurityPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/securityPolicyRule:SecurityPolicyRule":
+                return new SecurityPolicyRule(name, <any>undefined, { urn })
             case "gcp:compute/securityScanConfig:SecurityScanConfig":
                 return new SecurityScanConfig(name, <any>undefined, { urn })
             case "gcp:compute/serviceAttachment:ServiceAttachment":
@@ -1383,6 +1390,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/routerPeer", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sSLCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sSLPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/securityPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/securityPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/securityScanConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/serviceAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sharedVPCHostProject", _module)

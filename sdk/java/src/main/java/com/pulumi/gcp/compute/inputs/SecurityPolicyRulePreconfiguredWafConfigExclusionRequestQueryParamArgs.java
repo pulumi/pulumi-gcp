@@ -17,14 +17,26 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQuery
     public static final SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs Empty = new SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs();
 
     /**
-     * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+     * You can specify an exact match or a partial match by using a field operator and a field value.
+     * Available options:
+     * EQUALS: The operator matches if the field value equals the specified value.
+     * STARTS_WITH: The operator matches if the field value starts with the specified value.
+     * ENDS_WITH: The operator matches if the field value ends with the specified value.
+     * CONTAINS: The operator matches if the field value contains the specified value.
+     * EQUALS_ANY: The operator matches if the field value is any value.
      * 
      */
     @Import(name="operator", required=true)
     private Output<String> operator;
 
     /**
-     * @return You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+     * @return You can specify an exact match or a partial match by using a field operator and a field value.
+     * Available options:
+     * EQUALS: The operator matches if the field value equals the specified value.
+     * STARTS_WITH: The operator matches if the field value starts with the specified value.
+     * ENDS_WITH: The operator matches if the field value ends with the specified value.
+     * CONTAINS: The operator matches if the field value contains the specified value.
+     * EQUALS_ANY: The operator matches if the field value is any value.
      * 
      */
     public Output<String> operator() {
@@ -32,14 +44,16 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQuery
     }
 
     /**
-     * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+     * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+     * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+     * @return A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+     * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
      * 
      */
     public Optional<Output<String>> value() {
@@ -72,7 +86,13 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQuery
         }
 
         /**
-         * @param operator You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         * @param operator You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
          * 
          * @return builder
          * 
@@ -83,7 +103,13 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQuery
         }
 
         /**
-         * @param operator You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         * @param operator You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
          * 
          * @return builder
          * 
@@ -93,7 +119,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQuery
         }
 
         /**
-         * @param value A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         * @param value A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
          * 
          * @return builder
          * 
@@ -104,7 +131,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQuery
         }
 
         /**
-         * @param value A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         * @param value A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
          * 
          * @return builder
          * 

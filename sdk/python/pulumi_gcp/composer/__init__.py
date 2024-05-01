@@ -8,5 +8,6 @@ import typing
 from .environment import *
 from .get_environment import *
 from .get_image_versions import *
+from .user_workloads_secret import *
 from ._inputs import *
 from . import outputs

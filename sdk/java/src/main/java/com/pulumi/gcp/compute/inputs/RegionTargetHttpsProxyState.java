@@ -160,6 +160,37 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
     }
 
     /**
+     * A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     * 
+     */
+    @Import(name="serverTlsPolicy")
+    private @Nullable Output<String> serverTlsPolicy;
+
+    /**
+     * @return A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     * 
+     */
+    public Optional<Output<String>> serverTlsPolicy() {
+        return Optional.ofNullable(this.serverTlsPolicy);
+    }
+
+    /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
      * sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -229,6 +260,7 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
         this.proxyId = $.proxyId;
         this.region = $.region;
         this.selfLink = $.selfLink;
+        this.serverTlsPolicy = $.serverTlsPolicy;
         this.sslCertificates = $.sslCertificates;
         this.sslPolicy = $.sslPolicy;
         this.urlMap = $.urlMap;
@@ -453,6 +485,43 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param serverTlsPolicy A URL referring to a networksecurity.ServerTlsPolicy
+         * resource that describes how the proxy should authenticate inbound
+         * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+         * attached to globalForwardingRules with the loadBalancingScheme
+         * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+         * For details which ServerTlsPolicy resources are accepted with
+         * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+         * loadBalancingScheme consult ServerTlsPolicy documentation.
+         * If left blank, communications are not encrypted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverTlsPolicy(@Nullable Output<String> serverTlsPolicy) {
+            $.serverTlsPolicy = serverTlsPolicy;
+            return this;
+        }
+
+        /**
+         * @param serverTlsPolicy A URL referring to a networksecurity.ServerTlsPolicy
+         * resource that describes how the proxy should authenticate inbound
+         * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+         * attached to globalForwardingRules with the loadBalancingScheme
+         * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+         * For details which ServerTlsPolicy resources are accepted with
+         * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+         * loadBalancingScheme consult ServerTlsPolicy documentation.
+         * If left blank, communications are not encrypted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverTlsPolicy(String serverTlsPolicy) {
+            return serverTlsPolicy(Output.of(serverTlsPolicy));
         }
 
         /**

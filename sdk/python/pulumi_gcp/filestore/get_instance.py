@@ -22,7 +22,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, create_time=None, description=None, effective_labels=None, etag=None, file_shares=None, id=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, project=None, pulumi_labels=None, tier=None, zone=None):
+    def __init__(__self__, create_time=None, description=None, effective_labels=None, etag=None, file_shares=None, id=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, project=None, protocol=None, pulumi_labels=None, tier=None, zone=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -59,6 +59,9 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if protocol and not isinstance(protocol, str):
+            raise TypeError("Expected argument 'protocol' to be a str")
+        pulumi.set(__self__, "protocol", protocol)
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
@@ -133,6 +136,11 @@ class GetInstanceResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+    @property
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "pulumi_labels")
@@ -166,6 +174,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             name=self.name,
             networks=self.networks,
             project=self.project,
+            protocol=self.protocol,
             pulumi_labels=self.pulumi_labels,
             tier=self.tier,
             zone=self.zone)
@@ -210,6 +219,7 @@ def get_instance(location: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         networks=pulumi.get(__ret__, 'networks'),
         project=pulumi.get(__ret__, 'project'),
+        protocol=pulumi.get(__ret__, 'protocol'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         tier=pulumi.get(__ret__, 'tier'),
         zone=pulumi.get(__ret__, 'zone'))

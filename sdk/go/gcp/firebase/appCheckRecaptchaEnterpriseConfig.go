@@ -30,6 +30,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -37,7 +38,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
+//			// Enables the reCAPTCHA Enterprise API
+//			_, err := projects.NewService(ctx, "recaptcha_enterprise", &projects.ServiceArgs{
+//				Project:          pulumi.String("my-project-name"),
+//				Service:          pulumi.String("recaptchaenterprise.googleapis.com"),
+//				DisableOnDestroy: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Web App for reCAPTCHA Enterprise"),
 //			})

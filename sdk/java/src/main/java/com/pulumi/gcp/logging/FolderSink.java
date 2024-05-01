@@ -235,6 +235,22 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.includeChildren);
     }
     /**
+     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     * 
+     */
+    @Export(name="interceptChildren", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> interceptChildren;
+
+    /**
+     * @return Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     * 
+     */
+    public Output<Optional<Boolean>> interceptChildren() {
+        return Codegen.optional(this.interceptChildren);
+    }
+    /**
      * The name of the logging sink.
      * 
      */

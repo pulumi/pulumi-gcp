@@ -8,8 +8,11 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigArgs;
+import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectKeyIdArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigArgs;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class CertificateConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -55,6 +58,23 @@ public final class CertificateConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="subjectKeyId")
+    private @Nullable Output<CertificateConfigSubjectKeyIdArgs> subjectKeyId;
+
+    /**
+     * @return When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CertificateConfigSubjectKeyIdArgs>> subjectKeyId() {
+        return Optional.ofNullable(this.subjectKeyId);
+    }
+
+    /**
      * Describes how some of the technical X.509 fields in a certificate should be populated.
      * Structure is documented below.
      * 
@@ -76,6 +96,7 @@ public final class CertificateConfigArgs extends com.pulumi.resources.ResourceAr
     private CertificateConfigArgs(CertificateConfigArgs $) {
         this.publicKey = $.publicKey;
         this.subjectConfig = $.subjectConfig;
+        this.subjectKeyId = $.subjectKeyId;
         this.x509Config = $.x509Config;
     }
 
@@ -145,6 +166,29 @@ public final class CertificateConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder subjectConfig(CertificateConfigSubjectConfigArgs subjectConfig) {
             return subjectConfig(Output.of(subjectConfig));
+        }
+
+        /**
+         * @param subjectKeyId When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectKeyId(@Nullable Output<CertificateConfigSubjectKeyIdArgs> subjectKeyId) {
+            $.subjectKeyId = subjectKeyId;
+            return this;
+        }
+
+        /**
+         * @param subjectKeyId When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectKeyId(CertificateConfigSubjectKeyIdArgs subjectKeyId) {
+            return subjectKeyId(Output.of(subjectKeyId));
         }
 
         /**

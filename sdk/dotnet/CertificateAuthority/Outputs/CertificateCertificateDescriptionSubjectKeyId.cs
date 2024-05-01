@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateCertificateDescriptionSubjectKeyId
     {
         /// <summary>
-        /// (Output)
-        /// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        /// The value of the KeyId in lowercase hexidecimal.
         /// </summary>
         public readonly string? KeyId;
 

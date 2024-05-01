@@ -18,16 +18,21 @@ __all__ = [
 @pulumi.input_type
 class DataPolicyDataMaskingPolicyArgs:
     def __init__(__self__, *,
-                 predefined_expression: pulumi.Input[str]):
+                 predefined_expression: Optional[pulumi.Input[str]] = None,
+                 routine: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] predefined_expression: The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
                Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
+        :param pulumi.Input[str] routine: The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
         """
-        pulumi.set(__self__, "predefined_expression", predefined_expression)
+        if predefined_expression is not None:
+            pulumi.set(__self__, "predefined_expression", predefined_expression)
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
 
     @property
     @pulumi.getter(name="predefinedExpression")
-    def predefined_expression(self) -> pulumi.Input[str]:
+    def predefined_expression(self) -> Optional[pulumi.Input[str]]:
         """
         The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
         Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
@@ -35,8 +40,20 @@ class DataPolicyDataMaskingPolicyArgs:
         return pulumi.get(self, "predefined_expression")
 
     @predefined_expression.setter
-    def predefined_expression(self, value: pulumi.Input[str]):
+    def predefined_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "predefined_expression", value)
+
+    @property
+    @pulumi.getter
+    def routine(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+        """
+        return pulumi.get(self, "routine")
+
+    @routine.setter
+    def routine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "routine", value)
 
 
 @pulumi.input_type
