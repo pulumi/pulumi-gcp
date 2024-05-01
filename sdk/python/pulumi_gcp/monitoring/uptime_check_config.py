@@ -655,6 +655,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 port=443,
                 use_ssl=True,
                 validate_ssl=True,
+                service_agent_authentication=gcp.monitoring.UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs(
+                    type="OIDC_TOKEN",
+                ),
             ),
             monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
                 type="uptime_url",
@@ -893,6 +896,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 port=443,
                 use_ssl=True,
                 validate_ssl=True,
+                service_agent_authentication=gcp.monitoring.UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs(
+                    type="OIDC_TOKEN",
+                ),
             ),
             monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
                 type="uptime_url",

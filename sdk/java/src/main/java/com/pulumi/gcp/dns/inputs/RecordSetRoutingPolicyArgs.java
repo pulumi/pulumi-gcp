@@ -52,7 +52,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+     * The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
      * Structure is documented below.
      * 
      */
@@ -60,7 +60,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
     private @Nullable Output<RecordSetRoutingPolicyPrimaryBackupArgs> primaryBackup;
 
     /**
-     * @return The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+     * @return The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
      * Structure is documented below.
      * 
      */
@@ -168,7 +168,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param primaryBackup The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+         * @param primaryBackup The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
          * Structure is documented below.
          * 
          * @return builder
@@ -180,7 +180,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param primaryBackup The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+         * @param primaryBackup The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
          * Structure is documented below.
          * 
          * @return builder

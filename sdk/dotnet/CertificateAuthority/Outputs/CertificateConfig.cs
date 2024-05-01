@@ -27,6 +27,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// </summary>
         public readonly Outputs.CertificateConfigSubjectConfig SubjectConfig;
         /// <summary>
+        /// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CertificateConfigSubjectKeyId? SubjectKeyId;
+        /// <summary>
         /// Describes how some of the technical X.509 fields in a certificate should be populated.
         /// Structure is documented below.
         /// </summary>
@@ -38,10 +43,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             Outputs.CertificateConfigSubjectConfig subjectConfig,
 
+            Outputs.CertificateConfigSubjectKeyId? subjectKeyId,
+
             Outputs.CertificateConfigX509Config x509Config)
         {
             PublicKey = publicKey;
             SubjectConfig = subjectConfig;
+            SubjectKeyId = subjectKeyId;
             X509Config = x509Config;
         }
     }

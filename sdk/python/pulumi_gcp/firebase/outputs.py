@@ -1418,11 +1418,13 @@ class HostingVersionConfigRewrite(dict):
     def __init__(__self__, *,
                  function: Optional[str] = None,
                  glob: Optional[str] = None,
+                 path: Optional[str] = None,
                  regex: Optional[str] = None,
                  run: Optional['outputs.HostingVersionConfigRewriteRun'] = None):
         """
         :param str function: The function to proxy requests to. Must match the exported function name exactly.
         :param str glob: The user-supplied glob to match against the request URL path.
+        :param str path: The URL path to rewrite the request to.
         :param str regex: The user-supplied RE2 regular expression to match against the request URL path.
         :param 'HostingVersionConfigRewriteRunArgs' run: The request will be forwarded to Cloud Run.
                Structure is documented below.
@@ -1431,6 +1433,8 @@ class HostingVersionConfigRewrite(dict):
             pulumi.set(__self__, "function", function)
         if glob is not None:
             pulumi.set(__self__, "glob", glob)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
         if run is not None:
@@ -1451,6 +1455,14 @@ class HostingVersionConfigRewrite(dict):
         The user-supplied glob to match against the request URL path.
         """
         return pulumi.get(self, "glob")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The URL path to rewrite the request to.
+        """
+        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter

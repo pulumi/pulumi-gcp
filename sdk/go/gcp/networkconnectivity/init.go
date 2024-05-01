@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:networkconnectivity/hub:Hub":
 		r = &Hub{}
+	case "gcp:networkconnectivity/internalRange:InternalRange":
+		r = &InternalRange{}
 	case "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute":
 		r = &PolicyBasedRoute{}
 	case "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy":
@@ -45,6 +47,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkconnectivity/hub",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkconnectivity/internalRange",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

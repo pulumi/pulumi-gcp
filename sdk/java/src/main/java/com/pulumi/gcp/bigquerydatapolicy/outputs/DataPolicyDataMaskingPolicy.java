@@ -4,9 +4,10 @@
 package com.pulumi.gcp.bigquerydatapolicy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DataPolicyDataMaskingPolicy {
@@ -15,7 +16,12 @@ public final class DataPolicyDataMaskingPolicy {
      * Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
      * 
      */
-    private String predefinedExpression;
+    private @Nullable String predefinedExpression;
+    /**
+     * @return The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+     * 
+     */
+    private @Nullable String routine;
 
     private DataPolicyDataMaskingPolicy() {}
     /**
@@ -23,8 +29,15 @@ public final class DataPolicyDataMaskingPolicy {
      * Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
      * 
      */
-    public String predefinedExpression() {
-        return this.predefinedExpression;
+    public Optional<String> predefinedExpression() {
+        return Optional.ofNullable(this.predefinedExpression);
+    }
+    /**
+     * @return The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+     * 
+     */
+    public Optional<String> routine() {
+        return Optional.ofNullable(this.routine);
     }
 
     public static Builder builder() {
@@ -36,24 +49,31 @@ public final class DataPolicyDataMaskingPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String predefinedExpression;
+        private @Nullable String predefinedExpression;
+        private @Nullable String routine;
         public Builder() {}
         public Builder(DataPolicyDataMaskingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.predefinedExpression = defaults.predefinedExpression;
+    	      this.routine = defaults.routine;
         }
 
         @CustomType.Setter
-        public Builder predefinedExpression(String predefinedExpression) {
-            if (predefinedExpression == null) {
-              throw new MissingRequiredPropertyException("DataPolicyDataMaskingPolicy", "predefinedExpression");
-            }
+        public Builder predefinedExpression(@Nullable String predefinedExpression) {
+
             this.predefinedExpression = predefinedExpression;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder routine(@Nullable String routine) {
+
+            this.routine = routine;
             return this;
         }
         public DataPolicyDataMaskingPolicy build() {
             final var _resultValue = new DataPolicyDataMaskingPolicy();
             _resultValue.predefinedExpression = predefinedExpression;
+            _resultValue.routine = routine;
             return _resultValue;
         }
     }

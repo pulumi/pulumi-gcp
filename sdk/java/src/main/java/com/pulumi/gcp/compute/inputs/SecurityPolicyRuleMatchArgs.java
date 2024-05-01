@@ -18,8 +18,8 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     public static final SecurityPolicyRuleMatchArgs Empty = new SecurityPolicyRuleMatchArgs();
 
     /**
-     * The configuration options available when specifying `versioned_expr`.
-     * This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+     * The configuration options available when specifying versionedExpr.
+     * This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
      * Structure is documented below.
      * 
      */
@@ -27,8 +27,8 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     private @Nullable Output<SecurityPolicyRuleMatchConfigArgs> config;
 
     /**
-     * @return The configuration options available when specifying `versioned_expr`.
-     * This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+     * @return The configuration options available when specifying versionedExpr.
+     * This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
      * Structure is documented below.
      * 
      */
@@ -37,8 +37,7 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-     * such as `origin.ip`, `source.region_code` and `contents` in the request header.
+     * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
      * Structure is documented below.
      * 
      */
@@ -46,8 +45,7 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     private @Nullable Output<SecurityPolicyRuleMatchExprArgs> expr;
 
     /**
-     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-     * such as `origin.ip`, `source.region_code` and `contents` in the request header.
+     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
      * Structure is documented below.
      * 
      */
@@ -56,16 +54,18 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Predefined rule expression. If this field is specified, `config` must also be specified.
-     * Available options:
+     * Preconfigured versioned expression. If this field is specified, config must also be specified.
+     * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+     * Possible values are: `SRC_IPS_V1`.
      * 
      */
     @Import(name="versionedExpr")
     private @Nullable Output<String> versionedExpr;
 
     /**
-     * @return Predefined rule expression. If this field is specified, `config` must also be specified.
-     * Available options:
+     * @return Preconfigured versioned expression. If this field is specified, config must also be specified.
+     * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+     * Possible values are: `SRC_IPS_V1`.
      * 
      */
     public Optional<Output<String>> versionedExpr() {
@@ -99,8 +99,8 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param config The configuration options available when specifying `versioned_expr`.
-         * This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+         * @param config The configuration options available when specifying versionedExpr.
+         * This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
          * Structure is documented below.
          * 
          * @return builder
@@ -112,8 +112,8 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param config The configuration options available when specifying `versioned_expr`.
-         * This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+         * @param config The configuration options available when specifying versionedExpr.
+         * This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
          * Structure is documented below.
          * 
          * @return builder
@@ -124,8 +124,7 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param expr User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-         * such as `origin.ip`, `source.region_code` and `contents` in the request header.
+         * @param expr User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
          * Structure is documented below.
          * 
          * @return builder
@@ -137,8 +136,7 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param expr User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-         * such as `origin.ip`, `source.region_code` and `contents` in the request header.
+         * @param expr User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
          * Structure is documented below.
          * 
          * @return builder
@@ -149,8 +147,9 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param versionedExpr Predefined rule expression. If this field is specified, `config` must also be specified.
-         * Available options:
+         * @param versionedExpr Preconfigured versioned expression. If this field is specified, config must also be specified.
+         * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+         * Possible values are: `SRC_IPS_V1`.
          * 
          * @return builder
          * 
@@ -161,8 +160,9 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param versionedExpr Predefined rule expression. If this field is specified, `config` must also be specified.
-         * Available options:
+         * @param versionedExpr Preconfigured versioned expression. If this field is specified, config must also be specified.
+         * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+         * Possible values are: `SRC_IPS_V1`.
          * 
          * @return builder
          * 

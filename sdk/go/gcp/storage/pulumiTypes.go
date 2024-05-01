@@ -8631,6 +8631,139 @@ func (o GetBucketObjectRetentionArrayOutput) Index(i pulumi.IntInput) GetBucketO
 	}).(GetBucketObjectRetentionOutput)
 }
 
+type GetBucketObjectsBucketObject struct {
+	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
+	ContentType string `pulumi:"contentType"`
+	// A url reference to download this object.
+	MediaLink string `pulumi:"mediaLink"`
+	// The name of the object.
+	Name string `pulumi:"name"`
+	// A url reference to this object.
+	SelfLink string `pulumi:"selfLink"`
+	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
+	StorageClass string `pulumi:"storageClass"`
+}
+
+// GetBucketObjectsBucketObjectInput is an input type that accepts GetBucketObjectsBucketObjectArgs and GetBucketObjectsBucketObjectOutput values.
+// You can construct a concrete instance of `GetBucketObjectsBucketObjectInput` via:
+//
+//	GetBucketObjectsBucketObjectArgs{...}
+type GetBucketObjectsBucketObjectInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectsBucketObjectOutput() GetBucketObjectsBucketObjectOutput
+	ToGetBucketObjectsBucketObjectOutputWithContext(context.Context) GetBucketObjectsBucketObjectOutput
+}
+
+type GetBucketObjectsBucketObjectArgs struct {
+	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// A url reference to download this object.
+	MediaLink pulumi.StringInput `pulumi:"mediaLink"`
+	// The name of the object.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A url reference to this object.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+}
+
+func (GetBucketObjectsBucketObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectsBucketObject)(nil)).Elem()
+}
+
+func (i GetBucketObjectsBucketObjectArgs) ToGetBucketObjectsBucketObjectOutput() GetBucketObjectsBucketObjectOutput {
+	return i.ToGetBucketObjectsBucketObjectOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectsBucketObjectArgs) ToGetBucketObjectsBucketObjectOutputWithContext(ctx context.Context) GetBucketObjectsBucketObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectsBucketObjectOutput)
+}
+
+// GetBucketObjectsBucketObjectArrayInput is an input type that accepts GetBucketObjectsBucketObjectArray and GetBucketObjectsBucketObjectArrayOutput values.
+// You can construct a concrete instance of `GetBucketObjectsBucketObjectArrayInput` via:
+//
+//	GetBucketObjectsBucketObjectArray{ GetBucketObjectsBucketObjectArgs{...} }
+type GetBucketObjectsBucketObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectsBucketObjectArrayOutput() GetBucketObjectsBucketObjectArrayOutput
+	ToGetBucketObjectsBucketObjectArrayOutputWithContext(context.Context) GetBucketObjectsBucketObjectArrayOutput
+}
+
+type GetBucketObjectsBucketObjectArray []GetBucketObjectsBucketObjectInput
+
+func (GetBucketObjectsBucketObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectsBucketObject)(nil)).Elem()
+}
+
+func (i GetBucketObjectsBucketObjectArray) ToGetBucketObjectsBucketObjectArrayOutput() GetBucketObjectsBucketObjectArrayOutput {
+	return i.ToGetBucketObjectsBucketObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectsBucketObjectArray) ToGetBucketObjectsBucketObjectArrayOutputWithContext(ctx context.Context) GetBucketObjectsBucketObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectsBucketObjectArrayOutput)
+}
+
+type GetBucketObjectsBucketObjectOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectsBucketObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectsBucketObject)(nil)).Elem()
+}
+
+func (o GetBucketObjectsBucketObjectOutput) ToGetBucketObjectsBucketObjectOutput() GetBucketObjectsBucketObjectOutput {
+	return o
+}
+
+func (o GetBucketObjectsBucketObjectOutput) ToGetBucketObjectsBucketObjectOutputWithContext(ctx context.Context) GetBucketObjectsBucketObjectOutput {
+	return o
+}
+
+// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
+func (o GetBucketObjectsBucketObjectOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsBucketObject) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// A url reference to download this object.
+func (o GetBucketObjectsBucketObjectOutput) MediaLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsBucketObject) string { return v.MediaLink }).(pulumi.StringOutput)
+}
+
+// The name of the object.
+func (o GetBucketObjectsBucketObjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsBucketObject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A url reference to this object.
+func (o GetBucketObjectsBucketObjectOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsBucketObject) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
+func (o GetBucketObjectsBucketObjectOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsBucketObject) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+type GetBucketObjectsBucketObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectsBucketObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectsBucketObject)(nil)).Elem()
+}
+
+func (o GetBucketObjectsBucketObjectArrayOutput) ToGetBucketObjectsBucketObjectArrayOutput() GetBucketObjectsBucketObjectArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectsBucketObjectArrayOutput) ToGetBucketObjectsBucketObjectArrayOutputWithContext(ctx context.Context) GetBucketObjectsBucketObjectArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectsBucketObjectArrayOutput) Index(i pulumi.IntInput) GetBucketObjectsBucketObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketObjectsBucketObject {
+		return vs[0].([]GetBucketObjectsBucketObject)[vs[1].(int)]
+	}).(GetBucketObjectsBucketObjectOutput)
+}
+
 type GetBucketRetentionPolicy struct {
 	// If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 	IsLocked bool `pulumi:"isLocked"`
@@ -9157,6 +9290,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectCustomerEncryptionArrayInput)(nil)).Elem(), GetBucketObjectCustomerEncryptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectRetentionInput)(nil)).Elem(), GetBucketObjectRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectRetentionArrayInput)(nil)).Elem(), GetBucketObjectRetentionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectsBucketObjectInput)(nil)).Elem(), GetBucketObjectsBucketObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectsBucketObjectArrayInput)(nil)).Elem(), GetBucketObjectsBucketObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketRetentionPolicyInput)(nil)).Elem(), GetBucketRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketRetentionPolicyArrayInput)(nil)).Elem(), GetBucketRetentionPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketSoftDeletePolicyInput)(nil)).Elem(), GetBucketSoftDeletePolicyArgs{})
@@ -9275,6 +9410,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBucketObjectCustomerEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectRetentionOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectRetentionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectsBucketObjectOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectsBucketObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(GetBucketRetentionPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketSoftDeletePolicyOutput{})

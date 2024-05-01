@@ -291,6 +291,21 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Instance level network configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.InstanceNetworkConfig?> NetworkConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The public IP addresses for the Instance. This is available ONLY when
+        /// networkConfig.enablePublicIp is set to true. This is the connection
+        /// endpoint for an end-user application.
+        /// </summary>
+        [Output("publicIpAddress")]
+        public Output<string> PublicIpAddress { get; private set; } = null!;
+
+        /// <summary>
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
@@ -484,6 +499,13 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.InstanceMachineConfigArgs>? MachineConfig { get; set; }
 
         /// <summary>
+        /// Instance level network configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.InstanceNetworkConfigArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
         /// Configuration for query insights.
         /// Structure is documented below.
         /// </summary>
@@ -643,6 +665,21 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Instance level network configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.InstanceNetworkConfigGetArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
+        /// The public IP addresses for the Instance. This is available ONLY when
+        /// networkConfig.enablePublicIp is set to true. This is the connection
+        /// endpoint for an end-user application.
+        /// </summary>
+        [Input("publicIpAddress")]
+        public Input<string>? PublicIpAddress { get; set; }
 
         [Input("pulumiLabels")]
         private InputMap<string>? _pulumiLabels;

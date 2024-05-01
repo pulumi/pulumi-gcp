@@ -73,6 +73,60 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firebasehosting Version Path
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.HostingSite;
+ * import com.pulumi.gcp.firebase.HostingSiteArgs;
+ * import com.pulumi.gcp.firebase.HostingVersion;
+ * import com.pulumi.gcp.firebase.HostingVersionArgs;
+ * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+ * import com.pulumi.gcp.firebase.HostingRelease;
+ * import com.pulumi.gcp.firebase.HostingReleaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .siteId(&#34;site-id&#34;)
+ *             .build());
+ * 
+ *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
+ *             .siteId(default_.siteId())
+ *             .config(HostingVersionConfigArgs.builder()
+ *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
+ *                     .glob(&#34;**&#34;)
+ *                     .path(&#34;/index.html&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
+ *             .siteId(default_.siteId())
+ *             .versionName(defaultHostingVersion.name())
+ *             .message(&#34;Path Rewrite&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Version Cloud Run
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

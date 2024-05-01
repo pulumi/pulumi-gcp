@@ -7,8 +7,11 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigPublicKey;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigSubjectConfig;
+import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigSubjectKeyId;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509Config;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateConfig {
@@ -26,6 +29,12 @@ public final class CertificateConfig {
      * 
      */
     private CertificateConfigSubjectConfig subjectConfig;
+    /**
+     * @return When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable CertificateConfigSubjectKeyId subjectKeyId;
     /**
      * @return Describes how some of the technical X.509 fields in a certificate should be populated.
      * Structure is documented below.
@@ -53,6 +62,14 @@ public final class CertificateConfig {
         return this.subjectConfig;
     }
     /**
+     * @return When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * Structure is documented below.
+     * 
+     */
+    public Optional<CertificateConfigSubjectKeyId> subjectKeyId() {
+        return Optional.ofNullable(this.subjectKeyId);
+    }
+    /**
      * @return Describes how some of the technical X.509 fields in a certificate should be populated.
      * Structure is documented below.
      * 
@@ -72,12 +89,14 @@ public final class CertificateConfig {
     public static final class Builder {
         private CertificateConfigPublicKey publicKey;
         private CertificateConfigSubjectConfig subjectConfig;
+        private @Nullable CertificateConfigSubjectKeyId subjectKeyId;
         private CertificateConfigX509Config x509Config;
         public Builder() {}
         public Builder(CertificateConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicKey = defaults.publicKey;
     	      this.subjectConfig = defaults.subjectConfig;
+    	      this.subjectKeyId = defaults.subjectKeyId;
     	      this.x509Config = defaults.x509Config;
         }
 
@@ -98,6 +117,12 @@ public final class CertificateConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder subjectKeyId(@Nullable CertificateConfigSubjectKeyId subjectKeyId) {
+
+            this.subjectKeyId = subjectKeyId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder x509Config(CertificateConfigX509Config x509Config) {
             if (x509Config == null) {
               throw new MissingRequiredPropertyException("CertificateConfig", "x509Config");
@@ -109,6 +134,7 @@ public final class CertificateConfig {
             final var _resultValue = new CertificateConfig();
             _resultValue.publicKey = publicKey;
             _resultValue.subjectConfig = subjectConfig;
+            _resultValue.subjectKeyId = subjectKeyId;
             _resultValue.x509Config = x509Config;
             return _resultValue;
         }

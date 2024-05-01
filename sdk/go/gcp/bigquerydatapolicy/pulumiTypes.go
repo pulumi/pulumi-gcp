@@ -16,7 +16,9 @@ var _ = internal.GetEnvOrDefault
 type DataPolicyDataMaskingPolicy struct {
 	// The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
 	// Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
-	PredefinedExpression string `pulumi:"predefinedExpression"`
+	PredefinedExpression *string `pulumi:"predefinedExpression"`
+	// The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+	Routine *string `pulumi:"routine"`
 }
 
 // DataPolicyDataMaskingPolicyInput is an input type that accepts DataPolicyDataMaskingPolicyArgs and DataPolicyDataMaskingPolicyOutput values.
@@ -33,7 +35,9 @@ type DataPolicyDataMaskingPolicyInput interface {
 type DataPolicyDataMaskingPolicyArgs struct {
 	// The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
 	// Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
-	PredefinedExpression pulumi.StringInput `pulumi:"predefinedExpression"`
+	PredefinedExpression pulumi.StringPtrInput `pulumi:"predefinedExpression"`
+	// The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+	Routine pulumi.StringPtrInput `pulumi:"routine"`
 }
 
 func (DataPolicyDataMaskingPolicyArgs) ElementType() reflect.Type {
@@ -115,8 +119,13 @@ func (o DataPolicyDataMaskingPolicyOutput) ToDataPolicyDataMaskingPolicyPtrOutpu
 
 // The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
 // Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
-func (o DataPolicyDataMaskingPolicyOutput) PredefinedExpression() pulumi.StringOutput {
-	return o.ApplyT(func(v DataPolicyDataMaskingPolicy) string { return v.PredefinedExpression }).(pulumi.StringOutput)
+func (o DataPolicyDataMaskingPolicyOutput) PredefinedExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPolicyDataMaskingPolicy) *string { return v.PredefinedExpression }).(pulumi.StringPtrOutput)
+}
+
+// The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+func (o DataPolicyDataMaskingPolicyOutput) Routine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPolicyDataMaskingPolicy) *string { return v.Routine }).(pulumi.StringPtrOutput)
 }
 
 type DataPolicyDataMaskingPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -150,7 +159,17 @@ func (o DataPolicyDataMaskingPolicyPtrOutput) PredefinedExpression() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return &v.PredefinedExpression
+		return v.PredefinedExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+func (o DataPolicyDataMaskingPolicyPtrOutput) Routine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataPolicyDataMaskingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Routine
 	}).(pulumi.StringPtrOutput)
 }
 

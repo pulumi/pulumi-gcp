@@ -16,11 +16,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// <summary>
         /// Specifies some of the values in a certificate that are related to the subject.
         /// Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
         /// </summary>
         public readonly Outputs.AuthorityConfigSubjectConfig SubjectConfig;
+        /// <summary>
+        /// When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AuthorityConfigSubjectKeyId? SubjectKeyId;
         /// <summary>
         /// Describes how some of the technical X.509 fields in a certificate should be populated.
         /// Structure is documented below.
@@ -31,9 +33,12 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         private AuthorityConfig(
             Outputs.AuthorityConfigSubjectConfig subjectConfig,
 
+            Outputs.AuthorityConfigSubjectKeyId? subjectKeyId,
+
             Outputs.AuthorityConfigX509Config x509Config)
         {
             SubjectConfig = subjectConfig;
+            SubjectKeyId = subjectKeyId;
             X509Config = x509Config;
         }
     }

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate":
 		r = &PreventionDeidentifyTemplate{}
+	case "gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig":
+		r = &PreventionDiscoveryConfig{}
 	case "gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate":
 		r = &PreventionInspectTemplate{}
 	case "gcp:dataloss/preventionJobTrigger:PreventionJobTrigger":
@@ -45,6 +47,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataloss/preventionDeidentifyTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataloss/preventionDiscoveryConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

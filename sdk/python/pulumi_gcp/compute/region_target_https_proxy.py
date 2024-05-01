@@ -20,6 +20,7 @@ class RegionTargetHttpsProxyArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
@@ -45,6 +46,15 @@ class RegionTargetHttpsProxyArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created target https proxy should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to a networksecurity.ServerTlsPolicy
+               resource that describes how the proxy should authenticate inbound
+               traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+               attached to globalForwardingRules with the loadBalancingScheme
+               set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+               For details which ServerTlsPolicy resources are accepted with
+               INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+               loadBalancingScheme consult ServerTlsPolicy documentation.
+               If left blank, communications are not encrypted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
                At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
                sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -63,6 +73,8 @@ class RegionTargetHttpsProxyArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if server_tls_policy is not None:
+            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if ssl_certificates is not None:
             pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
@@ -156,6 +168,26 @@ class RegionTargetHttpsProxyArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="serverTlsPolicy")
+    def server_tls_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A URL referring to a networksecurity.ServerTlsPolicy
+        resource that describes how the proxy should authenticate inbound
+        traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        attached to globalForwardingRules with the loadBalancingScheme
+        set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        For details which ServerTlsPolicy resources are accepted with
+        INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        loadBalancingScheme consult ServerTlsPolicy documentation.
+        If left blank, communications are not encrypted.
+        """
+        return pulumi.get(self, "server_tls_policy")
+
+    @server_tls_policy.setter
+    def server_tls_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_tls_policy", value)
+
+    @property
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -195,6 +227,7 @@ class _RegionTargetHttpsProxyState:
                  proxy_id: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None):
@@ -219,6 +252,15 @@ class _RegionTargetHttpsProxyState:
         :param pulumi.Input[str] region: The Region in which the created target https proxy should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to a networksecurity.ServerTlsPolicy
+               resource that describes how the proxy should authenticate inbound
+               traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+               attached to globalForwardingRules with the loadBalancingScheme
+               set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+               For details which ServerTlsPolicy resources are accepted with
+               INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+               loadBalancingScheme consult ServerTlsPolicy documentation.
+               If left blank, communications are not encrypted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
                At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
                sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -247,6 +289,8 @@ class _RegionTargetHttpsProxyState:
             pulumi.set(__self__, "region", region)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if server_tls_policy is not None:
+            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if ssl_certificates is not None:
             pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
@@ -362,6 +406,26 @@ class _RegionTargetHttpsProxyState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="serverTlsPolicy")
+    def server_tls_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A URL referring to a networksecurity.ServerTlsPolicy
+        resource that describes how the proxy should authenticate inbound
+        traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        attached to globalForwardingRules with the loadBalancingScheme
+        set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        For details which ServerTlsPolicy resources are accepted with
+        INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        loadBalancingScheme consult ServerTlsPolicy documentation.
+        If left blank, communications are not encrypted.
+        """
+        return pulumi.get(self, "server_tls_policy")
+
+    @server_tls_policy.setter
+    def server_tls_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_tls_policy", value)
+
+    @property
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -416,6 +480,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
@@ -479,6 +544,83 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
+        ```
+        ### Region Target Https Proxy Mtls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        default_trust_config = gcp.certificatemanager.TrustConfig("default",
+            location="us-central1",
+            name="my-trust-config",
+            description="sample description for trust config",
+            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
+                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
+                )],
+                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
+                )],
+            )],
+            labels={
+                "foo": "bar",
+            })
+        default_server_tls_policy = gcp.networksecurity.ServerTlsPolicy("default",
+            location="us-central1",
+            name="my-tls-policy",
+            description="my description",
+            allow_open=False,
+            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
+                client_validation_mode="REJECT_INVALID",
+                client_validation_trust_config=default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/us-central1/trustConfigs/{name}"),
+            ))
+        default_region_ssl_certificate = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="http-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="url-map",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_region_backend_service.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_region_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.RegionTargetHttpsProxy("default",
+            region="us-central1",
+            name="test-mtls-proxy",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id],
+            server_tls_policy=default_server_tls_policy.id)
         ```
         ### Region Target Https Proxy Certificate Manager Certificate
 
@@ -558,6 +700,15 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created target https proxy should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to a networksecurity.ServerTlsPolicy
+               resource that describes how the proxy should authenticate inbound
+               traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+               attached to globalForwardingRules with the loadBalancingScheme
+               set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+               For details which ServerTlsPolicy resources are accepted with
+               INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+               loadBalancingScheme consult ServerTlsPolicy documentation.
+               If left blank, communications are not encrypted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
                At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
                sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -635,6 +786,83 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
+        ```
+        ### Region Target Https Proxy Mtls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        default_trust_config = gcp.certificatemanager.TrustConfig("default",
+            location="us-central1",
+            name="my-trust-config",
+            description="sample description for trust config",
+            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
+                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
+                )],
+                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
+                )],
+            )],
+            labels={
+                "foo": "bar",
+            })
+        default_server_tls_policy = gcp.networksecurity.ServerTlsPolicy("default",
+            location="us-central1",
+            name="my-tls-policy",
+            description="my description",
+            allow_open=False,
+            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
+                client_validation_mode="REJECT_INVALID",
+                client_validation_trust_config=default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/us-central1/trustConfigs/{name}"),
+            ))
+        default_region_ssl_certificate = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="http-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="url-map",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_region_backend_service.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_region_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.RegionTargetHttpsProxy("default",
+            region="us-central1",
+            name="test-mtls-proxy",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id],
+            server_tls_policy=default_server_tls_policy.id)
         ```
         ### Region Target Https Proxy Certificate Manager Certificate
 
@@ -716,6 +944,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
@@ -733,6 +962,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["server_tls_policy"] = server_tls_policy
             __props__.__dict__["ssl_certificates"] = ssl_certificates
             __props__.__dict__["ssl_policy"] = ssl_policy
             if url_map is None and not opts.urn:
@@ -759,6 +989,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             proxy_id: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            server_tls_policy: Optional[pulumi.Input[str]] = None,
             ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ssl_policy: Optional[pulumi.Input[str]] = None,
             url_map: Optional[pulumi.Input[str]] = None) -> 'RegionTargetHttpsProxy':
@@ -788,6 +1019,15 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[str] region: The Region in which the created target https proxy should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to a networksecurity.ServerTlsPolicy
+               resource that describes how the proxy should authenticate inbound
+               traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+               attached to globalForwardingRules with the loadBalancingScheme
+               set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+               For details which ServerTlsPolicy resources are accepted with
+               INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+               loadBalancingScheme consult ServerTlsPolicy documentation.
+               If left blank, communications are not encrypted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
                At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
                sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -812,6 +1052,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["proxy_id"] = proxy_id
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["server_tls_policy"] = server_tls_policy
         __props__.__dict__["ssl_certificates"] = ssl_certificates
         __props__.__dict__["ssl_policy"] = ssl_policy
         __props__.__dict__["url_map"] = url_map
@@ -891,6 +1132,22 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serverTlsPolicy")
+    def server_tls_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        A URL referring to a networksecurity.ServerTlsPolicy
+        resource that describes how the proxy should authenticate inbound
+        traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        attached to globalForwardingRules with the loadBalancingScheme
+        set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        For details which ServerTlsPolicy resources are accepted with
+        INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        loadBalancingScheme consult ServerTlsPolicy documentation.
+        If left blank, communications are not encrypted.
+        """
+        return pulumi.get(self, "server_tls_policy")
 
     @property
     @pulumi.getter(name="sslCertificates")

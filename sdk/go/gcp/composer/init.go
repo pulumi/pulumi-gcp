@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:composer/environment:Environment":
 		r = &Environment{}
+	case "gcp:composer/userWorkloadsSecret:UserWorkloadsSecret":
+		r = &UserWorkloadsSecret{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"composer/environment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"composer/userWorkloadsSecret",
 		&module{version},
 	)
 }

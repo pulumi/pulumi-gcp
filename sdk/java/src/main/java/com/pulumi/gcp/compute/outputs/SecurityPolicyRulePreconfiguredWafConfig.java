@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecurityPolicyRulePreconfiguredWafConfig {
     /**
-     * @return An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+     * @return An exclusion to apply during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusion> exclusions;
 
     private SecurityPolicyRulePreconfiguredWafConfig() {}
     /**
-     * @return An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+     * @return An exclusion to apply during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     public List<SecurityPolicyRulePreconfiguredWafConfigExclusion> exclusions() {

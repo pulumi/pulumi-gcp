@@ -975,6 +975,61 @@ class Authority(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Privateca Certificate Authority Custom Ski
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            deletion_protection=True,
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                subject_key_id=gcp.certificateauthority.AuthorityConfigSubjectKeyIdArgs(
+                    key_id="4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                        max_issuer_path_length=10,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            digital_signature=True,
+                            content_commitment=True,
+                            key_encipherment=False,
+                            data_encipherment=True,
+                            key_agreement=True,
+                            cert_sign=True,
+                            crl_sign=True,
+                            decipher_only=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                            client_auth=False,
+                            email_protection=True,
+                            code_signing=True,
+                            time_stamping=True,
+                        ),
+                    ),
+                ),
+            ),
+            lifetime="86400s",
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                cloud_kms_key_version="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
+            ))
+        ```
 
         ## Import
 
@@ -1255,6 +1310,61 @@ class Authority(pulumi.CustomResource):
                         excluded_uris=[".deny.example.com"],
                     ),
                 ),
+            ))
+        ```
+        ### Privateca Certificate Authority Custom Ski
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            deletion_protection=True,
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                subject_key_id=gcp.certificateauthority.AuthorityConfigSubjectKeyIdArgs(
+                    key_id="4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                        max_issuer_path_length=10,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            digital_signature=True,
+                            content_commitment=True,
+                            key_encipherment=False,
+                            data_encipherment=True,
+                            key_agreement=True,
+                            cert_sign=True,
+                            crl_sign=True,
+                            decipher_only=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                            client_auth=False,
+                            email_protection=True,
+                            code_signing=True,
+                            time_stamping=True,
+                        ),
+                    ),
+                ),
+            ),
+            lifetime="86400s",
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                cloud_kms_key_version="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             ))
         ```
 

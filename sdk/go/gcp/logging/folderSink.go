@@ -120,6 +120,9 @@ type FolderSink struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren pulumi.BoolPtrOutput `pulumi:"includeChildren"`
+	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	InterceptChildren pulumi.BoolPtrOutput `pulumi:"interceptChildren"`
 	// The name of the logging sink.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The identity associated with this sink. This identity must be granted write access to the
@@ -191,6 +194,9 @@ type folderSinkState struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
+	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	InterceptChildren *bool `pulumi:"interceptChildren"`
 	// The name of the logging sink.
 	Name *string `pulumi:"name"`
 	// The identity associated with this sink. This identity must be granted write access to the
@@ -227,6 +233,9 @@ type FolderSinkState struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren pulumi.BoolPtrInput
+	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	InterceptChildren pulumi.BoolPtrInput
 	// The name of the logging sink.
 	Name pulumi.StringPtrInput
 	// The identity associated with this sink. This identity must be granted write access to the
@@ -267,6 +276,9 @@ type folderSinkArgs struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
+	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	InterceptChildren *bool `pulumi:"interceptChildren"`
 	// The name of the logging sink.
 	Name *string `pulumi:"name"`
 }
@@ -301,6 +313,9 @@ type FolderSinkArgs struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren pulumi.BoolPtrInput
+	// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+	// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+	InterceptChildren pulumi.BoolPtrInput
 	// The name of the logging sink.
 	Name pulumi.StringPtrInput
 }
@@ -442,6 +457,12 @@ func (o FolderSinkOutput) Folder() pulumi.StringOutput {
 // associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 func (o FolderSinkOutput) IncludeChildren() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.BoolPtrOutput { return v.IncludeChildren }).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+func (o FolderSinkOutput) InterceptChildren() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FolderSink) pulumi.BoolPtrOutput { return v.InterceptChildren }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the logging sink.

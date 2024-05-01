@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.WebApp;
  * import com.pulumi.gcp.firebase.WebAppArgs;
  * import com.pulumi.time.sleep;
@@ -52,6 +54,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Enables the reCAPTCHA Enterprise API
+ *         var recaptchaEnterprise = new Service(&#34;recaptchaEnterprise&#34;, ServiceArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .service(&#34;recaptchaenterprise.googleapis.com&#34;)
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
  *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .displayName(&#34;Web App for reCAPTCHA Enterprise&#34;)

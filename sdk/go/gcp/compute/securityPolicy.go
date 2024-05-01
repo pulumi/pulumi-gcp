@@ -33,8 +33,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
 //				Name: pulumi.String("my-policy"),
-//				Rules: compute.SecurityPolicyRuleArray{
-//					&compute.SecurityPolicyRuleArgs{
+//				Rules: compute.SecurityPolicyRuleTypeArray{
+//					&compute.SecurityPolicyRuleTypeArgs{
 //						Action:   pulumi.String("deny(403)"),
 //						Priority: pulumi.Int(1000),
 //						Match: &compute.SecurityPolicyRuleMatchArgs{
@@ -47,7 +47,7 @@ import (
 //						},
 //						Description: pulumi.String("Deny access to IPs in 9.9.9.0/24"),
 //					},
-//					&compute.SecurityPolicyRuleArgs{
+//					&compute.SecurityPolicyRuleTypeArgs{
 //						Action:   pulumi.String("allow"),
 //						Priority: pulumi.Int(2147483647),
 //						Match: &compute.SecurityPolicyRuleMatchArgs{
@@ -136,8 +136,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
 //				Name: pulumi.String("my-policy"),
-//				Rules: compute.SecurityPolicyRuleArray{
-//					&compute.SecurityPolicyRuleArgs{
+//				Rules: compute.SecurityPolicyRuleTypeArray{
+//					&compute.SecurityPolicyRuleTypeArgs{
 //						Action:   pulumi.String("allow"),
 //						Priority: pulumi.Int(2147483647),
 //						Match: &compute.SecurityPolicyRuleMatchArgs{
@@ -150,7 +150,7 @@ import (
 //						},
 //						Description: pulumi.String("default rule"),
 //					},
-//					&compute.SecurityPolicyRuleArgs{
+//					&compute.SecurityPolicyRuleTypeArgs{
 //						Action:   pulumi.String("allow"),
 //						Priority: pulumi.Int(1000),
 //						Match: &compute.SecurityPolicyRuleMatchArgs{
@@ -200,8 +200,8 @@ import (
 //			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
 //				Name:        pulumi.String("%s"),
 //				Description: pulumi.String("throttle rule with enforce_on_key_configs"),
-//				Rules: compute.SecurityPolicyRuleArray{
-//					&compute.SecurityPolicyRuleArgs{
+//				Rules: compute.SecurityPolicyRuleTypeArray{
+//					&compute.SecurityPolicyRuleTypeArgs{
 //						Action:   pulumi.String("throttle"),
 //						Priority: pulumi.Int(2147483647),
 //						Match: &compute.SecurityPolicyRuleMatchArgs{
@@ -290,7 +290,7 @@ type SecurityPolicy struct {
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
-	Rules SecurityPolicyRuleArrayOutput `pulumi:"rules"`
+	Rules SecurityPolicyRuleTypeArrayOutput `pulumi:"rules"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
@@ -348,7 +348,7 @@ type securityPolicyState struct {
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
-	Rules []SecurityPolicyRule `pulumi:"rules"`
+	Rules []SecurityPolicyRuleType `pulumi:"rules"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
@@ -377,7 +377,7 @@ type SecurityPolicyState struct {
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
-	Rules SecurityPolicyRuleArrayInput
+	Rules SecurityPolicyRuleTypeArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
@@ -408,7 +408,7 @@ type securityPolicyArgs struct {
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
-	Rules []SecurityPolicyRule `pulumi:"rules"`
+	Rules []SecurityPolicyRuleType `pulumi:"rules"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	Type *string `pulumi:"type"`
 }
@@ -434,7 +434,7 @@ type SecurityPolicyArgs struct {
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
-	Rules SecurityPolicyRuleArrayInput
+	Rules SecurityPolicyRuleTypeArrayInput
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	Type pulumi.StringPtrInput
 }
@@ -570,8 +570,8 @@ func (o SecurityPolicyOutput) RecaptchaOptionsConfig() SecurityPolicyRecaptchaOp
 // The set of rules that belong to this policy. There must always be a default
 // rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 // security policy, a default rule with action "allow" will be added. Structure is documented below.
-func (o SecurityPolicyOutput) Rules() SecurityPolicyRuleArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyRuleArrayOutput { return v.Rules }).(SecurityPolicyRuleArrayOutput)
+func (o SecurityPolicyOutput) Rules() SecurityPolicyRuleTypeArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyRuleTypeArrayOutput { return v.Rules }).(SecurityPolicyRuleTypeArrayOutput)
 }
 
 // The URI of the created resource.

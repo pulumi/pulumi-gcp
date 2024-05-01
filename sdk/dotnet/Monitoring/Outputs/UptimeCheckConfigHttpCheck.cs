@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCode> AcceptedResponseStatusCodes;
         /// <summary>
-        /// The authentication information. Optional when creating an HTTP check; defaults to empty.
+        /// The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.UptimeCheckConfigHttpCheckAuthInfo? AuthInfo;
@@ -64,6 +64,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? RequestMethod;
         /// <summary>
+        /// The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.UptimeCheckConfigHttpCheckServiceAgentAuthentication? ServiceAgentAuthentication;
+        /// <summary>
         /// If true, use HTTPS instead of HTTP to run the check.
         /// </summary>
         public readonly bool? UseSsl;
@@ -96,6 +101,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             string? requestMethod,
 
+            Outputs.UptimeCheckConfigHttpCheckServiceAgentAuthentication? serviceAgentAuthentication,
+
             bool? useSsl,
 
             bool? validateSsl)
@@ -111,6 +118,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
             PingConfig = pingConfig;
             Port = port;
             RequestMethod = requestMethod;
+            ServiceAgentAuthentication = serviceAgentAuthentication;
             UseSsl = useSsl;
             ValidateSsl = validateSsl;
         }

@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyRulePreconfiguredWafConfig
     {
         /// <summary>
-        /// An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+        /// An exclusion to apply during preconfigured WAF evaluation.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRulePreconfiguredWafConfigExclusion> Exclusions;
 

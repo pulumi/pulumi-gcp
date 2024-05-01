@@ -23,6 +23,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as time from "@pulumi/time";
  *
+ * // Enables the Play Integrity API
+ * const playIntegrity = new gcp.projects.Service("play_integrity", {
+ *     project: "my-project-name",
+ *     service: "playintegrity.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
  * const _default = new gcp.firebase.AndroidApp("default", {
  *     project: "my-project-name",
  *     displayName: "Play Integrity app",
@@ -45,6 +51,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as time from "@pulumi/time";
  *
+ * // Enables the Play Integrity API
+ * const playIntegrity = new gcp.projects.Service("play_integrity", {
+ *     project: "my-project-name",
+ *     service: "playintegrity.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
  * const _default = new gcp.firebase.AndroidApp("default", {
  *     project: "my-project-name",
  *     displayName: "Play Integrity app",

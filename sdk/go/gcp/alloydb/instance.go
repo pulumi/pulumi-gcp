@@ -258,6 +258,13 @@ type Instance struct {
 	MachineConfig InstanceMachineConfigOutput `pulumi:"machineConfig"`
 	// The name of the instance resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Instance level network configuration.
+	// Structure is documented below.
+	NetworkConfig InstanceNetworkConfigPtrOutput `pulumi:"networkConfig"`
+	// The public IP addresses for the Instance. This is available ONLY when
+	// networkConfig.enablePublicIp is set to true. This is the connection
+	// endpoint for an end-user application.
+	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -366,6 +373,13 @@ type instanceState struct {
 	MachineConfig *InstanceMachineConfig `pulumi:"machineConfig"`
 	// The name of the instance resource.
 	Name *string `pulumi:"name"`
+	// Instance level network configuration.
+	// Structure is documented below.
+	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
+	// The public IP addresses for the Instance. This is available ONLY when
+	// networkConfig.enablePublicIp is set to true. This is the connection
+	// endpoint for an end-user application.
+	PublicIpAddress *string `pulumi:"publicIpAddress"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -431,6 +445,13 @@ type InstanceState struct {
 	MachineConfig InstanceMachineConfigPtrInput
 	// The name of the instance resource.
 	Name pulumi.StringPtrInput
+	// Instance level network configuration.
+	// Structure is documented below.
+	NetworkConfig InstanceNetworkConfigPtrInput
+	// The public IP addresses for the Instance. This is available ONLY when
+	// networkConfig.enablePublicIp is set to true. This is the connection
+	// endpoint for an end-user application.
+	PublicIpAddress pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -491,6 +512,9 @@ type instanceArgs struct {
 	// Configurations for the machines that host the underlying database engine.
 	// Structure is documented below.
 	MachineConfig *InstanceMachineConfig `pulumi:"machineConfig"`
+	// Instance level network configuration.
+	// Structure is documented below.
+	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
 	// Configuration for query insights.
 	// Structure is documented below.
 	QueryInsightsConfig *InstanceQueryInsightsConfig `pulumi:"queryInsightsConfig"`
@@ -537,6 +561,9 @@ type InstanceArgs struct {
 	// Configurations for the machines that host the underlying database engine.
 	// Structure is documented below.
 	MachineConfig InstanceMachineConfigPtrInput
+	// Instance level network configuration.
+	// Structure is documented below.
+	NetworkConfig InstanceNetworkConfigPtrInput
 	// Configuration for query insights.
 	// Structure is documented below.
 	QueryInsightsConfig InstanceQueryInsightsConfigPtrInput
@@ -723,6 +750,19 @@ func (o InstanceOutput) MachineConfig() InstanceMachineConfigOutput {
 // The name of the instance resource.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Instance level network configuration.
+// Structure is documented below.
+func (o InstanceOutput) NetworkConfig() InstanceNetworkConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceNetworkConfigPtrOutput { return v.NetworkConfig }).(InstanceNetworkConfigPtrOutput)
+}
+
+// The public IP addresses for the Instance. This is available ONLY when
+// networkConfig.enablePublicIp is set to true. This is the connection
+// endpoint for an end-user application.
+func (o InstanceOutput) PublicIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
 
 // The combination of labels configured directly on the resource

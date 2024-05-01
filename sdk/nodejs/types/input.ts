@@ -2112,6 +2112,29 @@ export namespace alloydb {
         cpuCount?: pulumi.Input<number>;
     }
 
+    export interface InstanceNetworkConfig {
+        /**
+         * A list of external networks authorized to access this instance. This
+         * field is only allowed to be set when `enablePublicIp` is set to
+         * true.
+         * Structure is documented below.
+         */
+        authorizedExternalNetworks?: pulumi.Input<pulumi.Input<inputs.alloydb.InstanceNetworkConfigAuthorizedExternalNetwork>[]>;
+        /**
+         * Enabling public ip for the instance. If a user wishes to disable this,
+         * please also clear the list of the authorized external networks set on
+         * the same instance.
+         */
+        enablePublicIp?: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceNetworkConfigAuthorizedExternalNetwork {
+        /**
+         * CIDR range for one authorized network of the instance.
+         */
+        cidrRange?: pulumi.Input<string>;
+    }
+
     export interface InstanceQueryInsightsConfig {
         /**
          * Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
@@ -3821,6 +3844,242 @@ export namespace apphub {
 }
 
 export namespace applicationintegration {
+    export interface AuthConfigClientCertificate {
+        /**
+         * The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+         */
+        encryptedPrivateKey: pulumi.Input<string>;
+        /**
+         * 'passphrase' should be left unset if private key is not encrypted.
+         * Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
+         */
+        passphrase?: pulumi.Input<string>;
+        /**
+         * The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+         */
+        sslCertificate: pulumi.Input<string>;
+    }
+
+    export interface AuthConfigDecryptedCredential {
+        /**
+         * Auth token credential.
+         * Structure is documented below.
+         */
+        authToken?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialAuthToken>;
+        /**
+         * Credential type associated with auth configs.
+         */
+        credentialType: pulumi.Input<string>;
+        /**
+         * JWT credential.
+         * Structure is documented below.
+         */
+        jwt?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialJwt>;
+        /**
+         * OAuth2 authorization code credential.
+         * Structure is documented below.
+         */
+        oauth2AuthorizationCode?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCode>;
+        /**
+         * OAuth2 client credentials.
+         * Structure is documented below.
+         */
+        oauth2ClientCredentials?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2ClientCredentials>;
+        /**
+         * Google OIDC ID Token.
+         * Structure is documented below.
+         */
+        oidcToken?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOidcToken>;
+        /**
+         * Service account credential.
+         * Structure is documented below.
+         */
+        serviceAccountCredentials?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialServiceAccountCredentials>;
+        /**
+         * Username and password credential.
+         * Structure is documented below.
+         */
+        usernameAndPassword?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialUsernameAndPassword>;
+    }
+
+    export interface AuthConfigDecryptedCredentialAuthToken {
+        /**
+         * The token for the auth type.
+         */
+        token?: pulumi.Input<string>;
+        /**
+         * Authentication type, e.g. "Basic", "Bearer", etc.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface AuthConfigDecryptedCredentialJwt {
+        /**
+         * (Output)
+         * The token calculated by the header, payload and signature.
+         */
+        jwt?: pulumi.Input<string>;
+        /**
+         * Identifies which algorithm is used to generate the signature.
+         */
+        jwtHeader?: pulumi.Input<string>;
+        /**
+         * Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
+         */
+        jwtPayload?: pulumi.Input<string>;
+        /**
+         * User's pre-shared secret to sign the token.
+         */
+        secret?: pulumi.Input<string>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCode {
+        /**
+         * The auth url endpoint to send the auth code request to.
+         */
+        authEndpoint?: pulumi.Input<string>;
+        /**
+         * The client's id.
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * The client's secret.
+         */
+        clientSecret?: pulumi.Input<string>;
+        /**
+         * A space-delimited list of requested scope permissions.
+         */
+        scope?: pulumi.Input<string>;
+        /**
+         * The token url endpoint to send the token request to.
+         */
+        tokenEndpoint?: pulumi.Input<string>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2ClientCredentials {
+        /**
+         * The client's ID.
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * The client's secret.
+         */
+        clientSecret?: pulumi.Input<string>;
+        /**
+         * Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+         */
+        requestType?: pulumi.Input<string>;
+        /**
+         * A space-delimited list of requested scope permissions.
+         */
+        scope?: pulumi.Input<string>;
+        /**
+         * The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
+         */
+        tokenEndpoint?: pulumi.Input<string>;
+        /**
+         * Token parameters for the auth request.
+         */
+        tokenParams?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
+        /**
+         * A list of parameter map entries.
+         * Structure is documented below.
+         */
+        entries?: pulumi.Input<pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry>[]>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
+        /**
+         * Key of the map entry.
+         * Structure is documented below.
+         */
+        key?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey>;
+        /**
+         * Value of the map entry.
+         * Structure is documented below.
+         */
+        value?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey {
+        /**
+         * Passing a literal value
+         * Structure is documented below.
+         */
+        literalValue?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue {
+        /**
+         * String.
+         */
+        stringValue?: pulumi.Input<string>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue {
+        /**
+         * Passing a literal value
+         * Structure is documented below.
+         */
+        literalValue?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue {
+        /**
+         * String.
+         */
+        stringValue?: pulumi.Input<string>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOidcToken {
+        /**
+         * Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
+         */
+        audience?: pulumi.Input<string>;
+        /**
+         * The service account email to be used as the identity for the token.
+         */
+        serviceAccountEmail?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * ID token obtained for the service account.
+         */
+        token?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The approximate time until the token retrieved is valid.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        tokenExpireTime?: pulumi.Input<string>;
+    }
+
+    export interface AuthConfigDecryptedCredentialServiceAccountCredentials {
+        /**
+         * A space-delimited list of requested scope permissions.
+         */
+        scope?: pulumi.Input<string>;
+        /**
+         * Name of the service account that has the permission to make the request.
+         */
+        serviceAccount?: pulumi.Input<string>;
+    }
+
+    export interface AuthConfigDecryptedCredentialUsernameAndPassword {
+        /**
+         * Password to be used.
+         *
+         * <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * Username to be used.
+         */
+        username?: pulumi.Input<string>;
+    }
+
     export interface ClientCloudKmsConfig {
         /**
          * A Cloud KMS key is a named object containing one or more key versions, along
@@ -6088,7 +6347,11 @@ export namespace bigquerydatapolicy {
          * The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
          * Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
          */
-        predefinedExpression: pulumi.Input<string>;
+        predefinedExpression?: pulumi.Input<string>;
+        /**
+         * The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+         */
+        routine?: pulumi.Input<string>;
     }
 
     export interface DataPolicyIamBindingCondition {
@@ -6740,11 +7003,13 @@ export namespace certificateauthority {
         /**
          * Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
-         *
-         *
-         * <a name="nestedX509Config"></a>The `x509Config` block supports:
          */
         subjectConfig: pulumi.Input<inputs.certificateauthority.AuthorityConfigSubjectConfig>;
+        /**
+         * When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+         * Structure is documented below.
+         */
+        subjectKeyId?: pulumi.Input<inputs.certificateauthority.AuthorityConfigSubjectKeyId>;
         /**
          * Describes how some of the technical X.509 fields in a certificate should be populated.
          * Structure is documented below.
@@ -6817,6 +7082,15 @@ export namespace certificateauthority {
          * Contains only valid RFC 3986 URIs.
          */
         uris?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface AuthorityConfigSubjectKeyId {
+        /**
+         * The value of the KeyId in lowercase hexidecimal.
+         *
+         * <a name="nestedX509Config"></a>The `x509Config` block supports:
+         */
+        keyId?: pulumi.Input<string>;
     }
 
     export interface AuthorityConfigX509Config {
@@ -7701,8 +7975,7 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionSubjectKeyId {
         /**
-         * (Output)
-         * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+         * The value of the KeyId in lowercase hexidecimal.
          */
         keyId?: pulumi.Input<string>;
     }
@@ -7958,6 +8231,11 @@ export namespace certificateauthority {
          */
         subjectConfig: pulumi.Input<inputs.certificateauthority.CertificateConfigSubjectConfig>;
         /**
+         * When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+         * Structure is documented below.
+         */
+        subjectKeyId?: pulumi.Input<inputs.certificateauthority.CertificateConfigSubjectKeyId>;
+        /**
          * Describes how some of the technical X.509 fields in a certificate should be populated.
          * Structure is documented below.
          */
@@ -8041,6 +8319,13 @@ export namespace certificateauthority {
          * Contains only valid RFC 3986 URIs.
          */
         uris?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CertificateConfigSubjectKeyId {
+        /**
+         * The value of the KeyId in lowercase hexidecimal.
+         */
+        keyId?: pulumi.Input<string>;
     }
 
     export interface CertificateConfigX509Config {
@@ -22997,69 +23282,72 @@ export namespace compute {
 
     export interface SecurityPolicyRuleMatch {
         /**
-         * The configuration options available when specifying `versionedExpr`.
-         * This field must be specified if `versionedExpr` is specified and cannot be specified if `versionedExpr` is not specified.
+         * The configuration options available when specifying versionedExpr.
+         * This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
          * Structure is documented below.
          */
         config?: pulumi.Input<inputs.compute.SecurityPolicyRuleMatchConfig>;
         /**
-         * User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-         * such as `origin.ip`, `source.region_code` and `contents` in the request header.
+         * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
          * Structure is documented below.
          */
         expr?: pulumi.Input<inputs.compute.SecurityPolicyRuleMatchExpr>;
         /**
-         * Predefined rule expression. If this field is specified, `config` must also be specified.
-         * Available options:
+         * Preconfigured versioned expression. If this field is specified, config must also be specified.
+         * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+         * Possible values are: `SRC_IPS_V1`.
          */
         versionedExpr?: pulumi.Input<string>;
     }
 
     export interface SecurityPolicyRuleMatchConfig {
         /**
-         * Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-         * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-         * (can be used to override the default behavior).
+         * CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
          */
-        srcIpRanges: pulumi.Input<pulumi.Input<string>[]>;
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface SecurityPolicyRuleMatchExpr {
         /**
-         * Textual representation of an expression in Common Expression Language syntax.
-         * The application context of the containing message determines which well-known feature set of CEL is supported.
+         * Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
          */
         expression: pulumi.Input<string>;
     }
 
     export interface SecurityPolicyRulePreconfiguredWafConfig {
         /**
-         * An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+         * An exclusion to apply during preconfigured WAF evaluation.
+         * Structure is documented below.
          */
         exclusions?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusion>[]>;
     }
 
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
-         * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
          */
         requestCookies?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky>[]>;
         /**
-         * Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         * Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
          */
         requestHeaders?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader>[]>;
         /**
-         * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Note that the parameter can be in the query string or in the POST body.
+         * Structure is documented below.
          */
         requestQueryParams?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam>[]>;
         /**
-         * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+         * When specifying this field, the query or fragment part should be excluded.
+         * Structure is documented below.
          */
         requestUris?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri>[]>;
         /**
-         * A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-         *
-         * <a name="nestedFieldParams"></a>The `requestHeader`, `requestCookie`, `requestUri` and `requestQueryParam` blocks support:
+         * A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+         * If omitted, it refers to all the rule IDs under the WAF rule set.
          */
         targetRuleIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -23070,44 +23358,72 @@ export namespace compute {
 
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
         /**
-         * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: pulumi.Input<string>;
         /**
-         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
          */
         value?: pulumi.Input<string>;
     }
 
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
         /**
-         * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: pulumi.Input<string>;
         /**
-         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
          */
         value?: pulumi.Input<string>;
     }
 
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
         /**
-         * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: pulumi.Input<string>;
         /**
-         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
          */
         value?: pulumi.Input<string>;
     }
 
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
         /**
-         * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: pulumi.Input<string>;
         /**
-         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
          */
         value?: pulumi.Input<string>;
     }
@@ -33768,6 +34084,306 @@ export namespace dataloss {
         seconds?: pulumi.Input<number>;
     }
 
+    export interface PreventionDiscoveryConfigAction {
+        /**
+         * Export data profiles into a provided location
+         * Structure is documented below.
+         */
+        exportData?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigActionExportData>;
+        /**
+         * Publish a message into the Pub/Sub topic.
+         * Structure is documented below.
+         */
+        pubSubNotification?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigActionPubSubNotification>;
+    }
+
+    export interface PreventionDiscoveryConfigActionExportData {
+        /**
+         * Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+         * Structure is documented below.
+         */
+        profileTable?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigActionExportDataProfileTable>;
+    }
+
+    export interface PreventionDiscoveryConfigActionExportDataProfileTable {
+        /**
+         * Dataset Id of the table
+         */
+        datasetId?: pulumi.Input<string>;
+        /**
+         * The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * Name of the table
+         */
+        tableId?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDiscoveryConfigActionPubSubNotification {
+        /**
+         * How much data to include in the pub/sub message.
+         * Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+         */
+        detailOfMessage?: pulumi.Input<string>;
+        /**
+         * The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
+         * Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
+         */
+        event?: pulumi.Input<string>;
+        /**
+         * Conditions for triggering pubsub
+         * Structure is documented below.
+         */
+        pubsubCondition?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition>;
+        /**
+         * Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+         */
+        topic?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
+        /**
+         * An expression
+         * Structure is documented below.
+         */
+        expressions?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions>;
+    }
+
+    export interface PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions {
+        /**
+         * Conditions to apply to the expression
+         * Structure is documented below.
+         */
+        conditions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition>[]>;
+        /**
+         * The operator to apply to the collection of conditions
+         * Possible values are: `OR`, `AND`.
+         */
+        logicalOperator?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition {
+        /**
+         * The minimum data risk score that triggers the condition.
+         * Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
+         */
+        minimumRiskScore?: pulumi.Input<string>;
+        /**
+         * The minimum sensitivity level that triggers the condition.
+         * Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
+         */
+        minimumSensitivityScore?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDiscoveryConfigError {
+        /**
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigErrorDetails>;
+        /**
+         * The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+         */
+        timestamp?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDiscoveryConfigErrorDetails {
+        /**
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        /**
+         * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDiscoveryConfigOrgConfig {
+        /**
+         * The data to scan folder org or project
+         * Structure is documented below.
+         */
+        location?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOrgConfigLocation>;
+        /**
+         * The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the cloud DLP API must be enabled.
+         */
+        projectId?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDiscoveryConfigOrgConfigLocation {
+        /**
+         * The ID for the folder within an organization to scan
+         */
+        folderId?: pulumi.Input<string>;
+        /**
+         * The ID of an organization to scan
+         */
+        organizationId?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDiscoveryConfigTarget {
+        /**
+         * BigQuery target for Discovery. The first target to match a table will be the one applied.
+         * Structure is documented below.
+         */
+        bigQueryTarget?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTarget>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTarget {
+        /**
+         * How often and when to update profiles. New tables that match both the fiter and conditions are scanned as quickly as possible depending on system capacity.
+         * Structure is documented below.
+         */
+        cadence?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetCadence>;
+        /**
+         * In addition to matching the filter, these conditions must be true before a profile is generated
+         * Structure is documented below.
+         */
+        conditions?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetConditions>;
+        /**
+         * Tables that match this filter will not have profiles created.
+         */
+        disabled?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetDisabled>;
+        /**
+         * Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table
+         * Structure is documented below.
+         */
+        filter?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilter>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetCadence {
+        /**
+         * Governs when to update data profiles when a schema is modified
+         * Structure is documented below.
+         */
+        schemaModifiedCadence?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence>;
+        /**
+         * Governs when to update profile when a table is modified.
+         * Structure is documented below.
+         */
+        tableModifiedCadence?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence {
+        /**
+         * How frequently profiles may be updated when schemas are modified. Default to monthly
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        frequency?: pulumi.Input<string>;
+        /**
+         * The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMN.
+         * Each value may be one of: `SCHEMA_NEW_COLUMNS`, `SCHEMA_REMOVED_COLUMNS`.
+         */
+        types?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence {
+        /**
+         * How frequently data profiles can be updated when tables are modified. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        frequency?: pulumi.Input<string>;
+        /**
+         * The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP
+         * Each value may be one of: `TABLE_MODIFIED_TIMESTAMP`.
+         */
+        types?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetConditions {
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+         */
+        createdAfter?: pulumi.Input<string>;
+        /**
+         * At least one of the conditions must be true for a table to be scanned.
+         * Structure is documented below.
+         */
+        orConditions?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions>;
+        /**
+         * Restrict discovery to categories of table types. Currently view, materialized view, snapshot and non-biglake external tables are supported.
+         * Possible values are: `BIG_QUERY_COLLECTION_ALL_TYPES`, `BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES`.
+         */
+        typeCollection?: pulumi.Input<string>;
+        /**
+         * Restrict discovery to specific table type
+         * Structure is documented below.
+         */
+        types?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions {
+        /**
+         * Duration format. The minimum age a table must have before Cloud DLP can profile it. Value greater than 1.
+         */
+        minAge?: pulumi.Input<string>;
+        /**
+         * Minimum number of rows that should be present before Cloud DLP profiles as a table.
+         */
+        minRowCount?: pulumi.Input<number>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes {
+        /**
+         * A set of BiqQuery table types
+         * Each value may be one of: `BIG_QUERY_TABLE_TYPE_TABLE`, `BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE`.
+         */
+        types?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetDisabled {
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetFilter {
+        /**
+         * Catch-all. This should always be the last filter in the list because anything above it will apply first.
+         */
+        otherTables?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables>;
+        /**
+         * A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
+         * Structure is documented below.
+         */
+        tables?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterTables>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTables {
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterTables {
+        /**
+         * A collection of regular expressions to match a BQ table against.
+         * Structure is documented below.
+         */
+        includeRegexes?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes {
+        /**
+         * A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+         * Structure is documented below.
+         */
+        patterns?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern>[]>;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern {
+        /**
+         * if unset, this property matches all datasets
+         */
+        datasetIdRegex?: pulumi.Input<string>;
+        /**
+         * For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+         */
+        projectIdRegex?: pulumi.Input<string>;
+        /**
+         * if unset, this property matches all tables
+         */
+        tableIdRegex?: pulumi.Input<string>;
+    }
+
     export interface PreventionInspectTemplateInspectConfig {
         /**
          * List of options defining data content to scan. If empty, text, images, and other content will be included.
@@ -42564,7 +43180,7 @@ export namespace dns {
          */
         geos?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeo>[]>;
         /**
-         * The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+         * The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
          * Structure is documented below.
          */
         primaryBackup?: pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackup>;
@@ -44133,6 +44749,10 @@ export namespace firebase {
          * The user-supplied glob to match against the request URL path.
          */
         glob?: pulumi.Input<string>;
+        /**
+         * The URL path to rewrite the request to.
+         */
+        path?: pulumi.Input<string>;
         /**
          * The user-supplied RE2 regular expression to match against the request URL path.
          */
@@ -52412,7 +53032,7 @@ export namespace monitoring {
          */
         acceptedResponseStatusCodes?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCode>[]>;
         /**
-         * The authentication information. Optional when creating an HTTP check; defaults to empty.
+         * The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
          * Structure is documented below.
          */
         authInfo?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheckAuthInfo>;
@@ -52457,6 +53077,11 @@ export namespace monitoring {
          */
         requestMethod?: pulumi.Input<string>;
         /**
+         * The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+         * Structure is documented below.
+         */
+        serviceAgentAuthentication?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheckServiceAgentAuthentication>;
+        /**
          * If true, use HTTPS instead of HTTP to run the check.
          */
         useSsl?: pulumi.Input<boolean>;
@@ -52495,6 +53120,14 @@ export namespace monitoring {
          * Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
          */
         pingsCount: pulumi.Input<number>;
+    }
+
+    export interface UptimeCheckConfigHttpCheckServiceAgentAuthentication {
+        /**
+         * The type of authentication to use.
+         * Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
+         */
+        type?: pulumi.Input<string>;
     }
 
     export interface UptimeCheckConfigMonitoredResource {

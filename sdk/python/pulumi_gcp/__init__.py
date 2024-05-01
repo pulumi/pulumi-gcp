@@ -931,6 +931,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "applicationintegration/authConfig",
+  "fqn": "pulumi_gcp.applicationintegration",
+  "classes": {
+   "gcp:applicationintegration/authConfig:AuthConfig": "AuthConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "applicationintegration/client",
   "fqn": "pulumi_gcp.applicationintegration",
   "classes": {
@@ -2051,6 +2059,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "composer/userWorkloadsSecret",
+  "fqn": "pulumi_gcp.composer",
+  "classes": {
+   "gcp:composer/userWorkloadsSecret:UserWorkloadsSecret": "UserWorkloadsSecret"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/address",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -2995,6 +3011,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/securityPolicyRule",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/securityPolicyRule:SecurityPolicyRule": "SecurityPolicyRule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/securityScanConfig",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3527,6 +3551,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataloss",
   "classes": {
    "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate": "PreventionDeidentifyTemplate"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataloss/preventionDiscoveryConfig",
+  "fqn": "pulumi_gcp.dataloss",
+  "classes": {
+   "gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig": "PreventionDiscoveryConfig"
   }
  },
  {
@@ -5791,6 +5823,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkconnectivity",
   "classes": {
    "gcp:networkconnectivity/hub:Hub": "Hub"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkconnectivity/internalRange",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/internalRange:InternalRange": "InternalRange"
   }
  },
  {

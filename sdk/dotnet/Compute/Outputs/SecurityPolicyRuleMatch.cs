@@ -14,20 +14,20 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyRuleMatch
     {
         /// <summary>
-        /// The configuration options available when specifying `versioned_expr`.
-        /// This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+        /// The configuration options available when specifying versionedExpr.
+        /// This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleMatchConfig? Config;
         /// <summary>
-        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-        /// such as `origin.ip`, `source.region_code` and `contents` in the request header.
+        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleMatchExpr? Expr;
         /// <summary>
-        /// Predefined rule expression. If this field is specified, `config` must also be specified.
-        /// Available options:
+        /// Preconfigured versioned expression. If this field is specified, config must also be specified.
+        /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+        /// Possible values are: `SRC_IPS_V1`.
         /// </summary>
         public readonly string? VersionedExpr;
 

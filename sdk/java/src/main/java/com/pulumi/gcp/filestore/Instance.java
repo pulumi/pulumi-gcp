@@ -133,6 +133,51 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Filestore Instance Protocol
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.filestore.Instance;
+ * import com.pulumi.gcp.filestore.InstanceArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;test-instance&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
+ *             .protocol(&#34;NFS_V4_1&#34;)
+ *             .fileShares(InstanceFileSharesArgs.builder()
+ *                 .capacityGb(1024)
+ *                 .name(&#34;share1&#34;)
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .network(&#34;default&#34;)
+ *                 .modes(&#34;MODE_IPV4&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Filestore Instance Enterprise
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -379,6 +424,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+     * &#34;NFS_V3&#34; Possible values: [&#34;NFS_V3&#34;, &#34;NFS_V4_1&#34;]
+     * 
+     */
+    @Export(name="protocol", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> protocol;
+
+    /**
+     * @return Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+     * &#34;NFS_V3&#34; Possible values: [&#34;NFS_V3&#34;, &#34;NFS_V4_1&#34;]
+     * 
+     */
+    public Output<Optional<String>> protocol() {
+        return Codegen.optional(this.protocol);
     }
     /**
      * The combination of labels configured directly on the resource

@@ -193,6 +193,20 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of &#34;http&#34; or &#34;https&#34;, and the port must be supplied.
+     * 
+     */
+    @Export(name="forwardProxyUri", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> forwardProxyUri;
+
+    /**
+     * @return Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of &#34;http&#34; or &#34;https&#34;, and the port must be supplied.
+     * 
+     */
+    public Output<Optional<String>> forwardProxyUri() {
+        return Codegen.optional(this.forwardProxyUri);
+    }
+    /**
      * The resource ID of the environment.
      * 
      */

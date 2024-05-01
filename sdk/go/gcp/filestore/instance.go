@@ -121,6 +121,46 @@ import (
 //	}
 //
 // ```
+// ### Filestore Instance Protocol
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/filestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				Name:     pulumi.String("test-instance"),
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//				Protocol: pulumi.String("NFS_V4_1"),
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(1024),
+//					Name:       pulumi.String("share1"),
+//				},
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						Network: pulumi.String("default"),
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Filestore Instance Enterprise
 //
 // ```go
@@ -231,6 +271,10 @@ type Instance struct {
 	// Structure is documented below.
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
 	Project  pulumi.StringOutput        `pulumi:"project"`
+	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -315,6 +359,10 @@ type instanceState struct {
 	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
 	Project  *string           `pulumi:"project"`
+	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	Protocol *string `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -356,6 +404,10 @@ type InstanceState struct {
 	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
 	Project  pulumi.StringPtrInput
+	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	Protocol pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -394,6 +446,10 @@ type instanceArgs struct {
 	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
 	Project  *string           `pulumi:"project"`
+	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	Protocol *string `pulumi:"protocol"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier string `pulumi:"tier"`
@@ -426,6 +482,10 @@ type InstanceArgs struct {
 	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
 	Project  pulumi.StringPtrInput
+	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	Protocol pulumi.StringPtrInput
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringInput
@@ -581,6 +641,13 @@ func (o InstanceOutput) Networks() InstanceNetworkArrayOutput {
 
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+func (o InstanceOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // The combination of labels configured directly on the resource

@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.Filestore
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkResult> Networks;
         public readonly string? Project;
+        public readonly string Protocol;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string Tier;
         public readonly string Zone;
@@ -176,6 +177,8 @@ namespace Pulumi.Gcp.Filestore
 
             string? project,
 
+            string protocol,
+
             ImmutableDictionary<string, string> pulumiLabels,
 
             string tier,
@@ -194,6 +197,7 @@ namespace Pulumi.Gcp.Filestore
             Name = name;
             Networks = networks;
             Project = project;
+            Protocol = protocol;
             PulumiLabels = pulumiLabels;
             Tier = tier;
             Zone = zone;

@@ -36,6 +36,8 @@ __all__ = [
     'InstanceClientConnectionConfig',
     'InstanceClientConnectionConfigSslConfig',
     'InstanceMachineConfig',
+    'InstanceNetworkConfig',
+    'InstanceNetworkConfigAuthorizedExternalNetwork',
     'InstanceQueryInsightsConfig',
     'InstanceReadPoolConfig',
     'GetLocationsLocationResult',
@@ -1287,6 +1289,102 @@ class InstanceMachineConfig(dict):
         The number of CPU's in the VM instance.
         """
         return pulumi.get(self, "cpu_count")
+
+
+@pulumi.output_type
+class InstanceNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizedExternalNetworks":
+            suggest = "authorized_external_networks"
+        elif key == "enablePublicIp":
+            suggest = "enable_public_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorized_external_networks: Optional[Sequence['outputs.InstanceNetworkConfigAuthorizedExternalNetwork']] = None,
+                 enable_public_ip: Optional[bool] = None):
+        """
+        :param Sequence['InstanceNetworkConfigAuthorizedExternalNetworkArgs'] authorized_external_networks: A list of external networks authorized to access this instance. This
+               field is only allowed to be set when `enable_public_ip` is set to
+               true.
+               Structure is documented below.
+        :param bool enable_public_ip: Enabling public ip for the instance. If a user wishes to disable this,
+               please also clear the list of the authorized external networks set on
+               the same instance.
+        """
+        if authorized_external_networks is not None:
+            pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
+        if enable_public_ip is not None:
+            pulumi.set(__self__, "enable_public_ip", enable_public_ip)
+
+    @property
+    @pulumi.getter(name="authorizedExternalNetworks")
+    def authorized_external_networks(self) -> Optional[Sequence['outputs.InstanceNetworkConfigAuthorizedExternalNetwork']]:
+        """
+        A list of external networks authorized to access this instance. This
+        field is only allowed to be set when `enable_public_ip` is set to
+        true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorized_external_networks")
+
+    @property
+    @pulumi.getter(name="enablePublicIp")
+    def enable_public_ip(self) -> Optional[bool]:
+        """
+        Enabling public ip for the instance. If a user wishes to disable this,
+        please also clear the list of the authorized external networks set on
+        the same instance.
+        """
+        return pulumi.get(self, "enable_public_ip")
+
+
+@pulumi.output_type
+class InstanceNetworkConfigAuthorizedExternalNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrRange":
+            suggest = "cidr_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkConfigAuthorizedExternalNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetworkConfigAuthorizedExternalNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetworkConfigAuthorizedExternalNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_range: Optional[str] = None):
+        """
+        :param str cidr_range: CIDR range for one authorized network of the instance.
+        """
+        if cidr_range is not None:
+            pulumi.set(__self__, "cidr_range", cidr_range)
+
+    @property
+    @pulumi.getter(name="cidrRange")
+    def cidr_range(self) -> Optional[str]:
+        """
+        CIDR range for one authorized network of the instance.
+        """
+        return pulumi.get(self, "cidr_range")
 
 
 @pulumi.output_type

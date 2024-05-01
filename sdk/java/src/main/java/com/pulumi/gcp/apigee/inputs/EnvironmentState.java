@@ -95,6 +95,21 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of &#34;http&#34; or &#34;https&#34;, and the port must be supplied.
+     * 
+     */
+    @Import(name="forwardProxyUri")
+    private @Nullable Output<String> forwardProxyUri;
+
+    /**
+     * @return Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of &#34;http&#34; or &#34;https&#34;, and the port must be supplied.
+     * 
+     */
+    public Optional<Output<String>> forwardProxyUri() {
+        return Optional.ofNullable(this.forwardProxyUri);
+    }
+
+    /**
      * The resource ID of the environment.
      * 
      */
@@ -177,6 +192,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         this.deploymentType = $.deploymentType;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.forwardProxyUri = $.forwardProxyUri;
         this.name = $.name;
         this.nodeConfig = $.nodeConfig;
         this.orgId = $.orgId;
@@ -301,6 +317,27 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param forwardProxyUri Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of &#34;http&#34; or &#34;https&#34;, and the port must be supplied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardProxyUri(@Nullable Output<String> forwardProxyUri) {
+            $.forwardProxyUri = forwardProxyUri;
+            return this;
+        }
+
+        /**
+         * @param forwardProxyUri Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of &#34;http&#34; or &#34;https&#34;, and the port must be supplied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardProxyUri(String forwardProxyUri) {
+            return forwardProxyUri(Output.of(forwardProxyUri));
         }
 
         /**

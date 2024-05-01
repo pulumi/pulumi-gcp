@@ -16,8 +16,14 @@ namespace Pulumi.Gcp.BigQueryDataPolicy.Inputs
         /// The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
         /// Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
         /// </summary>
-        [Input("predefinedExpression", required: true)]
-        public Input<string> PredefinedExpression { get; set; } = null!;
+        [Input("predefinedExpression")]
+        public Input<string>? PredefinedExpression { get; set; }
+
+        /// <summary>
+        /// The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+        /// </summary>
+        [Input("routine")]
+        public Input<string>? Routine { get; set; }
 
         public DataPolicyDataMaskingPolicyArgs()
         {

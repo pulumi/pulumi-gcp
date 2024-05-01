@@ -41,6 +41,50 @@ import * as utilities from "../utilities";
  *     dataPolicyType: "COLUMN_LEVEL_SECURITY_POLICY",
  * });
  * ```
+ * ### Bigquery Datapolicy Data Policy Routine
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const taxonomy = new gcp.datacatalog.Taxonomy("taxonomy", {
+ *     region: "us-central1",
+ *     displayName: "taxonomy",
+ *     description: "A collection of policy tags",
+ *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
+ * });
+ * const policyTag = new gcp.datacatalog.PolicyTag("policy_tag", {
+ *     taxonomy: taxonomy.id,
+ *     displayName: "Low security",
+ *     description: "A policy tag normally associated with low security items",
+ * });
+ * const test = new gcp.bigquery.Dataset("test", {
+ *     datasetId: "dataset_id",
+ *     location: "us-central1",
+ * });
+ * const customMaskingRoutine = new gcp.bigquery.Routine("custom_masking_routine", {
+ *     datasetId: test.datasetId,
+ *     routineId: "custom_masking_routine",
+ *     routineType: "SCALAR_FUNCTION",
+ *     language: "SQL",
+ *     dataGovernanceType: "DATA_MASKING",
+ *     definitionBody: "SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
+ *     returnType: "{\"typeKind\" :  \"STRING\"}",
+ *     arguments: [{
+ *         name: "ssn",
+ *         dataType: "{\"typeKind\" :  \"STRING\"}",
+ *     }],
+ * });
+ * const dataPolicy = new gcp.bigquerydatapolicy.DataPolicy("data_policy", {
+ *     location: "us-central1",
+ *     dataPolicyId: "data_policy",
+ *     policyTag: policyTag.name,
+ *     dataPolicyType: "DATA_MASKING_POLICY",
+ *     dataMaskingPolicy: {
+ *         routine: customMaskingRoutine.id,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

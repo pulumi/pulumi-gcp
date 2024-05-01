@@ -594,6 +594,146 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Privateca Certificate Custom Ski
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.certificateauthority.Certificate;
+ * import com.pulumi.gcp.certificateauthority.CertificateArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectKeyIdArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-pool&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .pool(default_.name())
+ *             .certificateAuthorityId(&#34;my-authority&#34;)
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization(&#34;HashiCorp&#34;)
+ *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .build())
+ *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
+ *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .digitalSignature(true)
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .lifetime(&#34;86400s&#34;)
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .skipGracePeriod(true)
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .build());
+ * 
+ *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .pool(default_.name())
+ *             .name(&#34;my-certificate&#34;)
+ *             .lifetime(&#34;860s&#34;)
+ *             .config(CertificateConfigArgs.builder()
+ *                 .subjectConfig(CertificateConfigSubjectConfigArgs.builder()
+ *                     .subject(CertificateConfigSubjectConfigSubjectArgs.builder()
+ *                         .commonName(&#34;san1.example.com&#34;)
+ *                         .countryCode(&#34;us&#34;)
+ *                         .organization(&#34;google&#34;)
+ *                         .organizationalUnit(&#34;enterprise&#34;)
+ *                         .locality(&#34;mountain view&#34;)
+ *                         .province(&#34;california&#34;)
+ *                         .streetAddress(&#34;1600 amphitheatre parkway&#34;)
+ *                         .postalCode(&#34;94109&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .subjectKeyId(CertificateConfigSubjectKeyIdArgs.builder()
+ *                     .keyId(&#34;4cf3372289b1d411b999dbb9ebcd44744b6b2fca&#34;)
+ *                     .build())
+ *                 .x509Config(CertificateConfigX509ConfigArgs.builder()
+ *                     .caOptions(CertificateConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(false)
+ *                         .build())
+ *                     .keyUsage(CertificateConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .publicKey(CertificateConfigPublicKeyArgs.builder()
+ *                     .format(&#34;PEM&#34;)
+ *                     .key(StdFunctions.filebase64(Filebase64Args.builder()
+ *                         .input(&#34;test-fixtures/rsa_public.pem&#34;)
+ *                         .build()).result())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

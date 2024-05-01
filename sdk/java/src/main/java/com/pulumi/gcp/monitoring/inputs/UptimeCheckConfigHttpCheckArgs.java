@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAuthInfoArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckPingConfigArgs;
+import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -40,7 +41,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The authentication information. Optional when creating an HTTP check; defaults to empty.
+     * The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
      * Structure is documented below.
      * 
      */
@@ -48,7 +49,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
     private @Nullable Output<UptimeCheckConfigHttpCheckAuthInfoArgs> authInfo;
 
     /**
-     * @return The authentication information. Optional when creating an HTTP check; defaults to empty.
+     * @return The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
      * Structure is documented below.
      * 
      */
@@ -200,6 +201,23 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="serviceAgentAuthentication")
+    private @Nullable Output<UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs> serviceAgentAuthentication;
+
+    /**
+     * @return The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs>> serviceAgentAuthentication() {
+        return Optional.ofNullable(this.serviceAgentAuthentication);
+    }
+
+    /**
      * If true, use HTTPS instead of HTTP to run the check.
      * 
      */
@@ -243,6 +261,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
         this.pingConfig = $.pingConfig;
         this.port = $.port;
         this.requestMethod = $.requestMethod;
+        this.serviceAgentAuthentication = $.serviceAgentAuthentication;
         this.useSsl = $.useSsl;
         this.validateSsl = $.validateSsl;
     }
@@ -300,7 +319,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param authInfo The authentication information. Optional when creating an HTTP check; defaults to empty.
+         * @param authInfo The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
          * Structure is documented below.
          * 
          * @return builder
@@ -312,7 +331,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param authInfo The authentication information. Optional when creating an HTTP check; defaults to empty.
+         * @param authInfo The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
          * Structure is documented below.
          * 
          * @return builder
@@ -517,6 +536,29 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
          */
         public Builder requestMethod(String requestMethod) {
             return requestMethod(Output.of(requestMethod));
+        }
+
+        /**
+         * @param serviceAgentAuthentication The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAgentAuthentication(@Nullable Output<UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs> serviceAgentAuthentication) {
+            $.serviceAgentAuthentication = serviceAgentAuthentication;
+            return this;
+        }
+
+        /**
+         * @param serviceAgentAuthentication The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAgentAuthentication(UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs serviceAgentAuthentication) {
+            return serviceAgentAuthentication(Output.of(serviceAgentAuthentication));
         }
 
         /**

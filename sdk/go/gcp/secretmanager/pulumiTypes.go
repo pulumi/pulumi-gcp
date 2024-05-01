@@ -2317,6 +2317,12 @@ type GetSecretsSecret struct {
 	Ttl string `pulumi:"ttl"`
 	// Mapping from version alias to version name.
 	VersionAliases map[string]string `pulumi:"versionAliases"`
+	// Secret Version TTL after destruction request.
+	// This is a part of the delayed delete feature on Secret Version.
+	// For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+	// on calling destroy instead the version goes to a disabled state and
+	// the actual destruction happens after this TTL expires.
+	VersionDestroyTtl string `pulumi:"versionDestroyTtl"`
 }
 
 // GetSecretsSecretInput is an input type that accepts GetSecretsSecretArgs and GetSecretsSecretOutput values.
@@ -2365,6 +2371,12 @@ type GetSecretsSecretArgs struct {
 	Ttl pulumi.StringInput `pulumi:"ttl"`
 	// Mapping from version alias to version name.
 	VersionAliases pulumi.StringMapInput `pulumi:"versionAliases"`
+	// Secret Version TTL after destruction request.
+	// This is a part of the delayed delete feature on Secret Version.
+	// For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+	// on calling destroy instead the version goes to a disabled state and
+	// the actual destruction happens after this TTL expires.
+	VersionDestroyTtl pulumi.StringInput `pulumi:"versionDestroyTtl"`
 }
 
 func (GetSecretsSecretArgs) ElementType() reflect.Type {
@@ -2496,6 +2508,15 @@ func (o GetSecretsSecretOutput) Ttl() pulumi.StringOutput {
 // Mapping from version alias to version name.
 func (o GetSecretsSecretOutput) VersionAliases() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.VersionAliases }).(pulumi.StringMapOutput)
+}
+
+// Secret Version TTL after destruction request.
+// This is a part of the delayed delete feature on Secret Version.
+// For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+// on calling destroy instead the version goes to a disabled state and
+// the actual destruction happens after this TTL expires.
+func (o GetSecretsSecretOutput) VersionDestroyTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.VersionDestroyTtl }).(pulumi.StringOutput)
 }
 
 type GetSecretsSecretArrayOutput struct{ *pulumi.OutputState }

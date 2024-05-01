@@ -176,6 +176,28 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Redirect to Google")
         ```
+        ### Firebasehosting Version Path
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-id")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
+            config=gcp.firebase.HostingVersionConfigArgs(
+                rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
+                    glob="**",
+                    path="/index.html",
+                )],
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
+            version_name=default_hosting_version.name,
+            message="Path Rewrite")
+        ```
         ### Firebasehosting Version Cloud Run
 
         ```python
@@ -311,6 +333,28 @@ class HostingVersion(pulumi.CustomResource):
             site_id=default.site_id,
             version_name=default_hosting_version.name,
             message="Redirect to Google")
+        ```
+        ### Firebasehosting Version Path
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-id")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
+            config=gcp.firebase.HostingVersionConfigArgs(
+                rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
+                    glob="**",
+                    path="/index.html",
+                )],
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
+            version_name=default_hosting_version.name,
+            message="Path Rewrite")
         ```
         ### Firebasehosting Version Cloud Run
 

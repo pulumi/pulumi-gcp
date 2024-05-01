@@ -78,6 +78,86 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Datapolicy Data Policy Routine
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.Taxonomy;
+ * import com.pulumi.gcp.datacatalog.TaxonomyArgs;
+ * import com.pulumi.gcp.datacatalog.PolicyTag;
+ * import com.pulumi.gcp.datacatalog.PolicyTagArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+ * import com.pulumi.gcp.bigquerydatapolicy.DataPolicy;
+ * import com.pulumi.gcp.bigquerydatapolicy.DataPolicyArgs;
+ * import com.pulumi.gcp.bigquerydatapolicy.inputs.DataPolicyDataMaskingPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var taxonomy = new Taxonomy(&#34;taxonomy&#34;, TaxonomyArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .displayName(&#34;taxonomy&#34;)
+ *             .description(&#34;A collection of policy tags&#34;)
+ *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
+ *             .build());
+ * 
+ *         var policyTag = new PolicyTag(&#34;policyTag&#34;, PolicyTagArgs.builder()        
+ *             .taxonomy(taxonomy.id())
+ *             .displayName(&#34;Low security&#34;)
+ *             .description(&#34;A policy tag normally associated with low security items&#34;)
+ *             .build());
+ * 
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;dataset_id&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var customMaskingRoutine = new Routine(&#34;customMaskingRoutine&#34;, RoutineArgs.builder()        
+ *             .datasetId(test.datasetId())
+ *             .routineId(&#34;custom_masking_routine&#34;)
+ *             .routineType(&#34;SCALAR_FUNCTION&#34;)
+ *             .language(&#34;SQL&#34;)
+ *             .dataGovernanceType(&#34;DATA_MASKING&#34;)
+ *             .definitionBody(&#34;SAFE.REGEXP_REPLACE(ssn, &#39;[0-9]&#39;, &#39;X&#39;)&#34;)
+ *             .returnType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *             .arguments(RoutineArgumentArgs.builder()
+ *                 .name(&#34;ssn&#34;)
+ *                 .dataType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var dataPolicy = new DataPolicy(&#34;dataPolicy&#34;, DataPolicyArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .dataPolicyId(&#34;data_policy&#34;)
+ *             .policyTag(policyTag.name())
+ *             .dataPolicyType(&#34;DATA_MASKING_POLICY&#34;)
+ *             .dataMaskingPolicy(DataPolicyDataMaskingPolicyArgs.builder()
+ *                 .routine(customMaskingRoutine.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

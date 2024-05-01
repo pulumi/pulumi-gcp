@@ -690,7 +690,7 @@ class RecordSetRoutingPolicyArgs:
         :param pulumi.Input[bool] enable_geo_fencing: Specifies whether to enable fencing for geo queries.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]] geos: The configuration for Geolocation based routing policy.
                Structure is documented below.
-        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs'] primary_backup: The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs'] primary_backup: The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]] wrrs: The configuration for Weighted Round Robin based routing policy.
                Structure is documented below.
@@ -733,7 +733,7 @@ class RecordSetRoutingPolicyArgs:
     @pulumi.getter(name="primaryBackup")
     def primary_backup(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs']]:
         """
-        The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+        The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
         Structure is documented below.
         """
         return pulumi.get(self, "primary_backup")

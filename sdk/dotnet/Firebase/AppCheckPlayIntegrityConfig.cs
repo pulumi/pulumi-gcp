@@ -32,6 +32,14 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Enables the Play Integrity API
+    ///     var playIntegrity = new Gcp.Projects.Service("play_integrity", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         ServiceName = "playintegrity.googleapis.com",
+    ///         DisableOnDestroy = false,
+    ///     });
+    /// 
     ///     var @default = new Gcp.Firebase.AndroidApp("default", new()
     ///     {
     ///         Project = "my-project-name",
@@ -73,6 +81,14 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Enables the Play Integrity API
+    ///     var playIntegrity = new Gcp.Projects.Service("play_integrity", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         ServiceName = "playintegrity.googleapis.com",
+    ///         DisableOnDestroy = false,
+    ///     });
+    /// 
     ///     var @default = new Gcp.Firebase.AndroidApp("default", new()
     ///     {
     ///         Project = "my-project-name",

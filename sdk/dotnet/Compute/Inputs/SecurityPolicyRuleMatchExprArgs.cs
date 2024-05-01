@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityPolicyRuleMatchExprArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// The application context of the containing message determines which well-known feature set of CEL is supported.
+        /// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
         /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;

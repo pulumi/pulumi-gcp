@@ -15,16 +15,14 @@ public final class SecurityPolicyRuleMatchExprArgs extends com.pulumi.resources.
     public static final SecurityPolicyRuleMatchExprArgs Empty = new SecurityPolicyRuleMatchExprArgs();
 
     /**
-     * Textual representation of an expression in Common Expression Language syntax.
-     * The application context of the containing message determines which well-known feature set of CEL is supported.
+     * Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
      * 
      */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
     /**
-     * @return Textual representation of an expression in Common Expression Language syntax.
-     * The application context of the containing message determines which well-known feature set of CEL is supported.
+     * @return Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
      * 
      */
     public Output<String> expression() {
@@ -56,8 +54,7 @@ public final class SecurityPolicyRuleMatchExprArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param expression Textual representation of an expression in Common Expression Language syntax.
-         * The application context of the containing message determines which well-known feature set of CEL is supported.
+         * @param expression Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
          * 
          * @return builder
          * 
@@ -68,8 +65,7 @@ public final class SecurityPolicyRuleMatchExprArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param expression Textual representation of an expression in Common Expression Language syntax.
-         * The application context of the containing message determines which well-known feature set of CEL is supported.
+         * @param expression Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
          * 
          * @return builder
          * 

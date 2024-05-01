@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.inputs.InstanceClientConnectionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.InstanceNetworkConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceQueryInsightsConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceReadPoolConfigArgs;
 import java.lang.String;
@@ -209,6 +210,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Instance level network configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkConfig")
+    private @Nullable Output<InstanceNetworkConfigArgs> networkConfig;
+
+    /**
+     * @return Instance level network configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceNetworkConfigArgs>> networkConfig() {
+        return Optional.ofNullable(this.networkConfig);
+    }
+
+    /**
      * Configuration for query insights.
      * Structure is documented below.
      * 
@@ -256,6 +274,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.instanceType = $.instanceType;
         this.labels = $.labels;
         this.machineConfig = $.machineConfig;
+        this.networkConfig = $.networkConfig;
         this.queryInsightsConfig = $.queryInsightsConfig;
         this.readPoolConfig = $.readPoolConfig;
     }
@@ -525,6 +544,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder machineConfig(InstanceMachineConfigArgs machineConfig) {
             return machineConfig(Output.of(machineConfig));
+        }
+
+        /**
+         * @param networkConfig Instance level network configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(@Nullable Output<InstanceNetworkConfigArgs> networkConfig) {
+            $.networkConfig = networkConfig;
+            return this;
+        }
+
+        /**
+         * @param networkConfig Instance level network configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(InstanceNetworkConfigArgs networkConfig) {
+            return networkConfig(Output.of(networkConfig));
         }
 
         /**

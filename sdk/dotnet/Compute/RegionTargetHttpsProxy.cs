@@ -117,6 +117,163 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Target Https Proxy Mtls
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Name = "my-trust-config",
+    ///         Description = "sample description for trust config",
+    ///         TrustStores = new[]
+    ///         {
+    ///             new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreArgs
+    ///             {
+    ///                 TrustAnchors = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///                 IntermediateCas = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultServerTlsPolicy = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Name = "my-tls-policy",
+    ///         Description = "my description",
+    ///         AllowOpen = false,
+    ///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
+    ///         {
+    ///             ClientValidationMode = "REJECT_INVALID",
+    ///             ClientValidationTrustConfig = Output.Tuple(project, defaultTrustConfig.Name).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var name = values.Item2;
+    ///                 return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/us-central1/trustConfigs/{name}";
+    ///             }),
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionSslCertificate = new Gcp.Compute.RegionSslCertificate("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "my-certificate",
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "http-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "backend-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "url-map",
+    ///         Description = "a description",
+    ///         DefaultService = defaultRegionBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultRegionBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultRegionBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionTargetHttpsProxy("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "test-mtls-proxy",
+    ///         UrlMap = defaultRegionUrlMap.Id,
+    ///         SslCertificates = new[]
+    ///         {
+    ///             defaultRegionSslCertificate.Id,
+    ///         },
+    ///         ServerTlsPolicy = defaultServerTlsPolicy.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Region Target Https Proxy Certificate Manager Certificate
     /// 
     /// ```csharp
@@ -267,6 +424,20 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// A URL referring to a networksecurity.ServerTlsPolicy
+        /// resource that describes how the proxy should authenticate inbound
+        /// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        /// attached to globalForwardingRules with the loadBalancingScheme
+        /// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        /// For details which ServerTlsPolicy resources are accepted with
+        /// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        /// loadBalancingScheme consult ServerTlsPolicy documentation.
+        /// If left blank, communications are not encrypted.
+        /// </summary>
+        [Output("serverTlsPolicy")]
+        public Output<string?> ServerTlsPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
         /// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
         /// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -385,6 +556,20 @@ namespace Pulumi.Gcp.Compute
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// A URL referring to a networksecurity.ServerTlsPolicy
+        /// resource that describes how the proxy should authenticate inbound
+        /// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        /// attached to globalForwardingRules with the loadBalancingScheme
+        /// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        /// For details which ServerTlsPolicy resources are accepted with
+        /// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        /// loadBalancingScheme consult ServerTlsPolicy documentation.
+        /// If left blank, communications are not encrypted.
+        /// </summary>
+        [Input("serverTlsPolicy")]
+        public Input<string>? ServerTlsPolicy { get; set; }
+
         [Input("sslCertificates")]
         private InputList<string>? _sslCertificates;
 
@@ -489,6 +674,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// A URL referring to a networksecurity.ServerTlsPolicy
+        /// resource that describes how the proxy should authenticate inbound
+        /// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        /// attached to globalForwardingRules with the loadBalancingScheme
+        /// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        /// For details which ServerTlsPolicy resources are accepted with
+        /// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        /// loadBalancingScheme consult ServerTlsPolicy documentation.
+        /// If left blank, communications are not encrypted.
+        /// </summary>
+        [Input("serverTlsPolicy")]
+        public Input<string>? ServerTlsPolicy { get; set; }
 
         [Input("sslCertificates")]
         private InputList<string>? _sslCertificates;

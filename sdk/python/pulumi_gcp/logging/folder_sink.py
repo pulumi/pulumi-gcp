@@ -24,6 +24,7 @@ class FolderSinkArgs:
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
+                 intercept_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FolderSink resource.
@@ -47,6 +48,8 @@ class FolderSinkArgs:
                write a filter.
         :param pulumi.Input[bool] include_children: Whether or not to include children folders in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
+        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+               resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         :param pulumi.Input[str] name: The name of the logging sink.
         """
         pulumi.set(__self__, "destination", destination)
@@ -63,6 +66,8 @@ class FolderSinkArgs:
             pulumi.set(__self__, "filter", filter)
         if include_children is not None:
             pulumi.set(__self__, "include_children", include_children)
+        if intercept_children is not None:
+            pulumi.set(__self__, "intercept_children", intercept_children)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -175,6 +180,19 @@ class FolderSinkArgs:
         pulumi.set(self, "include_children", value)
 
     @property
+    @pulumi.getter(name="interceptChildren")
+    def intercept_children(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+        resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        """
+        return pulumi.get(self, "intercept_children")
+
+    @intercept_children.setter
+    def intercept_children(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "intercept_children", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -198,6 +216,7 @@ class _FolderSinkState:
                  filter: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
+                 intercept_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  writer_identity: Optional[pulumi.Input[str]] = None):
         """
@@ -222,6 +241,8 @@ class _FolderSinkState:
                accepted.
         :param pulumi.Input[bool] include_children: Whether or not to include children folders in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
+        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+               resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
@@ -242,6 +263,8 @@ class _FolderSinkState:
             pulumi.set(__self__, "folder", folder)
         if include_children is not None:
             pulumi.set(__self__, "include_children", include_children)
+        if intercept_children is not None:
+            pulumi.set(__self__, "intercept_children", intercept_children)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if writer_identity is not None:
@@ -356,6 +379,19 @@ class _FolderSinkState:
         pulumi.set(self, "include_children", value)
 
     @property
+    @pulumi.getter(name="interceptChildren")
+    def intercept_children(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+        resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        """
+        return pulumi.get(self, "intercept_children")
+
+    @intercept_children.setter
+    def intercept_children(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "intercept_children", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -394,6 +430,7 @@ class FolderSink(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
+                 intercept_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -460,6 +497,8 @@ class FolderSink(pulumi.CustomResource):
                accepted.
         :param pulumi.Input[bool] include_children: Whether or not to include children folders in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
+        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+               resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         :param pulumi.Input[str] name: The name of the logging sink.
         """
         ...
@@ -533,6 +572,7 @@ class FolderSink(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
+                 intercept_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -555,6 +595,7 @@ class FolderSink(pulumi.CustomResource):
                 raise TypeError("Missing required property 'folder'")
             __props__.__dict__["folder"] = folder
             __props__.__dict__["include_children"] = include_children
+            __props__.__dict__["intercept_children"] = intercept_children
             __props__.__dict__["name"] = name
             __props__.__dict__["writer_identity"] = None
         super(FolderSink, __self__).__init__(
@@ -575,6 +616,7 @@ class FolderSink(pulumi.CustomResource):
             filter: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
             include_children: Optional[pulumi.Input[bool]] = None,
+            intercept_children: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             writer_identity: Optional[pulumi.Input[str]] = None) -> 'FolderSink':
         """
@@ -604,6 +646,8 @@ class FolderSink(pulumi.CustomResource):
                accepted.
         :param pulumi.Input[bool] include_children: Whether or not to include children folders in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
+        :param pulumi.Input[bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+               resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
@@ -620,6 +664,7 @@ class FolderSink(pulumi.CustomResource):
         __props__.__dict__["filter"] = filter
         __props__.__dict__["folder"] = folder
         __props__.__dict__["include_children"] = include_children
+        __props__.__dict__["intercept_children"] = intercept_children
         __props__.__dict__["name"] = name
         __props__.__dict__["writer_identity"] = writer_identity
         return FolderSink(resource_name, opts=opts, __props__=__props__)
@@ -699,6 +744,15 @@ class FolderSink(pulumi.CustomResource):
         associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
         """
         return pulumi.get(self, "include_children")
+
+    @property
+    @pulumi.getter(name="interceptChildren")
+    def intercept_children(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
+        resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        """
+        return pulumi.get(self, "intercept_children")
 
     @property
     @pulumi.getter

@@ -29223,14 +29223,14 @@ class SecurityPolicyRuleMatchArgs:
                  expr: Optional[pulumi.Input['SecurityPolicyRuleMatchExprArgs']] = None,
                  versioned_expr: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['SecurityPolicyRuleMatchConfigArgs'] config: The configuration options available when specifying `versioned_expr`.
-               This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+        :param pulumi.Input['SecurityPolicyRuleMatchConfigArgs'] config: The configuration options available when specifying versionedExpr.
+               This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
                Structure is documented below.
-        :param pulumi.Input['SecurityPolicyRuleMatchExprArgs'] expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-               such as `origin.ip`, `source.region_code` and `contents` in the request header.
+        :param pulumi.Input['SecurityPolicyRuleMatchExprArgs'] expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
                Structure is documented below.
-        :param pulumi.Input[str] versioned_expr: Predefined rule expression. If this field is specified, `config` must also be specified.
-               Available options:
+        :param pulumi.Input[str] versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified.
+               Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+               Possible values are: `SRC_IPS_V1`.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -29243,8 +29243,8 @@ class SecurityPolicyRuleMatchArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatchConfigArgs']]:
         """
-        The configuration options available when specifying `versioned_expr`.
-        This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+        The configuration options available when specifying versionedExpr.
+        This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
         Structure is documented below.
         """
         return pulumi.get(self, "config")
@@ -29257,8 +29257,7 @@ class SecurityPolicyRuleMatchArgs:
     @pulumi.getter
     def expr(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatchExprArgs']]:
         """
-        User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-        such as `origin.ip`, `source.region_code` and `contents` in the request header.
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
         Structure is documented below.
         """
         return pulumi.get(self, "expr")
@@ -29271,8 +29270,9 @@ class SecurityPolicyRuleMatchArgs:
     @pulumi.getter(name="versionedExpr")
     def versioned_expr(self) -> Optional[pulumi.Input[str]]:
         """
-        Predefined rule expression. If this field is specified, `config` must also be specified.
-        Available options:
+        Preconfigured versioned expression. If this field is specified, config must also be specified.
+        Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+        Possible values are: `SRC_IPS_V1`.
         """
         return pulumi.get(self, "versioned_expr")
 
@@ -29284,26 +29284,23 @@ class SecurityPolicyRuleMatchArgs:
 @pulumi.input_type
 class SecurityPolicyRuleMatchConfigArgs:
     def __init__(__self__, *,
-                 src_ip_ranges: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-               to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-               (can be used to override the default behavior).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
         """
-        pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
 
     @property
     @pulumi.getter(name="srcIpRanges")
-    def src_ip_ranges(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+    def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-        to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-        (can be used to override the default behavior).
+        CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
         """
         return pulumi.get(self, "src_ip_ranges")
 
     @src_ip_ranges.setter
-    def src_ip_ranges(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+    def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
 
 
@@ -29312,8 +29309,7 @@ class SecurityPolicyRuleMatchExprArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
-               The application context of the containing message determines which well-known feature set of CEL is supported.
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
         """
         pulumi.set(__self__, "expression", expression)
 
@@ -29321,8 +29317,7 @@ class SecurityPolicyRuleMatchExprArgs:
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
         """
-        Textual representation of an expression in Common Expression Language syntax.
-        The application context of the containing message determines which well-known feature set of CEL is supported.
+        Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
         """
         return pulumi.get(self, "expression")
 
@@ -29336,7 +29331,8 @@ class SecurityPolicyRulePreconfiguredWafConfigArgs:
     def __init__(__self__, *,
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]] exclusions: An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]] exclusions: An exclusion to apply during preconfigured WAF evaluation.
+               Structure is documented below.
         """
         if exclusions is not None:
             pulumi.set(__self__, "exclusions", exclusions)
@@ -29345,7 +29341,8 @@ class SecurityPolicyRulePreconfiguredWafConfigArgs:
     @pulumi.getter
     def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]]:
         """
-        An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+        An exclusion to apply during preconfigured WAF evaluation.
+        Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
@@ -29365,13 +29362,18 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
                  target_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]] request_query_params: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]] request_uris: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-               
-               <a name="nested_field_params"></a>The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]] request_query_params: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+               Note that the parameter can be in the query string or in the POST body.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]] request_uris: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+               When specifying this field, the query or fragment part should be excluded.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+               If omitted, it refers to all the rule IDs under the WAF rule set.
         """
         pulumi.set(__self__, "target_rule_set", target_rule_set)
         if request_cookies is not None:
@@ -29401,7 +29403,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @pulumi.getter(name="requestCookies")
     def request_cookies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]]]:
         """
-        Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+        Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Structure is documented below.
         """
         return pulumi.get(self, "request_cookies")
 
@@ -29413,7 +29416,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @pulumi.getter(name="requestHeaders")
     def request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]]]:
         """
-        Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+        Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Structure is documented below.
         """
         return pulumi.get(self, "request_headers")
 
@@ -29425,7 +29429,9 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @pulumi.getter(name="requestQueryParams")
     def request_query_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]]]:
         """
-        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Note that the parameter can be in the query string or in the POST body.
+        Structure is documented below.
         """
         return pulumi.get(self, "request_query_params")
 
@@ -29437,7 +29443,9 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @pulumi.getter(name="requestUris")
     def request_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]]]:
         """
-        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+        When specifying this field, the query or fragment part should be excluded.
+        Structure is documented below.
         """
         return pulumi.get(self, "request_uris")
 
@@ -29449,9 +29457,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @pulumi.getter(name="targetRuleIds")
     def target_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-
-        <a name="nested_field_params"></a>The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+        If omitted, it refers to all the rule IDs under the WAF rule set.
         """
         return pulumi.get(self, "target_rule_ids")
 
@@ -29466,8 +29473,15 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
-        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value.
+        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -29477,7 +29491,13 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
         """
-        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -29489,7 +29509,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         return pulumi.get(self, "value")
 
@@ -29504,8 +29525,15 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
-        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value.
+        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -29515,7 +29543,13 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
         """
-        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -29527,7 +29561,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         return pulumi.get(self, "value")
 
@@ -29542,8 +29577,15 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
-        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value.
+        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -29553,7 +29595,13 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
         """
-        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -29565,7 +29613,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         return pulumi.get(self, "value")
 
@@ -29580,8 +29629,15 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
                  operator: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
-        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value.
+        :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -29591,7 +29647,13 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
         """
-        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -29603,7 +29665,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
         """
         return pulumi.get(self, "value")
 

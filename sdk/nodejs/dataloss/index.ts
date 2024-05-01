@@ -10,6 +10,11 @@ export type PreventionDeidentifyTemplate = import("./preventionDeidentifyTemplat
 export const PreventionDeidentifyTemplate: typeof import("./preventionDeidentifyTemplate").PreventionDeidentifyTemplate = null as any;
 utilities.lazyLoad(exports, ["PreventionDeidentifyTemplate"], () => require("./preventionDeidentifyTemplate"));
 
+export { PreventionDiscoveryConfigArgs, PreventionDiscoveryConfigState } from "./preventionDiscoveryConfig";
+export type PreventionDiscoveryConfig = import("./preventionDiscoveryConfig").PreventionDiscoveryConfig;
+export const PreventionDiscoveryConfig: typeof import("./preventionDiscoveryConfig").PreventionDiscoveryConfig = null as any;
+utilities.lazyLoad(exports, ["PreventionDiscoveryConfig"], () => require("./preventionDiscoveryConfig"));
+
 export { PreventionInspectTemplateArgs, PreventionInspectTemplateState } from "./preventionInspectTemplate";
 export type PreventionInspectTemplate = import("./preventionInspectTemplate").PreventionInspectTemplate;
 export const PreventionInspectTemplate: typeof import("./preventionInspectTemplate").PreventionInspectTemplate = null as any;
@@ -32,6 +37,8 @@ const _module = {
         switch (type) {
             case "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate":
                 return new PreventionDeidentifyTemplate(name, <any>undefined, { urn })
+            case "gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig":
+                return new PreventionDiscoveryConfig(name, <any>undefined, { urn })
             case "gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate":
                 return new PreventionInspectTemplate(name, <any>undefined, { urn })
             case "gcp:dataloss/preventionJobTrigger:PreventionJobTrigger":
@@ -44,6 +51,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "dataloss/preventionDeidentifyTemplate", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataloss/preventionDiscoveryConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataloss/preventionInspectTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataloss/preventionJobTrigger", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataloss/preventionStoredInfoType", _module)

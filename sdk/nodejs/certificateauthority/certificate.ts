@@ -404,6 +404,99 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Privateca Certificate Custom Ski
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = new gcp.certificateauthority.CaPool("default", {
+ *     location: "us-central1",
+ *     name: "my-pool",
+ *     tier: "ENTERPRISE",
+ * });
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+ *     location: "us-central1",
+ *     pool: _default.name,
+ *     certificateAuthorityId: "my-authority",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     digitalSignature: true,
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     lifetime: "86400s",
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ * });
+ * const defaultCertificate = new gcp.certificateauthority.Certificate("default", {
+ *     location: "us-central1",
+ *     pool: _default.name,
+ *     name: "my-certificate",
+ *     lifetime: "860s",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 commonName: "san1.example.com",
+ *                 countryCode: "us",
+ *                 organization: "google",
+ *                 organizationalUnit: "enterprise",
+ *                 locality: "mountain view",
+ *                 province: "california",
+ *                 streetAddress: "1600 amphitheatre parkway",
+ *                 postalCode: "94109",
+ *             },
+ *         },
+ *         subjectKeyId: {
+ *             keyId: "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: false,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *         publicKey: {
+ *             format: "PEM",
+ *             key: std.filebase64({
+ *                 input: "test-fixtures/rsa_public.pem",
+ *             }).then(invoke => invoke.result),
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

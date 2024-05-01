@@ -25,6 +25,7 @@ class InstanceArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -43,6 +44,9 @@ class InstanceArgs:
                resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the instance.
+        :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+               protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+               "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
         """
         pulumi.set(__self__, "file_shares", file_shares)
@@ -60,6 +64,8 @@ class InstanceArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
         if zone is not None:
             warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
             pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
@@ -180,6 +186,20 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+        protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+        "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Filestore zone of the instance.
@@ -208,6 +228,7 @@ class _InstanceState:
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -230,6 +251,9 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
+        :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+               protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+               "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance.
@@ -258,6 +282,8 @@ class _InstanceState:
             pulumi.set(__self__, "networks", networks)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if tier is not None:
@@ -405,6 +431,20 @@ class _InstanceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+        protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+        "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -459,6 +499,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -528,6 +569,26 @@ class Instance(pulumi.CustomResource):
                 connect_mode="DIRECT_PEERING",
             )])
         ```
+        ### Filestore Instance Protocol
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            name="test-instance",
+            location="us-central1",
+            tier="ENTERPRISE",
+            protocol="NFS_V4_1",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )])
+        ```
         ### Filestore Instance Enterprise
 
         ```python
@@ -594,6 +655,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
+        :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+               protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+               "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
@@ -670,6 +734,26 @@ class Instance(pulumi.CustomResource):
                 connect_mode="DIRECT_PEERING",
             )])
         ```
+        ### Filestore Instance Protocol
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            name="test-instance",
+            location="us-central1",
+            tier="ENTERPRISE",
+            protocol="NFS_V4_1",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )])
+        ```
         ### Filestore Instance Enterprise
 
         ```python
@@ -744,6 +828,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -767,6 +852,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'networks'")
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
+            __props__.__dict__["protocol"] = protocol
             if tier is None and not opts.urn:
                 raise TypeError("Missing required property 'tier'")
             __props__.__dict__["tier"] = tier
@@ -798,6 +884,7 @@ class Instance(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            protocol: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -825,6 +912,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
+        :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+               protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+               "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance.
@@ -846,6 +936,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
         __props__.__dict__["project"] = project
+        __props__.__dict__["protocol"] = protocol
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["tier"] = tier
         __props__.__dict__["zone"] = zone
@@ -942,6 +1033,16 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Output[Optional[str]]:
+        """
+        Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
+        protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
+        "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        """
+        return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="pulumiLabels")

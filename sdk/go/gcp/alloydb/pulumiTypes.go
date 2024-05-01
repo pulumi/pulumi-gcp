@@ -3613,6 +3613,281 @@ func (o InstanceMachineConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type InstanceNetworkConfig struct {
+	// A list of external networks authorized to access this instance. This
+	// field is only allowed to be set when `enablePublicIp` is set to
+	// true.
+	// Structure is documented below.
+	AuthorizedExternalNetworks []InstanceNetworkConfigAuthorizedExternalNetwork `pulumi:"authorizedExternalNetworks"`
+	// Enabling public ip for the instance. If a user wishes to disable this,
+	// please also clear the list of the authorized external networks set on
+	// the same instance.
+	EnablePublicIp *bool `pulumi:"enablePublicIp"`
+}
+
+// InstanceNetworkConfigInput is an input type that accepts InstanceNetworkConfigArgs and InstanceNetworkConfigOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigInput` via:
+//
+//	InstanceNetworkConfigArgs{...}
+type InstanceNetworkConfigInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigOutput() InstanceNetworkConfigOutput
+	ToInstanceNetworkConfigOutputWithContext(context.Context) InstanceNetworkConfigOutput
+}
+
+type InstanceNetworkConfigArgs struct {
+	// A list of external networks authorized to access this instance. This
+	// field is only allowed to be set when `enablePublicIp` is set to
+	// true.
+	// Structure is documented below.
+	AuthorizedExternalNetworks InstanceNetworkConfigAuthorizedExternalNetworkArrayInput `pulumi:"authorizedExternalNetworks"`
+	// Enabling public ip for the instance. If a user wishes to disable this,
+	// please also clear the list of the authorized external networks set on
+	// the same instance.
+	EnablePublicIp pulumi.BoolPtrInput `pulumi:"enablePublicIp"`
+}
+
+func (InstanceNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigOutput() InstanceNetworkConfigOutput {
+	return i.ToInstanceNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigOutputWithContext(ctx context.Context) InstanceNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigOutput)
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return i.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigOutput).ToInstanceNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkConfigPtrInput is an input type that accepts InstanceNetworkConfigArgs, InstanceNetworkConfigPtr and InstanceNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigPtrInput` via:
+//
+//	        InstanceNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput
+	ToInstanceNetworkConfigPtrOutputWithContext(context.Context) InstanceNetworkConfigPtrOutput
+}
+
+type instanceNetworkConfigPtrType InstanceNetworkConfigArgs
+
+func InstanceNetworkConfigPtr(v *InstanceNetworkConfigArgs) InstanceNetworkConfigPtrInput {
+	return (*instanceNetworkConfigPtrType)(v)
+}
+
+func (*instanceNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (i *instanceNetworkConfigPtrType) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return i.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkConfigPtrType) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigPtrOutput)
+}
+
+type InstanceNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigOutput() InstanceNetworkConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigOutputWithContext(ctx context.Context) InstanceNetworkConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return o.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkConfig) *InstanceNetworkConfig {
+		return &v
+	}).(InstanceNetworkConfigPtrOutput)
+}
+
+// A list of external networks authorized to access this instance. This
+// field is only allowed to be set when `enablePublicIp` is set to
+// true.
+// Structure is documented below.
+func (o InstanceNetworkConfigOutput) AuthorizedExternalNetworks() InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) []InstanceNetworkConfigAuthorizedExternalNetwork {
+		return v.AuthorizedExternalNetworks
+	}).(InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput)
+}
+
+// Enabling public ip for the instance. If a user wishes to disable this,
+// please also clear the list of the authorized external networks set on
+// the same instance.
+func (o InstanceNetworkConfigOutput) EnablePublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) *bool { return v.EnablePublicIp }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPtrOutput) Elem() InstanceNetworkConfigOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) InstanceNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkConfig
+		return ret
+	}).(InstanceNetworkConfigOutput)
+}
+
+// A list of external networks authorized to access this instance. This
+// field is only allowed to be set when `enablePublicIp` is set to
+// true.
+// Structure is documented below.
+func (o InstanceNetworkConfigPtrOutput) AuthorizedExternalNetworks() InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) []InstanceNetworkConfigAuthorizedExternalNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizedExternalNetworks
+	}).(InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput)
+}
+
+// Enabling public ip for the instance. If a user wishes to disable this,
+// please also clear the list of the authorized external networks set on
+// the same instance.
+func (o InstanceNetworkConfigPtrOutput) EnablePublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePublicIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+type InstanceNetworkConfigAuthorizedExternalNetwork struct {
+	// CIDR range for one authorized network of the instance.
+	CidrRange *string `pulumi:"cidrRange"`
+}
+
+// InstanceNetworkConfigAuthorizedExternalNetworkInput is an input type that accepts InstanceNetworkConfigAuthorizedExternalNetworkArgs and InstanceNetworkConfigAuthorizedExternalNetworkOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigAuthorizedExternalNetworkInput` via:
+//
+//	InstanceNetworkConfigAuthorizedExternalNetworkArgs{...}
+type InstanceNetworkConfigAuthorizedExternalNetworkInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigAuthorizedExternalNetworkOutput() InstanceNetworkConfigAuthorizedExternalNetworkOutput
+	ToInstanceNetworkConfigAuthorizedExternalNetworkOutputWithContext(context.Context) InstanceNetworkConfigAuthorizedExternalNetworkOutput
+}
+
+type InstanceNetworkConfigAuthorizedExternalNetworkArgs struct {
+	// CIDR range for one authorized network of the instance.
+	CidrRange pulumi.StringPtrInput `pulumi:"cidrRange"`
+}
+
+func (InstanceNetworkConfigAuthorizedExternalNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfigAuthorizedExternalNetwork)(nil)).Elem()
+}
+
+func (i InstanceNetworkConfigAuthorizedExternalNetworkArgs) ToInstanceNetworkConfigAuthorizedExternalNetworkOutput() InstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return i.ToInstanceNetworkConfigAuthorizedExternalNetworkOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigAuthorizedExternalNetworkArgs) ToInstanceNetworkConfigAuthorizedExternalNetworkOutputWithContext(ctx context.Context) InstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigAuthorizedExternalNetworkOutput)
+}
+
+// InstanceNetworkConfigAuthorizedExternalNetworkArrayInput is an input type that accepts InstanceNetworkConfigAuthorizedExternalNetworkArray and InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigAuthorizedExternalNetworkArrayInput` via:
+//
+//	InstanceNetworkConfigAuthorizedExternalNetworkArray{ InstanceNetworkConfigAuthorizedExternalNetworkArgs{...} }
+type InstanceNetworkConfigAuthorizedExternalNetworkArrayInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput() InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput
+	ToInstanceNetworkConfigAuthorizedExternalNetworkArrayOutputWithContext(context.Context) InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput
+}
+
+type InstanceNetworkConfigAuthorizedExternalNetworkArray []InstanceNetworkConfigAuthorizedExternalNetworkInput
+
+func (InstanceNetworkConfigAuthorizedExternalNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceNetworkConfigAuthorizedExternalNetwork)(nil)).Elem()
+}
+
+func (i InstanceNetworkConfigAuthorizedExternalNetworkArray) ToInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput() InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return i.ToInstanceNetworkConfigAuthorizedExternalNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigAuthorizedExternalNetworkArray) ToInstanceNetworkConfigAuthorizedExternalNetworkArrayOutputWithContext(ctx context.Context) InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput)
+}
+
+type InstanceNetworkConfigAuthorizedExternalNetworkOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigAuthorizedExternalNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfigAuthorizedExternalNetwork)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigAuthorizedExternalNetworkOutput) ToInstanceNetworkConfigAuthorizedExternalNetworkOutput() InstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigAuthorizedExternalNetworkOutput) ToInstanceNetworkConfigAuthorizedExternalNetworkOutputWithContext(ctx context.Context) InstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return o
+}
+
+// CIDR range for one authorized network of the instance.
+func (o InstanceNetworkConfigAuthorizedExternalNetworkOutput) CidrRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfigAuthorizedExternalNetwork) *string { return v.CidrRange }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceNetworkConfigAuthorizedExternalNetwork)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) ToInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput() InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) ToInstanceNetworkConfigAuthorizedExternalNetworkArrayOutputWithContext(ctx context.Context) InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceNetworkConfigAuthorizedExternalNetwork {
+		return vs[0].([]InstanceNetworkConfigAuthorizedExternalNetwork)[vs[1].(int)]
+	}).(InstanceNetworkConfigAuthorizedExternalNetworkOutput)
+}
+
 type InstanceQueryInsightsConfig struct {
 	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
 	QueryPlansPerMinute *int `pulumi:"queryPlansPerMinute"`
@@ -4407,6 +4682,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientConnectionConfigSslConfigPtrInput)(nil)).Elem(), InstanceClientConnectionConfigSslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigInput)(nil)).Elem(), InstanceMachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigPtrInput)(nil)).Elem(), InstanceMachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigAuthorizedExternalNetworkInput)(nil)).Elem(), InstanceNetworkConfigAuthorizedExternalNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigAuthorizedExternalNetworkArrayInput)(nil)).Elem(), InstanceNetworkConfigAuthorizedExternalNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigPtrInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
@@ -4467,6 +4746,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceClientConnectionConfigSslConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMachineConfigOutput{})
 	pulumi.RegisterOutputType(InstanceMachineConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigAuthorizedExternalNetworkOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput{})
 	pulumi.RegisterOutputType(InstanceQueryInsightsConfigOutput{})
 	pulumi.RegisterOutputType(InstanceQueryInsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigOutput{})

@@ -12,6 +12,7 @@ import com.pulumi.gcp.alloydb.InstanceArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceState;
 import com.pulumi.gcp.alloydb.outputs.InstanceClientConnectionConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceMachineConfig;
+import com.pulumi.gcp.alloydb.outputs.InstanceNetworkConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceQueryInsightsConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceReadPoolConfig;
 import java.lang.Boolean;
@@ -466,6 +467,40 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Instance level network configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="networkConfig", refs={InstanceNetworkConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceNetworkConfig> networkConfig;
+
+    /**
+     * @return Instance level network configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceNetworkConfig>> networkConfig() {
+        return Codegen.optional(this.networkConfig);
+    }
+    /**
+     * The public IP addresses for the Instance. This is available ONLY when
+     * networkConfig.enablePublicIp is set to true. This is the connection
+     * endpoint for an end-user application.
+     * 
+     */
+    @Export(name="publicIpAddress", refs={String.class}, tree="[0]")
+    private Output<String> publicIpAddress;
+
+    /**
+     * @return The public IP addresses for the Instance. This is available ONLY when
+     * networkConfig.enablePublicIp is set to true. This is the connection
+     * endpoint for an end-user application.
+     * 
+     */
+    public Output<String> publicIpAddress() {
+        return this.publicIpAddress;
     }
     /**
      * The combination of labels configured directly on the resource

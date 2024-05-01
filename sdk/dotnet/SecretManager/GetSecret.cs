@@ -124,6 +124,7 @@ namespace Pulumi.Gcp.SecretManager
         public readonly ImmutableArray<Outputs.GetSecretTopicResult> Topics;
         public readonly string Ttl;
         public readonly ImmutableDictionary<string, string> VersionAliases;
+        public readonly string VersionDestroyTtl;
 
         [OutputConstructor]
         private GetSecretResult(
@@ -157,7 +158,9 @@ namespace Pulumi.Gcp.SecretManager
 
             string ttl,
 
-            ImmutableDictionary<string, string> versionAliases)
+            ImmutableDictionary<string, string> versionAliases,
+
+            string versionDestroyTtl)
         {
             Annotations = annotations;
             CreateTime = createTime;
@@ -175,6 +178,7 @@ namespace Pulumi.Gcp.SecretManager
             Topics = topics;
             Ttl = ttl;
             VersionAliases = versionAliases;
+            VersionDestroyTtl = versionDestroyTtl;
         }
     }
 }

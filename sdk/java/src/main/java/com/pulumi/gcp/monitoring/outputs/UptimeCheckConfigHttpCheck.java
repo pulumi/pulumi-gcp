@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCode;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheckAuthInfo;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheckPingConfig;
+import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheckServiceAgentAuthentication;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -25,7 +26,7 @@ public final class UptimeCheckConfigHttpCheck {
      */
     private @Nullable List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCode> acceptedResponseStatusCodes;
     /**
-     * @return The authentication information. Optional when creating an HTTP check; defaults to empty.
+     * @return The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
      * Structure is documented below.
      * 
      */
@@ -80,6 +81,12 @@ public final class UptimeCheckConfigHttpCheck {
      */
     private @Nullable String requestMethod;
     /**
+     * @return The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable UptimeCheckConfigHttpCheckServiceAgentAuthentication serviceAgentAuthentication;
+    /**
      * @return If true, use HTTPS instead of HTTP to run the check.
      * 
      */
@@ -100,7 +107,7 @@ public final class UptimeCheckConfigHttpCheck {
         return this.acceptedResponseStatusCodes == null ? List.of() : this.acceptedResponseStatusCodes;
     }
     /**
-     * @return The authentication information. Optional when creating an HTTP check; defaults to empty.
+     * @return The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
      * Structure is documented below.
      * 
      */
@@ -175,6 +182,14 @@ public final class UptimeCheckConfigHttpCheck {
         return Optional.ofNullable(this.requestMethod);
     }
     /**
+     * @return The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<UptimeCheckConfigHttpCheckServiceAgentAuthentication> serviceAgentAuthentication() {
+        return Optional.ofNullable(this.serviceAgentAuthentication);
+    }
+    /**
      * @return If true, use HTTPS instead of HTTP to run the check.
      * 
      */
@@ -209,6 +224,7 @@ public final class UptimeCheckConfigHttpCheck {
         private @Nullable UptimeCheckConfigHttpCheckPingConfig pingConfig;
         private @Nullable Integer port;
         private @Nullable String requestMethod;
+        private @Nullable UptimeCheckConfigHttpCheckServiceAgentAuthentication serviceAgentAuthentication;
         private @Nullable Boolean useSsl;
         private @Nullable Boolean validateSsl;
         public Builder() {}
@@ -225,6 +241,7 @@ public final class UptimeCheckConfigHttpCheck {
     	      this.pingConfig = defaults.pingConfig;
     	      this.port = defaults.port;
     	      this.requestMethod = defaults.requestMethod;
+    	      this.serviceAgentAuthentication = defaults.serviceAgentAuthentication;
     	      this.useSsl = defaults.useSsl;
     	      this.validateSsl = defaults.validateSsl;
         }
@@ -299,6 +316,12 @@ public final class UptimeCheckConfigHttpCheck {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAgentAuthentication(@Nullable UptimeCheckConfigHttpCheckServiceAgentAuthentication serviceAgentAuthentication) {
+
+            this.serviceAgentAuthentication = serviceAgentAuthentication;
+            return this;
+        }
+        @CustomType.Setter
         public Builder useSsl(@Nullable Boolean useSsl) {
 
             this.useSsl = useSsl;
@@ -323,6 +346,7 @@ public final class UptimeCheckConfigHttpCheck {
             _resultValue.pingConfig = pingConfig;
             _resultValue.port = port;
             _resultValue.requestMethod = requestMethod;
+            _resultValue.serviceAgentAuthentication = serviceAgentAuthentication;
             _resultValue.useSsl = useSsl;
             _resultValue.validateSsl = validateSsl;
             return _resultValue;

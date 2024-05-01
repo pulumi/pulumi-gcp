@@ -117,11 +117,11 @@ install_nodejs_sdk:
 install_plugins: export PULUMI_HOME := $(WORKING_DIR)/.pulumi
 install_plugins: export PATH := $(WORKING_DIR)/.pulumi/bin:$(PATH)
 install_plugins: .pulumi/bin/pulumi
-	.pulumi/bin/pulumi plugin install resource random 4.14.0
-	.pulumi/bin/pulumi plugin install resource kubernetes 4.5.4
+	.pulumi/bin/pulumi plugin install resource random 4.16.1
+	.pulumi/bin/pulumi plugin install resource kubernetes 4.11.0
 	.pulumi/bin/pulumi plugin install resource std 1.6.2
-	.pulumi/bin/pulumi plugin install resource tls 4.11.1
-	.pulumi/bin/pulumi plugin install resource http 0.0.1
+	.pulumi/bin/pulumi plugin install resource tls 5.0.2
+	.pulumi/bin/pulumi plugin install resource http 0.0.3
 	.pulumi/bin/pulumi plugin install resource time 0.0.15
 	.pulumi/bin/pulumi plugin install converter terraform 1.0.15
 

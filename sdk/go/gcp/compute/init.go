@@ -257,6 +257,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SSLPolicy{}
 	case "gcp:compute/securityPolicy:SecurityPolicy":
 		r = &SecurityPolicy{}
+	case "gcp:compute/securityPolicyRule:SecurityPolicyRule":
+		r = &SecurityPolicyRule{}
 	case "gcp:compute/securityScanConfig:SecurityScanConfig":
 		r = &SecurityScanConfig{}
 	case "gcp:compute/serviceAttachment:ServiceAttachment":
@@ -902,6 +904,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/securityPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/securityPolicyRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

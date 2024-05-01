@@ -211,6 +211,25 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.versionAliases);
     }
 
+    /**
+     * Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+     * with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately on calling destroy instead the version goes to
+     * a disabled state and the actual destruction happens after this TTL expires.
+     * 
+     */
+    @Import(name="versionDestroyTtl")
+    private @Nullable Output<String> versionDestroyTtl;
+
+    /**
+     * @return Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+     * with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately on calling destroy instead the version goes to
+     * a disabled state and the actual destruction happens after this TTL expires.
+     * 
+     */
+    public Optional<Output<String>> versionDestroyTtl() {
+        return Optional.ofNullable(this.versionDestroyTtl);
+    }
+
     private SecretArgs() {}
 
     private SecretArgs(SecretArgs $) {
@@ -224,6 +243,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         this.topics = $.topics;
         this.ttl = $.ttl;
         this.versionAliases = $.versionAliases;
+        this.versionDestroyTtl = $.versionDestroyTtl;
     }
 
     public static Builder builder() {
@@ -499,6 +519,31 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder versionAliases(Map<String,String> versionAliases) {
             return versionAliases(Output.of(versionAliases));
+        }
+
+        /**
+         * @param versionDestroyTtl Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+         * with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately on calling destroy instead the version goes to
+         * a disabled state and the actual destruction happens after this TTL expires.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionDestroyTtl(@Nullable Output<String> versionDestroyTtl) {
+            $.versionDestroyTtl = versionDestroyTtl;
+            return this;
+        }
+
+        /**
+         * @param versionDestroyTtl Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+         * with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately on calling destroy instead the version goes to
+         * a disabled state and the actual destruction happens after this TTL expires.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionDestroyTtl(String versionDestroyTtl) {
+            return versionDestroyTtl(Output.of(versionDestroyTtl));
         }
 
         public SecretArgs build() {

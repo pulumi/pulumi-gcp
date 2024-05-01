@@ -88,6 +88,15 @@ public final class GetSecretsSecret {
      * 
      */
     private Map<String,String> versionAliases;
+    /**
+     * @return Secret Version TTL after destruction request.
+     * This is a part of the delayed delete feature on Secret Version.
+     * For secret with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately
+     * on calling destroy instead the version goes to a disabled state and
+     * the actual destruction happens after this TTL expires.
+     * 
+     */
+    private String versionDestroyTtl;
 
     private GetSecretsSecret() {}
     /**
@@ -193,6 +202,17 @@ public final class GetSecretsSecret {
     public Map<String,String> versionAliases() {
         return this.versionAliases;
     }
+    /**
+     * @return Secret Version TTL after destruction request.
+     * This is a part of the delayed delete feature on Secret Version.
+     * For secret with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately
+     * on calling destroy instead the version goes to a disabled state and
+     * the actual destruction happens after this TTL expires.
+     * 
+     */
+    public String versionDestroyTtl() {
+        return this.versionDestroyTtl;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -218,6 +238,7 @@ public final class GetSecretsSecret {
         private List<GetSecretsSecretTopic> topics;
         private String ttl;
         private Map<String,String> versionAliases;
+        private String versionDestroyTtl;
         public Builder() {}
         public Builder(GetSecretsSecret defaults) {
     	      Objects.requireNonNull(defaults);
@@ -236,6 +257,7 @@ public final class GetSecretsSecret {
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
     	      this.versionAliases = defaults.versionAliases;
+    	      this.versionDestroyTtl = defaults.versionDestroyTtl;
         }
 
         @CustomType.Setter
@@ -367,6 +389,14 @@ public final class GetSecretsSecret {
             this.versionAliases = versionAliases;
             return this;
         }
+        @CustomType.Setter
+        public Builder versionDestroyTtl(String versionDestroyTtl) {
+            if (versionDestroyTtl == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "versionDestroyTtl");
+            }
+            this.versionDestroyTtl = versionDestroyTtl;
+            return this;
+        }
         public GetSecretsSecret build() {
             final var _resultValue = new GetSecretsSecret();
             _resultValue.annotations = annotations;
@@ -384,6 +414,7 @@ public final class GetSecretsSecret {
             _resultValue.topics = topics;
             _resultValue.ttl = ttl;
             _resultValue.versionAliases = versionAliases;
+            _resultValue.versionDestroyTtl = versionDestroyTtl;
             return _resultValue;
         }
     }

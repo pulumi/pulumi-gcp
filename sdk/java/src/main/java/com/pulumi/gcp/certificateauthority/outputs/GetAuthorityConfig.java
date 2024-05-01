@@ -6,6 +6,7 @@ package com.pulumi.gcp.certificateauthority.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigSubjectConfig;
+import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigSubjectKeyId;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509Config;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,11 @@ public final class GetAuthorityConfig {
      * 
      */
     private List<GetAuthorityConfigSubjectConfig> subjectConfigs;
+    /**
+     * @return When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * 
+     */
+    private List<GetAuthorityConfigSubjectKeyId> subjectKeyIds;
     /**
      * @return Describes how some of the technical X.509 fields in a certificate should be populated.
      * 
@@ -30,6 +36,13 @@ public final class GetAuthorityConfig {
      */
     public List<GetAuthorityConfigSubjectConfig> subjectConfigs() {
         return this.subjectConfigs;
+    }
+    /**
+     * @return When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * 
+     */
+    public List<GetAuthorityConfigSubjectKeyId> subjectKeyIds() {
+        return this.subjectKeyIds;
     }
     /**
      * @return Describes how some of the technical X.509 fields in a certificate should be populated.
@@ -49,11 +62,13 @@ public final class GetAuthorityConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetAuthorityConfigSubjectConfig> subjectConfigs;
+        private List<GetAuthorityConfigSubjectKeyId> subjectKeyIds;
         private List<GetAuthorityConfigX509Config> x509Configs;
         public Builder() {}
         public Builder(GetAuthorityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.subjectConfigs = defaults.subjectConfigs;
+    	      this.subjectKeyIds = defaults.subjectKeyIds;
     	      this.x509Configs = defaults.x509Configs;
         }
 
@@ -69,6 +84,17 @@ public final class GetAuthorityConfig {
             return subjectConfigs(List.of(subjectConfigs));
         }
         @CustomType.Setter
+        public Builder subjectKeyIds(List<GetAuthorityConfigSubjectKeyId> subjectKeyIds) {
+            if (subjectKeyIds == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfig", "subjectKeyIds");
+            }
+            this.subjectKeyIds = subjectKeyIds;
+            return this;
+        }
+        public Builder subjectKeyIds(GetAuthorityConfigSubjectKeyId... subjectKeyIds) {
+            return subjectKeyIds(List.of(subjectKeyIds));
+        }
+        @CustomType.Setter
         public Builder x509Configs(List<GetAuthorityConfigX509Config> x509Configs) {
             if (x509Configs == null) {
               throw new MissingRequiredPropertyException("GetAuthorityConfig", "x509Configs");
@@ -82,6 +108,7 @@ public final class GetAuthorityConfig {
         public GetAuthorityConfig build() {
             final var _resultValue = new GetAuthorityConfig();
             _resultValue.subjectConfigs = subjectConfigs;
+            _resultValue.subjectKeyIds = subjectKeyIds;
             _resultValue.x509Configs = x509Configs;
             return _resultValue;
         }

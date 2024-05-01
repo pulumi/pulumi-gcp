@@ -6,8 +6,11 @@ package com.pulumi.gcp.certificateauthority.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigSubjectConfig;
+import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigSubjectKeyId;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509Config;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AuthorityConfig {
@@ -15,10 +18,14 @@ public final class AuthorityConfig {
      * @return Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
-     * 
      */
     private AuthorityConfigSubjectConfig subjectConfig;
+    /**
+     * @return When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AuthorityConfigSubjectKeyId subjectKeyId;
     /**
      * @return Describes how some of the technical X.509 fields in a certificate should be populated.
      * Structure is documented below.
@@ -31,11 +38,17 @@ public final class AuthorityConfig {
      * @return Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
-     * 
      */
     public AuthorityConfigSubjectConfig subjectConfig() {
         return this.subjectConfig;
+    }
+    /**
+     * @return When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AuthorityConfigSubjectKeyId> subjectKeyId() {
+        return Optional.ofNullable(this.subjectKeyId);
     }
     /**
      * @return Describes how some of the technical X.509 fields in a certificate should be populated.
@@ -56,11 +69,13 @@ public final class AuthorityConfig {
     @CustomType.Builder
     public static final class Builder {
         private AuthorityConfigSubjectConfig subjectConfig;
+        private @Nullable AuthorityConfigSubjectKeyId subjectKeyId;
         private AuthorityConfigX509Config x509Config;
         public Builder() {}
         public Builder(AuthorityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.subjectConfig = defaults.subjectConfig;
+    	      this.subjectKeyId = defaults.subjectKeyId;
     	      this.x509Config = defaults.x509Config;
         }
 
@@ -70,6 +85,12 @@ public final class AuthorityConfig {
               throw new MissingRequiredPropertyException("AuthorityConfig", "subjectConfig");
             }
             this.subjectConfig = subjectConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder subjectKeyId(@Nullable AuthorityConfigSubjectKeyId subjectKeyId) {
+
+            this.subjectKeyId = subjectKeyId;
             return this;
         }
         @CustomType.Setter
@@ -83,6 +104,7 @@ public final class AuthorityConfig {
         public AuthorityConfig build() {
             final var _resultValue = new AuthorityConfig();
             _resultValue.subjectConfig = subjectConfig;
+            _resultValue.subjectKeyId = subjectKeyId;
             _resultValue.x509Config = x509Config;
             return _resultValue;
         }

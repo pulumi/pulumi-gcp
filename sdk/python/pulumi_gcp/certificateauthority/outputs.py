@@ -16,6 +16,7 @@ __all__ = [
     'AuthorityConfigSubjectConfig',
     'AuthorityConfigSubjectConfigSubject',
     'AuthorityConfigSubjectConfigSubjectAltName',
+    'AuthorityConfigSubjectKeyId',
     'AuthorityConfigX509Config',
     'AuthorityConfigX509ConfigAdditionalExtension',
     'AuthorityConfigX509ConfigAdditionalExtensionObjectId',
@@ -74,6 +75,7 @@ __all__ = [
     'CertificateConfigSubjectConfig',
     'CertificateConfigSubjectConfigSubject',
     'CertificateConfigSubjectConfigSubjectAltName',
+    'CertificateConfigSubjectKeyId',
     'CertificateConfigX509Config',
     'CertificateConfigX509ConfigAdditionalExtension',
     'CertificateConfigX509ConfigAdditionalExtensionObjectId',
@@ -105,6 +107,7 @@ __all__ = [
     'GetAuthorityConfigSubjectConfigResult',
     'GetAuthorityConfigSubjectConfigSubjectResult',
     'GetAuthorityConfigSubjectConfigSubjectAltNameResult',
+    'GetAuthorityConfigSubjectKeyIdResult',
     'GetAuthorityConfigX509ConfigResult',
     'GetAuthorityConfigX509ConfigAdditionalExtensionResult',
     'GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult',
@@ -187,6 +190,8 @@ class AuthorityConfig(dict):
             suggest = "subject_config"
         elif key == "x509Config":
             suggest = "x509_config"
+        elif key == "subjectKeyId":
+            suggest = "subject_key_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AuthorityConfig. Access the value via the '{suggest}' property getter instead.")
@@ -201,18 +206,20 @@ class AuthorityConfig(dict):
 
     def __init__(__self__, *,
                  subject_config: 'outputs.AuthorityConfigSubjectConfig',
-                 x509_config: 'outputs.AuthorityConfigX509Config'):
+                 x509_config: 'outputs.AuthorityConfigX509Config',
+                 subject_key_id: Optional['outputs.AuthorityConfigSubjectKeyId'] = None):
         """
         :param 'AuthorityConfigSubjectConfigArgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
-               
-               
-               <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param 'AuthorityConfigX509ConfigArgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
+               Structure is documented below.
+        :param 'AuthorityConfigSubjectKeyIdArgs' subject_key_id: When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
                Structure is documented below.
         """
         pulumi.set(__self__, "subject_config", subject_config)
         pulumi.set(__self__, "x509_config", x509_config)
+        if subject_key_id is not None:
+            pulumi.set(__self__, "subject_key_id", subject_key_id)
 
     @property
     @pulumi.getter(name="subjectConfig")
@@ -220,9 +227,6 @@ class AuthorityConfig(dict):
         """
         Specifies some of the values in a certificate that are related to the subject.
         Structure is documented below.
-
-
-        <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "subject_config")
 
@@ -234,6 +238,15 @@ class AuthorityConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "x509_config")
+
+    @property
+    @pulumi.getter(name="subjectKeyId")
+    def subject_key_id(self) -> Optional['outputs.AuthorityConfigSubjectKeyId']:
+        """
+        When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject_key_id")
 
 
 @pulumi.output_type
@@ -487,6 +500,46 @@ class AuthorityConfigSubjectConfigSubjectAltName(dict):
         Contains only valid RFC 3986 URIs.
         """
         return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
+class AuthorityConfigSubjectKeyId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyId":
+            suggest = "key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityConfigSubjectKeyId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityConfigSubjectKeyId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityConfigSubjectKeyId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key_id: Optional[str] = None):
+        """
+        :param str key_id: The value of the KeyId in lowercase hexidecimal.
+               
+               <a name="nested_x509_config"></a>The `x509_config` block supports:
+        """
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[str]:
+        """
+        The value of the KeyId in lowercase hexidecimal.
+
+        <a name="nested_x509_config"></a>The `x509_config` block supports:
+        """
+        return pulumi.get(self, "key_id")
 
 
 @pulumi.output_type
@@ -3720,8 +3773,7 @@ class CertificateCertificateDescriptionSubjectKeyId(dict):
     def __init__(__self__, *,
                  key_id: Optional[str] = None):
         """
-        :param str key_id: (Output)
-               Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        :param str key_id: The value of the KeyId in lowercase hexidecimal.
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -3730,8 +3782,7 @@ class CertificateCertificateDescriptionSubjectKeyId(dict):
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[str]:
         """
-        (Output)
-        Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        The value of the KeyId in lowercase hexidecimal.
         """
         return pulumi.get(self, "key_id")
 
@@ -4619,6 +4670,8 @@ class CertificateConfig(dict):
             suggest = "subject_config"
         elif key == "x509Config":
             suggest = "x509_config"
+        elif key == "subjectKeyId":
+            suggest = "subject_key_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CertificateConfig. Access the value via the '{suggest}' property getter instead.")
@@ -4634,7 +4687,8 @@ class CertificateConfig(dict):
     def __init__(__self__, *,
                  public_key: 'outputs.CertificateConfigPublicKey',
                  subject_config: 'outputs.CertificateConfigSubjectConfig',
-                 x509_config: 'outputs.CertificateConfigX509Config'):
+                 x509_config: 'outputs.CertificateConfigX509Config',
+                 subject_key_id: Optional['outputs.CertificateConfigSubjectKeyId'] = None):
         """
         :param 'CertificateConfigPublicKeyArgs' public_key: A PublicKey describes a public key.
                Structure is documented below.
@@ -4645,10 +4699,14 @@ class CertificateConfig(dict):
                Structure is documented below.
         :param 'CertificateConfigX509ConfigArgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
+        :param 'CertificateConfigSubjectKeyIdArgs' subject_key_id: When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+               Structure is documented below.
         """
         pulumi.set(__self__, "public_key", public_key)
         pulumi.set(__self__, "subject_config", subject_config)
         pulumi.set(__self__, "x509_config", x509_config)
+        if subject_key_id is not None:
+            pulumi.set(__self__, "subject_key_id", subject_key_id)
 
     @property
     @pulumi.getter(name="publicKey")
@@ -4679,6 +4737,15 @@ class CertificateConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "x509_config")
+
+    @property
+    @pulumi.getter(name="subjectKeyId")
+    def subject_key_id(self) -> Optional['outputs.CertificateConfigSubjectKeyId']:
+        """
+        When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject_key_id")
 
 
 @pulumi.output_type
@@ -4964,6 +5031,42 @@ class CertificateConfigSubjectConfigSubjectAltName(dict):
         Contains only valid RFC 3986 URIs.
         """
         return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
+class CertificateConfigSubjectKeyId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyId":
+            suggest = "key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateConfigSubjectKeyId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateConfigSubjectKeyId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateConfigSubjectKeyId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key_id: Optional[str] = None):
+        """
+        :param str key_id: The value of the KeyId in lowercase hexidecimal.
+        """
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[str]:
+        """
+        The value of the KeyId in lowercase hexidecimal.
+        """
+        return pulumi.get(self, "key_id")
 
 
 @pulumi.output_type
@@ -6856,12 +6959,15 @@ class GetAuthorityAccessUrlResult(dict):
 class GetAuthorityConfigResult(dict):
     def __init__(__self__, *,
                  subject_configs: Sequence['outputs.GetAuthorityConfigSubjectConfigResult'],
+                 subject_key_ids: Sequence['outputs.GetAuthorityConfigSubjectKeyIdResult'],
                  x509_configs: Sequence['outputs.GetAuthorityConfigX509ConfigResult']):
         """
         :param Sequence['GetAuthorityConfigSubjectConfigArgs'] subject_configs: Specifies some of the values in a certificate that are related to the subject.
+        :param Sequence['GetAuthorityConfigSubjectKeyIdArgs'] subject_key_ids: When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
         :param Sequence['GetAuthorityConfigX509ConfigArgs'] x509_configs: Describes how some of the technical X.509 fields in a certificate should be populated.
         """
         pulumi.set(__self__, "subject_configs", subject_configs)
+        pulumi.set(__self__, "subject_key_ids", subject_key_ids)
         pulumi.set(__self__, "x509_configs", x509_configs)
 
     @property
@@ -6871,6 +6977,14 @@ class GetAuthorityConfigResult(dict):
         Specifies some of the values in a certificate that are related to the subject.
         """
         return pulumi.get(self, "subject_configs")
+
+    @property
+    @pulumi.getter(name="subjectKeyIds")
+    def subject_key_ids(self) -> Sequence['outputs.GetAuthorityConfigSubjectKeyIdResult']:
+        """
+        When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+        """
+        return pulumi.get(self, "subject_key_ids")
 
     @property
     @pulumi.getter(name="x509Configs")
@@ -7054,6 +7168,24 @@ class GetAuthorityConfigSubjectConfigSubjectAltNameResult(dict):
         Contains only valid RFC 3986 URIs.
         """
         return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
+class GetAuthorityConfigSubjectKeyIdResult(dict):
+    def __init__(__self__, *,
+                 key_id: str):
+        """
+        :param str key_id: The value of the KeyId in lowercase hexidecimal.
+        """
+        pulumi.set(__self__, "key_id", key_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> str:
+        """
+        The value of the KeyId in lowercase hexidecimal.
+        """
+        return pulumi.get(self, "key_id")
 
 
 @pulumi.output_type

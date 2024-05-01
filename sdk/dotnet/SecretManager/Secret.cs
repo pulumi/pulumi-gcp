@@ -89,6 +89,28 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// ### Secret With Version Destroy Ttl
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_with_version_destroy_ttl = new Gcp.SecretManager.Secret("secret-with-version-destroy-ttl", new()
+    ///     {
+    ///         SecretId = "secret",
+    ///         VersionDestroyTtl = "2592000s",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Secret With Automatic Cmek
     /// 
     /// ```csharp
@@ -263,6 +285,14 @@ namespace Pulumi.Gcp.SecretManager
         [Output("versionAliases")]
         public Output<ImmutableDictionary<string, string>?> VersionAliases { get; private set; } = null!;
 
+        /// <summary>
+        /// Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+        /// with versionDestroyTtl&gt;0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+        /// a disabled state and the actual destruction happens after this TTL expires.
+        /// </summary>
+        [Output("versionDestroyTtl")]
+        public Output<string?> VersionDestroyTtl { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Secret resource with the given unique name, arguments, and options.
@@ -418,6 +448,14 @@ namespace Pulumi.Gcp.SecretManager
             get => _versionAliases ?? (_versionAliases = new InputMap<string>());
             set => _versionAliases = value;
         }
+
+        /// <summary>
+        /// Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+        /// with versionDestroyTtl&gt;0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+        /// a disabled state and the actual destruction happens after this TTL expires.
+        /// </summary>
+        [Input("versionDestroyTtl")]
+        public Input<string>? VersionDestroyTtl { get; set; }
 
         public SecretArgs()
         {
@@ -585,6 +623,14 @@ namespace Pulumi.Gcp.SecretManager
             get => _versionAliases ?? (_versionAliases = new InputMap<string>());
             set => _versionAliases = value;
         }
+
+        /// <summary>
+        /// Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+        /// with versionDestroyTtl&gt;0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+        /// a disabled state and the actual destruction happens after this TTL expires.
+        /// </summary>
+        [Input("versionDestroyTtl")]
+        public Input<string>? VersionDestroyTtl { get; set; }
 
         public SecretState()
         {

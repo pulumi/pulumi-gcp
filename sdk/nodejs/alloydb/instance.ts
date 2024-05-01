@@ -229,6 +229,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Instance level network configuration.
+     * Structure is documented below.
+     */
+    public readonly networkConfig!: pulumi.Output<outputs.alloydb.InstanceNetworkConfig | undefined>;
+    /**
+     * The public IP addresses for the Instance. This is available ONLY when
+     * networkConfig.enablePublicIp is set to true. This is the connection
+     * endpoint for an end-user application.
+     */
+    public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
@@ -289,6 +300,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["machineConfig"] = state ? state.machineConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
+            resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["queryInsightsConfig"] = state ? state.queryInsightsConfig : undefined;
             resourceInputs["readPoolConfig"] = state ? state.readPoolConfig : undefined;
@@ -318,6 +331,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineConfig"] = args ? args.machineConfig : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["queryInsightsConfig"] = args ? args.queryInsightsConfig : undefined;
             resourceInputs["readPoolConfig"] = args ? args.readPoolConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -325,6 +339,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["publicIpAddress"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -416,6 +431,17 @@ export interface InstanceState {
      * The name of the instance resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Instance level network configuration.
+     * Structure is documented below.
+     */
+    networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
+    /**
+     * The public IP addresses for the Instance. This is available ONLY when
+     * networkConfig.enablePublicIp is set to true. This is the connection
+     * endpoint for an end-user application.
+     */
+    publicIpAddress?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
@@ -510,6 +536,11 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     machineConfig?: pulumi.Input<inputs.alloydb.InstanceMachineConfig>;
+    /**
+     * Instance level network configuration.
+     * Structure is documented below.
+     */
+    networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
     /**
      * Configuration for query insights.
      * Structure is documented below.

@@ -63,6 +63,20 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Secret With Version Destroy Ttl
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_with_version_destroy_ttl = new gcp.secretmanager.Secret("secret-with-version-destroy-ttl", {
+ *     secretId: "secret",
+ *     versionDestroyTtl: "2592000s",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * ```
  * ### Secret With Automatic Cmek
  *
  * ```typescript
@@ -219,6 +233,12 @@ export class Secret extends pulumi.CustomResource {
      * secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     public readonly versionAliases!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+     * with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+     * a disabled state and the actual destruction happens after this TTL expires.
+     */
+    public readonly versionDestroyTtl!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -248,6 +268,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["topics"] = state ? state.topics : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["versionAliases"] = state ? state.versionAliases : undefined;
+            resourceInputs["versionDestroyTtl"] = state ? state.versionDestroyTtl : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
             if ((!args || args.replication === undefined) && !opts.urn) {
@@ -266,6 +287,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["topics"] = args ? args.topics : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["versionAliases"] = args ? args.versionAliases : undefined;
+            resourceInputs["versionDestroyTtl"] = args ? args.versionDestroyTtl : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -363,6 +385,12 @@ export interface SecretState {
      * secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+     * with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+     * a disabled state and the actual destruction happens after this TTL expires.
+     */
+    versionDestroyTtl?: pulumi.Input<string>;
 }
 
 /**
@@ -430,4 +458,10 @@ export interface SecretArgs {
      * secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
+     * with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
+     * a disabled state and the actual destruction happens after this TTL expires.
+     */
+    versionDestroyTtl?: pulumi.Input<string>;
 }

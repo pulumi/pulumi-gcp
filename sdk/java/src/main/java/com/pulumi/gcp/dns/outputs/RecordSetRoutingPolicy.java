@@ -27,7 +27,7 @@ public final class RecordSetRoutingPolicy {
      */
     private @Nullable List<RecordSetRoutingPolicyGeo> geos;
     /**
-     * @return The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+     * @return The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
      * Structure is documented below.
      * 
      */
@@ -56,7 +56,7 @@ public final class RecordSetRoutingPolicy {
         return this.geos == null ? List.of() : this.geos;
     }
     /**
-     * @return The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+     * @return The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
      * Structure is documented below.
      * 
      */

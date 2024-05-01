@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Firebase.Inputs
         public Input<string>? Glob { get; set; }
 
         /// <summary>
+        /// The URL path to rewrite the request to.
+        /// </summary>
+        [Input("path")]
+        public Input<string>? Path { get; set; }
+
+        /// <summary>
         /// The user-supplied RE2 regular expression to match against the request URL path.
         /// </summary>
         [Input("regex")]

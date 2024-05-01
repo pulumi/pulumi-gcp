@@ -73,6 +73,14 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         /// Mapping from version alias to version name.
         /// </summary>
         public readonly ImmutableDictionary<string, string> VersionAliases;
+        /// <summary>
+        /// Secret Version TTL after destruction request.
+        /// This is a part of the delayed delete feature on Secret Version.
+        /// For secret with versionDestroyTtl&gt;0, version destruction doesn't happen immediately
+        /// on calling destroy instead the version goes to a disabled state and
+        /// the actual destruction happens after this TTL expires.
+        /// </summary>
+        public readonly string VersionDestroyTtl;
 
         [OutputConstructor]
         private GetSecretsSecretResult(
@@ -104,7 +112,9 @@ namespace Pulumi.Gcp.SecretManager.Outputs
 
             string ttl,
 
-            ImmutableDictionary<string, string> versionAliases)
+            ImmutableDictionary<string, string> versionAliases,
+
+            string versionDestroyTtl)
         {
             Annotations = annotations;
             CreateTime = createTime;
@@ -121,6 +131,7 @@ namespace Pulumi.Gcp.SecretManager.Outputs
             Topics = topics;
             Ttl = ttl;
             VersionAliases = versionAliases;
+            VersionDestroyTtl = versionDestroyTtl;
         }
     }
 }

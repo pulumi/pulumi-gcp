@@ -5,10 +5,11 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SecurityPolicyRuleMatchConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,22 +17,18 @@ public final class SecurityPolicyRuleMatchConfigArgs extends com.pulumi.resource
     public static final SecurityPolicyRuleMatchConfigArgs Empty = new SecurityPolicyRuleMatchConfigArgs();
 
     /**
-     * Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-     * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-     * (can be used to override the default behavior).
+     * CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
      * 
      */
-    @Import(name="srcIpRanges", required=true)
-    private Output<List<String>> srcIpRanges;
+    @Import(name="srcIpRanges")
+    private @Nullable Output<List<String>> srcIpRanges;
 
     /**
-     * @return Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-     * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-     * (can be used to override the default behavior).
+     * @return CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
      * 
      */
-    public Output<List<String>> srcIpRanges() {
-        return this.srcIpRanges;
+    public Optional<Output<List<String>>> srcIpRanges() {
+        return Optional.ofNullable(this.srcIpRanges);
     }
 
     private SecurityPolicyRuleMatchConfigArgs() {}
@@ -59,22 +56,18 @@ public final class SecurityPolicyRuleMatchConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param srcIpRanges Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-         * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-         * (can be used to override the default behavior).
+         * @param srcIpRanges CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
          * 
          * @return builder
          * 
          */
-        public Builder srcIpRanges(Output<List<String>> srcIpRanges) {
+        public Builder srcIpRanges(@Nullable Output<List<String>> srcIpRanges) {
             $.srcIpRanges = srcIpRanges;
             return this;
         }
 
         /**
-         * @param srcIpRanges Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-         * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-         * (can be used to override the default behavior).
+         * @param srcIpRanges CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
          * 
          * @return builder
          * 
@@ -84,9 +77,7 @@ public final class SecurityPolicyRuleMatchConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param srcIpRanges Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-         * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
-         * (can be used to override the default behavior).
+         * @param srcIpRanges CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
          * 
          * @return builder
          * 
@@ -96,9 +87,6 @@ public final class SecurityPolicyRuleMatchConfigArgs extends com.pulumi.resource
         }
 
         public SecurityPolicyRuleMatchConfigArgs build() {
-            if ($.srcIpRanges == null) {
-                throw new MissingRequiredPropertyException("SecurityPolicyRuleMatchConfigArgs", "srcIpRanges");
-            }
             return $;
         }
     }

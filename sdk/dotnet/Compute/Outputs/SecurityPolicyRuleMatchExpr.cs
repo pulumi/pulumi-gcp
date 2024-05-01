@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyRuleMatchExpr
     {
         /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// The application context of the containing message determines which well-known feature set of CEL is supported.
+        /// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
         /// </summary>
         public readonly string Expression;
 

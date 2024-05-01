@@ -129,6 +129,8 @@ type Environment struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the environment.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+	ForwardProxyUri pulumi.StringPtrOutput `pulumi:"forwardProxyUri"`
 	// The resource ID of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// NodeConfig for setting the min/max number of nodes associated with the environment.
@@ -197,6 +199,8 @@ type environmentState struct {
 	Description *string `pulumi:"description"`
 	// Display name of the environment.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+	ForwardProxyUri *string `pulumi:"forwardProxyUri"`
 	// The resource ID of the environment.
 	Name *string `pulumi:"name"`
 	// NodeConfig for setting the min/max number of nodes associated with the environment.
@@ -233,6 +237,8 @@ type EnvironmentState struct {
 	Description pulumi.StringPtrInput
 	// Display name of the environment.
 	DisplayName pulumi.StringPtrInput
+	// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+	ForwardProxyUri pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Name pulumi.StringPtrInput
 	// NodeConfig for setting the min/max number of nodes associated with the environment.
@@ -273,6 +279,8 @@ type environmentArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name of the environment.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+	ForwardProxyUri *string `pulumi:"forwardProxyUri"`
 	// The resource ID of the environment.
 	Name *string `pulumi:"name"`
 	// NodeConfig for setting the min/max number of nodes associated with the environment.
@@ -310,6 +318,8 @@ type EnvironmentArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name of the environment.
 	DisplayName pulumi.StringPtrInput
+	// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+	ForwardProxyUri pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Name pulumi.StringPtrInput
 	// NodeConfig for setting the min/max number of nodes associated with the environment.
@@ -442,6 +452,11 @@ func (o EnvironmentOutput) Description() pulumi.StringPtrOutput {
 // Display name of the environment.
 func (o EnvironmentOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
+func (o EnvironmentOutput) ForwardProxyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.ForwardProxyUri }).(pulumi.StringPtrOutput)
 }
 
 // The resource ID of the environment.

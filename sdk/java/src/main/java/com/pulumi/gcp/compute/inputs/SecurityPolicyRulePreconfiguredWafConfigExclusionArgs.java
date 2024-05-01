@@ -22,14 +22,16 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
     public static final SecurityPolicyRulePreconfiguredWafConfigExclusionArgs Empty = new SecurityPolicyRulePreconfiguredWafConfigExclusionArgs();
 
     /**
-     * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+     * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     @Import(name="requestCookies")
     private @Nullable Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs>> requestCookies;
 
     /**
-     * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+     * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs>>> requestCookies() {
@@ -37,14 +39,16 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
     }
 
     /**
-     * Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+     * Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     @Import(name="requestHeaders")
     private @Nullable Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs>> requestHeaders;
 
     /**
-     * @return Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+     * @return Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs>>> requestHeaders() {
@@ -52,14 +56,18 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
     }
 
     /**
-     * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+     * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Note that the parameter can be in the query string or in the POST body.
+     * Structure is documented below.
      * 
      */
     @Import(name="requestQueryParams")
     private @Nullable Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs>> requestQueryParams;
 
     /**
-     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+     * Note that the parameter can be in the query string or in the POST body.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs>>> requestQueryParams() {
@@ -67,14 +75,18 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
     }
 
     /**
-     * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+     * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+     * When specifying this field, the query or fragment part should be excluded.
+     * Structure is documented below.
      * 
      */
     @Import(name="requestUris")
     private @Nullable Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs>> requestUris;
 
     /**
-     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+     * When specifying this field, the query or fragment part should be excluded.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs>>> requestUris() {
@@ -82,18 +94,16 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
     }
 
     /**
-     * A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-     * 
-     * &lt;a name=&#34;nested_field_params&#34;&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+     * A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+     * If omitted, it refers to all the rule IDs under the WAF rule set.
      * 
      */
     @Import(name="targetRuleIds")
     private @Nullable Output<List<String>> targetRuleIds;
 
     /**
-     * @return A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-     * 
-     * &lt;a name=&#34;nested_field_params&#34;&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+     * @return A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+     * If omitted, it refers to all the rule IDs under the WAF rule set.
      * 
      */
     public Optional<Output<List<String>>> targetRuleIds() {
@@ -145,7 +155,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestCookies Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         * @param requestCookies Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -156,7 +167,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestCookies Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         * @param requestCookies Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -166,7 +178,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestCookies Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         * @param requestCookies Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -176,7 +189,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestHeaders Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         * @param requestHeaders Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -187,7 +201,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestHeaders Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         * @param requestHeaders Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -197,7 +212,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestHeaders Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         * @param requestHeaders Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -207,7 +223,9 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestQueryParams Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         * @param requestQueryParams Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Note that the parameter can be in the query string or in the POST body.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -218,7 +236,9 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestQueryParams Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         * @param requestQueryParams Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Note that the parameter can be in the query string or in the POST body.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -228,7 +248,9 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestQueryParams Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         * @param requestQueryParams Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+         * Note that the parameter can be in the query string or in the POST body.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -238,7 +260,9 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestUris Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         * @param requestUris Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+         * When specifying this field, the query or fragment part should be excluded.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -249,7 +273,9 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestUris Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         * @param requestUris Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+         * When specifying this field, the query or fragment part should be excluded.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -259,7 +285,9 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestUris Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         * @param requestUris Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+         * When specifying this field, the query or fragment part should be excluded.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -269,9 +297,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param targetRuleIds A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-         * 
-         * &lt;a name=&#34;nested_field_params&#34;&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+         * @param targetRuleIds A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+         * If omitted, it refers to all the rule IDs under the WAF rule set.
          * 
          * @return builder
          * 
@@ -282,9 +309,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param targetRuleIds A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-         * 
-         * &lt;a name=&#34;nested_field_params&#34;&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+         * @param targetRuleIds A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+         * If omitted, it refers to all the rule IDs under the WAF rule set.
          * 
          * @return builder
          * 
@@ -294,9 +320,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param targetRuleIds A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-         * 
-         * &lt;a name=&#34;nested_field_params&#34;&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+         * @param targetRuleIds A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+         * If omitted, it refers to all the rule IDs under the WAF rule set.
          * 
          * @return builder
          * 

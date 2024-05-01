@@ -318,7 +318,7 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Primary-Backup
+ * ### Failover
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java

@@ -35,6 +35,31 @@ import * as utilities from "../utilities";
  *     message: "Redirect to Google",
  * });
  * ```
+ * ### Firebasehosting Version Path
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.firebase.HostingSite("default", {
+ *     project: "my-project-name",
+ *     siteId: "site-id",
+ * });
+ * const defaultHostingVersion = new gcp.firebase.HostingVersion("default", {
+ *     siteId: _default.siteId,
+ *     config: {
+ *         rewrites: [{
+ *             glob: "**",
+ *             path: "/index.html",
+ *         }],
+ *     },
+ * });
+ * const defaultHostingRelease = new gcp.firebase.HostingRelease("default", {
+ *     siteId: _default.siteId,
+ *     versionName: defaultHostingVersion.name,
+ *     message: "Path Rewrite",
+ * });
+ * ```
  * ### Firebasehosting Version Cloud Run
  *
  * ```typescript

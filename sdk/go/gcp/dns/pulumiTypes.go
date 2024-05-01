@@ -2432,7 +2432,7 @@ type RecordSetRoutingPolicy struct {
 	// The configuration for Geolocation based routing policy.
 	// Structure is documented below.
 	Geos []RecordSetRoutingPolicyGeo `pulumi:"geos"`
-	// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+	// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
 	// Structure is documented below.
 	PrimaryBackup *RecordSetRoutingPolicyPrimaryBackup `pulumi:"primaryBackup"`
 	// The configuration for Weighted Round Robin based routing policy.
@@ -2457,7 +2457,7 @@ type RecordSetRoutingPolicyArgs struct {
 	// The configuration for Geolocation based routing policy.
 	// Structure is documented below.
 	Geos RecordSetRoutingPolicyGeoArrayInput `pulumi:"geos"`
-	// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+	// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
 	// Structure is documented below.
 	PrimaryBackup RecordSetRoutingPolicyPrimaryBackupPtrInput `pulumi:"primaryBackup"`
 	// The configuration for Weighted Round Robin based routing policy.
@@ -2553,7 +2553,7 @@ func (o RecordSetRoutingPolicyOutput) Geos() RecordSetRoutingPolicyGeoArrayOutpu
 	return o.ApplyT(func(v RecordSetRoutingPolicy) []RecordSetRoutingPolicyGeo { return v.Geos }).(RecordSetRoutingPolicyGeoArrayOutput)
 }
 
-// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
 // Structure is documented below.
 func (o RecordSetRoutingPolicyOutput) PrimaryBackup() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicy) *RecordSetRoutingPolicyPrimaryBackup { return v.PrimaryBackup }).(RecordSetRoutingPolicyPrimaryBackupPtrOutput)
@@ -2610,7 +2610,7 @@ func (o RecordSetRoutingPolicyPtrOutput) Geos() RecordSetRoutingPolicyGeoArrayOu
 	}).(RecordSetRoutingPolicyGeoArrayOutput)
 }
 
-// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
 // Structure is documented below.
 func (o RecordSetRoutingPolicyPtrOutput) PrimaryBackup() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicy) *RecordSetRoutingPolicyPrimaryBackup {

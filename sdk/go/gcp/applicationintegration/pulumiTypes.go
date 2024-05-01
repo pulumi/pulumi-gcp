@@ -13,6 +13,2641 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AuthConfigClientCertificate struct {
+	// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+	EncryptedPrivateKey string `pulumi:"encryptedPrivateKey"`
+	// 'passphrase' should be left unset if private key is not encrypted.
+	// Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
+	Passphrase *string `pulumi:"passphrase"`
+	// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+	SslCertificate string `pulumi:"sslCertificate"`
+}
+
+// AuthConfigClientCertificateInput is an input type that accepts AuthConfigClientCertificateArgs and AuthConfigClientCertificateOutput values.
+// You can construct a concrete instance of `AuthConfigClientCertificateInput` via:
+//
+//	AuthConfigClientCertificateArgs{...}
+type AuthConfigClientCertificateInput interface {
+	pulumi.Input
+
+	ToAuthConfigClientCertificateOutput() AuthConfigClientCertificateOutput
+	ToAuthConfigClientCertificateOutputWithContext(context.Context) AuthConfigClientCertificateOutput
+}
+
+type AuthConfigClientCertificateArgs struct {
+	// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+	EncryptedPrivateKey pulumi.StringInput `pulumi:"encryptedPrivateKey"`
+	// 'passphrase' should be left unset if private key is not encrypted.
+	// Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
+	Passphrase pulumi.StringPtrInput `pulumi:"passphrase"`
+	// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+	SslCertificate pulumi.StringInput `pulumi:"sslCertificate"`
+}
+
+func (AuthConfigClientCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigClientCertificate)(nil)).Elem()
+}
+
+func (i AuthConfigClientCertificateArgs) ToAuthConfigClientCertificateOutput() AuthConfigClientCertificateOutput {
+	return i.ToAuthConfigClientCertificateOutputWithContext(context.Background())
+}
+
+func (i AuthConfigClientCertificateArgs) ToAuthConfigClientCertificateOutputWithContext(ctx context.Context) AuthConfigClientCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigClientCertificateOutput)
+}
+
+func (i AuthConfigClientCertificateArgs) ToAuthConfigClientCertificatePtrOutput() AuthConfigClientCertificatePtrOutput {
+	return i.ToAuthConfigClientCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigClientCertificateArgs) ToAuthConfigClientCertificatePtrOutputWithContext(ctx context.Context) AuthConfigClientCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigClientCertificateOutput).ToAuthConfigClientCertificatePtrOutputWithContext(ctx)
+}
+
+// AuthConfigClientCertificatePtrInput is an input type that accepts AuthConfigClientCertificateArgs, AuthConfigClientCertificatePtr and AuthConfigClientCertificatePtrOutput values.
+// You can construct a concrete instance of `AuthConfigClientCertificatePtrInput` via:
+//
+//	        AuthConfigClientCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigClientCertificatePtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigClientCertificatePtrOutput() AuthConfigClientCertificatePtrOutput
+	ToAuthConfigClientCertificatePtrOutputWithContext(context.Context) AuthConfigClientCertificatePtrOutput
+}
+
+type authConfigClientCertificatePtrType AuthConfigClientCertificateArgs
+
+func AuthConfigClientCertificatePtr(v *AuthConfigClientCertificateArgs) AuthConfigClientCertificatePtrInput {
+	return (*authConfigClientCertificatePtrType)(v)
+}
+
+func (*authConfigClientCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigClientCertificate)(nil)).Elem()
+}
+
+func (i *authConfigClientCertificatePtrType) ToAuthConfigClientCertificatePtrOutput() AuthConfigClientCertificatePtrOutput {
+	return i.ToAuthConfigClientCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigClientCertificatePtrType) ToAuthConfigClientCertificatePtrOutputWithContext(ctx context.Context) AuthConfigClientCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigClientCertificatePtrOutput)
+}
+
+type AuthConfigClientCertificateOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigClientCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigClientCertificate)(nil)).Elem()
+}
+
+func (o AuthConfigClientCertificateOutput) ToAuthConfigClientCertificateOutput() AuthConfigClientCertificateOutput {
+	return o
+}
+
+func (o AuthConfigClientCertificateOutput) ToAuthConfigClientCertificateOutputWithContext(ctx context.Context) AuthConfigClientCertificateOutput {
+	return o
+}
+
+func (o AuthConfigClientCertificateOutput) ToAuthConfigClientCertificatePtrOutput() AuthConfigClientCertificatePtrOutput {
+	return o.ToAuthConfigClientCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigClientCertificateOutput) ToAuthConfigClientCertificatePtrOutputWithContext(ctx context.Context) AuthConfigClientCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigClientCertificate) *AuthConfigClientCertificate {
+		return &v
+	}).(AuthConfigClientCertificatePtrOutput)
+}
+
+// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+func (o AuthConfigClientCertificateOutput) EncryptedPrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthConfigClientCertificate) string { return v.EncryptedPrivateKey }).(pulumi.StringOutput)
+}
+
+// 'passphrase' should be left unset if private key is not encrypted.
+// Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
+func (o AuthConfigClientCertificateOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigClientCertificate) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
+}
+
+// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+func (o AuthConfigClientCertificateOutput) SslCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthConfigClientCertificate) string { return v.SslCertificate }).(pulumi.StringOutput)
+}
+
+type AuthConfigClientCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigClientCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigClientCertificate)(nil)).Elem()
+}
+
+func (o AuthConfigClientCertificatePtrOutput) ToAuthConfigClientCertificatePtrOutput() AuthConfigClientCertificatePtrOutput {
+	return o
+}
+
+func (o AuthConfigClientCertificatePtrOutput) ToAuthConfigClientCertificatePtrOutputWithContext(ctx context.Context) AuthConfigClientCertificatePtrOutput {
+	return o
+}
+
+func (o AuthConfigClientCertificatePtrOutput) Elem() AuthConfigClientCertificateOutput {
+	return o.ApplyT(func(v *AuthConfigClientCertificate) AuthConfigClientCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigClientCertificate
+		return ret
+	}).(AuthConfigClientCertificateOutput)
+}
+
+// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+func (o AuthConfigClientCertificatePtrOutput) EncryptedPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigClientCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncryptedPrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// 'passphrase' should be left unset if private key is not encrypted.
+// Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
+func (o AuthConfigClientCertificatePtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigClientCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Passphrase
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+func (o AuthConfigClientCertificatePtrOutput) SslCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigClientCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SslCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredential struct {
+	// Auth token credential.
+	// Structure is documented below.
+	AuthToken *AuthConfigDecryptedCredentialAuthToken `pulumi:"authToken"`
+	// Credential type associated with auth configs.
+	CredentialType string `pulumi:"credentialType"`
+	// JWT credential.
+	// Structure is documented below.
+	Jwt *AuthConfigDecryptedCredentialJwt `pulumi:"jwt"`
+	// OAuth2 authorization code credential.
+	// Structure is documented below.
+	Oauth2AuthorizationCode *AuthConfigDecryptedCredentialOauth2AuthorizationCode `pulumi:"oauth2AuthorizationCode"`
+	// OAuth2 client credentials.
+	// Structure is documented below.
+	Oauth2ClientCredentials *AuthConfigDecryptedCredentialOauth2ClientCredentials `pulumi:"oauth2ClientCredentials"`
+	// Google OIDC ID Token.
+	// Structure is documented below.
+	OidcToken *AuthConfigDecryptedCredentialOidcToken `pulumi:"oidcToken"`
+	// Service account credential.
+	// Structure is documented below.
+	ServiceAccountCredentials *AuthConfigDecryptedCredentialServiceAccountCredentials `pulumi:"serviceAccountCredentials"`
+	// Username and password credential.
+	// Structure is documented below.
+	UsernameAndPassword *AuthConfigDecryptedCredentialUsernameAndPassword `pulumi:"usernameAndPassword"`
+}
+
+// AuthConfigDecryptedCredentialInput is an input type that accepts AuthConfigDecryptedCredentialArgs and AuthConfigDecryptedCredentialOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialInput` via:
+//
+//	AuthConfigDecryptedCredentialArgs{...}
+type AuthConfigDecryptedCredentialInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOutput() AuthConfigDecryptedCredentialOutput
+	ToAuthConfigDecryptedCredentialOutputWithContext(context.Context) AuthConfigDecryptedCredentialOutput
+}
+
+type AuthConfigDecryptedCredentialArgs struct {
+	// Auth token credential.
+	// Structure is documented below.
+	AuthToken AuthConfigDecryptedCredentialAuthTokenPtrInput `pulumi:"authToken"`
+	// Credential type associated with auth configs.
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// JWT credential.
+	// Structure is documented below.
+	Jwt AuthConfigDecryptedCredentialJwtPtrInput `pulumi:"jwt"`
+	// OAuth2 authorization code credential.
+	// Structure is documented below.
+	Oauth2AuthorizationCode AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrInput `pulumi:"oauth2AuthorizationCode"`
+	// OAuth2 client credentials.
+	// Structure is documented below.
+	Oauth2ClientCredentials AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrInput `pulumi:"oauth2ClientCredentials"`
+	// Google OIDC ID Token.
+	// Structure is documented below.
+	OidcToken AuthConfigDecryptedCredentialOidcTokenPtrInput `pulumi:"oidcToken"`
+	// Service account credential.
+	// Structure is documented below.
+	ServiceAccountCredentials AuthConfigDecryptedCredentialServiceAccountCredentialsPtrInput `pulumi:"serviceAccountCredentials"`
+	// Username and password credential.
+	// Structure is documented below.
+	UsernameAndPassword AuthConfigDecryptedCredentialUsernameAndPasswordPtrInput `pulumi:"usernameAndPassword"`
+}
+
+func (AuthConfigDecryptedCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredential)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialArgs) ToAuthConfigDecryptedCredentialOutput() AuthConfigDecryptedCredentialOutput {
+	return i.ToAuthConfigDecryptedCredentialOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialArgs) ToAuthConfigDecryptedCredentialOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOutput)
+}
+
+func (i AuthConfigDecryptedCredentialArgs) ToAuthConfigDecryptedCredentialPtrOutput() AuthConfigDecryptedCredentialPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialArgs) ToAuthConfigDecryptedCredentialPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOutput).ToAuthConfigDecryptedCredentialPtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialPtrInput is an input type that accepts AuthConfigDecryptedCredentialArgs, AuthConfigDecryptedCredentialPtr and AuthConfigDecryptedCredentialPtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialPtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialPtrOutput() AuthConfigDecryptedCredentialPtrOutput
+	ToAuthConfigDecryptedCredentialPtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialPtrOutput
+}
+
+type authConfigDecryptedCredentialPtrType AuthConfigDecryptedCredentialArgs
+
+func AuthConfigDecryptedCredentialPtr(v *AuthConfigDecryptedCredentialArgs) AuthConfigDecryptedCredentialPtrInput {
+	return (*authConfigDecryptedCredentialPtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredential)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialPtrType) ToAuthConfigDecryptedCredentialPtrOutput() AuthConfigDecryptedCredentialPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialPtrType) ToAuthConfigDecryptedCredentialPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredential)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOutput) ToAuthConfigDecryptedCredentialOutput() AuthConfigDecryptedCredentialOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOutput) ToAuthConfigDecryptedCredentialOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOutput) ToAuthConfigDecryptedCredentialPtrOutput() AuthConfigDecryptedCredentialPtrOutput {
+	return o.ToAuthConfigDecryptedCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialOutput) ToAuthConfigDecryptedCredentialPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredential) *AuthConfigDecryptedCredential {
+		return &v
+	}).(AuthConfigDecryptedCredentialPtrOutput)
+}
+
+// Auth token credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOutput) AuthToken() AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialAuthToken { return v.AuthToken }).(AuthConfigDecryptedCredentialAuthTokenPtrOutput)
+}
+
+// Credential type associated with auth configs.
+func (o AuthConfigDecryptedCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredential) string { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+// JWT credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOutput) Jwt() AuthConfigDecryptedCredentialJwtPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialJwt { return v.Jwt }).(AuthConfigDecryptedCredentialJwtPtrOutput)
+}
+
+// OAuth2 authorization code credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOutput) Oauth2AuthorizationCode() AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialOauth2AuthorizationCode {
+		return v.Oauth2AuthorizationCode
+	}).(AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput)
+}
+
+// OAuth2 client credentials.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOutput) Oauth2ClientCredentials() AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialOauth2ClientCredentials {
+		return v.Oauth2ClientCredentials
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput)
+}
+
+// Google OIDC ID Token.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOutput) OidcToken() AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialOidcToken { return v.OidcToken }).(AuthConfigDecryptedCredentialOidcTokenPtrOutput)
+}
+
+// Service account credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOutput) ServiceAccountCredentials() AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialServiceAccountCredentials {
+		return v.ServiceAccountCredentials
+	}).(AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput)
+}
+
+// Username and password credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOutput) UsernameAndPassword() AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialUsernameAndPassword {
+		return v.UsernameAndPassword
+	}).(AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredential)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialPtrOutput) ToAuthConfigDecryptedCredentialPtrOutput() AuthConfigDecryptedCredentialPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialPtrOutput) ToAuthConfigDecryptedCredentialPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialPtrOutput) Elem() AuthConfigDecryptedCredentialOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredential) AuthConfigDecryptedCredential {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredential
+		return ret
+	}).(AuthConfigDecryptedCredentialOutput)
+}
+
+// Auth token credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialPtrOutput) AuthToken() AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialAuthToken {
+		if v == nil {
+			return nil
+		}
+		return v.AuthToken
+	}).(AuthConfigDecryptedCredentialAuthTokenPtrOutput)
+}
+
+// Credential type associated with auth configs.
+func (o AuthConfigDecryptedCredentialPtrOutput) CredentialType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CredentialType
+	}).(pulumi.StringPtrOutput)
+}
+
+// JWT credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialPtrOutput) Jwt() AuthConfigDecryptedCredentialJwtPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialJwt {
+		if v == nil {
+			return nil
+		}
+		return v.Jwt
+	}).(AuthConfigDecryptedCredentialJwtPtrOutput)
+}
+
+// OAuth2 authorization code credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialPtrOutput) Oauth2AuthorizationCode() AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialOauth2AuthorizationCode {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2AuthorizationCode
+	}).(AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput)
+}
+
+// OAuth2 client credentials.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialPtrOutput) Oauth2ClientCredentials() AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialOauth2ClientCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientCredentials
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput)
+}
+
+// Google OIDC ID Token.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialPtrOutput) OidcToken() AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialOidcToken {
+		if v == nil {
+			return nil
+		}
+		return v.OidcToken
+	}).(AuthConfigDecryptedCredentialOidcTokenPtrOutput)
+}
+
+// Service account credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialPtrOutput) ServiceAccountCredentials() AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialServiceAccountCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountCredentials
+	}).(AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput)
+}
+
+// Username and password credential.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialPtrOutput) UsernameAndPassword() AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredential) *AuthConfigDecryptedCredentialUsernameAndPassword {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameAndPassword
+	}).(AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialAuthToken struct {
+	// The token for the auth type.
+	Token *string `pulumi:"token"`
+	// Authentication type, e.g. "Basic", "Bearer", etc.
+	Type *string `pulumi:"type"`
+}
+
+// AuthConfigDecryptedCredentialAuthTokenInput is an input type that accepts AuthConfigDecryptedCredentialAuthTokenArgs and AuthConfigDecryptedCredentialAuthTokenOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialAuthTokenInput` via:
+//
+//	AuthConfigDecryptedCredentialAuthTokenArgs{...}
+type AuthConfigDecryptedCredentialAuthTokenInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialAuthTokenOutput() AuthConfigDecryptedCredentialAuthTokenOutput
+	ToAuthConfigDecryptedCredentialAuthTokenOutputWithContext(context.Context) AuthConfigDecryptedCredentialAuthTokenOutput
+}
+
+type AuthConfigDecryptedCredentialAuthTokenArgs struct {
+	// The token for the auth type.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Authentication type, e.g. "Basic", "Bearer", etc.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AuthConfigDecryptedCredentialAuthTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialAuthToken)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialAuthTokenArgs) ToAuthConfigDecryptedCredentialAuthTokenOutput() AuthConfigDecryptedCredentialAuthTokenOutput {
+	return i.ToAuthConfigDecryptedCredentialAuthTokenOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialAuthTokenArgs) ToAuthConfigDecryptedCredentialAuthTokenOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialAuthTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialAuthTokenOutput)
+}
+
+func (i AuthConfigDecryptedCredentialAuthTokenArgs) ToAuthConfigDecryptedCredentialAuthTokenPtrOutput() AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialAuthTokenArgs) ToAuthConfigDecryptedCredentialAuthTokenPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialAuthTokenOutput).ToAuthConfigDecryptedCredentialAuthTokenPtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialAuthTokenPtrInput is an input type that accepts AuthConfigDecryptedCredentialAuthTokenArgs, AuthConfigDecryptedCredentialAuthTokenPtr and AuthConfigDecryptedCredentialAuthTokenPtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialAuthTokenPtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialAuthTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialAuthTokenPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialAuthTokenPtrOutput() AuthConfigDecryptedCredentialAuthTokenPtrOutput
+	ToAuthConfigDecryptedCredentialAuthTokenPtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialAuthTokenPtrOutput
+}
+
+type authConfigDecryptedCredentialAuthTokenPtrType AuthConfigDecryptedCredentialAuthTokenArgs
+
+func AuthConfigDecryptedCredentialAuthTokenPtr(v *AuthConfigDecryptedCredentialAuthTokenArgs) AuthConfigDecryptedCredentialAuthTokenPtrInput {
+	return (*authConfigDecryptedCredentialAuthTokenPtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialAuthTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialAuthToken)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialAuthTokenPtrType) ToAuthConfigDecryptedCredentialAuthTokenPtrOutput() AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialAuthTokenPtrType) ToAuthConfigDecryptedCredentialAuthTokenPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialAuthTokenPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialAuthTokenOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialAuthTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialAuthToken)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialAuthTokenOutput) ToAuthConfigDecryptedCredentialAuthTokenOutput() AuthConfigDecryptedCredentialAuthTokenOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialAuthTokenOutput) ToAuthConfigDecryptedCredentialAuthTokenOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialAuthTokenOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialAuthTokenOutput) ToAuthConfigDecryptedCredentialAuthTokenPtrOutput() AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return o.ToAuthConfigDecryptedCredentialAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialAuthTokenOutput) ToAuthConfigDecryptedCredentialAuthTokenPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialAuthToken) *AuthConfigDecryptedCredentialAuthToken {
+		return &v
+	}).(AuthConfigDecryptedCredentialAuthTokenPtrOutput)
+}
+
+// The token for the auth type.
+func (o AuthConfigDecryptedCredentialAuthTokenOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialAuthToken) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type, e.g. "Basic", "Bearer", etc.
+func (o AuthConfigDecryptedCredentialAuthTokenOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialAuthToken) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialAuthTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialAuthTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialAuthToken)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialAuthTokenPtrOutput) ToAuthConfigDecryptedCredentialAuthTokenPtrOutput() AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialAuthTokenPtrOutput) ToAuthConfigDecryptedCredentialAuthTokenPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialAuthTokenPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialAuthTokenPtrOutput) Elem() AuthConfigDecryptedCredentialAuthTokenOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialAuthToken) AuthConfigDecryptedCredentialAuthToken {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialAuthToken
+		return ret
+	}).(AuthConfigDecryptedCredentialAuthTokenOutput)
+}
+
+// The token for the auth type.
+func (o AuthConfigDecryptedCredentialAuthTokenPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialAuthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type, e.g. "Basic", "Bearer", etc.
+func (o AuthConfigDecryptedCredentialAuthTokenPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialAuthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialJwt struct {
+	// (Output)
+	// The token calculated by the header, payload and signature.
+	Jwt *string `pulumi:"jwt"`
+	// Identifies which algorithm is used to generate the signature.
+	JwtHeader *string `pulumi:"jwtHeader"`
+	// Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
+	JwtPayload *string `pulumi:"jwtPayload"`
+	// User's pre-shared secret to sign the token.
+	Secret *string `pulumi:"secret"`
+}
+
+// AuthConfigDecryptedCredentialJwtInput is an input type that accepts AuthConfigDecryptedCredentialJwtArgs and AuthConfigDecryptedCredentialJwtOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialJwtInput` via:
+//
+//	AuthConfigDecryptedCredentialJwtArgs{...}
+type AuthConfigDecryptedCredentialJwtInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialJwtOutput() AuthConfigDecryptedCredentialJwtOutput
+	ToAuthConfigDecryptedCredentialJwtOutputWithContext(context.Context) AuthConfigDecryptedCredentialJwtOutput
+}
+
+type AuthConfigDecryptedCredentialJwtArgs struct {
+	// (Output)
+	// The token calculated by the header, payload and signature.
+	Jwt pulumi.StringPtrInput `pulumi:"jwt"`
+	// Identifies which algorithm is used to generate the signature.
+	JwtHeader pulumi.StringPtrInput `pulumi:"jwtHeader"`
+	// Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
+	JwtPayload pulumi.StringPtrInput `pulumi:"jwtPayload"`
+	// User's pre-shared secret to sign the token.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+}
+
+func (AuthConfigDecryptedCredentialJwtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialJwt)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialJwtArgs) ToAuthConfigDecryptedCredentialJwtOutput() AuthConfigDecryptedCredentialJwtOutput {
+	return i.ToAuthConfigDecryptedCredentialJwtOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialJwtArgs) ToAuthConfigDecryptedCredentialJwtOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialJwtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialJwtOutput)
+}
+
+func (i AuthConfigDecryptedCredentialJwtArgs) ToAuthConfigDecryptedCredentialJwtPtrOutput() AuthConfigDecryptedCredentialJwtPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialJwtPtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialJwtArgs) ToAuthConfigDecryptedCredentialJwtPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialJwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialJwtOutput).ToAuthConfigDecryptedCredentialJwtPtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialJwtPtrInput is an input type that accepts AuthConfigDecryptedCredentialJwtArgs, AuthConfigDecryptedCredentialJwtPtr and AuthConfigDecryptedCredentialJwtPtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialJwtPtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialJwtArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialJwtPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialJwtPtrOutput() AuthConfigDecryptedCredentialJwtPtrOutput
+	ToAuthConfigDecryptedCredentialJwtPtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialJwtPtrOutput
+}
+
+type authConfigDecryptedCredentialJwtPtrType AuthConfigDecryptedCredentialJwtArgs
+
+func AuthConfigDecryptedCredentialJwtPtr(v *AuthConfigDecryptedCredentialJwtArgs) AuthConfigDecryptedCredentialJwtPtrInput {
+	return (*authConfigDecryptedCredentialJwtPtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialJwtPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialJwt)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialJwtPtrType) ToAuthConfigDecryptedCredentialJwtPtrOutput() AuthConfigDecryptedCredentialJwtPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialJwtPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialJwtPtrType) ToAuthConfigDecryptedCredentialJwtPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialJwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialJwtPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialJwtOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialJwtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialJwt)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialJwtOutput) ToAuthConfigDecryptedCredentialJwtOutput() AuthConfigDecryptedCredentialJwtOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialJwtOutput) ToAuthConfigDecryptedCredentialJwtOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialJwtOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialJwtOutput) ToAuthConfigDecryptedCredentialJwtPtrOutput() AuthConfigDecryptedCredentialJwtPtrOutput {
+	return o.ToAuthConfigDecryptedCredentialJwtPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialJwtOutput) ToAuthConfigDecryptedCredentialJwtPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialJwtPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialJwt) *AuthConfigDecryptedCredentialJwt {
+		return &v
+	}).(AuthConfigDecryptedCredentialJwtPtrOutput)
+}
+
+// (Output)
+// The token calculated by the header, payload and signature.
+func (o AuthConfigDecryptedCredentialJwtOutput) Jwt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialJwt) *string { return v.Jwt }).(pulumi.StringPtrOutput)
+}
+
+// Identifies which algorithm is used to generate the signature.
+func (o AuthConfigDecryptedCredentialJwtOutput) JwtHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialJwt) *string { return v.JwtHeader }).(pulumi.StringPtrOutput)
+}
+
+// Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
+func (o AuthConfigDecryptedCredentialJwtOutput) JwtPayload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialJwt) *string { return v.JwtPayload }).(pulumi.StringPtrOutput)
+}
+
+// User's pre-shared secret to sign the token.
+func (o AuthConfigDecryptedCredentialJwtOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialJwt) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialJwtPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialJwtPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialJwt)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialJwtPtrOutput) ToAuthConfigDecryptedCredentialJwtPtrOutput() AuthConfigDecryptedCredentialJwtPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialJwtPtrOutput) ToAuthConfigDecryptedCredentialJwtPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialJwtPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialJwtPtrOutput) Elem() AuthConfigDecryptedCredentialJwtOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialJwt) AuthConfigDecryptedCredentialJwt {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialJwt
+		return ret
+	}).(AuthConfigDecryptedCredentialJwtOutput)
+}
+
+// (Output)
+// The token calculated by the header, payload and signature.
+func (o AuthConfigDecryptedCredentialJwtPtrOutput) Jwt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Jwt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies which algorithm is used to generate the signature.
+func (o AuthConfigDecryptedCredentialJwtPtrOutput) JwtHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtHeader
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
+func (o AuthConfigDecryptedCredentialJwtPtrOutput) JwtPayload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtPayload
+	}).(pulumi.StringPtrOutput)
+}
+
+// User's pre-shared secret to sign the token.
+func (o AuthConfigDecryptedCredentialJwtPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2AuthorizationCode struct {
+	// The auth url endpoint to send the auth code request to.
+	AuthEndpoint *string `pulumi:"authEndpoint"`
+	// The client's id.
+	ClientId *string `pulumi:"clientId"`
+	// The client's secret.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// A space-delimited list of requested scope permissions.
+	Scope *string `pulumi:"scope"`
+	// The token url endpoint to send the token request to.
+	TokenEndpoint *string `pulumi:"tokenEndpoint"`
+}
+
+// AuthConfigDecryptedCredentialOauth2AuthorizationCodeInput is an input type that accepts AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs and AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2AuthorizationCodeInput` via:
+//
+//	AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs{...}
+type AuthConfigDecryptedCredentialOauth2AuthorizationCodeInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput() AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput
+	ToAuthConfigDecryptedCredentialOauth2AuthorizationCodeOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput
+}
+
+type AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs struct {
+	// The auth url endpoint to send the auth code request to.
+	AuthEndpoint pulumi.StringPtrInput `pulumi:"authEndpoint"`
+	// The client's id.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The client's secret.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// A space-delimited list of requested scope permissions.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The token url endpoint to send the token request to.
+	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
+}
+
+func (AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2AuthorizationCode)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput() AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2AuthorizationCodeOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodeOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput)
+}
+
+func (i AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput() AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput).ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrInput is an input type that accepts AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs, AuthConfigDecryptedCredentialOauth2AuthorizationCodePtr and AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput() AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput
+	ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput
+}
+
+type authConfigDecryptedCredentialOauth2AuthorizationCodePtrType AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs
+
+func AuthConfigDecryptedCredentialOauth2AuthorizationCodePtr(v *AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs) AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrInput {
+	return (*authConfigDecryptedCredentialOauth2AuthorizationCodePtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialOauth2AuthorizationCodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2AuthorizationCode)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialOauth2AuthorizationCodePtrType) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput() AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialOauth2AuthorizationCodePtrType) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2AuthorizationCode)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput() AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodeOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput() AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return o.ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialOauth2AuthorizationCode) *AuthConfigDecryptedCredentialOauth2AuthorizationCode {
+		return &v
+	}).(AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput)
+}
+
+// The auth url endpoint to send the auth code request to.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) AuthEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string { return v.AuthEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The client's id.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The client's secret.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// A space-delimited list of requested scope permissions.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The token url endpoint to send the token request to.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2AuthorizationCode)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput() AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput) ToAuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput) Elem() AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2AuthorizationCode) AuthConfigDecryptedCredentialOauth2AuthorizationCode {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialOauth2AuthorizationCode
+		return ret
+	}).(AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput)
+}
+
+// The auth url endpoint to send the auth code request to.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput) AuthEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client's id.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client's secret.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// A space-delimited list of requested scope permissions.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// The token url endpoint to send the token request to.
+func (o AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2AuthorizationCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentials struct {
+	// The client's ID.
+	ClientId *string `pulumi:"clientId"`
+	// The client's secret.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+	RequestType *string `pulumi:"requestType"`
+	// A space-delimited list of requested scope permissions.
+	Scope *string `pulumi:"scope"`
+	// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
+	TokenEndpoint *string `pulumi:"tokenEndpoint"`
+	// Token parameters for the auth request.
+	TokenParams *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams `pulumi:"tokenParams"`
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs and AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsInput` via:
+//
+//	AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs{...}
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs struct {
+	// The client's ID.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The client's secret.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+	RequestType pulumi.StringPtrInput `pulumi:"requestType"`
+	// A space-delimited list of requested scope permissions.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
+	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
+	// Token parameters for the auth request.
+	TokenParams AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrInput `pulumi:"tokenParams"`
+}
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentials)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput)
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput).ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs, AuthConfigDecryptedCredentialOauth2ClientCredentialsPtr and AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput
+}
+
+type authConfigDecryptedCredentialOauth2ClientCredentialsPtrType AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs
+
+func AuthConfigDecryptedCredentialOauth2ClientCredentialsPtr(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs) AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrInput {
+	return (*authConfigDecryptedCredentialOauth2ClientCredentialsPtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialOauth2ClientCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentials)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsPtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsPtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentials)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return o.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialOauth2ClientCredentials) *AuthConfigDecryptedCredentialOauth2ClientCredentials {
+		return &v
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput)
+}
+
+// The client's ID.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentials) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The client's secret.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentials) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) RequestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentials) *string { return v.RequestType }).(pulumi.StringPtrOutput)
+}
+
+// A space-delimited list of requested scope permissions.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentials) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentials) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Token parameters for the auth request.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput) TokenParams() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentials) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
+		return v.TokenParams
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentials)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) Elem() AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentials) AuthConfigDecryptedCredentialOauth2ClientCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialOauth2ClientCredentials
+		return ret
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput)
+}
+
+// The client's ID.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client's secret.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) RequestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A space-delimited list of requested scope permissions.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Token parameters for the auth request.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput) TokenParams() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentials) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
+		if v == nil {
+			return nil
+		}
+		return v.TokenParams
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams struct {
+	// A list of parameter map entries.
+	// Structure is documented below.
+	Entries []AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry `pulumi:"entries"`
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsInput` via:
+//
+//	AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs{...}
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs struct {
+	// A list of parameter map entries.
+	// Structure is documented below.
+	Entries AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayInput `pulumi:"entries"`
+}
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput)
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput).ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs, AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtr and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput
+}
+
+type authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrType AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs
+
+func AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtr(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrInput {
+	return (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return o.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
+		return &v
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput)
+}
+
+// A list of parameter map entries.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput) Entries() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams) []AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
+		return v.Entries
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput) Elem() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams
+		return ret
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput)
+}
+
+// A list of parameter map entries.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput) Entries() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams) []AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
+		if v == nil {
+			return nil
+		}
+		return v.Entries
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry struct {
+	// Key of the map entry.
+	// Structure is documented below.
+	Key *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey `pulumi:"key"`
+	// Value of the map entry.
+	// Structure is documented below.
+	Value *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue `pulumi:"value"`
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryInput` via:
+//
+//	AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs{...}
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs struct {
+	// Key of the map entry.
+	// Structure is documented below.
+	Key AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrInput `pulumi:"key"`
+	// Value of the map entry.
+	// Structure is documented below.
+	Value AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrInput `pulumi:"value"`
+}
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput)
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArray and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayInput` via:
+//
+//	AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArray{ AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs{...} }
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArray []AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryInput
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArray) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArray) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput {
+	return o
+}
+
+// Key of the map entry.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput) Key() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey {
+		return v.Key
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput)
+}
+
+// Value of the map entry.
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput) Value() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue {
+		return v.Value
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput) Index(i pulumi.IntInput) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
+		return vs[0].([]AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry)[vs[1].(int)]
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey struct {
+	// Passing a literal value
+	// Structure is documented below.
+	LiteralValue *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue `pulumi:"literalValue"`
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyInput` via:
+//
+//	AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs{...}
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs struct {
+	// Passing a literal value
+	// Structure is documented below.
+	LiteralValue AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrInput `pulumi:"literalValue"`
+}
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput)
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput).ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs, AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtr and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput
+}
+
+type authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrType AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs
+
+func AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtr(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrInput {
+	return (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput {
+	return o.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey {
+		return &v
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput)
+}
+
+// Passing a literal value
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput) LiteralValue() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue {
+		return v.LiteralValue
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput) Elem() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey
+		return ret
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput)
+}
+
+// Passing a literal value
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput) LiteralValue() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue {
+		if v == nil {
+			return nil
+		}
+		return v.LiteralValue
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue struct {
+	// String.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueInput` via:
+//
+//	AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs{...}
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs struct {
+	// String.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput)
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput).ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs, AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtr and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput
+}
+
+type authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrType AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs
+
+func AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtr(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrInput {
+	return (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return o.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue {
+		return &v
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput)
+}
+
+// String.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput) Elem() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue
+		return ret
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput)
+}
+
+// String.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue struct {
+	// Passing a literal value
+	// Structure is documented below.
+	LiteralValue *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue `pulumi:"literalValue"`
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueInput` via:
+//
+//	AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs{...}
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs struct {
+	// Passing a literal value
+	// Structure is documented below.
+	LiteralValue AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrInput `pulumi:"literalValue"`
+}
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput)
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput).ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs, AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtr and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput
+}
+
+type authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrType AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs
+
+func AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtr(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrInput {
+	return (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput {
+	return o.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue {
+		return &v
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput)
+}
+
+// Passing a literal value
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput) LiteralValue() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue {
+		return v.LiteralValue
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput) Elem() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue
+		return ret
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput)
+}
+
+// Passing a literal value
+// Structure is documented below.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput) LiteralValue() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue {
+		if v == nil {
+			return nil
+		}
+		return v.LiteralValue
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue struct {
+	// String.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueInput` via:
+//
+//	AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs{...}
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs struct {
+	// String.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput)
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput).ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrInput is an input type that accepts AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs, AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtr and AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput
+	ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput
+}
+
+type authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrType AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs
+
+func AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtr(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrInput {
+	return (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrType) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return o.ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue) *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue {
+		return &v
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput)
+}
+
+// String.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput) ToAuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput) Elem() AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue) AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue
+		return ret
+	}).(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput)
+}
+
+// String.
+func (o AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOidcToken struct {
+	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
+	Audience *string `pulumi:"audience"`
+	// The service account email to be used as the identity for the token.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// (Output)
+	// ID token obtained for the service account.
+	Token *string `pulumi:"token"`
+	// (Output)
+	// The approximate time until the token retrieved is valid.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TokenExpireTime *string `pulumi:"tokenExpireTime"`
+}
+
+// AuthConfigDecryptedCredentialOidcTokenInput is an input type that accepts AuthConfigDecryptedCredentialOidcTokenArgs and AuthConfigDecryptedCredentialOidcTokenOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOidcTokenInput` via:
+//
+//	AuthConfigDecryptedCredentialOidcTokenArgs{...}
+type AuthConfigDecryptedCredentialOidcTokenInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOidcTokenOutput() AuthConfigDecryptedCredentialOidcTokenOutput
+	ToAuthConfigDecryptedCredentialOidcTokenOutputWithContext(context.Context) AuthConfigDecryptedCredentialOidcTokenOutput
+}
+
+type AuthConfigDecryptedCredentialOidcTokenArgs struct {
+	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// The service account email to be used as the identity for the token.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// (Output)
+	// ID token obtained for the service account.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// (Output)
+	// The approximate time until the token retrieved is valid.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TokenExpireTime pulumi.StringPtrInput `pulumi:"tokenExpireTime"`
+}
+
+func (AuthConfigDecryptedCredentialOidcTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOidcToken)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialOidcTokenArgs) ToAuthConfigDecryptedCredentialOidcTokenOutput() AuthConfigDecryptedCredentialOidcTokenOutput {
+	return i.ToAuthConfigDecryptedCredentialOidcTokenOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOidcTokenArgs) ToAuthConfigDecryptedCredentialOidcTokenOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOidcTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOidcTokenOutput)
+}
+
+func (i AuthConfigDecryptedCredentialOidcTokenArgs) ToAuthConfigDecryptedCredentialOidcTokenPtrOutput() AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialOidcTokenArgs) ToAuthConfigDecryptedCredentialOidcTokenPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOidcTokenOutput).ToAuthConfigDecryptedCredentialOidcTokenPtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialOidcTokenPtrInput is an input type that accepts AuthConfigDecryptedCredentialOidcTokenArgs, AuthConfigDecryptedCredentialOidcTokenPtr and AuthConfigDecryptedCredentialOidcTokenPtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialOidcTokenPtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialOidcTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialOidcTokenPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialOidcTokenPtrOutput() AuthConfigDecryptedCredentialOidcTokenPtrOutput
+	ToAuthConfigDecryptedCredentialOidcTokenPtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialOidcTokenPtrOutput
+}
+
+type authConfigDecryptedCredentialOidcTokenPtrType AuthConfigDecryptedCredentialOidcTokenArgs
+
+func AuthConfigDecryptedCredentialOidcTokenPtr(v *AuthConfigDecryptedCredentialOidcTokenArgs) AuthConfigDecryptedCredentialOidcTokenPtrInput {
+	return (*authConfigDecryptedCredentialOidcTokenPtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialOidcTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOidcToken)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialOidcTokenPtrType) ToAuthConfigDecryptedCredentialOidcTokenPtrOutput() AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialOidcTokenPtrType) ToAuthConfigDecryptedCredentialOidcTokenPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialOidcTokenPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOidcTokenOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOidcTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialOidcToken)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOidcTokenOutput) ToAuthConfigDecryptedCredentialOidcTokenOutput() AuthConfigDecryptedCredentialOidcTokenOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOidcTokenOutput) ToAuthConfigDecryptedCredentialOidcTokenOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOidcTokenOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOidcTokenOutput) ToAuthConfigDecryptedCredentialOidcTokenPtrOutput() AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return o.ToAuthConfigDecryptedCredentialOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialOidcTokenOutput) ToAuthConfigDecryptedCredentialOidcTokenPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialOidcToken) *AuthConfigDecryptedCredentialOidcToken {
+		return &v
+	}).(AuthConfigDecryptedCredentialOidcTokenPtrOutput)
+}
+
+// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
+func (o AuthConfigDecryptedCredentialOidcTokenOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// The service account email to be used as the identity for the token.
+func (o AuthConfigDecryptedCredentialOidcTokenOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOidcToken) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// ID token obtained for the service account.
+func (o AuthConfigDecryptedCredentialOidcTokenOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOidcToken) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The approximate time until the token retrieved is valid.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o AuthConfigDecryptedCredentialOidcTokenOutput) TokenExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialOidcToken) *string { return v.TokenExpireTime }).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialOidcTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialOidcTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialOidcToken)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialOidcTokenPtrOutput) ToAuthConfigDecryptedCredentialOidcTokenPtrOutput() AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOidcTokenPtrOutput) ToAuthConfigDecryptedCredentialOidcTokenPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialOidcTokenPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialOidcTokenPtrOutput) Elem() AuthConfigDecryptedCredentialOidcTokenOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOidcToken) AuthConfigDecryptedCredentialOidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialOidcToken
+		return ret
+	}).(AuthConfigDecryptedCredentialOidcTokenOutput)
+}
+
+// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
+func (o AuthConfigDecryptedCredentialOidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account email to be used as the identity for the token.
+func (o AuthConfigDecryptedCredentialOidcTokenPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// ID token obtained for the service account.
+func (o AuthConfigDecryptedCredentialOidcTokenPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The approximate time until the token retrieved is valid.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o AuthConfigDecryptedCredentialOidcTokenPtrOutput) TokenExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenExpireTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialServiceAccountCredentials struct {
+	// A space-delimited list of requested scope permissions.
+	Scope *string `pulumi:"scope"`
+	// Name of the service account that has the permission to make the request.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+}
+
+// AuthConfigDecryptedCredentialServiceAccountCredentialsInput is an input type that accepts AuthConfigDecryptedCredentialServiceAccountCredentialsArgs and AuthConfigDecryptedCredentialServiceAccountCredentialsOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialServiceAccountCredentialsInput` via:
+//
+//	AuthConfigDecryptedCredentialServiceAccountCredentialsArgs{...}
+type AuthConfigDecryptedCredentialServiceAccountCredentialsInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialServiceAccountCredentialsOutput() AuthConfigDecryptedCredentialServiceAccountCredentialsOutput
+	ToAuthConfigDecryptedCredentialServiceAccountCredentialsOutputWithContext(context.Context) AuthConfigDecryptedCredentialServiceAccountCredentialsOutput
+}
+
+type AuthConfigDecryptedCredentialServiceAccountCredentialsArgs struct {
+	// A space-delimited list of requested scope permissions.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Name of the service account that has the permission to make the request.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+}
+
+func (AuthConfigDecryptedCredentialServiceAccountCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialServiceAccountCredentials)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialServiceAccountCredentialsArgs) ToAuthConfigDecryptedCredentialServiceAccountCredentialsOutput() AuthConfigDecryptedCredentialServiceAccountCredentialsOutput {
+	return i.ToAuthConfigDecryptedCredentialServiceAccountCredentialsOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialServiceAccountCredentialsArgs) ToAuthConfigDecryptedCredentialServiceAccountCredentialsOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialServiceAccountCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialServiceAccountCredentialsOutput)
+}
+
+func (i AuthConfigDecryptedCredentialServiceAccountCredentialsArgs) ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput() AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialServiceAccountCredentialsArgs) ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialServiceAccountCredentialsOutput).ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialServiceAccountCredentialsPtrInput is an input type that accepts AuthConfigDecryptedCredentialServiceAccountCredentialsArgs, AuthConfigDecryptedCredentialServiceAccountCredentialsPtr and AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialServiceAccountCredentialsPtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialServiceAccountCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialServiceAccountCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput() AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput
+	ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput
+}
+
+type authConfigDecryptedCredentialServiceAccountCredentialsPtrType AuthConfigDecryptedCredentialServiceAccountCredentialsArgs
+
+func AuthConfigDecryptedCredentialServiceAccountCredentialsPtr(v *AuthConfigDecryptedCredentialServiceAccountCredentialsArgs) AuthConfigDecryptedCredentialServiceAccountCredentialsPtrInput {
+	return (*authConfigDecryptedCredentialServiceAccountCredentialsPtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialServiceAccountCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialServiceAccountCredentials)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialServiceAccountCredentialsPtrType) ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput() AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialServiceAccountCredentialsPtrType) ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialServiceAccountCredentialsOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialServiceAccountCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialServiceAccountCredentials)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsOutput) ToAuthConfigDecryptedCredentialServiceAccountCredentialsOutput() AuthConfigDecryptedCredentialServiceAccountCredentialsOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsOutput) ToAuthConfigDecryptedCredentialServiceAccountCredentialsOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialServiceAccountCredentialsOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsOutput) ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput() AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return o.ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsOutput) ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialServiceAccountCredentials) *AuthConfigDecryptedCredentialServiceAccountCredentials {
+		return &v
+	}).(AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput)
+}
+
+// A space-delimited list of requested scope permissions.
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialServiceAccountCredentials) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Name of the service account that has the permission to make the request.
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialServiceAccountCredentials) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialServiceAccountCredentials)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput) ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput() AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput) ToAuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput) Elem() AuthConfigDecryptedCredentialServiceAccountCredentialsOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialServiceAccountCredentials) AuthConfigDecryptedCredentialServiceAccountCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialServiceAccountCredentials
+		return ret
+	}).(AuthConfigDecryptedCredentialServiceAccountCredentialsOutput)
+}
+
+// A space-delimited list of requested scope permissions.
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialServiceAccountCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the service account that has the permission to make the request.
+func (o AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialServiceAccountCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialUsernameAndPassword struct {
+	// Password to be used.
+	//
+	// <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+	Password *string `pulumi:"password"`
+	// Username to be used.
+	Username *string `pulumi:"username"`
+}
+
+// AuthConfigDecryptedCredentialUsernameAndPasswordInput is an input type that accepts AuthConfigDecryptedCredentialUsernameAndPasswordArgs and AuthConfigDecryptedCredentialUsernameAndPasswordOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialUsernameAndPasswordInput` via:
+//
+//	AuthConfigDecryptedCredentialUsernameAndPasswordArgs{...}
+type AuthConfigDecryptedCredentialUsernameAndPasswordInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialUsernameAndPasswordOutput() AuthConfigDecryptedCredentialUsernameAndPasswordOutput
+	ToAuthConfigDecryptedCredentialUsernameAndPasswordOutputWithContext(context.Context) AuthConfigDecryptedCredentialUsernameAndPasswordOutput
+}
+
+type AuthConfigDecryptedCredentialUsernameAndPasswordArgs struct {
+	// Password to be used.
+	//
+	// <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Username to be used.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (AuthConfigDecryptedCredentialUsernameAndPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialUsernameAndPassword)(nil)).Elem()
+}
+
+func (i AuthConfigDecryptedCredentialUsernameAndPasswordArgs) ToAuthConfigDecryptedCredentialUsernameAndPasswordOutput() AuthConfigDecryptedCredentialUsernameAndPasswordOutput {
+	return i.ToAuthConfigDecryptedCredentialUsernameAndPasswordOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialUsernameAndPasswordArgs) ToAuthConfigDecryptedCredentialUsernameAndPasswordOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialUsernameAndPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialUsernameAndPasswordOutput)
+}
+
+func (i AuthConfigDecryptedCredentialUsernameAndPasswordArgs) ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput() AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i AuthConfigDecryptedCredentialUsernameAndPasswordArgs) ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialUsernameAndPasswordOutput).ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutputWithContext(ctx)
+}
+
+// AuthConfigDecryptedCredentialUsernameAndPasswordPtrInput is an input type that accepts AuthConfigDecryptedCredentialUsernameAndPasswordArgs, AuthConfigDecryptedCredentialUsernameAndPasswordPtr and AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput values.
+// You can construct a concrete instance of `AuthConfigDecryptedCredentialUsernameAndPasswordPtrInput` via:
+//
+//	        AuthConfigDecryptedCredentialUsernameAndPasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthConfigDecryptedCredentialUsernameAndPasswordPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput() AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput
+	ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutputWithContext(context.Context) AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput
+}
+
+type authConfigDecryptedCredentialUsernameAndPasswordPtrType AuthConfigDecryptedCredentialUsernameAndPasswordArgs
+
+func AuthConfigDecryptedCredentialUsernameAndPasswordPtr(v *AuthConfigDecryptedCredentialUsernameAndPasswordArgs) AuthConfigDecryptedCredentialUsernameAndPasswordPtrInput {
+	return (*authConfigDecryptedCredentialUsernameAndPasswordPtrType)(v)
+}
+
+func (*authConfigDecryptedCredentialUsernameAndPasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialUsernameAndPassword)(nil)).Elem()
+}
+
+func (i *authConfigDecryptedCredentialUsernameAndPasswordPtrType) ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput() AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return i.ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigDecryptedCredentialUsernameAndPasswordPtrType) ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialUsernameAndPasswordOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialUsernameAndPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigDecryptedCredentialUsernameAndPassword)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordOutput) ToAuthConfigDecryptedCredentialUsernameAndPasswordOutput() AuthConfigDecryptedCredentialUsernameAndPasswordOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordOutput) ToAuthConfigDecryptedCredentialUsernameAndPasswordOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialUsernameAndPasswordOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordOutput) ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput() AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return o.ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordOutput) ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigDecryptedCredentialUsernameAndPassword) *AuthConfigDecryptedCredentialUsernameAndPassword {
+		return &v
+	}).(AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput)
+}
+
+// Password to be used.
+//
+// <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialUsernameAndPassword) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Username to be used.
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfigDecryptedCredentialUsernameAndPassword) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigDecryptedCredentialUsernameAndPassword)(nil)).Elem()
+}
+
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput) ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput() AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput) ToAuthConfigDecryptedCredentialUsernameAndPasswordPtrOutputWithContext(ctx context.Context) AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput {
+	return o
+}
+
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput) Elem() AuthConfigDecryptedCredentialUsernameAndPasswordOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialUsernameAndPassword) AuthConfigDecryptedCredentialUsernameAndPassword {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigDecryptedCredentialUsernameAndPassword
+		return ret
+	}).(AuthConfigDecryptedCredentialUsernameAndPasswordOutput)
+}
+
+// Password to be used.
+//
+// <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialUsernameAndPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to be used.
+func (o AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigDecryptedCredentialUsernameAndPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClientCloudKmsConfig struct {
 	// A Cloud KMS key is a named object containing one or more key versions, along
 	// with metadata for the key. A key exists on exactly one key ring tied to a
@@ -267,8 +2902,68 @@ func (o ClientCloudKmsConfigPtrOutput) KmsRing() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigClientCertificateInput)(nil)).Elem(), AuthConfigClientCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigClientCertificatePtrInput)(nil)).Elem(), AuthConfigClientCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialInput)(nil)).Elem(), AuthConfigDecryptedCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialPtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialAuthTokenInput)(nil)).Elem(), AuthConfigDecryptedCredentialAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialAuthTokenPtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialJwtInput)(nil)).Elem(), AuthConfigDecryptedCredentialJwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialJwtPtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialJwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2AuthorizationCodeInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOidcTokenInput)(nil)).Elem(), AuthConfigDecryptedCredentialOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialOidcTokenPtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialServiceAccountCredentialsInput)(nil)).Elem(), AuthConfigDecryptedCredentialServiceAccountCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialServiceAccountCredentialsPtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialServiceAccountCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialUsernameAndPasswordInput)(nil)).Elem(), AuthConfigDecryptedCredentialUsernameAndPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigDecryptedCredentialUsernameAndPasswordPtrInput)(nil)).Elem(), AuthConfigDecryptedCredentialUsernameAndPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCloudKmsConfigInput)(nil)).Elem(), ClientCloudKmsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCloudKmsConfigPtrInput)(nil)).Elem(), ClientCloudKmsConfigArgs{})
+	pulumi.RegisterOutputType(AuthConfigClientCertificateOutput{})
+	pulumi.RegisterOutputType(AuthConfigClientCertificatePtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialAuthTokenOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialAuthTokenPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialJwtOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialJwtPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2AuthorizationCodeOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2AuthorizationCodePtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArrayOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValuePtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValuePtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValuePtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOidcTokenOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialOidcTokenPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialServiceAccountCredentialsOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialUsernameAndPasswordOutput{})
+	pulumi.RegisterOutputType(AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput{})
 	pulumi.RegisterOutputType(ClientCloudKmsConfigOutput{})
 	pulumi.RegisterOutputType(ClientCloudKmsConfigPtrOutput{})
 }

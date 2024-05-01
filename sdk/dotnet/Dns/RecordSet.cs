@@ -244,7 +244,7 @@ namespace Pulumi.Gcp.Dns
     /// });
     /// ```
     /// 
-    /// ### Primary-Backup
+    /// ### Failover
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
