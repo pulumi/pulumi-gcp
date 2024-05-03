@@ -904,7 +904,7 @@ func pulumiTestDeleteFromState(ptest *pulumitest.PulumiTest, resourceURN string)
 	pulumiTestExec(ptest, arguments...)
 }
 
-func TestLabelImport(t *testing.T) {
+func TestImport(t *testing.T) {
 	for _, tc := range []struct {
 		testName         string
 		programPath      string
@@ -921,6 +921,11 @@ func TestLabelImport(t *testing.T) {
 			programPath:      filepath.Join("test-programs", "labeled-bucket-with-defaults"),
 			resourceType:     "gcp:storage/bucket:Bucket",
 			explicitProvider: true,
+		},
+		{
+			testName:     "bucket-iam-binding",
+			programPath:  filepath.Join("test-programs", "bucket-iam-binding"),
+			resourceType: "gcp:storage/bucketIAMBinding:BucketIAMBinding",
 		},
 	} {
 		t.Run(tc.testName, func(t *testing.T) {
