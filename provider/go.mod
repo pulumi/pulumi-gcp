@@ -6,11 +6,11 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/providertest v0.0.11
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.33.1-0.20240508212925-a1a46e5bc072
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.81.1-0.20240508212925-a1a46e5bc072
-	github.com/pulumi/pulumi/pkg/v3 v3.113.0
-	github.com/pulumi/pulumi/sdk/v3 v3.113.0
-	github.com/stretchr/testify v1.8.4
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.34.1-0.20240509180805-b3ecbf803ee0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.81.1-0.20240509180805-b3ecbf803ee0
+	github.com/pulumi/pulumi/pkg/v3 v3.114.0
+	github.com/pulumi/pulumi/sdk/v3 v3.114.0
+	github.com/stretchr/testify v1.9.0
 	google.golang.org/api v0.171.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
 )
@@ -101,7 +101,7 @@ require (
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.5.0 // indirect
-	github.com/go-git/go-git/v5 v5.11.0 // indirect
+	github.com/go-git/go-git/v5 v5.12.0 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/gofrs/uuid v4.2.0+incompatible // indirect
@@ -151,8 +151,9 @@ require (
 	github.com/hashicorp/terraform-json v0.21.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework v1.8.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.22.2 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
+	github.com/hashicorp/terraform-plugin-mux v0.16.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.8.2 // indirect
@@ -217,10 +218,10 @@ require (
 	github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect
 	github.com/segmentio/asm v1.1.3 // indirect
 	github.com/segmentio/encoding v0.3.5 // indirect
-	github.com/sergi/go-diff v1.3.1 // indirect
+	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
-	github.com/skeema/knownhosts v1.2.1 // indirect
+	github.com/skeema/knownhosts v1.2.2 // indirect
 	github.com/spf13/afero v1.10.0 // indirect
 	github.com/spf13/cast v1.5.1 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect
@@ -264,7 +265,7 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20240311173647-c811ad7063a7 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240314234333-6e1732d8331c // indirect
 	google.golang.org/grpc v1.63.2 // indirect
-	google.golang.org/protobuf v1.33.0 // indirect
+	google.golang.org/protobuf v1.34.0 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
