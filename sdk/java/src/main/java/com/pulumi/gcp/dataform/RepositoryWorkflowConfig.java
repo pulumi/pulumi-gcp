@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Dataform Repository Workflow Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,93 +63,94 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gitRepository = new Repository(&#34;gitRepository&#34;, RepositoryArgs.builder()        
- *             .name(&#34;my/repository&#34;)
+ *         var gitRepository = new Repository("gitRepository", RepositoryArgs.builder()        
+ *             .name("my/repository")
  *             .build());
  * 
- *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;my_secret&#34;)
+ *         var secret = new Secret("secret", SecretArgs.builder()        
+ *             .secretId("my_secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secretVersion = new SecretVersion(&#34;secretVersion&#34;, SecretVersionArgs.builder()        
+ *         var secretVersion = new SecretVersion("secretVersion", SecretVersionArgs.builder()        
  *             .secret(secret.id())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
- *         var repository = new Repository(&#34;repository&#34;, RepositoryArgs.builder()        
- *             .name(&#34;dataform_repository&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var repository = new Repository("repository", RepositoryArgs.builder()        
+ *             .name("dataform_repository")
+ *             .region("us-central1")
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
  *                 .url(gitRepository.url())
- *                 .defaultBranch(&#34;main&#34;)
+ *                 .defaultBranch("main")
  *                 .authenticationTokenSecretVersion(secretVersion.id())
  *                 .build())
  *             .workspaceCompilationOverrides(RepositoryWorkspaceCompilationOverridesArgs.builder()
- *                 .defaultDatabase(&#34;database&#34;)
- *                 .schemaSuffix(&#34;_suffix&#34;)
- *                 .tablePrefix(&#34;prefix_&#34;)
+ *                 .defaultDatabase("database")
+ *                 .schemaSuffix("_suffix")
+ *                 .tablePrefix("prefix_")
  *                 .build())
  *             .build());
  * 
- *         var releaseConfig = new RepositoryReleaseConfig(&#34;releaseConfig&#34;, RepositoryReleaseConfigArgs.builder()        
+ *         var releaseConfig = new RepositoryReleaseConfig("releaseConfig", RepositoryReleaseConfigArgs.builder()        
  *             .project(repository.project())
  *             .region(repository.region())
  *             .repository(repository.name())
- *             .name(&#34;my_release&#34;)
- *             .gitCommitish(&#34;main&#34;)
- *             .cronSchedule(&#34;0 7 * * *&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
+ *             .name("my_release")
+ *             .gitCommitish("main")
+ *             .cronSchedule("0 7 * * *")
+ *             .timeZone("America/New_York")
  *             .codeCompilationConfig(RepositoryReleaseConfigCodeCompilationConfigArgs.builder()
- *                 .defaultDatabase(&#34;gcp-example-project&#34;)
- *                 .defaultSchema(&#34;example-dataset&#34;)
- *                 .defaultLocation(&#34;us-central1&#34;)
- *                 .assertionSchema(&#34;example-assertion-dataset&#34;)
- *                 .databaseSuffix(&#34;&#34;)
- *                 .schemaSuffix(&#34;&#34;)
- *                 .tablePrefix(&#34;&#34;)
- *                 .vars(Map.of(&#34;var1&#34;, &#34;value&#34;))
+ *                 .defaultDatabase("gcp-example-project")
+ *                 .defaultSchema("example-dataset")
+ *                 .defaultLocation("us-central1")
+ *                 .assertionSchema("example-assertion-dataset")
+ *                 .databaseSuffix("")
+ *                 .schemaSuffix("")
+ *                 .tablePrefix("")
+ *                 .vars(Map.of("var1", "value"))
  *                 .build())
  *             .build());
  * 
- *         var dataformSa = new Account(&#34;dataformSa&#34;, AccountArgs.builder()        
- *             .accountId(&#34;dataform-sa&#34;)
- *             .displayName(&#34;Dataform Service Account&#34;)
+ *         var dataformSa = new Account("dataformSa", AccountArgs.builder()        
+ *             .accountId("dataform-sa")
+ *             .displayName("Dataform Service Account")
  *             .build());
  * 
- *         var workflow = new RepositoryWorkflowConfig(&#34;workflow&#34;, RepositoryWorkflowConfigArgs.builder()        
+ *         var workflow = new RepositoryWorkflowConfig("workflow", RepositoryWorkflowConfigArgs.builder()        
  *             .project(repository.project())
  *             .region(repository.region())
  *             .repository(repository.name())
- *             .name(&#34;my_workflow&#34;)
+ *             .name("my_workflow")
  *             .releaseConfig(releaseConfig.id())
  *             .invocationConfig(RepositoryWorkflowConfigInvocationConfigArgs.builder()
  *                 .includedTargets(                
  *                     RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs.builder()
- *                         .database(&#34;gcp-example-project&#34;)
- *                         .schema(&#34;example-dataset&#34;)
- *                         .name(&#34;target_1&#34;)
+ *                         .database("gcp-example-project")
+ *                         .schema("example-dataset")
+ *                         .name("target_1")
  *                         .build(),
  *                     RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs.builder()
- *                         .database(&#34;gcp-example-project&#34;)
- *                         .schema(&#34;example-dataset&#34;)
- *                         .name(&#34;target_2&#34;)
+ *                         .database("gcp-example-project")
+ *                         .schema("example-dataset")
+ *                         .name("target_2")
  *                         .build())
- *                 .includedTags(&#34;tag_1&#34;)
+ *                 .includedTags("tag_1")
  *                 .transitiveDependenciesIncluded(true)
  *                 .transitiveDependentsIncluded(true)
  *                 .fullyRefreshIncrementalTablesEnabled(false)
  *                 .serviceAccount(dataformSa.email())
  *                 .build())
- *             .cronSchedule(&#34;0 7 * * *&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
+ *             .cronSchedule("0 7 * * *")
+ *             .timeZone("America/New_York")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

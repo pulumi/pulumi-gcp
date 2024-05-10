@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Certificate Manager Certificate Issuance Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,41 +70,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new CaPool(&#34;pool&#34;, CaPoolArgs.builder()        
- *             .name(&#34;ca-pool&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var pool = new CaPool("pool", CaPoolArgs.builder()        
+ *             .name("ca-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var default_ = new CertificateIssuanceConfig(&#34;default&#34;, CertificateIssuanceConfigArgs.builder()        
- *             .name(&#34;issuance-config&#34;)
- *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
+ *         var default_ = new CertificateIssuanceConfig("default", CertificateIssuanceConfigArgs.builder()        
+ *             .name("issuance-config")
+ *             .description("sample description for the certificate issuanceConfigs")
  *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
  *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
  *                     .caPool(pool.id())
  *                     .build())
  *                 .build())
- *             .lifetime(&#34;1814400s&#34;)
+ *             .lifetime("1814400s")
  *             .rotationWindowPercentage(34)
- *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
+ *             .keyAlgorithm("ECDSA_P256")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;name&#34;, &#34;wrench&#34;),
- *                 Map.entry(&#34;count&#34;, &#34;3&#34;)
+ *                 Map.entry("name", "wrench"),
+ *                 Map.entry("count", "3")
  *             ))
  *             .build());
  * 
- *         var caAuthority = new Authority(&#34;caAuthority&#34;, AuthorityArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()        
+ *             .location("us-central1")
  *             .pool(pool.name())
- *             .certificateAuthorityId(&#34;ca-authority&#34;)
+ *             .certificateAuthorityId("ca-authority")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -122,7 +123,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
@@ -131,7 +132,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## google\_bigtable\_instance\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,26 +53,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/bigtable.user&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/bigtable.user")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var editor = new InstanceIamPolicy(&#34;editor&#34;, InstanceIamPolicyArgs.builder()        
- *             .project(&#34;your-project&#34;)
- *             .instance(&#34;your-bigtable-instance&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var editor = new InstanceIamPolicy("editor", InstanceIamPolicyArgs.builder()        
+ *             .project("your-project")
+ *             .instance("your-bigtable-instance")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigtable\_instance\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,21 +95,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new InstanceIamBinding(&#34;editor&#34;, InstanceIamBindingArgs.builder()        
- *             .instance(&#34;your-bigtable-instance&#34;)
- *             .role(&#34;roles/bigtable.user&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var editor = new InstanceIamBinding("editor", InstanceIamBindingArgs.builder()        
+ *             .instance("your-bigtable-instance")
+ *             .role("roles/bigtable.user")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigtable\_instance\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -127,21 +132,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new InstanceIamMember(&#34;editor&#34;, InstanceIamMemberArgs.builder()        
- *             .instance(&#34;your-bigtable-instance&#34;)
- *             .role(&#34;roles/bigtable.user&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var editor = new InstanceIamMember("editor", InstanceIamMemberArgs.builder()        
+ *             .instance("your-bigtable-instance")
+ *             .role("roles/bigtable.user")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigtable\_instance\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -166,26 +173,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/bigtable.user&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/bigtable.user")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var editor = new InstanceIamPolicy(&#34;editor&#34;, InstanceIamPolicyArgs.builder()        
- *             .project(&#34;your-project&#34;)
- *             .instance(&#34;your-bigtable-instance&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var editor = new InstanceIamPolicy("editor", InstanceIamPolicyArgs.builder()        
+ *             .project("your-project")
+ *             .instance("your-bigtable-instance")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigtable\_instance\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -206,21 +215,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new InstanceIamBinding(&#34;editor&#34;, InstanceIamBindingArgs.builder()        
- *             .instance(&#34;your-bigtable-instance&#34;)
- *             .role(&#34;roles/bigtable.user&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var editor = new InstanceIamBinding("editor", InstanceIamBindingArgs.builder()        
+ *             .instance("your-bigtable-instance")
+ *             .role("roles/bigtable.user")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigtable\_instance\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -241,15 +252,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new InstanceIamMember(&#34;editor&#34;, InstanceIamMemberArgs.builder()        
- *             .instance(&#34;your-bigtable-instance&#34;)
- *             .role(&#34;roles/bigtable.user&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var editor = new InstanceIamMember("editor", InstanceIamMemberArgs.builder()        
+ *             .instance("your-bigtable-instance")
+ *             .role("roles/bigtable.user")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

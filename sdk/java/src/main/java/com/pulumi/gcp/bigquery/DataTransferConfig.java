@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Bigquerydatatransfer Config Scheduled Query
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,35 +65,36 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var permissions = new IAMMember(&#34;permissions&#34;, IAMMemberArgs.builder()        
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var permissions = new IAMMember("permissions", IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/iam.serviceAccountTokenCreator")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var myDataset = new Dataset(&#34;myDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;my_dataset&#34;)
- *             .friendlyName(&#34;foo&#34;)
- *             .description(&#34;bar&#34;)
- *             .location(&#34;asia-northeast1&#34;)
+ *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()        
+ *             .datasetId("my_dataset")
+ *             .friendlyName("foo")
+ *             .description("bar")
+ *             .location("asia-northeast1")
  *             .build());
  * 
- *         var queryConfig = new DataTransferConfig(&#34;queryConfig&#34;, DataTransferConfigArgs.builder()        
- *             .displayName(&#34;my-query&#34;)
- *             .location(&#34;asia-northeast1&#34;)
- *             .dataSourceId(&#34;scheduled_query&#34;)
- *             .schedule(&#34;first sunday of quarter 00:00&#34;)
+ *         var queryConfig = new DataTransferConfig("queryConfig", DataTransferConfigArgs.builder()        
+ *             .displayName("my-query")
+ *             .location("asia-northeast1")
+ *             .dataSourceId("scheduled_query")
+ *             .schedule("first sunday of quarter 00:00")
  *             .destinationDatasetId(myDataset.datasetId())
  *             .params(Map.ofEntries(
- *                 Map.entry(&#34;destination_table_name_template&#34;, &#34;my_table&#34;),
- *                 Map.entry(&#34;write_disposition&#34;, &#34;WRITE_APPEND&#34;),
- *                 Map.entry(&#34;query&#34;, &#34;SELECT name FROM tabl WHERE x = &#39;y&#39;&#34;)
+ *                 Map.entry("destination_table_name_template", "my_table"),
+ *                 Map.entry("write_disposition", "WRITE_APPEND"),
+ *                 Map.entry("query", "SELECT name FROM tabl WHERE x = 'y'")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

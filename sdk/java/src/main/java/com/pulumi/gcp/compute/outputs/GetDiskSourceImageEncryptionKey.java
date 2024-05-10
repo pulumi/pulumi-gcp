@@ -13,7 +13,7 @@ public final class GetDiskSourceImageEncryptionKey {
     /**
      * @return The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
      * in the cloud console. Your project&#39;s Compute Engine System service account
-     * (&#39;service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com&#39;) must have
+     * (&#39;service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com&#39;) must have
      * &#39;roles/cloudkms.cryptoKeyEncrypterDecrypter&#39; to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
      * 
@@ -42,7 +42,7 @@ public final class GetDiskSourceImageEncryptionKey {
     /**
      * @return The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
      * in the cloud console. Your project&#39;s Compute Engine System service account
-     * (&#39;service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com&#39;) must have
+     * (&#39;service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com&#39;) must have
      * &#39;roles/cloudkms.cryptoKeyEncrypterDecrypter&#39; to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
      * 

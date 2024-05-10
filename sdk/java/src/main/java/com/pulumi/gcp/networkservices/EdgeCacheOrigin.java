@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Network Services Edge Cache Origin Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,20 +55,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EdgeCacheOrigin(&#34;default&#34;, EdgeCacheOriginArgs.builder()        
- *             .name(&#34;my-origin&#34;)
- *             .originAddress(&#34;gs://media-edge-default&#34;)
- *             .description(&#34;The default bucket for media edge test&#34;)
+ *         var default_ = new EdgeCacheOrigin("default", EdgeCacheOriginArgs.builder()        
+ *             .name("my-origin")
+ *             .originAddress("gs://media-edge-default")
+ *             .description("The default bucket for media edge test")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Edge Cache Origin Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -93,66 +96,68 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fallback = new EdgeCacheOrigin(&#34;fallback&#34;, EdgeCacheOriginArgs.builder()        
- *             .name(&#34;my-fallback&#34;)
- *             .originAddress(&#34;fallback.example.com&#34;)
- *             .description(&#34;The default bucket for media edge test&#34;)
+ *         var fallback = new EdgeCacheOrigin("fallback", EdgeCacheOriginArgs.builder()        
+ *             .name("my-fallback")
+ *             .originAddress("fallback.example.com")
+ *             .description("The default bucket for media edge test")
  *             .maxAttempts(3)
- *             .protocol(&#34;HTTP&#34;)
+ *             .protocol("HTTP")
  *             .port(80)
  *             .retryConditions(            
- *                 &#34;CONNECT_FAILURE&#34;,
- *                 &#34;NOT_FOUND&#34;,
- *                 &#34;HTTP_5XX&#34;,
- *                 &#34;FORBIDDEN&#34;)
+ *                 "CONNECT_FAILURE",
+ *                 "NOT_FOUND",
+ *                 "HTTP_5XX",
+ *                 "FORBIDDEN")
  *             .timeout(EdgeCacheOriginTimeoutArgs.builder()
- *                 .connectTimeout(&#34;10s&#34;)
- *                 .maxAttemptsTimeout(&#34;20s&#34;)
- *                 .responseTimeout(&#34;60s&#34;)
- *                 .readTimeout(&#34;5s&#34;)
+ *                 .connectTimeout("10s")
+ *                 .maxAttemptsTimeout("20s")
+ *                 .responseTimeout("60s")
+ *                 .readTimeout("5s")
  *                 .build())
  *             .originOverrideAction(EdgeCacheOriginOriginOverrideActionArgs.builder()
  *                 .urlRewrite(EdgeCacheOriginOriginOverrideActionUrlRewriteArgs.builder()
- *                     .hostRewrite(&#34;example.com&#34;)
+ *                     .hostRewrite("example.com")
  *                     .build())
  *                 .headerAction(EdgeCacheOriginOriginOverrideActionHeaderActionArgs.builder()
  *                     .requestHeadersToAdds(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs.builder()
- *                         .headerName(&#34;x-header&#34;)
- *                         .headerValue(&#34;value&#34;)
+ *                         .headerName("x-header")
+ *                         .headerValue("value")
  *                         .replace(true)
  *                         .build())
  *                     .build())
  *                 .build())
  *             .originRedirect(EdgeCacheOriginOriginRedirectArgs.builder()
  *                 .redirectConditions(                
- *                     &#34;MOVED_PERMANENTLY&#34;,
- *                     &#34;FOUND&#34;,
- *                     &#34;SEE_OTHER&#34;,
- *                     &#34;TEMPORARY_REDIRECT&#34;,
- *                     &#34;PERMANENT_REDIRECT&#34;)
+ *                     "MOVED_PERMANENTLY",
+ *                     "FOUND",
+ *                     "SEE_OTHER",
+ *                     "TEMPORARY_REDIRECT",
+ *                     "PERMANENT_REDIRECT")
  *                 .build())
  *             .build());
  * 
- *         var default_ = new EdgeCacheOrigin(&#34;default&#34;, EdgeCacheOriginArgs.builder()        
- *             .name(&#34;my-origin&#34;)
- *             .originAddress(&#34;gs://media-edge-default&#34;)
+ *         var default_ = new EdgeCacheOrigin("default", EdgeCacheOriginArgs.builder()        
+ *             .name("my-origin")
+ *             .originAddress("gs://media-edge-default")
  *             .failoverOrigin(fallback.id())
- *             .description(&#34;The default bucket for media edge test&#34;)
+ *             .description("The default bucket for media edge test")
  *             .maxAttempts(2)
- *             .labels(Map.of(&#34;a&#34;, &#34;b&#34;))
+ *             .labels(Map.of("a", "b"))
  *             .timeout(EdgeCacheOriginTimeoutArgs.builder()
- *                 .connectTimeout(&#34;10s&#34;)
+ *                 .connectTimeout("10s")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Edge Cache Origin V4auth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -180,32 +185,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret-name&#34;)
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *             .secretId("secret-name")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion(&#34;secret-version-basic&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
- *         var default_ = new EdgeCacheOrigin(&#34;default&#34;, EdgeCacheOriginArgs.builder()        
- *             .name(&#34;my-origin&#34;)
- *             .originAddress(&#34;gs://media-edge-default&#34;)
- *             .description(&#34;The default bucket for V4 authentication&#34;)
+ *         var default_ = new EdgeCacheOrigin("default", EdgeCacheOriginArgs.builder()        
+ *             .name("my-origin")
+ *             .originAddress("gs://media-edge-default")
+ *             .description("The default bucket for V4 authentication")
  *             .awsV4Authentication(EdgeCacheOriginAwsV4AuthenticationArgs.builder()
- *                 .accessKeyId(&#34;ACCESSKEYID&#34;)
+ *                 .accessKeyId("ACCESSKEYID")
  *                 .secretAccessKeyVersion(secret_version_basic.id())
- *                 .originRegion(&#34;auto&#34;)
+ *                 .originRegion("auto")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

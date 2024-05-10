@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Index Endpoint
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,42 +60,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vertexNetwork = new Network(&#34;vertexNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-name&#34;)
+ *         var vertexNetwork = new Network("vertexNetwork", NetworkArgs.builder()        
+ *             .name("network-name")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var indexEndpoint = new AiIndexEndpoint(&#34;indexEndpoint&#34;, AiIndexEndpointArgs.builder()        
- *             .displayName(&#34;sample-endpoint&#34;)
- *             .description(&#34;A sample vertex endpoint&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .network(vertexNetwork.name().applyValue(name -&gt; String.format(&#34;projects/%s/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()        
+ *             .displayName("sample-endpoint")
+ *             .description("A sample vertex endpoint")
+ *             .region("us-central1")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .network(vertexNetwork.name().applyValue(name -> String.format("projects/%s/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
  *             .build());
  * 
- *         var vertexRange = new GlobalAddress(&#34;vertexRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;address-name&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var vertexRange = new GlobalAddress("vertexRange", GlobalAddressArgs.builder()        
+ *             .name("address-name")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(24)
  *             .network(vertexNetwork.id())
  *             .build());
  * 
- *         var vertexVpcConnection = new Connection(&#34;vertexVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var vertexVpcConnection = new Connection("vertexVpcConnection", ConnectionArgs.builder()        
  *             .network(vertexNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(vertexRange.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Index Endpoint With Psc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -120,25 +123,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var indexEndpoint = new AiIndexEndpoint(&#34;indexEndpoint&#34;, AiIndexEndpointArgs.builder()        
- *             .displayName(&#34;sample-endpoint&#34;)
- *             .description(&#34;A sample vertex endpoint&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()        
+ *             .displayName("sample-endpoint")
+ *             .description("A sample vertex endpoint")
+ *             .region("us-central1")
+ *             .labels(Map.of("label-one", "value-one"))
  *             .privateServiceConnectConfig(AiIndexEndpointPrivateServiceConnectConfigArgs.builder()
  *                 .enablePrivateServiceConnect(true)
- *                 .projectAllowlists(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
+ *                 .projectAllowlists(project.applyValue(getProjectResult -> getProjectResult.number()))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Index Endpoint With Public Endpoint
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -159,17 +164,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var indexEndpoint = new AiIndexEndpoint(&#34;indexEndpoint&#34;, AiIndexEndpointArgs.builder()        
- *             .displayName(&#34;sample-endpoint&#34;)
- *             .description(&#34;A sample vertex endpoint with an public endpoint&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()        
+ *             .displayName("sample-endpoint")
+ *             .description("A sample vertex endpoint with an public endpoint")
+ *             .region("us-central1")
+ *             .labels(Map.of("label-one", "value-one"))
  *             .publicEndpointEnabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

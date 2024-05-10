@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,48 +62,50 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;tf-instance&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("tf-instance")
  *             .clusters(InstanceClusterArgs.builder()
- *                 .clusterId(&#34;tf-instance-cluster&#34;)
+ *                 .clusterId("tf-instance-cluster")
  *                 .numNodes(3)
- *                 .storageType(&#34;HDD&#34;)
+ *                 .storageType("HDD")
  *                 .build())
  *             .build());
  * 
- *         var table = new Table(&#34;table&#34;, TableArgs.builder()        
- *             .name(&#34;tf-table&#34;)
+ *         var table = new Table("table", TableArgs.builder()        
+ *             .name("tf-table")
  *             .instanceName(instance.name())
  *             .columnFamilies(TableColumnFamilyArgs.builder()
- *                 .family(&#34;name&#34;)
+ *                 .family("name")
  *                 .build())
  *             .build());
  * 
- *         var policy = new GCPolicy(&#34;policy&#34;, GCPolicyArgs.builder()        
+ *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()        
  *             .instanceName(instance.name())
  *             .table(table.name())
- *             .columnFamily(&#34;name&#34;)
- *             .deletionPolicy(&#34;ABANDON&#34;)
- *             .gcRules(&#34;&#34;&#34;
+ *             .columnFamily("name")
+ *             .deletionPolicy("ABANDON")
+ *             .gcRules("""
  *   {
- *     &#34;rules&#34;: [
+ *     "rules": [
  *       {
- *         &#34;max_age&#34;: &#34;168h&#34;
+ *         "max_age": "168h"
  *       }
  *     ]
  *   }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -123,34 +126,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new GCPolicy(&#34;policy&#34;, GCPolicyArgs.builder()        
+ *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()        
  *             .instanceName(instance.name())
  *             .table(table.name())
- *             .columnFamily(&#34;name&#34;)
- *             .deletionPolicy(&#34;ABANDON&#34;)
- *             .gcRules(&#34;&#34;&#34;
+ *             .columnFamily("name")
+ *             .deletionPolicy("ABANDON")
+ *             .gcRules("""
  *   {
- *     &#34;mode&#34;: &#34;union&#34;,
- *     &#34;rules&#34;: [
+ *     "mode": "union",
+ *     "rules": [
  *       {
- *         &#34;max_age&#34;: &#34;168h&#34;
+ *         "max_age": "168h"
  *       },
  *       {
- *         &#34;max_version&#34;: 10
+ *         "max_version": 10
  *       }
  *     ]
  *   }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * An example of more complex GC policy:
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -177,55 +182,56 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance_name&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("instance_name")
  *             .clusters(InstanceClusterArgs.builder()
- *                 .clusterId(&#34;cid&#34;)
- *                 .zone(&#34;us-central1-b&#34;)
+ *                 .clusterId("cid")
+ *                 .zone("us-central1-b")
  *                 .build())
- *             .instanceType(&#34;DEVELOPMENT&#34;)
+ *             .instanceType("DEVELOPMENT")
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var table = new Table(&#34;table&#34;, TableArgs.builder()        
- *             .name(&#34;your-table&#34;)
+ *         var table = new Table("table", TableArgs.builder()        
+ *             .name("your-table")
  *             .instanceName(instance.id())
  *             .columnFamilies(TableColumnFamilyArgs.builder()
- *                 .family(&#34;cf1&#34;)
+ *                 .family("cf1")
  *                 .build())
  *             .build());
  * 
- *         var policy = new GCPolicy(&#34;policy&#34;, GCPolicyArgs.builder()        
+ *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()        
  *             .instanceName(instance.id())
  *             .table(table.name())
- *             .columnFamily(&#34;cf1&#34;)
- *             .deletionPolicy(&#34;ABANDON&#34;)
- *             .gcRules(&#34;&#34;&#34;
+ *             .columnFamily("cf1")
+ *             .deletionPolicy("ABANDON")
+ *             .gcRules("""
  *   {
- *     &#34;mode&#34;: &#34;union&#34;,
- *     &#34;rules&#34;: [
+ *     "mode": "union",
+ *     "rules": [
  *       {
- *         &#34;max_age&#34;: &#34;10h&#34;
+ *         "max_age": "10h"
  *       },
  *       {
- *         &#34;mode&#34;: &#34;intersection&#34;,
- *         &#34;rules&#34;: [
+ *         "mode": "intersection",
+ *         "rules": [
  *           {
- *             &#34;max_age&#34;: &#34;2h&#34;
+ *             "max_age": "2h"
  *           },
  *           {
- *             &#34;max_version&#34;: 2
+ *             "max_version": 2
  *           }
  *         ]
  *       }
  *     ]
  *   }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * This is equivalent to running the following `cbt` command:
  * 

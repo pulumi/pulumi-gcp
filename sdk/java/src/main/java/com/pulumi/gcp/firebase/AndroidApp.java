@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ### Firebase Android App Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,22 +43,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new AndroidApp(&#34;basic&#34;, AndroidAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Display Name Basic&#34;)
- *             .packageName(&#34;android.package.app&#34;)
- *             .sha1Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
- *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
+ *         var basic = new AndroidApp("basic", AndroidAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Display Name Basic")
+ *             .packageName("android.package.app")
+ *             .sha1Hashes("2145bdf698b8715039bd0e83f2069bed435ac21c")
+ *             .sha256Hashes("2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebase Android App Custom Api Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,32 +85,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var android = new ApiKey(&#34;android&#34;, ApiKeyArgs.builder()        
- *             .name(&#34;api-key&#34;)
- *             .displayName(&#34;Display Name&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var android = new ApiKey("android", ApiKeyArgs.builder()        
+ *             .name("api-key")
+ *             .displayName("Display Name")
+ *             .project("my-project-name")
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
  *                 .androidKeyRestrictions(ApiKeyRestrictionsAndroidKeyRestrictionsArgs.builder()
  *                     .allowedApplications(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs.builder()
- *                         .packageName(&#34;android.package.app&#34;)
- *                         .sha1Fingerprint(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
+ *                         .packageName("android.package.app")
+ *                         .sha1Fingerprint("2145bdf698b8715039bd0e83f2069bed435ac21c")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_ = new AndroidApp(&#34;default&#34;, AndroidAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Display Name&#34;)
- *             .packageName(&#34;android.package.app&#34;)
- *             .sha1Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
- *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
+ *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Display Name")
+ *             .packageName("android.package.app")
+ *             .sha1Hashes("2145bdf698b8715039bd0e83f2069bed435ac21c")
+ *             .sha256Hashes("2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc")
  *             .apiKeyId(android.uid())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

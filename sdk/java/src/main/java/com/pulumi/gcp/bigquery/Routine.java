@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Routine Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,26 +57,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataset_id&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var sproc = new Routine(&#34;sproc&#34;, RoutineArgs.builder()        
+ *         var sproc = new Routine("sproc", RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;routine_id&#34;)
- *             .routineType(&#34;PROCEDURE&#34;)
- *             .language(&#34;SQL&#34;)
- *             .definitionBody(&#34;CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);&#34;)
+ *             .routineId("routine_id")
+ *             .routineType("PROCEDURE")
+ *             .language("SQL")
+ *             .definitionBody("CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Json
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,36 +102,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataset_id&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var sproc = new Routine(&#34;sproc&#34;, RoutineArgs.builder()        
+ *         var sproc = new Routine("sproc", RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;routine_id&#34;)
- *             .routineType(&#34;SCALAR_FUNCTION&#34;)
- *             .language(&#34;JAVASCRIPT&#34;)
- *             .definitionBody(&#34;CREATE FUNCTION multiplyInputs return x*y;&#34;)
+ *             .routineId("routine_id")
+ *             .routineType("SCALAR_FUNCTION")
+ *             .language("JAVASCRIPT")
+ *             .definitionBody("CREATE FUNCTION multiplyInputs return x*y;")
  *             .arguments(            
  *                 RoutineArgumentArgs.builder()
- *                     .name(&#34;x&#34;)
- *                     .dataType(&#34;{\&#34;typeKind\&#34; :  \&#34;FLOAT64\&#34;}&#34;)
+ *                     .name("x")
+ *                     .dataType("{\"typeKind\" :  \"FLOAT64\"}")
  *                     .build(),
  *                 RoutineArgumentArgs.builder()
- *                     .name(&#34;y&#34;)
- *                     .dataType(&#34;{\&#34;typeKind\&#34; :  \&#34;FLOAT64\&#34;}&#34;)
+ *                     .name("y")
+ *                     .dataType("{\"typeKind\" :  \"FLOAT64\"}")
  *                     .build())
- *             .returnType(&#34;{\&#34;typeKind\&#34; :  \&#34;FLOAT64\&#34;}&#34;)
+ *             .returnType("{\"typeKind\" :  \"FLOAT64\"}")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Tvf
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -153,32 +158,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataset_id&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var sproc = new Routine(&#34;sproc&#34;, RoutineArgs.builder()        
+ *         var sproc = new Routine("sproc", RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;routine_id&#34;)
- *             .routineType(&#34;TABLE_VALUED_FUNCTION&#34;)
- *             .language(&#34;SQL&#34;)
- *             .definitionBody(&#34;&#34;&#34;
+ *             .routineId("routine_id")
+ *             .routineType("TABLE_VALUED_FUNCTION")
+ *             .language("SQL")
+ *             .definitionBody("""
  * SELECT 1 + value AS value
- *             &#34;&#34;&#34;)
+ *             """)
  *             .arguments(RoutineArgumentArgs.builder()
- *                 .name(&#34;value&#34;)
- *                 .argumentKind(&#34;FIXED_TYPE&#34;)
+ *                 .name("value")
+ *                 .argumentKind("FIXED_TYPE")
  *                 .dataType(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                         jsonProperty("typeKind", "INT64")
  *                     )))
  *                 .build())
  *             .returnTableType(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;columns&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;name&#34;, &#34;value&#34;),
- *                         jsonProperty(&#34;type&#34;, jsonObject(
- *                             jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                     jsonProperty("columns", jsonArray(jsonObject(
+ *                         jsonProperty("name", "value"),
+ *                         jsonProperty("type", jsonObject(
+ *                             jsonProperty("typeKind", "INT64")
  *                         ))
  *                     )))
  *                 )))
@@ -186,12 +191,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Pyspark
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -218,56 +225,58 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataset_id&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var testConnection = new Connection(&#34;testConnection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;connection_id&#34;)
- *             .location(&#34;US&#34;)
+ *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()        
+ *             .connectionId("connection_id")
+ *             .location("US")
  *             .spark()
  *             .build());
  * 
- *         var pyspark = new Routine(&#34;pyspark&#34;, RoutineArgs.builder()        
+ *         var pyspark = new Routine("pyspark", RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;routine_id&#34;)
- *             .routineType(&#34;PROCEDURE&#34;)
- *             .language(&#34;PYTHON&#34;)
- *             .definitionBody(&#34;&#34;&#34;
+ *             .routineId("routine_id")
+ *             .routineType("PROCEDURE")
+ *             .language("PYTHON")
+ *             .definitionBody("""
  * from pyspark.sql import SparkSession
  * 
- * spark = SparkSession.builder.appName(&#34;spark-bigquery-demo&#34;).getOrCreate()
+ * spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
  *     
  * # Load data from BigQuery.
- * words = spark.read.format(&#34;bigquery&#34;) \
- *   .option(&#34;table&#34;, &#34;bigquery-public-data:samples.shakespeare&#34;) \
+ * words = spark.read.format("bigquery") \
+ *   .option("table", "bigquery-public-data:samples.shakespeare") \
  *   .load()
- * words.createOrReplaceTempView(&#34;words&#34;)
+ * words.createOrReplaceTempView("words")
  *     
  * # Perform word count.
- * word_count = words.select(&#39;word&#39;, &#39;word_count&#39;).groupBy(&#39;word&#39;).sum(&#39;word_count&#39;).withColumnRenamed(&#34;sum(word_count)&#34;, &#34;sum_word_count&#34;)
+ * word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed("sum(word_count)", "sum_word_count")
  * word_count.show()
  * word_count.printSchema()
  *     
  * # Saving the data to BigQuery
- * word_count.write.format(&#34;bigquery&#34;) \
- *   .option(&#34;writeMethod&#34;, &#34;direct&#34;) \
- *   .save(&#34;wordcount_dataset.wordcount_output&#34;)
- *             &#34;&#34;&#34;)
+ * word_count.write.format("bigquery") \
+ *   .option("writeMethod", "direct") \
+ *   .save("wordcount_dataset.wordcount_output")
+ *             """)
  *             .sparkOptions(RoutineSparkOptionsArgs.builder()
  *                 .connection(testConnection.name())
- *                 .runtimeVersion(&#34;2.1&#34;)
+ *                 .runtimeVersion("2.1")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Pyspark Mainfile
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -294,40 +303,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataset_id&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var testConnection = new Connection(&#34;testConnection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;connection_id&#34;)
- *             .location(&#34;US&#34;)
+ *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()        
+ *             .connectionId("connection_id")
+ *             .location("US")
  *             .spark()
  *             .build());
  * 
- *         var pysparkMainfile = new Routine(&#34;pysparkMainfile&#34;, RoutineArgs.builder()        
+ *         var pysparkMainfile = new Routine("pysparkMainfile", RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;routine_id&#34;)
- *             .routineType(&#34;PROCEDURE&#34;)
- *             .language(&#34;PYTHON&#34;)
- *             .definitionBody(&#34;&#34;)
+ *             .routineId("routine_id")
+ *             .routineType("PROCEDURE")
+ *             .language("PYTHON")
+ *             .definitionBody("")
  *             .sparkOptions(RoutineSparkOptionsArgs.builder()
  *                 .connection(testConnection.name())
- *                 .runtimeVersion(&#34;2.1&#34;)
- *                 .mainFileUri(&#34;gs://test-bucket/main.py&#34;)
- *                 .pyFileUris(&#34;gs://test-bucket/lib.py&#34;)
- *                 .fileUris(&#34;gs://test-bucket/distribute_in_executor.json&#34;)
- *                 .archiveUris(&#34;gs://test-bucket/distribute_in_executor.tar.gz&#34;)
+ *                 .runtimeVersion("2.1")
+ *                 .mainFileUri("gs://test-bucket/main.py")
+ *                 .pyFileUris("gs://test-bucket/lib.py")
+ *                 .fileUris("gs://test-bucket/distribute_in_executor.json")
+ *                 .archiveUris("gs://test-bucket/distribute_in_executor.tar.gz")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Spark Jar
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -354,43 +365,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataset_id&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var testConnection = new Connection(&#34;testConnection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;connection_id&#34;)
- *             .location(&#34;US&#34;)
+ *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()        
+ *             .connectionId("connection_id")
+ *             .location("US")
  *             .spark()
  *             .build());
  * 
- *         var sparkJar = new Routine(&#34;sparkJar&#34;, RoutineArgs.builder()        
+ *         var sparkJar = new Routine("sparkJar", RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;routine_id&#34;)
- *             .routineType(&#34;PROCEDURE&#34;)
- *             .language(&#34;SCALA&#34;)
- *             .definitionBody(&#34;&#34;)
+ *             .routineId("routine_id")
+ *             .routineType("PROCEDURE")
+ *             .language("SCALA")
+ *             .definitionBody("")
  *             .sparkOptions(RoutineSparkOptionsArgs.builder()
  *                 .connection(testConnection.name())
- *                 .runtimeVersion(&#34;2.1&#34;)
- *                 .containerImage(&#34;gcr.io/my-project-id/my-spark-image:latest&#34;)
- *                 .mainClass(&#34;com.google.test.jar.MainClass&#34;)
- *                 .jarUris(&#34;gs://test-bucket/uberjar_spark_spark3.jar&#34;)
+ *                 .runtimeVersion("2.1")
+ *                 .containerImage("gcr.io/my-project-id/my-spark-image:latest")
+ *                 .mainClass("com.google.test.jar.MainClass")
+ *                 .jarUris("gs://test-bucket/uberjar_spark_spark3.jar")
  *                 .properties(Map.ofEntries(
- *                     Map.entry(&#34;spark.dataproc.scaling.version&#34;, &#34;2&#34;),
- *                     Map.entry(&#34;spark.reducer.fetchMigratedShuffle.enabled&#34;, &#34;true&#34;)
+ *                     Map.entry("spark.dataproc.scaling.version", "2"),
+ *                     Map.entry("spark.reducer.fetchMigratedShuffle.enabled", "true")
  *                 ))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Data Governance Type
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -414,32 +427,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;tf_test_dataset_id_77884&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("tf_test_dataset_id_77884")
  *             .build());
  * 
- *         var customMaskingRoutine = new Routine(&#34;customMaskingRoutine&#34;, RoutineArgs.builder()        
+ *         var customMaskingRoutine = new Routine("customMaskingRoutine", RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;custom_masking_routine&#34;)
- *             .routineType(&#34;SCALAR_FUNCTION&#34;)
- *             .language(&#34;SQL&#34;)
- *             .dataGovernanceType(&#34;DATA_MASKING&#34;)
- *             .definitionBody(&#34;SAFE.REGEXP_REPLACE(ssn, &#39;[0-9]&#39;, &#39;X&#39;)&#34;)
+ *             .routineId("custom_masking_routine")
+ *             .routineType("SCALAR_FUNCTION")
+ *             .language("SQL")
+ *             .dataGovernanceType("DATA_MASKING")
+ *             .definitionBody("SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')")
  *             .arguments(RoutineArgumentArgs.builder()
- *                 .name(&#34;ssn&#34;)
- *                 .dataType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *                 .name("ssn")
+ *                 .dataType("{\"typeKind\" :  \"STRING\"}")
  *                 .build())
- *             .returnType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *             .returnType("{\"typeKind\" :  \"STRING\"}")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Remote Function
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -466,33 +481,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataset_id&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("dataset_id")
  *             .build());
  * 
- *         var testConnection = new Connection(&#34;testConnection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;connection_id&#34;)
- *             .location(&#34;US&#34;)
+ *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()        
+ *             .connectionId("connection_id")
+ *             .location("US")
  *             .cloudResource()
  *             .build());
  * 
- *         var remoteFunction = new Routine(&#34;remoteFunction&#34;, RoutineArgs.builder()        
+ *         var remoteFunction = new Routine("remoteFunction", RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;routine_id&#34;)
- *             .routineType(&#34;SCALAR_FUNCTION&#34;)
- *             .definitionBody(&#34;&#34;)
- *             .returnType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *             .routineId("routine_id")
+ *             .routineType("SCALAR_FUNCTION")
+ *             .definitionBody("")
+ *             .returnType("{\"typeKind\" :  \"STRING\"}")
  *             .remoteFunctionOptions(RoutineRemoteFunctionOptionsArgs.builder()
- *                 .endpoint(&#34;https://us-east1-my_gcf_project.cloudfunctions.net/remote_add&#34;)
+ *                 .endpoint("https://us-east1-my_gcf_project.cloudfunctions.net/remote_add")
  *                 .connection(testConnection.name())
- *                 .maxBatchingRows(&#34;10&#34;)
- *                 .userDefinedContext(Map.of(&#34;z&#34;, &#34;1.5&#34;))
+ *                 .maxBatchingRows("10")
+ *                 .userDefinedContext(Map.of("z", "1.5"))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

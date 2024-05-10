@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
  * 
  * &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
- * default &#39;root&#39;@&#39;%&#39; user with no password. This user will be deleted by the provider on
+ * default &#39;root&#39;{@literal @}&#39;%&#39; user with no password. This user will be deleted by the provider on
  * instance creation. You should use `gcp.sql.User` to define a custom user with
  * a restricted host and strong password.
  * 
@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * ### SQL Second Generation Instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,25 +63,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;main-instance&#34;)
- *             .databaseVersion(&#34;POSTGRES_15&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *             .name("main-instance")
+ *             .databaseVersion("POSTGRES_15")
+ *             .region("us-central1")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Private IP Instance
  * &gt; **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -111,34 +114,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var privateNetwork = new Network(&#34;privateNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;private-network&#34;)
+ *         var privateNetwork = new Network("privateNetwork", NetworkArgs.builder()        
+ *             .name("private-network")
  *             .build());
  * 
- *         var privateIpAddress = new GlobalAddress(&#34;privateIpAddress&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;private-ip-address&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var privateIpAddress = new GlobalAddress("privateIpAddress", GlobalAddressArgs.builder()        
+ *             .name("private-ip-address")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(privateNetwork.id())
  *             .build());
  * 
- *         var privateVpcConnection = new Connection(&#34;privateVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var privateVpcConnection = new Connection("privateVpcConnection", ConnectionArgs.builder()        
  *             .network(privateNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAddress.name())
  *             .build());
  * 
- *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
  *             .byteLength(4)
  *             .build());
  * 
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;private-instance-%s&#34;, hex)))
- *             .region(&#34;us-central1&#34;)
- *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("private-instance-%s", hex)))
+ *             .region("us-central1")
+ *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
  *                     .ipv4Enabled(false)
  *                     .privateNetwork(privateNetwork.id())
@@ -149,13 +152,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### ENTERPRISE_PLUS Instance with data_cache_config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -178,12 +183,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;enterprise-plus-main-instance&#34;)
- *             .databaseVersion(&#34;MYSQL_8_0_31&#34;)
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *             .name("enterprise-plus-main-instance")
+ *             .databaseVersion("MYSQL_8_0_31")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-perf-optimized-N-2&#34;)
- *                 .edition(&#34;ENTERPRISE_PLUS&#34;)
+ *                 .tier("db-perf-optimized-N-2")
+ *                 .edition("ENTERPRISE_PLUS")
  *                 .dataCacheConfig(DatabaseInstanceSettingsDataCacheConfigArgs.builder()
  *                     .dataCacheEnabled(true)
  *                     .build())
@@ -192,13 +197,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Cloud SQL Instance with PSC connectivity
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -222,15 +229,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;psc-enabled-main-instance&#34;)
- *             .databaseVersion(&#34;MYSQL_8_0&#34;)
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *             .name("psc-enabled-main-instance")
+ *             .databaseVersion("MYSQL_8_0")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
  *                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
  *                         .pscEnabled(true)
- *                         .allowedConsumerProjects(&#34;allowed-consumer-project-name&#34;)
+ *                         .allowedConsumerProjects("allowed-consumer-project-name")
  *                         .build())
  *                     .ipv4Enabled(false)
  *                     .build())
@@ -238,13 +245,14 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .binaryLogEnabled(true)
  *                     .build())
- *                 .availabilityType(&#34;REGIONAL&#34;)
+ *                 .availabilityType("REGIONAL")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

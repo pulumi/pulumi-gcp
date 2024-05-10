@@ -368,7 +368,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      * The service account used for all user-controlled operations including
      * triggers.patch, triggers.run, builds.create, and builds.cancel.
      * If no service account is set, then the standard Cloud Build service account
-     * ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+     * ([PROJECT_NUM]{@literal @}system.gserviceaccount.com) will be used instead.
      * Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
      * 
      */
@@ -379,7 +379,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      * @return The service account used for all user-controlled operations including
      * triggers.patch, triggers.run, builds.create, and builds.cancel.
      * If no service account is set, then the standard Cloud Build service account
-     * ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+     * ([PROJECT_NUM]{@literal @}system.gserviceaccount.com) will be used instead.
      * Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
      * 
      */
@@ -1033,7 +1033,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          * @param serviceAccount The service account used for all user-controlled operations including
          * triggers.patch, triggers.run, builds.create, and builds.cancel.
          * If no service account is set, then the standard Cloud Build service account
-         * ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+         * ([PROJECT_NUM]{@literal @}system.gserviceaccount.com) will be used instead.
          * Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
          * 
          * @return builder
@@ -1048,7 +1048,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          * @param serviceAccount The service account used for all user-controlled operations including
          * triggers.patch, triggers.run, builds.create, and builds.cancel.
          * If no service account is set, then the standard Cloud Build service account
-         * ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+         * ([PROJECT_NUM]{@literal @}system.gserviceaccount.com) will be used instead.
          * Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
          * 
          * @return builder

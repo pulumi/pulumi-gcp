@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Canary_delivery_pipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,46 +51,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;pipeline&#34;)
- *             .description(&#34;basic description&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *             .location("us-west1")
+ *             .name("pipeline")
+ *             .description("basic description")
+ *             .project("my-project-name")
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
- *                             .values(Map.of(&#34;deployParameterKey&#34;, &#34;deployParameterValue&#34;))
+ *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
  *                             .matchTargetLabels()
  *                             .build())
  *                         .profiles(                        
- *                             &#34;example-profile-one&#34;,
- *                             &#34;example-profile-two&#34;)
- *                         .targetId(&#34;example-target-one&#34;)
+ *                             "example-profile-one",
+ *                             "example-profile-two")
+ *                         .targetId("example-target-one")
  *                         .build(),
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .profiles()
- *                         .targetId(&#34;example-target-two&#34;)
+ *                         .targetId("example-target-two")
  *                         .build())
  *                 .build())
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Canary_service_networking_delivery_pipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -111,46 +114,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;pipeline&#34;)
- *             .description(&#34;basic description&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *             .location("us-west1")
+ *             .name("pipeline")
+ *             .description("basic description")
+ *             .project("my-project-name")
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
- *                             .values(Map.of(&#34;deployParameterKey&#34;, &#34;deployParameterValue&#34;))
+ *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
  *                             .matchTargetLabels()
  *                             .build())
  *                         .profiles(                        
- *                             &#34;example-profile-one&#34;,
- *                             &#34;example-profile-two&#34;)
- *                         .targetId(&#34;example-target-one&#34;)
+ *                             "example-profile-one",
+ *                             "example-profile-two")
+ *                         .targetId("example-target-one")
  *                         .build(),
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .profiles()
- *                         .targetId(&#34;example-target-two&#34;)
+ *                         .targetId("example-target-two")
  *                         .build())
  *                 .build())
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Canaryrun_delivery_pipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -172,46 +177,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;pipeline&#34;)
- *             .description(&#34;basic description&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *             .location("us-west1")
+ *             .name("pipeline")
+ *             .description("basic description")
+ *             .project("my-project-name")
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
- *                             .values(Map.of(&#34;deployParameterKey&#34;, &#34;deployParameterValue&#34;))
+ *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
  *                             .matchTargetLabels()
  *                             .build())
  *                         .profiles(                        
- *                             &#34;example-profile-one&#34;,
- *                             &#34;example-profile-two&#34;)
- *                         .targetId(&#34;example-target-one&#34;)
+ *                             "example-profile-one",
+ *                             "example-profile-two")
+ *                         .targetId("example-target-one")
  *                         .build(),
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .profiles()
- *                         .targetId(&#34;example-target-two&#34;)
+ *                         .targetId("example-target-two")
  *                         .build())
  *                 .build())
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Delivery_pipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -233,46 +240,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;pipeline&#34;)
- *             .description(&#34;basic description&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *             .location("us-west1")
+ *             .name("pipeline")
+ *             .description("basic description")
+ *             .project("my-project-name")
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
- *                             .values(Map.of(&#34;deployParameterKey&#34;, &#34;deployParameterValue&#34;))
+ *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
  *                             .matchTargetLabels()
  *                             .build())
  *                         .profiles(                        
- *                             &#34;example-profile-one&#34;,
- *                             &#34;example-profile-two&#34;)
- *                         .targetId(&#34;example-target-one&#34;)
+ *                             "example-profile-one",
+ *                             "example-profile-two")
+ *                         .targetId("example-target-one")
  *                         .build(),
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .profiles()
- *                         .targetId(&#34;example-target-two&#34;)
+ *                         .targetId("example-target-two")
  *                         .build())
  *                 .build())
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Verify_delivery_pipeline
  * tests creating and updating a delivery pipeline with deployment verification strategy
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -294,41 +303,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;pipeline&#34;)
- *             .description(&#34;basic description&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *             .location("us-west1")
+ *             .name("pipeline")
+ *             .description("basic description")
+ *             .project("my-project-name")
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
- *                             .values(Map.of(&#34;deployParameterKey&#34;, &#34;deployParameterValue&#34;))
+ *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
  *                             .matchTargetLabels()
  *                             .build())
  *                         .profiles(                        
- *                             &#34;example-profile-one&#34;,
- *                             &#34;example-profile-two&#34;)
- *                         .targetId(&#34;example-target-one&#34;)
+ *                             "example-profile-one",
+ *                             "example-profile-two")
+ *                         .targetId("example-target-one")
  *                         .build(),
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .profiles()
- *                         .targetId(&#34;example-target-two&#34;)
+ *                         .targetId("example-target-two")
  *                         .build())
  *                 .build())
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Clouddeploy Automation Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,44 +61,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pipeline = new DeliveryPipeline(&#34;pipeline&#34;, DeliveryPipelineArgs.builder()        
- *             .name(&#34;cd-pipeline&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var pipeline = new DeliveryPipeline("pipeline", DeliveryPipelineArgs.builder()        
+ *             .name("cd-pipeline")
+ *             .location("us-central1")
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(DeliveryPipelineSerialPipelineStageArgs.builder()
- *                     .targetId(&#34;test&#34;)
+ *                     .targetId("test")
  *                     .profiles()
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var b_automation = new Automation(&#34;b-automation&#34;, AutomationArgs.builder()        
- *             .name(&#34;cd-automation&#34;)
+ *         var b_automation = new Automation("b-automation", AutomationArgs.builder()        
+ *             .name("cd-automation")
  *             .project(pipeline.project())
  *             .location(pipeline.location())
  *             .deliveryPipeline(pipeline.name())
- *             .serviceAccount(&#34;my@service-account.com&#34;)
+ *             .serviceAccount("my{@literal @}service-account.com")
  *             .selector(AutomationSelectorArgs.builder()
  *                 .targets(AutomationSelectorTargetArgs.builder()
- *                     .id(&#34;*&#34;)
+ *                     .id("*")
  *                     .build())
  *                 .build())
  *             .suspended(false)
  *             .rules(AutomationRuleArgs.builder()
  *                 .promoteReleaseRule(AutomationRulePromoteReleaseRuleArgs.builder()
- *                     .id(&#34;promote-release&#34;)
+ *                     .id("promote-release")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Clouddeploy Automation Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -125,59 +128,60 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pipeline = new DeliveryPipeline(&#34;pipeline&#34;, DeliveryPipelineArgs.builder()        
- *             .name(&#34;cd-pipeline&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var pipeline = new DeliveryPipeline("pipeline", DeliveryPipelineArgs.builder()        
+ *             .name("cd-pipeline")
+ *             .location("us-central1")
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(DeliveryPipelineSerialPipelineStageArgs.builder()
- *                     .targetId(&#34;test&#34;)
- *                     .profiles(&#34;test-profile&#34;)
+ *                     .targetId("test")
+ *                     .profiles("test-profile")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var f_automation = new Automation(&#34;f-automation&#34;, AutomationArgs.builder()        
- *             .name(&#34;cd-automation&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var f_automation = new Automation("f-automation", AutomationArgs.builder()        
+ *             .name("cd-automation")
+ *             .location("us-central1")
  *             .deliveryPipeline(pipeline.name())
- *             .serviceAccount(&#34;my@service-account.com&#34;)
+ *             .serviceAccount("my{@literal @}service-account.com")
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
- *             .description(&#34;automation resource&#34;)
+ *             .description("automation resource")
  *             .selector(AutomationSelectorArgs.builder()
  *                 .targets(AutomationSelectorTargetArgs.builder()
- *                     .id(&#34;test&#34;)
- *                     .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *                     .id("test")
+ *                     .labels(Map.of("foo", "bar"))
  *                     .build())
  *                 .build())
  *             .suspended(true)
  *             .rules(            
  *                 AutomationRuleArgs.builder()
  *                     .promoteReleaseRule(AutomationRulePromoteReleaseRuleArgs.builder()
- *                         .id(&#34;promote-release&#34;)
- *                         .wait(&#34;200s&#34;)
- *                         .destinationTargetId(&#34;@next&#34;)
- *                         .destinationPhase(&#34;stable&#34;)
+ *                         .id("promote-release")
+ *                         .wait("200s")
+ *                         .destinationTargetId("{@literal @}next")
+ *                         .destinationPhase("stable")
  *                         .build())
  *                     .build(),
  *                 AutomationRuleArgs.builder()
  *                     .advanceRolloutRule(AutomationRuleAdvanceRolloutRuleArgs.builder()
- *                         .id(&#34;advance-rollout&#34;)
- *                         .sourcePhases(&#34;deploy&#34;)
- *                         .wait(&#34;200s&#34;)
+ *                         .id("advance-rollout")
+ *                         .sourcePhases("deploy")
+ *                         .wait("200s")
  *                         .build())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

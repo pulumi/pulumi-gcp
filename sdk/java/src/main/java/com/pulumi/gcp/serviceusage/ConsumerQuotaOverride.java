@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Consumer Quota Override
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,33 +56,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;tf-test-project&#34;)
- *             .projectId(&#34;quota&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *             .name("tf-test-project")
+ *             .projectId("quota")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var override = new ConsumerQuotaOverride(&#34;override&#34;, ConsumerQuotaOverrideArgs.builder()        
+ *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()        
  *             .project(myProject.projectId())
- *             .service(&#34;servicemanagement.googleapis.com&#34;)
+ *             .service("servicemanagement.googleapis.com")
  *             .metric(StdFunctions.urlencode(UrlencodeArgs.builder()
- *                 .input(&#34;servicemanagement.googleapis.com/default_requests&#34;)
+ *                 .input("servicemanagement.googleapis.com/default_requests")
  *                 .build()).result())
  *             .limit(StdFunctions.urlencode(UrlencodeArgs.builder()
- *                 .input(&#34;/min/project&#34;)
+ *                 .input("/min/project")
  *                 .build()).result())
- *             .overrideValue(&#34;95&#34;)
+ *             .overrideValue("95")
  *             .force(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Consumer Quota Override
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,34 +107,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;tf-test-project&#34;)
- *             .projectId(&#34;quota&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *             .name("tf-test-project")
+ *             .projectId("quota")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var override = new ConsumerQuotaOverride(&#34;override&#34;, ConsumerQuotaOverrideArgs.builder()        
- *             .dimensions(Map.of(&#34;region&#34;, &#34;us-central1&#34;))
+ *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()        
+ *             .dimensions(Map.of("region", "us-central1"))
  *             .project(myProject.projectId())
- *             .service(&#34;compute.googleapis.com&#34;)
+ *             .service("compute.googleapis.com")
  *             .metric(StdFunctions.urlencode(UrlencodeArgs.builder()
- *                 .input(&#34;compute.googleapis.com/n2_cpus&#34;)
+ *                 .input("compute.googleapis.com/n2_cpus")
  *                 .build()).result())
  *             .limit(StdFunctions.urlencode(UrlencodeArgs.builder()
- *                 .input(&#34;/project/region&#34;)
+ *                 .input("/project/region")
  *                 .build()).result())
- *             .overrideValue(&#34;8&#34;)
+ *             .overrideValue("8")
  *             .force(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Consumer Quota Override Custom Dimension
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -154,29 +159,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;tf-test-project&#34;)
- *             .projectId(&#34;quota&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *             .name("tf-test-project")
+ *             .projectId("quota")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var override = new ConsumerQuotaOverride(&#34;override&#34;, ConsumerQuotaOverrideArgs.builder()        
+ *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()        
  *             .project(myProject.projectId())
- *             .service(&#34;libraryagent.googleapis.com&#34;)
+ *             .service("libraryagent.googleapis.com")
  *             .metric(StdFunctions.urlencode(UrlencodeArgs.builder()
- *                 .input(&#34;libraryagent.googleapis.com/borrows&#34;)
+ *                 .input("libraryagent.googleapis.com/borrows")
  *                 .build()).result())
  *             .limit(StdFunctions.urlencode(UrlencodeArgs.builder()
- *                 .input(&#34;/author/project&#34;)
+ *                 .input("/author/project")
  *                 .build()).result())
- *             .overrideValue(&#34;1&#34;)
+ *             .overrideValue("1")
  *             .force(true)
- *             .dimensions(Map.of(&#34;author&#34;, &#34;larry&#34;))
+ *             .dimensions(Map.of("author", "larry"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

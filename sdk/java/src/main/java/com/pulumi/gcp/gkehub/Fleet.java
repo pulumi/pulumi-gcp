@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Gkehub Fleet Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,19 +54,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Fleet(&#34;default&#34;, FleetArgs.builder()        
- *             .displayName(&#34;my production fleet&#34;)
+ *         var default_ = new Fleet("default", FleetArgs.builder()        
+ *             .displayName("my production fleet")
  *             .defaultClusterConfig(FleetDefaultClusterConfigArgs.builder()
  *                 .securityPostureConfig(FleetDefaultClusterConfigSecurityPostureConfigArgs.builder()
- *                     .mode(&#34;DISABLED&#34;)
- *                     .vulnerabilityMode(&#34;VULNERABILITY_DISABLED&#34;)
+ *                     .mode("DISABLED")
+ *                     .vulnerabilityMode("VULNERABILITY_DISABLED")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

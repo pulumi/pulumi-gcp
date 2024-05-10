@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,17 +44,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var name = new PeeredDnsDomain(&#34;name&#34;, PeeredDnsDomainArgs.builder()        
+ *         var name = new PeeredDnsDomain("name", PeeredDnsDomainArgs.builder()        
  *             .project(10000000)
- *             .name(&#34;example-com&#34;)
- *             .network(&#34;default&#34;)
- *             .dnsSuffix(&#34;example.com.&#34;)
- *             .service(&#34;peering-service&#34;)
+ *             .name("example-com")
+ *             .network("default")
+ *             .dnsSuffix("example.com.")
+ *             .service("peering-service")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

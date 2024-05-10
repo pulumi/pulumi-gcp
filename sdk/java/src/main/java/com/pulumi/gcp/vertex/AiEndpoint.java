@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Endpoint Network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,48 +65,49 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vertexNetwork = new Network(&#34;vertexNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-name&#34;)
+ *         var vertexNetwork = new Network("vertexNetwork", NetworkArgs.builder()        
+ *             .name("network-name")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var endpoint = new AiEndpoint(&#34;endpoint&#34;, AiEndpointArgs.builder()        
- *             .name(&#34;endpoint-name&#34;)
- *             .displayName(&#34;sample-endpoint&#34;)
- *             .description(&#34;A sample vertex endpoint&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .network(vertexNetwork.name().applyValue(name -&gt; String.format(&#34;projects/%s/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()        
+ *             .name("endpoint-name")
+ *             .displayName("sample-endpoint")
+ *             .description("A sample vertex endpoint")
+ *             .location("us-central1")
+ *             .region("us-central1")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .network(vertexNetwork.name().applyValue(name -> String.format("projects/%s/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
  *             .encryptionSpec(AiEndpointEncryptionSpecArgs.builder()
- *                 .kmsKeyName(&#34;kms-name&#34;)
+ *                 .kmsKeyName("kms-name")
  *                 .build())
  *             .build());
  * 
- *         var vertexRange = new GlobalAddress(&#34;vertexRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;address-name&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var vertexRange = new GlobalAddress("vertexRange", GlobalAddressArgs.builder()        
+ *             .name("address-name")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(24)
  *             .network(vertexNetwork.id())
  *             .build());
  * 
- *         var vertexVpcConnection = new Connection(&#34;vertexVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var vertexVpcConnection = new Connection("vertexVpcConnection", ConnectionArgs.builder()        
  *             .network(vertexNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(vertexRange.name())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;kms-name&#34;)
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-aiplatform.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("kms-name")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

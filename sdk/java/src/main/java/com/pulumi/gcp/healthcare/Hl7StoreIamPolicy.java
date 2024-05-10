@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,25 +53,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var hl7V2Store = new Hl7StoreIamPolicy(&#34;hl7V2Store&#34;, Hl7StoreIamPolicyArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var hl7V2Store = new Hl7StoreIamPolicy("hl7V2Store", Hl7StoreIamPolicyArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,21 +94,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hl7V2Store = new Hl7StoreIamBinding(&#34;hl7V2Store&#34;, Hl7StoreIamBindingArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var hl7V2Store = new Hl7StoreIamBinding("hl7V2Store", Hl7StoreIamBindingArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -126,21 +131,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hl7V2Store = new Hl7StoreIamMember(&#34;hl7V2Store&#34;, Hl7StoreIamMemberArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var hl7V2Store = new Hl7StoreIamMember("hl7V2Store", Hl7StoreIamMemberArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -165,25 +172,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var hl7V2Store = new Hl7StoreIamPolicy(&#34;hl7V2Store&#34;, Hl7StoreIamPolicyArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var hl7V2Store = new Hl7StoreIamPolicy("hl7V2Store", Hl7StoreIamPolicyArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -204,21 +213,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hl7V2Store = new Hl7StoreIamBinding(&#34;hl7V2Store&#34;, Hl7StoreIamBindingArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var hl7V2Store = new Hl7StoreIamBinding("hl7V2Store", Hl7StoreIamBindingArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -239,15 +250,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hl7V2Store = new Hl7StoreIamMember(&#34;hl7V2Store&#34;, Hl7StoreIamMemberArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var hl7V2Store = new Hl7StoreIamMember("hl7V2Store", Hl7StoreIamMemberArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

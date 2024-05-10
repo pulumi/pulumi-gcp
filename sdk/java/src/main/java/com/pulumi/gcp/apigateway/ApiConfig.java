@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Apigateway Api Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,18 +60,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiCfg = new Api(&#34;apiCfg&#34;, ApiArgs.builder()        
- *             .apiId(&#34;my-api&#34;)
+ *         var apiCfg = new Api("apiCfg", ApiArgs.builder()        
+ *             .apiId("my-api")
  *             .build());
  * 
- *         var apiCfgApiConfig = new ApiConfig(&#34;apiCfgApiConfig&#34;, ApiConfigArgs.builder()        
+ *         var apiCfgApiConfig = new ApiConfig("apiCfgApiConfig", ApiConfigArgs.builder()        
  *             .api(apiCfg.apiId())
- *             .apiConfigId(&#34;my-config&#34;)
+ *             .apiConfigId("my-config")
  *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
  *                 .document(ApiConfigOpenapiDocumentDocumentArgs.builder()
- *                     .path(&#34;spec.yaml&#34;)
+ *                     .path("spec.yaml")
  *                     .contents(StdFunctions.filebase64(Filebase64Args.builder()
- *                         .input(&#34;test-fixtures/openapi.yaml&#34;)
+ *                         .input("test-fixtures/openapi.yaml")
  *                         .build()).result())
  *                     .build())
  *                 .build())
@@ -78,12 +79,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigateway Api Config Grpc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -109,30 +112,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiCfg = new Api(&#34;apiCfg&#34;, ApiArgs.builder()        
- *             .apiId(&#34;my-api&#34;)
+ *         var apiCfg = new Api("apiCfg", ApiArgs.builder()        
+ *             .apiId("my-api")
  *             .build());
  * 
- *         var apiCfgApiConfig = new ApiConfig(&#34;apiCfgApiConfig&#34;, ApiConfigArgs.builder()        
+ *         var apiCfgApiConfig = new ApiConfig("apiCfgApiConfig", ApiConfigArgs.builder()        
  *             .api(apiCfg.apiId())
- *             .apiConfigId(&#34;my-config&#34;)
+ *             .apiConfigId("my-config")
  *             .grpcServices(ApiConfigGrpcServiceArgs.builder()
  *                 .fileDescriptorSet(ApiConfigGrpcServiceFileDescriptorSetArgs.builder()
- *                     .path(&#34;api_descriptor.pb&#34;)
+ *                     .path("api_descriptor.pb")
  *                     .contents(StdFunctions.filebase64(Filebase64Args.builder()
- *                         .input(&#34;test-fixtures/api_descriptor.pb&#34;)
+ *                         .input("test-fixtures/api_descriptor.pb")
  *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .managedServiceConfigs(ApiConfigManagedServiceConfigArgs.builder()
- *                 .path(&#34;api_config.yaml&#34;)
- *                 .contents(StdFunctions.base64encode().applyValue(invoke -&gt; invoke.result()))
+ *                 .path("api_config.yaml")
+ *                 .contents(StdFunctions.base64encode().applyValue(invoke -> invoke.result()))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

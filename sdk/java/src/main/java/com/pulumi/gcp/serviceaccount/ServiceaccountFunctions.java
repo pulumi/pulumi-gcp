@@ -36,7 +36,8 @@ public final class ServiceaccountFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -58,17 +59,19 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var objectViewer = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId(&#34;object-viewer&#34;)
+     *             .accountId("object-viewer")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Save Key In Kubernetes Secret
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -95,23 +98,24 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId(&#34;myaccount-id&#34;)
+     *             .accountId("myaccount-id")
      *             .build());
      * 
-     *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -&gt; getAccountResult.name()))
+     *         var mykey = new Key("mykey", KeyArgs.builder()        
+     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
      *             .build());
      * 
-     *         var google_application_credentials = new Secret(&#34;google-application-credentials&#34;, SecretArgs.builder()        
+     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;google-application-credentials&#34;)
+     *                 .name("google-application-credentials")
      *                 .build())
-     *             .data(Map.of(&#34;json&#34;, StdFunctions.base64decode().applyValue(invoke -&gt; invoke.result())))
+     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -125,7 +129,8 @@ public final class ServiceaccountFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -147,17 +152,19 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var objectViewer = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId(&#34;object-viewer&#34;)
+     *             .accountId("object-viewer")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Save Key In Kubernetes Secret
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -184,23 +191,24 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId(&#34;myaccount-id&#34;)
+     *             .accountId("myaccount-id")
      *             .build());
      * 
-     *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -&gt; getAccountResult.name()))
+     *         var mykey = new Key("mykey", KeyArgs.builder()        
+     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
      *             .build());
      * 
-     *         var google_application_credentials = new Secret(&#34;google-application-credentials&#34;, SecretArgs.builder()        
+     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;google-application-credentials&#34;)
+     *                 .name("google-application-credentials")
      *                 .build())
-     *             .data(Map.of(&#34;json&#34;, StdFunctions.base64decode().applyValue(invoke -&gt; invoke.result())))
+     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -214,7 +222,8 @@ public final class ServiceaccountFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -236,17 +245,19 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var objectViewer = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId(&#34;object-viewer&#34;)
+     *             .accountId("object-viewer")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Save Key In Kubernetes Secret
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -273,23 +284,24 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId(&#34;myaccount-id&#34;)
+     *             .accountId("myaccount-id")
      *             .build());
      * 
-     *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -&gt; getAccountResult.name()))
+     *         var mykey = new Key("mykey", KeyArgs.builder()        
+     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
      *             .build());
      * 
-     *         var google_application_credentials = new Secret(&#34;google-application-credentials&#34;, SecretArgs.builder()        
+     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;google-application-credentials&#34;)
+     *                 .name("google-application-credentials")
      *                 .build())
-     *             .data(Map.of(&#34;json&#34;, StdFunctions.base64decode().applyValue(invoke -&gt; invoke.result())))
+     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -303,7 +315,8 @@ public final class ServiceaccountFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -325,17 +338,19 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var objectViewer = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId(&#34;object-viewer&#34;)
+     *             .accountId("object-viewer")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Save Key In Kubernetes Secret
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -362,23 +377,24 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId(&#34;myaccount-id&#34;)
+     *             .accountId("myaccount-id")
      *             .build());
      * 
-     *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -&gt; getAccountResult.name()))
+     *         var mykey = new Key("mykey", KeyArgs.builder()        
+     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
      *             .build());
      * 
-     *         var google_application_credentials = new Secret(&#34;google-application-credentials&#34;, SecretArgs.builder()        
+     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;google-application-credentials&#34;)
+     *                 .name("google-application-credentials")
      *                 .build())
-     *             .data(Map.of(&#34;json&#34;, StdFunctions.base64decode().applyValue(invoke -&gt; invoke.result())))
+     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -398,7 +414,8 @@ public final class ServiceaccountFunctions {
      * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -419,15 +436,16 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
-     *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
-     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
-     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
+     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()        
+     *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .role("roles/iam.serviceAccountTokenCreator")
+     *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
@@ -435,7 +453,8 @@ public final class ServiceaccountFunctions {
      * In the example below, `gcp.organizations.Project` will run as `service_B`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -460,19 +479,20 @@ public final class ServiceaccountFunctions {
      *         final var default = OrganizationsFunctions.getClientConfig();
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("service_B{@literal @}projectB.iam.gserviceaccount.com")
      *             .scopes(            
-     *                 &#34;userinfo-email&#34;,
-     *                 &#34;cloud-platform&#34;)
-     *             .lifetime(&#34;300s&#34;)
+     *                 "userinfo-email",
+     *                 "cloud-platform")
+     *             .lifetime("300s")
      *             .build());
      * 
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;target-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
@@ -494,7 +514,8 @@ public final class ServiceaccountFunctions {
      * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -515,15 +536,16 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
-     *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
-     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
-     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
+     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()        
+     *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .role("roles/iam.serviceAccountTokenCreator")
+     *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
@@ -531,7 +553,8 @@ public final class ServiceaccountFunctions {
      * In the example below, `gcp.organizations.Project` will run as `service_B`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -556,19 +579,20 @@ public final class ServiceaccountFunctions {
      *         final var default = OrganizationsFunctions.getClientConfig();
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("service_B{@literal @}projectB.iam.gserviceaccount.com")
      *             .scopes(            
-     *                 &#34;userinfo-email&#34;,
-     *                 &#34;cloud-platform&#34;)
-     *             .lifetime(&#34;300s&#34;)
+     *                 "userinfo-email",
+     *                 "cloud-platform")
+     *             .lifetime("300s")
      *             .build());
      * 
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;target-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
@@ -590,7 +614,8 @@ public final class ServiceaccountFunctions {
      * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -611,15 +636,16 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
-     *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
-     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
-     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
+     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()        
+     *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .role("roles/iam.serviceAccountTokenCreator")
+     *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
@@ -627,7 +653,8 @@ public final class ServiceaccountFunctions {
      * In the example below, `gcp.organizations.Project` will run as `service_B`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -652,19 +679,20 @@ public final class ServiceaccountFunctions {
      *         final var default = OrganizationsFunctions.getClientConfig();
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("service_B{@literal @}projectB.iam.gserviceaccount.com")
      *             .scopes(            
-     *                 &#34;userinfo-email&#34;,
-     *                 &#34;cloud-platform&#34;)
-     *             .lifetime(&#34;300s&#34;)
+     *                 "userinfo-email",
+     *                 "cloud-platform")
+     *             .lifetime("300s")
      *             .build());
      * 
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;target-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
@@ -686,7 +714,8 @@ public final class ServiceaccountFunctions {
      * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -707,15 +736,16 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
-     *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
-     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
-     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
+     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()        
+     *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .role("roles/iam.serviceAccountTokenCreator")
+     *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
@@ -723,7 +753,8 @@ public final class ServiceaccountFunctions {
      * In the example below, `gcp.organizations.Project` will run as `service_B`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -748,19 +779,20 @@ public final class ServiceaccountFunctions {
      *         final var default = OrganizationsFunctions.getClientConfig();
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("service_B{@literal @}projectB.iam.gserviceaccount.com")
      *             .scopes(            
-     *                 &#34;userinfo-email&#34;,
-     *                 &#34;cloud-platform&#34;)
-     *             .lifetime(&#34;300s&#34;)
+     *                 "userinfo-email",
+     *                 "cloud-platform")
+     *             .lifetime("300s")
      *             .build());
      * 
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;target-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
@@ -781,7 +813,8 @@ public final class ServiceaccountFunctions {
      *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
      *   &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -803,13 +836,14 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience(&#34;https://foo.bar/&#34;)
+     *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export(&#34;oidcToken&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Service Account Impersonation.
@@ -819,7 +853,8 @@ public final class ServiceaccountFunctions {
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
      *   &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -842,25 +877,26 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .delegates()
      *             .scopes(            
-     *                 &#34;userinfo-email&#34;,
-     *                 &#34;cloud-platform&#34;)
-     *             .lifetime(&#34;300s&#34;)
+     *                 "userinfo-email",
+     *                 "cloud-platform")
+     *             .lifetime("300s")
      *             .build());
      * 
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .delegates()
      *             .includeEmail(true)
-     *             .targetAudience(&#34;https://foo.bar/&#34;)
+     *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export(&#34;oidcToken&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Invoking Cloud Run Endpoint
@@ -868,7 +904,8 @@ public final class ServiceaccountFunctions {
      *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -892,18 +929,19 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience(&#34;https://your.cloud.run.app/&#34;)
+     *             .targetAudience("https://your.cloud.run.app/")
      *             .build());
      * 
      *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
-     *             .url(&#34;https://your.cloud.run.app/&#34;)
-     *             .requestHeaders(Map.of(&#34;Authorization&#34;, String.format(&#34;Bearer %s&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()))))
+     *             .url("https://your.cloud.run.app/")
+     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
      *             .build());
      * 
-     *         ctx.export(&#34;cloudRunResponse&#34;, cloudrun.applyValue(getHttpResult -&gt; getHttpResult.body()));
+     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -922,7 +960,8 @@ public final class ServiceaccountFunctions {
      *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
      *   &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -944,13 +983,14 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience(&#34;https://foo.bar/&#34;)
+     *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export(&#34;oidcToken&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Service Account Impersonation.
@@ -960,7 +1000,8 @@ public final class ServiceaccountFunctions {
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
      *   &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -983,25 +1024,26 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .delegates()
      *             .scopes(            
-     *                 &#34;userinfo-email&#34;,
-     *                 &#34;cloud-platform&#34;)
-     *             .lifetime(&#34;300s&#34;)
+     *                 "userinfo-email",
+     *                 "cloud-platform")
+     *             .lifetime("300s")
      *             .build());
      * 
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .delegates()
      *             .includeEmail(true)
-     *             .targetAudience(&#34;https://foo.bar/&#34;)
+     *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export(&#34;oidcToken&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Invoking Cloud Run Endpoint
@@ -1009,7 +1051,8 @@ public final class ServiceaccountFunctions {
      *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1033,18 +1076,19 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience(&#34;https://your.cloud.run.app/&#34;)
+     *             .targetAudience("https://your.cloud.run.app/")
      *             .build());
      * 
      *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
-     *             .url(&#34;https://your.cloud.run.app/&#34;)
-     *             .requestHeaders(Map.of(&#34;Authorization&#34;, String.format(&#34;Bearer %s&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()))))
+     *             .url("https://your.cloud.run.app/")
+     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
      *             .build());
      * 
-     *         ctx.export(&#34;cloudRunResponse&#34;, cloudrun.applyValue(getHttpResult -&gt; getHttpResult.body()));
+     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1063,7 +1107,8 @@ public final class ServiceaccountFunctions {
      *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
      *   &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1085,13 +1130,14 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience(&#34;https://foo.bar/&#34;)
+     *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export(&#34;oidcToken&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Service Account Impersonation.
@@ -1101,7 +1147,8 @@ public final class ServiceaccountFunctions {
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
      *   &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1124,25 +1171,26 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .delegates()
      *             .scopes(            
-     *                 &#34;userinfo-email&#34;,
-     *                 &#34;cloud-platform&#34;)
-     *             .lifetime(&#34;300s&#34;)
+     *                 "userinfo-email",
+     *                 "cloud-platform")
+     *             .lifetime("300s")
      *             .build());
      * 
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .delegates()
      *             .includeEmail(true)
-     *             .targetAudience(&#34;https://foo.bar/&#34;)
+     *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export(&#34;oidcToken&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Invoking Cloud Run Endpoint
@@ -1150,7 +1198,8 @@ public final class ServiceaccountFunctions {
      *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1174,18 +1223,19 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience(&#34;https://your.cloud.run.app/&#34;)
+     *             .targetAudience("https://your.cloud.run.app/")
      *             .build());
      * 
      *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
-     *             .url(&#34;https://your.cloud.run.app/&#34;)
-     *             .requestHeaders(Map.of(&#34;Authorization&#34;, String.format(&#34;Bearer %s&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()))))
+     *             .url("https://your.cloud.run.app/")
+     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
      *             .build());
      * 
-     *         ctx.export(&#34;cloudRunResponse&#34;, cloudrun.applyValue(getHttpResult -&gt; getHttpResult.body()));
+     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1204,7 +1254,8 @@ public final class ServiceaccountFunctions {
      *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
      *   &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1226,13 +1277,14 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience(&#34;https://foo.bar/&#34;)
+     *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export(&#34;oidcToken&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Service Account Impersonation.
@@ -1242,7 +1294,8 @@ public final class ServiceaccountFunctions {
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
      *   &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1265,25 +1318,26 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .delegates()
      *             .scopes(            
-     *                 &#34;userinfo-email&#34;,
-     *                 &#34;cloud-platform&#34;)
-     *             .lifetime(&#34;300s&#34;)
+     *                 "userinfo-email",
+     *                 "cloud-platform")
+     *             .lifetime("300s")
      *             .build());
      * 
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .delegates()
      *             .includeEmail(true)
-     *             .targetAudience(&#34;https://foo.bar/&#34;)
+     *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export(&#34;oidcToken&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Invoking Cloud Run Endpoint
@@ -1291,7 +1345,8 @@ public final class ServiceaccountFunctions {
      *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1315,18 +1370,19 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience(&#34;https://your.cloud.run.app/&#34;)
+     *             .targetAudience("https://your.cloud.run.app/")
      *             .build());
      * 
      *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
-     *             .url(&#34;https://your.cloud.run.app/&#34;)
-     *             .requestHeaders(Map.of(&#34;Authorization&#34;, String.format(&#34;Bearer %s&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()))))
+     *             .url("https://your.cloud.run.app/")
+     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
      *             .build());
      * 
-     *         ctx.export(&#34;cloudRunResponse&#34;, cloudrun.applyValue(getHttpResult -&gt; getHttpResult.body()));
+     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1341,7 +1397,8 @@ public final class ServiceaccountFunctions {
      * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1364,19 +1421,20 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .payload(serializeJson(
      *                 jsonObject(
-     *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
-     *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
+     *                     jsonProperty("foo", "bar"),
+     *                     jsonProperty("sub", "subject")
      *                 )))
      *             .expiresIn(60)
      *             .build());
      * 
-     *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
+     *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1391,7 +1449,8 @@ public final class ServiceaccountFunctions {
      * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1414,19 +1473,20 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .payload(serializeJson(
      *                 jsonObject(
-     *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
-     *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
+     *                     jsonProperty("foo", "bar"),
+     *                     jsonProperty("sub", "subject")
      *                 )))
      *             .expiresIn(60)
      *             .build());
      * 
-     *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
+     *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1441,7 +1501,8 @@ public final class ServiceaccountFunctions {
      * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1464,19 +1525,20 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .payload(serializeJson(
      *                 jsonObject(
-     *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
-     *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
+     *                     jsonProperty("foo", "bar"),
+     *                     jsonProperty("sub", "subject")
      *                 )))
      *             .expiresIn(60)
      *             .build());
      * 
-     *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
+     *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1491,7 +1553,8 @@ public final class ServiceaccountFunctions {
      * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1514,19 +1577,20 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
-     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
      *             .payload(serializeJson(
      *                 jsonObject(
-     *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
-     *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
+     *                     jsonProperty("foo", "bar"),
+     *                     jsonProperty("sub", "subject")
      *                 )))
      *             .expiresIn(60)
      *             .build());
      * 
-     *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
+     *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1539,7 +1603,8 @@ public final class ServiceaccountFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1564,22 +1629,23 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myaccount = new Account(&#34;myaccount&#34;, AccountArgs.builder()        
-     *             .accountId(&#34;dev-foo-account&#34;)
+     *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+     *             .accountId("dev-foo-account")
      *             .build());
      * 
-     *         var mykeyKey = new Key(&#34;mykeyKey&#34;, KeyArgs.builder()        
+     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()        
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
      *         final var mykey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
      *             .name(mykeyKey.name())
-     *             .publicKeyType(&#34;TYPE_X509_PEM_FILE&#34;)
+     *             .publicKeyType("TYPE_X509_PEM_FILE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1592,7 +1658,8 @@ public final class ServiceaccountFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1617,22 +1684,23 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myaccount = new Account(&#34;myaccount&#34;, AccountArgs.builder()        
-     *             .accountId(&#34;dev-foo-account&#34;)
+     *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+     *             .accountId("dev-foo-account")
      *             .build());
      * 
-     *         var mykeyKey = new Key(&#34;mykeyKey&#34;, KeyArgs.builder()        
+     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()        
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
      *         final var mykey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
      *             .name(mykeyKey.name())
-     *             .publicKeyType(&#34;TYPE_X509_PEM_FILE&#34;)
+     *             .publicKeyType("TYPE_X509_PEM_FILE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1645,7 +1713,8 @@ public final class ServiceaccountFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1670,22 +1739,23 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myaccount = new Account(&#34;myaccount&#34;, AccountArgs.builder()        
-     *             .accountId(&#34;dev-foo-account&#34;)
+     *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+     *             .accountId("dev-foo-account")
      *             .build());
      * 
-     *         var mykeyKey = new Key(&#34;mykeyKey&#34;, KeyArgs.builder()        
+     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()        
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
      *         final var mykey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
      *             .name(mykeyKey.name())
-     *             .publicKeyType(&#34;TYPE_X509_PEM_FILE&#34;)
+     *             .publicKeyType("TYPE_X509_PEM_FILE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1698,7 +1768,8 @@ public final class ServiceaccountFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1723,22 +1794,23 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myaccount = new Account(&#34;myaccount&#34;, AccountArgs.builder()        
-     *             .accountId(&#34;dev-foo-account&#34;)
+     *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+     *             .accountId("dev-foo-account")
      *             .build());
      * 
-     *         var mykeyKey = new Key(&#34;mykeyKey&#34;, KeyArgs.builder()        
+     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()        
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
      *         final var mykey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
      *             .name(mykeyKey.name())
-     *             .publicKeyType(&#34;TYPE_X509_PEM_FILE&#34;)
+     *             .publicKeyType("TYPE_X509_PEM_FILE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1751,7 +1823,8 @@ public final class ServiceaccountFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1778,7 +1851,8 @@ public final class ServiceaccountFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1791,7 +1865,8 @@ public final class ServiceaccountFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1818,7 +1893,8 @@ public final class ServiceaccountFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1831,7 +1907,8 @@ public final class ServiceaccountFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1858,7 +1935,8 @@ public final class ServiceaccountFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1871,7 +1949,8 @@ public final class ServiceaccountFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1898,7 +1977,8 @@ public final class ServiceaccountFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

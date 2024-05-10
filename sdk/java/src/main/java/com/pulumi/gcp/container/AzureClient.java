@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Basic_azure_client
  * A basic example of a containerazure azure client
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,17 +45,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new AzureClient(&#34;primary&#34;, AzureClientArgs.builder()        
- *             .applicationId(&#34;12345678-1234-1234-1234-123456789111&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;client-name&#34;)
- *             .tenantId(&#34;12345678-1234-1234-1234-123456789111&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new AzureClient("primary", AzureClientArgs.builder()        
+ *             .applicationId("12345678-1234-1234-1234-123456789111")
+ *             .location("us-west1")
+ *             .name("client-name")
+ *             .tenantId("12345678-1234-1234-1234-123456789111")
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

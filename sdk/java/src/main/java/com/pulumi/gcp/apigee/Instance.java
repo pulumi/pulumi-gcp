@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Apigee Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,44 +62,46 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = OrganizationsFunctions.getClientConfig();
  * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;apigee-network&#34;)
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *             .name("apigee-network")
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;apigee-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
  *             .network(apigeeNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
- *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *             .analyticsRegion("us-central1")
+ *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeInstance = new Instance(&#34;apigeeInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance-name&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()        
+ *             .name("my-instance-name")
+ *             .location("us-central1")
  *             .orgId(apigeeOrg.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Instance Cidr Range
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -130,45 +133,47 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = OrganizationsFunctions.getClientConfig();
  * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;apigee-network&#34;)
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *             .name("apigee-network")
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;apigee-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(22)
  *             .network(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
  *             .network(apigeeNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
- *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *             .analyticsRegion("us-central1")
+ *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeInstance = new Instance(&#34;apigeeInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance-name&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()        
+ *             .name("my-instance-name")
+ *             .location("us-central1")
  *             .orgId(apigeeOrg.id())
- *             .peeringCidrRange(&#34;SLASH_22&#34;)
+ *             .peeringCidrRange("SLASH_22")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Instance Ip Range
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -200,45 +205,47 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = OrganizationsFunctions.getClientConfig();
  * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;apigee-network&#34;)
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *             .name("apigee-network")
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;apigee-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(22)
  *             .network(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
  *             .network(apigeeNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
- *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *             .analyticsRegion("us-central1")
+ *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeInstance = new Instance(&#34;apigeeInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance-name&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()        
+ *             .name("my-instance-name")
+ *             .location("us-central1")
  *             .orgId(apigeeOrg.id())
- *             .ipRange(&#34;10.87.8.0/22&#34;)
+ *             .ipRange("10.87.8.0/22")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -278,66 +285,67 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = OrganizationsFunctions.getClientConfig();
  * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;apigee-network&#34;)
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *             .name("apigee-network")
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;apigee-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
  *             .network(apigeeNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var apigeeKeyring = new KeyRing(&#34;apigeeKeyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;apigee-keyring&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var apigeeKeyring = new KeyRing("apigeeKeyring", KeyRingArgs.builder()        
+ *             .name("apigee-keyring")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var apigeeKey = new CryptoKey(&#34;apigeeKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;apigee-key&#34;)
+ *         var apigeeKey = new CryptoKey("apigeeKey", CryptoKeyArgs.builder()        
+ *             .name("apigee-key")
  *             .keyRing(apigeeKeyring.id())
  *             .build());
  * 
- *         var apigeeSa = new ServiceIdentity(&#34;apigeeSa&#34;, ServiceIdentityArgs.builder()        
+ *         var apigeeSa = new ServiceIdentity("apigeeSa", ServiceIdentityArgs.builder()        
  *             .project(project.projectId())
  *             .service(apigee.service())
  *             .build());
  * 
- *         var apigeeSaKeyuser = new CryptoKeyIAMMember(&#34;apigeeSaKeyuser&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var apigeeSaKeyuser = new CryptoKeyIAMMember("apigeeSaKeyuser", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(apigeeKey.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(apigeeSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(apigeeSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
- *             .displayName(&#34;apigee-org&#34;)
- *             .description(&#34;Auto-provisioned Apigee Org.&#34;)
- *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *             .analyticsRegion("us-central1")
+ *             .displayName("apigee-org")
+ *             .description("Auto-provisioned Apigee Org.")
+ *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
  *             .build());
  * 
- *         var apigeeInstance = new Instance(&#34;apigeeInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance-name&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;Auto-managed Apigee Runtime Instance&#34;)
- *             .displayName(&#34;my-instance-name&#34;)
+ *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()        
+ *             .name("my-instance-name")
+ *             .location("us-central1")
+ *             .description("Auto-managed Apigee Runtime Instance")
+ *             .displayName("my-instance-name")
  *             .orgId(apigeeOrg.id())
  *             .diskEncryptionKeyName(apigeeKey.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

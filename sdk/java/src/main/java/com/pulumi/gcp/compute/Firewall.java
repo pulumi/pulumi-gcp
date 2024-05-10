@@ -45,7 +45,8 @@ import javax.annotation.Nullable;
  * ### Firewall Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,35 +70,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;test-network&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("test-network")
  *             .build());
  * 
- *         var default_ = new Firewall(&#34;default&#34;, FirewallArgs.builder()        
- *             .name(&#34;test-firewall&#34;)
+ *         var default_ = new Firewall("default", FirewallArgs.builder()        
+ *             .name("test-firewall")
  *             .network(defaultNetwork.name())
  *             .allows(            
  *                 FirewallAllowArgs.builder()
- *                     .protocol(&#34;icmp&#34;)
+ *                     .protocol("icmp")
  *                     .build(),
  *                 FirewallAllowArgs.builder()
- *                     .protocol(&#34;tcp&#34;)
+ *                     .protocol("tcp")
  *                     .ports(                    
- *                         &#34;80&#34;,
- *                         &#34;8080&#34;,
- *                         &#34;1000-2000&#34;)
+ *                         "80",
+ *                         "8080",
+ *                         "1000-2000")
  *                     .build())
- *             .sourceTags(&#34;web&#34;)
+ *             .sourceTags("web")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firewall With Target Tags
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -119,25 +122,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rules = new Firewall(&#34;rules&#34;, FirewallArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;my-firewall-rule&#34;)
- *             .network(&#34;default&#34;)
- *             .description(&#34;Creates firewall rule targeting tagged instances&#34;)
+ *         var rules = new Firewall("rules", FirewallArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("my-firewall-rule")
+ *             .network("default")
+ *             .description("Creates firewall rule targeting tagged instances")
  *             .allows(FirewallAllowArgs.builder()
- *                 .protocol(&#34;tcp&#34;)
+ *                 .protocol("tcp")
  *                 .ports(                
- *                     &#34;80&#34;,
- *                     &#34;8080&#34;,
- *                     &#34;1000-2000&#34;)
+ *                     "80",
+ *                     "8080",
+ *                     "1000-2000")
  *                 .build())
- *             .sourceTags(&#34;foo&#34;)
- *             .targetTags(&#34;web&#34;)
+ *             .sourceTags("foo")
+ *             .targetTags("web")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ### Dataproc Metastore Service Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,29 +63,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;metastore-srv&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()        
+ *             .serviceId("metastore-srv")
+ *             .location("us-central1")
  *             .port(9080)
- *             .tier(&#34;DEVELOPER&#34;)
+ *             .tier("DEVELOPER")
  *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
  *                 .hourOfDay(2)
- *                 .dayOfWeek(&#34;SUNDAY&#34;)
+ *                 .dayOfWeek("SUNDAY")
  *                 .build())
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
- *                 .version(&#34;2.3.6&#34;)
+ *                 .version("2.3.6")
  *                 .build())
- *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *             .labels(Map.of("env", "test"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Cmek Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -111,36 +114,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;example-keyring&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("example-keyring")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;example-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("example-key")
  *             .keyRing(keyRing.id())
- *             .purpose(&#34;ENCRYPT_DECRYPT&#34;)
+ *             .purpose("ENCRYPT_DECRYPT")
  *             .build());
  * 
- *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;example-service&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()        
+ *             .serviceId("example-service")
+ *             .location("us-central1")
  *             .encryptionConfig(MetastoreServiceEncryptionConfigArgs.builder()
  *                 .kmsKey(cryptoKey.id())
  *                 .build())
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
- *                 .version(&#34;3.1.2&#34;)
+ *                 .version("3.1.2")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Private Service Connect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -167,24 +172,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var net = new Network("net", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnetwork&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *             .name("my-subnetwork")
+ *             .region("us-central1")
  *             .network(net.id())
- *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
+ *             .ipCidrRange("10.0.0.0/22")
  *             .privateIpGoogleAccess(true)
  *             .build());
  * 
- *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;metastore-srv&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()        
+ *             .serviceId("metastore-srv")
+ *             .location("us-central1")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
- *                 .version(&#34;3.1.2&#34;)
+ *                 .version("3.1.2")
  *                 .build())
  *             .networkConfig(MetastoreServiceNetworkConfigArgs.builder()
  *                 .consumers(MetastoreServiceNetworkConfigConsumerArgs.builder()
@@ -195,12 +200,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Private Service Connect Custom Routes
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -227,24 +234,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var net = new Network("net", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnetwork&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *             .name("my-subnetwork")
+ *             .region("us-central1")
  *             .network(net.id())
- *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
+ *             .ipCidrRange("10.0.0.0/22")
  *             .privateIpGoogleAccess(true)
  *             .build());
  * 
- *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;metastore-srv&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()        
+ *             .serviceId("metastore-srv")
+ *             .location("us-central1")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
- *                 .version(&#34;3.1.2&#34;)
+ *                 .version("3.1.2")
  *                 .build())
  *             .networkConfig(MetastoreServiceNetworkConfigArgs.builder()
  *                 .consumers(MetastoreServiceNetworkConfigConsumerArgs.builder()
@@ -256,12 +263,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Dpms2
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -284,26 +293,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dpms2 = new MetastoreService(&#34;dpms2&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;ms-dpms2&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .databaseType(&#34;SPANNER&#34;)
+ *         var dpms2 = new MetastoreService("dpms2", MetastoreServiceArgs.builder()        
+ *             .serviceId("ms-dpms2")
+ *             .location("us-central1")
+ *             .databaseType("SPANNER")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
- *                 .version(&#34;3.1.2&#34;)
+ *                 .version("3.1.2")
  *                 .build())
  *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
- *                 .instanceSize(&#34;EXTRA_SMALL&#34;)
+ *                 .instanceSize("EXTRA_SMALL")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Dpms2 Scaling Factor
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -326,26 +337,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dpms2ScalingFactor = new MetastoreService(&#34;dpms2ScalingFactor&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;ms-dpms2sf&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .databaseType(&#34;SPANNER&#34;)
+ *         var dpms2ScalingFactor = new MetastoreService("dpms2ScalingFactor", MetastoreServiceArgs.builder()        
+ *             .serviceId("ms-dpms2sf")
+ *             .location("us-central1")
+ *             .databaseType("SPANNER")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
- *                 .version(&#34;3.1.2&#34;)
+ *                 .version("3.1.2")
  *                 .build())
  *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
- *                 .scalingFactor(&#34;2&#34;)
+ *                 .scalingFactor("2")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Scheduled Backup
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -371,35 +384,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;backup&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("backup")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var backup = new MetastoreService(&#34;backup&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;backup&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var backup = new MetastoreService("backup", MetastoreServiceArgs.builder()        
+ *             .serviceId("backup")
+ *             .location("us-central1")
  *             .port(9080)
- *             .tier(&#34;DEVELOPER&#34;)
+ *             .tier("DEVELOPER")
  *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
  *                 .hourOfDay(2)
- *                 .dayOfWeek(&#34;SUNDAY&#34;)
+ *                 .dayOfWeek("SUNDAY")
  *                 .build())
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
- *                 .version(&#34;2.3.6&#34;)
+ *                 .version("2.3.6")
  *                 .build())
  *             .scheduledBackup(MetastoreServiceScheduledBackupArgs.builder()
  *                 .enabled(true)
- *                 .cronSchedule(&#34;0 0 * * *&#34;)
- *                 .timeZone(&#34;UTC&#34;)
- *                 .backupLocation(bucket.name().applyValue(name -&gt; String.format(&#34;gs://%s&#34;, name)))
+ *                 .cronSchedule("0 0 * * *")
+ *                 .timeZone("UTC")
+ *                 .backupLocation(bucket.name().applyValue(name -> String.format("gs://%s", name)))
  *                 .build())
- *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *             .labels(Map.of("env", "test"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

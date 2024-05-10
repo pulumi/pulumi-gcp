@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Empty Instance Group
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,22 +49,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new InstanceGroup(&#34;test&#34;, InstanceGroupArgs.builder()        
- *             .name(&#34;test&#34;)
- *             .description(&#34;Test instance group&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *         var test = new InstanceGroup("test", InstanceGroupArgs.builder()        
+ *             .name("test")
+ *             .description("Test instance group")
+ *             .zone("us-central1-a")
  *             .network(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Example Usage - With instances and named ports
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -85,27 +88,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var webservers = new InstanceGroup(&#34;webservers&#34;, InstanceGroupArgs.builder()        
- *             .name(&#34;webservers&#34;)
- *             .description(&#34;Test instance group&#34;)
+ *         var webservers = new InstanceGroup("webservers", InstanceGroupArgs.builder()        
+ *             .name("webservers")
+ *             .description("Test instance group")
  *             .instances(            
  *                 test.id(),
  *                 test2.id())
  *             .namedPorts(            
  *                 InstanceGroupNamedPortArgs.builder()
- *                     .name(&#34;http&#34;)
- *                     .port(&#34;8080&#34;)
+ *                     .name("http")
+ *                     .port("8080")
  *                     .build(),
  *                 InstanceGroupNamedPortArgs.builder()
- *                     .name(&#34;https&#34;)
- *                     .port(&#34;8443&#34;)
+ *                     .name("https")
+ *                     .port("8443")
  *                     .build())
- *             .zone(&#34;us-central1-a&#34;)
+ *             .zone("us-central1-a")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Example Usage - Recreating an instance group in use
@@ -114,7 +118,8 @@ import javax.annotation.Nullable;
  * as shown in this example to avoid this type of error.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -149,48 +154,48 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var stagingVm = new Instance(&#34;stagingVm&#34;, InstanceArgs.builder()        
- *             .name(&#34;staging-vm&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .zone(&#34;us-central1-c&#34;)
+ *         var stagingVm = new Instance("stagingVm", InstanceArgs.builder()        
+ *             .name("staging-vm")
+ *             .machineType("e2-medium")
+ *             .zone("us-central1-c")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(debianImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(debianImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
  *             .build());
  * 
- *         var stagingGroup = new InstanceGroup(&#34;stagingGroup&#34;, InstanceGroupArgs.builder()        
- *             .name(&#34;staging-instance-group&#34;)
- *             .zone(&#34;us-central1-c&#34;)
+ *         var stagingGroup = new InstanceGroup("stagingGroup", InstanceGroupArgs.builder()        
+ *             .name("staging-instance-group")
+ *             .zone("us-central1-c")
  *             .instances(stagingVm.id())
  *             .namedPorts(            
  *                 InstanceGroupNamedPortArgs.builder()
- *                     .name(&#34;http&#34;)
- *                     .port(&#34;8080&#34;)
+ *                     .name("http")
+ *                     .port("8080")
  *                     .build(),
  *                 InstanceGroupNamedPortArgs.builder()
- *                     .name(&#34;https&#34;)
- *                     .port(&#34;8443&#34;)
+ *                     .name("https")
+ *                     .port("8443")
  *                     .build())
  *             .build());
  * 
- *         var stagingHealth = new HttpsHealthCheck(&#34;stagingHealth&#34;, HttpsHealthCheckArgs.builder()        
- *             .name(&#34;staging-health&#34;)
- *             .requestPath(&#34;/health_check&#34;)
+ *         var stagingHealth = new HttpsHealthCheck("stagingHealth", HttpsHealthCheckArgs.builder()        
+ *             .name("staging-health")
+ *             .requestPath("/health_check")
  *             .build());
  * 
- *         var stagingService = new BackendService(&#34;stagingService&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;staging-service&#34;)
- *             .portName(&#34;https&#34;)
- *             .protocol(&#34;HTTPS&#34;)
+ *         var stagingService = new BackendService("stagingService", BackendServiceArgs.builder()        
+ *             .name("staging-service")
+ *             .portName("https")
+ *             .protocol("HTTPS")
  *             .backends(BackendServiceBackendArgs.builder()
  *                 .group(stagingGroup.id())
  *                 .build())
@@ -199,7 +204,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

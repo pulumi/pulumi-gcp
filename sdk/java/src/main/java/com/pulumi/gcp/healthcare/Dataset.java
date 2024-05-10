@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Healthcare Dataset Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,15 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Dataset(&#34;default&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .timeZone(&#34;UTC&#34;)
+ *         var default_ = new Dataset("default", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
+ *             .timeZone("UTC")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

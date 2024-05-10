@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Dataplex Datascan Basic Profile
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,11 +62,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicProfile = new Datascan(&#34;basicProfile&#34;, DatascanArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .dataScanId(&#34;dataprofile-basic&#34;)
+ *         var basicProfile = new Datascan("basicProfile", DatascanArgs.builder()        
+ *             .location("us-central1")
+ *             .dataScanId("dataprofile-basic")
  *             .data(DatascanDataArgs.builder()
- *                 .resource(&#34;//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare&#34;)
+ *                 .resource("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare")
  *                 .build())
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
@@ -73,17 +74,19 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .dataProfileSpec()
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataplex Datascan Full Profile
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -115,56 +118,58 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fullProfile = new Datascan(&#34;fullProfile&#34;, DatascanArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .displayName(&#34;Full Datascan Profile&#34;)
- *             .dataScanId(&#34;dataprofile-full&#34;)
- *             .description(&#34;Example resource - Full Datascan Profile&#34;)
- *             .labels(Map.of(&#34;author&#34;, &#34;billing&#34;))
+ *         var fullProfile = new Datascan("fullProfile", DatascanArgs.builder()        
+ *             .location("us-central1")
+ *             .displayName("Full Datascan Profile")
+ *             .dataScanId("dataprofile-full")
+ *             .description("Example resource - Full Datascan Profile")
+ *             .labels(Map.of("author", "billing"))
  *             .data(DatascanDataArgs.builder()
- *                 .resource(&#34;//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare&#34;)
+ *                 .resource("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare")
  *                 .build())
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
  *                     .schedule(DatascanExecutionSpecTriggerScheduleArgs.builder()
- *                         .cron(&#34;TZ=America/New_York 1 1 * * *&#34;)
+ *                         .cron("TZ=America/New_York 1 1 * * *")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .dataProfileSpec(DatascanDataProfileSpecArgs.builder()
  *                 .samplingPercent(80)
- *                 .rowFilter(&#34;word_count &gt; 10&#34;)
+ *                 .rowFilter("word_count > 10")
  *                 .includeFields(DatascanDataProfileSpecIncludeFieldsArgs.builder()
- *                     .fieldNames(&#34;word_count&#34;)
+ *                     .fieldNames("word_count")
  *                     .build())
  *                 .excludeFields(DatascanDataProfileSpecExcludeFieldsArgs.builder()
- *                     .fieldNames(&#34;property_type&#34;)
+ *                     .fieldNames("property_type")
  *                     .build())
  *                 .postScanActions(DatascanDataProfileSpecPostScanActionsArgs.builder()
  *                     .bigqueryExport(DatascanDataProfileSpecPostScanActionsBigqueryExportArgs.builder()
- *                         .resultsTable(&#34;//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export&#34;)
+ *                         .resultsTable("//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export")
  *                         .build())
  *                     .build())
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var source = new Dataset(&#34;source&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataplex_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var source = new Dataset("source", DatasetArgs.builder()        
+ *             .datasetId("dataplex_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .deleteContentsOnDestroy(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataplex Datascan Basic Quality
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -190,11 +195,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicQuality = new Datascan(&#34;basicQuality&#34;, DatascanArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .dataScanId(&#34;dataquality-basic&#34;)
+ *         var basicQuality = new Datascan("basicQuality", DatascanArgs.builder()        
+ *             .location("us-central1")
+ *             .dataScanId("dataquality-basic")
  *             .data(DatascanDataArgs.builder()
- *                 .resource(&#34;//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare&#34;)
+ *                 .resource("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare")
  *                 .build())
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
@@ -203,25 +208,27 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
  *                 .rules(DatascanDataQualitySpecRuleArgs.builder()
- *                     .dimension(&#34;VALIDITY&#34;)
- *                     .name(&#34;rule1&#34;)
- *                     .description(&#34;rule 1 for validity dimension&#34;)
+ *                     .dimension("VALIDITY")
+ *                     .name("rule1")
+ *                     .description("rule 1 for validity dimension")
  *                     .tableConditionExpectation(DatascanDataQualitySpecRuleTableConditionExpectationArgs.builder()
- *                         .sqlExpression(&#34;COUNT(*) &gt; 0&#34;)
+ *                         .sqlExpression("COUNT(*) > 0")
  *                         .build())
  *                     .build())
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataplex Datascan Full Quality
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -247,36 +254,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fullQuality = new Datascan(&#34;fullQuality&#34;, DatascanArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .displayName(&#34;Full Datascan Quality&#34;)
- *             .dataScanId(&#34;dataquality-full&#34;)
- *             .description(&#34;Example resource - Full Datascan Quality&#34;)
- *             .labels(Map.of(&#34;author&#34;, &#34;billing&#34;))
+ *         var fullQuality = new Datascan("fullQuality", DatascanArgs.builder()        
+ *             .location("us-central1")
+ *             .displayName("Full Datascan Quality")
+ *             .dataScanId("dataquality-full")
+ *             .description("Example resource - Full Datascan Quality")
+ *             .labels(Map.of("author", "billing"))
  *             .data(DatascanDataArgs.builder()
- *                 .resource(&#34;//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations&#34;)
+ *                 .resource("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations")
  *                 .build())
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
  *                     .schedule(DatascanExecutionSpecTriggerScheduleArgs.builder()
- *                         .cron(&#34;TZ=America/New_York 1 1 * * *&#34;)
+ *                         .cron("TZ=America/New_York 1 1 * * *")
  *                         .build())
  *                     .build())
- *                 .field(&#34;modified_date&#34;)
+ *                 .field("modified_date")
  *                 .build())
  *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
  *                 .samplingPercent(5)
- *                 .rowFilter(&#34;station_id &gt; 1000&#34;)
+ *                 .rowFilter("station_id > 1000")
  *                 .rules(                
  *                     DatascanDataQualitySpecRuleArgs.builder()
- *                         .column(&#34;address&#34;)
- *                         .dimension(&#34;VALIDITY&#34;)
+ *                         .column("address")
+ *                         .dimension("VALIDITY")
  *                         .threshold(0.99)
  *                         .nonNullExpectation()
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
- *                         .column(&#34;council_district&#34;)
- *                         .dimension(&#34;VALIDITY&#34;)
+ *                         .column("council_district")
+ *                         .dimension("VALIDITY")
  *                         .ignoreNull(true)
  *                         .threshold(0.9)
  *                         .rangeExpectation(DatascanDataQualitySpecRuleRangeExpectationArgs.builder()
@@ -287,33 +294,33 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
- *                         .column(&#34;power_type&#34;)
- *                         .dimension(&#34;VALIDITY&#34;)
+ *                         .column("power_type")
+ *                         .dimension("VALIDITY")
  *                         .ignoreNull(false)
  *                         .regexExpectation(DatascanDataQualitySpecRuleRegexExpectationArgs.builder()
- *                             .regex(&#34;.*solar.*&#34;)
+ *                             .regex(".*solar.*")
  *                             .build())
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
- *                         .column(&#34;property_type&#34;)
- *                         .dimension(&#34;VALIDITY&#34;)
+ *                         .column("property_type")
+ *                         .dimension("VALIDITY")
  *                         .ignoreNull(false)
  *                         .setExpectation(DatascanDataQualitySpecRuleSetExpectationArgs.builder()
  *                             .values(                            
- *                                 &#34;sidewalk&#34;,
- *                                 &#34;parkland&#34;)
+ *                                 "sidewalk",
+ *                                 "parkland")
  *                             .build())
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
- *                         .column(&#34;address&#34;)
- *                         .dimension(&#34;UNIQUENESS&#34;)
+ *                         .column("address")
+ *                         .dimension("UNIQUENESS")
  *                         .uniquenessExpectation()
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
- *                         .column(&#34;number_of_docks&#34;)
- *                         .dimension(&#34;VALIDITY&#34;)
+ *                         .column("number_of_docks")
+ *                         .dimension("VALIDITY")
  *                         .statisticRangeExpectation(DatascanDataQualitySpecRuleStatisticRangeExpectationArgs.builder()
- *                             .statistic(&#34;MEAN&#34;)
+ *                             .statistic("MEAN")
  *                             .minValue(5)
  *                             .maxValue(15)
  *                             .strictMinEnabled(true)
@@ -321,25 +328,26 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
- *                         .column(&#34;footprint_length&#34;)
- *                         .dimension(&#34;VALIDITY&#34;)
+ *                         .column("footprint_length")
+ *                         .dimension("VALIDITY")
  *                         .rowConditionExpectation(DatascanDataQualitySpecRuleRowConditionExpectationArgs.builder()
- *                             .sqlExpression(&#34;footprint_length &gt; 0 AND footprint_length &lt;= 10&#34;)
+ *                             .sqlExpression("footprint_length > 0 AND footprint_length <= 10")
  *                             .build())
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
- *                         .dimension(&#34;VALIDITY&#34;)
+ *                         .dimension("VALIDITY")
  *                         .tableConditionExpectation(DatascanDataQualitySpecRuleTableConditionExpectationArgs.builder()
- *                             .sqlExpression(&#34;COUNT(*) &gt; 0&#34;)
+ *                             .sqlExpression("COUNT(*) > 0")
  *                             .build())
  *                         .build())
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Target Ssl Proxy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,40 +61,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
- *             .name(&#34;default-cert&#34;)
+ *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()        
+ *             .name("default-cert")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/private.key&#34;)
+ *                 .input("path/to/private.key")
  *                 .build()).result())
  *             .certificate(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .input("path/to/certificate.crt")
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
- *             .protocol(&#34;SSL&#34;)
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *             .name("backend-service")
+ *             .protocol("SSL")
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
- *         var default_ = new TargetSSLProxy(&#34;default&#34;, TargetSSLProxyArgs.builder()        
- *             .name(&#34;test-proxy&#34;)
+ *         var default_ = new TargetSSLProxy("default", TargetSSLProxyArgs.builder()        
+ *             .name("test-proxy")
  *             .backendService(defaultBackendService.id())
  *             .sslCertificates(defaultSSLCertificate.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

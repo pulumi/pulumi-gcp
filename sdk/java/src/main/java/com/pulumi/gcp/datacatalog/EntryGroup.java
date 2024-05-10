@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Data Catalog Entry Group Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,18 +50,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicEntryGroup = new EntryGroup(&#34;basicEntryGroup&#34;, EntryGroupArgs.builder()        
- *             .entryGroupId(&#34;my_group&#34;)
+ *         var basicEntryGroup = new EntryGroup("basicEntryGroup", EntryGroupArgs.builder()        
+ *             .entryGroupId("my_group")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Catalog Entry Group Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -81,15 +84,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicEntryGroup = new EntryGroup(&#34;basicEntryGroup&#34;, EntryGroupArgs.builder()        
- *             .entryGroupId(&#34;my_group&#34;)
- *             .displayName(&#34;entry group&#34;)
- *             .description(&#34;example entry group&#34;)
+ *         var basicEntryGroup = new EntryGroup("basicEntryGroup", EntryGroupArgs.builder()        
+ *             .entryGroupId("my_group")
+ *             .displayName("entry group")
+ *             .description("example entry group")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

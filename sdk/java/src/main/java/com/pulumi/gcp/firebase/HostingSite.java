@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ### Firebasehosting Site Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,19 +42,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-no-app&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-no-app")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Site Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -76,20 +79,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Test web app for Firebase Hosting&#34;)
+ *         var default_ = new WebApp("default", WebAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Test web app for Firebase Hosting")
  *             .build());
  * 
- *         var full = new HostingSite(&#34;full&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-with-app&#34;)
+ *         var full = new HostingSite("full", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-with-app")
  *             .appId(default_.appId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

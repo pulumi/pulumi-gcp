@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### Artifact Registry Repository Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,21 +58,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
- *             .description(&#34;example docker repository&#34;)
- *             .format(&#34;DOCKER&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .description("example docker repository")
+ *             .format("DOCKER")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Docker
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -93,11 +96,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
- *             .description(&#34;example docker repository&#34;)
- *             .format(&#34;DOCKER&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .description("example docker repository")
+ *             .format("DOCKER")
  *             .dockerConfig(RepositoryDockerConfigArgs.builder()
  *                 .immutableTags(true)
  *                 .build())
@@ -105,12 +108,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -135,30 +140,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
- *             .description(&#34;example docker repository with cmek&#34;)
- *             .format(&#34;DOCKER&#34;)
- *             .kmsKeyName(&#34;kms-key&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .description("example docker repository with cmek")
+ *             .format("DOCKER")
+ *             .kmsKeyName("kms-key")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;kms-key&#34;)
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-artifactregistry.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("kms-key")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Virtual
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -180,35 +187,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo_upstream_1 = new Repository(&#34;my-repo-upstream-1&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository-upstream-1&#34;)
- *             .description(&#34;example docker repository (upstream source) 1&#34;)
- *             .format(&#34;DOCKER&#34;)
+ *         var my_repo_upstream_1 = new Repository("my-repo-upstream-1", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("my-repository-upstream-1")
+ *             .description("example docker repository (upstream source) 1")
+ *             .format("DOCKER")
  *             .build());
  * 
- *         var my_repo_upstream_2 = new Repository(&#34;my-repo-upstream-2&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository-upstream-2&#34;)
- *             .description(&#34;example docker repository (upstream source) 2&#34;)
- *             .format(&#34;DOCKER&#34;)
+ *         var my_repo_upstream_2 = new Repository("my-repo-upstream-2", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("my-repository-upstream-2")
+ *             .description("example docker repository (upstream source) 2")
+ *             .format("DOCKER")
  *             .build());
  * 
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
- *             .description(&#34;example virtual docker repository&#34;)
- *             .format(&#34;DOCKER&#34;)
- *             .mode(&#34;VIRTUAL_REPOSITORY&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .description("example virtual docker repository")
+ *             .format("DOCKER")
+ *             .mode("VIRTUAL_REPOSITORY")
  *             .virtualRepositoryConfig(RepositoryVirtualRepositoryConfigArgs.builder()
  *                 .upstreamPolicies(                
  *                     RepositoryVirtualRepositoryConfigUpstreamPolicyArgs.builder()
- *                         .id(&#34;my-repository-upstream-1&#34;)
+ *                         .id("my-repository-upstream-1")
  *                         .repository(my_repo_upstream_1.id())
  *                         .priority(20)
  *                         .build(),
  *                     RepositoryVirtualRepositoryConfigUpstreamPolicyArgs.builder()
- *                         .id(&#34;my-repository-upstream-2&#34;)
+ *                         .id("my-repository-upstream-2")
  *                         .repository(my_repo_upstream_2.id())
  *                         .priority(10)
  *                         .build())
@@ -217,12 +224,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Remote
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -245,28 +254,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
- *             .description(&#34;example remote docker repository&#34;)
- *             .format(&#34;DOCKER&#34;)
- *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .description("example remote docker repository")
+ *             .format("DOCKER")
+ *             .mode("REMOTE_REPOSITORY")
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
- *                 .description(&#34;docker hub&#34;)
+ *                 .description("docker hub")
  *                 .dockerRepository(RepositoryRemoteRepositoryConfigDockerRepositoryArgs.builder()
- *                     .publicRepository(&#34;DOCKER_HUB&#34;)
+ *                     .publicRepository("DOCKER_HUB")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Remote Apt
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -290,18 +301,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;debian-buster&#34;)
- *             .description(&#34;example remote apt repository&#34;)
- *             .format(&#34;APT&#34;)
- *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("debian-buster")
+ *             .description("example remote apt repository")
+ *             .format("APT")
+ *             .mode("REMOTE_REPOSITORY")
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
- *                 .description(&#34;Debian buster remote repository&#34;)
+ *                 .description("Debian buster remote repository")
  *                 .aptRepository(RepositoryRemoteRepositoryConfigAptRepositoryArgs.builder()
  *                     .publicRepository(RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs.builder()
- *                         .repositoryBase(&#34;DEBIAN&#34;)
- *                         .repositoryPath(&#34;debian/dists/buster&#34;)
+ *                         .repositoryBase("DEBIAN")
+ *                         .repositoryPath("debian/dists/buster")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -309,12 +320,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Remote Yum
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -338,18 +351,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;centos-8&#34;)
- *             .description(&#34;example remote yum repository&#34;)
- *             .format(&#34;YUM&#34;)
- *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("centos-8")
+ *             .description("example remote yum repository")
+ *             .format("YUM")
+ *             .mode("REMOTE_REPOSITORY")
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
- *                 .description(&#34;Centos 8 remote repository&#34;)
+ *                 .description("Centos 8 remote repository")
  *                 .yumRepository(RepositoryRemoteRepositoryConfigYumRepositoryArgs.builder()
  *                     .publicRepository(RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs.builder()
- *                         .repositoryBase(&#34;CENTOS&#34;)
- *                         .repositoryPath(&#34;centos/8-stream/BaseOS/x86_64/os&#34;)
+ *                         .repositoryBase("CENTOS")
+ *                         .repositoryPath("centos/8-stream/BaseOS/x86_64/os")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -357,12 +370,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Cleanup
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -386,43 +401,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
- *             .description(&#34;example docker repository with cleanup policies&#34;)
- *             .format(&#34;DOCKER&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .description("example docker repository with cleanup policies")
+ *             .format("DOCKER")
  *             .cleanupPolicyDryRun(false)
  *             .cleanupPolicies(            
  *                 RepositoryCleanupPolicyArgs.builder()
- *                     .id(&#34;delete-prerelease&#34;)
- *                     .action(&#34;DELETE&#34;)
+ *                     .id("delete-prerelease")
+ *                     .action("DELETE")
  *                     .condition(RepositoryCleanupPolicyConditionArgs.builder()
- *                         .tagState(&#34;TAGGED&#34;)
+ *                         .tagState("TAGGED")
  *                         .tagPrefixes(                        
- *                             &#34;alpha&#34;,
- *                             &#34;v0&#34;)
- *                         .olderThan(&#34;2592000s&#34;)
+ *                             "alpha",
+ *                             "v0")
+ *                         .olderThan("2592000s")
  *                         .build())
  *                     .build(),
  *                 RepositoryCleanupPolicyArgs.builder()
- *                     .id(&#34;keep-tagged-release&#34;)
- *                     .action(&#34;KEEP&#34;)
+ *                     .id("keep-tagged-release")
+ *                     .action("KEEP")
  *                     .condition(RepositoryCleanupPolicyConditionArgs.builder()
- *                         .tagState(&#34;TAGGED&#34;)
- *                         .tagPrefixes(&#34;release&#34;)
+ *                         .tagState("TAGGED")
+ *                         .tagPrefixes("release")
  *                         .packageNamePrefixes(                        
- *                             &#34;webapp&#34;,
- *                             &#34;mobile&#34;)
+ *                             "webapp",
+ *                             "mobile")
  *                         .build())
  *                     .build(),
  *                 RepositoryCleanupPolicyArgs.builder()
- *                     .id(&#34;keep-minimum-versions&#34;)
- *                     .action(&#34;KEEP&#34;)
+ *                     .id("keep-minimum-versions")
+ *                     .action("KEEP")
  *                     .mostRecentVersions(RepositoryCleanupPolicyMostRecentVersionsArgs.builder()
  *                         .packageNamePrefixes(                        
- *                             &#34;webapp&#34;,
- *                             &#34;mobile&#34;,
- *                             &#34;sandbox&#34;)
+ *                             "webapp",
+ *                             "mobile",
+ *                             "sandbox")
  *                         .keepCount(5)
  *                         .build())
  *                     .build())
@@ -430,12 +445,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Remote Dockerhub Auth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -472,39 +489,39 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret(&#34;example-remote-secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;example-secret&#34;)
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion(&#34;example-remote-secretVersion&#34;, SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
  *             .secret(example_remote_secret.id())
- *             .secretData(&#34;remote-password&#34;)
+ *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
  *             .secretId(example_remote_secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-artifactregistry.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;example-dockerhub-remote&#34;)
- *             .description(&#34;example remote dockerhub repository with credentials&#34;)
- *             .format(&#34;DOCKER&#34;)
- *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("example-dockerhub-remote")
+ *             .description("example remote dockerhub repository with credentials")
+ *             .format("DOCKER")
+ *             .mode("REMOTE_REPOSITORY")
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
- *                 .description(&#34;docker hub with custom credentials&#34;)
+ *                 .description("docker hub with custom credentials")
  *                 .disableUpstreamValidation(true)
  *                 .dockerRepository(RepositoryRemoteRepositoryConfigDockerRepositoryArgs.builder()
- *                     .publicRepository(&#34;DOCKER_HUB&#34;)
+ *                     .publicRepository("DOCKER_HUB")
  *                     .build())
  *                 .upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs.builder()
  *                     .usernamePasswordCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs.builder()
- *                         .username(&#34;remote-username&#34;)
+ *                         .username("remote-username")
  *                         .passwordSecretVersion(example_remote_secretVersion.name())
  *                         .build())
  *                     .build())
@@ -513,12 +530,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Remote Docker Custom With Auth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -556,41 +575,41 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret(&#34;example-remote-secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;example-secret&#34;)
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion(&#34;example-remote-secretVersion&#34;, SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
  *             .secret(example_remote_secret.id())
- *             .secretData(&#34;remote-password&#34;)
+ *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
  *             .secretId(example_remote_secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-artifactregistry.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;example-docker-custom-remote&#34;)
- *             .description(&#34;example remote custom docker repository with credentials&#34;)
- *             .format(&#34;DOCKER&#34;)
- *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("example-docker-custom-remote")
+ *             .description("example remote custom docker repository with credentials")
+ *             .format("DOCKER")
+ *             .mode("REMOTE_REPOSITORY")
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
- *                 .description(&#34;custom docker remote with credentials&#34;)
+ *                 .description("custom docker remote with credentials")
  *                 .disableUpstreamValidation(true)
  *                 .dockerRepository(RepositoryRemoteRepositoryConfigDockerRepositoryArgs.builder()
  *                     .customRepository(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs.builder()
- *                         .uri(&#34;https://registry-1.docker.io&#34;)
+ *                         .uri("https://registry-1.docker.io")
  *                         .build())
  *                     .build())
  *                 .upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs.builder()
  *                     .usernamePasswordCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs.builder()
- *                         .username(&#34;remote-username&#34;)
+ *                         .username("remote-username")
  *                         .passwordSecretVersion(example_remote_secretVersion.name())
  *                         .build())
  *                     .build())
@@ -599,12 +618,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Remote Maven Custom With Auth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -642,41 +663,41 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret(&#34;example-remote-secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;example-secret&#34;)
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion(&#34;example-remote-secretVersion&#34;, SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
  *             .secret(example_remote_secret.id())
- *             .secretData(&#34;remote-password&#34;)
+ *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
  *             .secretId(example_remote_secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-artifactregistry.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;example-maven-custom-remote&#34;)
- *             .description(&#34;example remote custom maven repository with credentials&#34;)
- *             .format(&#34;MAVEN&#34;)
- *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("example-maven-custom-remote")
+ *             .description("example remote custom maven repository with credentials")
+ *             .format("MAVEN")
+ *             .mode("REMOTE_REPOSITORY")
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
- *                 .description(&#34;custom maven remote with credentials&#34;)
+ *                 .description("custom maven remote with credentials")
  *                 .disableUpstreamValidation(true)
  *                 .mavenRepository(RepositoryRemoteRepositoryConfigMavenRepositoryArgs.builder()
  *                     .customRepository(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs.builder()
- *                         .uri(&#34;https://my.maven.registry&#34;)
+ *                         .uri("https://my.maven.registry")
  *                         .build())
  *                     .build())
  *                 .upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs.builder()
  *                     .usernamePasswordCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs.builder()
- *                         .username(&#34;remote-username&#34;)
+ *                         .username("remote-username")
  *                         .passwordSecretVersion(example_remote_secretVersion.name())
  *                         .build())
  *                     .build())
@@ -685,12 +706,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Remote Npm Custom With Auth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -728,41 +751,41 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret(&#34;example-remote-secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;example-secret&#34;)
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion(&#34;example-remote-secretVersion&#34;, SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
  *             .secret(example_remote_secret.id())
- *             .secretData(&#34;remote-password&#34;)
+ *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
  *             .secretId(example_remote_secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-artifactregistry.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;example-npm-custom-remote&#34;)
- *             .description(&#34;example remote custom npm repository with credentials&#34;)
- *             .format(&#34;NPM&#34;)
- *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("example-npm-custom-remote")
+ *             .description("example remote custom npm repository with credentials")
+ *             .format("NPM")
+ *             .mode("REMOTE_REPOSITORY")
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
- *                 .description(&#34;custom npm with credentials&#34;)
+ *                 .description("custom npm with credentials")
  *                 .disableUpstreamValidation(true)
  *                 .npmRepository(RepositoryRemoteRepositoryConfigNpmRepositoryArgs.builder()
  *                     .customRepository(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs.builder()
- *                         .uri(&#34;https://my.npm.registry&#34;)
+ *                         .uri("https://my.npm.registry")
  *                         .build())
  *                     .build())
  *                 .upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs.builder()
  *                     .usernamePasswordCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs.builder()
- *                         .username(&#34;remote-username&#34;)
+ *                         .username("remote-username")
  *                         .passwordSecretVersion(example_remote_secretVersion.name())
  *                         .build())
  *                     .build())
@@ -771,12 +794,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Remote Python Custom With Auth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -814,41 +839,41 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example_remote_secret = new Secret(&#34;example-remote-secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;example-secret&#34;)
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()        
+ *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var example_remote_secretVersion = new SecretVersion(&#34;example-remote-secretVersion&#34;, SecretVersionArgs.builder()        
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()        
  *             .secret(example_remote_secret.id())
- *             .secretData(&#34;remote-password&#34;)
+ *             .secretData("remote-password")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
  *             .secretId(example_remote_secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-artifactregistry.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;example-python-custom-remote&#34;)
- *             .description(&#34;example remote custom python repository with credentials&#34;)
- *             .format(&#34;PYTHON&#34;)
- *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .location("us-central1")
+ *             .repositoryId("example-python-custom-remote")
+ *             .description("example remote custom python repository with credentials")
+ *             .format("PYTHON")
+ *             .mode("REMOTE_REPOSITORY")
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
- *                 .description(&#34;custom npm with credentials&#34;)
+ *                 .description("custom npm with credentials")
  *                 .disableUpstreamValidation(true)
  *                 .pythonRepository(RepositoryRemoteRepositoryConfigPythonRepositoryArgs.builder()
  *                     .customRepository(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs.builder()
- *                         .uri(&#34;https://my.python.registry&#34;)
+ *                         .uri("https://my.python.registry")
  *                         .build())
  *                     .build())
  *                 .upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs.builder()
  *                     .usernamePasswordCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs.builder()
- *                         .username(&#34;remote-username&#34;)
+ *                         .username("remote-username")
  *                         .passwordSecretVersion(example_remote_secretVersion.name())
  *                         .build())
  *                     .build())
@@ -857,7 +882,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

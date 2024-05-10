@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Dns Response Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,38 +62,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-1&#34;)
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network(&#34;network-2&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-2&#34;)
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_1 = new Subnetwork(&#34;subnetwork-1&#34;, SubnetworkArgs.builder()        
+ *         var subnetwork_1 = new Subnetwork("subnetwork-1", SubnetworkArgs.builder()        
  *             .name(network_1.name())
  *             .network(network_1.name())
- *             .ipCidrRange(&#34;10.0.36.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .ipCidrRange("10.0.36.0/24")
+ *             .region("us-central1")
  *             .privateIpGoogleAccess(true)
  *             .secondaryIpRanges(            
  *                 SubnetworkSecondaryIpRangeArgs.builder()
- *                     .rangeName(&#34;pod&#34;)
- *                     .ipCidrRange(&#34;10.0.0.0/19&#34;)
+ *                     .rangeName("pod")
+ *                     .ipCidrRange("10.0.0.0/19")
  *                     .build(),
  *                 SubnetworkSecondaryIpRangeArgs.builder()
- *                     .rangeName(&#34;svc&#34;)
- *                     .ipCidrRange(&#34;10.0.32.0/22&#34;)
+ *                     .rangeName("svc")
+ *                     .ipCidrRange("10.0.32.0/22")
  *                     .build())
  *             .build());
  * 
- *         var cluster_1 = new Cluster(&#34;cluster-1&#34;, ClusterArgs.builder()        
- *             .name(&#34;cluster-1&#34;)
- *             .location(&#34;us-central1-c&#34;)
+ *         var cluster_1 = new Cluster("cluster-1", ClusterArgs.builder()        
+ *             .name("cluster-1")
+ *             .location("us-central1-c")
  *             .initialNodeCount(1)
- *             .networkingMode(&#34;VPC_NATIVE&#34;)
+ *             .networkingMode("VPC_NATIVE")
  *             .defaultSnatStatus(ClusterDefaultSnatStatusArgs.builder()
  *                 .disabled(true)
  *                 .build())
@@ -101,21 +102,21 @@ import javax.annotation.Nullable;
  *             .privateClusterConfig(ClusterPrivateClusterConfigArgs.builder()
  *                 .enablePrivateEndpoint(true)
  *                 .enablePrivateNodes(true)
- *                 .masterIpv4CidrBlock(&#34;10.42.0.0/28&#34;)
+ *                 .masterIpv4CidrBlock("10.42.0.0/28")
  *                 .masterGlobalAccessConfig(ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
  *             .masterAuthorizedNetworksConfig()
  *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
- *                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[0].rangeName()))
- *                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[1].rangeName()))
+ *                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[0].rangeName()))
+ *                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[1].rangeName()))
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var example_response_policy = new ResponsePolicy(&#34;example-response-policy&#34;, ResponsePolicyArgs.builder()        
- *             .responsePolicyName(&#34;example-response-policy&#34;)
+ *         var example_response_policy = new ResponsePolicy("example-response-policy", ResponsePolicyArgs.builder()        
+ *             .responsePolicyName("example-response-policy")
  *             .networks(            
  *                 ResponsePolicyNetworkArgs.builder()
  *                     .networkUrl(network_1.id())
@@ -130,7 +131,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

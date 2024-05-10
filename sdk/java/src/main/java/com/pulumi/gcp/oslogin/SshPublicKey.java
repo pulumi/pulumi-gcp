@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Os Login Ssh Key Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,16 +53,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
  * 
- *         var cache = new SshPublicKey(&#34;cache&#34;, SshPublicKeyArgs.builder()        
- *             .user(me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()))
+ *         var cache = new SshPublicKey("cache", SshPublicKeyArgs.builder()        
+ *             .user(me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()))
  *             .key(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/id_rsa.pub&#34;)
+ *                 .input("path/to/id_rsa.pub")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

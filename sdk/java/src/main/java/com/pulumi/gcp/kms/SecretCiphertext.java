@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Kms Secret Ciphertext Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,41 +65,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring-example&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("keyring-example")
+ *             .location("global")
  *             .build());
  * 
- *         var cryptokey = new CryptoKey(&#34;cryptokey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-key-example&#34;)
+ *         var cryptokey = new CryptoKey("cryptokey", CryptoKeyArgs.builder()        
+ *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
- *             .rotationPeriod(&#34;7776000s&#34;)
+ *             .rotationPeriod("7776000s")
  *             .build());
  * 
- *         var myPassword = new SecretCiphertext(&#34;myPassword&#34;, SecretCiphertextArgs.builder()        
+ *         var myPassword = new SecretCiphertext("myPassword", SecretCiphertextArgs.builder()        
  *             .cryptoKey(cryptokey.id())
- *             .plaintext(&#34;my-secret-password&#34;)
+ *             .plaintext("my-secret-password")
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
- *             .name(&#34;my-instance&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .name("my-instance")
+ *             .machineType("e2-medium")
+ *             .zone("us-central1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .image("debian-cloud/debian-11")
  *                     .build())
  *                 .build())
- *             .metadata(Map.of(&#34;password&#34;, myPassword.ciphertext()))
+ *             .metadata(Map.of("password", myPassword.ciphertext()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

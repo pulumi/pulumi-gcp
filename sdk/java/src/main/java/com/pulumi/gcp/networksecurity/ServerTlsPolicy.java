@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Network Security Server Tls Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,31 +50,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ServerTlsPolicy(&#34;default&#34;, ServerTlsPolicyArgs.builder()        
- *             .name(&#34;my-server-tls-policy&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .allowOpen(&#34;false&#34;)
+ *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()        
+ *             .name("my-server-tls-policy")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .allowOpen("false")
  *             .serverCertificate(ServerTlsPolicyServerCertificateArgs.builder()
  *                 .certificateProviderInstance(ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs.builder()
- *                     .pluginInstance(&#34;google_cloud_private_spiffe&#34;)
+ *                     .pluginInstance("google_cloud_private_spiffe")
  *                     .build())
  *                 .build())
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
  *                 .clientValidationCas(                
  *                     ServerTlsPolicyMtlsPolicyClientValidationCaArgs.builder()
  *                         .grpcEndpoint(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs.builder()
- *                             .targetUri(&#34;unix:mypath&#34;)
+ *                             .targetUri("unix:mypath")
  *                             .build())
  *                         .build(),
  *                     ServerTlsPolicyMtlsPolicyClientValidationCaArgs.builder()
  *                         .grpcEndpoint(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs.builder()
- *                             .targetUri(&#34;unix:abc/mypath&#34;)
+ *                             .targetUri("unix:abc/mypath")
  *                             .build())
  *                         .build(),
  *                     ServerTlsPolicyMtlsPolicyClientValidationCaArgs.builder()
  *                         .certificateProviderInstance(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs.builder()
- *                             .pluginInstance(&#34;google_cloud_private_spiffe&#34;)
+ *                             .pluginInstance("google_cloud_private_spiffe")
  *                             .build())
  *                         .build())
  *                 .build())
@@ -81,12 +82,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Server Tls Policy Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -108,25 +111,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ServerTlsPolicy(&#34;default&#34;, ServerTlsPolicyArgs.builder()        
- *             .name(&#34;my-server-tls-policy&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .location(&#34;global&#34;)
- *             .allowOpen(&#34;false&#34;)
+ *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()        
+ *             .name("my-server-tls-policy")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .location("global")
+ *             .allowOpen("false")
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
- *                 .clientValidationMode(&#34;ALLOW_INVALID_OR_MISSING_CLIENT_CERT&#34;)
+ *                 .clientValidationMode("ALLOW_INVALID_OR_MISSING_CLIENT_CERT")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Server Tls Policy Server Cert
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -149,27 +154,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ServerTlsPolicy(&#34;default&#34;, ServerTlsPolicyArgs.builder()        
- *             .name(&#34;my-server-tls-policy&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .location(&#34;global&#34;)
- *             .allowOpen(&#34;false&#34;)
+ *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()        
+ *             .name("my-server-tls-policy")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .location("global")
+ *             .allowOpen("false")
  *             .serverCertificate(ServerTlsPolicyServerCertificateArgs.builder()
  *                 .grpcEndpoint(ServerTlsPolicyServerCertificateGrpcEndpointArgs.builder()
- *                     .targetUri(&#34;unix:mypath&#34;)
+ *                     .targetUri("unix:mypath")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Server Tls Policy Mtls
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -198,40 +205,41 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var defaultTrustConfig = new TrustConfig(&#34;defaultTrustConfig&#34;, TrustConfigArgs.builder()        
- *             .name(&#34;my-trust-config&#34;)
- *             .description(&#34;sample trust config description&#34;)
- *             .location(&#34;global&#34;)
+ *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()        
+ *             .name("my-trust-config")
+ *             .description("sample trust config description")
+ *             .location("global")
  *             .trustStores(TrustConfigTrustStoreArgs.builder()
  *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
  *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .input("test-fixtures/ca_cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
  *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .input("test-fixtures/ca_cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var default_ = new ServerTlsPolicy(&#34;default&#34;, ServerTlsPolicyArgs.builder()        
- *             .name(&#34;my-server-tls-policy&#34;)
- *             .description(&#34;my description&#34;)
- *             .location(&#34;global&#34;)
- *             .allowOpen(&#34;false&#34;)
+ *         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()        
+ *             .name("my-server-tls-policy")
+ *             .description("my description")
+ *             .location("global")
+ *             .allowOpen("false")
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
- *                 .clientValidationMode(&#34;REJECT_INVALID&#34;)
- *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/global/trustConfigs/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *                 .clientValidationMode("REJECT_INVALID")
+ *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -> String.format("projects/%s/locations/global/trustConfigs/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Essential Contact
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,16 +60,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var contact = new Contact(&#34;contact&#34;, ContactArgs.builder()        
- *             .parent(project.applyValue(getProjectResult -&gt; getProjectResult.id()))
- *             .email(&#34;foo@bar.com&#34;)
- *             .languageTag(&#34;en-GB&#34;)
- *             .notificationCategorySubscriptions(&#34;ALL&#34;)
+ *         var contact = new Contact("contact", ContactArgs.builder()        
+ *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
+ *             .email("foo{@literal @}bar.com")
+ *             .languageTag("en-GB")
+ *             .notificationCategorySubscriptions("ALL")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

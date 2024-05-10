@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ### Notebook Runtime Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,20 +65,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtime = new Runtime(&#34;runtime&#34;, RuntimeArgs.builder()        
- *             .name(&#34;notebooks-runtime&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var runtime = new Runtime("runtime", RuntimeArgs.builder()        
+ *             .name("notebooks-runtime")
+ *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
- *                 .accessType(&#34;SINGLE_USER&#34;)
- *                 .runtimeOwner(&#34;admin@hashicorptest.com&#34;)
+ *                 .accessType("SINGLE_USER")
+ *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
  *                 .build())
  *             .virtualMachine(RuntimeVirtualMachineArgs.builder()
  *                 .virtualMachineConfig(RuntimeVirtualMachineVirtualMachineConfigArgs.builder()
- *                     .machineType(&#34;n1-standard-4&#34;)
+ *                     .machineType("n1-standard-4")
  *                     .dataDisk(RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs.builder()
  *                         .initializeParams(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs.builder()
- *                             .diskSizeGb(&#34;100&#34;)
- *                             .diskType(&#34;PD_STANDARD&#34;)
+ *                             .diskSizeGb("100")
+ *                             .diskType("PD_STANDARD")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -86,12 +87,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Notebook Runtime Basic Gpu
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -119,28 +122,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtimeGpu = new Runtime(&#34;runtimeGpu&#34;, RuntimeArgs.builder()        
- *             .name(&#34;notebooks-runtime-gpu&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var runtimeGpu = new Runtime("runtimeGpu", RuntimeArgs.builder()        
+ *             .name("notebooks-runtime-gpu")
+ *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
- *                 .accessType(&#34;SINGLE_USER&#34;)
- *                 .runtimeOwner(&#34;admin@hashicorptest.com&#34;)
+ *                 .accessType("SINGLE_USER")
+ *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
  *                 .build())
  *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
  *                 .installGpuDriver(true)
  *                 .build())
  *             .virtualMachine(RuntimeVirtualMachineArgs.builder()
  *                 .virtualMachineConfig(RuntimeVirtualMachineVirtualMachineConfigArgs.builder()
- *                     .machineType(&#34;n1-standard-4&#34;)
+ *                     .machineType("n1-standard-4")
  *                     .dataDisk(RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs.builder()
  *                         .initializeParams(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs.builder()
- *                             .diskSizeGb(&#34;100&#34;)
- *                             .diskType(&#34;PD_STANDARD&#34;)
+ *                             .diskSizeGb("100")
+ *                             .diskType("PD_STANDARD")
  *                             .build())
  *                         .build())
  *                     .acceleratorConfig(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs.builder()
- *                         .coreCount(&#34;1&#34;)
- *                         .type(&#34;NVIDIA_TESLA_V100&#34;)
+ *                         .coreCount("1")
+ *                         .type("NVIDIA_TESLA_V100")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -148,12 +151,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Notebook Runtime Basic Container
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -179,30 +184,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtimeContainer = new Runtime(&#34;runtimeContainer&#34;, RuntimeArgs.builder()        
- *             .name(&#34;notebooks-runtime-container&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()        
+ *             .name("notebooks-runtime-container")
+ *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
- *                 .accessType(&#34;SINGLE_USER&#34;)
- *                 .runtimeOwner(&#34;admin@hashicorptest.com&#34;)
+ *                 .accessType("SINGLE_USER")
+ *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
  *                 .build())
  *             .virtualMachine(RuntimeVirtualMachineArgs.builder()
  *                 .virtualMachineConfig(RuntimeVirtualMachineVirtualMachineConfigArgs.builder()
- *                     .machineType(&#34;n1-standard-4&#34;)
+ *                     .machineType("n1-standard-4")
  *                     .dataDisk(RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs.builder()
  *                         .initializeParams(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs.builder()
- *                             .diskSizeGb(&#34;100&#34;)
- *                             .diskType(&#34;PD_STANDARD&#34;)
+ *                             .diskSizeGb("100")
+ *                             .diskType("PD_STANDARD")
  *                             .build())
  *                         .build())
  *                     .containerImages(                    
  *                         RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs.builder()
- *                             .repository(&#34;gcr.io/deeplearning-platform-release/base-cpu&#34;)
- *                             .tag(&#34;latest&#34;)
+ *                             .repository("gcr.io/deeplearning-platform-release/base-cpu")
+ *                             .tag("latest")
  *                             .build(),
  *                         RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs.builder()
- *                             .repository(&#34;gcr.io/deeplearning-platform-release/beam-notebooks&#34;)
- *                             .tag(&#34;latest&#34;)
+ *                             .repository("gcr.io/deeplearning-platform-release/beam-notebooks")
+ *                             .tag("latest")
  *                             .build())
  *                     .build())
  *                 .build())
@@ -210,12 +215,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Notebook Runtime Kernels
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -242,41 +249,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtimeContainer = new Runtime(&#34;runtimeContainer&#34;, RuntimeArgs.builder()        
- *             .name(&#34;notebooks-runtime-kernel&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()        
+ *             .name("notebooks-runtime-kernel")
+ *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
- *                 .accessType(&#34;SINGLE_USER&#34;)
- *                 .runtimeOwner(&#34;admin@hashicorptest.com&#34;)
+ *                 .accessType("SINGLE_USER")
+ *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
  *                 .build())
  *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
  *                 .kernels(RuntimeSoftwareConfigKernelArgs.builder()
- *                     .repository(&#34;gcr.io/deeplearning-platform-release/base-cpu&#34;)
- *                     .tag(&#34;latest&#34;)
+ *                     .repository("gcr.io/deeplearning-platform-release/base-cpu")
+ *                     .tag("latest")
  *                     .build())
  *                 .build())
  *             .virtualMachine(RuntimeVirtualMachineArgs.builder()
  *                 .virtualMachineConfig(RuntimeVirtualMachineVirtualMachineConfigArgs.builder()
- *                     .machineType(&#34;n1-standard-4&#34;)
+ *                     .machineType("n1-standard-4")
  *                     .dataDisk(RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs.builder()
  *                         .initializeParams(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs.builder()
- *                             .diskSizeGb(&#34;100&#34;)
- *                             .diskType(&#34;PD_STANDARD&#34;)
+ *                             .diskSizeGb("100")
+ *                             .diskType("PD_STANDARD")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
+ *             .labels(Map.of("k", "val"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Notebook Runtime Script
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -303,33 +312,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var runtimeContainer = new Runtime(&#34;runtimeContainer&#34;, RuntimeArgs.builder()        
- *             .name(&#34;notebooks-runtime-script&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()        
+ *             .name("notebooks-runtime-script")
+ *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
- *                 .accessType(&#34;SINGLE_USER&#34;)
- *                 .runtimeOwner(&#34;admin@hashicorptest.com&#34;)
+ *                 .accessType("SINGLE_USER")
+ *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
  *                 .build())
  *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
- *                 .postStartupScriptBehavior(&#34;RUN_EVERY_START&#34;)
+ *                 .postStartupScriptBehavior("RUN_EVERY_START")
  *                 .build())
  *             .virtualMachine(RuntimeVirtualMachineArgs.builder()
  *                 .virtualMachineConfig(RuntimeVirtualMachineVirtualMachineConfigArgs.builder()
- *                     .machineType(&#34;n1-standard-4&#34;)
+ *                     .machineType("n1-standard-4")
  *                     .dataDisk(RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs.builder()
  *                         .initializeParams(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs.builder()
- *                             .diskSizeGb(&#34;100&#34;)
- *                             .diskType(&#34;PD_STANDARD&#34;)
+ *                             .diskSizeGb("100")
+ *                             .diskType("PD_STANDARD")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
+ *             .labels(Map.of("k", "val"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

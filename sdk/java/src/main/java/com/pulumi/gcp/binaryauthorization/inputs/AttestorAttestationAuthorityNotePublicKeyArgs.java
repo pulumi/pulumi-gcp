@@ -19,7 +19,7 @@ public final class AttestorAttestationAuthorityNotePublicKeyArgs extends com.pul
     /**
      * ASCII-armored representation of a PGP public key, as the
      * entire output by the command
-     * `gpg --export --armor foo@example.com` (either LF or CRLF
+     * `gpg --export --armor foo{@literal @}example.com` (either LF or CRLF
      * line endings). When using this field, id should be left
      * blank. The BinAuthz API handlers will calculate the ID
      * and fill it in automatically. BinAuthz computes this ID
@@ -34,7 +34,7 @@ public final class AttestorAttestationAuthorityNotePublicKeyArgs extends com.pul
     /**
      * @return ASCII-armored representation of a PGP public key, as the
      * entire output by the command
-     * `gpg --export --armor foo@example.com` (either LF or CRLF
+     * `gpg --export --armor foo{@literal @}example.com` (either LF or CRLF
      * line endings). When using this field, id should be left
      * blank. The BinAuthz API handlers will calculate the ID
      * and fill it in automatically. BinAuthz computes this ID
@@ -142,7 +142,7 @@ public final class AttestorAttestationAuthorityNotePublicKeyArgs extends com.pul
         /**
          * @param asciiArmoredPgpPublicKey ASCII-armored representation of a PGP public key, as the
          * entire output by the command
-         * `gpg --export --armor foo@example.com` (either LF or CRLF
+         * `gpg --export --armor foo{@literal @}example.com` (either LF or CRLF
          * line endings). When using this field, id should be left
          * blank. The BinAuthz API handlers will calculate the ID
          * and fill it in automatically. BinAuthz computes this ID
@@ -161,7 +161,7 @@ public final class AttestorAttestationAuthorityNotePublicKeyArgs extends com.pul
         /**
          * @param asciiArmoredPgpPublicKey ASCII-armored representation of a PGP public key, as the
          * entire output by the command
-         * `gpg --export --armor foo@example.com` (either LF or CRLF
+         * `gpg --export --armor foo{@literal @}example.com` (either LF or CRLF
          * line endings). When using this field, id should be left
          * blank. The BinAuthz API handlers will calculate the ID
          * and fill it in automatically. BinAuthz computes this ID

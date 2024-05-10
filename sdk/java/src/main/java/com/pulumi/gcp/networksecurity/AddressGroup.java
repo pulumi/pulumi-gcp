@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Network Security Address Groups Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,23 +53,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AddressGroup(&#34;default&#34;, AddressGroupArgs.builder()        
- *             .name(&#34;my-address-groups&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .type(&#34;IPV4&#34;)
- *             .capacity(&#34;100&#34;)
- *             .items(&#34;208.80.154.224/32&#34;)
+ *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()        
+ *             .name("my-address-groups")
+ *             .parent("projects/my-project-name")
+ *             .location("us-central1")
+ *             .type("IPV4")
+ *             .capacity("100")
+ *             .items("208.80.154.224/32")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Address Groups Organization Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,23 +92,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AddressGroup(&#34;default&#34;, AddressGroupArgs.builder()        
- *             .name(&#34;my-address-groups&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .type(&#34;IPV4&#34;)
- *             .capacity(&#34;100&#34;)
- *             .items(&#34;208.80.154.224/32&#34;)
+ *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()        
+ *             .name("my-address-groups")
+ *             .parent("organizations/123456789")
+ *             .location("us-central1")
+ *             .type("IPV4")
+ *             .capacity("100")
+ *             .items("208.80.154.224/32")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Address Groups Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -126,19 +131,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AddressGroup(&#34;default&#34;, AddressGroupArgs.builder()        
- *             .name(&#34;my-address-groups&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;my description&#34;)
- *             .type(&#34;IPV4&#34;)
- *             .capacity(&#34;100&#34;)
- *             .items(&#34;208.80.154.224/32&#34;)
+ *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()        
+ *             .name("my-address-groups")
+ *             .parent("projects/my-project-name")
+ *             .location("us-central1")
+ *             .description("my description")
+ *             .type("IPV4")
+ *             .capacity("100")
+ *             .items("208.80.154.224/32")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

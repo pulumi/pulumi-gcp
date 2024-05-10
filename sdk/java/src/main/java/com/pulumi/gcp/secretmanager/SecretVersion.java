@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Secret Version Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,27 +50,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret-version&#34;)
- *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *             .secretId("secret-version")
+ *             .labels(Map.of("label", "my-label"))
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion(&#34;secret-version-basic&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secret Version Deletion Policy Abandon
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,31 +97,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret-version&#34;)
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *             .secretId("secret-version")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
  *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
- *                         .location(&#34;us-central1&#34;)
+ *                         .location("us-central1")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var secret_version_deletion_policy = new SecretVersion(&#34;secret-version-deletion-policy&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_deletion_policy = new SecretVersion("secret-version-deletion-policy", SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
- *             .secretData(&#34;secret-data&#34;)
- *             .deletionPolicy(&#34;ABANDON&#34;)
+ *             .secretData("secret-data")
+ *             .deletionPolicy("ABANDON")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secret Version Deletion Policy Disable
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -143,31 +148,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret-version&#34;)
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *             .secretId("secret-version")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
  *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
- *                         .location(&#34;us-central1&#34;)
+ *                         .location("us-central1")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var secret_version_deletion_policy = new SecretVersion(&#34;secret-version-deletion-policy&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_deletion_policy = new SecretVersion("secret-version-deletion-policy", SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
- *             .secretData(&#34;secret-data&#34;)
- *             .deletionPolicy(&#34;DISABLE&#34;)
+ *             .secretData("secret-data")
+ *             .deletionPolicy("DISABLE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secret Version With Base64 String Secret Data
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -192,28 +199,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret-version&#34;)
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *             .secretId("secret-version")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
  *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
- *                         .location(&#34;us-central1&#34;)
+ *                         .location("us-central1")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var secret_version_base64 = new SecretVersion(&#34;secret-version-base64&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_base64 = new SecretVersion("secret-version-base64", SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
  *             .isSecretDataBase64(true)
  *             .secretData(StdFunctions.filebase64(Filebase64Args.builder()
- *                 .input(&#34;secret-data.pfx&#34;)
+ *                 .input("secret-data.pfx")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

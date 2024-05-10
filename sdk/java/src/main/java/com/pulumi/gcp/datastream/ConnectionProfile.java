@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Datastream Connection Profile Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,24 +60,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ConnectionProfile(&#34;default&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;my-profile&#34;)
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()        
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("my-profile")
  *             .gcsProfile(ConnectionProfileGcsProfileArgs.builder()
- *                 .bucket(&#34;my-bucket&#34;)
- *                 .rootPath(&#34;/path&#34;)
+ *                 .bucket("my-bucket")
+ *                 .rootPath("/path")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Connection Profile Postgresql Private Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -114,69 +117,69 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .build());
  * 
- *         var privateConnection = new PrivateConnection(&#34;privateConnection&#34;, PrivateConnectionArgs.builder()        
- *             .displayName(&#34;Connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .privateConnectionId(&#34;my-connection&#34;)
- *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *         var privateConnection = new PrivateConnection("privateConnection", PrivateConnectionArgs.builder()        
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .privateConnectionId("my-connection")
+ *             .labels(Map.of("key", "value"))
  *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
  *                 .vpc(default_.id())
- *                 .subnet(&#34;10.0.0.0/29&#34;)
+ *                 .subnet("10.0.0.0/29")
  *                 .build())
  *             .build());
  * 
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .databaseVersion(&#34;POSTGRES_14&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .databaseVersion("POSTGRES_14")
+ *             .region("us-central1")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
  *                     .authorizedNetworks(                    
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.71.242.81&#34;)
+ *                             .value("34.71.242.81")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.28.29&#34;)
+ *                             .value("34.72.28.29")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.6.157&#34;)
+ *                             .value("34.67.6.157")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.234.134&#34;)
+ *                             .value("34.67.234.134")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.239.218&#34;)
+ *                             .value("34.72.239.218")
  *                             .build())
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()        
  *             .instance(instance.name())
- *             .name(&#34;db&#34;)
+ *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;user&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("user")
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
  * 
- *         var defaultConnectionProfile = new ConnectionProfile(&#34;defaultConnectionProfile&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;my-profile&#34;)
+ *         var defaultConnectionProfile = new ConnectionProfile("defaultConnectionProfile", ConnectionProfileArgs.builder()        
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("my-profile")
  *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
  *                 .hostname(instance.publicIpAddress())
  *                 .username(user.name())
@@ -190,12 +193,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Connection Profile Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -218,31 +223,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ConnectionProfile(&#34;default&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;my-profile&#34;)
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()        
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("my-profile")
  *             .gcsProfile(ConnectionProfileGcsProfileArgs.builder()
- *                 .bucket(&#34;my-bucket&#34;)
- *                 .rootPath(&#34;/path&#34;)
+ *                 .bucket("my-bucket")
+ *                 .rootPath("/path")
  *                 .build())
  *             .forwardSshConnectivity(ConnectionProfileForwardSshConnectivityArgs.builder()
- *                 .hostname(&#34;google.com&#34;)
- *                 .username(&#34;my-user&#34;)
+ *                 .hostname("google.com")
+ *                 .username("my-user")
  *                 .port(8022)
- *                 .password(&#34;swordfish&#34;)
+ *                 .password("swordfish")
  *                 .build())
- *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *             .labels(Map.of("key", "value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Connection Profile Postgres
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -274,54 +281,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .databaseVersion(&#34;POSTGRES_14&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .databaseVersion("POSTGRES_14")
+ *             .region("us-central1")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
  *                     .authorizedNetworks(                    
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.71.242.81&#34;)
+ *                             .value("34.71.242.81")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.28.29&#34;)
+ *                             .value("34.72.28.29")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.6.157&#34;)
+ *                             .value("34.67.6.157")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.234.134&#34;)
+ *                             .value("34.67.234.134")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.239.218&#34;)
+ *                             .value("34.72.239.218")
  *                             .build())
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()        
  *             .instance(instance.name())
- *             .name(&#34;db&#34;)
+ *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;user&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("user")
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
  * 
- *         var default_ = new ConnectionProfile(&#34;default&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;my-profile&#34;)
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()        
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("my-profile")
  *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
  *                 .hostname(instance.publicIpAddress())
  *                 .username(user.name())
@@ -332,7 +339,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

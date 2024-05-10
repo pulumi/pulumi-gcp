@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Interconnect Attachment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,35 +54,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarNetwork = new Network(&#34;foobarNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-1&#34;)
+ *         var foobarNetwork = new Network("foobarNetwork", NetworkArgs.builder()        
+ *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var foobar = new Router(&#34;foobar&#34;, RouterArgs.builder()        
- *             .name(&#34;router-1&#34;)
+ *         var foobar = new Router("foobar", RouterArgs.builder()        
+ *             .name("router-1")
  *             .network(foobarNetwork.name())
  *             .bgp(RouterBgpArgs.builder()
  *                 .asn(16550)
  *                 .build())
  *             .build());
  * 
- *         var onPrem = new InterconnectAttachment(&#34;onPrem&#34;, InterconnectAttachmentArgs.builder()        
- *             .name(&#34;on-prem-attachment&#34;)
- *             .edgeAvailabilityDomain(&#34;AVAILABILITY_DOMAIN_1&#34;)
- *             .type(&#34;PARTNER&#34;)
+ *         var onPrem = new InterconnectAttachment("onPrem", InterconnectAttachmentArgs.builder()        
+ *             .name("on-prem-attachment")
+ *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
+ *             .type("PARTNER")
  *             .router(foobar.id())
  *             .mtu(1500)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Compute Interconnect Attachment Ipsec Encryption
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -109,22 +112,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;test-network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var address = new Address(&#34;address&#34;, AddressArgs.builder()        
- *             .name(&#34;test-address&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;IPSEC_INTERCONNECT&#34;)
- *             .address(&#34;192.168.1.0&#34;)
+ *         var address = new Address("address", AddressArgs.builder()        
+ *             .name("test-address")
+ *             .addressType("INTERNAL")
+ *             .purpose("IPSEC_INTERCONNECT")
+ *             .address("192.168.1.0")
  *             .prefixLength(29)
  *             .network(network.selfLink())
  *             .build());
  * 
- *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
- *             .name(&#34;test-router&#34;)
+ *         var router = new Router("router", RouterArgs.builder()        
+ *             .name("test-router")
  *             .network(network.name())
  *             .encryptedInterconnectRouter(true)
  *             .bgp(RouterBgpArgs.builder()
@@ -132,18 +135,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var ipsec_encrypted_interconnect_attachment = new InterconnectAttachment(&#34;ipsec-encrypted-interconnect-attachment&#34;, InterconnectAttachmentArgs.builder()        
- *             .name(&#34;test-interconnect-attachment&#34;)
- *             .edgeAvailabilityDomain(&#34;AVAILABILITY_DOMAIN_1&#34;)
- *             .type(&#34;PARTNER&#34;)
+ *         var ipsec_encrypted_interconnect_attachment = new InterconnectAttachment("ipsec-encrypted-interconnect-attachment", InterconnectAttachmentArgs.builder()        
+ *             .name("test-interconnect-attachment")
+ *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
+ *             .type("PARTNER")
  *             .router(router.id())
- *             .encryption(&#34;IPSEC&#34;)
+ *             .encryption("IPSEC")
  *             .ipsecInternalAddresses(address.selfLink())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

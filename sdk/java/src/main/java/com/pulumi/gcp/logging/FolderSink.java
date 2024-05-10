@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,33 +55,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var log_bucket = new Bucket(&#34;log-bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;folder-logging-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var log_bucket = new Bucket("log-bucket", BucketArgs.builder()        
+ *             .name("folder-logging-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var my_folder = new Folder(&#34;my-folder&#34;, FolderArgs.builder()        
- *             .displayName(&#34;My folder&#34;)
- *             .parent(&#34;organizations/123456&#34;)
+ *         var my_folder = new Folder("my-folder", FolderArgs.builder()        
+ *             .displayName("My folder")
+ *             .parent("organizations/123456")
  *             .build());
  * 
- *         var my_sink = new FolderSink(&#34;my-sink&#34;, FolderSinkArgs.builder()        
- *             .name(&#34;my-sink&#34;)
- *             .description(&#34;some explanation on what this is&#34;)
+ *         var my_sink = new FolderSink("my-sink", FolderSinkArgs.builder()        
+ *             .name("my-sink")
+ *             .description("some explanation on what this is")
  *             .folder(my_folder.name())
- *             .destination(log_bucket.name().applyValue(name -&gt; String.format(&#34;storage.googleapis.com/%s&#34;, name)))
- *             .filter(&#34;resource.type = gce_instance AND severity &gt;= WARNING&#34;)
+ *             .destination(log_bucket.name().applyValue(name -> String.format("storage.googleapis.com/%s", name)))
+ *             .filter("resource.type = gce_instance AND severity >= WARNING")
  *             .build());
  * 
- *         var log_writer = new IAMBinding(&#34;log-writer&#34;, IAMBindingArgs.builder()        
- *             .project(&#34;your-project-id&#34;)
- *             .role(&#34;roles/storage.objectCreator&#34;)
+ *         var log_writer = new IAMBinding("log-writer", IAMBindingArgs.builder()        
+ *             .project("your-project-id")
+ *             .role("roles/storage.objectCreator")
  *             .members(my_sink.writerIdentity())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Region Security Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,20 +45,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var region_sec_policy_basic = new RegionSecurityPolicy(&#34;region-sec-policy-basic&#34;, RegionSecurityPolicyArgs.builder()        
- *             .name(&#34;my-sec-policy-basic&#34;)
- *             .description(&#34;basic region security policy&#34;)
- *             .type(&#34;CLOUD_ARMOR&#34;)
+ *         var region_sec_policy_basic = new RegionSecurityPolicy("region-sec-policy-basic", RegionSecurityPolicyArgs.builder()        
+ *             .name("my-sec-policy-basic")
+ *             .description("basic region security policy")
+ *             .type("CLOUD_ARMOR")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Security Policy With Ddos Protection Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -79,23 +82,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var region_sec_policy_ddos_protection = new RegionSecurityPolicy(&#34;region-sec-policy-ddos-protection&#34;, RegionSecurityPolicyArgs.builder()        
- *             .name(&#34;my-sec-policy-ddos-protection&#34;)
- *             .description(&#34;with ddos protection config&#34;)
- *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
+ *         var region_sec_policy_ddos_protection = new RegionSecurityPolicy("region-sec-policy-ddos-protection", RegionSecurityPolicyArgs.builder()        
+ *             .name("my-sec-policy-ddos-protection")
+ *             .description("with ddos protection config")
+ *             .type("CLOUD_ARMOR_NETWORK")
  *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
- *                 .ddosProtection(&#34;ADVANCED_PREVIEW&#34;)
+ *                 .ddosProtection("ADVANCED_PREVIEW")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Security Policy With User Defined Fields
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -117,30 +122,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var region_sec_policy_user_defined_fields = new RegionSecurityPolicy(&#34;region-sec-policy-user-defined-fields&#34;, RegionSecurityPolicyArgs.builder()        
- *             .name(&#34;my-sec-policy-user-defined-fields&#34;)
- *             .description(&#34;with user defined fields&#34;)
- *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
+ *         var region_sec_policy_user_defined_fields = new RegionSecurityPolicy("region-sec-policy-user-defined-fields", RegionSecurityPolicyArgs.builder()        
+ *             .name("my-sec-policy-user-defined-fields")
+ *             .description("with user defined fields")
+ *             .type("CLOUD_ARMOR_NETWORK")
  *             .userDefinedFields(            
  *                 RegionSecurityPolicyUserDefinedFieldArgs.builder()
- *                     .name(&#34;SIG1_AT_0&#34;)
- *                     .base(&#34;UDP&#34;)
+ *                     .name("SIG1_AT_0")
+ *                     .base("UDP")
  *                     .offset(8)
  *                     .size(2)
- *                     .mask(&#34;0x8F00&#34;)
+ *                     .mask("0x8F00")
  *                     .build(),
  *                 RegionSecurityPolicyUserDefinedFieldArgs.builder()
- *                     .name(&#34;SIG2_AT_8&#34;)
- *                     .base(&#34;UDP&#34;)
+ *                     .name("SIG2_AT_8")
+ *                     .base("UDP")
  *                     .offset(16)
  *                     .size(4)
- *                     .mask(&#34;0xFFFFFFFF&#34;)
+ *                     .mask("0xFFFFFFFF")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

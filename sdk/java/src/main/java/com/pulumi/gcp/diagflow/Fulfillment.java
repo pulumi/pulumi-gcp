@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Dialogflow Fulfillment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,26 +57,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicAgent = new Agent(&#34;basicAgent&#34;, AgentArgs.builder()        
- *             .displayName(&#34;example_agent&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
+ *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()        
+ *             .displayName("example_agent")
+ *             .defaultLanguageCode("en")
+ *             .timeZone("America/New_York")
  *             .build());
  * 
- *         var basicFulfillment = new Fulfillment(&#34;basicFulfillment&#34;, FulfillmentArgs.builder()        
- *             .displayName(&#34;basic-fulfillment&#34;)
+ *         var basicFulfillment = new Fulfillment("basicFulfillment", FulfillmentArgs.builder()        
+ *             .displayName("basic-fulfillment")
  *             .enabled(true)
  *             .genericWebService(FulfillmentGenericWebServiceArgs.builder()
- *                 .uri(&#34;https://google.com&#34;)
- *                 .username(&#34;admin&#34;)
- *                 .password(&#34;password&#34;)
- *                 .requestHeaders(Map.of(&#34;name&#34;, &#34;wrench&#34;))
+ *                 .uri("https://google.com")
+ *                 .username("admin")
+ *                 .password("password")
+ *                 .requestHeaders(Map.of("name", "wrench"))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

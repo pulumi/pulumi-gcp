@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Pubsub Schema Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,35 +51,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Schema(&#34;example&#34;, SchemaArgs.builder()        
- *             .name(&#34;example-schema&#34;)
- *             .type(&#34;AVRO&#34;)
- *             .definition(&#34;&#34;&#34;
+ *         var example = new Schema("example", SchemaArgs.builder()        
+ *             .name("example-schema")
+ *             .type("AVRO")
+ *             .definition("""
  * {
- *   &#34;type&#34; : &#34;record&#34;,
- *   &#34;name&#34; : &#34;Avro&#34;,
- *   &#34;fields&#34; : [
+ *   "type" : "record",
+ *   "name" : "Avro",
+ *   "fields" : [
  *     {
- *       &#34;name&#34; : &#34;StringField&#34;,
- *       &#34;type&#34; : &#34;string&#34;
+ *       "name" : "StringField",
+ *       "type" : "string"
  *     },
  *     {
- *       &#34;name&#34; : &#34;IntField&#34;,
- *       &#34;type&#34; : &#34;int&#34;
+ *       "name" : "IntField",
+ *       "type" : "int"
  *     }
  *   ]
  * }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Schema Protobuf
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,30 +105,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Schema(&#34;example&#34;, SchemaArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .type(&#34;PROTOCOL_BUFFER&#34;)
- *             .definition(&#34;&#34;&#34;
- * syntax = &#34;proto3&#34;;
+ *         var example = new Schema("example", SchemaArgs.builder()        
+ *             .name("example")
+ *             .type("PROTOCOL_BUFFER")
+ *             .definition("""
+ * syntax = "proto3";
  * message Results {
  * string message_request = 1;
  * string message_response = 2;
  * string timestamp_request = 3;
  * string timestamp_response = 4;
- * }            &#34;&#34;&#34;)
+ * }            """)
  *             .build());
  * 
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .schemaSettings(TopicSchemaSettingsArgs.builder()
- *                 .schema(&#34;projects/my-project-name/schemas/example&#34;)
- *                 .encoding(&#34;JSON&#34;)
+ *                 .schema("projects/my-project-name/schemas/example")
+ *                 .encoding("JSON")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

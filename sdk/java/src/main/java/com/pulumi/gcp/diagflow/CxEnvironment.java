@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Dialogflowcx Environment Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,17 +60,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent(&#34;agent&#34;, CxAgentArgs.builder()        
- *             .displayName(&#34;dialogflowcx-agent&#34;)
- *             .location(&#34;global&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            
- *                 &#34;fr&#34;,
- *                 &#34;de&#34;,
- *                 &#34;es&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .description(&#34;Example description.&#34;)
- *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *                 "fr",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
  *             .enableStackdriverLogging(true)
  *             .enableSpellCorrection(true)
  *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
@@ -77,16 +78,16 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var version1 = new CxVersion(&#34;version1&#34;, CxVersionArgs.builder()        
+ *         var version1 = new CxVersion("version1", CxVersionArgs.builder()        
  *             .parent(agent.startFlow())
- *             .displayName(&#34;1.0.0&#34;)
- *             .description(&#34;version 1.0.0&#34;)
+ *             .displayName("1.0.0")
+ *             .description("version 1.0.0")
  *             .build());
  * 
- *         var development = new CxEnvironment(&#34;development&#34;, CxEnvironmentArgs.builder()        
+ *         var development = new CxEnvironment("development", CxEnvironmentArgs.builder()        
  *             .parent(agent.id())
- *             .displayName(&#34;Development&#34;)
- *             .description(&#34;Development Environment&#34;)
+ *             .displayName("Development")
+ *             .description("Development Environment")
  *             .versionConfigs(CxEnvironmentVersionConfigArgs.builder()
  *                 .version(version1.id())
  *                 .build())
@@ -94,7 +95,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

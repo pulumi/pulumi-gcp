@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Kms Ekm Connection Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,22 +56,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_ekmconnection = new EkmConnection(&#34;example-ekmconnection&#34;, EkmConnectionArgs.builder()        
- *             .name(&#34;ekmconnection_example&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .keyManagementMode(&#34;MANUAL&#34;)
+ *         var example_ekmconnection = new EkmConnection("example-ekmconnection", EkmConnectionArgs.builder()        
+ *             .name("ekmconnection_example")
+ *             .location("us-central1")
+ *             .keyManagementMode("MANUAL")
  *             .serviceResolvers(EkmConnectionServiceResolverArgs.builder()
- *                 .serviceDirectoryService(&#34;projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name&#34;)
- *                 .hostname(&#34;example-ekm.goog&#34;)
+ *                 .serviceDirectoryService("projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name")
+ *                 .hostname("example-ekm.goog")
  *                 .serverCertificates(EkmConnectionServiceResolverServerCertificateArgs.builder()
- *                     .rawDer(&#34;==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==&#34;)
+ *                     .rawDer("==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

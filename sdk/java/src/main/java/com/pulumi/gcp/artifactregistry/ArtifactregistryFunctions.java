@@ -25,7 +25,8 @@ public final class ArtifactregistryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -47,13 +48,14 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-repo = ArtifactregistryFunctions.getRepository(GetRepositoryArgs.builder()
-     *             .location(&#34;us-central1&#34;)
-     *             .repositoryId(&#34;my-repository&#34;)
+     *             .location("us-central1")
+     *             .repositoryId("my-repository")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -68,7 +70,8 @@ public final class ArtifactregistryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -90,13 +93,14 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-repo = ArtifactregistryFunctions.getRepository(GetRepositoryArgs.builder()
-     *             .location(&#34;us-central1&#34;)
-     *             .repositoryId(&#34;my-repository&#34;)
+     *             .location("us-central1")
+     *             .repositoryId("my-repository")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -111,7 +115,8 @@ public final class ArtifactregistryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -133,13 +138,14 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-repo = ArtifactregistryFunctions.getRepository(GetRepositoryArgs.builder()
-     *             .location(&#34;us-central1&#34;)
-     *             .repositoryId(&#34;my-repository&#34;)
+     *             .location("us-central1")
+     *             .repositoryId("my-repository")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -154,7 +160,8 @@ public final class ArtifactregistryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -176,13 +183,14 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-repo = ArtifactregistryFunctions.getRepository(GetRepositoryArgs.builder()
-     *             .location(&#34;us-central1&#34;)
-     *             .repositoryId(&#34;my-repository&#34;)
+     *             .location("us-central1")
+     *             .repositoryId("my-repository")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -195,7 +203,8 @@ public final class ArtifactregistryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -224,7 +233,8 @@ public final class ArtifactregistryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -237,7 +247,8 @@ public final class ArtifactregistryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -266,7 +277,8 @@ public final class ArtifactregistryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -279,7 +291,8 @@ public final class ArtifactregistryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -308,7 +321,8 @@ public final class ArtifactregistryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -321,7 +335,8 @@ public final class ArtifactregistryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -350,7 +365,8 @@ public final class ArtifactregistryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

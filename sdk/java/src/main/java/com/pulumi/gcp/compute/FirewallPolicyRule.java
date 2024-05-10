@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * 
  * ### Basic_fir_sec_rule
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,58 +54,59 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup(&#34;basicGlobalNetworksecurityAddressGroup&#34;, AddressGroupArgs.builder()        
- *             .name(&#34;policy&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .description(&#34;Sample global networksecurity_address_group&#34;)
- *             .location(&#34;global&#34;)
- *             .items(&#34;208.80.154.224/32&#34;)
- *             .type(&#34;IPV4&#34;)
+ *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()        
+ *             .name("policy")
+ *             .parent("organizations/123456789")
+ *             .description("Sample global networksecurity_address_group")
+ *             .location("global")
+ *             .items("208.80.154.224/32")
+ *             .type("IPV4")
  *             .capacity(100)
  *             .build());
  * 
- *         var folder = new Folder(&#34;folder&#34;, FolderArgs.builder()        
- *             .displayName(&#34;policy&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
+ *         var folder = new Folder("folder", FolderArgs.builder()        
+ *             .displayName("policy")
+ *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var default_ = new FirewallPolicy(&#34;default&#34;, FirewallPolicyArgs.builder()        
+ *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()        
  *             .parent(folder.id())
- *             .shortName(&#34;policy&#34;)
- *             .description(&#34;Resource created for Terraform acceptance testing&#34;)
+ *             .shortName("policy")
+ *             .description("Resource created for Terraform acceptance testing")
  *             .build());
  * 
- *         var primary = new FirewallPolicyRule(&#34;primary&#34;, FirewallPolicyRuleArgs.builder()        
+ *         var primary = new FirewallPolicyRule("primary", FirewallPolicyRuleArgs.builder()        
  *             .firewallPolicy(default_.name())
- *             .description(&#34;Resource created for Terraform acceptance testing&#34;)
+ *             .description("Resource created for Terraform acceptance testing")
  *             .priority(9000)
  *             .enableLogging(true)
- *             .action(&#34;allow&#34;)
- *             .direction(&#34;EGRESS&#34;)
+ *             .action("allow")
+ *             .direction("EGRESS")
  *             .disabled(false)
  *             .match(FirewallPolicyRuleMatchArgs.builder()
  *                 .layer4Configs(                
  *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
- *                         .ipProtocol(&#34;tcp&#34;)
+ *                         .ipProtocol("tcp")
  *                         .ports(8080)
  *                         .build(),
  *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
- *                         .ipProtocol(&#34;udp&#34;)
+ *                         .ipProtocol("udp")
  *                         .ports(22)
  *                         .build())
- *                 .destIpRanges(&#34;11.100.0.1/32&#34;)
+ *                 .destIpRanges("11.100.0.1/32")
  *                 .destFqdns()
- *                 .destRegionCodes(&#34;US&#34;)
- *                 .destThreatIntelligences(&#34;iplist-known-malicious-ips&#34;)
+ *                 .destRegionCodes("US")
+ *                 .destThreatIntelligences("iplist-known-malicious-ips")
  *                 .srcAddressGroups()
  *                 .destAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
  *                 .build())
- *             .targetServiceAccounts(&#34;my@service-account.com&#34;)
+ *             .targetServiceAccounts("my{@literal @}service-account.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

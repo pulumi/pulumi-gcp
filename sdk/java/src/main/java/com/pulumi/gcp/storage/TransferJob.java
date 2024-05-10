@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -79,36 +80,36 @@ import javax.annotation.Nullable;
  *             .project(project)
  *             .build());
  * 
- *         var s3_backup_bucket = new Bucket(&#34;s3-backup-bucket&#34;, BucketArgs.builder()        
- *             .name(String.format(&#34;%s-backup&#34;, awsS3Bucket))
- *             .storageClass(&#34;NEARLINE&#34;)
+ *         var s3_backup_bucket = new Bucket("s3-backup-bucket", BucketArgs.builder()        
+ *             .name(String.format("%s-backup", awsS3Bucket))
+ *             .storageClass("NEARLINE")
  *             .project(project)
- *             .location(&#34;US&#34;)
+ *             .location("US")
  *             .build());
  * 
- *         var s3_backup_bucketBucketIAMMember = new BucketIAMMember(&#34;s3-backup-bucketBucketIAMMember&#34;, BucketIAMMemberArgs.builder()        
+ *         var s3_backup_bucketBucketIAMMember = new BucketIAMMember("s3-backup-bucketBucketIAMMember", BucketIAMMemberArgs.builder()        
  *             .bucket(s3_backup_bucket.name())
- *             .role(&#34;roles/storage.admin&#34;)
- *             .member(String.format(&#34;serviceAccount:%s&#34;, default_.email()))
+ *             .role("roles/storage.admin")
+ *             .member(String.format("serviceAccount:%s", default_.email()))
  *             .build());
  * 
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()        
  *             .name(pubsubTopicName)
  *             .build());
  * 
- *         var notificationConfig = new TopicIAMMember(&#34;notificationConfig&#34;, TopicIAMMemberArgs.builder()        
+ *         var notificationConfig = new TopicIAMMember("notificationConfig", TopicIAMMemberArgs.builder()        
  *             .topic(topic.id())
- *             .role(&#34;roles/pubsub.publisher&#34;)
- *             .member(String.format(&#34;serviceAccount:%s&#34;, default_.email()))
+ *             .role("roles/pubsub.publisher")
+ *             .member(String.format("serviceAccount:%s", default_.email()))
  *             .build());
  * 
- *         var s3_bucket_nightly_backup = new TransferJob(&#34;s3-bucket-nightly-backup&#34;, TransferJobArgs.builder()        
- *             .description(&#34;Nightly backup of S3 bucket&#34;)
+ *         var s3_bucket_nightly_backup = new TransferJob("s3-bucket-nightly-backup", TransferJobArgs.builder()        
+ *             .description("Nightly backup of S3 bucket")
  *             .project(project)
  *             .transferSpec(TransferJobTransferSpecArgs.builder()
  *                 .objectConditions(TransferJobTransferSpecObjectConditionsArgs.builder()
- *                     .maxTimeElapsedSinceLastModification(&#34;600s&#34;)
- *                     .excludePrefixes(&#34;requests.gz&#34;)
+ *                     .maxTimeElapsedSinceLastModification("600s")
+ *                     .excludePrefixes("requests.gz")
  *                     .build())
  *                 .transferOptions(TransferJobTransferSpecTransferOptionsArgs.builder()
  *                     .deleteObjectsUniqueInSink(false)
@@ -122,7 +123,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .gcsDataSink(TransferJobTransferSpecGcsDataSinkArgs.builder()
  *                     .bucketName(s3_backup_bucket.name())
- *                     .path(&#34;foo/bar/&#34;)
+ *                     .path("foo/bar/")
  *                     .build())
  *                 .build())
  *             .schedule(TransferJobScheduleArgs.builder()
@@ -142,20 +143,21 @@ import javax.annotation.Nullable;
  *                     .seconds(0)
  *                     .nanos(0)
  *                     .build())
- *                 .repeatInterval(&#34;604800s&#34;)
+ *                 .repeatInterval("604800s")
  *                 .build())
  *             .notificationConfig(TransferJobNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .eventTypes(                
- *                     &#34;TRANSFER_OPERATION_SUCCESS&#34;,
- *                     &#34;TRANSFER_OPERATION_FAILED&#34;)
- *                 .payloadFormat(&#34;JSON&#34;)
+ *                     "TRANSFER_OPERATION_SUCCESS",
+ *                     "TRANSFER_OPERATION_FAILED")
+ *                 .payloadFormat("JSON")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

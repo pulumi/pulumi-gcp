@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ### Firebasehosting Version Redirect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,36 +48,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-id&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .redirects(HostingVersionConfigRedirectArgs.builder()
- *                     .glob(&#34;/google/**&#34;)
+ *                     .glob("/google/**")
  *                     .statusCode(302)
- *                     .location(&#34;https://www.google.com&#34;)
+ *                     .location("https://www.google.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
- *             .message(&#34;Redirect to Google&#34;)
+ *             .message("Redirect to Google")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Version Path
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,35 +105,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-id&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
- *                     .glob(&#34;**&#34;)
- *                     .path(&#34;/index.html&#34;)
+ *                     .glob("**")
+ *                     .path("/index.html")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
- *             .message(&#34;Path Rewrite&#34;)
+ *             .message("Path Rewrite")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Version Cloud Run
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -159,28 +164,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-id&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;cloud-run-service-via-hosting&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("cloud-run-service-via-hosting")
+ *             .location("us-central1")
+ *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
- *                     .glob(&#34;/hello/**&#34;)
+ *                     .glob("/hello/**")
  *                     .run(HostingVersionConfigRewriteRunArgs.builder()
  *                         .serviceId(defaultService.name())
  *                         .region(defaultService.location())
@@ -189,20 +194,22 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
- *             .message(&#34;Cloud Run Integration&#34;)
+ *             .message("Cloud Run Integration")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Version Cloud Functions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -235,55 +242,56 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-id&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-id")
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;site-id-function-source&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("site-id-function-source")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;function-source.zip&#34;)
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *             .name("function-source.zip")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;function-source.zip&#34;))
+ *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;cloud-function-via-hosting&#34;)
- *             .description(&#34;A Cloud Function connected to Firebase Hosing&#34;)
- *             .runtime(&#34;nodejs16&#34;)
+ *         var function = new Function("function", FunctionArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("cloud-function-via-hosting")
+ *             .description("A Cloud Function connected to Firebase Hosing")
+ *             .runtime("nodejs16")
  *             .availableMemoryMb(128)
  *             .sourceArchiveBucket(bucket.name())
  *             .sourceArchiveObject(object.name())
  *             .triggerHttp(true)
- *             .entryPoint(&#34;helloHttp&#34;)
+ *             .entryPoint("helloHttp")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
- *                     .glob(&#34;/hello/**&#34;)
+ *                     .glob("/hello/**")
  *                     .function(function.name())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
- *             .message(&#34;Cloud Functions Integration&#34;)
+ *             .message("Cloud Functions Integration")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

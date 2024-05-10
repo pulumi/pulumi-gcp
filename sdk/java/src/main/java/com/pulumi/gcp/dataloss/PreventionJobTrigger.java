@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Dlp Job Trigger Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,23 +59,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionJobTrigger(&#34;basic&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var basic = new PreventionJobTrigger("basic", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .inspectTemplateName("fake")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
  *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
  *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
- *                                 .projectId(&#34;project&#34;)
- *                                 .datasetId(&#34;dataset&#34;)
+ *                                 .projectId("project")
+ *                                 .datasetId("dataset")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -82,7 +83,7 @@ import javax.annotation.Nullable;
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
  *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
- *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .url("gs://mybucket/directory/")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -91,12 +92,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger Bigquery Row Limit
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -123,23 +126,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigqueryRowLimit = new PreventionJobTrigger(&#34;bigqueryRowLimit&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var bigqueryRowLimit = new PreventionJobTrigger("bigqueryRowLimit", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .inspectTemplateName("fake")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
  *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
  *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
- *                                 .projectId(&#34;project&#34;)
- *                                 .datasetId(&#34;dataset&#34;)
+ *                                 .projectId("project")
+ *                                 .datasetId("dataset")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -147,12 +150,12 @@ import javax.annotation.Nullable;
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .bigQueryOptions(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs.builder()
  *                         .tableReference(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs.builder()
- *                             .projectId(&#34;project&#34;)
- *                             .datasetId(&#34;dataset&#34;)
- *                             .tableId(&#34;table_to_scan&#34;)
+ *                             .projectId("project")
+ *                             .datasetId("dataset")
+ *                             .tableId("table_to_scan")
  *                             .build())
  *                         .rowsLimit(1000)
- *                         .sampleMethod(&#34;RANDOM_START&#34;)
+ *                         .sampleMethod("RANDOM_START")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -160,12 +163,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger Bigquery Row Limit Percentage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -192,23 +197,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigqueryRowLimitPercentage = new PreventionJobTrigger(&#34;bigqueryRowLimitPercentage&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var bigqueryRowLimitPercentage = new PreventionJobTrigger("bigqueryRowLimitPercentage", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .inspectTemplateName("fake")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
  *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
  *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
- *                                 .projectId(&#34;project&#34;)
- *                                 .datasetId(&#34;dataset&#34;)
+ *                                 .projectId("project")
+ *                                 .datasetId("dataset")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -216,12 +221,12 @@ import javax.annotation.Nullable;
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .bigQueryOptions(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs.builder()
  *                         .tableReference(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs.builder()
- *                             .projectId(&#34;project&#34;)
- *                             .datasetId(&#34;dataset&#34;)
- *                             .tableId(&#34;table_to_scan&#34;)
+ *                             .projectId("project")
+ *                             .datasetId("dataset")
+ *                             .tableId("table_to_scan")
  *                             .build())
  *                         .rowsLimitPercent(50)
- *                         .sampleMethod(&#34;RANDOM_START&#34;)
+ *                         .sampleMethod("RANDOM_START")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -229,12 +234,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger Job Notification Emails
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -261,24 +268,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jobNotificationEmails = new PreventionJobTrigger(&#34;jobNotificationEmails&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description for the job_trigger created by terraform&#34;)
- *             .displayName(&#34;TerraformDisplayName&#34;)
+ *         var jobNotificationEmails = new PreventionJobTrigger("jobNotificationEmails", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description for the job_trigger created by terraform")
+ *             .displayName("TerraformDisplayName")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;sample-inspect-template&#34;)
+ *                 .inspectTemplateName("sample-inspect-template")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .jobNotificationEmails()
  *                     .build())
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
  *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
- *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .url("gs://mybucket/directory/")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -287,12 +294,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger Deidentify
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -324,76 +333,76 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Dataset(&#34;default&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;tf_test&#34;)
- *             .friendlyName(&#34;terraform-test&#34;)
- *             .description(&#34;Description for the dataset created by terraform&#34;)
- *             .location(&#34;US&#34;)
+ *         var default_ = new Dataset("default", DatasetArgs.builder()        
+ *             .datasetId("tf_test")
+ *             .friendlyName("terraform-test")
+ *             .description("Description for the dataset created by terraform")
+ *             .location("US")
  *             .defaultTableExpirationMs(3600000)
- *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
+ *             .labels(Map.of("env", "default"))
  *             .build());
  * 
- *         var defaultTable = new Table(&#34;defaultTable&#34;, TableArgs.builder()        
+ *         var defaultTable = new Table("defaultTable", TableArgs.builder()        
  *             .datasetId(default_.datasetId())
- *             .tableId(&#34;tf_test&#34;)
+ *             .tableId("tf_test")
  *             .deletionProtection(false)
  *             .timePartitioning(TableTimePartitioningArgs.builder()
- *                 .type(&#34;DAY&#34;)
+ *                 .type("DAY")
  *                 .build())
- *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
- *             .schema(&#34;&#34;&#34;
+ *             .labels(Map.of("env", "default"))
+ *             .schema("""
  *     [
  *     {
- *       &#34;name&#34;: &#34;quantity&#34;,
- *       &#34;type&#34;: &#34;NUMERIC&#34;,
- *       &#34;mode&#34;: &#34;NULLABLE&#34;,
- *       &#34;description&#34;: &#34;The quantity&#34;
+ *       "name": "quantity",
+ *       "type": "NUMERIC",
+ *       "mode": "NULLABLE",
+ *       "description": "The quantity"
  *     },
  *     {
- *       &#34;name&#34;: &#34;name&#34;,
- *       &#34;type&#34;: &#34;STRING&#34;,
- *       &#34;mode&#34;: &#34;NULLABLE&#34;,
- *       &#34;description&#34;: &#34;Name of the object&#34;
+ *       "name": "name",
+ *       "type": "STRING",
+ *       "mode": "NULLABLE",
+ *       "description": "Name of the object"
  *     }
  *     ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var deidentify = new PreventionJobTrigger(&#34;deidentify&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description for the job_trigger created by terraform&#34;)
- *             .displayName(&#34;TerraformDisplayName&#34;)
+ *         var deidentify = new PreventionJobTrigger("deidentify", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description for the job_trigger created by terraform")
+ *             .displayName("TerraformDisplayName")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;sample-inspect-template&#34;)
+ *                 .inspectTemplateName("sample-inspect-template")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .deidentify(PreventionJobTriggerInspectJobActionDeidentifyArgs.builder()
- *                         .cloudStorageOutput(&#34;gs://samplebucket/dir/&#34;)
+ *                         .cloudStorageOutput("gs://samplebucket/dir/")
  *                         .fileTypesToTransforms(                        
- *                             &#34;CSV&#34;,
- *                             &#34;TSV&#34;)
+ *                             "CSV",
+ *                             "TSV")
  *                         .transformationDetailsStorageConfig(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs.builder()
  *                             .table(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs.builder()
- *                                 .projectId(&#34;my-project-name&#34;)
+ *                                 .projectId("my-project-name")
  *                                 .datasetId(default_.datasetId())
  *                                 .tableId(defaultTable.tableId())
  *                                 .build())
  *                             .build())
  *                         .transformationConfig(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs.builder()
- *                             .deidentifyTemplate(&#34;sample-deidentify-template&#34;)
- *                             .imageRedactTemplate(&#34;sample-image-redact-template&#34;)
- *                             .structuredDeidentifyTemplate(&#34;sample-structured-deidentify-template&#34;)
+ *                             .deidentifyTemplate("sample-deidentify-template")
+ *                             .imageRedactTemplate("sample-image-redact-template")
+ *                             .structuredDeidentifyTemplate("sample-structured-deidentify-template")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
  *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
- *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .url("gs://mybucket/directory/")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -402,12 +411,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger Hybrid
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -434,31 +445,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hybridTrigger = new PreventionJobTrigger(&#34;hybridTrigger&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
+ *         var hybridTrigger = new PreventionJobTrigger("hybridTrigger", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .manual()
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .inspectTemplateName("fake")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
  *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
  *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
- *                                 .projectId(&#34;project&#34;)
- *                                 .datasetId(&#34;dataset&#34;)
+ *                                 .projectId("project")
+ *                                 .datasetId("dataset")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .hybridOptions(PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs.builder()
- *                         .description(&#34;Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings&#34;)
- *                         .requiredFindingLabelKeys(&#34;appointment-bookings-comments&#34;)
- *                         .labels(Map.of(&#34;env&#34;, &#34;prod&#34;))
+ *                         .description("Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings")
+ *                         .requiredFindingLabelKeys("appointment-bookings-comments")
+ *                         .labels(Map.of("env", "prod"))
  *                         .tableOptions(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs.builder()
  *                             .identifyingFields(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs.builder()
- *                                 .name(&#34;booking_id&#34;)
+ *                                 .name("booking_id")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -468,12 +479,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger Inspect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -502,23 +515,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var inspect = new PreventionJobTrigger(&#34;inspect&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var inspect = new PreventionJobTrigger("inspect", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .inspectTemplateName("fake")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
  *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
  *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
- *                                 .projectId(&#34;project&#34;)
- *                                 .datasetId(&#34;dataset&#34;)
+ *                                 .projectId("project")
+ *                                 .datasetId("dataset")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -526,52 +539,52 @@ import javax.annotation.Nullable;
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
  *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
- *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .url("gs://mybucket/directory/")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .inspectConfig(PreventionJobTriggerInspectJobInspectConfigArgs.builder()
  *                     .customInfoTypes(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs.builder()
  *                         .infoType(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs.builder()
- *                             .name(&#34;MY_CUSTOM_TYPE&#34;)
+ *                             .name("MY_CUSTOM_TYPE")
  *                             .build())
- *                         .likelihood(&#34;UNLIKELY&#34;)
+ *                         .likelihood("UNLIKELY")
  *                         .regex(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs.builder()
- *                             .pattern(&#34;test*&#34;)
+ *                             .pattern("test*")
  *                             .build())
  *                         .build())
  *                     .infoTypes(PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs.builder()
- *                         .name(&#34;EMAIL_ADDRESS&#34;)
+ *                         .name("EMAIL_ADDRESS")
  *                         .build())
- *                     .minLikelihood(&#34;UNLIKELY&#34;)
+ *                     .minLikelihood("UNLIKELY")
  *                     .ruleSets(                    
  *                         PreventionJobTriggerInspectJobInspectConfigRuleSetArgs.builder()
  *                             .infoTypes(PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs.builder()
- *                                 .name(&#34;EMAIL_ADDRESS&#34;)
+ *                                 .name("EMAIL_ADDRESS")
  *                                 .build())
  *                             .rules(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs.builder()
  *                                 .exclusionRule(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs.builder()
  *                                     .regex(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
- *                                         .pattern(&#34;.+@example.com&#34;)
+ *                                         .pattern(".+{@literal @}example.com")
  *                                         .build())
- *                                     .matchingType(&#34;MATCHING_TYPE_FULL_MATCH&#34;)
+ *                                     .matchingType("MATCHING_TYPE_FULL_MATCH")
  *                                     .build())
  *                                 .build())
  *                             .build(),
  *                         PreventionJobTriggerInspectJobInspectConfigRuleSetArgs.builder()
  *                             .infoTypes(PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs.builder()
- *                                 .name(&#34;MY_CUSTOM_TYPE&#34;)
+ *                                 .name("MY_CUSTOM_TYPE")
  *                                 .build())
  *                             .rules(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs.builder()
  *                                 .hotwordRule(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs.builder()
  *                                     .hotwordRegex(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs.builder()
- *                                         .pattern(&#34;example*&#34;)
+ *                                         .pattern("example*")
  *                                         .build())
  *                                     .proximity(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs.builder()
  *                                         .windowBefore(50)
  *                                         .build())
  *                                     .likelihoodAdjustment(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs.builder()
- *                                         .fixedLikelihood(&#34;VERY_LIKELY&#34;)
+ *                                         .fixedLikelihood("VERY_LIKELY")
  *                                         .build())
  *                                     .build())
  *                                 .build())
@@ -586,12 +599,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger Publish To Stackdriver
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -618,24 +633,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var publishToStackdriver = new PreventionJobTrigger(&#34;publishToStackdriver&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description for the job_trigger created by terraform&#34;)
- *             .displayName(&#34;TerraformDisplayName&#34;)
+ *         var publishToStackdriver = new PreventionJobTrigger("publishToStackdriver", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description for the job_trigger created by terraform")
+ *             .displayName("TerraformDisplayName")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;sample-inspect-template&#34;)
+ *                 .inspectTemplateName("sample-inspect-template")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .publishToStackdriver()
  *                     .build())
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
  *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
- *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .url("gs://mybucket/directory/")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -644,12 +659,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger With Id
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -676,24 +693,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var withTriggerId = new PreventionJobTrigger(&#34;withTriggerId&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Starting description&#34;)
- *             .displayName(&#34;display&#34;)
- *             .triggerId(&#34;id-&#34;)
+ *         var withTriggerId = new PreventionJobTrigger("withTriggerId", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Starting description")
+ *             .displayName("display")
+ *             .triggerId("id-")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .inspectTemplateName("fake")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
  *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
  *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
- *                                 .projectId(&#34;project&#34;)
- *                                 .datasetId(&#34;dataset123&#34;)
+ *                                 .projectId("project")
+ *                                 .datasetId("dataset123")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -701,7 +718,7 @@ import javax.annotation.Nullable;
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
  *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
- *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .url("gs://mybucket/directory/")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -710,12 +727,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger Multiple Actions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -742,37 +761,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionJobTrigger(&#34;basic&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var basic = new PreventionJobTrigger("basic", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .inspectTemplateName("fake")
  *                 .actions(                
  *                     PreventionJobTriggerInspectJobActionArgs.builder()
  *                         .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
  *                             .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
  *                                 .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
- *                                     .projectId(&#34;project&#34;)
- *                                     .datasetId(&#34;dataset&#34;)
+ *                                     .projectId("project")
+ *                                     .datasetId("dataset")
  *                                     .build())
  *                                 .build())
  *                             .build())
  *                         .build(),
  *                     PreventionJobTriggerInspectJobActionArgs.builder()
  *                         .pubSub(PreventionJobTriggerInspectJobActionPubSubArgs.builder()
- *                             .topic(&#34;projects/project/topics/topic-name&#34;)
+ *                             .topic("projects/project/topics/topic-name")
  *                             .build())
  *                         .build())
  *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
  *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
  *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
- *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .url("gs://mybucket/directory/")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -781,12 +800,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -814,23 +835,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionJobTrigger(&#34;basic&#34;, PreventionJobTriggerArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var basic = new PreventionJobTrigger("basic", PreventionJobTriggerArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .triggers(PreventionJobTriggerTriggerArgs.builder()
  *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
- *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .recurrencePeriodDuration("86400s")
  *                     .build())
  *                 .build())
  *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
- *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .inspectTemplateName("fake")
  *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
  *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
  *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
  *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
- *                                 .projectId(&#34;project&#34;)
- *                                 .datasetId(&#34;dataset&#34;)
+ *                                 .projectId("project")
+ *                                 .datasetId("dataset")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -841,7 +862,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
  *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
- *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .url("gs://mybucket/directory/")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -850,7 +871,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Node Group Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,28 +61,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var soletenant_tmpl = new NodeTemplate(&#34;soletenant-tmpl&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;soletenant-tmpl&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .nodeType(&#34;n1-node-96-624&#34;)
+ *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()        
+ *             .name("soletenant-tmpl")
+ *             .region("us-central1")
+ *             .nodeType("n1-node-96-624")
  *             .build());
  * 
- *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
- *             .name(&#34;soletenant-group&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .description(&#34;example google_compute_node_group for the Google Provider&#34;)
+ *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()        
+ *             .name("soletenant-group")
+ *             .zone("us-central1-a")
+ *             .description("example google_compute_node_group for the Google Provider")
  *             .initialSize(1)
  *             .nodeTemplate(soletenant_tmpl.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Node Group Maintenance Interval
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,29 +107,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var soletenant_tmpl = new NodeTemplate(&#34;soletenant-tmpl&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;soletenant-tmpl&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .nodeType(&#34;c2-node-60-240&#34;)
+ *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()        
+ *             .name("soletenant-tmpl")
+ *             .region("us-central1")
+ *             .nodeType("c2-node-60-240")
  *             .build());
  * 
- *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
- *             .name(&#34;soletenant-group&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .description(&#34;example google_compute_node_group for Terraform Google Provider&#34;)
+ *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()        
+ *             .name("soletenant-group")
+ *             .zone("us-central1-a")
+ *             .description("example google_compute_node_group for Terraform Google Provider")
  *             .initialSize(1)
  *             .nodeTemplate(soletenant_tmpl.id())
- *             .maintenanceInterval(&#34;RECURRENT&#34;)
+ *             .maintenanceInterval("RECURRENT")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Node Group Autoscaling Policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -151,24 +156,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var soletenant_tmpl = new NodeTemplate(&#34;soletenant-tmpl&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;soletenant-tmpl&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .nodeType(&#34;n1-node-96-624&#34;)
+ *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()        
+ *             .name("soletenant-tmpl")
+ *             .region("us-central1")
+ *             .nodeType("n1-node-96-624")
  *             .build());
  * 
- *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
- *             .name(&#34;soletenant-group&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .description(&#34;example google_compute_node_group for Google Provider&#34;)
- *             .maintenancePolicy(&#34;RESTART_IN_PLACE&#34;)
+ *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()        
+ *             .name("soletenant-group")
+ *             .zone("us-central1-a")
+ *             .description("example google_compute_node_group for Google Provider")
+ *             .maintenancePolicy("RESTART_IN_PLACE")
  *             .maintenanceWindow(NodeGroupMaintenanceWindowArgs.builder()
- *                 .startTime(&#34;08:00&#34;)
+ *                 .startTime("08:00")
  *                 .build())
  *             .initialSize(1)
  *             .nodeTemplate(soletenant_tmpl.id())
  *             .autoscalingPolicy(NodeGroupAutoscalingPolicyArgs.builder()
- *                 .mode(&#34;ONLY_SCALE_OUT&#34;)
+ *                 .mode("ONLY_SCALE_OUT")
  *                 .minNodes(1)
  *                 .maxNodes(10)
  *                 .build())
@@ -176,12 +181,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Node Group Share Settings
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -207,26 +214,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var guestProject = new Project(&#34;guestProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-id&#34;)
- *             .name(&#34;project-name&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var guestProject = new Project("guestProject", ProjectArgs.builder()        
+ *             .projectId("project-id")
+ *             .name("project-name")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var soletenant_tmpl = new NodeTemplate(&#34;soletenant-tmpl&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;soletenant-tmpl&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .nodeType(&#34;n1-node-96-624&#34;)
+ *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()        
+ *             .name("soletenant-tmpl")
+ *             .region("us-central1")
+ *             .nodeType("n1-node-96-624")
  *             .build());
  * 
- *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
- *             .name(&#34;soletenant-group&#34;)
- *             .zone(&#34;us-central1-f&#34;)
- *             .description(&#34;example google_compute_node_group for Terraform Google Provider&#34;)
+ *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()        
+ *             .name("soletenant-group")
+ *             .zone("us-central1-f")
+ *             .description("example google_compute_node_group for Terraform Google Provider")
  *             .initialSize(1)
  *             .nodeTemplate(soletenant_tmpl.id())
  *             .shareSettings(NodeGroupShareSettingsArgs.builder()
- *                 .shareType(&#34;SPECIFIC_PROJECTS&#34;)
+ *                 .shareType("SPECIFIC_PROJECTS")
  *                 .projectMaps(NodeGroupShareSettingsProjectMapArgs.builder()
  *                     .id(guestProject.projectId())
  *                     .projectId(guestProject.projectId())
@@ -236,7 +243,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

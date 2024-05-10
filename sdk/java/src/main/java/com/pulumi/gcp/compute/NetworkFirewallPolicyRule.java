@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * 
  * ### Global
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,60 +59,60 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup(&#34;basicGlobalNetworksecurityAddressGroup&#34;, AddressGroupArgs.builder()        
- *             .name(&#34;policy&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Sample global networksecurity_address_group&#34;)
- *             .location(&#34;global&#34;)
- *             .items(&#34;208.80.154.224/32&#34;)
- *             .type(&#34;IPV4&#34;)
+ *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()        
+ *             .name("policy")
+ *             .parent("projects/my-project-name")
+ *             .description("Sample global networksecurity_address_group")
+ *             .location("global")
+ *             .items("208.80.154.224/32")
+ *             .type("IPV4")
  *             .capacity(100)
  *             .build());
  * 
- *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy(&#34;basicNetworkFirewallPolicy&#34;, NetworkFirewallPolicyArgs.builder()        
- *             .name(&#34;policy&#34;)
- *             .description(&#34;Sample global network firewall policy&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy("basicNetworkFirewallPolicy", NetworkFirewallPolicyArgs.builder()        
+ *             .name("policy")
+ *             .description("Sample global network firewall policy")
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var basicNetwork = new Network(&#34;basicNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()        
+ *             .name("network")
  *             .build());
  * 
- *         var basicKey = new TagKey(&#34;basicKey&#34;, TagKeyArgs.builder()        
- *             .description(&#34;For keyname resources.&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .purpose(&#34;GCE_FIREWALL&#34;)
- *             .shortName(&#34;tagkey&#34;)
- *             .purposeData(Map.of(&#34;network&#34;, basicNetwork.name().applyValue(name -&gt; String.format(&#34;my-project-name/%s&#34;, name))))
+ *         var basicKey = new TagKey("basicKey", TagKeyArgs.builder()        
+ *             .description("For keyname resources.")
+ *             .parent("organizations/123456789")
+ *             .purpose("GCE_FIREWALL")
+ *             .shortName("tagkey")
+ *             .purposeData(Map.of("network", basicNetwork.name().applyValue(name -> String.format("my-project-name/%s", name))))
  *             .build());
  * 
- *         var basicValue = new TagValue(&#34;basicValue&#34;, TagValueArgs.builder()        
- *             .description(&#34;For valuename resources.&#34;)
- *             .parent(basicKey.name().applyValue(name -&gt; String.format(&#34;tagKeys/%s&#34;, name)))
- *             .shortName(&#34;tagvalue&#34;)
+ *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()        
+ *             .description("For valuename resources.")
+ *             .parent(basicKey.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .shortName("tagvalue")
  *             .build());
  * 
- *         var primary = new NetworkFirewallPolicyRule(&#34;primary&#34;, NetworkFirewallPolicyRuleArgs.builder()        
- *             .action(&#34;allow&#34;)
- *             .description(&#34;This is a simple rule description&#34;)
- *             .direction(&#34;INGRESS&#34;)
+ *         var primary = new NetworkFirewallPolicyRule("primary", NetworkFirewallPolicyRuleArgs.builder()        
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("INGRESS")
  *             .disabled(false)
  *             .enableLogging(true)
  *             .firewallPolicy(basicNetworkFirewallPolicy.name())
  *             .priority(1000)
- *             .ruleName(&#34;test-rule&#34;)
- *             .targetServiceAccounts(&#34;my@service-account.com&#34;)
+ *             .ruleName("test-rule")
+ *             .targetServiceAccounts("my{@literal @}service-account.com")
  *             .match(NetworkFirewallPolicyRuleMatchArgs.builder()
- *                 .srcIpRanges(&#34;10.100.0.1/32&#34;)
- *                 .srcFqdns(&#34;google.com&#34;)
- *                 .srcRegionCodes(&#34;US&#34;)
- *                 .srcThreatIntelligences(&#34;iplist-known-malicious-ips&#34;)
+ *                 .srcIpRanges("10.100.0.1/32")
+ *                 .srcFqdns("google.com")
+ *                 .srcRegionCodes("US")
+ *                 .srcThreatIntelligences("iplist-known-malicious-ips")
  *                 .srcSecureTags(NetworkFirewallPolicyRuleMatchSrcSecureTagArgs.builder()
- *                     .name(basicValue.name().applyValue(name -&gt; String.format(&#34;tagValues/%s&#34;, name)))
+ *                     .name(basicValue.name().applyValue(name -> String.format("tagValues/%s", name)))
  *                     .build())
  *                 .layer4Configs(NetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
- *                     .ipProtocol(&#34;all&#34;)
+ *                     .ipProtocol("all")
  *                     .build())
  *                 .srcAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
  *                 .build())
@@ -119,7 +120,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

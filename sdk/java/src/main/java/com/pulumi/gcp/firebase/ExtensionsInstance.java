@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Firebase Extentions Instance Resize Image
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,44 +48,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var images = new Bucket(&#34;images&#34;, BucketArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;bucket-id&#34;)
- *             .location(&#34;US&#34;)
+ *         var images = new Bucket("images", BucketArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("bucket-id")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var resizeImage = new ExtensionsInstance(&#34;resizeImage&#34;, ExtensionsInstanceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .instanceId(&#34;storage-resize-images&#34;)
+ *         var resizeImage = new ExtensionsInstance("resizeImage", ExtensionsInstanceArgs.builder()        
+ *             .project("my-project-name")
+ *             .instanceId("storage-resize-images")
  *             .config(ExtensionsInstanceConfigArgs.builder()
- *                 .extensionRef(&#34;firebase/storage-resize-images&#34;)
- *                 .extensionVersion(&#34;0.2.2&#34;)
+ *                 .extensionRef("firebase/storage-resize-images")
+ *                 .extensionVersion("0.2.2")
  *                 .params(Map.ofEntries(
- *                     Map.entry(&#34;DELETE_ORIGINAL_FILE&#34;, false),
- *                     Map.entry(&#34;MAKE_PUBLIC&#34;, false),
- *                     Map.entry(&#34;IMAGE_TYPE&#34;, false),
- *                     Map.entry(&#34;IS_ANIMATED&#34;, true),
- *                     Map.entry(&#34;FUNCTION_MEMORY&#34;, 1024),
- *                     Map.entry(&#34;DO_BACKFILL&#34;, false),
- *                     Map.entry(&#34;IMG_SIZES&#34;, &#34;200x200&#34;),
- *                     Map.entry(&#34;IMG_BUCKET&#34;, images.name())
+ *                     Map.entry("DELETE_ORIGINAL_FILE", false),
+ *                     Map.entry("MAKE_PUBLIC", false),
+ *                     Map.entry("IMAGE_TYPE", false),
+ *                     Map.entry("IS_ANIMATED", true),
+ *                     Map.entry("FUNCTION_MEMORY", 1024),
+ *                     Map.entry("DO_BACKFILL", false),
+ *                     Map.entry("IMG_SIZES", "200x200"),
+ *                     Map.entry("IMG_BUCKET", images.name())
  *                 ))
  *                 .systemParams(Map.ofEntries(
- *                     Map.entry(&#34;firebaseextensions.v1beta.function/location&#34;, &#34;&#34;),
- *                     Map.entry(&#34;firebaseextensions.v1beta.function/maxInstances&#34;, 3000),
- *                     Map.entry(&#34;firebaseextensions.v1beta.function/minInstances&#34;, 0),
- *                     Map.entry(&#34;firebaseextensions.v1beta.function/vpcConnectorEgressSettings&#34;, &#34;VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED&#34;)
+ *                     Map.entry("firebaseextensions.v1beta.function/location", ""),
+ *                     Map.entry("firebaseextensions.v1beta.function/maxInstances", 3000),
+ *                     Map.entry("firebaseextensions.v1beta.function/minInstances", 0),
+ *                     Map.entry("firebaseextensions.v1beta.function/vpcConnectorEgressSettings", "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED")
  *                 ))
- *                 .allowedEventTypes(&#34;firebase.extensions.storage-resize-images.v1.onCompletion&#34;)
- *                 .eventarcChannel(&#34;projects/my-project-name/locations//channels/firebase&#34;)
+ *                 .allowedEventTypes("firebase.extensions.storage-resize-images.v1.onCompletion")
+ *                 .eventarcChannel("projects/my-project-name/locations//channels/firebase")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

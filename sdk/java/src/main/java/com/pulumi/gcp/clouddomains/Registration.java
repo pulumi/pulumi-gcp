@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Clouddomains Registration Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,59 +58,59 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myRegistration = new Registration(&#34;myRegistration&#34;, RegistrationArgs.builder()        
- *             .domainName(&#34;example-domain.com&#34;)
- *             .location(&#34;global&#34;)
- *             .labels(Map.of(&#34;labelkey&#34;, &#34;labelvalue&#34;))
+ *         var myRegistration = new Registration("myRegistration", RegistrationArgs.builder()        
+ *             .domainName("example-domain.com")
+ *             .location("global")
+ *             .labels(Map.of("labelkey", "labelvalue"))
  *             .yearlyPrice(RegistrationYearlyPriceArgs.builder()
- *                 .currencyCode(&#34;USD&#34;)
+ *                 .currencyCode("USD")
  *                 .units(12)
  *                 .build())
  *             .dnsSettings(RegistrationDnsSettingsArgs.builder()
  *                 .customDns(RegistrationDnsSettingsCustomDnsArgs.builder()
  *                     .nameServers(                    
- *                         &#34;ns-cloud-a1.googledomains.com.&#34;,
- *                         &#34;ns-cloud-a2.googledomains.com.&#34;,
- *                         &#34;ns-cloud-a3.googledomains.com.&#34;,
- *                         &#34;ns-cloud-a4.googledomains.com.&#34;)
+ *                         "ns-cloud-a1.googledomains.com.",
+ *                         "ns-cloud-a2.googledomains.com.",
+ *                         "ns-cloud-a3.googledomains.com.",
+ *                         "ns-cloud-a4.googledomains.com.")
  *                     .build())
  *                 .build())
  *             .contactSettings(RegistrationContactSettingsArgs.builder()
- *                 .privacy(&#34;REDACTED_CONTACT_DATA&#34;)
+ *                 .privacy("REDACTED_CONTACT_DATA")
  *                 .registrantContact(RegistrationContactSettingsRegistrantContactArgs.builder()
- *                     .phoneNumber(&#34;+12345000000&#34;)
- *                     .email(&#34;user@example.com&#34;)
+ *                     .phoneNumber("+12345000000")
+ *                     .email("user{@literal @}example.com")
  *                     .postalAddress(RegistrationContactSettingsRegistrantContactPostalAddressArgs.builder()
- *                         .regionCode(&#34;US&#34;)
- *                         .postalCode(&#34;95050&#34;)
- *                         .administrativeArea(&#34;CA&#34;)
- *                         .locality(&#34;Example City&#34;)
- *                         .addressLines(&#34;1234 Example street&#34;)
- *                         .recipients(&#34;example recipient&#34;)
+ *                         .regionCode("US")
+ *                         .postalCode("95050")
+ *                         .administrativeArea("CA")
+ *                         .locality("Example City")
+ *                         .addressLines("1234 Example street")
+ *                         .recipients("example recipient")
  *                         .build())
  *                     .build())
  *                 .adminContact(RegistrationContactSettingsAdminContactArgs.builder()
- *                     .phoneNumber(&#34;+12345000000&#34;)
- *                     .email(&#34;user@example.com&#34;)
+ *                     .phoneNumber("+12345000000")
+ *                     .email("user{@literal @}example.com")
  *                     .postalAddress(RegistrationContactSettingsAdminContactPostalAddressArgs.builder()
- *                         .regionCode(&#34;US&#34;)
- *                         .postalCode(&#34;95050&#34;)
- *                         .administrativeArea(&#34;CA&#34;)
- *                         .locality(&#34;Example City&#34;)
- *                         .addressLines(&#34;1234 Example street&#34;)
- *                         .recipients(&#34;example recipient&#34;)
+ *                         .regionCode("US")
+ *                         .postalCode("95050")
+ *                         .administrativeArea("CA")
+ *                         .locality("Example City")
+ *                         .addressLines("1234 Example street")
+ *                         .recipients("example recipient")
  *                         .build())
  *                     .build())
  *                 .technicalContact(RegistrationContactSettingsTechnicalContactArgs.builder()
- *                     .phoneNumber(&#34;+12345000000&#34;)
- *                     .email(&#34;user@example.com&#34;)
+ *                     .phoneNumber("+12345000000")
+ *                     .email("user{@literal @}example.com")
  *                     .postalAddress(RegistrationContactSettingsTechnicalContactPostalAddressArgs.builder()
- *                         .regionCode(&#34;US&#34;)
- *                         .postalCode(&#34;95050&#34;)
- *                         .administrativeArea(&#34;CA&#34;)
- *                         .locality(&#34;Example City&#34;)
- *                         .addressLines(&#34;1234 Example street&#34;)
- *                         .recipients(&#34;example recipient&#34;)
+ *                         .regionCode("US")
+ *                         .postalCode("95050")
+ *                         .administrativeArea("CA")
+ *                         .locality("Example City")
+ *                         .addressLines("1234 Example street")
+ *                         .recipients("example recipient")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -117,7 +118,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

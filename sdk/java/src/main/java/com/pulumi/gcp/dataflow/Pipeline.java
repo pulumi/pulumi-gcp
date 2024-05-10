@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Data Pipeline Pipeline
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,52 +61,53 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Service Account&#34;)
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Service Account")
  *             .build());
  * 
- *         var primary = new Pipeline(&#34;primary&#34;, PipelineArgs.builder()        
- *             .name(&#34;my-pipeline&#34;)
- *             .displayName(&#34;my-pipeline&#34;)
- *             .type(&#34;PIPELINE_TYPE_BATCH&#34;)
- *             .state(&#34;STATE_ACTIVE&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var primary = new Pipeline("primary", PipelineArgs.builder()        
+ *             .name("my-pipeline")
+ *             .displayName("my-pipeline")
+ *             .type("PIPELINE_TYPE_BATCH")
+ *             .state("STATE_ACTIVE")
+ *             .region("us-central1")
  *             .workload(PipelineWorkloadArgs.builder()
  *                 .dataflowLaunchTemplateRequest(PipelineWorkloadDataflowLaunchTemplateRequestArgs.builder()
- *                     .projectId(&#34;my-project&#34;)
- *                     .gcsPath(&#34;gs://my-bucket/path&#34;)
+ *                     .projectId("my-project")
+ *                     .gcsPath("gs://my-bucket/path")
  *                     .launchParameters(PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs.builder()
- *                         .jobName(&#34;my-job&#34;)
- *                         .parameters(Map.of(&#34;name&#34;, &#34;wrench&#34;))
+ *                         .jobName("my-job")
+ *                         .parameters(Map.of("name", "wrench"))
  *                         .environment(PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs.builder()
  *                             .numWorkers(5)
  *                             .maxWorkers(5)
- *                             .zone(&#34;us-centra1-a&#34;)
+ *                             .zone("us-centra1-a")
  *                             .serviceAccountEmail(serviceAccount.email())
- *                             .network(&#34;default&#34;)
- *                             .tempLocation(&#34;gs://my-bucket/tmp_dir&#34;)
+ *                             .network("default")
+ *                             .tempLocation("gs://my-bucket/tmp_dir")
  *                             .bypassTempDirValidation(false)
- *                             .machineType(&#34;E2&#34;)
- *                             .additionalUserLabels(Map.of(&#34;context&#34;, &#34;test&#34;))
- *                             .workerRegion(&#34;us-central1&#34;)
- *                             .workerZone(&#34;us-central1-a&#34;)
- *                             .enableStreamingEngine(&#34;false&#34;)
+ *                             .machineType("E2")
+ *                             .additionalUserLabels(Map.of("context", "test"))
+ *                             .workerRegion("us-central1")
+ *                             .workerZone("us-central1-a")
+ *                             .enableStreamingEngine("false")
  *                             .build())
  *                         .update(false)
- *                         .transformNameMapping(Map.of(&#34;name&#34;, &#34;wrench&#34;))
+ *                         .transformNameMapping(Map.of("name", "wrench"))
  *                         .build())
- *                     .location(&#34;us-central1&#34;)
+ *                     .location("us-central1")
  *                     .build())
  *                 .build())
  *             .scheduleInfo(PipelineScheduleInfoArgs.builder()
- *                 .schedule(&#34;* *{@literal /}2 * * *&#34;)
+ *                 .schedule("* *{@literal /}2 * * *")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,13 +46,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ProjectDefaultNetworkTier(&#34;default&#34;, ProjectDefaultNetworkTierArgs.builder()        
- *             .networkTier(&#34;PREMIUM&#34;)
+ *         var default_ = new ProjectDefaultNetworkTier("default", ProjectDefaultNetworkTierArgs.builder()        
+ *             .networkTier("PREMIUM")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

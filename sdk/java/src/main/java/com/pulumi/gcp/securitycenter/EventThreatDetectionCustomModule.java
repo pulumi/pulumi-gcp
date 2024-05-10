@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Scc Event Threat Detection Custom Module
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,29 +53,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new EventThreatDetectionCustomModule(&#34;example&#34;, EventThreatDetectionCustomModuleArgs.builder()        
- *             .organization(&#34;123456789&#34;)
- *             .displayName(&#34;basic_custom_module&#34;)
- *             .enablementState(&#34;ENABLED&#34;)
- *             .type(&#34;CONFIGURABLE_BAD_IP&#34;)
- *             .description(&#34;My Event Threat Detection Custom Module&#34;)
+ *         var example = new EventThreatDetectionCustomModule("example", EventThreatDetectionCustomModuleArgs.builder()        
+ *             .organization("123456789")
+ *             .displayName("basic_custom_module")
+ *             .enablementState("ENABLED")
+ *             .type("CONFIGURABLE_BAD_IP")
+ *             .description("My Event Threat Detection Custom Module")
  *             .config(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;metadata&#34;, jsonObject(
- *                         jsonProperty(&#34;severity&#34;, &#34;LOW&#34;),
- *                         jsonProperty(&#34;description&#34;, &#34;Flagged by Forcepoint as malicious&#34;),
- *                         jsonProperty(&#34;recommendation&#34;, &#34;Contact the owner of the relevant project.&#34;)
+ *                     jsonProperty("metadata", jsonObject(
+ *                         jsonProperty("severity", "LOW"),
+ *                         jsonProperty("description", "Flagged by Forcepoint as malicious"),
+ *                         jsonProperty("recommendation", "Contact the owner of the relevant project.")
  *                     )),
- *                     jsonProperty(&#34;ips&#34;, jsonArray(
- *                         &#34;192.0.2.1&#34;, 
- *                         &#34;192.0.2.0/24&#34;
+ *                     jsonProperty("ips", jsonArray(
+ *                         "192.0.2.1", 
+ *                         "192.0.2.0/24"
  *                     ))
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

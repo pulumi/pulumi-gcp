@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Iam Workload Identity Pool Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,18 +52,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkloadIdentityPool(&#34;example&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *         var example = new WorkloadIdentityPool("example", WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -83,16 +86,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkloadIdentityPool(&#34;example&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
- *             .displayName(&#34;Name of pool&#34;)
- *             .description(&#34;Identity pool for automated test&#34;)
+ *         var example = new WorkloadIdentityPool("example", WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId("example-pool")
+ *             .displayName("Name of pool")
+ *             .description("Identity pool for automated test")
  *             .disabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

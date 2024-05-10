@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Featurestore
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,27 +58,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
- *             .name(&#34;terraform&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *             .name("terraform")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
  *                 .fixedNodeCount(2)
  *                 .build())
  *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
- *                 .kmsKeyName(&#34;kms-name&#34;)
+ *                 .kmsKeyName("kms-name")
  *                 .build())
  *             .forceDestroy(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featurestore With Beta Fields
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,15 +103,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
- *             .name(&#34;terraform2&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *             .name("terraform2")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
  *                 .fixedNodeCount(2)
  *                 .build())
  *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
- *                 .kmsKeyName(&#34;kms-name&#34;)
+ *                 .kmsKeyName("kms-name")
  *                 .build())
  *             .onlineStorageTtlDays(30)
  *             .forceDestroy(true)
@@ -116,12 +119,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featurestore Scaling
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -145,10 +150,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
- *             .name(&#34;terraform3&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *             .name("terraform3")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
  *                 .scaling(AiFeatureStoreOnlineServingConfigScalingArgs.builder()
  *                     .minNodeCount(2)
@@ -156,14 +161,15 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
- *                 .kmsKeyName(&#34;kms-name&#34;)
+ *                 .kmsKeyName("kms-name")
  *                 .build())
  *             .forceDestroy(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

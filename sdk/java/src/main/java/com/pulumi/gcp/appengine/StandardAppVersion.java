@@ -42,7 +42,8 @@ import javax.annotation.Nullable;
  * ### App Engine Standard App Version
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -78,57 +79,57 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customServiceAccount = new Account(&#34;customServiceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Custom Service Account&#34;)
+ *         var customServiceAccount = new Account("customServiceAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Custom Service Account")
  *             .build());
  * 
- *         var gaeApi = new IAMMember(&#34;gaeApi&#34;, IAMMemberArgs.builder()        
+ *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()        
  *             .project(customServiceAccount.project())
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/compute.networkUser")
+ *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var storageViewer = new IAMMember(&#34;storageViewer&#34;, IAMMemberArgs.builder()        
+ *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()        
  *             .project(customServiceAccount.project())
- *             .role(&#34;roles/storage.objectViewer&#34;)
- *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/storage.objectViewer")
+ *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;appengine-static-content&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("appengine-static-content")
+ *             .location("US")
  *             .build());
  * 
- *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;hello-world.zip&#34;)
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *             .name("hello-world.zip")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
+ *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
  *             .build());
  * 
- *         var myappV1 = new StandardAppVersion(&#34;myappV1&#34;, StandardAppVersionArgs.builder()        
- *             .versionId(&#34;v1&#34;)
- *             .service(&#34;myapp&#34;)
- *             .runtime(&#34;nodejs20&#34;)
+ *         var myappV1 = new StandardAppVersion("myappV1", StandardAppVersionArgs.builder()        
+ *             .versionId("v1")
+ *             .service("myapp")
+ *             .runtime("nodejs20")
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
- *                 .shell(&#34;node ./app.js&#34;)
+ *                 .shell("node ./app.js")
  *                 .build())
  *             .deployment(StandardAppVersionDeploymentArgs.builder()
  *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
  *                         var bucketName = values.t1;
  *                         var objectName = values.t2;
- *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+ *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
  *                     }))
  *                     .build())
  *                 .build())
- *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+ *             .envVariables(Map.of("port", "8080"))
  *             .automaticScaling(StandardAppVersionAutomaticScalingArgs.builder()
  *                 .maxConcurrentRequests(10)
  *                 .minIdleInstances(1)
  *                 .maxIdleInstances(3)
- *                 .minPendingLatency(&#34;1s&#34;)
- *                 .maxPendingLatency(&#34;5s&#34;)
+ *                 .minPendingLatency("1s")
+ *                 .maxPendingLatency("5s")
  *                 .standardSchedulerSettings(StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs.builder()
  *                     .targetCpuUtilization(0.5)
  *                     .targetThroughputUtilization(0.75)
@@ -140,24 +141,24 @@ import javax.annotation.Nullable;
  *             .serviceAccount(customServiceAccount.email())
  *             .build());
  * 
- *         var myappV2 = new StandardAppVersion(&#34;myappV2&#34;, StandardAppVersionArgs.builder()        
- *             .versionId(&#34;v2&#34;)
- *             .service(&#34;myapp&#34;)
- *             .runtime(&#34;nodejs20&#34;)
+ *         var myappV2 = new StandardAppVersion("myappV2", StandardAppVersionArgs.builder()        
+ *             .versionId("v2")
+ *             .service("myapp")
+ *             .runtime("nodejs20")
  *             .appEngineApis(true)
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
- *                 .shell(&#34;node ./app.js&#34;)
+ *                 .shell("node ./app.js")
  *                 .build())
  *             .deployment(StandardAppVersionDeploymentArgs.builder()
  *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
  *                         var bucketName = values.t1;
  *                         var objectName = values.t2;
- *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+ *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
  *                     }))
  *                     .build())
  *                 .build())
- *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+ *             .envVariables(Map.of("port", "8080"))
  *             .basicScaling(StandardAppVersionBasicScalingArgs.builder()
  *                 .maxInstances(5)
  *                 .build())
@@ -167,7 +168,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

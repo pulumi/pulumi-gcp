@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * This snippet creates a customized IAM organization role.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,20 +56,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_custom_role = new IAMCustomRole(&#34;my-custom-role&#34;, IAMCustomRoleArgs.builder()        
- *             .roleId(&#34;myCustomRole&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .title(&#34;My Custom Role&#34;)
- *             .description(&#34;A description&#34;)
+ *         var my_custom_role = new IAMCustomRole("my-custom-role", IAMCustomRoleArgs.builder()        
+ *             .roleId("myCustomRole")
+ *             .orgId("123456789")
+ *             .title("My Custom Role")
+ *             .description("A description")
  *             .permissions(            
- *                 &#34;iam.roles.list&#34;,
- *                 &#34;iam.roles.create&#34;,
- *                 &#34;iam.roles.delete&#34;)
+ *                 "iam.roles.list",
+ *                 "iam.roles.create",
+ *                 "iam.roles.delete")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

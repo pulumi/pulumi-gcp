@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,25 +55,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var hl7V2Store = new Hl7StoreIamPolicy(&#34;hl7V2Store&#34;, Hl7StoreIamPolicyArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var hl7V2Store = new Hl7StoreIamPolicy("hl7V2Store", Hl7StoreIamPolicyArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -93,21 +96,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hl7V2Store = new Hl7StoreIamBinding(&#34;hl7V2Store&#34;, Hl7StoreIamBindingArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var hl7V2Store = new Hl7StoreIamBinding("hl7V2Store", Hl7StoreIamBindingArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -128,21 +133,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hl7V2Store = new Hl7StoreIamMember(&#34;hl7V2Store&#34;, Hl7StoreIamMemberArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var hl7V2Store = new Hl7StoreIamMember("hl7V2Store", Hl7StoreIamMemberArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -167,25 +174,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var hl7V2Store = new Hl7StoreIamPolicy(&#34;hl7V2Store&#34;, Hl7StoreIamPolicyArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var hl7V2Store = new Hl7StoreIamPolicy("hl7V2Store", Hl7StoreIamPolicyArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -206,21 +215,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hl7V2Store = new Hl7StoreIamBinding(&#34;hl7V2Store&#34;, Hl7StoreIamBindingArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var hl7V2Store = new Hl7StoreIamBinding("hl7V2Store", Hl7StoreIamBindingArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -241,15 +252,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hl7V2Store = new Hl7StoreIamMember(&#34;hl7V2Store&#34;, Hl7StoreIamMemberArgs.builder()        
- *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var hl7V2Store = new Hl7StoreIamMember("hl7V2Store", Hl7StoreIamMemberArgs.builder()        
+ *             .hl7V2StoreId("your-hl7-v2-store-id")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -326,9 +338,9 @@ public class Hl7StoreIamMember extends com.pulumi.resources.CustomResource {
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -340,9 +352,9 @@ public class Hl7StoreIamMember extends com.pulumi.resources.CustomResource {
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */

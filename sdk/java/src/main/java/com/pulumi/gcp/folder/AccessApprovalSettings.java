@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Folder Access Approval Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,29 +54,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myFolder = new Folder(&#34;myFolder&#34;, FolderArgs.builder()        
- *             .displayName(&#34;my-folder&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
+ *         var myFolder = new Folder("myFolder", FolderArgs.builder()        
+ *             .displayName("my-folder")
+ *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var folderAccessApproval = new AccessApprovalSettings(&#34;folderAccessApproval&#34;, AccessApprovalSettingsArgs.builder()        
+ *         var folderAccessApproval = new AccessApprovalSettings("folderAccessApproval", AccessApprovalSettingsArgs.builder()        
  *             .folderId(myFolder.folderId())
  *             .notificationEmails(            
- *                 &#34;testuser@example.com&#34;,
- *                 &#34;example.user@example.com&#34;)
+ *                 "testuser{@literal @}example.com",
+ *                 "example.user{@literal @}example.com")
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
- *                 .cloudProduct(&#34;all&#34;)
+ *                 .cloudProduct("all")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Folder Access Approval Active Key Version
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -112,29 +115,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myFolder = new Folder(&#34;myFolder&#34;, FolderArgs.builder()        
- *             .displayName(&#34;my-folder&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
+ *         var myFolder = new Folder("myFolder", FolderArgs.builder()        
+ *             .displayName("my-folder")
+ *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;My Project&#34;)
- *             .projectId(&#34;your-project-id&#34;)
+ *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *             .name("My Project")
+ *             .projectId("your-project-id")
  *             .folderId(myFolder.name())
  *             .build());
  * 
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;key-ring&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("key-ring")
+ *             .location("global")
  *             .project(myProject.projectId())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("crypto-key")
  *             .keyRing(keyRing.id())
- *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
+ *             .purpose("ASYMMETRIC_SIGN")
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
- *                 .algorithm(&#34;EC_SIGN_P384_SHA384&#34;)
+ *                 .algorithm("EC_SIGN_P384_SHA384")
  *                 .build())
  *             .build());
  * 
@@ -142,27 +145,28 @@ import javax.annotation.Nullable;
  *             .folderId(myFolder.folderId())
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
- *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
- *             .member(serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult).applyValue(serviceAccount -&gt; String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail()))))
+ *             .role("roles/cloudkms.signerVerifier")
+ *             .member(serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult).applyValue(serviceAccount -> String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail()))))
  *             .build());
  * 
  *         final var cryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
  *             .cryptoKey(cryptoKey.id())
  *             .build());
  * 
- *         var folderAccessApproval = new AccessApprovalSettings(&#34;folderAccessApproval&#34;, AccessApprovalSettingsArgs.builder()        
+ *         var folderAccessApproval = new AccessApprovalSettings("folderAccessApproval", AccessApprovalSettingsArgs.builder()        
  *             .folderId(myFolder.folderId())
- *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -&gt; cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.name())))
+ *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -> cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.name())))
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
- *                 .cloudProduct(&#34;all&#34;)
+ *                 .cloudProduct("all")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

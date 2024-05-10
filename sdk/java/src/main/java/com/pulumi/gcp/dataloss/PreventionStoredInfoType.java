@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Dlp Stored Info Type Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,24 +54,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionStoredInfoType(&#34;basic&#34;, PreventionStoredInfoTypeArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var basic = new PreventionStoredInfoType("basic", PreventionStoredInfoTypeArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .regex(PreventionStoredInfoTypeRegexArgs.builder()
- *                 .pattern(&#34;patient&#34;)
+ *                 .pattern("patient")
  *                 .groupIndexes(2)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Stored Info Type Dictionary
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -93,27 +96,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dictionary = new PreventionStoredInfoType(&#34;dictionary&#34;, PreventionStoredInfoTypeArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var dictionary = new PreventionStoredInfoType("dictionary", PreventionStoredInfoTypeArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .dictionary(PreventionStoredInfoTypeDictionaryArgs.builder()
  *                 .wordList(PreventionStoredInfoTypeDictionaryWordListArgs.builder()
  *                     .words(                    
- *                         &#34;word&#34;,
- *                         &#34;word2&#34;)
+ *                         "word",
+ *                         "word2")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Stored Info Type Large Custom Dictionary
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -142,44 +147,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;tf-test-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("tf-test-bucket")
+ *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;tf-test-object&#34;)
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *             .name("tf-test-object")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;./test-fixtures/words.txt&#34;))
+ *             .source(new FileAsset("./test-fixtures/words.txt"))
  *             .build());
  * 
- *         var large = new PreventionStoredInfoType(&#34;large&#34;, PreventionStoredInfoTypeArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var large = new PreventionStoredInfoType("large", PreventionStoredInfoTypeArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .largeCustomDictionary(PreventionStoredInfoTypeLargeCustomDictionaryArgs.builder()
  *                 .cloudStorageFileSet(PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs.builder()
- *                     .url(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+ *                     .url(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
  *                         var bucketName = values.t1;
  *                         var objectName = values.t2;
- *                         return String.format(&#34;gs://%s/%s&#34;, bucketName,objectName);
+ *                         return String.format("gs://%s/%s", bucketName,objectName);
  *                     }))
  *                     .build())
  *                 .outputPath(PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs.builder()
- *                     .path(bucket.name().applyValue(name -&gt; String.format(&#34;gs://%s/output/dictionary.txt&#34;, name)))
+ *                     .path(bucket.name().applyValue(name -> String.format("gs://%s/output/dictionary.txt", name)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Stored Info Type With Id
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -201,20 +208,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var withStoredInfoTypeId = new PreventionStoredInfoType(&#34;withStoredInfoTypeId&#34;, PreventionStoredInfoTypeArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
- *             .storedInfoTypeId(&#34;id-&#34;)
+ *         var withStoredInfoTypeId = new PreventionStoredInfoType("withStoredInfoTypeId", PreventionStoredInfoTypeArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
+ *             .storedInfoTypeId("id-")
  *             .regex(PreventionStoredInfoTypeRegexArgs.builder()
- *                 .pattern(&#34;patient&#34;)
+ *                 .pattern("patient")
  *                 .groupIndexes(2)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

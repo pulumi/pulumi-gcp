@@ -41,7 +41,8 @@ public final class KmsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -68,7 +69,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -81,7 +83,8 @@ public final class KmsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -108,7 +111,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -121,7 +125,8 @@ public final class KmsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -148,7 +153,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -161,7 +167,8 @@ public final class KmsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -188,7 +195,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -207,7 +215,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -230,18 +239,19 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
-     *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -260,7 +270,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -283,18 +294,19 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
-     *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -313,7 +325,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -336,18 +349,19 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
-     *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -366,7 +380,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -389,18 +404,19 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
-     *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -418,7 +434,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -442,13 +459,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
-     *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -457,7 +474,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -475,7 +493,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -499,13 +518,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
-     *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -514,7 +533,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -532,7 +552,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -556,13 +577,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
-     *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -571,7 +592,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -589,7 +611,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -613,13 +636,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
-     *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -628,7 +651,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -647,7 +671,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -669,13 +694,14 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -694,7 +720,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -716,13 +743,14 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -741,7 +769,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -763,13 +792,14 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -788,7 +818,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -810,13 +841,14 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -840,7 +872,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -863,20 +896,21 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey(&#34;myCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
@@ -885,7 +919,8 @@ public final class KmsFunctions {
      * Finally, reference the encrypted ciphertext in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -915,31 +950,32 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
      *             .cryptoKey(myCryptoKey.id())
-     *             .ciphertext(&#34;CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=&#34;)
+     *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
-     *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
-     *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
-     *                 .tier(&#34;db-f1-micro&#34;)
+     *                 .tier("db-f1-micro")
      *                 .build())
      *             .build());
      * 
-     *         var users = new User(&#34;users&#34;, UserArgs.builder()        
-     *             .name(&#34;me&#34;)
+     *         var users = new User("users", UserArgs.builder()        
+     *             .name("me")
      *             .instance(main.name())
-     *             .host(&#34;me.com&#34;)
-     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -&gt; getKMSSecretResult.plaintext()))
+     *             .host("me.com")
+     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -> getKMSSecretResult.plaintext()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * This will result in a Cloud SQL user being created with password `my-secret-password`.
@@ -965,7 +1001,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -988,20 +1025,21 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey(&#34;myCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
@@ -1010,7 +1048,8 @@ public final class KmsFunctions {
      * Finally, reference the encrypted ciphertext in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1040,31 +1079,32 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
      *             .cryptoKey(myCryptoKey.id())
-     *             .ciphertext(&#34;CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=&#34;)
+     *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
-     *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
-     *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
-     *                 .tier(&#34;db-f1-micro&#34;)
+     *                 .tier("db-f1-micro")
      *                 .build())
      *             .build());
      * 
-     *         var users = new User(&#34;users&#34;, UserArgs.builder()        
-     *             .name(&#34;me&#34;)
+     *         var users = new User("users", UserArgs.builder()        
+     *             .name("me")
      *             .instance(main.name())
-     *             .host(&#34;me.com&#34;)
-     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -&gt; getKMSSecretResult.plaintext()))
+     *             .host("me.com")
+     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -> getKMSSecretResult.plaintext()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * This will result in a Cloud SQL user being created with password `my-secret-password`.
@@ -1090,7 +1130,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1113,20 +1154,21 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey(&#34;myCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
@@ -1135,7 +1177,8 @@ public final class KmsFunctions {
      * Finally, reference the encrypted ciphertext in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1165,31 +1208,32 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
      *             .cryptoKey(myCryptoKey.id())
-     *             .ciphertext(&#34;CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=&#34;)
+     *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
-     *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
-     *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
-     *                 .tier(&#34;db-f1-micro&#34;)
+     *                 .tier("db-f1-micro")
      *                 .build())
      *             .build());
      * 
-     *         var users = new User(&#34;users&#34;, UserArgs.builder()        
-     *             .name(&#34;me&#34;)
+     *         var users = new User("users", UserArgs.builder()        
+     *             .name("me")
      *             .instance(main.name())
-     *             .host(&#34;me.com&#34;)
-     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -&gt; getKMSSecretResult.plaintext()))
+     *             .host("me.com")
+     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -> getKMSSecretResult.plaintext()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * This will result in a Cloud SQL user being created with password `my-secret-password`.
@@ -1215,7 +1259,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1238,20 +1283,21 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey(&#34;myCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
@@ -1260,7 +1306,8 @@ public final class KmsFunctions {
      * Finally, reference the encrypted ciphertext in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1290,31 +1337,32 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
      *             .cryptoKey(myCryptoKey.id())
-     *             .ciphertext(&#34;CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=&#34;)
+     *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
-     *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
-     *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
-     *                 .tier(&#34;db-f1-micro&#34;)
+     *                 .tier("db-f1-micro")
      *                 .build())
      *             .build());
      * 
-     *         var users = new User(&#34;users&#34;, UserArgs.builder()        
-     *             .name(&#34;me&#34;)
+     *         var users = new User("users", UserArgs.builder()        
+     *             .name("me")
      *             .instance(main.name())
-     *             .host(&#34;me.com&#34;)
-     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -&gt; getKMSSecretResult.plaintext()))
+     *             .host("me.com")
+     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -> getKMSSecretResult.plaintext()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * This will result in a Cloud SQL user being created with password `my-secret-password`.
@@ -1329,7 +1377,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1355,18 +1404,18 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKeyCryptoKey = new CryptoKey(&#34;myCryptoKeyCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
-     *             .purpose(&#34;ASYMMETRIC_DECRYPT&#34;)
+     *             .purpose("ASYMMETRIC_DECRYPT")
      *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
-     *                 .algorithm(&#34;RSA_DECRYPT_OAEP_4096_SHA256&#34;)
+     *                 .algorithm("RSA_DECRYPT_OAEP_4096_SHA256")
      *                 .build())
      *             .build());
      * 
@@ -1376,7 +1425,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
@@ -1385,7 +1435,8 @@ public final class KmsFunctions {
      * Finally, reference the encrypted ciphertext in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1415,8 +1466,8 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
      *             .cryptoKeyVersion(myCryptoKey.id())
-     *             .crc32(&#34;12c59e54&#34;)
-     *             .ciphertext(&#34;&#34;&#34;
+     *             .crc32("12c59e54")
+     *             .ciphertext("""
      *     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
      *     ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
      *     4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
@@ -1428,31 +1479,32 @@ public final class KmsFunctions {
      *     IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
      *     mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
      *     A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
-     *             &#34;&#34;&#34;)
+     *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
-     *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
-     *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
-     *                 .tier(&#34;db-f1-micro&#34;)
+     *                 .tier("db-f1-micro")
      *                 .build())
      *             .build());
      * 
-     *         var users = new User(&#34;users&#34;, UserArgs.builder()        
-     *             .name(&#34;me&#34;)
+     *         var users = new User("users", UserArgs.builder()        
+     *             .name("me")
      *             .instance(main.name())
-     *             .host(&#34;me.com&#34;)
+     *             .host("me.com")
      *             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * This will result in a Cloud SQL user being created with password `my-secret-password`.
@@ -1467,7 +1519,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1493,18 +1546,18 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKeyCryptoKey = new CryptoKey(&#34;myCryptoKeyCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
-     *             .purpose(&#34;ASYMMETRIC_DECRYPT&#34;)
+     *             .purpose("ASYMMETRIC_DECRYPT")
      *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
-     *                 .algorithm(&#34;RSA_DECRYPT_OAEP_4096_SHA256&#34;)
+     *                 .algorithm("RSA_DECRYPT_OAEP_4096_SHA256")
      *                 .build())
      *             .build());
      * 
@@ -1514,7 +1567,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
@@ -1523,7 +1577,8 @@ public final class KmsFunctions {
      * Finally, reference the encrypted ciphertext in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1553,8 +1608,8 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
      *             .cryptoKeyVersion(myCryptoKey.id())
-     *             .crc32(&#34;12c59e54&#34;)
-     *             .ciphertext(&#34;&#34;&#34;
+     *             .crc32("12c59e54")
+     *             .ciphertext("""
      *     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
      *     ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
      *     4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
@@ -1566,31 +1621,32 @@ public final class KmsFunctions {
      *     IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
      *     mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
      *     A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
-     *             &#34;&#34;&#34;)
+     *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
-     *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
-     *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
-     *                 .tier(&#34;db-f1-micro&#34;)
+     *                 .tier("db-f1-micro")
      *                 .build())
      *             .build());
      * 
-     *         var users = new User(&#34;users&#34;, UserArgs.builder()        
-     *             .name(&#34;me&#34;)
+     *         var users = new User("users", UserArgs.builder()        
+     *             .name("me")
      *             .instance(main.name())
-     *             .host(&#34;me.com&#34;)
+     *             .host("me.com")
      *             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * This will result in a Cloud SQL user being created with password `my-secret-password`.
@@ -1605,7 +1661,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1631,18 +1688,18 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKeyCryptoKey = new CryptoKey(&#34;myCryptoKeyCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
-     *             .purpose(&#34;ASYMMETRIC_DECRYPT&#34;)
+     *             .purpose("ASYMMETRIC_DECRYPT")
      *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
-     *                 .algorithm(&#34;RSA_DECRYPT_OAEP_4096_SHA256&#34;)
+     *                 .algorithm("RSA_DECRYPT_OAEP_4096_SHA256")
      *                 .build())
      *             .build());
      * 
@@ -1652,7 +1709,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
@@ -1661,7 +1719,8 @@ public final class KmsFunctions {
      * Finally, reference the encrypted ciphertext in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1691,8 +1750,8 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
      *             .cryptoKeyVersion(myCryptoKey.id())
-     *             .crc32(&#34;12c59e54&#34;)
-     *             .ciphertext(&#34;&#34;&#34;
+     *             .crc32("12c59e54")
+     *             .ciphertext("""
      *     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
      *     ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
      *     4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
@@ -1704,31 +1763,32 @@ public final class KmsFunctions {
      *     IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
      *     mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
      *     A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
-     *             &#34;&#34;&#34;)
+     *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
-     *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
-     *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
-     *                 .tier(&#34;db-f1-micro&#34;)
+     *                 .tier("db-f1-micro")
      *                 .build())
      *             .build());
      * 
-     *         var users = new User(&#34;users&#34;, UserArgs.builder()        
-     *             .name(&#34;me&#34;)
+     *         var users = new User("users", UserArgs.builder()        
+     *             .name("me")
      *             .instance(main.name())
-     *             .host(&#34;me.com&#34;)
+     *             .host("me.com")
      *             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * This will result in a Cloud SQL user being created with password `my-secret-password`.
@@ -1743,7 +1803,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1769,18 +1830,18 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKeyCryptoKey = new CryptoKey(&#34;myCryptoKeyCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
-     *             .purpose(&#34;ASYMMETRIC_DECRYPT&#34;)
+     *             .purpose("ASYMMETRIC_DECRYPT")
      *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
-     *                 .algorithm(&#34;RSA_DECRYPT_OAEP_4096_SHA256&#34;)
+     *                 .algorithm("RSA_DECRYPT_OAEP_4096_SHA256")
      *                 .build())
      *             .build());
      * 
@@ -1790,7 +1851,8 @@ public final class KmsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
@@ -1799,7 +1861,8 @@ public final class KmsFunctions {
      * Finally, reference the encrypted ciphertext in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1829,8 +1892,8 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
      *             .cryptoKeyVersion(myCryptoKey.id())
-     *             .crc32(&#34;12c59e54&#34;)
-     *             .ciphertext(&#34;&#34;&#34;
+     *             .crc32("12c59e54")
+     *             .ciphertext("""
      *     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
      *     ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
      *     4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
@@ -1842,31 +1905,32 @@ public final class KmsFunctions {
      *     IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
      *     mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
      *     A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
-     *             &#34;&#34;&#34;)
+     *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
      *             .byteLength(4)
      *             .build());
      * 
-     *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
-     *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
-     *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+     *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
-     *                 .tier(&#34;db-f1-micro&#34;)
+     *                 .tier("db-f1-micro")
      *                 .build())
      *             .build());
      * 
-     *         var users = new User(&#34;users&#34;, UserArgs.builder()        
-     *             .name(&#34;me&#34;)
+     *         var users = new User("users", UserArgs.builder()        
+     *             .name("me")
      *             .instance(main.name())
-     *             .host(&#34;me.com&#34;)
+     *             .host("me.com")
      *             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * This will result in a Cloud SQL user being created with password `my-secret-password`.
@@ -1894,7 +1958,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1917,26 +1982,28 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey(&#34;myCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1964,28 +2031,29 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
      *             .cryptoKey(myCryptoKey.id())
-     *             .plaintext(&#34;my-secret-password&#34;)
+     *             .plaintext("my-secret-password")
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
-     *                 .network(&#34;default&#34;)
+     *                 .network("default")
      *                 .build())
-     *             .name(&#34;test&#34;)
-     *             .machineType(&#34;e2-medium&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("test")
+     *             .machineType("e2-medium")
+     *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(&#34;debian-cloud/debian-11&#34;)
+     *                     .image("debian-cloud/debian-11")
      *                     .build())
      *                 .build())
-     *             .metadata(Map.of(&#34;password&#34;, myPassword.applyValue(getKMSSecretCiphertextResult -&gt; getKMSSecretCiphertextResult.ciphertext())))
+     *             .metadata(Map.of("password", myPassword.applyValue(getKMSSecretCiphertextResult -> getKMSSecretCiphertextResult.ciphertext())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The resulting instance can then access the encrypted password from its metadata
@@ -2014,7 +2082,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2037,26 +2106,28 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey(&#34;myCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2084,28 +2155,29 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
      *             .cryptoKey(myCryptoKey.id())
-     *             .plaintext(&#34;my-secret-password&#34;)
+     *             .plaintext("my-secret-password")
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
-     *                 .network(&#34;default&#34;)
+     *                 .network("default")
      *                 .build())
-     *             .name(&#34;test&#34;)
-     *             .machineType(&#34;e2-medium&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("test")
+     *             .machineType("e2-medium")
+     *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(&#34;debian-cloud/debian-11&#34;)
+     *                     .image("debian-cloud/debian-11")
      *                     .build())
      *                 .build())
-     *             .metadata(Map.of(&#34;password&#34;, myPassword.applyValue(getKMSSecretCiphertextResult -&gt; getKMSSecretCiphertextResult.ciphertext())))
+     *             .metadata(Map.of("password", myPassword.applyValue(getKMSSecretCiphertextResult -> getKMSSecretCiphertextResult.ciphertext())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The resulting instance can then access the encrypted password from its metadata
@@ -2134,7 +2206,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2157,26 +2230,28 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey(&#34;myCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2204,28 +2279,29 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
      *             .cryptoKey(myCryptoKey.id())
-     *             .plaintext(&#34;my-secret-password&#34;)
+     *             .plaintext("my-secret-password")
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
-     *                 .network(&#34;default&#34;)
+     *                 .network("default")
      *                 .build())
-     *             .name(&#34;test&#34;)
-     *             .machineType(&#34;e2-medium&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("test")
+     *             .machineType("e2-medium")
+     *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(&#34;debian-cloud/debian-11&#34;)
+     *                     .image("debian-cloud/debian-11")
      *                     .build())
      *                 .build())
-     *             .metadata(Map.of(&#34;password&#34;, myPassword.applyValue(getKMSSecretCiphertextResult -&gt; getKMSSecretCiphertextResult.ciphertext())))
+     *             .metadata(Map.of("password", myPassword.applyValue(getKMSSecretCiphertextResult -> getKMSSecretCiphertextResult.ciphertext())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The resulting instance can then access the encrypted password from its metadata
@@ -2254,7 +2330,8 @@ public final class KmsFunctions {
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2277,26 +2354,28 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myKeyRing = new KeyRing(&#34;myKeyRing&#34;, KeyRingArgs.builder()        
-     *             .project(&#34;my-project&#34;)
-     *             .name(&#34;my-key-ring&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *         var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()        
+     *             .project("my-project")
+     *             .name("my-key-ring")
+     *             .location("us-central1")
      *             .build());
      * 
-     *         var myCryptoKey = new CryptoKey(&#34;myCryptoKey&#34;, CryptoKeyArgs.builder()        
-     *             .name(&#34;my-crypto-key&#34;)
+     *         var myCryptoKey = new CryptoKey("myCryptoKey", CryptoKeyArgs.builder()        
+     *             .name("my-crypto-key")
      *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2324,28 +2403,29 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
      *             .cryptoKey(myCryptoKey.id())
-     *             .plaintext(&#34;my-secret-password&#34;)
+     *             .plaintext("my-secret-password")
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
-     *                 .network(&#34;default&#34;)
+     *                 .network("default")
      *                 .build())
-     *             .name(&#34;test&#34;)
-     *             .machineType(&#34;e2-medium&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("test")
+     *             .machineType("e2-medium")
+     *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(&#34;debian-cloud/debian-11&#34;)
+     *                     .image("debian-cloud/debian-11")
      *                     .build())
      *                 .build())
-     *             .metadata(Map.of(&#34;password&#34;, myPassword.applyValue(getKMSSecretCiphertextResult -&gt; getKMSSecretCiphertextResult.ciphertext())))
+     *             .metadata(Map.of("password", myPassword.applyValue(getKMSSecretCiphertextResult -> getKMSSecretCiphertextResult.ciphertext())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The resulting instance can then access the encrypted password from its metadata
@@ -2361,7 +2441,8 @@ public final class KmsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2383,12 +2464,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var testKeyRingIamPolicy = KmsFunctions.getKeyRingIamPolicy(GetKeyRingIamPolicyArgs.builder()
-     *             .keyRingId(&#34;{project_id}/{location_name}/{key_ring_name}&#34;)
+     *             .keyRingId("{project_id}/{location_name}/{key_ring_name}")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2401,7 +2483,8 @@ public final class KmsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2423,12 +2506,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var testKeyRingIamPolicy = KmsFunctions.getKeyRingIamPolicy(GetKeyRingIamPolicyArgs.builder()
-     *             .keyRingId(&#34;{project_id}/{location_name}/{key_ring_name}&#34;)
+     *             .keyRingId("{project_id}/{location_name}/{key_ring_name}")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2441,7 +2525,8 @@ public final class KmsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2463,12 +2548,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var testKeyRingIamPolicy = KmsFunctions.getKeyRingIamPolicy(GetKeyRingIamPolicyArgs.builder()
-     *             .keyRingId(&#34;{project_id}/{location_name}/{key_ring_name}&#34;)
+     *             .keyRingId("{project_id}/{location_name}/{key_ring_name}")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2481,7 +2567,8 @@ public final class KmsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2503,12 +2590,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var testKeyRingIamPolicy = KmsFunctions.getKeyRingIamPolicy(GetKeyRingIamPolicyArgs.builder()
-     *             .keyRingId(&#34;{project_id}/{location_name}/{key_ring_name}&#34;)
+     *             .keyRingId("{project_id}/{location_name}/{key_ring_name}")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

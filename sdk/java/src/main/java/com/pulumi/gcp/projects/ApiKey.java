@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Android_key
  * A basic example of a android api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,38 +50,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;app&#34;)
- *             .name(&#34;app&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var basic = new Project("basic", ProjectArgs.builder()        
+ *             .projectId("app")
+ *             .name("app")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
- *             .name(&#34;key&#34;)
- *             .displayName(&#34;sample-key&#34;)
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *             .name("key")
+ *             .displayName("sample-key")
  *             .project(basic.name())
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
  *                 .androidKeyRestrictions(ApiKeyRestrictionsAndroidKeyRestrictionsArgs.builder()
  *                     .allowedApplications(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs.builder()
- *                         .packageName(&#34;com.example.app123&#34;)
- *                         .sha1Fingerprint(&#34;1699466a142d4682a5f91b50fdf400f2358e2b0b&#34;)
+ *                         .packageName("com.example.app123")
+ *                         .sha1Fingerprint("1699466a142d4682a5f91b50fdf400f2358e2b0b")
  *                         .build())
  *                     .build())
  *                 .apiTargets(ApiKeyRestrictionsApiTargetArgs.builder()
- *                     .service(&#34;translate.googleapis.com&#34;)
- *                     .methods(&#34;GET*&#34;)
+ *                     .service("translate.googleapis.com")
+ *                     .methods("GET*")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Basic_key
  * A basic example of a api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -105,35 +108,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;app&#34;)
- *             .name(&#34;app&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var basic = new Project("basic", ProjectArgs.builder()        
+ *             .projectId("app")
+ *             .name("app")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
- *             .name(&#34;key&#34;)
- *             .displayName(&#34;sample-key&#34;)
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *             .name("key")
+ *             .displayName("sample-key")
  *             .project(basic.name())
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
  *                 .apiTargets(ApiKeyRestrictionsApiTargetArgs.builder()
- *                     .service(&#34;translate.googleapis.com&#34;)
- *                     .methods(&#34;GET*&#34;)
+ *                     .service("translate.googleapis.com")
+ *                     .methods("GET*")
  *                     .build())
  *                 .browserKeyRestrictions(ApiKeyRestrictionsBrowserKeyRestrictionsArgs.builder()
- *                     .allowedReferrers(&#34;.*&#34;)
+ *                     .allowedReferrers(".*")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Ios_key
  * A basic example of a ios api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -158,35 +163,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;app&#34;)
- *             .name(&#34;app&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var basic = new Project("basic", ProjectArgs.builder()        
+ *             .projectId("app")
+ *             .name("app")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
- *             .name(&#34;key&#34;)
- *             .displayName(&#34;sample-key&#34;)
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *             .name("key")
+ *             .displayName("sample-key")
  *             .project(basic.name())
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
  *                 .apiTargets(ApiKeyRestrictionsApiTargetArgs.builder()
- *                     .service(&#34;translate.googleapis.com&#34;)
- *                     .methods(&#34;GET*&#34;)
+ *                     .service("translate.googleapis.com")
+ *                     .methods("GET*")
  *                     .build())
  *                 .iosKeyRestrictions(ApiKeyRestrictionsIosKeyRestrictionsArgs.builder()
- *                     .allowedBundleIds(&#34;com.google.app.macos&#34;)
+ *                     .allowedBundleIds("com.google.app.macos")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Minimal_key
  * A minimal example of a api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -209,26 +216,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;app&#34;)
- *             .name(&#34;app&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var basic = new Project("basic", ProjectArgs.builder()        
+ *             .projectId("app")
+ *             .name("app")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
- *             .name(&#34;key&#34;)
- *             .displayName(&#34;sample-key&#34;)
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *             .name("key")
+ *             .displayName("sample-key")
  *             .project(basic.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Server_key
  * A basic example of a server api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -253,30 +262,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;app&#34;)
- *             .name(&#34;app&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var basic = new Project("basic", ProjectArgs.builder()        
+ *             .projectId("app")
+ *             .name("app")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
- *             .name(&#34;key&#34;)
- *             .displayName(&#34;sample-key&#34;)
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()        
+ *             .name("key")
+ *             .displayName("sample-key")
  *             .project(basic.name())
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
  *                 .apiTargets(ApiKeyRestrictionsApiTargetArgs.builder()
- *                     .service(&#34;translate.googleapis.com&#34;)
- *                     .methods(&#34;GET*&#34;)
+ *                     .service("translate.googleapis.com")
+ *                     .methods("GET*")
  *                     .build())
  *                 .serverKeyRestrictions(ApiKeyRestrictionsServerKeyRestrictionsArgs.builder()
- *                     .allowedIps(&#34;127.0.0.1&#34;)
+ *                     .allowedIps("127.0.0.1")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

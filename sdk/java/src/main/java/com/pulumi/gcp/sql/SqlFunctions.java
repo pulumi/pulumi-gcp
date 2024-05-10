@@ -41,7 +41,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -69,7 +70,8 @@ public final class SqlFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -82,7 +84,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -110,7 +113,8 @@ public final class SqlFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -123,7 +127,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -151,7 +156,8 @@ public final class SqlFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -164,7 +170,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -192,7 +199,8 @@ public final class SqlFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -245,7 +253,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -267,13 +276,14 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
-     *             .name(&#34;test-sql-database&#34;)
+     *             .name("test-sql-database")
      *             .instance(main.name())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -286,7 +296,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -308,13 +319,14 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
-     *             .name(&#34;test-sql-database&#34;)
+     *             .name("test-sql-database")
      *             .instance(main.name())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -327,7 +339,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -349,13 +362,14 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
-     *             .name(&#34;test-sql-database&#34;)
+     *             .name("test-sql-database")
      *             .instance(main.name())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -368,7 +382,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -390,13 +405,14 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
-     *             .name(&#34;test-sql-database&#34;)
+     *             .name("test-sql-database")
      *             .instance(main.name())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -409,7 +425,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -431,12 +448,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
-     *             .name(&#34;test-sql-instance&#34;)
+     *             .name("test-sql-instance")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -449,7 +467,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -471,12 +490,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
-     *             .name(&#34;test-sql-instance&#34;)
+     *             .name("test-sql-instance")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -489,7 +509,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -511,12 +532,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
-     *             .name(&#34;test-sql-instance&#34;)
+     *             .name("test-sql-instance")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -529,7 +551,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -551,12 +574,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
-     *             .name(&#34;test-sql-instance&#34;)
+     *             .name("test-sql-instance")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -572,7 +596,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -594,13 +619,14 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SqlFunctions.getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs.builder()
-     *             .instance(&#34;sample-instance&#34;)
+     *             .instance("sample-instance")
      *             .build());
      * 
-     *         ctx.export(&#34;latestRecoveryTime&#34;, default_);
+     *         ctx.export("latestRecoveryTime", default_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -616,7 +642,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -638,13 +665,14 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SqlFunctions.getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs.builder()
-     *             .instance(&#34;sample-instance&#34;)
+     *             .instance("sample-instance")
      *             .build());
      * 
-     *         ctx.export(&#34;latestRecoveryTime&#34;, default_);
+     *         ctx.export("latestRecoveryTime", default_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -660,7 +688,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -682,13 +711,14 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SqlFunctions.getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs.builder()
-     *             .instance(&#34;sample-instance&#34;)
+     *             .instance("sample-instance")
      *             .build());
      * 
-     *         ctx.export(&#34;latestRecoveryTime&#34;, default_);
+     *         ctx.export("latestRecoveryTime", default_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -704,7 +734,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -726,13 +757,14 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SqlFunctions.getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs.builder()
-     *             .instance(&#34;sample-instance&#34;)
+     *             .instance("sample-instance")
      *             .build());
      * 
-     *         ctx.export(&#34;latestRecoveryTime&#34;, default_);
+     *         ctx.export("latestRecoveryTime", default_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -745,7 +777,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -767,12 +800,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .project(&#34;test-project&#34;)
+     *             .project("test-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -785,7 +819,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -807,12 +842,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .project(&#34;test-project&#34;)
+     *             .project("test-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -825,7 +861,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -847,12 +884,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .project(&#34;test-project&#34;)
+     *             .project("test-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -865,7 +903,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -887,12 +926,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .project(&#34;test-project&#34;)
+     *             .project("test-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -905,7 +945,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -927,12 +968,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .project(&#34;test-project&#34;)
+     *             .project("test-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -945,7 +987,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -967,12 +1010,13 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .project(&#34;test-project&#34;)
+     *             .project("test-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -984,7 +1028,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1011,7 +1056,8 @@ public final class SqlFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1023,7 +1069,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1050,7 +1097,8 @@ public final class SqlFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1062,7 +1110,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1089,7 +1138,8 @@ public final class SqlFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1101,7 +1151,8 @@ public final class SqlFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1128,7 +1179,8 @@ public final class SqlFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

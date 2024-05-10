@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Region Network Endpoint Internet Ip Port
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,33 +59,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var group = new RegionNetworkEndpointGroup(&#34;group&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;ip-port-neg&#34;)
+ *         var group = new RegionNetworkEndpointGroup("group", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("ip-port-neg")
  *             .network(default_.id())
- *             .region(&#34;us-central1&#34;)
- *             .networkEndpointType(&#34;INTERNET_IP_PORT&#34;)
+ *             .region("us-central1")
+ *             .networkEndpointType("INTERNET_IP_PORT")
  *             .build());
  * 
- *         var region_internet_ip_port_endpoint = new RegionNetworkEndpoint(&#34;region-internet-ip-port-endpoint&#34;, RegionNetworkEndpointArgs.builder()        
+ *         var region_internet_ip_port_endpoint = new RegionNetworkEndpoint("region-internet-ip-port-endpoint", RegionNetworkEndpointArgs.builder()        
  *             .regionNetworkEndpointGroup(group.name())
- *             .region(&#34;us-central1&#34;)
- *             .ipAddress(&#34;8.8.8.8&#34;)
+ *             .region("us-central1")
+ *             .ipAddress("8.8.8.8")
  *             .port(443)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Network Endpoint Internet Fqdn Port
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -109,28 +112,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var group = new RegionNetworkEndpointGroup(&#34;group&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;fqdn-port-neg&#34;)
+ *         var group = new RegionNetworkEndpointGroup("group", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("fqdn-port-neg")
  *             .network(default_.id())
- *             .region(&#34;us-central1&#34;)
- *             .networkEndpointType(&#34;INTERNET_FQDN_PORT&#34;)
+ *             .region("us-central1")
+ *             .networkEndpointType("INTERNET_FQDN_PORT")
  *             .build());
  * 
- *         var region_internet_fqdn_port_endpoint = new RegionNetworkEndpoint(&#34;region-internet-fqdn-port-endpoint&#34;, RegionNetworkEndpointArgs.builder()        
+ *         var region_internet_fqdn_port_endpoint = new RegionNetworkEndpoint("region-internet-fqdn-port-endpoint", RegionNetworkEndpointArgs.builder()        
  *             .regionNetworkEndpointGroup(group.name())
- *             .region(&#34;us-central1&#34;)
- *             .fqdn(&#34;backend.example.com&#34;)
+ *             .region("us-central1")
+ *             .fqdn("backend.example.com")
  *             .port(443)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,20 +55,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var department1 = new Folder(&#34;department1&#34;, FolderArgs.builder()        
- *             .displayName(&#34;Department 1&#34;)
- *             .parent(&#34;organizations/1234567&#34;)
+ *         var department1 = new Folder("department1", FolderArgs.builder()        
+ *             .displayName("Department 1")
+ *             .parent("organizations/1234567")
  *             .build());
  * 
- *         var admin = new IAMBinding(&#34;admin&#34;, IAMBindingArgs.builder()        
+ *         var admin = new IAMBinding("admin", IAMBindingArgs.builder()        
  *             .folder(department1.name())
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:alice@gmail.com&#34;)
+ *             .role("roles/editor")
+ *             .members("user:alice{@literal @}gmail.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -122,9 +124,9 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * An array of identities that will be granted the privilege in the `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice{@literal @}gmail.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      * 
@@ -135,9 +137,9 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return An array of identities that will be granted the privilege in the `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice{@literal @}gmail.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      * 

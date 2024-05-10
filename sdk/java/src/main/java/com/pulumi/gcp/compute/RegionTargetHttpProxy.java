@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Region Target Http Proxy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,55 +61,57 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;http-health-check&#34;)
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *             .region("us-central1")
+ *             .name("http-health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;backend-service&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("backend-service")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;url-map&#34;)
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *             .region("us-central1")
+ *             .name("url-map")
  *             .defaultService(defaultRegionBackendService.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultRegionBackendService.id())
  *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/*&#34;)
+ *                     .paths("/*")
  *                     .service(defaultRegionBackendService.id())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpProxy(&#34;default&#34;, RegionTargetHttpProxyArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;test-proxy&#34;)
+ *         var default_ = new RegionTargetHttpProxy("default", RegionTargetHttpProxyArgs.builder()        
+ *             .region("us-central1")
+ *             .name("test-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Target Http Proxy Https Redirect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -132,24 +135,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;url-map&#34;)
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *             .region("us-central1")
+ *             .name("url-map")
  *             .defaultUrlRedirect(RegionUrlMapDefaultUrlRedirectArgs.builder()
  *                 .httpsRedirect(true)
  *                 .stripQuery(false)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpProxy(&#34;default&#34;, RegionTargetHttpProxyArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;test-https-redirect-proxy&#34;)
+ *         var default_ = new RegionTargetHttpProxy("default", RegionTargetHttpProxyArgs.builder()        
+ *             .region("us-central1")
+ *             .name("test-https-redirect-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

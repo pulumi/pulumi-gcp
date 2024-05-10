@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Sql Source Representation Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,25 +50,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new SourceRepresentationInstance(&#34;instance&#34;, SourceRepresentationInstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .databaseVersion(&#34;MYSQL_8_0&#34;)
- *             .host(&#34;10.20.30.40&#34;)
+ *         var instance = new SourceRepresentationInstance("instance", SourceRepresentationInstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .region("us-central1")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .host("10.20.30.40")
  *             .port(3306)
- *             .username(&#34;some-user&#34;)
- *             .password(&#34;password-for-the-user&#34;)
- *             .dumpFilePath(&#34;gs://replica-bucket/source-database.sql.gz&#34;)
+ *             .username("some-user")
+ *             .password("password-for-the-user")
+ *             .dumpFilePath("gs://replica-bucket/source-database.sql.gz")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Sql Source Representation Instance Postgres
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -88,20 +91,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new SourceRepresentationInstance(&#34;instance&#34;, SourceRepresentationInstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .databaseVersion(&#34;POSTGRES_9_6&#34;)
- *             .host(&#34;10.20.30.40&#34;)
+ *         var instance = new SourceRepresentationInstance("instance", SourceRepresentationInstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .region("us-central1")
+ *             .databaseVersion("POSTGRES_9_6")
+ *             .host("10.20.30.40")
  *             .port(3306)
- *             .username(&#34;some-user&#34;)
- *             .password(&#34;password-for-the-user&#34;)
- *             .dumpFilePath(&#34;gs://replica-bucket/source-database.sql.gz&#34;)
+ *             .username("some-user")
+ *             .password("password-for-the-user")
+ *             .dumpFilePath("gs://replica-bucket/source-database.sql.gz")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

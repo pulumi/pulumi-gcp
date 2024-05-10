@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,23 +50,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ProjectMetadata(&#34;default&#34;, ProjectMetadataArgs.builder()        
+ *         var default_ = new ProjectMetadata("default", ProjectMetadataArgs.builder()        
  *             .metadata(Map.ofEntries(
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                 Map.entry(&#34;fizz&#34;, &#34;buzz&#34;),
- *                 Map.entry(&#34;13&#34;, &#34;42&#34;)
+ *                 Map.entry("foo", "bar"),
+ *                 Map.entry("fizz", "buzz"),
+ *                 Map.entry("13", "42")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Adding An SSH Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,16 +92,17 @@ import javax.annotation.Nullable;
  *         //A key set in project metadata is propagated to every instance in the project.
  *         //This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
  *         //It is better to use OS Login instead.
- *         var mySshKey = new ProjectMetadata(&#34;mySshKey&#34;, ProjectMetadataArgs.builder()        
- *             .metadata(Map.of(&#34;ssh-keys&#34;, &#34;&#34;&#34;
+ *         var mySshKey = new ProjectMetadata("mySshKey", ProjectMetadataArgs.builder()        
+ *             .metadata(Map.of("ssh-keys", """
  *       dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
  *       foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
- *             &#34;&#34;&#34;))
+ *             """))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

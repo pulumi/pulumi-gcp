@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Dialogflowcx Test Case Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -76,17 +77,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent(&#34;agent&#34;, CxAgentArgs.builder()        
- *             .displayName(&#34;dialogflowcx-agent&#34;)
- *             .location(&#34;global&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            
- *                 &#34;fr&#34;,
- *                 &#34;de&#34;,
- *                 &#34;es&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .description(&#34;Example description.&#34;)
- *             .avatarUri(&#34;https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png&#34;)
+ *                 "fr",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png")
  *             .enableStackdriverLogging(true)
  *             .enableSpellCorrection(true)
  *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
@@ -94,64 +95,64 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var intent = new CxIntent(&#34;intent&#34;, CxIntentArgs.builder()        
+ *         var intent = new CxIntent("intent", CxIntentArgs.builder()        
  *             .parent(agent.id())
- *             .displayName(&#34;MyIntent&#34;)
+ *             .displayName("MyIntent")
  *             .priority(1)
  *             .trainingPhrases(CxIntentTrainingPhraseArgs.builder()
  *                 .parts(CxIntentTrainingPhrasePartArgs.builder()
- *                     .text(&#34;training phrase&#34;)
+ *                     .text("training phrase")
  *                     .build())
  *                 .repeatCount(1)
  *                 .build())
  *             .build());
  * 
- *         var page = new CxPage(&#34;page&#34;, CxPageArgs.builder()        
+ *         var page = new CxPage("page", CxPageArgs.builder()        
  *             .parent(agent.startFlow())
- *             .displayName(&#34;MyPage&#34;)
+ *             .displayName("MyPage")
  *             .transitionRoutes(CxPageTransitionRouteArgs.builder()
  *                 .intent(intent.id())
  *                 .triggerFulfillment(CxPageTransitionRouteTriggerFulfillmentArgs.builder()
  *                     .messages(CxPageTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                         .text(CxPageTransitionRouteTriggerFulfillmentMessageTextArgs.builder()
- *                             .texts(&#34;Training phrase response&#34;)
+ *                             .texts("Training phrase response")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
  *             .eventHandlers(CxPageEventHandlerArgs.builder()
- *                 .event(&#34;some-event&#34;)
+ *                 .event("some-event")
  *                 .triggerFulfillment(CxPageEventHandlerTriggerFulfillmentArgs.builder()
  *                     .messages(CxPageEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                         .text(CxPageEventHandlerTriggerFulfillmentMessageTextArgs.builder()
- *                             .texts(&#34;Handling some event&#34;)
+ *                             .texts("Handling some event")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var basicTestCase = new CxTestCase(&#34;basicTestCase&#34;, CxTestCaseArgs.builder()        
+ *         var basicTestCase = new CxTestCase("basicTestCase", CxTestCaseArgs.builder()        
  *             .parent(agent.id())
- *             .displayName(&#34;MyTestCase&#34;)
- *             .tags(&#34;#tag1&#34;)
- *             .notes(&#34;demonstrates a simple training phrase response&#34;)
+ *             .displayName("MyTestCase")
+ *             .tags("#tag1")
+ *             .notes("demonstrates a simple training phrase response")
  *             .testConfig(CxTestCaseTestConfigArgs.builder()
- *                 .trackingParameters(&#34;some_param&#34;)
+ *                 .trackingParameters("some_param")
  *                 .page(page.id())
  *                 .build())
  *             .testCaseConversationTurns(            
  *                 CxTestCaseTestCaseConversationTurnArgs.builder()
  *                     .userInput(CxTestCaseTestCaseConversationTurnUserInputArgs.builder()
  *                         .input(CxTestCaseTestCaseConversationTurnUserInputInputArgs.builder()
- *                             .languageCode(&#34;en&#34;)
+ *                             .languageCode("en")
  *                             .text(CxTestCaseTestCaseConversationTurnUserInputInputTextArgs.builder()
- *                                 .text(&#34;training phrase&#34;)
+ *                                 .text("training phrase")
  *                                 .build())
  *                             .build())
  *                         .injectedParameters(serializeJson(
  *                             jsonObject(
- *                                 jsonProperty(&#34;someParam&#34;, &#34;1&#34;)
+ *                                 jsonProperty("someParam", "1")
  *                             )))
  *                         .isWebhookEnabled(true)
  *                         .enableSentimentAnalysis(true)
@@ -159,7 +160,7 @@ import javax.annotation.Nullable;
  *                     .virtualAgentOutput(CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs.builder()
  *                         .sessionParameters(serializeJson(
  *                             jsonObject(
- *                                 jsonProperty(&#34;someParam&#34;, &#34;1&#34;)
+ *                                 jsonProperty("someParam", "1")
  *                             )))
  *                         .triggeredIntent(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs.builder()
  *                             .name(intent.id())
@@ -168,7 +169,7 @@ import javax.annotation.Nullable;
  *                             .name(page.id())
  *                             .build())
  *                         .textResponses(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs.builder()
- *                             .texts(&#34;Training phrase response&#34;)
+ *                             .texts("Training phrase response")
  *                             .build())
  *                         .build())
  *                     .build(),
@@ -176,7 +177,7 @@ import javax.annotation.Nullable;
  *                     .userInput(CxTestCaseTestCaseConversationTurnUserInputArgs.builder()
  *                         .input(CxTestCaseTestCaseConversationTurnUserInputInputArgs.builder()
  *                             .event(CxTestCaseTestCaseConversationTurnUserInputInputEventArgs.builder()
- *                                 .event(&#34;some-event&#34;)
+ *                                 .event("some-event")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -185,7 +186,7 @@ import javax.annotation.Nullable;
  *                             .name(page.id())
  *                             .build())
  *                         .textResponses(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs.builder()
- *                             .texts(&#34;Handling some event&#34;)
+ *                             .texts("Handling some event")
  *                             .build())
  *                         .build())
  *                     .build(),
@@ -193,14 +194,14 @@ import javax.annotation.Nullable;
  *                     .userInput(CxTestCaseTestCaseConversationTurnUserInputArgs.builder()
  *                         .input(CxTestCaseTestCaseConversationTurnUserInputInputArgs.builder()
  *                             .dtmf(CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs.builder()
- *                                 .digits(&#34;12&#34;)
- *                                 .finishDigit(&#34;3&#34;)
+ *                                 .digits("12")
+ *                                 .finishDigit("3")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .virtualAgentOutput(CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs.builder()
  *                         .textResponses(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs.builder()
- *                             .texts(&#34;I didn&#39;t get that. Can you say it again?&#34;)
+ *                             .texts("I didn't get that. Can you say it again?")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -208,7 +209,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

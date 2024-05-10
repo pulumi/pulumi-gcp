@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Cloud Run Domain Mapping Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,26 +60,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-srv&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-srv")
+ *             .location("us-central1")
  *             .metadata(ServiceMetadataArgs.builder()
- *                 .namespace(&#34;my-project-name&#34;)
+ *                 .namespace("my-project-name")
  *                 .build())
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
  *                     .containers(ServiceTemplateSpecContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultDomainMapping = new DomainMapping(&#34;defaultDomainMapping&#34;, DomainMappingArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;verified-domain.com&#34;)
+ *         var defaultDomainMapping = new DomainMapping("defaultDomainMapping", DomainMappingArgs.builder()        
+ *             .location("us-central1")
+ *             .name("verified-domain.com")
  *             .metadata(DomainMappingMetadataArgs.builder()
- *                 .namespace(&#34;my-project-name&#34;)
+ *                 .namespace("my-project-name")
  *                 .build())
  *             .spec(DomainMappingSpecArgs.builder()
  *                 .routeName(default_.name())
@@ -87,7 +88,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

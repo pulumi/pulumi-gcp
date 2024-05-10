@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Document Ai Warehouse Location
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,18 +54,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new DocumentAiWarehouseLocation(&#34;example&#34;, DocumentAiWarehouseLocationArgs.builder()        
- *             .location(&#34;us&#34;)
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .accessControlMode(&#34;ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI&#34;)
- *             .databaseType(&#34;DB_INFRA_SPANNER&#34;)
- *             .kmsKey(&#34;dummy_key&#34;)
- *             .documentCreatorDefaultRole(&#34;DOCUMENT_ADMIN&#34;)
+ *         var example = new DocumentAiWarehouseLocation("example", DocumentAiWarehouseLocationArgs.builder()        
+ *             .location("us")
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .accessControlMode("ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI")
+ *             .databaseType("DB_INFRA_SPANNER")
+ *             .kmsKey("dummy_key")
+ *             .documentCreatorDefaultRole("DOCUMENT_ADMIN")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

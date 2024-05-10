@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## google\_dns\_managed\_zone\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,26 +57,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new DnsManagedZoneIamPolicy(&#34;policy&#34;, DnsManagedZoneIamPolicyArgs.builder()        
+ *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()        
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dns\_managed\_zone\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,22 +99,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DnsManagedZoneIamBinding(&#34;binding&#34;, DnsManagedZoneIamBindingArgs.builder()        
+ *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()        
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dns\_managed\_zone\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -132,22 +137,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DnsManagedZoneIamMember(&#34;member&#34;, DnsManagedZoneIamMemberArgs.builder()        
+ *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()        
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dns\_managed\_zone\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -172,26 +179,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new DnsManagedZoneIamPolicy(&#34;policy&#34;, DnsManagedZoneIamPolicyArgs.builder()        
+ *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()        
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dns\_managed\_zone\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -212,22 +221,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DnsManagedZoneIamBinding(&#34;binding&#34;, DnsManagedZoneIamBindingArgs.builder()        
+ *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()        
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dns\_managed\_zone\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -248,16 +259,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DnsManagedZoneIamMember(&#34;member&#34;, DnsManagedZoneIamMemberArgs.builder()        
+ *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()        
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -277,7 +289,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy editor &#34;projects/{{project}}/managedZones/{{managed_zone}} roles/viewer user:jane@example.com&#34;
+ * $ pulumi import gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy editor &#34;projects/{{project}}/managedZones/{{managed_zone}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

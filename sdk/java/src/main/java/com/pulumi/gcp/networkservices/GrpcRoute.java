@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Network Services Grpc Route Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,21 +48,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GrpcRoute(&#34;default&#34;, GrpcRouteArgs.builder()        
- *             .name(&#34;my-grpc-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .hostnames(&#34;example&#34;)
+ *         var default_ = new GrpcRoute("default", GrpcRouteArgs.builder()        
+ *             .name("my-grpc-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .hostnames("example")
  *             .rules(GrpcRouteRuleArgs.builder()
  *                 .matches(GrpcRouteRuleMatchArgs.builder()
  *                     .headers(GrpcRouteRuleMatchHeaderArgs.builder()
- *                         .key(&#34;key&#34;)
- *                         .value(&#34;value&#34;)
+ *                         .key("key")
+ *                         .value("value")
  *                         .build())
  *                     .build())
  *                 .action(GrpcRouteRuleActionArgs.builder()
  *                     .retryPolicy(GrpcRouteRuleActionRetryPolicyArgs.builder()
- *                         .retryConditions(&#34;cancelled&#34;)
+ *                         .retryConditions("cancelled")
  *                         .numRetries(1)
  *                         .build())
  *                     .build())
@@ -70,12 +71,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Grpc Route Matches And Actions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,34 +105,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GrpcRoute(&#34;default&#34;, GrpcRouteArgs.builder()        
- *             .name(&#34;my-grpc-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .hostnames(&#34;example&#34;)
+ *         var default_ = new GrpcRoute("default", GrpcRouteArgs.builder()        
+ *             .name("my-grpc-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .hostnames("example")
  *             .rules(GrpcRouteRuleArgs.builder()
  *                 .matches(                
  *                     GrpcRouteRuleMatchArgs.builder()
  *                         .headers(GrpcRouteRuleMatchHeaderArgs.builder()
- *                             .key(&#34;key&#34;)
- *                             .value(&#34;value&#34;)
+ *                             .key("key")
+ *                             .value("value")
  *                             .build())
  *                         .build(),
  *                     GrpcRouteRuleMatchArgs.builder()
  *                         .headers(GrpcRouteRuleMatchHeaderArgs.builder()
- *                             .key(&#34;key&#34;)
- *                             .value(&#34;value&#34;)
+ *                             .key("key")
+ *                             .value("value")
  *                             .build())
  *                         .method(GrpcRouteRuleMatchMethodArgs.builder()
- *                             .grpcService(&#34;foo&#34;)
- *                             .grpcMethod(&#34;bar&#34;)
+ *                             .grpcService("foo")
+ *                             .grpcMethod("bar")
  *                             .caseSensitive(true)
  *                             .build())
  *                         .build())
  *                 .action(GrpcRouteRuleActionArgs.builder()
  *                     .faultInjectionPolicy(GrpcRouteRuleActionFaultInjectionPolicyArgs.builder()
  *                         .delay(GrpcRouteRuleActionFaultInjectionPolicyDelayArgs.builder()
- *                             .fixedDelay(&#34;1s&#34;)
+ *                             .fixedDelay("1s")
  *                             .percentage(1)
  *                             .build())
  *                         .abort(GrpcRouteRuleActionFaultInjectionPolicyAbortArgs.builder()
@@ -138,7 +141,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .retryPolicy(GrpcRouteRuleActionRetryPolicyArgs.builder()
- *                         .retryConditions(&#34;cancelled&#34;)
+ *                         .retryConditions("cancelled")
  *                         .numRetries(1)
  *                         .build())
  *                     .build())
@@ -147,12 +150,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Grpc Route Actions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -179,16 +184,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GrpcRoute(&#34;default&#34;, GrpcRouteArgs.builder()        
- *             .name(&#34;my-grpc-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .hostnames(&#34;example&#34;)
+ *         var default_ = new GrpcRoute("default", GrpcRouteArgs.builder()        
+ *             .name("my-grpc-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .hostnames("example")
  *             .rules(GrpcRouteRuleArgs.builder()
  *                 .action(GrpcRouteRuleActionArgs.builder()
  *                     .faultInjectionPolicy(GrpcRouteRuleActionFaultInjectionPolicyArgs.builder()
  *                         .delay(GrpcRouteRuleActionFaultInjectionPolicyDelayArgs.builder()
- *                             .fixedDelay(&#34;1s&#34;)
+ *                             .fixedDelay("1s")
  *                             .percentage(1)
  *                             .build())
  *                         .abort(GrpcRouteRuleActionFaultInjectionPolicyAbortArgs.builder()
@@ -197,7 +202,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .retryPolicy(GrpcRouteRuleActionRetryPolicyArgs.builder()
- *                         .retryConditions(&#34;cancelled&#34;)
+ *                         .retryConditions("cancelled")
  *                         .numRetries(1)
  *                         .build())
  *                     .build())
@@ -206,7 +211,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

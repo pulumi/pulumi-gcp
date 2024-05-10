@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Identity Platform Tenant Inbound Saml Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,33 +55,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tenant = new Tenant(&#34;tenant&#34;, TenantArgs.builder()        
- *             .displayName(&#34;tenant&#34;)
+ *         var tenant = new Tenant("tenant", TenantArgs.builder()        
+ *             .displayName("tenant")
  *             .build());
  * 
- *         var tenantSamlConfig = new TenantInboundSamlConfig(&#34;tenantSamlConfig&#34;, TenantInboundSamlConfigArgs.builder()        
- *             .name(&#34;saml.tf-config&#34;)
- *             .displayName(&#34;Display Name&#34;)
+ *         var tenantSamlConfig = new TenantInboundSamlConfig("tenantSamlConfig", TenantInboundSamlConfigArgs.builder()        
+ *             .name("saml.tf-config")
+ *             .displayName("Display Name")
  *             .tenant(tenant.name())
  *             .idpConfig(TenantInboundSamlConfigIdpConfigArgs.builder()
- *                 .idpEntityId(&#34;tf-idp&#34;)
+ *                 .idpEntityId("tf-idp")
  *                 .signRequest(true)
- *                 .ssoUrl(&#34;https://example.com&#34;)
+ *                 .ssoUrl("https://example.com")
  *                 .idpCertificates(TenantInboundSamlConfigIdpConfigIdpCertificateArgs.builder()
  *                     .x509Certificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/rsa_cert.pem&#34;)
+ *                         .input("test-fixtures/rsa_cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .spConfig(TenantInboundSamlConfigSpConfigArgs.builder()
- *                 .spEntityId(&#34;tf-sp&#34;)
- *                 .callbackUri(&#34;https://example.com&#34;)
+ *                 .spEntityId("tf-sp")
+ *                 .callbackUri("https://example.com")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

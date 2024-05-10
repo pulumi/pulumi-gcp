@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Bigtable App Profile Anycluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,45 +55,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;bt-instance&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("bt-instance")
  *             .clusters(            
  *                 InstanceClusterArgs.builder()
- *                     .clusterId(&#34;cluster-1&#34;)
- *                     .zone(&#34;us-central1-a&#34;)
+ *                     .clusterId("cluster-1")
+ *                     .zone("us-central1-a")
  *                     .numNodes(3)
- *                     .storageType(&#34;HDD&#34;)
+ *                     .storageType("HDD")
  *                     .build(),
  *                 InstanceClusterArgs.builder()
- *                     .clusterId(&#34;cluster-2&#34;)
- *                     .zone(&#34;us-central1-b&#34;)
+ *                     .clusterId("cluster-2")
+ *                     .zone("us-central1-b")
  *                     .numNodes(3)
- *                     .storageType(&#34;HDD&#34;)
+ *                     .storageType("HDD")
  *                     .build(),
  *                 InstanceClusterArgs.builder()
- *                     .clusterId(&#34;cluster-3&#34;)
- *                     .zone(&#34;us-central1-c&#34;)
+ *                     .clusterId("cluster-3")
+ *                     .zone("us-central1-c")
  *                     .numNodes(3)
- *                     .storageType(&#34;HDD&#34;)
+ *                     .storageType("HDD")
  *                     .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var ap = new AppProfile(&#34;ap&#34;, AppProfileArgs.builder()        
+ *         var ap = new AppProfile("ap", AppProfileArgs.builder()        
  *             .instance(instance.name())
- *             .appProfileId(&#34;bt-profile&#34;)
+ *             .appProfileId("bt-profile")
  *             .multiClusterRoutingUseAny(true)
  *             .ignoreWarnings(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigtable App Profile Singlecluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -117,22 +120,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;bt-instance&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("bt-instance")
  *             .clusters(InstanceClusterArgs.builder()
- *                 .clusterId(&#34;cluster-1&#34;)
- *                 .zone(&#34;us-central1-b&#34;)
+ *                 .clusterId("cluster-1")
+ *                 .zone("us-central1-b")
  *                 .numNodes(3)
- *                 .storageType(&#34;HDD&#34;)
+ *                 .storageType("HDD")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var ap = new AppProfile(&#34;ap&#34;, AppProfileArgs.builder()        
+ *         var ap = new AppProfile("ap", AppProfileArgs.builder()        
  *             .instance(instance.name())
- *             .appProfileId(&#34;bt-profile&#34;)
+ *             .appProfileId("bt-profile")
  *             .singleClusterRouting(AppProfileSingleClusterRoutingArgs.builder()
- *                 .clusterId(&#34;cluster-1&#34;)
+ *                 .clusterId("cluster-1")
  *                 .allowTransactionalWrites(true)
  *                 .build())
  *             .ignoreWarnings(true)
@@ -140,12 +143,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigtable App Profile Multicluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -169,48 +174,50 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;bt-instance&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("bt-instance")
  *             .clusters(            
  *                 InstanceClusterArgs.builder()
- *                     .clusterId(&#34;cluster-1&#34;)
- *                     .zone(&#34;us-central1-a&#34;)
+ *                     .clusterId("cluster-1")
+ *                     .zone("us-central1-a")
  *                     .numNodes(3)
- *                     .storageType(&#34;HDD&#34;)
+ *                     .storageType("HDD")
  *                     .build(),
  *                 InstanceClusterArgs.builder()
- *                     .clusterId(&#34;cluster-2&#34;)
- *                     .zone(&#34;us-central1-b&#34;)
+ *                     .clusterId("cluster-2")
+ *                     .zone("us-central1-b")
  *                     .numNodes(3)
- *                     .storageType(&#34;HDD&#34;)
+ *                     .storageType("HDD")
  *                     .build(),
  *                 InstanceClusterArgs.builder()
- *                     .clusterId(&#34;cluster-3&#34;)
- *                     .zone(&#34;us-central1-c&#34;)
+ *                     .clusterId("cluster-3")
+ *                     .zone("us-central1-c")
  *                     .numNodes(3)
- *                     .storageType(&#34;HDD&#34;)
+ *                     .storageType("HDD")
  *                     .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var ap = new AppProfile(&#34;ap&#34;, AppProfileArgs.builder()        
+ *         var ap = new AppProfile("ap", AppProfileArgs.builder()        
  *             .instance(instance.name())
- *             .appProfileId(&#34;bt-profile&#34;)
+ *             .appProfileId("bt-profile")
  *             .multiClusterRoutingUseAny(true)
  *             .multiClusterRoutingClusterIds(            
- *                 &#34;cluster-1&#34;,
- *                 &#34;cluster-2&#34;)
+ *                 "cluster-1",
+ *                 "cluster-2")
  *             .ignoreWarnings(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigtable App Profile Priority
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -236,33 +243,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;bt-instance&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("bt-instance")
  *             .clusters(InstanceClusterArgs.builder()
- *                 .clusterId(&#34;cluster-1&#34;)
- *                 .zone(&#34;us-central1-b&#34;)
+ *                 .clusterId("cluster-1")
+ *                 .zone("us-central1-b")
  *                 .numNodes(3)
- *                 .storageType(&#34;HDD&#34;)
+ *                 .storageType("HDD")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var ap = new AppProfile(&#34;ap&#34;, AppProfileArgs.builder()        
+ *         var ap = new AppProfile("ap", AppProfileArgs.builder()        
  *             .instance(instance.name())
- *             .appProfileId(&#34;bt-profile&#34;)
+ *             .appProfileId("bt-profile")
  *             .singleClusterRouting(AppProfileSingleClusterRoutingArgs.builder()
- *                 .clusterId(&#34;cluster-1&#34;)
+ *                 .clusterId("cluster-1")
  *                 .allowTransactionalWrites(true)
  *                 .build())
  *             .standardIsolation(AppProfileStandardIsolationArgs.builder()
- *                 .priority(&#34;PRIORITY_LOW&#34;)
+ *                 .priority("PRIORITY_LOW")
  *                 .build())
  *             .ignoreWarnings(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

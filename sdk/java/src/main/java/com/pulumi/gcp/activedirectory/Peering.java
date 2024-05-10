@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Active Directory Peering Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,44 +52,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source_network = new Network(&#34;source-network&#34;, NetworkArgs.builder()        
- *             .name(&#34;ad-network&#34;)
+ *         var source_network = new Network("source-network", NetworkArgs.builder()        
+ *             .name("ad-network")
  *             .build());
  * 
- *         var ad_domain = new Domain(&#34;ad-domain&#34;, DomainArgs.builder()        
- *             .domainName(&#34;ad.test.hashicorptest.com&#34;)
- *             .locations(&#34;us-central1&#34;)
- *             .reservedIpRange(&#34;192.168.255.0/24&#34;)
+ *         var ad_domain = new Domain("ad-domain", DomainArgs.builder()        
+ *             .domainName("ad.test.hashicorptest.com")
+ *             .locations("us-central1")
+ *             .reservedIpRange("192.168.255.0/24")
  *             .authorizedNetworks(source_network.id())
  *             .build());
  * 
- *         var peered_project = new Project(&#34;peered-project&#34;, ProjectArgs.builder()        
- *             .name(&#34;my-peered-project&#34;)
- *             .projectId(&#34;my-peered-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var peered_project = new Project("peered-project", ProjectArgs.builder()        
+ *             .name("my-peered-project")
+ *             .projectId("my-peered-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var compute = new Service(&#34;compute&#34;, ServiceArgs.builder()        
+ *         var compute = new Service("compute", ServiceArgs.builder()        
  *             .project(peered_project.projectId())
- *             .service(&#34;compute.googleapis.com&#34;)
+ *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var peered_network = new Network(&#34;peered-network&#34;, NetworkArgs.builder()        
+ *         var peered_network = new Network("peered-network", NetworkArgs.builder()        
  *             .project(compute.project())
- *             .name(&#34;ad-peered-network&#34;)
+ *             .name("ad-peered-network")
  *             .build());
  * 
- *         var ad_domain_peering = new Peering(&#34;ad-domain-peering&#34;, PeeringArgs.builder()        
+ *         var ad_domain_peering = new Peering("ad-domain-peering", PeeringArgs.builder()        
  *             .domainResource(ad_domain.name())
- *             .peeringId(&#34;ad-domain-peering&#34;)
+ *             .peeringId("ad-domain-peering")
  *             .authorizedNetwork(peered_network.id())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

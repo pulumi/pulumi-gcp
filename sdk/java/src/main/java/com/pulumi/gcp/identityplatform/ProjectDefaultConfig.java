@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Identity Platform Project Default Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ProjectDefaultConfig(&#34;default&#34;, ProjectDefaultConfigArgs.builder()        
+ *         var default_ = new ProjectDefaultConfig("default", ProjectDefaultConfigArgs.builder()        
  *             .signIn(ProjectDefaultConfigSignInArgs.builder()
  *                 .allowDuplicateEmails(true)
  *                 .anonymous(ProjectDefaultConfigSignInAnonymousArgs.builder()
@@ -68,14 +69,15 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .phoneNumber(ProjectDefaultConfigSignInPhoneNumberArgs.builder()
  *                     .enabled(true)
- *                     .testPhoneNumbers(Map.of(&#34;+11231231234&#34;, &#34;000000&#34;))
+ *                     .testPhoneNumbers(Map.of("+11231231234", "000000"))
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

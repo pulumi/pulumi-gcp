@@ -42,7 +42,8 @@ import javax.annotation.Nullable;
  * ### Pubsub Subscription Push
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,29 +67,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var example = new Topic("example", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .name(&#34;example-subscription&#34;)
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *             .name("example-subscription")
  *             .topic(example.id())
  *             .ackDeadlineSeconds(20)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .pushConfig(SubscriptionPushConfigArgs.builder()
- *                 .pushEndpoint(&#34;https://example.com/push&#34;)
- *                 .attributes(Map.of(&#34;x-goog-version&#34;, &#34;v1&#34;))
+ *                 .pushEndpoint("https://example.com/push")
+ *                 .attributes(Map.of("x-goog-version", "v1"))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Subscription Pull
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -113,34 +116,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var example = new Topic("example", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .name(&#34;example-subscription&#34;)
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *             .name("example-subscription")
  *             .topic(example.id())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .messageRetentionDuration(&#34;1200s&#34;)
+ *             .labels(Map.of("foo", "bar"))
+ *             .messageRetentionDuration("1200s")
  *             .retainAckedMessages(true)
  *             .ackDeadlineSeconds(20)
  *             .expirationPolicy(SubscriptionExpirationPolicyArgs.builder()
- *                 .ttl(&#34;300000.5s&#34;)
+ *                 .ttl("300000.5s")
  *                 .build())
  *             .retryPolicy(SubscriptionRetryPolicyArgs.builder()
- *                 .minimumBackoff(&#34;10s&#34;)
+ *                 .minimumBackoff("10s")
  *                 .build())
  *             .enableMessageOrdering(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Subscription Dead Letter
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -164,16 +169,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var example = new Topic("example", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .build());
  * 
- *         var exampleDeadLetter = new Topic(&#34;exampleDeadLetter&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic-dead-letter&#34;)
+ *         var exampleDeadLetter = new Topic("exampleDeadLetter", TopicArgs.builder()        
+ *             .name("example-topic-dead-letter")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .name(&#34;example-subscription&#34;)
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *             .name("example-subscription")
  *             .topic(example.id())
  *             .deadLetterPolicy(SubscriptionDeadLetterPolicyArgs.builder()
  *                 .deadLetterTopic(exampleDeadLetter.id())
@@ -183,12 +188,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Subscription Push Bq
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -220,65 +227,67 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var example = new Topic("example", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .build());
  * 
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var testTable = new Table(&#34;testTable&#34;, TableArgs.builder()        
+ *         var testTable = new Table("testTable", TableArgs.builder()        
  *             .deletionProtection(false)
- *             .tableId(&#34;example_table&#34;)
+ *             .tableId("example_table")
  *             .datasetId(test.datasetId())
- *             .schema(&#34;&#34;&#34;
+ *             .schema("""
  * [
  *   {
- *     &#34;name&#34;: &#34;data&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;,
- *     &#34;description&#34;: &#34;The data&#34;
+ *     "name": "data",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The data"
  *   }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .name(&#34;example-subscription&#34;)
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -&gt; {
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format(&#34;%s.%s.%s&#34;, project,datasetId,tableId);
+ *                     return String.format("%s.%s.%s", project,datasetId,tableId);
  *                 }))
  *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var viewer = new IAMMember(&#34;viewer&#34;, IAMMemberArgs.builder()        
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .role(&#34;roles/bigquery.metadataViewer&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.metadataViewer")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var editor = new IAMMember(&#34;editor&#34;, IAMMemberArgs.builder()        
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .role(&#34;roles/bigquery.dataEditor&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var editor = new IAMMember("editor", IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.dataEditor")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Subscription Push Bq Table Schema
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -310,39 +319,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var example = new Topic("example", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .build());
  * 
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var testTable = new Table(&#34;testTable&#34;, TableArgs.builder()        
+ *         var testTable = new Table("testTable", TableArgs.builder()        
  *             .deletionProtection(false)
- *             .tableId(&#34;example_table&#34;)
+ *             .tableId("example_table")
  *             .datasetId(test.datasetId())
- *             .schema(&#34;&#34;&#34;
+ *             .schema("""
  * [
  *   {
- *     &#34;name&#34;: &#34;data&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;,
- *     &#34;description&#34;: &#34;The data&#34;
+ *     "name": "data",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The data"
  *   }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .name(&#34;example-subscription&#34;)
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -&gt; {
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format(&#34;%s.%s.%s&#34;, project,datasetId,tableId);
+ *                     return String.format("%s.%s.%s", project,datasetId,tableId);
  *                 }))
  *                 .useTableSchema(true)
  *                 .build())
@@ -350,26 +359,28 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var viewer = new IAMMember(&#34;viewer&#34;, IAMMemberArgs.builder()        
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .role(&#34;roles/bigquery.metadataViewer&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.metadataViewer")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var editor = new IAMMember(&#34;editor&#34;, IAMMemberArgs.builder()        
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .role(&#34;roles/bigquery.dataEditor&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var editor = new IAMMember("editor", IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.dataEditor")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Subscription Push Cloudstorage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -399,44 +410,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Bucket(&#34;example&#34;, BucketArgs.builder()        
- *             .name(&#34;example-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var example = new Bucket("example", BucketArgs.builder()        
+ *             .name("example-bucket")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .name(&#34;example-subscription&#34;)
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *             .name("example-subscription")
  *             .topic(exampleTopic.id())
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
- *                 .filenamePrefix(&#34;pre-&#34;)
- *                 .filenameSuffix(&#34;-_2605&#34;)
+ *                 .filenamePrefix("pre-")
+ *                 .filenameSuffix("-_2605")
  *                 .maxBytes(1000)
- *                 .maxDuration(&#34;300s&#34;)
+ *                 .maxDuration("300s")
  *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var admin = new BucketIAMMember(&#34;admin&#34;, BucketIAMMemberArgs.builder()        
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()        
  *             .bucket(example.name())
- *             .role(&#34;roles/storage.admin&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/storage.admin")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Subscription Push Cloudstorage Avro
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -467,25 +480,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Bucket(&#34;example&#34;, BucketArgs.builder()        
- *             .name(&#34;example-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var example = new Bucket("example", BucketArgs.builder()        
+ *             .name("example-bucket")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .build());
  * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .name(&#34;example-subscription&#34;)
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()        
+ *             .name("example-subscription")
  *             .topic(exampleTopic.id())
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
- *                 .filenamePrefix(&#34;pre-&#34;)
- *                 .filenameSuffix(&#34;-_34535&#34;)
+ *                 .filenamePrefix("pre-")
+ *                 .filenameSuffix("-_34535")
  *                 .maxBytes(1000)
- *                 .maxDuration(&#34;300s&#34;)
+ *                 .maxDuration("300s")
  *                 .avroConfig(SubscriptionCloudStorageConfigAvroConfigArgs.builder()
  *                     .writeMetadata(true)
  *                     .build())
@@ -494,15 +507,16 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var admin = new BucketIAMMember(&#34;admin&#34;, BucketIAMMemberArgs.builder()        
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()        
  *             .bucket(example.name())
- *             .role(&#34;roles/storage.admin&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/storage.admin")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -620,7 +634,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      * 
@@ -634,7 +648,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      * 

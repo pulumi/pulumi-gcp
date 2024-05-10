@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## google\_service\_directory\_namespace\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,25 +57,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new NamespaceIamPolicy(&#34;policy&#34;, NamespaceIamPolicyArgs.builder()        
+ *         var policy = new NamespaceIamPolicy("policy", NamespaceIamPolicyArgs.builder()        
  *             .name(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_service\_directory\_namespace\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,21 +98,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new NamespaceIamBinding(&#34;binding&#34;, NamespaceIamBindingArgs.builder()        
+ *         var binding = new NamespaceIamBinding("binding", NamespaceIamBindingArgs.builder()        
  *             .name(example.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_service\_directory\_namespace\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -130,21 +135,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new NamespaceIamMember(&#34;member&#34;, NamespaceIamMemberArgs.builder()        
+ *         var member = new NamespaceIamMember("member", NamespaceIamMemberArgs.builder()        
  *             .name(example.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_service\_directory\_namespace\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -169,25 +176,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new NamespaceIamPolicy(&#34;policy&#34;, NamespaceIamPolicyArgs.builder()        
+ *         var policy = new NamespaceIamPolicy("policy", NamespaceIamPolicyArgs.builder()        
  *             .name(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_service\_directory\_namespace\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -208,21 +217,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new NamespaceIamBinding(&#34;binding&#34;, NamespaceIamBindingArgs.builder()        
+ *         var binding = new NamespaceIamBinding("binding", NamespaceIamBindingArgs.builder()        
  *             .name(example.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_service\_directory\_namespace\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -243,15 +254,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new NamespaceIamMember(&#34;member&#34;, NamespaceIamMemberArgs.builder()        
+ *         var member = new NamespaceIamMember("member", NamespaceIamMemberArgs.builder()        
  *             .name(example.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -271,7 +283,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor &#34;projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}} roles/viewer user:jane@example.com&#34;
+ * $ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor &#34;projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

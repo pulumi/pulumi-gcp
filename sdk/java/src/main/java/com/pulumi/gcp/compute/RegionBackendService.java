@@ -42,7 +42,8 @@ import javax.annotation.Nullable;
  * ### Region Backend Service Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,31 +67,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;rbs-health-check&#34;)
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *             .name("rbs-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;region-service&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *             .name("region-service")
+ *             .region("us-central1")
  *             .healthChecks(defaultHealthCheck.id())
  *             .connectionDrainingTimeoutSec(10)
- *             .sessionAffinity(&#34;CLIENT_IP&#34;)
+ *             .sessionAffinity("CLIENT_IP")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Backend Service External Iap
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -112,25 +115,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;tf-test-region-service-external&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *             .name("tf-test-region-service-external")
+ *             .region("us-central1")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("EXTERNAL")
  *             .iap(RegionBackendServiceIapArgs.builder()
- *                 .oauth2ClientId(&#34;abc&#34;)
- *                 .oauth2ClientSecret(&#34;xyz&#34;)
+ *                 .oauth2ClientId("abc")
+ *                 .oauth2ClientSecret("xyz")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Backend Service Cache
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -155,39 +160,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;rbs-health-check&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *             .name("rbs-health-check")
+ *             .region("us-central1")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;region-service&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *             .name("region-service")
+ *             .region("us-central1")
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(RegionBackendServiceCdnPolicyArgs.builder()
- *                 .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
+ *                 .cacheMode("CACHE_ALL_STATIC")
  *                 .defaultTtl(3600)
  *                 .clientTtl(7200)
  *                 .maxTtl(10800)
  *                 .negativeCaching(true)
  *                 .signedUrlCacheMaxAgeSec(7200)
  *                 .build())
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *             .loadBalancingScheme("EXTERNAL")
+ *             .protocol("HTTP")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Backend Service Ilb Round Robin
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -211,30 +218,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck(&#34;healthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;rbs-health-check&#34;)
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *             .name("rbs-health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;region-service&#34;)
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("region-service")
  *             .healthChecks(healthCheck.id())
- *             .protocol(&#34;HTTP&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
- *             .localityLbPolicy(&#34;ROUND_ROBIN&#34;)
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .localityLbPolicy("ROUND_ROBIN")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Backend Service External
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -258,30 +267,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new RegionHealthCheck(&#34;healthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;rbs-health-check&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()        
+ *             .name("rbs-health-check")
+ *             .region("us-central1")
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;region-service&#34;)
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("region-service")
  *             .healthChecks(healthCheck.id())
- *             .protocol(&#34;TCP&#34;)
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
+ *             .protocol("TCP")
+ *             .loadBalancingScheme("EXTERNAL")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Backend Service External Weighted
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -305,31 +316,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new RegionHealthCheck(&#34;healthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;rbs-health-check&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()        
+ *             .name("rbs-health-check")
+ *             .region("us-central1")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;region-service&#34;)
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("region-service")
  *             .healthChecks(healthCheck.id())
- *             .protocol(&#34;TCP&#34;)
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
- *             .localityLbPolicy(&#34;WEIGHTED_MAGLEV&#34;)
+ *             .protocol("TCP")
+ *             .loadBalancingScheme("EXTERNAL")
+ *             .localityLbPolicy("WEIGHTED_MAGLEV")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Backend Service Ilb Ring Hash
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -358,21 +371,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck(&#34;healthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;rbs-health-check&#34;)
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *             .name("rbs-health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;region-service&#34;)
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("region-service")
  *             .healthChecks(healthCheck.id())
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
- *             .localityLbPolicy(&#34;RING_HASH&#34;)
- *             .sessionAffinity(&#34;HTTP_COOKIE&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .localityLbPolicy("RING_HASH")
+ *             .sessionAffinity("HTTP_COOKIE")
+ *             .protocol("HTTP")
  *             .circuitBreakers(RegionBackendServiceCircuitBreakersArgs.builder()
  *                 .maxConnections(10)
  *                 .build())
@@ -382,7 +395,7 @@ import javax.annotation.Nullable;
  *                         .seconds(11)
  *                         .nanos(1111)
  *                         .build())
- *                     .name(&#34;mycookie&#34;)
+ *                     .name("mycookie")
  *                     .build())
  *                 .build())
  *             .outlierDetection(RegionBackendServiceOutlierDetectionArgs.builder()
@@ -392,12 +405,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Backend Service Balancing Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -436,81 +451,83 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;rbs-net&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("rbs-net")
  *             .autoCreateSubnetworks(false)
- *             .routingMode(&#34;REGIONAL&#34;)
+ *             .routingMode("REGIONAL")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;rbs-net-default&#34;)
- *             .ipCidrRange(&#34;10.1.2.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("rbs-net-default")
+ *             .ipCidrRange("10.1.2.0/24")
+ *             .region("us-central1")
  *             .network(defaultNetwork.id())
  *             .build());
  * 
- *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
- *             .name(&#34;template-region-service&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()        
+ *             .name("template-region-service")
+ *             .machineType("e2-medium")
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network(defaultNetwork.id())
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debianImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                 .sourceImage(debianImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
  *             .tags(            
- *                 &#34;allow-ssh&#34;,
- *                 &#34;load-balanced-backend&#34;)
+ *                 "allow-ssh",
+ *                 "load-balanced-backend")
  *             .build());
  * 
- *         var rigm = new RegionInstanceGroupManager(&#34;rigm&#34;, RegionInstanceGroupManagerArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;rbs-rigm&#34;)
+ *         var rigm = new RegionInstanceGroupManager("rigm", RegionInstanceGroupManagerArgs.builder()        
+ *             .region("us-central1")
+ *             .name("rbs-rigm")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(instanceTemplate.id())
- *                 .name(&#34;primary&#34;)
+ *                 .name("primary")
  *                 .build())
- *             .baseInstanceName(&#34;internal-glb&#34;)
+ *             .baseInstanceName("internal-glb")
  *             .targetSize(1)
  *             .build());
  * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;rbs-health-check&#34;)
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *             .region("us-central1")
+ *             .name("rbs-health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .portSpecification(&#34;USE_SERVING_PORT&#34;)
+ *                 .portSpecification("USE_SERVING_PORT")
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .backends(RegionBackendServiceBackendArgs.builder()
  *                 .group(rigm.instanceGroup())
- *                 .balancingMode(&#34;UTILIZATION&#34;)
+ *                 .balancingMode("UTILIZATION")
  *                 .capacityScaler(1)
  *                 .build())
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;region-service&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *             .region("us-central1")
+ *             .name("region-service")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Backend Service Connection Tracking
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -535,25 +552,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new RegionHealthCheck(&#34;healthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;rbs-health-check&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()        
+ *             .name("rbs-health-check")
+ *             .region("us-central1")
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
  *                 .port(22)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;region-service&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()        
+ *             .name("region-service")
+ *             .region("us-central1")
  *             .healthChecks(healthCheck.id())
  *             .connectionDrainingTimeoutSec(10)
- *             .sessionAffinity(&#34;CLIENT_IP&#34;)
- *             .protocol(&#34;TCP&#34;)
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
+ *             .sessionAffinity("CLIENT_IP")
+ *             .protocol("TCP")
+ *             .loadBalancingScheme("EXTERNAL")
  *             .connectionTrackingPolicy(RegionBackendServiceConnectionTrackingPolicyArgs.builder()
- *                 .trackingMode(&#34;PER_SESSION&#34;)
- *                 .connectionPersistenceOnUnhealthyBackends(&#34;NEVER_PERSIST&#34;)
+ *                 .trackingMode("PER_SESSION")
+ *                 .connectionPersistenceOnUnhealthyBackends("NEVER_PERSIST")
  *                 .idleTimeoutSec(60)
  *                 .enableStrongAffinity(true)
  *                 .build())
@@ -561,7 +578,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

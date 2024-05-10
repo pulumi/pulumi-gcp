@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Cloudids Endpoint
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,34 +55,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;tf-test-my-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("tf-test-my-network")
  *             .build());
  * 
- *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;address&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()        
+ *             .name("address")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(default_.id())
  *             .build());
  * 
- *         var privateServiceConnection = new Connection(&#34;privateServiceConnection&#34;, ConnectionArgs.builder()        
+ *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()        
  *             .network(default_.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
  * 
- *         var example_endpoint = new Endpoint(&#34;example-endpoint&#34;, EndpointArgs.builder()        
- *             .name(&#34;test&#34;)
- *             .location(&#34;us-central1-f&#34;)
+ *         var example_endpoint = new Endpoint("example-endpoint", EndpointArgs.builder()        
+ *             .name("test")
+ *             .location("us-central1-f")
  *             .network(default_.id())
- *             .severity(&#34;INFORMATIONAL&#34;)
+ *             .severity("INFORMATIONAL")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

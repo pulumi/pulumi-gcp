@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * 
  * ### Basic_asset
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,55 +61,56 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicBucket = new Bucket(&#34;basicBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;bucket&#34;)
- *             .location(&#34;us-west1&#34;)
+ *         var basicBucket = new Bucket("basicBucket", BucketArgs.builder()        
+ *             .name("bucket")
+ *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var basicLake = new Lake(&#34;basicLake&#34;, LakeArgs.builder()        
- *             .name(&#34;lake&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var basicLake = new Lake("basicLake", LakeArgs.builder()        
+ *             .name("lake")
+ *             .location("us-west1")
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var basicZone = new Zone(&#34;basicZone&#34;, ZoneArgs.builder()        
- *             .name(&#34;zone&#34;)
- *             .location(&#34;us-west1&#34;)
+ *         var basicZone = new Zone("basicZone", ZoneArgs.builder()        
+ *             .name("zone")
+ *             .location("us-west1")
  *             .lake(basicLake.name())
- *             .type(&#34;RAW&#34;)
+ *             .type("RAW")
  *             .discoverySpec(ZoneDiscoverySpecArgs.builder()
  *                 .enabled(false)
  *                 .build())
  *             .resourceSpec(ZoneResourceSpecArgs.builder()
- *                 .locationType(&#34;SINGLE_REGION&#34;)
+ *                 .locationType("SINGLE_REGION")
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var primary = new Asset(&#34;primary&#34;, AssetArgs.builder()        
- *             .name(&#34;asset&#34;)
- *             .location(&#34;us-west1&#34;)
+ *         var primary = new Asset("primary", AssetArgs.builder()        
+ *             .name("asset")
+ *             .location("us-west1")
  *             .lake(basicLake.name())
  *             .dataplexZone(basicZone.name())
  *             .discoverySpec(AssetDiscoverySpecArgs.builder()
  *                 .enabled(false)
  *                 .build())
  *             .resourceSpec(AssetResourceSpecArgs.builder()
- *                 .name(&#34;projects/my-project-name/buckets/bucket&#34;)
- *                 .type(&#34;STORAGE_BUCKET&#34;)
+ *                 .name("projects/my-project-name/buckets/bucket")
+ *                 .type("STORAGE_BUCKET")
  *                 .build())
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;env&#34;, &#34;foo&#34;),
- *                 Map.entry(&#34;my-asset&#34;, &#34;exists&#34;)
+ *                 Map.entry("env", "foo"),
+ *                 Map.entry("my-asset", "exists")
  *             ))
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

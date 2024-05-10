@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,25 +47,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkerPool(&#34;pool&#34;, WorkerPoolArgs.builder()        
- *             .name(&#34;my-pool&#34;)
- *             .location(&#34;europe-west1&#34;)
+ *         var pool = new WorkerPool("pool", WorkerPoolArgs.builder()        
+ *             .name("my-pool")
+ *             .location("europe-west1")
  *             .workerConfig(WorkerPoolWorkerConfigArgs.builder()
  *                 .diskSizeGb(100)
- *                 .machineType(&#34;e2-standard-4&#34;)
+ *                 .machineType("e2-standard-4")
  *                 .noExternalIp(false)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Network Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,47 +98,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicenetworking = new Service(&#34;servicenetworking&#34;, ServiceArgs.builder()        
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()        
+ *             .service("servicenetworking.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var workerRange = new GlobalAddress(&#34;workerRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;worker-pool-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var workerRange = new GlobalAddress("workerRange", GlobalAddressArgs.builder()        
+ *             .name("worker-pool-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(network.id())
  *             .build());
  * 
- *         var workerPoolConn = new Connection(&#34;workerPoolConn&#34;, ConnectionArgs.builder()        
+ *         var workerPoolConn = new Connection("workerPoolConn", ConnectionArgs.builder()        
  *             .network(network.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(workerRange.name())
  *             .build());
  * 
- *         var pool = new WorkerPool(&#34;pool&#34;, WorkerPoolArgs.builder()        
- *             .name(&#34;my-pool&#34;)
- *             .location(&#34;europe-west1&#34;)
+ *         var pool = new WorkerPool("pool", WorkerPoolArgs.builder()        
+ *             .name("my-pool")
+ *             .location("europe-west1")
  *             .workerConfig(WorkerPoolWorkerConfigArgs.builder()
  *                 .diskSizeGb(100)
- *                 .machineType(&#34;e2-standard-4&#34;)
+ *                 .machineType("e2-standard-4")
  *                 .noExternalIp(false)
  *                 .build())
  *             .networkConfig(WorkerPoolNetworkConfigArgs.builder()
  *                 .peeredNetwork(network.id())
- *                 .peeredNetworkIpRange(&#34;/29&#34;)
+ *                 .peeredNetworkIpRange("/29")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

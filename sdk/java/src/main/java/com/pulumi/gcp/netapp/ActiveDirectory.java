@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Netapp Active Directory Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,35 +53,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testActiveDirectoryFull = new ActiveDirectory(&#34;testActiveDirectoryFull&#34;, ActiveDirectoryArgs.builder()        
- *             .name(&#34;test-active-directory-full&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .domain(&#34;ad.internal&#34;)
- *             .dns(&#34;172.30.64.3&#34;)
- *             .netBiosPrefix(&#34;smbserver&#34;)
- *             .username(&#34;user&#34;)
- *             .password(&#34;pass&#34;)
+ *         var testActiveDirectoryFull = new ActiveDirectory("testActiveDirectoryFull", ActiveDirectoryArgs.builder()        
+ *             .name("test-active-directory-full")
+ *             .location("us-central1")
+ *             .domain("ad.internal")
+ *             .dns("172.30.64.3")
+ *             .netBiosPrefix("smbserver")
+ *             .username("user")
+ *             .password("pass")
  *             .aesEncryption(false)
  *             .backupOperators(            
- *                 &#34;test1&#34;,
- *                 &#34;test2&#34;)
- *             .description(&#34;ActiveDirectory is the public representation of the active directory config.&#34;)
+ *                 "test1",
+ *                 "test2")
+ *             .description("ActiveDirectory is the public representation of the active directory config.")
  *             .encryptDcConnections(false)
- *             .kdcHostname(&#34;hostname&#34;)
- *             .kdcIp(&#34;10.10.0.11&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .kdcHostname("hostname")
+ *             .kdcIp("10.10.0.11")
+ *             .labels(Map.of("foo", "bar"))
  *             .ldapSigning(false)
  *             .nfsUsersWithLdap(false)
- *             .organizationalUnit(&#34;CN=Computers&#34;)
+ *             .organizationalUnit("CN=Computers")
  *             .securityOperators(            
- *                 &#34;test1&#34;,
- *                 &#34;test2&#34;)
- *             .site(&#34;test-site&#34;)
+ *                 "test1",
+ *                 "test2")
+ *             .site("test-site")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

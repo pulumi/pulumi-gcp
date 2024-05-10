@@ -18,7 +18,8 @@ public final class BackupdisasterrecoveryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -40,12 +41,13 @@ public final class BackupdisasterrecoveryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-backup-dr-management-server = BackupdisasterrecoveryFunctions.getManagementServer(GetManagementServerArgs.builder()
-     *             .location(&#34;us-central1&#34;)
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -56,7 +58,8 @@ public final class BackupdisasterrecoveryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -78,12 +81,13 @@ public final class BackupdisasterrecoveryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-backup-dr-management-server = BackupdisasterrecoveryFunctions.getManagementServer(GetManagementServerArgs.builder()
-     *             .location(&#34;us-central1&#34;)
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -94,7 +98,8 @@ public final class BackupdisasterrecoveryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -116,12 +121,13 @@ public final class BackupdisasterrecoveryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-backup-dr-management-server = BackupdisasterrecoveryFunctions.getManagementServer(GetManagementServerArgs.builder()
-     *             .location(&#34;us-central1&#34;)
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -132,7 +138,8 @@ public final class BackupdisasterrecoveryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -154,12 +161,13 @@ public final class BackupdisasterrecoveryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-backup-dr-management-server = BackupdisasterrecoveryFunctions.getManagementServer(GetManagementServerArgs.builder()
-     *             .location(&#34;us-central1&#34;)
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

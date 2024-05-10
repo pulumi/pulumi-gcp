@@ -183,7 +183,7 @@ public final class MembershipRbacRoleBindingState extends com.pulumi.resources.R
      * Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * user is the name of the user as seen by the kubernetes cluster, example
-     * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+     * &#34;alice&#34; or &#34;alice{@literal @}domain.tld&#34;
      * 
      */
     @Import(name="user")
@@ -193,7 +193,7 @@ public final class MembershipRbacRoleBindingState extends com.pulumi.resources.R
      * @return Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * user is the name of the user as seen by the kubernetes cluster, example
-     * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+     * &#34;alice&#34; or &#34;alice{@literal @}domain.tld&#34;
      * 
      */
     public Optional<Output<String>> user() {
@@ -473,7 +473,7 @@ public final class MembershipRbacRoleBindingState extends com.pulumi.resources.R
          * @param user Principal that is be authorized in the cluster (at least of one the oneof
          * is required). Updating one will unset the other automatically.
          * user is the name of the user as seen by the kubernetes cluster, example
-         * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+         * &#34;alice&#34; or &#34;alice{@literal @}domain.tld&#34;
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class MembershipRbacRoleBindingState extends com.pulumi.resources.R
          * @param user Principal that is be authorized in the cluster (at least of one the oneof
          * is required). Updating one will unset the other automatically.
          * user is the name of the user as seen by the kubernetes cluster, example
-         * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+         * &#34;alice&#34; or &#34;alice{@literal @}domain.tld&#34;
          * 
          * @return builder
          * 

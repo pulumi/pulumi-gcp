@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Disk Resource Policy Attachment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,40 +56,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var ssd = new Disk(&#34;ssd&#34;, DiskArgs.builder()        
- *             .name(&#34;my-disk&#34;)
- *             .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *         var ssd = new Disk("ssd", DiskArgs.builder()        
+ *             .name("my-disk")
+ *             .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *             .size(50)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
  *             .build());
  * 
- *         var policy = new ResourcePolicy(&#34;policy&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;my-resource-policy&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var policy = new ResourcePolicy("policy", ResourcePolicyArgs.builder()        
+ *             .name("my-resource-policy")
+ *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
  *                     .dailySchedule(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs.builder()
  *                         .daysInCycle(1)
- *                         .startTime(&#34;04:00&#34;)
+ *                         .startTime("04:00")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var attachment = new DiskResourcePolicyAttachment(&#34;attachment&#34;, DiskResourcePolicyAttachmentArgs.builder()        
+ *         var attachment = new DiskResourcePolicyAttachment("attachment", DiskResourcePolicyAttachmentArgs.builder()        
  *             .name(policy.name())
  *             .disk(ssd.name())
- *             .zone(&#34;us-central1-a&#34;)
+ *             .zone("us-central1-a")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

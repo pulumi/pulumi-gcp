@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## google\_dataproc\_cluster\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,27 +55,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var editor = new ClusterIAMPolicy(&#34;editor&#34;, ClusterIAMPolicyArgs.builder()        
- *             .project(&#34;your-project&#34;)
- *             .region(&#34;your-region&#34;)
- *             .cluster(&#34;your-dataproc-cluster&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var editor = new ClusterIAMPolicy("editor", ClusterIAMPolicyArgs.builder()        
+ *             .project("your-project")
+ *             .region("your-region")
+ *             .cluster("your-dataproc-cluster")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dataproc\_cluster\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,21 +98,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMBinding(&#34;editor&#34;, ClusterIAMBindingArgs.builder()        
- *             .cluster(&#34;your-dataproc-cluster&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var editor = new ClusterIAMBinding("editor", ClusterIAMBindingArgs.builder()        
+ *             .cluster("your-dataproc-cluster")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dataproc\_cluster\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -130,21 +135,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMMember(&#34;editor&#34;, ClusterIAMMemberArgs.builder()        
- *             .cluster(&#34;your-dataproc-cluster&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var editor = new ClusterIAMMember("editor", ClusterIAMMemberArgs.builder()        
+ *             .cluster("your-dataproc-cluster")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dataproc\_cluster\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -169,27 +176,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var editor = new ClusterIAMPolicy(&#34;editor&#34;, ClusterIAMPolicyArgs.builder()        
- *             .project(&#34;your-project&#34;)
- *             .region(&#34;your-region&#34;)
- *             .cluster(&#34;your-dataproc-cluster&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var editor = new ClusterIAMPolicy("editor", ClusterIAMPolicyArgs.builder()        
+ *             .project("your-project")
+ *             .region("your-region")
+ *             .cluster("your-dataproc-cluster")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dataproc\_cluster\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -210,21 +219,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMBinding(&#34;editor&#34;, ClusterIAMBindingArgs.builder()        
- *             .cluster(&#34;your-dataproc-cluster&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var editor = new ClusterIAMBinding("editor", ClusterIAMBindingArgs.builder()        
+ *             .cluster("your-dataproc-cluster")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dataproc\_cluster\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -245,15 +256,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMMember(&#34;editor&#34;, ClusterIAMMemberArgs.builder()        
- *             .cluster(&#34;your-dataproc-cluster&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var editor = new ClusterIAMMember("editor", ClusterIAMMemberArgs.builder()        
+ *             .cluster("your-dataproc-cluster")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -328,9 +340,9 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -342,9 +354,9 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Gkehub Scope Rbac Role Binding Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,23 +56,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
- *             .scopeId(&#34;tf-test-scope_27169&#34;)
+ *         var scope = new Scope("scope", ScopeArgs.builder()        
+ *             .scopeId("tf-test-scope_27169")
  *             .build());
  * 
- *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding(&#34;scopeRbacRoleBinding&#34;, ScopeRbacRoleBindingArgs.builder()        
- *             .scopeRbacRoleBindingId(&#34;tf-test-scope-rbac-role-binding_75223&#34;)
+ *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding("scopeRbacRoleBinding", ScopeRbacRoleBindingArgs.builder()        
+ *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_75223")
  *             .scopeId(scope.scopeId())
- *             .user(&#34;test-email@gmail.com&#34;)
+ *             .user("test-email{@literal @}gmail.com")
  *             .role(ScopeRbacRoleBindingRoleArgs.builder()
- *                 .predefinedRole(&#34;ADMIN&#34;)
+ *                 .predefinedRole("ADMIN")
  *                 .build())
- *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *             .labels(Map.of("key", "value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -302,7 +304,7 @@ public class ScopeRbacRoleBinding extends com.pulumi.resources.CustomResource {
     /**
      * Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
      * other automatically. user is the name of the user as seen by the kubernetes cluster, example &#34;alice&#34; or
-     * &#34;alice@domain.tld&#34;
+     * &#34;alice{@literal @}domain.tld&#34;
      * 
      */
     @Export(name="user", refs={String.class}, tree="[0]")
@@ -311,7 +313,7 @@ public class ScopeRbacRoleBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
      * other automatically. user is the name of the user as seen by the kubernetes cluster, example &#34;alice&#34; or
-     * &#34;alice@domain.tld&#34;
+     * &#34;alice{@literal @}domain.tld&#34;
      * 
      */
     public Output<Optional<String>> user() {

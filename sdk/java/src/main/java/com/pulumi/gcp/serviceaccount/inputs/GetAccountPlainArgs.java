@@ -24,7 +24,7 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
      * `projects/my-project/serviceAccounts/...`)
      * 
      * * The email address of the service account (e.g.
-     * `my-service@my-project.iam.gserviceaccount.com`)
+     * `my-service{@literal @}my-project.iam.gserviceaccount.com`)
      * 
      */
     @Import(name="accountId", required=true)
@@ -39,7 +39,7 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
      * `projects/my-project/serviceAccounts/...`)
      * 
      * * The email address of the service account (e.g.
-     * `my-service@my-project.iam.gserviceaccount.com`)
+     * `my-service{@literal @}my-project.iam.gserviceaccount.com`)
      * 
      */
     public String accountId() {
@@ -97,7 +97,7 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
          * `projects/my-project/serviceAccounts/...`)
          * 
          * * The email address of the service account (e.g.
-         * `my-service@my-project.iam.gserviceaccount.com`)
+         * `my-service{@literal @}my-project.iam.gserviceaccount.com`)
          * 
          * @return builder
          * 

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Global Address Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,18 +54,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GlobalAddress(&#34;default&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;global-appserver-ip&#34;)
+ *         var default_ = new GlobalAddress("default", GlobalAddressArgs.builder()        
+ *             .name("global-appserver-ip")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Global Address Private Services Connect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -87,22 +90,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network-name&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("my-network-name")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new GlobalAddress(&#34;default&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;global-psconnect-ip&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
+ *         var default_ = new GlobalAddress("default", GlobalAddressArgs.builder()        
+ *             .name("global-psconnect-ip")
+ *             .addressType("INTERNAL")
+ *             .purpose("PRIVATE_SERVICE_CONNECT")
  *             .network(network.id())
- *             .address(&#34;100.100.100.105&#34;)
+ *             .address("100.100.100.105")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

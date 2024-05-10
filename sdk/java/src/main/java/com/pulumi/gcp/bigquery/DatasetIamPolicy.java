@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ## google\_bigquery\_dataset\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,29 +63,31 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var owner = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/bigquery.dataOwner&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/bigquery.dataOwner")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var datasetDataset = new Dataset(&#34;datasetDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var dataset = new DatasetIamPolicy(&#34;dataset&#34;, DatasetIamPolicyArgs.builder()        
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()        
  *             .datasetId(datasetDataset.datasetId())
- *             .policyData(owner.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(owner.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_dataset\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -107,25 +110,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var reader = new DatasetIamBinding(&#34;reader&#34;, DatasetIamBindingArgs.builder()        
+ *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()        
  *             .datasetId(dataset.datasetId())
- *             .role(&#34;roles/bigquery.dataViewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/bigquery.dataViewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_dataset\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -148,25 +153,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var editor = new DatasetIamMember(&#34;editor&#34;, DatasetIamMemberArgs.builder()        
+ *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()        
  *             .datasetId(dataset.datasetId())
- *             .role(&#34;roles/bigquery.dataEditor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/bigquery.dataEditor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_dataset\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -193,29 +200,31 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var owner = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/bigquery.dataOwner&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/bigquery.dataOwner")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var datasetDataset = new Dataset(&#34;datasetDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var dataset = new DatasetIamPolicy(&#34;dataset&#34;, DatasetIamPolicyArgs.builder()        
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()        
  *             .datasetId(datasetDataset.datasetId())
- *             .policyData(owner.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(owner.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_dataset\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -238,25 +247,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var reader = new DatasetIamBinding(&#34;reader&#34;, DatasetIamBindingArgs.builder()        
+ *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()        
  *             .datasetId(dataset.datasetId())
- *             .role(&#34;roles/bigquery.dataViewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/bigquery.dataViewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_dataset\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -279,19 +290,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var editor = new DatasetIamMember(&#34;editor&#34;, DatasetIamMemberArgs.builder()        
+ *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()        
  *             .datasetId(dataset.datasetId())
- *             .role(&#34;roles/bigquery.dataEditor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/bigquery.dataEditor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

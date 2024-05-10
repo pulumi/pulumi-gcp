@@ -32,7 +32,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -54,12 +55,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SecretmanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .secretId(&#34;foobar&#34;)
+     *             .secretId("foobar")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -72,7 +74,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -94,12 +97,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SecretmanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .secretId(&#34;foobar&#34;)
+     *             .secretId("foobar")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -112,7 +116,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -134,12 +139,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SecretmanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .secretId(&#34;foobar&#34;)
+     *             .secretId("foobar")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -152,7 +158,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -174,12 +181,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SecretmanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .secretId(&#34;foobar&#34;)
+     *             .secretId("foobar")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -192,7 +200,8 @@ public final class SecretmanagerFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -220,7 +229,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -233,7 +243,8 @@ public final class SecretmanagerFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -261,7 +272,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -274,7 +286,8 @@ public final class SecretmanagerFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -302,7 +315,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -315,7 +329,8 @@ public final class SecretmanagerFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -343,7 +358,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -356,7 +372,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -378,12 +395,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -396,7 +414,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -418,12 +437,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -436,7 +456,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -458,12 +479,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -476,7 +498,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -498,12 +521,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -516,7 +540,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -538,12 +563,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersionAccess(GetSecretVersionAccessArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -556,7 +582,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -578,12 +605,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersionAccess(GetSecretVersionAccessArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -596,7 +624,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -618,12 +647,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersionAccess(GetSecretVersionAccessArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -636,7 +666,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -658,12 +689,13 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersionAccess(GetSecretVersionAccessArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -676,7 +708,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -701,7 +734,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -714,7 +748,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -739,7 +774,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -752,7 +788,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -777,7 +814,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -790,7 +828,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -815,7 +854,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -828,7 +868,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -853,7 +894,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -866,7 +908,8 @@ public final class SecretmanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -891,7 +934,8 @@ public final class SecretmanagerFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

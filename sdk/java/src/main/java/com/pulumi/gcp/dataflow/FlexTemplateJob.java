@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,15 +45,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigDataJob = new FlexTemplateJob(&#34;bigDataJob&#34;, FlexTemplateJobArgs.builder()        
- *             .name(&#34;dataflow-flextemplates-job&#34;)
- *             .containerSpecGcsPath(&#34;gs://my-bucket/templates/template.json&#34;)
- *             .parameters(Map.of(&#34;inputSubscription&#34;, &#34;messages&#34;))
+ *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()        
+ *             .name("dataflow-flextemplates-job")
+ *             .containerSpecGcsPath("gs://my-bucket/templates/template.json")
+ *             .parameters(Map.of("inputSubscription", "messages"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Note on &#34;destroy&#34; / &#34;apply&#34;
@@ -85,7 +87,8 @@ import javax.annotation.Nullable;
  * resource, for example:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -109,26 +112,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var bigDataJobSubscriptionId = config.get(&#34;bigDataJobSubscriptionId&#34;).orElse(&#34;projects/myproject/subscriptions/messages&#34;);
- *         var bigDataJobNameSuffix = new RandomId(&#34;bigDataJobNameSuffix&#34;, RandomIdArgs.builder()        
+ *         final var bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId").orElse("projects/myproject/subscriptions/messages");
+ *         var bigDataJobNameSuffix = new RandomId("bigDataJobNameSuffix", RandomIdArgs.builder()        
  *             .byteLength(4)
  *             .keepers(Map.ofEntries(
- *                 Map.entry(&#34;region&#34;, region),
- *                 Map.entry(&#34;subscription_id&#34;, bigDataJobSubscriptionId)
+ *                 Map.entry("region", region),
+ *                 Map.entry("subscription_id", bigDataJobSubscriptionId)
  *             ))
  *             .build());
  * 
- *         var bigDataJob = new FlexTemplateJob(&#34;bigDataJob&#34;, FlexTemplateJobArgs.builder()        
- *             .name(bigDataJobNameSuffix.dec().applyValue(dec -&gt; String.format(&#34;dataflow-flextemplates-job-%s&#34;, dec)))
+ *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()        
+ *             .name(bigDataJobNameSuffix.dec().applyValue(dec -> String.format("dataflow-flextemplates-job-%s", dec)))
  *             .region(region)
- *             .containerSpecGcsPath(&#34;gs://my-bucket/templates/template.json&#34;)
+ *             .containerSpecGcsPath("gs://my-bucket/templates/template.json")
  *             .skipWaitOnJobTermination(true)
- *             .parameters(Map.of(&#34;inputSubscription&#34;, bigDataJobSubscriptionId))
+ *             .parameters(Map.of("inputSubscription", bigDataJobSubscriptionId))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Datastream Private Connection Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,24 +57,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .build());
  * 
- *         var default_ = new PrivateConnection(&#34;default&#34;, PrivateConnectionArgs.builder()        
- *             .displayName(&#34;Connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .privateConnectionId(&#34;my-connection&#34;)
- *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()        
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .privateConnectionId("my-connection")
+ *             .labels(Map.of("key", "value"))
  *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
  *                 .vpc(defaultNetwork.id())
- *                 .subnet(&#34;10.0.0.0/29&#34;)
+ *                 .subnet("10.0.0.0/29")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

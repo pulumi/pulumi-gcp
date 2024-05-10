@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Url Map Bucket And Service
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,82 +68,84 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpHealthCheck(&#34;default&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()        
+ *             .name("health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var login = new BackendService(&#34;login&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;login&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var login = new BackendService("login", BackendServiceArgs.builder()        
+ *             .name("login")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var staticBucket = new Bucket(&#34;staticBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;static-asset-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var staticBucket = new Bucket("staticBucket", BucketArgs.builder()        
+ *             .name("static-asset-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var static_ = new BackendBucket(&#34;static&#34;, BackendBucketArgs.builder()        
- *             .name(&#34;static-asset-backend-bucket&#34;)
+ *         var static_ = new BackendBucket("static", BackendBucketArgs.builder()        
+ *             .name("static-asset-backend-bucket")
  *             .bucketName(staticBucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
- *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *             .name("urlmap")
+ *             .description("a description")
  *             .defaultService(static_.id())
  *             .hostRules(            
  *                 URLMapHostRuleArgs.builder()
- *                     .hosts(&#34;mysite.com&#34;)
- *                     .pathMatcher(&#34;mysite&#34;)
+ *                     .hosts("mysite.com")
+ *                     .pathMatcher("mysite")
  *                     .build(),
  *                 URLMapHostRuleArgs.builder()
- *                     .hosts(&#34;myothersite.com&#34;)
- *                     .pathMatcher(&#34;otherpaths&#34;)
+ *                     .hosts("myothersite.com")
+ *                     .pathMatcher("otherpaths")
  *                     .build())
  *             .pathMatchers(            
  *                 URLMapPathMatcherArgs.builder()
- *                     .name(&#34;mysite&#34;)
+ *                     .name("mysite")
  *                     .defaultService(static_.id())
  *                     .pathRules(                    
  *                         URLMapPathMatcherPathRuleArgs.builder()
- *                             .paths(&#34;/home&#34;)
+ *                             .paths("/home")
  *                             .service(static_.id())
  *                             .build(),
  *                         URLMapPathMatcherPathRuleArgs.builder()
- *                             .paths(&#34;/login&#34;)
+ *                             .paths("/login")
  *                             .service(login.id())
  *                             .build(),
  *                         URLMapPathMatcherPathRuleArgs.builder()
- *                             .paths(&#34;/static&#34;)
+ *                             .paths("/static")
  *                             .service(static_.id())
  *                             .build())
  *                     .build(),
  *                 URLMapPathMatcherArgs.builder()
- *                     .name(&#34;otherpaths&#34;)
+ *                     .name("otherpaths")
  *                     .defaultService(static_.id())
  *                     .build())
  *             .tests(URLMapTestArgs.builder()
  *                 .service(static_.id())
- *                 .host(&#34;example.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("example.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Url Map Traffic Director Route
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -171,93 +174,95 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService(&#34;home&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;home&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
- *             .loadBalancingScheme(&#34;INTERNAL_SELF_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *             .name("urlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .routeRules(URLMapPathMatcherRouteRuleArgs.builder()
  *                     .priority(1)
  *                     .headerAction(URLMapPathMatcherRouteRuleHeaderActionArgs.builder()
- *                         .requestHeadersToRemoves(&#34;RemoveMe2&#34;)
+ *                         .requestHeadersToRemoves("RemoveMe2")
  *                         .requestHeadersToAdds(URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs.builder()
- *                             .headerName(&#34;AddSomethingElse&#34;)
- *                             .headerValue(&#34;MyOtherValue&#34;)
+ *                             .headerName("AddSomethingElse")
+ *                             .headerValue("MyOtherValue")
  *                             .replace(true)
  *                             .build())
- *                         .responseHeadersToRemoves(&#34;RemoveMe3&#34;)
+ *                         .responseHeadersToRemoves("RemoveMe3")
  *                         .responseHeadersToAdds(URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs.builder()
- *                             .headerName(&#34;AddMe&#34;)
- *                             .headerValue(&#34;MyValue&#34;)
+ *                             .headerName("AddMe")
+ *                             .headerValue("MyValue")
  *                             .replace(false)
  *                             .build())
  *                         .build())
  *                     .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                         .fullPathMatch(&#34;a full path&#34;)
+ *                         .fullPathMatch("a full path")
  *                         .headerMatches(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs.builder()
- *                             .headerName(&#34;someheader&#34;)
- *                             .exactMatch(&#34;match this exactly&#34;)
+ *                             .headerName("someheader")
+ *                             .exactMatch("match this exactly")
  *                             .invertMatch(true)
  *                             .build())
  *                         .ignoreCase(true)
  *                         .metadataFilters(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs.builder()
- *                             .filterMatchCriteria(&#34;MATCH_ANY&#34;)
+ *                             .filterMatchCriteria("MATCH_ANY")
  *                             .filterLabels(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs.builder()
- *                                 .name(&#34;PLANET&#34;)
- *                                 .value(&#34;MARS&#34;)
+ *                                 .name("PLANET")
+ *                                 .value("MARS")
  *                                 .build())
  *                             .build())
  *                         .queryParameterMatches(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs.builder()
- *                             .name(&#34;a query parameter&#34;)
+ *                             .name("a query parameter")
  *                             .presentMatch(true)
  *                             .build())
  *                         .build())
  *                     .urlRedirect(URLMapPathMatcherRouteRuleUrlRedirectArgs.builder()
- *                         .hostRedirect(&#34;A host&#34;)
+ *                         .hostRedirect("A host")
  *                         .httpsRedirect(false)
- *                         .pathRedirect(&#34;some/path&#34;)
- *                         .redirectResponseCode(&#34;TEMPORARY_REDIRECT&#34;)
+ *                         .pathRedirect("some/path")
+ *                         .redirectResponseCode("TEMPORARY_REDIRECT")
  *                         .stripQuery(true)
  *                         .build())
  *                     .build())
  *                 .build())
  *             .tests(URLMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Url Map Traffic Director Route Partial
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -286,64 +291,66 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService(&#34;home&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;home&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
- *             .loadBalancingScheme(&#34;INTERNAL_SELF_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *             .name("urlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .routeRules(URLMapPathMatcherRouteRuleArgs.builder()
  *                     .priority(1)
  *                     .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                         .prefixMatch(&#34;/someprefix&#34;)
+ *                         .prefixMatch("/someprefix")
  *                         .headerMatches(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs.builder()
- *                             .headerName(&#34;someheader&#34;)
- *                             .exactMatch(&#34;match this exactly&#34;)
+ *                             .headerName("someheader")
+ *                             .exactMatch("match this exactly")
  *                             .invertMatch(true)
  *                             .build())
  *                         .build())
  *                     .urlRedirect(URLMapPathMatcherRouteRuleUrlRedirectArgs.builder()
- *                         .pathRedirect(&#34;some/path&#34;)
- *                         .redirectResponseCode(&#34;TEMPORARY_REDIRECT&#34;)
+ *                         .pathRedirect("some/path")
+ *                         .redirectResponseCode("TEMPORARY_REDIRECT")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .tests(URLMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Url Map Traffic Director Path
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -372,43 +379,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService(&#34;home&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;home&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
- *             .loadBalancingScheme(&#34;INTERNAL_SELF_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *             .name("urlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/home&#34;)
+ *                     .paths("/home")
  *                     .routeAction(URLMapPathMatcherPathRuleRouteActionArgs.builder()
  *                         .corsPolicy(URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs.builder()
  *                             .allowCredentials(true)
- *                             .allowHeaders(&#34;Allowed content&#34;)
- *                             .allowMethods(&#34;GET&#34;)
- *                             .allowOriginRegexes(&#34;abc.*&#34;)
- *                             .allowOrigins(&#34;Allowed origin&#34;)
- *                             .exposeHeaders(&#34;Exposed header&#34;)
+ *                             .allowHeaders("Allowed content")
+ *                             .allowMethods("GET")
+ *                             .allowOriginRegexes("abc.*")
+ *                             .allowOrigins("Allowed origin")
+ *                             .exposeHeaders("Exposed header")
  *                             .maxAge(30)
  *                             .disabled(false)
  *                             .build())
@@ -434,31 +441,31 @@ import javax.annotation.Nullable;
  *                                 .seconds(30)
  *                                 .build())
  *                             .retryConditions(                            
- *                                 &#34;5xx&#34;,
- *                                 &#34;deadline-exceeded&#34;)
+ *                                 "5xx",
+ *                                 "deadline-exceeded")
  *                             .build())
  *                         .timeout(URLMapPathMatcherPathRuleRouteActionTimeoutArgs.builder()
  *                             .seconds(20)
  *                             .nanos(750000000)
  *                             .build())
  *                         .urlRewrite(URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs.builder()
- *                             .hostRewrite(&#34;dev.example.com&#34;)
- *                             .pathPrefixRewrite(&#34;/v1/api/&#34;)
+ *                             .hostRewrite("dev.example.com")
+ *                             .pathPrefixRewrite("/v1/api/")
  *                             .build())
  *                         .weightedBackendServices(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs.builder()
  *                             .backendService(home.id())
  *                             .weight(400)
  *                             .headerAction(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs.builder()
- *                                 .requestHeadersToRemoves(&#34;RemoveMe&#34;)
+ *                                 .requestHeadersToRemoves("RemoveMe")
  *                                 .requestHeadersToAdds(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
- *                                     .headerName(&#34;AddMe&#34;)
- *                                     .headerValue(&#34;MyValue&#34;)
+ *                                     .headerName("AddMe")
+ *                                     .headerValue("MyValue")
  *                                     .replace(true)
  *                                     .build())
- *                                 .responseHeadersToRemoves(&#34;RemoveMe&#34;)
+ *                                 .responseHeadersToRemoves("RemoveMe")
  *                                 .responseHeadersToAdds(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
- *                                     .headerName(&#34;AddMe&#34;)
- *                                     .headerValue(&#34;MyValue&#34;)
+ *                                     .headerName("AddMe")
+ *                                     .headerValue("MyValue")
  *                                     .replace(false)
  *                                     .build())
  *                                 .build())
@@ -468,19 +475,21 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .tests(URLMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Url Map Traffic Director Path Partial
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -509,43 +518,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService(&#34;home&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;home&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
- *             .loadBalancingScheme(&#34;INTERNAL_SELF_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *             .name("urlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/home&#34;)
+ *                     .paths("/home")
  *                     .routeAction(URLMapPathMatcherPathRuleRouteActionArgs.builder()
  *                         .corsPolicy(URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs.builder()
  *                             .allowCredentials(true)
- *                             .allowHeaders(&#34;Allowed content&#34;)
- *                             .allowMethods(&#34;GET&#34;)
- *                             .allowOriginRegexes(&#34;abc.*&#34;)
- *                             .allowOrigins(&#34;Allowed origin&#34;)
- *                             .exposeHeaders(&#34;Exposed header&#34;)
+ *                             .allowHeaders("Allowed content")
+ *                             .allowMethods("GET")
+ *                             .allowOriginRegexes("abc.*")
+ *                             .allowOrigins("Allowed origin")
+ *                             .exposeHeaders("Exposed header")
  *                             .maxAge(30)
  *                             .disabled(false)
  *                             .build())
@@ -553,16 +562,16 @@ import javax.annotation.Nullable;
  *                             .backendService(home.id())
  *                             .weight(400)
  *                             .headerAction(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs.builder()
- *                                 .requestHeadersToRemoves(&#34;RemoveMe&#34;)
+ *                                 .requestHeadersToRemoves("RemoveMe")
  *                                 .requestHeadersToAdds(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
- *                                     .headerName(&#34;AddMe&#34;)
- *                                     .headerValue(&#34;MyValue&#34;)
+ *                                     .headerName("AddMe")
+ *                                     .headerValue("MyValue")
  *                                     .replace(true)
  *                                     .build())
- *                                 .responseHeadersToRemoves(&#34;RemoveMe&#34;)
+ *                                 .responseHeadersToRemoves("RemoveMe")
  *                                 .responseHeadersToAdds(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
- *                                     .headerName(&#34;AddMe&#34;)
- *                                     .headerValue(&#34;MyValue&#34;)
+ *                                     .headerName("AddMe")
+ *                                     .headerValue("MyValue")
  *                                     .replace(false)
  *                                     .build())
  *                                 .build())
@@ -572,19 +581,21 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .tests(URLMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Url Map Header Based Routing
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -611,58 +622,58 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;default&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("default")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var service_a = new BackendService(&#34;service-a&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;service-a&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()        
+ *             .name("service-a")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var service_b = new BackendService(&#34;service-b&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;service-b&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var service_b = new BackendService("service-b", BackendServiceArgs.builder()        
+ *             .name("service-b")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;header-based routing example&#34;)
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *             .name("urlmap")
+ *             .description("header-based routing example")
  *             .defaultService(default_.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;*&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("*")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(default_.id())
  *                 .routeRules(                
  *                     URLMapPathMatcherRouteRuleArgs.builder()
  *                         .priority(1)
  *                         .service(service_a.id())
  *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .prefixMatch(&#34;/&#34;)
+ *                             .prefixMatch("/")
  *                             .ignoreCase(true)
  *                             .headerMatches(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs.builder()
- *                                 .headerName(&#34;abtest&#34;)
- *                                 .exactMatch(&#34;a&#34;)
+ *                                 .headerName("abtest")
+ *                                 .exactMatch("a")
  *                                 .build())
  *                             .build())
  *                         .build(),
@@ -671,10 +682,10 @@ import javax.annotation.Nullable;
  *                         .service(service_b.id())
  *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
  *                             .ignoreCase(true)
- *                             .prefixMatch(&#34;/&#34;)
+ *                             .prefixMatch("/")
  *                             .headerMatches(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs.builder()
- *                                 .headerName(&#34;abtest&#34;)
- *                                 .exactMatch(&#34;b&#34;)
+ *                                 .headerName("abtest")
+ *                                 .exactMatch("b")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -683,12 +694,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Url Map Parameter Based Routing
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -715,58 +728,58 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;default&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("default")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var service_a = new BackendService(&#34;service-a&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;service-a&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()        
+ *             .name("service-a")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var service_b = new BackendService(&#34;service-b&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;service-b&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var service_b = new BackendService("service-b", BackendServiceArgs.builder()        
+ *             .name("service-b")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;parameter-based routing example&#34;)
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *             .name("urlmap")
+ *             .description("parameter-based routing example")
  *             .defaultService(default_.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;*&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("*")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(default_.id())
  *                 .routeRules(                
  *                     URLMapPathMatcherRouteRuleArgs.builder()
  *                         .priority(1)
  *                         .service(service_a.id())
  *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .prefixMatch(&#34;/&#34;)
+ *                             .prefixMatch("/")
  *                             .ignoreCase(true)
  *                             .queryParameterMatches(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs.builder()
- *                                 .name(&#34;abtest&#34;)
- *                                 .exactMatch(&#34;a&#34;)
+ *                                 .name("abtest")
+ *                                 .exactMatch("a")
  *                                 .build())
  *                             .build())
  *                         .build(),
@@ -775,10 +788,10 @@ import javax.annotation.Nullable;
  *                         .service(service_b.id())
  *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
  *                             .ignoreCase(true)
- *                             .prefixMatch(&#34;/&#34;)
+ *                             .prefixMatch("/")
  *                             .queryParameterMatches(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs.builder()
- *                                 .name(&#34;abtest&#34;)
- *                                 .exactMatch(&#34;b&#34;)
+ *                                 .name("abtest")
+ *                                 .exactMatch("b")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -787,12 +800,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Url Map Path Template Match
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -823,69 +838,69 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpHealthCheck(&#34;default&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()        
+ *             .name("health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var cart_backend = new BackendService(&#34;cart-backend&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;cart-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var cart_backend = new BackendService("cart-backend", BackendServiceArgs.builder()        
+ *             .name("cart-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var user_backend = new BackendService(&#34;user-backend&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;user-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var user_backend = new BackendService("user-backend", BackendServiceArgs.builder()        
+ *             .name("user-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var staticBucket = new Bucket(&#34;staticBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;static-asset-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var staticBucket = new Bucket("staticBucket", BucketArgs.builder()        
+ *             .name("static-asset-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var static_ = new BackendBucket(&#34;static&#34;, BackendBucketArgs.builder()        
- *             .name(&#34;static-asset-backend-bucket&#34;)
+ *         var static_ = new BackendBucket("static", BackendBucketArgs.builder()        
+ *             .name("static-asset-backend-bucket")
  *             .bucketName(staticBucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
- *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *             .name("urlmap")
+ *             .description("a description")
  *             .defaultService(static_.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;mysite&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("mysite")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;mysite&#34;)
+ *                 .name("mysite")
  *                 .defaultService(static_.id())
  *                 .routeRules(                
  *                     URLMapPathMatcherRouteRuleArgs.builder()
  *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .pathTemplateMatch(&#34;/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}&#34;)
+ *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}")
  *                             .build())
  *                         .service(cart_backend.id())
  *                         .priority(1)
  *                         .routeAction(URLMapPathMatcherRouteRuleRouteActionArgs.builder()
  *                             .urlRewrite(URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs.builder()
- *                                 .pathTemplateRewrite(&#34;/{username}-{cartid}/&#34;)
+ *                                 .pathTemplateRewrite("/{username}-{cartid}/")
  *                                 .build())
  *                             .build())
  *                         .build(),
  *                     URLMapPathMatcherRouteRuleArgs.builder()
  *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .pathTemplateMatch(&#34;/xyzwebservices/v2/xyz/users/*{@literal /}accountinfo/*&#34;)
+ *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/*{@literal /}accountinfo/*")
  *                             .build())
  *                         .service(user_backend.id())
  *                         .priority(2)
@@ -895,7 +910,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

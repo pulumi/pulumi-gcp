@@ -207,14 +207,14 @@ public final class AwsClusterControlPlaneArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+     * Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+     * @return Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -546,7 +546,7 @@ public final class AwsClusterControlPlaneArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tags Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+         * @param tags Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class AwsClusterControlPlaneArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tags Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+         * @param tags Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
          * 
          * @return builder
          * 

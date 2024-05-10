@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Data Catalog Entry Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,25 +61,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entryGroup = new EntryGroup(&#34;entryGroup&#34;, EntryGroupArgs.builder()        
- *             .entryGroupId(&#34;my_group&#34;)
+ *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()        
+ *             .entryGroupId("my_group")
  *             .build());
  * 
- *         var basicEntry = new Entry(&#34;basicEntry&#34;, EntryArgs.builder()        
+ *         var basicEntry = new Entry("basicEntry", EntryArgs.builder()        
  *             .entryGroup(entryGroup.id())
- *             .entryId(&#34;my_entry&#34;)
- *             .userSpecifiedType(&#34;my_custom_type&#34;)
- *             .userSpecifiedSystem(&#34;SomethingExternal&#34;)
+ *             .entryId("my_entry")
+ *             .userSpecifiedType("my_custom_type")
+ *             .userSpecifiedSystem("SomethingExternal")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Catalog Entry Fileset
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,27 +105,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entryGroup = new EntryGroup(&#34;entryGroup&#34;, EntryGroupArgs.builder()        
- *             .entryGroupId(&#34;my_group&#34;)
+ *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()        
+ *             .entryGroupId("my_group")
  *             .build());
  * 
- *         var basicEntry = new Entry(&#34;basicEntry&#34;, EntryArgs.builder()        
+ *         var basicEntry = new Entry("basicEntry", EntryArgs.builder()        
  *             .entryGroup(entryGroup.id())
- *             .entryId(&#34;my_entry&#34;)
- *             .type(&#34;FILESET&#34;)
+ *             .entryId("my_entry")
+ *             .type("FILESET")
  *             .gcsFilesetSpec(EntryGcsFilesetSpecArgs.builder()
- *                 .filePatterns(&#34;gs://fake_bucket/dir/*&#34;)
+ *                 .filePatterns("gs://fake_bucket/dir/*")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Catalog Entry Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -145,61 +150,62 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entryGroup = new EntryGroup(&#34;entryGroup&#34;, EntryGroupArgs.builder()        
- *             .entryGroupId(&#34;my_group&#34;)
+ *         var entryGroup = new EntryGroup("entryGroup", EntryGroupArgs.builder()        
+ *             .entryGroupId("my_group")
  *             .build());
  * 
- *         var basicEntry = new Entry(&#34;basicEntry&#34;, EntryArgs.builder()        
+ *         var basicEntry = new Entry("basicEntry", EntryArgs.builder()        
  *             .entryGroup(entryGroup.id())
- *             .entryId(&#34;my_entry&#34;)
- *             .userSpecifiedType(&#34;my_user_specified_type&#34;)
- *             .userSpecifiedSystem(&#34;Something_custom&#34;)
- *             .linkedResource(&#34;my/linked/resource&#34;)
- *             .displayName(&#34;my custom type entry&#34;)
- *             .description(&#34;a custom type entry for a user specified system&#34;)
- *             .schema(&#34;&#34;&#34;
+ *             .entryId("my_entry")
+ *             .userSpecifiedType("my_user_specified_type")
+ *             .userSpecifiedSystem("Something_custom")
+ *             .linkedResource("my/linked/resource")
+ *             .displayName("my custom type entry")
+ *             .description("a custom type entry for a user specified system")
+ *             .schema("""
  * {
- *   &#34;columns&#34;: [
+ *   "columns": [
  *     {
- *       &#34;column&#34;: &#34;first_name&#34;,
- *       &#34;description&#34;: &#34;First name&#34;,
- *       &#34;mode&#34;: &#34;REQUIRED&#34;,
- *       &#34;type&#34;: &#34;STRING&#34;
+ *       "column": "first_name",
+ *       "description": "First name",
+ *       "mode": "REQUIRED",
+ *       "type": "STRING"
  *     },
  *     {
- *       &#34;column&#34;: &#34;last_name&#34;,
- *       &#34;description&#34;: &#34;Last name&#34;,
- *       &#34;mode&#34;: &#34;REQUIRED&#34;,
- *       &#34;type&#34;: &#34;STRING&#34;
+ *       "column": "last_name",
+ *       "description": "Last name",
+ *       "mode": "REQUIRED",
+ *       "type": "STRING"
  *     },
  *     {
- *       &#34;column&#34;: &#34;address&#34;,
- *       &#34;description&#34;: &#34;Address&#34;,
- *       &#34;mode&#34;: &#34;REPEATED&#34;,
- *       &#34;subcolumns&#34;: [
+ *       "column": "address",
+ *       "description": "Address",
+ *       "mode": "REPEATED",
+ *       "subcolumns": [
  *         {
- *           &#34;column&#34;: &#34;city&#34;,
- *           &#34;description&#34;: &#34;City&#34;,
- *           &#34;mode&#34;: &#34;NULLABLE&#34;,
- *           &#34;type&#34;: &#34;STRING&#34;
+ *           "column": "city",
+ *           "description": "City",
+ *           "mode": "NULLABLE",
+ *           "type": "STRING"
  *         },
  *         {
- *           &#34;column&#34;: &#34;state&#34;,
- *           &#34;description&#34;: &#34;State&#34;,
- *           &#34;mode&#34;: &#34;NULLABLE&#34;,
- *           &#34;type&#34;: &#34;STRING&#34;
+ *           "column": "state",
+ *           "description": "State",
+ *           "mode": "NULLABLE",
+ *           "type": "STRING"
  *         }
  *       ],
- *       &#34;type&#34;: &#34;RECORD&#34;
+ *       "type": "RECORD"
  *     }
  *   ]
  * }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Integrations Auth Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,27 +58,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var client = new Client(&#34;client&#34;, ClientArgs.builder()        
- *             .location(&#34;us-west1&#34;)
+ *         var client = new Client("client", ClientArgs.builder()        
+ *             .location("us-west1")
  *             .provisionGmek(true)
  *             .build());
  * 
- *         var basicExample = new AuthConfig(&#34;basicExample&#34;, AuthConfigArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .displayName(&#34;test-authconfig&#34;)
- *             .description(&#34;Test auth config created via terraform&#34;)
+ *         var basicExample = new AuthConfig("basicExample", AuthConfigArgs.builder()        
+ *             .location("us-west1")
+ *             .displayName("test-authconfig")
+ *             .description("Test auth config created via terraform")
  *             .decryptedCredential(AuthConfigDecryptedCredentialArgs.builder()
- *                 .credentialType(&#34;USERNAME_AND_PASSWORD&#34;)
+ *                 .credentialType("USERNAME_AND_PASSWORD")
  *                 .usernameAndPassword(AuthConfigDecryptedCredentialUsernameAndPasswordArgs.builder()
- *                     .username(&#34;test-username&#34;)
- *                     .password(&#34;test-password&#34;)
+ *                     .username("test-username")
+ *                     .password("test-password")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

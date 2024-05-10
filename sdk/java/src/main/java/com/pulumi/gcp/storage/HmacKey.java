@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Storage Hmac Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,18 +56,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new service account
- *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-svc-acc&#34;)
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *             .accountId("my-svc-acc")
  *             .build());
  * 
  *         //Create the HMAC key for the associated service account
- *         var key = new HmacKey(&#34;key&#34;, HmacKeyArgs.builder()        
+ *         var key = new HmacKey("key", HmacKeyArgs.builder()        
  *             .serviceAccountEmail(serviceAccount.email())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

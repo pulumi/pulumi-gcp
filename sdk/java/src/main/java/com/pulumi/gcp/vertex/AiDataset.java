@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Dataset
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,16 +53,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new AiDataset(&#34;dataset&#34;, AiDatasetArgs.builder()        
- *             .displayName(&#34;terraform&#34;)
- *             .metadataSchemaUri(&#34;gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *         var dataset = new AiDataset("dataset", AiDatasetArgs.builder()        
+ *             .displayName("terraform")
+ *             .metadataSchemaUri("gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml")
+ *             .region("us-central1")
+ *             .labels(Map.of("env", "test"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ### Os Config Os Policy Assignment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,84 +65,85 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new OsPolicyAssignment(&#34;primary&#34;, OsPolicyAssignmentArgs.builder()        
+ *         var primary = new OsPolicyAssignment("primary", OsPolicyAssignmentArgs.builder()        
  *             .instanceFilter(OsPolicyAssignmentInstanceFilterArgs.builder()
  *                 .all(false)
  *                 .exclusionLabels(OsPolicyAssignmentInstanceFilterExclusionLabelArgs.builder()
- *                     .labels(Map.of(&#34;label-two&#34;, &#34;value-two&#34;))
+ *                     .labels(Map.of("label-two", "value-two"))
  *                     .build())
  *                 .inclusionLabels(OsPolicyAssignmentInstanceFilterInclusionLabelArgs.builder()
- *                     .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *                     .labels(Map.of("label-one", "value-one"))
  *                     .build())
  *                 .inventories(OsPolicyAssignmentInstanceFilterInventoryArgs.builder()
- *                     .osShortName(&#34;centos&#34;)
- *                     .osVersion(&#34;8.*&#34;)
+ *                     .osShortName("centos")
+ *                     .osVersion("8.*")
  *                     .build())
  *                 .build())
- *             .location(&#34;us-central1-a&#34;)
- *             .name(&#34;policy-assignment&#34;)
+ *             .location("us-central1-a")
+ *             .name("policy-assignment")
  *             .osPolicies(OsPolicyAssignmentOsPolicyArgs.builder()
- *                 .id(&#34;policy&#34;)
- *                 .mode(&#34;VALIDATION&#34;)
+ *                 .id("policy")
+ *                 .mode("VALIDATION")
  *                 .resourceGroups(OsPolicyAssignmentOsPolicyResourceGroupArgs.builder()
  *                     .resources(                    
  *                         OsPolicyAssignmentOsPolicyResourceGroupResourceArgs.builder()
- *                             .id(&#34;apt-to-yum&#34;)
+ *                             .id("apt-to-yum")
  *                             .repository(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs.builder()
  *                                 .apt(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs.builder()
- *                                     .archiveType(&#34;DEB&#34;)
- *                                     .components(&#34;doc&#34;)
- *                                     .distribution(&#34;debian&#34;)
- *                                     .uri(&#34;https://atl.mirrors.clouvider.net/debian&#34;)
- *                                     .gpgKey(&#34;.gnupg/pubring.kbx&#34;)
+ *                                     .archiveType("DEB")
+ *                                     .components("doc")
+ *                                     .distribution("debian")
+ *                                     .uri("https://atl.mirrors.clouvider.net/debian")
+ *                                     .gpgKey(".gnupg/pubring.kbx")
  *                                     .build())
  *                                 .build())
  *                             .build(),
  *                         OsPolicyAssignmentOsPolicyResourceGroupResourceArgs.builder()
- *                             .id(&#34;exec1&#34;)
+ *                             .id("exec1")
  *                             .exec(OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs.builder()
  *                                 .validate(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs.builder()
- *                                     .interpreter(&#34;SHELL&#34;)
- *                                     .args(&#34;arg1&#34;)
+ *                                     .interpreter("SHELL")
+ *                                     .args("arg1")
  *                                     .file(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs.builder()
- *                                         .localPath(&#34;$HOME/script.sh&#34;)
+ *                                         .localPath("$HOME/script.sh")
  *                                         .build())
- *                                     .outputFilePath(&#34;$HOME/out&#34;)
+ *                                     .outputFilePath("$HOME/out")
  *                                     .build())
  *                                 .enforce(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs.builder()
- *                                     .interpreter(&#34;SHELL&#34;)
- *                                     .args(&#34;arg1&#34;)
+ *                                     .interpreter("SHELL")
+ *                                     .args("arg1")
  *                                     .file(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs.builder()
  *                                         .allowInsecure(true)
  *                                         .remote(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs.builder()
- *                                             .uri(&#34;https://www.example.com/script.sh&#34;)
- *                                             .sha256Checksum(&#34;c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063&#34;)
+ *                                             .uri("https://www.example.com/script.sh")
+ *                                             .sha256Checksum("c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063")
  *                                             .build())
  *                                         .build())
- *                                     .outputFilePath(&#34;$HOME/out&#34;)
+ *                                     .outputFilePath("$HOME/out")
  *                                     .build())
  *                                 .build())
  *                             .build())
  *                     .inventoryFilters(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs.builder()
- *                         .osShortName(&#34;centos&#34;)
- *                         .osVersion(&#34;8.*&#34;)
+ *                         .osShortName("centos")
+ *                         .osVersion("8.*")
  *                         .build())
  *                     .build())
  *                 .allowNoResourceGroupMatch(false)
- *                 .description(&#34;A test os policy&#34;)
+ *                 .description("A test os policy")
  *                 .build())
  *             .rollout(OsPolicyAssignmentRolloutArgs.builder()
  *                 .disruptionBudget(OsPolicyAssignmentRolloutDisruptionBudgetArgs.builder()
  *                     .percent(100)
  *                     .build())
- *                 .minWaitDuration(&#34;3s&#34;)
+ *                 .minWaitDuration("3s")
  *                 .build())
- *             .description(&#34;A test os policy assignment&#34;)
+ *             .description("A test os policy assignment")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Basic_azure_node_pool
  * A basic example of a containerazure azure node pool
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,48 +72,48 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var versions = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
- *             .project(&#34;my-project-name&#34;)
- *             .location(&#34;us-west1&#34;)
+ *             .project("my-project-name")
+ *             .location("us-west1")
  *             .build());
  * 
- *         var basic = new AzureClient(&#34;basic&#34;, AzureClientArgs.builder()        
- *             .applicationId(&#34;12345678-1234-1234-1234-123456789111&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;client-name&#34;)
- *             .tenantId(&#34;12345678-1234-1234-1234-123456789111&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var basic = new AzureClient("basic", AzureClientArgs.builder()        
+ *             .applicationId("12345678-1234-1234-1234-123456789111")
+ *             .location("us-west1")
+ *             .name("client-name")
+ *             .tenantId("12345678-1234-1234-1234-123456789111")
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var primary = new AzureCluster(&#34;primary&#34;, AzureClusterArgs.builder()        
+ *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()        
  *             .authorization(AzureClusterAuthorizationArgs.builder()
  *                 .adminUsers(AzureClusterAuthorizationAdminUserArgs.builder()
- *                     .username(&#34;mmv2@google.com&#34;)
+ *                     .username("mmv2{@literal @}google.com")
  *                     .build())
  *                 .build())
- *             .azureRegion(&#34;westus2&#34;)
- *             .client(basic.name().applyValue(name -&gt; String.format(&#34;projects/my-project-number/locations/us-west1/azureClients/%s&#34;, name)))
+ *             .azureRegion("westus2")
+ *             .client(basic.name().applyValue(name -> String.format("projects/my-project-number/locations/us-west1/azureClients/%s", name)))
  *             .controlPlane(AzureClusterControlPlaneArgs.builder()
  *                 .sshConfig(AzureClusterControlPlaneSshConfigArgs.builder()
- *                     .authorizedKey(&#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers&#34;)
+ *                     .authorizedKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers")
  *                     .build())
- *                 .subnetId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default&#34;)
- *                 .version(versions.applyValue(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
+ *                 .subnetId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default")
+ *                 .version(versions.applyValue(getAzureVersionsResult -> getAzureVersionsResult.validVersions()[0]))
  *                 .build())
  *             .fleet(AzureClusterFleetArgs.builder()
- *                 .project(&#34;my-project-number&#34;)
+ *                 .project("my-project-number")
  *                 .build())
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;name&#34;)
+ *             .location("us-west1")
+ *             .name("name")
  *             .networking(AzureClusterNetworkingArgs.builder()
- *                 .podAddressCidrBlocks(&#34;10.200.0.0/16&#34;)
- *                 .serviceAddressCidrBlocks(&#34;10.32.0.0/24&#34;)
- *                 .virtualNetworkId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet&#34;)
+ *                 .podAddressCidrBlocks("10.200.0.0/16")
+ *                 .serviceAddressCidrBlocks("10.32.0.0/24")
+ *                 .virtualNetworkId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet")
  *                 .build())
- *             .resourceGroupId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *             .resourceGroupId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var primaryAzureNodePool = new AzureNodePool(&#34;primaryAzureNodePool&#34;, AzureNodePoolArgs.builder()        
+ *         var primaryAzureNodePool = new AzureNodePool("primaryAzureNodePool", AzureNodePoolArgs.builder()        
  *             .autoscaling(AzureNodePoolAutoscalingArgs.builder()
  *                 .maxNodeCount(3)
  *                 .minNodeCount(2)
@@ -120,36 +121,37 @@ import javax.annotation.Nullable;
  *             .cluster(primary.name())
  *             .config(AzureNodePoolConfigArgs.builder()
  *                 .sshConfig(AzureNodePoolConfigSshConfigArgs.builder()
- *                     .authorizedKey(&#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers&#34;)
+ *                     .authorizedKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers")
  *                     .build())
  *                 .proxyConfig(AzureNodePoolConfigProxyConfigArgs.builder()
- *                     .resourceGroupId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster&#34;)
- *                     .secretId(&#34;https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000&#34;)
+ *                     .resourceGroupId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
+ *                     .secretId("https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000")
  *                     .build())
  *                 .rootVolume(AzureNodePoolConfigRootVolumeArgs.builder()
  *                     .sizeGib(32)
  *                     .build())
- *                 .tags(Map.of(&#34;owner&#34;, &#34;mmv2&#34;))
- *                 .labels(Map.of(&#34;key_one&#34;, &#34;label_one&#34;))
- *                 .vmSize(&#34;Standard_DS2_v2&#34;)
+ *                 .tags(Map.of("owner", "mmv2"))
+ *                 .labels(Map.of("key_one", "label_one"))
+ *                 .vmSize("Standard_DS2_v2")
  *                 .build())
- *             .location(&#34;us-west1&#34;)
+ *             .location("us-west1")
  *             .maxPodsConstraint(AzureNodePoolMaxPodsConstraintArgs.builder()
  *                 .maxPodsPerNode(110)
  *                 .build())
- *             .name(&#34;node-pool-name&#34;)
- *             .subnetId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default&#34;)
- *             .version(versions.applyValue(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
- *             .annotations(Map.of(&#34;annotation-one&#34;, &#34;value-one&#34;))
+ *             .name("node-pool-name")
+ *             .subnetId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default")
+ *             .version(versions.applyValue(getAzureVersionsResult -> getAzureVersionsResult.validVersions()[0]))
+ *             .annotations(Map.of("annotation-one", "value-one"))
  *             .management(AzureNodePoolManagementArgs.builder()
  *                 .autoRepair(true)
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

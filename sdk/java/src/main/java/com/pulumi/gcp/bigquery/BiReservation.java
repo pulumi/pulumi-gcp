@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Reservation Bi Reservation Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,14 +53,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reservation = new BiReservation(&#34;reservation&#34;, BiReservationArgs.builder()        
- *             .location(&#34;us-west2&#34;)
- *             .size(&#34;3000000000&#34;)
+ *         var reservation = new BiReservation("reservation", BiReservationArgs.builder()        
+ *             .location("us-west2")
+ *             .size("3000000000")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

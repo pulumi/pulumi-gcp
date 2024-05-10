@@ -50,7 +50,8 @@ import javax.annotation.Nullable;
  * ### Health Check Tcp
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -72,23 +73,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcp_health_check = new HealthCheck(&#34;tcp-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;tcp-health-check&#34;)
+ *         var tcp_health_check = new HealthCheck("tcp-health-check", HealthCheckArgs.builder()        
+ *             .name("tcp-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Tcp Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -110,30 +113,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcp_health_check = new HealthCheck(&#34;tcp-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;tcp-health-check&#34;)
- *             .description(&#34;Health check via tcp&#34;)
+ *         var tcp_health_check = new HealthCheck("tcp-health-check", HealthCheckArgs.builder()        
+ *             .name("tcp-health-check")
+ *             .description("Health check via tcp")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .request(&#34;ARE YOU HEALTHY?&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .request("ARE YOU HEALTHY?")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Ssl
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -155,23 +160,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ssl_health_check = new HealthCheck(&#34;ssl-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;ssl-health-check&#34;)
+ *         var ssl_health_check = new HealthCheck("ssl-health-check", HealthCheckArgs.builder()        
+ *             .name("ssl-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .sslHealthCheck(HealthCheckSslHealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Ssl Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -193,30 +200,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ssl_health_check = new HealthCheck(&#34;ssl-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;ssl-health-check&#34;)
- *             .description(&#34;Health check via ssl&#34;)
+ *         var ssl_health_check = new HealthCheck("ssl-health-check", HealthCheckArgs.builder()        
+ *             .name("ssl-health-check")
+ *             .description("Health check via ssl")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .sslHealthCheck(HealthCheckSslHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .request(&#34;ARE YOU HEALTHY?&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .request("ARE YOU HEALTHY?")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Http
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -238,8 +247,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_health_check = new HealthCheck(&#34;http-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;http-health-check&#34;)
+ *         var http_health_check = new HealthCheck("http-health-check", HealthCheckArgs.builder()        
+ *             .name("http-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
@@ -249,12 +258,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Http Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -276,31 +287,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_health_check = new HealthCheck(&#34;http-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;http-health-check&#34;)
- *             .description(&#34;Health check via http&#34;)
+ *         var http_health_check = new HealthCheck("http-health-check", HealthCheckArgs.builder()        
+ *             .name("http-health-check")
+ *             .description("Health check via http")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .host(&#34;1.2.3.4&#34;)
- *                 .requestPath(&#34;/mypath&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .host("1.2.3.4")
+ *                 .requestPath("/mypath")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Https
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -322,23 +335,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https_health_check = new HealthCheck(&#34;https-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;https-health-check&#34;)
+ *         var https_health_check = new HealthCheck("https-health-check", HealthCheckArgs.builder()        
+ *             .name("https-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpsHealthCheck(HealthCheckHttpsHealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Https Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -360,31 +375,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https_health_check = new HealthCheck(&#34;https-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;https-health-check&#34;)
- *             .description(&#34;Health check via https&#34;)
+ *         var https_health_check = new HealthCheck("https-health-check", HealthCheckArgs.builder()        
+ *             .name("https-health-check")
+ *             .description("Health check via https")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .httpsHealthCheck(HealthCheckHttpsHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .host(&#34;1.2.3.4&#34;)
- *                 .requestPath(&#34;/mypath&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .host("1.2.3.4")
+ *                 .requestPath("/mypath")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Http2
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -406,23 +423,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http2_health_check = new HealthCheck(&#34;http2-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;http2-health-check&#34;)
+ *         var http2_health_check = new HealthCheck("http2-health-check", HealthCheckArgs.builder()        
+ *             .name("http2-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .http2HealthCheck(HealthCheckHttp2HealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Http2 Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -444,31 +463,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http2_health_check = new HealthCheck(&#34;http2-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;http2-health-check&#34;)
- *             .description(&#34;Health check via http2&#34;)
+ *         var http2_health_check = new HealthCheck("http2-health-check", HealthCheckArgs.builder()        
+ *             .name("http2-health-check")
+ *             .description("Health check via http2")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .http2HealthCheck(HealthCheckHttp2HealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .host(&#34;1.2.3.4&#34;)
- *                 .requestPath(&#34;/mypath&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .host("1.2.3.4")
+ *                 .requestPath("/mypath")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Grpc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -490,23 +511,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grpc_health_check = new HealthCheck(&#34;grpc-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;grpc-health-check&#34;)
+ *         var grpc_health_check = new HealthCheck("grpc-health-check", HealthCheckArgs.builder()        
+ *             .name("grpc-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .grpcHealthCheck(HealthCheckGrpcHealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check Grpc Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -528,25 +551,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grpc_health_check = new HealthCheck(&#34;grpc-health-check&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;grpc-health-check&#34;)
+ *         var grpc_health_check = new HealthCheck("grpc-health-check", HealthCheckArgs.builder()        
+ *             .name("grpc-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .grpcHealthCheck(HealthCheckGrpcHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .grpcServiceName(&#34;testservice&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .grpcServiceName("testservice")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check With Logging
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -569,12 +594,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var health_check_with_logging = new HealthCheck(&#34;health-check-with-logging&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;tcp-health-check&#34;)
+ *         var health_check_with_logging = new HealthCheck("health-check-with-logging", HealthCheckArgs.builder()        
+ *             .name("tcp-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;22&#34;)
+ *                 .port("22")
  *                 .build())
  *             .logConfig(HealthCheckLogConfigArgs.builder()
  *                 .enable(true)
@@ -583,7 +608,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

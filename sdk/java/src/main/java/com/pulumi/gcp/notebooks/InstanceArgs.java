@@ -222,7 +222,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The list of owners of this instance after creation.
-     * Format: alias@example.com.
+     * Format: alias{@literal @}example.com.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance&#39;s service account can use the instance.
@@ -233,7 +233,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The list of owners of this instance after creation.
-     * Format: alias@example.com.
+     * Format: alias{@literal @}example.com.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance&#39;s service account can use the instance.
@@ -927,7 +927,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceOwners The list of owners of this instance after creation.
-         * Format: alias@example.com.
+         * Format: alias{@literal @}example.com.
          * Currently supports one owner only.
          * If not specified, all of the service account users of
          * your VM instance&#39;s service account can use the instance.
@@ -942,7 +942,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceOwners The list of owners of this instance after creation.
-         * Format: alias@example.com.
+         * Format: alias{@literal @}example.com.
          * Currently supports one owner only.
          * If not specified, all of the service account users of
          * your VM instance&#39;s service account can use the instance.
@@ -956,7 +956,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceOwners The list of owners of this instance after creation.
-         * Format: alias@example.com.
+         * Format: alias{@literal @}example.com.
          * Currently supports one owner only.
          * If not specified, all of the service account users of
          * your VM instance&#39;s service account can use the instance.

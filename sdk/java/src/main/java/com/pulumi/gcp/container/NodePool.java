@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Using A Separately Managed Node Pool (Recommended)
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,39 +60,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account(&#34;default&#34;, AccountArgs.builder()        
- *             .accountId(&#34;service-account-id&#34;)
- *             .displayName(&#34;Service Account&#34;)
+ *         var default_ = new Account("default", AccountArgs.builder()        
+ *             .accountId("service-account-id")
+ *             .displayName("Service Account")
  *             .build());
  * 
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-gke-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("my-gke-cluster")
+ *             .location("us-central1")
  *             .removeDefaultNodePool(true)
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var primaryPreemptibleNodes = new NodePool(&#34;primaryPreemptibleNodes&#34;, NodePoolArgs.builder()        
- *             .name(&#34;my-node-pool&#34;)
+ *         var primaryPreemptibleNodes = new NodePool("primaryPreemptibleNodes", NodePoolArgs.builder()        
+ *             .name("my-node-pool")
  *             .cluster(primary.id())
  *             .nodeCount(1)
  *             .nodeConfig(NodePoolNodeConfigArgs.builder()
  *                 .preemptible(true)
- *                 .machineType(&#34;e2-medium&#34;)
+ *                 .machineType("e2-medium")
  *                 .serviceAccount(default_.email())
- *                 .oauthScopes(&#34;https://www.googleapis.com/auth/cloud-platform&#34;)
+ *                 .oauthScopes("https://www.googleapis.com/auth/cloud-platform")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -118,39 +121,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account(&#34;default&#34;, AccountArgs.builder()        
- *             .accountId(&#34;service-account-id&#34;)
- *             .displayName(&#34;Service Account&#34;)
+ *         var default_ = new Account("default", AccountArgs.builder()        
+ *             .accountId("service-account-id")
+ *             .displayName("Service Account")
  *             .build());
  * 
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;marcellus-wallace&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("marcellus-wallace")
+ *             .location("us-central1-a")
  *             .initialNodeCount(3)
- *             .nodeLocations(&#34;us-central1-c&#34;)
+ *             .nodeLocations("us-central1-c")
  *             .nodeConfig(ClusterNodeConfigArgs.builder()
  *                 .serviceAccount(default_.email())
- *                 .oauthScopes(&#34;https://www.googleapis.com/auth/cloud-platform&#34;)
+ *                 .oauthScopes("https://www.googleapis.com/auth/cloud-platform")
  *                 .guestAccelerators(ClusterNodeConfigGuestAcceleratorArgs.builder()
- *                     .type(&#34;nvidia-tesla-k80&#34;)
+ *                     .type("nvidia-tesla-k80")
  *                     .count(1)
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var np = new NodePool(&#34;np&#34;, NodePoolArgs.builder()        
- *             .name(&#34;my-node-pool&#34;)
+ *         var np = new NodePool("np", NodePoolArgs.builder()        
+ *             .name("my-node-pool")
  *             .cluster(primary.id())
  *             .nodeConfig(NodePoolNodeConfigArgs.builder()
- *                 .machineType(&#34;e2-medium&#34;)
+ *                 .machineType("e2-medium")
  *                 .serviceAccount(default_.email())
- *                 .oauthScopes(&#34;https://www.googleapis.com/auth/cloud-platform&#34;)
+ *                 .oauthScopes("https://www.googleapis.com/auth/cloud-platform")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

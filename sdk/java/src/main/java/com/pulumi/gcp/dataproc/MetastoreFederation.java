@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Dataproc Metastore Federation Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,35 +49,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultMetastoreService = new MetastoreService(&#34;defaultMetastoreService&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .tier(&#34;DEVELOPER&#34;)
+ *         var defaultMetastoreService = new MetastoreService("defaultMetastoreService", MetastoreServiceArgs.builder()        
+ *             .serviceId("")
+ *             .location("us-central1")
+ *             .tier("DEVELOPER")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
- *                 .version(&#34;3.1.2&#34;)
- *                 .endpointProtocol(&#34;GRPC&#34;)
+ *                 .version("3.1.2")
+ *                 .endpointProtocol("GRPC")
  *                 .build())
  *             .build());
  * 
- *         var default_ = new MetastoreFederation(&#34;default&#34;, MetastoreFederationArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .federationId(&#34;&#34;)
- *             .version(&#34;3.1.2&#34;)
+ *         var default_ = new MetastoreFederation("default", MetastoreFederationArgs.builder()        
+ *             .location("us-central1")
+ *             .federationId("")
+ *             .version("3.1.2")
  *             .backendMetastores(MetastoreFederationBackendMetastoreArgs.builder()
- *                 .rank(&#34;1&#34;)
+ *                 .rank("1")
  *                 .name(defaultMetastoreService.id())
- *                 .metastoreType(&#34;DATAPROC_METASTORE&#34;)
+ *                 .metastoreType("DATAPROC_METASTORE")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Federation Bigquery
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -103,38 +106,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultMetastoreService = new MetastoreService(&#34;defaultMetastoreService&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .tier(&#34;DEVELOPER&#34;)
+ *         var defaultMetastoreService = new MetastoreService("defaultMetastoreService", MetastoreServiceArgs.builder()        
+ *             .serviceId("")
+ *             .location("us-central1")
+ *             .tier("DEVELOPER")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
- *                 .version(&#34;3.1.2&#34;)
- *                 .endpointProtocol(&#34;GRPC&#34;)
+ *                 .version("3.1.2")
+ *                 .endpointProtocol("GRPC")
  *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new MetastoreFederation(&#34;default&#34;, MetastoreFederationArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .federationId(&#34;&#34;)
- *             .version(&#34;3.1.2&#34;)
+ *         var default_ = new MetastoreFederation("default", MetastoreFederationArgs.builder()        
+ *             .location("us-central1")
+ *             .federationId("")
+ *             .version("3.1.2")
  *             .backendMetastores(            
  *                 MetastoreFederationBackendMetastoreArgs.builder()
- *                     .rank(&#34;2&#34;)
- *                     .name(project.applyValue(getProjectResult -&gt; getProjectResult.id()))
- *                     .metastoreType(&#34;BIGQUERY&#34;)
+ *                     .rank("2")
+ *                     .name(project.applyValue(getProjectResult -> getProjectResult.id()))
+ *                     .metastoreType("BIGQUERY")
  *                     .build(),
  *                 MetastoreFederationBackendMetastoreArgs.builder()
- *                     .rank(&#34;1&#34;)
+ *                     .rank("1")
  *                     .name(defaultMetastoreService.id())
- *                     .metastoreType(&#34;DATAPROC_METASTORE&#34;)
+ *                     .metastoreType("DATAPROC_METASTORE")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

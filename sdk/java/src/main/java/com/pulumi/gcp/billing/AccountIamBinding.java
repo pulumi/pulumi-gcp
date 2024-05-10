@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## google\_billing\_account\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,25 +56,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/billing.viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/billing.viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var editor = new AccountIamPolicy(&#34;editor&#34;, AccountIamPolicyArgs.builder()        
- *             .billingAccountId(&#34;00AA00-000AAA-00AA0A&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var editor = new AccountIamPolicy("editor", AccountIamPolicyArgs.builder()        
+ *             .billingAccountId("00AA00-000AAA-00AA0A")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_billing\_account\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,21 +97,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new AccountIamBinding(&#34;editor&#34;, AccountIamBindingArgs.builder()        
- *             .billingAccountId(&#34;00AA00-000AAA-00AA0A&#34;)
- *             .role(&#34;roles/billing.viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var editor = new AccountIamBinding("editor", AccountIamBindingArgs.builder()        
+ *             .billingAccountId("00AA00-000AAA-00AA0A")
+ *             .role("roles/billing.viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_billing\_account\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -129,21 +134,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new AccountIamMember(&#34;editor&#34;, AccountIamMemberArgs.builder()        
- *             .billingAccountId(&#34;00AA00-000AAA-00AA0A&#34;)
- *             .role(&#34;roles/billing.viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var editor = new AccountIamMember("editor", AccountIamMemberArgs.builder()        
+ *             .billingAccountId("00AA00-000AAA-00AA0A")
+ *             .role("roles/billing.viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_billing\_account\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -168,25 +175,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/billing.viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/billing.viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var editor = new AccountIamPolicy(&#34;editor&#34;, AccountIamPolicyArgs.builder()        
- *             .billingAccountId(&#34;00AA00-000AAA-00AA0A&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var editor = new AccountIamPolicy("editor", AccountIamPolicyArgs.builder()        
+ *             .billingAccountId("00AA00-000AAA-00AA0A")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_billing\_account\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -207,21 +216,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new AccountIamBinding(&#34;editor&#34;, AccountIamBindingArgs.builder()        
- *             .billingAccountId(&#34;00AA00-000AAA-00AA0A&#34;)
- *             .role(&#34;roles/billing.viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var editor = new AccountIamBinding("editor", AccountIamBindingArgs.builder()        
+ *             .billingAccountId("00AA00-000AAA-00AA0A")
+ *             .role("roles/billing.viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_billing\_account\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -242,15 +253,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new AccountIamMember(&#34;editor&#34;, AccountIamMemberArgs.builder()        
- *             .billingAccountId(&#34;00AA00-000AAA-00AA0A&#34;)
- *             .role(&#34;roles/billing.viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var editor = new AccountIamMember("editor", AccountIamMemberArgs.builder()        
+ *             .billingAccountId("00AA00-000AAA-00AA0A")
+ *             .role("roles/billing.viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -323,9 +335,9 @@ public class AccountIamBinding extends com.pulumi.resources.CustomResource {
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -335,9 +347,9 @@ public class AccountIamBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */

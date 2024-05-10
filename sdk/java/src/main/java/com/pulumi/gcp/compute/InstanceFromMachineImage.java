@@ -42,7 +42,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,17 +64,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tpl = new InstanceFromMachineImage(&#34;tpl&#34;, InstanceFromMachineImageArgs.builder()        
- *             .name(&#34;instance-from-machine-image&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .sourceMachineImage(&#34;projects/PROJECT-ID/global/machineImages/NAME&#34;)
+ *         var tpl = new InstanceFromMachineImage("tpl", InstanceFromMachineImageArgs.builder()        
+ *             .name("instance-from-machine-image")
+ *             .zone("us-central1-a")
+ *             .sourceMachineImage("projects/PROJECT-ID/global/machineImages/NAME")
  *             .canIpForward(false)
- *             .labels(Map.of(&#34;my_key&#34;, &#34;my_value&#34;))
+ *             .labels(Map.of("my_key", "my_value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

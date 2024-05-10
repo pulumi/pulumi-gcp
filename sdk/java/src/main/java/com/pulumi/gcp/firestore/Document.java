@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ### Firestore Document Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,44 +68,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-id&#34;)
- *             .name(&#34;project-id&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("project-id")
+ *             .name("project-id")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;60s&#34;)
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *             .createDuration("60s")
  *             .build());
  * 
- *         var firestore = new Service(&#34;firestore&#34;, ServiceArgs.builder()        
+ *         var firestore = new Service("firestore", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;firestore.googleapis.com&#34;)
+ *             .service("firestore.googleapis.com")
  *             .build());
  * 
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()        
  *             .project(project.projectId())
- *             .name(&#34;(default)&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .name("(default)")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
  *             .build());
  * 
- *         var mydoc = new Document(&#34;mydoc&#34;, DocumentArgs.builder()        
+ *         var mydoc = new Document("mydoc", DocumentArgs.builder()        
  *             .project(project.projectId())
  *             .database(database.name())
- *             .collection(&#34;somenewcollection&#34;)
- *             .documentId(&#34;my-doc-id&#34;)
- *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;akey\&#34;:{\&#34;stringValue\&#34;:\&#34;avalue\&#34;}}}}}&#34;)
+ *             .collection("somenewcollection")
+ *             .documentId("my-doc-id")
+ *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Document Nested Document
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -133,55 +136,56 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-id&#34;)
- *             .name(&#34;project-id&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("project-id")
+ *             .name("project-id")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;60s&#34;)
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *             .createDuration("60s")
  *             .build());
  * 
- *         var firestore = new Service(&#34;firestore&#34;, ServiceArgs.builder()        
+ *         var firestore = new Service("firestore", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;firestore.googleapis.com&#34;)
+ *             .service("firestore.googleapis.com")
  *             .build());
  * 
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()        
  *             .project(project.projectId())
- *             .name(&#34;(default)&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .name("(default)")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
  *             .build());
  * 
- *         var mydoc = new Document(&#34;mydoc&#34;, DocumentArgs.builder()        
- *             .project(project.projectId())
- *             .database(database.name())
- *             .collection(&#34;somenewcollection&#34;)
- *             .documentId(&#34;my-doc-id&#34;)
- *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;akey\&#34;:{\&#34;stringValue\&#34;:\&#34;avalue\&#34;}}}}}&#34;)
- *             .build());
- * 
- *         var subDocument = new Document(&#34;subDocument&#34;, DocumentArgs.builder()        
+ *         var mydoc = new Document("mydoc", DocumentArgs.builder()        
  *             .project(project.projectId())
  *             .database(database.name())
- *             .collection(mydoc.path().applyValue(path -&gt; String.format(&#34;%s/subdocs&#34;, path)))
- *             .documentId(&#34;bitcoinkey&#34;)
- *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;ayo\&#34;:{\&#34;stringValue\&#34;:\&#34;val2\&#34;}}}}}&#34;)
+ *             .collection("somenewcollection")
+ *             .documentId("my-doc-id")
+ *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}")
  *             .build());
  * 
- *         var subSubDocument = new Document(&#34;subSubDocument&#34;, DocumentArgs.builder()        
+ *         var subDocument = new Document("subDocument", DocumentArgs.builder()        
  *             .project(project.projectId())
  *             .database(database.name())
- *             .collection(subDocument.path().applyValue(path -&gt; String.format(&#34;%s/subsubdocs&#34;, path)))
- *             .documentId(&#34;asecret&#34;)
- *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;secret\&#34;:{\&#34;stringValue\&#34;:\&#34;hithere\&#34;}}}}}&#34;)
+ *             .collection(mydoc.path().applyValue(path -> String.format("%s/subdocs", path)))
+ *             .documentId("bitcoinkey")
+ *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}")
+ *             .build());
+ * 
+ *         var subSubDocument = new Document("subSubDocument", DocumentArgs.builder()        
+ *             .project(project.projectId())
+ *             .database(database.name())
+ *             .collection(subDocument.path().applyValue(path -> String.format("%s/subsubdocs", path)))
+ *             .documentId("asecret")
+ *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

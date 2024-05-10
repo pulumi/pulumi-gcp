@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Certificate Manager Trust Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,28 +54,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new TrustConfig(&#34;default&#34;, TrustConfigArgs.builder()        
- *             .name(&#34;trust-config&#34;)
- *             .description(&#34;sample description for the trust config&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new TrustConfig("default", TrustConfigArgs.builder()        
+ *             .name("trust-config")
+ *             .description("sample description for the trust config")
+ *             .location("us-central1")
  *             .trustStores(TrustConfigTrustStoreArgs.builder()
  *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
  *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/cert.pem&#34;)
+ *                         .input("test-fixtures/cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
  *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/cert.pem&#34;)
+ *                         .input("test-fixtures/cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -42,7 +42,8 @@ import javax.annotation.Nullable;
  * ### Network Endpoint Group
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,34 +68,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;neg-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("neg-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;neg-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("neg-subnetwork")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
  *             .network(default_.id())
  *             .build());
  * 
- *         var neg = new NetworkEndpointGroup(&#34;neg&#34;, NetworkEndpointGroupArgs.builder()        
- *             .name(&#34;my-lb-neg&#34;)
+ *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()        
+ *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .defaultPort(&#34;90&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .defaultPort("90")
+ *             .zone("us-central1-a")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Endpoint Group Non Gcp
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -119,27 +122,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;neg-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("neg-network")
  *             .build());
  * 
- *         var neg = new NetworkEndpointGroup(&#34;neg&#34;, NetworkEndpointGroupArgs.builder()        
- *             .name(&#34;my-lb-neg&#34;)
+ *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()        
+ *             .name("my-lb-neg")
  *             .network(default_.id())
- *             .defaultPort(&#34;90&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .networkEndpointType(&#34;NON_GCP_PRIVATE_IP_PORT&#34;)
+ *             .defaultPort("90")
+ *             .zone("us-central1-a")
+ *             .networkEndpointType("NON_GCP_PRIVATE_IP_PORT")
  *             .build());
  * 
- *         var default_endpoint = new NetworkEndpoint(&#34;default-endpoint&#34;, NetworkEndpointArgs.builder()        
+ *         var default_endpoint = new NetworkEndpoint("default-endpoint", NetworkEndpointArgs.builder()        
  *             .networkEndpointGroup(neg.name())
  *             .port(neg.defaultPort())
- *             .ipAddress(&#34;127.0.0.1&#34;)
+ *             .ipAddress("127.0.0.1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Active Directory Domain Trust Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,18 +52,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ad_domain_trust = new DomainTrust(&#34;ad-domain-trust&#34;, DomainTrustArgs.builder()        
- *             .domain(&#34;test-managed-ad.com&#34;)
- *             .targetDomainName(&#34;example-gcp.com&#34;)
- *             .targetDnsIpAddresses(&#34;10.1.0.100&#34;)
- *             .trustDirection(&#34;OUTBOUND&#34;)
- *             .trustType(&#34;FOREST&#34;)
- *             .trustHandshakeSecret(&#34;Testing1!&#34;)
+ *         var ad_domain_trust = new DomainTrust("ad-domain-trust", DomainTrustArgs.builder()        
+ *             .domain("test-managed-ad.com")
+ *             .targetDomainName("example-gcp.com")
+ *             .targetDnsIpAddresses("10.1.0.100")
+ *             .trustDirection("OUTBOUND")
+ *             .trustType("FOREST")
+ *             .trustHandshakeSecret("Testing1!")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

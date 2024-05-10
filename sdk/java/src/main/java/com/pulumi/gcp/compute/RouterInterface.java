@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,17 +45,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new RouterInterface(&#34;foobar&#34;, RouterInterfaceArgs.builder()        
- *             .name(&#34;interface-1&#34;)
- *             .router(&#34;router-1&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .ipRange(&#34;169.254.1.1/30&#34;)
- *             .vpnTunnel(&#34;tunnel-1&#34;)
+ *         var foobar = new RouterInterface("foobar", RouterInterfaceArgs.builder()        
+ *             .name("interface-1")
+ *             .router("router-1")
+ *             .region("us-central1")
+ *             .ipRange("169.254.1.1/30")
+ *             .vpnTunnel("tunnel-1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -47,7 +47,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -69,12 +70,13 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-bucket = StorageFunctions.getBucket(GetBucketArgs.builder()
-     *             .name(&#34;my-bucket&#34;)
+     *             .name("my-bucket")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -90,7 +92,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -112,12 +115,13 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-bucket = StorageFunctions.getBucket(GetBucketArgs.builder()
-     *             .name(&#34;my-bucket&#34;)
+     *             .name("my-bucket")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -133,7 +137,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -155,12 +160,13 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-bucket = StorageFunctions.getBucket(GetBucketArgs.builder()
-     *             .name(&#34;my-bucket&#34;)
+     *             .name("my-bucket")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -176,7 +182,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -198,12 +205,13 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-bucket = StorageFunctions.getBucket(GetBucketArgs.builder()
-     *             .name(&#34;my-bucket&#34;)
+     *             .name("my-bucket")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -216,7 +224,8 @@ public final class StorageFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -243,7 +252,8 @@ public final class StorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -256,7 +266,8 @@ public final class StorageFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -283,7 +294,8 @@ public final class StorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -296,7 +308,8 @@ public final class StorageFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -323,7 +336,8 @@ public final class StorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -336,7 +350,8 @@ public final class StorageFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -363,7 +378,8 @@ public final class StorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -381,7 +397,8 @@ public final class StorageFunctions {
      * Example picture stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -403,13 +420,14 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .bucket(&#34;image-store&#34;)
+     *             .name("folder/butterfly01.jpg")
+     *             .bucket("image-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -427,7 +445,8 @@ public final class StorageFunctions {
      * Example picture stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -449,13 +468,14 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .bucket(&#34;image-store&#34;)
+     *             .name("folder/butterfly01.jpg")
+     *             .bucket("image-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -473,7 +493,8 @@ public final class StorageFunctions {
      * Example picture stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -495,13 +516,14 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .bucket(&#34;image-store&#34;)
+     *             .name("folder/butterfly01.jpg")
+     *             .bucket("image-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -519,7 +541,8 @@ public final class StorageFunctions {
      * Example picture stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -541,13 +564,14 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .bucket(&#34;image-store&#34;)
+     *             .name("folder/butterfly01.jpg")
+     *             .bucket("image-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -565,7 +589,8 @@ public final class StorageFunctions {
      * Example picture stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -587,13 +612,14 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .bucket(&#34;image-store&#34;)
+     *             .name("folder/butterfly01.jpg")
+     *             .bucket("image-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -611,7 +637,8 @@ public final class StorageFunctions {
      * Example picture stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -633,13 +660,14 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .bucket(&#34;image-store&#34;)
+     *             .name("folder/butterfly01.jpg")
+     *             .bucket("image-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -659,7 +687,8 @@ public final class StorageFunctions {
      * Example file object  stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -681,14 +710,15 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var key = StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
-     *             .name(&#34;encryptedkey&#34;)
-     *             .bucket(&#34;keystore&#34;)
+     *             .name("encryptedkey")
+     *             .bucket("keystore")
      *             .build());
      * 
-     *         ctx.export(&#34;encrypted&#34;, key.applyValue(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
+     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -708,7 +738,8 @@ public final class StorageFunctions {
      * Example file object  stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -730,14 +761,15 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var key = StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
-     *             .name(&#34;encryptedkey&#34;)
-     *             .bucket(&#34;keystore&#34;)
+     *             .name("encryptedkey")
+     *             .bucket("keystore")
      *             .build());
      * 
-     *         ctx.export(&#34;encrypted&#34;, key.applyValue(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
+     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -757,7 +789,8 @@ public final class StorageFunctions {
      * Example file object  stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -779,14 +812,15 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var key = StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
-     *             .name(&#34;encryptedkey&#34;)
-     *             .bucket(&#34;keystore&#34;)
+     *             .name("encryptedkey")
+     *             .bucket("keystore")
      *             .build());
      * 
-     *         ctx.export(&#34;encrypted&#34;, key.applyValue(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
+     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -806,7 +840,8 @@ public final class StorageFunctions {
      * Example file object  stored within a folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -828,14 +863,15 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var key = StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
-     *             .name(&#34;encryptedkey&#34;)
-     *             .bucket(&#34;keystore&#34;)
+     *             .name("encryptedkey")
+     *             .bucket("keystore")
      *             .build());
      * 
-     *         ctx.export(&#34;encrypted&#34;, key.applyValue(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
+     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -852,7 +888,8 @@ public final class StorageFunctions {
      * Example files stored within a bucket.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -874,12 +911,13 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var files = StorageFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
-     *             .bucket(&#34;file-store&#34;)
+     *             .bucket("file-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -896,7 +934,8 @@ public final class StorageFunctions {
      * Example files stored within a bucket.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -918,12 +957,13 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var files = StorageFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
-     *             .bucket(&#34;file-store&#34;)
+     *             .bucket("file-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -940,7 +980,8 @@ public final class StorageFunctions {
      * Example files stored within a bucket.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -962,12 +1003,13 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var files = StorageFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
-     *             .bucket(&#34;file-store&#34;)
+     *             .bucket("file-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -984,7 +1026,8 @@ public final class StorageFunctions {
      * Example files stored within a bucket.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1006,12 +1049,13 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var files = StorageFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
-     *             .bucket(&#34;file-store&#34;)
+     *             .bucket("file-store")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1026,7 +1070,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1050,23 +1095,25 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var artifact = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket(&#34;install_binaries&#34;)
-     *             .path(&#34;path/to/install_file.bin&#34;)
+     *             .bucket("install_binaries")
+     *             .path("path/to/install_file.bin")
      *             .build());
      * 
-     *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
-     *             .name(&#34;vm&#34;)
+     *         var vm = new Instance("vm", InstanceArgs.builder()        
+     *             .name("vm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Full Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1088,20 +1135,21 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket(&#34;fried_chicken&#34;)
-     *             .path(&#34;path/to/file&#34;)
-     *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
-     *             .contentType(&#34;text/plain&#34;)
-     *             .duration(&#34;2d&#34;)
+     *             .bucket("fried_chicken")
+     *             .path("path/to/file")
+     *             .contentMd5("pRviqwS4c4OTJRTe03FD1w==")
+     *             .contentType("text/plain")
+     *             .duration("2d")
      *             .credentials(StdFunctions.file(FileArgs.builder()
-     *                 .input(&#34;path/to/credentials.json&#34;)
+     *                 .input("path/to/credentials.json")
      *                 .build()).result())
-     *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1116,7 +1164,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1140,23 +1189,25 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var artifact = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket(&#34;install_binaries&#34;)
-     *             .path(&#34;path/to/install_file.bin&#34;)
+     *             .bucket("install_binaries")
+     *             .path("path/to/install_file.bin")
      *             .build());
      * 
-     *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
-     *             .name(&#34;vm&#34;)
+     *         var vm = new Instance("vm", InstanceArgs.builder()        
+     *             .name("vm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Full Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1178,20 +1229,21 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket(&#34;fried_chicken&#34;)
-     *             .path(&#34;path/to/file&#34;)
-     *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
-     *             .contentType(&#34;text/plain&#34;)
-     *             .duration(&#34;2d&#34;)
+     *             .bucket("fried_chicken")
+     *             .path("path/to/file")
+     *             .contentMd5("pRviqwS4c4OTJRTe03FD1w==")
+     *             .contentType("text/plain")
+     *             .duration("2d")
      *             .credentials(StdFunctions.file(FileArgs.builder()
-     *                 .input(&#34;path/to/credentials.json&#34;)
+     *                 .input("path/to/credentials.json")
      *                 .build()).result())
-     *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1206,7 +1258,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1230,23 +1283,25 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var artifact = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket(&#34;install_binaries&#34;)
-     *             .path(&#34;path/to/install_file.bin&#34;)
+     *             .bucket("install_binaries")
+     *             .path("path/to/install_file.bin")
      *             .build());
      * 
-     *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
-     *             .name(&#34;vm&#34;)
+     *         var vm = new Instance("vm", InstanceArgs.builder()        
+     *             .name("vm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Full Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1268,20 +1323,21 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket(&#34;fried_chicken&#34;)
-     *             .path(&#34;path/to/file&#34;)
-     *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
-     *             .contentType(&#34;text/plain&#34;)
-     *             .duration(&#34;2d&#34;)
+     *             .bucket("fried_chicken")
+     *             .path("path/to/file")
+     *             .contentMd5("pRviqwS4c4OTJRTe03FD1w==")
+     *             .contentType("text/plain")
+     *             .duration("2d")
      *             .credentials(StdFunctions.file(FileArgs.builder()
-     *                 .input(&#34;path/to/credentials.json&#34;)
+     *                 .input("path/to/credentials.json")
      *                 .build()).result())
-     *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1296,7 +1352,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1320,23 +1377,25 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var artifact = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket(&#34;install_binaries&#34;)
-     *             .path(&#34;path/to/install_file.bin&#34;)
+     *             .bucket("install_binaries")
+     *             .path("path/to/install_file.bin")
      *             .build());
      * 
-     *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
-     *             .name(&#34;vm&#34;)
+     *         var vm = new Instance("vm", InstanceArgs.builder()        
+     *             .name("vm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Full Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1358,20 +1417,21 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket(&#34;fried_chicken&#34;)
-     *             .path(&#34;path/to/file&#34;)
-     *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
-     *             .contentType(&#34;text/plain&#34;)
-     *             .duration(&#34;2d&#34;)
+     *             .bucket("fried_chicken")
+     *             .path("path/to/file")
+     *             .contentMd5("pRviqwS4c4OTJRTe03FD1w==")
+     *             .contentType("text/plain")
+     *             .duration("2d")
      *             .credentials(StdFunctions.file(FileArgs.builder()
-     *                 .input(&#34;path/to/credentials.json&#34;)
+     *                 .input("path/to/credentials.json")
      *                 .build()).result())
-     *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1417,7 +1477,8 @@ public final class StorageFunctions {
      * ### Pub/Sub Notifications
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1442,21 +1503,23 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
      *             .topic(topic.name())
-     *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .role("roles/pubsub.publisher")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Cloud KMS Keys
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1484,23 +1547,24 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
-     *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *             .cryptoKeyId("your-crypto-key-id")
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;kms-protected-bucket&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("kms-protected-bucket")
+     *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
-     *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
+     *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1546,7 +1610,8 @@ public final class StorageFunctions {
      * ### Pub/Sub Notifications
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1571,21 +1636,23 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
      *             .topic(topic.name())
-     *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .role("roles/pubsub.publisher")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Cloud KMS Keys
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1613,23 +1680,24 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
-     *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *             .cryptoKeyId("your-crypto-key-id")
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;kms-protected-bucket&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("kms-protected-bucket")
+     *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
-     *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
+     *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1675,7 +1743,8 @@ public final class StorageFunctions {
      * ### Pub/Sub Notifications
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1700,21 +1769,23 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
      *             .topic(topic.name())
-     *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .role("roles/pubsub.publisher")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Cloud KMS Keys
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1742,23 +1813,24 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
-     *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *             .cryptoKeyId("your-crypto-key-id")
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;kms-protected-bucket&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("kms-protected-bucket")
+     *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
-     *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
+     *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1804,7 +1876,8 @@ public final class StorageFunctions {
      * ### Pub/Sub Notifications
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1829,21 +1902,23 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
      *             .topic(topic.name())
-     *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .role("roles/pubsub.publisher")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Cloud KMS Keys
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1871,23 +1946,24 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
-     *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *             .cryptoKeyId("your-crypto-key-id")
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;kms-protected-bucket&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("kms-protected-bucket")
+     *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
-     *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
+     *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1933,7 +2009,8 @@ public final class StorageFunctions {
      * ### Pub/Sub Notifications
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1958,21 +2035,23 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
      *             .topic(topic.name())
-     *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .role("roles/pubsub.publisher")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Cloud KMS Keys
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2000,23 +2079,24 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
-     *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *             .cryptoKeyId("your-crypto-key-id")
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;kms-protected-bucket&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("kms-protected-bucket")
+     *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
-     *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
+     *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2062,7 +2142,8 @@ public final class StorageFunctions {
      * ### Pub/Sub Notifications
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2087,21 +2168,23 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
      *             .topic(topic.name())
-     *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .role("roles/pubsub.publisher")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Cloud KMS Keys
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2129,23 +2212,24 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
-     *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()        
+     *             .cryptoKeyId("your-crypto-key-id")
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;kms-protected-bucket&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("kms-protected-bucket")
+     *             .location("US")
      *             .encryption(BucketEncryptionArgs.builder()
-     *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
+     *                 .defaultKmsKeyName("your-crypto-key-id")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2158,7 +2242,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2181,10 +2266,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2197,7 +2283,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2220,10 +2307,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2236,7 +2324,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2259,10 +2348,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2275,7 +2365,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2298,10 +2389,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2314,7 +2406,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2337,10 +2430,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2353,7 +2447,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2376,10 +2471,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2392,7 +2488,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2415,10 +2512,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2435,7 +2533,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2458,10 +2557,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2478,7 +2578,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2501,10 +2602,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2521,7 +2623,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2544,10 +2647,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2564,7 +2668,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2587,10 +2692,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2607,7 +2713,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2630,10 +2737,11 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated

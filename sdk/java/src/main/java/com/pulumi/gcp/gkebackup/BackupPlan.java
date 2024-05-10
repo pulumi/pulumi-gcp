@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Gkebackup Backupplan Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,27 +63,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;basic-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("basic-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;basic-plan&#34;)
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *             .name("basic-plan")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -92,12 +93,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Backupplan Autopilot
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -125,28 +128,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;autopilot-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("autopilot-cluster")
+ *             .location("us-central1")
  *             .enableAutopilot(true)
  *             .ipAllocationPolicy()
  *             .releaseChannel(ClusterReleaseChannelArgs.builder()
- *                 .channel(&#34;RAPID&#34;)
+ *                 .channel("RAPID")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var autopilot = new BackupPlan(&#34;autopilot&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;autopilot-plan&#34;)
+ *         var autopilot = new BackupPlan("autopilot", BackupPlanArgs.builder()        
+ *             .name("autopilot-plan")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -156,12 +159,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Backupplan Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -194,44 +199,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;cmek-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("cmek-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;backup-key&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("backup-key")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;backup-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("backup-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var cmek = new BackupPlan(&#34;cmek&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;cmek-plan&#34;)
+ *         var cmek = new BackupPlan("cmek", BackupPlanArgs.builder()        
+ *             .name("cmek-plan")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
  *                 .selectedNamespaces(BackupPlanBackupConfigSelectedNamespacesArgs.builder()
  *                     .namespaces(                    
- *                         &#34;default&#34;,
- *                         &#34;test&#34;)
+ *                         "default",
+ *                         "test")
  *                     .build())
  *                 .encryptionKey(BackupPlanBackupConfigEncryptionKeyArgs.builder()
  *                     .gcpKmsEncryptionKey(cryptoKey.id())
@@ -241,12 +246,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Backupplan Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -276,33 +283,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;full-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("full-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var full = new BackupPlan(&#34;full&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;full-plan&#34;)
+ *         var full = new BackupPlan("full", BackupPlanArgs.builder()        
+ *             .name("full-plan")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
  *                 .backupRetainDays(180)
  *                 .build())
  *             .backupSchedule(BackupPlanBackupScheduleArgs.builder()
- *                 .cronSchedule(&#34;0 9 * * 1&#34;)
+ *                 .cronSchedule("0 9 * * 1")
  *                 .build())
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
@@ -310,12 +317,12 @@ import javax.annotation.Nullable;
  *                 .selectedApplications(BackupPlanBackupConfigSelectedApplicationsArgs.builder()
  *                     .namespacedNames(                    
  *                         BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs.builder()
- *                             .name(&#34;app1&#34;)
- *                             .namespace(&#34;ns1&#34;)
+ *                             .name("app1")
+ *                             .namespace("ns1")
  *                             .build(),
  *                         BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs.builder()
- *                             .name(&#34;app2&#34;)
- *                             .namespace(&#34;ns2&#34;)
+ *                             .name("app2")
+ *                             .namespace("ns2")
  *                             .build())
  *                     .build())
  *                 .build())
@@ -323,12 +330,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Backupplan Rpo Daily Window
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -358,27 +367,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;rpo-daily-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("rpo-daily-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var rpoDailyWindow = new BackupPlan(&#34;rpoDailyWindow&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;rpo-daily-window&#34;)
+ *         var rpoDailyWindow = new BackupPlan("rpoDailyWindow", BackupPlanArgs.builder()        
+ *             .name("rpo-daily-window")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
  *                 .backupRetainDays(180)
@@ -392,7 +401,7 @@ import javax.annotation.Nullable;
  *                             .startTime(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs.builder()
  *                                 .hours(12)
  *                                 .build())
- *                             .duration(&#34;7200s&#34;)
+ *                             .duration("7200s")
  *                             .daily(true)
  *                             .build(),
  *                         BackupPlanBackupScheduleRpoConfigExclusionWindowArgs.builder()
@@ -402,7 +411,7 @@ import javax.annotation.Nullable;
  *                                 .seconds(1)
  *                                 .nanos(100)
  *                                 .build())
- *                             .duration(&#34;3600s&#34;)
+ *                             .duration("3600s")
  *                             .singleOccurrenceDate(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs.builder()
  *                                 .year(2024)
  *                                 .month(3)
@@ -420,12 +429,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Backupplan Rpo Weekly Window
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -455,27 +466,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;rpo-weekly-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("rpo-weekly-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var rpoWeeklyWindow = new BackupPlan(&#34;rpoWeeklyWindow&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;rpo-weekly-window&#34;)
+ *         var rpoWeeklyWindow = new BackupPlan("rpoWeeklyWindow", BackupPlanArgs.builder()        
+ *             .name("rpo-weekly-window")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
  *                 .backupRetainDays(180)
@@ -490,18 +501,18 @@ import javax.annotation.Nullable;
  *                                 .hours(1)
  *                                 .minutes(23)
  *                                 .build())
- *                             .duration(&#34;1800s&#34;)
+ *                             .duration("1800s")
  *                             .daysOfWeek(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs.builder()
  *                                 .daysOfWeeks(                                
- *                                     &#34;MONDAY&#34;,
- *                                     &#34;THURSDAY&#34;)
+ *                                     "MONDAY",
+ *                                     "THURSDAY")
  *                                 .build())
  *                             .build(),
  *                         BackupPlanBackupScheduleRpoConfigExclusionWindowArgs.builder()
  *                             .startTime(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs.builder()
  *                                 .hours(12)
  *                                 .build())
- *                             .duration(&#34;3600s&#34;)
+ *                             .duration("3600s")
  *                             .singleOccurrenceDate(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs.builder()
  *                                 .year(2024)
  *                                 .month(3)
@@ -513,7 +524,7 @@ import javax.annotation.Nullable;
  *                                 .hours(8)
  *                                 .minutes(40)
  *                                 .build())
- *                             .duration(&#34;600s&#34;)
+ *                             .duration("600s")
  *                             .singleOccurrenceDate(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs.builder()
  *                                 .year(2024)
  *                                 .month(3)
@@ -531,7 +542,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

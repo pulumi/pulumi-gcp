@@ -41,7 +41,8 @@ import javax.annotation.Nullable;
  * ### Container Attached Cluster Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,33 +72,35 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         final var versions = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
- *             .location(&#34;us-west1&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .location("us-west1")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .build());
  * 
- *         var primary = new AttachedCluster(&#34;primary&#34;, AttachedClusterArgs.builder()        
- *             .name(&#34;basic&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .description(&#34;Test cluster&#34;)
- *             .distribution(&#34;aks&#34;)
+ *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()        
+ *             .name("basic")
+ *             .location("us-west1")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .description("Test cluster")
+ *             .distribution("aks")
  *             .oidcConfig(AttachedClusterOidcConfigArgs.builder()
- *                 .issuerUrl(&#34;https://oidc.issuer.url&#34;)
+ *                 .issuerUrl("https://oidc.issuer.url")
  *                 .build())
- *             .platformVersion(versions.applyValue(getAttachedVersionsResult -&gt; getAttachedVersionsResult.validVersions()[0]))
+ *             .platformVersion(versions.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]))
  *             .fleet(AttachedClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Container Attached Cluster Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -135,40 +138,40 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         final var versions = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
- *             .location(&#34;us-west1&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .location("us-west1")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .build());
  * 
- *         var primary = new AttachedCluster(&#34;primary&#34;, AttachedClusterArgs.builder()        
- *             .name(&#34;basic&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .location(&#34;us-west1&#34;)
- *             .description(&#34;Test cluster&#34;)
- *             .distribution(&#34;aks&#34;)
- *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()        
+ *             .name("basic")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .location("us-west1")
+ *             .description("Test cluster")
+ *             .distribution("aks")
+ *             .annotations(Map.of("label-one", "value-one"))
  *             .authorization(AttachedClusterAuthorizationArgs.builder()
  *                 .adminUsers(                
- *                     &#34;user1@example.com&#34;,
- *                     &#34;user2@example.com&#34;)
+ *                     "user1{@literal @}example.com",
+ *                     "user2{@literal @}example.com")
  *                 .adminGroups(                
- *                     &#34;group1@example.com&#34;,
- *                     &#34;group2@example.com&#34;)
+ *                     "group1{@literal @}example.com",
+ *                     "group2{@literal @}example.com")
  *                 .build())
  *             .oidcConfig(AttachedClusterOidcConfigArgs.builder()
- *                 .issuerUrl(&#34;https://oidc.issuer.url&#34;)
+ *                 .issuerUrl("https://oidc.issuer.url")
  *                 .jwks(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;{\&#34;keys\&#34;:[{\&#34;use\&#34;:\&#34;sig\&#34;,\&#34;kty\&#34;:\&#34;RSA\&#34;,\&#34;kid\&#34;:\&#34;testid\&#34;,\&#34;alg\&#34;:\&#34;RS256\&#34;,\&#34;n\&#34;:\&#34;somedata\&#34;,\&#34;e\&#34;:\&#34;AQAB\&#34;}]}&#34;)
+ *                     .input("{\"keys\":[{\"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}]}")
  *                     .build()).result())
  *                 .build())
- *             .platformVersion(versions.applyValue(getAttachedVersionsResult -&gt; getAttachedVersionsResult.validVersions()[0]))
+ *             .platformVersion(versions.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]))
  *             .fleet(AttachedClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
  *             .loggingConfig(AttachedClusterLoggingConfigArgs.builder()
  *                 .componentConfig(AttachedClusterLoggingConfigComponentConfigArgs.builder()
  *                     .enableComponents(                    
- *                         &#34;SYSTEM_COMPONENTS&#34;,
- *                         &#34;WORKLOADS&#34;)
+ *                         "SYSTEM_COMPONENTS",
+ *                         "WORKLOADS")
  *                     .build())
  *                 .build())
  *             .monitoringConfig(AttachedClusterMonitoringConfigArgs.builder()
@@ -177,24 +180,26 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .binaryAuthorization(AttachedClusterBinaryAuthorizationArgs.builder()
- *                 .evaluationMode(&#34;PROJECT_SINGLETON_POLICY_ENFORCE&#34;)
+ *                 .evaluationMode("PROJECT_SINGLETON_POLICY_ENFORCE")
  *                 .build())
  *             .proxyConfig(AttachedClusterProxyConfigArgs.builder()
  *                 .kubernetesSecret(AttachedClusterProxyConfigKubernetesSecretArgs.builder()
- *                     .name(&#34;proxy-config&#34;)
- *                     .namespace(&#34;default&#34;)
+ *                     .name("proxy-config")
+ *                     .namespace("default")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Container Attached Cluster Ignore Errors
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -224,29 +229,30 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         final var versions = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
- *             .location(&#34;us-west1&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .location("us-west1")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .build());
  * 
- *         var primary = new AttachedCluster(&#34;primary&#34;, AttachedClusterArgs.builder()        
- *             .name(&#34;basic&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .description(&#34;Test cluster&#34;)
- *             .distribution(&#34;aks&#34;)
+ *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()        
+ *             .name("basic")
+ *             .location("us-west1")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .description("Test cluster")
+ *             .distribution("aks")
  *             .oidcConfig(AttachedClusterOidcConfigArgs.builder()
- *                 .issuerUrl(&#34;https://oidc.issuer.url&#34;)
+ *                 .issuerUrl("https://oidc.issuer.url")
  *                 .build())
- *             .platformVersion(versions.applyValue(getAttachedVersionsResult -&gt; getAttachedVersionsResult.validVersions()[0]))
+ *             .platformVersion(versions.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]))
  *             .fleet(AttachedClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
- *             .deletionPolicy(&#34;DELETE_IGNORE_ERRORS&#34;)
+ *             .deletionPolicy("DELETE_IGNORE_ERRORS")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

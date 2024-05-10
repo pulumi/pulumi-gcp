@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Vmware Engine Network Standard
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,21 +50,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vmw_engine_network = new Network(&#34;vmw-engine-network&#34;, NetworkArgs.builder()        
- *             .name(&#34;standard-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
- *             .description(&#34;VMwareEngine standard network sample&#34;)
+ *         var vmw_engine_network = new Network("vmw-engine-network", NetworkArgs.builder()        
+ *             .name("standard-nw")
+ *             .location("global")
+ *             .type("STANDARD")
+ *             .description("VMwareEngine standard network sample")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vmware Engine Network Legacy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,33 +95,34 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // there can be only 1 Legacy network per region for a given project,
  *         // so creating new project for isolation in CI.
- *         var acceptanceProject = new Project(&#34;acceptanceProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;vmw-proj&#34;)
- *             .projectId(&#34;vmw-proj&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var acceptanceProject = new Project("acceptanceProject", ProjectArgs.builder()        
+ *             .name("vmw-proj")
+ *             .projectId("vmw-proj")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var acceptance = new Service(&#34;acceptance&#34;, ServiceArgs.builder()        
+ *         var acceptance = new Service("acceptance", ServiceArgs.builder()        
  *             .project(acceptanceProject.projectId())
- *             .service(&#34;vmwareengine.googleapis.com&#34;)
+ *             .service("vmwareengine.googleapis.com")
  *             .build());
  * 
- *         var vmw_engine_network = new Network(&#34;vmw-engine-network&#34;, NetworkArgs.builder()        
+ *         var vmw_engine_network = new Network("vmw-engine-network", NetworkArgs.builder()        
  *             .project(acceptance.project())
- *             .name(&#34;us-west1-default&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .type(&#34;LEGACY&#34;)
- *             .description(&#34;VMwareEngine legacy network sample&#34;)
+ *             .name("us-west1-default")
+ *             .location("us-west1")
+ *             .type("LEGACY")
+ *             .description("VMwareEngine legacy network sample")
  *             .build());
  * 
- *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;60s&#34;)
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *             .createDuration("60s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

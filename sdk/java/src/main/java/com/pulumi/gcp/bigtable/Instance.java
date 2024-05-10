@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ### Simple Instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,25 +62,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var production_instance = new Instance(&#34;production-instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;tf-instance&#34;)
+ *         var production_instance = new Instance("production-instance", InstanceArgs.builder()        
+ *             .name("tf-instance")
  *             .clusters(InstanceClusterArgs.builder()
- *                 .clusterId(&#34;tf-instance-cluster&#34;)
+ *                 .clusterId("tf-instance-cluster")
  *                 .numNodes(1)
- *                 .storageType(&#34;HDD&#34;)
+ *                 .storageType("HDD")
  *                 .build())
- *             .labels(Map.of(&#34;my-label&#34;, &#34;prod-label&#34;))
+ *             .labels(Map.of("my-label", "prod-label"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Replicated Instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,31 +105,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var production_instance = new Instance(&#34;production-instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;tf-instance&#34;)
+ *         var production_instance = new Instance("production-instance", InstanceArgs.builder()        
+ *             .name("tf-instance")
  *             .clusters(            
  *                 InstanceClusterArgs.builder()
- *                     .clusterId(&#34;tf-instance-cluster1&#34;)
+ *                     .clusterId("tf-instance-cluster1")
  *                     .numNodes(1)
- *                     .storageType(&#34;HDD&#34;)
- *                     .zone(&#34;us-central1-c&#34;)
+ *                     .storageType("HDD")
+ *                     .zone("us-central1-c")
  *                     .build(),
  *                 InstanceClusterArgs.builder()
- *                     .clusterId(&#34;tf-instance-cluster2&#34;)
- *                     .storageType(&#34;HDD&#34;)
- *                     .zone(&#34;us-central1-b&#34;)
+ *                     .clusterId("tf-instance-cluster2")
+ *                     .storageType("HDD")
+ *                     .zone("us-central1-b")
  *                     .autoscalingConfig(InstanceClusterAutoscalingConfigArgs.builder()
  *                         .minNodes(1)
  *                         .maxNodes(3)
  *                         .cpuTarget(50)
  *                         .build())
  *                     .build())
- *             .labels(Map.of(&#34;my-label&#34;, &#34;prod-label&#34;))
+ *             .labels(Map.of("my-label", "prod-label"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

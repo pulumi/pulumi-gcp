@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Config Management
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,36 +58,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;my-membership&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;configmanagement&#34;)
- *             .location(&#34;global&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("configmanagement")
+ *             .location("global")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
- *             .location(&#34;global&#34;)
+ *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()        
+ *             .location("global")
  *             .feature(feature.name())
  *             .membership(membership.membershipId())
  *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
- *                 .version(&#34;1.6.2&#34;)
+ *                 .version("1.6.2")
  *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
  *                     .git(FeatureMembershipConfigmanagementConfigSyncGitArgs.builder()
- *                         .syncRepo(&#34;https://github.com/hashicorp/terraform&#34;)
+ *                         .syncRepo("https://github.com/hashicorp/terraform")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -94,12 +95,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Config Management With OCI
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -131,40 +134,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;my-membership&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;configmanagement&#34;)
- *             .location(&#34;global&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("configmanagement")
+ *             .location("global")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
- *             .location(&#34;global&#34;)
+ *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()        
+ *             .location("global")
  *             .feature(feature.name())
  *             .membership(membership.membershipId())
  *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
- *                 .version(&#34;1.15.1&#34;)
+ *                 .version("1.15.1")
  *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
  *                     .oci(FeatureMembershipConfigmanagementConfigSyncOciArgs.builder()
- *                         .syncRepo(&#34;us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest&#34;)
- *                         .policyDir(&#34;config-connector&#34;)
- *                         .syncWaitSecs(&#34;20&#34;)
- *                         .secretType(&#34;gcpserviceaccount&#34;)
- *                         .gcpServiceAccountEmail(&#34;sa@project-id.iam.gserviceaccount.com&#34;)
+ *                         .syncRepo("us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest")
+ *                         .policyDir("config-connector")
+ *                         .syncWaitSecs("20")
+ *                         .secretType("gcpserviceaccount")
+ *                         .gcpServiceAccountEmail("sa{@literal @}project-id.iam.gserviceaccount.com")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -172,13 +175,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Multi Cluster Service Discovery
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -199,21 +204,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;multiclusterservicediscovery&#34;)
- *             .location(&#34;global&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("multiclusterservicediscovery")
+ *             .location("global")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Service Mesh
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -243,44 +250,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;my-membership&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;servicemesh&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("servicemesh")
+ *             .location("global")
  *             .build());
  * 
- *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
- *             .location(&#34;global&#34;)
+ *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()        
+ *             .location("global")
  *             .feature(feature.name())
  *             .membership(membership.membershipId())
  *             .mesh(FeatureMembershipMeshArgs.builder()
- *                 .management(&#34;MANAGEMENT_AUTOMATIC&#34;)
+ *                 .management("MANAGEMENT_AUTOMATIC")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Config Management With Regional Membership
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -312,38 +321,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;my-membership&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("my-membership")
+ *             .location("us-central1")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;configmanagement&#34;)
- *             .location(&#34;global&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("configmanagement")
+ *             .location("global")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
- *             .location(&#34;global&#34;)
+ *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()        
+ *             .location("global")
  *             .feature(feature.name())
  *             .membership(membership.membershipId())
  *             .membershipLocation(membership.location())
  *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
- *                 .version(&#34;1.6.2&#34;)
+ *                 .version("1.6.2")
  *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
  *                     .git(FeatureMembershipConfigmanagementConfigSyncGitArgs.builder()
- *                         .syncRepo(&#34;https://github.com/hashicorp/terraform&#34;)
+ *                         .syncRepo("https://github.com/hashicorp/terraform")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -351,13 +360,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Policy Controller With Minimal Configuration
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -388,46 +399,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;my-membership&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;policycontroller&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("policycontroller")
+ *             .location("global")
  *             .build());
  * 
- *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
- *             .location(&#34;global&#34;)
+ *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()        
+ *             .location("global")
  *             .feature(feature.name())
  *             .membership(membership.membershipId())
  *             .policycontroller(FeatureMembershipPolicycontrollerArgs.builder()
  *                 .policyControllerHubConfig(FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs.builder()
- *                     .installSpec(&#34;INSTALL_SPEC_ENABLED&#34;)
+ *                     .installSpec("INSTALL_SPEC_ENABLED")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Policy Controller With Custom Configurations
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -460,36 +473,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;my-membership&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;policycontroller&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("policycontroller")
+ *             .location("global")
  *             .build());
  * 
- *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
- *             .location(&#34;global&#34;)
+ *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()        
+ *             .location("global")
  *             .feature(feature.name())
  *             .membership(membership.membershipId())
  *             .policycontroller(FeatureMembershipPolicycontrollerArgs.builder()
  *                 .policyControllerHubConfig(FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs.builder()
- *                     .installSpec(&#34;INSTALL_SPEC_SUSPENDED&#34;)
+ *                     .installSpec("INSTALL_SPEC_SUSPENDED")
  *                     .policyContent(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs.builder()
  *                         .templateLibrary(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs.builder()
- *                             .installation(&#34;NOT_INSTALLED&#34;)
+ *                             .installation("NOT_INSTALLED")
  *                             .build())
  *                         .build())
  *                     .constraintViolationLimit(50)
@@ -498,13 +511,14 @@ import javax.annotation.Nullable;
  *                     .logDeniesEnabled(true)
  *                     .mutationEnabled(true)
  *                     .build())
- *                 .version(&#34;1.17.0&#34;)
+ *                 .version("1.17.0")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

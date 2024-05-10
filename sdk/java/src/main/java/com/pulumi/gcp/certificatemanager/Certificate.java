@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Certificate Manager Google Managed Certificate Dns
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,23 +51,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth&#34;)
- *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth")
+ *             .description("The default dnss")
+ *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth2&#34;)
- *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
+ *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth2")
+ *             .description("The default dnss")
+ *             .domain("subdomain2.hashicorptest.com")
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .name(&#34;dns-cert&#34;)
- *             .description(&#34;The default cert&#34;)
- *             .scope(&#34;EDGE_CACHE&#34;)
- *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .name("dns-cert")
+ *             .description("The default cert")
+ *             .scope("EDGE_CACHE")
+ *             .labels(Map.of("env", "test"))
  *             .managed(CertificateManagedArgs.builder()
  *                 .domains(                
  *                     instance.domain(),
@@ -79,12 +80,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Google Managed Certificate Issuance Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -124,48 +127,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new CaPool(&#34;pool&#34;, CaPoolArgs.builder()        
- *             .name(&#34;ca-pool&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var pool = new CaPool("pool", CaPoolArgs.builder()        
+ *             .name("ca-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
  *             .build());
  * 
  *         // creating certificate_issuance_config to use it in the managed certificate
- *         var issuanceconfig = new CertificateIssuanceConfig(&#34;issuanceconfig&#34;, CertificateIssuanceConfigArgs.builder()        
- *             .name(&#34;issuance-config&#34;)
- *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
+ *         var issuanceconfig = new CertificateIssuanceConfig("issuanceconfig", CertificateIssuanceConfigArgs.builder()        
+ *             .name("issuance-config")
+ *             .description("sample description for the certificate issuanceConfigs")
  *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
  *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
  *                     .caPool(pool.id())
  *                     .build())
  *                 .build())
- *             .lifetime(&#34;1814400s&#34;)
+ *             .lifetime("1814400s")
  *             .rotationWindowPercentage(34)
- *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
+ *             .keyAlgorithm("ECDSA_P256")
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .name(&#34;issuance-config-cert&#34;)
- *             .description(&#34;The default cert&#34;)
- *             .scope(&#34;EDGE_CACHE&#34;)
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .name("issuance-config-cert")
+ *             .description("The default cert")
+ *             .scope("EDGE_CACHE")
  *             .managed(CertificateManagedArgs.builder()
- *                 .domains(&#34;terraform.subdomain1.com&#34;)
+ *                 .domains("terraform.subdomain1.com")
  *                 .issuanceConfig(issuanceconfig.id())
  *                 .build())
  *             .build());
  * 
- *         var caAuthority = new Authority(&#34;caAuthority&#34;, AuthorityArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()        
+ *             .location("us-central1")
  *             .pool(pool.name())
- *             .certificateAuthorityId(&#34;ca-authority&#34;)
+ *             .certificateAuthorityId("ca-authority")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -184,7 +187,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
@@ -193,12 +196,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Certificate Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -222,22 +227,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth&#34;)
- *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth")
+ *             .description("The default dnss")
+ *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth2&#34;)
- *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
+ *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth2")
+ *             .description("The default dnss")
+ *             .domain("subdomain2.hashicorptest.com")
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .name(&#34;self-managed-cert&#34;)
- *             .description(&#34;Global cert&#34;)
- *             .scope(&#34;EDGE_CACHE&#34;)
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .name("self-managed-cert")
+ *             .description("Global cert")
+ *             .scope("EDGE_CACHE")
  *             .managed(CertificateManagedArgs.builder()
  *                 .domains(                
  *                     instance.domain(),
@@ -250,12 +255,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Self Managed Certificate Regional
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -277,28 +284,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .name(&#34;self-managed-cert&#34;)
- *             .description(&#34;Regional cert&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .name("self-managed-cert")
+ *             .description("Regional cert")
+ *             .location("us-central1")
  *             .selfManaged(CertificateSelfManagedArgs.builder()
  *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/cert.pem&#34;)
+ *                     .input("test-fixtures/cert.pem")
  *                     .build()).result())
  *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/private-key.pem&#34;)
+ *                     .input("test-fixtures/private-key.pem")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Google Managed Certificate Issuance Config All Regions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -338,48 +347,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new CaPool(&#34;pool&#34;, CaPoolArgs.builder()        
- *             .name(&#34;ca-pool&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var pool = new CaPool("pool", CaPoolArgs.builder()        
+ *             .name("ca-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
  *             .build());
  * 
  *         // creating certificate_issuance_config to use it in the managed certificate
- *         var issuanceconfig = new CertificateIssuanceConfig(&#34;issuanceconfig&#34;, CertificateIssuanceConfigArgs.builder()        
- *             .name(&#34;issuance-config&#34;)
- *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
+ *         var issuanceconfig = new CertificateIssuanceConfig("issuanceconfig", CertificateIssuanceConfigArgs.builder()        
+ *             .name("issuance-config")
+ *             .description("sample description for the certificate issuanceConfigs")
  *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
  *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
  *                     .caPool(pool.id())
  *                     .build())
  *                 .build())
- *             .lifetime(&#34;1814400s&#34;)
+ *             .lifetime("1814400s")
  *             .rotationWindowPercentage(34)
- *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
+ *             .keyAlgorithm("ECDSA_P256")
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .name(&#34;issuance-config-cert&#34;)
- *             .description(&#34;sample google managed all_regions certificate with issuance config for terraform&#34;)
- *             .scope(&#34;ALL_REGIONS&#34;)
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .name("issuance-config-cert")
+ *             .description("sample google managed all_regions certificate with issuance config for terraform")
+ *             .scope("ALL_REGIONS")
  *             .managed(CertificateManagedArgs.builder()
- *                 .domains(&#34;terraform.subdomain1.com&#34;)
+ *                 .domains("terraform.subdomain1.com")
  *                 .issuanceConfig(issuanceconfig.id())
  *                 .build())
  *             .build());
  * 
- *         var caAuthority = new Authority(&#34;caAuthority&#34;, AuthorityArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var caAuthority = new Authority("caAuthority", AuthorityArgs.builder()        
+ *             .location("us-central1")
  *             .pool(pool.name())
- *             .certificateAuthorityId(&#34;ca-authority&#34;)
+ *             .certificateAuthorityId("ca-authority")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -398,7 +407,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
@@ -407,12 +416,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Google Managed Certificate Dns All Regions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -436,22 +447,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth&#34;)
- *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth")
+ *             .description("The default dnss")
+ *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth2&#34;)
- *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
+ *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth2")
+ *             .description("The default dnss")
+ *             .domain("subdomain2.hashicorptest.com")
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .name(&#34;dns-cert&#34;)
- *             .description(&#34;The default cert&#34;)
- *             .scope(&#34;ALL_REGIONS&#34;)
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .name("dns-cert")
+ *             .description("The default cert")
+ *             .scope("ALL_REGIONS")
  *             .managed(CertificateManagedArgs.builder()
  *                 .domains(                
  *                     instance.domain(),
@@ -464,12 +475,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Google Managed Regional Certificate Dns Auth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -493,17 +506,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth")
+ *             .location("us-central1")
+ *             .description("The default dnss")
+ *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .name(&#34;dns-cert&#34;)
- *             .description(&#34;regional managed certs&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .name("dns-cert")
+ *             .description("regional managed certs")
+ *             .location("us-central1")
  *             .managed(CertificateManagedArgs.builder()
  *                 .domains(instance.domain())
  *                 .dnsAuthorizations(instance.id())
@@ -512,7 +525,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,25 +50,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // A host project provides network resources to associated service projects.
- *         var host = new SharedVPCHostProject(&#34;host&#34;, SharedVPCHostProjectArgs.builder()        
- *             .project(&#34;host-project-id&#34;)
+ *         var host = new SharedVPCHostProject("host", SharedVPCHostProjectArgs.builder()        
+ *             .project("host-project-id")
  *             .build());
  * 
  *         // A service project gains access to network resources provided by its
  *         // associated host project.
- *         var service1 = new SharedVPCServiceProject(&#34;service1&#34;, SharedVPCServiceProjectArgs.builder()        
+ *         var service1 = new SharedVPCServiceProject("service1", SharedVPCServiceProjectArgs.builder()        
  *             .hostProject(host.project())
- *             .serviceProject(&#34;service-project-id-1&#34;)
+ *             .serviceProject("service-project-id-1")
  *             .build());
  * 
- *         var service2 = new SharedVPCServiceProject(&#34;service2&#34;, SharedVPCServiceProjectArgs.builder()        
+ *         var service2 = new SharedVPCServiceProject("service2", SharedVPCServiceProjectArgs.builder()        
  *             .hostProject(host.project())
- *             .serviceProject(&#34;service-project-id-2&#34;)
+ *             .serviceProject("service-project-id-2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

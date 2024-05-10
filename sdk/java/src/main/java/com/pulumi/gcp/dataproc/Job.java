@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,47 +65,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mycluster = new Cluster(&#34;mycluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;dproc-cluster-unique-name&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var mycluster = new Cluster("mycluster", ClusterArgs.builder()        
+ *             .name("dproc-cluster-unique-name")
+ *             .region("us-central1")
  *             .build());
  * 
  *         // Submit an example spark job to a dataproc cluster
- *         var spark = new Job(&#34;spark&#34;, JobArgs.builder()        
+ *         var spark = new Job("spark", JobArgs.builder()        
  *             .region(mycluster.region())
  *             .forceDelete(true)
  *             .placement(JobPlacementArgs.builder()
  *                 .clusterName(mycluster.name())
  *                 .build())
  *             .sparkConfig(JobSparkConfigArgs.builder()
- *                 .mainClass(&#34;org.apache.spark.examples.SparkPi&#34;)
- *                 .jarFileUris(&#34;file:///usr/lib/spark/examples/jars/spark-examples.jar&#34;)
- *                 .args(&#34;1000&#34;)
- *                 .properties(Map.of(&#34;spark.logConf&#34;, &#34;true&#34;))
+ *                 .mainClass("org.apache.spark.examples.SparkPi")
+ *                 .jarFileUris("file:///usr/lib/spark/examples/jars/spark-examples.jar")
+ *                 .args("1000")
+ *                 .properties(Map.of("spark.logConf", "true"))
  *                 .loggingConfig(JobSparkConfigLoggingConfigArgs.builder()
- *                     .driverLogLevels(Map.of(&#34;root&#34;, &#34;INFO&#34;))
+ *                     .driverLogLevels(Map.of("root", "INFO"))
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         // Submit an example pyspark job to a dataproc cluster
- *         var pyspark = new Job(&#34;pyspark&#34;, JobArgs.builder()        
+ *         var pyspark = new Job("pyspark", JobArgs.builder()        
  *             .region(mycluster.region())
  *             .forceDelete(true)
  *             .placement(JobPlacementArgs.builder()
  *                 .clusterName(mycluster.name())
  *                 .build())
  *             .pysparkConfig(JobPysparkConfigArgs.builder()
- *                 .mainPythonFileUri(&#34;gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py&#34;)
- *                 .properties(Map.of(&#34;spark.logConf&#34;, &#34;true&#34;))
+ *                 .mainPythonFileUri("gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py")
+ *                 .properties(Map.of("spark.logConf", "true"))
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;sparkStatus&#34;, spark.statuses().applyValue(statuses -&gt; statuses[0].state()));
- *         ctx.export(&#34;pysparkStatus&#34;, pyspark.statuses().applyValue(statuses -&gt; statuses[0].state()));
+ *         ctx.export("sparkStatus", spark.statuses().applyValue(statuses -> statuses[0].state()));
+ *         ctx.export("pysparkStatus", pyspark.statuses().applyValue(statuses -> statuses[0].state()));
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

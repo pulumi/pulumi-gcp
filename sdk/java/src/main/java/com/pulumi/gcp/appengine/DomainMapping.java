@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### App Engine Domain Mapping Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,16 +54,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var domainMapping = new DomainMapping(&#34;domainMapping&#34;, DomainMappingArgs.builder()        
- *             .domainName(&#34;verified-domain.com&#34;)
+ *         var domainMapping = new DomainMapping("domainMapping", DomainMappingArgs.builder()        
+ *             .domainName("verified-domain.com")
  *             .sslSettings(DomainMappingSslSettingsArgs.builder()
- *                 .sslManagementType(&#34;AUTOMATIC&#34;)
+ *                 .sslManagementType("AUTOMATIC")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

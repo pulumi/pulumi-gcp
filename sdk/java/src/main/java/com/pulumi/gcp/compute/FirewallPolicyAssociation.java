@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,21 +45,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new FirewallPolicy(&#34;default&#34;, FirewallPolicyArgs.builder()        
- *             .parent(&#34;organizations/12345&#34;)
- *             .shortName(&#34;my-policy&#34;)
- *             .description(&#34;Example Resource&#34;)
+ *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()        
+ *             .parent("organizations/12345")
+ *             .shortName("my-policy")
+ *             .description("Example Resource")
  *             .build());
  * 
- *         var defaultFirewallPolicyAssociation = new FirewallPolicyAssociation(&#34;defaultFirewallPolicyAssociation&#34;, FirewallPolicyAssociationArgs.builder()        
+ *         var defaultFirewallPolicyAssociation = new FirewallPolicyAssociation("defaultFirewallPolicyAssociation", FirewallPolicyAssociationArgs.builder()        
  *             .firewallPolicy(default_.id())
  *             .attachmentTarget(folder.name())
- *             .name(&#34;my-association&#34;)
+ *             .name("my-association")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

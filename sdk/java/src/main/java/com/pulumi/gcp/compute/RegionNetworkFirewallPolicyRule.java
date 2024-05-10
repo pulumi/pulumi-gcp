@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * 
  * ### Regional
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,62 +59,62 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicRegionalNetworksecurityAddressGroup = new AddressGroup(&#34;basicRegionalNetworksecurityAddressGroup&#34;, AddressGroupArgs.builder()        
- *             .name(&#34;policy&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Sample regional networksecurity_address_group&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .items(&#34;208.80.154.224/32&#34;)
- *             .type(&#34;IPV4&#34;)
+ *         var basicRegionalNetworksecurityAddressGroup = new AddressGroup("basicRegionalNetworksecurityAddressGroup", AddressGroupArgs.builder()        
+ *             .name("policy")
+ *             .parent("projects/my-project-name")
+ *             .description("Sample regional networksecurity_address_group")
+ *             .location("us-west1")
+ *             .items("208.80.154.224/32")
+ *             .type("IPV4")
  *             .capacity(100)
  *             .build());
  * 
- *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy(&#34;basicRegionalNetworkFirewallPolicy&#34;, RegionNetworkFirewallPolicyArgs.builder()        
- *             .name(&#34;policy&#34;)
- *             .description(&#34;Sample regional network firewall policy&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .region(&#34;us-west1&#34;)
+ *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()        
+ *             .name("policy")
+ *             .description("Sample regional network firewall policy")
+ *             .project("my-project-name")
+ *             .region("us-west1")
  *             .build());
  * 
- *         var basicNetwork = new Network(&#34;basicNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()        
+ *             .name("network")
  *             .build());
  * 
- *         var basicKey = new TagKey(&#34;basicKey&#34;, TagKeyArgs.builder()        
- *             .description(&#34;For keyname resources.&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .purpose(&#34;GCE_FIREWALL&#34;)
- *             .shortName(&#34;tagkey&#34;)
- *             .purposeData(Map.of(&#34;network&#34;, basicNetwork.name().applyValue(name -&gt; String.format(&#34;my-project-name/%s&#34;, name))))
+ *         var basicKey = new TagKey("basicKey", TagKeyArgs.builder()        
+ *             .description("For keyname resources.")
+ *             .parent("organizations/123456789")
+ *             .purpose("GCE_FIREWALL")
+ *             .shortName("tagkey")
+ *             .purposeData(Map.of("network", basicNetwork.name().applyValue(name -> String.format("my-project-name/%s", name))))
  *             .build());
  * 
- *         var basicValue = new TagValue(&#34;basicValue&#34;, TagValueArgs.builder()        
- *             .description(&#34;For valuename resources.&#34;)
- *             .parent(basicKey.name().applyValue(name -&gt; String.format(&#34;tagKeys/%s&#34;, name)))
- *             .shortName(&#34;tagvalue&#34;)
+ *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()        
+ *             .description("For valuename resources.")
+ *             .parent(basicKey.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .shortName("tagvalue")
  *             .build());
  * 
- *         var primary = new RegionNetworkFirewallPolicyRule(&#34;primary&#34;, RegionNetworkFirewallPolicyRuleArgs.builder()        
- *             .action(&#34;allow&#34;)
- *             .description(&#34;This is a simple rule description&#34;)
- *             .direction(&#34;INGRESS&#34;)
+ *         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()        
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("INGRESS")
  *             .disabled(false)
  *             .enableLogging(true)
  *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
  *             .priority(1000)
- *             .region(&#34;us-west1&#34;)
- *             .ruleName(&#34;test-rule&#34;)
- *             .targetServiceAccounts(&#34;my@service-account.com&#34;)
+ *             .region("us-west1")
+ *             .ruleName("test-rule")
+ *             .targetServiceAccounts("my{@literal @}service-account.com")
  *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
- *                 .srcIpRanges(&#34;10.100.0.1/32&#34;)
- *                 .srcFqdns(&#34;example.com&#34;)
- *                 .srcRegionCodes(&#34;US&#34;)
- *                 .srcThreatIntelligences(&#34;iplist-known-malicious-ips&#34;)
+ *                 .srcIpRanges("10.100.0.1/32")
+ *                 .srcFqdns("example.com")
+ *                 .srcRegionCodes("US")
+ *                 .srcThreatIntelligences("iplist-known-malicious-ips")
  *                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
- *                     .ipProtocol(&#34;all&#34;)
+ *                     .ipProtocol("all")
  *                     .build())
  *                 .srcSecureTags(RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs.builder()
- *                     .name(basicValue.name().applyValue(name -&gt; String.format(&#34;tagValues/%s&#34;, name)))
+ *                     .name(basicValue.name().applyValue(name -> String.format("tagValues/%s", name)))
  *                     .build())
  *                 .srcAddressGroups(basicRegionalNetworksecurityAddressGroup.id())
  *                 .build())
@@ -121,7 +122,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

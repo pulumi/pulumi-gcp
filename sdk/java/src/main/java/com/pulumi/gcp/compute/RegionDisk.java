@@ -49,7 +49,8 @@ import javax.annotation.Nullable;
  * ### Region Disk Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -74,39 +75,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var disk = new Disk(&#34;disk&#34;, DiskArgs.builder()        
- *             .name(&#34;my-disk&#34;)
- *             .image(&#34;debian-cloud/debian-11&#34;)
+ *         var disk = new Disk("disk", DiskArgs.builder()        
+ *             .name("my-disk")
+ *             .image("debian-cloud/debian-11")
  *             .size(50)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
  *             .build());
  * 
- *         var snapdisk = new Snapshot(&#34;snapdisk&#34;, SnapshotArgs.builder()        
- *             .name(&#34;my-snapshot&#34;)
+ *         var snapdisk = new Snapshot("snapdisk", SnapshotArgs.builder()        
+ *             .name("my-snapshot")
  *             .sourceDisk(disk.name())
- *             .zone(&#34;us-central1-a&#34;)
+ *             .zone("us-central1-a")
  *             .build());
  * 
- *         var regiondisk = new RegionDisk(&#34;regiondisk&#34;, RegionDiskArgs.builder()        
- *             .name(&#34;my-region-disk&#34;)
+ *         var regiondisk = new RegionDisk("regiondisk", RegionDiskArgs.builder()        
+ *             .name("my-region-disk")
  *             .snapshot(snapdisk.id())
- *             .type(&#34;pd-ssd&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .type("pd-ssd")
+ *             .region("us-central1")
  *             .physicalBlockSizeBytes(4096)
  *             .replicaZones(            
- *                 &#34;us-central1-a&#34;,
- *                 &#34;us-central1-f&#34;)
+ *                 "us-central1-a",
+ *                 "us-central1-f")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Disk Async
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -128,37 +131,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new RegionDisk(&#34;primary&#34;, RegionDiskArgs.builder()        
- *             .name(&#34;primary-region-disk&#34;)
- *             .type(&#34;pd-ssd&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var primary = new RegionDisk("primary", RegionDiskArgs.builder()        
+ *             .name("primary-region-disk")
+ *             .type("pd-ssd")
+ *             .region("us-central1")
  *             .physicalBlockSizeBytes(4096)
  *             .replicaZones(            
- *                 &#34;us-central1-a&#34;,
- *                 &#34;us-central1-f&#34;)
+ *                 "us-central1-a",
+ *                 "us-central1-f")
  *             .build());
  * 
- *         var secondary = new RegionDisk(&#34;secondary&#34;, RegionDiskArgs.builder()        
- *             .name(&#34;secondary-region-disk&#34;)
- *             .type(&#34;pd-ssd&#34;)
- *             .region(&#34;us-east1&#34;)
+ *         var secondary = new RegionDisk("secondary", RegionDiskArgs.builder()        
+ *             .name("secondary-region-disk")
+ *             .type("pd-ssd")
+ *             .region("us-east1")
  *             .physicalBlockSizeBytes(4096)
  *             .asyncPrimaryDisk(RegionDiskAsyncPrimaryDiskArgs.builder()
  *                 .disk(primary.id())
  *                 .build())
  *             .replicaZones(            
- *                 &#34;us-east1-b&#34;,
- *                 &#34;us-east1-c&#34;)
+ *                 "us-east1-b",
+ *                 "us-east1-c")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Disk Features
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -180,30 +185,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var regiondisk = new RegionDisk(&#34;regiondisk&#34;, RegionDiskArgs.builder()        
- *             .name(&#34;my-region-features-disk&#34;)
- *             .type(&#34;pd-ssd&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var regiondisk = new RegionDisk("regiondisk", RegionDiskArgs.builder()        
+ *             .name("my-region-features-disk")
+ *             .type("pd-ssd")
+ *             .region("us-central1")
  *             .physicalBlockSizeBytes(4096)
  *             .guestOsFeatures(            
  *                 RegionDiskGuestOsFeatureArgs.builder()
- *                     .type(&#34;SECURE_BOOT&#34;)
+ *                     .type("SECURE_BOOT")
  *                     .build(),
  *                 RegionDiskGuestOsFeatureArgs.builder()
- *                     .type(&#34;MULTI_IP_SUBNET&#34;)
+ *                     .type("MULTI_IP_SUBNET")
  *                     .build(),
  *                 RegionDiskGuestOsFeatureArgs.builder()
- *                     .type(&#34;WINDOWS&#34;)
+ *                     .type("WINDOWS")
  *                     .build())
- *             .licenses(&#34;https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core&#34;)
+ *             .licenses("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core")
  *             .replicaZones(            
- *                 &#34;us-central1-a&#34;,
- *                 &#34;us-central1-f&#34;)
+ *                 "us-central1-a",
+ *                 "us-central1-f")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

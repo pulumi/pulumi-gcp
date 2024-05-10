@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Data Catalog Tag Template Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,50 +57,51 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicTagTemplate = new TagTemplate(&#34;basicTagTemplate&#34;, TagTemplateArgs.builder()        
- *             .tagTemplateId(&#34;my_template&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .displayName(&#34;Demo Tag Template&#34;)
+ *         var basicTagTemplate = new TagTemplate("basicTagTemplate", TagTemplateArgs.builder()        
+ *             .tagTemplateId("my_template")
+ *             .region("us-central1")
+ *             .displayName("Demo Tag Template")
  *             .fields(            
  *                 TagTemplateFieldArgs.builder()
- *                     .fieldId(&#34;source&#34;)
- *                     .displayName(&#34;Source of data asset&#34;)
+ *                     .fieldId("source")
+ *                     .displayName("Source of data asset")
  *                     .type(TagTemplateFieldTypeArgs.builder()
- *                         .primitiveType(&#34;STRING&#34;)
+ *                         .primitiveType("STRING")
  *                         .build())
  *                     .isRequired(true)
  *                     .build(),
  *                 TagTemplateFieldArgs.builder()
- *                     .fieldId(&#34;num_rows&#34;)
- *                     .displayName(&#34;Number of rows in the data asset&#34;)
+ *                     .fieldId("num_rows")
+ *                     .displayName("Number of rows in the data asset")
  *                     .type(TagTemplateFieldTypeArgs.builder()
- *                         .primitiveType(&#34;DOUBLE&#34;)
+ *                         .primitiveType("DOUBLE")
  *                         .build())
  *                     .build(),
  *                 TagTemplateFieldArgs.builder()
- *                     .fieldId(&#34;pii_type&#34;)
- *                     .displayName(&#34;PII type&#34;)
+ *                     .fieldId("pii_type")
+ *                     .displayName("PII type")
  *                     .type(TagTemplateFieldTypeArgs.builder()
  *                         .enumType(TagTemplateFieldTypeEnumTypeArgs.builder()
  *                             .allowedValues(                            
  *                                 TagTemplateFieldTypeEnumTypeAllowedValueArgs.builder()
- *                                     .displayName(&#34;EMAIL&#34;)
+ *                                     .displayName("EMAIL")
  *                                     .build(),
  *                                 TagTemplateFieldTypeEnumTypeAllowedValueArgs.builder()
- *                                     .displayName(&#34;SOCIAL SECURITY NUMBER&#34;)
+ *                                     .displayName("SOCIAL SECURITY NUMBER")
  *                                     .build(),
  *                                 TagTemplateFieldTypeEnumTypeAllowedValueArgs.builder()
- *                                     .displayName(&#34;NONE&#34;)
+ *                                     .displayName("NONE")
  *                                     .build())
  *                             .build())
  *                         .build())
  *                     .build())
- *             .forceDelete(&#34;false&#34;)
+ *             .forceDelete("false")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Create an object ACL with one owner and one reader.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,28 +60,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var image_store = new Bucket(&#34;image-store&#34;, BucketArgs.builder()        
- *             .name(&#34;image-store-bucket&#34;)
- *             .location(&#34;EU&#34;)
+ *         var image_store = new Bucket("image-store", BucketArgs.builder()        
+ *             .name("image-store-bucket")
+ *             .location("EU")
  *             .build());
  * 
- *         var image = new BucketObject(&#34;image&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;image1&#34;)
+ *         var image = new BucketObject("image", BucketObjectArgs.builder()        
+ *             .name("image1")
  *             .bucket(image_store.name())
- *             .source(new FileAsset(&#34;image1.jpg&#34;))
+ *             .source(new FileAsset("image1.jpg"))
  *             .build());
  * 
- *         var image_store_acl = new ObjectACL(&#34;image-store-acl&#34;, ObjectACLArgs.builder()        
+ *         var image_store_acl = new ObjectACL("image-store-acl", ObjectACLArgs.builder()        
  *             .bucket(image_store.name())
  *             .object(image.outputName())
  *             .roleEntities(            
- *                 &#34;OWNER:user-my.email@gmail.com&#34;,
- *                 &#34;READER:group-mygroup&#34;)
+ *                 "OWNER:user-my.email{@literal @}gmail.com",
+ *                 "READER:group-mygroup")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

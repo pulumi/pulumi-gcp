@@ -23,7 +23,8 @@ public final class FolderFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -50,7 +51,8 @@ public final class FolderFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -63,7 +65,8 @@ public final class FolderFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -90,7 +93,8 @@ public final class FolderFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -103,7 +107,8 @@ public final class FolderFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -130,7 +135,8 @@ public final class FolderFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -143,7 +149,8 @@ public final class FolderFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -170,7 +177,8 @@ public final class FolderFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -185,7 +193,8 @@ public final class FolderFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -207,14 +216,15 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
-     *             .folder(&#34;folders/folderid&#34;)
-     *             .constraint(&#34;constraints/compute.trustedImageProjects&#34;)
+     *             .folder("folders/folderid")
+     *             .constraint("constraints/compute.trustedImageProjects")
      *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -229,7 +239,8 @@ public final class FolderFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -251,14 +262,15 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
-     *             .folder(&#34;folders/folderid&#34;)
-     *             .constraint(&#34;constraints/compute.trustedImageProjects&#34;)
+     *             .folder("folders/folderid")
+     *             .constraint("constraints/compute.trustedImageProjects")
      *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -273,7 +285,8 @@ public final class FolderFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -295,14 +308,15 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
-     *             .folder(&#34;folders/folderid&#34;)
-     *             .constraint(&#34;constraints/compute.trustedImageProjects&#34;)
+     *             .folder("folders/folderid")
+     *             .constraint("constraints/compute.trustedImageProjects")
      *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -317,7 +331,8 @@ public final class FolderFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -339,14 +354,15 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
-     *             .folder(&#34;folders/folderid&#34;)
-     *             .constraint(&#34;constraints/compute.trustedImageProjects&#34;)
+     *             .folder("folders/folderid")
+     *             .constraint("constraints/compute.trustedImageProjects")
      *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

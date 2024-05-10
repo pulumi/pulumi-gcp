@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Data Fusion Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,20 +49,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicInstance = new Instance(&#34;basicInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .type(&#34;BASIC&#34;)
+ *         var basicInstance = new Instance("basicInstance", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .region("us-central1")
+ *             .type("BASIC")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Fusion Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,51 +95,53 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AppengineFunctions.getDefaultServiceAccount();
  * 
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;datafusion-full-network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("datafusion-full-network")
  *             .build());
  * 
- *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;datafusion-ip-alloc&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *             .name("datafusion-ip-alloc")
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
  *             .prefixLength(22)
  *             .network(network.id())
  *             .build());
  * 
- *         var extendedInstance = new Instance(&#34;extendedInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .description(&#34;My Data Fusion instance&#34;)
- *             .displayName(&#34;My Data Fusion instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .type(&#34;BASIC&#34;)
+ *         var extendedInstance = new Instance("extendedInstance", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .description("My Data Fusion instance")
+ *             .displayName("My Data Fusion instance")
+ *             .region("us-central1")
+ *             .type("BASIC")
  *             .enableStackdriverLogging(true)
  *             .enableStackdriverMonitoring(true)
  *             .privateInstance(true)
  *             .dataprocServiceAccount(default_.email())
- *             .labels(Map.of(&#34;example_key&#34;, &#34;example_value&#34;))
+ *             .labels(Map.of("example_key", "example_value"))
  *             .networkConfig(InstanceNetworkConfigArgs.builder()
- *                 .network(&#34;default&#34;)
- *                 .ipAllocation(Output.tuple(privateIpAlloc.address(), privateIpAlloc.prefixLength()).applyValue(values -&gt; {
+ *                 .network("default")
+ *                 .ipAllocation(Output.tuple(privateIpAlloc.address(), privateIpAlloc.prefixLength()).applyValue(values -> {
  *                     var address = values.t1;
  *                     var prefixLength = values.t2;
- *                     return String.format(&#34;%s/%s&#34;, address,prefixLength);
+ *                     return String.format("%s/%s", address,prefixLength);
  *                 }))
  *                 .build())
  *             .accelerators(InstanceAcceleratorArgs.builder()
- *                 .acceleratorType(&#34;CDC&#34;)
- *                 .state(&#34;ENABLED&#34;)
+ *                 .acceleratorType("CDC")
+ *                 .state("ENABLED")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Fusion Instance Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -166,20 +171,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("my-instance")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;my-instance&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("my-instance")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var cmek = new Instance(&#34;cmek&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .type(&#34;BASIC&#34;)
+ *         var cmek = new Instance("cmek", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .region("us-central1")
+ *             .type("BASIC")
  *             .cryptoKeyConfig(InstanceCryptoKeyConfigArgs.builder()
  *                 .keyReference(cryptoKey.id())
  *                 .build())
@@ -187,20 +192,22 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKeyMember = new CryptoKeyIAMMember(&#34;cryptoKeyMember&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKeyMember = new CryptoKeyIAMMember("cryptoKeyMember", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datafusion.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datafusion.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Fusion Instance Enterprise
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -221,21 +228,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var enterpriseInstance = new Instance(&#34;enterpriseInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .type(&#34;ENTERPRISE&#34;)
+ *         var enterpriseInstance = new Instance("enterpriseInstance", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .region("us-central1")
+ *             .type("ENTERPRISE")
  *             .enableRbac(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Fusion Instance Event
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -259,14 +268,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var eventTopic = new Topic(&#34;eventTopic&#34;, TopicArgs.builder()        
- *             .name(&#34;my-instance&#34;)
+ *         var eventTopic = new Topic("eventTopic", TopicArgs.builder()        
+ *             .name("my-instance")
  *             .build());
  * 
- *         var event = new Instance(&#34;event&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .type(&#34;BASIC&#34;)
+ *         var event = new Instance("event", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .region("us-central1")
+ *             .type("BASIC")
  *             .eventPublishConfig(InstanceEventPublishConfigArgs.builder()
  *                 .enabled(true)
  *                 .topic(eventTopic.id())
@@ -275,12 +284,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Fusion Instance Zone
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -301,16 +312,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Instance(&#34;zone&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .type(&#34;DEVELOPER&#34;)
+ *         var zone = new Instance("zone", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .region("us-central1")
+ *             .zone("us-central1-a")
+ *             .type("DEVELOPER")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

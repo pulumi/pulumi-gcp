@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Tag Value Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,21 +52,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var key = new TagKey(&#34;key&#34;, TagKeyArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .shortName(&#34;keyname&#34;)
- *             .description(&#34;For keyname resources.&#34;)
+ *         var key = new TagKey("key", TagKeyArgs.builder()        
+ *             .parent("organizations/123456789")
+ *             .shortName("keyname")
+ *             .description("For keyname resources.")
  *             .build());
  * 
- *         var value = new TagValue(&#34;value&#34;, TagValueArgs.builder()        
- *             .parent(key.name().applyValue(name -&gt; String.format(&#34;tagKeys/%s&#34;, name)))
- *             .shortName(&#34;valuename&#34;)
- *             .description(&#34;For valuename resources.&#34;)
+ *         var value = new TagValue("value", TagValueArgs.builder()        
+ *             .parent(key.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .shortName("valuename")
+ *             .description("For valuename resources.")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

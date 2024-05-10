@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Firebase Project Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,20 +54,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
- *             .name(&#34;my-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .labels(Map.of(&#34;firebase&#34;, &#34;enabled&#34;))
+ *         var default_ = new Project("default", ProjectArgs.builder()        
+ *             .projectId("my-project")
+ *             .name("my-project")
+ *             .orgId("123456789")
+ *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
  *             .project(default_.projectId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

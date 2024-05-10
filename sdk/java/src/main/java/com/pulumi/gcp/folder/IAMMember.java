@@ -41,7 +41,8 @@ import javax.annotation.Nullable;
  *    applying the change.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,25 +67,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy(&#34;folder&#34;, IAMPolicyArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -109,30 +112,32 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/compute.admin&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy(&#34;folder&#34;, IAMPolicyArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_folder\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -153,21 +158,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding(&#34;folder&#34;, IAMBindingArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -189,26 +196,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding(&#34;folder&#34;, IAMBindingArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .role(&#34;roles/container.admin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .role("roles/container.admin")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(IAMBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_folder\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -229,21 +238,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember(&#34;folder&#34;, IAMMemberArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -265,26 +276,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember(&#34;folder&#34;, IAMMemberArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .role(&#34;roles/firebase.admin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .role("roles/firebase.admin")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(IAMMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_folder\_iam\_audit\_config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -306,22 +319,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IamAuditConfig(&#34;folder&#34;, IamAuditConfigArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .service(&#34;allServices&#34;)
+ *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .service("allServices")
  *             .auditLogConfigs(            
  *                 IamAuditConfigAuditLogConfigArgs.builder()
- *                     .logType(&#34;ADMIN_READ&#34;)
+ *                     .logType("ADMIN_READ")
  *                     .build(),
  *                 IamAuditConfigAuditLogConfigArgs.builder()
- *                     .logType(&#34;DATA_READ&#34;)
- *                     .exemptedMembers(&#34;user:joebloggs@example.com&#34;)
+ *                     .logType("DATA_READ")
+ *                     .exemptedMembers("user:joebloggs{@literal @}example.com")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_folder\_iam\_policy
@@ -335,7 +349,8 @@ import javax.annotation.Nullable;
  *    applying the change.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -360,25 +375,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy(&#34;folder&#34;, IAMPolicyArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -403,30 +420,32 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/compute.admin&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy(&#34;folder&#34;, IAMPolicyArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_folder\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -447,21 +466,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding(&#34;folder&#34;, IAMBindingArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -483,26 +504,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding(&#34;folder&#34;, IAMBindingArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .role(&#34;roles/container.admin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .role("roles/container.admin")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(IAMBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_folder\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -523,21 +546,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember(&#34;folder&#34;, IAMMemberArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -559,26 +584,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember(&#34;folder&#34;, IAMMemberArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .role(&#34;roles/firebase.admin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var folder = new IAMMember("folder", IAMMemberArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .role("roles/firebase.admin")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(IAMMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_folder\_iam\_audit\_config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -600,22 +627,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IamAuditConfig(&#34;folder&#34;, IamAuditConfigArgs.builder()        
- *             .folder(&#34;folders/1234567&#34;)
- *             .service(&#34;allServices&#34;)
+ *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()        
+ *             .folder("folders/1234567")
+ *             .service("allServices")
  *             .auditLogConfigs(            
  *                 IamAuditConfigAuditLogConfigArgs.builder()
- *                     .logType(&#34;ADMIN_READ&#34;)
+ *                     .logType("ADMIN_READ")
  *                     .build(),
  *                 IamAuditConfigAuditLogConfigArgs.builder()
- *                     .logType(&#34;DATA_READ&#34;)
- *                     .exemptedMembers(&#34;user:joebloggs@example.com&#34;)
+ *                     .logType("DATA_READ")
+ *                     .exemptedMembers("user:joebloggs{@literal @}example.com")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -694,9 +722,9 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -706,9 +734,9 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
     /**
      * @return Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */

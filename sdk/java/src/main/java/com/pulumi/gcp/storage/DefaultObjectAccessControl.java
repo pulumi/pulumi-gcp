@@ -43,7 +43,8 @@ import javax.annotation.Nullable;
  * ### Storage Default Object Access Control Public
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,20 +67,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;static-content-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("static-content-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var publicRule = new DefaultObjectAccessControl(&#34;publicRule&#34;, DefaultObjectAccessControlArgs.builder()        
+ *         var publicRule = new DefaultObjectAccessControl("publicRule", DefaultObjectAccessControlArgs.builder()        
  *             .bucket(bucket.name())
- *             .role(&#34;READER&#34;)
- *             .entity(&#34;allUsers&#34;)
+ *             .role("READER")
+ *             .entity("allUsers")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -142,9 +144,9 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
     /**
      * The entity holding the permission, in one of the following forms:
      * * user-{{userId}}
-     * * user-{{email}} (such as &#34;user-liz@example.com&#34;)
+     * * user-{{email}} (such as &#34;user-liz{@literal @}example.com&#34;)
      * * group-{{groupId}}
-     * * group-{{email}} (such as &#34;group-example@googlegroups.com&#34;)
+     * * group-{{email}} (such as &#34;group-example{@literal @}googlegroups.com&#34;)
      * * domain-{{domain}} (such as &#34;domain-example.com&#34;)
      * * project-team-{{projectId}}
      * * allUsers
@@ -157,9 +159,9 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
     /**
      * @return The entity holding the permission, in one of the following forms:
      * * user-{{userId}}
-     * * user-{{email}} (such as &#34;user-liz@example.com&#34;)
+     * * user-{{email}} (such as &#34;user-liz{@literal @}example.com&#34;)
      * * group-{{groupId}}
-     * * group-{{email}} (such as &#34;group-example@googlegroups.com&#34;)
+     * * group-{{email}} (such as &#34;group-example{@literal @}googlegroups.com&#34;)
      * * domain-{{domain}} (such as &#34;domain-example.com&#34;)
      * * project-team-{{projectId}}
      * * allUsers

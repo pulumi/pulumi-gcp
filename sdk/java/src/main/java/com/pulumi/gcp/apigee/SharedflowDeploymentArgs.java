@@ -66,14 +66,14 @@ public final class SharedflowDeploymentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
+     * The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
+     * @return The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -191,7 +191,7 @@ public final class SharedflowDeploymentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceAccount The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
+         * @param serviceAccount The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class SharedflowDeploymentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceAccount The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
+         * @param serviceAccount The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com.
          * 
          * @return builder
          * 

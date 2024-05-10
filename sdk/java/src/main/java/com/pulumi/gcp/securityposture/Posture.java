@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Securityposture Posture Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,54 +56,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var posture1 = new Posture(&#34;posture1&#34;, PostureArgs.builder()        
- *             .postureId(&#34;posture_example&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
- *             .state(&#34;ACTIVE&#34;)
- *             .description(&#34;a new posture&#34;)
+ *         var posture1 = new Posture("posture1", PostureArgs.builder()        
+ *             .postureId("posture_example")
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .state("ACTIVE")
+ *             .description("a new posture")
  *             .policySets(            
  *                 PosturePolicySetArgs.builder()
- *                     .policySetId(&#34;org_policy_set&#34;)
- *                     .description(&#34;set of org policies&#34;)
+ *                     .policySetId("org_policy_set")
+ *                     .description("set of org policies")
  *                     .policies(                    
  *                         PosturePolicySetPolicyArgs.builder()
- *                             .policyId(&#34;canned_org_policy&#34;)
+ *                             .policyId("canned_org_policy")
  *                             .constraint(PosturePolicySetPolicyConstraintArgs.builder()
  *                                 .orgPolicyConstraint(PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs.builder()
- *                                     .cannedConstraintId(&#34;storage.uniformBucketLevelAccess&#34;)
+ *                                     .cannedConstraintId("storage.uniformBucketLevelAccess")
  *                                     .policyRules(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs.builder()
  *                                         .enforce(true)
  *                                         .condition(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs.builder()
- *                                             .description(&#34;condition description&#34;)
- *                                             .expression(&#34;resource.matchTag(&#39;org_id/tag_key_short_name,&#39;tag_value_short_name&#39;)&#34;)
- *                                             .title(&#34;a CEL condition&#34;)
+ *                                             .description("condition description")
+ *                                             .expression("resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')")
+ *                                             .title("a CEL condition")
  *                                             .build())
  *                                         .build())
  *                                     .build())
  *                                 .build())
  *                             .build(),
  *                         PosturePolicySetPolicyArgs.builder()
- *                             .policyId(&#34;custom_org_policy&#34;)
+ *                             .policyId("custom_org_policy")
  *                             .constraint(PosturePolicySetPolicyConstraintArgs.builder()
  *                                 .orgPolicyConstraintCustom(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs.builder()
  *                                     .customConstraint(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs.builder()
- *                                         .name(&#34;organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade&#34;)
- *                                         .displayName(&#34;Disable GKE auto upgrade&#34;)
- *                                         .description(&#34;Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.&#34;)
- *                                         .actionType(&#34;ALLOW&#34;)
- *                                         .condition(&#34;resource.management.autoUpgrade == false&#34;)
+ *                                         .name("organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade")
+ *                                         .displayName("Disable GKE auto upgrade")
+ *                                         .description("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.")
+ *                                         .actionType("ALLOW")
+ *                                         .condition("resource.management.autoUpgrade == false")
  *                                         .methodTypes(                                        
- *                                             &#34;CREATE&#34;,
- *                                             &#34;UPDATE&#34;)
- *                                         .resourceTypes(&#34;container.googleapis.com/NodePool&#34;)
+ *                                             "CREATE",
+ *                                             "UPDATE")
+ *                                         .resourceTypes("container.googleapis.com/NodePool")
  *                                         .build())
  *                                     .policyRules(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs.builder()
  *                                         .enforce(true)
  *                                         .condition(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs.builder()
- *                                             .description(&#34;condition description&#34;)
- *                                             .expression(&#34;resource.matchTagId(&#39;tagKeys/key_id&#39;,&#39;tagValues/value_id&#39;)&#34;)
- *                                             .title(&#34;a CEL condition&#34;)
+ *                                             .description("condition description")
+ *                                             .expression("resource.matchTagId('tagKeys/key_id','tagValues/value_id')")
+ *                                             .title("a CEL condition")
  *                                             .build())
  *                                         .build())
  *                                     .build())
@@ -110,44 +111,44 @@ import javax.annotation.Nullable;
  *                             .build())
  *                     .build(),
  *                 PosturePolicySetArgs.builder()
- *                     .policySetId(&#34;sha_policy_set&#34;)
- *                     .description(&#34;set of sha policies&#34;)
+ *                     .policySetId("sha_policy_set")
+ *                     .description("set of sha policies")
  *                     .policies(                    
  *                         PosturePolicySetPolicyArgs.builder()
- *                             .policyId(&#34;sha_builtin_module&#34;)
+ *                             .policyId("sha_builtin_module")
  *                             .constraint(PosturePolicySetPolicyConstraintArgs.builder()
  *                                 .securityHealthAnalyticsModule(PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs.builder()
- *                                     .moduleName(&#34;BIGQUERY_TABLE_CMEK_DISABLED&#34;)
- *                                     .moduleEnablementState(&#34;ENABLED&#34;)
+ *                                     .moduleName("BIGQUERY_TABLE_CMEK_DISABLED")
+ *                                     .moduleEnablementState("ENABLED")
  *                                     .build())
  *                                 .build())
- *                             .description(&#34;enable BIGQUERY_TABLE_CMEK_DISABLED&#34;)
+ *                             .description("enable BIGQUERY_TABLE_CMEK_DISABLED")
  *                             .build(),
  *                         PosturePolicySetPolicyArgs.builder()
- *                             .policyId(&#34;sha_custom_module&#34;)
+ *                             .policyId("sha_custom_module")
  *                             .constraint(PosturePolicySetPolicyConstraintArgs.builder()
  *                                 .securityHealthAnalyticsCustomModule(PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs.builder()
- *                                     .displayName(&#34;custom_SHA_policy&#34;)
+ *                                     .displayName("custom_SHA_policy")
  *                                     .config(PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs.builder()
  *                                         .predicate(PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs.builder()
- *                                             .expression(&#34;resource.rotationPeriod &gt; duration(&#39;2592000s&#39;)&#34;)
+ *                                             .expression("resource.rotationPeriod > duration('2592000s')")
  *                                             .build())
  *                                         .customOutput(PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs.builder()
  *                                             .properties(PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs.builder()
- *                                                 .name(&#34;duration&#34;)
+ *                                                 .name("duration")
  *                                                 .valueExpression(PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs.builder()
- *                                                     .expression(&#34;resource.rotationPeriod&#34;)
+ *                                                     .expression("resource.rotationPeriod")
  *                                                     .build())
  *                                                 .build())
  *                                             .build())
  *                                         .resourceSelector(PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs.builder()
- *                                             .resourceTypes(&#34;cloudkms.googleapis.com/CryptoKey&#34;)
+ *                                             .resourceTypes("cloudkms.googleapis.com/CryptoKey")
  *                                             .build())
- *                                         .severity(&#34;LOW&#34;)
- *                                         .description(&#34;Custom Module&#34;)
- *                                         .recommendation(&#34;Testing custom modules&#34;)
+ *                                         .severity("LOW")
+ *                                         .description("Custom Module")
+ *                                         .recommendation("Testing custom modules")
  *                                         .build())
- *                                     .moduleEnablementState(&#34;ENABLED&#34;)
+ *                                     .moduleEnablementState("ENABLED")
  *                                     .build())
  *                                 .build())
  *                             .build())
@@ -156,7 +157,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

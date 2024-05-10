@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Basic_aws_cluster
  * A basic example of a containeraws cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -70,80 +71,82 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var versions = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
- *             .project(&#34;my-project-name&#34;)
- *             .location(&#34;us-west1&#34;)
+ *             .project("my-project-name")
+ *             .location("us-west1")
  *             .build());
  * 
- *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
+ *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()        
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
- *                     .username(&#34;my@service-account.com&#34;)
+ *                     .username("my{@literal @}service-account.com")
  *                     .build())
  *                 .adminGroups(AwsClusterAuthorizationAdminGroupArgs.builder()
- *                     .group(&#34;group@domain.com&#34;)
+ *                     .group("group{@literal @}domain.com")
  *                     .build())
  *                 .build())
- *             .awsRegion(&#34;my-aws-region&#34;)
+ *             .awsRegion("my-aws-region")
  *             .controlPlane(AwsClusterControlPlaneArgs.builder()
  *                 .awsServicesAuthentication(AwsClusterControlPlaneAwsServicesAuthenticationArgs.builder()
- *                     .roleArn(&#34;arn:aws:iam::012345678910:role/my--1p-dev-oneplatform&#34;)
- *                     .roleSessionName(&#34;my--1p-dev-session&#34;)
+ *                     .roleArn("arn:aws:iam::012345678910:role/my--1p-dev-oneplatform")
+ *                     .roleSessionName("my--1p-dev-session")
  *                     .build())
  *                 .configEncryption(AwsClusterControlPlaneConfigEncryptionArgs.builder()
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .build())
  *                 .databaseEncryption(AwsClusterControlPlaneDatabaseEncryptionArgs.builder()
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .build())
- *                 .iamInstanceProfile(&#34;my--1p-dev-controlplane&#34;)
- *                 .subnetIds(&#34;subnet-00000000000000000&#34;)
- *                 .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
- *                 .instanceType(&#34;t3.medium&#34;)
+ *                 .iamInstanceProfile("my--1p-dev-controlplane")
+ *                 .subnetIds("subnet-00000000000000000")
+ *                 .version(versions.applyValue(getAwsVersionsResult -> getAwsVersionsResult.validVersions()[0]))
+ *                 .instanceType("t3.medium")
  *                 .mainVolume(AwsClusterControlPlaneMainVolumeArgs.builder()
  *                     .iops(3000)
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .sizeGib(10)
- *                     .volumeType(&#34;GP3&#34;)
+ *                     .volumeType("GP3")
  *                     .build())
  *                 .proxyConfig(AwsClusterControlPlaneProxyConfigArgs.builder()
- *                     .secretArn(&#34;arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF&#34;)
- *                     .secretVersion(&#34;12345678-ABCD-EFGH-IJKL-987654321098&#34;)
+ *                     .secretArn("arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF")
+ *                     .secretVersion("12345678-ABCD-EFGH-IJKL-987654321098")
  *                     .build())
  *                 .rootVolume(AwsClusterControlPlaneRootVolumeArgs.builder()
  *                     .iops(3000)
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .sizeGib(10)
- *                     .volumeType(&#34;GP3&#34;)
+ *                     .volumeType("GP3")
  *                     .build())
- *                 .securityGroupIds(&#34;sg-00000000000000000&#34;)
+ *                 .securityGroupIds("sg-00000000000000000")
  *                 .sshConfig(AwsClusterControlPlaneSshConfigArgs.builder()
- *                     .ec2KeyPair(&#34;my--1p-dev-ssh&#34;)
+ *                     .ec2KeyPair("my--1p-dev-ssh")
  *                     .build())
- *                 .tags(Map.of(&#34;owner&#34;, &#34;my@service-account.com&#34;))
+ *                 .tags(Map.of("owner", "my{@literal @}service-account.com"))
  *                 .build())
  *             .fleet(AwsClusterFleetArgs.builder()
- *                 .project(&#34;my-project-number&#34;)
+ *                 .project("my-project-number")
  *                 .build())
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;name&#34;)
+ *             .location("us-west1")
+ *             .name("name")
  *             .networking(AwsClusterNetworkingArgs.builder()
- *                 .podAddressCidrBlocks(&#34;10.2.0.0/16&#34;)
- *                 .serviceAddressCidrBlocks(&#34;10.1.0.0/16&#34;)
- *                 .vpcId(&#34;vpc-00000000000000000&#34;)
+ *                 .podAddressCidrBlocks("10.2.0.0/16")
+ *                 .serviceAddressCidrBlocks("10.1.0.0/16")
+ *                 .vpcId("vpc-00000000000000000")
  *                 .build())
- *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .description(&#34;A sample aws cluster&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *             .annotations(Map.of("label-one", "value-one"))
+ *             .description("A sample aws cluster")
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Basic_enum_aws_cluster
  * A basic example of a containeraws cluster with lowercase enums
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -178,77 +181,79 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var versions = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
- *             .project(&#34;my-project-name&#34;)
- *             .location(&#34;us-west1&#34;)
+ *             .project("my-project-name")
+ *             .location("us-west1")
  *             .build());
  * 
- *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
+ *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()        
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
- *                     .username(&#34;my@service-account.com&#34;)
+ *                     .username("my{@literal @}service-account.com")
  *                     .build())
  *                 .build())
- *             .awsRegion(&#34;my-aws-region&#34;)
+ *             .awsRegion("my-aws-region")
  *             .controlPlane(AwsClusterControlPlaneArgs.builder()
  *                 .awsServicesAuthentication(AwsClusterControlPlaneAwsServicesAuthenticationArgs.builder()
- *                     .roleArn(&#34;arn:aws:iam::012345678910:role/my--1p-dev-oneplatform&#34;)
- *                     .roleSessionName(&#34;my--1p-dev-session&#34;)
+ *                     .roleArn("arn:aws:iam::012345678910:role/my--1p-dev-oneplatform")
+ *                     .roleSessionName("my--1p-dev-session")
  *                     .build())
  *                 .configEncryption(AwsClusterControlPlaneConfigEncryptionArgs.builder()
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .build())
  *                 .databaseEncryption(AwsClusterControlPlaneDatabaseEncryptionArgs.builder()
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .build())
- *                 .iamInstanceProfile(&#34;my--1p-dev-controlplane&#34;)
- *                 .subnetIds(&#34;subnet-00000000000000000&#34;)
- *                 .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
- *                 .instanceType(&#34;t3.medium&#34;)
+ *                 .iamInstanceProfile("my--1p-dev-controlplane")
+ *                 .subnetIds("subnet-00000000000000000")
+ *                 .version(versions.applyValue(getAwsVersionsResult -> getAwsVersionsResult.validVersions()[0]))
+ *                 .instanceType("t3.medium")
  *                 .mainVolume(AwsClusterControlPlaneMainVolumeArgs.builder()
  *                     .iops(3000)
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .sizeGib(10)
- *                     .volumeType(&#34;gp3&#34;)
+ *                     .volumeType("gp3")
  *                     .build())
  *                 .proxyConfig(AwsClusterControlPlaneProxyConfigArgs.builder()
- *                     .secretArn(&#34;arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF&#34;)
- *                     .secretVersion(&#34;12345678-ABCD-EFGH-IJKL-987654321098&#34;)
+ *                     .secretArn("arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF")
+ *                     .secretVersion("12345678-ABCD-EFGH-IJKL-987654321098")
  *                     .build())
  *                 .rootVolume(AwsClusterControlPlaneRootVolumeArgs.builder()
  *                     .iops(3000)
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .sizeGib(10)
- *                     .volumeType(&#34;gp3&#34;)
+ *                     .volumeType("gp3")
  *                     .build())
- *                 .securityGroupIds(&#34;sg-00000000000000000&#34;)
+ *                 .securityGroupIds("sg-00000000000000000")
  *                 .sshConfig(AwsClusterControlPlaneSshConfigArgs.builder()
- *                     .ec2KeyPair(&#34;my--1p-dev-ssh&#34;)
+ *                     .ec2KeyPair("my--1p-dev-ssh")
  *                     .build())
- *                 .tags(Map.of(&#34;owner&#34;, &#34;my@service-account.com&#34;))
+ *                 .tags(Map.of("owner", "my{@literal @}service-account.com"))
  *                 .build())
  *             .fleet(AwsClusterFleetArgs.builder()
- *                 .project(&#34;my-project-number&#34;)
+ *                 .project("my-project-number")
  *                 .build())
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;name&#34;)
+ *             .location("us-west1")
+ *             .name("name")
  *             .networking(AwsClusterNetworkingArgs.builder()
- *                 .podAddressCidrBlocks(&#34;10.2.0.0/16&#34;)
- *                 .serviceAddressCidrBlocks(&#34;10.1.0.0/16&#34;)
- *                 .vpcId(&#34;vpc-00000000000000000&#34;)
+ *                 .podAddressCidrBlocks("10.2.0.0/16")
+ *                 .serviceAddressCidrBlocks("10.1.0.0/16")
+ *                 .vpcId("vpc-00000000000000000")
  *                 .build())
- *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .description(&#34;A sample aws cluster&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *             .annotations(Map.of("label-one", "value-one"))
+ *             .description("A sample aws cluster")
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Beta_basic_enum_aws_cluster
  * A basic example of a containeraws cluster with lowercase enums (beta)
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -286,82 +291,83 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var versions = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
- *             .project(&#34;my-project-name&#34;)
- *             .location(&#34;us-west1&#34;)
+ *             .project("my-project-name")
+ *             .location("us-west1")
  *             .build());
  * 
- *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
+ *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()        
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
- *                     .username(&#34;my@service-account.com&#34;)
+ *                     .username("my{@literal @}service-account.com")
  *                     .build())
  *                 .build())
- *             .awsRegion(&#34;my-aws-region&#34;)
+ *             .awsRegion("my-aws-region")
  *             .controlPlane(AwsClusterControlPlaneArgs.builder()
  *                 .awsServicesAuthentication(AwsClusterControlPlaneAwsServicesAuthenticationArgs.builder()
- *                     .roleArn(&#34;arn:aws:iam::012345678910:role/my--1p-dev-oneplatform&#34;)
- *                     .roleSessionName(&#34;my--1p-dev-session&#34;)
+ *                     .roleArn("arn:aws:iam::012345678910:role/my--1p-dev-oneplatform")
+ *                     .roleSessionName("my--1p-dev-session")
  *                     .build())
  *                 .configEncryption(AwsClusterControlPlaneConfigEncryptionArgs.builder()
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .build())
  *                 .databaseEncryption(AwsClusterControlPlaneDatabaseEncryptionArgs.builder()
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .build())
- *                 .iamInstanceProfile(&#34;my--1p-dev-controlplane&#34;)
- *                 .subnetIds(&#34;subnet-00000000000000000&#34;)
- *                 .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
- *                 .instanceType(&#34;t3.medium&#34;)
+ *                 .iamInstanceProfile("my--1p-dev-controlplane")
+ *                 .subnetIds("subnet-00000000000000000")
+ *                 .version(versions.applyValue(getAwsVersionsResult -> getAwsVersionsResult.validVersions()[0]))
+ *                 .instanceType("t3.medium")
  *                 .mainVolume(AwsClusterControlPlaneMainVolumeArgs.builder()
  *                     .iops(3000)
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .sizeGib(10)
- *                     .volumeType(&#34;gp3&#34;)
+ *                     .volumeType("gp3")
  *                     .build())
  *                 .proxyConfig(AwsClusterControlPlaneProxyConfigArgs.builder()
- *                     .secretArn(&#34;arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF&#34;)
- *                     .secretVersion(&#34;12345678-ABCD-EFGH-IJKL-987654321098&#34;)
+ *                     .secretArn("arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF")
+ *                     .secretVersion("12345678-ABCD-EFGH-IJKL-987654321098")
  *                     .build())
  *                 .rootVolume(AwsClusterControlPlaneRootVolumeArgs.builder()
  *                     .iops(3000)
- *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .kmsKeyArn("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111")
  *                     .sizeGib(10)
- *                     .volumeType(&#34;gp3&#34;)
+ *                     .volumeType("gp3")
  *                     .build())
- *                 .securityGroupIds(&#34;sg-00000000000000000&#34;)
+ *                 .securityGroupIds("sg-00000000000000000")
  *                 .sshConfig(AwsClusterControlPlaneSshConfigArgs.builder()
- *                     .ec2KeyPair(&#34;my--1p-dev-ssh&#34;)
+ *                     .ec2KeyPair("my--1p-dev-ssh")
  *                     .build())
- *                 .tags(Map.of(&#34;owner&#34;, &#34;my@service-account.com&#34;))
+ *                 .tags(Map.of("owner", "my{@literal @}service-account.com"))
  *                 .instancePlacement(AwsClusterControlPlaneInstancePlacementArgs.builder()
- *                     .tenancy(&#34;dedicated&#34;)
+ *                     .tenancy("dedicated")
  *                     .build())
  *                 .build())
  *             .fleet(AwsClusterFleetArgs.builder()
- *                 .project(&#34;my-project-number&#34;)
+ *                 .project("my-project-number")
  *                 .build())
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;name&#34;)
+ *             .location("us-west1")
+ *             .name("name")
  *             .networking(AwsClusterNetworkingArgs.builder()
- *                 .podAddressCidrBlocks(&#34;10.2.0.0/16&#34;)
- *                 .serviceAddressCidrBlocks(&#34;10.1.0.0/16&#34;)
- *                 .vpcId(&#34;vpc-00000000000000000&#34;)
+ *                 .podAddressCidrBlocks("10.2.0.0/16")
+ *                 .serviceAddressCidrBlocks("10.1.0.0/16")
+ *                 .vpcId("vpc-00000000000000000")
  *                 .build())
- *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .description(&#34;A sample aws cluster&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *             .annotations(Map.of("label-one", "value-one"))
+ *             .description("A sample aws cluster")
+ *             .project("my-project-name")
  *             .loggingConfig(AwsClusterLoggingConfigArgs.builder()
  *                 .componentConfig(AwsClusterLoggingConfigComponentConfigArgs.builder()
  *                     .enableComponents(                    
- *                         &#34;system_components&#34;,
- *                         &#34;workloads&#34;)
+ *                         "system_components",
+ *                         "workloads")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

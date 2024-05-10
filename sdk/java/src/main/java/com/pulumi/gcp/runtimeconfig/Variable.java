@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Example creating a RuntimeConfig variable.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,20 +45,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_runtime_config = new Config(&#34;my-runtime-config&#34;, ConfigArgs.builder()        
- *             .name(&#34;my-service-runtime-config&#34;)
- *             .description(&#34;Runtime configuration values for my service&#34;)
+ *         var my_runtime_config = new Config("my-runtime-config", ConfigArgs.builder()        
+ *             .name("my-service-runtime-config")
+ *             .description("Runtime configuration values for my service")
  *             .build());
  * 
- *         var environment = new Variable(&#34;environment&#34;, VariableArgs.builder()        
+ *         var environment = new Variable("environment", VariableArgs.builder()        
  *             .parent(my_runtime_config.name())
- *             .name(&#34;prod-variables/hostname&#34;)
- *             .text(&#34;example.com&#34;)
+ *             .name("prod-variables/hostname")
+ *             .text("example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * You can also encode binary content using the `value` argument instead. The
@@ -66,7 +68,8 @@ import javax.annotation.Nullable;
  * Example of using the `value` argument.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,22 +92,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_runtime_config = new Config(&#34;my-runtime-config&#34;, ConfigArgs.builder()        
- *             .name(&#34;my-service-runtime-config&#34;)
- *             .description(&#34;Runtime configuration values for my service&#34;)
+ *         var my_runtime_config = new Config("my-runtime-config", ConfigArgs.builder()        
+ *             .name("my-service-runtime-config")
+ *             .description("Runtime configuration values for my service")
  *             .build());
  * 
- *         var my_secret = new Variable(&#34;my-secret&#34;, VariableArgs.builder()        
+ *         var my_secret = new Variable("my-secret", VariableArgs.builder()        
  *             .parent(my_runtime_config.name())
- *             .name(&#34;secret&#34;)
+ *             .name("secret")
  *             .value(StdFunctions.filebase64(Filebase64Args.builder()
- *                 .input(&#34;my-encrypted-secret.dat&#34;)
+ *                 .input("my-encrypted-secret.dat")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -91,14 +91,14 @@ public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
         return this.revision;
     }
     /**
-     * The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
+     * The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com.
      * 
      */
     @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccount;
 
     /**
-     * @return The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
+     * @return The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com.
      * 
      */
     public Output<Optional<String>> serviceAccount() {

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## google\_cloud\_run\_v2\_job\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,27 +57,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new JobIamPolicy(&#34;policy&#34;, JobIamPolicyArgs.builder()        
+ *         var policy = new JobIamPolicy("policy", JobIamPolicyArgs.builder()        
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloud\_run\_v2\_job\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -97,23 +100,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new JobIamBinding(&#34;binding&#34;, JobIamBindingArgs.builder()        
+ *         var binding = new JobIamBinding("binding", JobIamBindingArgs.builder()        
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloud\_run\_v2\_job\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -134,23 +139,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new JobIamMember(&#34;member&#34;, JobIamMemberArgs.builder()        
+ *         var member = new JobIamMember("member", JobIamMemberArgs.builder()        
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloud\_run\_v2\_job\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -175,27 +182,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new JobIamPolicy(&#34;policy&#34;, JobIamPolicyArgs.builder()        
+ *         var policy = new JobIamPolicy("policy", JobIamPolicyArgs.builder()        
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloud\_run\_v2\_job\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -216,23 +225,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new JobIamBinding(&#34;binding&#34;, JobIamBindingArgs.builder()        
+ *         var binding = new JobIamBinding("binding", JobIamBindingArgs.builder()        
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloud\_run\_v2\_job\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -253,17 +264,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new JobIamMember(&#34;member&#34;, JobIamMemberArgs.builder()        
+ *         var member = new JobIamMember("member", JobIamMemberArgs.builder()        
  *             .project(default_.project())
  *             .location(default_.location())
  *             .name(default_.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -285,7 +297,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:cloudrunv2/jobIamPolicy:JobIamPolicy editor &#34;projects/{{project}}/locations/{{location}}/jobs/{{job}} roles/viewer user:jane@example.com&#34;
+ * $ pulumi import gcp:cloudrunv2/jobIamPolicy:JobIamPolicy editor &#34;projects/{{project}}/locations/{{location}}/jobs/{{job}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

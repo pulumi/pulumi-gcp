@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## google\_bigquery\_analytics\_hub\_listing\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,28 +57,30 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new ListingIamPolicy(&#34;policy&#34;, ListingIamPolicyArgs.builder()        
+ *         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()        
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(listing.listingId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_analytics\_hub\_listing\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -98,24 +101,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ListingIamBinding(&#34;binding&#34;, ListingIamBindingArgs.builder()        
+ *         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()        
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(listing.listingId())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_analytics\_hub\_listing\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -136,24 +141,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ListingIamMember(&#34;member&#34;, ListingIamMemberArgs.builder()        
+ *         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()        
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(listing.listingId())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_analytics\_hub\_listing\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -178,28 +185,30 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new ListingIamPolicy(&#34;policy&#34;, ListingIamPolicyArgs.builder()        
+ *         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()        
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(listing.listingId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_analytics\_hub\_listing\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -220,24 +229,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ListingIamBinding(&#34;binding&#34;, ListingIamBindingArgs.builder()        
+ *         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()        
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(listing.listingId())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_bigquery\_analytics\_hub\_listing\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -258,18 +269,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ListingIamMember(&#34;member&#34;, ListingIamMemberArgs.builder()        
+ *         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()        
  *             .project(listing.project())
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(listing.listingId())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -291,7 +303,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy editor &#34;projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}} roles/viewer user:jane@example.com&#34;
+ * $ pulumi import gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy editor &#34;projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

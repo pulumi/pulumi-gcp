@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Clouddeploy Custom Target Type Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,32 +55,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_target_type = new CustomTargetType(&#34;custom-target-type&#34;, CustomTargetTypeArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-custom-target-type&#34;)
- *             .description(&#34;My custom target type&#34;)
+ *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-custom-target-type")
+ *             .description("My custom target type")
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
  *             .customActions(CustomTargetTypeCustomActionsArgs.builder()
- *                 .renderAction(&#34;renderAction&#34;)
- *                 .deployAction(&#34;deployAction&#34;)
+ *                 .renderAction("renderAction")
+ *                 .deployAction("deployAction")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Clouddeploy Custom Target Type Git Skaffold Modules
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -101,19 +104,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_target_type = new CustomTargetType(&#34;custom-target-type&#34;, CustomTargetTypeArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-custom-target-type&#34;)
- *             .description(&#34;My custom target type&#34;)
+ *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-custom-target-type")
+ *             .description("My custom target type")
  *             .customActions(CustomTargetTypeCustomActionsArgs.builder()
- *                 .renderAction(&#34;renderAction&#34;)
- *                 .deployAction(&#34;deployAction&#34;)
+ *                 .renderAction("renderAction")
+ *                 .deployAction("deployAction")
  *                 .includeSkaffoldModules(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs.builder()
- *                     .configs(&#34;my-config&#34;)
+ *                     .configs("my-config")
  *                     .git(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs.builder()
- *                         .repo(&#34;http://github.com/example/example-repo.git&#34;)
- *                         .path(&#34;configs/skaffold.yaml&#34;)
- *                         .ref(&#34;main&#34;)
+ *                         .repo("http://github.com/example/example-repo.git")
+ *                         .path("configs/skaffold.yaml")
+ *                         .ref("main")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -121,12 +124,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Clouddeploy Custom Target Type Gcs Skaffold Modules
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -148,18 +153,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_target_type = new CustomTargetType(&#34;custom-target-type&#34;, CustomTargetTypeArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-custom-target-type&#34;)
- *             .description(&#34;My custom target type&#34;)
+ *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-custom-target-type")
+ *             .description("My custom target type")
  *             .customActions(CustomTargetTypeCustomActionsArgs.builder()
- *                 .renderAction(&#34;renderAction&#34;)
- *                 .deployAction(&#34;deployAction&#34;)
+ *                 .renderAction("renderAction")
+ *                 .deployAction("deployAction")
  *                 .includeSkaffoldModules(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs.builder()
- *                     .configs(&#34;my-config&#34;)
+ *                     .configs("my-config")
  *                     .googleCloudStorage(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs.builder()
- *                         .source(&#34;gs://example-bucket/dir/configs/*&#34;)
- *                         .path(&#34;skaffold.yaml&#34;)
+ *                         .source("gs://example-bucket/dir/configs/*")
+ *                         .path("skaffold.yaml")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -167,7 +172,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Certificate Manager Dns Authorization Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,24 +47,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new DnsAuthorization(&#34;default&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth&#34;)
- *             .location(&#34;global&#34;)
- *             .description(&#34;The default dns&#34;)
- *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *         var default_ = new DnsAuthorization("default", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth")
+ *             .location("global")
+ *             .description("The default dns")
+ *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         ctx.export(&#34;recordNameToInsert&#34;, default_.dnsResourceRecords().applyValue(dnsResourceRecords -&gt; dnsResourceRecords[0].name()));
- *         ctx.export(&#34;recordTypeToInsert&#34;, default_.dnsResourceRecords().applyValue(dnsResourceRecords -&gt; dnsResourceRecords[0].type()));
- *         ctx.export(&#34;recordDataToInsert&#34;, default_.dnsResourceRecords().applyValue(dnsResourceRecords -&gt; dnsResourceRecords[0].data()));
+ *         ctx.export("recordNameToInsert", default_.dnsResourceRecords().applyValue(dnsResourceRecords -> dnsResourceRecords[0].name()));
+ *         ctx.export("recordTypeToInsert", default_.dnsResourceRecords().applyValue(dnsResourceRecords -> dnsResourceRecords[0].type()));
+ *         ctx.export("recordDataToInsert", default_.dnsResourceRecords().applyValue(dnsResourceRecords -> dnsResourceRecords[0].data()));
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Dns Authorization Regional
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -84,17 +87,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new DnsAuthorization(&#34;default&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;reginal dns&#34;)
- *             .type(&#34;PER_PROJECT_RECORD&#34;)
- *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *         var default_ = new DnsAuthorization("default", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth")
+ *             .location("us-central1")
+ *             .description("reginal dns")
+ *             .type("PER_PROJECT_RECORD")
+ *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

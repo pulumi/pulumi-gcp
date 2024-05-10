@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Router Nat Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,19 +64,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var net = new Network("net", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .build());
  * 
- *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnetwork&#34;)
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *             .name("my-subnetwork")
  *             .network(net.id())
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
  *             .build());
  * 
- *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
- *             .name(&#34;my-router&#34;)
+ *         var router = new Router("router", RouterArgs.builder()        
+ *             .name("my-router")
  *             .region(subnet.region())
  *             .network(net.id())
  *             .bgp(RouterBgpArgs.builder()
@@ -83,26 +84,28 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var nat = new RouterNat(&#34;nat&#34;, RouterNatArgs.builder()        
- *             .name(&#34;my-router-nat&#34;)
+ *         var nat = new RouterNat("nat", RouterNatArgs.builder()        
+ *             .name("my-router-nat")
  *             .router(router.name())
  *             .region(router.region())
- *             .natIpAllocateOption(&#34;AUTO_ONLY&#34;)
- *             .sourceSubnetworkIpRangesToNat(&#34;ALL_SUBNETWORKS_ALL_IP_RANGES&#34;)
+ *             .natIpAllocateOption("AUTO_ONLY")
+ *             .sourceSubnetworkIpRangesToNat("ALL_SUBNETWORKS_ALL_IP_RANGES")
  *             .logConfig(RouterNatLogConfigArgs.builder()
  *                 .enable(true)
- *                 .filter(&#34;ERRORS_ONLY&#34;)
+ *                 .filter("ERRORS_ONLY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Router Nat Manual Ips
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -133,52 +136,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var net = new Network("net", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .build());
  * 
- *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnetwork&#34;)
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *             .name("my-subnetwork")
  *             .network(net.id())
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
  *             .build());
  * 
- *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
- *             .name(&#34;my-router&#34;)
+ *         var router = new Router("router", RouterArgs.builder()        
+ *             .name("my-router")
  *             .region(subnet.region())
  *             .network(net.id())
  *             .build());
  * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new Address(&#34;address-&#34; + i, AddressArgs.builder()            
- *                 .name(String.format(&#34;nat-manual-ip-%s&#34;, range.value()))
+ *         for (var i = 0; i < 2; i++) {
+ *             new Address("address-" + i, AddressArgs.builder()            
+ *                 .name(String.format("nat-manual-ip-%s", range.value()))
  *                 .region(subnet.region())
  *                 .build());
  * 
  *         
  * }
- *         var natManual = new RouterNat(&#34;natManual&#34;, RouterNatArgs.builder()        
- *             .name(&#34;my-router-nat&#34;)
+ *         var natManual = new RouterNat("natManual", RouterNatArgs.builder()        
+ *             .name("my-router-nat")
  *             .router(router.name())
  *             .region(router.region())
- *             .natIpAllocateOption(&#34;MANUAL_ONLY&#34;)
- *             .natIps(address.stream().map(element -&gt; element.selfLink()).collect(toList()))
- *             .sourceSubnetworkIpRangesToNat(&#34;LIST_OF_SUBNETWORKS&#34;)
+ *             .natIpAllocateOption("MANUAL_ONLY")
+ *             .natIps(address.stream().map(element -> element.selfLink()).collect(toList()))
+ *             .sourceSubnetworkIpRangesToNat("LIST_OF_SUBNETWORKS")
  *             .subnetworks(RouterNatSubnetworkArgs.builder()
  *                 .name(subnet.id())
- *                 .sourceIpRangesToNats(&#34;ALL_IP_RANGES&#34;)
+ *                 .sourceIpRangesToNats("ALL_IP_RANGES")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Router Nat Rules
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -210,54 +215,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var net = new Network("net", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnetwork&#34;)
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *             .name("my-subnetwork")
  *             .network(net.id())
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
  *             .build());
  * 
- *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
- *             .name(&#34;my-router&#34;)
+ *         var router = new Router("router", RouterArgs.builder()        
+ *             .name("my-router")
  *             .region(subnet.region())
  *             .network(net.id())
  *             .build());
  * 
- *         var addr1 = new Address(&#34;addr1&#34;, AddressArgs.builder()        
- *             .name(&#34;nat-address1&#34;)
+ *         var addr1 = new Address("addr1", AddressArgs.builder()        
+ *             .name("nat-address1")
  *             .region(subnet.region())
  *             .build());
  * 
- *         var addr2 = new Address(&#34;addr2&#34;, AddressArgs.builder()        
- *             .name(&#34;nat-address2&#34;)
+ *         var addr2 = new Address("addr2", AddressArgs.builder()        
+ *             .name("nat-address2")
  *             .region(subnet.region())
  *             .build());
  * 
- *         var addr3 = new Address(&#34;addr3&#34;, AddressArgs.builder()        
- *             .name(&#34;nat-address3&#34;)
+ *         var addr3 = new Address("addr3", AddressArgs.builder()        
+ *             .name("nat-address3")
  *             .region(subnet.region())
  *             .build());
  * 
- *         var natRules = new RouterNat(&#34;natRules&#34;, RouterNatArgs.builder()        
- *             .name(&#34;my-router-nat&#34;)
+ *         var natRules = new RouterNat("natRules", RouterNatArgs.builder()        
+ *             .name("my-router-nat")
  *             .router(router.name())
  *             .region(router.region())
- *             .natIpAllocateOption(&#34;MANUAL_ONLY&#34;)
+ *             .natIpAllocateOption("MANUAL_ONLY")
  *             .natIps(addr1.selfLink())
- *             .sourceSubnetworkIpRangesToNat(&#34;LIST_OF_SUBNETWORKS&#34;)
+ *             .sourceSubnetworkIpRangesToNat("LIST_OF_SUBNETWORKS")
  *             .subnetworks(RouterNatSubnetworkArgs.builder()
  *                 .name(subnet.id())
- *                 .sourceIpRangesToNats(&#34;ALL_IP_RANGES&#34;)
+ *                 .sourceIpRangesToNats("ALL_IP_RANGES")
  *                 .build())
  *             .rules(RouterNatRuleArgs.builder()
  *                 .ruleNumber(100)
- *                 .description(&#34;nat rules example&#34;)
- *                 .match(&#34;inIpRange(destination.ip, &#39;1.1.0.0/16&#39;) || inIpRange(destination.ip, &#39;2.2.0.0/16&#39;)&#34;)
+ *                 .description("nat rules example")
+ *                 .match("inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')")
  *                 .action(RouterNatRuleActionArgs.builder()
  *                     .sourceNatActiveIps(                    
  *                         addr2.selfLink(),
@@ -269,12 +274,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Router Nat Private
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -309,59 +316,59 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var net = new Network("net", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .build());
  * 
- *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnetwork&#34;)
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *             .name("my-subnetwork")
  *             .network(net.id())
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .purpose(&#34;PRIVATE_NAT&#34;)
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
+ *             .purpose("PRIVATE_NAT")
  *             .build());
  * 
- *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
- *             .name(&#34;my-router&#34;)
+ *         var router = new Router("router", RouterArgs.builder()        
+ *             .name("my-router")
  *             .region(subnet.region())
  *             .network(net.id())
  *             .build());
  * 
- *         var hub = new Hub(&#34;hub&#34;, HubArgs.builder()        
- *             .name(&#34;my-hub&#34;)
- *             .description(&#34;vpc hub for inter vpc nat&#34;)
+ *         var hub = new Hub("hub", HubArgs.builder()        
+ *             .name("my-hub")
+ *             .description("vpc hub for inter vpc nat")
  *             .build());
  * 
- *         var spoke = new Spoke(&#34;spoke&#34;, SpokeArgs.builder()        
- *             .name(&#34;my-spoke&#34;)
- *             .location(&#34;global&#34;)
- *             .description(&#34;vpc spoke for inter vpc nat&#34;)
+ *         var spoke = new Spoke("spoke", SpokeArgs.builder()        
+ *             .name("my-spoke")
+ *             .location("global")
+ *             .description("vpc spoke for inter vpc nat")
  *             .hub(hub.id())
  *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
  *                 .excludeExportRanges(                
- *                     &#34;198.51.100.0/24&#34;,
- *                     &#34;10.10.0.0/16&#34;)
+ *                     "198.51.100.0/24",
+ *                     "10.10.0.0/16")
  *                 .uri(net.selfLink())
  *                 .build())
  *             .build());
  * 
- *         var natType = new RouterNat(&#34;natType&#34;, RouterNatArgs.builder()        
- *             .name(&#34;my-router-nat&#34;)
+ *         var natType = new RouterNat("natType", RouterNatArgs.builder()        
+ *             .name("my-router-nat")
  *             .router(router.name())
  *             .region(router.region())
- *             .sourceSubnetworkIpRangesToNat(&#34;LIST_OF_SUBNETWORKS&#34;)
+ *             .sourceSubnetworkIpRangesToNat("LIST_OF_SUBNETWORKS")
  *             .enableDynamicPortAllocation(false)
  *             .enableEndpointIndependentMapping(false)
  *             .minPortsPerVm(32)
- *             .type(&#34;PRIVATE&#34;)
+ *             .type("PRIVATE")
  *             .subnetworks(RouterNatSubnetworkArgs.builder()
  *                 .name(subnet.id())
- *                 .sourceIpRangesToNats(&#34;ALL_IP_RANGES&#34;)
+ *                 .sourceIpRangesToNats("ALL_IP_RANGES")
  *                 .build())
  *             .rules(RouterNatRuleArgs.builder()
  *                 .ruleNumber(100)
- *                 .description(&#34;rule for private nat&#34;)
- *                 .match(&#34;nexthop.hub == \&#34;//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\&#34;&#34;)
+ *                 .description("rule for private nat")
+ *                 .match("nexthop.hub == \"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\"")
  *                 .action(RouterNatRuleActionArgs.builder()
  *                     .sourceNatActiveRanges(subnet.selfLink())
  *                     .build())
@@ -370,7 +377,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

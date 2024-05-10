@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Application Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,22 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .location(&#34;us-east1&#34;)
- *             .applicationId(&#34;example-application&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .location("us-east1")
+ *             .applicationId("example-application")
  *             .scope(ApplicationScopeArgs.builder()
- *                 .type(&#34;REGIONAL&#34;)
+ *                 .type("REGIONAL")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Application Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -86,39 +89,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example2 = new Application(&#34;example2&#34;, ApplicationArgs.builder()        
- *             .location(&#34;us-east1&#34;)
- *             .applicationId(&#34;example-application&#34;)
- *             .displayName(&#34;Application Full&#34;)
+ *         var example2 = new Application("example2", ApplicationArgs.builder()        
+ *             .location("us-east1")
+ *             .applicationId("example-application")
+ *             .displayName("Application Full")
  *             .scope(ApplicationScopeArgs.builder()
- *                 .type(&#34;REGIONAL&#34;)
+ *                 .type("REGIONAL")
  *                 .build())
- *             .description(&#34;Application for testing&#34;)
+ *             .description("Application for testing")
  *             .attributes(ApplicationAttributesArgs.builder()
  *                 .environment(ApplicationAttributesEnvironmentArgs.builder()
- *                     .type(&#34;STAGING&#34;)
+ *                     .type("STAGING")
  *                     .build())
  *                 .criticality(ApplicationAttributesCriticalityArgs.builder()
- *                     .type(&#34;MISSION_CRITICAL&#34;)
+ *                     .type("MISSION_CRITICAL")
  *                     .build())
  *                 .businessOwners(ApplicationAttributesBusinessOwnerArgs.builder()
- *                     .displayName(&#34;Alice&#34;)
- *                     .email(&#34;alice@google.com&#34;)
+ *                     .displayName("Alice")
+ *                     .email("alice{@literal @}google.com")
  *                     .build())
  *                 .developerOwners(ApplicationAttributesDeveloperOwnerArgs.builder()
- *                     .displayName(&#34;Bob&#34;)
- *                     .email(&#34;bob@google.com&#34;)
+ *                     .displayName("Bob")
+ *                     .email("bob{@literal @}google.com")
  *                     .build())
  *                 .operatorOwners(ApplicationAttributesOperatorOwnerArgs.builder()
- *                     .displayName(&#34;Charlie&#34;)
- *                     .email(&#34;charlie@google.com&#34;)
+ *                     .displayName("Charlie")
+ *                     .email("charlie{@literal @}google.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

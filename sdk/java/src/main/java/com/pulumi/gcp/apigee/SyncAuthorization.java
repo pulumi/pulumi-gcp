@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Apigee Sync Authorization Basic Test
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,43 +60,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
- *             .name(&#34;my-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("my-project")
+ *             .name("my-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var apigee = new Service(&#34;apigee&#34;, ServiceArgs.builder()        
+ *         var apigee = new Service("apigee", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;apigee.googleapis.com&#34;)
+ *             .service("apigee.googleapis.com")
  *             .build());
  * 
- *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *             .analyticsRegion("us-central1")
  *             .projectId(project.projectId())
- *             .runtimeType(&#34;HYBRID&#34;)
+ *             .runtimeType("HYBRID")
  *             .build());
  * 
- *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Service Account&#34;)
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Service Account")
  *             .build());
  * 
- *         var synchronizer_iam = new IAMMember(&#34;synchronizer-iam&#34;, IAMMemberArgs.builder()        
+ *         var synchronizer_iam = new IAMMember("synchronizer-iam", IAMMemberArgs.builder()        
  *             .project(project.projectId())
- *             .role(&#34;roles/apigee.synchronizerManager&#34;)
- *             .member(serviceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/apigee.synchronizerManager")
+ *             .member(serviceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var apigeeSyncAuthorization = new SyncAuthorization(&#34;apigeeSyncAuthorization&#34;, SyncAuthorizationArgs.builder()        
+ *         var apigeeSyncAuthorization = new SyncAuthorization("apigeeSyncAuthorization", SyncAuthorizationArgs.builder()        
  *             .name(apigeeOrg.name())
- *             .identities(serviceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .identities(serviceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -137,7 +139,7 @@ public class SyncAuthorization extends com.pulumi.resources.CustomResource {
     }
     /**
      * Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
-     * The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount@my_project_id.iam.gserviceaccount.com
+     * The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount{@literal @}my_project_id.iam.gserviceaccount.com
      * You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
      * The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
      * 
@@ -147,7 +149,7 @@ public class SyncAuthorization extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
-     * The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount@my_project_id.iam.gserviceaccount.com
+     * The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount{@literal @}my_project_id.iam.gserviceaccount.com
      * You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
      * The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
      * 

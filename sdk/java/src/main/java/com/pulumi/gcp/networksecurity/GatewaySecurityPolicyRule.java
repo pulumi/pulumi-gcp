@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Network Security Gateway Security Policy Rules Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,31 +53,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GatewaySecurityPolicy(&#34;default&#34;, GatewaySecurityPolicyArgs.builder()        
- *             .name(&#34;my-gateway-security-policy&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;gateway security policy created to be used as reference by the rule.&#34;)
+ *         var default_ = new GatewaySecurityPolicy("default", GatewaySecurityPolicyArgs.builder()        
+ *             .name("my-gateway-security-policy")
+ *             .location("us-central1")
+ *             .description("gateway security policy created to be used as reference by the rule.")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
- *             .name(&#34;my-gateway-security-policy-rule&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()        
+ *             .name("my-gateway-security-policy-rule")
+ *             .location("us-central1")
  *             .gatewaySecurityPolicy(default_.name())
  *             .enabled(true)
- *             .description(&#34;my description&#34;)
+ *             .description("my description")
  *             .priority(0)
- *             .sessionMatcher(&#34;host() == &#39;example.com&#39;&#34;)
- *             .basicProfile(&#34;ALLOW&#34;)
+ *             .sessionMatcher("host() == 'example.com'")
+ *             .basicProfile("ALLOW")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Gateway Security Policy Rules Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,28 +102,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GatewaySecurityPolicy(&#34;default&#34;, GatewaySecurityPolicyArgs.builder()        
- *             .name(&#34;my-gateway-security-policy&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;gateway security policy created to be used as reference by the rule.&#34;)
+ *         var default_ = new GatewaySecurityPolicy("default", GatewaySecurityPolicyArgs.builder()        
+ *             .name("my-gateway-security-policy")
+ *             .location("us-central1")
+ *             .description("gateway security policy created to be used as reference by the rule.")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
- *             .name(&#34;my-gateway-security-policy-rule&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()        
+ *             .name("my-gateway-security-policy-rule")
+ *             .location("us-central1")
  *             .gatewaySecurityPolicy(default_.name())
  *             .enabled(true)
- *             .description(&#34;my description&#34;)
+ *             .description("my description")
  *             .priority(0)
- *             .sessionMatcher(&#34;host() == &#39;example.com&#39;&#34;)
- *             .applicationMatcher(&#34;request.method == &#39;POST&#39;&#34;)
+ *             .sessionMatcher("host() == 'example.com'")
+ *             .applicationMatcher("request.method == 'POST'")
  *             .tlsInspectionEnabled(false)
- *             .basicProfile(&#34;ALLOW&#34;)
+ *             .basicProfile("ALLOW")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -38,7 +38,7 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
      * Specifies the address of your proxy server.
      * Examples: http://domain
      * WARNING: Do not provide credentials in the format
-     * http://(username:password@)domain these will be rejected by the server.
+     * http://(username:password{@literal @})domain these will be rejected by the server.
      * 
      */
     @Import(name="uri", required=true)
@@ -48,7 +48,7 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
      * @return Specifies the address of your proxy server.
      * Examples: http://domain
      * WARNING: Do not provide credentials in the format
-     * http://(username:password@)domain these will be rejected by the server.
+     * http://(username:password{@literal @})domain these will be rejected by the server.
      * 
      */
     public Output<String> uri() {
@@ -118,7 +118,7 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
          * @param uri Specifies the address of your proxy server.
          * Examples: http://domain
          * WARNING: Do not provide credentials in the format
-         * http://(username:password@)domain these will be rejected by the server.
+         * http://(username:password{@literal @})domain these will be rejected by the server.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
          * @param uri Specifies the address of your proxy server.
          * Examples: http://domain
          * WARNING: Do not provide credentials in the format
-         * http://(username:password@)domain these will be rejected by the server.
+         * http://(username:password{@literal @})domain these will be rejected by the server.
          * 
          * @return builder
          * 

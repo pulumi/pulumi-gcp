@@ -88,7 +88,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
     /**
      * Optional. The email of the trigger&#39;s service account. The service account
      * must have permission to invoke Cloud Run services. If empty, defaults to the
-     * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+     * Compute Engine default service account: {project_number}-compute{@literal @}developer.gserviceaccount.com.
      * 
      */
     @Import(name="serviceAccountEmail")
@@ -97,7 +97,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
     /**
      * @return Optional. The email of the trigger&#39;s service account. The service account
      * must have permission to invoke Cloud Run services. If empty, defaults to the
-     * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+     * Compute Engine default service account: {project_number}-compute{@literal @}developer.gserviceaccount.com.
      * 
      */
     public Optional<Output<String>> serviceAccountEmail() {
@@ -278,7 +278,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
         /**
          * @param serviceAccountEmail Optional. The email of the trigger&#39;s service account. The service account
          * must have permission to invoke Cloud Run services. If empty, defaults to the
-         * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+         * Compute Engine default service account: {project_number}-compute{@literal @}developer.gserviceaccount.com.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
         /**
          * @param serviceAccountEmail Optional. The email of the trigger&#39;s service account. The service account
          * must have permission to invoke Cloud Run services. If empty, defaults to the
-         * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+         * Compute Engine default service account: {project_number}-compute{@literal @}developer.gserviceaccount.com.
          * 
          * @return builder
          * 

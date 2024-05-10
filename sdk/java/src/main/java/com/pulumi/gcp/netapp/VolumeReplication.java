@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Netapp Volume Replication Create
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,46 +55,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;test-network&#34;)
+ *             .name("test-network")
  *             .build());
  * 
- *         var sourcePool = new StoragePool(&#34;sourcePool&#34;, StoragePoolArgs.builder()        
- *             .name(&#34;source-pool&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .serviceLevel(&#34;PREMIUM&#34;)
+ *         var sourcePool = new StoragePool("sourcePool", StoragePoolArgs.builder()        
+ *             .name("source-pool")
+ *             .location("us-central1")
+ *             .serviceLevel("PREMIUM")
  *             .capacityGib(2048)
  *             .network(default_.id())
  *             .build());
  * 
- *         var destinationPool = new StoragePool(&#34;destinationPool&#34;, StoragePoolArgs.builder()        
- *             .name(&#34;destination-pool&#34;)
- *             .location(&#34;us-west2&#34;)
- *             .serviceLevel(&#34;PREMIUM&#34;)
+ *         var destinationPool = new StoragePool("destinationPool", StoragePoolArgs.builder()        
+ *             .name("destination-pool")
+ *             .location("us-west2")
+ *             .serviceLevel("PREMIUM")
  *             .capacityGib(2048)
  *             .network(default_.id())
  *             .build());
  * 
- *         var sourceVolume = new Volume(&#34;sourceVolume&#34;, VolumeArgs.builder()        
+ *         var sourceVolume = new Volume("sourceVolume", VolumeArgs.builder()        
  *             .location(sourcePool.location())
- *             .name(&#34;source-volume&#34;)
+ *             .name("source-volume")
  *             .capacityGib(100)
- *             .shareName(&#34;source-volume&#34;)
+ *             .shareName("source-volume")
  *             .storagePool(sourcePool.name())
- *             .protocols(&#34;NFSV3&#34;)
- *             .deletionPolicy(&#34;FORCE&#34;)
+ *             .protocols("NFSV3")
+ *             .deletionPolicy("FORCE")
  *             .build());
  * 
- *         var testReplication = new VolumeReplication(&#34;testReplication&#34;, VolumeReplicationArgs.builder()        
+ *         var testReplication = new VolumeReplication("testReplication", VolumeReplicationArgs.builder()        
  *             .location(sourceVolume.location())
  *             .volumeName(sourceVolume.name())
- *             .name(&#34;test-replication&#34;)
- *             .replicationSchedule(&#34;EVERY_10_MINUTES&#34;)
- *             .description(&#34;This is a replication resource&#34;)
+ *             .name("test-replication")
+ *             .replicationSchedule("EVERY_10_MINUTES")
+ *             .description("This is a replication resource")
  *             .destinationVolumeParameters(VolumeReplicationDestinationVolumeParametersArgs.builder()
  *                 .storagePool(destinationPool.id())
- *                 .volumeId(&#34;destination-volume&#34;)
- *                 .shareName(&#34;source-volume&#34;)
- *                 .description(&#34;This is a replicated volume&#34;)
+ *                 .volumeId("destination-volume")
+ *                 .shareName("source-volume")
+ *                 .description("This is a replicated volume")
  *                 .build())
  *             .deleteDestinationVolume(true)
  *             .waitForMirror(true)
@@ -101,7 +102,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

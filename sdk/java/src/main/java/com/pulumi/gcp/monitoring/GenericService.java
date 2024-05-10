@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Monitoring Service Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,22 +60,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myService = new GenericService(&#34;myService&#34;, GenericServiceArgs.builder()        
- *             .serviceId(&#34;my-service&#34;)
- *             .displayName(&#34;My Service my-service&#34;)
+ *         var myService = new GenericService("myService", GenericServiceArgs.builder()        
+ *             .serviceId("my-service")
+ *             .displayName("My Service my-service")
  *             .userLabels(Map.ofEntries(
- *                 Map.entry(&#34;my_key&#34;, &#34;my_value&#34;),
- *                 Map.entry(&#34;my_other_key&#34;, &#34;my_other_value&#34;)
+ *                 Map.entry("my_key", "my_value"),
+ *                 Map.entry("my_other_key", "my_other_value")
  *             ))
  *             .basicService(GenericServiceBasicServiceArgs.builder()
- *                 .serviceType(&#34;APP_ENGINE&#34;)
- *                 .serviceLabels(Map.of(&#34;module_id&#34;, &#34;another-module-id&#34;))
+ *                 .serviceType("APP_ENGINE")
+ *                 .serviceLabels(Map.of("module_id", "another-module-id"))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

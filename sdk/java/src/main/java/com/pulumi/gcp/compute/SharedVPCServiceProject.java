@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,14 +51,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var service1 = new SharedVPCServiceProject(&#34;service1&#34;, SharedVPCServiceProjectArgs.builder()        
- *             .hostProject(&#34;host-project-id&#34;)
- *             .serviceProject(&#34;service-project-id-1&#34;)
+ *         var service1 = new SharedVPCServiceProject("service1", SharedVPCServiceProjectArgs.builder()        
+ *             .hostProject("host-project-id")
+ *             .serviceProject("service-project-id-1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * For a complete Shared VPC example with both host and service projects, see

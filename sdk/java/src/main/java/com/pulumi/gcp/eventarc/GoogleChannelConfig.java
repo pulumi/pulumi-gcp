@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * 
  * ### Basic
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,35 +51,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var testProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .projectId(&#34;my-project-name&#34;)
+ *             .projectId("my-project-name")
  *             .build());
  * 
  *         final var testKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
- *             .name(&#34;keyring&#34;)
- *             .location(&#34;us-west1&#34;)
+ *             .name("keyring")
+ *             .location("us-west1")
  *             .build());
  * 
  *         final var key = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
- *             .name(&#34;key&#34;)
- *             .keyRing(testKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+ *             .name("key")
+ *             .keyRing(testKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
  *             .build());
  * 
- *         var key1Member = new CryptoKeyIAMMember(&#34;key1Member&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var key1Member = new CryptoKeyIAMMember("key1Member", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(key1.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-eventarc.iam.gserviceaccount.com&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-eventarc.iam.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var primary = new GoogleChannelConfig(&#34;primary&#34;, GoogleChannelConfigArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;channel&#34;)
- *             .project(testProject.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *         var primary = new GoogleChannelConfig("primary", GoogleChannelConfigArgs.builder()        
+ *             .location("us-west1")
+ *             .name("channel")
+ *             .project(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .cryptoKeyName(key1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

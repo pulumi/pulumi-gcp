@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Sourcerepo Repository Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,18 +53,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .name(&#34;my/repository&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .name("my/repository")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Sourcerepo Repository Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,27 +92,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testAccount = new Account(&#34;testAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
+ *         var testAccount = new Account("testAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;my-topic&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("my-topic")
  *             .build());
  * 
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .name(&#34;my-repository&#34;)
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *             .name("my-repository")
  *             .pubsubConfigs(RepositoryPubsubConfigArgs.builder()
  *                 .topic(topic.id())
- *                 .messageFormat(&#34;JSON&#34;)
+ *                 .messageFormat("JSON")
  *                 .serviceAccountEmail(testAccount.email())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

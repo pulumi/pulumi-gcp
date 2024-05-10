@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## google\_spanner\_database\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,26 +56,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var database = new DatabaseIAMPolicy(&#34;database&#34;, DatabaseIAMPolicyArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,31 +102,33 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;My Role&#34;)
- *                     .description(&#34;Grant permissions on my_role&#34;)
- *                     .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                     .title("My Role")
+ *                     .description("Grant permissions on my_role")
+ *                     .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var database = new DatabaseIAMPolicy(&#34;database&#34;, DatabaseIAMPolicyArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_spanner\_database\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -144,22 +149,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMBinding(&#34;database&#34;, DatabaseIAMBindingArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .role("roles/compute.networkUser")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -181,27 +188,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMBinding(&#34;database&#34;, DatabaseIAMBindingArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .role("roles/compute.networkUser")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(DatabaseIAMBindingConditionArgs.builder()
- *                 .title(&#34;My Role&#34;)
- *                 .description(&#34;Grant permissions on my_role&#34;)
- *                 .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                 .title("My Role")
+ *                 .description("Grant permissions on my_role")
+ *                 .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_spanner\_database\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -222,22 +231,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMMember(&#34;database&#34;, DatabaseIAMMemberArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .role("roles/compute.networkUser")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -259,27 +270,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMMember(&#34;database&#34;, DatabaseIAMMemberArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .role("roles/compute.networkUser")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(DatabaseIAMMemberConditionArgs.builder()
- *                 .title(&#34;My Role&#34;)
- *                 .description(&#34;Grant permissions on my_role&#34;)
- *                 .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                 .title("My Role")
+ *                 .description("Grant permissions on my_role")
+ *                 .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_spanner\_database\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -304,26 +317,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var database = new DatabaseIAMPolicy(&#34;database&#34;, DatabaseIAMPolicyArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -348,31 +363,33 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;My Role&#34;)
- *                     .description(&#34;Grant permissions on my_role&#34;)
- *                     .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                     .title("My Role")
+ *                     .description("Grant permissions on my_role")
+ *                     .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var database = new DatabaseIAMPolicy(&#34;database&#34;, DatabaseIAMPolicyArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_spanner\_database\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -393,22 +410,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMBinding(&#34;database&#34;, DatabaseIAMBindingArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .role("roles/compute.networkUser")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -430,27 +449,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMBinding(&#34;database&#34;, DatabaseIAMBindingArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .role("roles/compute.networkUser")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(DatabaseIAMBindingConditionArgs.builder()
- *                 .title(&#34;My Role&#34;)
- *                 .description(&#34;Grant permissions on my_role&#34;)
- *                 .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                 .title("My Role")
+ *                 .description("Grant permissions on my_role")
+ *                 .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_spanner\_database\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -471,22 +492,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMMember(&#34;database&#34;, DatabaseIAMMemberArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .role("roles/compute.networkUser")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -508,21 +531,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMMember(&#34;database&#34;, DatabaseIAMMemberArgs.builder()        
- *             .instance(&#34;your-instance-name&#34;)
- *             .database(&#34;your-database-name&#34;)
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()        
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .role("roles/compute.networkUser")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(DatabaseIAMMemberConditionArgs.builder()
- *                 .title(&#34;My Role&#34;)
- *                 .description(&#34;Grant permissions on my_role&#34;)
- *                 .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                 .title("My Role")
+ *                 .description("Grant permissions on my_role")
+ *                 .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

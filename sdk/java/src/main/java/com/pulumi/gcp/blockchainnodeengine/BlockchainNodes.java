@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Blockchain Nodes Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,34 +56,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNode = new BlockchainNodes(&#34;defaultNode&#34;, BlockchainNodesArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .blockchainType(&#34;ETHEREUM&#34;)
- *             .blockchainNodeId(&#34;blockchain_basic_node&#34;)
+ *         var defaultNode = new BlockchainNodes("defaultNode", BlockchainNodesArgs.builder()        
+ *             .location("us-central1")
+ *             .blockchainType("ETHEREUM")
+ *             .blockchainNodeId("blockchain_basic_node")
  *             .ethereumDetails(BlockchainNodesEthereumDetailsArgs.builder()
  *                 .apiEnableAdmin(true)
  *                 .apiEnableDebug(true)
  *                 .validatorConfig(BlockchainNodesEthereumDetailsValidatorConfigArgs.builder()
  *                     .mevRelayUrls(                    
- *                         &#34;https://mev1.example.org/&#34;,
- *                         &#34;https://mev2.example.org/&#34;)
+ *                         "https://mev1.example.org/",
+ *                         "https://mev2.example.org/")
  *                     .build())
- *                 .nodeType(&#34;ARCHIVE&#34;)
- *                 .consensusClient(&#34;LIGHTHOUSE&#34;)
- *                 .executionClient(&#34;ERIGON&#34;)
- *                 .network(&#34;MAINNET&#34;)
+ *                 .nodeType("ARCHIVE")
+ *                 .consensusClient("LIGHTHOUSE")
+ *                 .executionClient("ERIGON")
+ *                 .network("MAINNET")
  *                 .build())
- *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
+ *             .labels(Map.of("environment", "dev"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Blockchain Nodes Geth Details
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -106,32 +109,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNodeGeth = new BlockchainNodes(&#34;defaultNodeGeth&#34;, BlockchainNodesArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .blockchainType(&#34;ETHEREUM&#34;)
- *             .blockchainNodeId(&#34;blockchain_geth_node&#34;)
+ *         var defaultNodeGeth = new BlockchainNodes("defaultNodeGeth", BlockchainNodesArgs.builder()        
+ *             .location("us-central1")
+ *             .blockchainType("ETHEREUM")
+ *             .blockchainNodeId("blockchain_geth_node")
  *             .ethereumDetails(BlockchainNodesEthereumDetailsArgs.builder()
  *                 .apiEnableAdmin(true)
  *                 .apiEnableDebug(true)
  *                 .validatorConfig(BlockchainNodesEthereumDetailsValidatorConfigArgs.builder()
  *                     .mevRelayUrls(                    
- *                         &#34;https://mev1.example.org/&#34;,
- *                         &#34;https://mev2.example.org/&#34;)
+ *                         "https://mev1.example.org/",
+ *                         "https://mev2.example.org/")
  *                     .build())
- *                 .nodeType(&#34;FULL&#34;)
- *                 .consensusClient(&#34;LIGHTHOUSE&#34;)
- *                 .executionClient(&#34;GETH&#34;)
- *                 .network(&#34;MAINNET&#34;)
+ *                 .nodeType("FULL")
+ *                 .consensusClient("LIGHTHOUSE")
+ *                 .executionClient("GETH")
+ *                 .network("MAINNET")
  *                 .gethDetails(BlockchainNodesEthereumDetailsGethDetailsArgs.builder()
- *                     .garbageCollectionMode(&#34;FULL&#34;)
+ *                     .garbageCollectionMode("FULL")
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
+ *             .labels(Map.of("environment", "dev"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

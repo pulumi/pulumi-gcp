@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * ### Dns Managed Zone Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,21 +62,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_zone = new ManagedZone(&#34;example-zone&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;example-zone&#34;)
- *             .dnsName(&#34;my-domain.com.&#34;)
- *             .description(&#34;Example DNS zone&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var example_zone = new ManagedZone("example-zone", ManagedZoneArgs.builder()        
+ *             .name("example-zone")
+ *             .dnsName("my-domain.com.")
+ *             .description("Example DNS zone")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dns Managed Zone Private
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,22 +102,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-1&#34;)
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network(&#34;network-2&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-2&#34;)
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var private_zone = new ManagedZone(&#34;private-zone&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;private-zone&#34;)
- *             .dnsName(&#34;private.example.com.&#34;)
- *             .description(&#34;Example private DNS zone&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .visibility(&#34;private&#34;)
+ *         var private_zone = new ManagedZone("private-zone", ManagedZoneArgs.builder()        
+ *             .name("private-zone")
+ *             .dnsName("private.example.com.")
+ *             .description("Example private DNS zone")
+ *             .labels(Map.of("foo", "bar"))
+ *             .visibility("private")
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
  *                 .networks(                
  *                     ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
@@ -128,12 +131,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dns Managed Zone Private Forwarding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -158,22 +163,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-1&#34;)
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network(&#34;network-2&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-2&#34;)
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var private_zone = new ManagedZone(&#34;private-zone&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;private-zone&#34;)
- *             .dnsName(&#34;private.example.com.&#34;)
- *             .description(&#34;Example private DNS zone&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .visibility(&#34;private&#34;)
+ *         var private_zone = new ManagedZone("private-zone", ManagedZoneArgs.builder()        
+ *             .name("private-zone")
+ *             .dnsName("private.example.com.")
+ *             .description("Example private DNS zone")
+ *             .labels(Map.of("foo", "bar"))
+ *             .visibility("private")
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
  *                 .networks(                
  *                     ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
@@ -186,22 +191,24 @@ import javax.annotation.Nullable;
  *             .forwardingConfig(ManagedZoneForwardingConfigArgs.builder()
  *                 .targetNameServers(                
  *                     ManagedZoneForwardingConfigTargetNameServerArgs.builder()
- *                         .ipv4Address(&#34;172.16.1.10&#34;)
+ *                         .ipv4Address("172.16.1.10")
  *                         .build(),
  *                     ManagedZoneForwardingConfigTargetNameServerArgs.builder()
- *                         .ipv4Address(&#34;172.16.1.20&#34;)
+ *                         .ipv4Address("172.16.1.20")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dns Managed Zone Private Gke
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -235,33 +242,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-1&#34;)
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_1 = new Subnetwork(&#34;subnetwork-1&#34;, SubnetworkArgs.builder()        
+ *         var subnetwork_1 = new Subnetwork("subnetwork-1", SubnetworkArgs.builder()        
  *             .name(network_1.name())
  *             .network(network_1.name())
- *             .ipCidrRange(&#34;10.0.36.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .ipCidrRange("10.0.36.0/24")
+ *             .region("us-central1")
  *             .privateIpGoogleAccess(true)
  *             .secondaryIpRanges(            
  *                 SubnetworkSecondaryIpRangeArgs.builder()
- *                     .rangeName(&#34;pod&#34;)
- *                     .ipCidrRange(&#34;10.0.0.0/19&#34;)
+ *                     .rangeName("pod")
+ *                     .ipCidrRange("10.0.0.0/19")
  *                     .build(),
  *                 SubnetworkSecondaryIpRangeArgs.builder()
- *                     .rangeName(&#34;svc&#34;)
- *                     .ipCidrRange(&#34;10.0.32.0/22&#34;)
+ *                     .rangeName("svc")
+ *                     .ipCidrRange("10.0.32.0/22")
  *                     .build())
  *             .build());
  * 
- *         var cluster_1 = new Cluster(&#34;cluster-1&#34;, ClusterArgs.builder()        
- *             .name(&#34;cluster-1&#34;)
- *             .location(&#34;us-central1-c&#34;)
+ *         var cluster_1 = new Cluster("cluster-1", ClusterArgs.builder()        
+ *             .name("cluster-1")
+ *             .location("us-central1-c")
  *             .initialNodeCount(1)
- *             .networkingMode(&#34;VPC_NATIVE&#34;)
+ *             .networkingMode("VPC_NATIVE")
  *             .defaultSnatStatus(ClusterDefaultSnatStatusArgs.builder()
  *                 .disabled(true)
  *                 .build())
@@ -270,25 +277,25 @@ import javax.annotation.Nullable;
  *             .privateClusterConfig(ClusterPrivateClusterConfigArgs.builder()
  *                 .enablePrivateEndpoint(true)
  *                 .enablePrivateNodes(true)
- *                 .masterIpv4CidrBlock(&#34;10.42.0.0/28&#34;)
+ *                 .masterIpv4CidrBlock("10.42.0.0/28")
  *                 .masterGlobalAccessConfig(ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
  *             .masterAuthorizedNetworksConfig()
  *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
- *                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[0].rangeName()))
- *                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[1].rangeName()))
+ *                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[0].rangeName()))
+ *                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[1].rangeName()))
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var private_zone_gke = new ManagedZone(&#34;private-zone-gke&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;private-zone&#34;)
- *             .dnsName(&#34;private.example.com.&#34;)
- *             .description(&#34;Example private DNS zone&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .visibility(&#34;private&#34;)
+ *         var private_zone_gke = new ManagedZone("private-zone-gke", ManagedZoneArgs.builder()        
+ *             .name("private-zone")
+ *             .dnsName("private.example.com.")
+ *             .description("Example private DNS zone")
+ *             .labels(Map.of("foo", "bar"))
+ *             .visibility("private")
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
  *                 .gkeClusters(ManagedZonePrivateVisibilityConfigGkeClusterArgs.builder()
  *                     .gkeClusterName(cluster_1.id())
@@ -298,12 +305,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dns Managed Zone Private Peering
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -329,21 +338,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_source = new Network(&#34;network-source&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-source&#34;)
+ *         var network_source = new Network("network-source", NetworkArgs.builder()        
+ *             .name("network-source")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_target = new Network(&#34;network-target&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-target&#34;)
+ *         var network_target = new Network("network-target", NetworkArgs.builder()        
+ *             .name("network-target")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var peering_zone = new ManagedZone(&#34;peering-zone&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;peering-zone&#34;)
- *             .dnsName(&#34;peering.example.com.&#34;)
- *             .description(&#34;Example private DNS peering zone&#34;)
- *             .visibility(&#34;private&#34;)
+ *         var peering_zone = new ManagedZone("peering-zone", ManagedZoneArgs.builder()        
+ *             .name("peering-zone")
+ *             .dnsName("peering.example.com.")
+ *             .description("Example private DNS peering zone")
+ *             .visibility("private")
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
  *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
  *                     .networkUrl(network_source.id())
@@ -358,12 +367,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dns Managed Zone Service Directory
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -390,16 +401,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
- *             .namespaceId(&#34;example&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var example = new Namespace("example", NamespaceArgs.builder()        
+ *             .namespaceId("example")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var sd_zone = new ManagedZone(&#34;sd-zone&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;peering-zone&#34;)
- *             .dnsName(&#34;services.example.com.&#34;)
- *             .description(&#34;Example private DNS Service Directory zone&#34;)
- *             .visibility(&#34;private&#34;)
+ *         var sd_zone = new ManagedZone("sd-zone", ManagedZoneArgs.builder()        
+ *             .name("peering-zone")
+ *             .dnsName("services.example.com.")
+ *             .description("Example private DNS Service Directory zone")
+ *             .visibility("private")
  *             .serviceDirectoryConfig(ManagedZoneServiceDirectoryConfigArgs.builder()
  *                 .namespace(ManagedZoneServiceDirectoryConfigNamespaceArgs.builder()
  *                     .namespaceUrl(example.id())
@@ -407,19 +418,21 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dns Managed Zone Cloud Logging
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -441,11 +454,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cloud_logging_enabled_zone = new ManagedZone(&#34;cloud-logging-enabled-zone&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;cloud-logging-enabled-zone&#34;)
- *             .dnsName(&#34;services.example.com.&#34;)
- *             .description(&#34;Example cloud logging enabled DNS zone&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var cloud_logging_enabled_zone = new ManagedZone("cloud-logging-enabled-zone", ManagedZoneArgs.builder()        
+ *             .name("cloud-logging-enabled-zone")
+ *             .dnsName("services.example.com.")
+ *             .description("Example cloud logging enabled DNS zone")
+ *             .labels(Map.of("foo", "bar"))
  *             .cloudLoggingConfig(ManagedZoneCloudLoggingConfigArgs.builder()
  *                 .enableLogging(true)
  *                 .build())
@@ -453,7 +466,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

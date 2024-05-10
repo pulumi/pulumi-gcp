@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * 
  * ### Regional
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,28 +46,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy(&#34;basicRegionalNetworkFirewallPolicy&#34;, RegionNetworkFirewallPolicyArgs.builder()        
- *             .name(&#34;policy&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .description(&#34;Sample global network firewall policy&#34;)
- *             .region(&#34;us-west1&#34;)
+ *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()        
+ *             .name("policy")
+ *             .project("my-project-name")
+ *             .description("Sample global network firewall policy")
+ *             .region("us-west1")
  *             .build());
  * 
- *         var basicNetwork = new Network(&#34;basicNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()        
+ *             .name("network")
  *             .build());
  * 
- *         var primary = new RegionNetworkFirewallPolicyAssociation(&#34;primary&#34;, RegionNetworkFirewallPolicyAssociationArgs.builder()        
- *             .name(&#34;association&#34;)
+ *         var primary = new RegionNetworkFirewallPolicyAssociation("primary", RegionNetworkFirewallPolicyAssociationArgs.builder()        
+ *             .name("association")
  *             .attachmentTarget(basicNetwork.id())
  *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
- *             .project(&#34;my-project-name&#34;)
- *             .region(&#34;us-west1&#34;)
+ *             .project("my-project-name")
+ *             .region("us-west1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

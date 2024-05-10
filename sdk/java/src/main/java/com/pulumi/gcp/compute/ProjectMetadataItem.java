@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,14 +44,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ProjectMetadataItem(&#34;default&#34;, ProjectMetadataItemArgs.builder()        
- *             .key(&#34;my_metadata&#34;)
- *             .value(&#34;my_value&#34;)
+ *         var default_ = new ProjectMetadataItem("default", ProjectMetadataItemArgs.builder()        
+ *             .key("my_metadata")
+ *             .value("my_value")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

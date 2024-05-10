@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Monitoring Dashboard Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,31 +49,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dashboard = new Dashboard(&#34;dashboard&#34;, DashboardArgs.builder()        
- *             .dashboardJson(&#34;&#34;&#34;
+ *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()        
+ *             .dashboardJson("""
  * {
- *   &#34;displayName&#34;: &#34;Demo Dashboard&#34;,
- *   &#34;gridLayout&#34;: {
- *     &#34;widgets&#34;: [
+ *   "displayName": "Demo Dashboard",
+ *   "gridLayout": {
+ *     "widgets": [
  *       {
- *         &#34;blank&#34;: {}
+ *         "blank": {}
  *       }
  *     ]
  *   }
  * }
  * 
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Monitoring Dashboard GridLayout
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -93,60 +96,60 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dashboard = new Dashboard(&#34;dashboard&#34;, DashboardArgs.builder()        
- *             .dashboardJson(&#34;&#34;&#34;
+ *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()        
+ *             .dashboardJson("""
  * {
- *   &#34;displayName&#34;: &#34;Grid Layout Example&#34;,
- *   &#34;gridLayout&#34;: {
- *     &#34;columns&#34;: &#34;2&#34;,
- *     &#34;widgets&#34;: [
+ *   "displayName": "Grid Layout Example",
+ *   "gridLayout": {
+ *     "columns": "2",
+ *     "widgets": [
  *       {
- *         &#34;title&#34;: &#34;Widget 1&#34;,
- *         &#34;xyChart&#34;: {
- *           &#34;dataSets&#34;: [{
- *             &#34;timeSeriesQuery&#34;: {
- *               &#34;timeSeriesFilter&#34;: {
- *                 &#34;filter&#34;: &#34;metric.type=\&#34;agent.googleapis.com/nginx/connections/accepted_count\&#34;&#34;,
- *                 &#34;aggregation&#34;: {
- *                   &#34;perSeriesAligner&#34;: &#34;ALIGN_RATE&#34;
+ *         "title": "Widget 1",
+ *         "xyChart": {
+ *           "dataSets": [{
+ *             "timeSeriesQuery": {
+ *               "timeSeriesFilter": {
+ *                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+ *                 "aggregation": {
+ *                   "perSeriesAligner": "ALIGN_RATE"
  *                 }
  *               },
- *               &#34;unitOverride&#34;: &#34;1&#34;
+ *               "unitOverride": "1"
  *             },
- *             &#34;plotType&#34;: &#34;LINE&#34;
+ *             "plotType": "LINE"
  *           }],
- *           &#34;timeshiftDuration&#34;: &#34;0s&#34;,
- *           &#34;yAxis&#34;: {
- *             &#34;label&#34;: &#34;y1Axis&#34;,
- *             &#34;scale&#34;: &#34;LINEAR&#34;
+ *           "timeshiftDuration": "0s",
+ *           "yAxis": {
+ *             "label": "y1Axis",
+ *             "scale": "LINEAR"
  *           }
  *         }
  *       },
  *       {
- *         &#34;text&#34;: {
- *           &#34;content&#34;: &#34;Widget 2&#34;,
- *           &#34;format&#34;: &#34;MARKDOWN&#34;
+ *         "text": {
+ *           "content": "Widget 2",
+ *           "format": "MARKDOWN"
  *         }
  *       },
  *       {
- *         &#34;title&#34;: &#34;Widget 3&#34;,
- *         &#34;xyChart&#34;: {
- *           &#34;dataSets&#34;: [{
- *             &#34;timeSeriesQuery&#34;: {
- *               &#34;timeSeriesFilter&#34;: {
- *                 &#34;filter&#34;: &#34;metric.type=\&#34;agent.googleapis.com/nginx/connections/accepted_count\&#34;&#34;,
- *                 &#34;aggregation&#34;: {
- *                   &#34;perSeriesAligner&#34;: &#34;ALIGN_RATE&#34;
+ *         "title": "Widget 3",
+ *         "xyChart": {
+ *           "dataSets": [{
+ *             "timeSeriesQuery": {
+ *               "timeSeriesFilter": {
+ *                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+ *                 "aggregation": {
+ *                   "perSeriesAligner": "ALIGN_RATE"
  *                 }
  *               },
- *               &#34;unitOverride&#34;: &#34;1&#34;
+ *               "unitOverride": "1"
  *             },
- *             &#34;plotType&#34;: &#34;STACKED_BAR&#34;
+ *             "plotType": "STACKED_BAR"
  *           }],
- *           &#34;timeshiftDuration&#34;: &#34;0s&#34;,
- *           &#34;yAxis&#34;: {
- *             &#34;label&#34;: &#34;y1Axis&#34;,
- *             &#34;scale&#34;: &#34;LINEAR&#34;
+ *           "timeshiftDuration": "0s",
+ *           "yAxis": {
+ *             "label": "y1Axis",
+ *             "scale": "LINEAR"
  *           }
  *         }
  *       }
@@ -154,12 +157,13 @@ import javax.annotation.Nullable;
  *   }
  * }
  * 
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

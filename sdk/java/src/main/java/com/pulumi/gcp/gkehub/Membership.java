@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Gkehub Membership Regional
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,33 +58,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;basic-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("basic-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .deletionProtection(false)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;basic&#34;)
- *             .location(&#34;us-west1&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("basic")
+ *             .location("us-west1")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkehub Membership Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -108,33 +111,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;basic-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("basic-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;basic&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("basic")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *             .labels(Map.of("env", "test"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkehub Membership Issuer
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -161,33 +166,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;basic-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("basic-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;basic&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("basic")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
  *                     .resourceLink(primary.id())
  *                     .build())
  *                 .build())
  *             .authority(MembershipAuthorityArgs.builder()
- *                 .issuer(primary.id().applyValue(id -&gt; String.format(&#34;https://container.googleapis.com/v1/%s&#34;, id)))
+ *                 .issuer(primary.id().applyValue(id -> String.format("https://container.googleapis.com/v1/%s", id)))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

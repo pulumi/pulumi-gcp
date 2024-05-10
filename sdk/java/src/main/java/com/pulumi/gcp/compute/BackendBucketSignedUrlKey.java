@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Backend Bucket Signed Url Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,31 +56,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var urlSignature = new RandomId(&#34;urlSignature&#34;, RandomIdArgs.builder()        
+ *         var urlSignature = new RandomId("urlSignature", RandomIdArgs.builder()        
  *             .byteLength(16)
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;test-storage-bucket&#34;)
- *             .location(&#34;EU&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("test-storage-bucket")
+ *             .location("EU")
  *             .build());
  * 
- *         var testBackend = new BackendBucket(&#34;testBackend&#34;, BackendBucketArgs.builder()        
- *             .name(&#34;test-signed-backend-bucket&#34;)
- *             .description(&#34;Contains beautiful images&#34;)
+ *         var testBackend = new BackendBucket("testBackend", BackendBucketArgs.builder()        
+ *             .name("test-signed-backend-bucket")
+ *             .description("Contains beautiful images")
  *             .bucketName(bucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
- *         var backendKey = new BackendBucketSignedUrlKey(&#34;backendKey&#34;, BackendBucketSignedUrlKeyArgs.builder()        
- *             .name(&#34;test-key&#34;)
+ *         var backendKey = new BackendBucketSignedUrlKey("backendKey", BackendBucketSignedUrlKeyArgs.builder()        
+ *             .name("test-key")
  *             .keyValue(urlSignature.b64Url())
  *             .backendBucket(testBackend.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

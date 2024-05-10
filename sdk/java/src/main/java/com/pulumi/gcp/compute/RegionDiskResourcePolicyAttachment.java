@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Region Disk Resource Policy Attachment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,58 +59,59 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var disk = new Disk(&#34;disk&#34;, DiskArgs.builder()        
- *             .name(&#34;my-base-disk&#34;)
- *             .image(&#34;debian-cloud/debian-11&#34;)
+ *         var disk = new Disk("disk", DiskArgs.builder()        
+ *             .name("my-base-disk")
+ *             .image("debian-cloud/debian-11")
  *             .size(50)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
  *             .build());
  * 
- *         var snapdisk = new Snapshot(&#34;snapdisk&#34;, SnapshotArgs.builder()        
- *             .name(&#34;my-snapshot&#34;)
+ *         var snapdisk = new Snapshot("snapdisk", SnapshotArgs.builder()        
+ *             .name("my-snapshot")
  *             .sourceDisk(disk.name())
- *             .zone(&#34;us-central1-a&#34;)
+ *             .zone("us-central1-a")
  *             .build());
  * 
- *         var ssd = new RegionDisk(&#34;ssd&#34;, RegionDiskArgs.builder()        
- *             .name(&#34;my-disk&#34;)
+ *         var ssd = new RegionDisk("ssd", RegionDiskArgs.builder()        
+ *             .name("my-disk")
  *             .replicaZones(            
- *                 &#34;us-central1-a&#34;,
- *                 &#34;us-central1-f&#34;)
+ *                 "us-central1-a",
+ *                 "us-central1-f")
  *             .snapshot(snapdisk.id())
  *             .size(50)
- *             .type(&#34;pd-ssd&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .type("pd-ssd")
+ *             .region("us-central1")
  *             .build());
  * 
- *         var policy = new ResourcePolicy(&#34;policy&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;my-resource-policy&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var policy = new ResourcePolicy("policy", ResourcePolicyArgs.builder()        
+ *             .name("my-resource-policy")
+ *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
  *                     .dailySchedule(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs.builder()
  *                         .daysInCycle(1)
- *                         .startTime(&#34;04:00&#34;)
+ *                         .startTime("04:00")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var attachment = new RegionDiskResourcePolicyAttachment(&#34;attachment&#34;, RegionDiskResourcePolicyAttachmentArgs.builder()        
+ *         var attachment = new RegionDiskResourcePolicyAttachment("attachment", RegionDiskResourcePolicyAttachmentArgs.builder()        
  *             .name(policy.name())
  *             .disk(ssd.name())
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .build());
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

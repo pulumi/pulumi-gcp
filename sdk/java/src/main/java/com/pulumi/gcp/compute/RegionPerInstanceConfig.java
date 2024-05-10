@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Stateful Rigm
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,78 +69,79 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var igm_basic = new InstanceTemplate(&#34;igm-basic&#34;, InstanceTemplateArgs.builder()        
- *             .name(&#34;my-template&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var igm_basic = new InstanceTemplate("igm-basic", InstanceTemplateArgs.builder()        
+ *             .name("my-template")
+ *             .machineType("e2-medium")
  *             .canIpForward(false)
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
+ *                 "foo",
+ *                 "bar")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                 .sourceImage(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
  *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
  *                 .scopes(                
- *                     &#34;userinfo-email&#34;,
- *                     &#34;compute-ro&#34;,
- *                     &#34;storage-ro&#34;)
+ *                     "userinfo-email",
+ *                     "compute-ro",
+ *                     "storage-ro")
  *                 .build())
  *             .build());
  * 
- *         var rigm = new RegionInstanceGroupManager(&#34;rigm&#34;, RegionInstanceGroupManagerArgs.builder()        
- *             .description(&#34;Demo test instance group manager&#34;)
- *             .name(&#34;my-rigm&#34;)
+ *         var rigm = new RegionInstanceGroupManager("rigm", RegionInstanceGroupManagerArgs.builder()        
+ *             .description("Demo test instance group manager")
+ *             .name("my-rigm")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
- *                 .name(&#34;prod&#34;)
+ *                 .name("prod")
  *                 .instanceTemplate(igm_basic.selfLink())
  *                 .build())
  *             .updatePolicy(RegionInstanceGroupManagerUpdatePolicyArgs.builder()
- *                 .type(&#34;OPPORTUNISTIC&#34;)
- *                 .instanceRedistributionType(&#34;NONE&#34;)
- *                 .minimalAction(&#34;RESTART&#34;)
+ *                 .type("OPPORTUNISTIC")
+ *                 .instanceRedistributionType("NONE")
+ *                 .minimalAction("RESTART")
  *                 .build())
- *             .baseInstanceName(&#34;rigm&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .baseInstanceName("rigm")
+ *             .region("us-central1")
  *             .targetSize(2)
  *             .build());
  * 
- *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
- *             .name(&#34;my-disk-name&#34;)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .image(&#34;debian-11-bullseye-v20220719&#34;)
+ *         var default_ = new Disk("default", DiskArgs.builder()        
+ *             .name("my-disk-name")
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .image("debian-11-bullseye-v20220719")
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
- *         var withDisk = new RegionPerInstanceConfig(&#34;withDisk&#34;, RegionPerInstanceConfigArgs.builder()        
+ *         var withDisk = new RegionPerInstanceConfig("withDisk", RegionPerInstanceConfigArgs.builder()        
  *             .region(igm.region())
  *             .regionInstanceGroupManager(rigm.name())
- *             .name(&#34;instance-1&#34;)
+ *             .name("instance-1")
  *             .preservedState(RegionPerInstanceConfigPreservedStateArgs.builder()
  *                 .metadata(Map.ofEntries(
- *                     Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                     Map.entry(&#34;instance_template&#34;, igm_basic.selfLink())
+ *                     Map.entry("foo", "bar"),
+ *                     Map.entry("instance_template", igm_basic.selfLink())
  *                 ))
  *                 .disks(RegionPerInstanceConfigPreservedStateDiskArgs.builder()
- *                     .deviceName(&#34;my-stateful-disk&#34;)
+ *                     .deviceName("my-stateful-disk")
  *                     .source(default_.id())
- *                     .mode(&#34;READ_ONLY&#34;)
+ *                     .mode("READ_ONLY")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

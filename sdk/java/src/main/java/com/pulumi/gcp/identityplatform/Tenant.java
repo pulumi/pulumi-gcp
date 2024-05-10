@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Identity Platform Tenant Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,14 +52,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tenant = new Tenant(&#34;tenant&#34;, TenantArgs.builder()        
- *             .displayName(&#34;tenant&#34;)
+ *         var tenant = new Tenant("tenant", TenantArgs.builder()        
+ *             .displayName("tenant")
  *             .allowPasswordSignup(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

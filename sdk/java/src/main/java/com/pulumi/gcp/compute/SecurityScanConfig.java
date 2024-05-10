@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Scan Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,19 +56,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var scannerStaticIp = new Address(&#34;scannerStaticIp&#34;, AddressArgs.builder()        
- *             .name(&#34;scan-basic-static-ip&#34;)
+ *         var scannerStaticIp = new Address("scannerStaticIp", AddressArgs.builder()        
+ *             .name("scan-basic-static-ip")
  *             .build());
  * 
- *         var scan_config = new SecurityScanConfig(&#34;scan-config&#34;, SecurityScanConfigArgs.builder()        
- *             .displayName(&#34;scan-config&#34;)
- *             .startingUrls(scannerStaticIp.address().applyValue(address -&gt; String.format(&#34;http://%s&#34;, address)))
- *             .targetPlatforms(&#34;COMPUTE&#34;)
+ *         var scan_config = new SecurityScanConfig("scan-config", SecurityScanConfigArgs.builder()        
+ *             .displayName("scan-config")
+ *             .startingUrls(scannerStaticIp.address().applyValue(address -> String.format("http://%s", address)))
+ *             .targetPlatforms("COMPUTE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

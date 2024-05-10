@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Organization Access Approval Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,29 +52,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organizationAccessApproval = new AccessApprovalSettings(&#34;organizationAccessApproval&#34;, AccessApprovalSettingsArgs.builder()        
- *             .organizationId(&#34;123456789&#34;)
+ *         var organizationAccessApproval = new AccessApprovalSettings("organizationAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *             .organizationId("123456789")
  *             .notificationEmails(            
- *                 &#34;testuser@example.com&#34;,
- *                 &#34;example.user@example.com&#34;)
+ *                 "testuser{@literal @}example.com",
+ *                 "example.user{@literal @}example.com")
  *             .enrolledServices(            
  *                 AccessApprovalSettingsEnrolledServiceArgs.builder()
- *                     .cloudProduct(&#34;appengine.googleapis.com&#34;)
+ *                     .cloudProduct("appengine.googleapis.com")
  *                     .build(),
  *                 AccessApprovalSettingsEnrolledServiceArgs.builder()
- *                     .cloudProduct(&#34;dataflow.googleapis.com&#34;)
- *                     .enrollmentLevel(&#34;BLOCK_ALL&#34;)
+ *                     .cloudProduct("dataflow.googleapis.com")
+ *                     .enrollmentLevel("BLOCK_ALL")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Organization Access Approval Active Key Version
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -108,52 +111,53 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;My Project&#34;)
- *             .projectId(&#34;your-project-id&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *             .name("My Project")
+ *             .projectId("your-project-id")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;key-ring&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("key-ring")
+ *             .location("global")
  *             .project(myProject.projectId())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("crypto-key")
  *             .keyRing(keyRing.id())
- *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
+ *             .purpose("ASYMMETRIC_SIGN")
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
- *                 .algorithm(&#34;EC_SIGN_P384_SHA384&#34;)
+ *                 .algorithm("EC_SIGN_P384_SHA384")
  *                 .build())
  *             .build());
  * 
  *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
- *             .organizationId(&#34;123456789&#34;)
+ *             .organizationId("123456789")
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
- *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
- *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
+ *             .role("roles/cloudkms.signerVerifier")
+ *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
  *             .build());
  * 
  *         final var cryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
  *             .cryptoKey(cryptoKey.id())
  *             .build());
  * 
- *         var organizationAccessApproval = new AccessApprovalSettings(&#34;organizationAccessApproval&#34;, AccessApprovalSettingsArgs.builder()        
- *             .organizationId(&#34;123456789&#34;)
- *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -&gt; cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.name())))
+ *         var organizationAccessApproval = new AccessApprovalSettings("organizationAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *             .organizationId("123456789")
+ *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -> cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.name())))
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
- *                 .cloudProduct(&#34;all&#34;)
+ *                 .cloudProduct("all")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

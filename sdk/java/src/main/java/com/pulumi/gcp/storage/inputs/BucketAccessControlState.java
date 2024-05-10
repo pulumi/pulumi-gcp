@@ -71,9 +71,9 @@ public final class BucketAccessControlState extends com.pulumi.resources.Resourc
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz@example.com would be user-liz@example.com.
-     * The group example@googlegroups.com would be
-     * group-example@googlegroups.com.
+     * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
+     * The group example{@literal @}googlegroups.com would be
+     * group-example{@literal @}googlegroups.com.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
      * 
@@ -94,9 +94,9 @@ public final class BucketAccessControlState extends com.pulumi.resources.Resourc
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz@example.com would be user-liz@example.com.
-     * The group example@googlegroups.com would be
-     * group-example@googlegroups.com.
+     * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
+     * The group example{@literal @}googlegroups.com would be
+     * group-example{@literal @}googlegroups.com.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
      * 
@@ -226,9 +226,9 @@ public final class BucketAccessControlState extends com.pulumi.resources.Resourc
          * allUsers
          * allAuthenticatedUsers
          * Examples:
-         * The user liz@example.com would be user-liz@example.com.
-         * The group example@googlegroups.com would be
-         * group-example@googlegroups.com.
+         * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
+         * The group example{@literal @}googlegroups.com would be
+         * group-example{@literal @}googlegroups.com.
          * To refer to all members of the Google Apps for Business domain
          * example.com, the entity would be domain-example.com.
          * 
@@ -253,9 +253,9 @@ public final class BucketAccessControlState extends com.pulumi.resources.Resourc
          * allUsers
          * allAuthenticatedUsers
          * Examples:
-         * The user liz@example.com would be user-liz@example.com.
-         * The group example@googlegroups.com would be
-         * group-example@googlegroups.com.
+         * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
+         * The group example{@literal @}googlegroups.com would be
+         * group-example{@literal @}googlegroups.com.
          * To refer to all members of the Google Apps for Business domain
          * example.com, the entity would be domain-example.com.
          * 

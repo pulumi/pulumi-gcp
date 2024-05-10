@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### Http Health Check Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,16 +58,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpHealthCheck(&#34;default&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;authentication-health-check&#34;)
- *             .requestPath(&#34;/health_check&#34;)
+ *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()        
+ *             .name("authentication-health-check")
+ *             .requestPath("/health_check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

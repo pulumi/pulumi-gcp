@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy editor &#34;projects/{{project}}/locations/{{location}}/addressGroups/{{project_address_group}} roles/compute.networkAdmin user:jane@example.com&#34;
+ * $ pulumi import gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy editor &#34;projects/{{project}}/locations/{{location}}/addressGroups/{{project_address_group}} roles/compute.networkAdmin user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

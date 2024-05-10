@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,38 +53,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring-example&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("keyring-example")
+ *             .location("global")
  *             .build());
  * 
- *         var key = new CryptoKey(&#34;key&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-key-example&#34;)
+ *         var key = new CryptoKey("key", CryptoKeyArgs.builder()        
+ *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
- *             .rotationPeriod(&#34;7776000s&#34;)
+ *             .rotationPeriod("7776000s")
  *             .build());
  * 
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/cloudkms.cryptoKeyEncrypter")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKeyIAMPolicy(&#34;cryptoKey&#34;, CryptoKeyIAMPolicyArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMPolicy("cryptoKey", CryptoKeyIAMPolicyArgs.builder()        
  *             .cryptoKeyId(key.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -106,23 +109,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/cloudkms.cryptoKeyEncrypter")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -143,21 +148,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMBinding(&#34;cryptoKey&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()        
  *             .cryptoKeyId(key.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/cloudkms.cryptoKeyEncrypter")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -179,24 +186,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMBinding(&#34;cryptoKey&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()        
  *             .cryptoKeyId(key.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/cloudkms.cryptoKeyEncrypter")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(CryptoKeyIAMBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -217,21 +226,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(key.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/cloudkms.cryptoKeyEncrypter")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -253,20 +264,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(key.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/cloudkms.cryptoKeyEncrypter")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(CryptoKeyIAMMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

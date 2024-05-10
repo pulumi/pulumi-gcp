@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## google\_healthcare\_dataset\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,25 +53,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var dataset = new DatasetIamPolicy(&#34;dataset&#34;, DatasetIamPolicyArgs.builder()        
- *             .datasetId(&#34;your-dataset-id&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()        
+ *             .datasetId("your-dataset-id")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_dataset\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,21 +94,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new DatasetIamBinding(&#34;dataset&#34;, DatasetIamBindingArgs.builder()        
- *             .datasetId(&#34;your-dataset-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var dataset = new DatasetIamBinding("dataset", DatasetIamBindingArgs.builder()        
+ *             .datasetId("your-dataset-id")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_dataset\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -126,21 +131,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new DatasetIamMember(&#34;dataset&#34;, DatasetIamMemberArgs.builder()        
- *             .datasetId(&#34;your-dataset-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var dataset = new DatasetIamMember("dataset", DatasetIamMemberArgs.builder()        
+ *             .datasetId("your-dataset-id")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_dataset\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -165,25 +172,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var dataset = new DatasetIamPolicy(&#34;dataset&#34;, DatasetIamPolicyArgs.builder()        
- *             .datasetId(&#34;your-dataset-id&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()        
+ *             .datasetId("your-dataset-id")
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_dataset\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -204,21 +213,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new DatasetIamBinding(&#34;dataset&#34;, DatasetIamBindingArgs.builder()        
- *             .datasetId(&#34;your-dataset-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var dataset = new DatasetIamBinding("dataset", DatasetIamBindingArgs.builder()        
+ *             .datasetId("your-dataset-id")
+ *             .role("roles/editor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_dataset\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -239,15 +250,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new DatasetIamMember(&#34;dataset&#34;, DatasetIamMemberArgs.builder()        
- *             .datasetId(&#34;your-dataset-id&#34;)
- *             .role(&#34;roles/editor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var dataset = new DatasetIamMember("dataset", DatasetIamMemberArgs.builder()        
+ *             .datasetId("your-dataset-id")
+ *             .role("roles/editor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

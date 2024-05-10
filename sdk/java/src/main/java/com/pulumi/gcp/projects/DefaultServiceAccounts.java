@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,20 +57,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new DefaultServiceAccounts(&#34;myProject&#34;, DefaultServiceAccountsArgs.builder()        
- *             .project(&#34;my-project-id&#34;)
- *             .action(&#34;DELETE&#34;)
+ *         var myProject = new DefaultServiceAccounts("myProject", DefaultServiceAccountsArgs.builder()        
+ *             .project("my-project-id")
+ *             .action("DELETE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * To enable the default service accounts on the resource destroy:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,15 +93,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new DefaultServiceAccounts(&#34;myProject&#34;, DefaultServiceAccountsArgs.builder()        
- *             .project(&#34;my-project-id&#34;)
- *             .action(&#34;DISABLE&#34;)
- *             .restorePolicy(&#34;REVERT&#34;)
+ *         var myProject = new DefaultServiceAccounts("myProject", DefaultServiceAccountsArgs.builder()        
+ *             .project("my-project-id")
+ *             .action("DISABLE")
+ *             .restorePolicy("REVERT")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

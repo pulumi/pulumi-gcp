@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Network Services Mesh Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,21 +45,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Mesh(&#34;default&#34;, MeshArgs.builder()        
- *             .name(&#34;my-mesh&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var default_ = new Mesh("default", MeshArgs.builder()        
+ *             .name("my-mesh")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .interceptionPort(443)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Mesh No Port
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -79,15 +82,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Mesh(&#34;default&#34;, MeshArgs.builder()        
- *             .name(&#34;my-mesh-noport&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var default_ = new Mesh("default", MeshArgs.builder()        
+ *             .name("my-mesh-noport")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Binary Authorization Attestor Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,21 +56,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
- *             .name(&#34;test-attestor-note&#34;)
+ *         var note = new Note("note", NoteArgs.builder()        
+ *             .name("test-attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
- *                     .humanReadableName(&#34;Attestor Note&#34;)
+ *                     .humanReadableName("Attestor Note")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
- *             .name(&#34;test-attestor&#34;)
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *             .name("test-attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .publicKeys(AttestorAttestationAuthorityNotePublicKeyArgs.builder()
- *                     .asciiArmoredPgpPublicKey(&#34;&#34;&#34;
+ *                     .asciiArmoredPgpPublicKey("""
  * mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
  * bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
  * oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
@@ -85,19 +86,21 @@ import javax.annotation.Nullable;
  * +OPuS1NGnxI1YKsNaWJF4uJVuvQuZ1twrhCbGNtVorO2U12+cEq+YtUxj7kmdOC1
  * qoIRW6y0+UlAc+MbqfL0ziHDOAmcqz1GnROg
  * =6Bvm
- *                     &#34;&#34;&#34;)
+ *                     """)
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Binary Authorization Attestor Kms
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -130,17 +133,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;test-attestor-key-ring&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("test-attestor-key-ring")
+ *             .location("global")
  *             .build());
  * 
- *         var crypto_key = new CryptoKey(&#34;crypto-key&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;test-attestor-key&#34;)
+ *         var crypto_key = new CryptoKey("crypto-key", CryptoKeyArgs.builder()        
+ *             .name("test-attestor-key")
  *             .keyRing(keyring.id())
- *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
+ *             .purpose("ASYMMETRIC_SIGN")
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
- *                 .algorithm(&#34;RSA_SIGN_PKCS1_4096_SHA512&#34;)
+ *                 .algorithm("RSA_SIGN_PKCS1_4096_SHA512")
  *                 .build())
  *             .build());
  * 
@@ -148,24 +151,24 @@ import javax.annotation.Nullable;
  *             .cryptoKey(crypto_key.id())
  *             .build());
  * 
- *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
- *             .name(&#34;test-attestor-note&#34;)
+ *         var note = new Note("note", NoteArgs.builder()        
+ *             .name("test-attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
- *                     .humanReadableName(&#34;Attestor Note&#34;)
+ *                     .humanReadableName("Attestor Note")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
- *             .name(&#34;test-attestor&#34;)
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *             .name("test-attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .publicKeys(AttestorAttestationAuthorityNotePublicKeyArgs.builder()
- *                     .id(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(version -&gt; version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id())))
+ *                     .id(version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(version -> version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.id())))
  *                     .pkixPublicKey(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs.builder()
- *                         .publicKeyPem(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(version -&gt; version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].pem())))
- *                         .signatureAlgorithm(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(version -&gt; version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].algorithm())))
+ *                         .publicKeyPem(version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(version -> version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.publicKeys()[0].pem())))
+ *                         .signatureAlgorithm(version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(version -> version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.publicKeys()[0].algorithm())))
  *                         .build())
  *                     .build())
  *                 .build())
@@ -173,7 +176,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

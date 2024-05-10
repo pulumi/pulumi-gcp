@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Gkeonprem Vmware Node Pool Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,15 +59,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_basic = new VMwareCluster(&#34;default-basic&#34;, VMwareClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
- *             .description(&#34;test cluster&#34;)
- *             .onPremVersion(&#34;1.13.1-gke.35&#34;)
+ *         var default_basic = new VMwareCluster("default-basic", VMwareClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-west1")
+ *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
+ *             .description("test cluster")
+ *             .onPremVersion("1.13.1-gke.35")
  *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
- *                 .serviceAddressCidrBlocks(&#34;10.96.0.0/12&#34;)
- *                 .podAddressCidrBlocks(&#34;192.168.0.0/16&#34;)
+ *                 .serviceAddressCidrBlocks("10.96.0.0/12")
+ *                 .podAddressCidrBlocks("192.168.0.0/16")
  *                 .dhcpIpConfig(VMwareClusterNetworkConfigDhcpIpConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
@@ -78,44 +79,46 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .loadBalancer(VMwareClusterLoadBalancerArgs.builder()
  *                 .vipConfig(VMwareClusterLoadBalancerVipConfigArgs.builder()
- *                     .controlPlaneVip(&#34;10.251.133.5&#34;)
- *                     .ingressVip(&#34;10.251.135.19&#34;)
+ *                     .controlPlaneVip("10.251.133.5")
+ *                     .ingressVip("10.251.135.19")
  *                     .build())
  *                 .metalLbConfig(VMwareClusterLoadBalancerMetalLbConfigArgs.builder()
  *                     .addressPools(                    
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
- *                             .pool(&#34;ingress-ip&#34;)
- *                             .manualAssign(&#34;true&#34;)
- *                             .addresses(&#34;10.251.135.19&#34;)
+ *                             .pool("ingress-ip")
+ *                             .manualAssign("true")
+ *                             .addresses("10.251.135.19")
  *                             .build(),
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
- *                             .pool(&#34;lb-test-ip&#34;)
- *                             .manualAssign(&#34;true&#34;)
- *                             .addresses(&#34;10.251.135.19&#34;)
+ *                             .pool("lb-test-ip")
+ *                             .manualAssign("true")
+ *                             .addresses("10.251.135.19")
  *                             .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var nodepool_basic = new VMwareNodePool(&#34;nodepool-basic&#34;, VMwareNodePoolArgs.builder()        
- *             .name(&#34;my-nodepool&#34;)
- *             .location(&#34;us-west1&#34;)
+ *         var nodepool_basic = new VMwareNodePool("nodepool-basic", VMwareNodePoolArgs.builder()        
+ *             .name("my-nodepool")
+ *             .location("us-west1")
  *             .vmwareCluster(default_basic.name())
  *             .config(VMwareNodePoolConfigArgs.builder()
  *                 .replicas(3)
- *                 .imageType(&#34;ubuntu_containerd&#34;)
+ *                 .imageType("ubuntu_containerd")
  *                 .enableLoadBalancer(true)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkeonprem Vmware Node Pool Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -146,15 +149,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_full = new VMwareCluster(&#34;default-full&#34;, VMwareClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
- *             .description(&#34;test cluster&#34;)
- *             .onPremVersion(&#34;1.13.1-gke.35&#34;)
+ *         var default_full = new VMwareCluster("default-full", VMwareClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-west1")
+ *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
+ *             .description("test cluster")
+ *             .onPremVersion("1.13.1-gke.35")
  *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
- *                 .serviceAddressCidrBlocks(&#34;10.96.0.0/12&#34;)
- *                 .podAddressCidrBlocks(&#34;192.168.0.0/16&#34;)
+ *                 .serviceAddressCidrBlocks("10.96.0.0/12")
+ *                 .podAddressCidrBlocks("192.168.0.0/16")
  *                 .dhcpIpConfig(VMwareClusterNetworkConfigDhcpIpConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
@@ -166,46 +169,46 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .loadBalancer(VMwareClusterLoadBalancerArgs.builder()
  *                 .vipConfig(VMwareClusterLoadBalancerVipConfigArgs.builder()
- *                     .controlPlaneVip(&#34;10.251.133.5&#34;)
- *                     .ingressVip(&#34;10.251.135.19&#34;)
+ *                     .controlPlaneVip("10.251.133.5")
+ *                     .ingressVip("10.251.135.19")
  *                     .build())
  *                 .metalLbConfig(VMwareClusterLoadBalancerMetalLbConfigArgs.builder()
  *                     .addressPools(                    
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
- *                             .pool(&#34;ingress-ip&#34;)
- *                             .manualAssign(&#34;true&#34;)
- *                             .addresses(&#34;10.251.135.19&#34;)
+ *                             .pool("ingress-ip")
+ *                             .manualAssign("true")
+ *                             .addresses("10.251.135.19")
  *                             .build(),
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
- *                             .pool(&#34;lb-test-ip&#34;)
- *                             .manualAssign(&#34;true&#34;)
- *                             .addresses(&#34;10.251.135.19&#34;)
+ *                             .pool("lb-test-ip")
+ *                             .manualAssign("true")
+ *                             .addresses("10.251.135.19")
  *                             .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var nodepool_full = new VMwareNodePool(&#34;nodepool-full&#34;, VMwareNodePoolArgs.builder()        
- *             .name(&#34;my-nodepool&#34;)
- *             .location(&#34;us-west1&#34;)
+ *         var nodepool_full = new VMwareNodePool("nodepool-full", VMwareNodePoolArgs.builder()        
+ *             .name("my-nodepool")
+ *             .location("us-west1")
  *             .vmwareCluster(default_full.name())
  *             .annotations()
  *             .config(VMwareNodePoolConfigArgs.builder()
  *                 .cpus(4)
  *                 .memoryMb(8196)
  *                 .replicas(3)
- *                 .imageType(&#34;ubuntu_containerd&#34;)
- *                 .image(&#34;image&#34;)
+ *                 .imageType("ubuntu_containerd")
+ *                 .image("image")
  *                 .bootDiskSizeGb(10)
  *                 .taints(                
  *                     VMwareNodePoolConfigTaintArgs.builder()
- *                         .key(&#34;key&#34;)
- *                         .value(&#34;value&#34;)
+ *                         .key("key")
+ *                         .value("value")
  *                         .build(),
  *                     VMwareNodePoolConfigTaintArgs.builder()
- *                         .key(&#34;key&#34;)
- *                         .value(&#34;value&#34;)
- *                         .effect(&#34;NO_SCHEDULE&#34;)
+ *                         .key("key")
+ *                         .value("value")
+ *                         .effect("NO_SCHEDULE")
  *                         .build())
  *                 .labels()
  *                 .vsphereConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
@@ -219,7 +222,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

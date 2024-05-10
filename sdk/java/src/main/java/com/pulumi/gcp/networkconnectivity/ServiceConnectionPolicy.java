@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Network Connectivity Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,23 +59,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNet = new Network(&#34;producerNet&#34;, NetworkArgs.builder()        
- *             .name(&#34;producer-net&#34;)
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()        
+ *             .name("producer-net")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var producerSubnet = new Subnetwork(&#34;producerSubnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;producer-subnet&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()        
+ *             .name("producer-subnet")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
  *             .network(producerNet.id())
  *             .build());
  * 
- *         var default_ = new ServiceConnectionPolicy(&#34;default&#34;, ServiceConnectionPolicyArgs.builder()        
- *             .name(&#34;my-network-connectivity-policy&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .serviceClass(&#34;my-basic-service-class&#34;)
- *             .description(&#34;my basic service connection policy&#34;)
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()        
+ *             .name("my-network-connectivity-policy")
+ *             .location("us-central1")
+ *             .serviceClass("my-basic-service-class")
+ *             .description("my basic service connection policy")
  *             .network(producerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
  *                 .subnetworks(producerSubnet.id())
@@ -84,7 +85,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

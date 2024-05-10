@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Agent Pool Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,26 +57,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var pubsubEditorRole = new IAMMember(&#34;pubsubEditorRole&#34;, IAMMemberArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .role(&#34;roles/pubsub.editor&#34;)
- *             .member(String.format(&#34;serviceAccount:%s&#34;, default_.email()))
+ *         var pubsubEditorRole = new IAMMember("pubsubEditorRole", IAMMemberArgs.builder()        
+ *             .project("my-project-name")
+ *             .role("roles/pubsub.editor")
+ *             .member(String.format("serviceAccount:%s", default_.email()))
  *             .build());
  * 
- *         var example = new TransferAgentPool(&#34;example&#34;, TransferAgentPoolArgs.builder()        
- *             .name(&#34;agent-pool-example&#34;)
- *             .displayName(&#34;Source A to destination Z&#34;)
+ *         var example = new TransferAgentPool("example", TransferAgentPoolArgs.builder()        
+ *             .name("agent-pool-example")
+ *             .displayName("Source A to destination Z")
  *             .bandwidthLimit(TransferAgentPoolBandwidthLimitArgs.builder()
- *                 .limitMbps(&#34;120&#34;)
+ *                 .limitMbps("120")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

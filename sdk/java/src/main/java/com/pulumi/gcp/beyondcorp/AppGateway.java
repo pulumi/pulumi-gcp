@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Beyondcorp App Gateway Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,21 +55,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appGateway = new AppGateway(&#34;appGateway&#34;, AppGatewayArgs.builder()        
- *             .name(&#34;my-app-gateway&#34;)
- *             .type(&#34;TCP_PROXY&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .hostType(&#34;GCP_REGIONAL_MIG&#34;)
+ *         var appGateway = new AppGateway("appGateway", AppGatewayArgs.builder()        
+ *             .name("my-app-gateway")
+ *             .type("TCP_PROXY")
+ *             .region("us-central1")
+ *             .hostType("GCP_REGIONAL_MIG")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Beyondcorp App Gateway Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,21 +92,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appGateway = new AppGateway(&#34;appGateway&#34;, AppGatewayArgs.builder()        
- *             .name(&#34;my-app-gateway&#34;)
- *             .type(&#34;TCP_PROXY&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .displayName(&#34;some display name&#34;)
+ *         var appGateway = new AppGateway("appGateway", AppGatewayArgs.builder()        
+ *             .name("my-app-gateway")
+ *             .type("TCP_PROXY")
+ *             .region("us-central1")
+ *             .displayName("some display name")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                 Map.entry(&#34;bar&#34;, &#34;baz&#34;)
+ *                 Map.entry("foo", "bar"),
+ *                 Map.entry("bar", "baz")
  *             ))
- *             .hostType(&#34;GCP_REGIONAL_MIG&#34;)
+ *             .hostType("GCP_REGIONAL_MIG")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

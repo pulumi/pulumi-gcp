@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Cloud Identity Group Membership
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,42 +64,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var group = new Group(&#34;group&#34;, GroupArgs.builder()        
- *             .displayName(&#34;my-identity-group&#34;)
- *             .parent(&#34;customers/A01b123xz&#34;)
+ *         var group = new Group("group", GroupArgs.builder()        
+ *             .displayName("my-identity-group")
+ *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
- *                 .id(&#34;my-identity-group@example.com&#34;)
+ *                 .id("my-identity-group{@literal @}example.com")
  *                 .build())
- *             .labels(Map.of(&#34;cloudidentity.googleapis.com/groups.discussion_forum&#34;, &#34;&#34;))
+ *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
  * 
- *         var child_group = new Group(&#34;child-group&#34;, GroupArgs.builder()        
- *             .displayName(&#34;my-identity-group-child&#34;)
- *             .parent(&#34;customers/A01b123xz&#34;)
+ *         var child_group = new Group("child-group", GroupArgs.builder()        
+ *             .displayName("my-identity-group-child")
+ *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
- *                 .id(&#34;my-identity-group-child@example.com&#34;)
+ *                 .id("my-identity-group-child{@literal @}example.com")
  *                 .build())
- *             .labels(Map.of(&#34;cloudidentity.googleapis.com/groups.discussion_forum&#34;, &#34;&#34;))
+ *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
  * 
- *         var cloudIdentityGroupMembershipBasic = new GroupMembership(&#34;cloudIdentityGroupMembershipBasic&#34;, GroupMembershipArgs.builder()        
+ *         var cloudIdentityGroupMembershipBasic = new GroupMembership("cloudIdentityGroupMembershipBasic", GroupMembershipArgs.builder()        
  *             .group(group.id())
  *             .preferredMemberKey(GroupMembershipPreferredMemberKeyArgs.builder()
- *                 .id(child_group.groupKey().applyValue(groupKey -&gt; groupKey.id()))
+ *                 .id(child_group.groupKey().applyValue(groupKey -> groupKey.id()))
  *                 .build())
  *             .roles(GroupMembershipRoleArgs.builder()
- *                 .name(&#34;MEMBER&#34;)
+ *                 .name("MEMBER")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloud Identity Group Membership User
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -124,32 +127,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var group = new Group(&#34;group&#34;, GroupArgs.builder()        
- *             .displayName(&#34;my-identity-group&#34;)
- *             .parent(&#34;customers/A01b123xz&#34;)
+ *         var group = new Group("group", GroupArgs.builder()        
+ *             .displayName("my-identity-group")
+ *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
- *                 .id(&#34;my-identity-group@example.com&#34;)
+ *                 .id("my-identity-group{@literal @}example.com")
  *                 .build())
- *             .labels(Map.of(&#34;cloudidentity.googleapis.com/groups.discussion_forum&#34;, &#34;&#34;))
+ *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
  * 
- *         var cloudIdentityGroupMembershipBasic = new GroupMembership(&#34;cloudIdentityGroupMembershipBasic&#34;, GroupMembershipArgs.builder()        
+ *         var cloudIdentityGroupMembershipBasic = new GroupMembership("cloudIdentityGroupMembershipBasic", GroupMembershipArgs.builder()        
  *             .group(group.id())
  *             .preferredMemberKey(GroupMembershipPreferredMemberKeyArgs.builder()
- *                 .id(&#34;cloud_identity_user@example.com&#34;)
+ *                 .id("cloud_identity_user{@literal @}example.com")
  *                 .build())
  *             .roles(            
  *                 GroupMembershipRoleArgs.builder()
- *                     .name(&#34;MEMBER&#34;)
+ *                     .name("MEMBER")
  *                     .build(),
  *                 GroupMembershipRoleArgs.builder()
- *                     .name(&#34;MANAGER&#34;)
+ *                     .name("MANAGER")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

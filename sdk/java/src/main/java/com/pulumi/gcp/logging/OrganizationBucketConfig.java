@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,23 +53,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
- *             .organization(&#34;123456789&#34;)
+ *             .organization("123456789")
  *             .build());
  * 
- *         var basic = new OrganizationBucketConfig(&#34;basic&#34;, OrganizationBucketConfigArgs.builder()        
+ *         var basic = new OrganizationBucketConfig("basic", OrganizationBucketConfigArgs.builder()        
  *             .organization(default_.organization())
- *             .location(&#34;global&#34;)
+ *             .location("global")
  *             .retentionDays(30)
- *             .bucketId(&#34;_Default&#34;)
+ *             .bucketId("_Default")
  *             .indexConfigs(OrganizationBucketConfigIndexConfigArgs.builder()
- *                 .filePath(&#34;jsonPayload.request.status&#34;)
- *                 .type(&#34;INDEX_TYPE_STRING&#34;)
+ *                 .filePath("jsonPayload.request.status")
+ *                 .type("INDEX_TYPE_STRING")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## google\_kms\_key\_ring\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,32 +53,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring-example&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("keyring-example")
+ *             .location("global")
  *             .build());
  * 
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy(&#34;keyRing&#34;, KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()        
  *             .keyRingId(keyring.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,37 +105,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring-example&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("keyring-example")
+ *             .location("global")
  *             .build());
  * 
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy(&#34;keyRing&#34;, KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()        
  *             .keyRingId(keyring.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_kms\_key\_ring\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -153,21 +158,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding(&#34;keyRing&#34;, KeyRingIAMBindingArgs.builder()        
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()        
+ *             .keyRingId("your-key-ring-id")
+ *             .role("roles/cloudkms.admin")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -189,26 +196,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding(&#34;keyRing&#34;, KeyRingIAMBindingArgs.builder()        
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()        
+ *             .keyRingId("your-key-ring-id")
+ *             .role("roles/cloudkms.admin")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(KeyRingIAMBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_kms\_key\_ring\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -229,21 +238,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember(&#34;keyRing&#34;, KeyRingIAMMemberArgs.builder()        
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()        
+ *             .keyRingId("your-key-ring-id")
+ *             .role("roles/cloudkms.admin")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -265,26 +276,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember(&#34;keyRing&#34;, KeyRingIAMMemberArgs.builder()        
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()        
+ *             .keyRingId("your-key-ring-id")
+ *             .role("roles/cloudkms.admin")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(KeyRingIAMMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_kms\_key\_ring\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -309,32 +322,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring-example&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("keyring-example")
+ *             .location("global")
  *             .build());
  * 
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy(&#34;keyRing&#34;, KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()        
  *             .keyRingId(keyring.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -359,37 +374,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring-example&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("keyring-example")
+ *             .location("global")
  *             .build());
  * 
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/editor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/editor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy(&#34;keyRing&#34;, KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()        
  *             .keyRingId(keyring.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_kms\_key\_ring\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -410,21 +427,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding(&#34;keyRing&#34;, KeyRingIAMBindingArgs.builder()        
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()        
+ *             .keyRingId("your-key-ring-id")
+ *             .role("roles/cloudkms.admin")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -446,26 +465,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding(&#34;keyRing&#34;, KeyRingIAMBindingArgs.builder()        
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *         var keyRing = new KeyRingIAMBinding("keyRing", KeyRingIAMBindingArgs.builder()        
+ *             .keyRingId("your-key-ring-id")
+ *             .role("roles/cloudkms.admin")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(KeyRingIAMBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_kms\_key\_ring\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -486,21 +507,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember(&#34;keyRing&#34;, KeyRingIAMMemberArgs.builder()        
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()        
+ *             .keyRingId("your-key-ring-id")
+ *             .role("roles/cloudkms.admin")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -522,20 +545,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember(&#34;keyRing&#34;, KeyRingIAMMemberArgs.builder()        
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *         var keyRing = new KeyRingIAMMember("keyRing", KeyRingIAMMemberArgs.builder()        
+ *             .keyRingId("your-key-ring-id")
+ *             .role("roles/cloudkms.admin")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(KeyRingIAMMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

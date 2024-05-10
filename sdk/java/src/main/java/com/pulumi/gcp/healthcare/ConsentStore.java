@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Healthcare Consent Store Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,24 +55,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-dataset&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-dataset")
  *             .build());
  * 
- *         var my_consent = new ConsentStore(&#34;my-consent&#34;, ConsentStoreArgs.builder()        
+ *         var my_consent = new ConsentStore("my-consent", ConsentStoreArgs.builder()        
  *             .dataset(dataset.id())
- *             .name(&#34;my-consent-store&#34;)
+ *             .name("my-consent-store")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Healthcare Consent Store Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,27 +97,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-dataset&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-dataset")
  *             .build());
  * 
- *         var my_consent = new ConsentStore(&#34;my-consent&#34;, ConsentStoreArgs.builder()        
+ *         var my_consent = new ConsentStore("my-consent", ConsentStoreArgs.builder()        
  *             .dataset(dataset.id())
- *             .name(&#34;my-consent-store&#34;)
+ *             .name("my-consent-store")
  *             .enableConsentCreateOnUpdate(true)
- *             .defaultConsentTtl(&#34;90000s&#34;)
- *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .defaultConsentTtl("90000s")
+ *             .labels(Map.of("label1", "labelvalue1"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Healthcare Consent Store Iam
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -141,31 +146,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-dataset&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-dataset")
  *             .build());
  * 
- *         var my_consent = new ConsentStore(&#34;my-consent&#34;, ConsentStoreArgs.builder()        
+ *         var my_consent = new ConsentStore("my-consent", ConsentStoreArgs.builder()        
  *             .dataset(dataset.id())
- *             .name(&#34;my-consent-store&#34;)
+ *             .name("my-consent-store")
  *             .build());
  * 
- *         var test_account = new Account(&#34;test-account&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
+ *         var test_account = new Account("test-account", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var test_iam = new ConsentStoreIamMember(&#34;test-iam&#34;, ConsentStoreIamMemberArgs.builder()        
+ *         var test_iam = new ConsentStoreIamMember("test-iam", ConsentStoreIamMemberArgs.builder()        
  *             .dataset(dataset.id())
  *             .consentStoreId(my_consent.name())
- *             .role(&#34;roles/editor&#34;)
- *             .member(test_account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/editor")
+ *             .member(test_account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

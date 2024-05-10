@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Firestore Default Database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,21 +57,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;(default)&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("(default)")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,26 +94,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;database-id&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
- *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
- *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
- *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .concurrencyMode("OPTIMISTIC")
+ *             .appEngineIntegrationMode("DISABLED")
+ *             .pointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLED")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Cmek Database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -142,46 +147,48 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;kms-key-ring&#34;)
- *             .location(&#34;us&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("kms-key-ring")
+ *             .location("us")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;kms-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("kms-key")
  *             .keyRing(keyRing.id())
- *             .purpose(&#34;ENCRYPT_DECRYPT&#34;)
+ *             .purpose("ENCRYPT_DECRYPT")
  *             .build());
  * 
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;cmek-database-id&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
- *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
- *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
- *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("cmek-database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .concurrencyMode("OPTIMISTIC")
+ *             .appEngineIntegrationMode("DISABLED")
+ *             .pointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLED")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
  *             .cmekConfig(DatabaseCmekConfigArgs.builder()
  *                 .kmsKeyName(cryptoKey.id())
  *                 .build())
  *             .build());
  * 
- *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding(&#34;firestoreCmekKeyuser&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-firestore.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Default Database In Datastore Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -202,21 +209,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var datastoreModeDatabase = new Database(&#34;datastoreModeDatabase&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;(default)&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;DATASTORE_MODE&#34;)
+ *         var datastoreModeDatabase = new Database("datastoreModeDatabase", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("(default)")
+ *             .locationId("nam5")
+ *             .type("DATASTORE_MODE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Database In Datastore Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -237,26 +246,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var datastoreModeDatabase = new Database(&#34;datastoreModeDatabase&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;database-id&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;DATASTORE_MODE&#34;)
- *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
- *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
- *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var datastoreModeDatabase = new Database("datastoreModeDatabase", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("DATASTORE_MODE")
+ *             .concurrencyMode("OPTIMISTIC")
+ *             .appEngineIntegrationMode("DISABLED")
+ *             .pointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLED")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Cmek Database In Datastore Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -288,41 +299,42 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;kms-key-ring&#34;)
- *             .location(&#34;us&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("kms-key-ring")
+ *             .location("us")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;kms-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("kms-key")
  *             .keyRing(keyRing.id())
- *             .purpose(&#34;ENCRYPT_DECRYPT&#34;)
+ *             .purpose("ENCRYPT_DECRYPT")
  *             .build());
  * 
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;cmek-database-id&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;DATASTORE_MODE&#34;)
- *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
- *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
- *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("cmek-database-id")
+ *             .locationId("nam5")
+ *             .type("DATASTORE_MODE")
+ *             .concurrencyMode("OPTIMISTIC")
+ *             .appEngineIntegrationMode("DISABLED")
+ *             .pointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLED")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
  *             .cmekConfig(DatabaseCmekConfigArgs.builder()
  *                 .kmsKeyName(cryptoKey.id())
  *                 .build())
  *             .build());
  * 
- *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding(&#34;firestoreCmekKeyuser&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-firestore.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

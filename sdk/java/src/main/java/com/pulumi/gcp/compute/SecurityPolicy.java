@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,42 +54,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
- *             .name(&#34;my-policy&#34;)
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *             .name("my-policy")
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
- *                     .action(&#34;deny(403)&#34;)
- *                     .priority(&#34;1000&#34;)
+ *                     .action("deny(403)")
+ *                     .priority("1000")
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
- *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                         .versionedExpr("SRC_IPS_V1")
  *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
- *                             .srcIpRanges(&#34;9.9.9.0/24&#34;)
+ *                             .srcIpRanges("9.9.9.0/24")
  *                             .build())
  *                         .build())
- *                     .description(&#34;Deny access to IPs in 9.9.9.0/24&#34;)
+ *                     .description("Deny access to IPs in 9.9.9.0/24")
  *                     .build(),
  *                 SecurityPolicyRuleArgs.builder()
- *                     .action(&#34;allow&#34;)
- *                     .priority(&#34;2147483647&#34;)
+ *                     .action("allow")
+ *                     .priority("2147483647")
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
- *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                         .versionedExpr("SRC_IPS_V1")
  *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
- *                             .srcIpRanges(&#34;*&#34;)
+ *                             .srcIpRanges("*")
  *                             .build())
  *                         .build())
- *                     .description(&#34;default rule&#34;)
+ *                     .description("default rule")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### With ReCAPTCHA Configuration Options
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -113,21 +116,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
- *             .displayName(&#34;display-name&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *             .displayName("display-name")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .project("my-project-name")
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
- *                 .integrationType(&#34;INVISIBLE&#34;)
+ *                 .integrationType("INVISIBLE")
  *                 .allowAllDomains(true)
- *                 .allowedDomains(&#34;localhost&#34;)
+ *                 .allowedDomains("localhost")
  *                 .build())
  *             .build());
  * 
- *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
- *             .name(&#34;my-policy&#34;)
- *             .description(&#34;basic security policy&#34;)
- *             .type(&#34;CLOUD_ARMOR&#34;)
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *             .name("my-policy")
+ *             .description("basic security policy")
+ *             .type("CLOUD_ARMOR")
  *             .recaptchaOptionsConfig(SecurityPolicyRecaptchaOptionsConfigArgs.builder()
  *                 .redirectSiteKey(primary.name())
  *                 .build())
@@ -135,13 +138,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### With Header Actions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -167,37 +172,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
- *             .name(&#34;my-policy&#34;)
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *             .name("my-policy")
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
- *                     .action(&#34;allow&#34;)
- *                     .priority(&#34;2147483647&#34;)
+ *                     .action("allow")
+ *                     .priority("2147483647")
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
- *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                         .versionedExpr("SRC_IPS_V1")
  *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
- *                             .srcIpRanges(&#34;*&#34;)
+ *                             .srcIpRanges("*")
  *                             .build())
  *                         .build())
- *                     .description(&#34;default rule&#34;)
+ *                     .description("default rule")
  *                     .build(),
  *                 SecurityPolicyRuleArgs.builder()
- *                     .action(&#34;allow&#34;)
- *                     .priority(&#34;1000&#34;)
+ *                     .action("allow")
+ *                     .priority("1000")
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
  *                         .expr(SecurityPolicyRuleMatchExprArgs.builder()
- *                             .expression(&#34;request.path.matches(\&#34;/login.html\&#34;) &amp;&amp; token.recaptcha_session.score &lt; 0.2&#34;)
+ *                             .expression("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2")
  *                             .build())
  *                         .build())
  *                     .headerAction(SecurityPolicyRuleHeaderActionArgs.builder()
  *                         .requestHeadersToAdds(                        
  *                             SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs.builder()
- *                                 .headerName(&#34;reCAPTCHA-Warning&#34;)
- *                                 .headerValue(&#34;high&#34;)
+ *                                 .headerName("reCAPTCHA-Warning")
+ *                                 .headerValue("high")
  *                                 .build(),
  *                             SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs.builder()
- *                                 .headerName(&#34;X-Resource&#34;)
- *                                 .headerValue(&#34;test&#34;)
+ *                                 .headerName("X-Resource")
+ *                                 .headerValue("test")
  *                                 .build())
  *                         .build())
  *                     .build())
@@ -205,14 +210,16 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### With EnforceOnKey Value As Empty String
  * A scenario example that won&#39;t cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -239,29 +246,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
- *             .name(&#34;%s&#34;)
- *             .description(&#34;throttle rule with enforce_on_key_configs&#34;)
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *             .name("%s")
+ *             .description("throttle rule with enforce_on_key_configs")
  *             .rules(SecurityPolicyRuleArgs.builder()
- *                 .action(&#34;throttle&#34;)
- *                 .priority(&#34;2147483647&#34;)
+ *                 .action("throttle")
+ *                 .priority("2147483647")
  *                 .match(SecurityPolicyRuleMatchArgs.builder()
- *                     .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                     .versionedExpr("SRC_IPS_V1")
  *                     .config(SecurityPolicyRuleMatchConfigArgs.builder()
- *                         .srcIpRanges(&#34;*&#34;)
+ *                         .srcIpRanges("*")
  *                         .build())
  *                     .build())
- *                 .description(&#34;default rule&#34;)
+ *                 .description("default rule")
  *                 .rateLimitOptions(SecurityPolicyRuleRateLimitOptionsArgs.builder()
- *                     .conformAction(&#34;allow&#34;)
- *                     .exceedAction(&#34;redirect&#34;)
- *                     .enforceOnKey(&#34;&#34;)
+ *                     .conformAction("allow")
+ *                     .exceedAction("redirect")
+ *                     .enforceOnKey("")
  *                     .enforceOnKeyConfigs(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs.builder()
- *                         .enforceOnKeyType(&#34;IP&#34;)
+ *                         .enforceOnKeyType("IP")
  *                         .build())
  *                     .exceedRedirectOptions(SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs.builder()
- *                         .type(&#34;EXTERNAL_302&#34;)
- *                         .target(&#34;&lt;https://www.example.com&gt;&#34;)
+ *                         .type("EXTERNAL_302")
+ *                         .target("<https://www.example.com>")
  *                         .build())
  *                     .rateLimitThreshold(SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs.builder()
  *                         .count(10)
@@ -273,7 +280,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

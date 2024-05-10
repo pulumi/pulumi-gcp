@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ### Artifact Registry Vpcsc Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,14 +42,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_config = new VpcscConfig(&#34;my-config&#34;, VpcscConfigArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .vpcscPolicy(&#34;ALLOW&#34;)
+ *         var my_config = new VpcscConfig("my-config", VpcscConfigArgs.builder()        
+ *             .location("us-central1")
+ *             .vpcscPolicy("ALLOW")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Feature Group
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,54 +59,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sampleDataset = new Dataset(&#34;sampleDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;job_load_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var sampleDataset = new Dataset("sampleDataset", DatasetArgs.builder()        
+ *             .datasetId("job_load_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var sampleTable = new Table(&#34;sampleTable&#34;, TableArgs.builder()        
+ *         var sampleTable = new Table("sampleTable", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(sampleDataset.datasetId())
- *             .tableId(&#34;job_load_table&#34;)
- *             .schema(&#34;&#34;&#34;
+ *             .tableId("job_load_table")
+ *             .schema("""
  * [
  *     {
- *         &#34;name&#34;: &#34;feature_id&#34;,
- *         &#34;type&#34;: &#34;STRING&#34;,
- *         &#34;mode&#34;: &#34;NULLABLE&#34;
+ *         "name": "feature_id",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
  *     },
  *     {
- *         &#34;name&#34;: &#34;feature_timestamp&#34;,
- *         &#34;type&#34;: &#34;TIMESTAMP&#34;,
- *         &#34;mode&#34;: &#34;NULLABLE&#34;
+ *         "name": "feature_timestamp",
+ *         "type": "TIMESTAMP",
+ *         "mode": "NULLABLE"
  *     }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var featureGroup = new AiFeatureGroup(&#34;featureGroup&#34;, AiFeatureGroupArgs.builder()        
- *             .name(&#34;example_feature_group&#34;)
- *             .description(&#34;A sample feature group&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *         var featureGroup = new AiFeatureGroup("featureGroup", AiFeatureGroupArgs.builder()        
+ *             .name("example_feature_group")
+ *             .description("A sample feature group")
+ *             .region("us-central1")
+ *             .labels(Map.of("label-one", "value-one"))
  *             .bigQuery(AiFeatureGroupBigQueryArgs.builder()
  *                 .bigQuerySource(AiFeatureGroupBigQueryBigQuerySourceArgs.builder()
- *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -&gt; {
+ *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> {
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
  *                         var tableId = values.t3;
- *                         return String.format(&#34;bq://%s.%s.%s&#34;, project,datasetId,tableId);
+ *                         return String.format("bq://%s.%s.%s", project,datasetId,tableId);
  *                     }))
  *                     .build())
- *                 .entityIdColumns(&#34;feature_id&#34;)
+ *                 .entityIdColumns("feature_id")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

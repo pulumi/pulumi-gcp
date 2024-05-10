@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Firebase App Check Service Config Off
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,25 +52,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appcheck = new Service(&#34;appcheck&#34;, ServiceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .service(&#34;firebaseappcheck.googleapis.com&#34;)
+ *         var appcheck = new Service("appcheck", ServiceArgs.builder()        
+ *             .project("my-project-name")
+ *             .service("firebaseappcheck.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AppCheckServiceConfig(&#34;default&#34;, AppCheckServiceConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .serviceId(&#34;firestore.googleapis.com&#34;)
+ *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()        
+ *             .project("my-project-name")
+ *             .serviceId("firestore.googleapis.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebase App Check Service Config Enforced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,26 +95,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appcheck = new Service(&#34;appcheck&#34;, ServiceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .service(&#34;firebaseappcheck.googleapis.com&#34;)
+ *         var appcheck = new Service("appcheck", ServiceArgs.builder()        
+ *             .project("my-project-name")
+ *             .service("firebaseappcheck.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AppCheckServiceConfig(&#34;default&#34;, AppCheckServiceConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .serviceId(&#34;firebasestorage.googleapis.com&#34;)
- *             .enforcementMode(&#34;ENFORCED&#34;)
+ *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()        
+ *             .project("my-project-name")
+ *             .serviceId("firebasestorage.googleapis.com")
+ *             .enforcementMode("ENFORCED")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebase App Check Service Config Unenforced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -134,21 +139,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appcheck = new Service(&#34;appcheck&#34;, ServiceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .service(&#34;firebaseappcheck.googleapis.com&#34;)
+ *         var appcheck = new Service("appcheck", ServiceArgs.builder()        
+ *             .project("my-project-name")
+ *             .service("firebaseappcheck.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AppCheckServiceConfig(&#34;default&#34;, AppCheckServiceConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .serviceId(&#34;identitytoolkit.googleapis.com&#34;)
- *             .enforcementMode(&#34;UNENFORCED&#34;)
+ *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()        
+ *             .project("my-project-name")
+ *             .serviceId("identitytoolkit.googleapis.com")
+ *             .enforcementMode("UNENFORCED")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

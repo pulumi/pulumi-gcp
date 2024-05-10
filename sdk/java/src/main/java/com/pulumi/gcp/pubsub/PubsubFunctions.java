@@ -32,7 +32,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -60,7 +61,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -73,7 +75,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -101,7 +104,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -114,7 +118,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -142,7 +147,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -155,7 +161,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -183,7 +190,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -198,7 +206,8 @@ public final class PubsubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -220,12 +229,13 @@ public final class PubsubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-pubsub-subscription = PubsubFunctions.getSubscription(GetSubscriptionArgs.builder()
-     *             .name(&#34;my-pubsub-subscription&#34;)
+     *             .name("my-pubsub-subscription")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -240,7 +250,8 @@ public final class PubsubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -262,12 +273,13 @@ public final class PubsubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-pubsub-subscription = PubsubFunctions.getSubscription(GetSubscriptionArgs.builder()
-     *             .name(&#34;my-pubsub-subscription&#34;)
+     *             .name("my-pubsub-subscription")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -282,7 +294,8 @@ public final class PubsubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -304,12 +317,13 @@ public final class PubsubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-pubsub-subscription = PubsubFunctions.getSubscription(GetSubscriptionArgs.builder()
-     *             .name(&#34;my-pubsub-subscription&#34;)
+     *             .name("my-pubsub-subscription")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -324,7 +338,8 @@ public final class PubsubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -346,12 +361,13 @@ public final class PubsubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-pubsub-subscription = PubsubFunctions.getSubscription(GetSubscriptionArgs.builder()
-     *             .name(&#34;my-pubsub-subscription&#34;)
+     *             .name("my-pubsub-subscription")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -364,7 +380,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -391,7 +408,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -404,7 +422,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -431,7 +450,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -444,7 +464,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -471,7 +492,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -484,7 +506,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -511,7 +534,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -526,7 +550,8 @@ public final class PubsubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -548,12 +573,13 @@ public final class PubsubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-pubsub-topic = PubsubFunctions.getTopic(GetTopicArgs.builder()
-     *             .name(&#34;my-pubsub-topic&#34;)
+     *             .name("my-pubsub-topic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -568,7 +594,8 @@ public final class PubsubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -590,12 +617,13 @@ public final class PubsubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-pubsub-topic = PubsubFunctions.getTopic(GetTopicArgs.builder()
-     *             .name(&#34;my-pubsub-topic&#34;)
+     *             .name("my-pubsub-topic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -610,7 +638,8 @@ public final class PubsubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -632,12 +661,13 @@ public final class PubsubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-pubsub-topic = PubsubFunctions.getTopic(GetTopicArgs.builder()
-     *             .name(&#34;my-pubsub-topic&#34;)
+     *             .name("my-pubsub-topic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -652,7 +682,8 @@ public final class PubsubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -674,12 +705,13 @@ public final class PubsubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-pubsub-topic = PubsubFunctions.getTopic(GetTopicArgs.builder()
-     *             .name(&#34;my-pubsub-topic&#34;)
+     *             .name("my-pubsub-topic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -692,7 +724,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -720,7 +753,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -733,7 +767,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -761,7 +796,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -774,7 +810,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -802,7 +839,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -815,7 +853,8 @@ public final class PubsubFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -843,7 +882,8 @@ public final class PubsubFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

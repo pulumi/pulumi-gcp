@@ -45,7 +45,8 @@ import javax.annotation.Nullable;
  * ### Backend Service Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,26 +69,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service External Iap
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -109,24 +112,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;tf-test-backend-service-external&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("tf-test-backend-service-external")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("EXTERNAL")
  *             .iap(BackendServiceIapArgs.builder()
- *                 .oauth2ClientId(&#34;abc&#34;)
- *                 .oauth2ClientSecret(&#34;xyz&#34;)
+ *                 .oauth2ClientId("abc")
+ *                 .oauth2ClientSecret("xyz")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service Cache Simple
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -150,15 +155,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
@@ -168,12 +173,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service Cache Include Http Headers
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -196,28 +203,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
- *                 .cacheMode(&#34;USE_ORIGIN_HEADERS&#34;)
+ *                 .cacheMode("USE_ORIGIN_HEADERS")
  *                 .cacheKeyPolicy(BackendServiceCdnPolicyCacheKeyPolicyArgs.builder()
  *                     .includeHost(true)
  *                     .includeProtocol(true)
  *                     .includeQueryString(true)
- *                     .includeHttpHeaders(&#34;X-My-Header-Field&#34;)
+ *                     .includeHttpHeaders("X-My-Header-Field")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service Cache Include Named Cookies
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -240,11 +249,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
- *                 .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
+ *                 .cacheMode("CACHE_ALL_STATIC")
  *                 .defaultTtl(3600)
  *                 .clientTtl(7200)
  *                 .maxTtl(10800)
@@ -253,20 +262,22 @@ import javax.annotation.Nullable;
  *                     .includeProtocol(true)
  *                     .includeQueryString(true)
  *                     .includeNamedCookies(                    
- *                         &#34;__next_preview_data&#34;,
- *                         &#34;__prerender_bypass&#34;)
+ *                         "__next_preview_data",
+ *                         "__prerender_bypass")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service Cache
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -290,19 +301,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
- *                 .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
+ *                 .cacheMode("CACHE_ALL_STATIC")
  *                 .defaultTtl(3600)
  *                 .clientTtl(7200)
  *                 .maxTtl(10800)
@@ -313,12 +324,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service Cache Bypass Cache On Request Headers
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -342,19 +355,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
- *                 .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
+ *                 .cacheMode("CACHE_ALL_STATIC")
  *                 .defaultTtl(3600)
  *                 .clientTtl(7200)
  *                 .maxTtl(10800)
@@ -362,22 +375,24 @@ import javax.annotation.Nullable;
  *                 .signedUrlCacheMaxAgeSec(7200)
  *                 .bypassCacheOnRequestHeaders(                
  *                     BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs.builder()
- *                         .headerName(&#34;Authorization&#34;)
+ *                         .headerName("Authorization")
  *                         .build(),
  *                     BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs.builder()
- *                         .headerName(&#34;Proxy-Authorization&#34;)
+ *                         .headerName("Proxy-Authorization")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service Traffic Director Round Robin
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -401,28 +416,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck(&#34;healthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .healthChecks(healthCheck.id())
- *             .loadBalancingScheme(&#34;INTERNAL_SELF_MANAGED&#34;)
- *             .localityLbPolicy(&#34;ROUND_ROBIN&#34;)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .localityLbPolicy("ROUND_ROBIN")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service Traffic Director Ring Hash
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -451,19 +468,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var healthCheck = new HealthCheck(&#34;healthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .healthChecks(healthCheck.id())
- *             .loadBalancingScheme(&#34;INTERNAL_SELF_MANAGED&#34;)
- *             .localityLbPolicy(&#34;RING_HASH&#34;)
- *             .sessionAffinity(&#34;HTTP_COOKIE&#34;)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .localityLbPolicy("RING_HASH")
+ *             .sessionAffinity("HTTP_COOKIE")
  *             .circuitBreakers(BackendServiceCircuitBreakersArgs.builder()
  *                 .maxConnections(10)
  *                 .build())
@@ -473,7 +490,7 @@ import javax.annotation.Nullable;
  *                         .seconds(11)
  *                         .nanos(1111)
  *                         .build())
- *                     .name(&#34;mycookie&#34;)
+ *                     .name("mycookie")
  *                     .build())
  *                 .build())
  *             .outlierDetection(BackendServiceOutlierDetectionArgs.builder()
@@ -483,12 +500,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service Network Endpoint
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -514,25 +533,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var externalProxy = new GlobalNetworkEndpointGroup(&#34;externalProxy&#34;, GlobalNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;network-endpoint&#34;)
- *             .networkEndpointType(&#34;INTERNET_FQDN_PORT&#34;)
- *             .defaultPort(&#34;443&#34;)
+ *         var externalProxy = new GlobalNetworkEndpointGroup("externalProxy", GlobalNetworkEndpointGroupArgs.builder()        
+ *             .name("network-endpoint")
+ *             .networkEndpointType("INTERNET_FQDN_PORT")
+ *             .defaultPort("443")
  *             .build());
  * 
- *         var proxy = new GlobalNetworkEndpoint(&#34;proxy&#34;, GlobalNetworkEndpointArgs.builder()        
+ *         var proxy = new GlobalNetworkEndpoint("proxy", GlobalNetworkEndpointArgs.builder()        
  *             .globalNetworkEndpointGroup(externalProxy.id())
- *             .fqdn(&#34;test.example.com&#34;)
+ *             .fqdn("test.example.com")
  *             .port(externalProxy.defaultPort())
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .enableCdn(true)
  *             .timeoutSec(10)
  *             .connectionDrainingTimeoutSec(10)
- *             .customRequestHeaders(proxy.fqdn().applyValue(fqdn -&gt; String.format(&#34;host: %s&#34;, fqdn)))
- *             .customResponseHeaders(&#34;X-Cache-Hit: {cdn_cache_status}&#34;)
+ *             .customRequestHeaders(proxy.fqdn().applyValue(fqdn -> String.format("host: %s", fqdn)))
+ *             .customResponseHeaders("X-Cache-Hit: {cdn_cache_status}")
  *             .backends(BackendServiceBackendArgs.builder()
  *                 .group(externalProxy.id())
  *                 .build())
@@ -540,12 +559,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Service External Managed
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -569,22 +590,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("backend-service")
  *             .healthChecks(defaultHealthCheck.id())
- *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Logging Metric Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,30 +59,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new Metric(&#34;loggingMetric&#34;, MetricArgs.builder()        
- *             .name(&#34;my-(custom)/metric&#34;)
- *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
+ *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()        
+ *             .name("my-(custom)/metric")
+ *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
- *                 .metricKind(&#34;DELTA&#34;)
- *                 .valueType(&#34;DISTRIBUTION&#34;)
- *                 .unit(&#34;1&#34;)
+ *                 .metricKind("DELTA")
+ *                 .valueType("DISTRIBUTION")
+ *                 .unit("1")
  *                 .labels(                
  *                     MetricMetricDescriptorLabelArgs.builder()
- *                         .key(&#34;mass&#34;)
- *                         .valueType(&#34;STRING&#34;)
- *                         .description(&#34;amount of matter&#34;)
+ *                         .key("mass")
+ *                         .valueType("STRING")
+ *                         .description("amount of matter")
  *                         .build(),
  *                     MetricMetricDescriptorLabelArgs.builder()
- *                         .key(&#34;sku&#34;)
- *                         .valueType(&#34;INT64&#34;)
- *                         .description(&#34;Identifying number for item&#34;)
+ *                         .key("sku")
+ *                         .valueType("INT64")
+ *                         .description("Identifying number for item")
  *                         .build())
- *                 .displayName(&#34;My metric&#34;)
+ *                 .displayName("My metric")
  *                 .build())
- *             .valueExtractor(&#34;EXTRACT(jsonPayload.request)&#34;)
+ *             .valueExtractor("EXTRACT(jsonPayload.request)")
  *             .labelExtractors(Map.ofEntries(
- *                 Map.entry(&#34;mass&#34;, &#34;EXTRACT(jsonPayload.request)&#34;),
- *                 Map.entry(&#34;sku&#34;, &#34;EXTRACT(jsonPayload.id)&#34;)
+ *                 Map.entry("mass", "EXTRACT(jsonPayload.request)"),
+ *                 Map.entry("sku", "EXTRACT(jsonPayload.id)")
  *             ))
  *             .bucketOptions(MetricBucketOptionsArgs.builder()
  *                 .linearBuckets(MetricBucketOptionsLinearBucketsArgs.builder()
@@ -94,12 +95,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Logging Metric Counter Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -121,23 +124,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new Metric(&#34;loggingMetric&#34;, MetricArgs.builder()        
- *             .name(&#34;my-(custom)/metric&#34;)
- *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
+ *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()        
+ *             .name("my-(custom)/metric")
+ *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
- *                 .metricKind(&#34;DELTA&#34;)
- *                 .valueType(&#34;INT64&#34;)
+ *                 .metricKind("DELTA")
+ *                 .valueType("INT64")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Logging Metric Counter Labels
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -159,29 +164,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new Metric(&#34;loggingMetric&#34;, MetricArgs.builder()        
- *             .name(&#34;my-(custom)/metric&#34;)
- *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
+ *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()        
+ *             .name("my-(custom)/metric")
+ *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
- *                 .metricKind(&#34;DELTA&#34;)
- *                 .valueType(&#34;INT64&#34;)
+ *                 .metricKind("DELTA")
+ *                 .valueType("INT64")
  *                 .labels(MetricMetricDescriptorLabelArgs.builder()
- *                     .key(&#34;mass&#34;)
- *                     .valueType(&#34;STRING&#34;)
- *                     .description(&#34;amount of matter&#34;)
+ *                     .key("mass")
+ *                     .valueType("STRING")
+ *                     .description("amount of matter")
  *                     .build())
  *                 .build())
- *             .labelExtractors(Map.of(&#34;mass&#34;, &#34;EXTRACT(jsonPayload.request)&#34;))
+ *             .labelExtractors(Map.of("mass", "EXTRACT(jsonPayload.request)"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Logging Metric Logging Bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -204,26 +211,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new ProjectBucketConfig(&#34;loggingMetric&#34;, ProjectBucketConfigArgs.builder()        
- *             .location(&#34;global&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .bucketId(&#34;_Default&#34;)
+ *         var loggingMetric = new ProjectBucketConfig("loggingMetric", ProjectBucketConfigArgs.builder()        
+ *             .location("global")
+ *             .project("my-project-name")
+ *             .bucketId("_Default")
  *             .build());
  * 
- *         var loggingMetricMetric = new Metric(&#34;loggingMetricMetric&#34;, MetricArgs.builder()        
- *             .name(&#34;my-(custom)/metric&#34;)
- *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
+ *         var loggingMetricMetric = new Metric("loggingMetricMetric", MetricArgs.builder()        
+ *             .name("my-(custom)/metric")
+ *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .bucketName(loggingMetric.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Logging Metric Disabled
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -245,19 +254,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetric = new Metric(&#34;loggingMetric&#34;, MetricArgs.builder()        
- *             .name(&#34;my-(custom)/metric&#34;)
- *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
+ *         var loggingMetric = new Metric("loggingMetric", MetricArgs.builder()        
+ *             .name("my-(custom)/metric")
+ *             .filter("resource.type=gae_app AND severity>=ERROR")
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
- *                 .metricKind(&#34;DELTA&#34;)
- *                 .valueType(&#34;INT64&#34;)
+ *                 .metricKind("DELTA")
+ *                 .valueType("INT64")
  *                 .build())
  *             .disabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -49,7 +49,8 @@ import javax.annotation.Nullable;
  * ### Image Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,21 +72,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Image(&#34;example&#34;, ImageArgs.builder()        
- *             .name(&#34;example-image&#34;)
+ *         var example = new Image("example", ImageArgs.builder()        
+ *             .name("example-image")
  *             .rawDisk(ImageRawDiskArgs.builder()
- *                 .source(&#34;https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz&#34;)
+ *                 .source("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Image Guest Os
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -108,28 +111,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Image(&#34;example&#34;, ImageArgs.builder()        
- *             .name(&#34;example-image&#34;)
+ *         var example = new Image("example", ImageArgs.builder()        
+ *             .name("example-image")
  *             .rawDisk(ImageRawDiskArgs.builder()
- *                 .source(&#34;https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz&#34;)
+ *                 .source("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz")
  *                 .build())
  *             .guestOsFeatures(            
  *                 ImageGuestOsFeatureArgs.builder()
- *                     .type(&#34;SECURE_BOOT&#34;)
+ *                     .type("SECURE_BOOT")
  *                     .build(),
  *                 ImageGuestOsFeatureArgs.builder()
- *                     .type(&#34;MULTI_IP_SUBNET&#34;)
+ *                     .type("MULTI_IP_SUBNET")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Image Basic Storage Location
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -151,17 +156,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Image(&#34;example&#34;, ImageArgs.builder()        
- *             .name(&#34;example-sl-image&#34;)
+ *         var example = new Image("example", ImageArgs.builder()        
+ *             .name("example-sl-image")
  *             .rawDisk(ImageRawDiskArgs.builder()
- *                 .source(&#34;https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz&#34;)
+ *                 .source("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz")
  *                 .build())
- *             .storageLocations(&#34;us-central1&#34;)
+ *             .storageLocations("us-central1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

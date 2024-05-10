@@ -37,7 +37,7 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A user managed service account that will be used to write
-     * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+     * the log entries. The format must be `serviceAccount:some{@literal @}email`. This field can only be specified if you are
      * routing logs to a destination outside this sink&#39;s project. If not specified, a Logging service account
      * will automatically be generated.
      * 
@@ -47,7 +47,7 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A user managed service account that will be used to write
-     * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+     * the log entries. The format must be `serviceAccount:some{@literal @}email`. This field can only be specified if you are
      * routing logs to a destination outside this sink&#39;s project. If not specified, a Logging service account
      * will automatically be generated.
      * 
@@ -184,7 +184,7 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
+     * Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
      * `bigquery_options`, you must set `unique_writer_identity` to true.
      * 
@@ -193,7 +193,7 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> uniqueWriterIdentity;
 
     /**
-     * @return Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
+     * @return Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
      * `bigquery_options`, you must set `unique_writer_identity` to true.
      * 
@@ -258,7 +258,7 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param customWriterIdentity A user managed service account that will be used to write
-         * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+         * the log entries. The format must be `serviceAccount:some{@literal @}email`. This field can only be specified if you are
          * routing logs to a destination outside this sink&#39;s project. If not specified, a Logging service account
          * will automatically be generated.
          * 
@@ -272,7 +272,7 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param customWriterIdentity A user managed service account that will be used to write
-         * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+         * the log entries. The format must be `serviceAccount:some{@literal @}email`. This field can only be specified if you are
          * routing logs to a destination outside this sink&#39;s project. If not specified, a Logging service account
          * will automatically be generated.
          * 
@@ -463,7 +463,7 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
+         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
          * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
          * `bigquery_options`, you must set `unique_writer_identity` to true.
          * 
@@ -476,7 +476,7 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
+         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
          * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
          * `bigquery_options`, you must set `unique_writer_identity` to true.
          * 

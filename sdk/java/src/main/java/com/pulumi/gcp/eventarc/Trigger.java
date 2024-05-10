@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * 
  * ### Basic
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,16 +60,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;eventarc-service&#34;)
- *             .location(&#34;europe-west1&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("eventarc-service")
+ *             .location("europe-west1")
  *             .metadata(ServiceMetadataArgs.builder()
- *                 .namespace(&#34;my-project-name&#34;)
+ *                 .namespace("my-project-name")
  *                 .build())
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
  *                     .containers(ServiceTemplateSpecContainerArgs.builder()
- *                         .image(&#34;gcr.io/cloudrun/hello&#34;)
+ *                         .image("gcr.io/cloudrun/hello")
  *                         .ports(ServiceTemplateSpecContainerPortArgs.builder()
  *                             .containerPort(8080)
  *                             .build())
@@ -83,29 +84,30 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var primary = new Trigger(&#34;primary&#34;, TriggerArgs.builder()        
- *             .name(&#34;name&#34;)
- *             .location(&#34;europe-west1&#34;)
+ *         var primary = new Trigger("primary", TriggerArgs.builder()        
+ *             .name("name")
+ *             .location("europe-west1")
  *             .matchingCriterias(TriggerMatchingCriteriaArgs.builder()
- *                 .attribute(&#34;type&#34;)
- *                 .value(&#34;google.cloud.pubsub.topic.v1.messagePublished&#34;)
+ *                 .attribute("type")
+ *                 .value("google.cloud.pubsub.topic.v1.messagePublished")
  *                 .build())
  *             .destination(TriggerDestinationArgs.builder()
  *                 .cloudRunService(TriggerDestinationCloudRunServiceArgs.builder()
  *                     .service(default_.name())
- *                     .region(&#34;europe-west1&#34;)
+ *                     .region("europe-west1")
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var foo = new Topic(&#34;foo&#34;, TopicArgs.builder()        
- *             .name(&#34;topic&#34;)
+ *         var foo = new Topic("foo", TopicArgs.builder()        
+ *             .name("topic")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

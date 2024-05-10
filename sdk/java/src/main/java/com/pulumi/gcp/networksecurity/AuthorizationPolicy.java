@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Network Security Authorization Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,27 +46,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AuthorizationPolicy(&#34;default&#34;, AuthorizationPolicyArgs.builder()        
- *             .name(&#34;my-authorization-policy&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .action(&#34;ALLOW&#34;)
+ *         var default_ = new AuthorizationPolicy("default", AuthorizationPolicyArgs.builder()        
+ *             .name("my-authorization-policy")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .action("ALLOW")
  *             .rules(AuthorizationPolicyRuleArgs.builder()
  *                 .sources(AuthorizationPolicyRuleSourceArgs.builder()
- *                     .principals(&#34;namespace/*&#34;)
- *                     .ipBlocks(&#34;1.2.3.0/24&#34;)
+ *                     .principals("namespace/*")
+ *                     .ipBlocks("1.2.3.0/24")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Authorization Policy Destinations
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -87,23 +90,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AuthorizationPolicy(&#34;default&#34;, AuthorizationPolicyArgs.builder()        
- *             .name(&#34;my-authorization-policy&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .action(&#34;ALLOW&#34;)
+ *         var default_ = new AuthorizationPolicy("default", AuthorizationPolicyArgs.builder()        
+ *             .name("my-authorization-policy")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .action("ALLOW")
  *             .rules(AuthorizationPolicyRuleArgs.builder()
  *                 .sources(AuthorizationPolicyRuleSourceArgs.builder()
- *                     .principals(&#34;namespace/*&#34;)
- *                     .ipBlocks(&#34;1.2.3.0/24&#34;)
+ *                     .principals("namespace/*")
+ *                     .ipBlocks("1.2.3.0/24")
  *                     .build())
  *                 .destinations(AuthorizationPolicyRuleDestinationArgs.builder()
- *                     .hosts(&#34;mydomain.*&#34;)
+ *                     .hosts("mydomain.*")
  *                     .ports(8080)
- *                     .methods(&#34;GET&#34;)
+ *                     .methods("GET")
  *                     .httpHeaderMatch(AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs.builder()
- *                         .headerName(&#34;:method&#34;)
- *                         .regexMatch(&#34;GET&#34;)
+ *                         .headerName(":method")
+ *                         .regexMatch("GET")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -111,7 +114,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

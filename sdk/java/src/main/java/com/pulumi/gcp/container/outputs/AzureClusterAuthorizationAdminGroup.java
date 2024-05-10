@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class AzureClusterAuthorizationAdminGroup {
     /**
-     * @return The name of the group, e.g. `my-group@domain.com`.
+     * @return The name of the group, e.g. `my-group{@literal @}domain.com`.
      * 
      */
     private String group;
 
     private AzureClusterAuthorizationAdminGroup() {}
     /**
-     * @return The name of the group, e.g. `my-group@domain.com`.
+     * @return The name of the group, e.g. `my-group{@literal @}domain.com`.
      * 
      */
     public String group() {

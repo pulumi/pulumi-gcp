@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,31 +53,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;foobar&#34;)
- *             .autoCreateSubnetworks(&#34;false&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("foobar")
+ *             .autoCreateSubnetworks("false")
  *             .build());
  * 
- *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
- *             .name(&#34;other&#34;)
- *             .autoCreateSubnetworks(&#34;false&#34;)
+ *         var other = new Network("other", NetworkArgs.builder()        
+ *             .name("other")
+ *             .autoCreateSubnetworks("false")
  *             .build());
  * 
- *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
- *             .name(&#34;peering1&#34;)
+ *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+ *             .name("peering1")
  *             .network(default_.selfLink())
  *             .peerNetwork(other.selfLink())
  *             .build());
  * 
- *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
- *             .name(&#34;peering2&#34;)
+ *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+ *             .name("peering2")
  *             .network(other.selfLink())
  *             .peerNetwork(default_.selfLink())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

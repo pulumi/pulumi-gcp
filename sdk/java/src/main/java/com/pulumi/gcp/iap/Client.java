@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Iap Client
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,31 +60,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
- *             .name(&#34;my-project&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("my-project")
+ *             .name("my-project")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var projectService = new Service(&#34;projectService&#34;, ServiceArgs.builder()        
+ *         var projectService = new Service("projectService", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;iap.googleapis.com&#34;)
+ *             .service("iap.googleapis.com")
  *             .build());
  * 
- *         var projectBrand = new Brand(&#34;projectBrand&#34;, BrandArgs.builder()        
- *             .supportEmail(&#34;support@example.com&#34;)
- *             .applicationTitle(&#34;Cloud IAP protected Application&#34;)
+ *         var projectBrand = new Brand("projectBrand", BrandArgs.builder()        
+ *             .supportEmail("support{@literal @}example.com")
+ *             .applicationTitle("Cloud IAP protected Application")
  *             .project(projectService.project())
  *             .build());
  * 
- *         var projectClient = new Client(&#34;projectClient&#34;, ClientArgs.builder()        
- *             .displayName(&#34;Test Client&#34;)
+ *         var projectClient = new Client("projectClient", ClientArgs.builder()        
+ *             .displayName("Test Client")
  *             .brand(projectBrand.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

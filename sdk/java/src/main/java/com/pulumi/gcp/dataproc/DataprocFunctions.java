@@ -35,7 +35,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -64,7 +65,8 @@ public final class DataprocFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -77,7 +79,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -106,7 +109,8 @@ public final class DataprocFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -119,7 +123,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -148,7 +153,8 @@ public final class DataprocFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -161,7 +167,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -190,7 +197,8 @@ public final class DataprocFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -203,7 +211,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -226,12 +235,13 @@ public final class DataprocFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
      *             .cluster(cluster.name())
-     *             .region(&#34;us-central1&#34;)
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -244,7 +254,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -267,12 +278,13 @@ public final class DataprocFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
      *             .cluster(cluster.name())
-     *             .region(&#34;us-central1&#34;)
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -285,7 +297,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -308,12 +321,13 @@ public final class DataprocFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
      *             .cluster(cluster.name())
-     *             .region(&#34;us-central1&#34;)
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -326,7 +340,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -349,12 +364,13 @@ public final class DataprocFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
      *             .cluster(cluster.name())
-     *             .region(&#34;us-central1&#34;)
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -367,7 +383,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -390,12 +407,13 @@ public final class DataprocFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
      *             .jobId(pyspark.reference()[0].jobId())
-     *             .region(&#34;us-central1&#34;)
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -408,7 +426,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -431,12 +450,13 @@ public final class DataprocFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
      *             .jobId(pyspark.reference()[0].jobId())
-     *             .region(&#34;us-central1&#34;)
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -449,7 +469,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -472,12 +493,13 @@ public final class DataprocFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
      *             .jobId(pyspark.reference()[0].jobId())
-     *             .region(&#34;us-central1&#34;)
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -490,7 +512,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -513,12 +536,13 @@ public final class DataprocFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
      *             .jobId(pyspark.reference()[0].jobId())
-     *             .region(&#34;us-central1&#34;)
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -579,7 +603,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -608,7 +633,8 @@ public final class DataprocFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -621,7 +647,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -650,7 +677,8 @@ public final class DataprocFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -663,7 +691,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -692,7 +721,8 @@ public final class DataprocFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -705,7 +735,8 @@ public final class DataprocFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -734,7 +765,8 @@ public final class DataprocFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

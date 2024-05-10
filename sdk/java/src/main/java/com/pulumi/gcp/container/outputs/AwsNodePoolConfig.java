@@ -83,7 +83,7 @@ public final class AwsNodePoolConfig {
      */
     private @Nullable AwsNodePoolConfigSshConfig sshConfig;
     /**
-     * @return Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+     * @return Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -179,7 +179,7 @@ public final class AwsNodePoolConfig {
         return Optional.ofNullable(this.sshConfig);
     }
     /**
-     * @return Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+     * @return Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
     public Map<String,String> tags() {

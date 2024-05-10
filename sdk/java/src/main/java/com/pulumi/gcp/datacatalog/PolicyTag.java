@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Data Catalog Taxonomies Policy Tag Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,26 +53,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myTaxonomy = new Taxonomy(&#34;myTaxonomy&#34;, TaxonomyArgs.builder()        
- *             .displayName(&#34;taxonomy_display_name&#34;)
- *             .description(&#34;A collection of policy tags&#34;)
- *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
+ *         var myTaxonomy = new Taxonomy("myTaxonomy", TaxonomyArgs.builder()        
+ *             .displayName("taxonomy_display_name")
+ *             .description("A collection of policy tags")
+ *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")
  *             .build());
  * 
- *         var basicPolicyTag = new PolicyTag(&#34;basicPolicyTag&#34;, PolicyTagArgs.builder()        
+ *         var basicPolicyTag = new PolicyTag("basicPolicyTag", PolicyTagArgs.builder()        
  *             .taxonomy(myTaxonomy.id())
- *             .displayName(&#34;Low security&#34;)
- *             .description(&#34;A policy tag normally associated with low security items&#34;)
+ *             .displayName("Low security")
+ *             .description("A policy tag normally associated with low security items")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Catalog Taxonomies Policy Tag Child Policies
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,35 +97,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myTaxonomy = new Taxonomy(&#34;myTaxonomy&#34;, TaxonomyArgs.builder()        
- *             .displayName(&#34;taxonomy_display_name&#34;)
- *             .description(&#34;A collection of policy tags&#34;)
- *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
+ *         var myTaxonomy = new Taxonomy("myTaxonomy", TaxonomyArgs.builder()        
+ *             .displayName("taxonomy_display_name")
+ *             .description("A collection of policy tags")
+ *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")
  *             .build());
  * 
- *         var parentPolicy = new PolicyTag(&#34;parentPolicy&#34;, PolicyTagArgs.builder()        
+ *         var parentPolicy = new PolicyTag("parentPolicy", PolicyTagArgs.builder()        
  *             .taxonomy(myTaxonomy.id())
- *             .displayName(&#34;High&#34;)
- *             .description(&#34;A policy tag category used for high security access&#34;)
+ *             .displayName("High")
+ *             .description("A policy tag category used for high security access")
  *             .build());
  * 
- *         var childPolicy = new PolicyTag(&#34;childPolicy&#34;, PolicyTagArgs.builder()        
+ *         var childPolicy = new PolicyTag("childPolicy", PolicyTagArgs.builder()        
  *             .taxonomy(myTaxonomy.id())
- *             .displayName(&#34;ssn&#34;)
- *             .description(&#34;A hash of the users ssn&#34;)
+ *             .displayName("ssn")
+ *             .description("A hash of the users ssn")
  *             .parentPolicyTag(parentPolicy.id())
  *             .build());
  * 
- *         var childPolicy2 = new PolicyTag(&#34;childPolicy2&#34;, PolicyTagArgs.builder()        
+ *         var childPolicy2 = new PolicyTag("childPolicy2", PolicyTagArgs.builder()        
  *             .taxonomy(myTaxonomy.id())
- *             .displayName(&#34;dob&#34;)
- *             .description(&#34;The users date of birth&#34;)
+ *             .displayName("dob")
+ *             .description("The users date of birth")
  *             .parentPolicyTag(parentPolicy.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

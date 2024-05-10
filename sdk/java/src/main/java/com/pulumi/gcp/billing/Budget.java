@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ### Billing Budget Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,16 +67,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
- *             .displayName(&#34;Example Billing Budget&#34;)
+ *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .displayName("Example Billing Budget")
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
- *                     .currencyCode(&#34;USD&#34;)
- *                     .units(&#34;100000&#34;)
+ *                     .currencyCode("USD")
+ *                     .units("100000")
  *                     .build())
  *                 .build())
  *             .thresholdRules(BudgetThresholdRuleArgs.builder()
@@ -85,12 +86,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Billing Budget Lastperiod
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -118,16 +121,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
- *             .displayName(&#34;Example Billing Budget&#34;)
+ *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .lastPeriodAmount(true)
@@ -139,12 +142,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Billing Budget Filter
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -173,27 +178,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
- *             .displayName(&#34;Example Billing Budget&#34;)
+ *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *                 .creditTypesTreatment(&#34;INCLUDE_SPECIFIED_CREDITS&#34;)
- *                 .services(&#34;services/24E6-581D-38E5&#34;)
+ *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .creditTypesTreatment("INCLUDE_SPECIFIED_CREDITS")
+ *                 .services("services/24E6-581D-38E5")
  *                 .creditTypes(                
- *                     &#34;PROMOTION&#34;,
- *                     &#34;FREE_TIER&#34;)
- *                 .resourceAncestors(&#34;organizations/123456789&#34;)
+ *                     "PROMOTION",
+ *                     "FREE_TIER")
+ *                 .resourceAncestors("organizations/123456789")
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
- *                     .currencyCode(&#34;USD&#34;)
- *                     .units(&#34;100000&#34;)
+ *                     .currencyCode("USD")
+ *                     .units("100000")
  *                     .build())
  *                 .build())
  *             .thresholdRules(            
@@ -202,18 +207,20 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 BudgetThresholdRuleArgs.builder()
  *                     .thresholdPercent(0.9)
- *                     .spendBasis(&#34;FORECASTED_SPEND&#34;)
+ *                     .spendBasis("FORECASTED_SPEND")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Billing Budget Notify
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -245,27 +252,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var notificationChannel = new NotificationChannel(&#34;notificationChannel&#34;, NotificationChannelArgs.builder()        
- *             .displayName(&#34;Example Notification Channel&#34;)
- *             .type(&#34;email&#34;)
- *             .labels(Map.of(&#34;email_address&#34;, &#34;address@example.com&#34;))
+ *         var notificationChannel = new NotificationChannel("notificationChannel", NotificationChannelArgs.builder()        
+ *             .displayName("Example Notification Channel")
+ *             .type("email")
+ *             .labels(Map.of("email_address", "address{@literal @}example.com"))
  *             .build());
  * 
- *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
- *             .displayName(&#34;Example Billing Budget&#34;)
+ *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
- *                     .currencyCode(&#34;USD&#34;)
- *                     .units(&#34;100000&#34;)
+ *                     .currencyCode("USD")
+ *                     .units("100000")
  *                     .build())
  *                 .build())
  *             .thresholdRules(            
@@ -274,7 +281,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 BudgetThresholdRuleArgs.builder()
  *                     .thresholdPercent(1)
- *                     .spendBasis(&#34;FORECASTED_SPEND&#34;)
+ *                     .spendBasis("FORECASTED_SPEND")
  *                     .build())
  *             .allUpdatesRule(BudgetAllUpdatesRuleArgs.builder()
  *                 .monitoringNotificationChannels(notificationChannel.id())
@@ -284,12 +291,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Billing Budget Customperiod
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -321,18 +330,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
- *             .displayName(&#34;Example Billing Budget&#34;)
+ *         var budget = new Budget("budget", BudgetArgs.builder()        
+ *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *                 .creditTypesTreatment(&#34;EXCLUDE_ALL_CREDITS&#34;)
- *                 .services(&#34;services/24E6-581D-38E5&#34;)
+ *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .creditTypesTreatment("EXCLUDE_ALL_CREDITS")
+ *                 .services("services/24E6-581D-38E5")
  *                 .customPeriod(BudgetBudgetFilterCustomPeriodArgs.builder()
  *                     .startDate(BudgetBudgetFilterCustomPeriodStartDateArgs.builder()
  *                         .year(2022)
@@ -348,8 +357,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
- *                     .currencyCode(&#34;USD&#34;)
- *                     .units(&#34;100000&#34;)
+ *                     .currencyCode("USD")
+ *                     .units("100000")
  *                     .build())
  *                 .build())
  *             .thresholdRules(            
@@ -363,7 +372,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

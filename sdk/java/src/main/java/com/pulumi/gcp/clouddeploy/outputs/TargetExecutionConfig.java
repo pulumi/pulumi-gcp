@@ -24,7 +24,7 @@ public final class TargetExecutionConfig {
      */
     private @Nullable String executionTimeout;
     /**
-     * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+     * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute{@literal @}developer.gserviceaccount.com) is used.
      * 
      */
     private @Nullable String serviceAccount;
@@ -55,7 +55,7 @@ public final class TargetExecutionConfig {
         return Optional.ofNullable(this.executionTimeout);
     }
     /**
-     * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+     * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute{@literal @}developer.gserviceaccount.com) is used.
      * 
      */
     public Optional<String> serviceAccount() {

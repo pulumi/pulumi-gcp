@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Example creating an ACL on a bucket with one owner, and one reader.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,21 +56,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var image_store = new Bucket(&#34;image-store&#34;, BucketArgs.builder()        
- *             .name(&#34;image-store-bucket&#34;)
- *             .location(&#34;EU&#34;)
+ *         var image_store = new Bucket("image-store", BucketArgs.builder()        
+ *             .name("image-store-bucket")
+ *             .location("EU")
  *             .build());
  * 
- *         var image_store_acl = new BucketACL(&#34;image-store-acl&#34;, BucketACLArgs.builder()        
+ *         var image_store_acl = new BucketACL("image-store-acl", BucketACLArgs.builder()        
  *             .bucket(image_store.name())
  *             .roleEntities(            
- *                 &#34;OWNER:user-my.email@gmail.com&#34;,
- *                 &#34;READER:group-mygroup&#34;)
+ *                 "OWNER:user-my.email{@literal @}gmail.com",
+ *                 "READER:group-mygroup")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

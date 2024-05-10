@@ -44,7 +44,8 @@ import javax.annotation.Nullable;
  * ### Snapshot Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -70,34 +71,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var persistent = new Disk(&#34;persistent&#34;, DiskArgs.builder()        
- *             .name(&#34;debian-disk&#34;)
- *             .image(debian.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *         var persistent = new Disk("persistent", DiskArgs.builder()        
+ *             .name("debian-disk")
+ *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
  *             .size(10)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
  *             .build());
  * 
- *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
- *             .name(&#34;my-snapshot&#34;)
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()        
+ *             .name("my-snapshot")
  *             .sourceDisk(persistent.id())
- *             .zone(&#34;us-central1-a&#34;)
- *             .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
- *             .storageLocations(&#34;us-central1&#34;)
+ *             .zone("us-central1-a")
+ *             .labels(Map.of("my_label", "value"))
+ *             .storageLocations("us-central1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Snapshot Chainname
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -123,30 +126,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var persistent = new Disk(&#34;persistent&#34;, DiskArgs.builder()        
- *             .name(&#34;debian-disk&#34;)
- *             .image(debian.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *         var persistent = new Disk("persistent", DiskArgs.builder()        
+ *             .name("debian-disk")
+ *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
  *             .size(10)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
  *             .build());
  * 
- *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
- *             .name(&#34;my-snapshot&#34;)
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()        
+ *             .name("my-snapshot")
  *             .sourceDisk(persistent.id())
- *             .zone(&#34;us-central1-a&#34;)
- *             .chainName(&#34;snapshot-chain&#34;)
- *             .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
- *             .storageLocations(&#34;us-central1&#34;)
+ *             .zone("us-central1-a")
+ *             .chainName("snapshot-chain")
+ *             .labels(Map.of("my_label", "value"))
+ *             .storageLocations("us-central1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

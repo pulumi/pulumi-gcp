@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Multi_target
  * tests creating and updating a multi-target
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,42 +55,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Target(&#34;primary&#34;, TargetArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;target&#34;)
+ *         var primary = new Target("primary", TargetArgs.builder()        
+ *             .location("us-west1")
+ *             .name("target")
  *             .deployParameters()
- *             .description(&#34;multi-target description&#34;)
+ *             .description("multi-target description")
  *             .executionConfigs(TargetExecutionConfigArgs.builder()
  *                 .usages(                
- *                     &#34;RENDER&#34;,
- *                     &#34;DEPLOY&#34;)
- *                 .executionTimeout(&#34;3600s&#34;)
+ *                     "RENDER",
+ *                     "DEPLOY")
+ *                 .executionTimeout("3600s")
  *                 .build())
  *             .multiTarget(TargetMultiTargetArgs.builder()
  *                 .targetIds(                
- *                     &#34;1&#34;,
- *                     &#34;2&#34;)
+ *                     "1",
+ *                     "2")
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .requireApproval(false)
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Run_target
  * tests creating and updating a cloud run target
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -112,40 +115,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Target(&#34;primary&#34;, TargetArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;target&#34;)
+ *         var primary = new Target("primary", TargetArgs.builder()        
+ *             .location("us-west1")
+ *             .name("target")
  *             .deployParameters()
- *             .description(&#34;basic description&#34;)
+ *             .description("basic description")
  *             .executionConfigs(TargetExecutionConfigArgs.builder()
  *                 .usages(                
- *                     &#34;RENDER&#34;,
- *                     &#34;DEPLOY&#34;)
- *                 .executionTimeout(&#34;3600s&#34;)
+ *                     "RENDER",
+ *                     "DEPLOY")
+ *                 .executionTimeout("3600s")
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .requireApproval(false)
  *             .run(TargetRunArgs.builder()
- *                 .location(&#34;projects/my-project-name/locations/us-west1&#34;)
+ *                 .location("projects/my-project-name/locations/us-west1")
  *                 .build())
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Target
  * Creates a basic Cloud Deploy target
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -167,29 +172,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Target(&#34;primary&#34;, TargetArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;target&#34;)
- *             .deployParameters(Map.of(&#34;deployParameterKey&#34;, &#34;deployParameterValue&#34;))
- *             .description(&#34;basic description&#34;)
+ *         var primary = new Target("primary", TargetArgs.builder()        
+ *             .location("us-west1")
+ *             .name("target")
+ *             .deployParameters(Map.of("deployParameterKey", "deployParameterValue"))
+ *             .description("basic description")
  *             .gke(TargetGkeArgs.builder()
- *                 .cluster(&#34;projects/my-project-name/locations/us-west1/clusters/example-cluster-name&#34;)
+ *                 .cluster("projects/my-project-name/locations/us-west1/clusters/example-cluster-name")
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .requireApproval(false)
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *                 Map.entry("my_first_annotation", "example-annotation-1"),
+ *                 Map.entry("my_second_annotation", "example-annotation-2")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *                 Map.entry("my_first_label", "example-label-1"),
+ *                 Map.entry("my_second_label", "example-label-2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

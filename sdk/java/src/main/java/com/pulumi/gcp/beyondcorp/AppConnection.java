@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Beyondcorp App Connection Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,13 +63,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var appConnector = new AppConnector(&#34;appConnector&#34;, AppConnectorArgs.builder()        
- *             .name(&#34;my-app-connector&#34;)
+ *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()        
+ *             .name("my-app-connector")
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
  *                     .email(serviceAccount.email())
@@ -76,11 +77,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var appConnection = new AppConnection(&#34;appConnection&#34;, AppConnectionArgs.builder()        
- *             .name(&#34;my-app-connection&#34;)
- *             .type(&#34;TCP_PROXY&#34;)
+ *         var appConnection = new AppConnection("appConnection", AppConnectionArgs.builder()        
+ *             .name("my-app-connection")
+ *             .type("TCP_PROXY")
  *             .applicationEndpoint(AppConnectionApplicationEndpointArgs.builder()
- *                 .host(&#34;foo-host&#34;)
+ *                 .host("foo-host")
  *                 .port(8080)
  *                 .build())
  *             .connectors(appConnector.id())
@@ -88,12 +89,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Beyondcorp App Connection Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -124,19 +127,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var appGateway = new AppGateway(&#34;appGateway&#34;, AppGatewayArgs.builder()        
- *             .name(&#34;my-app-gateway&#34;)
- *             .type(&#34;TCP_PROXY&#34;)
- *             .hostType(&#34;GCP_REGIONAL_MIG&#34;)
+ *         var appGateway = new AppGateway("appGateway", AppGatewayArgs.builder()        
+ *             .name("my-app-gateway")
+ *             .type("TCP_PROXY")
+ *             .hostType("GCP_REGIONAL_MIG")
  *             .build());
  * 
- *         var appConnector = new AppConnector(&#34;appConnector&#34;, AppConnectorArgs.builder()        
- *             .name(&#34;my-app-connector&#34;)
+ *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()        
+ *             .name("my-app-connector")
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
  *                     .email(serviceAccount.email())
@@ -144,12 +147,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var appConnection = new AppConnection(&#34;appConnection&#34;, AppConnectionArgs.builder()        
- *             .name(&#34;my-app-connection&#34;)
- *             .type(&#34;TCP_PROXY&#34;)
- *             .displayName(&#34;some display name&#34;)
+ *         var appConnection = new AppConnection("appConnection", AppConnectionArgs.builder()        
+ *             .name("my-app-connection")
+ *             .type("TCP_PROXY")
+ *             .displayName("some display name")
  *             .applicationEndpoint(AppConnectionApplicationEndpointArgs.builder()
- *                 .host(&#34;foo-host&#34;)
+ *                 .host("foo-host")
  *                 .port(8080)
  *                 .build())
  *             .connectors(appConnector.id())
@@ -157,14 +160,15 @@ import javax.annotation.Nullable;
  *                 .appGateway(appGateway.id())
  *                 .build())
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                 Map.entry(&#34;bar&#34;, &#34;baz&#34;)
+ *                 Map.entry("foo", "bar"),
+ *                 Map.entry("bar", "baz")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

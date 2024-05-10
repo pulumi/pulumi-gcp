@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Network Management Connectivity Test Instances
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,63 +67,65 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .name(&#34;conn-test-net&#34;)
+ *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *             .name("conn-test-net")
  *             .build());
  * 
  *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var source = new Instance(&#34;source&#34;, InstanceArgs.builder()        
+ *         var source = new Instance("source", InstanceArgs.builder()        
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(vpc.id())
  *                 .build())
- *             .name(&#34;source-vm&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *             .name("source-vm")
+ *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
+ *                     .image(debian9.applyValue(getImageResult -> getImageResult.id()))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var destination = new Instance(&#34;destination&#34;, InstanceArgs.builder()        
+ *         var destination = new Instance("destination", InstanceArgs.builder()        
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(vpc.id())
  *                 .build())
- *             .name(&#34;dest-vm&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *             .name("dest-vm")
+ *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
+ *                     .image(debian9.applyValue(getImageResult -> getImageResult.id()))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var instance_test = new ConnectivityTest(&#34;instance-test&#34;, ConnectivityTestArgs.builder()        
- *             .name(&#34;conn-test-instances&#34;)
+ *         var instance_test = new ConnectivityTest("instance-test", ConnectivityTestArgs.builder()        
+ *             .name("conn-test-instances")
  *             .source(ConnectivityTestSourceArgs.builder()
  *                 .instance(source.id())
  *                 .build())
  *             .destination(ConnectivityTestDestinationArgs.builder()
  *                 .instance(destination.id())
  *                 .build())
- *             .protocol(&#34;TCP&#34;)
- *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *             .protocol("TCP")
+ *             .labels(Map.of("env", "test"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Management Connectivity Test Addresses
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -151,52 +154,53 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .name(&#34;connectivity-vpc&#34;)
+ *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *             .name("connectivity-vpc")
  *             .build());
  * 
- *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;connectivity-vpc-subnet&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *             .name("connectivity-vpc-subnet")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
  *             .network(vpc.id())
  *             .build());
  * 
- *         var source_addr = new Address(&#34;source-addr&#34;, AddressArgs.builder()        
- *             .name(&#34;src-addr&#34;)
+ *         var source_addr = new Address("source-addr", AddressArgs.builder()        
+ *             .name("src-addr")
  *             .subnetwork(subnet.id())
- *             .addressType(&#34;INTERNAL&#34;)
- *             .address(&#34;10.0.42.42&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .addressType("INTERNAL")
+ *             .address("10.0.42.42")
+ *             .region("us-central1")
  *             .build());
  * 
- *         var dest_addr = new Address(&#34;dest-addr&#34;, AddressArgs.builder()        
- *             .name(&#34;dest-addr&#34;)
+ *         var dest_addr = new Address("dest-addr", AddressArgs.builder()        
+ *             .name("dest-addr")
  *             .subnetwork(subnet.id())
- *             .addressType(&#34;INTERNAL&#34;)
- *             .address(&#34;10.0.43.43&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .addressType("INTERNAL")
+ *             .address("10.0.43.43")
+ *             .region("us-central1")
  *             .build());
  * 
- *         var address_test = new ConnectivityTest(&#34;address-test&#34;, ConnectivityTestArgs.builder()        
- *             .name(&#34;conn-test-addr&#34;)
+ *         var address_test = new ConnectivityTest("address-test", ConnectivityTestArgs.builder()        
+ *             .name("conn-test-addr")
  *             .source(ConnectivityTestSourceArgs.builder()
  *                 .ipAddress(source_addr.address())
  *                 .projectId(source_addr.project())
  *                 .network(vpc.id())
- *                 .networkType(&#34;GCP_NETWORK&#34;)
+ *                 .networkType("GCP_NETWORK")
  *                 .build())
  *             .destination(ConnectivityTestDestinationArgs.builder()
  *                 .ipAddress(dest_addr.address())
  *                 .projectId(dest_addr.project())
  *                 .network(vpc.id())
  *                 .build())
- *             .protocol(&#34;UDP&#34;)
+ *             .protocol("UDP")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

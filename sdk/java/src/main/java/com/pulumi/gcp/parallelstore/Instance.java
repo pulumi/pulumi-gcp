@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Parallelstore Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,40 +50,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("network")
  *             .autoCreateSubnetworks(true)
  *             .mtu(8896)
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .instanceId(&#34;instance&#34;)
- *             .location(&#34;us-central1-a&#34;)
- *             .description(&#34;test instance&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .instanceId("instance")
+ *             .location("us-central1-a")
+ *             .description("test instance")
  *             .capacityGib(12000)
  *             .network(network.name())
- *             .labels(Map.of(&#34;test&#34;, &#34;value&#34;))
+ *             .labels(Map.of("test", "value"))
  *             .build());
  * 
  *         // Create an IP address
- *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;address&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *             .name("address")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(24)
  *             .network(network.id())
  *             .build());
  * 
  *         // Create a private connection
- *         var default_ = new Connection(&#34;default&#34;, ConnectionArgs.builder()        
+ *         var default_ = new Connection("default", ConnectionArgs.builder()        
  *             .network(network.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

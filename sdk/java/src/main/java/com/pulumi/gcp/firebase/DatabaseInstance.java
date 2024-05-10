@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ### Firebase Database Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,20 +42,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new DatabaseInstance(&#34;basic&#34;, DatabaseInstanceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .instanceId(&#34;active-db&#34;)
+ *         var basic = new DatabaseInstance("basic", DatabaseInstanceArgs.builder()        
+ *             .project("my-project-name")
+ *             .region("us-central1")
+ *             .instanceId("active-db")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebase Database Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -75,22 +78,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var full = new DatabaseInstance(&#34;full&#34;, DatabaseInstanceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .region(&#34;europe-west1&#34;)
- *             .instanceId(&#34;disabled-db&#34;)
- *             .type(&#34;USER_DATABASE&#34;)
- *             .desiredState(&#34;DISABLED&#34;)
+ *         var full = new DatabaseInstance("full", DatabaseInstanceArgs.builder()        
+ *             .project("my-project-name")
+ *             .region("europe-west1")
+ *             .instanceId("disabled-db")
+ *             .type("USER_DATABASE")
+ *             .desiredState("DISABLED")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebase Database Instance Default Database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -117,32 +122,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;rtdb-project&#34;)
- *             .name(&#34;rtdb-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .labels(Map.of(&#34;firebase&#34;, &#34;enabled&#34;))
+ *         var default_ = new Project("default", ProjectArgs.builder()        
+ *             .projectId("rtdb-project")
+ *             .name("rtdb-project")
+ *             .orgId("123456789")
+ *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
  *             .project(default_.projectId())
  *             .build());
  * 
- *         var firebaseDatabase = new Service(&#34;firebaseDatabase&#34;, ServiceArgs.builder()        
+ *         var firebaseDatabase = new Service("firebaseDatabase", ServiceArgs.builder()        
  *             .project(defaultProject.project())
- *             .service(&#34;firebasedatabase.googleapis.com&#34;)
+ *             .service("firebasedatabase.googleapis.com")
  *             .build());
  * 
- *         var defaultDatabaseInstance = new DatabaseInstance(&#34;defaultDatabaseInstance&#34;, DatabaseInstanceArgs.builder()        
+ *         var defaultDatabaseInstance = new DatabaseInstance("defaultDatabaseInstance", DatabaseInstanceArgs.builder()        
  *             .project(defaultProject.project())
- *             .region(&#34;us-central1&#34;)
- *             .instanceId(&#34;rtdb-project-default-rtdb&#34;)
- *             .type(&#34;DEFAULT_DATABASE&#34;)
+ *             .region("us-central1")
+ *             .instanceId("rtdb-project-default-rtdb")
+ *             .type("DEFAULT_DATABASE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Network Security Security Profile Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,22 +45,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityProfile(&#34;default&#34;, SecurityProfileArgs.builder()        
- *             .name(&#34;my-security-profile&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .description(&#34;my description&#34;)
- *             .type(&#34;THREAT_PREVENTION&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var default_ = new SecurityProfile("default", SecurityProfileArgs.builder()        
+ *             .name("my-security-profile")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
+ *             .type("THREAT_PREVENTION")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Security Profile Overrides
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -81,31 +84,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityProfile(&#34;default&#34;, SecurityProfileArgs.builder()        
- *             .name(&#34;my-security-profile&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .description(&#34;my description&#34;)
- *             .type(&#34;THREAT_PREVENTION&#34;)
+ *         var default_ = new SecurityProfile("default", SecurityProfileArgs.builder()        
+ *             .name("my-security-profile")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
+ *             .type("THREAT_PREVENTION")
  *             .threatPreventionProfile(SecurityProfileThreatPreventionProfileArgs.builder()
  *                 .severityOverrides(                
  *                     SecurityProfileThreatPreventionProfileSeverityOverrideArgs.builder()
- *                         .action(&#34;ALLOW&#34;)
- *                         .severity(&#34;INFORMATIONAL&#34;)
+ *                         .action("ALLOW")
+ *                         .severity("INFORMATIONAL")
  *                         .build(),
  *                     SecurityProfileThreatPreventionProfileSeverityOverrideArgs.builder()
- *                         .action(&#34;DENY&#34;)
- *                         .severity(&#34;HIGH&#34;)
+ *                         .action("DENY")
+ *                         .severity("HIGH")
  *                         .build())
  *                 .threatOverrides(SecurityProfileThreatPreventionProfileThreatOverrideArgs.builder()
- *                     .action(&#34;ALLOW&#34;)
- *                     .threatId(&#34;280647&#34;)
+ *                     .action("ALLOW")
+ *                     .threatId("280647")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

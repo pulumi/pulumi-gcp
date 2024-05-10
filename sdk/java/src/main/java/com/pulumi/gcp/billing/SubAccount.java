@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,14 +43,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subaccount = new SubAccount(&#34;subaccount&#34;, SubAccountArgs.builder()        
- *             .displayName(&#34;My Billing Account&#34;)
- *             .masterBillingAccount(&#34;012345-567890-ABCDEF&#34;)
+ *         var subaccount = new SubAccount("subaccount", SubAccountArgs.builder()        
+ *             .displayName("My Billing Account")
+ *             .masterBillingAccount("012345-567890-ABCDEF")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

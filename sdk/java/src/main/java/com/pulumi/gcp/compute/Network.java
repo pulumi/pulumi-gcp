@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Network Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,18 +52,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpcNetwork = new Network(&#34;vpcNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;vpc-network&#34;)
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()        
+ *             .name("vpc-network")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Custom Mtu
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -83,21 +86,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpcNetwork = new Network(&#34;vpcNetwork&#34;, NetworkArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;vpc-network&#34;)
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("vpc-network")
  *             .autoCreateSubnetworks(true)
  *             .mtu(1460)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Custom Firewall Enforcement Order
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -118,16 +123,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpcNetwork = new Network(&#34;vpcNetwork&#34;, NetworkArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;vpc-network&#34;)
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("vpc-network")
  *             .autoCreateSubnetworks(true)
- *             .networkFirewallPolicyEnforcementOrder(&#34;BEFORE_CLASSIC_FIREWALL&#34;)
+ *             .networkFirewallPolicyEnforcementOrder("BEFORE_CLASSIC_FIREWALL")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

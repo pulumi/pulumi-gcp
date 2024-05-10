@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Dns Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,28 +59,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-1&#34;)
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network(&#34;network-2&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-2&#34;)
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var example_policy = new Policy(&#34;example-policy&#34;, PolicyArgs.builder()        
- *             .name(&#34;example-policy&#34;)
+ *         var example_policy = new Policy("example-policy", PolicyArgs.builder()        
+ *             .name("example-policy")
  *             .enableInboundForwarding(true)
  *             .enableLogging(true)
  *             .alternativeNameServerConfig(PolicyAlternativeNameServerConfigArgs.builder()
  *                 .targetNameServers(                
  *                     PolicyAlternativeNameServerConfigTargetNameServerArgs.builder()
- *                         .ipv4Address(&#34;172.16.1.10&#34;)
- *                         .forwardingPath(&#34;private&#34;)
+ *                         .ipv4Address("172.16.1.10")
+ *                         .forwardingPath("private")
  *                         .build(),
  *                     PolicyAlternativeNameServerConfigTargetNameServerArgs.builder()
- *                         .ipv4Address(&#34;172.16.1.20&#34;)
+ *                         .ipv4Address("172.16.1.20")
  *                         .build())
  *                 .build())
  *             .networks(            
@@ -93,7 +94,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

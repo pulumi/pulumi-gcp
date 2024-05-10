@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Firestore_release
  * Creates a Firebase Rules Release to Cloud Firestore
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,30 +47,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var firestore = new Ruleset(&#34;firestore&#34;, RulesetArgs.builder()        
+ *         var firestore = new Ruleset("firestore", RulesetArgs.builder()        
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
- *                     .content(&#34;service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }&#34;)
- *                     .name(&#34;firestore.rules&#34;)
+ *                     .content("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }")
+ *                     .name("firestore.rules")
  *                     .build())
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var primary = new Release(&#34;primary&#34;, ReleaseArgs.builder()        
- *             .name(&#34;cloud.firestore&#34;)
- *             .rulesetName(firestore.name().applyValue(name -&gt; String.format(&#34;projects/my-project-name/rulesets/%s&#34;, name)))
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new Release("primary", ReleaseArgs.builder()        
+ *             .name("cloud.firestore")
+ *             .rulesetName(firestore.name().applyValue(name -> String.format("projects/my-project-name/rulesets/%s", name)))
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Storage_release
  * Creates a Firebase Rules Release for a Storage bucket
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -98,38 +101,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Provision a non-default Cloud Storage bucket.
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;bucket&#34;)
- *             .location(&#34;us-west1&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("bucket")
+ *             .location("us-west1")
  *             .build());
  * 
  *         // Create a ruleset of Firebase Security Rules from a local file.
- *         var storage = new Ruleset(&#34;storage&#34;, RulesetArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var storage = new Ruleset("storage", RulesetArgs.builder()        
+ *             .project("my-project-name")
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
- *                     .name(&#34;storage.rules&#34;)
- *                     .content(&#34;service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}&#34;)
+ *                     .name("storage.rules")
+ *                     .content("service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var primary = new Release(&#34;primary&#34;, ReleaseArgs.builder()        
- *             .name(bucket.name().applyValue(name -&gt; String.format(&#34;firebase.storage/%s&#34;, name)))
- *             .rulesetName(storage.name().applyValue(name -&gt; String.format(&#34;projects/my-project-name/rulesets/%s&#34;, name)))
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new Release("primary", ReleaseArgs.builder()        
+ *             .name(bucket.name().applyValue(name -> String.format("firebase.storage/%s", name)))
+ *             .rulesetName(storage.name().applyValue(name -> String.format("projects/my-project-name/rulesets/%s", name)))
+ *             .project("my-project-name")
  *             .build());
  * 
  *         // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
- *         var bucketStorageBucket = new StorageBucket(&#34;bucketStorageBucket&#34;, StorageBucketArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var bucketStorageBucket = new StorageBucket("bucketStorageBucket", StorageBucketArgs.builder()        
+ *             .project("my-project-name")
  *             .bucketId(bucket.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Iam Workload Identity Pool Provider Aws Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,26 +58,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
- *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
+ *             .workloadIdentityPoolProviderId("example-prvdr")
  *             .aws(WorkloadIdentityPoolProviderAwsArgs.builder()
- *                 .accountId(&#34;999999999999&#34;)
+ *                 .accountId("999999999999")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Aws Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,35 +103,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
- *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
- *             .displayName(&#34;Name of provider&#34;)
- *             .description(&#34;AWS identity pool provider for automated test&#34;)
+ *             .workloadIdentityPoolProviderId("example-prvdr")
+ *             .displayName("Name of provider")
+ *             .description("AWS identity pool provider for automated test")
  *             .disabled(true)
- *             .attributeCondition(&#34;attribute.aws_role==\&#34;arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\&#34;&#34;)
+ *             .attributeCondition("attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\"")
  *             .attributeMapping(Map.ofEntries(
- *                 Map.entry(&#34;google.subject&#34;, &#34;assertion.arn&#34;),
- *                 Map.entry(&#34;attribute.aws_account&#34;, &#34;assertion.account&#34;),
- *                 Map.entry(&#34;attribute.environment&#34;, &#34;assertion.arn.contains(\&#34;:instance-profile/Production\&#34;) ? \&#34;prod\&#34; : \&#34;test\&#34;&#34;)
+ *                 Map.entry("google.subject", "assertion.arn"),
+ *                 Map.entry("attribute.aws_account", "assertion.account"),
+ *                 Map.entry("attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"")
  *             ))
  *             .aws(WorkloadIdentityPoolProviderAwsArgs.builder()
- *                 .accountId(&#34;999999999999&#34;)
+ *                 .accountId("999999999999")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Oidc Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -152,27 +157,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
- *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
- *             .attributeMapping(Map.of(&#34;google.subject&#34;, &#34;assertion.sub&#34;))
+ *             .workloadIdentityPoolProviderId("example-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
  *             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
- *                 .issuerUri(&#34;https://sts.windows.net/azure-tenant-id&#34;)
+ *                 .issuerUri("https://sts.windows.net/azure-tenant-id")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Oidc Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -196,43 +203,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
- *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
- *             .displayName(&#34;Name of provider&#34;)
- *             .description(&#34;OIDC identity pool provider for automated test&#34;)
+ *             .workloadIdentityPoolProviderId("example-prvdr")
+ *             .displayName("Name of provider")
+ *             .description("OIDC identity pool provider for automated test")
  *             .disabled(true)
- *             .attributeCondition(&#34;\&#34;e968c2ef-047c-498d-8d79-16ca1b61e77e\&#34; in assertion.groups&#34;)
+ *             .attributeCondition("\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups")
  *             .attributeMapping(Map.ofEntries(
- *                 Map.entry(&#34;google.subject&#34;, &#34;\&#34;azure::\&#34; + assertion.tid + \&#34;::\&#34; + assertion.sub&#34;),
- *                 Map.entry(&#34;attribute.tid&#34;, &#34;assertion.tid&#34;),
- *                 Map.entry(&#34;attribute.managed_identity_name&#34;, &#34;&#34;&#34;
+ *                 Map.entry("google.subject", "\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
+ *                 Map.entry("attribute.tid", "assertion.tid"),
+ *                 Map.entry("attribute.managed_identity_name", """
  *       {
- *         &#34;8bb39bdb-1cc5-4447-b7db-a19e920eb111&#34;:&#34;workload1&#34;,
- *         &#34;55d36609-9bcf-48e0-a366-a3cf19027d2a&#34;:&#34;workload2&#34;
+ *         "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
+ *         "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
  *       }[assertion.oid]
- *                 &#34;&#34;&#34;)
+ *                 """)
  *             ))
  *             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
  *                 .allowedAudiences(                
- *                     &#34;https://example.com/gcp-oidc-federation&#34;,
- *                     &#34;example.com/gcp-oidc-federation&#34;)
- *                 .issuerUri(&#34;https://sts.windows.net/azure-tenant-id&#34;)
+ *                     "https://example.com/gcp-oidc-federation",
+ *                     "example.com/gcp-oidc-federation")
+ *                 .issuerUri("https://sts.windows.net/azure-tenant-id")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Saml Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -256,33 +265,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
- *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
+ *             .workloadIdentityPoolProviderId("example-prvdr")
  *             .attributeMapping(Map.ofEntries(
- *                 Map.entry(&#34;google.subject&#34;, &#34;assertion.arn&#34;),
- *                 Map.entry(&#34;attribute.aws_account&#34;, &#34;assertion.account&#34;),
- *                 Map.entry(&#34;attribute.environment&#34;, &#34;assertion.arn.contains(\&#34;:instance-profile/Production\&#34;) ? \&#34;prod\&#34; : \&#34;test\&#34;&#34;)
+ *                 Map.entry("google.subject", "assertion.arn"),
+ *                 Map.entry("attribute.aws_account", "assertion.account"),
+ *                 Map.entry("attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"")
  *             ))
  *             .saml(WorkloadIdentityPoolProviderSamlArgs.builder()
  *                 .idpMetadataXml(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/metadata.xml&#34;)
+ *                     .input("test-fixtures/metadata.xml")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Saml Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -306,36 +317,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
- *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
- *             .displayName(&#34;Name of provider&#34;)
- *             .description(&#34;SAML 2.0 identity pool provider for automated test&#34;)
+ *             .workloadIdentityPoolProviderId("example-prvdr")
+ *             .displayName("Name of provider")
+ *             .description("SAML 2.0 identity pool provider for automated test")
  *             .disabled(true)
  *             .attributeMapping(Map.ofEntries(
- *                 Map.entry(&#34;google.subject&#34;, &#34;assertion.arn&#34;),
- *                 Map.entry(&#34;attribute.aws_account&#34;, &#34;assertion.account&#34;),
- *                 Map.entry(&#34;attribute.environment&#34;, &#34;assertion.arn.contains(\&#34;:instance-profile/Production\&#34;) ? \&#34;prod\&#34; : \&#34;test\&#34;&#34;)
+ *                 Map.entry("google.subject", "assertion.arn"),
+ *                 Map.entry("attribute.aws_account", "assertion.account"),
+ *                 Map.entry("attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"")
  *             ))
  *             .saml(WorkloadIdentityPoolProviderSamlArgs.builder()
  *                 .idpMetadataXml(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/metadata.xml&#34;)
+ *                     .input("test-fixtures/metadata.xml")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Oidc Upload Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -359,39 +372,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
- *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
- *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
- *             .displayName(&#34;Name of provider&#34;)
- *             .description(&#34;OIDC identity pool provider for automated test&#34;)
+ *             .workloadIdentityPoolProviderId("example-prvdr")
+ *             .displayName("Name of provider")
+ *             .description("OIDC identity pool provider for automated test")
  *             .disabled(true)
- *             .attributeCondition(&#34;\&#34;e968c2ef-047c-498d-8d79-16ca1b61e77e\&#34; in assertion.groups&#34;)
+ *             .attributeCondition("\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups")
  *             .attributeMapping(Map.ofEntries(
- *                 Map.entry(&#34;google.subject&#34;, &#34;\&#34;azure::\&#34; + assertion.tid + \&#34;::\&#34; + assertion.sub&#34;),
- *                 Map.entry(&#34;attribute.tid&#34;, &#34;assertion.tid&#34;),
- *                 Map.entry(&#34;attribute.managed_identity_name&#34;, &#34;&#34;&#34;
+ *                 Map.entry("google.subject", "\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
+ *                 Map.entry("attribute.tid", "assertion.tid"),
+ *                 Map.entry("attribute.managed_identity_name", """
  *       {
- *         &#34;8bb39bdb-1cc5-4447-b7db-a19e920eb111&#34;:&#34;workload1&#34;,
- *         &#34;55d36609-9bcf-48e0-a366-a3cf19027d2a&#34;:&#34;workload2&#34;
+ *         "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
+ *         "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
  *       }[assertion.oid]
- *                 &#34;&#34;&#34;)
+ *                 """)
  *             ))
  *             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
  *                 .allowedAudiences(                
- *                     &#34;https://example.com/gcp-oidc-federation&#34;,
- *                     &#34;example.com/gcp-oidc-federation&#34;)
- *                 .issuerUri(&#34;https://sts.windows.net/azure-tenant-id&#34;)
- *                 .jwksJson(&#34;{\&#34;keys\&#34;:[{\&#34;kty\&#34;:\&#34;RSA\&#34;,\&#34;alg\&#34;:\&#34;RS256\&#34;,\&#34;kid\&#34;:\&#34;sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\&#34;,\&#34;use\&#34;:\&#34;sig\&#34;,\&#34;e\&#34;:\&#34;AQAB\&#34;,\&#34;n\&#34;:\&#34;ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\&#34;}]}&#34;)
+ *                     "https://example.com/gcp-oidc-federation",
+ *                     "example.com/gcp-oidc-federation")
+ *                 .issuerUri("https://sts.windows.net/azure-tenant-id")
+ *                 .jwksJson("{\"keys\":[{\"kty\":\"RSA\",\"alg\":\"RS256\",\"kid\":\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\",\"use\":\"sig\",\"e\":\"AQAB\",\"n\":\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\"}]}")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

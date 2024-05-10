@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Region Ssl Certificate Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,26 +54,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionSslCertificate(&#34;default&#34;, RegionSslCertificateArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .namePrefix(&#34;my-certificate-&#34;)
- *             .description(&#34;a description&#34;)
+ *         var default_ = new RegionSslCertificate("default", RegionSslCertificateArgs.builder()        
+ *             .region("us-central1")
+ *             .namePrefix("my-certificate-")
+ *             .description("a description")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/private.key&#34;)
+ *                 .input("path/to/private.key")
  *                 .build()).result())
  *             .certificate(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .input("path/to/certificate.crt")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Ssl Certificate Random Provider
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,39 +98,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var certificate = new RandomId(&#34;certificate&#34;, RandomIdArgs.builder()        
+ *         var certificate = new RandomId("certificate", RandomIdArgs.builder()        
  *             .byteLength(4)
- *             .prefix(&#34;my-certificate-&#34;)
+ *             .prefix("my-certificate-")
  *             .keepers(Map.ofEntries(
- *                 Map.entry(&#34;private_key&#34;, StdFunctions.filebase64sha256(Filebase64sha256Args.builder()
- *                     .input(&#34;path/to/private.key&#34;)
+ *                 Map.entry("private_key", StdFunctions.filebase64sha256(Filebase64sha256Args.builder()
+ *                     .input("path/to/private.key")
  *                     .build()).result()),
- *                 Map.entry(&#34;certificate&#34;, StdFunctions.filebase64sha256(Filebase64sha256Args.builder()
- *                     .input(&#34;path/to/certificate.crt&#34;)
+ *                 Map.entry("certificate", StdFunctions.filebase64sha256(Filebase64sha256Args.builder()
+ *                     .input("path/to/certificate.crt")
  *                     .build()).result())
  *             ))
  *             .build());
  * 
  *         // You may also want to control name generation explicitly:
- *         var default_ = new RegionSslCertificate(&#34;default&#34;, RegionSslCertificateArgs.builder()        
- *             .region(&#34;us-central1&#34;)
+ *         var default_ = new RegionSslCertificate("default", RegionSslCertificateArgs.builder()        
+ *             .region("us-central1")
  *             .name(certificate.hex())
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/private.key&#34;)
+ *                 .input("path/to/private.key")
  *                 .build()).result())
  *             .certificate(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .input("path/to/certificate.crt")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Ssl Certificate Target Https Proxies
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -164,67 +169,68 @@ import javax.annotation.Nullable;
  *         // SSL certificates cannot be updated after creation. In order to apply
  *         // the specified configuration, the provider will destroy the existing
  *         // resource and create a replacement. To effectively use an SSL
- *         // certificate resource with a Target HTTPS Proxy resource, it&#39;s
+ *         // certificate resource with a Target HTTPS Proxy resource, it's
  *         // recommended to specify create_before_destroy in a lifecycle block.
  *         // Either omit the Instance Template name attribute, specify a partial
  *         // name with name_prefix, or use random_id resource. Example:
- *         var default_ = new RegionSslCertificate(&#34;default&#34;, RegionSslCertificateArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .namePrefix(&#34;my-certificate-&#34;)
+ *         var default_ = new RegionSslCertificate("default", RegionSslCertificateArgs.builder()        
+ *             .region("us-central1")
+ *             .namePrefix("my-certificate-")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/private.key&#34;)
+ *                 .input("path/to/private.key")
  *                 .build()).result())
  *             .certificate(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .input("path/to/certificate.crt")
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;http-health-check&#34;)
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *             .region("us-central1")
+ *             .name("http-health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;backend-service&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("backend-service")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .timeoutSec(10)
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;url-map&#34;)
- *             .description(&#34;a description&#34;)
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *             .region("us-central1")
+ *             .name("url-map")
+ *             .description("a description")
  *             .defaultService(defaultRegionBackendService.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultRegionBackendService.id())
  *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/*&#34;)
+ *                     .paths("/*")
  *                     .service(defaultRegionBackendService.id())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionTargetHttpsProxy = new RegionTargetHttpsProxy(&#34;defaultRegionTargetHttpsProxy&#34;, RegionTargetHttpsProxyArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;test-proxy&#34;)
+ *         var defaultRegionTargetHttpsProxy = new RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy", RegionTargetHttpsProxyArgs.builder()        
+ *             .region("us-central1")
+ *             .name("test-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
  *             .sslCertificates(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

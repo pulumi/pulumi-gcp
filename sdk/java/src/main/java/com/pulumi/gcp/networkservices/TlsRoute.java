@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Network Services Tls Route Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,25 +50,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;backend-service-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("backend-service-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;my-backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultTlsRoute = new TlsRoute(&#34;defaultTlsRoute&#34;, TlsRouteArgs.builder()        
- *             .name(&#34;my-tls-route&#34;)
- *             .description(&#34;my description&#34;)
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()        
+ *             .name("my-tls-route")
+ *             .description("my description")
  *             .rules(TlsRouteRuleArgs.builder()
  *                 .matches(TlsRouteRuleMatchArgs.builder()
- *                     .sniHosts(&#34;example.com&#34;)
- *                     .alpns(&#34;http/1.1&#34;)
+ *                     .sniHosts("example.com")
+ *                     .alpns("http/1.1")
  *                     .build())
  *                 .action(TlsRouteRuleActionArgs.builder()
  *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
@@ -80,12 +81,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Tls Route Mesh Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -114,32 +117,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;backend-service-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("backend-service-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;my-backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultMesh = new Mesh(&#34;defaultMesh&#34;, MeshArgs.builder()        
- *             .name(&#34;my-tls-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var defaultMesh = new Mesh("defaultMesh", MeshArgs.builder()        
+ *             .name("my-tls-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .build());
  * 
- *         var defaultTlsRoute = new TlsRoute(&#34;defaultTlsRoute&#34;, TlsRouteArgs.builder()        
- *             .name(&#34;my-tls-route&#34;)
- *             .description(&#34;my description&#34;)
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()        
+ *             .name("my-tls-route")
+ *             .description("my description")
  *             .meshes(defaultMesh.id())
  *             .rules(TlsRouteRuleArgs.builder()
  *                 .matches(TlsRouteRuleMatchArgs.builder()
- *                     .sniHosts(&#34;example.com&#34;)
- *                     .alpns(&#34;http/1.1&#34;)
+ *                     .sniHosts("example.com")
+ *                     .alpns("http/1.1")
  *                     .build())
  *                 .action(TlsRouteRuleActionArgs.builder()
  *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
@@ -152,12 +155,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Tls Route Gateway Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -186,35 +191,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;backend-service-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("backend-service-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;my-backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
- *             .name(&#34;my-tls-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .scope(&#34;my-scope&#34;)
- *             .type(&#34;OPEN_MESH&#34;)
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *             .name("my-tls-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .scope("my-scope")
+ *             .type("OPEN_MESH")
  *             .ports(443)
  *             .build());
  * 
- *         var defaultTlsRoute = new TlsRoute(&#34;defaultTlsRoute&#34;, TlsRouteArgs.builder()        
- *             .name(&#34;my-tls-route&#34;)
- *             .description(&#34;my description&#34;)
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()        
+ *             .name("my-tls-route")
+ *             .description("my description")
  *             .gateways(defaultGateway.id())
  *             .rules(TlsRouteRuleArgs.builder()
  *                 .matches(TlsRouteRuleMatchArgs.builder()
- *                     .sniHosts(&#34;example.com&#34;)
- *                     .alpns(&#34;http/1.1&#34;)
+ *                     .sniHosts("example.com")
+ *                     .alpns("http/1.1")
  *                     .build())
  *                 .action(TlsRouteRuleActionArgs.builder()
  *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
@@ -227,7 +232,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

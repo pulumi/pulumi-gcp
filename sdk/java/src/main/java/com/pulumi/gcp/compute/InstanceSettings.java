@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Instance Settings Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,16 +52,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gceInstanceSettings = new InstanceSettings(&#34;gceInstanceSettings&#34;, InstanceSettingsArgs.builder()        
- *             .zone(&#34;us-east7-b&#34;)
+ *         var gceInstanceSettings = new InstanceSettings("gceInstanceSettings", InstanceSettingsArgs.builder()        
+ *             .zone("us-east7-b")
  *             .metadata(InstanceSettingsMetadataArgs.builder()
- *                 .items(Map.of(&#34;foo&#34;, &#34;baz&#34;))
+ *                 .items(Map.of("foo", "baz"))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## google\_healthcare\_consent\_store\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,26 +57,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new ConsentStoreIamPolicy(&#34;policy&#34;, ConsentStoreIamPolicyArgs.builder()        
+ *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()        
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_consent\_store\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,22 +99,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ConsentStoreIamBinding(&#34;binding&#34;, ConsentStoreIamBindingArgs.builder()        
+ *         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()        
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_consent\_store\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -132,22 +137,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ConsentStoreIamMember(&#34;member&#34;, ConsentStoreIamMemberArgs.builder()        
+ *         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()        
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_consent\_store\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -172,26 +179,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new ConsentStoreIamPolicy(&#34;policy&#34;, ConsentStoreIamPolicyArgs.builder()        
+ *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()        
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_consent\_store\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -212,22 +221,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ConsentStoreIamBinding(&#34;binding&#34;, ConsentStoreIamBindingArgs.builder()        
+ *         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()        
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_healthcare\_consent\_store\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -248,16 +259,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ConsentStoreIamMember(&#34;member&#34;, ConsentStoreIamMemberArgs.builder()        
+ *         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()        
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
- *             .role(&#34;roles/viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -275,7 +287,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor &#34;{{dataset}}/consentStores/{{consent_store}} roles/viewer user:jane@example.com&#34;
+ * $ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor &#34;{{dataset}}/consentStores/{{consent_store}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

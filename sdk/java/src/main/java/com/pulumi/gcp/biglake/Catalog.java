@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Biglake Catalog
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,14 +49,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Catalog(&#34;default&#34;, CatalogArgs.builder()        
- *             .name(&#34;my_catalog&#34;)
- *             .location(&#34;US&#34;)
+ *         var default_ = new Catalog("default", CatalogArgs.builder()        
+ *             .name("my_catalog")
+ *             .location("US")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

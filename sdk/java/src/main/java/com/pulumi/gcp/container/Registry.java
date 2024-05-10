@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,20 +44,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var registry = new Registry(&#34;registry&#34;, RegistryArgs.builder()        
- *             .project(&#34;my-project&#34;)
- *             .location(&#34;EU&#34;)
+ *         var registry = new Registry("registry", RegistryArgs.builder()        
+ *             .project("my-project")
+ *             .location("EU")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The `id` field of the `gcp.container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -79,20 +82,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var registry = new Registry(&#34;registry&#34;, RegistryArgs.builder()        
- *             .project(&#34;my-project&#34;)
- *             .location(&#34;EU&#34;)
+ *         var registry = new Registry("registry", RegistryArgs.builder()        
+ *             .project("my-project")
+ *             .location("EU")
  *             .build());
  * 
- *         var viewer = new BucketIAMMember(&#34;viewer&#34;, BucketIAMMemberArgs.builder()        
+ *         var viewer = new BucketIAMMember("viewer", BucketIAMMemberArgs.builder()        
  *             .bucket(registry.id())
- *             .role(&#34;roles/storage.objectViewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/storage.objectViewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

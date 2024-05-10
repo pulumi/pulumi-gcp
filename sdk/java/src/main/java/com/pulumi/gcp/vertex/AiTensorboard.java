@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Tensorboard
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,24 +53,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tensorboard = new AiTensorboard(&#34;tensorboard&#34;, AiTensorboardArgs.builder()        
- *             .displayName(&#34;terraform&#34;)
- *             .description(&#34;sample description&#34;)
+ *         var tensorboard = new AiTensorboard("tensorboard", AiTensorboardArgs.builder()        
+ *             .displayName("terraform")
+ *             .description("sample description")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
- *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+ *                 Map.entry("key1", "value1"),
+ *                 Map.entry("key2", "value2")
  *             ))
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Tensorboard Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,30 +98,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tensorboard = new AiTensorboard(&#34;tensorboard&#34;, AiTensorboardArgs.builder()        
- *             .displayName(&#34;terraform&#34;)
- *             .description(&#34;sample description&#34;)
+ *         var tensorboard = new AiTensorboard("tensorboard", AiTensorboardArgs.builder()        
+ *             .displayName("terraform")
+ *             .description("sample description")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
- *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+ *                 Map.entry("key1", "value1"),
+ *                 Map.entry("key2", "value2")
  *             ))
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .encryptionSpec(AiTensorboardEncryptionSpecArgs.builder()
- *                 .kmsKeyName(&#34;kms-name&#34;)
+ *                 .kmsKeyName("kms-name")
  *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;kms-name&#34;)
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-aiplatform.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("kms-name")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

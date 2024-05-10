@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Apigateway Gateway Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,31 +58,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiGw = new Api(&#34;apiGw&#34;, ApiArgs.builder()        
- *             .apiId(&#34;my-api&#34;)
+ *         var apiGw = new Api("apiGw", ApiArgs.builder()        
+ *             .apiId("my-api")
  *             .build());
  * 
- *         var apiGwApiConfig = new ApiConfig(&#34;apiGwApiConfig&#34;, ApiConfigArgs.builder()        
+ *         var apiGwApiConfig = new ApiConfig("apiGwApiConfig", ApiConfigArgs.builder()        
  *             .api(apiGw.apiId())
- *             .apiConfigId(&#34;my-config&#34;)
+ *             .apiConfigId("my-config")
  *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
  *                 .document(ApiConfigOpenapiDocumentDocumentArgs.builder()
- *                     .path(&#34;spec.yaml&#34;)
+ *                     .path("spec.yaml")
  *                     .contents(StdFunctions.filebase64(Filebase64Args.builder()
- *                         .input(&#34;test-fixtures/openapi.yaml&#34;)
+ *                         .input("test-fixtures/openapi.yaml")
  *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var apiGwGateway = new Gateway(&#34;apiGwGateway&#34;, GatewayArgs.builder()        
+ *         var apiGwGateway = new Gateway("apiGwGateway", GatewayArgs.builder()        
  *             .apiConfig(apiGwApiConfig.id())
- *             .gatewayId(&#34;my-gateway&#34;)
+ *             .gatewayId("my-gateway")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

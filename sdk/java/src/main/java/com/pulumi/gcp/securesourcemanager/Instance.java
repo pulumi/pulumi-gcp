@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Secure Source Manager Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,20 +54,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .instanceId(&#34;my-instance&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .location("us-central1")
+ *             .instanceId("my-instance")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secure Source Manager Instance Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,38 +98,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;my-keyring&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("my-keyring")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;my-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("my-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKeyBinding = new CryptoKeyIAMMember(&#34;cryptoKeyBinding&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKeyBinding = new CryptoKeyIAMMember("cryptoKeyBinding", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-sourcemanager.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .instanceId(&#34;my-instance&#34;)
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .location("us-central1")
+ *             .instanceId("my-instance")
  *             .kmsKey(cryptoKey.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secure Source Manager Instance Private
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -168,25 +173,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var caPool = new CaPool(&#34;caPool&#34;, CaPoolArgs.builder()        
- *             .name(&#34;ca-pool&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var caPool = new CaPool("caPool", CaPoolArgs.builder()        
+ *             .name("ca-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
  *                 .publishCaCert(true)
  *                 .publishCrl(true)
  *                 .build())
  *             .build());
  * 
- *         var rootCa = new Authority(&#34;rootCa&#34;, AuthorityArgs.builder()        
+ *         var rootCa = new Authority("rootCa", AuthorityArgs.builder()        
  *             .pool(caPool.name())
- *             .certificateAuthorityId(&#34;root-ca&#34;)
- *             .location(&#34;us-central1&#34;)
+ *             .certificateAuthorityId("root-ca")
+ *             .location("us-central1")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;google&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("google")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -205,7 +210,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .ignoreActiveCertificatesOnDeletion(true)
@@ -214,15 +219,15 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var caPoolBinding = new CaPoolIamBinding(&#34;caPoolBinding&#34;, CaPoolIamBindingArgs.builder()        
+ *         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()        
  *             .caPool(caPool.id())
- *             .role(&#34;roles/privateca.certificateRequester&#34;)
- *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-sourcemanager.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/privateca.certificateRequester")
+ *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .instanceId(&#34;my-instance&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .instanceId("my-instance")
+ *             .location("us-central1")
  *             .privateConfig(InstancePrivateConfigArgs.builder()
  *                 .isPrivate(true)
  *                 .caPool(caPool.id())
@@ -230,13 +235,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // ca pool IAM permissions can take time to propagate
- *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;60s&#34;)
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *             .createDuration("60s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

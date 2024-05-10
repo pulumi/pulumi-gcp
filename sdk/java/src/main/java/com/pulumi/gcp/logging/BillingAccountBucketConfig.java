@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,25 +53,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
- *             .billingAccount(&#34;00AA00-000AAA-00AA0A&#34;)
+ *             .billingAccount("00AA00-000AAA-00AA0A")
  *             .build());
  * 
- *         var basic = new BillingAccountBucketConfig(&#34;basic&#34;, BillingAccountBucketConfigArgs.builder()        
+ *         var basic = new BillingAccountBucketConfig("basic", BillingAccountBucketConfigArgs.builder()        
  *             .billingAccount(default_.billingAccount())
- *             .location(&#34;global&#34;)
+ *             .location("global")
  *             .retentionDays(30)
- *             .bucketId(&#34;_Default&#34;)
+ *             .bucketId("_Default")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Create logging bucket with index configs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,20 +94,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_billing_account_bucket_index_configs = new BillingAccountBucketConfig(&#34;example-billing-account-bucket-index-configs&#34;, BillingAccountBucketConfigArgs.builder()        
+ *         var example_billing_account_bucket_index_configs = new BillingAccountBucketConfig("example-billing-account-bucket-index-configs", BillingAccountBucketConfigArgs.builder()        
  *             .folder(default_.billingAccount())
- *             .location(&#34;global&#34;)
+ *             .location("global")
  *             .retentionDays(30)
- *             .bucketId(&#34;_Default&#34;)
+ *             .bucketId("_Default")
  *             .indexConfigs(BillingAccountBucketConfigIndexConfigArgs.builder()
- *                 .filePath(&#34;jsonPayload.request.status&#34;)
- *                 .type(&#34;INDEX_TYPE_STRING&#34;)
+ *                 .filePath("jsonPayload.request.status")
+ *                 .type("INDEX_TYPE_STRING")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

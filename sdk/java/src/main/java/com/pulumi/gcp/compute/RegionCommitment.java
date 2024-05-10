@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Compute Region Commitment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,28 +60,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new RegionCommitment(&#34;foobar&#34;, RegionCommitmentArgs.builder()        
- *             .name(&#34;my-region-commitment&#34;)
- *             .plan(&#34;THIRTY_SIX_MONTH&#34;)
+ *         var foobar = new RegionCommitment("foobar", RegionCommitmentArgs.builder()        
+ *             .name("my-region-commitment")
+ *             .plan("THIRTY_SIX_MONTH")
  *             .resources(            
  *                 RegionCommitmentResourceArgs.builder()
- *                     .type(&#34;VCPU&#34;)
- *                     .amount(&#34;4&#34;)
+ *                     .type("VCPU")
+ *                     .amount("4")
  *                     .build(),
  *                 RegionCommitmentResourceArgs.builder()
- *                     .type(&#34;MEMORY&#34;)
- *                     .amount(&#34;9&#34;)
+ *                     .type("MEMORY")
+ *                     .amount("9")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Compute Region Commitment Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,27 +105,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new RegionCommitment(&#34;foobar&#34;, RegionCommitmentArgs.builder()        
- *             .name(&#34;my-full-commitment&#34;)
- *             .description(&#34;some description&#34;)
- *             .plan(&#34;THIRTY_SIX_MONTH&#34;)
- *             .type(&#34;MEMORY_OPTIMIZED&#34;)
- *             .category(&#34;MACHINE&#34;)
+ *         var foobar = new RegionCommitment("foobar", RegionCommitmentArgs.builder()        
+ *             .name("my-full-commitment")
+ *             .description("some description")
+ *             .plan("THIRTY_SIX_MONTH")
+ *             .type("MEMORY_OPTIMIZED")
+ *             .category("MACHINE")
  *             .autoRenew(true)
  *             .resources(            
  *                 RegionCommitmentResourceArgs.builder()
- *                     .type(&#34;VCPU&#34;)
- *                     .amount(&#34;4&#34;)
+ *                     .type("VCPU")
+ *                     .amount("4")
  *                     .build(),
  *                 RegionCommitmentResourceArgs.builder()
- *                     .type(&#34;MEMORY&#34;)
- *                     .amount(&#34;9&#34;)
+ *                     .type("MEMORY")
+ *                     .amount("9")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

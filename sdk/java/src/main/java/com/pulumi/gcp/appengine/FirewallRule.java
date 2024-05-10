@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### App Engine Firewall Rule Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,28 +56,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;tf-test-project&#34;)
- *             .projectId(&#34;ae-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *             .name("tf-test-project")
+ *             .projectId("ae-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var app = new Application(&#34;app&#34;, ApplicationArgs.builder()        
+ *         var app = new Application("app", ApplicationArgs.builder()        
  *             .project(myProject.projectId())
- *             .locationId(&#34;us-central&#34;)
+ *             .locationId("us-central")
  *             .build());
  * 
- *         var rule = new FirewallRule(&#34;rule&#34;, FirewallRuleArgs.builder()        
+ *         var rule = new FirewallRule("rule", FirewallRuleArgs.builder()        
  *             .project(app.project())
  *             .priority(1000)
- *             .action(&#34;ALLOW&#34;)
- *             .sourceRange(&#34;*&#34;)
+ *             .action("ALLOW")
+ *             .sourceRange("*")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

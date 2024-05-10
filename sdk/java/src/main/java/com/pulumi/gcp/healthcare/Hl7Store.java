@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Healthcare Hl7 V2 Store Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,33 +62,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;hl7-v2-notifications&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("hl7-v2-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var store = new Hl7Store(&#34;store&#34;, Hl7StoreArgs.builder()        
- *             .name(&#34;example-hl7-v2-store&#34;)
+ *         var store = new Hl7Store("store", Hl7StoreArgs.builder()        
+ *             .name("example-hl7-v2-store")
  *             .dataset(dataset.id())
  *             .rejectDuplicateMessage(true)
  *             .notificationConfigs(Hl7StoreNotificationConfigsArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .build())
- *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .labels(Map.of("label1", "labelvalue1"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Healthcare Hl7 V2 Store Parser Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -111,108 +114,110 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var store = new Hl7Store(&#34;store&#34;, Hl7StoreArgs.builder()        
- *             .name(&#34;example-hl7-v2-store&#34;)
+ *         var store = new Hl7Store("store", Hl7StoreArgs.builder()        
+ *             .name("example-hl7-v2-store")
  *             .dataset(dataset.id())
  *             .parserConfig(Hl7StoreParserConfigArgs.builder()
  *                 .allowNullHeader(false)
- *                 .segmentTerminator(&#34;Jw==&#34;)
- *                 .schema(&#34;&#34;&#34;
+ *                 .segmentTerminator("Jw==")
+ *                 .schema("""
  * {
- *   &#34;schemas&#34;: [{
- *     &#34;messageSchemaConfigs&#34;: {
- *       &#34;ADT_A01&#34;: {
- *         &#34;name&#34;: &#34;ADT_A01&#34;,
- *         &#34;minOccurs&#34;: 1,
- *         &#34;maxOccurs&#34;: 1,
- *         &#34;members&#34;: [{
- *             &#34;segment&#34;: {
- *               &#34;type&#34;: &#34;MSH&#34;,
- *               &#34;minOccurs&#34;: 1,
- *               &#34;maxOccurs&#34;: 1
+ *   "schemas": [{
+ *     "messageSchemaConfigs": {
+ *       "ADT_A01": {
+ *         "name": "ADT_A01",
+ *         "minOccurs": 1,
+ *         "maxOccurs": 1,
+ *         "members": [{
+ *             "segment": {
+ *               "type": "MSH",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
  *             }
  *           },
  *           {
- *             &#34;segment&#34;: {
- *               &#34;type&#34;: &#34;EVN&#34;,
- *               &#34;minOccurs&#34;: 1,
- *               &#34;maxOccurs&#34;: 1
+ *             "segment": {
+ *               "type": "EVN",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
  *             }
  *           },
  *           {
- *             &#34;segment&#34;: {
- *               &#34;type&#34;: &#34;PID&#34;,
- *               &#34;minOccurs&#34;: 1,
- *               &#34;maxOccurs&#34;: 1
+ *             "segment": {
+ *               "type": "PID",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
  *             }
  *           },
  *           {
- *             &#34;segment&#34;: {
- *               &#34;type&#34;: &#34;ZPD&#34;,
- *               &#34;minOccurs&#34;: 1,
- *               &#34;maxOccurs&#34;: 1
+ *             "segment": {
+ *               "type": "ZPD",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
  *             }
  *           },
  *           {
- *             &#34;segment&#34;: {
- *               &#34;type&#34;: &#34;OBX&#34;
+ *             "segment": {
+ *               "type": "OBX"
  *             }
  *           },
  *           {
- *             &#34;group&#34;: {
- *               &#34;name&#34;: &#34;PROCEDURE&#34;,
- *               &#34;members&#34;: [{
- *                   &#34;segment&#34;: {
- *                     &#34;type&#34;: &#34;PR1&#34;,
- *                     &#34;minOccurs&#34;: 1,
- *                     &#34;maxOccurs&#34;: 1
+ *             "group": {
+ *               "name": "PROCEDURE",
+ *               "members": [{
+ *                   "segment": {
+ *                     "type": "PR1",
+ *                     "minOccurs": 1,
+ *                     "maxOccurs": 1
  *                   }
  *                 },
  *                 {
- *                   &#34;segment&#34;: {
- *                     &#34;type&#34;: &#34;ROL&#34;
+ *                   "segment": {
+ *                     "type": "ROL"
  *                   }
  *                 }
  *               ]
  *             }
  *           },
  *           {
- *             &#34;segment&#34;: {
- *               &#34;type&#34;: &#34;PDA&#34;,
- *               &#34;maxOccurs&#34;: 1
+ *             "segment": {
+ *               "type": "PDA",
+ *               "maxOccurs": 1
  *             }
  *           }
  *         ]
  *       }
  *     }
  *   }],
- *   &#34;types&#34;: [{
- *     &#34;type&#34;: [{
- *         &#34;name&#34;: &#34;ZPD&#34;,
- *         &#34;primitive&#34;: &#34;VARIES&#34;
+ *   "types": [{
+ *     "type": [{
+ *         "name": "ZPD",
+ *         "primitive": "VARIES"
  *       }
  * 
  *     ]
  *   }],
- *   &#34;ignoreMinOccurs&#34;: true
+ *   "ignoreMinOccurs": true
  * }
- *                 &#34;&#34;&#34;)
+ *                 """)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Healthcare Hl7 V2 Store Unschematized
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -236,24 +241,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var store = new Hl7Store(&#34;store&#34;, Hl7StoreArgs.builder()        
- *             .name(&#34;example-hl7-v2-store&#34;)
+ *         var store = new Hl7Store("store", Hl7StoreArgs.builder()        
+ *             .name("example-hl7-v2-store")
  *             .dataset(dataset.id())
  *             .parserConfig(Hl7StoreParserConfigArgs.builder()
  *                 .allowNullHeader(false)
- *                 .segmentTerminator(&#34;Jw==&#34;)
- *                 .version(&#34;V2&#34;)
+ *                 .segmentTerminator("Jw==")
+ *                 .version("V2")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

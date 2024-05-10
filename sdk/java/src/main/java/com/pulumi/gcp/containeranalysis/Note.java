@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Container Analysis Note Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,23 +57,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
- *             .name(&#34;attestor-note&#34;)
+ *         var note = new Note("note", NoteArgs.builder()        
+ *             .name("attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
- *                     .humanReadableName(&#34;Attestor Note&#34;)
+ *                     .humanReadableName("Attestor Note")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Container Analysis Note Attestation Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,29 +99,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
- *             .name(&#34;attestor-note&#34;)
- *             .shortDescription(&#34;test note&#34;)
- *             .longDescription(&#34;a longer description of test note&#34;)
- *             .expirationTime(&#34;2120-10-02T15:01:23.045123456Z&#34;)
+ *         var note = new Note("note", NoteArgs.builder()        
+ *             .name("attestor-note")
+ *             .shortDescription("test note")
+ *             .longDescription("a longer description of test note")
+ *             .expirationTime("2120-10-02T15:01:23.045123456Z")
  *             .relatedUrls(            
  *                 NoteRelatedUrlArgs.builder()
- *                     .url(&#34;some.url&#34;)
- *                     .label(&#34;foo&#34;)
+ *                     .url("some.url")
+ *                     .label("foo")
  *                     .build(),
  *                 NoteRelatedUrlArgs.builder()
- *                     .url(&#34;google.com&#34;)
+ *                     .url("google.com")
  *                     .build())
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
- *                     .humanReadableName(&#34;Attestor Note&#34;)
+ *                     .humanReadableName("Attestor Note")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Firebasehosting Customdomain Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,20 +47,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingCustomDomain(&#34;default&#34;, HostingCustomDomainArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-id&#34;)
- *             .customDomain(&#34;custom.domain.com&#34;)
+ *         var default_ = new HostingCustomDomain("default", HostingCustomDomainArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-id")
+ *             .customDomain("custom.domain.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Customdomain Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,28 +85,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-id-full&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-id-full")
  *             .build());
  * 
- *         var defaultHostingCustomDomain = new HostingCustomDomain(&#34;defaultHostingCustomDomain&#34;, HostingCustomDomainArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var defaultHostingCustomDomain = new HostingCustomDomain("defaultHostingCustomDomain", HostingCustomDomainArgs.builder()        
+ *             .project("my-project-name")
  *             .siteId(default_.siteId())
- *             .customDomain(&#34;source.domain.com&#34;)
- *             .certPreference(&#34;GROUPED&#34;)
- *             .redirectTarget(&#34;destination.domain.com&#34;)
+ *             .customDomain("source.domain.com")
+ *             .certPreference("GROUPED")
+ *             .redirectTarget("destination.domain.com")
  *             .waitDnsVerification(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Customdomain Cloud Run
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -134,28 +139,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-id&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;cloud-run-service-via-hosting&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("cloud-run-service-via-hosting")
+ *             .location("us-central1")
+ *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
- *                     .glob(&#34;/hello/**&#34;)
+ *                     .glob("/hello/**")
  *                     .run(HostingVersionConfigRewriteRunArgs.builder()
  *                         .serviceId(defaultService.name())
  *                         .region(defaultService.location())
@@ -164,22 +169,23 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
- *             .message(&#34;Cloud Run Integration&#34;)
+ *             .message("Cloud Run Integration")
  *             .build());
  * 
- *         var defaultHostingCustomDomain = new HostingCustomDomain(&#34;defaultHostingCustomDomain&#34;, HostingCustomDomainArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var defaultHostingCustomDomain = new HostingCustomDomain("defaultHostingCustomDomain", HostingCustomDomainArgs.builder()        
+ *             .project("my-project-name")
  *             .siteId(default_.siteId())
- *             .customDomain(&#34;run.custom.domain.com&#34;)
+ *             .customDomain("run.custom.domain.com")
  *             .waitDnsVerification(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

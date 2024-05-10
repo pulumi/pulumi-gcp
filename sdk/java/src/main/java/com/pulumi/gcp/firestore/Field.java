@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Firestore Field Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,40 +62,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;database-id&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var basic = new Field(&#34;basic&#34;, FieldArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var basic = new Field("basic", FieldArgs.builder()        
+ *             .project("my-project-name")
  *             .database(database.name())
- *             .collection(&#34;chatrooms__34962&#34;)
- *             .field(&#34;basic&#34;)
+ *             .collection("chatrooms__34962")
+ *             .field("basic")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
  *                     FieldIndexConfigIndexArgs.builder()
- *                         .order(&#34;ASCENDING&#34;)
- *                         .queryScope(&#34;COLLECTION_GROUP&#34;)
+ *                         .order("ASCENDING")
+ *                         .queryScope("COLLECTION_GROUP")
  *                         .build(),
  *                     FieldIndexConfigIndexArgs.builder()
- *                         .arrayConfig(&#34;CONTAINS&#34;)
+ *                         .arrayConfig("CONTAINS")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Field Timestamp
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -119,32 +122,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;database-id&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var timestamp = new Field(&#34;timestamp&#34;, FieldArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var timestamp = new Field("timestamp", FieldArgs.builder()        
+ *             .project("my-project-name")
  *             .database(database.name())
- *             .collection(&#34;chatrooms&#34;)
- *             .field(&#34;timestamp&#34;)
+ *             .collection("chatrooms")
+ *             .field("timestamp")
  *             .ttlConfig()
  *             .indexConfig()
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Field Match Override
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -168,37 +173,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;database-id&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var matchOverride = new Field(&#34;matchOverride&#34;, FieldArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var matchOverride = new Field("matchOverride", FieldArgs.builder()        
+ *             .project("my-project-name")
  *             .database(database.name())
- *             .collection(&#34;chatrooms__74000&#34;)
- *             .field(&#34;field_with_same_configuration_as_ancestor&#34;)
+ *             .collection("chatrooms__74000")
+ *             .field("field_with_same_configuration_as_ancestor")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
  *                     FieldIndexConfigIndexArgs.builder()
- *                         .order(&#34;ASCENDING&#34;)
+ *                         .order("ASCENDING")
  *                         .build(),
  *                     FieldIndexConfigIndexArgs.builder()
- *                         .order(&#34;DESCENDING&#34;)
+ *                         .order("DESCENDING")
  *                         .build(),
  *                     FieldIndexConfigIndexArgs.builder()
- *                         .arrayConfig(&#34;CONTAINS&#34;)
+ *                         .arrayConfig("CONTAINS")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

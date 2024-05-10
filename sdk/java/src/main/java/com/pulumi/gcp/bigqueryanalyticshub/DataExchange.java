@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Analyticshub Data Exchange Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,16 +51,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataExchange = new DataExchange(&#34;dataExchange&#34;, DataExchangeArgs.builder()        
- *             .location(&#34;US&#34;)
- *             .dataExchangeId(&#34;my_data_exchange&#34;)
- *             .displayName(&#34;my_data_exchange&#34;)
- *             .description(&#34;example data exchange&#34;)
+ *         var dataExchange = new DataExchange("dataExchange", DataExchangeArgs.builder()        
+ *             .location("US")
+ *             .dataExchangeId("my_data_exchange")
+ *             .displayName("my_data_exchange")
+ *             .description("example data exchange")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

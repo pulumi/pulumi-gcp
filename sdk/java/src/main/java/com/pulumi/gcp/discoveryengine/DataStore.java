@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Discoveryengine Datastore Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,19 +54,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new DataStore(&#34;basic&#34;, DataStoreArgs.builder()        
- *             .location(&#34;global&#34;)
- *             .dataStoreId(&#34;data-store-id&#34;)
- *             .displayName(&#34;tf-test-structured-datastore&#34;)
- *             .industryVertical(&#34;GENERIC&#34;)
- *             .contentConfig(&#34;NO_CONTENT&#34;)
- *             .solutionTypes(&#34;SOLUTION_TYPE_SEARCH&#34;)
+ *         var basic = new DataStore("basic", DataStoreArgs.builder()        
+ *             .location("global")
+ *             .dataStoreId("data-store-id")
+ *             .displayName("tf-test-structured-datastore")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("NO_CONTENT")
+ *             .solutionTypes("SOLUTION_TYPE_SEARCH")
  *             .createAdvancedSiteSearch(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

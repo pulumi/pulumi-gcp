@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,21 +58,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;My Project&#34;)
- *             .projectId(&#34;your-project-id&#34;)
- *             .orgId(&#34;1234567&#34;)
+ *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *             .name("My Project")
+ *             .projectId("your-project-id")
+ *             .orgId("1234567")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * To create a project under a specific folder
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,20 +97,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var department1 = new Folder(&#34;department1&#34;, FolderArgs.builder()        
- *             .displayName(&#34;Department 1&#34;)
- *             .parent(&#34;organizations/1234567&#34;)
+ *         var department1 = new Folder("department1", FolderArgs.builder()        
+ *             .displayName("Department 1")
+ *             .parent("organizations/1234567")
  *             .build());
  * 
- *         var myProject_in_a_folder = new Project(&#34;myProject-in-a-folder&#34;, ProjectArgs.builder()        
- *             .name(&#34;My Project&#34;)
- *             .projectId(&#34;your-project-id&#34;)
+ *         var myProject_in_a_folder = new Project("myProject-in-a-folder", ProjectArgs.builder()        
+ *             .name("My Project")
+ *             .projectId("your-project-id")
  *             .folderId(department1.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

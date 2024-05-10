@@ -32,14 +32,14 @@ public final class AutomationRulePromoteReleaseRuleArgs extends com.pulumi.resou
     }
 
     /**
-     * Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * &#34;@next&#34;, the next target in the promotion sequence.
+     * Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * &#34;{@literal @}next&#34;, the next target in the promotion sequence.
      * 
      */
     @Import(name="destinationTargetId")
     private @Nullable Output<String> destinationTargetId;
 
     /**
-     * @return Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * &#34;@next&#34;, the next target in the promotion sequence.
+     * @return Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * &#34;{@literal @}next&#34;, the next target in the promotion sequence.
      * 
      */
     public Optional<Output<String>> destinationTargetId() {
@@ -125,7 +125,7 @@ public final class AutomationRulePromoteReleaseRuleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destinationTargetId Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * &#34;@next&#34;, the next target in the promotion sequence.
+         * @param destinationTargetId Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * &#34;{@literal @}next&#34;, the next target in the promotion sequence.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class AutomationRulePromoteReleaseRuleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destinationTargetId Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * &#34;@next&#34;, the next target in the promotion sequence.
+         * @param destinationTargetId Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * &#34;{@literal @}next&#34;, the next target in the promotion sequence.
          * 
          * @return builder
          * 

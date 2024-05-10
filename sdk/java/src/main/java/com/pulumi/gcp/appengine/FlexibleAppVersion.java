@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * Learn about the differences between the standard environment and the flexible environment
  * at https://cloud.google.com/appengine/docs/the-appengine-environments.
  * 
- * &gt; **Note:** The App Engine flexible environment service account uses the member ID `service-[YOUR_PROJECT_NUMBER]@gae-api-prod.google.com.iam.gserviceaccount.com`
+ * &gt; **Note:** The App Engine flexible environment service account uses the member ID `service-[YOUR_PROJECT_NUMBER]{@literal @}gae-api-prod.google.com.iam.gserviceaccount.com`
  * It should have the App Engine Flexible Environment Service Agent role, which will be applied when the `appengineflex.googleapis.com` service is enabled.
  * 
  * To get more information about FlexibleAppVersion, see:
@@ -49,7 +49,8 @@ import javax.annotation.Nullable;
  * ### App Engine Flexible App Version
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,96 +95,96 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;appeng-flex&#34;)
- *             .projectId(&#34;appeng-flex&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *             .name("appeng-flex")
+ *             .projectId("appeng-flex")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var app = new Application(&#34;app&#34;, ApplicationArgs.builder()        
+ *         var app = new Application("app", ApplicationArgs.builder()        
  *             .project(myProject.projectId())
- *             .locationId(&#34;us-central&#34;)
+ *             .locationId("us-central")
  *             .build());
  * 
- *         var service = new Service(&#34;service&#34;, ServiceArgs.builder()        
+ *         var service = new Service("service", ServiceArgs.builder()        
  *             .project(myProject.projectId())
- *             .service(&#34;appengineflex.googleapis.com&#34;)
+ *             .service("appengineflex.googleapis.com")
  *             .disableDependentServices(false)
  *             .build());
  * 
- *         var customServiceAccount = new Account(&#34;customServiceAccount&#34;, AccountArgs.builder()        
+ *         var customServiceAccount = new Account("customServiceAccount", AccountArgs.builder()        
  *             .project(service.project())
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Custom Service Account&#34;)
+ *             .accountId("my-account")
+ *             .displayName("Custom Service Account")
  *             .build());
  * 
- *         var gaeApi = new IAMMember(&#34;gaeApi&#34;, IAMMemberArgs.builder()        
+ *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()        
  *             .project(service.project())
- *             .role(&#34;roles/compute.networkUser&#34;)
- *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/compute.networkUser")
+ *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var logsWriter = new IAMMember(&#34;logsWriter&#34;, IAMMemberArgs.builder()        
+ *         var logsWriter = new IAMMember("logsWriter", IAMMemberArgs.builder()        
  *             .project(service.project())
- *             .role(&#34;roles/logging.logWriter&#34;)
- *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/logging.logWriter")
+ *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var storageViewer = new IAMMember(&#34;storageViewer&#34;, IAMMemberArgs.builder()        
+ *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()        
  *             .project(service.project())
- *             .role(&#34;roles/storage.objectViewer&#34;)
- *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/storage.objectViewer")
+ *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
  *             .project(myProject.projectId())
- *             .name(&#34;appengine-static-content&#34;)
- *             .location(&#34;US&#34;)
+ *             .name("appengine-static-content")
+ *             .location("US")
  *             .build());
  * 
- *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;hello-world.zip&#34;)
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *             .name("hello-world.zip")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
+ *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
  *             .build());
  * 
- *         var myappV1 = new FlexibleAppVersion(&#34;myappV1&#34;, FlexibleAppVersionArgs.builder()        
- *             .versionId(&#34;v1&#34;)
+ *         var myappV1 = new FlexibleAppVersion("myappV1", FlexibleAppVersionArgs.builder()        
+ *             .versionId("v1")
  *             .project(gaeApi.project())
- *             .service(&#34;default&#34;)
- *             .runtime(&#34;nodejs&#34;)
+ *             .service("default")
+ *             .runtime("nodejs")
  *             .entrypoint(FlexibleAppVersionEntrypointArgs.builder()
- *                 .shell(&#34;node ./app.js&#34;)
+ *                 .shell("node ./app.js")
  *                 .build())
  *             .deployment(FlexibleAppVersionDeploymentArgs.builder()
  *                 .zip(FlexibleAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
  *                         var bucketName = values.t1;
  *                         var objectName = values.t2;
- *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+ *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
  *                     }))
  *                     .build())
  *                 .build())
  *             .livenessCheck(FlexibleAppVersionLivenessCheckArgs.builder()
- *                 .path(&#34;/&#34;)
+ *                 .path("/")
  *                 .build())
  *             .readinessCheck(FlexibleAppVersionReadinessCheckArgs.builder()
- *                 .path(&#34;/&#34;)
+ *                 .path("/")
  *                 .build())
- *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+ *             .envVariables(Map.of("port", "8080"))
  *             .handlers(FlexibleAppVersionHandlerArgs.builder()
- *                 .urlRegex(&#34;.*\\/my-path\\/*&#34;)
- *                 .securityLevel(&#34;SECURE_ALWAYS&#34;)
- *                 .login(&#34;LOGIN_REQUIRED&#34;)
- *                 .authFailAction(&#34;AUTH_FAIL_ACTION_REDIRECT&#34;)
+ *                 .urlRegex(".*\\/my-path\\/*")
+ *                 .securityLevel("SECURE_ALWAYS")
+ *                 .login("LOGIN_REQUIRED")
+ *                 .authFailAction("AUTH_FAIL_ACTION_REDIRECT")
  *                 .staticFiles(FlexibleAppVersionHandlerStaticFilesArgs.builder()
- *                     .path(&#34;my-other-path&#34;)
- *                     .uploadPathRegex(&#34;.*\\/my-path\\/*&#34;)
+ *                     .path("my-other-path")
+ *                     .uploadPathRegex(".*\\/my-path\\/*")
  *                     .build())
  *                 .build())
  *             .automaticScaling(FlexibleAppVersionAutomaticScalingArgs.builder()
- *                 .coolDownPeriod(&#34;120s&#34;)
+ *                 .coolDownPeriod("120s")
  *                 .cpuUtilization(FlexibleAppVersionAutomaticScalingCpuUtilizationArgs.builder()
  *                     .targetUtilization(0.5)
  *                     .build())
@@ -194,7 +195,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

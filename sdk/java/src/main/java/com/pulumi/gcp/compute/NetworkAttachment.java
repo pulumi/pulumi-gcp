@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Network Attachment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,37 +50,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;basic-network&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("basic-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;basic-subnetwork&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("basic-subnetwork")
+ *             .region("us-central1")
  *             .network(defaultNetwork.id())
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
- *         var rejectedProducerProject = new Project(&#34;rejectedProducerProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;prj-rejected&#34;)
- *             .name(&#34;prj-rejected&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var rejectedProducerProject = new Project("rejectedProducerProject", ProjectArgs.builder()        
+ *             .projectId("prj-rejected")
+ *             .name("prj-rejected")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var acceptedProducerProject = new Project(&#34;acceptedProducerProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;prj-accepted&#34;)
- *             .name(&#34;prj-accepted&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var acceptedProducerProject = new Project("acceptedProducerProject", ProjectArgs.builder()        
+ *             .projectId("prj-accepted")
+ *             .name("prj-accepted")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var default_ = new NetworkAttachment(&#34;default&#34;, NetworkAttachmentArgs.builder()        
- *             .name(&#34;basic-network-attachment&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .description(&#34;basic network attachment description&#34;)
- *             .connectionPreference(&#34;ACCEPT_MANUAL&#34;)
+ *         var default_ = new NetworkAttachment("default", NetworkAttachmentArgs.builder()        
+ *             .name("basic-network-attachment")
+ *             .region("us-central1")
+ *             .description("basic network attachment description")
+ *             .connectionPreference("ACCEPT_MANUAL")
  *             .subnetworks(defaultSubnetwork.selfLink())
  *             .producerAcceptLists(acceptedProducerProject.projectId())
  *             .producerRejectLists(rejectedProducerProject.projectId())
@@ -87,12 +88,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Attachment Instance Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -122,38 +125,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;basic-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("basic-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;basic-subnetwork&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("basic-subnetwork")
+ *             .region("us-central1")
  *             .network(default_.id())
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
- *         var defaultNetworkAttachment = new NetworkAttachment(&#34;defaultNetworkAttachment&#34;, NetworkAttachmentArgs.builder()        
- *             .name(&#34;basic-network-attachment&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .description(&#34;my basic network attachment&#34;)
+ *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()        
+ *             .name("basic-network-attachment")
+ *             .region("us-central1")
+ *             .description("my basic network attachment")
  *             .subnetworks(defaultSubnetwork.id())
- *             .connectionPreference(&#34;ACCEPT_AUTOMATIC&#34;)
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;basic-instance&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .machineType(&#34;e2-micro&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .name("basic-instance")
+ *             .zone("us-central1-a")
+ *             .machineType("e2-micro")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .image("debian-cloud/debian-11")
  *                     .build())
  *                 .build())
  *             .networkInterfaces(            
  *                 InstanceNetworkInterfaceArgs.builder()
- *                     .network(&#34;default&#34;)
+ *                     .network("default")
  *                     .build(),
  *                 InstanceNetworkInterfaceArgs.builder()
  *                     .networkAttachment(defaultNetworkAttachment.selfLink())
@@ -162,7 +165,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

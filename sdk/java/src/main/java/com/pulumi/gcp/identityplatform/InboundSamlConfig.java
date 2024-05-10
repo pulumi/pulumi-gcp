@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Identity Platform Inbound Saml Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,28 +53,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var samlConfig = new InboundSamlConfig(&#34;samlConfig&#34;, InboundSamlConfigArgs.builder()        
- *             .name(&#34;saml.tf-config&#34;)
- *             .displayName(&#34;Display Name&#34;)
+ *         var samlConfig = new InboundSamlConfig("samlConfig", InboundSamlConfigArgs.builder()        
+ *             .name("saml.tf-config")
+ *             .displayName("Display Name")
  *             .idpConfig(InboundSamlConfigIdpConfigArgs.builder()
- *                 .idpEntityId(&#34;tf-idp&#34;)
+ *                 .idpEntityId("tf-idp")
  *                 .signRequest(true)
- *                 .ssoUrl(&#34;https://example.com&#34;)
+ *                 .ssoUrl("https://example.com")
  *                 .idpCertificates(InboundSamlConfigIdpConfigIdpCertificateArgs.builder()
  *                     .x509Certificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/rsa_cert.pem&#34;)
+ *                         .input("test-fixtures/rsa_cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .spConfig(InboundSamlConfigSpConfigArgs.builder()
- *                 .spEntityId(&#34;tf-sp&#34;)
- *                 .callbackUri(&#34;https://example.com&#34;)
+ *                 .spEntityId("tf-sp")
+ *                 .callbackUri("https://example.com")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,24 +50,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;default&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("default")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new TargetPool(&#34;default&#34;, TargetPoolArgs.builder()        
- *             .name(&#34;instance-pool&#34;)
+ *         var default_ = new TargetPool("default", TargetPoolArgs.builder()        
+ *             .name("instance-pool")
  *             .instances(            
- *                 &#34;us-central1-a/myinstance1&#34;,
- *                 &#34;us-central1-b/myinstance2&#34;)
+ *                 "us-central1-a/myinstance1",
+ *                 "us-central1-b/myinstance2")
  *             .healthChecks(defaultHttpHealthCheck.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

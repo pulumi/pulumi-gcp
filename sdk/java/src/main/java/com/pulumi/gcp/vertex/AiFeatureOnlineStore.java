@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Feature Online Store
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,10 +59,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureOnlineStore = new AiFeatureOnlineStore(&#34;featureOnlineStore&#34;, AiFeatureOnlineStoreArgs.builder()        
- *             .name(&#34;example_feature_online_store&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featureOnlineStore = new AiFeatureOnlineStore("featureOnlineStore", AiFeatureOnlineStoreArgs.builder()        
+ *             .name("example_feature_online_store")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
  *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
  *                     .minNodeCount(1)
@@ -73,12 +74,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featureonlinestore With Beta Fields Optimized
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -106,27 +109,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
- *             .name(&#34;example_feature_online_store_optimized&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *             .name("example_feature_online_store_optimized")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .optimized()
  *             .dedicatedServingEndpoint(AiFeatureOnlineStoreDedicatedServingEndpointArgs.builder()
  *                 .privateServiceConnectConfig(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs.builder()
  *                     .enablePrivateServiceConnect(true)
- *                     .projectAllowlists(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
+ *                     .projectAllowlists(project.applyValue(getProjectResult -> getProjectResult.number()))
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -152,10 +157,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
- *             .name(&#34;example_feature_online_store_beta_bigtable&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *             .name("example_feature_online_store_beta_bigtable")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
  *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
  *                     .minNodeCount(1)
@@ -173,7 +178,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,56 +65,57 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Dataset(&#34;default&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;foo&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;EU&#34;)
+ *         var default_ = new Dataset("default", DatasetArgs.builder()        
+ *             .datasetId("foo")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("EU")
  *             .defaultTableExpirationMs(3600000)
- *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
+ *             .labels(Map.of("env", "default"))
  *             .build());
  * 
- *         var defaultTable = new Table(&#34;defaultTable&#34;, TableArgs.builder()        
+ *         var defaultTable = new Table("defaultTable", TableArgs.builder()        
  *             .datasetId(default_.datasetId())
- *             .tableId(&#34;bar&#34;)
+ *             .tableId("bar")
  *             .timePartitioning(TableTimePartitioningArgs.builder()
- *                 .type(&#34;DAY&#34;)
+ *                 .type("DAY")
  *                 .build())
- *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
- *             .schema(&#34;&#34;&#34;
+ *             .labels(Map.of("env", "default"))
+ *             .schema("""
  * [
  *   {
- *     &#34;name&#34;: &#34;permalink&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;,
- *     &#34;description&#34;: &#34;The Permalink&#34;
+ *     "name": "permalink",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The Permalink"
  *   },
  *   {
- *     &#34;name&#34;: &#34;state&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;,
- *     &#34;description&#34;: &#34;State where the head office is located&#34;
+ *     "name": "state",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "State where the head office is located"
  *   }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var sheet = new Table(&#34;sheet&#34;, TableArgs.builder()        
+ *         var sheet = new Table("sheet", TableArgs.builder()        
  *             .datasetId(default_.datasetId())
- *             .tableId(&#34;sheet&#34;)
+ *             .tableId("sheet")
  *             .externalDataConfiguration(TableExternalDataConfigurationArgs.builder()
  *                 .autodetect(true)
- *                 .sourceFormat(&#34;GOOGLE_SHEETS&#34;)
+ *                 .sourceFormat("GOOGLE_SHEETS")
  *                 .googleSheetsOptions(TableExternalDataConfigurationGoogleSheetsOptionsArgs.builder()
  *                     .skipLeadingRows(1)
  *                     .build())
- *                 .sourceUris(&#34;https://docs.google.com/spreadsheets/d/123456789012345&#34;)
+ *                 .sourceUris("https://docs.google.com/spreadsheets/d/123456789012345")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

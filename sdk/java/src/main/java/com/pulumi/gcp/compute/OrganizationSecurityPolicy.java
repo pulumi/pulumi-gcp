@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Organization Security Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,14 +50,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new OrganizationSecurityPolicy(&#34;policy&#34;, OrganizationSecurityPolicyArgs.builder()        
- *             .displayName(&#34;tf-test&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()        
+ *             .displayName("tf-test")
+ *             .parent("organizations/123456789")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Monitoring Group Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,19 +54,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Group(&#34;basic&#34;, GroupArgs.builder()        
- *             .displayName(&#34;tf-test MonitoringGroup&#34;)
- *             .filter(&#34;resource.metadata.region=\&#34;europe-west2\&#34;&#34;)
+ *         var basic = new Group("basic", GroupArgs.builder()        
+ *             .displayName("tf-test MonitoringGroup")
+ *             .filter("resource.metadata.region=\"europe-west2\"")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Group Subgroup
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -86,20 +89,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var parent = new Group(&#34;parent&#34;, GroupArgs.builder()        
- *             .displayName(&#34;tf-test MonitoringParentGroup&#34;)
- *             .filter(&#34;resource.metadata.region=\&#34;europe-west2\&#34;&#34;)
+ *         var parent = new Group("parent", GroupArgs.builder()        
+ *             .displayName("tf-test MonitoringParentGroup")
+ *             .filter("resource.metadata.region=\"europe-west2\"")
  *             .build());
  * 
- *         var subgroup = new Group(&#34;subgroup&#34;, GroupArgs.builder()        
- *             .displayName(&#34;tf-test MonitoringSubGroup&#34;)
- *             .filter(&#34;resource.metadata.region=\&#34;europe-west2\&#34;&#34;)
+ *         var subgroup = new Group("subgroup", GroupArgs.builder()        
+ *             .displayName("tf-test MonitoringSubGroup")
+ *             .filter("resource.metadata.region=\"europe-west2\"")
  *             .parentName(parent.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

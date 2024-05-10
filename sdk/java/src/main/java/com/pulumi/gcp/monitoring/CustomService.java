@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Monitoring Service Custom
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,21 +58,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom = new CustomService(&#34;custom&#34;, CustomServiceArgs.builder()        
- *             .serviceId(&#34;custom-srv&#34;)
- *             .displayName(&#34;My Custom Service custom-srv&#34;)
+ *         var custom = new CustomService("custom", CustomServiceArgs.builder()        
+ *             .serviceId("custom-srv")
+ *             .displayName("My Custom Service custom-srv")
  *             .telemetry(CustomServiceTelemetryArgs.builder()
- *                 .resourceName(&#34;//product.googleapis.com/foo/foo/services/test&#34;)
+ *                 .resourceName("//product.googleapis.com/foo/foo/services/test")
  *                 .build())
  *             .userLabels(Map.ofEntries(
- *                 Map.entry(&#34;my_key&#34;, &#34;my_value&#34;),
- *                 Map.entry(&#34;my_other_key&#34;, &#34;my_other_value&#34;)
+ *                 Map.entry("my_key", "my_value"),
+ *                 Map.entry("my_other_key", "my_other_value")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

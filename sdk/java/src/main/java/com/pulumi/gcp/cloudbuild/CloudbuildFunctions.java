@@ -24,7 +24,8 @@ public final class CloudbuildFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,14 +47,15 @@ public final class CloudbuildFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .project(&#34;your-project-id&#34;)
+     *             .project("your-project-id")
      *             .triggerId(filename_trigger.triggerId())
-     *             .location(&#34;location of trigger build&#34;)
+     *             .location("location of trigger build")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -70,7 +72,8 @@ public final class CloudbuildFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -92,14 +95,15 @@ public final class CloudbuildFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .project(&#34;your-project-id&#34;)
+     *             .project("your-project-id")
      *             .triggerId(filename_trigger.triggerId())
-     *             .location(&#34;location of trigger build&#34;)
+     *             .location("location of trigger build")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -116,7 +120,8 @@ public final class CloudbuildFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -138,14 +143,15 @@ public final class CloudbuildFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .project(&#34;your-project-id&#34;)
+     *             .project("your-project-id")
      *             .triggerId(filename_trigger.triggerId())
-     *             .location(&#34;location of trigger build&#34;)
+     *             .location("location of trigger build")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -162,7 +168,8 @@ public final class CloudbuildFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -184,14 +191,15 @@ public final class CloudbuildFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .project(&#34;your-project-id&#34;)
+     *             .project("your-project-id")
      *             .triggerId(filename_trigger.triggerId())
-     *             .location(&#34;location of trigger build&#34;)
+     *             .location("location of trigger build")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

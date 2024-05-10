@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Cloud Asset Organization Feed
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,45 +61,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // The topic where the resource change notifications will be sent.
- *         var feedOutput = new Topic(&#34;feedOutput&#34;, TopicArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;network-updates&#34;)
+ *         var feedOutput = new Topic("feedOutput", TopicArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("network-updates")
  *             .build());
  * 
  *         // Create a feed that sends notifications about network resource updates under a
  *         // particular organization.
- *         var organizationFeed = new OrganizationFeed(&#34;organizationFeed&#34;, OrganizationFeedArgs.builder()        
- *             .billingProject(&#34;my-project-name&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .feedId(&#34;network-updates&#34;)
- *             .contentType(&#34;RESOURCE&#34;)
+ *         var organizationFeed = new OrganizationFeed("organizationFeed", OrganizationFeedArgs.builder()        
+ *             .billingProject("my-project-name")
+ *             .orgId("123456789")
+ *             .feedId("network-updates")
+ *             .contentType("RESOURCE")
  *             .assetTypes(            
- *                 &#34;compute.googleapis.com/Subnetwork&#34;,
- *                 &#34;compute.googleapis.com/Network&#34;)
+ *                 "compute.googleapis.com/Subnetwork",
+ *                 "compute.googleapis.com/Network")
  *             .feedOutputConfig(OrganizationFeedFeedOutputConfigArgs.builder()
  *                 .pubsubDestination(OrganizationFeedFeedOutputConfigPubsubDestinationArgs.builder()
  *                     .topic(feedOutput.id())
  *                     .build())
  *                 .build())
  *             .condition(OrganizationFeedConditionArgs.builder()
- *                 .expression(&#34;&#34;&#34;
- * !temporal_asset.deleted &amp;&amp;
+ *                 .expression("""
+ * !temporal_asset.deleted &&
  * temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
- *                 &#34;&#34;&#34;)
- *                 .title(&#34;created&#34;)
- *                 .description(&#34;Send notifications on creation events&#34;)
+ *                 """)
+ *                 .title("created")
+ *                 .description("Send notifications on creation events")
  *                 .build())
  *             .build());
  * 
  *         // Find the project number of the project whose identity will be used for sending
  *         // the asset change notifications.
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .projectId(&#34;my-project-name&#34;)
+ *             .projectId("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

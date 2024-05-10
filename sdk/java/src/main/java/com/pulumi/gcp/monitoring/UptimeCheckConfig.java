@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### Uptime Check Config Http
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,47 +63,49 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http = new UptimeCheckConfig(&#34;http&#34;, UptimeCheckConfigArgs.builder()        
- *             .displayName(&#34;http-uptime-check&#34;)
- *             .timeout(&#34;60s&#34;)
- *             .userLabels(Map.of(&#34;example-key&#34;, &#34;example-value&#34;))
+ *         var http = new UptimeCheckConfig("http", UptimeCheckConfigArgs.builder()        
+ *             .displayName("http-uptime-check")
+ *             .timeout("60s")
+ *             .userLabels(Map.of("example-key", "example-value"))
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
- *                 .path(&#34;some-path&#34;)
- *                 .port(&#34;8010&#34;)
- *                 .requestMethod(&#34;POST&#34;)
- *                 .contentType(&#34;USER_PROVIDED&#34;)
- *                 .customContentType(&#34;application/json&#34;)
- *                 .body(&#34;Zm9vJTI1M0RiYXI=&#34;)
+ *                 .path("some-path")
+ *                 .port("8010")
+ *                 .requestMethod("POST")
+ *                 .contentType("USER_PROVIDED")
+ *                 .customContentType("application/json")
+ *                 .body("Zm9vJTI1M0RiYXI=")
  *                 .pingConfig(UptimeCheckConfigHttpCheckPingConfigArgs.builder()
  *                     .pingsCount(1)
  *                     .build())
  *                 .build())
  *             .monitoredResource(UptimeCheckConfigMonitoredResourceArgs.builder()
- *                 .type(&#34;uptime_url&#34;)
+ *                 .type("uptime_url")
  *                 .labels(Map.ofEntries(
- *                     Map.entry(&#34;project_id&#34;, &#34;my-project-name&#34;),
- *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;)
+ *                     Map.entry("project_id", "my-project-name"),
+ *                     Map.entry("host", "192.168.1.1")
  *                 ))
  *                 .build())
  *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
- *                 .content(&#34;\&#34;example\&#34;&#34;)
- *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
+ *                 .content("\"example\"")
+ *                 .matcher("MATCHES_JSON_PATH")
  *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
- *                     .jsonPath(&#34;$.path&#34;)
- *                     .jsonMatcher(&#34;EXACT_MATCH&#34;)
+ *                     .jsonPath("$.path")
+ *                     .jsonMatcher("EXACT_MATCH")
  *                     .build())
  *                 .build())
- *             .checkerType(&#34;STATIC_IP_CHECKERS&#34;)
+ *             .checkerType("STATIC_IP_CHECKERS")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Uptime Check Config Status Code
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -127,18 +130,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var statusCode = new UptimeCheckConfig(&#34;statusCode&#34;, UptimeCheckConfigArgs.builder()        
- *             .displayName(&#34;http-uptime-check&#34;)
- *             .timeout(&#34;60s&#34;)
+ *         var statusCode = new UptimeCheckConfig("statusCode", UptimeCheckConfigArgs.builder()        
+ *             .displayName("http-uptime-check")
+ *             .timeout("60s")
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
- *                 .path(&#34;some-path&#34;)
- *                 .port(&#34;8010&#34;)
- *                 .requestMethod(&#34;POST&#34;)
- *                 .contentType(&#34;URL_ENCODED&#34;)
- *                 .body(&#34;Zm9vJTI1M0RiYXI=&#34;)
+ *                 .path("some-path")
+ *                 .port("8010")
+ *                 .requestMethod("POST")
+ *                 .contentType("URL_ENCODED")
+ *                 .body("Zm9vJTI1M0RiYXI=")
  *                 .acceptedResponseStatusCodes(                
  *                     UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs.builder()
- *                         .statusClass(&#34;STATUS_CLASS_2XX&#34;)
+ *                         .statusClass("STATUS_CLASS_2XX")
  *                         .build(),
  *                     UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs.builder()
  *                         .statusValue(301)
@@ -148,31 +151,33 @@ import javax.annotation.Nullable;
  *                         .build())
  *                 .build())
  *             .monitoredResource(UptimeCheckConfigMonitoredResourceArgs.builder()
- *                 .type(&#34;uptime_url&#34;)
+ *                 .type("uptime_url")
  *                 .labels(Map.ofEntries(
- *                     Map.entry(&#34;project_id&#34;, &#34;my-project-name&#34;),
- *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;)
+ *                     Map.entry("project_id", "my-project-name"),
+ *                     Map.entry("host", "192.168.1.1")
  *                 ))
  *                 .build())
  *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
- *                 .content(&#34;\&#34;example\&#34;&#34;)
- *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
+ *                 .content("\"example\"")
+ *                 .matcher("MATCHES_JSON_PATH")
  *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
- *                     .jsonPath(&#34;$.path&#34;)
- *                     .jsonMatcher(&#34;EXACT_MATCH&#34;)
+ *                     .jsonPath("$.path")
+ *                     .jsonMatcher("EXACT_MATCH")
  *                     .build())
  *                 .build())
- *             .checkerType(&#34;STATIC_IP_CHECKERS&#34;)
+ *             .checkerType("STATIC_IP_CHECKERS")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Uptime Check Config Https
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -198,43 +203,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https = new UptimeCheckConfig(&#34;https&#34;, UptimeCheckConfigArgs.builder()        
- *             .displayName(&#34;https-uptime-check&#34;)
- *             .timeout(&#34;60s&#34;)
+ *         var https = new UptimeCheckConfig("https", UptimeCheckConfigArgs.builder()        
+ *             .displayName("https-uptime-check")
+ *             .timeout("60s")
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
- *                 .path(&#34;/some-path&#34;)
- *                 .port(&#34;443&#34;)
+ *                 .path("/some-path")
+ *                 .port("443")
  *                 .useSsl(true)
  *                 .validateSsl(true)
  *                 .serviceAgentAuthentication(UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs.builder()
- *                     .type(&#34;OIDC_TOKEN&#34;)
+ *                     .type("OIDC_TOKEN")
  *                     .build())
  *                 .build())
  *             .monitoredResource(UptimeCheckConfigMonitoredResourceArgs.builder()
- *                 .type(&#34;uptime_url&#34;)
+ *                 .type("uptime_url")
  *                 .labels(Map.ofEntries(
- *                     Map.entry(&#34;project_id&#34;, &#34;my-project-name&#34;),
- *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;)
+ *                     Map.entry("project_id", "my-project-name"),
+ *                     Map.entry("host", "192.168.1.1")
  *                 ))
  *                 .build())
  *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
- *                 .content(&#34;example&#34;)
- *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
+ *                 .content("example")
+ *                 .matcher("MATCHES_JSON_PATH")
  *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
- *                     .jsonPath(&#34;$.path&#34;)
- *                     .jsonMatcher(&#34;REGEX_MATCH&#34;)
+ *                     .jsonPath("$.path")
+ *                     .jsonMatcher("REGEX_MATCH")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Uptime Check Tcp
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -260,14 +267,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var check = new Group(&#34;check&#34;, GroupArgs.builder()        
- *             .displayName(&#34;uptime-check-group&#34;)
- *             .filter(&#34;resource.metadata.name=has_substring(\&#34;foo\&#34;)&#34;)
+ *         var check = new Group("check", GroupArgs.builder()        
+ *             .displayName("uptime-check-group")
+ *             .filter("resource.metadata.name=has_substring(\"foo\")")
  *             .build());
  * 
- *         var tcpGroup = new UptimeCheckConfig(&#34;tcpGroup&#34;, UptimeCheckConfigArgs.builder()        
- *             .displayName(&#34;tcp-uptime-check&#34;)
- *             .timeout(&#34;60s&#34;)
+ *         var tcpGroup = new UptimeCheckConfig("tcpGroup", UptimeCheckConfigArgs.builder()        
+ *             .displayName("tcp-uptime-check")
+ *             .timeout("60s")
  *             .tcpCheck(UptimeCheckConfigTcpCheckArgs.builder()
  *                 .port(888)
  *                 .pingConfig(UptimeCheckConfigTcpCheckPingConfigArgs.builder()
@@ -275,19 +282,21 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .resourceGroup(UptimeCheckConfigResourceGroupArgs.builder()
- *                 .resourceType(&#34;INSTANCE&#34;)
+ *                 .resourceType("INSTANCE")
  *                 .groupId(check.name())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Uptime Check Config Synthetic Monitor
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -321,24 +330,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;my-project-name-gcf-source&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("my-project-name-gcf-source")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;function-source.zip&#34;)
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *             .name("function-source.zip")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;synthetic-fn-source.zip&#34;))
+ *             .source(new FileAsset("synthetic-fn-source.zip"))
  *             .build());
  * 
- *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
- *             .name(&#34;synthetic_function&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var function = new Function("function", FunctionArgs.builder()        
+ *             .name("synthetic_function")
+ *             .location("us-central1")
  *             .buildConfig(FunctionBuildConfigArgs.builder()
- *                 .runtime(&#34;nodejs16&#34;)
- *                 .entryPoint(&#34;SyntheticFunction&#34;)
+ *                 .runtime("nodejs16")
+ *                 .entryPoint("SyntheticFunction")
  *                 .source(FunctionBuildConfigSourceArgs.builder()
  *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
  *                         .bucket(bucket.name())
@@ -348,14 +357,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .serviceConfig(FunctionServiceConfigArgs.builder()
  *                 .maxInstanceCount(1)
- *                 .availableMemory(&#34;256M&#34;)
+ *                 .availableMemory("256M")
  *                 .timeoutSeconds(60)
  *                 .build())
  *             .build());
  * 
- *         var syntheticMonitor = new UptimeCheckConfig(&#34;syntheticMonitor&#34;, UptimeCheckConfigArgs.builder()        
- *             .displayName(&#34;synthetic_monitor&#34;)
- *             .timeout(&#34;60s&#34;)
+ *         var syntheticMonitor = new UptimeCheckConfig("syntheticMonitor", UptimeCheckConfigArgs.builder()        
+ *             .displayName("synthetic_monitor")
+ *             .timeout("60s")
  *             .syntheticMonitor(UptimeCheckConfigSyntheticMonitorArgs.builder()
  *                 .cloudFunctionV2(UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args.builder()
  *                     .name(function.id())
@@ -365,7 +374,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

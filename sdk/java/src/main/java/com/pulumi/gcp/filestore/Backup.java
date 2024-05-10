@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Filestore Backup Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,36 +57,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;tf-fs-inst&#34;)
- *             .location(&#34;us-central1-b&#34;)
- *             .tier(&#34;BASIC_HDD&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("tf-fs-inst")
+ *             .location("us-central1-b")
+ *             .tier("BASIC_HDD")
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(1024)
- *                 .name(&#34;share1&#34;)
+ *                 .name("share1")
  *                 .build())
  *             .networks(InstanceNetworkArgs.builder()
- *                 .network(&#34;default&#34;)
- *                 .modes(&#34;MODE_IPV4&#34;)
- *                 .connectMode(&#34;DIRECT_PEERING&#34;)
+ *                 .network("default")
+ *                 .modes("MODE_IPV4")
+ *                 .connectMode("DIRECT_PEERING")
  *                 .build())
  *             .build());
  * 
- *         var backup = new Backup(&#34;backup&#34;, BackupArgs.builder()        
- *             .name(&#34;tf-fs-bkup&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;This is a filestore backup for the test instance&#34;)
+ *         var backup = new Backup("backup", BackupArgs.builder()        
+ *             .name("tf-fs-bkup")
+ *             .location("us-central1")
+ *             .description("This is a filestore backup for the test instance")
  *             .sourceInstance(instance.id())
- *             .sourceFileShare(&#34;share1&#34;)
+ *             .sourceFileShare("share1")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;files&#34;, &#34;label1&#34;),
- *                 Map.entry(&#34;other-label&#34;, &#34;label2&#34;)
+ *                 Map.entry("files", "label1"),
+ *                 Map.entry("other-label", "label2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Apphub Workload Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,123 +72,125 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var application = new Application(&#34;application&#34;, ApplicationArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .applicationId(&#34;example-application-1&#34;)
+ *         var application = new Application("application", ApplicationArgs.builder()        
+ *             .location("us-central1")
+ *             .applicationId("example-application-1")
  *             .scope(ApplicationScopeArgs.builder()
- *                 .type(&#34;REGIONAL&#34;)
+ *                 .type("REGIONAL")
  *                 .build())
  *             .build());
  * 
- *         var serviceProject = new Project(&#34;serviceProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-1&#34;)
- *             .name(&#34;Service Project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *             .projectId("project-1")
+ *             .name("Service Project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service(&#34;computeServiceProject&#34;, ServiceArgs.builder()        
+ *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()        
  *             .project(serviceProject.projectId())
- *             .service(&#34;compute.googleapis.com&#34;)
+ *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var wait120s = new Sleep(&#34;wait120s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
- *         var serviceProjectAttachment = new ServiceProjectAttachment(&#34;serviceProjectAttachment&#34;, ServiceProjectAttachmentArgs.builder()        
+ *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()        
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
  *         // VPC network
- *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;l7-ilb-network&#34;)
+ *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()        
+ *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // backend subnet
- *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;l7-ilb-subnet&#34;)
+ *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()        
+ *             .name("l7-ilb-subnet")
  *             .project(serviceProject.projectId())
- *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .ipCidrRange("10.0.1.0/24")
+ *             .region("us-central1")
  *             .network(ilbNetwork.id())
  *             .build());
  * 
  *         // instance template
- *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(ilbNetwork.id())
  *                 .subnetwork(ilbSubnet.id())
  *                 .build())
- *             .name(&#34;l7-ilb-mig-template&#34;)
+ *             .name("l7-ilb-mig-template")
  *             .project(serviceProject.projectId())
- *             .machineType(&#34;e2-small&#34;)
- *             .tags(&#34;http-server&#34;)
+ *             .machineType("e2-small")
+ *             .tags("http-server")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-10&#34;)
+ *                 .sourceImage("debian-cloud/debian-10")
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
- *             .metadata(Map.of(&#34;startup-script&#34;, &#34;&#34;&#34;
+ *             .metadata(Map.of("startup-script", """
  * #! /bin/bash
  * set -euo pipefail
  * export DEBIAN_FRONTEND=noninteractive
  * apt-get update
  * apt-get install -y nginx-light jq
- * NAME=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/hostname&#34;)
- * IP=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip&#34;)
- * METADATA=$(curl -f -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True&#34; | jq &#39;del(.[&#34;startup-script&#34;])&#39;)
- * cat &lt;&lt;EOF &gt; /var/www/html/index.html
- * &lt;pre&gt;
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
  * Name: $NAME
  * IP: $IP
  * Metadata: $METADATA
- * &lt;/pre&gt;
+ * </pre>
  * EOF
- *             &#34;&#34;&#34;))
+ *             """))
  *             .build());
  * 
- *         var mig = new RegionInstanceGroupManager(&#34;mig&#34;, RegionInstanceGroupManagerArgs.builder()        
- *             .name(&#34;l7-ilb-mig1&#34;)
+ *         var mig = new RegionInstanceGroupManager("mig", RegionInstanceGroupManagerArgs.builder()        
+ *             .name("l7-ilb-mig1")
  *             .project(serviceProject.projectId())
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(instanceTemplate.id())
- *                 .name(&#34;primary&#34;)
+ *                 .name("primary")
  *                 .build())
- *             .baseInstanceName(&#34;vm&#34;)
+ *             .baseInstanceName("vm")
  *             .targetSize(2)
  *             .build());
  * 
  *         // Discovered workload
  *         final var catalog-workload = ApphubFunctions.getDiscoveredWorkload(GetDiscoveredWorkloadArgs.builder()
- *             .location(&#34;us-central1&#34;)
- *             .workloadUri(StdFunctions.replace().applyValue(invoke -&gt; invoke.result()))
+ *             .location("us-central1")
+ *             .workloadUri(StdFunctions.replace().applyValue(invoke -> invoke.result()))
  *             .build());
  * 
- *         var wait120sForResourceIngestion = new Sleep(&#34;wait120sForResourceIngestion&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
- *         var example = new Workload(&#34;example&#34;, WorkloadArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var example = new Workload("example", WorkloadArgs.builder()        
+ *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .workloadId(mig.name())
- *             .discoveredWorkload(catalog_workload.applyValue(catalog_workload -&gt; catalog_workload.name()))
+ *             .discoveredWorkload(catalog_workload.applyValue(catalog_workload -> catalog_workload.name()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apphub Workload Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -235,140 +238,141 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var application = new Application(&#34;application&#34;, ApplicationArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .applicationId(&#34;example-application-1&#34;)
+ *         var application = new Application("application", ApplicationArgs.builder()        
+ *             .location("us-central1")
+ *             .applicationId("example-application-1")
  *             .scope(ApplicationScopeArgs.builder()
- *                 .type(&#34;REGIONAL&#34;)
+ *                 .type("REGIONAL")
  *                 .build())
  *             .build());
  * 
- *         var serviceProject = new Project(&#34;serviceProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-1&#34;)
- *             .name(&#34;Service Project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *             .projectId("project-1")
+ *             .name("Service Project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service(&#34;computeServiceProject&#34;, ServiceArgs.builder()        
+ *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()        
  *             .project(serviceProject.projectId())
- *             .service(&#34;compute.googleapis.com&#34;)
+ *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var wait120s = new Sleep(&#34;wait120s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
- *         var serviceProjectAttachment = new ServiceProjectAttachment(&#34;serviceProjectAttachment&#34;, ServiceProjectAttachmentArgs.builder()        
+ *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()        
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
  *         // VPC network
- *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;l7-ilb-network&#34;)
+ *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()        
+ *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // backend subnet
- *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;l7-ilb-subnet&#34;)
+ *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()        
+ *             .name("l7-ilb-subnet")
  *             .project(serviceProject.projectId())
- *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .ipCidrRange("10.0.1.0/24")
+ *             .region("us-central1")
  *             .network(ilbNetwork.id())
  *             .build());
  * 
  *         // instance template
- *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(ilbNetwork.id())
  *                 .subnetwork(ilbSubnet.id())
  *                 .build())
- *             .name(&#34;l7-ilb-mig-template&#34;)
+ *             .name("l7-ilb-mig-template")
  *             .project(serviceProject.projectId())
- *             .machineType(&#34;e2-small&#34;)
- *             .tags(&#34;http-server&#34;)
+ *             .machineType("e2-small")
+ *             .tags("http-server")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-10&#34;)
+ *                 .sourceImage("debian-cloud/debian-10")
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
- *             .metadata(Map.of(&#34;startup-script&#34;, &#34;&#34;&#34;
+ *             .metadata(Map.of("startup-script", """
  * #! /bin/bash
  * set -euo pipefail
  * export DEBIAN_FRONTEND=noninteractive
  * apt-get update
  * apt-get install -y nginx-light jq
- * NAME=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/hostname&#34;)
- * IP=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip&#34;)
- * METADATA=$(curl -f -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True&#34; | jq &#39;del(.[&#34;startup-script&#34;])&#39;)
- * cat &lt;&lt;EOF &gt; /var/www/html/index.html
- * &lt;pre&gt;
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
  * Name: $NAME
  * IP: $IP
  * Metadata: $METADATA
- * &lt;/pre&gt;
+ * </pre>
  * EOF
- *             &#34;&#34;&#34;))
+ *             """))
  *             .build());
  * 
- *         var mig = new RegionInstanceGroupManager(&#34;mig&#34;, RegionInstanceGroupManagerArgs.builder()        
- *             .name(&#34;l7-ilb-mig1&#34;)
+ *         var mig = new RegionInstanceGroupManager("mig", RegionInstanceGroupManagerArgs.builder()        
+ *             .name("l7-ilb-mig1")
  *             .project(serviceProject.projectId())
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(instanceTemplate.id())
- *                 .name(&#34;primary&#34;)
+ *                 .name("primary")
  *                 .build())
- *             .baseInstanceName(&#34;vm&#34;)
+ *             .baseInstanceName("vm")
  *             .targetSize(2)
  *             .build());
  * 
  *         // Discovered workload 
  *         final var catalog-workload = ApphubFunctions.getDiscoveredWorkload(GetDiscoveredWorkloadArgs.builder()
- *             .location(&#34;us-central1&#34;)
- *             .workloadUri(StdFunctions.replace().applyValue(invoke -&gt; invoke.result()))
+ *             .location("us-central1")
+ *             .workloadUri(StdFunctions.replace().applyValue(invoke -> invoke.result()))
  *             .build());
  * 
- *         var wait120sForResourceIngestion = new Sleep(&#34;wait120sForResourceIngestion&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
- *         var example = new Workload(&#34;example&#34;, WorkloadArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var example = new Workload("example", WorkloadArgs.builder()        
+ *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .workloadId(mig.name())
- *             .discoveredWorkload(catalog_workload.applyValue(catalog_workload -&gt; catalog_workload.name()))
- *             .displayName(&#34;Example Service Full&#34;)
- *             .description(&#34;Register service for testing&#34;)
+ *             .discoveredWorkload(catalog_workload.applyValue(catalog_workload -> catalog_workload.name()))
+ *             .displayName("Example Service Full")
+ *             .description("Register service for testing")
  *             .attributes(WorkloadAttributesArgs.builder()
  *                 .environment(WorkloadAttributesEnvironmentArgs.builder()
- *                     .type(&#34;STAGING&#34;)
+ *                     .type("STAGING")
  *                     .build())
  *                 .criticality(WorkloadAttributesCriticalityArgs.builder()
- *                     .type(&#34;MISSION_CRITICAL&#34;)
+ *                     .type("MISSION_CRITICAL")
  *                     .build())
  *                 .businessOwners(WorkloadAttributesBusinessOwnerArgs.builder()
- *                     .displayName(&#34;Alice&#34;)
- *                     .email(&#34;alice@google.com&#34;)
+ *                     .displayName("Alice")
+ *                     .email("alice{@literal @}google.com")
  *                     .build())
  *                 .developerOwners(WorkloadAttributesDeveloperOwnerArgs.builder()
- *                     .displayName(&#34;Bob&#34;)
- *                     .email(&#34;bob@google.com&#34;)
+ *                     .displayName("Bob")
+ *                     .email("bob{@literal @}google.com")
  *                     .build())
  *                 .operatorOwners(WorkloadAttributesOperatorOwnerArgs.builder()
- *                     .displayName(&#34;Charlie&#34;)
- *                     .email(&#34;charlie@google.com&#34;)
+ *                     .displayName("Charlie")
+ *                     .email("charlie{@literal @}google.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

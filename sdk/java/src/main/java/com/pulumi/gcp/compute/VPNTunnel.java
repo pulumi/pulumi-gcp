@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Vpn Tunnel Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,61 +64,62 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-1&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network-1")
  *             .build());
  * 
- *         var targetGateway = new VPNGateway(&#34;targetGateway&#34;, VPNGatewayArgs.builder()        
- *             .name(&#34;vpn-1&#34;)
+ *         var targetGateway = new VPNGateway("targetGateway", VPNGatewayArgs.builder()        
+ *             .name("vpn-1")
  *             .network(network1.id())
  *             .build());
  * 
- *         var tunnel1 = new VPNTunnel(&#34;tunnel1&#34;, VPNTunnelArgs.builder()        
- *             .name(&#34;tunnel-1&#34;)
- *             .peerIp(&#34;15.0.0.120&#34;)
- *             .sharedSecret(&#34;a secret message&#34;)
+ *         var tunnel1 = new VPNTunnel("tunnel1", VPNTunnelArgs.builder()        
+ *             .name("tunnel-1")
+ *             .peerIp("15.0.0.120")
+ *             .sharedSecret("a secret message")
  *             .targetVpnGateway(targetGateway.id())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var vpnStaticIp = new Address(&#34;vpnStaticIp&#34;, AddressArgs.builder()        
- *             .name(&#34;vpn-static-ip&#34;)
+ *         var vpnStaticIp = new Address("vpnStaticIp", AddressArgs.builder()        
+ *             .name("vpn-static-ip")
  *             .build());
  * 
- *         var frEsp = new ForwardingRule(&#34;frEsp&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;fr-esp&#34;)
- *             .ipProtocol(&#34;ESP&#34;)
+ *         var frEsp = new ForwardingRule("frEsp", ForwardingRuleArgs.builder()        
+ *             .name("fr-esp")
+ *             .ipProtocol("ESP")
  *             .ipAddress(vpnStaticIp.address())
  *             .target(targetGateway.id())
  *             .build());
  * 
- *         var frUdp500 = new ForwardingRule(&#34;frUdp500&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;fr-udp500&#34;)
- *             .ipProtocol(&#34;UDP&#34;)
- *             .portRange(&#34;500&#34;)
+ *         var frUdp500 = new ForwardingRule("frUdp500", ForwardingRuleArgs.builder()        
+ *             .name("fr-udp500")
+ *             .ipProtocol("UDP")
+ *             .portRange("500")
  *             .ipAddress(vpnStaticIp.address())
  *             .target(targetGateway.id())
  *             .build());
  * 
- *         var frUdp4500 = new ForwardingRule(&#34;frUdp4500&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;fr-udp4500&#34;)
- *             .ipProtocol(&#34;UDP&#34;)
- *             .portRange(&#34;4500&#34;)
+ *         var frUdp4500 = new ForwardingRule("frUdp4500", ForwardingRuleArgs.builder()        
+ *             .name("fr-udp4500")
+ *             .ipProtocol("UDP")
+ *             .portRange("4500")
  *             .ipAddress(vpnStaticIp.address())
  *             .target(targetGateway.id())
  *             .build());
  * 
- *         var route1 = new Route(&#34;route1&#34;, RouteArgs.builder()        
- *             .name(&#34;route1&#34;)
+ *         var route1 = new Route("route1", RouteArgs.builder()        
+ *             .name("route1")
  *             .network(network1.name())
- *             .destRange(&#34;15.0.0.0/24&#34;)
+ *             .destRange("15.0.0.0/24")
  *             .priority(1000)
  *             .nextHopVpnTunnel(tunnel1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

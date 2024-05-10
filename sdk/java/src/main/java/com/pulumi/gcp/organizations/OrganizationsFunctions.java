@@ -75,7 +75,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Billing Account.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -99,20 +100,21 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
-     *             .displayName(&#34;My Billing Account&#34;)
+     *             .displayName("My Billing Account")
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .name(&#34;My Project&#34;)
-     *             .projectId(&#34;your-project-id&#34;)
-     *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *             .name("My Project")
+     *             .projectId("your-project-id")
+     *             .orgId("1234567")
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -123,7 +125,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Billing Account.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -147,20 +150,21 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
-     *             .displayName(&#34;My Billing Account&#34;)
+     *             .displayName("My Billing Account")
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .name(&#34;My Project&#34;)
-     *             .projectId(&#34;your-project-id&#34;)
-     *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *             .name("My Project")
+     *             .projectId("your-project-id")
+     *             .orgId("1234567")
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -171,7 +175,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Billing Account.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -195,20 +200,21 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
-     *             .displayName(&#34;My Billing Account&#34;)
+     *             .displayName("My Billing Account")
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .name(&#34;My Project&#34;)
-     *             .projectId(&#34;your-project-id&#34;)
-     *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *             .name("My Project")
+     *             .projectId("your-project-id")
+     *             .orgId("1234567")
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -219,7 +225,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Billing Account.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -243,20 +250,21 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
-     *             .displayName(&#34;My Billing Account&#34;)
+     *             .displayName("My Billing Account")
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .name(&#34;My Project&#34;)
-     *             .projectId(&#34;your-project-id&#34;)
-     *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *             .name("My Project")
+     *             .projectId("your-project-id")
+     *             .orgId("1234567")
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -267,7 +275,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Billing Account.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -291,20 +300,21 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
-     *             .displayName(&#34;My Billing Account&#34;)
+     *             .displayName("My Billing Account")
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .name(&#34;My Project&#34;)
-     *             .projectId(&#34;your-project-id&#34;)
-     *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *             .name("My Project")
+     *             .projectId("your-project-id")
+     *             .orgId("1234567")
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -315,7 +325,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Billing Account.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -339,20 +350,21 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
-     *             .displayName(&#34;My Billing Account&#34;)
+     *             .displayName("My Billing Account")
      *             .open(true)
      *             .build());
      * 
-     *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .name(&#34;My Project&#34;)
-     *             .projectId(&#34;your-project-id&#34;)
-     *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *         var myProject = new Project("myProject", ProjectArgs.builder()        
+     *             .name("My Project")
+     *             .projectId("your-project-id")
+     *             .orgId("1234567")
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -431,7 +443,8 @@ public final class OrganizationsFunctions {
      * ### Exporting An Email
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -453,16 +466,18 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -493,25 +508,26 @@ public final class OrganizationsFunctions {
      *         final var provider = OrganizationsFunctions.getClientConfig();
      * 
      *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
      *             .build());
      * 
-     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .name("provider-user-admin")
      *                 .build())
      *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
-     *                 .kind(&#34;ClusterRole&#34;)
-     *                 .name(&#34;cluster-admin&#34;)
+     *                 .apiGroup("rbac.authorization.k8s.io")
+     *                 .kind("ClusterRole")
+     *                 .name("cluster-admin")
      *                 .build())
      *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -536,7 +552,8 @@ public final class OrganizationsFunctions {
      * ### Exporting An Email
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -558,16 +575,18 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -598,25 +617,26 @@ public final class OrganizationsFunctions {
      *         final var provider = OrganizationsFunctions.getClientConfig();
      * 
      *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
      *             .build());
      * 
-     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .name("provider-user-admin")
      *                 .build())
      *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
-     *                 .kind(&#34;ClusterRole&#34;)
-     *                 .name(&#34;cluster-admin&#34;)
+     *                 .apiGroup("rbac.authorization.k8s.io")
+     *                 .kind("ClusterRole")
+     *                 .name("cluster-admin")
      *                 .build())
      *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -641,7 +661,8 @@ public final class OrganizationsFunctions {
      * ### Exporting An Email
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -663,16 +684,18 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -703,25 +726,26 @@ public final class OrganizationsFunctions {
      *         final var provider = OrganizationsFunctions.getClientConfig();
      * 
      *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
      *             .build());
      * 
-     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .name("provider-user-admin")
      *                 .build())
      *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
-     *                 .kind(&#34;ClusterRole&#34;)
-     *                 .name(&#34;cluster-admin&#34;)
+     *                 .apiGroup("rbac.authorization.k8s.io")
+     *                 .kind("ClusterRole")
+     *                 .name("cluster-admin")
      *                 .build())
      *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -746,7 +770,8 @@ public final class OrganizationsFunctions {
      * ### Exporting An Email
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -768,16 +793,18 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -808,25 +835,26 @@ public final class OrganizationsFunctions {
      *         final var provider = OrganizationsFunctions.getClientConfig();
      * 
      *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
      *             .build());
      * 
-     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .name("provider-user-admin")
      *                 .build())
      *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
-     *                 .kind(&#34;ClusterRole&#34;)
-     *                 .name(&#34;cluster-admin&#34;)
+     *                 .apiGroup("rbac.authorization.k8s.io")
+     *                 .kind("ClusterRole")
+     *                 .name("cluster-admin")
      *                 .build())
      *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -851,7 +879,8 @@ public final class OrganizationsFunctions {
      * ### Exporting An Email
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -873,16 +902,18 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -913,25 +944,26 @@ public final class OrganizationsFunctions {
      *         final var provider = OrganizationsFunctions.getClientConfig();
      * 
      *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
      *             .build());
      * 
-     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .name("provider-user-admin")
      *                 .build())
      *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
-     *                 .kind(&#34;ClusterRole&#34;)
-     *                 .name(&#34;cluster-admin&#34;)
+     *                 .apiGroup("rbac.authorization.k8s.io")
+     *                 .kind("ClusterRole")
+     *                 .name("cluster-admin")
      *                 .build())
      *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -956,7 +988,8 @@ public final class OrganizationsFunctions {
      * ### Exporting An Email
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -978,16 +1011,18 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
-     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1018,25 +1053,26 @@ public final class OrganizationsFunctions {
      *         final var provider = OrganizationsFunctions.getClientConfig();
      * 
      *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
      *             .build());
      * 
-     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()        
      *             .metadata(ObjectMetaArgs.builder()
-     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .name("provider-user-admin")
      *                 .build())
      *             .roleRef(RoleRefArgs.builder()
-     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
-     *                 .kind(&#34;ClusterRole&#34;)
-     *                 .name(&#34;cluster-admin&#34;)
+     *                 .apiGroup("rbac.authorization.k8s.io")
+     *                 .kind("ClusterRole")
+     *                 .name("cluster-admin")
      *                 .build())
      *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1047,7 +1083,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Cloud Folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1069,19 +1106,20 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myFolder1 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
-     *             .folder(&#34;folders/12345&#34;)
+     *             .folder("folders/12345")
      *             .lookupOrganization(true)
      *             .build());
      * 
      *         final var myFolder2 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
-     *             .folder(&#34;folders/23456&#34;)
+     *             .folder("folders/23456")
      *             .build());
      * 
-     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.applyValue(getFolderResult -&gt; getFolderResult.organization()));
-     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.applyValue(getFolderResult -&gt; getFolderResult.parent()));
+     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
+     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1092,7 +1130,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Cloud Folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1114,19 +1153,20 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myFolder1 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
-     *             .folder(&#34;folders/12345&#34;)
+     *             .folder("folders/12345")
      *             .lookupOrganization(true)
      *             .build());
      * 
      *         final var myFolder2 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
-     *             .folder(&#34;folders/23456&#34;)
+     *             .folder("folders/23456")
      *             .build());
      * 
-     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.applyValue(getFolderResult -&gt; getFolderResult.organization()));
-     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.applyValue(getFolderResult -&gt; getFolderResult.parent()));
+     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
+     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1137,7 +1177,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Cloud Folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1159,19 +1200,20 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myFolder1 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
-     *             .folder(&#34;folders/12345&#34;)
+     *             .folder("folders/12345")
      *             .lookupOrganization(true)
      *             .build());
      * 
      *         final var myFolder2 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
-     *             .folder(&#34;folders/23456&#34;)
+     *             .folder("folders/23456")
      *             .build());
      * 
-     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.applyValue(getFolderResult -&gt; getFolderResult.organization()));
-     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.applyValue(getFolderResult -&gt; getFolderResult.parent()));
+     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
+     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1182,7 +1224,8 @@ public final class OrganizationsFunctions {
      * Use this data source to get information about a Google Cloud Folder.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1204,19 +1247,20 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myFolder1 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
-     *             .folder(&#34;folders/12345&#34;)
+     *             .folder("folders/12345")
      *             .lookupOrganization(true)
      *             .build());
      * 
      *         final var myFolder2 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
-     *             .folder(&#34;folders/23456&#34;)
+     *             .folder("folders/23456")
      *             .build());
      * 
-     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.applyValue(getFolderResult -&gt; getFolderResult.organization()));
-     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.applyValue(getFolderResult -&gt; getFolderResult.parent()));
+     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
+     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1233,7 +1277,8 @@ public final class OrganizationsFunctions {
      * ### Searching For Folders At The Root Of An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1256,7 +1301,7 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
-     *             .parentId(String.format(&#34;organizations/%s&#34;, organizationId))
+     *             .parentId(String.format("organizations/%s", organizationId))
      *             .build());
      * 
      *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
@@ -1265,7 +1310,8 @@ public final class OrganizationsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1282,7 +1328,8 @@ public final class OrganizationsFunctions {
      * ### Searching For Folders At The Root Of An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1305,7 +1352,7 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
-     *             .parentId(String.format(&#34;organizations/%s&#34;, organizationId))
+     *             .parentId(String.format("organizations/%s", organizationId))
      *             .build());
      * 
      *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
@@ -1314,7 +1361,8 @@ public final class OrganizationsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1331,7 +1379,8 @@ public final class OrganizationsFunctions {
      * ### Searching For Folders At The Root Of An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1354,7 +1403,7 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
-     *             .parentId(String.format(&#34;organizations/%s&#34;, organizationId))
+     *             .parentId(String.format("organizations/%s", organizationId))
      *             .build());
      * 
      *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
@@ -1363,7 +1412,8 @@ public final class OrganizationsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1380,7 +1430,8 @@ public final class OrganizationsFunctions {
      * ### Searching For Folders At The Root Of An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1403,7 +1454,7 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
-     *             .parentId(String.format(&#34;organizations/%s&#34;, organizationId))
+     *             .parentId(String.format("organizations/%s", organizationId))
      *             .build());
      * 
      *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
@@ -1412,7 +1463,8 @@ public final class OrganizationsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1483,7 +1535,8 @@ public final class OrganizationsFunctions {
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1507,17 +1560,18 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .domain(&#34;example.com&#34;)
+     *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
-     *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *             .displayName("Sales")
+     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1528,7 +1582,8 @@ public final class OrganizationsFunctions {
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1552,17 +1607,18 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .domain(&#34;example.com&#34;)
+     *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
-     *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *             .displayName("Sales")
+     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1573,7 +1629,8 @@ public final class OrganizationsFunctions {
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1597,17 +1654,18 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .domain(&#34;example.com&#34;)
+     *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
-     *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *             .displayName("Sales")
+     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1618,7 +1676,8 @@ public final class OrganizationsFunctions {
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1642,17 +1701,18 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .domain(&#34;example.com&#34;)
+     *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
-     *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *             .displayName("Sales")
+     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1663,7 +1723,8 @@ public final class OrganizationsFunctions {
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1687,17 +1748,18 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .domain(&#34;example.com&#34;)
+     *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
-     *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *             .displayName("Sales")
+     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1708,7 +1770,8 @@ public final class OrganizationsFunctions {
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1732,17 +1795,18 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .domain(&#34;example.com&#34;)
+     *             .domain("example.com")
      *             .build());
      * 
-     *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
-     *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *         var sales = new Folder("sales", FolderArgs.builder()        
+     *             .displayName("Sales")
+     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1757,7 +1821,8 @@ public final class OrganizationsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1780,10 +1845,11 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1798,7 +1864,8 @@ public final class OrganizationsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1821,10 +1888,11 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1839,7 +1907,8 @@ public final class OrganizationsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1862,10 +1931,11 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1880,7 +1950,8 @@ public final class OrganizationsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1903,10 +1974,11 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1921,7 +1993,8 @@ public final class OrganizationsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1944,10 +2017,11 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1962,7 +2036,8 @@ public final class OrganizationsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1985,10 +2060,11 @@ public final class OrganizationsFunctions {
      *     public static void stack(Context ctx) {
      *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

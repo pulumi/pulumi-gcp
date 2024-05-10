@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Pubsub Lite Reservation Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,15 +55,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new LiteReservation(&#34;example&#34;, LiteReservationArgs.builder()        
- *             .name(&#34;example-reservation&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
+ *         var example = new LiteReservation("example", LiteReservationArgs.builder()        
+ *             .name("example-reservation")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .throughputCapacity(2)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Service Identity Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,20 +60,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var hcSa = new ServiceIdentity(&#34;hcSa&#34;, ServiceIdentityArgs.builder()        
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .service(&#34;healthcare.googleapis.com&#34;)
+ *         var hcSa = new ServiceIdentity("hcSa", ServiceIdentityArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .service("healthcare.googleapis.com")
  *             .build());
  * 
- *         var hcSaBqJobuser = new IAMMember(&#34;hcSaBqJobuser&#34;, IAMMemberArgs.builder()        
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .role(&#34;roles/bigquery.jobUser&#34;)
- *             .member(hcSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *         var hcSaBqJobuser = new IAMMember("hcSaBqJobuser", IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.jobUser")
+ *             .member(hcSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

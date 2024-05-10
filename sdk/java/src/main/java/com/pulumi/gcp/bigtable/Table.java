@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,36 +50,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;tf-instance&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("tf-instance")
  *             .clusters(InstanceClusterArgs.builder()
- *                 .clusterId(&#34;tf-instance-cluster&#34;)
- *                 .zone(&#34;us-central1-b&#34;)
+ *                 .clusterId("tf-instance-cluster")
+ *                 .zone("us-central1-b")
  *                 .numNodes(3)
- *                 .storageType(&#34;HDD&#34;)
+ *                 .storageType("HDD")
  *                 .build())
  *             .build());
  * 
- *         var table = new Table(&#34;table&#34;, TableArgs.builder()        
- *             .name(&#34;tf-table&#34;)
+ *         var table = new Table("table", TableArgs.builder()        
+ *             .name("tf-table")
  *             .instanceName(instance.name())
  *             .splitKeys(            
- *                 &#34;a&#34;,
- *                 &#34;b&#34;,
- *                 &#34;c&#34;)
+ *                 "a",
+ *                 "b",
+ *                 "c")
  *             .columnFamilies(            
  *                 TableColumnFamilyArgs.builder()
- *                     .family(&#34;family-first&#34;)
+ *                     .family("family-first")
  *                     .build(),
  *                 TableColumnFamilyArgs.builder()
- *                     .family(&#34;family-second&#34;)
+ *                     .family("family-second")
  *                     .build())
- *             .changeStreamRetention(&#34;24h0m0s&#34;)
+ *             .changeStreamRetention("24h0m0s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Datapolicy Data Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,34 +55,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var taxonomy = new Taxonomy(&#34;taxonomy&#34;, TaxonomyArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .displayName(&#34;taxonomy&#34;)
- *             .description(&#34;A collection of policy tags&#34;)
- *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
+ *         var taxonomy = new Taxonomy("taxonomy", TaxonomyArgs.builder()        
+ *             .region("us-central1")
+ *             .displayName("taxonomy")
+ *             .description("A collection of policy tags")
+ *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")
  *             .build());
  * 
- *         var policyTag = new PolicyTag(&#34;policyTag&#34;, PolicyTagArgs.builder()        
+ *         var policyTag = new PolicyTag("policyTag", PolicyTagArgs.builder()        
  *             .taxonomy(taxonomy.id())
- *             .displayName(&#34;Low security&#34;)
- *             .description(&#34;A policy tag normally associated with low security items&#34;)
+ *             .displayName("Low security")
+ *             .description("A policy tag normally associated with low security items")
  *             .build());
  * 
- *         var dataPolicy = new DataPolicy(&#34;dataPolicy&#34;, DataPolicyArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .dataPolicyId(&#34;data_policy&#34;)
+ *         var dataPolicy = new DataPolicy("dataPolicy", DataPolicyArgs.builder()        
+ *             .location("us-central1")
+ *             .dataPolicyId("data_policy")
  *             .policyTag(policyTag.name())
- *             .dataPolicyType(&#34;COLUMN_LEVEL_SECURITY_POLICY&#34;)
+ *             .dataPolicyType("COLUMN_LEVEL_SECURITY_POLICY")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Datapolicy Data Policy Routine
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -112,43 +115,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var taxonomy = new Taxonomy(&#34;taxonomy&#34;, TaxonomyArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .displayName(&#34;taxonomy&#34;)
- *             .description(&#34;A collection of policy tags&#34;)
- *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
+ *         var taxonomy = new Taxonomy("taxonomy", TaxonomyArgs.builder()        
+ *             .region("us-central1")
+ *             .displayName("taxonomy")
+ *             .description("A collection of policy tags")
+ *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")
  *             .build());
  * 
- *         var policyTag = new PolicyTag(&#34;policyTag&#34;, PolicyTagArgs.builder()        
+ *         var policyTag = new PolicyTag("policyTag", PolicyTagArgs.builder()        
  *             .taxonomy(taxonomy.id())
- *             .displayName(&#34;Low security&#34;)
- *             .description(&#34;A policy tag normally associated with low security items&#34;)
+ *             .displayName("Low security")
+ *             .description("A policy tag normally associated with low security items")
  *             .build());
  * 
- *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataset_id&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var test = new Dataset("test", DatasetArgs.builder()        
+ *             .datasetId("dataset_id")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var customMaskingRoutine = new Routine(&#34;customMaskingRoutine&#34;, RoutineArgs.builder()        
+ *         var customMaskingRoutine = new Routine("customMaskingRoutine", RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;custom_masking_routine&#34;)
- *             .routineType(&#34;SCALAR_FUNCTION&#34;)
- *             .language(&#34;SQL&#34;)
- *             .dataGovernanceType(&#34;DATA_MASKING&#34;)
- *             .definitionBody(&#34;SAFE.REGEXP_REPLACE(ssn, &#39;[0-9]&#39;, &#39;X&#39;)&#34;)
- *             .returnType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *             .routineId("custom_masking_routine")
+ *             .routineType("SCALAR_FUNCTION")
+ *             .language("SQL")
+ *             .dataGovernanceType("DATA_MASKING")
+ *             .definitionBody("SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')")
+ *             .returnType("{\"typeKind\" :  \"STRING\"}")
  *             .arguments(RoutineArgumentArgs.builder()
- *                 .name(&#34;ssn&#34;)
- *                 .dataType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *                 .name("ssn")
+ *                 .dataType("{\"typeKind\" :  \"STRING\"}")
  *                 .build())
  *             .build());
  * 
- *         var dataPolicy = new DataPolicy(&#34;dataPolicy&#34;, DataPolicyArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .dataPolicyId(&#34;data_policy&#34;)
+ *         var dataPolicy = new DataPolicy("dataPolicy", DataPolicyArgs.builder()        
+ *             .location("us-central1")
+ *             .dataPolicyId("data_policy")
  *             .policyTag(policyTag.name())
- *             .dataPolicyType(&#34;DATA_MASKING_POLICY&#34;)
+ *             .dataPolicyType("DATA_MASKING_POLICY")
  *             .dataMaskingPolicy(DataPolicyDataMaskingPolicyArgs.builder()
  *                 .routine(customMaskingRoutine.id())
  *                 .build())
@@ -156,7 +159,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

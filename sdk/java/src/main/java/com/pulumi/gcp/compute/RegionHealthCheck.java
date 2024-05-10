@@ -46,7 +46,8 @@ import javax.annotation.Nullable;
  * ### Region Health Check Tcp
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,23 +69,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcp_region_health_check = new RegionHealthCheck(&#34;tcp-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;tcp-region-health-check&#34;)
+ *         var tcp_region_health_check = new RegionHealthCheck("tcp-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("tcp-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Tcp Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -106,30 +109,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcp_region_health_check = new RegionHealthCheck(&#34;tcp-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;tcp-region-health-check&#34;)
- *             .description(&#34;Health check via tcp&#34;)
+ *         var tcp_region_health_check = new RegionHealthCheck("tcp-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("tcp-region-health-check")
+ *             .description("Health check via tcp")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .request(&#34;ARE YOU HEALTHY?&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .request("ARE YOU HEALTHY?")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Ssl
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -151,23 +156,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ssl_region_health_check = new RegionHealthCheck(&#34;ssl-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;ssl-region-health-check&#34;)
+ *         var ssl_region_health_check = new RegionHealthCheck("ssl-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("ssl-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .sslHealthCheck(RegionHealthCheckSslHealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Ssl Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -189,30 +196,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ssl_region_health_check = new RegionHealthCheck(&#34;ssl-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;ssl-region-health-check&#34;)
- *             .description(&#34;Health check via ssl&#34;)
+ *         var ssl_region_health_check = new RegionHealthCheck("ssl-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("ssl-region-health-check")
+ *             .description("Health check via ssl")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .sslHealthCheck(RegionHealthCheckSslHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .request(&#34;ARE YOU HEALTHY?&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .request("ARE YOU HEALTHY?")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Http
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -234,23 +243,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_region_health_check = new RegionHealthCheck(&#34;http-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;http-region-health-check&#34;)
+ *         var http_region_health_check = new RegionHealthCheck("http-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("http-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Http Logs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -273,12 +284,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_region_health_check = new RegionHealthCheck(&#34;http-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;http-region-health-check&#34;)
+ *         var http_region_health_check = new RegionHealthCheck("http-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("http-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .logConfig(RegionHealthCheckLogConfigArgs.builder()
  *                 .enable(true)
@@ -287,12 +298,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Http Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -314,31 +327,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http_region_health_check = new RegionHealthCheck(&#34;http-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;http-region-health-check&#34;)
- *             .description(&#34;Health check via http&#34;)
+ *         var http_region_health_check = new RegionHealthCheck("http-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("http-region-health-check")
+ *             .description("Health check via http")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .host(&#34;1.2.3.4&#34;)
- *                 .requestPath(&#34;/mypath&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .host("1.2.3.4")
+ *                 .requestPath("/mypath")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Https
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -360,23 +375,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https_region_health_check = new RegionHealthCheck(&#34;https-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;https-region-health-check&#34;)
+ *         var https_region_health_check = new RegionHealthCheck("https-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("https-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpsHealthCheck(RegionHealthCheckHttpsHealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Https Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -398,31 +415,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var https_region_health_check = new RegionHealthCheck(&#34;https-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;https-region-health-check&#34;)
- *             .description(&#34;Health check via https&#34;)
+ *         var https_region_health_check = new RegionHealthCheck("https-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("https-region-health-check")
+ *             .description("Health check via https")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .httpsHealthCheck(RegionHealthCheckHttpsHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .host(&#34;1.2.3.4&#34;)
- *                 .requestPath(&#34;/mypath&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .host("1.2.3.4")
+ *                 .requestPath("/mypath")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Http2
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -444,23 +463,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http2_region_health_check = new RegionHealthCheck(&#34;http2-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;http2-region-health-check&#34;)
+ *         var http2_region_health_check = new RegionHealthCheck("http2-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("http2-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .http2HealthCheck(RegionHealthCheckHttp2HealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Http2 Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -482,31 +503,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var http2_region_health_check = new RegionHealthCheck(&#34;http2-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;http2-region-health-check&#34;)
- *             .description(&#34;Health check via http2&#34;)
+ *         var http2_region_health_check = new RegionHealthCheck("http2-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("http2-region-health-check")
+ *             .description("Health check via http2")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
  *             .unhealthyThreshold(5)
  *             .http2HealthCheck(RegionHealthCheckHttp2HealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .host(&#34;1.2.3.4&#34;)
- *                 .requestPath(&#34;/mypath&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
- *                 .response(&#34;I AM HEALTHY&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .host("1.2.3.4")
+ *                 .requestPath("/mypath")
+ *                 .proxyHeader("NONE")
+ *                 .response("I AM HEALTHY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Grpc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -528,23 +551,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grpc_region_health_check = new RegionHealthCheck(&#34;grpc-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;grpc-region-health-check&#34;)
+ *         var grpc_region_health_check = new RegionHealthCheck("grpc-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("grpc-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .grpcHealthCheck(RegionHealthCheckGrpcHealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Health Check Grpc Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -566,20 +591,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grpc_region_health_check = new RegionHealthCheck(&#34;grpc-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;grpc-region-health-check&#34;)
+ *         var grpc_region_health_check = new RegionHealthCheck("grpc-region-health-check", RegionHealthCheckArgs.builder()        
+ *             .name("grpc-region-health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .grpcHealthCheck(RegionHealthCheckGrpcHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .grpcServiceName(&#34;testservice&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .grpcServiceName("testservice")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Dialogflowcx Security Settings Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,21 +55,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicSecuritySettings = new CxSecuritySettings(&#34;basicSecuritySettings&#34;, CxSecuritySettingsArgs.builder()        
- *             .displayName(&#34;dialogflowcx-security-settings&#34;)
- *             .location(&#34;global&#34;)
+ *         var basicSecuritySettings = new CxSecuritySettings("basicSecuritySettings", CxSecuritySettingsArgs.builder()        
+ *             .displayName("dialogflowcx-security-settings")
+ *             .location("global")
  *             .purgeDataTypes()
  *             .retentionWindowDays(7)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dialogflowcx Security Settings Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,26 +103,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var inspect = new PreventionInspectTemplate(&#34;inspect&#34;, PreventionInspectTemplateArgs.builder()        
- *             .parent(&#34;projects/my-project-name/locations/global&#34;)
- *             .displayName(&#34;dialogflowcx-inspect-template&#34;)
+ *         var inspect = new PreventionInspectTemplate("inspect", PreventionInspectTemplateArgs.builder()        
+ *             .parent("projects/my-project-name/locations/global")
+ *             .displayName("dialogflowcx-inspect-template")
  *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
  *                 .infoTypes(PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
- *                     .name(&#34;EMAIL_ADDRESS&#34;)
+ *                     .name("EMAIL_ADDRESS")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var deidentify = new PreventionDeidentifyTemplate(&#34;deidentify&#34;, PreventionDeidentifyTemplateArgs.builder()        
- *             .parent(&#34;projects/my-project-name/locations/global&#34;)
- *             .displayName(&#34;dialogflowcx-deidentify-template&#34;)
+ *         var deidentify = new PreventionDeidentifyTemplate("deidentify", PreventionDeidentifyTemplateArgs.builder()        
+ *             .parent("projects/my-project-name/locations/global")
+ *             .displayName("dialogflowcx-deidentify-template")
  *             .deidentifyConfig(PreventionDeidentifyTemplateDeidentifyConfigArgs.builder()
  *                 .infoTypeTransformations(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs.builder()
  *                     .transformations(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs.builder()
  *                         .primitiveTransformation(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs.builder()
  *                             .replaceConfig(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs.builder()
  *                                 .newValue(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs.builder()
- *                                     .stringValue(&#34;[REDACTED]&#34;)
+ *                                     .stringValue("[REDACTED]")
  *                                     .build())
  *                                 .build())
  *                             .build())
@@ -128,35 +131,36 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;dialogflowcx-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("dialogflowcx-bucket")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var basicSecuritySettings = new CxSecuritySettings(&#34;basicSecuritySettings&#34;, CxSecuritySettingsArgs.builder()        
- *             .displayName(&#34;dialogflowcx-security-settings&#34;)
- *             .location(&#34;global&#34;)
- *             .redactionStrategy(&#34;REDACT_WITH_SERVICE&#34;)
- *             .redactionScope(&#34;REDACT_DISK_STORAGE&#34;)
+ *         var basicSecuritySettings = new CxSecuritySettings("basicSecuritySettings", CxSecuritySettingsArgs.builder()        
+ *             .displayName("dialogflowcx-security-settings")
+ *             .location("global")
+ *             .redactionStrategy("REDACT_WITH_SERVICE")
+ *             .redactionScope("REDACT_DISK_STORAGE")
  *             .inspectTemplate(inspect.id())
  *             .deidentifyTemplate(deidentify.id())
- *             .purgeDataTypes(&#34;DIALOGFLOW_HISTORY&#34;)
+ *             .purgeDataTypes("DIALOGFLOW_HISTORY")
  *             .audioExportSettings(CxSecuritySettingsAudioExportSettingsArgs.builder()
  *                 .gcsBucket(bucket.id())
- *                 .audioExportPattern(&#34;export&#34;)
+ *                 .audioExportPattern("export")
  *                 .enableAudioRedaction(true)
- *                 .audioFormat(&#34;OGG&#34;)
+ *                 .audioFormat("OGG")
  *                 .build())
  *             .insightsExportSettings(CxSecuritySettingsInsightsExportSettingsArgs.builder()
  *                 .enableInsightsExport(true)
  *                 .build())
- *             .retentionStrategy(&#34;REMOVE_AFTER_CONVERSATION&#34;)
+ *             .retentionStrategy("REMOVE_AFTER_CONVERSATION")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

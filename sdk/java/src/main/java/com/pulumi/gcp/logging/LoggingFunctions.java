@@ -39,7 +39,8 @@ public final class LoggingFunctions {
      * ### Logging Folder Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -61,12 +62,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getFolderSettings(GetFolderSettingsArgs.builder()
-     *             .folder(&#34;my-folder-name&#34;)
+     *             .folder("my-folder-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -86,7 +88,8 @@ public final class LoggingFunctions {
      * ### Logging Folder Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -108,12 +111,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getFolderSettings(GetFolderSettingsArgs.builder()
-     *             .folder(&#34;my-folder-name&#34;)
+     *             .folder("my-folder-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -133,7 +137,8 @@ public final class LoggingFunctions {
      * ### Logging Folder Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -155,12 +160,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getFolderSettings(GetFolderSettingsArgs.builder()
-     *             .folder(&#34;my-folder-name&#34;)
+     *             .folder("my-folder-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -180,7 +186,8 @@ public final class LoggingFunctions {
      * ### Logging Folder Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -202,12 +209,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getFolderSettings(GetFolderSettingsArgs.builder()
-     *             .folder(&#34;my-folder-name&#34;)
+     *             .folder("my-folder-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -227,7 +235,8 @@ public final class LoggingFunctions {
      * ### Logging Organization Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -249,12 +258,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getOrganizationSettings(GetOrganizationSettingsArgs.builder()
-     *             .organization(&#34;my-organization-name&#34;)
+     *             .organization("my-organization-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -274,7 +284,8 @@ public final class LoggingFunctions {
      * ### Logging Organization Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -296,12 +307,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getOrganizationSettings(GetOrganizationSettingsArgs.builder()
-     *             .organization(&#34;my-organization-name&#34;)
+     *             .organization("my-organization-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -321,7 +333,8 @@ public final class LoggingFunctions {
      * ### Logging Organization Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -343,12 +356,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getOrganizationSettings(GetOrganizationSettingsArgs.builder()
-     *             .organization(&#34;my-organization-name&#34;)
+     *             .organization("my-organization-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -368,7 +382,8 @@ public final class LoggingFunctions {
      * ### Logging Organization Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -390,12 +405,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getOrganizationSettings(GetOrganizationSettingsArgs.builder()
-     *             .organization(&#34;my-organization-name&#34;)
+     *             .organization("my-organization-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -415,7 +431,8 @@ public final class LoggingFunctions {
      * ### Logging Project Cmek Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -437,12 +454,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cmekSettings = LoggingFunctions.getProjectCmekSettings(GetProjectCmekSettingsArgs.builder()
-     *             .project(&#34;my-project-name&#34;)
+     *             .project("my-project-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -462,7 +480,8 @@ public final class LoggingFunctions {
      * ### Logging Project Cmek Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -484,12 +503,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cmekSettings = LoggingFunctions.getProjectCmekSettings(GetProjectCmekSettingsArgs.builder()
-     *             .project(&#34;my-project-name&#34;)
+     *             .project("my-project-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -509,7 +529,8 @@ public final class LoggingFunctions {
      * ### Logging Project Cmek Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -531,12 +552,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cmekSettings = LoggingFunctions.getProjectCmekSettings(GetProjectCmekSettingsArgs.builder()
-     *             .project(&#34;my-project-name&#34;)
+     *             .project("my-project-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -556,7 +578,8 @@ public final class LoggingFunctions {
      * ### Logging Project Cmek Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -578,12 +601,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cmekSettings = LoggingFunctions.getProjectCmekSettings(GetProjectCmekSettingsArgs.builder()
-     *             .project(&#34;my-project-name&#34;)
+     *             .project("my-project-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -603,7 +627,8 @@ public final class LoggingFunctions {
      * ### Logging Project Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -625,12 +650,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getProjectSettings(GetProjectSettingsArgs.builder()
-     *             .project(&#34;my-project-name&#34;)
+     *             .project("my-project-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -650,7 +676,8 @@ public final class LoggingFunctions {
      * ### Logging Project Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -672,12 +699,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getProjectSettings(GetProjectSettingsArgs.builder()
-     *             .project(&#34;my-project-name&#34;)
+     *             .project("my-project-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -697,7 +725,8 @@ public final class LoggingFunctions {
      * ### Logging Project Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -719,12 +748,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getProjectSettings(GetProjectSettingsArgs.builder()
-     *             .project(&#34;my-project-name&#34;)
+     *             .project("my-project-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -744,7 +774,8 @@ public final class LoggingFunctions {
      * ### Logging Project Settings Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -766,12 +797,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var settings = LoggingFunctions.getProjectSettings(GetProjectSettingsArgs.builder()
-     *             .project(&#34;my-project-name&#34;)
+     *             .project("my-project-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -789,7 +821,8 @@ public final class LoggingFunctions {
      * ### Retrieve Project Logging Sink Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -811,12 +844,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project-sink = LoggingFunctions.getSink(GetSinkArgs.builder()
-     *             .id(&#34;projects/0123456789/sinks/my-sink-name&#34;)
+     *             .id("projects/0123456789/sinks/my-sink-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -834,7 +868,8 @@ public final class LoggingFunctions {
      * ### Retrieve Project Logging Sink Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -856,12 +891,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project-sink = LoggingFunctions.getSink(GetSinkArgs.builder()
-     *             .id(&#34;projects/0123456789/sinks/my-sink-name&#34;)
+     *             .id("projects/0123456789/sinks/my-sink-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -879,7 +915,8 @@ public final class LoggingFunctions {
      * ### Retrieve Project Logging Sink Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -901,12 +938,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project-sink = LoggingFunctions.getSink(GetSinkArgs.builder()
-     *             .id(&#34;projects/0123456789/sinks/my-sink-name&#34;)
+     *             .id("projects/0123456789/sinks/my-sink-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -924,7 +962,8 @@ public final class LoggingFunctions {
      * ### Retrieve Project Logging Sink Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -946,12 +985,13 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project-sink = LoggingFunctions.getSink(GetSinkArgs.builder()
-     *             .id(&#34;projects/0123456789/sinks/my-sink-name&#34;)
+     *             .id("projects/0123456789/sinks/my-sink-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

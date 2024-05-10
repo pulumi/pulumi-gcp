@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Document Ai Warehouse Document Schema Text
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,23 +59,23 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleText = new DocumentAiWarehouseDocumentSchema(&#34;exampleText&#34;, DocumentAiWarehouseDocumentSchemaArgs.builder()        
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .displayName(&#34;test-property-text&#34;)
- *             .location(&#34;us&#34;)
+ *         var exampleText = new DocumentAiWarehouseDocumentSchema("exampleText", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .displayName("test-property-text")
+ *             .location("us")
  *             .documentIsFolder(false)
  *             .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs.builder()
- *                 .name(&#34;prop3&#34;)
- *                 .displayName(&#34;propdisp3&#34;)
+ *                 .name("prop3")
+ *                 .displayName("propdisp3")
  *                 .isRepeatable(false)
  *                 .isFilterable(true)
  *                 .isSearchable(true)
  *                 .isMetadata(false)
  *                 .isRequired(false)
- *                 .retrievalImportance(&#34;HIGHEST&#34;)
+ *                 .retrievalImportance("HIGHEST")
  *                 .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs.builder()
- *                     .name(&#34;dummy_source&#34;)
- *                     .processorType(&#34;dummy_processor&#34;)
+ *                     .name("dummy_source")
+ *                     .processorType("dummy_processor")
  *                     .build())
  *                 .textTypeOptions()
  *                 .build())
@@ -82,12 +83,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Integer
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -114,22 +117,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleInteger = new DocumentAiWarehouseDocumentSchema(&#34;exampleInteger&#34;, DocumentAiWarehouseDocumentSchemaArgs.builder()        
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .displayName(&#34;test-property-integer&#34;)
- *             .location(&#34;us&#34;)
+ *         var exampleInteger = new DocumentAiWarehouseDocumentSchema("exampleInteger", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .displayName("test-property-integer")
+ *             .location("us")
  *             .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs.builder()
- *                 .name(&#34;prop1&#34;)
- *                 .displayName(&#34;propdisp1&#34;)
+ *                 .name("prop1")
+ *                 .displayName("propdisp1")
  *                 .isRepeatable(false)
  *                 .isFilterable(true)
  *                 .isSearchable(true)
  *                 .isMetadata(false)
  *                 .isRequired(false)
- *                 .retrievalImportance(&#34;HIGHEST&#34;)
+ *                 .retrievalImportance("HIGHEST")
  *                 .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs.builder()
- *                     .name(&#34;dummy_source&#34;)
- *                     .processorType(&#34;dummy_processor&#34;)
+ *                     .name("dummy_source")
+ *                     .processorType("dummy_processor")
  *                     .build())
  *                 .integerTypeOptions()
  *                 .build())
@@ -137,12 +140,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Float
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -169,22 +174,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleFloat = new DocumentAiWarehouseDocumentSchema(&#34;exampleFloat&#34;, DocumentAiWarehouseDocumentSchemaArgs.builder()        
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .displayName(&#34;test-property-float&#34;)
- *             .location(&#34;us&#34;)
+ *         var exampleFloat = new DocumentAiWarehouseDocumentSchema("exampleFloat", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .displayName("test-property-float")
+ *             .location("us")
  *             .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs.builder()
- *                 .name(&#34;prop2&#34;)
- *                 .displayName(&#34;propdisp2&#34;)
+ *                 .name("prop2")
+ *                 .displayName("propdisp2")
  *                 .isRepeatable(false)
  *                 .isFilterable(true)
  *                 .isSearchable(true)
  *                 .isMetadata(false)
  *                 .isRequired(false)
- *                 .retrievalImportance(&#34;HIGHEST&#34;)
+ *                 .retrievalImportance("HIGHEST")
  *                 .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs.builder()
- *                     .name(&#34;dummy_source&#34;)
- *                     .processorType(&#34;dummy_processor&#34;)
+ *                     .name("dummy_source")
+ *                     .processorType("dummy_processor")
  *                     .build())
  *                 .floatTypeOptions()
  *                 .build())
@@ -192,12 +197,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Property
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -224,37 +231,37 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleProperty = new DocumentAiWarehouseDocumentSchema(&#34;exampleProperty&#34;, DocumentAiWarehouseDocumentSchemaArgs.builder()        
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .displayName(&#34;test-property-property&#34;)
- *             .location(&#34;us&#34;)
+ *         var exampleProperty = new DocumentAiWarehouseDocumentSchema("exampleProperty", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .displayName("test-property-property")
+ *             .location("us")
  *             .documentIsFolder(false)
  *             .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs.builder()
- *                 .name(&#34;prop8&#34;)
- *                 .displayName(&#34;propdisp8&#34;)
+ *                 .name("prop8")
+ *                 .displayName("propdisp8")
  *                 .isRepeatable(false)
  *                 .isFilterable(true)
  *                 .isSearchable(true)
  *                 .isMetadata(false)
  *                 .isRequired(false)
- *                 .retrievalImportance(&#34;HIGHEST&#34;)
+ *                 .retrievalImportance("HIGHEST")
  *                 .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs.builder()
- *                     .name(&#34;dummy_source&#34;)
- *                     .processorType(&#34;dummy_processor&#34;)
+ *                     .name("dummy_source")
+ *                     .processorType("dummy_processor")
  *                     .build())
  *                 .propertyTypeOptions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs.builder()
  *                     .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs.builder()
- *                         .name(&#34;prop8_nested&#34;)
- *                         .displayName(&#34;propdisp8_nested&#34;)
+ *                         .name("prop8_nested")
+ *                         .displayName("propdisp8_nested")
  *                         .isRepeatable(false)
  *                         .isFilterable(true)
  *                         .isSearchable(true)
  *                         .isMetadata(false)
  *                         .isRequired(false)
- *                         .retrievalImportance(&#34;HIGHEST&#34;)
+ *                         .retrievalImportance("HIGHEST")
  *                         .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs.builder()
- *                             .name(&#34;dummy_source_nested&#34;)
- *                             .processorType(&#34;dummy_processor_nested&#34;)
+ *                             .name("dummy_source_nested")
+ *                             .processorType("dummy_processor_nested")
  *                             .build())
  *                         .textTypeOptions()
  *                         .build())
@@ -264,12 +271,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Property Enum
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -296,43 +305,43 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var examplePropertyEnum = new DocumentAiWarehouseDocumentSchema(&#34;examplePropertyEnum&#34;, DocumentAiWarehouseDocumentSchemaArgs.builder()        
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .displayName(&#34;test-property-property&#34;)
- *             .location(&#34;us&#34;)
+ *         var examplePropertyEnum = new DocumentAiWarehouseDocumentSchema("examplePropertyEnum", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .displayName("test-property-property")
+ *             .location("us")
  *             .documentIsFolder(false)
  *             .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs.builder()
- *                 .name(&#34;prop8&#34;)
- *                 .displayName(&#34;propdisp8&#34;)
+ *                 .name("prop8")
+ *                 .displayName("propdisp8")
  *                 .isRepeatable(false)
  *                 .isFilterable(true)
  *                 .isSearchable(true)
  *                 .isMetadata(false)
  *                 .isRequired(false)
- *                 .retrievalImportance(&#34;HIGHEST&#34;)
+ *                 .retrievalImportance("HIGHEST")
  *                 .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs.builder()
- *                     .name(&#34;dummy_source&#34;)
- *                     .processorType(&#34;dummy_processor&#34;)
+ *                     .name("dummy_source")
+ *                     .processorType("dummy_processor")
  *                     .build())
  *                 .propertyTypeOptions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs.builder()
  *                     .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs.builder()
- *                         .name(&#34;prop8_nested&#34;)
- *                         .displayName(&#34;propdisp8_nested&#34;)
+ *                         .name("prop8_nested")
+ *                         .displayName("propdisp8_nested")
  *                         .isRepeatable(false)
  *                         .isFilterable(true)
  *                         .isSearchable(true)
  *                         .isMetadata(false)
  *                         .isRequired(false)
- *                         .retrievalImportance(&#34;HIGHEST&#34;)
+ *                         .retrievalImportance("HIGHEST")
  *                         .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs.builder()
- *                             .name(&#34;dummy_source_nested&#34;)
- *                             .processorType(&#34;dummy_processor_nested&#34;)
+ *                             .name("dummy_source_nested")
+ *                             .processorType("dummy_processor_nested")
  *                             .build())
  *                         .enumTypeOptions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs.builder()
  *                             .possibleValues(                            
- *                                 &#34;M&#34;,
- *                                 &#34;F&#34;,
- *                                 &#34;X&#34;)
+ *                                 "M",
+ *                                 "F",
+ *                                 "X")
  *                             .validationCheckDisabled(false)
  *                             .build())
  *                         .build())
@@ -342,12 +351,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Enum
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -374,28 +385,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleEnum = new DocumentAiWarehouseDocumentSchema(&#34;exampleEnum&#34;, DocumentAiWarehouseDocumentSchemaArgs.builder()        
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .displayName(&#34;test-property-enum&#34;)
- *             .location(&#34;us&#34;)
+ *         var exampleEnum = new DocumentAiWarehouseDocumentSchema("exampleEnum", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .displayName("test-property-enum")
+ *             .location("us")
  *             .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs.builder()
- *                 .name(&#34;prop6&#34;)
- *                 .displayName(&#34;propdisp6&#34;)
+ *                 .name("prop6")
+ *                 .displayName("propdisp6")
  *                 .isRepeatable(false)
  *                 .isFilterable(true)
  *                 .isSearchable(true)
  *                 .isMetadata(false)
  *                 .isRequired(false)
- *                 .retrievalImportance(&#34;HIGHEST&#34;)
+ *                 .retrievalImportance("HIGHEST")
  *                 .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs.builder()
- *                     .name(&#34;dummy_source&#34;)
- *                     .processorType(&#34;dummy_processor&#34;)
+ *                     .name("dummy_source")
+ *                     .processorType("dummy_processor")
  *                     .build())
  *                 .enumTypeOptions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs.builder()
  *                     .possibleValues(                    
- *                         &#34;M&#34;,
- *                         &#34;F&#34;,
- *                         &#34;X&#34;)
+ *                         "M",
+ *                         "F",
+ *                         "X")
  *                     .validationCheckDisabled(false)
  *                     .build())
  *                 .build())
@@ -403,12 +414,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Map
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -435,22 +448,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleMap = new DocumentAiWarehouseDocumentSchema(&#34;exampleMap&#34;, DocumentAiWarehouseDocumentSchemaArgs.builder()        
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .displayName(&#34;test-property-map&#34;)
- *             .location(&#34;us&#34;)
+ *         var exampleMap = new DocumentAiWarehouseDocumentSchema("exampleMap", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .displayName("test-property-map")
+ *             .location("us")
  *             .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs.builder()
- *                 .name(&#34;prop4&#34;)
- *                 .displayName(&#34;propdisp4&#34;)
+ *                 .name("prop4")
+ *                 .displayName("propdisp4")
  *                 .isRepeatable(false)
  *                 .isFilterable(true)
  *                 .isSearchable(true)
  *                 .isMetadata(false)
  *                 .isRequired(false)
- *                 .retrievalImportance(&#34;HIGHEST&#34;)
+ *                 .retrievalImportance("HIGHEST")
  *                 .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs.builder()
- *                     .name(&#34;dummy_source&#34;)
- *                     .processorType(&#34;dummy_processor&#34;)
+ *                     .name("dummy_source")
+ *                     .processorType("dummy_processor")
  *                     .build())
  *                 .mapTypeOptions()
  *                 .build())
@@ -458,12 +471,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Datetime
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -490,22 +505,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleDatetime = new DocumentAiWarehouseDocumentSchema(&#34;exampleDatetime&#34;, DocumentAiWarehouseDocumentSchemaArgs.builder()        
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .displayName(&#34;test-property-date_time&#34;)
- *             .location(&#34;us&#34;)
+ *         var exampleDatetime = new DocumentAiWarehouseDocumentSchema("exampleDatetime", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .displayName("test-property-date_time")
+ *             .location("us")
  *             .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs.builder()
- *                 .name(&#34;prop7&#34;)
- *                 .displayName(&#34;propdisp7&#34;)
+ *                 .name("prop7")
+ *                 .displayName("propdisp7")
  *                 .isRepeatable(false)
  *                 .isFilterable(true)
  *                 .isSearchable(true)
  *                 .isMetadata(false)
  *                 .isRequired(false)
- *                 .retrievalImportance(&#34;HIGHEST&#34;)
+ *                 .retrievalImportance("HIGHEST")
  *                 .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs.builder()
- *                     .name(&#34;dummy_source&#34;)
- *                     .processorType(&#34;dummy_processor&#34;)
+ *                     .name("dummy_source")
+ *                     .processorType("dummy_processor")
  *                     .build())
  *                 .dateTimeTypeOptions()
  *                 .build())
@@ -513,12 +528,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Timestamp
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -545,22 +562,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleTimestamp = new DocumentAiWarehouseDocumentSchema(&#34;exampleTimestamp&#34;, DocumentAiWarehouseDocumentSchemaArgs.builder()        
- *             .projectNumber(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
- *             .displayName(&#34;test-property-timestamp&#34;)
- *             .location(&#34;us&#34;)
+ *         var exampleTimestamp = new DocumentAiWarehouseDocumentSchema("exampleTimestamp", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .displayName("test-property-timestamp")
+ *             .location("us")
  *             .propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs.builder()
- *                 .name(&#34;prop5&#34;)
- *                 .displayName(&#34;propdisp5&#34;)
+ *                 .name("prop5")
+ *                 .displayName("propdisp5")
  *                 .isRepeatable(false)
  *                 .isFilterable(true)
  *                 .isSearchable(true)
  *                 .isMetadata(false)
  *                 .isRequired(false)
- *                 .retrievalImportance(&#34;HIGHEST&#34;)
+ *                 .retrievalImportance("HIGHEST")
  *                 .schemaSources(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs.builder()
- *                     .name(&#34;dummy_source&#34;)
- *                     .processorType(&#34;dummy_processor&#34;)
+ *                     .name("dummy_source")
+ *                     .processorType("dummy_processor")
  *                     .build())
  *                 .timestampTypeOptions()
  *                 .build())
@@ -568,7 +585,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Preference Set Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,28 +53,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new PreferenceSet(&#34;default&#34;, PreferenceSetArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .preferenceSetId(&#34;preference-set-test&#34;)
- *             .description(&#34;Terraform integration test description&#34;)
- *             .displayName(&#34;Terraform integration test display&#34;)
+ *         var default_ = new PreferenceSet("default", PreferenceSetArgs.builder()        
+ *             .location("us-central1")
+ *             .preferenceSetId("preference-set-test")
+ *             .description("Terraform integration test description")
+ *             .displayName("Terraform integration test display")
  *             .virtualMachinePreferences(PreferenceSetVirtualMachinePreferencesArgs.builder()
  *                 .vmwareEnginePreferences(PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs.builder()
  *                     .cpuOvercommitRatio(1.5)
  *                     .build())
- *                 .sizingOptimizationStrategy(&#34;SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE&#34;)
- *                 .targetProduct(&#34;COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE&#34;)
+ *                 .sizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE")
+ *                 .targetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Preference Set Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,36 +103,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new PreferenceSet(&#34;default&#34;, PreferenceSetArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .preferenceSetId(&#34;preference-set-test&#34;)
- *             .description(&#34;Terraform integration test description&#34;)
- *             .displayName(&#34;Terraform integration test display&#34;)
+ *         var default_ = new PreferenceSet("default", PreferenceSetArgs.builder()        
+ *             .location("us-central1")
+ *             .preferenceSetId("preference-set-test")
+ *             .description("Terraform integration test description")
+ *             .displayName("Terraform integration test display")
  *             .virtualMachinePreferences(PreferenceSetVirtualMachinePreferencesArgs.builder()
  *                 .vmwareEnginePreferences(PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs.builder()
  *                     .cpuOvercommitRatio(1.5)
  *                     .storageDeduplicationCompressionRatio(1.3)
- *                     .commitmentPlan(&#34;ON_DEMAND&#34;)
+ *                     .commitmentPlan("ON_DEMAND")
  *                     .build())
- *                 .sizingOptimizationStrategy(&#34;SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE&#34;)
- *                 .targetProduct(&#34;COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE&#34;)
- *                 .commitmentPlan(&#34;COMMITMENT_PLAN_ONE_YEAR&#34;)
+ *                 .sizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE")
+ *                 .targetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE")
+ *                 .commitmentPlan("COMMITMENT_PLAN_ONE_YEAR")
  *                 .regionPreferences(PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs.builder()
- *                     .preferredRegions(&#34;us-central1&#34;)
+ *                     .preferredRegions("us-central1")
  *                     .build())
  *                 .soleTenancyPreferences(PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs.builder()
- *                     .commitmentPlan(&#34;ON_DEMAND&#34;)
+ *                     .commitmentPlan("ON_DEMAND")
  *                     .cpuOvercommitRatio(1.2)
- *                     .hostMaintenancePolicy(&#34;HOST_MAINTENANCE_POLICY_DEFAULT&#34;)
+ *                     .hostMaintenancePolicy("HOST_MAINTENANCE_POLICY_DEFAULT")
  *                     .nodeTypes(PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs.builder()
- *                         .nodeName(&#34;tf-test&#34;)
+ *                         .nodeName("tf-test")
  *                         .build())
  *                     .build())
  *                 .computeEnginePreferences(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs.builder()
- *                     .licenseType(&#34;LICENSE_TYPE_BRING_YOUR_OWN_LICENSE&#34;)
+ *                     .licenseType("LICENSE_TYPE_BRING_YOUR_OWN_LICENSE")
  *                     .machinePreferences(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs.builder()
  *                         .allowedMachineSeries(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs.builder()
- *                             .code(&#34;C3&#34;)
+ *                             .code("C3")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -138,7 +141,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

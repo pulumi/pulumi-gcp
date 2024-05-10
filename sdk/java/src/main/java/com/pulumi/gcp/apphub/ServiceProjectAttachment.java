@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Service Project Attachment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,28 +48,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceProject = new Project(&#34;serviceProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-1&#34;)
- *             .name(&#34;Service Project&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *             .projectId("project-1")
+ *             .name("Service Project")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var example = new ServiceProjectAttachment(&#34;example&#34;, ServiceProjectAttachmentArgs.builder()        
+ *         var example = new ServiceProjectAttachment("example", ServiceProjectAttachmentArgs.builder()        
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
- *         var wait120s = new Sleep(&#34;wait120s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Service Project Attachment Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -93,24 +96,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceProjectFull = new Project(&#34;serviceProjectFull&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-1&#34;)
- *             .name(&#34;Service Project Full&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var serviceProjectFull = new Project("serviceProjectFull", ProjectArgs.builder()        
+ *             .projectId("project-1")
+ *             .name("Service Project Full")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var example2 = new ServiceProjectAttachment(&#34;example2&#34;, ServiceProjectAttachmentArgs.builder()        
+ *         var example2 = new ServiceProjectAttachment("example2", ServiceProjectAttachmentArgs.builder()        
  *             .serviceProjectAttachmentId(serviceProjectFull.projectId())
  *             .serviceProject(serviceProjectFull.projectId())
  *             .build());
  * 
- *         var wait120s = new Sleep(&#34;wait120s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

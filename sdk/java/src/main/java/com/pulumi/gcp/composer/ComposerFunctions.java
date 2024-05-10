@@ -23,7 +23,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,18 +47,19 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var composerEnvEnvironment = new Environment(&#34;composerEnvEnvironment&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;composer-environment&#34;)
+     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()        
+     *             .name("composer-environment")
      *             .build());
      * 
      *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
      *             .name(test.name())
      *             .build());
      * 
-     *         ctx.export(&#34;debug&#34;, composerEnv.applyValue(getEnvironmentResult -&gt; getEnvironmentResult.configs()));
+     *         ctx.export("debug", composerEnv.applyValue(getEnvironmentResult -> getEnvironmentResult.configs()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -70,7 +72,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -93,18 +96,19 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var composerEnvEnvironment = new Environment(&#34;composerEnvEnvironment&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;composer-environment&#34;)
+     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()        
+     *             .name("composer-environment")
      *             .build());
      * 
      *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
      *             .name(test.name())
      *             .build());
      * 
-     *         ctx.export(&#34;debug&#34;, composerEnv.applyValue(getEnvironmentResult -&gt; getEnvironmentResult.configs()));
+     *         ctx.export("debug", composerEnv.applyValue(getEnvironmentResult -> getEnvironmentResult.configs()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -117,7 +121,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -140,18 +145,19 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var composerEnvEnvironment = new Environment(&#34;composerEnvEnvironment&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;composer-environment&#34;)
+     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()        
+     *             .name("composer-environment")
      *             .build());
      * 
      *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
      *             .name(test.name())
      *             .build());
      * 
-     *         ctx.export(&#34;debug&#34;, composerEnv.applyValue(getEnvironmentResult -&gt; getEnvironmentResult.configs()));
+     *         ctx.export("debug", composerEnv.applyValue(getEnvironmentResult -> getEnvironmentResult.configs()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -164,7 +170,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -187,18 +194,19 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var composerEnvEnvironment = new Environment(&#34;composerEnvEnvironment&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;composer-environment&#34;)
+     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()        
+     *             .name("composer-environment")
      *             .build());
      * 
      *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
      *             .name(test.name())
      *             .build());
      * 
-     *         ctx.export(&#34;debug&#34;, composerEnv.applyValue(getEnvironmentResult -&gt; getEnvironmentResult.configs()));
+     *         ctx.export("debug", composerEnv.applyValue(getEnvironmentResult -> getEnvironmentResult.configs()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -211,7 +219,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -238,19 +247,20 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;test-env&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *             .name("test-env")
+     *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -263,7 +273,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -290,19 +301,20 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;test-env&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *             .name("test-env")
+     *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -315,7 +327,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -342,19 +355,20 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;test-env&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *             .name("test-env")
+     *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -367,7 +381,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -394,19 +409,20 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;test-env&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *             .name("test-env")
+     *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -419,7 +435,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -446,19 +463,20 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;test-env&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *             .name("test-env")
+     *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -471,7 +489,8 @@ public final class ComposerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -498,19 +517,20 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
-     *             .name(&#34;test-env&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *             .name("test-env")
+     *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

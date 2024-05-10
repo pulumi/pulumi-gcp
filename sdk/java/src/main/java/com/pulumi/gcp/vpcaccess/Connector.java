@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Vpc Access Connector
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,20 +53,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
- *             .name(&#34;vpc-con&#34;)
- *             .ipCidrRange(&#34;10.8.0.0/28&#34;)
- *             .network(&#34;default&#34;)
+ *         var connector = new Connector("connector", ConnectorArgs.builder()        
+ *             .name("vpc-con")
+ *             .ipCidrRange("10.8.0.0/28")
+ *             .network("default")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vpc Access Connector Shared Vpc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,29 +94,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customTestNetwork = new Network(&#34;customTestNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;vpc-con&#34;)
+ *         var customTestNetwork = new Network("customTestNetwork", NetworkArgs.builder()        
+ *             .name("vpc-con")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var customTest = new Subnetwork(&#34;customTest&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;vpc-con&#34;)
- *             .ipCidrRange(&#34;10.2.0.0/28&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var customTest = new Subnetwork("customTest", SubnetworkArgs.builder()        
+ *             .name("vpc-con")
+ *             .ipCidrRange("10.2.0.0/28")
+ *             .region("us-central1")
  *             .network(customTestNetwork.id())
  *             .build());
  * 
- *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
- *             .name(&#34;vpc-con&#34;)
+ *         var connector = new Connector("connector", ConnectorArgs.builder()        
+ *             .name("vpc-con")
  *             .subnet(ConnectorSubnetArgs.builder()
  *                 .name(customTest.name())
  *                 .build())
- *             .machineType(&#34;e2-standard-4&#34;)
+ *             .machineType("e2-standard-4")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

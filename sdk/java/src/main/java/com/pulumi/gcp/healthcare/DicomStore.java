@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Healthcare Dicom Store Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,32 +60,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;dicom-notifications&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("dicom-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var default_ = new DicomStore(&#34;default&#34;, DicomStoreArgs.builder()        
- *             .name(&#34;example-dicom-store&#34;)
+ *         var default_ = new DicomStore("default", DicomStoreArgs.builder()        
+ *             .name("example-dicom-store")
  *             .dataset(dataset.id())
  *             .notificationConfig(DicomStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .build())
- *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .labels(Map.of("label1", "labelvalue1"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Healthcare Dicom Store Bq Stream
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -116,43 +119,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;dicom-notifications&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("dicom-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var bqDataset = new Dataset(&#34;bqDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dicom_bq_ds&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var bqDataset = new Dataset("bqDataset", DatasetArgs.builder()        
+ *             .datasetId("dicom_bq_ds")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .deleteContentsOnDestroy(true)
  *             .build());
  * 
- *         var bqTable = new Table(&#34;bqTable&#34;, TableArgs.builder()        
+ *         var bqTable = new Table("bqTable", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(bqDataset.datasetId())
- *             .tableId(&#34;dicom_bq_tb&#34;)
+ *             .tableId("dicom_bq_tb")
  *             .build());
  * 
- *         var default_ = new DicomStore(&#34;default&#34;, DicomStoreArgs.builder()        
- *             .name(&#34;example-dicom-store&#34;)
+ *         var default_ = new DicomStore("default", DicomStoreArgs.builder()        
+ *             .name("example-dicom-store")
  *             .dataset(dataset.id())
  *             .notificationConfig(DicomStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .build())
- *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .labels(Map.of("label1", "labelvalue1"))
  *             .streamConfigs(DicomStoreStreamConfigArgs.builder()
  *                 .bigqueryDestination(DicomStoreStreamConfigBigqueryDestinationArgs.builder()
- *                     .tableUri(Output.tuple(bqDataset.project(), bqDataset.datasetId(), bqTable.tableId()).applyValue(values -&gt; {
+ *                     .tableUri(Output.tuple(bqDataset.project(), bqDataset.datasetId(), bqTable.tableId()).applyValue(values -> {
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
  *                         var tableId = values.t3;
- *                         return String.format(&#34;bq://%s.%s.%s&#34;, project,datasetId,tableId);
+ *                         return String.format("bq://%s.%s.%s", project,datasetId,tableId);
  *                     }))
  *                     .build())
  *                 .build())
@@ -160,7 +163,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

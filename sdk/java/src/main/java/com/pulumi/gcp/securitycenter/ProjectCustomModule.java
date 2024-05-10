@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Scc Project Custom Module Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,30 +57,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ProjectCustomModule(&#34;example&#34;, ProjectCustomModuleArgs.builder()        
- *             .displayName(&#34;basic_custom_module&#34;)
- *             .enablementState(&#34;ENABLED&#34;)
+ *         var example = new ProjectCustomModule("example", ProjectCustomModuleArgs.builder()        
+ *             .displayName("basic_custom_module")
+ *             .enablementState("ENABLED")
  *             .customConfig(ProjectCustomModuleCustomConfigArgs.builder()
  *                 .predicate(ProjectCustomModuleCustomConfigPredicateArgs.builder()
- *                     .expression(&#34;resource.rotationPeriod &gt; duration(\&#34;2592000s\&#34;)&#34;)
+ *                     .expression("resource.rotationPeriod > duration(\"2592000s\")")
  *                     .build())
  *                 .resourceSelector(ProjectCustomModuleCustomConfigResourceSelectorArgs.builder()
- *                     .resourceTypes(&#34;cloudkms.googleapis.com/CryptoKey&#34;)
+ *                     .resourceTypes("cloudkms.googleapis.com/CryptoKey")
  *                     .build())
- *                 .description(&#34;The rotation period of the identified cryptokey resource exceeds 30 days.&#34;)
- *                 .recommendation(&#34;Set the rotation period to at most 30 days.&#34;)
- *                 .severity(&#34;MEDIUM&#34;)
+ *                 .description("The rotation period of the identified cryptokey resource exceeds 30 days.")
+ *                 .recommendation("Set the rotation period to at most 30 days.")
+ *                 .severity("MEDIUM")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Scc Project Custom Module Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,39 +107,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ProjectCustomModule(&#34;example&#34;, ProjectCustomModuleArgs.builder()        
- *             .displayName(&#34;full_custom_module&#34;)
- *             .enablementState(&#34;ENABLED&#34;)
+ *         var example = new ProjectCustomModule("example", ProjectCustomModuleArgs.builder()        
+ *             .displayName("full_custom_module")
+ *             .enablementState("ENABLED")
  *             .customConfig(ProjectCustomModuleCustomConfigArgs.builder()
  *                 .predicate(ProjectCustomModuleCustomConfigPredicateArgs.builder()
- *                     .expression(&#34;resource.rotationPeriod &gt; duration(\&#34;2592000s\&#34;)&#34;)
- *                     .title(&#34;Purpose of the expression&#34;)
- *                     .description(&#34;description of the expression&#34;)
- *                     .location(&#34;location of the expression&#34;)
+ *                     .expression("resource.rotationPeriod > duration(\"2592000s\")")
+ *                     .title("Purpose of the expression")
+ *                     .description("description of the expression")
+ *                     .location("location of the expression")
  *                     .build())
  *                 .customOutput(ProjectCustomModuleCustomConfigCustomOutputArgs.builder()
  *                     .properties(ProjectCustomModuleCustomConfigCustomOutputPropertyArgs.builder()
- *                         .name(&#34;duration&#34;)
+ *                         .name("duration")
  *                         .valueExpression(ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs.builder()
- *                             .expression(&#34;resource.rotationPeriod&#34;)
- *                             .title(&#34;Purpose of the expression&#34;)
- *                             .description(&#34;description of the expression&#34;)
- *                             .location(&#34;location of the expression&#34;)
+ *                             .expression("resource.rotationPeriod")
+ *                             .title("Purpose of the expression")
+ *                             .description("description of the expression")
+ *                             .location("location of the expression")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .resourceSelector(ProjectCustomModuleCustomConfigResourceSelectorArgs.builder()
- *                     .resourceTypes(&#34;cloudkms.googleapis.com/CryptoKey&#34;)
+ *                     .resourceTypes("cloudkms.googleapis.com/CryptoKey")
  *                     .build())
- *                 .severity(&#34;LOW&#34;)
- *                 .description(&#34;Description of the custom module&#34;)
- *                 .recommendation(&#34;Steps to resolve violation&#34;)
+ *                 .severity("LOW")
+ *                 .description("Description of the custom module")
+ *                 .recommendation("Steps to resolve violation")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

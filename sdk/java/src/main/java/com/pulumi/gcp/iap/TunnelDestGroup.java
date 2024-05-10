@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Iap Destgroup
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,17 +51,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var destGroup = new TunnelDestGroup(&#34;destGroup&#34;, TunnelDestGroupArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .groupName(&#34;testgroup_41819&#34;)
+ *         var destGroup = new TunnelDestGroup("destGroup", TunnelDestGroupArgs.builder()        
+ *             .region("us-central1")
+ *             .groupName("testgroup_41819")
  *             .cidrs(            
- *                 &#34;10.1.0.0/16&#34;,
- *                 &#34;192.168.10.0/24&#34;)
+ *                 "10.1.0.0/16",
+ *                 "192.168.10.0/24")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Analyticshub Listing Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,26 +60,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var listing = new DataExchange(&#34;listing&#34;, DataExchangeArgs.builder()        
- *             .location(&#34;US&#34;)
- *             .dataExchangeId(&#34;my_data_exchange&#34;)
- *             .displayName(&#34;my_data_exchange&#34;)
- *             .description(&#34;example data exchange&#34;)
+ *         var listing = new DataExchange("listing", DataExchangeArgs.builder()        
+ *             .location("US")
+ *             .dataExchangeId("my_data_exchange")
+ *             .displayName("my_data_exchange")
+ *             .description("example data exchange")
  *             .build());
  * 
- *         var listingDataset = new Dataset(&#34;listingDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;my_listing&#34;)
- *             .friendlyName(&#34;my_listing&#34;)
- *             .description(&#34;example data exchange&#34;)
- *             .location(&#34;US&#34;)
+ *         var listingDataset = new Dataset("listingDataset", DatasetArgs.builder()        
+ *             .datasetId("my_listing")
+ *             .friendlyName("my_listing")
+ *             .description("example data exchange")
+ *             .location("US")
  *             .build());
  * 
- *         var listingListing = new Listing(&#34;listingListing&#34;, ListingArgs.builder()        
- *             .location(&#34;US&#34;)
+ *         var listingListing = new Listing("listingListing", ListingArgs.builder()        
+ *             .location("US")
  *             .dataExchangeId(listing.dataExchangeId())
- *             .listingId(&#34;my_listing&#34;)
- *             .displayName(&#34;my_listing&#34;)
- *             .description(&#34;example data exchange&#34;)
+ *             .listingId("my_listing")
+ *             .displayName("my_listing")
+ *             .description("example data exchange")
  *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
  *                 .dataset(listingDataset.id())
  *                 .build())
@@ -86,12 +87,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Analyticshub Listing Restricted
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -118,26 +121,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var listing = new DataExchange(&#34;listing&#34;, DataExchangeArgs.builder()        
- *             .location(&#34;US&#34;)
- *             .dataExchangeId(&#34;my_data_exchange&#34;)
- *             .displayName(&#34;my_data_exchange&#34;)
- *             .description(&#34;example data exchange&#34;)
+ *         var listing = new DataExchange("listing", DataExchangeArgs.builder()        
+ *             .location("US")
+ *             .dataExchangeId("my_data_exchange")
+ *             .displayName("my_data_exchange")
+ *             .description("example data exchange")
  *             .build());
  * 
- *         var listingDataset = new Dataset(&#34;listingDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;my_listing&#34;)
- *             .friendlyName(&#34;my_listing&#34;)
- *             .description(&#34;example data exchange&#34;)
- *             .location(&#34;US&#34;)
+ *         var listingDataset = new Dataset("listingDataset", DatasetArgs.builder()        
+ *             .datasetId("my_listing")
+ *             .friendlyName("my_listing")
+ *             .description("example data exchange")
+ *             .location("US")
  *             .build());
  * 
- *         var listingListing = new Listing(&#34;listingListing&#34;, ListingArgs.builder()        
- *             .location(&#34;US&#34;)
+ *         var listingListing = new Listing("listingListing", ListingArgs.builder()        
+ *             .location("US")
  *             .dataExchangeId(listing.dataExchangeId())
- *             .listingId(&#34;my_listing&#34;)
- *             .displayName(&#34;my_listing&#34;)
- *             .description(&#34;example data exchange&#34;)
+ *             .listingId("my_listing")
+ *             .displayName("my_listing")
+ *             .description("example data exchange")
  *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
  *                 .dataset(listingDataset.id())
  *                 .build())
@@ -149,7 +152,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
