@@ -1063,6 +1063,8 @@
         "oslogin/sshPublicKey.ts",
         "parallelstore/index.ts",
         "parallelstore/instance.ts",
+        "privilegedaccessmanager/entitlement.ts",
+        "privilegedaccessmanager/index.ts",
         "priviligedaccessmanager/entitlement.ts",
         "priviligedaccessmanager/index.ts",
         "projects/accessApprovalSettings.ts",

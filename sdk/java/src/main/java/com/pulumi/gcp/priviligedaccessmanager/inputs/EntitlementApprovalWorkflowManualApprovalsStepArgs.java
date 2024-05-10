@@ -57,7 +57,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepArgs extends co
 
     /**
      * The potential set of approvers in this step. This list should contain at only one entry.
-     * Structure is documented below.
      * 
      */
     @Import(name="approvers", required=true)
@@ -65,7 +64,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepArgs extends co
 
     /**
      * @return The potential set of approvers in this step. This list should contain at only one entry.
-     * Structure is documented below.
      * 
      */
     public Output<EntitlementApprovalWorkflowManualApprovalsStepApproversArgs> approvers() {
@@ -158,7 +156,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepArgs extends co
 
         /**
          * @param approvers The potential set of approvers in this step. This list should contain at only one entry.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -170,7 +167,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepArgs extends co
 
         /**
          * @param approvers The potential set of approvers in this step. This list should contain at only one entry.
-         * Structure is documented below.
          * 
          * @return builder
          * 

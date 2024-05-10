@@ -17,8 +17,7 @@ public final class EntitlementApprovalWorkflow {
      * * Require an approval from any user in a group G.
      * * Require an approval from any k number of users from a Group G.
      * * Require an approval from any user in a group G and then from a user U. etc.
-     *   A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-     *   Structure is documented below.
+     *   A single user might be part of &#39;approvers&#39; ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
      * 
      */
     private EntitlementApprovalWorkflowManualApprovals manualApprovals;
@@ -31,8 +30,7 @@ public final class EntitlementApprovalWorkflow {
      * * Require an approval from any user in a group G.
      * * Require an approval from any k number of users from a Group G.
      * * Require an approval from any user in a group G and then from a user U. etc.
-     *   A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-     *   Structure is documented below.
+     *   A single user might be part of &#39;approvers&#39; ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
      * 
      */
     public EntitlementApprovalWorkflowManualApprovals manualApprovals() {

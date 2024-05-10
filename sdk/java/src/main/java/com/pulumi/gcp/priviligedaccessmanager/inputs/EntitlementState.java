@@ -54,16 +54,16 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
+     * Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
+     * @return Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -72,7 +72,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Who can create Grants using Entitlement. This list should contain at most one entry
-     * Structure is documented below.
      * 
      */
     @Import(name="eligibleUsers")
@@ -80,7 +79,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Who can create Grants using Entitlement. This list should contain at most one entry
-     * Structure is documented below.
      * 
      */
     public Optional<Output<List<EntitlementEligibleUserArgs>>> eligibleUsers() {
@@ -88,18 +86,18 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID to use for this Entitlement. This will become the last part of the resource name.
-     * This value should be 4-63 characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z].
-     * This value should be unique among all other Entitlements under the specified `parent`.
+     * The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+     * characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z]. This value
+     * should be unique among all other Entitlements under the specified &#39;parent&#39;.
      * 
      */
     @Import(name="entitlementId")
     private @Nullable Output<String> entitlementId;
 
     /**
-     * @return The ID to use for this Entitlement. This will become the last part of the resource name.
-     * This value should be 4-63 characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z].
-     * This value should be unique among all other Entitlements under the specified `parent`.
+     * @return The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+     * characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z]. This value
+     * should be unique among all other Entitlements under the specified &#39;parent&#39;.
      * 
      */
     public Optional<Output<String>> entitlementId() {
@@ -137,18 +135,18 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum amount of time for which access would be granted for a request.
-     * A requester can choose to ask for access for less than this duration but never more.
-     * Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours = &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
+     * The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+     * less than this duration but never more. Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours =
+     * &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
      * 
      */
     @Import(name="maxRequestDuration")
     private @Nullable Output<String> maxRequestDuration;
 
     /**
-     * @return The maximum amount of time for which access would be granted for a request.
-     * A requester can choose to ask for access for less than this duration but never more.
-     * Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours = &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
+     * @return The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+     * less than this duration but never more. Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours =
+     * &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
      * 
      */
     public Optional<Output<String>> maxRequestDuration() {
@@ -156,16 +154,22 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output Only. The entitlement&#39;s name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-     * Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+     * Output Only. The entitlement&#39;s name follows a hierarchical structure, comprising the organization, folder, or project,
+     * alongside the region and a unique entitlement ID. Formats:
+     * organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+     * folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+     * projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Output Only. The entitlement&#39;s name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-     * Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+     * @return Output Only. The entitlement&#39;s name follows a hierarchical structure, comprising the organization, folder, or project,
+     * alongside the region and a unique entitlement ID. Formats:
+     * organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+     * folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+     * projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
      * 
      */
     public Optional<Output<String>> name() {
@@ -189,7 +193,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Privileged access that this service can be used to gate.
-     * Structure is documented below.
      * 
      */
     @Import(name="privilegedAccess")
@@ -197,7 +200,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Privileged access that this service can be used to gate.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<EntitlementPrivilegedAccessArgs>> privilegedAccess() {
@@ -206,7 +208,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Defines the ways in which a requester should provide the justification while requesting for access.
-     * Structure is documented below.
      * 
      */
     @Import(name="requesterJustificationConfig")
@@ -214,7 +215,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Defines the ways in which a requester should provide the justification while requesting for access.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<EntitlementRequesterJustificationConfigArgs>> requesterJustificationConfig() {
@@ -237,16 +237,16 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -335,8 +335,8 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
+         * @param createTime Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
          * 
          * @return builder
          * 
@@ -347,8 +347,8 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
+         * @param createTime Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
          * 
          * @return builder
          * 
@@ -359,7 +359,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param eligibleUsers Who can create Grants using Entitlement. This list should contain at most one entry
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -371,7 +370,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param eligibleUsers Who can create Grants using Entitlement. This list should contain at most one entry
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -382,7 +380,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param eligibleUsers Who can create Grants using Entitlement. This list should contain at most one entry
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -392,9 +389,9 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entitlementId The ID to use for this Entitlement. This will become the last part of the resource name.
-         * This value should be 4-63 characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z].
-         * This value should be unique among all other Entitlements under the specified `parent`.
+         * @param entitlementId The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+         * characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z]. This value
+         * should be unique among all other Entitlements under the specified &#39;parent&#39;.
          * 
          * @return builder
          * 
@@ -405,9 +402,9 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entitlementId The ID to use for this Entitlement. This will become the last part of the resource name.
-         * This value should be 4-63 characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z].
-         * This value should be unique among all other Entitlements under the specified `parent`.
+         * @param entitlementId The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+         * characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z]. This value
+         * should be unique among all other Entitlements under the specified &#39;parent&#39;.
          * 
          * @return builder
          * 
@@ -459,9 +456,9 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRequestDuration The maximum amount of time for which access would be granted for a request.
-         * A requester can choose to ask for access for less than this duration but never more.
-         * Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours = &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
+         * @param maxRequestDuration The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+         * less than this duration but never more. Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours =
+         * &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
          * 
          * @return builder
          * 
@@ -472,9 +469,9 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRequestDuration The maximum amount of time for which access would be granted for a request.
-         * A requester can choose to ask for access for less than this duration but never more.
-         * Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours = &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
+         * @param maxRequestDuration The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+         * less than this duration but never more. Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours =
+         * &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
          * 
          * @return builder
          * 
@@ -484,8 +481,11 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output Only. The entitlement&#39;s name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-         * Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+         * @param name Output Only. The entitlement&#39;s name follows a hierarchical structure, comprising the organization, folder, or project,
+         * alongside the region and a unique entitlement ID. Formats:
+         * organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+         * folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+         * projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
          * 
          * @return builder
          * 
@@ -496,8 +496,11 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output Only. The entitlement&#39;s name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-         * Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+         * @param name Output Only. The entitlement&#39;s name follows a hierarchical structure, comprising the organization, folder, or project,
+         * alongside the region and a unique entitlement ID. Formats:
+         * organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+         * folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+         * projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
          * 
          * @return builder
          * 
@@ -529,7 +532,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param privilegedAccess Privileged access that this service can be used to gate.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -541,7 +543,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param privilegedAccess Privileged access that this service can be used to gate.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -552,7 +553,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requesterJustificationConfig Defines the ways in which a requester should provide the justification while requesting for access.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -564,7 +564,6 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requesterJustificationConfig Defines the ways in which a requester should provide the justification while requesting for access.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -595,8 +594,8 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -607,8 +606,8 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 

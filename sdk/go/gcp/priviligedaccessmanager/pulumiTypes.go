@@ -176,8 +176,7 @@ type EntitlementApprovalWorkflow struct {
 	// * Require an approval from any user in a group G.
 	// * Require an approval from any k number of users from a Group G.
 	// * Require an approval from any user in a group G and then from a user U. etc.
-	//   A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-	//   Structure is documented below.
+	//   A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
 	ManualApprovals EntitlementApprovalWorkflowManualApprovals `pulumi:"manualApprovals"`
 }
 
@@ -199,8 +198,7 @@ type EntitlementApprovalWorkflowArgs struct {
 	// * Require an approval from any user in a group G.
 	// * Require an approval from any k number of users from a Group G.
 	// * Require an approval from any user in a group G and then from a user U. etc.
-	//   A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-	//   Structure is documented below.
+	//   A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
 	ManualApprovals EntitlementApprovalWorkflowManualApprovalsInput `pulumi:"manualApprovals"`
 }
 
@@ -287,8 +285,7 @@ func (o EntitlementApprovalWorkflowOutput) ToEntitlementApprovalWorkflowPtrOutpu
 //   - Require an approval from any user in a group G.
 //   - Require an approval from any k number of users from a Group G.
 //   - Require an approval from any user in a group G and then from a user U. etc.
-//     A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-//     Structure is documented below.
+//     A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
 func (o EntitlementApprovalWorkflowOutput) ManualApprovals() EntitlementApprovalWorkflowManualApprovalsOutput {
 	return o.ApplyT(func(v EntitlementApprovalWorkflow) EntitlementApprovalWorkflowManualApprovals {
 		return v.ManualApprovals
@@ -325,8 +322,7 @@ func (o EntitlementApprovalWorkflowPtrOutput) Elem() EntitlementApprovalWorkflow
 //   - Require an approval from any user in a group G.
 //   - Require an approval from any k number of users from a Group G.
 //   - Require an approval from any user in a group G and then from a user U. etc.
-//     A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-//     Structure is documented below.
+//     A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
 func (o EntitlementApprovalWorkflowPtrOutput) ManualApprovals() EntitlementApprovalWorkflowManualApprovalsPtrOutput {
 	return o.ApplyT(func(v *EntitlementApprovalWorkflow) *EntitlementApprovalWorkflowManualApprovals {
 		if v == nil {
@@ -340,7 +336,6 @@ type EntitlementApprovalWorkflowManualApprovals struct {
 	// Optional. Do the approvers need to provide a justification for their actions?
 	RequireApproverJustification *bool `pulumi:"requireApproverJustification"`
 	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-	// Structure is documented below.
 	Steps []EntitlementApprovalWorkflowManualApprovalsStep `pulumi:"steps"`
 }
 
@@ -359,7 +354,6 @@ type EntitlementApprovalWorkflowManualApprovalsArgs struct {
 	// Optional. Do the approvers need to provide a justification for their actions?
 	RequireApproverJustification pulumi.BoolPtrInput `pulumi:"requireApproverJustification"`
 	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-	// Structure is documented below.
 	Steps EntitlementApprovalWorkflowManualApprovalsStepArrayInput `pulumi:"steps"`
 }
 
@@ -446,7 +440,6 @@ func (o EntitlementApprovalWorkflowManualApprovalsOutput) RequireApproverJustifi
 }
 
 // List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-// Structure is documented below.
 func (o EntitlementApprovalWorkflowManualApprovalsOutput) Steps() EntitlementApprovalWorkflowManualApprovalsStepArrayOutput {
 	return o.ApplyT(func(v EntitlementApprovalWorkflowManualApprovals) []EntitlementApprovalWorkflowManualApprovalsStep {
 		return v.Steps
@@ -488,7 +481,6 @@ func (o EntitlementApprovalWorkflowManualApprovalsPtrOutput) RequireApproverJust
 }
 
 // List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-// Structure is documented below.
 func (o EntitlementApprovalWorkflowManualApprovalsPtrOutput) Steps() EntitlementApprovalWorkflowManualApprovalsStepArrayOutput {
 	return o.ApplyT(func(v *EntitlementApprovalWorkflowManualApprovals) []EntitlementApprovalWorkflowManualApprovalsStep {
 		if v == nil {
@@ -507,7 +499,6 @@ type EntitlementApprovalWorkflowManualApprovalsStep struct {
 	// Optional. Additional email addresses to be notified when a grant is pending approval.
 	ApproverEmailRecipients []string `pulumi:"approverEmailRecipients"`
 	// The potential set of approvers in this step. This list should contain at only one entry.
-	// Structure is documented below.
 	Approvers EntitlementApprovalWorkflowManualApprovalsStepApprovers `pulumi:"approvers"`
 }
 
@@ -531,7 +522,6 @@ type EntitlementApprovalWorkflowManualApprovalsStepArgs struct {
 	// Optional. Additional email addresses to be notified when a grant is pending approval.
 	ApproverEmailRecipients pulumi.StringArrayInput `pulumi:"approverEmailRecipients"`
 	// The potential set of approvers in this step. This list should contain at only one entry.
-	// Structure is documented below.
 	Approvers EntitlementApprovalWorkflowManualApprovalsStepApproversInput `pulumi:"approvers"`
 }
 
@@ -600,7 +590,6 @@ func (o EntitlementApprovalWorkflowManualApprovalsStepOutput) ApproverEmailRecip
 }
 
 // The potential set of approvers in this step. This list should contain at only one entry.
-// Structure is documented below.
 func (o EntitlementApprovalWorkflowManualApprovalsStepOutput) Approvers() EntitlementApprovalWorkflowManualApprovalsStepApproversOutput {
 	return o.ApplyT(func(v EntitlementApprovalWorkflowManualApprovalsStep) EntitlementApprovalWorkflowManualApprovalsStepApprovers {
 		return v.Approvers
@@ -778,7 +767,6 @@ func (o EntitlementEligibleUserArrayOutput) Index(i pulumi.IntInput) Entitlement
 
 type EntitlementPrivilegedAccess struct {
 	// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-	// Structure is documented below.
 	GcpIamAccess EntitlementPrivilegedAccessGcpIamAccess `pulumi:"gcpIamAccess"`
 }
 
@@ -795,7 +783,6 @@ type EntitlementPrivilegedAccessInput interface {
 
 type EntitlementPrivilegedAccessArgs struct {
 	// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-	// Structure is documented below.
 	GcpIamAccess EntitlementPrivilegedAccessGcpIamAccessInput `pulumi:"gcpIamAccess"`
 }
 
@@ -877,7 +864,6 @@ func (o EntitlementPrivilegedAccessOutput) ToEntitlementPrivilegedAccessPtrOutpu
 }
 
 // GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-// Structure is documented below.
 func (o EntitlementPrivilegedAccessOutput) GcpIamAccess() EntitlementPrivilegedAccessGcpIamAccessOutput {
 	return o.ApplyT(func(v EntitlementPrivilegedAccess) EntitlementPrivilegedAccessGcpIamAccess { return v.GcpIamAccess }).(EntitlementPrivilegedAccessGcpIamAccessOutput)
 }
@@ -907,7 +893,6 @@ func (o EntitlementPrivilegedAccessPtrOutput) Elem() EntitlementPrivilegedAccess
 }
 
 // GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-// Structure is documented below.
 func (o EntitlementPrivilegedAccessPtrOutput) GcpIamAccess() EntitlementPrivilegedAccessGcpIamAccessPtrOutput {
 	return o.ApplyT(func(v *EntitlementPrivilegedAccess) *EntitlementPrivilegedAccessGcpIamAccess {
 		if v == nil {
@@ -923,7 +908,6 @@ type EntitlementPrivilegedAccessGcpIamAccess struct {
 	// The type of this resource.
 	ResourceType string `pulumi:"resourceType"`
 	// Role bindings to be created on successful grant.
-	// Structure is documented below.
 	RoleBindings []EntitlementPrivilegedAccessGcpIamAccessRoleBinding `pulumi:"roleBindings"`
 }
 
@@ -944,7 +928,6 @@ type EntitlementPrivilegedAccessGcpIamAccessArgs struct {
 	// The type of this resource.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 	// Role bindings to be created on successful grant.
-	// Structure is documented below.
 	RoleBindings EntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayInput `pulumi:"roleBindings"`
 }
 
@@ -1036,7 +1019,6 @@ func (o EntitlementPrivilegedAccessGcpIamAccessOutput) ResourceType() pulumi.Str
 }
 
 // Role bindings to be created on successful grant.
-// Structure is documented below.
 func (o EntitlementPrivilegedAccessGcpIamAccessOutput) RoleBindings() EntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput {
 	return o.ApplyT(func(v EntitlementPrivilegedAccessGcpIamAccess) []EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
 		return v.RoleBindings
@@ -1088,7 +1070,6 @@ func (o EntitlementPrivilegedAccessGcpIamAccessPtrOutput) ResourceType() pulumi.
 }
 
 // Role bindings to be created on successful grant.
-// Structure is documented below.
 func (o EntitlementPrivilegedAccessGcpIamAccessPtrOutput) RoleBindings() EntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput {
 	return o.ApplyT(func(v *EntitlementPrivilegedAccessGcpIamAccess) []EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
 		if v == nil {
@@ -1211,8 +1192,6 @@ type EntitlementRequesterJustificationConfig struct {
 	// The justification is not mandatory but can be provided in any of the supported formats.
 	NotMandatory *EntitlementRequesterJustificationConfigNotMandatory `pulumi:"notMandatory"`
 	// The requester has to provide a justification in the form of free flowing text.
-	//
-	// ***
 	Unstructured *EntitlementRequesterJustificationConfigUnstructured `pulumi:"unstructured"`
 }
 
@@ -1231,8 +1210,6 @@ type EntitlementRequesterJustificationConfigArgs struct {
 	// The justification is not mandatory but can be provided in any of the supported formats.
 	NotMandatory EntitlementRequesterJustificationConfigNotMandatoryPtrInput `pulumi:"notMandatory"`
 	// The requester has to provide a justification in the form of free flowing text.
-	//
-	// ***
 	Unstructured EntitlementRequesterJustificationConfigUnstructuredPtrInput `pulumi:"unstructured"`
 }
 
@@ -1321,8 +1298,6 @@ func (o EntitlementRequesterJustificationConfigOutput) NotMandatory() Entitlemen
 }
 
 // The requester has to provide a justification in the form of free flowing text.
-//
-// ***
 func (o EntitlementRequesterJustificationConfigOutput) Unstructured() EntitlementRequesterJustificationConfigUnstructuredPtrOutput {
 	return o.ApplyT(func(v EntitlementRequesterJustificationConfig) *EntitlementRequesterJustificationConfigUnstructured {
 		return v.Unstructured
@@ -1364,8 +1339,6 @@ func (o EntitlementRequesterJustificationConfigPtrOutput) NotMandatory() Entitle
 }
 
 // The requester has to provide a justification in the form of free flowing text.
-//
-// ***
 func (o EntitlementRequesterJustificationConfigPtrOutput) Unstructured() EntitlementRequesterJustificationConfigUnstructuredPtrOutput {
 	return o.ApplyT(func(v *EntitlementRequesterJustificationConfig) *EntitlementRequesterJustificationConfigUnstructured {
 		if v == nil {

@@ -7,110 +7,9 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager
+namespace Pulumi.Gcp.Priviligedaccessmanager
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Privileged Access Manager Entitlement Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var tfentitlement = new Gcp.PriviligedAccessManager.Entitlement("tfentitlement", new()
-    ///     {
-    ///         EntitlementId = "example-entitlement",
-    ///         Location = "global",
-    ///         MaxRequestDuration = "43200s",
-    ///         Parent = "projects/my-project-name",
-    ///         RequesterJustificationConfig = new Gcp.PriviligedAccessManager.Inputs.EntitlementRequesterJustificationConfigArgs
-    ///         {
-    ///             Unstructured = null,
-    ///         },
-    ///         EligibleUsers = new[]
-    ///         {
-    ///             new Gcp.PriviligedAccessManager.Inputs.EntitlementEligibleUserArgs
-    ///             {
-    ///                 Principals = new[]
-    ///                 {
-    ///                     "group:test@google.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///         PrivilegedAccess = new Gcp.PriviligedAccessManager.Inputs.EntitlementPrivilegedAccessArgs
-    ///         {
-    ///             GcpIamAccess = new Gcp.PriviligedAccessManager.Inputs.EntitlementPrivilegedAccessGcpIamAccessArgs
-    ///             {
-    ///                 RoleBindings = new[]
-    ///                 {
-    ///                     new Gcp.PriviligedAccessManager.Inputs.EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs
-    ///                     {
-    ///                         Role = "roles/storage.admin",
-    ///                         ConditionExpression = "request.time &lt; timestamp(\"2024-04-23T18:30:00.000Z\")",
-    ///                     },
-    ///                 },
-    ///                 Resource = "//cloudresourcemanager.googleapis.com/projects/my-project-name",
-    ///                 ResourceType = "cloudresourcemanager.googleapis.com/Project",
-    ///             },
-    ///         },
-    ///         AdditionalNotificationTargets = new Gcp.PriviligedAccessManager.Inputs.EntitlementAdditionalNotificationTargetsArgs
-    ///         {
-    ///             AdminEmailRecipients = new[]
-    ///             {
-    ///                 "user@example.com",
-    ///             },
-    ///             RequesterEmailRecipients = new[]
-    ///             {
-    ///                 "user@example.com",
-    ///             },
-    ///         },
-    ///         ApprovalWorkflow = new Gcp.PriviligedAccessManager.Inputs.EntitlementApprovalWorkflowArgs
-    ///         {
-    ///             ManualApprovals = new Gcp.PriviligedAccessManager.Inputs.EntitlementApprovalWorkflowManualApprovalsArgs
-    ///             {
-    ///                 RequireApproverJustification = true,
-    ///                 Steps = new[]
-    ///                 {
-    ///                     new Gcp.PriviligedAccessManager.Inputs.EntitlementApprovalWorkflowManualApprovalsStepArgs
-    ///                     {
-    ///                         ApprovalsNeeded = 1,
-    ///                         ApproverEmailRecipients = new[]
-    ///                         {
-    ///                             "user@example.com",
-    ///                         },
-    ///                         Approvers = new Gcp.PriviligedAccessManager.Inputs.EntitlementApprovalWorkflowManualApprovalsStepApproversArgs
-    ///                         {
-    ///                             Principals = new[]
-    ///                             {
-    ///                                 "group:test@google.com",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Entitlement can be imported using any of these accepted formats:
-    /// 
-    /// * `{{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}`
-    /// 
-    /// When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:priviligedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
-    /// ```
-    /// </summary>
+    [Obsolete(@"gcp.priviligedaccessmanager/entitlement.Entitlement has been deprecated in favor of gcp.privilegedaccessmanager/entitlement.Entitlement")]
     [GcpResourceType("gcp:priviligedaccessmanager/entitlement:Entitlement")]
     public partial class Entitlement : global::Pulumi.CustomResource
     {
@@ -128,23 +27,22 @@ namespace Pulumi.Gcp.PriviligedAccessManager
         public Output<Outputs.EntitlementApprovalWorkflow?> ApprovalWorkflow { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Who can create Grants using Entitlement. This list should contain at most one entry
-        /// Structure is documented below.
         /// </summary>
         [Output("eligibleUsers")]
         public Output<ImmutableArray<Outputs.EntitlementEligibleUser>> EligibleUsers { get; private set; } = null!;
 
         /// <summary>
-        /// The ID to use for this Entitlement. This will become the last part of the resource name.
-        /// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-        /// This value should be unique among all other Entitlements under the specified `parent`.
+        /// The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+        /// characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+        /// should be unique among all other Entitlements under the specified 'parent'.
         /// </summary>
         [Output("entitlementId")]
         public Output<string> EntitlementId { get; private set; } = null!;
@@ -162,16 +60,19 @@ namespace Pulumi.Gcp.PriviligedAccessManager
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum amount of time for which access would be granted for a request.
-        /// A requester can choose to ask for access for less than this duration but never more.
-        /// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+        /// The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+        /// less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+        /// "7200s", 45 minutes = "2700s"
         /// </summary>
         [Output("maxRequestDuration")]
         public Output<string> MaxRequestDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-        /// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+        /// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+        /// alongside the region and a unique entitlement ID. Formats:
+        /// organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+        /// folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+        /// projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -184,14 +85,12 @@ namespace Pulumi.Gcp.PriviligedAccessManager
 
         /// <summary>
         /// Privileged access that this service can be used to gate.
-        /// Structure is documented below.
         /// </summary>
         [Output("privilegedAccess")]
         public Output<Outputs.EntitlementPrivilegedAccess> PrivilegedAccess { get; private set; } = null!;
 
         /// <summary>
         /// Defines the ways in which a requester should provide the justification while requesting for access.
-        /// Structure is documented below.
         /// </summary>
         [Output("requesterJustificationConfig")]
         public Output<Outputs.EntitlementRequesterJustificationConfig> RequesterJustificationConfig { get; private set; } = null!;
@@ -203,8 +102,8 @@ namespace Pulumi.Gcp.PriviligedAccessManager
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -273,7 +172,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager
 
         /// <summary>
         /// Who can create Grants using Entitlement. This list should contain at most one entry
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntitlementEligibleUserArgs> EligibleUsers
         {
@@ -282,9 +180,9 @@ namespace Pulumi.Gcp.PriviligedAccessManager
         }
 
         /// <summary>
-        /// The ID to use for this Entitlement. This will become the last part of the resource name.
-        /// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-        /// This value should be unique among all other Entitlements under the specified `parent`.
+        /// The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+        /// characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+        /// should be unique among all other Entitlements under the specified 'parent'.
         /// </summary>
         [Input("entitlementId", required: true)]
         public Input<string> EntitlementId { get; set; } = null!;
@@ -296,9 +194,9 @@ namespace Pulumi.Gcp.PriviligedAccessManager
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The maximum amount of time for which access would be granted for a request.
-        /// A requester can choose to ask for access for less than this duration but never more.
-        /// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+        /// The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+        /// less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+        /// "7200s", 45 minutes = "2700s"
         /// </summary>
         [Input("maxRequestDuration", required: true)]
         public Input<string> MaxRequestDuration { get; set; } = null!;
@@ -311,14 +209,12 @@ namespace Pulumi.Gcp.PriviligedAccessManager
 
         /// <summary>
         /// Privileged access that this service can be used to gate.
-        /// Structure is documented below.
         /// </summary>
         [Input("privilegedAccess", required: true)]
         public Input<Inputs.EntitlementPrivilegedAccessArgs> PrivilegedAccess { get; set; } = null!;
 
         /// <summary>
         /// Defines the ways in which a requester should provide the justification while requesting for access.
-        /// Structure is documented below.
         /// </summary>
         [Input("requesterJustificationConfig", required: true)]
         public Input<Inputs.EntitlementRequesterJustificationConfigArgs> RequesterJustificationConfig { get; set; } = null!;
@@ -345,8 +241,8 @@ namespace Pulumi.Gcp.PriviligedAccessManager
         public Input<Inputs.EntitlementApprovalWorkflowGetArgs>? ApprovalWorkflow { get; set; }
 
         /// <summary>
-        /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -356,7 +252,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager
 
         /// <summary>
         /// Who can create Grants using Entitlement. This list should contain at most one entry
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntitlementEligibleUserGetArgs> EligibleUsers
         {
@@ -365,9 +260,9 @@ namespace Pulumi.Gcp.PriviligedAccessManager
         }
 
         /// <summary>
-        /// The ID to use for this Entitlement. This will become the last part of the resource name.
-        /// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-        /// This value should be unique among all other Entitlements under the specified `parent`.
+        /// The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+        /// characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+        /// should be unique among all other Entitlements under the specified 'parent'.
         /// </summary>
         [Input("entitlementId")]
         public Input<string>? EntitlementId { get; set; }
@@ -385,16 +280,19 @@ namespace Pulumi.Gcp.PriviligedAccessManager
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The maximum amount of time for which access would be granted for a request.
-        /// A requester can choose to ask for access for less than this duration but never more.
-        /// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+        /// The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+        /// less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+        /// "7200s", 45 minutes = "2700s"
         /// </summary>
         [Input("maxRequestDuration")]
         public Input<string>? MaxRequestDuration { get; set; }
 
         /// <summary>
-        /// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-        /// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+        /// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+        /// alongside the region and a unique entitlement ID. Formats:
+        /// organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+        /// folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+        /// projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -407,14 +305,12 @@ namespace Pulumi.Gcp.PriviligedAccessManager
 
         /// <summary>
         /// Privileged access that this service can be used to gate.
-        /// Structure is documented below.
         /// </summary>
         [Input("privilegedAccess")]
         public Input<Inputs.EntitlementPrivilegedAccessGetArgs>? PrivilegedAccess { get; set; }
 
         /// <summary>
         /// Defines the ways in which a requester should provide the justification while requesting for access.
-        /// Structure is documented below.
         /// </summary>
         [Input("requesterJustificationConfig")]
         public Input<Inputs.EntitlementRequesterJustificationConfigGetArgs>? RequesterJustificationConfig { get; set; }
@@ -426,8 +322,8 @@ namespace Pulumi.Gcp.PriviligedAccessManager
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

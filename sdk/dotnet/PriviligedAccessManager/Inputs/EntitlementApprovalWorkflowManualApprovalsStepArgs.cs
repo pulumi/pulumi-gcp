@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
+namespace Pulumi.Gcp.Priviligedaccessmanager.Inputs
 {
 
     public sealed class EntitlementApprovalWorkflowManualApprovalsStepArgs : global::Pulumi.ResourceArgs
@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
 
         /// <summary>
         /// The potential set of approvers in this step. This list should contain at only one entry.
-        /// Structure is documented below.
         /// </summary>
         [Input("approvers", required: true)]
         public Input<Inputs.EntitlementApprovalWorkflowManualApprovalsStepApproversArgs> Approvers { get; set; } = null!;

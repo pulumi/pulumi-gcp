@@ -103,8 +103,7 @@ class EntitlementApprovalWorkflow(dict):
                * Require an approval from any user in a group G.
                * Require an approval from any k number of users from a Group G.
                * Require an approval from any user in a group G and then from a user U. etc.
-               A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-               Structure is documented below.
+               A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
         """
         pulumi.set(__self__, "manual_approvals", manual_approvals)
 
@@ -118,8 +117,7 @@ class EntitlementApprovalWorkflow(dict):
         * Require an approval from any user in a group G.
         * Require an approval from any k number of users from a Group G.
         * Require an approval from any user in a group G and then from a user U. etc.
-        A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-        Structure is documented below.
+        A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
         """
         return pulumi.get(self, "manual_approvals")
 
@@ -148,7 +146,6 @@ class EntitlementApprovalWorkflowManualApprovals(dict):
                  require_approver_justification: Optional[bool] = None):
         """
         :param Sequence['EntitlementApprovalWorkflowManualApprovalsStepArgs'] steps: List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-               Structure is documented below.
         :param bool require_approver_justification: Optional. Do the approvers need to provide a justification for their actions?
         """
         pulumi.set(__self__, "steps", steps)
@@ -160,7 +157,6 @@ class EntitlementApprovalWorkflowManualApprovals(dict):
     def steps(self) -> Sequence['outputs.EntitlementApprovalWorkflowManualApprovalsStep']:
         """
         List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-        Structure is documented below.
         """
         return pulumi.get(self, "steps")
 
@@ -200,7 +196,6 @@ class EntitlementApprovalWorkflowManualApprovalsStep(dict):
                  approver_email_recipients: Optional[Sequence[str]] = None):
         """
         :param 'EntitlementApprovalWorkflowManualApprovalsStepApproversArgs' approvers: The potential set of approvers in this step. This list should contain at only one entry.
-               Structure is documented below.
         :param int approvals_needed: How many users from the above list need to approve.
                If there are not enough distinct users in the list above then the workflow
                will indefinitely block. Should always be greater than 0. Currently 1 is the only
@@ -218,7 +213,6 @@ class EntitlementApprovalWorkflowManualApprovalsStep(dict):
     def approvers(self) -> 'outputs.EntitlementApprovalWorkflowManualApprovalsStepApprovers':
         """
         The potential set of approvers in this step. This list should contain at only one entry.
-        Structure is documented below.
         """
         return pulumi.get(self, "approvers")
 
@@ -301,7 +295,6 @@ class EntitlementPrivilegedAccess(dict):
                  gcp_iam_access: 'outputs.EntitlementPrivilegedAccessGcpIamAccess'):
         """
         :param 'EntitlementPrivilegedAccessGcpIamAccessArgs' gcp_iam_access: GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-               Structure is documented below.
         """
         pulumi.set(__self__, "gcp_iam_access", gcp_iam_access)
 
@@ -310,7 +303,6 @@ class EntitlementPrivilegedAccess(dict):
     def gcp_iam_access(self) -> 'outputs.EntitlementPrivilegedAccessGcpIamAccess':
         """
         GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-        Structure is documented below.
         """
         return pulumi.get(self, "gcp_iam_access")
 
@@ -344,7 +336,6 @@ class EntitlementPrivilegedAccessGcpIamAccess(dict):
         :param str resource: Name of the resource.
         :param str resource_type: The type of this resource.
         :param Sequence['EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs'] role_bindings: Role bindings to be created on successful grant.
-               Structure is documented below.
         """
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "resource_type", resource_type)
@@ -371,7 +362,6 @@ class EntitlementPrivilegedAccessGcpIamAccess(dict):
     def role_bindings(self) -> Sequence['outputs.EntitlementPrivilegedAccessGcpIamAccessRoleBinding']:
         """
         Role bindings to be created on successful grant.
-        Structure is documented below.
         """
         return pulumi.get(self, "role_bindings")
 
@@ -450,8 +440,6 @@ class EntitlementRequesterJustificationConfig(dict):
         """
         :param 'EntitlementRequesterJustificationConfigNotMandatoryArgs' not_mandatory: The justification is not mandatory but can be provided in any of the supported formats.
         :param 'EntitlementRequesterJustificationConfigUnstructuredArgs' unstructured: The requester has to provide a justification in the form of free flowing text.
-               
-               - - -
         """
         if not_mandatory is not None:
             pulumi.set(__self__, "not_mandatory", not_mandatory)
@@ -471,8 +459,6 @@ class EntitlementRequesterJustificationConfig(dict):
     def unstructured(self) -> Optional['outputs.EntitlementRequesterJustificationConfigUnstructured']:
         """
         The requester has to provide a justification in the form of free flowing text.
-
-        - - -
         """
         return pulumi.get(self, "unstructured")
 

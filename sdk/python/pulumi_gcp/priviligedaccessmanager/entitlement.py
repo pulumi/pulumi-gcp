@@ -28,19 +28,16 @@ class EntitlementArgs:
         """
         The set of arguments for constructing a Entitlement resource.
         :param pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
-               Structure is documented below.
-        :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
-               This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-               This value should be unique among all other Entitlements under the specified `parent`.
+        :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+               characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+               should be unique among all other Entitlements under the specified 'parent'.
         :param pulumi.Input[str] location: The region of the Entitlement resource.
-        :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request.
-               A requester can choose to ask for access for less than this duration but never more.
-               Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+        :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+               less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+               "7200s", 45 minutes = "2700s"
         :param pulumi.Input[str] parent: Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
         :param pulumi.Input['EntitlementPrivilegedAccessArgs'] privileged_access: Privileged access that this service can be used to gate.
-               Structure is documented below.
         :param pulumi.Input['EntitlementRequesterJustificationConfigArgs'] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
-               Structure is documented below.
         :param pulumi.Input['EntitlementAdditionalNotificationTargetsArgs'] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
         :param pulumi.Input['EntitlementApprovalWorkflowArgs'] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
                Different types of approval workflows that can be used to gate privileged access granting.
@@ -62,7 +59,6 @@ class EntitlementArgs:
     def eligible_users(self) -> pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]]:
         """
         Who can create Grants using Entitlement. This list should contain at most one entry
-        Structure is documented below.
         """
         return pulumi.get(self, "eligible_users")
 
@@ -74,9 +70,9 @@ class EntitlementArgs:
     @pulumi.getter(name="entitlementId")
     def entitlement_id(self) -> pulumi.Input[str]:
         """
-        The ID to use for this Entitlement. This will become the last part of the resource name.
-        This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-        This value should be unique among all other Entitlements under the specified `parent`.
+        The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+        characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+        should be unique among all other Entitlements under the specified 'parent'.
         """
         return pulumi.get(self, "entitlement_id")
 
@@ -100,9 +96,9 @@ class EntitlementArgs:
     @pulumi.getter(name="maxRequestDuration")
     def max_request_duration(self) -> pulumi.Input[str]:
         """
-        The maximum amount of time for which access would be granted for a request.
-        A requester can choose to ask for access for less than this duration but never more.
-        Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+        The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+        less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+        "7200s", 45 minutes = "2700s"
         """
         return pulumi.get(self, "max_request_duration")
 
@@ -127,7 +123,6 @@ class EntitlementArgs:
     def privileged_access(self) -> pulumi.Input['EntitlementPrivilegedAccessArgs']:
         """
         Privileged access that this service can be used to gate.
-        Structure is documented below.
         """
         return pulumi.get(self, "privileged_access")
 
@@ -140,7 +135,6 @@ class EntitlementArgs:
     def requester_justification_config(self) -> pulumi.Input['EntitlementRequesterJustificationConfigArgs']:
         """
         Defines the ways in which a requester should provide the justification while requesting for access.
-        Structure is documented below.
         """
         return pulumi.get(self, "requester_justification_config")
 
@@ -196,28 +190,28 @@ class _EntitlementState:
         :param pulumi.Input['EntitlementAdditionalNotificationTargetsArgs'] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
         :param pulumi.Input['EntitlementApprovalWorkflowArgs'] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
                Different types of approval workflows that can be used to gate privileged access granting.
-        :param pulumi.Input[str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param pulumi.Input[str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         :param pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
-               Structure is documented below.
-        :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
-               This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-               This value should be unique among all other Entitlements under the specified `parent`.
+        :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+               characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+               should be unique among all other Entitlements under the specified 'parent'.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] location: The region of the Entitlement resource.
-        :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request.
-               A requester can choose to ask for access for less than this duration but never more.
-               Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
-        :param pulumi.Input[str] name: Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-               Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+        :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+               less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+               "7200s", 45 minutes = "2700s"
+        :param pulumi.Input[str] name: Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+               alongside the region and a unique entitlement ID. Formats:
+               organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+               folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+               projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
         :param pulumi.Input[str] parent: Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
         :param pulumi.Input['EntitlementPrivilegedAccessArgs'] privileged_access: Privileged access that this service can be used to gate.
-               Structure is documented below.
         :param pulumi.Input['EntitlementRequesterJustificationConfigArgs'] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
-               Structure is documented below.
         :param pulumi.Input[str] state: Output only. The current state of the Entitlement.
-        :param pulumi.Input[str] update_time: Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         if additional_notification_targets is not None:
             pulumi.set(__self__, "additional_notification_targets", additional_notification_targets)
@@ -277,8 +271,8 @@ class _EntitlementState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "create_time")
 
@@ -291,7 +285,6 @@ class _EntitlementState:
     def eligible_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]]]:
         """
         Who can create Grants using Entitlement. This list should contain at most one entry
-        Structure is documented below.
         """
         return pulumi.get(self, "eligible_users")
 
@@ -303,9 +296,9 @@ class _EntitlementState:
     @pulumi.getter(name="entitlementId")
     def entitlement_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID to use for this Entitlement. This will become the last part of the resource name.
-        This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-        This value should be unique among all other Entitlements under the specified `parent`.
+        The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+        characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+        should be unique among all other Entitlements under the specified 'parent'.
         """
         return pulumi.get(self, "entitlement_id")
 
@@ -341,9 +334,9 @@ class _EntitlementState:
     @pulumi.getter(name="maxRequestDuration")
     def max_request_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum amount of time for which access would be granted for a request.
-        A requester can choose to ask for access for less than this duration but never more.
-        Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+        The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+        less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+        "7200s", 45 minutes = "2700s"
         """
         return pulumi.get(self, "max_request_duration")
 
@@ -355,8 +348,11 @@ class _EntitlementState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-        Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+        Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+        alongside the region and a unique entitlement ID. Formats:
+        organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+        folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+        projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
         """
         return pulumi.get(self, "name")
 
@@ -381,7 +377,6 @@ class _EntitlementState:
     def privileged_access(self) -> Optional[pulumi.Input['EntitlementPrivilegedAccessArgs']]:
         """
         Privileged access that this service can be used to gate.
-        Structure is documented below.
         """
         return pulumi.get(self, "privileged_access")
 
@@ -394,7 +389,6 @@ class _EntitlementState:
     def requester_justification_config(self) -> Optional[pulumi.Input['EntitlementRequesterJustificationConfigArgs']]:
         """
         Defines the ways in which a requester should provide the justification while requesting for access.
-        Structure is documented below.
         """
         return pulumi.get(self, "requester_justification_config")
 
@@ -418,8 +412,8 @@ class _EntitlementState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 
@@ -428,7 +422,12 @@ class _EntitlementState:
         pulumi.set(self, "update_time", value)
 
 
+warnings.warn("""gcp.priviligedaccessmanager/entitlement.Entitlement has been deprecated in favor of gcp.privilegedaccessmanager/entitlement.Entitlement""", DeprecationWarning)
+
+
 class Entitlement(pulumi.CustomResource):
+    warnings.warn("""gcp.priviligedaccessmanager/entitlement.Entitlement has been deprecated in favor of gcp.privilegedaccessmanager/entitlement.Entitlement""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -444,84 +443,23 @@ class Entitlement(pulumi.CustomResource):
                  requester_justification_config: Optional[pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Privileged Access Manager Entitlement Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tfentitlement = gcp.priviligedaccessmanager.Entitlement("tfentitlement",
-            entitlement_id="example-entitlement",
-            location="global",
-            max_request_duration="43200s",
-            parent="projects/my-project-name",
-            requester_justification_config=gcp.priviligedaccessmanager.EntitlementRequesterJustificationConfigArgs(
-                unstructured=gcp.priviligedaccessmanager.EntitlementRequesterJustificationConfigUnstructuredArgs(),
-            ),
-            eligible_users=[gcp.priviligedaccessmanager.EntitlementEligibleUserArgs(
-                principals=["group:test@google.com"],
-            )],
-            privileged_access=gcp.priviligedaccessmanager.EntitlementPrivilegedAccessArgs(
-                gcp_iam_access=gcp.priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessArgs(
-                    role_bindings=[gcp.priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs(
-                        role="roles/storage.admin",
-                        condition_expression="request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
-                    )],
-                    resource="//cloudresourcemanager.googleapis.com/projects/my-project-name",
-                    resource_type="cloudresourcemanager.googleapis.com/Project",
-                ),
-            ),
-            additional_notification_targets=gcp.priviligedaccessmanager.EntitlementAdditionalNotificationTargetsArgs(
-                admin_email_recipients=["user@example.com"],
-                requester_email_recipients=["user@example.com"],
-            ),
-            approval_workflow=gcp.priviligedaccessmanager.EntitlementApprovalWorkflowArgs(
-                manual_approvals=gcp.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsArgs(
-                    require_approver_justification=True,
-                    steps=[gcp.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepArgs(
-                        approvals_needed=1,
-                        approver_email_recipients=["user@example.com"],
-                        approvers=gcp.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApproversArgs(
-                            principals=["group:test@google.com"],
-                        ),
-                    )],
-                ),
-            ))
-        ```
-
-        ## Import
-
-        Entitlement can be imported using any of these accepted formats:
-
-        * `{{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}`
-
-        When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
-
-        ```sh
-        $ pulumi import gcp:priviligedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
-        ```
-
+        Create a Entitlement resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['EntitlementAdditionalNotificationTargetsArgs']] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
         :param pulumi.Input[pulumi.InputType['EntitlementApprovalWorkflowArgs']] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
                Different types of approval workflows that can be used to gate privileged access granting.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntitlementEligibleUserArgs']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
-               Structure is documented below.
-        :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
-               This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-               This value should be unique among all other Entitlements under the specified `parent`.
+        :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+               characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+               should be unique among all other Entitlements under the specified 'parent'.
         :param pulumi.Input[str] location: The region of the Entitlement resource.
-        :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request.
-               A requester can choose to ask for access for less than this duration but never more.
-               Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+        :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+               less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+               "7200s", 45 minutes = "2700s"
         :param pulumi.Input[str] parent: Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
         :param pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']] privileged_access: Privileged access that this service can be used to gate.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
-               Structure is documented below.
         """
         ...
     @overload
@@ -530,65 +468,7 @@ class Entitlement(pulumi.CustomResource):
                  args: EntitlementArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Privileged Access Manager Entitlement Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tfentitlement = gcp.priviligedaccessmanager.Entitlement("tfentitlement",
-            entitlement_id="example-entitlement",
-            location="global",
-            max_request_duration="43200s",
-            parent="projects/my-project-name",
-            requester_justification_config=gcp.priviligedaccessmanager.EntitlementRequesterJustificationConfigArgs(
-                unstructured=gcp.priviligedaccessmanager.EntitlementRequesterJustificationConfigUnstructuredArgs(),
-            ),
-            eligible_users=[gcp.priviligedaccessmanager.EntitlementEligibleUserArgs(
-                principals=["group:test@google.com"],
-            )],
-            privileged_access=gcp.priviligedaccessmanager.EntitlementPrivilegedAccessArgs(
-                gcp_iam_access=gcp.priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessArgs(
-                    role_bindings=[gcp.priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs(
-                        role="roles/storage.admin",
-                        condition_expression="request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
-                    )],
-                    resource="//cloudresourcemanager.googleapis.com/projects/my-project-name",
-                    resource_type="cloudresourcemanager.googleapis.com/Project",
-                ),
-            ),
-            additional_notification_targets=gcp.priviligedaccessmanager.EntitlementAdditionalNotificationTargetsArgs(
-                admin_email_recipients=["user@example.com"],
-                requester_email_recipients=["user@example.com"],
-            ),
-            approval_workflow=gcp.priviligedaccessmanager.EntitlementApprovalWorkflowArgs(
-                manual_approvals=gcp.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsArgs(
-                    require_approver_justification=True,
-                    steps=[gcp.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepArgs(
-                        approvals_needed=1,
-                        approver_email_recipients=["user@example.com"],
-                        approvers=gcp.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApproversArgs(
-                            principals=["group:test@google.com"],
-                        ),
-                    )],
-                ),
-            ))
-        ```
-
-        ## Import
-
-        Entitlement can be imported using any of these accepted formats:
-
-        * `{{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}`
-
-        When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
-
-        ```sh
-        $ pulumi import gcp:priviligedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
-        ```
-
+        Create a Entitlement resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param EntitlementArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -614,6 +494,7 @@ class Entitlement(pulumi.CustomResource):
                  privileged_access: Optional[pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']]] = None,
                  requester_justification_config: Optional[pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']]] = None,
                  __props__=None):
+        pulumi.log.warn("""Entitlement is deprecated: gcp.priviligedaccessmanager/entitlement.Entitlement has been deprecated in favor of gcp.privilegedaccessmanager/entitlement.Entitlement""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -684,28 +565,28 @@ class Entitlement(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EntitlementAdditionalNotificationTargetsArgs']] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
         :param pulumi.Input[pulumi.InputType['EntitlementApprovalWorkflowArgs']] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
                Different types of approval workflows that can be used to gate privileged access granting.
-        :param pulumi.Input[str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param pulumi.Input[str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntitlementEligibleUserArgs']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
-               Structure is documented below.
-        :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
-               This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-               This value should be unique among all other Entitlements under the specified `parent`.
+        :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+               characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+               should be unique among all other Entitlements under the specified 'parent'.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] location: The region of the Entitlement resource.
-        :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request.
-               A requester can choose to ask for access for less than this duration but never more.
-               Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
-        :param pulumi.Input[str] name: Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-               Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+        :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+               less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+               "7200s", 45 minutes = "2700s"
+        :param pulumi.Input[str] name: Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+               alongside the region and a unique entitlement ID. Formats:
+               organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+               folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+               projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
         :param pulumi.Input[str] parent: Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
         :param pulumi.Input[pulumi.InputType['EntitlementPrivilegedAccessArgs']] privileged_access: Privileged access that this service can be used to gate.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['EntitlementRequesterJustificationConfigArgs']] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
-               Structure is documented below.
         :param pulumi.Input[str] state: Output only. The current state of the Entitlement.
-        :param pulumi.Input[str] update_time: Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -748,8 +629,8 @@ class Entitlement(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "create_time")
 
@@ -758,7 +639,6 @@ class Entitlement(pulumi.CustomResource):
     def eligible_users(self) -> pulumi.Output[Sequence['outputs.EntitlementEligibleUser']]:
         """
         Who can create Grants using Entitlement. This list should contain at most one entry
-        Structure is documented below.
         """
         return pulumi.get(self, "eligible_users")
 
@@ -766,9 +646,9 @@ class Entitlement(pulumi.CustomResource):
     @pulumi.getter(name="entitlementId")
     def entitlement_id(self) -> pulumi.Output[str]:
         """
-        The ID to use for this Entitlement. This will become the last part of the resource name.
-        This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-        This value should be unique among all other Entitlements under the specified `parent`.
+        The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+        characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+        should be unique among all other Entitlements under the specified 'parent'.
         """
         return pulumi.get(self, "entitlement_id")
 
@@ -792,9 +672,9 @@ class Entitlement(pulumi.CustomResource):
     @pulumi.getter(name="maxRequestDuration")
     def max_request_duration(self) -> pulumi.Output[str]:
         """
-        The maximum amount of time for which access would be granted for a request.
-        A requester can choose to ask for access for less than this duration but never more.
-        Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+        The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+        less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+        "7200s", 45 minutes = "2700s"
         """
         return pulumi.get(self, "max_request_duration")
 
@@ -802,8 +682,11 @@ class Entitlement(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-        Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+        Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+        alongside the region and a unique entitlement ID. Formats:
+        organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+        folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+        projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
         """
         return pulumi.get(self, "name")
 
@@ -820,7 +703,6 @@ class Entitlement(pulumi.CustomResource):
     def privileged_access(self) -> pulumi.Output['outputs.EntitlementPrivilegedAccess']:
         """
         Privileged access that this service can be used to gate.
-        Structure is documented below.
         """
         return pulumi.get(self, "privileged_access")
 
@@ -829,7 +711,6 @@ class Entitlement(pulumi.CustomResource):
     def requester_justification_config(self) -> pulumi.Output['outputs.EntitlementRequesterJustificationConfig']:
         """
         Defines the ways in which a requester should provide the justification while requesting for access.
-        Structure is documented below.
         """
         return pulumi.get(self, "requester_justification_config")
 
@@ -845,8 +726,8 @@ class Entitlement(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 

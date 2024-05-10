@@ -30,7 +30,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsStep {
     private @Nullable List<String> approverEmailRecipients;
     /**
      * @return The potential set of approvers in this step. This list should contain at only one entry.
-     * Structure is documented below.
      * 
      */
     private EntitlementApprovalWorkflowManualApprovalsStepApprovers approvers;
@@ -55,7 +54,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsStep {
     }
     /**
      * @return The potential set of approvers in this step. This list should contain at only one entry.
-     * Structure is documented below.
      * 
      */
     public EntitlementApprovalWorkflowManualApprovalsStepApprovers approvers() {

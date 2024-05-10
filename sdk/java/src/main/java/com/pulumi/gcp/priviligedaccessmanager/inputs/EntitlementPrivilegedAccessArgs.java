@@ -16,7 +16,6 @@ public final class EntitlementPrivilegedAccessArgs extends com.pulumi.resources.
 
     /**
      * GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-     * Structure is documented below.
      * 
      */
     @Import(name="gcpIamAccess", required=true)
@@ -24,7 +23,6 @@ public final class EntitlementPrivilegedAccessArgs extends com.pulumi.resources.
 
     /**
      * @return GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-     * Structure is documented below.
      * 
      */
     public Output<EntitlementPrivilegedAccessGcpIamAccessArgs> gcpIamAccess() {
@@ -57,7 +55,6 @@ public final class EntitlementPrivilegedAccessArgs extends com.pulumi.resources.
 
         /**
          * @param gcpIamAccess GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -69,7 +66,6 @@ public final class EntitlementPrivilegedAccessArgs extends com.pulumi.resources.
 
         /**
          * @param gcpIamAccess GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-         * Structure is documented below.
          * 
          * @return builder
          * 

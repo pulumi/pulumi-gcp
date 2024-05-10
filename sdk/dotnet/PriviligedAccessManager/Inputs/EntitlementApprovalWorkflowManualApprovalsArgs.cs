@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
+namespace Pulumi.Gcp.Priviligedaccessmanager.Inputs
 {
 
     public sealed class EntitlementApprovalWorkflowManualApprovalsArgs : global::Pulumi.ResourceArgs
@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
 
         /// <summary>
         /// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntitlementApprovalWorkflowManualApprovalsStepArgs> Steps
         {

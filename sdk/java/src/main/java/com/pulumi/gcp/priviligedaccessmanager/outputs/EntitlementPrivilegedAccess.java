@@ -12,7 +12,6 @@ import java.util.Objects;
 public final class EntitlementPrivilegedAccess {
     /**
      * @return GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-     * Structure is documented below.
      * 
      */
     private EntitlementPrivilegedAccessGcpIamAccess gcpIamAccess;
@@ -20,7 +19,6 @@ public final class EntitlementPrivilegedAccess {
     private EntitlementPrivilegedAccess() {}
     /**
      * @return GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-     * Structure is documented below.
      * 
      */
     public EntitlementPrivilegedAccessGcpIamAccess gcpIamAccess() {

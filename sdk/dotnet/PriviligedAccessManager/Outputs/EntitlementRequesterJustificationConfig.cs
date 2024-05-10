@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager.Outputs
+namespace Pulumi.Gcp.Priviligedaccessmanager.Outputs
 {
 
     [OutputType]
@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager.Outputs
         public readonly Outputs.EntitlementRequesterJustificationConfigNotMandatory? NotMandatory;
         /// <summary>
         /// The requester has to provide a justification in the form of free flowing text.
-        /// 
-        /// - - -
         /// </summary>
         public readonly Outputs.EntitlementRequesterJustificationConfigUnstructured? Unstructured;
 

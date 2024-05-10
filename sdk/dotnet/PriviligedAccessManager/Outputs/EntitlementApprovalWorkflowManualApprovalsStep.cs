@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager.Outputs
+namespace Pulumi.Gcp.Priviligedaccessmanager.Outputs
 {
 
     [OutputType]
@@ -26,7 +26,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager.Outputs
         public readonly ImmutableArray<string> ApproverEmailRecipients;
         /// <summary>
         /// The potential set of approvers in this step. This list should contain at only one entry.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.EntitlementApprovalWorkflowManualApprovalsStepApprovers Approvers;
 

@@ -35,7 +35,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsArgs extends com.pu
 
     /**
      * List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-     * Structure is documented below.
      * 
      */
     @Import(name="steps", required=true)
@@ -43,7 +42,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsArgs extends com.pu
 
     /**
      * @return List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-     * Structure is documented below.
      * 
      */
     public Output<List<EntitlementApprovalWorkflowManualApprovalsStepArgs>> steps() {
@@ -98,7 +96,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsArgs extends com.pu
 
         /**
          * @param steps List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -110,7 +107,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsArgs extends com.pu
 
         /**
          * @param steps List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -121,7 +117,6 @@ public final class EntitlementApprovalWorkflowManualApprovalsArgs extends com.pu
 
         /**
          * @param steps List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
+namespace Pulumi.Gcp.Priviligedaccessmanager.Inputs
 {
 
     public sealed class EntitlementPrivilegedAccessGcpIamAccessGetArgs : global::Pulumi.ResourceArgs
@@ -29,7 +29,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
 
         /// <summary>
         /// Role bindings to be created on successful grant.
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntitlementPrivilegedAccessGcpIamAccessRoleBindingGetArgs> RoleBindings
         {

@@ -48,7 +48,6 @@ public final class EntitlementPrivilegedAccessGcpIamAccessArgs extends com.pulum
 
     /**
      * Role bindings to be created on successful grant.
-     * Structure is documented below.
      * 
      */
     @Import(name="roleBindings", required=true)
@@ -56,7 +55,6 @@ public final class EntitlementPrivilegedAccessGcpIamAccessArgs extends com.pulum
 
     /**
      * @return Role bindings to be created on successful grant.
-     * Structure is documented below.
      * 
      */
     public Output<List<EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs>> roleBindings() {
@@ -133,7 +131,6 @@ public final class EntitlementPrivilegedAccessGcpIamAccessArgs extends com.pulum
 
         /**
          * @param roleBindings Role bindings to be created on successful grant.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -145,7 +142,6 @@ public final class EntitlementPrivilegedAccessGcpIamAccessArgs extends com.pulum
 
         /**
          * @param roleBindings Role bindings to be created on successful grant.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -156,7 +152,6 @@ public final class EntitlementPrivilegedAccessGcpIamAccessArgs extends com.pulum
 
         /**
          * @param roleBindings Role bindings to be created on successful grant.
-         * Structure is documented below.
          * 
          * @return builder
          * 

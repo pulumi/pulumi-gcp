@@ -12,96 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Privileged Access Manager Entitlement Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/priviligedaccessmanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := priviligedaccessmanager.NewEntitlement(ctx, "tfentitlement", &priviligedaccessmanager.EntitlementArgs{
-//				EntitlementId:      pulumi.String("example-entitlement"),
-//				Location:           pulumi.String("global"),
-//				MaxRequestDuration: pulumi.String("43200s"),
-//				Parent:             pulumi.String("projects/my-project-name"),
-//				RequesterJustificationConfig: &priviligedaccessmanager.EntitlementRequesterJustificationConfigArgs{
-//					Unstructured: nil,
-//				},
-//				EligibleUsers: priviligedaccessmanager.EntitlementEligibleUserArray{
-//					&priviligedaccessmanager.EntitlementEligibleUserArgs{
-//						Principals: pulumi.StringArray{
-//							pulumi.String("group:test@google.com"),
-//						},
-//					},
-//				},
-//				PrivilegedAccess: &priviligedaccessmanager.EntitlementPrivilegedAccessArgs{
-//					GcpIamAccess: &priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessArgs{
-//						RoleBindings: priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBindingArray{
-//							&priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs{
-//								Role:                pulumi.String("roles/storage.admin"),
-//								ConditionExpression: pulumi.String("request.time < timestamp(\"2024-04-23T18:30:00.000Z\")"),
-//							},
-//						},
-//						Resource:     pulumi.String("//cloudresourcemanager.googleapis.com/projects/my-project-name"),
-//						ResourceType: pulumi.String("cloudresourcemanager.googleapis.com/Project"),
-//					},
-//				},
-//				AdditionalNotificationTargets: &priviligedaccessmanager.EntitlementAdditionalNotificationTargetsArgs{
-//					AdminEmailRecipients: pulumi.StringArray{
-//						pulumi.String("user@example.com"),
-//					},
-//					RequesterEmailRecipients: pulumi.StringArray{
-//						pulumi.String("user@example.com"),
-//					},
-//				},
-//				ApprovalWorkflow: &priviligedaccessmanager.EntitlementApprovalWorkflowArgs{
-//					ManualApprovals: &priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsArgs{
-//						RequireApproverJustification: pulumi.Bool(true),
-//						Steps: priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepArray{
-//							&priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepArgs{
-//								ApprovalsNeeded: pulumi.Int(1),
-//								ApproverEmailRecipients: pulumi.StringArray{
-//									pulumi.String("user@example.com"),
-//								},
-//								Approvers: &priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApproversArgs{
-//									Principals: pulumi.StringArray{
-//										pulumi.String("group:test@google.com"),
-//									},
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Entitlement can be imported using any of these accepted formats:
-//
-// * `{{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}`
-//
-// When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
-//
-// ```sh
-// $ pulumi import gcp:priviligedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
-// ```
+// Deprecated: gcp.priviligedaccessmanager/entitlement.Entitlement has been deprecated in favor of gcp.privilegedaccessmanager/entitlement.Entitlement
 type Entitlement struct {
 	pulumi.CustomResourceState
 
@@ -110,39 +21,39 @@ type Entitlement struct {
 	// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
 	// Different types of approval workflows that can be used to gate privileged access granting.
 	ApprovalWorkflow EntitlementApprovalWorkflowPtrOutput `pulumi:"approvalWorkflow"`
-	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Who can create Grants using Entitlement. This list should contain at most one entry
-	// Structure is documented below.
 	EligibleUsers EntitlementEligibleUserArrayOutput `pulumi:"eligibleUsers"`
-	// The ID to use for this Entitlement. This will become the last part of the resource name.
-	// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-	// This value should be unique among all other Entitlements under the specified `parent`.
+	// The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+	// characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+	// should be unique among all other Entitlements under the specified 'parent'.
 	EntitlementId pulumi.StringOutput `pulumi:"entitlementId"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The region of the Entitlement resource.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The maximum amount of time for which access would be granted for a request.
-	// A requester can choose to ask for access for less than this duration but never more.
-	// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+	// The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+	// less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+	// "7200s", 45 minutes = "2700s"
 	MaxRequestDuration pulumi.StringOutput `pulumi:"maxRequestDuration"`
-	// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-	// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+	// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+	// alongside the region and a unique entitlement ID. Formats:
+	// organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+	// folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+	// projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Privileged access that this service can be used to gate.
-	// Structure is documented below.
 	PrivilegedAccess EntitlementPrivilegedAccessOutput `pulumi:"privilegedAccess"`
 	// Defines the ways in which a requester should provide the justification while requesting for access.
-	// Structure is documented below.
 	RequesterJustificationConfig EntitlementRequesterJustificationConfigOutput `pulumi:"requesterJustificationConfig"`
 	// Output only. The current state of the Entitlement.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -202,39 +113,39 @@ type entitlementState struct {
 	// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
 	// Different types of approval workflows that can be used to gate privileged access granting.
 	ApprovalWorkflow *EntitlementApprovalWorkflow `pulumi:"approvalWorkflow"`
-	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	CreateTime *string `pulumi:"createTime"`
 	// Who can create Grants using Entitlement. This list should contain at most one entry
-	// Structure is documented below.
 	EligibleUsers []EntitlementEligibleUser `pulumi:"eligibleUsers"`
-	// The ID to use for this Entitlement. This will become the last part of the resource name.
-	// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-	// This value should be unique among all other Entitlements under the specified `parent`.
+	// The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+	// characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+	// should be unique among all other Entitlements under the specified 'parent'.
 	EntitlementId *string `pulumi:"entitlementId"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag *string `pulumi:"etag"`
 	// The region of the Entitlement resource.
 	Location *string `pulumi:"location"`
-	// The maximum amount of time for which access would be granted for a request.
-	// A requester can choose to ask for access for less than this duration but never more.
-	// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+	// The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+	// less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+	// "7200s", 45 minutes = "2700s"
 	MaxRequestDuration *string `pulumi:"maxRequestDuration"`
-	// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-	// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+	// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+	// alongside the region and a unique entitlement ID. Formats:
+	// organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+	// folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+	// projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
 	Name *string `pulumi:"name"`
 	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
 	Parent *string `pulumi:"parent"`
 	// Privileged access that this service can be used to gate.
-	// Structure is documented below.
 	PrivilegedAccess *EntitlementPrivilegedAccess `pulumi:"privilegedAccess"`
 	// Defines the ways in which a requester should provide the justification while requesting for access.
-	// Structure is documented below.
 	RequesterJustificationConfig *EntitlementRequesterJustificationConfig `pulumi:"requesterJustificationConfig"`
 	// Output only. The current state of the Entitlement.
 	State *string `pulumi:"state"`
-	// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -244,39 +155,39 @@ type EntitlementState struct {
 	// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
 	// Different types of approval workflows that can be used to gate privileged access granting.
 	ApprovalWorkflow EntitlementApprovalWorkflowPtrInput
-	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	CreateTime pulumi.StringPtrInput
 	// Who can create Grants using Entitlement. This list should contain at most one entry
-	// Structure is documented below.
 	EligibleUsers EntitlementEligibleUserArrayInput
-	// The ID to use for this Entitlement. This will become the last part of the resource name.
-	// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-	// This value should be unique among all other Entitlements under the specified `parent`.
+	// The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+	// characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+	// should be unique among all other Entitlements under the specified 'parent'.
 	EntitlementId pulumi.StringPtrInput
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringPtrInput
 	// The region of the Entitlement resource.
 	Location pulumi.StringPtrInput
-	// The maximum amount of time for which access would be granted for a request.
-	// A requester can choose to ask for access for less than this duration but never more.
-	// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+	// The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+	// less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+	// "7200s", 45 minutes = "2700s"
 	MaxRequestDuration pulumi.StringPtrInput
-	// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-	// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+	// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+	// alongside the region and a unique entitlement ID. Formats:
+	// organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+	// folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+	// projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
 	Name pulumi.StringPtrInput
 	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
 	Parent pulumi.StringPtrInput
 	// Privileged access that this service can be used to gate.
-	// Structure is documented below.
 	PrivilegedAccess EntitlementPrivilegedAccessPtrInput
 	// Defines the ways in which a requester should provide the justification while requesting for access.
-	// Structure is documented below.
 	RequesterJustificationConfig EntitlementRequesterJustificationConfigPtrInput
 	// Output only. The current state of the Entitlement.
 	State pulumi.StringPtrInput
-	// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -291,25 +202,22 @@ type entitlementArgs struct {
 	// Different types of approval workflows that can be used to gate privileged access granting.
 	ApprovalWorkflow *EntitlementApprovalWorkflow `pulumi:"approvalWorkflow"`
 	// Who can create Grants using Entitlement. This list should contain at most one entry
-	// Structure is documented below.
 	EligibleUsers []EntitlementEligibleUser `pulumi:"eligibleUsers"`
-	// The ID to use for this Entitlement. This will become the last part of the resource name.
-	// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-	// This value should be unique among all other Entitlements under the specified `parent`.
+	// The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+	// characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+	// should be unique among all other Entitlements under the specified 'parent'.
 	EntitlementId string `pulumi:"entitlementId"`
 	// The region of the Entitlement resource.
 	Location string `pulumi:"location"`
-	// The maximum amount of time for which access would be granted for a request.
-	// A requester can choose to ask for access for less than this duration but never more.
-	// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+	// The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+	// less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+	// "7200s", 45 minutes = "2700s"
 	MaxRequestDuration string `pulumi:"maxRequestDuration"`
 	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
 	Parent string `pulumi:"parent"`
 	// Privileged access that this service can be used to gate.
-	// Structure is documented below.
 	PrivilegedAccess EntitlementPrivilegedAccess `pulumi:"privilegedAccess"`
 	// Defines the ways in which a requester should provide the justification while requesting for access.
-	// Structure is documented below.
 	RequesterJustificationConfig EntitlementRequesterJustificationConfig `pulumi:"requesterJustificationConfig"`
 }
 
@@ -321,25 +229,22 @@ type EntitlementArgs struct {
 	// Different types of approval workflows that can be used to gate privileged access granting.
 	ApprovalWorkflow EntitlementApprovalWorkflowPtrInput
 	// Who can create Grants using Entitlement. This list should contain at most one entry
-	// Structure is documented below.
 	EligibleUsers EntitlementEligibleUserArrayInput
-	// The ID to use for this Entitlement. This will become the last part of the resource name.
-	// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-	// This value should be unique among all other Entitlements under the specified `parent`.
+	// The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+	// characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+	// should be unique among all other Entitlements under the specified 'parent'.
 	EntitlementId pulumi.StringInput
 	// The region of the Entitlement resource.
 	Location pulumi.StringInput
-	// The maximum amount of time for which access would be granted for a request.
-	// A requester can choose to ask for access for less than this duration but never more.
-	// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+	// The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+	// less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+	// "7200s", 45 minutes = "2700s"
 	MaxRequestDuration pulumi.StringInput
 	// Format: project/{project_id} or organization/{organization_number} or folder/{folder_number}
 	Parent pulumi.StringInput
 	// Privileged access that this service can be used to gate.
-	// Structure is documented below.
 	PrivilegedAccess EntitlementPrivilegedAccessInput
 	// Defines the ways in which a requester should provide the justification while requesting for access.
-	// Structure is documented below.
 	RequesterJustificationConfig EntitlementRequesterJustificationConfigInput
 }
 
@@ -443,21 +348,20 @@ func (o EntitlementOutput) ApprovalWorkflow() EntitlementApprovalWorkflowPtrOutp
 	return o.ApplyT(func(v *Entitlement) EntitlementApprovalWorkflowPtrOutput { return v.ApprovalWorkflow }).(EntitlementApprovalWorkflowPtrOutput)
 }
 
-// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 func (o EntitlementOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Who can create Grants using Entitlement. This list should contain at most one entry
-// Structure is documented below.
 func (o EntitlementOutput) EligibleUsers() EntitlementEligibleUserArrayOutput {
 	return o.ApplyT(func(v *Entitlement) EntitlementEligibleUserArrayOutput { return v.EligibleUsers }).(EntitlementEligibleUserArrayOutput)
 }
 
-// The ID to use for this Entitlement. This will become the last part of the resource name.
-// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-// This value should be unique among all other Entitlements under the specified `parent`.
+// The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+// characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z]. This value
+// should be unique among all other Entitlements under the specified 'parent'.
 func (o EntitlementOutput) EntitlementId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.EntitlementId }).(pulumi.StringOutput)
 }
@@ -472,15 +376,18 @@ func (o EntitlementOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The maximum amount of time for which access would be granted for a request.
-// A requester can choose to ask for access for less than this duration but never more.
-// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+// The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+// less than this duration but never more. Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours =
+// "7200s", 45 minutes = "2700s"
 func (o EntitlementOutput) MaxRequestDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.MaxRequestDuration }).(pulumi.StringOutput)
 }
 
-// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
-// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
+// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project,
+// alongside the region and a unique entitlement ID. Formats:
+// organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
+// folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and
+// projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
 func (o EntitlementOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -491,13 +398,11 @@ func (o EntitlementOutput) Parent() pulumi.StringOutput {
 }
 
 // Privileged access that this service can be used to gate.
-// Structure is documented below.
 func (o EntitlementOutput) PrivilegedAccess() EntitlementPrivilegedAccessOutput {
 	return o.ApplyT(func(v *Entitlement) EntitlementPrivilegedAccessOutput { return v.PrivilegedAccess }).(EntitlementPrivilegedAccessOutput)
 }
 
 // Defines the ways in which a requester should provide the justification while requesting for access.
-// Structure is documented below.
 func (o EntitlementOutput) RequesterJustificationConfig() EntitlementRequesterJustificationConfigOutput {
 	return o.ApplyT(func(v *Entitlement) EntitlementRequesterJustificationConfigOutput {
 		return v.RequesterJustificationConfig
@@ -509,8 +414,8 @@ func (o EntitlementOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o EntitlementOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

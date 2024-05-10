@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager.Outputs
+namespace Pulumi.Gcp.Priviligedaccessmanager.Outputs
 {
 
     [OutputType]
@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager.Outputs
         public readonly bool? RequireApproverJustification;
         /// <summary>
         /// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
-        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EntitlementApprovalWorkflowManualApprovalsStep> Steps;
 

@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager.Outputs
+namespace Pulumi.Gcp.Priviligedaccessmanager.Outputs
 {
 
     [OutputType]
@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager.Outputs
         public readonly string ResourceType;
         /// <summary>
         /// Role bindings to be created on successful grant.
-        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EntitlementPrivilegedAccessGcpIamAccessRoleBinding> RoleBindings;
 

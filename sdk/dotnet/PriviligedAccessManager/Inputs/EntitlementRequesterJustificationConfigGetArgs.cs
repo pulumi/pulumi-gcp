@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
+namespace Pulumi.Gcp.Priviligedaccessmanager.Inputs
 {
 
     public sealed class EntitlementRequesterJustificationConfigGetArgs : global::Pulumi.ResourceArgs
@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
 
         /// <summary>
         /// The requester has to provide a justification in the form of free flowing text.
-        /// 
-        /// - - -
         /// </summary>
         [Input("unstructured")]
         public Input<Inputs.EntitlementRequesterJustificationConfigUnstructuredGetArgs>? Unstructured { get; set; }

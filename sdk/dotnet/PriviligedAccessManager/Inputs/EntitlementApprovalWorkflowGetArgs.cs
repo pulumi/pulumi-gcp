@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
+namespace Pulumi.Gcp.Priviligedaccessmanager.Inputs
 {
 
     public sealed class EntitlementApprovalWorkflowGetArgs : global::Pulumi.ResourceArgs
@@ -19,8 +19,7 @@ namespace Pulumi.Gcp.PriviligedAccessManager.Inputs
         /// * Require an approval from any user in a group G.
         /// * Require an approval from any k number of users from a Group G.
         /// * Require an approval from any user in a group G and then from a user U. etc.
-        /// A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
-        /// Structure is documented below.
+        /// A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
         /// </summary>
         [Input("manualApprovals", required: true)]
         public Input<Inputs.EntitlementApprovalWorkflowManualApprovalsGetArgs> ManualApprovals { get; set; } = null!;

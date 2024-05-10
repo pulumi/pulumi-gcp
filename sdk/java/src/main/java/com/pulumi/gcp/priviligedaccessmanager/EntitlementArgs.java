@@ -56,7 +56,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Who can create Grants using Entitlement. This list should contain at most one entry
-     * Structure is documented below.
      * 
      */
     @Import(name="eligibleUsers", required=true)
@@ -64,7 +63,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Who can create Grants using Entitlement. This list should contain at most one entry
-     * Structure is documented below.
      * 
      */
     public Output<List<EntitlementEligibleUserArgs>> eligibleUsers() {
@@ -72,18 +70,18 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID to use for this Entitlement. This will become the last part of the resource name.
-     * This value should be 4-63 characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z].
-     * This value should be unique among all other Entitlements under the specified `parent`.
+     * The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+     * characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z]. This value
+     * should be unique among all other Entitlements under the specified &#39;parent&#39;.
      * 
      */
     @Import(name="entitlementId", required=true)
     private Output<String> entitlementId;
 
     /**
-     * @return The ID to use for this Entitlement. This will become the last part of the resource name.
-     * This value should be 4-63 characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z].
-     * This value should be unique among all other Entitlements under the specified `parent`.
+     * @return The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+     * characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z]. This value
+     * should be unique among all other Entitlements under the specified &#39;parent&#39;.
      * 
      */
     public Output<String> entitlementId() {
@@ -106,18 +104,18 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum amount of time for which access would be granted for a request.
-     * A requester can choose to ask for access for less than this duration but never more.
-     * Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours = &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
+     * The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+     * less than this duration but never more. Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours =
+     * &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
      * 
      */
     @Import(name="maxRequestDuration", required=true)
     private Output<String> maxRequestDuration;
 
     /**
-     * @return The maximum amount of time for which access would be granted for a request.
-     * A requester can choose to ask for access for less than this duration but never more.
-     * Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours = &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
+     * @return The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+     * less than this duration but never more. Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours =
+     * &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
      * 
      */
     public Output<String> maxRequestDuration() {
@@ -141,7 +139,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Privileged access that this service can be used to gate.
-     * Structure is documented below.
      * 
      */
     @Import(name="privilegedAccess", required=true)
@@ -149,7 +146,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Privileged access that this service can be used to gate.
-     * Structure is documented below.
      * 
      */
     public Output<EntitlementPrivilegedAccessArgs> privilegedAccess() {
@@ -158,7 +154,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Defines the ways in which a requester should provide the justification while requesting for access.
-     * Structure is documented below.
      * 
      */
     @Import(name="requesterJustificationConfig", required=true)
@@ -166,7 +161,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Defines the ways in which a requester should provide the justification while requesting for access.
-     * Structure is documented below.
      * 
      */
     public Output<EntitlementRequesterJustificationConfigArgs> requesterJustificationConfig() {
@@ -251,7 +245,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param eligibleUsers Who can create Grants using Entitlement. This list should contain at most one entry
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -263,7 +256,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param eligibleUsers Who can create Grants using Entitlement. This list should contain at most one entry
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -274,7 +266,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param eligibleUsers Who can create Grants using Entitlement. This list should contain at most one entry
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -284,9 +275,9 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entitlementId The ID to use for this Entitlement. This will become the last part of the resource name.
-         * This value should be 4-63 characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z].
-         * This value should be unique among all other Entitlements under the specified `parent`.
+         * @param entitlementId The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+         * characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z]. This value
+         * should be unique among all other Entitlements under the specified &#39;parent&#39;.
          * 
          * @return builder
          * 
@@ -297,9 +288,9 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entitlementId The ID to use for this Entitlement. This will become the last part of the resource name.
-         * This value should be 4-63 characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z].
-         * This value should be unique among all other Entitlements under the specified `parent`.
+         * @param entitlementId The ID to use for this Entitlement. This will become the last part of the resource name. This value should be 4-63
+         * characters, and valid characters are &#34;[a-z]&#34;, &#34;[0-9]&#34;, and &#34;-&#34;. The first character should be from [a-z]. This value
+         * should be unique among all other Entitlements under the specified &#39;parent&#39;.
          * 
          * @return builder
          * 
@@ -330,9 +321,9 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRequestDuration The maximum amount of time for which access would be granted for a request.
-         * A requester can choose to ask for access for less than this duration but never more.
-         * Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours = &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
+         * @param maxRequestDuration The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+         * less than this duration but never more. Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours =
+         * &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
          * 
          * @return builder
          * 
@@ -343,9 +334,9 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRequestDuration The maximum amount of time for which access would be granted for a request.
-         * A requester can choose to ask for access for less than this duration but never more.
-         * Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours = &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
+         * @param maxRequestDuration The maximum amount of time for which access would be granted for a request. A requester can choose to ask for access for
+         * less than this duration but never more. Format: calculate the time in seconds and concatenate it with &#39;s&#39; i.e. 2 hours =
+         * &#34;7200s&#34;, 45 minutes = &#34;2700s&#34;
          * 
          * @return builder
          * 
@@ -377,7 +368,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param privilegedAccess Privileged access that this service can be used to gate.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -389,7 +379,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param privilegedAccess Privileged access that this service can be used to gate.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -400,7 +389,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requesterJustificationConfig Defines the ways in which a requester should provide the justification while requesting for access.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -412,7 +400,6 @@ public final class EntitlementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requesterJustificationConfig Defines the ways in which a requester should provide the justification while requesting for access.
-         * Structure is documented below.
          * 
          * @return builder
          * 

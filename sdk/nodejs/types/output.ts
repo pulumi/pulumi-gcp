@@ -69809,7 +69809,7 @@ export namespace osconfig {
 
 }
 
-export namespace priviligedaccessmanager {
+export namespace privilegedaccessmanager {
     export interface EntitlementAdditionalNotificationTargets {
         /**
          * Optional. Additional email addresses to be notified when a principal(requester) is granted access.
@@ -69832,7 +69832,7 @@ export namespace priviligedaccessmanager {
          * A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
          * Structure is documented below.
          */
-        manualApprovals: outputs.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovals;
+        manualApprovals: outputs.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovals;
     }
 
     export interface EntitlementApprovalWorkflowManualApprovals {
@@ -69844,7 +69844,7 @@ export namespace priviligedaccessmanager {
          * List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
          * Structure is documented below.
          */
-        steps: outputs.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStep[];
+        steps: outputs.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStep[];
     }
 
     export interface EntitlementApprovalWorkflowManualApprovalsStep {
@@ -69863,7 +69863,7 @@ export namespace priviligedaccessmanager {
          * The potential set of approvers in this step. This list should contain at only one entry.
          * Structure is documented below.
          */
-        approvers: outputs.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApprovers;
+        approvers: outputs.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApprovers;
     }
 
     export interface EntitlementApprovalWorkflowManualApprovalsStepApprovers {
@@ -69885,7 +69885,7 @@ export namespace priviligedaccessmanager {
          * GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
          * Structure is documented below.
          */
-        gcpIamAccess: outputs.priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccess;
+        gcpIamAccess: outputs.privilegedaccessmanager.EntitlementPrivilegedAccessGcpIamAccess;
     }
 
     export interface EntitlementPrivilegedAccessGcpIamAccess {
@@ -69900,6 +69900,129 @@ export namespace priviligedaccessmanager {
         /**
          * Role bindings to be created on successful grant.
          * Structure is documented below.
+         */
+        roleBindings: outputs.privilegedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBinding[];
+    }
+
+    export interface EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
+        /**
+         * The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+         * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+         */
+        conditionExpression?: string;
+        /**
+         * IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+         */
+        role: string;
+    }
+
+    export interface EntitlementRequesterJustificationConfig {
+        /**
+         * The justification is not mandatory but can be provided in any of the supported formats.
+         */
+        notMandatory?: outputs.privilegedaccessmanager.EntitlementRequesterJustificationConfigNotMandatory;
+        /**
+         * The requester has to provide a justification in the form of free flowing text.
+         *
+         * - - -
+         */
+        unstructured?: outputs.privilegedaccessmanager.EntitlementRequesterJustificationConfigUnstructured;
+    }
+
+    export interface EntitlementRequesterJustificationConfigNotMandatory {
+    }
+
+    export interface EntitlementRequesterJustificationConfigUnstructured {
+    }
+
+}
+
+export namespace priviligedaccessmanager {
+    export interface EntitlementAdditionalNotificationTargets {
+        /**
+         * Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+         */
+        adminEmailRecipients?: string[];
+        /**
+         * Optional. Additional email address to be notified about an eligible entitlement.
+         */
+        requesterEmailRecipients?: string[];
+    }
+
+    export interface EntitlementApprovalWorkflow {
+        /**
+         * A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+         * The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+         * This can be used to create approval workflows such as
+         * * Require an approval from any user in a group G.
+         * * Require an approval from any k number of users from a Group G.
+         * * Require an approval from any user in a group G and then from a user U. etc.
+         * A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+         */
+        manualApprovals: outputs.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovals;
+    }
+
+    export interface EntitlementApprovalWorkflowManualApprovals {
+        /**
+         * Optional. Do the approvers need to provide a justification for their actions?
+         */
+        requireApproverJustification?: boolean;
+        /**
+         * List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+         */
+        steps: outputs.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStep[];
+    }
+
+    export interface EntitlementApprovalWorkflowManualApprovalsStep {
+        /**
+         * How many users from the above list need to approve.
+         * If there are not enough distinct users in the list above then the workflow
+         * will indefinitely block. Should always be greater than 0. Currently 1 is the only
+         * supported value.
+         */
+        approvalsNeeded?: number;
+        /**
+         * Optional. Additional email addresses to be notified when a grant is pending approval.
+         */
+        approverEmailRecipients?: string[];
+        /**
+         * The potential set of approvers in this step. This list should contain at only one entry.
+         */
+        approvers: outputs.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApprovers;
+    }
+
+    export interface EntitlementApprovalWorkflowManualApprovalsStepApprovers {
+        /**
+         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+         */
+        principals: string[];
+    }
+
+    export interface EntitlementEligibleUser {
+        /**
+         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+         */
+        principals: string[];
+    }
+
+    export interface EntitlementPrivilegedAccess {
+        /**
+         * GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+         */
+        gcpIamAccess: outputs.priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccess;
+    }
+
+    export interface EntitlementPrivilegedAccessGcpIamAccess {
+        /**
+         * Name of the resource.
+         */
+        resource: string;
+        /**
+         * The type of this resource.
+         */
+        resourceType: string;
+        /**
+         * Role bindings to be created on successful grant.
          */
         roleBindings: outputs.priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBinding[];
     }
@@ -69923,8 +70046,6 @@ export namespace priviligedaccessmanager {
         notMandatory?: outputs.priviligedaccessmanager.EntitlementRequesterJustificationConfigNotMandatory;
         /**
          * The requester has to provide a justification in the form of free flowing text.
-         *
-         * - - -
          */
         unstructured?: outputs.priviligedaccessmanager.EntitlementRequesterJustificationConfigUnstructured;
     }

@@ -24,7 +24,6 @@ public final class EntitlementPrivilegedAccessGcpIamAccess {
     private String resourceType;
     /**
      * @return Role bindings to be created on successful grant.
-     * Structure is documented below.
      * 
      */
     private List<EntitlementPrivilegedAccessGcpIamAccessRoleBinding> roleBindings;
@@ -46,7 +45,6 @@ public final class EntitlementPrivilegedAccessGcpIamAccess {
     }
     /**
      * @return Role bindings to be created on successful grant.
-     * Structure is documented below.
      * 
      */
     public List<EntitlementPrivilegedAccessGcpIamAccessRoleBinding> roleBindings() {
