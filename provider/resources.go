@@ -131,7 +131,7 @@ const (
 	gcpOsConfig                 = "OsConfig"                 // OsConfig resources
 	gcpOsLogin                  = "OsLogin"                  // OsLogin resources
 	gcpParallelStore            = "ParallelStore"            // ParallelStore resources
-	gcpPriviligedAccessManager  = "PriviligedAccessManager"  // Priviliged Access Manager 
+	gcpPriviligedAccessManager  = "PriviligedAccessManager"  // Priviliged Access Manager
 	gcpProject                  = "Projects"                 // Project resources
 	gcpPubSub                   = "PubSub"                   // PubSub resources
 	gcpRecaptcha                = "Recaptcha"                // Recaptcha resources
