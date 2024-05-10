@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ### Gkehub Membership Rbac Role Binding Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,39 +52,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;basic-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("basic-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;tf-test-membership_74391&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("tf-test-membership_74391")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var membershipRbacRoleBinding = new MembershipRbacRoleBinding(&#34;membershipRbacRoleBinding&#34;, MembershipRbacRoleBindingArgs.builder()        
- *             .membershipRbacRoleBindingId(&#34;tf-test-membership-rbac-role-binding_16511&#34;)
+ *         var membershipRbacRoleBinding = new MembershipRbacRoleBinding("membershipRbacRoleBinding", MembershipRbacRoleBindingArgs.builder()        
+ *             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_16511")
  *             .membershipId(membership.membershipId())
- *             .user(String.format(&#34;service-%s@gcp-sa-anthossupport.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .user(String.format("service-%s{@literal @}gcp-sa-anthossupport.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .role(MembershipRbacRoleBindingRoleArgs.builder()
- *                 .predefinedRole(&#34;ANTHOS_SUPPORT&#34;)
+ *                 .predefinedRole("ANTHOS_SUPPORT")
  *                 .build())
- *             .location(&#34;global&#34;)
+ *             .location("global")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -267,7 +269,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * user is the name of the user as seen by the kubernetes cluster, example
-     * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+     * &#34;alice&#34; or &#34;alice{@literal @}domain.tld&#34;
      * 
      */
     @Export(name="user", refs={String.class}, tree="[0]")
@@ -277,7 +279,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * @return Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * user is the name of the user as seen by the kubernetes cluster, example
-     * &#34;alice&#34; or &#34;alice@domain.tld&#34;
+     * &#34;alice&#34; or &#34;alice{@literal @}domain.tld&#34;
      * 
      */
     public Output<String> user() {

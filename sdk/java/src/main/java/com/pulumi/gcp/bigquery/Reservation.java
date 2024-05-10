@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Reservation Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,11 +54,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reservation = new Reservation(&#34;reservation&#34;, ReservationArgs.builder()        
- *             .name(&#34;my-reservation&#34;)
- *             .location(&#34;us-west2&#34;)
+ *         var reservation = new Reservation("reservation", ReservationArgs.builder()        
+ *             .name("my-reservation")
+ *             .location("us-west2")
  *             .slotCapacity(0)
- *             .edition(&#34;STANDARD&#34;)
+ *             .edition("STANDARD")
  *             .ignoreIdleSlots(true)
  *             .concurrency(0)
  *             .autoscale(ReservationAutoscaleArgs.builder()
@@ -67,7 +68,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

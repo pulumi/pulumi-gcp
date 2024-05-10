@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Resource Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,14 +55,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new ResourcePolicy(&#34;foo&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;gce-policy&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var foo = new ResourcePolicy("foo", ResourcePolicyArgs.builder()        
+ *             .name("gce-policy")
+ *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
  *                     .dailySchedule(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs.builder()
  *                         .daysInCycle(1)
- *                         .startTime(&#34;04:00&#34;)
+ *                         .startTime("04:00")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -69,12 +70,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Resource Policy Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,23 +103,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new ResourcePolicy(&#34;bar&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;gce-policy&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var bar = new ResourcePolicy("bar", ResourcePolicyArgs.builder()        
+ *             .name("gce-policy")
+ *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
  *                     .hourlySchedule(ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs.builder()
  *                         .hoursInCycle(20)
- *                         .startTime(&#34;23:00&#34;)
+ *                         .startTime("23:00")
  *                         .build())
  *                     .build())
  *                 .retentionPolicy(ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs.builder()
  *                     .maxRetentionDays(10)
- *                     .onSourceDiskDelete(&#34;KEEP_AUTO_SNAPSHOTS&#34;)
+ *                     .onSourceDiskDelete("KEEP_AUTO_SNAPSHOTS")
  *                     .build())
  *                 .snapshotProperties(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs.builder()
- *                     .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
- *                     .storageLocations(&#34;us&#34;)
+ *                     .labels(Map.of("my_label", "value"))
+ *                     .storageLocations("us")
  *                     .guestFlush(true)
  *                     .build())
  *                 .build())
@@ -124,12 +127,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Resource Policy Placement Policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -151,23 +156,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var baz = new ResourcePolicy(&#34;baz&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;gce-policy&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var baz = new ResourcePolicy("baz", ResourcePolicyArgs.builder()        
+ *             .name("gce-policy")
+ *             .region("us-central1")
  *             .groupPlacementPolicy(ResourcePolicyGroupPlacementPolicyArgs.builder()
  *                 .vmCount(2)
- *                 .collocation(&#34;COLLOCATED&#34;)
+ *                 .collocation("COLLOCATED")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Resource Policy Placement Policy Max Distance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -189,24 +196,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var baz = new ResourcePolicy(&#34;baz&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;gce-policy&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var baz = new ResourcePolicy("baz", ResourcePolicyArgs.builder()        
+ *             .name("gce-policy")
+ *             .region("us-central1")
  *             .groupPlacementPolicy(ResourcePolicyGroupPlacementPolicyArgs.builder()
  *                 .vmCount(2)
- *                 .collocation(&#34;COLLOCATED&#34;)
+ *                 .collocation("COLLOCATED")
  *                 .maxDistance(2)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Resource Policy Instance Schedule Policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -230,29 +239,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hourly = new ResourcePolicy(&#34;hourly&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;gce-policy&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .description(&#34;Start and stop instances&#34;)
+ *         var hourly = new ResourcePolicy("hourly", ResourcePolicyArgs.builder()        
+ *             .name("gce-policy")
+ *             .region("us-central1")
+ *             .description("Start and stop instances")
  *             .instanceSchedulePolicy(ResourcePolicyInstanceSchedulePolicyArgs.builder()
  *                 .vmStartSchedule(ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs.builder()
- *                     .schedule(&#34;0 * * * *&#34;)
+ *                     .schedule("0 * * * *")
  *                     .build())
  *                 .vmStopSchedule(ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs.builder()
- *                     .schedule(&#34;15 * * * *&#34;)
+ *                     .schedule("15 * * * *")
  *                     .build())
- *                 .timeZone(&#34;US/Central&#34;)
+ *                 .timeZone("US/Central")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Resource Policy Snapshot Schedule Chain Name
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -278,38 +289,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var hourly = new ResourcePolicy(&#34;hourly&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;gce-policy&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .description(&#34;chain name snapshot&#34;)
+ *         var hourly = new ResourcePolicy("hourly", ResourcePolicyArgs.builder()        
+ *             .name("gce-policy")
+ *             .region("us-central1")
+ *             .description("chain name snapshot")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
  *                     .hourlySchedule(ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs.builder()
  *                         .hoursInCycle(20)
- *                         .startTime(&#34;23:00&#34;)
+ *                         .startTime("23:00")
  *                         .build())
  *                     .build())
  *                 .retentionPolicy(ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs.builder()
  *                     .maxRetentionDays(14)
- *                     .onSourceDiskDelete(&#34;KEEP_AUTO_SNAPSHOTS&#34;)
+ *                     .onSourceDiskDelete("KEEP_AUTO_SNAPSHOTS")
  *                     .build())
  *                 .snapshotProperties(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs.builder()
- *                     .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
- *                     .storageLocations(&#34;us&#34;)
+ *                     .labels(Map.of("my_label", "value"))
+ *                     .storageLocations("us")
  *                     .guestFlush(true)
- *                     .chainName(&#34;test-schedule-chain-name&#34;)
+ *                     .chainName("test-schedule-chain-name")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Resource Policy Consistency Group
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -331,9 +344,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cgroup = new ResourcePolicy(&#34;cgroup&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;gce-policy&#34;)
- *             .region(&#34;europe-west1&#34;)
+ *         var cgroup = new ResourcePolicy("cgroup", ResourcePolicyArgs.builder()        
+ *             .name("gce-policy")
+ *             .region("europe-west1")
  *             .diskConsistencyGroupPolicy(ResourcePolicyDiskConsistencyGroupPolicyArgs.builder()
  *                 .enabled(true)
  *                 .build())
@@ -341,7 +354,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

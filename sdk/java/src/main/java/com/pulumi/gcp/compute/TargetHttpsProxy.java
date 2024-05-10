@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Target Https Proxy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,63 +64,65 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
- *             .name(&#34;my-certificate&#34;)
+ *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()        
+ *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/private.key&#34;)
+ *                 .input("path/to/private.key")
  *                 .build()).result())
  *             .certificate(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .input("path/to/certificate.crt")
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;http-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("http-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *             .name("backend-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
- *             .name(&#34;url-map&#34;)
- *             .description(&#34;a description&#34;)
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *             .name("url-map")
+ *             .description("a description")
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultBackendService.id())
  *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/*&#34;)
+ *                     .paths("/*")
  *                     .service(defaultBackendService.id())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpsProxy(&#34;default&#34;, TargetHttpsProxyArgs.builder()        
- *             .name(&#34;test-proxy&#34;)
+ *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()        
+ *             .name("test-proxy")
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(defaultSSLCertificate.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Target Https Proxy Http Keep Alive Timeout
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -150,52 +153,52 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
- *             .name(&#34;my-certificate&#34;)
+ *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()        
+ *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/private.key&#34;)
+ *                 .input("path/to/private.key")
  *                 .build()).result())
  *             .certificate(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .input("path/to/certificate.crt")
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;http-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("http-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *             .name("backend-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
- *             .name(&#34;url-map&#34;)
- *             .description(&#34;a description&#34;)
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *             .name("url-map")
+ *             .description("a description")
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultBackendService.id())
  *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/*&#34;)
+ *                     .paths("/*")
  *                     .service(defaultBackendService.id())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpsProxy(&#34;default&#34;, TargetHttpsProxyArgs.builder()        
- *             .name(&#34;test-http-keep-alive-timeout-proxy&#34;)
+ *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()        
+ *             .name("test-http-keep-alive-timeout-proxy")
  *             .httpKeepAliveTimeoutSec(610)
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(defaultSSLCertificate.id())
@@ -203,12 +206,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Target Https Proxy Mtls
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -249,81 +254,81 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var defaultTrustConfig = new TrustConfig(&#34;defaultTrustConfig&#34;, TrustConfigArgs.builder()        
- *             .name(&#34;my-trust-config&#34;)
- *             .description(&#34;sample description for the trust config&#34;)
- *             .location(&#34;global&#34;)
+ *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()        
+ *             .name("my-trust-config")
+ *             .description("sample description for the trust config")
+ *             .location("global")
  *             .trustStores(TrustConfigTrustStoreArgs.builder()
  *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
  *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .input("test-fixtures/ca_cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
  *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .input("test-fixtures/ca_cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var defaultServerTlsPolicy = new ServerTlsPolicy(&#34;defaultServerTlsPolicy&#34;, ServerTlsPolicyArgs.builder()        
- *             .name(&#34;my-tls-policy&#34;)
- *             .description(&#34;my description&#34;)
- *             .location(&#34;global&#34;)
- *             .allowOpen(&#34;false&#34;)
+ *         var defaultServerTlsPolicy = new ServerTlsPolicy("defaultServerTlsPolicy", ServerTlsPolicyArgs.builder()        
+ *             .name("my-tls-policy")
+ *             .description("my description")
+ *             .location("global")
+ *             .allowOpen("false")
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
- *                 .clientValidationMode(&#34;ALLOW_INVALID_OR_MISSING_CLIENT_CERT&#34;)
- *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/global/trustConfigs/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *                 .clientValidationMode("ALLOW_INVALID_OR_MISSING_CLIENT_CERT")
+ *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -> String.format("projects/%s/locations/global/trustConfigs/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
  *                 .build())
  *             .build());
  * 
- *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
- *             .name(&#34;my-certificate&#34;)
+ *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()        
+ *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/private.key&#34;)
+ *                 .input("path/to/private.key")
  *                 .build()).result())
  *             .certificate(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .input("path/to/certificate.crt")
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;http-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("http-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *             .name("backend-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
- *             .name(&#34;url-map&#34;)
- *             .description(&#34;a description&#34;)
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *             .name("url-map")
+ *             .description("a description")
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultBackendService.id())
  *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/*&#34;)
+ *                     .paths("/*")
  *                     .service(defaultBackendService.id())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpsProxy(&#34;default&#34;, TargetHttpsProxyArgs.builder()        
- *             .name(&#34;test-mtls-proxy&#34;)
+ *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()        
+ *             .name("test-mtls-proxy")
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(defaultSSLCertificate.id())
  *             .serverTlsPolicy(defaultServerTlsPolicy.id())
@@ -331,12 +336,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Target Https Proxy Certificate Manager Certificate
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -366,54 +373,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
- *             .name(&#34;my-certificate&#34;)
- *             .scope(&#34;ALL_REGIONS&#34;)
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *             .name("my-certificate")
+ *             .scope("ALL_REGIONS")
  *             .selfManaged(CertificateSelfManagedArgs.builder()
  *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/cert.pem&#34;)
+ *                     .input("test-fixtures/cert.pem")
  *                     .build()).result())
  *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/private-key.pem&#34;)
+ *                     .input("test-fixtures/private-key.pem")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *             .name("backend-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
- *             .name(&#34;url-map&#34;)
- *             .description(&#34;a description&#34;)
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *             .name("url-map")
+ *             .description("a description")
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultBackendService.id())
  *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/*&#34;)
+ *                     .paths("/*")
  *                     .service(defaultBackendService.id())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetHttpsProxy(&#34;default&#34;, TargetHttpsProxyArgs.builder()        
- *             .name(&#34;target-http-proxy&#34;)
+ *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()        
+ *             .name("target-http-proxy")
  *             .urlMap(defaultURLMap.id())
- *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -&gt; String.format(&#34;//certificatemanager.googleapis.com/%s&#34;, id)))
+ *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -> String.format("//certificatemanager.googleapis.com/%s", id)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

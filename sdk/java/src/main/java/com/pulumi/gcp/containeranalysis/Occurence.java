@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Container Analysis Occurrence Kms
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,54 +64,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
- *             .name(&#34;attestation-note&#34;)
+ *         var note = new Note("note", NoteArgs.builder()        
+ *             .name("attestation-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
- *                     .humanReadableName(&#34;Attestor Note&#34;)
+ *                     .humanReadableName("Attestor Note")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         final var keyring = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
- *             .name(&#34;my-key-ring&#34;)
- *             .location(&#34;global&#34;)
+ *             .name("my-key-ring")
+ *             .location("global")
  *             .build());
  * 
  *         final var crypto-key = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
- *             .name(&#34;my-key&#34;)
- *             .keyRing(keyring.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+ *             .name("my-key")
+ *             .keyRing(keyring.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
  *             .build());
  * 
  *         final var version = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
  *             .cryptoKey(crypto_key.id())
  *             .build());
  * 
- *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
- *             .name(&#34;attestor&#34;)
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *             .name("attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .publicKeys(AttestorAttestationAuthorityNotePublicKeyArgs.builder()
- *                     .id(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id()))
+ *                     .id(version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.id()))
  *                     .pkixPublicKey(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs.builder()
- *                         .publicKeyPem(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].pem()))
- *                         .signatureAlgorithm(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].algorithm()))
+ *                         .publicKeyPem(version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.publicKeys()[0].pem()))
+ *                         .signatureAlgorithm(version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.publicKeys()[0].algorithm()))
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var occurrence = new Occurence(&#34;occurrence&#34;, OccurenceArgs.builder()        
- *             .resourceUri(&#34;gcr.io/my-project/my-image&#34;)
+ *         var occurrence = new Occurence("occurrence", OccurenceArgs.builder()        
+ *             .resourceUri("gcr.io/my-project/my-image")
  *             .noteName(note.id())
  *             .attestation(OccurenceAttestationArgs.builder()
  *                 .serializedPayload(StdFunctions.filebase64(Filebase64Args.builder()
- *                     .input(&#34;path/to/my/payload.json&#34;)
+ *                     .input("path/to/my/payload.json")
  *                     .build()).result())
  *                 .signatures(OccurenceAttestationSignatureArgs.builder()
- *                     .publicKeyId(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id()))
+ *                     .publicKeyId(version.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.id()))
  *                     .serializedPayload(StdFunctions.filebase64(Filebase64Args.builder()
- *                         .input(&#34;path/to/my/payload.json.sig&#34;)
+ *                         .input("path/to/my/payload.json.sig")
  *                         .build()).result())
  *                     .build())
  *                 .build())
@@ -118,7 +119,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -265,7 +267,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
-     * https://gcr.io/project/image@sha256:123abc for a Docker image.
+     * https://gcr.io/project/image{@literal @}sha256:123abc for a Docker image.
      * 
      */
     @Export(name="resourceUri", refs={String.class}, tree="[0]")
@@ -274,7 +276,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
     /**
      * @return Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
-     * https://gcr.io/project/image@sha256:123abc for a Docker image.
+     * https://gcr.io/project/image{@literal @}sha256:123abc for a Docker image.
      * 
      */
     public Output<String> resourceUri() {

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Example creating a public object in an existing `image-store` bucket.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,21 +56,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var picture = new BucketObject(&#34;picture&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;butterfly01&#34;)
- *             .source(new FileAsset(&#34;/images/nature/garden-tiger-moth.jpg&#34;))
- *             .bucket(&#34;image-store&#34;)
+ *         var picture = new BucketObject("picture", BucketObjectArgs.builder()        
+ *             .name("butterfly01")
+ *             .source(new FileAsset("/images/nature/garden-tiger-moth.jpg"))
+ *             .bucket("image-store")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Example creating an empty folder in an existing `image-store` bucket.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,15 +93,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var emptyFolder = new BucketObject(&#34;emptyFolder&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;empty_folder/&#34;)
- *             .content(&#34; &#34;)
- *             .bucket(&#34;image-store&#34;)
+ *         var emptyFolder = new BucketObject("emptyFolder", BucketObjectArgs.builder()        
+ *             .name("empty_folder/")
+ *             .content(" ")
+ *             .bucket("image-store")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

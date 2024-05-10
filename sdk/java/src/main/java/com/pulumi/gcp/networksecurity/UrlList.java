@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Network Security Url Lists Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,20 +51,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new UrlList(&#34;default&#34;, UrlListArgs.builder()        
- *             .name(&#34;my-url-lists&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .values(&#34;www.example.com&#34;)
+ *         var default_ = new UrlList("default", UrlListArgs.builder()        
+ *             .name("my-url-lists")
+ *             .location("us-central1")
+ *             .values("www.example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Url Lists Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -84,19 +87,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new UrlList(&#34;default&#34;, UrlListArgs.builder()        
- *             .name(&#34;my-url-lists&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;my description&#34;)
+ *         var default_ = new UrlList("default", UrlListArgs.builder()        
+ *             .name("my-url-lists")
+ *             .location("us-central1")
+ *             .description("my description")
  *             .values(            
- *                 &#34;www.example.com&#34;,
- *                 &#34;about.example.com&#34;,
- *                 &#34;github.com/example-org/*&#34;)
+ *                 "www.example.com",
+ *                 "about.example.com",
+ *                 "github.com/example-org/*")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

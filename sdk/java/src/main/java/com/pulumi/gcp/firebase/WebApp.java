@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Firebase Web App Custom Api Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,27 +55,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new ApiKey(&#34;web&#34;, ApiKeyArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;api-key&#34;)
- *             .displayName(&#34;Display Name&#34;)
+ *         var web = new ApiKey("web", ApiKeyArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("api-key")
+ *             .displayName("Display Name")
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
  *                 .browserKeyRestrictions(ApiKeyRestrictionsBrowserKeyRestrictionsArgs.builder()
- *                     .allowedReferrers(&#34;*&#34;)
+ *                     .allowedReferrers("*")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Display Name&#34;)
+ *         var default_ = new WebApp("default", WebAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Display Name")
  *             .apiKeyId(web.uid())
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

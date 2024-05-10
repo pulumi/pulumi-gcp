@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ### Cloud Identity Groups Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,19 +61,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cloudIdentityGroupBasic = new Group(&#34;cloudIdentityGroupBasic&#34;, GroupArgs.builder()        
- *             .displayName(&#34;my-identity-group&#34;)
- *             .initialGroupConfig(&#34;WITH_INITIAL_OWNER&#34;)
- *             .parent(&#34;customers/A01b123xz&#34;)
+ *         var cloudIdentityGroupBasic = new Group("cloudIdentityGroupBasic", GroupArgs.builder()        
+ *             .displayName("my-identity-group")
+ *             .initialGroupConfig("WITH_INITIAL_OWNER")
+ *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
- *                 .id(&#34;my-identity-group@example.com&#34;)
+ *                 .id("my-identity-group{@literal @}example.com")
  *                 .build())
- *             .labels(Map.of(&#34;cloudidentity.googleapis.com/groups.discussion_forum&#34;, &#34;&#34;))
+ *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

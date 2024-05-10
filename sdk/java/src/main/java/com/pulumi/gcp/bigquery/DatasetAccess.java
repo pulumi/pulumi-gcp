@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Dataset Access Basic User
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,28 +50,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var bqowner = new Account(&#34;bqowner&#34;, AccountArgs.builder()        
- *             .accountId(&#34;bqowner&#34;)
+ *         var bqowner = new Account("bqowner", AccountArgs.builder()        
+ *             .accountId("bqowner")
  *             .build());
  * 
- *         var access = new DatasetAccess(&#34;access&#34;, DatasetAccessArgs.builder()        
+ *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()        
  *             .datasetId(dataset.datasetId())
- *             .role(&#34;OWNER&#34;)
+ *             .role("OWNER")
  *             .userByEmail(bqowner.email())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Dataset Access View
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -97,25 +100,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var private_ = new Dataset(&#34;private&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
+ *         var private_ = new Dataset("private", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
  *             .build());
  * 
- *         var public_ = new Dataset(&#34;public&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset2&#34;)
+ *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *             .datasetId("example_dataset2")
  *             .build());
  * 
- *         var publicTable = new Table(&#34;publicTable&#34;, TableArgs.builder()        
+ *         var publicTable = new Table("publicTable", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(public_.datasetId())
- *             .tableId(&#34;example_table&#34;)
+ *             .tableId("example_table")
  *             .view(TableViewArgs.builder()
- *                 .query(&#34;SELECT state FROM [lookerdata:cdc.project_tycho_reports]&#34;)
+ *                 .query("SELECT state FROM [lookerdata:cdc.project_tycho_reports]")
  *                 .useLegacySql(false)
  *                 .build())
  *             .build());
  * 
- *         var access = new DatasetAccess(&#34;access&#34;, DatasetAccessArgs.builder()        
+ *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()        
  *             .datasetId(private_.datasetId())
  *             .view(DatasetAccessViewArgs.builder()
  *                 .projectId(publicTable.project())
@@ -126,12 +129,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Dataset Access Authorized Dataset
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -156,33 +161,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var private_ = new Dataset(&#34;private&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;private&#34;)
+ *         var private_ = new Dataset("private", DatasetArgs.builder()        
+ *             .datasetId("private")
  *             .build());
  * 
- *         var public_ = new Dataset(&#34;public&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;public&#34;)
+ *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *             .datasetId("public")
  *             .build());
  * 
- *         var access = new DatasetAccess(&#34;access&#34;, DatasetAccessArgs.builder()        
+ *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()        
  *             .datasetId(private_.datasetId())
  *             .authorizedDataset(DatasetAccessAuthorizedDatasetArgs.builder()
  *                 .dataset(DatasetAccessAuthorizedDatasetDatasetArgs.builder()
  *                     .projectId(public_.project())
  *                     .datasetId(public_.datasetId())
  *                     .build())
- *                 .targetTypes(&#34;VIEWS&#34;)
+ *                 .targetTypes("VIEWS")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Dataset Access Authorized Routine
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -210,44 +217,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var public_ = new Dataset(&#34;public&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;public_dataset&#34;)
- *             .description(&#34;This dataset is public&#34;)
+ *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *             .datasetId("public_dataset")
+ *             .description("This dataset is public")
  *             .build());
  * 
- *         var publicRoutine = new Routine(&#34;publicRoutine&#34;, RoutineArgs.builder()        
+ *         var publicRoutine = new Routine("publicRoutine", RoutineArgs.builder()        
  *             .datasetId(public_.datasetId())
- *             .routineId(&#34;public_routine&#34;)
- *             .routineType(&#34;TABLE_VALUED_FUNCTION&#34;)
- *             .language(&#34;SQL&#34;)
- *             .definitionBody(&#34;&#34;&#34;
+ *             .routineId("public_routine")
+ *             .routineType("TABLE_VALUED_FUNCTION")
+ *             .language("SQL")
+ *             .definitionBody("""
  * SELECT 1 + value AS value
- *             &#34;&#34;&#34;)
+ *             """)
  *             .arguments(RoutineArgumentArgs.builder()
- *                 .name(&#34;value&#34;)
- *                 .argumentKind(&#34;FIXED_TYPE&#34;)
+ *                 .name("value")
+ *                 .argumentKind("FIXED_TYPE")
  *                 .dataType(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                         jsonProperty("typeKind", "INT64")
  *                     )))
  *                 .build())
  *             .returnTableType(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;columns&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;name&#34;, &#34;value&#34;),
- *                         jsonProperty(&#34;type&#34;, jsonObject(
- *                             jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                     jsonProperty("columns", jsonArray(jsonObject(
+ *                         jsonProperty("name", "value"),
+ *                         jsonProperty("type", jsonObject(
+ *                             jsonProperty("typeKind", "INT64")
  *                         ))
  *                     )))
  *                 )))
  *             .build());
  * 
- *         var private_ = new Dataset(&#34;private&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;private_dataset&#34;)
- *             .description(&#34;This dataset is private&#34;)
+ *         var private_ = new Dataset("private", DatasetArgs.builder()        
+ *             .datasetId("private_dataset")
+ *             .description("This dataset is private")
  *             .build());
  * 
- *         var authorizedRoutine = new DatasetAccess(&#34;authorizedRoutine&#34;, DatasetAccessArgs.builder()        
+ *         var authorizedRoutine = new DatasetAccess("authorizedRoutine", DatasetAccessArgs.builder()        
  *             .datasetId(private_.datasetId())
  *             .routine(DatasetAccessRoutineArgs.builder()
  *                 .projectId(publicRoutine.project())
@@ -258,7 +265,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -448,7 +456,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
     }
     /**
      * An email address of a user to grant access to. For example:
-     * fred@example.com
+     * fred{@literal @}example.com
      * 
      */
     @Export(name="userByEmail", refs={String.class}, tree="[0]")
@@ -456,7 +464,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
 
     /**
      * @return An email address of a user to grant access to. For example:
-     * fred@example.com
+     * fred{@literal @}example.com
      * 
      */
     public Output<Optional<String>> userByEmail() {

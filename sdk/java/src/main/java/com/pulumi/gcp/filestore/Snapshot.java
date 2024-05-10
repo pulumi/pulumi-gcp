@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Filestore Snapshot Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,34 +57,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;test-instance-for-snapshot&#34;)
- *             .location(&#34;us-east1&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("test-instance-for-snapshot")
+ *             .location("us-east1")
+ *             .tier("ENTERPRISE")
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(1024)
- *                 .name(&#34;share1&#34;)
+ *                 .name("share1")
  *                 .build())
  *             .networks(InstanceNetworkArgs.builder()
- *                 .network(&#34;default&#34;)
- *                 .modes(&#34;MODE_IPV4&#34;)
+ *                 .network("default")
+ *                 .modes("MODE_IPV4")
  *                 .build())
  *             .build());
  * 
- *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
- *             .name(&#34;test-snapshot&#34;)
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()        
+ *             .name("test-snapshot")
  *             .instance(instance.name())
- *             .location(&#34;us-east1&#34;)
+ *             .location("us-east1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Filestore Snapshot Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -108,31 +111,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;test-instance-for-snapshot&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("test-instance-for-snapshot")
+ *             .location("us-west1")
+ *             .tier("ENTERPRISE")
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(1024)
- *                 .name(&#34;share1&#34;)
+ *                 .name("share1")
  *                 .build())
  *             .networks(InstanceNetworkArgs.builder()
- *                 .network(&#34;default&#34;)
- *                 .modes(&#34;MODE_IPV4&#34;)
+ *                 .network("default")
+ *                 .modes("MODE_IPV4")
  *                 .build())
  *             .build());
  * 
- *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
- *             .name(&#34;test-snapshot&#34;)
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()        
+ *             .name("test-snapshot")
  *             .instance(instance.name())
- *             .location(&#34;us-west1&#34;)
- *             .description(&#34;Snapshot of test-instance-for-snapshot&#34;)
- *             .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
+ *             .location("us-west1")
+ *             .description("Snapshot of test-instance-for-snapshot")
+ *             .labels(Map.of("my_label", "value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ public final class Cloudrunv2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -53,13 +54,14 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
-     *             .name(&#34;my-job&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-job")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -74,7 +76,8 @@ public final class Cloudrunv2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -96,13 +99,14 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
-     *             .name(&#34;my-job&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-job")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -117,7 +121,8 @@ public final class Cloudrunv2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -139,13 +144,14 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
-     *             .name(&#34;my-job&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-job")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -160,7 +166,8 @@ public final class Cloudrunv2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -182,13 +189,14 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
-     *             .name(&#34;my-job&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-job")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -201,7 +209,8 @@ public final class Cloudrunv2Functions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -230,7 +239,8 @@ public final class Cloudrunv2Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -243,7 +253,8 @@ public final class Cloudrunv2Functions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -272,7 +283,8 @@ public final class Cloudrunv2Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -285,7 +297,8 @@ public final class Cloudrunv2Functions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -314,7 +327,8 @@ public final class Cloudrunv2Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -327,7 +341,8 @@ public final class Cloudrunv2Functions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -356,7 +371,8 @@ public final class Cloudrunv2Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -371,7 +387,8 @@ public final class Cloudrunv2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -393,13 +410,14 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
-     *             .name(&#34;my-service&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-service")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -414,7 +432,8 @@ public final class Cloudrunv2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -436,13 +455,14 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
-     *             .name(&#34;my-service&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-service")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -457,7 +477,8 @@ public final class Cloudrunv2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -479,13 +500,14 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
-     *             .name(&#34;my-service&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-service")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -500,7 +522,8 @@ public final class Cloudrunv2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -522,13 +545,14 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
-     *             .name(&#34;my-service&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-service")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -541,7 +565,8 @@ public final class Cloudrunv2Functions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -570,7 +595,8 @@ public final class Cloudrunv2Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -583,7 +609,8 @@ public final class Cloudrunv2Functions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -612,7 +639,8 @@ public final class Cloudrunv2Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -625,7 +653,8 @@ public final class Cloudrunv2Functions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -654,7 +683,8 @@ public final class Cloudrunv2Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -667,7 +697,8 @@ public final class Cloudrunv2Functions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -696,7 +727,8 @@ public final class Cloudrunv2Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

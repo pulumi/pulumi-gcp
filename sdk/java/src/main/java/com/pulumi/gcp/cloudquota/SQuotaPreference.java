@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Cloudquotas Quota Preference Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,13 +54,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var preference = new SQuotaPreference(&#34;preference&#34;, SQuotaPreferenceArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .name(&#34;compute_googleapis_com-CPUS-per-project_us-east1&#34;)
- *             .dimensions(Map.of(&#34;region&#34;, &#34;us-east1&#34;))
- *             .service(&#34;compute.googleapis.com&#34;)
- *             .quotaId(&#34;CPUS-per-project-region&#34;)
- *             .contactEmail(&#34;testuser@gmail.com&#34;)
+ *         var preference = new SQuotaPreference("preference", SQuotaPreferenceArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .name("compute_googleapis_com-CPUS-per-project_us-east1")
+ *             .dimensions(Map.of("region", "us-east1"))
+ *             .service("compute.googleapis.com")
+ *             .quotaId("CPUS-per-project-region")
+ *             .contactEmail("testuser{@literal @}gmail.com")
  *             .quotaConfig(SQuotaPreferenceQuotaConfigArgs.builder()
  *                 .preferredValue(200)
  *                 .build())
@@ -67,7 +68,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -52,7 +52,7 @@ public final class RuntimeAccessConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The owner of this runtime after creation. Format: `alias@example.com`.
+     * The owner of this runtime after creation. Format: `alias{@literal @}example.com`.
      * Currently supports one owner only.
      * 
      */
@@ -60,7 +60,7 @@ public final class RuntimeAccessConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> runtimeOwner;
 
     /**
-     * @return The owner of this runtime after creation. Format: `alias@example.com`.
+     * @return The owner of this runtime after creation. Format: `alias{@literal @}example.com`.
      * Currently supports one owner only.
      * 
      */
@@ -143,7 +143,7 @@ public final class RuntimeAccessConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param runtimeOwner The owner of this runtime after creation. Format: `alias@example.com`.
+         * @param runtimeOwner The owner of this runtime after creation. Format: `alias{@literal @}example.com`.
          * Currently supports one owner only.
          * 
          * @return builder
@@ -155,7 +155,7 @@ public final class RuntimeAccessConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param runtimeOwner The owner of this runtime after creation. Format: `alias@example.com`.
+         * @param runtimeOwner The owner of this runtime after creation. Format: `alias{@literal @}example.com`.
          * Currently supports one owner only.
          * 
          * @return builder

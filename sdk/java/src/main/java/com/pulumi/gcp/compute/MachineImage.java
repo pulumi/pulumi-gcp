@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Machine Image Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,32 +60,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-vm&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var vm = new Instance("vm", InstanceArgs.builder()        
+ *             .name("my-vm")
+ *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .image("debian-cloud/debian-11")
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
  *             .build());
  * 
- *         var image = new MachineImage(&#34;image&#34;, MachineImageArgs.builder()        
- *             .name(&#34;my-image&#34;)
+ *         var image = new MachineImage("image", MachineImageArgs.builder()        
+ *             .name("my-image")
  *             .sourceInstance(vm.selfLink())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Compute Machine Image Kms
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -115,31 +118,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-vm&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var vm = new Instance("vm", InstanceArgs.builder()        
+ *             .name("my-vm")
+ *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .image("debian-cloud/debian-11")
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring&#34;)
- *             .location(&#34;us&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("keyring")
+ *             .location("us")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var image = new MachineImage(&#34;image&#34;, MachineImageArgs.builder()        
- *             .name(&#34;my-image&#34;)
+ *         var image = new MachineImage("image", MachineImageArgs.builder()        
+ *             .name("my-image")
  *             .sourceInstance(vm.selfLink())
  *             .machineImageEncryptionKey(MachineImageMachineImageEncryptionKeyArgs.builder()
  *                 .kmsKeyName(cryptoKey.id())
@@ -148,7 +151,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

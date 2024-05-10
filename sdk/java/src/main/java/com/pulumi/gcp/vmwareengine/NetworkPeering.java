@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Vmware Engine Network Peering Ven
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,24 +51,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_peering_nw = new Network(&#34;network-peering-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;default-np-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
+ *         var network_peering_nw = new Network("network-peering-nw", NetworkArgs.builder()        
+ *             .name("default-np-nw")
+ *             .location("global")
+ *             .type("STANDARD")
  *             .build());
  * 
- *         var network_peering_peer_nw = new Network(&#34;network-peering-peer-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;peer-np-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
+ *         var network_peering_peer_nw = new Network("network-peering-peer-nw", NetworkArgs.builder()        
+ *             .name("peer-np-nw")
+ *             .location("global")
+ *             .type("STANDARD")
  *             .build());
  * 
- *         var vmw_engine_network_peering = new NetworkPeering(&#34;vmw-engine-network-peering&#34;, NetworkPeeringArgs.builder()        
- *             .name(&#34;sample-network-peering&#34;)
- *             .description(&#34;Sample description&#34;)
+ *         var vmw_engine_network_peering = new NetworkPeering("vmw-engine-network-peering", NetworkPeeringArgs.builder()        
+ *             .name("sample-network-peering")
+ *             .description("Sample description")
  *             .vmwareEngineNetwork(network_peering_nw.id())
  *             .peerNetwork(network_peering_peer_nw.id())
- *             .peerNetworkType(&#34;VMWARE_ENGINE_NETWORK&#34;)
+ *             .peerNetworkType("VMWARE_ENGINE_NETWORK")
  *             .exportCustomRoutes(false)
  *             .importCustomRoutes(false)
  *             .exportCustomRoutesWithPublicIp(false)
@@ -76,12 +77,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vmware Engine Network Peering Standard
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -106,27 +109,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_peering_vpc = new Network(&#34;network-peering-vpc&#34;, NetworkArgs.builder()        
- *             .name(&#34;default-vpc&#34;)
+ *         var network_peering_vpc = new Network("network-peering-vpc", NetworkArgs.builder()        
+ *             .name("default-vpc")
  *             .build());
  * 
- *         var network_peering_standard_nw = new Network(&#34;network-peering-standard-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;default-standard-nw-np&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
+ *         var network_peering_standard_nw = new Network("network-peering-standard-nw", NetworkArgs.builder()        
+ *             .name("default-standard-nw-np")
+ *             .location("global")
+ *             .type("STANDARD")
  *             .build());
  * 
- *         var vmw_engine_network_peering = new NetworkPeering(&#34;vmw-engine-network-peering&#34;, NetworkPeeringArgs.builder()        
- *             .name(&#34;sample-network-peering&#34;)
- *             .description(&#34;Sample description&#34;)
+ *         var vmw_engine_network_peering = new NetworkPeering("vmw-engine-network-peering", NetworkPeeringArgs.builder()        
+ *             .name("sample-network-peering")
+ *             .description("Sample description")
  *             .peerNetwork(network_peering_vpc.id())
- *             .peerNetworkType(&#34;STANDARD&#34;)
+ *             .peerNetworkType("STANDARD")
  *             .vmwareEngineNetwork(network_peering_standard_nw.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

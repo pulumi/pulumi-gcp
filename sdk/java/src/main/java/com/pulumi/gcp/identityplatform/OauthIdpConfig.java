@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Identity Platform Oauth Idp Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,18 +49,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var oauthIdpConfig = new OauthIdpConfig(&#34;oauthIdpConfig&#34;, OauthIdpConfigArgs.builder()        
- *             .name(&#34;oidc.oauth-idp-config&#34;)
- *             .displayName(&#34;Display Name&#34;)
- *             .clientId(&#34;client-id&#34;)
- *             .issuer(&#34;issuer&#34;)
+ *         var oauthIdpConfig = new OauthIdpConfig("oauthIdpConfig", OauthIdpConfigArgs.builder()        
+ *             .name("oidc.oauth-idp-config")
+ *             .displayName("Display Name")
+ *             .clientId("client-id")
+ *             .issuer("issuer")
  *             .enabled(true)
- *             .clientSecret(&#34;secret&#34;)
+ *             .clientSecret("secret")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Instance Group Named Port Gke
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,48 +60,49 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var containerNetwork = new Network(&#34;containerNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;container-network&#34;)
+ *         var containerNetwork = new Network("containerNetwork", NetworkArgs.builder()        
+ *             .name("container-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var containerSubnetwork = new Subnetwork(&#34;containerSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;container-subnetwork&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var containerSubnetwork = new Subnetwork("containerSubnetwork", SubnetworkArgs.builder()        
+ *             .name("container-subnetwork")
+ *             .region("us-central1")
  *             .network(containerNetwork.name())
- *             .ipCidrRange(&#34;10.0.36.0/24&#34;)
+ *             .ipCidrRange("10.0.36.0/24")
  *             .build());
  * 
- *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .network(containerNetwork.name())
  *             .subnetwork(containerSubnetwork.name())
  *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
- *                 .clusterIpv4CidrBlock(&#34;/19&#34;)
- *                 .servicesIpv4CidrBlock(&#34;/22&#34;)
+ *                 .clusterIpv4CidrBlock("/19")
+ *                 .servicesIpv4CidrBlock("/22")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var myPort = new InstanceGroupNamedPort(&#34;myPort&#34;, InstanceGroupNamedPortArgs.builder()        
- *             .group(myCluster.nodePools().applyValue(nodePools -&gt; nodePools[0].instanceGroupUrls()[0]))
- *             .zone(&#34;us-central1-a&#34;)
- *             .name(&#34;http&#34;)
+ *         var myPort = new InstanceGroupNamedPort("myPort", InstanceGroupNamedPortArgs.builder()        
+ *             .group(myCluster.nodePools().applyValue(nodePools -> nodePools[0].instanceGroupUrls()[0]))
+ *             .zone("us-central1-a")
+ *             .name("http")
  *             .port(8080)
  *             .build());
  * 
- *         var myPorts = new InstanceGroupNamedPort(&#34;myPorts&#34;, InstanceGroupNamedPortArgs.builder()        
- *             .group(myCluster.nodePools().applyValue(nodePools -&gt; nodePools[0].instanceGroupUrls()[0]))
- *             .zone(&#34;us-central1-a&#34;)
- *             .name(&#34;https&#34;)
+ *         var myPorts = new InstanceGroupNamedPort("myPorts", InstanceGroupNamedPortArgs.builder()        
+ *             .group(myCluster.nodePools().applyValue(nodePools -> nodePools[0].instanceGroupUrls()[0]))
+ *             .zone("us-central1-a")
+ *             .name("https")
  *             .port(4443)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

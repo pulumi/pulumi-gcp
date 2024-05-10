@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,27 +57,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var log_bucket = new Bucket(&#34;log-bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;billing-logging-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var log_bucket = new Bucket("log-bucket", BucketArgs.builder()        
+ *             .name("billing-logging-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var my_sink = new BillingAccountSink(&#34;my-sink&#34;, BillingAccountSinkArgs.builder()        
- *             .name(&#34;my-sink&#34;)
- *             .description(&#34;some explanation on what this is&#34;)
- *             .billingAccount(&#34;ABCDEF-012345-GHIJKL&#34;)
- *             .destination(log_bucket.name().applyValue(name -&gt; String.format(&#34;storage.googleapis.com/%s&#34;, name)))
+ *         var my_sink = new BillingAccountSink("my-sink", BillingAccountSinkArgs.builder()        
+ *             .name("my-sink")
+ *             .description("some explanation on what this is")
+ *             .billingAccount("ABCDEF-012345-GHIJKL")
+ *             .destination(log_bucket.name().applyValue(name -> String.format("storage.googleapis.com/%s", name)))
  *             .build());
  * 
- *         var log_writer = new IAMBinding(&#34;log-writer&#34;, IAMBindingArgs.builder()        
- *             .project(&#34;your-project-id&#34;)
- *             .role(&#34;roles/storage.objectCreator&#34;)
+ *         var log_writer = new IAMBinding("log-writer", IAMBindingArgs.builder()        
+ *             .project("your-project-id")
+ *             .role("roles/storage.objectCreator")
  *             .members(my_sink.writerIdentity())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

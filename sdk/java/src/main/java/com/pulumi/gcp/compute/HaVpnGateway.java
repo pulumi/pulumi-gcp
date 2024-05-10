@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Ha Vpn Gateway Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,25 +57,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network1&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var haGateway1 = new HaVpnGateway(&#34;haGateway1&#34;, HaVpnGatewayArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;ha-vpn-1&#34;)
+ *         var haGateway1 = new HaVpnGateway("haGateway1", HaVpnGatewayArgs.builder()        
+ *             .region("us-central1")
+ *             .name("ha-vpn-1")
  *             .network(network1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Ha Vpn Gateway Ipv6
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -97,26 +100,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network1&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var haGateway1 = new HaVpnGateway(&#34;haGateway1&#34;, HaVpnGatewayArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;ha-vpn-1&#34;)
+ *         var haGateway1 = new HaVpnGateway("haGateway1", HaVpnGatewayArgs.builder()        
+ *             .region("us-central1")
+ *             .name("ha-vpn-1")
  *             .network(network1.id())
- *             .stackType(&#34;IPV4_IPV6&#34;)
+ *             .stackType("IPV4_IPV6")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Compute Ha Vpn Gateway Encrypted Interconnect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -147,22 +152,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;test-network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var address1 = new Address(&#34;address1&#34;, AddressArgs.builder()        
- *             .name(&#34;test-address1&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;IPSEC_INTERCONNECT&#34;)
- *             .address(&#34;192.168.1.0&#34;)
+ *         var address1 = new Address("address1", AddressArgs.builder()        
+ *             .name("test-address1")
+ *             .addressType("INTERNAL")
+ *             .purpose("IPSEC_INTERCONNECT")
+ *             .address("192.168.1.0")
  *             .prefixLength(29)
  *             .network(network.selfLink())
  *             .build());
  * 
- *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
- *             .name(&#34;test-router&#34;)
+ *         var router = new Router("router", RouterArgs.builder()        
+ *             .name("test-router")
  *             .network(network.name())
  *             .encryptedInterconnectRouter(true)
  *             .bgp(RouterBgpArgs.builder()
@@ -170,35 +175,35 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var attachment1 = new InterconnectAttachment(&#34;attachment1&#34;, InterconnectAttachmentArgs.builder()        
- *             .name(&#34;test-interconnect-attachment1&#34;)
- *             .edgeAvailabilityDomain(&#34;AVAILABILITY_DOMAIN_1&#34;)
- *             .type(&#34;PARTNER&#34;)
+ *         var attachment1 = new InterconnectAttachment("attachment1", InterconnectAttachmentArgs.builder()        
+ *             .name("test-interconnect-attachment1")
+ *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
+ *             .type("PARTNER")
  *             .router(router.id())
- *             .encryption(&#34;IPSEC&#34;)
+ *             .encryption("IPSEC")
  *             .ipsecInternalAddresses(address1.selfLink())
  *             .build());
  * 
- *         var address2 = new Address(&#34;address2&#34;, AddressArgs.builder()        
- *             .name(&#34;test-address2&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;IPSEC_INTERCONNECT&#34;)
- *             .address(&#34;192.168.2.0&#34;)
+ *         var address2 = new Address("address2", AddressArgs.builder()        
+ *             .name("test-address2")
+ *             .addressType("INTERNAL")
+ *             .purpose("IPSEC_INTERCONNECT")
+ *             .address("192.168.2.0")
  *             .prefixLength(29)
  *             .network(network.selfLink())
  *             .build());
  * 
- *         var attachment2 = new InterconnectAttachment(&#34;attachment2&#34;, InterconnectAttachmentArgs.builder()        
- *             .name(&#34;test-interconnect-attachment2&#34;)
- *             .edgeAvailabilityDomain(&#34;AVAILABILITY_DOMAIN_2&#34;)
- *             .type(&#34;PARTNER&#34;)
+ *         var attachment2 = new InterconnectAttachment("attachment2", InterconnectAttachmentArgs.builder()        
+ *             .name("test-interconnect-attachment2")
+ *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_2")
+ *             .type("PARTNER")
  *             .router(router.id())
- *             .encryption(&#34;IPSEC&#34;)
+ *             .encryption("IPSEC")
  *             .ipsecInternalAddresses(address2.selfLink())
  *             .build());
  * 
- *         var vpn_gateway = new HaVpnGateway(&#34;vpn-gateway&#34;, HaVpnGatewayArgs.builder()        
- *             .name(&#34;test-ha-vpngw&#34;)
+ *         var vpn_gateway = new HaVpnGateway("vpn-gateway", HaVpnGatewayArgs.builder()        
+ *             .name("test-ha-vpngw")
  *             .network(network.id())
  *             .vpnInterfaces(            
  *                 HaVpnGatewayVpnInterfaceArgs.builder()
@@ -213,7 +218,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Network Connectivity Internal Ranges Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,29 +55,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;internal-ranges&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("internal-ranges")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new InternalRange(&#34;default&#34;, InternalRangeArgs.builder()        
- *             .name(&#34;basic&#34;)
- *             .description(&#34;Test internal range&#34;)
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()        
+ *             .name("basic")
+ *             .description("Test internal range")
  *             .network(defaultNetwork.selfLink())
- *             .usage(&#34;FOR_VPC&#34;)
- *             .peering(&#34;FOR_SELF&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
- *             .labels(Map.of(&#34;label-a&#34;, &#34;b&#34;))
+ *             .usage("FOR_VPC")
+ *             .peering("FOR_SELF")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .labels(Map.of("label-a", "b"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Connectivity Internal Ranges Automatic Reservation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,28 +102,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;internal-ranges&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("internal-ranges")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new InternalRange(&#34;default&#34;, InternalRangeArgs.builder()        
- *             .name(&#34;automatic-reservation&#34;)
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()        
+ *             .name("automatic-reservation")
  *             .network(defaultNetwork.id())
- *             .usage(&#34;FOR_VPC&#34;)
- *             .peering(&#34;FOR_SELF&#34;)
+ *             .usage("FOR_VPC")
+ *             .peering("FOR_SELF")
  *             .prefixLength(24)
- *             .targetCidrRanges(&#34;192.16.0.0/16&#34;)
+ *             .targetCidrRanges("192.16.0.0/16")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Connectivity Internal Ranges External Ranges
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -143,28 +148,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;internal-ranges&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("internal-ranges")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new InternalRange(&#34;default&#34;, InternalRangeArgs.builder()        
- *             .name(&#34;external-ranges&#34;)
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()        
+ *             .name("external-ranges")
  *             .network(defaultNetwork.id())
- *             .usage(&#34;EXTERNAL_TO_VPC&#34;)
- *             .peering(&#34;FOR_SELF&#34;)
- *             .ipCidrRange(&#34;172.16.0.0/24&#34;)
- *             .labels(Map.of(&#34;external-reserved-range&#34;, &#34;on-premises&#34;))
+ *             .usage("EXTERNAL_TO_VPC")
+ *             .peering("FOR_SELF")
+ *             .ipCidrRange("172.16.0.0/24")
+ *             .labels(Map.of("external-reserved-range", "on-premises"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Connectivity Internal Ranges Reserve With Overlap
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -189,31 +196,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;internal-ranges&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("internal-ranges")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new InternalRange(&#34;default&#34;, InternalRangeArgs.builder()        
- *             .name(&#34;overlap-range&#34;)
- *             .description(&#34;Test internal range&#34;)
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()        
+ *             .name("overlap-range")
+ *             .description("Test internal range")
  *             .network(defaultNetwork.id())
- *             .usage(&#34;FOR_VPC&#34;)
- *             .peering(&#34;FOR_SELF&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/30&#34;)
- *             .overlaps(&#34;OVERLAP_EXISTING_SUBNET_RANGE&#34;)
+ *             .usage("FOR_VPC")
+ *             .peering("FOR_SELF")
+ *             .ipCidrRange("10.0.0.0/30")
+ *             .overlaps("OVERLAP_EXISTING_SUBNET_RANGE")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;overlapping-subnet&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("overlapping-subnet")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
  *             .network(defaultNetwork.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

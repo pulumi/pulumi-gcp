@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### App Engine Application Url Dispatch Rules Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,54 +60,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;appengine-test-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("appengine-test-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;hello-world.zip&#34;)
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *             .name("hello-world.zip")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
+ *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
  *             .build());
  * 
- *         var adminV3 = new StandardAppVersion(&#34;adminV3&#34;, StandardAppVersionArgs.builder()        
- *             .versionId(&#34;v3&#34;)
- *             .service(&#34;admin&#34;)
- *             .runtime(&#34;nodejs20&#34;)
+ *         var adminV3 = new StandardAppVersion("adminV3", StandardAppVersionArgs.builder()        
+ *             .versionId("v3")
+ *             .service("admin")
+ *             .runtime("nodejs20")
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
- *                 .shell(&#34;node ./app.js&#34;)
+ *                 .shell("node ./app.js")
  *                 .build())
  *             .deployment(StandardAppVersionDeploymentArgs.builder()
  *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
  *                         var bucketName = values.t1;
  *                         var objectName = values.t2;
- *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+ *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
  *                     }))
  *                     .build())
  *                 .build())
- *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+ *             .envVariables(Map.of("port", "8080"))
  *             .deleteServiceOnDestroy(true)
  *             .build());
  * 
- *         var webService = new ApplicationUrlDispatchRules(&#34;webService&#34;, ApplicationUrlDispatchRulesArgs.builder()        
+ *         var webService = new ApplicationUrlDispatchRules("webService", ApplicationUrlDispatchRulesArgs.builder()        
  *             .dispatchRules(            
  *                 ApplicationUrlDispatchRulesDispatchRuleArgs.builder()
- *                     .domain(&#34;*&#34;)
- *                     .path(&#34;/*&#34;)
- *                     .service(&#34;default&#34;)
+ *                     .domain("*")
+ *                     .path("/*")
+ *                     .service("default")
  *                     .build(),
  *                 ApplicationUrlDispatchRulesDispatchRuleArgs.builder()
- *                     .domain(&#34;*&#34;)
- *                     .path(&#34;/admin/*&#34;)
+ *                     .domain("*")
+ *                     .path("/admin/*")
  *                     .service(adminV3.service())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ### Access Context Manager Access Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,19 +60,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .title(&#34;Org Access Policy&#34;)
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *             .parent("organizations/123456789")
+ *             .title("Org Access Policy")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Access Context Manager Access Policy Scoped
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,21 +97,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project-name&#34;)
- *             .name(&#34;my-project-name&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("my-project-name")
+ *             .name("my-project-name")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .title(&#34;Scoped Access Policy&#34;)
- *             .scopes(project.number().applyValue(number -&gt; String.format(&#34;projects/%s&#34;, number)))
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *             .parent("organizations/123456789")
+ *             .title("Scoped Access Policy")
+ *             .scopes(project.number().applyValue(number -> String.format("projects/%s", number)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ### Instance Group Membership
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,16 +70,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_network = new Network(&#34;default-network&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var default_network = new Network("default-network", NetworkArgs.builder()        
+ *             .name("network")
  *             .build());
  * 
- *         var default_instance = new Instance(&#34;default-instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var default_instance = new Instance("default-instance", InstanceArgs.builder()        
+ *             .name("instance")
+ *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .image("debian-cloud/debian-11")
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -86,18 +87,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_instance_group = new InstanceGroup(&#34;default-instance-group&#34;, InstanceGroupArgs.builder()        
- *             .name(&#34;instance-group&#34;)
+ *         var default_instance_group = new InstanceGroup("default-instance-group", InstanceGroupArgs.builder()        
+ *             .name("instance-group")
  *             .build());
  * 
- *         var default_ig_membership = new InstanceGroupMembership(&#34;default-ig-membership&#34;, InstanceGroupMembershipArgs.builder()        
+ *         var default_ig_membership = new InstanceGroupMembership("default-ig-membership", InstanceGroupMembershipArgs.builder()        
  *             .instance(default_instance.selfLink())
  *             .instanceGroup(default_instance_group.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

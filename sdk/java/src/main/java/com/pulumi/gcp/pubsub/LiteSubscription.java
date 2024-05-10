@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Pubsub Lite Subscription Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,9 +62,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new LiteTopic(&#34;example&#34;, LiteTopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
+ *         var example = new LiteTopic("example", LiteTopicArgs.builder()        
+ *             .name("example-topic")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .partitionConfig(LiteTopicPartitionConfigArgs.builder()
  *                 .count(1)
  *                 .capacity(LiteTopicPartitionConfigCapacityArgs.builder()
@@ -76,17 +77,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleLiteSubscription = new LiteSubscription(&#34;exampleLiteSubscription&#34;, LiteSubscriptionArgs.builder()        
- *             .name(&#34;example-subscription&#34;)
+ *         var exampleLiteSubscription = new LiteSubscription("exampleLiteSubscription", LiteSubscriptionArgs.builder()        
+ *             .name("example-subscription")
  *             .topic(example.name())
  *             .deliveryConfig(LiteSubscriptionDeliveryConfigArgs.builder()
- *                 .deliveryRequirement(&#34;DELIVER_AFTER_STORED&#34;)
+ *                 .deliveryRequirement("DELIVER_AFTER_STORED")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

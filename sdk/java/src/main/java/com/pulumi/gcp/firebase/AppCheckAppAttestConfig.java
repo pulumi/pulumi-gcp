@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Firebase App Check App Attest Config Minimal
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,32 +54,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AppleApp(&#34;default&#34;, AppleAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Apple app&#34;)
- *             .bundleId(&#34;bundle.id.appattest&#34;)
- *             .teamId(&#34;9987654321&#34;)
+ *         var default_ = new AppleApp("default", AppleAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Apple app")
+ *             .bundleId("bundle.id.appattest")
+ *             .teamId("9987654321")
  *             .build());
  * 
  *         // It takes a while for App Check to recognize the new app
- *         // If your app already exists, you don&#39;t have to wait 30 seconds.
- *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;30s&#34;)
+ *         // If your app already exists, you don't have to wait 30 seconds.
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckAppAttestConfig = new AppCheckAppAttestConfig(&#34;defaultAppCheckAppAttestConfig&#34;, AppCheckAppAttestConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var defaultAppCheckAppAttestConfig = new AppCheckAppAttestConfig("defaultAppCheckAppAttestConfig", AppCheckAppAttestConfigArgs.builder()        
+ *             .project("my-project-name")
  *             .appId(default_.appId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebase App Check App Attest Config Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -103,28 +106,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AppleApp(&#34;default&#34;, AppleAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Apple app&#34;)
- *             .bundleId(&#34;bundle.id.appattest&#34;)
- *             .teamId(&#34;9987654321&#34;)
+ *         var default_ = new AppleApp("default", AppleAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Apple app")
+ *             .bundleId("bundle.id.appattest")
+ *             .teamId("9987654321")
  *             .build());
  * 
  *         // It takes a while for App Check to recognize the new app
- *         // If your app already exists, you don&#39;t have to wait 30 seconds.
- *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;30s&#34;)
+ *         // If your app already exists, you don't have to wait 30 seconds.
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckAppAttestConfig = new AppCheckAppAttestConfig(&#34;defaultAppCheckAppAttestConfig&#34;, AppCheckAppAttestConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var defaultAppCheckAppAttestConfig = new AppCheckAppAttestConfig("defaultAppCheckAppAttestConfig", AppCheckAppAttestConfigArgs.builder()        
+ *             .project("my-project-name")
  *             .appId(default_.appId())
- *             .tokenTtl(&#34;7200s&#34;)
+ *             .tokenTtl("7200s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

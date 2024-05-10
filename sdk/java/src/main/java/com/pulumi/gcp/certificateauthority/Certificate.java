@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Privateca Certificate Generated Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -78,24 +79,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;default&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *             .location("us-central1")
+ *             .name("default")
+ *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
- *             .certificateAuthorityId(&#34;my-authority&#34;)
+ *             .certificateAuthorityId("my-authority")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -114,38 +115,38 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var certKey = new PrivateKey(&#34;certKey&#34;, PrivateKeyArgs.builder()        
- *             .algorithm(&#34;RSA&#34;)
+ *         var certKey = new PrivateKey("certKey", PrivateKeyArgs.builder()        
+ *             .algorithm("RSA")
  *             .build());
  * 
- *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
- *             .lifetime(&#34;86000s&#34;)
- *             .name(&#34;cert-1&#34;)
+ *             .lifetime("86000s")
+ *             .name("cert-1")
  *             .config(CertificateConfigArgs.builder()
  *                 .subjectConfig(CertificateConfigSubjectConfigArgs.builder()
  *                     .subject(CertificateConfigSubjectConfigSubjectArgs.builder()
- *                         .commonName(&#34;san1.example.com&#34;)
- *                         .countryCode(&#34;us&#34;)
- *                         .organization(&#34;google&#34;)
- *                         .organizationalUnit(&#34;enterprise&#34;)
- *                         .locality(&#34;mountain view&#34;)
- *                         .province(&#34;california&#34;)
- *                         .streetAddress(&#34;1600 amphitheatre parkway&#34;)
+ *                         .commonName("san1.example.com")
+ *                         .countryCode("us")
+ *                         .organization("google")
+ *                         .organizationalUnit("enterprise")
+ *                         .locality("mountain view")
+ *                         .province("california")
+ *                         .streetAddress("1600 amphitheatre parkway")
  *                         .build())
  *                     .subjectAltName(CertificateConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .emailAddresses(&#34;email@example.com&#34;)
- *                         .ipAddresses(&#34;127.0.0.1&#34;)
- *                         .uris(&#34;http://www.ietf.org/rfc/rfc3986.txt&#34;)
+ *                         .emailAddresses("email{@literal @}example.com")
+ *                         .ipAddresses("127.0.0.1")
+ *                         .uris("http://www.ietf.org/rfc/rfc3986.txt")
  *                         .build())
  *                     .build())
  *                 .x509Config(CertificateConfigX509ConfigArgs.builder()
@@ -163,31 +164,33 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .nameConstraints(CertificateConfigX509ConfigNameConstraintsArgs.builder()
  *                         .critical(true)
- *                         .permittedDnsNames(&#34;*.example.com&#34;)
- *                         .excludedDnsNames(&#34;*.deny.example.com&#34;)
- *                         .permittedIpRanges(&#34;10.0.0.0/8&#34;)
- *                         .excludedIpRanges(&#34;10.1.1.0/24&#34;)
- *                         .permittedEmailAddresses(&#34;.example.com&#34;)
- *                         .excludedEmailAddresses(&#34;.deny.example.com&#34;)
- *                         .permittedUris(&#34;.example.com&#34;)
- *                         .excludedUris(&#34;.deny.example.com&#34;)
+ *                         .permittedDnsNames("*.example.com")
+ *                         .excludedDnsNames("*.deny.example.com")
+ *                         .permittedIpRanges("10.0.0.0/8")
+ *                         .excludedIpRanges("10.1.1.0/24")
+ *                         .permittedEmailAddresses(".example.com")
+ *                         .excludedEmailAddresses(".deny.example.com")
+ *                         .permittedUris(".example.com")
+ *                         .excludedUris(".deny.example.com")
  *                         .build())
  *                     .build())
  *                 .publicKey(CertificateConfigPublicKeyArgs.builder()
- *                     .format(&#34;PEM&#34;)
- *                     .key(StdFunctions.base64encode().applyValue(invoke -&gt; invoke.result()))
+ *                     .format("PEM")
+ *                     .key(StdFunctions.base64encode().applyValue(invoke -> invoke.result()))
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate With Template
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -232,24 +235,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-pool&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-pool")
+ *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultCertificateTemplate = new CertificateTemplate(&#34;defaultCertificateTemplate&#34;, CertificateTemplateArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-certificate-template&#34;)
- *             .description(&#34;An updated sample certificate template&#34;)
+ *         var defaultCertificateTemplate = new CertificateTemplate("defaultCertificateTemplate", CertificateTemplateArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-certificate-template")
+ *             .description("An updated sample certificate template")
  *             .identityConstraints(CertificateTemplateIdentityConstraintsArgs.builder()
  *                 .allowSubjectAltNamesPassthrough(true)
  *                 .allowSubjectPassthrough(true)
  *                 .celExpression(CertificateTemplateIdentityConstraintsCelExpressionArgs.builder()
- *                     .description(&#34;Always true&#34;)
- *                     .expression(&#34;true&#34;)
- *                     .location(&#34;any.file.anywhere&#34;)
- *                     .title(&#34;Sample expression&#34;)
+ *                     .description("Always true")
+ *                     .expression("true")
+ *                     .location("any.file.anywhere")
+ *                     .title("Sample expression")
  *                     .build())
  *                 .build())
  *             .passthroughExtensions(CertificateTemplatePassthroughExtensionsArgs.builder()
@@ -258,7 +261,7 @@ import javax.annotation.Nullable;
  *                         1,
  *                         6)
  *                     .build())
- *                 .knownExtensions(&#34;EXTENDED_KEY_USAGE&#34;)
+ *                 .knownExtensions("EXTENDED_KEY_USAGE")
  *                 .build())
  *             .predefinedValues(CertificateTemplatePredefinedValuesArgs.builder()
  *                 .additionalExtensions(CertificateTemplatePredefinedValuesAdditionalExtensionArgs.builder()
@@ -267,10 +270,10 @@ import javax.annotation.Nullable;
  *                             1,
  *                             6)
  *                         .build())
- *                     .value(&#34;c3RyaW5nCg==&#34;)
+ *                     .value("c3RyaW5nCg==")
  *                     .critical(true)
  *                     .build())
- *                 .aiaOcspServers(&#34;string&#34;)
+ *                 .aiaOcspServers("string")
  *                 .caOptions(CertificateTemplatePredefinedValuesCaOptionsArgs.builder()
  *                     .isCa(false)
  *                     .maxIssuerPathLength(6)
@@ -309,18 +312,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
- *             .certificateAuthorityId(&#34;my-authority&#34;)
+ *             .certificateAuthorityId("my-authority")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -339,33 +342,35 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
- *             .name(&#34;my-certificate&#34;)
- *             .lifetime(&#34;860s&#34;)
+ *             .name("my-certificate")
+ *             .lifetime("860s")
  *             .pemCsr(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;test-fixtures/rsa_csr.pem&#34;)
+ *                 .input("test-fixtures/rsa_csr.pem")
  *                 .build()).result())
  *             .certificateTemplate(defaultCertificateTemplate.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate Csr
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -400,24 +405,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-pool&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-pool")
+ *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
- *             .certificateAuthorityId(&#34;my-authority&#34;)
+ *             .certificateAuthorityId("my-authority")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -436,32 +441,34 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
  *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
- *             .name(&#34;my-certificate&#34;)
- *             .lifetime(&#34;860s&#34;)
+ *             .name("my-certificate")
+ *             .lifetime("860s")
  *             .pemCsr(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;test-fixtures/rsa_csr.pem&#34;)
+ *                 .input("test-fixtures/rsa_csr.pem")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate No Authority
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -505,24 +512,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-pool&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-pool")
+ *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
- *             .certificateAuthorityId(&#34;my-authority&#34;)
+ *             .certificateAuthorityId("my-authority")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -541,31 +548,31 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .lifetime(&#34;86400s&#34;)
+ *             .lifetime("86400s")
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
- *             .name(&#34;my-certificate&#34;)
- *             .lifetime(&#34;860s&#34;)
+ *             .name("my-certificate")
+ *             .lifetime("860s")
  *             .config(CertificateConfigArgs.builder()
  *                 .subjectConfig(CertificateConfigSubjectConfigArgs.builder()
  *                     .subject(CertificateConfigSubjectConfigSubjectArgs.builder()
- *                         .commonName(&#34;san1.example.com&#34;)
- *                         .countryCode(&#34;us&#34;)
- *                         .organization(&#34;google&#34;)
- *                         .organizationalUnit(&#34;enterprise&#34;)
- *                         .locality(&#34;mountain view&#34;)
- *                         .province(&#34;california&#34;)
- *                         .streetAddress(&#34;1600 amphitheatre parkway&#34;)
- *                         .postalCode(&#34;94109&#34;)
+ *                         .commonName("san1.example.com")
+ *                         .countryCode("us")
+ *                         .organization("google")
+ *                         .organizationalUnit("enterprise")
+ *                         .locality("mountain view")
+ *                         .province("california")
+ *                         .streetAddress("1600 amphitheatre parkway")
+ *                         .postalCode("94109")
  *                         .build())
  *                     .build())
  *                 .x509Config(CertificateConfigX509ConfigArgs.builder()
@@ -582,9 +589,9 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .publicKey(CertificateConfigPublicKeyArgs.builder()
- *                     .format(&#34;PEM&#34;)
+ *                     .format("PEM")
  *                     .key(StdFunctions.filebase64(Filebase64Args.builder()
- *                         .input(&#34;test-fixtures/rsa_public.pem&#34;)
+ *                         .input("test-fixtures/rsa_public.pem")
  *                         .build()).result())
  *                     .build())
  *                 .build())
@@ -592,12 +599,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate Custom Ski
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -642,24 +651,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-pool&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-pool")
+ *             .tier("ENTERPRISE")
  *             .build());
  * 
- *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
- *             .certificateAuthorityId(&#34;my-authority&#34;)
+ *             .certificateAuthorityId("my-authority")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -678,35 +687,35 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .lifetime(&#34;86400s&#34;)
+ *             .lifetime("86400s")
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *             .location("us-central1")
  *             .pool(default_.name())
- *             .name(&#34;my-certificate&#34;)
- *             .lifetime(&#34;860s&#34;)
+ *             .name("my-certificate")
+ *             .lifetime("860s")
  *             .config(CertificateConfigArgs.builder()
  *                 .subjectConfig(CertificateConfigSubjectConfigArgs.builder()
  *                     .subject(CertificateConfigSubjectConfigSubjectArgs.builder()
- *                         .commonName(&#34;san1.example.com&#34;)
- *                         .countryCode(&#34;us&#34;)
- *                         .organization(&#34;google&#34;)
- *                         .organizationalUnit(&#34;enterprise&#34;)
- *                         .locality(&#34;mountain view&#34;)
- *                         .province(&#34;california&#34;)
- *                         .streetAddress(&#34;1600 amphitheatre parkway&#34;)
- *                         .postalCode(&#34;94109&#34;)
+ *                         .commonName("san1.example.com")
+ *                         .countryCode("us")
+ *                         .organization("google")
+ *                         .organizationalUnit("enterprise")
+ *                         .locality("mountain view")
+ *                         .province("california")
+ *                         .streetAddress("1600 amphitheatre parkway")
+ *                         .postalCode("94109")
  *                         .build())
  *                     .build())
  *                 .subjectKeyId(CertificateConfigSubjectKeyIdArgs.builder()
- *                     .keyId(&#34;4cf3372289b1d411b999dbb9ebcd44744b6b2fca&#34;)
+ *                     .keyId("4cf3372289b1d411b999dbb9ebcd44744b6b2fca")
  *                     .build())
  *                 .x509Config(CertificateConfigX509ConfigArgs.builder()
  *                     .caOptions(CertificateConfigX509ConfigCaOptionsArgs.builder()
@@ -722,9 +731,9 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .publicKey(CertificateConfigPublicKeyArgs.builder()
- *                     .format(&#34;PEM&#34;)
+ *                     .format("PEM")
  *                     .key(StdFunctions.filebase64(Filebase64Args.builder()
- *                         .input(&#34;test-fixtures/rsa_public.pem&#34;)
+ *                         .input("test-fixtures/rsa_public.pem")
  *                         .build()).result())
  *                     .build())
  *                 .build())
@@ -732,7 +741,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

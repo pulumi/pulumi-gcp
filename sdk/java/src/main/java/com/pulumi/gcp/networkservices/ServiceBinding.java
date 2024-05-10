@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Network Services Service Binding Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,30 +48,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Namespace(&#34;default&#34;, NamespaceArgs.builder()        
- *             .namespaceId(&#34;my-namespace&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Namespace("default", NamespaceArgs.builder()        
+ *             .namespaceId("my-namespace")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .serviceId(&#34;my-service&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .serviceId("my-service")
  *             .namespace(default_.id())
  *             .metadata(Map.ofEntries(
- *                 Map.entry(&#34;stage&#34;, &#34;prod&#34;),
- *                 Map.entry(&#34;region&#34;, &#34;us-central1&#34;)
+ *                 Map.entry("stage", "prod"),
+ *                 Map.entry("region", "us-central1")
  *             ))
  *             .build());
  * 
- *         var defaultServiceBinding = new ServiceBinding(&#34;defaultServiceBinding&#34;, ServiceBindingArgs.builder()        
- *             .name(&#34;my-service-binding&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var defaultServiceBinding = new ServiceBinding("defaultServiceBinding", ServiceBindingArgs.builder()        
+ *             .name("my-service-binding")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .service(defaultService.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

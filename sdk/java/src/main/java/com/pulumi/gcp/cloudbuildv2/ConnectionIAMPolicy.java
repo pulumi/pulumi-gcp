@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## google\_cloudbuildv2\_connection\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,27 +57,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/cloudbuild.connectionViewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/cloudbuild.connectionViewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new ConnectionIAMPolicy(&#34;policy&#34;, ConnectionIAMPolicyArgs.builder()        
+ *         var policy = new ConnectionIAMPolicy("policy", ConnectionIAMPolicyArgs.builder()        
  *             .project(my_connection.project())
  *             .location(my_connection.location())
  *             .name(my_connection.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloudbuildv2\_connection\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -97,23 +100,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ConnectionIAMBinding(&#34;binding&#34;, ConnectionIAMBindingArgs.builder()        
+ *         var binding = new ConnectionIAMBinding("binding", ConnectionIAMBindingArgs.builder()        
  *             .project(my_connection.project())
  *             .location(my_connection.location())
  *             .name(my_connection.name())
- *             .role(&#34;roles/cloudbuild.connectionViewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/cloudbuild.connectionViewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloudbuildv2\_connection\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -134,23 +139,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ConnectionIAMMember(&#34;member&#34;, ConnectionIAMMemberArgs.builder()        
+ *         var member = new ConnectionIAMMember("member", ConnectionIAMMemberArgs.builder()        
  *             .project(my_connection.project())
  *             .location(my_connection.location())
  *             .name(my_connection.name())
- *             .role(&#34;roles/cloudbuild.connectionViewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/cloudbuild.connectionViewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloudbuildv2\_connection\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -175,27 +182,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/cloudbuild.connectionViewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/cloudbuild.connectionViewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new ConnectionIAMPolicy(&#34;policy&#34;, ConnectionIAMPolicyArgs.builder()        
+ *         var policy = new ConnectionIAMPolicy("policy", ConnectionIAMPolicyArgs.builder()        
  *             .project(my_connection.project())
  *             .location(my_connection.location())
  *             .name(my_connection.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloudbuildv2\_connection\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -216,23 +225,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ConnectionIAMBinding(&#34;binding&#34;, ConnectionIAMBindingArgs.builder()        
+ *         var binding = new ConnectionIAMBinding("binding", ConnectionIAMBindingArgs.builder()        
  *             .project(my_connection.project())
  *             .location(my_connection.location())
  *             .name(my_connection.name())
- *             .role(&#34;roles/cloudbuild.connectionViewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/cloudbuild.connectionViewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloudbuildv2\_connection\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -253,17 +264,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ConnectionIAMMember(&#34;member&#34;, ConnectionIAMMemberArgs.builder()        
+ *         var member = new ConnectionIAMMember("member", ConnectionIAMMemberArgs.builder()        
  *             .project(my_connection.project())
  *             .location(my_connection.location())
  *             .name(my_connection.name())
- *             .role(&#34;roles/cloudbuild.connectionViewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/cloudbuild.connectionViewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -285,7 +297,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy editor &#34;projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com&#34;
+ * $ pulumi import gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy editor &#34;projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

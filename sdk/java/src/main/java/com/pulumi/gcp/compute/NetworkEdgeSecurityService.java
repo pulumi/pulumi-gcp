@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ### Compute Network Edge Security Service Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,15 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new NetworkEdgeSecurityService(&#34;default&#34;, NetworkEdgeSecurityServiceArgs.builder()        
- *             .name(&#34;my-edge-security-service&#34;)
- *             .region(&#34;us-east1&#34;)
- *             .description(&#34;My basic resource&#34;)
+ *         var default_ = new NetworkEdgeSecurityService("default", NetworkEdgeSecurityServiceArgs.builder()        
+ *             .name("my-edge-security-service")
+ *             .region("us-east1")
+ *             .description("My basic resource")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

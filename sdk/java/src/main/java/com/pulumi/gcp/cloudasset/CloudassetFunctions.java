@@ -20,7 +20,8 @@ public final class CloudassetFunctions {
      * ### Searching For All Projects In An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -42,19 +43,21 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var projects = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;organizations/0123456789&#34;)
-     *             .assetTypes(&#34;cloudresourcemanager.googleapis.com/Project&#34;)
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("cloudresourcemanager.googleapis.com/Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Searching For All Projects With CloudBuild API Enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -76,20 +79,22 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cloudBuildProjects = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;organizations/0123456789&#34;)
-     *             .assetTypes(&#34;serviceusage.googleapis.com/Service&#34;)
-     *             .query(&#34;displayName:cloudbuild.googleapis.com AND state:ENABLED&#34;)
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("serviceusage.googleapis.com/Service")
+     *             .query("displayName:cloudbuild.googleapis.com AND state:ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Searching For All Service Accounts In A Project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -111,13 +116,14 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var projectServiceAccounts = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;projects/my-project-id&#34;)
-     *             .assetTypes(&#34;iam.googleapis.com/ServiceAccount&#34;)
+     *             .scope("projects/my-project-id")
+     *             .assetTypes("iam.googleapis.com/ServiceAccount")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -130,7 +136,8 @@ public final class CloudassetFunctions {
      * ### Searching For All Projects In An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -152,19 +159,21 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var projects = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;organizations/0123456789&#34;)
-     *             .assetTypes(&#34;cloudresourcemanager.googleapis.com/Project&#34;)
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("cloudresourcemanager.googleapis.com/Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Searching For All Projects With CloudBuild API Enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -186,20 +195,22 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cloudBuildProjects = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;organizations/0123456789&#34;)
-     *             .assetTypes(&#34;serviceusage.googleapis.com/Service&#34;)
-     *             .query(&#34;displayName:cloudbuild.googleapis.com AND state:ENABLED&#34;)
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("serviceusage.googleapis.com/Service")
+     *             .query("displayName:cloudbuild.googleapis.com AND state:ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Searching For All Service Accounts In A Project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -221,13 +232,14 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var projectServiceAccounts = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;projects/my-project-id&#34;)
-     *             .assetTypes(&#34;iam.googleapis.com/ServiceAccount&#34;)
+     *             .scope("projects/my-project-id")
+     *             .assetTypes("iam.googleapis.com/ServiceAccount")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -240,7 +252,8 @@ public final class CloudassetFunctions {
      * ### Searching For All Projects In An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -262,19 +275,21 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var projects = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;organizations/0123456789&#34;)
-     *             .assetTypes(&#34;cloudresourcemanager.googleapis.com/Project&#34;)
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("cloudresourcemanager.googleapis.com/Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Searching For All Projects With CloudBuild API Enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -296,20 +311,22 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cloudBuildProjects = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;organizations/0123456789&#34;)
-     *             .assetTypes(&#34;serviceusage.googleapis.com/Service&#34;)
-     *             .query(&#34;displayName:cloudbuild.googleapis.com AND state:ENABLED&#34;)
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("serviceusage.googleapis.com/Service")
+     *             .query("displayName:cloudbuild.googleapis.com AND state:ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Searching For All Service Accounts In A Project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -331,13 +348,14 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var projectServiceAccounts = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;projects/my-project-id&#34;)
-     *             .assetTypes(&#34;iam.googleapis.com/ServiceAccount&#34;)
+     *             .scope("projects/my-project-id")
+     *             .assetTypes("iam.googleapis.com/ServiceAccount")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -350,7 +368,8 @@ public final class CloudassetFunctions {
      * ### Searching For All Projects In An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -372,19 +391,21 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var projects = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;organizations/0123456789&#34;)
-     *             .assetTypes(&#34;cloudresourcemanager.googleapis.com/Project&#34;)
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("cloudresourcemanager.googleapis.com/Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Searching For All Projects With CloudBuild API Enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -406,20 +427,22 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cloudBuildProjects = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;organizations/0123456789&#34;)
-     *             .assetTypes(&#34;serviceusage.googleapis.com/Service&#34;)
-     *             .query(&#34;displayName:cloudbuild.googleapis.com AND state:ENABLED&#34;)
+     *             .scope("organizations/0123456789")
+     *             .assetTypes("serviceusage.googleapis.com/Service")
+     *             .query("displayName:cloudbuild.googleapis.com AND state:ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Searching For All Service Accounts In A Project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -441,13 +464,14 @@ public final class CloudassetFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var projectServiceAccounts = CloudassetFunctions.getResourcesSearchAll(GetResourcesSearchAllArgs.builder()
-     *             .scope(&#34;projects/my-project-id&#34;)
-     *             .assetTypes(&#34;iam.googleapis.com/ServiceAccount&#34;)
+     *             .scope("projects/my-project-id")
+     *             .assetTypes("iam.googleapis.com/ServiceAccount")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

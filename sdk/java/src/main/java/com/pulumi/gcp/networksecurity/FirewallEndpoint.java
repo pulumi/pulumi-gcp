@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Network Security Firewall Endpoint Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,17 +45,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new FirewallEndpoint(&#34;default&#34;, FirewallEndpointArgs.builder()        
- *             .name(&#34;my-firewall-endpoint&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;us-central1-a&#34;)
- *             .billingProjectId(&#34;my-project-name&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var default_ = new FirewallEndpoint("default", FirewallEndpointArgs.builder()        
+ *             .name("my-firewall-endpoint")
+ *             .parent("organizations/123456789")
+ *             .location("us-central1-a")
+ *             .billingProjectId("my-project-name")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

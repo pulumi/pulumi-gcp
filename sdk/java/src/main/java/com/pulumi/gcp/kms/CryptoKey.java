@@ -42,7 +42,8 @@ import javax.annotation.Nullable;
  * ### Kms Crypto Key Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,25 +66,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring-example&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("keyring-example")
+ *             .location("global")
  *             .build());
  * 
- *         var example_key = new CryptoKey(&#34;example-key&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-key-example&#34;)
+ *         var example_key = new CryptoKey("example-key", CryptoKeyArgs.builder()        
+ *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
- *             .rotationPeriod(&#34;7776000s&#34;)
+ *             .rotationPeriod("7776000s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Kms Crypto Key Asymmetric Sign
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -107,23 +110,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring-example&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("keyring-example")
+ *             .location("global")
  *             .build());
  * 
- *         var example_asymmetric_sign_key = new CryptoKey(&#34;example-asymmetric-sign-key&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-key-example&#34;)
+ *         var example_asymmetric_sign_key = new CryptoKey("example-asymmetric-sign-key", CryptoKeyArgs.builder()        
+ *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
- *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
+ *             .purpose("ASYMMETRIC_SIGN")
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
- *                 .algorithm(&#34;EC_SIGN_P384_SHA384&#34;)
+ *                 .algorithm("EC_SIGN_P384_SHA384")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

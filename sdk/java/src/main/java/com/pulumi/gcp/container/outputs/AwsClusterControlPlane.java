@@ -83,7 +83,7 @@ public final class AwsClusterControlPlane {
      */
     private List<String> subnetIds;
     /**
-     * @return Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+     * @return Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -179,7 +179,7 @@ public final class AwsClusterControlPlane {
         return this.subnetIds;
     }
     /**
-     * @return Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+     * @return Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
     public Map<String,String> tags() {

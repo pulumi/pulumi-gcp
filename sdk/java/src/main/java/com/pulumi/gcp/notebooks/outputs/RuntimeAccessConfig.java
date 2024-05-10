@@ -25,7 +25,7 @@ public final class RuntimeAccessConfig {
      */
     private @Nullable String proxyUri;
     /**
-     * @return The owner of this runtime after creation. Format: `alias@example.com`.
+     * @return The owner of this runtime after creation. Format: `alias{@literal @}example.com`.
      * Currently supports one owner only.
      * 
      */
@@ -50,7 +50,7 @@ public final class RuntimeAccessConfig {
         return Optional.ofNullable(this.proxyUri);
     }
     /**
-     * @return The owner of this runtime after creation. Format: `alias@example.com`.
+     * @return The owner of this runtime after creation. Format: `alias{@literal @}example.com`.
      * Currently supports one owner only.
      * 
      */

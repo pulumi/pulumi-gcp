@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Router Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,36 +55,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarNetwork = new Network(&#34;foobarNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var foobarNetwork = new Network("foobarNetwork", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var foobar = new Router(&#34;foobar&#34;, RouterArgs.builder()        
- *             .name(&#34;my-router&#34;)
+ *         var foobar = new Router("foobar", RouterArgs.builder()        
+ *             .name("my-router")
  *             .network(foobarNetwork.name())
  *             .bgp(RouterBgpArgs.builder()
  *                 .asn(64514)
- *                 .advertiseMode(&#34;CUSTOM&#34;)
- *                 .advertisedGroups(&#34;ALL_SUBNETS&#34;)
+ *                 .advertiseMode("CUSTOM")
+ *                 .advertisedGroups("ALL_SUBNETS")
  *                 .advertisedIpRanges(                
  *                     RouterBgpAdvertisedIpRangeArgs.builder()
- *                         .range(&#34;1.2.3.4&#34;)
+ *                         .range("1.2.3.4")
  *                         .build(),
  *                     RouterBgpAdvertisedIpRangeArgs.builder()
- *                         .range(&#34;6.7.0.0/16&#34;)
+ *                         .range("6.7.0.0/16")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Compute Router Encrypted Interconnect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -107,13 +110,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;test-network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var encrypted_interconnect_router = new Router(&#34;encrypted-interconnect-router&#34;, RouterArgs.builder()        
- *             .name(&#34;test-router&#34;)
+ *         var encrypted_interconnect_router = new Router("encrypted-interconnect-router", RouterArgs.builder()        
+ *             .name("test-router")
  *             .network(network.name())
  *             .encryptedInterconnectRouter(true)
  *             .bgp(RouterBgpArgs.builder()
@@ -123,7 +126,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

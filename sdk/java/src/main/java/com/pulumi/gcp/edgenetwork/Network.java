@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Edgenetwork Network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,18 +52,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .networkId(&#34;example-network&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .zone(&#34;&#34;)
- *             .description(&#34;Example network.&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .networkId("example-network")
+ *             .location("us-west1")
+ *             .zone("")
+ *             .description("Example network.")
  *             .mtu(9000)
- *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
+ *             .labels(Map.of("environment", "dev"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

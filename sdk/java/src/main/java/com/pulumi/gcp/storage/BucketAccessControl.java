@@ -43,7 +43,8 @@ import javax.annotation.Nullable;
  * ### Storage Bucket Access Control Public Bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,20 +67,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;static-content-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("static-content-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var publicRule = new BucketAccessControl(&#34;publicRule&#34;, BucketAccessControlArgs.builder()        
+ *         var publicRule = new BucketAccessControl("publicRule", BucketAccessControlArgs.builder()        
  *             .bucket(bucket.name())
- *             .role(&#34;READER&#34;)
- *             .entity(&#34;allUsers&#34;)
+ *             .role("READER")
+ *             .entity("allUsers")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -150,9 +152,9 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz@example.com would be user-liz@example.com.
-     * The group example@googlegroups.com would be
-     * group-example@googlegroups.com.
+     * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
+     * The group example{@literal @}googlegroups.com would be
+     * group-example{@literal @}googlegroups.com.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
      * 
@@ -173,9 +175,9 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz@example.com would be user-liz@example.com.
-     * The group example@googlegroups.com would be
-     * group-example@googlegroups.com.
+     * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
+     * The group example{@literal @}googlegroups.com would be
+     * group-example{@literal @}googlegroups.com.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
      * 

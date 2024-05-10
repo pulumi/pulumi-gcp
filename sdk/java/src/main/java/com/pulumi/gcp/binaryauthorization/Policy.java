@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Binary Authorization Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,46 +64,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
- *             .name(&#34;test-attestor-note&#34;)
+ *         var note = new Note("note", NoteArgs.builder()        
+ *             .name("test-attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
- *                     .humanReadableName(&#34;My attestor&#34;)
+ *                     .humanReadableName("My attestor")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
- *             .name(&#34;test-attestor&#34;)
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *             .name("test-attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .build())
  *             .build());
  * 
- *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+ *         var policy = new Policy("policy", PolicyArgs.builder()        
  *             .admissionWhitelistPatterns(PolicyAdmissionWhitelistPatternArgs.builder()
- *                 .namePattern(&#34;gcr.io/google_containers/*&#34;)
+ *                 .namePattern("gcr.io/google_containers/*")
  *                 .build())
  *             .defaultAdmissionRule(PolicyDefaultAdmissionRuleArgs.builder()
- *                 .evaluationMode(&#34;ALWAYS_ALLOW&#34;)
- *                 .enforcementMode(&#34;ENFORCED_BLOCK_AND_AUDIT_LOG&#34;)
+ *                 .evaluationMode("ALWAYS_ALLOW")
+ *                 .enforcementMode("ENFORCED_BLOCK_AND_AUDIT_LOG")
  *                 .build())
  *             .clusterAdmissionRules(PolicyClusterAdmissionRuleArgs.builder()
- *                 .cluster(&#34;us-central1-a.prod-cluster&#34;)
- *                 .evaluationMode(&#34;REQUIRE_ATTESTATION&#34;)
- *                 .enforcementMode(&#34;ENFORCED_BLOCK_AND_AUDIT_LOG&#34;)
+ *                 .cluster("us-central1-a.prod-cluster")
+ *                 .evaluationMode("REQUIRE_ATTESTATION")
+ *                 .enforcementMode("ENFORCED_BLOCK_AND_AUDIT_LOG")
  *                 .requireAttestationsBies(attestor.name())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Binary Authorization Policy Global Evaluation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -131,34 +134,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
- *             .name(&#34;test-attestor-note&#34;)
+ *         var note = new Note("note", NoteArgs.builder()        
+ *             .name("test-attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
- *                     .humanReadableName(&#34;My attestor&#34;)
+ *                     .humanReadableName("My attestor")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
- *             .name(&#34;test-attestor&#34;)
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *             .name("test-attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .build())
  *             .build());
  * 
- *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+ *         var policy = new Policy("policy", PolicyArgs.builder()        
  *             .defaultAdmissionRule(PolicyDefaultAdmissionRuleArgs.builder()
- *                 .evaluationMode(&#34;REQUIRE_ATTESTATION&#34;)
- *                 .enforcementMode(&#34;ENFORCED_BLOCK_AND_AUDIT_LOG&#34;)
+ *                 .evaluationMode("REQUIRE_ATTESTATION")
+ *                 .enforcementMode("ENFORCED_BLOCK_AND_AUDIT_LOG")
  *                 .requireAttestationsBies(attestor.name())
  *                 .build())
- *             .globalPolicyEvaluationMode(&#34;ENABLE&#34;)
+ *             .globalPolicyEvaluationMode("ENABLE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Featurestore Entitytype
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,22 +63,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
- *             .name(&#34;terraform&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *             .name("terraform")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
  *                 .fixedNodeCount(2)
  *                 .build())
  *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
- *                 .kmsKeyName(&#34;kms-name&#34;)
+ *                 .kmsKeyName("kms-name")
  *                 .build())
  *             .build());
  * 
- *         var entity = new AiFeatureStoreEntityType(&#34;entity&#34;, AiFeatureStoreEntityTypeArgs.builder()        
- *             .name(&#34;terraform&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;test description&#34;)
+ *         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()        
+ *             .name("terraform")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("test description")
  *             .featurestore(featurestore.id())
  *             .monitoringConfig(AiFeatureStoreEntityTypeMonitoringConfigArgs.builder()
  *                 .snapshotAnalysis(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs.builder()
@@ -92,20 +93,22 @@ import javax.annotation.Nullable;
  *                     .value(10)
  *                     .build())
  *                 .importFeaturesAnalysis(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs.builder()
- *                     .state(&#34;ENABLED&#34;)
- *                     .anomalyDetectionBaseline(&#34;PREVIOUS_IMPORT_FEATURES_STATS&#34;)
+ *                     .state("ENABLED")
+ *                     .anomalyDetectionBaseline("PREVIOUS_IMPORT_FEATURES_STATS")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featurestore Entitytype With Beta Fields
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -134,26 +137,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
- *             .name(&#34;terraform2&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()        
+ *             .name("terraform2")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
  *                 .fixedNodeCount(2)
  *                 .build())
  *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
- *                 .kmsKeyName(&#34;kms-name&#34;)
+ *                 .kmsKeyName("kms-name")
  *                 .build())
  *             .build());
  * 
- *         var entity = new AiFeatureStoreEntityType(&#34;entity&#34;, AiFeatureStoreEntityTypeArgs.builder()        
- *             .name(&#34;terraform2&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()        
+ *             .name("terraform2")
+ *             .labels(Map.of("foo", "bar"))
  *             .featurestore(featurestore.id())
  *             .monitoringConfig(AiFeatureStoreEntityTypeMonitoringConfigArgs.builder()
  *                 .snapshotAnalysis(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs.builder()
  *                     .disabled(false)
- *                     .monitoringInterval(&#34;86400s&#34;)
+ *                     .monitoringInterval("86400s")
  *                     .build())
  *                 .categoricalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs.builder()
  *                     .value(0.3)
@@ -167,7 +170,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

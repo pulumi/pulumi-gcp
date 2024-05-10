@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Securityposture Posture Deployment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,20 +57,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var posture1 = new Posture(&#34;posture1&#34;, PostureArgs.builder()        
- *             .postureId(&#34;posture_1&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
- *             .state(&#34;ACTIVE&#34;)
- *             .description(&#34;a new posture&#34;)
+ *         var posture1 = new Posture("posture1", PostureArgs.builder()        
+ *             .postureId("posture_1")
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .state("ACTIVE")
+ *             .description("a new posture")
  *             .policySets(PosturePolicySetArgs.builder()
- *                 .policySetId(&#34;org_policy_set&#34;)
- *                 .description(&#34;set of org policies&#34;)
+ *                 .policySetId("org_policy_set")
+ *                 .description("set of org policies")
  *                 .policies(PosturePolicySetPolicyArgs.builder()
- *                     .policyId(&#34;policy_1&#34;)
+ *                     .policyId("policy_1")
  *                     .constraint(PosturePolicySetPolicyConstraintArgs.builder()
  *                         .orgPolicyConstraint(PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs.builder()
- *                             .cannedConstraintId(&#34;storage.uniformBucketLevelAccess&#34;)
+ *                             .cannedConstraintId("storage.uniformBucketLevelAccess")
  *                             .policyRules(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs.builder()
  *                                 .enforce(true)
  *                                 .build())
@@ -79,19 +80,20 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var postureDeployment = new PostureDeployment(&#34;postureDeployment&#34;, PostureDeploymentArgs.builder()        
- *             .postureDeploymentId(&#34;posture_deployment_1&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
- *             .description(&#34;a new posture deployment&#34;)
- *             .targetResource(&#34;projects/1111111111111&#34;)
+ *         var postureDeployment = new PostureDeployment("postureDeployment", PostureDeploymentArgs.builder()        
+ *             .postureDeploymentId("posture_deployment_1")
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .description("a new posture deployment")
+ *             .targetResource("projects/1111111111111")
  *             .postureId(posture1.name())
  *             .postureRevisionId(posture1.revisionId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

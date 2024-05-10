@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Active Directory Domain Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,15 +52,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ad_domain = new Domain(&#34;ad-domain&#34;, DomainArgs.builder()        
- *             .domainName(&#34;tfgen.org.com&#34;)
- *             .locations(&#34;us-central1&#34;)
- *             .reservedIpRange(&#34;192.168.255.0/24&#34;)
+ *         var ad_domain = new Domain("ad-domain", DomainArgs.builder()        
+ *             .domainName("tfgen.org.com")
+ *             .locations("us-central1")
+ *             .reservedIpRange("192.168.255.0/24")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

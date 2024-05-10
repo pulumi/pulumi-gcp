@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Service Directory Endpoint Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,35 +56,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
- *             .namespaceId(&#34;example-namespace&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var example = new Namespace("example", NamespaceArgs.builder()        
+ *             .namespaceId("example-namespace")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var exampleService = new Service(&#34;exampleService&#34;, ServiceArgs.builder()        
- *             .serviceId(&#34;example-service&#34;)
+ *         var exampleService = new Service("exampleService", ServiceArgs.builder()        
+ *             .serviceId("example-service")
  *             .namespace(example.id())
  *             .build());
  * 
- *         var exampleEndpoint = new Endpoint(&#34;exampleEndpoint&#34;, EndpointArgs.builder()        
- *             .endpointId(&#34;example-endpoint&#34;)
+ *         var exampleEndpoint = new Endpoint("exampleEndpoint", EndpointArgs.builder()        
+ *             .endpointId("example-endpoint")
  *             .service(exampleService.id())
  *             .metadata(Map.ofEntries(
- *                 Map.entry(&#34;stage&#34;, &#34;prod&#34;),
- *                 Map.entry(&#34;region&#34;, &#34;us-central1&#34;)
+ *                 Map.entry("stage", "prod"),
+ *                 Map.entry("region", "us-central1")
  *             ))
- *             .address(&#34;1.2.3.4&#34;)
+ *             .address("1.2.3.4")
  *             .port(5353)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Service Directory Endpoint With Network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -114,35 +117,36 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
- *             .name(&#34;example-network&#34;)
+ *         var example = new Network("example", NetworkArgs.builder()        
+ *             .name("example-network")
  *             .build());
  * 
- *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
- *             .namespaceId(&#34;example-namespace&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var exampleNamespace = new Namespace("exampleNamespace", NamespaceArgs.builder()        
+ *             .namespaceId("example-namespace")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var exampleService = new Service(&#34;exampleService&#34;, ServiceArgs.builder()        
- *             .serviceId(&#34;example-service&#34;)
+ *         var exampleService = new Service("exampleService", ServiceArgs.builder()        
+ *             .serviceId("example-service")
  *             .namespace(exampleNamespace.id())
  *             .build());
  * 
- *         var exampleEndpoint = new Endpoint(&#34;exampleEndpoint&#34;, EndpointArgs.builder()        
- *             .endpointId(&#34;example-endpoint&#34;)
+ *         var exampleEndpoint = new Endpoint("exampleEndpoint", EndpointArgs.builder()        
+ *             .endpointId("example-endpoint")
  *             .service(exampleService.id())
  *             .metadata(Map.ofEntries(
- *                 Map.entry(&#34;stage&#34;, &#34;prod&#34;),
- *                 Map.entry(&#34;region&#34;, &#34;us-central1&#34;)
+ *                 Map.entry("stage", "prod"),
+ *                 Map.entry("region", "us-central1")
  *             ))
- *             .network(example.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
- *             .address(&#34;1.2.3.4&#34;)
+ *             .network(example.name().applyValue(name -> String.format("projects/%s/locations/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .address("1.2.3.4")
  *             .port(5353)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Vmware Engine Private Cloud Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,25 +58,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pc_nw = new Network(&#34;pc-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;pc-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
- *             .description(&#34;PC network description.&#34;)
+ *         var pc_nw = new Network("pc-nw", NetworkArgs.builder()        
+ *             .name("pc-nw")
+ *             .location("global")
+ *             .type("STANDARD")
+ *             .description("PC network description.")
  *             .build());
  * 
- *         var vmw_engine_pc = new PrivateCloud(&#34;vmw-engine-pc&#34;, PrivateCloudArgs.builder()        
- *             .location(&#34;us-west1-a&#34;)
- *             .name(&#34;sample-pc&#34;)
- *             .description(&#34;Sample test PC.&#34;)
+ *         var vmw_engine_pc = new PrivateCloud("vmw-engine-pc", PrivateCloudArgs.builder()        
+ *             .location("us-west1-a")
+ *             .name("sample-pc")
+ *             .description("Sample test PC.")
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
- *                 .managementCidr(&#34;192.168.30.0/24&#34;)
+ *                 .managementCidr("192.168.30.0/24")
  *                 .vmwareEngineNetwork(pc_nw.id())
  *                 .build())
  *             .managementCluster(PrivateCloudManagementClusterArgs.builder()
- *                 .clusterId(&#34;sample-mgmt-cluster&#34;)
+ *                 .clusterId("sample-mgmt-cluster")
  *                 .nodeTypeConfigs(PrivateCloudManagementClusterNodeTypeConfigArgs.builder()
- *                     .nodeTypeId(&#34;standard-72&#34;)
+ *                     .nodeTypeId("standard-72")
  *                     .nodeCount(3)
  *                     .build())
  *                 .build())
@@ -83,12 +84,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vmware Engine Private Cloud Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -113,26 +116,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pc_nw = new Network(&#34;pc-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;pc-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
- *             .description(&#34;PC network description.&#34;)
+ *         var pc_nw = new Network("pc-nw", NetworkArgs.builder()        
+ *             .name("pc-nw")
+ *             .location("global")
+ *             .type("STANDARD")
+ *             .description("PC network description.")
  *             .build());
  * 
- *         var vmw_engine_pc = new PrivateCloud(&#34;vmw-engine-pc&#34;, PrivateCloudArgs.builder()        
- *             .location(&#34;us-west1-a&#34;)
- *             .name(&#34;sample-pc&#34;)
- *             .description(&#34;Sample test PC.&#34;)
- *             .type(&#34;TIME_LIMITED&#34;)
+ *         var vmw_engine_pc = new PrivateCloud("vmw-engine-pc", PrivateCloudArgs.builder()        
+ *             .location("us-west1-a")
+ *             .name("sample-pc")
+ *             .description("Sample test PC.")
+ *             .type("TIME_LIMITED")
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
- *                 .managementCidr(&#34;192.168.30.0/24&#34;)
+ *                 .managementCidr("192.168.30.0/24")
  *                 .vmwareEngineNetwork(pc_nw.id())
  *                 .build())
  *             .managementCluster(PrivateCloudManagementClusterArgs.builder()
- *                 .clusterId(&#34;sample-mgmt-cluster&#34;)
+ *                 .clusterId("sample-mgmt-cluster")
  *                 .nodeTypeConfigs(PrivateCloudManagementClusterNodeTypeConfigArgs.builder()
- *                     .nodeTypeId(&#34;standard-72&#34;)
+ *                     .nodeTypeId("standard-72")
  *                     .nodeCount(1)
  *                     .customCoreCount(32)
  *                     .build())
@@ -141,7 +144,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

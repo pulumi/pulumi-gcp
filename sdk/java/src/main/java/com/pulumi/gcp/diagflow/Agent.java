@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Dialogflow Agent Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,26 +56,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fullAgent = new Agent(&#34;fullAgent&#34;, AgentArgs.builder()        
- *             .displayName(&#34;dialogflow-agent&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
+ *         var fullAgent = new Agent("fullAgent", AgentArgs.builder()        
+ *             .displayName("dialogflow-agent")
+ *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            
- *                 &#34;fr&#34;,
- *                 &#34;de&#34;,
- *                 &#34;es&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .description(&#34;Example description.&#34;)
- *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *                 "fr",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
  *             .enableLogging(true)
- *             .matchMode(&#34;MATCH_MODE_ML_ONLY&#34;)
+ *             .matchMode("MATCH_MODE_ML_ONLY")
  *             .classificationThreshold(0.3)
- *             .apiVersion(&#34;API_VERSION_V2_BETA_1&#34;)
- *             .tier(&#34;TIER_STANDARD&#34;)
+ *             .apiVersion("API_VERSION_V2_BETA_1")
+ *             .tier("TIER_STANDARD")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -237,7 +239,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
      *   syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-     *   using @sys.any or very large developer entities.
+     *   using{@literal @}sys.any or very large developer entities.
      *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      * 
      */
@@ -249,7 +251,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
      *   syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-     *   using @sys.any or very large developer entities.
+     *   using{@literal @}sys.any or very large developer entities.
      *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      * 
      */

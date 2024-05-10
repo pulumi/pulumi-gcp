@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Public Ca External Account Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,13 +59,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new CaExternalAccountKey(&#34;prod&#34;, CaExternalAccountKeyArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var prod = new CaExternalAccountKey("prod", CaExternalAccountKeyArgs.builder()        
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

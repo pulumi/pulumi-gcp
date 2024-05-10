@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Region Security Policy Rule Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,36 +50,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionSecurityPolicy(&#34;default&#34;, RegionSecurityPolicyArgs.builder()        
- *             .region(&#34;us-west2&#34;)
- *             .name(&#34;policyruletest&#34;)
- *             .description(&#34;basic region security policy&#34;)
- *             .type(&#34;CLOUD_ARMOR&#34;)
+ *         var default_ = new RegionSecurityPolicy("default", RegionSecurityPolicyArgs.builder()        
+ *             .region("us-west2")
+ *             .name("policyruletest")
+ *             .description("basic region security policy")
+ *             .type("CLOUD_ARMOR")
  *             .build());
  * 
- *         var policyRule = new RegionSecurityPolicyRule(&#34;policyRule&#34;, RegionSecurityPolicyRuleArgs.builder()        
- *             .region(&#34;us-west2&#34;)
+ *         var policyRule = new RegionSecurityPolicyRule("policyRule", RegionSecurityPolicyRuleArgs.builder()        
+ *             .region("us-west2")
  *             .securityPolicy(default_.name())
- *             .description(&#34;new rule&#34;)
+ *             .description("new rule")
  *             .priority(100)
  *             .match(RegionSecurityPolicyRuleMatchArgs.builder()
- *                 .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()
- *                     .srcIpRanges(&#34;10.10.0.0/16&#34;)
+ *                     .srcIpRanges("10.10.0.0/16")
  *                     .build())
  *                 .build())
- *             .action(&#34;allow&#34;)
+ *             .action("allow")
  *             .preview(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Security Policy Rule Multiple Rules
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -103,53 +106,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionSecurityPolicy(&#34;default&#34;, RegionSecurityPolicyArgs.builder()        
- *             .region(&#34;us-west2&#34;)
- *             .name(&#34;policywithmultiplerules&#34;)
- *             .description(&#34;basic region security policy&#34;)
- *             .type(&#34;CLOUD_ARMOR&#34;)
+ *         var default_ = new RegionSecurityPolicy("default", RegionSecurityPolicyArgs.builder()        
+ *             .region("us-west2")
+ *             .name("policywithmultiplerules")
+ *             .description("basic region security policy")
+ *             .type("CLOUD_ARMOR")
  *             .build());
  * 
- *         var policyRuleOne = new RegionSecurityPolicyRule(&#34;policyRuleOne&#34;, RegionSecurityPolicyRuleArgs.builder()        
- *             .region(&#34;us-west2&#34;)
+ *         var policyRuleOne = new RegionSecurityPolicyRule("policyRuleOne", RegionSecurityPolicyRuleArgs.builder()        
+ *             .region("us-west2")
  *             .securityPolicy(default_.name())
- *             .description(&#34;new rule one&#34;)
+ *             .description("new rule one")
  *             .priority(100)
  *             .match(RegionSecurityPolicyRuleMatchArgs.builder()
- *                 .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()
- *                     .srcIpRanges(&#34;10.10.0.0/16&#34;)
+ *                     .srcIpRanges("10.10.0.0/16")
  *                     .build())
  *                 .build())
- *             .action(&#34;allow&#34;)
+ *             .action("allow")
  *             .preview(true)
  *             .build());
  * 
- *         var policyRuleTwo = new RegionSecurityPolicyRule(&#34;policyRuleTwo&#34;, RegionSecurityPolicyRuleArgs.builder()        
- *             .region(&#34;us-west2&#34;)
+ *         var policyRuleTwo = new RegionSecurityPolicyRule("policyRuleTwo", RegionSecurityPolicyRuleArgs.builder()        
+ *             .region("us-west2")
  *             .securityPolicy(default_.name())
- *             .description(&#34;new rule two&#34;)
+ *             .description("new rule two")
  *             .priority(101)
  *             .match(RegionSecurityPolicyRuleMatchArgs.builder()
- *                 .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()
  *                     .srcIpRanges(                    
- *                         &#34;192.168.0.0/16&#34;,
- *                         &#34;10.0.0.0/8&#34;)
+ *                         "192.168.0.0/16",
+ *                         "10.0.0.0/8")
  *                     .build())
  *                 .build())
- *             .action(&#34;allow&#34;)
+ *             .action("allow")
  *             .preview(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Security Policy Rule With Network Match
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -178,57 +183,58 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // First activate advanced network DDoS protection for the desired region
- *         var policyddosprotection = new RegionSecurityPolicy(&#34;policyddosprotection&#34;, RegionSecurityPolicyArgs.builder()        
- *             .region(&#34;us-west2&#34;)
- *             .name(&#34;policyddosprotection&#34;)
- *             .description(&#34;policy for activating network DDoS protection for the desired region&#34;)
- *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
+ *         var policyddosprotection = new RegionSecurityPolicy("policyddosprotection", RegionSecurityPolicyArgs.builder()        
+ *             .region("us-west2")
+ *             .name("policyddosprotection")
+ *             .description("policy for activating network DDoS protection for the desired region")
+ *             .type("CLOUD_ARMOR_NETWORK")
  *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
- *                 .ddosProtection(&#34;ADVANCED_PREVIEW&#34;)
+ *                 .ddosProtection("ADVANCED_PREVIEW")
  *                 .build())
  *             .build());
  * 
- *         var edgeSecService = new NetworkEdgeSecurityService(&#34;edgeSecService&#34;, NetworkEdgeSecurityServiceArgs.builder()        
- *             .region(&#34;us-west2&#34;)
- *             .name(&#34;edgesecservice&#34;)
- *             .description(&#34;linking policy to edge security service&#34;)
+ *         var edgeSecService = new NetworkEdgeSecurityService("edgeSecService", NetworkEdgeSecurityServiceArgs.builder()        
+ *             .region("us-west2")
+ *             .name("edgesecservice")
+ *             .description("linking policy to edge security service")
  *             .securityPolicy(policyddosprotection.selfLink())
  *             .build());
  * 
  *         // Add the desired policy and custom rule.
- *         var policynetworkmatch = new RegionSecurityPolicy(&#34;policynetworkmatch&#34;, RegionSecurityPolicyArgs.builder()        
- *             .region(&#34;us-west2&#34;)
- *             .name(&#34;policyfornetworkmatch&#34;)
- *             .description(&#34;region security policy for network match&#34;)
- *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
+ *         var policynetworkmatch = new RegionSecurityPolicy("policynetworkmatch", RegionSecurityPolicyArgs.builder()        
+ *             .region("us-west2")
+ *             .name("policyfornetworkmatch")
+ *             .description("region security policy for network match")
+ *             .type("CLOUD_ARMOR_NETWORK")
  *             .userDefinedFields(RegionSecurityPolicyUserDefinedFieldArgs.builder()
- *                 .name(&#34;SIG1_AT_0&#34;)
- *                 .base(&#34;TCP&#34;)
+ *                 .name("SIG1_AT_0")
+ *                 .base("TCP")
  *                 .offset(8)
  *                 .size(2)
- *                 .mask(&#34;0x8F00&#34;)
+ *                 .mask("0x8F00")
  *                 .build())
  *             .build());
  * 
- *         var policyRuleNetworkMatch = new RegionSecurityPolicyRule(&#34;policyRuleNetworkMatch&#34;, RegionSecurityPolicyRuleArgs.builder()        
- *             .region(&#34;us-west2&#34;)
+ *         var policyRuleNetworkMatch = new RegionSecurityPolicyRule("policyRuleNetworkMatch", RegionSecurityPolicyRuleArgs.builder()        
+ *             .region("us-west2")
  *             .securityPolicy(policynetworkmatch.name())
- *             .description(&#34;custom rule for network match&#34;)
+ *             .description("custom rule for network match")
  *             .priority(100)
  *             .networkMatch(RegionSecurityPolicyRuleNetworkMatchArgs.builder()
- *                 .srcIpRanges(&#34;10.10.0.0/16&#34;)
+ *                 .srcIpRanges("10.10.0.0/16")
  *                 .userDefinedFields(RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs.builder()
- *                     .name(&#34;SIG1_AT_0&#34;)
- *                     .values(&#34;0x8F00&#34;)
+ *                     .name("SIG1_AT_0")
+ *                     .values("0x8F00")
  *                     .build())
  *                 .build())
- *             .action(&#34;allow&#34;)
+ *             .action("allow")
  *             .preview(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

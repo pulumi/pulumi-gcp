@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Deployment Resource Pool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,19 +52,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var deploymentResourcePool = new AiDeploymentResourcePool(&#34;deploymentResourcePool&#34;, AiDeploymentResourcePoolArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;example-deployment-resource-pool&#34;)
+ *         var deploymentResourcePool = new AiDeploymentResourcePool("deploymentResourcePool", AiDeploymentResourcePoolArgs.builder()        
+ *             .region("us-central1")
+ *             .name("example-deployment-resource-pool")
  *             .dedicatedResources(AiDeploymentResourcePoolDedicatedResourcesArgs.builder()
  *                 .machineSpec(AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs.builder()
- *                     .machineType(&#34;n1-standard-4&#34;)
- *                     .acceleratorType(&#34;NVIDIA_TESLA_K80&#34;)
+ *                     .machineType("n1-standard-4")
+ *                     .acceleratorType("NVIDIA_TESLA_K80")
  *                     .acceleratorCount(1)
  *                     .build())
  *                 .minReplicaCount(1)
  *                 .maxReplicaCount(2)
  *                 .autoscalingMetricSpecs(AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs.builder()
- *                     .metricName(&#34;aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle&#34;)
+ *                     .metricName("aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle")
  *                     .target(60)
  *                     .build())
  *                 .build())
@@ -71,7 +72,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

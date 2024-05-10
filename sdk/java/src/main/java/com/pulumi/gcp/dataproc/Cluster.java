@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,20 +56,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var simplecluster = new Cluster(&#34;simplecluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;simplecluster&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var simplecluster = new Cluster("simplecluster", ClusterArgs.builder()        
+ *             .name("simplecluster")
+ *             .region("us-central1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,30 +102,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account(&#34;default&#34;, AccountArgs.builder()        
- *             .accountId(&#34;service-account-id&#34;)
- *             .displayName(&#34;Service Account&#34;)
+ *         var default_ = new Account("default", AccountArgs.builder()        
+ *             .accountId("service-account-id")
+ *             .displayName("Service Account")
  *             .build());
  * 
- *         var mycluster = new Cluster(&#34;mycluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;mycluster&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .gracefulDecommissionTimeout(&#34;120s&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var mycluster = new Cluster("mycluster", ClusterArgs.builder()        
+ *             .name("mycluster")
+ *             .region("us-central1")
+ *             .gracefulDecommissionTimeout("120s")
+ *             .labels(Map.of("foo", "bar"))
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
- *                 .stagingBucket(&#34;dataproc-staging-bucket&#34;)
+ *                 .stagingBucket("dataproc-staging-bucket")
  *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
  *                     .numInstances(1)
- *                     .machineType(&#34;e2-medium&#34;)
+ *                     .machineType("e2-medium")
  *                     .diskConfig(ClusterClusterConfigMasterConfigDiskConfigArgs.builder()
- *                         .bootDiskType(&#34;pd-ssd&#34;)
+ *                         .bootDiskType("pd-ssd")
  *                         .bootDiskSizeGb(30)
  *                         .build())
  *                     .build())
  *                 .workerConfig(ClusterClusterConfigWorkerConfigArgs.builder()
  *                     .numInstances(2)
- *                     .machineType(&#34;e2-medium&#34;)
- *                     .minCpuPlatform(&#34;Intel Skylake&#34;)
+ *                     .machineType("e2-medium")
+ *                     .minCpuPlatform("Intel Skylake")
  *                     .diskConfig(ClusterClusterConfigWorkerConfigDiskConfigArgs.builder()
  *                         .bootDiskSizeGb(30)
  *                         .numLocalSsds(1)
@@ -132,18 +135,18 @@ import javax.annotation.Nullable;
  *                     .numInstances(0)
  *                     .build())
  *                 .softwareConfig(ClusterClusterConfigSoftwareConfigArgs.builder()
- *                     .imageVersion(&#34;2.0.35-debian10&#34;)
- *                     .overrideProperties(Map.of(&#34;dataproc:dataproc.allow.zero.workers&#34;, &#34;true&#34;))
+ *                     .imageVersion("2.0.35-debian10")
+ *                     .overrideProperties(Map.of("dataproc:dataproc.allow.zero.workers", "true"))
  *                     .build())
  *                 .gceClusterConfig(ClusterClusterConfigGceClusterConfigArgs.builder()
  *                     .tags(                    
- *                         &#34;foo&#34;,
- *                         &#34;bar&#34;)
+ *                         "foo",
+ *                         "bar")
  *                     .serviceAccount(default_.email())
- *                     .serviceAccountScopes(&#34;cloud-platform&#34;)
+ *                     .serviceAccountScopes("cloud-platform")
  *                     .build())
  *                 .initializationActions(ClusterClusterConfigInitializationActionArgs.builder()
- *                     .script(&#34;gs://dataproc-initialization-actions/stackdriver/stackdriver.sh&#34;)
+ *                     .script("gs://dataproc-initialization-actions/stackdriver/stackdriver.sh")
  *                     .timeoutSec(500)
  *                     .build())
  *                 .build())
@@ -151,13 +154,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Using A GPU Accelerator
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -181,17 +186,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var acceleratedCluster = new Cluster(&#34;acceleratedCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-cluster-with-gpu&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var acceleratedCluster = new Cluster("acceleratedCluster", ClusterArgs.builder()        
+ *             .name("my-cluster-with-gpu")
+ *             .region("us-central1")
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .gceClusterConfig(ClusterClusterConfigGceClusterConfigArgs.builder()
- *                     .zone(&#34;us-central1-a&#34;)
+ *                     .zone("us-central1-a")
  *                     .build())
  *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
  *                     .accelerators(ClusterClusterConfigMasterConfigAcceleratorArgs.builder()
- *                         .acceleratorType(&#34;nvidia-tesla-k80&#34;)
- *                         .acceleratorCount(&#34;1&#34;)
+ *                         .acceleratorType("nvidia-tesla-k80")
+ *                         .acceleratorCount("1")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -199,7 +204,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Gkehub Feature Multi Cluster Ingress
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,25 +63,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;my-membership&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
- *             .description(&#34;Membership&#34;)
+ *             .description("Membership")
  *             .build());
  * 
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;multiclusteringress&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("multiclusteringress")
+ *             .location("global")
  *             .spec(FeatureSpecArgs.builder()
  *                 .multiclusteringress(FeatureSpecMulticlusteringressArgs.builder()
  *                     .configMembership(membership.id())
@@ -90,12 +91,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkehub Feature Multi Cluster Service Discovery
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -116,20 +119,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;multiclusterservicediscovery&#34;)
- *             .location(&#34;global&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("multiclusterservicediscovery")
+ *             .location("global")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkehub Feature Anthos Service Mesh
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -150,19 +155,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;servicemesh&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("servicemesh")
+ *             .location("global")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Enable Fleet Observability For Default Logs With Copy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -187,14 +194,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;fleetobservability&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("fleetobservability")
+ *             .location("global")
  *             .spec(FeatureSpecArgs.builder()
  *                 .fleetobservability(FeatureSpecFleetobservabilityArgs.builder()
  *                     .loggingConfig(FeatureSpecFleetobservabilityLoggingConfigArgs.builder()
  *                         .defaultConfig(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs.builder()
- *                             .mode(&#34;COPY&#34;)
+ *                             .mode("COPY")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -203,12 +210,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Enable Fleet Observability For Scope Logs With Move
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -233,14 +242,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;fleetobservability&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("fleetobservability")
+ *             .location("global")
  *             .spec(FeatureSpecArgs.builder()
  *                 .fleetobservability(FeatureSpecFleetobservabilityArgs.builder()
  *                     .loggingConfig(FeatureSpecFleetobservabilityLoggingConfigArgs.builder()
  *                         .fleetScopeLogsConfig(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs.builder()
- *                             .mode(&#34;MOVE&#34;)
+ *                             .mode("MOVE")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -249,12 +258,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Enable Fleet Observability For Both Default And Scope Logs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -280,17 +291,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;fleetobservability&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("fleetobservability")
+ *             .location("global")
  *             .spec(FeatureSpecArgs.builder()
  *                 .fleetobservability(FeatureSpecFleetobservabilityArgs.builder()
  *                     .loggingConfig(FeatureSpecFleetobservabilityLoggingConfigArgs.builder()
  *                         .defaultConfig(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs.builder()
- *                             .mode(&#34;COPY&#34;)
+ *                             .mode("COPY")
  *                             .build())
  *                         .fleetScopeLogsConfig(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs.builder()
- *                             .mode(&#34;MOVE&#34;)
+ *                             .mode("MOVE")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -299,12 +310,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Enable Fleet Default Member Config Service Mesh
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -327,24 +340,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;servicemesh&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("servicemesh")
+ *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .mesh(FeatureFleetDefaultMemberConfigMeshArgs.builder()
- *                     .management(&#34;MANAGEMENT_AUTOMATIC&#34;)
+ *                     .management("MANAGEMENT_AUTOMATIC")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Enable Fleet Default Member Config Configmanagement
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -369,14 +384,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;configmanagement&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("configmanagement")
+ *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .configmanagement(FeatureFleetDefaultMemberConfigConfigmanagementArgs.builder()
  *                     .configSync(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs.builder()
  *                         .git(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs.builder()
- *                             .syncRepo(&#34;https://github.com/hashicorp/terraform&#34;)
+ *                             .syncRepo("https://github.com/hashicorp/terraform")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -385,12 +400,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Enable Fleet Default Member Config Policycontroller
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -416,23 +433,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;policycontroller&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("policycontroller")
+ *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs.builder()
  *                     .policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs.builder()
- *                         .installSpec(&#34;INSTALL_SPEC_ENABLED&#34;)
- *                         .exemptableNamespaces(&#34;foo&#34;)
+ *                         .installSpec("INSTALL_SPEC_ENABLED")
+ *                         .exemptableNamespaces("foo")
  *                         .policyContent(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs.builder()
  *                             .bundles(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs.builder()
- *                                 .bundle(&#34;policy-essentials-v2022&#34;)
+ *                                 .bundle("policy-essentials-v2022")
  *                                 .exemptedNamespaces(                                
- *                                     &#34;foo&#34;,
- *                                     &#34;bar&#34;)
+ *                                     "foo",
+ *                                     "bar")
  *                                 .build())
  *                             .templateLibrary(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs.builder()
- *                                 .installation(&#34;ALL&#34;)
+ *                                 .installation("ALL")
  *                                 .build())
  *                             .build())
  *                         .auditIntervalSeconds(30)
@@ -444,12 +461,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Enable Fleet Default Member Config Policycontroller Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -476,27 +495,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;policycontroller&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("policycontroller")
+ *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs.builder()
  *                     .policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs.builder()
- *                         .installSpec(&#34;INSTALL_SPEC_SUSPENDED&#34;)
+ *                         .installSpec("INSTALL_SPEC_SUSPENDED")
  *                         .policyContent(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs.builder()
  *                             .bundles(                            
  *                                 FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs.builder()
- *                                     .bundle(&#34;pci-dss-v3.2.1&#34;)
+ *                                     .bundle("pci-dss-v3.2.1")
  *                                     .exemptedNamespaces(                                    
- *                                         &#34;baz&#34;,
- *                                         &#34;bar&#34;)
+ *                                         "baz",
+ *                                         "bar")
  *                                     .build(),
  *                                 FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs.builder()
- *                                     .bundle(&#34;nist-sp-800-190&#34;)
+ *                                     .bundle("nist-sp-800-190")
  *                                     .exemptedNamespaces()
  *                                     .build())
  *                             .templateLibrary(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs.builder()
- *                                 .installation(&#34;ALL&#34;)
+ *                                 .installation("ALL")
  *                                 .build())
  *                             .build())
  *                         .constraintViolationLimit(50)
@@ -505,31 +524,31 @@ import javax.annotation.Nullable;
  *                         .mutationEnabled(true)
  *                         .deploymentConfigs(                        
  *                             FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
- *                                 .component(&#34;admission&#34;)
+ *                                 .component("admission")
  *                                 .replicaCount(2)
- *                                 .podAffinity(&#34;ANTI_AFFINITY&#34;)
+ *                                 .podAffinity("ANTI_AFFINITY")
  *                                 .build(),
  *                             FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
- *                                 .component(&#34;audit&#34;)
+ *                                 .component("audit")
  *                                 .containerResources(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs.builder()
  *                                     .limits(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs.builder()
- *                                         .memory(&#34;1Gi&#34;)
- *                                         .cpu(&#34;1.5&#34;)
+ *                                         .memory("1Gi")
+ *                                         .cpu("1.5")
  *                                         .build())
  *                                     .requests(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs.builder()
- *                                         .memory(&#34;500Mi&#34;)
- *                                         .cpu(&#34;150m&#34;)
+ *                                         .memory("500Mi")
+ *                                         .cpu("150m")
  *                                         .build())
  *                                     .build())
  *                                 .podTolerations(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs.builder()
- *                                     .key(&#34;key1&#34;)
- *                                     .operator(&#34;Equal&#34;)
- *                                     .value(&#34;value1&#34;)
- *                                     .effect(&#34;NoSchedule&#34;)
+ *                                     .key("key1")
+ *                                     .operator("Equal")
+ *                                     .value("value1")
+ *                                     .effect("NoSchedule")
  *                                     .build())
  *                                 .build())
  *                         .monitoring(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs.builder()
- *                             .backends(&#34;PROMETHEUS&#34;)
+ *                             .backends("PROMETHEUS")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -538,12 +557,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Enable Fleet Default Member Config Policycontroller Minimal
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -569,20 +590,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;policycontroller&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("policycontroller")
+ *             .location("global")
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs.builder()
  *                     .policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs.builder()
- *                         .installSpec(&#34;INSTALL_SPEC_ENABLED&#34;)
+ *                         .installSpec("INSTALL_SPEC_ENABLED")
  *                         .policyContent()
  *                         .constraintViolationLimit(50)
  *                         .referentialRulesEnabled(true)
  *                         .logDeniesEnabled(true)
  *                         .mutationEnabled(true)
  *                         .deploymentConfigs(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
- *                             .component(&#34;admission&#34;)
+ *                             .component("admission")
  *                             .build())
  *                         .monitoring()
  *                         .build())
@@ -592,12 +613,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkehub Feature Clusterupgrade
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -621,14 +644,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .name(&#34;clusterupgrade&#34;)
- *             .location(&#34;global&#34;)
+ *         var feature = new Feature("feature", FeatureArgs.builder()        
+ *             .name("clusterupgrade")
+ *             .location("global")
  *             .spec(FeatureSpecArgs.builder()
  *                 .clusterupgrade(FeatureSpecClusterupgradeArgs.builder()
  *                     .upstreamFleets()
  *                     .postConditions(FeatureSpecClusterupgradePostConditionsArgs.builder()
- *                         .soaking(&#34;60s&#34;)
+ *                         .soaking("60s")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -636,7 +659,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

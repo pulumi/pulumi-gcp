@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Target Tcp Proxy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,30 +59,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
+ *                 .port("443")
  *                 .build())
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
- *             .protocol(&#34;TCP&#34;)
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *             .name("backend-service")
+ *             .protocol("TCP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
- *         var default_ = new TargetTCPProxy(&#34;default&#34;, TargetTCPProxyArgs.builder()        
- *             .name(&#34;test-proxy&#34;)
+ *         var default_ = new TargetTCPProxy("default", TargetTCPProxyArgs.builder()        
+ *             .name("test-proxy")
  *             .backendService(defaultBackendService.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,9 +57,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serialPortPolicy = new Policy(&#34;serialPortPolicy&#34;, PolicyArgs.builder()        
- *             .orgId(&#34;123456789&#34;)
- *             .constraint(&#34;compute.disableSerialPortAccess&#34;)
+ *         var serialPortPolicy = new Policy("serialPortPolicy", PolicyArgs.builder()        
+ *             .orgId("123456789")
+ *             .constraint("compute.disableSerialPortAccess")
  *             .booleanPolicy(PolicyBooleanPolicyArgs.builder()
  *                 .enforced(true)
  *                 .build())
@@ -66,13 +67,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,9 +98,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicesPolicy = new Policy(&#34;servicesPolicy&#34;, PolicyArgs.builder()        
- *             .orgId(&#34;123456789&#34;)
- *             .constraint(&#34;serviceuser.services&#34;)
+ *         var servicesPolicy = new Policy("servicesPolicy", PolicyArgs.builder()        
+ *             .orgId("123456789")
+ *             .constraint("serviceuser.services")
  *             .listPolicy(PolicyListPolicyArgs.builder()
  *                 .allow(PolicyListPolicyAllowArgs.builder()
  *                     .all(true)
@@ -107,13 +110,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Or to deny some services, use the following instead:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -136,26 +141,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicesPolicy = new Policy(&#34;servicesPolicy&#34;, PolicyArgs.builder()        
- *             .orgId(&#34;123456789&#34;)
- *             .constraint(&#34;serviceuser.services&#34;)
+ *         var servicesPolicy = new Policy("servicesPolicy", PolicyArgs.builder()        
+ *             .orgId("123456789")
+ *             .constraint("serviceuser.services")
  *             .listPolicy(PolicyListPolicyArgs.builder()
- *                 .suggestedValue(&#34;compute.googleapis.com&#34;)
+ *                 .suggestedValue("compute.googleapis.com")
  *                 .deny(PolicyListPolicyDenyArgs.builder()
- *                     .values(&#34;cloudresourcemanager.googleapis.com&#34;)
+ *                     .values("cloudresourcemanager.googleapis.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * To restore the default organization policy, use the following instead:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -177,9 +184,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var servicesPolicy = new Policy(&#34;servicesPolicy&#34;, PolicyArgs.builder()        
- *             .orgId(&#34;123456789&#34;)
- *             .constraint(&#34;serviceuser.services&#34;)
+ *         var servicesPolicy = new Policy("servicesPolicy", PolicyArgs.builder()        
+ *             .orgId("123456789")
+ *             .constraint("serviceuser.services")
  *             .restorePolicy(PolicyRestorePolicyArgs.builder()
  *                 .default_(true)
  *                 .build())
@@ -187,7 +194,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

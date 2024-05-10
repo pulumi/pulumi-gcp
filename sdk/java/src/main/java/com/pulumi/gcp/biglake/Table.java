@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Biglake Table
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,75 +62,76 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var catalog = new Catalog(&#34;catalog&#34;, CatalogArgs.builder()        
- *             .name(&#34;my_catalog&#34;)
- *             .location(&#34;US&#34;)
+ *         var catalog = new Catalog("catalog", CatalogArgs.builder()        
+ *             .name("my_catalog")
+ *             .location("US")
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;my_bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("my_bucket")
+ *             .location("US")
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var metadataFolder = new BucketObject(&#34;metadataFolder&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;metadata/&#34;)
- *             .content(&#34; &#34;)
+ *         var metadataFolder = new BucketObject("metadataFolder", BucketObjectArgs.builder()        
+ *             .name("metadata/")
+ *             .content(" ")
  *             .bucket(bucket.name())
  *             .build());
  * 
- *         var dataFolder = new BucketObject(&#34;dataFolder&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;data/&#34;)
- *             .content(&#34; &#34;)
+ *         var dataFolder = new BucketObject("dataFolder", BucketObjectArgs.builder()        
+ *             .name("data/")
+ *             .content(" ")
  *             .bucket(bucket.name())
  *             .build());
  * 
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .name(&#34;my_database&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .name("my_database")
  *             .catalog(catalog.id())
- *             .type(&#34;HIVE&#34;)
+ *             .type("HIVE")
  *             .hiveOptions(DatabaseHiveOptionsArgs.builder()
- *                 .locationUri(Output.tuple(bucket.name(), metadataFolder.name()).applyValue(values -&gt; {
+ *                 .locationUri(Output.tuple(bucket.name(), metadataFolder.name()).applyValue(values -> {
  *                     var bucketName = values.t1;
  *                     var metadataFolderName = values.t2;
- *                     return String.format(&#34;gs://%s/%s&#34;, bucketName,metadataFolderName);
+ *                     return String.format("gs://%s/%s", bucketName,metadataFolderName);
  *                 }))
- *                 .parameters(Map.of(&#34;owner&#34;, &#34;Alex&#34;))
+ *                 .parameters(Map.of("owner", "Alex"))
  *                 .build())
  *             .build());
  * 
- *         var table = new Table(&#34;table&#34;, TableArgs.builder()        
- *             .name(&#34;my_table&#34;)
+ *         var table = new Table("table", TableArgs.builder()        
+ *             .name("my_table")
  *             .database(database.id())
- *             .type(&#34;HIVE&#34;)
+ *             .type("HIVE")
  *             .hiveOptions(TableHiveOptionsArgs.builder()
- *                 .tableType(&#34;MANAGED_TABLE&#34;)
+ *                 .tableType("MANAGED_TABLE")
  *                 .storageDescriptor(TableHiveOptionsStorageDescriptorArgs.builder()
- *                     .locationUri(Output.tuple(bucket.name(), dataFolder.name()).applyValue(values -&gt; {
+ *                     .locationUri(Output.tuple(bucket.name(), dataFolder.name()).applyValue(values -> {
  *                         var bucketName = values.t1;
  *                         var dataFolderName = values.t2;
- *                         return String.format(&#34;gs://%s/%s&#34;, bucketName,dataFolderName);
+ *                         return String.format("gs://%s/%s", bucketName,dataFolderName);
  *                     }))
- *                     .inputFormat(&#34;org.apache.hadoop.mapred.SequenceFileInputFormat&#34;)
- *                     .outputFormat(&#34;org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat&#34;)
+ *                     .inputFormat("org.apache.hadoop.mapred.SequenceFileInputFormat")
+ *                     .outputFormat("org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat")
  *                     .build())
  *                 .parameters(Map.ofEntries(
- *                     Map.entry(&#34;spark.sql.create.version&#34;, &#34;3.1.3&#34;),
- *                     Map.entry(&#34;spark.sql.sources.schema.numParts&#34;, &#34;1&#34;),
- *                     Map.entry(&#34;transient_lastDdlTime&#34;, &#34;1680894197&#34;),
- *                     Map.entry(&#34;spark.sql.partitionProvider&#34;, &#34;catalog&#34;),
- *                     Map.entry(&#34;owner&#34;, &#34;John Doe&#34;),
- *                     Map.entry(&#34;spark.sql.sources.schema.part.0&#34;, &#34;{\&#34;type\&#34;:\&#34;struct\&#34;,\&#34;fields\&#34;:[{\&#34;name\&#34;:\&#34;id\&#34;,\&#34;type\&#34;:\&#34;integer\&#34;,\&#34;nullable\&#34;:true,\&#34;metadata\&#34;:{}},{\&#34;name\&#34;:\&#34;name\&#34;,\&#34;type\&#34;:\&#34;string\&#34;,\&#34;nullable\&#34;:true,\&#34;metadata\&#34;:{}},{\&#34;name\&#34;:\&#34;age\&#34;,\&#34;type\&#34;:\&#34;integer\&#34;,\&#34;nullable\&#34;:true,\&#34;metadata\&#34;:{}}]}&#34;),
- *                     Map.entry(&#34;spark.sql.sources.provider&#34;, &#34;iceberg&#34;),
- *                     Map.entry(&#34;provider&#34;, &#34;iceberg&#34;)
+ *                     Map.entry("spark.sql.create.version", "3.1.3"),
+ *                     Map.entry("spark.sql.sources.schema.numParts", "1"),
+ *                     Map.entry("transient_lastDdlTime", "1680894197"),
+ *                     Map.entry("spark.sql.partitionProvider", "catalog"),
+ *                     Map.entry("owner", "John Doe"),
+ *                     Map.entry("spark.sql.sources.schema.part.0", "{\"type\":\"struct\",\"fields\":[{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"name\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"age\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}]}"),
+ *                     Map.entry("spark.sql.sources.provider", "iceberg"),
+ *                     Map.entry("provider", "iceberg")
  *                 ))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

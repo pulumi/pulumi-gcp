@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Storage Insights Report Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,18 +68,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var reportBucket = new Bucket(&#34;reportBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;my-bucket&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var reportBucket = new Bucket("reportBucket", BucketArgs.builder()        
+ *             .name("my-bucket")
+ *             .location("us-central1")
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var config = new InsightsReportConfig(&#34;config&#34;, InsightsReportConfigArgs.builder()        
- *             .displayName(&#34;Test Report Config&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var config = new InsightsReportConfig("config", InsightsReportConfigArgs.builder()        
+ *             .displayName("Test Report Config")
+ *             .location("us-central1")
  *             .frequencyOptions(InsightsReportConfigFrequencyOptionsArgs.builder()
- *                 .frequency(&#34;WEEKLY&#34;)
+ *                 .frequency("WEEKLY")
  *                 .startDate(InsightsReportConfigFrequencyOptionsStartDateArgs.builder()
  *                     .day(15)
  *                     .month(3)
@@ -91,36 +92,37 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .csvOptions(InsightsReportConfigCsvOptionsArgs.builder()
- *                 .recordSeparator(&#34;&#34;&#34;
+ *                 .recordSeparator("""
  * 
- *                 &#34;&#34;&#34;)
- *                 .delimiter(&#34;,&#34;)
+ *                 """)
+ *                 .delimiter(",")
  *                 .headerRequired(false)
  *                 .build())
  *             .objectMetadataReportOptions(InsightsReportConfigObjectMetadataReportOptionsArgs.builder()
  *                 .metadataFields(                
- *                     &#34;bucket&#34;,
- *                     &#34;name&#34;,
- *                     &#34;project&#34;)
+ *                     "bucket",
+ *                     "name",
+ *                     "project")
  *                 .storageFilters(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs.builder()
  *                     .bucket(reportBucket.name())
  *                     .build())
  *                 .storageDestinationOptions(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs.builder()
  *                     .bucket(reportBucket.name())
- *                     .destinationPath(&#34;test-insights-reports&#34;)
+ *                     .destinationPath("test-insights-reports")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var admin = new BucketIAMMember(&#34;admin&#34;, BucketIAMMemberArgs.builder()        
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()        
  *             .bucket(reportBucket.name())
- *             .role(&#34;roles/storage.admin&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-storageinsights.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/storage.admin")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-storageinsights.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

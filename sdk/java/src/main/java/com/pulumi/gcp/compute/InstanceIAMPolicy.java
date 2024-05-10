@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## google\_compute\_instance\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,27 +59,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/compute.osLogin&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/compute.osLogin")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy(&#34;policy&#34;, InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -103,31 +106,33 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/compute.osLogin&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/compute.osLogin")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy(&#34;policy&#34;, InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_compute\_instance\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -148,23 +153,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding(&#34;binding&#34;, InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .role(&#34;roles/compute.osLogin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/compute.osLogin")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -186,27 +193,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding(&#34;binding&#34;, InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .role(&#34;roles/compute.osLogin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/compute.osLogin")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(InstanceIAMBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_compute\_instance\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -227,23 +236,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember(&#34;member&#34;, InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .role(&#34;roles/compute.osLogin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/compute.osLogin")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -265,28 +276,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember(&#34;member&#34;, InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .role(&#34;roles/compute.osLogin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/compute.osLogin")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(InstanceIAMMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_compute\_instance\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -311,27 +324,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/compute.osLogin&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/compute.osLogin")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy(&#34;policy&#34;, InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -356,31 +371,33 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/compute.osLogin&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/compute.osLogin")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy(&#34;policy&#34;, InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIAMPolicy("policy", InstanceIAMPolicyArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_compute\_instance\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -401,23 +418,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding(&#34;binding&#34;, InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .role(&#34;roles/compute.osLogin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/compute.osLogin")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -439,27 +458,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding(&#34;binding&#34;, InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIAMBinding("binding", InstanceIAMBindingArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .role(&#34;roles/compute.osLogin&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/compute.osLogin")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(InstanceIAMBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_compute\_instance\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -480,23 +501,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember(&#34;member&#34;, InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .role(&#34;roles/compute.osLogin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/compute.osLogin")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -518,22 +541,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember(&#34;member&#34;, InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIAMMember("member", InstanceIAMMemberArgs.builder()        
  *             .project(default_.project())
  *             .zone(default_.zone())
  *             .instanceName(default_.name())
- *             .role(&#34;roles/compute.osLogin&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/compute.osLogin")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(InstanceIAMMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -555,7 +579,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:compute/instanceIAMPolicy:InstanceIAMPolicy editor &#34;projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin user:jane@example.com&#34;
+ * $ pulumi import gcp:compute/instanceIAMPolicy:InstanceIAMPolicy editor &#34;projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

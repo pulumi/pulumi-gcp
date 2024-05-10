@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Healthcare Fhir Store Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,20 +61,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;fhir-notifications&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("fhir-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var default_ = new FhirStore(&#34;default&#34;, FhirStoreArgs.builder()        
- *             .name(&#34;example-fhir-store&#34;)
+ *         var default_ = new FhirStore("default", FhirStoreArgs.builder()        
+ *             .name("example-fhir-store")
  *             .dataset(dataset.id())
- *             .version(&#34;R4&#34;)
- *             .complexDataTypeReferenceParsing(&#34;DISABLED&#34;)
+ *             .version("R4")
+ *             .complexDataTypeReferenceParsing("DISABLED")
  *             .enableUpdateCreate(false)
  *             .disableReferentialIntegrity(false)
  *             .disableResourceVersioning(false)
@@ -82,17 +83,19 @@ import javax.annotation.Nullable;
  *             .notificationConfig(FhirStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .build())
- *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .labels(Map.of("label1", "labelvalue1"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Healthcare Fhir Store Streaming Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -123,40 +126,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var bqDataset = new Dataset(&#34;bqDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;bq_example_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var bqDataset = new Dataset("bqDataset", DatasetArgs.builder()        
+ *             .datasetId("bq_example_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .deleteContentsOnDestroy(true)
  *             .build());
  * 
- *         var default_ = new FhirStore(&#34;default&#34;, FhirStoreArgs.builder()        
- *             .name(&#34;example-fhir-store&#34;)
+ *         var default_ = new FhirStore("default", FhirStoreArgs.builder()        
+ *             .name("example-fhir-store")
  *             .dataset(dataset.id())
- *             .version(&#34;R4&#34;)
+ *             .version("R4")
  *             .enableUpdateCreate(false)
  *             .disableReferentialIntegrity(false)
  *             .disableResourceVersioning(false)
  *             .enableHistoryImport(false)
- *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .labels(Map.of("label1", "labelvalue1"))
  *             .streamConfigs(FhirStoreStreamConfigArgs.builder()
- *                 .resourceTypes(&#34;Observation&#34;)
+ *                 .resourceTypes("Observation")
  *                 .bigqueryDestination(FhirStoreStreamConfigBigqueryDestinationArgs.builder()
- *                     .datasetUri(Output.tuple(bqDataset.project(), bqDataset.datasetId()).applyValue(values -&gt; {
+ *                     .datasetUri(Output.tuple(bqDataset.project(), bqDataset.datasetId()).applyValue(values -> {
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
- *                         return String.format(&#34;bq://%s.%s&#34;, project,datasetId);
+ *                         return String.format("bq://%s.%s", project,datasetId);
  *                     }))
  *                     .schemaConfig(FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs.builder()
  *                         .recursiveStructureDepth(3)
  *                         .lastUpdatedPartitionConfig(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs.builder()
- *                             .type(&#34;HOUR&#34;)
+ *                             .type("HOUR")
  *                             .expirationMs(1000000)
  *                             .build())
  *                         .build())
@@ -164,18 +167,20 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;fhir-notifications&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("fhir-notifications")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Healthcare Fhir Store Notification Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -201,24 +206,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;fhir-notifications&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("fhir-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var default_ = new FhirStore(&#34;default&#34;, FhirStoreArgs.builder()        
- *             .name(&#34;example-fhir-store&#34;)
+ *         var default_ = new FhirStore("default", FhirStoreArgs.builder()        
+ *             .name("example-fhir-store")
  *             .dataset(dataset.id())
- *             .version(&#34;R4&#34;)
+ *             .version("R4")
  *             .enableUpdateCreate(false)
  *             .disableReferentialIntegrity(false)
  *             .disableResourceVersioning(false)
  *             .enableHistoryImport(false)
- *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .labels(Map.of("label1", "labelvalue1"))
  *             .notificationConfig(FhirStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .build())
@@ -226,12 +231,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Healthcare Fhir Store Notification Configs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -257,25 +264,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;fhir-notifications&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("fhir-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .name(&#34;example-dataset&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .name("example-dataset")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var default_ = new FhirStore(&#34;default&#34;, FhirStoreArgs.builder()        
- *             .name(&#34;example-fhir-store&#34;)
+ *         var default_ = new FhirStore("default", FhirStoreArgs.builder()        
+ *             .name("example-fhir-store")
  *             .dataset(dataset.id())
- *             .version(&#34;R4&#34;)
+ *             .version("R4")
  *             .enableUpdateCreate(false)
  *             .disableReferentialIntegrity(false)
  *             .disableResourceVersioning(false)
  *             .enableHistoryImport(false)
  *             .enableHistoryModifications(false)
- *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .labels(Map.of("label1", "labelvalue1"))
  *             .notificationConfigs(FhirStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .sendFullResource(true)
@@ -285,7 +292,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Connection Cloud Resource
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,22 +58,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;my-connection&#34;)
- *             .location(&#34;US&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .description(&#34;a riveting description&#34;)
+ *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *             .connectionId("my-connection")
+ *             .location("US")
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
  *             .cloudResource()
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,40 +107,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-database-instance&#34;)
- *             .databaseVersion(&#34;POSTGRES_11&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("my-database-instance")
+ *             .databaseVersion("POSTGRES_11")
+ *             .region("us-central1")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()        
  *             .instance(instance.name())
- *             .name(&#34;db&#34;)
+ *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;user&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("user")
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
  * 
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .friendlyName(&#34;👋&#34;)
- *             .description(&#34;a riveting description&#34;)
- *             .location(&#34;US&#34;)
+ *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
+ *             .location("US")
  *             .cloudSql(ConnectionCloudSqlArgs.builder()
  *                 .instanceId(instance.connectionName())
  *                 .database(db.name())
- *                 .type(&#34;POSTGRES&#34;)
+ *                 .type("POSTGRES")
  *                 .credential(ConnectionCloudSqlCredentialArgs.builder()
  *                     .username(user.name())
  *                     .password(user.password())
@@ -147,12 +150,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -184,41 +189,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-database-instance&#34;)
- *             .databaseVersion(&#34;POSTGRES_11&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("my-database-instance")
+ *             .databaseVersion("POSTGRES_11")
+ *             .region("us-central1")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()        
  *             .instance(instance.name())
- *             .name(&#34;db&#34;)
+ *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;user&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("user")
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
  * 
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;my-connection&#34;)
- *             .location(&#34;US&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .description(&#34;a riveting description&#34;)
+ *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *             .connectionId("my-connection")
+ *             .location("US")
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
  *             .cloudSql(ConnectionCloudSqlArgs.builder()
  *                 .instanceId(instance.connectionName())
  *                 .database(db.name())
- *                 .type(&#34;POSTGRES&#34;)
+ *                 .type("POSTGRES")
  *                 .credential(ConnectionCloudSqlCredentialArgs.builder()
  *                     .username(user.name())
  *                     .password(user.password())
@@ -228,12 +233,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Aws
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -256,26 +263,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;my-connection&#34;)
- *             .location(&#34;aws-us-east-1&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .description(&#34;a riveting description&#34;)
+ *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *             .connectionId("my-connection")
+ *             .location("aws-us-east-1")
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
  *             .aws(ConnectionAwsArgs.builder()
  *                 .accessRole(ConnectionAwsAccessRoleArgs.builder()
- *                     .iamRoleId(&#34;arn:aws:iam::999999999999:role/omnirole&#34;)
+ *                     .iamRoleId("arn:aws:iam::999999999999:role/omnirole")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Azure
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -297,25 +306,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;my-connection&#34;)
- *             .location(&#34;azure-eastus2&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .description(&#34;a riveting description&#34;)
+ *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *             .connectionId("my-connection")
+ *             .location("azure-eastus2")
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
  *             .azure(ConnectionAzureArgs.builder()
- *                 .customerTenantId(&#34;customer-tenant-id&#34;)
- *                 .federatedApplicationClientId(&#34;b43eeeee-eeee-eeee-eeee-a480155501ce&#34;)
+ *                 .customerTenantId("customer-tenant-id")
+ *                 .federatedApplicationClientId("b43eeeee-eeee-eeee-eeee-a480155501ce")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Cloudspanner
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -337,25 +348,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;my-connection&#34;)
- *             .location(&#34;US&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .description(&#34;a riveting description&#34;)
+ *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *             .connectionId("my-connection")
+ *             .location("US")
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
  *             .cloudSpanner(ConnectionCloudSpannerArgs.builder()
- *                 .database(&#34;projects/project/instances/instance/databases/database&#34;)
- *                 .databaseRole(&#34;database_role&#34;)
+ *                 .database("projects/project/instances/instance/databases/database")
+ *                 .databaseRole("database_role")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Cloudspanner Databoost
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -377,13 +390,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;my-connection&#34;)
- *             .location(&#34;US&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .description(&#34;a riveting description&#34;)
+ *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *             .connectionId("my-connection")
+ *             .location("US")
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
  *             .cloudSpanner(ConnectionCloudSpannerArgs.builder()
- *                 .database(&#34;projects/project/instances/instance/databases/database&#34;)
+ *                 .database("projects/project/instances/instance/databases/database")
  *                 .useParallelism(true)
  *                 .useDataBoost(true)
  *                 .maxParallelism(100)
@@ -392,12 +405,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Spark
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -426,16 +441,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Cluster(&#34;basic&#34;, ClusterArgs.builder()        
- *             .name(&#34;my-connection&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var basic = new Cluster("basic", ClusterArgs.builder()        
+ *             .name("my-connection")
+ *             .region("us-central1")
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .softwareConfig(ClusterClusterConfigSoftwareConfigArgs.builder()
- *                     .overrideProperties(Map.of(&#34;dataproc:dataproc.allow.zero.workers&#34;, &#34;true&#34;))
+ *                     .overrideProperties(Map.of("dataproc:dataproc.allow.zero.workers", "true"))
  *                     .build())
  *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
  *                     .numInstances(1)
- *                     .machineType(&#34;e2-standard-2&#34;)
+ *                     .machineType("e2-standard-2")
  *                     .diskConfig(ClusterClusterConfigMasterConfigDiskConfigArgs.builder()
  *                         .bootDiskSizeGb(35)
  *                         .build())
@@ -443,11 +458,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .connectionId(&#34;my-connection&#34;)
- *             .location(&#34;US&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .description(&#34;a riveting description&#34;)
+ *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *             .connectionId("my-connection")
+ *             .location("US")
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
  *             .spark(ConnectionSparkArgs.builder()
  *                 .sparkHistoryServerConfig(ConnectionSparkSparkHistoryServerConfigArgs.builder()
  *                     .dataprocCluster(basic.id())
@@ -457,7 +472,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

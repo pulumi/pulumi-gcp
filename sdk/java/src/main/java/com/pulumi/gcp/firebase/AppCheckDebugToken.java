@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Firebase App Check Debug Token Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,27 +57,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Web App for debug token&#34;)
+ *         var default_ = new WebApp("default", WebAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Web App for debug token")
  *             .build());
  * 
  *         // It takes a while for App Check to recognize the new app
- *         // If your app already exists, you don&#39;t have to wait 30 seconds.
- *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;30s&#34;)
+ *         // If your app already exists, you don't have to wait 30 seconds.
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckDebugToken = new AppCheckDebugToken(&#34;defaultAppCheckDebugToken&#34;, AppCheckDebugTokenArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var defaultAppCheckDebugToken = new AppCheckDebugToken("defaultAppCheckDebugToken", AppCheckDebugTokenArgs.builder()        
+ *             .project("my-project-name")
  *             .appId(default_.appId())
- *             .displayName(&#34;Debug Token&#34;)
- *             .token(&#34;00000000-AAAA-BBBB-CCCC-000000000000&#34;)
+ *             .displayName("Debug Token")
+ *             .token("00000000-AAAA-BBBB-CCCC-000000000000")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

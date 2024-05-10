@@ -23,7 +23,8 @@ public final class CloudquotaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -45,14 +46,15 @@ public final class CloudquotaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myQuotaInfo = CloudquotaFunctions.getSQuotaInfo(GetSQuotaInfoArgs.builder()
-     *             .parent(&#34;projects/my-project&#34;)
-     *             .service(&#34;compute.googleapis.com&#34;)
-     *             .quotaId(&#34;CPUS-per-project-region&#34;)
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
+     *             .quotaId("CPUS-per-project-region")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -65,7 +67,8 @@ public final class CloudquotaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -87,14 +90,15 @@ public final class CloudquotaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myQuotaInfo = CloudquotaFunctions.getSQuotaInfo(GetSQuotaInfoArgs.builder()
-     *             .parent(&#34;projects/my-project&#34;)
-     *             .service(&#34;compute.googleapis.com&#34;)
-     *             .quotaId(&#34;CPUS-per-project-region&#34;)
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
+     *             .quotaId("CPUS-per-project-region")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -107,7 +111,8 @@ public final class CloudquotaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -129,14 +134,15 @@ public final class CloudquotaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myQuotaInfo = CloudquotaFunctions.getSQuotaInfo(GetSQuotaInfoArgs.builder()
-     *             .parent(&#34;projects/my-project&#34;)
-     *             .service(&#34;compute.googleapis.com&#34;)
-     *             .quotaId(&#34;CPUS-per-project-region&#34;)
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
+     *             .quotaId("CPUS-per-project-region")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -149,7 +155,8 @@ public final class CloudquotaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -171,14 +178,15 @@ public final class CloudquotaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myQuotaInfo = CloudquotaFunctions.getSQuotaInfo(GetSQuotaInfoArgs.builder()
-     *             .parent(&#34;projects/my-project&#34;)
-     *             .service(&#34;compute.googleapis.com&#34;)
-     *             .quotaId(&#34;CPUS-per-project-region&#34;)
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
+     *             .quotaId("CPUS-per-project-region")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -191,7 +199,8 @@ public final class CloudquotaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -213,13 +222,14 @@ public final class CloudquotaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myQuotaInfos = CloudquotaFunctions.getSQuotaInfos(GetSQuotaInfosArgs.builder()
-     *             .parent(&#34;projects/my-project&#34;)
-     *             .service(&#34;compute.googleapis.com&#34;)
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -232,7 +242,8 @@ public final class CloudquotaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -254,13 +265,14 @@ public final class CloudquotaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myQuotaInfos = CloudquotaFunctions.getSQuotaInfos(GetSQuotaInfosArgs.builder()
-     *             .parent(&#34;projects/my-project&#34;)
-     *             .service(&#34;compute.googleapis.com&#34;)
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -273,7 +285,8 @@ public final class CloudquotaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -295,13 +308,14 @@ public final class CloudquotaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myQuotaInfos = CloudquotaFunctions.getSQuotaInfos(GetSQuotaInfosArgs.builder()
-     *             .parent(&#34;projects/my-project&#34;)
-     *             .service(&#34;compute.googleapis.com&#34;)
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -314,7 +328,8 @@ public final class CloudquotaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -336,13 +351,14 @@ public final class CloudquotaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myQuotaInfos = CloudquotaFunctions.getSQuotaInfos(GetSQuotaInfosArgs.builder()
-     *             .parent(&#34;projects/my-project&#34;)
-     *             .service(&#34;compute.googleapis.com&#34;)
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

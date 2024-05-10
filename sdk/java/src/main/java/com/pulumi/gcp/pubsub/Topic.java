@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### Pubsub Topic Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,20 +58,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .messageRetentionDuration(&#34;86600s&#34;)
+ *         var example = new Topic("example", TopicArgs.builder()        
+ *             .name("example-topic")
+ *             .labels(Map.of("foo", "bar"))
+ *             .messageRetentionDuration("86600s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Topic Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,29 +98,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;example-keyring&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("example-keyring")
+ *             .location("global")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;example-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("example-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var example = new Topic("example", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .kmsKeyName(cryptoKey.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Topic Geo Restricted
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -139,21 +144,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var example = new Topic("example", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .messageStoragePolicy(TopicMessageStoragePolicyArgs.builder()
- *                 .allowedPersistenceRegions(&#34;europe-west3&#34;)
+ *                 .allowedPersistenceRegions("europe-west3")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Topic Schema Settings
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -177,43 +184,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Schema(&#34;example&#34;, SchemaArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .type(&#34;AVRO&#34;)
- *             .definition(&#34;&#34;&#34;
+ *         var example = new Schema("example", SchemaArgs.builder()        
+ *             .name("example")
+ *             .type("AVRO")
+ *             .definition("""
  * {
- *   &#34;type&#34; : &#34;record&#34;,
- *   &#34;name&#34; : &#34;Avro&#34;,
- *   &#34;fields&#34; : [
+ *   "type" : "record",
+ *   "name" : "Avro",
+ *   "fields" : [
  *     {
- *       &#34;name&#34; : &#34;StringField&#34;,
- *       &#34;type&#34; : &#34;string&#34;
+ *       "name" : "StringField",
+ *       "type" : "string"
  *     },
  *     {
- *       &#34;name&#34; : &#34;IntField&#34;,
- *       &#34;type&#34; : &#34;int&#34;
+ *       "name" : "IntField",
+ *       "type" : "int"
  *     }
  *   ]
  * }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .schemaSettings(TopicSchemaSettingsArgs.builder()
- *                 .schema(&#34;projects/my-project-name/schemas/example&#34;)
- *                 .encoding(&#34;JSON&#34;)
+ *                 .schema("projects/my-project-name/schemas/example")
+ *                 .encoding("JSON")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Topic Ingestion Kinesis
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -236,21 +245,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
+ *         var example = new Topic("example", TopicArgs.builder()        
+ *             .name("example-topic")
  *             .ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs.builder()
  *                 .awsKinesis(TopicIngestionDataSourceSettingsAwsKinesisArgs.builder()
- *                     .streamArn(&#34;arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name&#34;)
- *                     .consumerArn(&#34;arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111&#34;)
- *                     .awsRoleArn(&#34;arn:aws:iam::111111111111:role/fake-role-name&#34;)
- *                     .gcpServiceAccount(&#34;fake-service-account@fake-gcp-project.iam.gserviceaccount.com&#34;)
+ *                     .streamArn("arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name")
+ *                     .consumerArn("arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111")
+ *                     .awsRoleArn("arn:aws:iam::111111111111:role/fake-role-name")
+ *                     .gcpServiceAccount("fake-service-account{@literal @}fake-gcp-project.iam.gserviceaccount.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -313,7 +323,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project&#39;s PubSub service account
-     * (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
+     * (`service-{{PROJECT_NUMBER}}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * The expected format is `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`
      * 
@@ -324,7 +334,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * @return The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project&#39;s PubSub service account
-     * (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
+     * (`service-{{PROJECT_NUMBER}}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * The expected format is `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`
      * 

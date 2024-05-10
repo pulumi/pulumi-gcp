@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### App Engine Service Network Settings
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,47 +59,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;appengine-static-content&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("appengine-static-content")
+ *             .location("US")
  *             .build());
  * 
- *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;hello-world.zip&#34;)
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *             .name("hello-world.zip")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
+ *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
  *             .build());
  * 
- *         var internalapp = new StandardAppVersion(&#34;internalapp&#34;, StandardAppVersionArgs.builder()        
- *             .versionId(&#34;v1&#34;)
- *             .service(&#34;internalapp&#34;)
+ *         var internalapp = new StandardAppVersion("internalapp", StandardAppVersionArgs.builder()        
+ *             .versionId("v1")
+ *             .service("internalapp")
  *             .deleteServiceOnDestroy(true)
- *             .runtime(&#34;nodejs20&#34;)
+ *             .runtime("nodejs20")
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
- *                 .shell(&#34;node ./app.js&#34;)
+ *                 .shell("node ./app.js")
  *                 .build())
  *             .deployment(StandardAppVersionDeploymentArgs.builder()
  *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
  *                         var bucketName = values.t1;
  *                         var objectName = values.t2;
- *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+ *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
  *                     }))
  *                     .build())
  *                 .build())
- *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+ *             .envVariables(Map.of("port", "8080"))
  *             .build());
  * 
- *         var internalappServiceNetworkSettings = new ServiceNetworkSettings(&#34;internalappServiceNetworkSettings&#34;, ServiceNetworkSettingsArgs.builder()        
+ *         var internalappServiceNetworkSettings = new ServiceNetworkSettings("internalappServiceNetworkSettings", ServiceNetworkSettingsArgs.builder()        
  *             .service(internalapp.service())
  *             .networkSettings(ServiceNetworkSettingsNetworkSettingsArgs.builder()
- *                 .ingressTrafficAllowed(&#34;INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY&#34;)
+ *                 .ingressTrafficAllowed("INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

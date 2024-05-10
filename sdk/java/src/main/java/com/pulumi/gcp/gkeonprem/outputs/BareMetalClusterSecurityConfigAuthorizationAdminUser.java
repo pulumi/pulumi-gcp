@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class BareMetalClusterSecurityConfigAuthorizationAdminUser {
     /**
-     * @return The name of the user, e.g. `my-gcp-id@gmail.com`.
+     * @return The name of the user, e.g. `my-gcp-id{@literal @}gmail.com`.
      * 
      */
     private String username;
 
     private BareMetalClusterSecurityConfigAuthorizationAdminUser() {}
     /**
-     * @return The name of the user, e.g. `my-gcp-id@gmail.com`.
+     * @return The name of the user, e.g. `my-gcp-id{@literal @}gmail.com`.
      * 
      */
     public String username() {

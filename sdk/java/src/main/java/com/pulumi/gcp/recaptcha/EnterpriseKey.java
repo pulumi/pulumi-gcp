@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Android_key
  * A basic test of recaptcha enterprise key that can be used by Android apps
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,27 +54,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
- *             .displayName(&#34;display-name-one&#34;)
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *             .displayName("display-name-one")
  *             .androidSettings(EnterpriseKeyAndroidSettingsArgs.builder()
  *                 .allowAllPackageNames(true)
  *                 .allowedPackageNames()
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
  *                 .testingScore(0.8)
  *                 .build())
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Ios_key
  * A basic test of recaptcha enterprise key that can be used by iOS apps
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,27 +99,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
- *             .displayName(&#34;display-name-one&#34;)
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *             .displayName("display-name-one")
  *             .iosSettings(EnterpriseKeyIosSettingsArgs.builder()
  *                 .allowAllBundleIds(true)
  *                 .allowedBundleIds()
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
  *                 .testingScore(1)
  *                 .build())
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Minimal_key
  * A minimal test of recaptcha enterprise key
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -138,11 +143,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
- *             .displayName(&#34;display-name-one&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *             .displayName("display-name-one")
+ *             .project("my-project-name")
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
- *                 .integrationType(&#34;SCORE&#34;)
+ *                 .integrationType("SCORE")
  *                 .allowAllDomains(true)
  *                 .build())
  *             .labels()
@@ -150,12 +155,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Waf_key
  * A basic test of recaptcha enterprise key that includes WAF settings
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -179,34 +186,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
- *             .displayName(&#34;display-name-one&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *             .displayName("display-name-one")
+ *             .project("my-project-name")
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
- *                 .testingChallenge(&#34;NOCAPTCHA&#34;)
+ *                 .testingChallenge("NOCAPTCHA")
  *                 .testingScore(0.5)
  *                 .build())
  *             .wafSettings(EnterpriseKeyWafSettingsArgs.builder()
- *                 .wafFeature(&#34;CHALLENGE_PAGE&#34;)
- *                 .wafService(&#34;CA&#34;)
+ *                 .wafFeature("CHALLENGE_PAGE")
+ *                 .wafService("CA")
  *                 .build())
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
- *                 .integrationType(&#34;INVISIBLE&#34;)
+ *                 .integrationType("INVISIBLE")
  *                 .allowAllDomains(true)
  *                 .allowedDomains()
- *                 .challengeSecurityPreference(&#34;USABILITY&#34;)
+ *                 .challengeSecurityPreference("USABILITY")
  *                 .build())
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Web_key
  * A basic test of recaptcha enterprise key that can be used by websites
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -229,30 +238,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
- *             .displayName(&#34;display-name-one&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *             .displayName("display-name-one")
+ *             .project("my-project-name")
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
- *                 .testingChallenge(&#34;NOCAPTCHA&#34;)
+ *                 .testingChallenge("NOCAPTCHA")
  *                 .testingScore(0.5)
  *                 .build())
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
- *                 .integrationType(&#34;CHECKBOX&#34;)
+ *                 .integrationType("CHECKBOX")
  *                 .allowAllDomains(true)
  *                 .allowedDomains()
- *                 .challengeSecurityPreference(&#34;USABILITY&#34;)
+ *                 .challengeSecurityPreference("USABILITY")
  *                 .build())
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Web_score_key
  * A basic test of recaptcha enterprise key with score integration type that can be used by websites
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -275,24 +286,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
- *             .displayName(&#34;display-name-one&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *             .displayName("display-name-one")
+ *             .project("my-project-name")
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
  *                 .testingScore(0.5)
  *                 .build())
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
- *                 .integrationType(&#34;SCORE&#34;)
+ *                 .integrationType("SCORE")
  *                 .allowAllDomains(true)
  *                 .allowAmpTraffic(false)
  *                 .allowedDomains()
  *                 .build())
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

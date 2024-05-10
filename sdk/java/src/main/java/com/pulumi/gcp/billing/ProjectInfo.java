@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Billing Project Info Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,20 +51,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;tf-test_15222&#34;)
- *             .name(&#34;tf-test_81126&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("tf-test_15222")
+ *             .name("tf-test_81126")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var default_ = new ProjectInfo(&#34;default&#34;, ProjectInfoArgs.builder()        
+ *         var default_ = new ProjectInfo("default", ProjectInfoArgs.builder()        
  *             .project(project.projectId())
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

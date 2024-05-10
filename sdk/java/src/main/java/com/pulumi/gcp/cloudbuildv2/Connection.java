@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Cloudbuildv2 Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,25 +59,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;tf-test-connection&#34;)
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()        
+ *             .location("us-central1")
+ *             .name("tf-test-connection")
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .appInstallationId(0)
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
- *                     .oauthTokenSecretVersion(&#34;projects/gcb-terraform-creds/secrets/github-pat/versions/1&#34;)
+ *                     .oauthTokenSecretVersion("projects/gcb-terraform-creds/secrets/github-pat/versions/1")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudbuildv2 Connection Ghe
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -108,70 +111,72 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var private_key_secret = new Secret(&#34;private-key-secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;ghe-pk-secret&#34;)
+ *         var private_key_secret = new Secret("private-key-secret", SecretArgs.builder()        
+ *             .secretId("ghe-pk-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var private_key_secret_version = new SecretVersion(&#34;private-key-secret-version&#34;, SecretVersionArgs.builder()        
+ *         var private_key_secret_version = new SecretVersion("private-key-secret-version", SecretVersionArgs.builder()        
  *             .secret(private_key_secret.id())
  *             .secretData(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;private-key.pem&#34;)
+ *                 .input("private-key.pem")
  *                 .build()).result())
  *             .build());
  * 
- *         var webhook_secret_secret = new Secret(&#34;webhook-secret-secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;github-token-secret&#34;)
+ *         var webhook_secret_secret = new Secret("webhook-secret-secret", SecretArgs.builder()        
+ *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var webhook_secret_secret_version = new SecretVersion(&#34;webhook-secret-secret-version&#34;, SecretVersionArgs.builder()        
+ *         var webhook_secret_secret_version = new SecretVersion("webhook-secret-secret-version", SecretVersionArgs.builder()        
  *             .secret(webhook_secret_secret.id())
- *             .secretData(&#34;&lt;webhook-secret-data&gt;&#34;)
+ *             .secretData("<webhook-secret-data>")
  *             .build());
  * 
  *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *                 .members(&#34;serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com&#34;)
+ *                 .role("roles/secretmanager.secretAccessor")
+ *                 .members("serviceAccount:service-123456789{@literal @}gcp-sa-cloudbuild.iam.gserviceaccount.com")
  *                 .build())
  *             .build());
  * 
- *         var policy_pk = new SecretIamPolicy(&#34;policy-pk&#34;, SecretIamPolicyArgs.builder()        
+ *         var policy_pk = new SecretIamPolicy("policy-pk", SecretIamPolicyArgs.builder()        
  *             .secretId(private_key_secret.secretId())
  *             .policyData(p4sa_secretAccessor.policyData())
  *             .build());
  * 
- *         var policy_whs = new SecretIamPolicy(&#34;policy-whs&#34;, SecretIamPolicyArgs.builder()        
+ *         var policy_whs = new SecretIamPolicy("policy-whs", SecretIamPolicyArgs.builder()        
  *             .secretId(webhook_secret_secret.secretId())
  *             .policyData(p4sa_secretAccessor.policyData())
  *             .build());
  * 
- *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-terraform-ghe-connection&#34;)
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-terraform-ghe-connection")
  *             .githubEnterpriseConfig(ConnectionGithubEnterpriseConfigArgs.builder()
- *                 .hostUri(&#34;https://ghe.com&#34;)
+ *                 .hostUri("https://ghe.com")
  *                 .privateKeySecretVersion(private_key_secret_version.id())
  *                 .webhookSecretSecretVersion(webhook_secret_secret_version.id())
  *                 .appId(200)
- *                 .appSlug(&#34;gcb-app&#34;)
+ *                 .appSlug("gcb-app")
  *                 .appInstallationId(300)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudbuildv2 Connection Github
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -204,35 +209,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var github_token_secret = new Secret(&#34;github-token-secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;github-token-secret&#34;)
+ *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()        
+ *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var github_token_secret_version = new SecretVersion(&#34;github-token-secret-version&#34;, SecretVersionArgs.builder()        
+ *         var github_token_secret_version = new SecretVersion("github-token-secret-version", SecretVersionArgs.builder()        
  *             .secret(github_token_secret.id())
  *             .secretData(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;my-github-token.txt&#34;)
+ *                 .input("my-github-token.txt")
  *                 .build()).result())
  *             .build());
  * 
  *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *                 .members(&#34;serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com&#34;)
+ *                 .role("roles/secretmanager.secretAccessor")
+ *                 .members("serviceAccount:service-123456789{@literal @}gcp-sa-cloudbuild.iam.gserviceaccount.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new SecretIamPolicy(&#34;policy&#34;, SecretIamPolicyArgs.builder()        
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()        
  *             .secretId(github_token_secret.secretId())
  *             .policyData(p4sa_secretAccessor.policyData())
  *             .build());
  * 
- *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-connection&#34;)
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-connection")
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .appInstallationId(123123)
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
@@ -243,7 +248,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

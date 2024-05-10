@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Workflow Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,20 +54,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testAccount = new Account(&#34;testAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
+ *         var testAccount = new Account("testAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var example = new Workflow(&#34;example&#34;, WorkflowArgs.builder()        
- *             .name(&#34;workflow&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .description(&#34;Magic&#34;)
+ *         var example = new Workflow("example", WorkflowArgs.builder()        
+ *             .name("workflow")
+ *             .region("us-central1")
+ *             .description("Magic")
  *             .serviceAccount(testAccount.id())
- *             .callLogLevel(&#34;LOG_ERRORS_ONLY&#34;)
- *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
- *             .userEnvVars(Map.of(&#34;url&#34;, &#34;https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam&#34;))
- *             .sourceContents(&#34;&#34;&#34;
+ *             .callLogLevel("LOG_ERRORS_ONLY")
+ *             .labels(Map.of("env", "test"))
+ *             .userEnvVars(Map.of("url", "https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam"))
+ *             .sourceContents("""
  * # This is a sample workflow. You can replace it with your source code.
  * #
  * # This workflow does the following:
@@ -81,7 +82,7 @@ import javax.annotation.Nullable;
  * - getCurrentTime:
  *     call: http.get
  *     args:
- *         url: ${sys.get_env(&#34;url&#34;)}
+ *         url: ${sys.get_env("url")}
  *     result: currentTime
  * - readWikipedia:
  *     call: http.get
@@ -93,12 +94,13 @@ import javax.annotation.Nullable;
  *     result: wikiResult
  * - returnOutput:
  *     return: ${wikiResult.body[1]}
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

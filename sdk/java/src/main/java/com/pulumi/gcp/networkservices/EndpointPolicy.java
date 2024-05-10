@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Network Services Endpoint Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,20 +49,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EndpointPolicy(&#34;default&#34;, EndpointPolicyArgs.builder()        
- *             .name(&#34;my-endpoint-policy&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .type(&#34;SIDECAR_PROXY&#34;)
+ *         var default_ = new EndpointPolicy("default", EndpointPolicyArgs.builder()        
+ *             .name("my-endpoint-policy")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .type("SIDECAR_PROXY")
  *             .trafficPortSelector(EndpointPolicyTrafficPortSelectorArgs.builder()
- *                 .ports(&#34;8081&#34;)
+ *                 .ports("8081")
  *                 .build())
  *             .endpointMatcher(EndpointPolicyEndpointMatcherArgs.builder()
  *                 .metadataLabelMatcher(EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs.builder()
- *                     .metadataLabelMatchCriteria(&#34;MATCH_ANY&#34;)
+ *                     .metadataLabelMatchCriteria("MATCH_ANY")
  *                     .metadataLabels(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs.builder()
- *                         .labelName(&#34;foo&#34;)
- *                         .labelValue(&#34;bar&#34;)
+ *                         .labelName("foo")
+ *                         .labelValue("bar")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -69,12 +70,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Endpoint Policy Empty Match
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -98,24 +101,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EndpointPolicy(&#34;default&#34;, EndpointPolicyArgs.builder()        
- *             .name(&#34;my-endpoint-policy&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .type(&#34;SIDECAR_PROXY&#34;)
+ *         var default_ = new EndpointPolicy("default", EndpointPolicyArgs.builder()        
+ *             .name("my-endpoint-policy")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .type("SIDECAR_PROXY")
  *             .trafficPortSelector(EndpointPolicyTrafficPortSelectorArgs.builder()
- *                 .ports(&#34;8081&#34;)
+ *                 .ports("8081")
  *                 .build())
  *             .endpointMatcher(EndpointPolicyEndpointMatcherArgs.builder()
  *                 .metadataLabelMatcher(EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs.builder()
- *                     .metadataLabelMatchCriteria(&#34;MATCH_ANY&#34;)
+ *                     .metadataLabelMatchCriteria("MATCH_ANY")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

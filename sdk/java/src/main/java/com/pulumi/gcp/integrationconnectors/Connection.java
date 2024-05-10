@@ -42,7 +42,8 @@ import javax.annotation.Nullable;
  * ### Integration Connectors Connection Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,30 +69,32 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
- *         var pubsubconnection = new Connection(&#34;pubsubconnection&#34;, ConnectionArgs.builder()        
- *             .name(&#34;test-pubsub&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectorVersion(String.format(&#34;projects/%s/locations/global/providers/gcp/connectors/pubsub/versions/1&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.projectId())))
- *             .description(&#34;tf created description&#34;)
+ *         var pubsubconnection = new Connection("pubsubconnection", ConnectionArgs.builder()        
+ *             .name("test-pubsub")
+ *             .location("us-central1")
+ *             .connectorVersion(String.format("projects/%s/locations/global/providers/gcp/connectors/pubsub/versions/1", testProject.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *             .description("tf created description")
  *             .configVariables(            
  *                 ConnectionConfigVariableArgs.builder()
- *                     .key(&#34;project_id&#34;)
- *                     .stringValue(&#34;connectors-example&#34;)
+ *                     .key("project_id")
+ *                     .stringValue("connectors-example")
  *                     .build(),
  *                 ConnectionConfigVariableArgs.builder()
- *                     .key(&#34;topic_id&#34;)
- *                     .stringValue(&#34;test&#34;)
+ *                     .key("topic_id")
+ *                     .stringValue("test")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Integration Connectors Connection Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -144,52 +147,52 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
- *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
- *             .secretId(&#34;test-secret&#34;)
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *             .secretId("test-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
  *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
- *                         .location(&#34;us-central1&#34;)
+ *                         .location("us-central1")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion(&#34;secret-version-basic&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
- *             .secretData(&#34;dummypassword&#34;)
+ *             .secretData("dummypassword")
  *             .build());
  * 
- *         var secretIam = new SecretIamMember(&#34;secretIam&#34;, SecretIamMemberArgs.builder()        
+ *         var secretIam = new SecretIamMember("secretIam", SecretIamMemberArgs.builder()        
  *             .secretId(secret_basic.id())
- *             .role(&#34;roles/secretmanager.admin&#34;)
- *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.admin")
+ *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var zendeskconnection = new Connection(&#34;zendeskconnection&#34;, ConnectionArgs.builder()        
- *             .name(&#34;test-zendesk&#34;)
- *             .description(&#34;tf updated description&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .serviceAccount(String.format(&#34;%s-compute@developer.gserviceaccount.com&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *             .connectorVersion(String.format(&#34;projects/%s/locations/global/providers/zendesk/connectors/zendesk/versions/1&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.projectId())))
+ *         var zendeskconnection = new Connection("zendeskconnection", ConnectionArgs.builder()        
+ *             .name("test-zendesk")
+ *             .description("tf updated description")
+ *             .location("us-central1")
+ *             .serviceAccount(String.format("%s-compute{@literal @}developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .connectorVersion(String.format("projects/%s/locations/global/providers/zendesk/connectors/zendesk/versions/1", testProject.applyValue(getProjectResult -> getProjectResult.projectId())))
  *             .configVariables(            
  *                 ConnectionConfigVariableArgs.builder()
- *                     .key(&#34;proxy_enabled&#34;)
+ *                     .key("proxy_enabled")
  *                     .booleanValue(false)
  *                     .build(),
  *                 ConnectionConfigVariableArgs.builder()
- *                     .key(&#34;sample_integer_value&#34;)
+ *                     .key("sample_integer_value")
  *                     .integerValue(1)
  *                     .build(),
  *                 ConnectionConfigVariableArgs.builder()
- *                     .key(&#34;sample_encryption_key_value&#34;)
+ *                     .key("sample_encryption_key_value")
  *                     .encryptionKeyValue(ConnectionConfigVariableEncryptionKeyValueArgs.builder()
- *                         .type(&#34;GOOGLE_MANAGED&#34;)
- *                         .kmsKeyName(&#34;sampleKMSKkey&#34;)
+ *                         .type("GOOGLE_MANAGED")
+ *                         .kmsKeyName("sampleKMSKkey")
  *                         .build())
  *                     .build(),
  *                 ConnectionConfigVariableArgs.builder()
- *                     .key(&#34;sample_secret_value&#34;)
+ *                     .key("sample_secret_value")
  *                     .secretValue(ConnectionConfigVariableSecretValueArgs.builder()
  *                         .secretVersion(secret_version_basic.name())
  *                         .build())
@@ -198,49 +201,49 @@ import javax.annotation.Nullable;
  *             .authConfig(ConnectionAuthConfigArgs.builder()
  *                 .additionalVariables(                
  *                     ConnectionAuthConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_string&#34;)
- *                         .stringValue(&#34;sampleString&#34;)
+ *                         .key("sample_string")
+ *                         .stringValue("sampleString")
  *                         .build(),
  *                     ConnectionAuthConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_boolean&#34;)
+ *                         .key("sample_boolean")
  *                         .booleanValue(false)
  *                         .build(),
  *                     ConnectionAuthConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_integer&#34;)
+ *                         .key("sample_integer")
  *                         .integerValue(1)
  *                         .build(),
  *                     ConnectionAuthConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_secret_value&#34;)
+ *                         .key("sample_secret_value")
  *                         .secretValue(ConnectionAuthConfigAdditionalVariableSecretValueArgs.builder()
  *                             .secretVersion(secret_version_basic.name())
  *                             .build())
  *                         .build(),
  *                     ConnectionAuthConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_encryption_key_value&#34;)
+ *                         .key("sample_encryption_key_value")
  *                         .encryptionKeyValue(ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs.builder()
- *                             .type(&#34;GOOGLE_MANAGED&#34;)
- *                             .kmsKeyName(&#34;sampleKMSKkey&#34;)
+ *                             .type("GOOGLE_MANAGED")
+ *                             .kmsKeyName("sampleKMSKkey")
  *                             .build())
  *                         .build())
- *                 .authType(&#34;USER_PASSWORD&#34;)
- *                 .authKey(&#34;sampleAuthKey&#34;)
+ *                 .authType("USER_PASSWORD")
+ *                 .authKey("sampleAuthKey")
  *                 .userPassword(ConnectionAuthConfigUserPasswordArgs.builder()
- *                     .username(&#34;user@xyz.com&#34;)
+ *                     .username("user{@literal @}xyz.com")
  *                     .password(ConnectionAuthConfigUserPasswordPasswordArgs.builder()
  *                         .secretVersion(secret_version_basic.name())
  *                         .build())
  *                     .build())
  *                 .build())
  *             .destinationConfigs(ConnectionDestinationConfigArgs.builder()
- *                 .key(&#34;url&#34;)
+ *                 .key("url")
  *                 .destinations(ConnectionDestinationConfigDestinationArgs.builder()
- *                     .host(&#34;https://test.zendesk.com&#34;)
+ *                     .host("https://test.zendesk.com")
  *                     .port(80)
  *                     .build())
  *                 .build())
  *             .lockConfig(ConnectionLockConfigArgs.builder()
  *                 .locked(false)
- *                 .reason(&#34;Its not locked&#34;)
+ *                 .reason("Its not locked")
  *                 .build())
  *             .logConfig(ConnectionLogConfigArgs.builder()
  *                 .enabled(true)
@@ -249,35 +252,35 @@ import javax.annotation.Nullable;
  *                 .minNodeCount(2)
  *                 .maxNodeCount(50)
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .sslConfig(ConnectionSslConfigArgs.builder()
  *                 .additionalVariables(                
  *                     ConnectionSslConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_string&#34;)
- *                         .stringValue(&#34;sampleString&#34;)
+ *                         .key("sample_string")
+ *                         .stringValue("sampleString")
  *                         .build(),
  *                     ConnectionSslConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_boolean&#34;)
+ *                         .key("sample_boolean")
  *                         .booleanValue(false)
  *                         .build(),
  *                     ConnectionSslConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_integer&#34;)
+ *                         .key("sample_integer")
  *                         .integerValue(1)
  *                         .build(),
  *                     ConnectionSslConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_secret_value&#34;)
+ *                         .key("sample_secret_value")
  *                         .secretValue(ConnectionSslConfigAdditionalVariableSecretValueArgs.builder()
  *                             .secretVersion(secret_version_basic.name())
  *                             .build())
  *                         .build(),
  *                     ConnectionSslConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_encryption_key_value&#34;)
+ *                         .key("sample_encryption_key_value")
  *                         .encryptionKeyValue(ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs.builder()
- *                             .type(&#34;GOOGLE_MANAGED&#34;)
- *                             .kmsKeyName(&#34;sampleKMSKkey&#34;)
+ *                             .type("GOOGLE_MANAGED")
+ *                             .kmsKeyName("sampleKMSKkey")
  *                             .build())
  *                         .build())
- *                 .clientCertType(&#34;PEM&#34;)
+ *                 .clientCertType("PEM")
  *                 .clientCertificate(ConnectionSslConfigClientCertificateArgs.builder()
  *                     .secretVersion(secret_version_basic.name())
  *                     .build())
@@ -290,79 +293,79 @@ import javax.annotation.Nullable;
  *                 .privateServerCertificate(ConnectionSslConfigPrivateServerCertificateArgs.builder()
  *                     .secretVersion(secret_version_basic.name())
  *                     .build())
- *                 .serverCertType(&#34;PEM&#34;)
- *                 .trustModel(&#34;PRIVATE&#34;)
- *                 .type(&#34;TLS&#34;)
+ *                 .serverCertType("PEM")
+ *                 .trustModel("PRIVATE")
+ *                 .type("TLS")
  *                 .useSsl(true)
  *                 .build())
- *             .eventingEnablementType(&#34;EVENTING_AND_CONNECTION&#34;)
+ *             .eventingEnablementType("EVENTING_AND_CONNECTION")
  *             .eventingConfig(ConnectionEventingConfigArgs.builder()
  *                 .additionalVariables(                
  *                     ConnectionEventingConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_string&#34;)
- *                         .stringValue(&#34;sampleString&#34;)
+ *                         .key("sample_string")
+ *                         .stringValue("sampleString")
  *                         .build(),
  *                     ConnectionEventingConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_boolean&#34;)
+ *                         .key("sample_boolean")
  *                         .booleanValue(false)
  *                         .build(),
  *                     ConnectionEventingConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_integer&#34;)
+ *                         .key("sample_integer")
  *                         .integerValue(1)
  *                         .build(),
  *                     ConnectionEventingConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_secret_value&#34;)
+ *                         .key("sample_secret_value")
  *                         .secretValue(ConnectionEventingConfigAdditionalVariableSecretValueArgs.builder()
  *                             .secretVersion(secret_version_basic.name())
  *                             .build())
  *                         .build(),
  *                     ConnectionEventingConfigAdditionalVariableArgs.builder()
- *                         .key(&#34;sample_encryption_key_value&#34;)
+ *                         .key("sample_encryption_key_value")
  *                         .encryptionKeyValue(ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs.builder()
- *                             .type(&#34;GOOGLE_MANAGED&#34;)
- *                             .kmsKeyName(&#34;sampleKMSKkey&#34;)
+ *                             .type("GOOGLE_MANAGED")
+ *                             .kmsKeyName("sampleKMSKkey")
  *                             .build())
  *                         .build())
  *                 .registrationDestinationConfig(ConnectionEventingConfigRegistrationDestinationConfigArgs.builder()
- *                     .key(&#34;registration_destination_config&#34;)
+ *                     .key("registration_destination_config")
  *                     .destinations(ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs.builder()
- *                         .host(&#34;https://test.zendesk.com&#34;)
+ *                         .host("https://test.zendesk.com")
  *                         .port(80)
  *                         .build())
  *                     .build())
  *                 .authConfig(ConnectionEventingConfigAuthConfigArgs.builder()
- *                     .authType(&#34;USER_PASSWORD&#34;)
- *                     .authKey(&#34;sampleAuthKey&#34;)
+ *                     .authType("USER_PASSWORD")
+ *                     .authKey("sampleAuthKey")
  *                     .userPassword(ConnectionEventingConfigAuthConfigUserPasswordArgs.builder()
- *                         .username(&#34;user@xyz.com&#34;)
+ *                         .username("user{@literal @}xyz.com")
  *                         .password(ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs.builder()
  *                             .secretVersion(secret_version_basic.name())
  *                             .build())
  *                         .build())
  *                     .additionalVariables(                    
  *                         ConnectionEventingConfigAuthConfigAdditionalVariableArgs.builder()
- *                             .key(&#34;sample_string&#34;)
- *                             .stringValue(&#34;sampleString&#34;)
+ *                             .key("sample_string")
+ *                             .stringValue("sampleString")
  *                             .build(),
  *                         ConnectionEventingConfigAuthConfigAdditionalVariableArgs.builder()
- *                             .key(&#34;sample_boolean&#34;)
+ *                             .key("sample_boolean")
  *                             .booleanValue(false)
  *                             .build(),
  *                         ConnectionEventingConfigAuthConfigAdditionalVariableArgs.builder()
- *                             .key(&#34;sample_integer&#34;)
+ *                             .key("sample_integer")
  *                             .integerValue(1)
  *                             .build(),
  *                         ConnectionEventingConfigAuthConfigAdditionalVariableArgs.builder()
- *                             .key(&#34;sample_secret_value&#34;)
+ *                             .key("sample_secret_value")
  *                             .secretValue(ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs.builder()
  *                                 .secretVersion(secret_version_basic.name())
  *                                 .build())
  *                             .build(),
  *                         ConnectionEventingConfigAuthConfigAdditionalVariableArgs.builder()
- *                             .key(&#34;sample_encryption_key_value&#34;)
+ *                             .key("sample_encryption_key_value")
  *                             .encryptionKeyValue(ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs.builder()
- *                                 .type(&#34;GOOGLE_MANAGED&#34;)
- *                                 .kmsKeyName(&#34;sampleKMSKkey&#34;)
+ *                                 .type("GOOGLE_MANAGED")
+ *                                 .kmsKeyName("sampleKMSKkey")
  *                                 .build())
  *                             .build())
  *                     .build())
@@ -372,7 +375,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

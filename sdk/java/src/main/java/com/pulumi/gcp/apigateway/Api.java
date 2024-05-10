@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Apigateway Api Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,13 +52,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var api = new Api(&#34;api&#34;, ApiArgs.builder()        
- *             .apiId(&#34;my-api&#34;)
+ *         var api = new Api("api", ApiArgs.builder()        
+ *             .apiId("my-api")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

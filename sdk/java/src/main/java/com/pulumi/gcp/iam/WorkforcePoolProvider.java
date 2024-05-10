@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Iam Workforce Pool Provider Saml Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,30 +60,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool(&#34;pool&#34;, WorkforcePoolArgs.builder()        
- *             .workforcePoolId(&#34;example-pool&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *             .workforcePoolId("example-pool")
+ *             .parent("organizations/123456789")
+ *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider(&#34;example&#34;, WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
- *             .providerId(&#34;example-prvdr&#34;)
- *             .attributeMapping(Map.of(&#34;google.subject&#34;, &#34;assertion.sub&#34;))
+ *             .providerId("example-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
  *             .saml(WorkforcePoolProviderSamlArgs.builder()
- *                 .idpMetadataXml(&#34;&lt;?xml version=\&#34;1.0\&#34;?&gt;&lt;md:EntityDescriptor xmlns:md=\&#34;urn:oasis:names:tc:SAML:2.0:metadata\&#34; entityID=\&#34;https://test.com\&#34;&gt;&lt;md:IDPSSODescriptor protocolSupportEnumeration=\&#34;urn:oasis:names:tc:SAML:2.0:protocol\&#34;&gt; &lt;md:KeyDescriptor use=\&#34;signing\&#34;&gt;&lt;ds:KeyInfo xmlns:ds=\&#34;http://www.w3.org/2000/09/xmldsig#\&#34;&gt;&lt;ds:X509Data&gt;&lt;ds:X509Certificate&gt;MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv&lt;/ds:X509Certificate&gt;&lt;/ds:X509Data&gt;&lt;/ds:KeyInfo&gt;&lt;/md:KeyDescriptor&gt;&lt;md:SingleSignOnService Binding=\&#34;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\&#34; Location=\&#34;https://test.com/sso\&#34;/&gt;&lt;/md:IDPSSODescriptor&gt;&lt;/md:EntityDescriptor&gt;&#34;)
+ *                 .idpMetadataXml("<?xml version=\"1.0\"?><md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://test.com\"><md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"> <md:KeyDescriptor use=\"signing\"><ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"><ds:X509Data><ds:X509Certificate>MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/></md:IDPSSODescriptor></md:EntityDescriptor>")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workforce Pool Provider Saml Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -106,34 +109,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool(&#34;pool&#34;, WorkforcePoolArgs.builder()        
- *             .workforcePoolId(&#34;example-pool&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *             .workforcePoolId("example-pool")
+ *             .parent("organizations/123456789")
+ *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider(&#34;example&#34;, WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
- *             .providerId(&#34;example-prvdr&#34;)
- *             .attributeMapping(Map.of(&#34;google.subject&#34;, &#34;assertion.sub&#34;))
+ *             .providerId("example-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
  *             .saml(WorkforcePoolProviderSamlArgs.builder()
- *                 .idpMetadataXml(&#34;&lt;?xml version=\&#34;1.0\&#34;?&gt;&lt;md:EntityDescriptor xmlns:md=\&#34;urn:oasis:names:tc:SAML:2.0:metadata\&#34; entityID=\&#34;https://test.com\&#34;&gt;&lt;md:IDPSSODescriptor protocolSupportEnumeration=\&#34;urn:oasis:names:tc:SAML:2.0:protocol\&#34;&gt; &lt;md:KeyDescriptor use=\&#34;signing\&#34;&gt;&lt;ds:KeyInfo xmlns:ds=\&#34;http://www.w3.org/2000/09/xmldsig#\&#34;&gt;&lt;ds:X509Data&gt;&lt;ds:X509Certificate&gt;MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv&lt;/ds:X509Certificate&gt;&lt;/ds:X509Data&gt;&lt;/ds:KeyInfo&gt;&lt;/md:KeyDescriptor&gt;&lt;md:SingleSignOnService Binding=\&#34;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\&#34; Location=\&#34;https://test.com/sso\&#34;/&gt;&lt;/md:IDPSSODescriptor&gt;&lt;/md:EntityDescriptor&gt;&#34;)
+ *                 .idpMetadataXml("<?xml version=\"1.0\"?><md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://test.com\"><md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"> <md:KeyDescriptor use=\"signing\"><ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"><ds:X509Data><ds:X509Certificate>MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/></md:IDPSSODescriptor></md:EntityDescriptor>")
  *                 .build())
- *             .displayName(&#34;Display name&#34;)
- *             .description(&#34;A sample SAML workforce pool provider.&#34;)
+ *             .displayName("Display name")
+ *             .description("A sample SAML workforce pool provider.")
  *             .disabled(false)
- *             .attributeCondition(&#34;true&#34;)
+ *             .attributeCondition("true")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workforce Pool Provider Oidc Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -160,40 +165,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool(&#34;pool&#34;, WorkforcePoolArgs.builder()        
- *             .workforcePoolId(&#34;example-pool&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *             .workforcePoolId("example-pool")
+ *             .parent("organizations/123456789")
+ *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider(&#34;example&#34;, WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
- *             .providerId(&#34;example-prvdr&#34;)
- *             .attributeMapping(Map.of(&#34;google.subject&#34;, &#34;assertion.sub&#34;))
+ *             .providerId("example-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
  *             .oidc(WorkforcePoolProviderOidcArgs.builder()
- *                 .issuerUri(&#34;https://accounts.thirdparty.com&#34;)
- *                 .clientId(&#34;client-id&#34;)
+ *                 .issuerUri("https://accounts.thirdparty.com")
+ *                 .clientId("client-id")
  *                 .clientSecret(WorkforcePoolProviderOidcClientSecretArgs.builder()
  *                     .value(WorkforcePoolProviderOidcClientSecretValueArgs.builder()
- *                         .plainText(&#34;client-secret&#34;)
+ *                         .plainText("client-secret")
  *                         .build())
  *                     .build())
  *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
- *                     .responseType(&#34;CODE&#34;)
- *                     .assertionClaimsBehavior(&#34;MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS&#34;)
+ *                     .responseType("CODE")
+ *                     .assertionClaimsBehavior("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workforce Pool Provider Oidc Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -220,42 +227,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new WorkforcePool(&#34;pool&#34;, WorkforcePoolArgs.builder()        
- *             .workforcePoolId(&#34;example-pool&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()        
+ *             .workforcePoolId("example-pool")
+ *             .parent("organizations/123456789")
+ *             .location("global")
  *             .build());
  * 
- *         var example = new WorkforcePoolProvider(&#34;example&#34;, WorkforcePoolProviderArgs.builder()        
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()        
  *             .workforcePoolId(pool.workforcePoolId())
  *             .location(pool.location())
- *             .providerId(&#34;example-prvdr&#34;)
- *             .attributeMapping(Map.of(&#34;google.subject&#34;, &#34;assertion.sub&#34;))
+ *             .providerId("example-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
  *             .oidc(WorkforcePoolProviderOidcArgs.builder()
- *                 .issuerUri(&#34;https://accounts.thirdparty.com&#34;)
- *                 .clientId(&#34;client-id&#34;)
+ *                 .issuerUri("https://accounts.thirdparty.com")
+ *                 .clientId("client-id")
  *                 .clientSecret(WorkforcePoolProviderOidcClientSecretArgs.builder()
  *                     .value(WorkforcePoolProviderOidcClientSecretValueArgs.builder()
- *                         .plainText(&#34;client-secret&#34;)
+ *                         .plainText("client-secret")
  *                         .build())
  *                     .build())
  *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
- *                     .responseType(&#34;CODE&#34;)
- *                     .assertionClaimsBehavior(&#34;MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS&#34;)
+ *                     .responseType("CODE")
+ *                     .assertionClaimsBehavior("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS")
  *                     .additionalScopes(                    
- *                         &#34;groups&#34;,
- *                         &#34;roles&#34;)
+ *                         "groups",
+ *                         "roles")
  *                     .build())
  *                 .build())
- *             .displayName(&#34;Display name&#34;)
- *             .description(&#34;A sample OIDC workforce pool provider.&#34;)
+ *             .displayName("Display name")
+ *             .description("A sample OIDC workforce pool provider.")
  *             .disabled(false)
- *             .attributeCondition(&#34;true&#34;)
+ *             .attributeCondition("true")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

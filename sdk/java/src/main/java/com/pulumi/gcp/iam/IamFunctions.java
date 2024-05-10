@@ -27,7 +27,8 @@ public final class IamFunctions {
      * Use this data source to get information about a Google IAM Role.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -49,13 +50,14 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var roleinfo = IamFunctions.getRule(GetRuleArgs.builder()
-     *             .name(&#34;roles/compute.viewer&#34;)
+     *             .name("roles/compute.viewer")
      *             .build());
      * 
-     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.applyValue(getRuleResult -&gt; getRuleResult.includedPermissions()));
+     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -66,7 +68,8 @@ public final class IamFunctions {
      * Use this data source to get information about a Google IAM Role.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -88,13 +91,14 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var roleinfo = IamFunctions.getRule(GetRuleArgs.builder()
-     *             .name(&#34;roles/compute.viewer&#34;)
+     *             .name("roles/compute.viewer")
      *             .build());
      * 
-     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.applyValue(getRuleResult -&gt; getRuleResult.includedPermissions()));
+     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -105,7 +109,8 @@ public final class IamFunctions {
      * Use this data source to get information about a Google IAM Role.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -127,13 +132,14 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var roleinfo = IamFunctions.getRule(GetRuleArgs.builder()
-     *             .name(&#34;roles/compute.viewer&#34;)
+     *             .name("roles/compute.viewer")
      *             .build());
      * 
-     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.applyValue(getRuleResult -&gt; getRuleResult.includedPermissions()));
+     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -144,7 +150,8 @@ public final class IamFunctions {
      * Use this data source to get information about a Google IAM Role.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -166,13 +173,14 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var roleinfo = IamFunctions.getRule(GetRuleArgs.builder()
-     *             .name(&#34;roles/compute.viewer&#34;)
+     *             .name("roles/compute.viewer")
      *             .build());
      * 
-     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.applyValue(getRuleResult -&gt; getRuleResult.includedPermissions()));
+     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -187,7 +195,8 @@ public final class IamFunctions {
      * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -209,15 +218,16 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var perms = IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
-     *             .fullResourceName(&#34;//cloudresourcemanager.googleapis.com/projects/my-project&#34;)
+     *             .fullResourceName("//cloudresourcemanager.googleapis.com/projects/my-project")
      *             .stages(            
-     *                 &#34;GA&#34;,
-     *                 &#34;BETA&#34;)
+     *                 "GA",
+     *                 "BETA")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -232,7 +242,8 @@ public final class IamFunctions {
      * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -254,15 +265,16 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var perms = IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
-     *             .fullResourceName(&#34;//cloudresourcemanager.googleapis.com/projects/my-project&#34;)
+     *             .fullResourceName("//cloudresourcemanager.googleapis.com/projects/my-project")
      *             .stages(            
-     *                 &#34;GA&#34;,
-     *                 &#34;BETA&#34;)
+     *                 "GA",
+     *                 "BETA")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -277,7 +289,8 @@ public final class IamFunctions {
      * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -299,15 +312,16 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var perms = IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
-     *             .fullResourceName(&#34;//cloudresourcemanager.googleapis.com/projects/my-project&#34;)
+     *             .fullResourceName("//cloudresourcemanager.googleapis.com/projects/my-project")
      *             .stages(            
-     *                 &#34;GA&#34;,
-     *                 &#34;BETA&#34;)
+     *                 "GA",
+     *                 "BETA")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -322,7 +336,8 @@ public final class IamFunctions {
      * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -344,15 +359,16 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var perms = IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
-     *             .fullResourceName(&#34;//cloudresourcemanager.googleapis.com/projects/my-project&#34;)
+     *             .fullResourceName("//cloudresourcemanager.googleapis.com/projects/my-project")
      *             .stages(            
-     *                 &#34;GA&#34;,
-     *                 &#34;BETA&#34;)
+     *                 "GA",
+     *                 "BETA")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

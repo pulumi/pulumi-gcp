@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Edgecontainer Node Pool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,43 +65,45 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;default&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *             .name("default")
+ *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username(&#34;admin@hashicorptest.com&#34;)
+ *                     .username("admin{@literal @}hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
- *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
- *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .clusterIpv4CidrBlocks("10.0.0.0/16")
+ *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
  *             .build());
  * 
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .name(&#34;nodepool-1&#34;)
+ *         var default_ = new NodePool("default", NodePoolArgs.builder()        
+ *             .name("nodepool-1")
  *             .cluster(cluster.name())
- *             .location(&#34;us-central1&#34;)
- *             .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
+ *             .location("us-central1")
+ *             .nodeLocation("us-central1-edge-example-edgesite")
  *             .nodeCount(3)
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_key&#34;, &#34;my_val&#34;),
- *                 Map.entry(&#34;other_key&#34;, &#34;other_val&#34;)
+ *                 Map.entry("my_key", "my_val"),
+ *                 Map.entry("other_key", "other_val")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Edgecontainer Node Pool With Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -138,44 +141,44 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;default&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *             .name("default")
+ *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username(&#34;admin@hashicorptest.com&#34;)
+ *                     .username("admin{@literal @}hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
- *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
- *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .clusterIpv4CidrBlocks("10.0.0.0/16")
+ *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("keyring")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKeyCryptoKey = new CryptoKey(&#34;cryptoKeyCryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;key&#34;)
+ *         var cryptoKeyCryptoKey = new CryptoKey("cryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+ *             .name("key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(cryptoKeyCryptoKey.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-edgecontainer.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-edgecontainer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .name(&#34;nodepool-1&#34;)
+ *         var default_ = new NodePool("default", NodePoolArgs.builder()        
+ *             .name("nodepool-1")
  *             .cluster(cluster.name())
- *             .location(&#34;us-central1&#34;)
- *             .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
+ *             .location("us-central1")
+ *             .nodeLocation("us-central1-edge-example-edgesite")
  *             .nodeCount(3)
  *             .localDiskEncryption(NodePoolLocalDiskEncryptionArgs.builder()
  *                 .kmsKey(cryptoKeyCryptoKey.id())
@@ -184,12 +187,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Edgecontainer Local Control Plane Node Pool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -222,43 +227,44 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
- *             .name(&#34;&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *             .name("")
+ *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username(&#34;admin@hashicorptest.com&#34;)
+ *                     .username("admin{@literal @}hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
- *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
- *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .clusterIpv4CidrBlocks("10.0.0.0/16")
+ *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
- *             .externalLoadBalancerIpv4AddressPools(&#34;10.100.0.0-10.100.0.10&#34;)
+ *             .externalLoadBalancerIpv4AddressPools("10.100.0.0-10.100.0.10")
  *             .controlPlane(ClusterControlPlaneArgs.builder()
  *                 .local(ClusterControlPlaneLocalArgs.builder()
- *                     .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
+ *                     .nodeLocation("us-central1-edge-example-edgesite")
  *                     .nodeCount(1)
- *                     .machineFilter(&#34;machine-name&#34;)
- *                     .sharedDeploymentPolicy(&#34;ALLOWED&#34;)
+ *                     .machineFilter("machine-name")
+ *                     .sharedDeploymentPolicy("ALLOWED")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultNodePool = new NodePool(&#34;defaultNodePool&#34;, NodePoolArgs.builder()        
- *             .name(&#34;nodepool-1&#34;)
+ *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()        
+ *             .name("nodepool-1")
  *             .cluster(cluster.name())
- *             .location(&#34;us-central1&#34;)
- *             .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
+ *             .location("us-central1")
+ *             .nodeLocation("us-central1-edge-example-edgesite")
  *             .nodeCount(3)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Workbench Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,19 +50,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;workbench-instance&#34;)
- *             .location(&#34;us-west1-a&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("workbench-instance")
+ *             .location("us-west1-a")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Workbench Instance Basic Container
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -84,25 +87,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;workbench-instance&#34;)
- *             .location(&#34;us-west1-a&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("workbench-instance")
+ *             .location("us-west1-a")
  *             .gceSetup(InstanceGceSetupArgs.builder()
  *                 .containerImage(InstanceGceSetupContainerImageArgs.builder()
- *                     .repository(&#34;us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310&#34;)
- *                     .tag(&#34;latest&#34;)
+ *                     .repository("us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310")
+ *                     .tag("latest")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Workbench Instance Basic Gpu
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -125,30 +130,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;workbench-instance&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("workbench-instance")
+ *             .location("us-central1-a")
  *             .gceSetup(InstanceGceSetupArgs.builder()
- *                 .machineType(&#34;n1-standard-1&#34;)
+ *                 .machineType("n1-standard-1")
  *                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
- *                     .type(&#34;NVIDIA_TESLA_T4&#34;)
+ *                     .type("NVIDIA_TESLA_T4")
  *                     .coreCount(1)
  *                     .build())
  *                 .vmImage(InstanceGceSetupVmImageArgs.builder()
- *                     .project(&#34;cloud-notebooks-managed&#34;)
- *                     .family(&#34;workbench-instances&#34;)
+ *                     .project("cloud-notebooks-managed")
+ *                     .family("workbench-instances")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Workbench Instance Labels Stopped
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -171,34 +178,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;workbench-instance&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("workbench-instance")
+ *             .location("us-central1-a")
  *             .gceSetup(InstanceGceSetupArgs.builder()
- *                 .machineType(&#34;e2-standard-4&#34;)
+ *                 .machineType("e2-standard-4")
  *                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
  *                     .enableSecureBoot(false)
  *                     .enableVtpm(false)
  *                     .enableIntegrityMonitoring(false)
  *                     .build())
  *                 .serviceAccounts(InstanceGceSetupServiceAccountArgs.builder()
- *                     .email(&#34;my@service-account.com&#34;)
+ *                     .email("my{@literal @}service-account.com")
  *                     .build())
- *                 .metadata(Map.of(&#34;terraform&#34;, &#34;true&#34;))
+ *                 .metadata(Map.of("terraform", "true"))
  *                 .build())
- *             .instanceOwners(&#34;my@service-account.com&#34;)
- *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
- *             .desiredState(&#34;STOPPED&#34;)
+ *             .instanceOwners("my{@literal @}service-account.com")
+ *             .labels(Map.of("k", "val"))
+ *             .desiredState("STOPPED")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Workbench Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -227,25 +236,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNetwork = new Network(&#34;myNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;wbi-test-default&#34;)
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()        
+ *             .name("wbi-test-default")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var mySubnetwork = new Subnetwork(&#34;mySubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;wbi-test-default&#34;)
+ *         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()        
+ *             .name("wbi-test-default")
  *             .network(myNetwork.id())
- *             .region(&#34;us-central1&#34;)
- *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
+ *             .region("us-central1")
+ *             .ipCidrRange("10.0.1.0/24")
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;workbench-instance&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("workbench-instance")
+ *             .location("us-central1-a")
  *             .gceSetup(InstanceGceSetupArgs.builder()
- *                 .machineType(&#34;n1-standard-4&#34;)
+ *                 .machineType("n1-standard-4")
  *                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
- *                     .type(&#34;NVIDIA_TESLA_T4&#34;)
+ *                     .type("NVIDIA_TESLA_T4")
  *                     .coreCount(1)
  *                     .build())
  *                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
@@ -255,40 +264,41 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .disablePublicIp(false)
  *                 .serviceAccounts(InstanceGceSetupServiceAccountArgs.builder()
- *                     .email(&#34;my@service-account.com&#34;)
+ *                     .email("my{@literal @}service-account.com")
  *                     .build())
  *                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
  *                     .diskSizeGb(310)
- *                     .diskType(&#34;PD_SSD&#34;)
- *                     .diskEncryption(&#34;CMEK&#34;)
- *                     .kmsKey(&#34;my-crypto-key&#34;)
+ *                     .diskType("PD_SSD")
+ *                     .diskEncryption("CMEK")
+ *                     .kmsKey("my-crypto-key")
  *                     .build())
  *                 .dataDisks(InstanceGceSetupDataDisksArgs.builder()
  *                     .diskSizeGb(330)
- *                     .diskType(&#34;PD_SSD&#34;)
- *                     .diskEncryption(&#34;CMEK&#34;)
- *                     .kmsKey(&#34;my-crypto-key&#34;)
+ *                     .diskType("PD_SSD")
+ *                     .diskEncryption("CMEK")
+ *                     .kmsKey("my-crypto-key")
  *                     .build())
  *                 .networkInterfaces(InstanceGceSetupNetworkInterfaceArgs.builder()
  *                     .network(myNetwork.id())
  *                     .subnet(mySubnetwork.id())
- *                     .nicType(&#34;GVNIC&#34;)
+ *                     .nicType("GVNIC")
  *                     .build())
- *                 .metadata(Map.of(&#34;terraform&#34;, &#34;true&#34;))
+ *                 .metadata(Map.of("terraform", "true"))
  *                 .enableIpForwarding(true)
  *                 .tags(                
- *                     &#34;abc&#34;,
- *                     &#34;def&#34;)
+ *                     "abc",
+ *                     "def")
  *                 .build())
- *             .disableProxyAccess(&#34;true&#34;)
- *             .instanceOwners(&#34;my@service-account.com&#34;)
- *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
- *             .desiredState(&#34;ACTIVE&#34;)
+ *             .disableProxyAccess("true")
+ *             .instanceOwners("my{@literal @}service-account.com")
+ *             .labels(Map.of("k", "val"))
+ *             .desiredState("ACTIVE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -454,7 +464,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * &#39;Optional. Input only. The owner of this instance after creation. Format:
-     * `alias@example.com` Currently supports one owner only. If not specified, all of
+     * `alias{@literal @}example.com` Currently supports one owner only. If not specified, all of
      * the service account users of your VM instance&#39;&#39;s service account can use the instance.&#39;
      * 
      */
@@ -463,7 +473,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return &#39;Optional. Input only. The owner of this instance after creation. Format:
-     * `alias@example.com` Currently supports one owner only. If not specified, all of
+     * `alias{@literal @}example.com` Currently supports one owner only. If not specified, all of
      * the service account users of your VM instance&#39;&#39;s service account can use the instance.&#39;
      * 
      */

@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,42 +68,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account(&#34;default&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-custom-sa&#34;)
- *             .displayName(&#34;Custom SA for VM Instance&#34;)
+ *         var default_ = new Account("default", AccountArgs.builder()        
+ *             .accountId("my-custom-sa")
+ *             .displayName("Custom SA for VM Instance")
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
- *             .name(&#34;my-instance&#34;)
- *             .machineType(&#34;n2-standard-2&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .name("my-instance")
+ *             .machineType("n2-standard-2")
+ *             .zone("us-central1-a")
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
+ *                 "foo",
+ *                 "bar")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-11&#34;)
- *                     .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
+ *                     .image("debian-cloud/debian-11")
+ *                     .labels(Map.of("my_label", "value"))
  *                     .build())
  *                 .build())
  *             .scratchDisks(InstanceScratchDiskArgs.builder()
- *                 .interface_(&#34;NVME&#34;)
+ *                 .interface_("NVME")
  *                 .build())
- *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .metadataStartupScript(&#34;echo hi &gt; /test.txt&#34;)
+ *             .metadata(Map.of("foo", "bar"))
+ *             .metadataStartupScript("echo hi > /test.txt")
  *             .serviceAccount(InstanceServiceAccountArgs.builder()
  *                 .email(default_.email())
- *                 .scopes(&#34;cloud-platform&#34;)
+ *                 .scopes("cloud-platform")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,37 +68,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // End enabling notifications
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;default_bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("default_bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;default_topic&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("default_topic")
  *             .build());
  * 
- *         var notification = new Notification(&#34;notification&#34;, NotificationArgs.builder()        
+ *         var notification = new Notification("notification", NotificationArgs.builder()        
  *             .bucket(bucket.name())
- *             .payloadFormat(&#34;JSON_API_V1&#34;)
+ *             .payloadFormat("JSON_API_V1")
  *             .topic(topic.id())
  *             .eventTypes(            
- *                 &#34;OBJECT_FINALIZE&#34;,
- *                 &#34;OBJECT_METADATA_UPDATE&#34;)
- *             .customAttributes(Map.of(&#34;new-attribute&#34;, &#34;new-attribute-value&#34;))
+ *                 "OBJECT_FINALIZE",
+ *                 "OBJECT_METADATA_UPDATE")
+ *             .customAttributes(Map.of("new-attribute", "new-attribute-value"))
  *             .build());
  * 
  *         // Enable notifications by giving the correct IAM permission to the unique service account.
  *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
  * 
- *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+ *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()        
  *             .topic(topic.id())
- *             .role(&#34;roles/pubsub.publisher&#34;)
- *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+ *             .role("roles/pubsub.publisher")
+ *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

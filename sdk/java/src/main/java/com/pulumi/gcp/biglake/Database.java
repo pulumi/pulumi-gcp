@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Biglake Database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,41 +57,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var catalog = new Catalog(&#34;catalog&#34;, CatalogArgs.builder()        
- *             .name(&#34;my_catalog&#34;)
- *             .location(&#34;US&#34;)
+ *         var catalog = new Catalog("catalog", CatalogArgs.builder()        
+ *             .name("my_catalog")
+ *             .location("US")
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;my_bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("my_bucket")
+ *             .location("US")
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var metadataFolder = new BucketObject(&#34;metadataFolder&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;metadata/&#34;)
- *             .content(&#34; &#34;)
+ *         var metadataFolder = new BucketObject("metadataFolder", BucketObjectArgs.builder()        
+ *             .name("metadata/")
+ *             .content(" ")
  *             .bucket(bucket.name())
  *             .build());
  * 
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .name(&#34;my_database&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .name("my_database")
  *             .catalog(catalog.id())
- *             .type(&#34;HIVE&#34;)
+ *             .type("HIVE")
  *             .hiveOptions(DatabaseHiveOptionsArgs.builder()
- *                 .locationUri(Output.tuple(bucket.name(), metadataFolder.name()).applyValue(values -&gt; {
+ *                 .locationUri(Output.tuple(bucket.name(), metadataFolder.name()).applyValue(values -> {
  *                     var bucketName = values.t1;
  *                     var metadataFolderName = values.t2;
- *                     return String.format(&#34;gs://%s/%s&#34;, bucketName,metadataFolderName);
+ *                     return String.format("gs://%s/%s", bucketName,metadataFolderName);
  *                 }))
- *                 .parameters(Map.of(&#34;owner&#34;, &#34;John Doe&#34;))
+ *                 .parameters(Map.of("owner", "John Doe"))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

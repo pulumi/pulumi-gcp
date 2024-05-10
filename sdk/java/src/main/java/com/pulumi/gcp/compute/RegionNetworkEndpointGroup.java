@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Region Network Endpoint Group Functions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,34 +63,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;cloudfunctions-function-example-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("cloudfunctions-function-example-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var archive = new BucketObject(&#34;archive&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;index.zip&#34;)
+ *         var archive = new BucketObject("archive", BucketObjectArgs.builder()        
+ *             .name("index.zip")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;path/to/index.zip&#34;))
+ *             .source(new FileAsset("path/to/index.zip"))
  *             .build());
  * 
- *         var functionNegFunction = new Function(&#34;functionNegFunction&#34;, FunctionArgs.builder()        
- *             .name(&#34;function-neg&#34;)
- *             .description(&#34;My function&#34;)
- *             .runtime(&#34;nodejs10&#34;)
+ *         var functionNegFunction = new Function("functionNegFunction", FunctionArgs.builder()        
+ *             .name("function-neg")
+ *             .description("My function")
+ *             .runtime("nodejs10")
  *             .availableMemoryMb(128)
  *             .sourceArchiveBucket(bucket.name())
  *             .sourceArchiveObject(archive.name())
  *             .triggerHttp(true)
  *             .timeout(60)
- *             .entryPoint(&#34;helloGET&#34;)
+ *             .entryPoint("helloGET")
  *             .build());
  * 
  *         // Cloud Functions Example
- *         var functionNeg = new RegionNetworkEndpointGroup(&#34;functionNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;function-neg&#34;)
- *             .networkEndpointType(&#34;SERVERLESS&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var functionNeg = new RegionNetworkEndpointGroup("functionNeg", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("function-neg")
+ *             .networkEndpointType("SERVERLESS")
+ *             .region("us-central1")
  *             .cloudFunction(RegionNetworkEndpointGroupCloudFunctionArgs.builder()
  *                 .function(functionNegFunction.name())
  *                 .build())
@@ -97,12 +98,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Network Endpoint Group Cloudrun
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -129,13 +132,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cloudrunNegService = new Service(&#34;cloudrunNegService&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-neg&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var cloudrunNegService = new Service("cloudrunNegService", ServiceArgs.builder()        
+ *             .name("cloudrun-neg")
+ *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
  *                     .containers(ServiceTemplateSpecContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -146,10 +149,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Cloud Run Example
- *         var cloudrunNeg = new RegionNetworkEndpointGroup(&#34;cloudrunNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;cloudrun-neg&#34;)
- *             .networkEndpointType(&#34;SERVERLESS&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var cloudrunNeg = new RegionNetworkEndpointGroup("cloudrunNeg", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("cloudrun-neg")
+ *             .networkEndpointType("SERVERLESS")
+ *             .region("us-central1")
  *             .cloudRun(RegionNetworkEndpointGroupCloudRunArgs.builder()
  *                 .service(cloudrunNegService.name())
  *                 .build())
@@ -157,12 +160,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Network Endpoint Group Appengine
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -200,52 +205,52 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appengineNegBucket = new Bucket(&#34;appengineNegBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;appengine-neg&#34;)
- *             .location(&#34;US&#34;)
+ *         var appengineNegBucket = new Bucket("appengineNegBucket", BucketArgs.builder()        
+ *             .name("appengine-neg")
+ *             .location("US")
  *             .build());
  * 
- *         var appengineNegBucketObject = new BucketObject(&#34;appengineNegBucketObject&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;hello-world.zip&#34;)
+ *         var appengineNegBucketObject = new BucketObject("appengineNegBucketObject", BucketObjectArgs.builder()        
+ *             .name("hello-world.zip")
  *             .bucket(appengineNegBucket.name())
- *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
+ *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
  *             .build());
  * 
- *         var appengineNegFlexibleAppVersion = new FlexibleAppVersion(&#34;appengineNegFlexibleAppVersion&#34;, FlexibleAppVersionArgs.builder()        
- *             .versionId(&#34;v1&#34;)
- *             .service(&#34;appengine-network-endpoint-group&#34;)
- *             .runtime(&#34;nodejs&#34;)
+ *         var appengineNegFlexibleAppVersion = new FlexibleAppVersion("appengineNegFlexibleAppVersion", FlexibleAppVersionArgs.builder()        
+ *             .versionId("v1")
+ *             .service("appengine-network-endpoint-group")
+ *             .runtime("nodejs")
  *             .entrypoint(FlexibleAppVersionEntrypointArgs.builder()
- *                 .shell(&#34;node ./app.js&#34;)
+ *                 .shell("node ./app.js")
  *                 .build())
  *             .deployment(FlexibleAppVersionDeploymentArgs.builder()
  *                 .zip(FlexibleAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(appengineNegBucket.name(), appengineNegBucketObject.name()).applyValue(values -&gt; {
+ *                     .sourceUrl(Output.tuple(appengineNegBucket.name(), appengineNegBucketObject.name()).applyValue(values -> {
  *                         var appengineNegBucketName = values.t1;
  *                         var appengineNegBucketObjectName = values.t2;
- *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, appengineNegBucketName,appengineNegBucketObjectName);
+ *                         return String.format("https://storage.googleapis.com/%s/%s", appengineNegBucketName,appengineNegBucketObjectName);
  *                     }))
  *                     .build())
  *                 .build())
  *             .livenessCheck(FlexibleAppVersionLivenessCheckArgs.builder()
- *                 .path(&#34;/&#34;)
+ *                 .path("/")
  *                 .build())
  *             .readinessCheck(FlexibleAppVersionReadinessCheckArgs.builder()
- *                 .path(&#34;/&#34;)
+ *                 .path("/")
  *                 .build())
- *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+ *             .envVariables(Map.of("port", "8080"))
  *             .handlers(FlexibleAppVersionHandlerArgs.builder()
- *                 .urlRegex(&#34;.*\\/my-path\\/*&#34;)
- *                 .securityLevel(&#34;SECURE_ALWAYS&#34;)
- *                 .login(&#34;LOGIN_REQUIRED&#34;)
- *                 .authFailAction(&#34;AUTH_FAIL_ACTION_REDIRECT&#34;)
+ *                 .urlRegex(".*\\/my-path\\/*")
+ *                 .securityLevel("SECURE_ALWAYS")
+ *                 .login("LOGIN_REQUIRED")
+ *                 .authFailAction("AUTH_FAIL_ACTION_REDIRECT")
  *                 .staticFiles(FlexibleAppVersionHandlerStaticFilesArgs.builder()
- *                     .path(&#34;my-other-path&#34;)
- *                     .uploadPathRegex(&#34;.*\\/my-path\\/*&#34;)
+ *                     .path("my-other-path")
+ *                     .uploadPathRegex(".*\\/my-path\\/*")
  *                     .build())
  *                 .build())
  *             .automaticScaling(FlexibleAppVersionAutomaticScalingArgs.builder()
- *                 .coolDownPeriod(&#34;120s&#34;)
+ *                 .coolDownPeriod("120s")
  *                 .cpuUtilization(FlexibleAppVersionAutomaticScalingCpuUtilizationArgs.builder()
  *                     .targetUtilization(0.5)
  *                     .build())
@@ -254,10 +259,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // App Engine Example
- *         var appengineNeg = new RegionNetworkEndpointGroup(&#34;appengineNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;appengine-neg&#34;)
- *             .networkEndpointType(&#34;SERVERLESS&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var appengineNeg = new RegionNetworkEndpointGroup("appengineNeg", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("appengine-neg")
+ *             .networkEndpointType("SERVERLESS")
+ *             .region("us-central1")
  *             .appEngine(RegionNetworkEndpointGroupAppEngineArgs.builder()
  *                 .service(appengineNegFlexibleAppVersion.service())
  *                 .version(appengineNegFlexibleAppVersion.versionId())
@@ -266,12 +271,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Network Endpoint Group Appengine Empty
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -294,21 +301,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // App Engine Example
- *         var appengineNeg = new RegionNetworkEndpointGroup(&#34;appengineNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;appengine-neg&#34;)
- *             .networkEndpointType(&#34;SERVERLESS&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var appengineNeg = new RegionNetworkEndpointGroup("appengineNeg", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("appengine-neg")
+ *             .networkEndpointType("SERVERLESS")
+ *             .region("us-central1")
  *             .appEngine()
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Network Endpoint Group Psc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -329,21 +338,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pscNeg = new RegionNetworkEndpointGroup(&#34;pscNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;psc-neg&#34;)
- *             .region(&#34;asia-northeast3&#34;)
- *             .networkEndpointType(&#34;PRIVATE_SERVICE_CONNECT&#34;)
- *             .pscTargetService(&#34;asia-northeast3-cloudkms.googleapis.com&#34;)
+ *         var pscNeg = new RegionNetworkEndpointGroup("pscNeg", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("psc-neg")
+ *             .region("asia-northeast3")
+ *             .networkEndpointType("PRIVATE_SERVICE_CONNECT")
+ *             .pscTargetService("asia-northeast3-cloudkms.googleapis.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Network Endpoint Group Psc Service Attachment
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -377,64 +388,64 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;psc-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("psc-network")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;psc-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;europe-west4&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("psc-subnetwork")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("europe-west4")
  *             .network(default_.id())
  *             .build());
  * 
- *         var pscSubnetwork = new Subnetwork(&#34;pscSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;psc-subnetwork-nat&#34;)
- *             .ipCidrRange(&#34;10.1.0.0/16&#34;)
- *             .region(&#34;europe-west4&#34;)
- *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
+ *         var pscSubnetwork = new Subnetwork("pscSubnetwork", SubnetworkArgs.builder()        
+ *             .name("psc-subnetwork-nat")
+ *             .ipCidrRange("10.1.0.0/16")
+ *             .region("europe-west4")
+ *             .purpose("PRIVATE_SERVICE_CONNECT")
  *             .network(default_.id())
  *             .build());
  * 
- *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;psc-healthcheck&#34;)
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *             .name("psc-healthcheck")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;psc-backend&#34;)
- *             .region(&#34;europe-west4&#34;)
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .name("psc-backend")
+ *             .region("europe-west4")
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
- *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;psc-forwarding-rule&#34;)
- *             .region(&#34;europe-west4&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *         var defaultForwardingRule = new ForwardingRule("defaultForwardingRule", ForwardingRuleArgs.builder()        
+ *             .name("psc-forwarding-rule")
+ *             .region("europe-west4")
+ *             .loadBalancingScheme("INTERNAL")
  *             .backendService(defaultRegionBackendService.id())
  *             .allPorts(true)
  *             .network(default_.name())
  *             .subnetwork(defaultSubnetwork.name())
  *             .build());
  * 
- *         var defaultServiceAttachment = new ServiceAttachment(&#34;defaultServiceAttachment&#34;, ServiceAttachmentArgs.builder()        
- *             .name(&#34;psc-service-attachment&#34;)
- *             .region(&#34;europe-west4&#34;)
- *             .description(&#34;A service attachment configured with Terraform&#34;)
+ *         var defaultServiceAttachment = new ServiceAttachment("defaultServiceAttachment", ServiceAttachmentArgs.builder()        
+ *             .name("psc-service-attachment")
+ *             .region("europe-west4")
+ *             .description("A service attachment configured with Terraform")
  *             .enableProxyProtocol(false)
- *             .connectionPreference(&#34;ACCEPT_AUTOMATIC&#34;)
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
  *             .natSubnets(pscSubnetwork.selfLink())
  *             .targetService(defaultForwardingRule.selfLink())
  *             .build());
  * 
- *         var pscNegServiceAttachment = new RegionNetworkEndpointGroup(&#34;pscNegServiceAttachment&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;psc-neg&#34;)
- *             .region(&#34;europe-west4&#34;)
- *             .networkEndpointType(&#34;PRIVATE_SERVICE_CONNECT&#34;)
+ *         var pscNegServiceAttachment = new RegionNetworkEndpointGroup("pscNegServiceAttachment", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("psc-neg")
+ *             .region("europe-west4")
+ *             .networkEndpointType("PRIVATE_SERVICE_CONNECT")
  *             .pscTargetService(defaultServiceAttachment.selfLink())
  *             .network(default_.selfLink())
  *             .subnetwork(defaultSubnetwork.selfLink())
@@ -442,12 +453,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Network Endpoint Group Internet Ip Port
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -470,25 +483,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("network")
  *             .build());
  * 
- *         var regionNetworkEndpointGroupInternetIpPort = new RegionNetworkEndpointGroup(&#34;regionNetworkEndpointGroupInternetIpPort&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;ip-port-neg&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var regionNetworkEndpointGroupInternetIpPort = new RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetIpPort", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("ip-port-neg")
+ *             .region("us-central1")
  *             .network(default_.id())
- *             .networkEndpointType(&#34;INTERNET_IP_PORT&#34;)
+ *             .networkEndpointType("INTERNET_IP_PORT")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Network Endpoint Group Internet Fqdn Port
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -511,20 +526,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("network")
  *             .build());
  * 
- *         var regionNetworkEndpointGroupInternetFqdnPort = new RegionNetworkEndpointGroup(&#34;regionNetworkEndpointGroupInternetFqdnPort&#34;, RegionNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;ip-port-neg&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var regionNetworkEndpointGroupInternetFqdnPort = new RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetFqdnPort", RegionNetworkEndpointGroupArgs.builder()        
+ *             .name("ip-port-neg")
+ *             .region("us-central1")
  *             .network(default_.id())
- *             .networkEndpointType(&#34;INTERNET_FQDN_PORT&#34;)
+ *             .networkEndpointType("INTERNET_FQDN_PORT")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

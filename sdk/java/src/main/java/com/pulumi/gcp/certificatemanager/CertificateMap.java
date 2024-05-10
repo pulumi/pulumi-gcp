@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Certificate Manager Certificate Map Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,18 +48,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CertificateMap(&#34;default&#34;, CertificateMapArgs.builder()        
- *             .name(&#34;cert-map&#34;)
- *             .description(&#34;My acceptance test certificate map&#34;)
+ *         var default_ = new CertificateMap("default", CertificateMapArgs.builder()        
+ *             .name("cert-map")
+ *             .description("My acceptance test certificate map")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;terraform&#34;, true),
- *                 Map.entry(&#34;acc-test&#34;, true)
+ *                 Map.entry("terraform", true),
+ *                 Map.entry("acc-test", true)
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

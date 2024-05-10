@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Logging Log View Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,23 +52,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingLogView = new ProjectBucketConfig(&#34;loggingLogView&#34;, ProjectBucketConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .location(&#34;global&#34;)
+ *         var loggingLogView = new ProjectBucketConfig("loggingLogView", ProjectBucketConfigArgs.builder()        
+ *             .project("my-project-name")
+ *             .location("global")
  *             .retentionDays(30)
- *             .bucketId(&#34;_Default&#34;)
+ *             .bucketId("_Default")
  *             .build());
  * 
- *         var loggingLogViewLogView = new LogView(&#34;loggingLogViewLogView&#34;, LogViewArgs.builder()        
- *             .name(&#34;my-view&#34;)
+ *         var loggingLogViewLogView = new LogView("loggingLogViewLogView", LogViewArgs.builder()        
+ *             .name("my-view")
  *             .bucket(loggingLogView.id())
- *             .description(&#34;A logging view configured with Terraform&#34;)
- *             .filter(&#34;SOURCE(\&#34;projects/myproject\&#34;) AND resource.type = \&#34;gce_instance\&#34; AND LOG_ID(\&#34;stdout\&#34;)&#34;)
+ *             .description("A logging view configured with Terraform")
+ *             .filter("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Netapp Backup Vault
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,16 +53,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testBackupVault = new BackupVault(&#34;testBackupVault&#34;, BackupVaultArgs.builder()        
- *             .name(&#34;test-backup-vault&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;Terraform created vault&#34;)
- *             .labels(Map.of(&#34;creator&#34;, &#34;testuser&#34;))
+ *         var testBackupVault = new BackupVault("testBackupVault", BackupVaultArgs.builder()        
+ *             .name("test-backup-vault")
+ *             .location("us-central1")
+ *             .description("Terraform created vault")
+ *             .labels(Map.of("creator", "testuser"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -41,7 +41,8 @@ import javax.annotation.Nullable;
  * ### Network Endpoints
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -77,76 +78,77 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;neg-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("neg-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;neg-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.0.0.1/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("neg-subnetwork")
+ *             .ipCidrRange("10.0.0.1/16")
+ *             .region("us-central1")
  *             .network(default_.id())
  *             .build());
  * 
- *         var endpoint_instance1 = new Instance(&#34;endpoint-instance1&#34;, InstanceArgs.builder()        
+ *         var endpoint_instance1 = new Instance("endpoint-instance1", InstanceArgs.builder()        
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
- *             .name(&#34;endpoint-instance1&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *             .name("endpoint-instance1")
+ *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var endpoint_instance2 = new Instance(&#34;endpoint-instance2&#34;, InstanceArgs.builder()        
+ *         var endpoint_instance2 = new Instance("endpoint-instance2", InstanceArgs.builder()        
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
- *             .name(&#34;endpoint-instance2&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *             .name("endpoint-instance2")
+ *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_endpoints = new NetworkEndpointList(&#34;default-endpoints&#34;, NetworkEndpointListArgs.builder()        
+ *         var default_endpoints = new NetworkEndpointList("default-endpoints", NetworkEndpointListArgs.builder()        
  *             .networkEndpointGroup(neg.name())
  *             .networkEndpoints(            
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance1.name())
  *                     .port(neg.defaultPort())
- *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(networkInterfaces -&gt; networkInterfaces[0].networkIp()))
+ *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].networkIp()))
  *                     .build(),
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance2.name())
  *                     .port(neg.defaultPort())
- *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(networkInterfaces -&gt; networkInterfaces[0].networkIp()))
+ *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].networkIp()))
  *                     .build())
  *             .build());
  * 
- *         var group = new NetworkEndpointGroup(&#34;group&#34;, NetworkEndpointGroupArgs.builder()        
- *             .name(&#34;my-lb-neg&#34;)
+ *         var group = new NetworkEndpointGroup("group", NetworkEndpointGroupArgs.builder()        
+ *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .defaultPort(&#34;90&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .defaultPort("90")
+ *             .zone("us-central1-a")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

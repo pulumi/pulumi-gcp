@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Apigee Environment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,40 +62,41 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = OrganizationsFunctions.getClientConfig();
  * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;apigee-network&#34;)
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *             .name("apigee-network")
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;apigee-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
  *             .network(apigeeNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
- *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *             .analyticsRegion("us-central1")
+ *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build());
  * 
- *         var env = new Environment(&#34;env&#34;, EnvironmentArgs.builder()        
- *             .name(&#34;my-environment&#34;)
- *             .description(&#34;Apigee Environment&#34;)
- *             .displayName(&#34;environment-1&#34;)
+ *         var env = new Environment("env", EnvironmentArgs.builder()        
+ *             .name("my-environment")
+ *             .description("Apigee Environment")
+ *             .displayName("environment-1")
  *             .orgId(apigeeOrg.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

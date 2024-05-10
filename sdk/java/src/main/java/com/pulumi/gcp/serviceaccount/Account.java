@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * This snippet creates a service account in a project.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,14 +57,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;service-account-id&#34;)
- *             .displayName(&#34;Service Account&#34;)
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *             .accountId("service-account-id")
+ *             .displayName("Service Account")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

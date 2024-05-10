@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,30 +62,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var template = new WorkflowTemplate(&#34;template&#34;, WorkflowTemplateArgs.builder()        
- *             .name(&#34;template-example&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var template = new WorkflowTemplate("template", WorkflowTemplateArgs.builder()        
+ *             .name("template-example")
+ *             .location("us-central1")
  *             .placement(WorkflowTemplatePlacementArgs.builder()
  *                 .managedCluster(WorkflowTemplatePlacementManagedClusterArgs.builder()
- *                     .clusterName(&#34;my-cluster&#34;)
+ *                     .clusterName("my-cluster")
  *                     .config(WorkflowTemplatePlacementManagedClusterConfigArgs.builder()
  *                         .gceClusterConfig(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs.builder()
- *                             .zone(&#34;us-central1-a&#34;)
+ *                             .zone("us-central1-a")
  *                             .tags(                            
- *                                 &#34;foo&#34;,
- *                                 &#34;bar&#34;)
+ *                                 "foo",
+ *                                 "bar")
  *                             .build())
  *                         .masterConfig(WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs.builder()
  *                             .numInstances(1)
- *                             .machineType(&#34;n1-standard-1&#34;)
+ *                             .machineType("n1-standard-1")
  *                             .diskConfig(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs.builder()
- *                                 .bootDiskType(&#34;pd-ssd&#34;)
+ *                                 .bootDiskType("pd-ssd")
  *                                 .bootDiskSizeGb(15)
  *                                 .build())
  *                             .build())
  *                         .workerConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs.builder()
  *                             .numInstances(3)
- *                             .machineType(&#34;n1-standard-2&#34;)
+ *                             .machineType("n1-standard-2")
  *                             .diskConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs.builder()
  *                                 .bootDiskSizeGb(10)
  *                                 .numLocalSsds(2)
@@ -94,30 +95,31 @@ import javax.annotation.Nullable;
  *                             .numInstances(2)
  *                             .build())
  *                         .softwareConfig(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs.builder()
- *                             .imageVersion(&#34;2.0.35-debian10&#34;)
+ *                             .imageVersion("2.0.35-debian10")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
  *             .jobs(            
  *                 WorkflowTemplateJobArgs.builder()
- *                     .stepId(&#34;someJob&#34;)
+ *                     .stepId("someJob")
  *                     .sparkJob(WorkflowTemplateJobSparkJobArgs.builder()
- *                         .mainClass(&#34;SomeClass&#34;)
+ *                         .mainClass("SomeClass")
  *                         .build())
  *                     .build(),
  *                 WorkflowTemplateJobArgs.builder()
- *                     .stepId(&#34;otherJob&#34;)
- *                     .prerequisiteStepIds(&#34;someJob&#34;)
+ *                     .stepId("otherJob")
+ *                     .prerequisiteStepIds("someJob")
  *                     .prestoJob(WorkflowTemplateJobPrestoJobArgs.builder()
- *                         .queryFileUri(&#34;someuri&#34;)
+ *                         .queryFileUri("someuri")
  *                         .build())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

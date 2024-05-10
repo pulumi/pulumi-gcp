@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,28 +53,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a VPC network
- *         var peeringNetwork = new Network(&#34;peeringNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;peering-network&#34;)
+ *         var peeringNetwork = new Network("peeringNetwork", NetworkArgs.builder()        
+ *             .name("peering-network")
  *             .build());
  * 
  *         // Create an IP address
- *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;private-ip-alloc&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *             .name("private-ip-alloc")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(peeringNetwork.id())
  *             .build());
  * 
  *         // Create a private connection
- *         var default_ = new Connection(&#34;default&#34;, ConnectionArgs.builder()        
+ *         var default_ = new Connection("default", ConnectionArgs.builder()        
  *             .network(peeringNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
  *         // (Optional) Import or export custom routes
- *         var peeringRoutes = new NetworkPeeringRoutesConfig(&#34;peeringRoutes&#34;, NetworkPeeringRoutesConfigArgs.builder()        
+ *         var peeringRoutes = new NetworkPeeringRoutesConfig("peeringRoutes", NetworkPeeringRoutesConfigArgs.builder()        
  *             .peering(default_.peering())
  *             .network(peeringNetwork.name())
  *             .importCustomRoutes(true)
@@ -82,7 +83,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

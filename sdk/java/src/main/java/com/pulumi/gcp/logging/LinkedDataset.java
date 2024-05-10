@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Logging Linked Dataset Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,27 +54,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingLinkedDataset = new ProjectBucketConfig(&#34;loggingLinkedDataset&#34;, ProjectBucketConfigArgs.builder()        
- *             .location(&#34;global&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var loggingLinkedDataset = new ProjectBucketConfig("loggingLinkedDataset", ProjectBucketConfigArgs.builder()        
+ *             .location("global")
+ *             .project("my-project-name")
  *             .enableAnalytics(true)
- *             .bucketId(&#34;my-bucket&#34;)
+ *             .bucketId("my-bucket")
  *             .build());
  * 
- *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset(&#34;loggingLinkedDatasetLinkedDataset&#34;, LinkedDatasetArgs.builder()        
- *             .linkId(&#34;mylink&#34;)
+ *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset("loggingLinkedDatasetLinkedDataset", LinkedDatasetArgs.builder()        
+ *             .linkId("mylink")
  *             .bucket(loggingLinkedDataset.id())
- *             .description(&#34;Linked dataset test&#34;)
+ *             .description("Linked dataset test")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Logging Linked Dataset All Params
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,24 +99,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingLinkedDataset = new ProjectBucketConfig(&#34;loggingLinkedDataset&#34;, ProjectBucketConfigArgs.builder()        
- *             .location(&#34;global&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var loggingLinkedDataset = new ProjectBucketConfig("loggingLinkedDataset", ProjectBucketConfigArgs.builder()        
+ *             .location("global")
+ *             .project("my-project-name")
  *             .enableAnalytics(true)
- *             .bucketId(&#34;my-bucket&#34;)
+ *             .bucketId("my-bucket")
  *             .build());
  * 
- *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset(&#34;loggingLinkedDatasetLinkedDataset&#34;, LinkedDatasetArgs.builder()        
- *             .linkId(&#34;mylink&#34;)
- *             .bucket(&#34;my-bucket&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .location(&#34;global&#34;)
- *             .description(&#34;Linked dataset test&#34;)
+ *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset("loggingLinkedDatasetLinkedDataset", LinkedDatasetArgs.builder()        
+ *             .linkId("mylink")
+ *             .bucket("my-bucket")
+ *             .parent("projects/my-project-name")
+ *             .location("global")
+ *             .description("Linked dataset test")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

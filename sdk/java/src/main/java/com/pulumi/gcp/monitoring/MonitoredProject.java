@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Monitoring Monitored Project Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,20 +51,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;m-id&#34;)
- *             .name(&#34;m-id-display&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var basic = new Project("basic", ProjectArgs.builder()        
+ *             .projectId("m-id")
+ *             .name("m-id-display")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new MonitoredProject(&#34;primary&#34;, MonitoredProjectArgs.builder()        
- *             .metricsScope(&#34;my-project-name&#34;)
+ *         var primary = new MonitoredProject("primary", MonitoredProjectArgs.builder()        
+ *             .metricsScope("my-project-name")
  *             .name(basic.projectId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

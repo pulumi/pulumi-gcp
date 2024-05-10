@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Iam Workforce Pool Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,20 +56,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkforcePool(&#34;example&#34;, WorkforcePoolArgs.builder()        
- *             .workforcePoolId(&#34;example-pool&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
+ *         var example = new WorkforcePool("example", WorkforcePoolArgs.builder()        
+ *             .workforcePoolId("example-pool")
+ *             .parent("organizations/123456789")
+ *             .location("global")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workforce Pool Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,17 +93,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkforcePool(&#34;example&#34;, WorkforcePoolArgs.builder()        
- *             .workforcePoolId(&#34;example-pool&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
- *             .displayName(&#34;Display name&#34;)
- *             .description(&#34;A sample workforce pool.&#34;)
+ *         var example = new WorkforcePool("example", WorkforcePoolArgs.builder()        
+ *             .workforcePoolId("example-pool")
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .displayName("Display name")
+ *             .description("A sample workforce pool.")
  *             .disabled(false)
- *             .sessionDuration(&#34;7200s&#34;)
+ *             .sessionDuration("7200s")
  *             .accessRestrictions(WorkforcePoolAccessRestrictionsArgs.builder()
  *                 .allowedServices(WorkforcePoolAccessRestrictionsAllowedServiceArgs.builder()
- *                     .domain(&#34;backstory.chronicle.security&#34;)
+ *                     .domain("backstory.chronicle.security")
  *                     .build())
  *                 .disableProgrammaticSignin(false)
  *                 .build())
@@ -108,7 +111,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

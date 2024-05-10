@@ -41,7 +41,8 @@ import javax.annotation.Nullable;
  * ### Public Function
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,46 +70,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;test-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("test-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var archive = new BucketObject(&#34;archive&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;index.zip&#34;)
+ *         var archive = new BucketObject("archive", BucketObjectArgs.builder()        
+ *             .name("index.zip")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;./path/to/zip/file/which/contains/code&#34;))
+ *             .source(new FileAsset("./path/to/zip/file/which/contains/code"))
  *             .build());
  * 
- *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
- *             .name(&#34;function-test&#34;)
- *             .description(&#34;My function&#34;)
- *             .runtime(&#34;nodejs16&#34;)
+ *         var function = new Function("function", FunctionArgs.builder()        
+ *             .name("function-test")
+ *             .description("My function")
+ *             .runtime("nodejs16")
  *             .availableMemoryMb(128)
  *             .sourceArchiveBucket(bucket.name())
  *             .sourceArchiveObject(archive.name())
  *             .triggerHttp(true)
- *             .entryPoint(&#34;helloGET&#34;)
+ *             .entryPoint("helloGET")
  *             .build());
  * 
  *         // IAM entry for all users to invoke the function
- *         var invoker = new FunctionIamMember(&#34;invoker&#34;, FunctionIamMemberArgs.builder()        
+ *         var invoker = new FunctionIamMember("invoker", FunctionIamMemberArgs.builder()        
  *             .project(function.project())
  *             .region(function.region())
  *             .cloudFunction(function.name())
- *             .role(&#34;roles/cloudfunctions.invoker&#34;)
- *             .member(&#34;allUsers&#34;)
+ *             .role("roles/cloudfunctions.invoker")
+ *             .member("allUsers")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Single User
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -136,44 +139,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;test-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("test-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var archive = new BucketObject(&#34;archive&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;index.zip&#34;)
+ *         var archive = new BucketObject("archive", BucketObjectArgs.builder()        
+ *             .name("index.zip")
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;./path/to/zip/file/which/contains/code&#34;))
+ *             .source(new FileAsset("./path/to/zip/file/which/contains/code"))
  *             .build());
  * 
- *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
- *             .name(&#34;function-test&#34;)
- *             .description(&#34;My function&#34;)
- *             .runtime(&#34;nodejs16&#34;)
+ *         var function = new Function("function", FunctionArgs.builder()        
+ *             .name("function-test")
+ *             .description("My function")
+ *             .runtime("nodejs16")
  *             .availableMemoryMb(128)
  *             .sourceArchiveBucket(bucket.name())
  *             .sourceArchiveObject(archive.name())
  *             .triggerHttp(true)
- *             .httpsTriggerSecurityLevel(&#34;SECURE_ALWAYS&#34;)
+ *             .httpsTriggerSecurityLevel("SECURE_ALWAYS")
  *             .timeout(60)
- *             .entryPoint(&#34;helloGET&#34;)
- *             .labels(Map.of(&#34;my-label&#34;, &#34;my-label-value&#34;))
- *             .environmentVariables(Map.of(&#34;MY_ENV_VAR&#34;, &#34;my-env-var-value&#34;))
+ *             .entryPoint("helloGET")
+ *             .labels(Map.of("my-label", "my-label-value"))
+ *             .environmentVariables(Map.of("MY_ENV_VAR", "my-env-var-value"))
  *             .build());
  * 
  *         // IAM entry for a single user to invoke the function
- *         var invoker = new FunctionIamMember(&#34;invoker&#34;, FunctionIamMemberArgs.builder()        
+ *         var invoker = new FunctionIamMember("invoker", FunctionIamMemberArgs.builder()        
  *             .project(function.project())
  *             .region(function.region())
  *             .cloudFunction(function.name())
- *             .role(&#34;roles/cloudfunctions.invoker&#34;)
- *             .member(&#34;user:myFunctionInvoker@example.com&#34;)
+ *             .role("roles/cloudfunctions.invoker")
+ *             .member("user:myFunctionInvoker{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

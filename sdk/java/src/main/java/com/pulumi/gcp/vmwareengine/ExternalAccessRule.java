@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Vmware Engine External Access Rule Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,44 +58,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external_access_rule_nw = new Network(&#34;external-access-rule-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;sample-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
- *             .description(&#34;PC network description.&#34;)
+ *         var external_access_rule_nw = new Network("external-access-rule-nw", NetworkArgs.builder()        
+ *             .name("sample-nw")
+ *             .location("global")
+ *             .type("STANDARD")
+ *             .description("PC network description.")
  *             .build());
  * 
- *         var external_access_rule_np = new NetworkPolicy(&#34;external-access-rule-np&#34;, NetworkPolicyArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;sample-np&#34;)
- *             .edgeServicesCidr(&#34;192.168.30.0/26&#34;)
+ *         var external_access_rule_np = new NetworkPolicy("external-access-rule-np", NetworkPolicyArgs.builder()        
+ *             .location("us-west1")
+ *             .name("sample-np")
+ *             .edgeServicesCidr("192.168.30.0/26")
  *             .vmwareEngineNetwork(external_access_rule_nw.id())
  *             .build());
  * 
- *         var vmw_engine_external_access_rule = new ExternalAccessRule(&#34;vmw-engine-external-access-rule&#34;, ExternalAccessRuleArgs.builder()        
- *             .name(&#34;sample-external-access-rule&#34;)
+ *         var vmw_engine_external_access_rule = new ExternalAccessRule("vmw-engine-external-access-rule", ExternalAccessRuleArgs.builder()        
+ *             .name("sample-external-access-rule")
  *             .parent(external_access_rule_np.id())
  *             .priority(101)
- *             .action(&#34;DENY&#34;)
- *             .ipProtocol(&#34;TCP&#34;)
+ *             .action("DENY")
+ *             .ipProtocol("TCP")
  *             .sourceIpRanges(ExternalAccessRuleSourceIpRangeArgs.builder()
- *                 .ipAddressRange(&#34;0.0.0.0/0&#34;)
+ *                 .ipAddressRange("0.0.0.0/0")
  *                 .build())
- *             .sourcePorts(&#34;80&#34;)
+ *             .sourcePorts("80")
  *             .destinationIpRanges(ExternalAccessRuleDestinationIpRangeArgs.builder()
- *                 .ipAddressRange(&#34;0.0.0.0/0&#34;)
+ *                 .ipAddressRange("0.0.0.0/0")
  *                 .build())
- *             .destinationPorts(&#34;433&#34;)
+ *             .destinationPorts("433")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vmware Engine External Access Rule Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -127,63 +130,64 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external_access_rule_nw = new Network(&#34;external-access-rule-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;sample-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
- *             .description(&#34;PC network description.&#34;)
+ *         var external_access_rule_nw = new Network("external-access-rule-nw", NetworkArgs.builder()        
+ *             .name("sample-nw")
+ *             .location("global")
+ *             .type("STANDARD")
+ *             .description("PC network description.")
  *             .build());
  * 
- *         var external_access_rule_pc = new PrivateCloud(&#34;external-access-rule-pc&#34;, PrivateCloudArgs.builder()        
- *             .location(&#34;us-west1-a&#34;)
- *             .name(&#34;sample-pc&#34;)
- *             .description(&#34;Sample test PC.&#34;)
+ *         var external_access_rule_pc = new PrivateCloud("external-access-rule-pc", PrivateCloudArgs.builder()        
+ *             .location("us-west1-a")
+ *             .name("sample-pc")
+ *             .description("Sample test PC.")
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
- *                 .managementCidr(&#34;192.168.50.0/24&#34;)
+ *                 .managementCidr("192.168.50.0/24")
  *                 .vmwareEngineNetwork(external_access_rule_nw.id())
  *                 .build())
  *             .managementCluster(PrivateCloudManagementClusterArgs.builder()
- *                 .clusterId(&#34;sample-mgmt-cluster&#34;)
+ *                 .clusterId("sample-mgmt-cluster")
  *                 .nodeTypeConfigs(PrivateCloudManagementClusterNodeTypeConfigArgs.builder()
- *                     .nodeTypeId(&#34;standard-72&#34;)
+ *                     .nodeTypeId("standard-72")
  *                     .nodeCount(3)
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var external_access_rule_np = new NetworkPolicy(&#34;external-access-rule-np&#34;, NetworkPolicyArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;sample-np&#34;)
- *             .edgeServicesCidr(&#34;192.168.30.0/26&#34;)
+ *         var external_access_rule_np = new NetworkPolicy("external-access-rule-np", NetworkPolicyArgs.builder()        
+ *             .location("us-west1")
+ *             .name("sample-np")
+ *             .edgeServicesCidr("192.168.30.0/26")
  *             .vmwareEngineNetwork(external_access_rule_nw.id())
  *             .build());
  * 
- *         var external_access_rule_ea = new ExternalAddress(&#34;external-access-rule-ea&#34;, ExternalAddressArgs.builder()        
- *             .name(&#34;sample-ea&#34;)
+ *         var external_access_rule_ea = new ExternalAddress("external-access-rule-ea", ExternalAddressArgs.builder()        
+ *             .name("sample-ea")
  *             .parent(external_access_rule_pc.id())
- *             .internalIp(&#34;192.168.0.65&#34;)
+ *             .internalIp("192.168.0.65")
  *             .build());
  * 
- *         var vmw_engine_external_access_rule = new ExternalAccessRule(&#34;vmw-engine-external-access-rule&#34;, ExternalAccessRuleArgs.builder()        
- *             .name(&#34;sample-external-access-rule&#34;)
+ *         var vmw_engine_external_access_rule = new ExternalAccessRule("vmw-engine-external-access-rule", ExternalAccessRuleArgs.builder()        
+ *             .name("sample-external-access-rule")
  *             .parent(external_access_rule_np.id())
- *             .description(&#34;Sample Description&#34;)
+ *             .description("Sample Description")
  *             .priority(101)
- *             .action(&#34;ALLOW&#34;)
- *             .ipProtocol(&#34;tcp&#34;)
+ *             .action("ALLOW")
+ *             .ipProtocol("tcp")
  *             .sourceIpRanges(ExternalAccessRuleSourceIpRangeArgs.builder()
- *                 .ipAddressRange(&#34;0.0.0.0/0&#34;)
+ *                 .ipAddressRange("0.0.0.0/0")
  *                 .build())
- *             .sourcePorts(&#34;80&#34;)
+ *             .sourcePorts("80")
  *             .destinationIpRanges(ExternalAccessRuleDestinationIpRangeArgs.builder()
  *                 .externalAddress(external_access_rule_ea.id())
  *                 .build())
- *             .destinationPorts(&#34;433&#34;)
+ *             .destinationPorts("433")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

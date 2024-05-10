@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ### Cloudrunv2 Service Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,25 +61,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Limits
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,17 +103,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .resources(ServiceTemplateContainerResourcesArgs.builder()
  *                         .limits(Map.ofEntries(
- *                             Map.entry(&#34;cpu&#34;, &#34;2&#34;),
- *                             Map.entry(&#34;memory&#34;, &#34;1024Mi&#34;)
+ *                             Map.entry("cpu", "2"),
+ *                             Map.entry("memory", "1024Mi")
  *                         ))
  *                         .build())
  *                     .build())
@@ -119,12 +122,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Sql
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -161,86 +166,88 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret-1&#34;)
+ *         var secret = new Secret("secret", SecretArgs.builder()        
+ *             .secretId("secret-1")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;cloudrun-sql&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("cloudrun-sql")
+ *             .region("us-central1")
+ *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .scaling(ServiceTemplateScalingArgs.builder()
  *                     .maxInstanceCount(2)
  *                     .build())
  *                 .volumes(ServiceTemplateVolumeArgs.builder()
- *                     .name(&#34;cloudsql&#34;)
+ *                     .name("cloudsql")
  *                     .cloudSqlInstance(ServiceTemplateVolumeCloudSqlInstanceArgs.builder()
  *                         .instances(instance.connectionName())
  *                         .build())
  *                     .build())
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .envs(                    
  *                         ServiceTemplateContainerEnvArgs.builder()
- *                             .name(&#34;FOO&#34;)
- *                             .value(&#34;bar&#34;)
+ *                             .name("FOO")
+ *                             .value("bar")
  *                             .build(),
  *                         ServiceTemplateContainerEnvArgs.builder()
- *                             .name(&#34;SECRET_ENV_VAR&#34;)
+ *                             .name("SECRET_ENV_VAR")
  *                             .valueSource(ServiceTemplateContainerEnvValueSourceArgs.builder()
  *                                 .secretKeyRef(ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs.builder()
  *                                     .secret(secret.secretId())
- *                                     .version(&#34;1&#34;)
+ *                                     .version("1")
  *                                     .build())
  *                                 .build())
  *                             .build())
  *                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
- *                         .name(&#34;cloudsql&#34;)
- *                         .mountPath(&#34;/cloudsql&#34;)
+ *                         .name("cloudsql")
+ *                         .mountPath("/cloudsql")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .traffics(ServiceTrafficArgs.builder()
- *                 .type(&#34;TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST&#34;)
+ *                 .type("TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST")
  *                 .percent(100)
  *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var secret_version_data = new SecretVersion(&#34;secret-version-data&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()        
  *             .secret(secret.name())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
  *             .secretId(secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Vpcaccess
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -270,51 +277,53 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customTestNetwork = new Network(&#34;customTestNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;run-network&#34;)
+ *         var customTestNetwork = new Network("customTestNetwork", NetworkArgs.builder()        
+ *             .name("run-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var customTest = new Subnetwork(&#34;customTest&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;run-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.2.0.0/28&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var customTest = new Subnetwork("customTest", SubnetworkArgs.builder()        
+ *             .name("run-subnetwork")
+ *             .ipCidrRange("10.2.0.0/28")
+ *             .region("us-central1")
  *             .network(customTestNetwork.id())
  *             .build());
  * 
- *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
- *             .name(&#34;run-vpc&#34;)
+ *         var connector = new Connector("connector", ConnectorArgs.builder()        
+ *             .name("run-vpc")
  *             .subnet(ConnectorSubnetArgs.builder()
  *                 .name(customTest.name())
  *                 .build())
- *             .machineType(&#34;e2-standard-4&#34;)
+ *             .machineType("e2-standard-4")
  *             .minInstances(2)
  *             .maxInstances(3)
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .build());
  * 
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .build())
  *                 .vpcAccess(ServiceTemplateVpcAccessArgs.builder()
  *                     .connector(connector.id())
- *                     .egress(&#34;ALL_TRAFFIC&#34;)
+ *                     .egress("ALL_TRAFFIC")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Directvpc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -337,36 +346,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .launchStage(&#34;BETA&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .launchStage("BETA")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .build())
  *                 .vpcAccess(ServiceTemplateVpcAccessArgs.builder()
  *                     .networkInterfaces(ServiceTemplateVpcAccessNetworkInterfaceArgs.builder()
- *                         .network(&#34;default&#34;)
- *                         .subnetwork(&#34;default&#34;)
+ *                         .network("default")
+ *                         .subnetwork("default")
  *                         .tags(                        
- *                             &#34;tag1&#34;,
- *                             &#34;tag2&#34;,
- *                             &#34;tag3&#34;)
+ *                             "tag1",
+ *                             "tag2",
+ *                             "tag3")
  *                         .build())
- *                     .egress(&#34;ALL_TRAFFIC&#34;)
+ *                     .egress("ALL_TRAFFIC")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Probes
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -388,12 +399,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .startupProbe(ServiceTemplateContainerStartupProbeArgs.builder()
  *                         .initialDelaySeconds(0)
  *                         .timeoutSeconds(1)
@@ -405,7 +416,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .livenessProbe(ServiceTemplateContainerLivenessProbeArgs.builder()
  *                         .httpGet(ServiceTemplateContainerLivenessProbeHttpGetArgs.builder()
- *                             .path(&#34;/&#34;)
+ *                             .path("/")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -414,12 +425,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Secret
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -451,34 +464,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret-1&#34;)
+ *         var secret = new Secret("secret", SecretArgs.builder()        
+ *             .secretId("secret-1")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .volumes(ServiceTemplateVolumeArgs.builder()
- *                     .name(&#34;a-volume&#34;)
+ *                     .name("a-volume")
  *                     .secret(ServiceTemplateVolumeSecretArgs.builder()
  *                         .secret(secret.secretId())
  *                         .defaultMode(292)
  *                         .items(ServiceTemplateVolumeSecretItemArgs.builder()
- *                             .version(&#34;1&#34;)
- *                             .path(&#34;my-secret&#34;)
+ *                             .version("1")
+ *                             .path("my-secret")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
- *                         .name(&#34;a-volume&#34;)
- *                         .mountPath(&#34;/secrets&#34;)
+ *                         .name("a-volume")
+ *                         .mountPath("/secrets")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -486,25 +499,27 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var secret_version_data = new SecretVersion(&#34;secret-version-data&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()        
  *             .secret(secret.name())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
  *             .secretId(secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Multicontainer
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -526,31 +541,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .launchStage(&#34;BETA&#34;)
- *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .launchStage("BETA")
+ *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(                
  *                     ServiceTemplateContainerArgs.builder()
- *                         .name(&#34;hello-1&#34;)
+ *                         .name("hello-1")
  *                         .ports(ServiceTemplateContainerPortArgs.builder()
  *                             .containerPort(8080)
  *                             .build())
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
- *                         .dependsOns(&#34;hello-2&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                         .dependsOns("hello-2")
  *                         .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
- *                             .name(&#34;empty-dir-volume&#34;)
- *                             .mountPath(&#34;/mnt&#34;)
+ *                             .name("empty-dir-volume")
+ *                             .mountPath("/mnt")
  *                             .build())
  *                         .build(),
  *                     ServiceTemplateContainerArgs.builder()
- *                         .name(&#34;hello-2&#34;)
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .name("hello-2")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                         .envs(ServiceTemplateContainerEnvArgs.builder()
- *                             .name(&#34;PORT&#34;)
- *                             .value(&#34;8081&#34;)
+ *                             .name("PORT")
+ *                             .value("8081")
  *                             .build())
  *                         .startupProbe(ServiceTemplateContainerStartupProbeArgs.builder()
  *                             .httpGet(ServiceTemplateContainerStartupProbeHttpGetArgs.builder()
@@ -559,10 +574,10 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                 .volumes(ServiceTemplateVolumeArgs.builder()
- *                     .name(&#34;empty-dir-volume&#34;)
+ *                     .name("empty-dir-volume")
  *                     .emptyDir(ServiceTemplateVolumeEmptyDirArgs.builder()
- *                         .medium(&#34;MEMORY&#34;)
- *                         .sizeLimit(&#34;256Mi&#34;)
+ *                         .medium("MEMORY")
+ *                         .sizeLimit("256Mi")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -570,12 +585,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Mount Gcs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -599,26 +616,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;US&#34;)
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("US")
  *             .build());
  * 
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .launchStage(&#34;BETA&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .launchStage("BETA")
  *             .template(ServiceTemplateArgs.builder()
- *                 .executionEnvironment(&#34;EXECUTION_ENVIRONMENT_GEN2&#34;)
+ *                 .executionEnvironment("EXECUTION_ENVIRONMENT_GEN2")
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
- *                         .name(&#34;bucket&#34;)
- *                         .mountPath(&#34;/var/www&#34;)
+ *                         .name("bucket")
+ *                         .mountPath("/var/www")
  *                         .build())
  *                     .build())
  *                 .volumes(ServiceTemplateVolumeArgs.builder()
- *                     .name(&#34;bucket&#34;)
+ *                     .name("bucket")
  *                     .gcs(ServiceTemplateVolumeGcsArgs.builder()
  *                         .bucket(defaultBucket.name())
  *                         .readOnly(false)
@@ -629,12 +646,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Mount Nfs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -661,45 +680,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1-b&#34;)
- *             .tier(&#34;BASIC_HDD&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1-b")
+ *             .tier("BASIC_HDD")
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(1024)
- *                 .name(&#34;share1&#34;)
+ *                 .name("share1")
  *                 .build())
  *             .networks(InstanceNetworkArgs.builder()
- *                 .network(&#34;default&#34;)
- *                 .modes(&#34;MODE_IPV4&#34;)
+ *                 .network("default")
+ *                 .modes("MODE_IPV4")
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .name(&#34;cloudrun-service&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
- *             .launchStage(&#34;BETA&#34;)
+ *         var default_ = new Service("default", ServiceArgs.builder()        
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .ingress("INGRESS_TRAFFIC_ALL")
+ *             .launchStage("BETA")
  *             .template(ServiceTemplateArgs.builder()
- *                 .executionEnvironment(&#34;EXECUTION_ENVIRONMENT_GEN2&#34;)
+ *                 .executionEnvironment("EXECUTION_ENVIRONMENT_GEN2")
  *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello:latest&#34;)
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello:latest")
  *                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
- *                         .name(&#34;nfs&#34;)
- *                         .mountPath(&#34;/mnt/nfs/filestore&#34;)
+ *                         .name("nfs")
+ *                         .mountPath("/mnt/nfs/filestore")
  *                         .build())
  *                     .build())
  *                 .vpcAccess(ServiceTemplateVpcAccessArgs.builder()
  *                     .networkInterfaces(ServiceTemplateVpcAccessNetworkInterfaceArgs.builder()
- *                         .network(&#34;default&#34;)
- *                         .subnetwork(&#34;default&#34;)
+ *                         .network("default")
+ *                         .subnetwork("default")
  *                         .build())
  *                     .build())
  *                 .volumes(ServiceTemplateVolumeArgs.builder()
- *                     .name(&#34;nfs&#34;)
+ *                     .name("nfs")
  *                     .nfs(ServiceTemplateVolumeNfsArgs.builder()
- *                         .server(defaultInstance.networks().applyValue(networks -&gt; networks[0].ipAddresses()[0]))
- *                         .path(&#34;/share1&#34;)
+ *                         .server(defaultInstance.networks().applyValue(networks -> networks[0].ipAddresses()[0]))
+ *                         .path("/share1")
  *                         .readOnly(false)
  *                         .build())
  *                     .build())
@@ -708,7 +727,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

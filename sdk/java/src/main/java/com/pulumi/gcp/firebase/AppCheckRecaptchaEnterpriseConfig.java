@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Firebase App Check Recaptcha Enterprise Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,33 +56,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enables the reCAPTCHA Enterprise API
- *         var recaptchaEnterprise = new Service(&#34;recaptchaEnterprise&#34;, ServiceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .service(&#34;recaptchaenterprise.googleapis.com&#34;)
+ *         var recaptchaEnterprise = new Service("recaptchaEnterprise", ServiceArgs.builder()        
+ *             .project("my-project-name")
+ *             .service("recaptchaenterprise.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Web App for reCAPTCHA Enterprise&#34;)
+ *         var default_ = new WebApp("default", WebAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Web App for reCAPTCHA Enterprise")
  *             .build());
  * 
  *         // It takes a while for App Check to recognize the new app
- *         // If your app already exists, you don&#39;t have to wait 30 seconds.
- *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;30s&#34;)
+ *         // If your app already exists, you don't have to wait 30 seconds.
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckRecaptchaEnterpriseConfig = new AppCheckRecaptchaEnterpriseConfig(&#34;defaultAppCheckRecaptchaEnterpriseConfig&#34;, AppCheckRecaptchaEnterpriseConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var defaultAppCheckRecaptchaEnterpriseConfig = new AppCheckRecaptchaEnterpriseConfig("defaultAppCheckRecaptchaEnterpriseConfig", AppCheckRecaptchaEnterpriseConfigArgs.builder()        
+ *             .project("my-project-name")
  *             .appId(default_.appId())
- *             .siteKey(&#34;6LdpMXIpAAAAANkwWQPgEdjEhal7ugkH9RK9ytuw&#34;)
- *             .tokenTtl(&#34;7200s&#34;)
+ *             .siteKey("6LdpMXIpAAAAANkwWQPgEdjEhal7ugkH9RK9ytuw")
+ *             .tokenTtl("7200s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Network Services Edge Cache Keyset Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,28 +55,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EdgeCacheKeyset(&#34;default&#34;, EdgeCacheKeysetArgs.builder()        
- *             .name(&#34;my-keyset&#34;)
- *             .description(&#34;The default keyset&#34;)
+ *         var default_ = new EdgeCacheKeyset("default", EdgeCacheKeysetArgs.builder()        
+ *             .name("my-keyset")
+ *             .description("The default keyset")
  *             .publicKeys(            
  *                 EdgeCacheKeysetPublicKeyArgs.builder()
- *                     .id(&#34;my-public-key&#34;)
- *                     .value(&#34;FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY&#34;)
+ *                     .id("my-public-key")
+ *                     .value("FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY")
  *                     .build(),
  *                 EdgeCacheKeysetPublicKeyArgs.builder()
- *                     .id(&#34;my-public-key-2&#34;)
- *                     .value(&#34;hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM&#34;)
+ *                     .id("my-public-key-2")
+ *                     .value("hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Edge Cache Keyset Dual Token
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,23 +107,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret-name&#34;)
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *             .secretId("secret-name")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion(&#34;secret-version-basic&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
- *         var default_ = new EdgeCacheKeyset(&#34;default&#34;, EdgeCacheKeysetArgs.builder()        
- *             .name(&#34;my-keyset&#34;)
- *             .description(&#34;The default keyset&#34;)
+ *         var default_ = new EdgeCacheKeyset("default", EdgeCacheKeysetArgs.builder()        
+ *             .name("my-keyset")
+ *             .description("The default keyset")
  *             .publicKeys(EdgeCacheKeysetPublicKeyArgs.builder()
- *                 .id(&#34;my-public-key&#34;)
+ *                 .id("my-public-key")
  *                 .managed(true)
  *                 .build())
  *             .validationSharedKeys(EdgeCacheKeysetValidationSharedKeyArgs.builder()
@@ -130,7 +133,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

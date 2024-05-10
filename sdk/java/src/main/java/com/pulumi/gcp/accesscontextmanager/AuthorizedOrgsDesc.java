@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ### Access Context Manager Authorized Orgs Desc Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,25 +63,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_access = new AccessPolicy(&#34;test-access&#34;, AccessPolicyArgs.builder()        
- *             .parent(&#34;organizations/&#34;)
- *             .title(&#34;my policy&#34;)
+ *         var test_access = new AccessPolicy("test-access", AccessPolicyArgs.builder()        
+ *             .parent("organizations/")
+ *             .title("my policy")
  *             .build());
  * 
- *         var authorized_orgs_desc = new AuthorizedOrgsDesc(&#34;authorized-orgs-desc&#34;, AuthorizedOrgsDescArgs.builder()        
- *             .parent(test_access.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
- *             .name(test_access.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/authorizedOrgsDescs/fakeDescName&#34;, name)))
- *             .authorizationType(&#34;AUTHORIZATION_TYPE_TRUST&#34;)
- *             .assetType(&#34;ASSET_TYPE_CREDENTIAL_STRENGTH&#34;)
- *             .authorizationDirection(&#34;AUTHORIZATION_DIRECTION_TO&#34;)
+ *         var authorized_orgs_desc = new AuthorizedOrgsDesc("authorized-orgs-desc", AuthorizedOrgsDescArgs.builder()        
+ *             .parent(test_access.name().applyValue(name -> String.format("accessPolicies/%s", name)))
+ *             .name(test_access.name().applyValue(name -> String.format("accessPolicies/%s/authorizedOrgsDescs/fakeDescName", name)))
+ *             .authorizationType("AUTHORIZATION_TYPE_TRUST")
+ *             .assetType("ASSET_TYPE_CREDENTIAL_STRENGTH")
+ *             .authorizationDirection("AUTHORIZATION_DIRECTION_TO")
  *             .orgs(            
- *                 &#34;organizations/12345&#34;,
- *                 &#34;organizations/98765&#34;)
+ *                 "organizations/12345",
+ *                 "organizations/98765")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

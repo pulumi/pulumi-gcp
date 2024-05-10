@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Monitoring Alert Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,32 +61,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
- *             .displayName(&#34;My Alert Policy&#34;)
- *             .combiner(&#34;OR&#34;)
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+ *             .displayName("My Alert Policy")
+ *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
- *                 .displayName(&#34;test condition&#34;)
+ *                 .displayName("test condition")
  *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
- *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
- *                     .duration(&#34;60s&#34;)
- *                     .comparison(&#34;COMPARISON_GT&#34;)
+ *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+ *                     .duration("60s")
+ *                     .comparison("COMPARISON_GT")
  *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
- *                         .alignmentPeriod(&#34;60s&#34;)
- *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+ *                         .alignmentPeriod("60s")
+ *                         .perSeriesAligner("ALIGN_RATE")
  *                         .build())
  *                     .build())
  *                 .build())
- *             .userLabels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .userLabels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Alert Policy Evaluation Missing Data
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -108,33 +111,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
- *             .displayName(&#34;My Alert Policy&#34;)
- *             .combiner(&#34;OR&#34;)
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+ *             .displayName("My Alert Policy")
+ *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
- *                 .displayName(&#34;test condition&#34;)
+ *                 .displayName("test condition")
  *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
- *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
- *                     .duration(&#34;60s&#34;)
- *                     .comparison(&#34;COMPARISON_GT&#34;)
+ *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+ *                     .duration("60s")
+ *                     .comparison("COMPARISON_GT")
  *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
- *                         .alignmentPeriod(&#34;60s&#34;)
- *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+ *                         .alignmentPeriod("60s")
+ *                         .perSeriesAligner("ALIGN_RATE")
  *                         .build())
- *                     .evaluationMissingData(&#34;EVALUATION_MISSING_DATA_INACTIVE&#34;)
+ *                     .evaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE")
  *                     .build())
  *                 .build())
- *             .userLabels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .userLabels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Alert Policy Forecast Options
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -158,35 +163,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
- *             .displayName(&#34;My Alert Policy&#34;)
- *             .combiner(&#34;OR&#34;)
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+ *             .displayName("My Alert Policy")
+ *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
- *                 .displayName(&#34;test condition&#34;)
+ *                 .displayName("test condition")
  *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
- *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
- *                     .duration(&#34;60s&#34;)
+ *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+ *                     .duration("60s")
  *                     .forecastOptions(AlertPolicyConditionConditionThresholdForecastOptionsArgs.builder()
- *                         .forecastHorizon(&#34;3600s&#34;)
+ *                         .forecastHorizon("3600s")
  *                         .build())
- *                     .comparison(&#34;COMPARISON_GT&#34;)
+ *                     .comparison("COMPARISON_GT")
  *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
- *                         .alignmentPeriod(&#34;60s&#34;)
- *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+ *                         .alignmentPeriod("60s")
+ *                         .perSeriesAligner("ALIGN_RATE")
  *                         .build())
  *                     .build())
  *                 .build())
- *             .userLabels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .userLabels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Alert Policy Promql Condition
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -210,27 +217,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
- *             .displayName(&#34;My Alert Policy&#34;)
- *             .combiner(&#34;OR&#34;)
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+ *             .displayName("My Alert Policy")
+ *             .combiner("OR")
  *             .conditions(AlertPolicyConditionArgs.builder()
- *                 .displayName(&#34;test condition&#34;)
+ *                 .displayName("test condition")
  *                 .conditionPrometheusQueryLanguage(AlertPolicyConditionConditionPrometheusQueryLanguageArgs.builder()
- *                     .query(&#34;compute_googleapis_com:instance_cpu_usage_time &gt; 0&#34;)
- *                     .duration(&#34;60s&#34;)
- *                     .evaluationInterval(&#34;60s&#34;)
- *                     .alertRule(&#34;AlwaysOn&#34;)
- *                     .ruleGroup(&#34;a test&#34;)
+ *                     .query("compute_googleapis_com:instance_cpu_usage_time > 0")
+ *                     .duration("60s")
+ *                     .evaluationInterval("60s")
+ *                     .alertRule("AlwaysOn")
+ *                     .ruleGroup("a test")
  *                     .build())
  *                 .build())
  *             .alertStrategy(AlertPolicyAlertStrategyArgs.builder()
- *                 .autoClose(&#34;1800s&#34;)
+ *                 .autoClose("1800s")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

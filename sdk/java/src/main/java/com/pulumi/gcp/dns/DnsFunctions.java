@@ -41,7 +41,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -65,12 +66,12 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foo = new ManagedZone(&#34;foo&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;foobar&#34;)
-     *             .dnsName(&#34;foo.bar.&#34;)
+     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()        
+     *             .name("foobar")
+     *             .dnsName("foo.bar.")
      *             .dnssecConfig(ManagedZoneDnssecConfigArgs.builder()
-     *                 .state(&#34;on&#34;)
-     *                 .nonExistence(&#34;nsec3&#34;)
+     *                 .state("on")
+     *                 .nonExistence("nsec3")
      *                 .build())
      *             .build());
      * 
@@ -78,10 +79,11 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult).applyValue(fooDnsKeys -&gt; fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(getKeysResult -> getKeysResult).applyValue(fooDnsKeys -> fooDnsKeys.applyValue(getKeysResult -> getKeysResult.keySigningKeys()[0].dsRecord())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -103,7 +105,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -127,12 +130,12 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foo = new ManagedZone(&#34;foo&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;foobar&#34;)
-     *             .dnsName(&#34;foo.bar.&#34;)
+     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()        
+     *             .name("foobar")
+     *             .dnsName("foo.bar.")
      *             .dnssecConfig(ManagedZoneDnssecConfigArgs.builder()
-     *                 .state(&#34;on&#34;)
-     *                 .nonExistence(&#34;nsec3&#34;)
+     *                 .state("on")
+     *                 .nonExistence("nsec3")
      *                 .build())
      *             .build());
      * 
@@ -140,10 +143,11 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult).applyValue(fooDnsKeys -&gt; fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(getKeysResult -> getKeysResult).applyValue(fooDnsKeys -> fooDnsKeys.applyValue(getKeysResult -> getKeysResult.keySigningKeys()[0].dsRecord())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -165,7 +169,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -189,12 +194,12 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foo = new ManagedZone(&#34;foo&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;foobar&#34;)
-     *             .dnsName(&#34;foo.bar.&#34;)
+     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()        
+     *             .name("foobar")
+     *             .dnsName("foo.bar.")
      *             .dnssecConfig(ManagedZoneDnssecConfigArgs.builder()
-     *                 .state(&#34;on&#34;)
-     *                 .nonExistence(&#34;nsec3&#34;)
+     *                 .state("on")
+     *                 .nonExistence("nsec3")
      *                 .build())
      *             .build());
      * 
@@ -202,10 +207,11 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult).applyValue(fooDnsKeys -&gt; fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(getKeysResult -> getKeysResult).applyValue(fooDnsKeys -> fooDnsKeys.applyValue(getKeysResult -> getKeysResult.keySigningKeys()[0].dsRecord())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -227,7 +233,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -251,12 +258,12 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var foo = new ManagedZone(&#34;foo&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;foobar&#34;)
-     *             .dnsName(&#34;foo.bar.&#34;)
+     *         var foo = new ManagedZone("foo", ManagedZoneArgs.builder()        
+     *             .name("foobar")
+     *             .dnsName("foo.bar.")
      *             .dnssecConfig(ManagedZoneDnssecConfigArgs.builder()
-     *                 .state(&#34;on&#34;)
-     *                 .nonExistence(&#34;nsec3&#34;)
+     *                 .state("on")
+     *                 .nonExistence("nsec3")
      *                 .build())
      *             .build());
      * 
@@ -264,10 +271,11 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult).applyValue(fooDnsKeys -&gt; fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(getKeysResult -> getKeysResult).applyValue(fooDnsKeys -> fooDnsKeys.applyValue(getKeysResult -> getKeysResult.keySigningKeys()[0].dsRecord())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -282,7 +290,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -306,20 +315,21 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
-     *             .name(&#34;qa-zone&#34;)
+     *             .name("qa-zone")
      *             .build());
      * 
-     *         var dns = new RecordSet(&#34;dns&#34;, RecordSetArgs.builder()        
-     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
-     *             .type(&#34;TXT&#34;)
+     *         var dns = new RecordSet("dns", RecordSetArgs.builder()        
+     *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .type("TXT")
      *             .ttl(300)
-     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .rrdatas(&#34;test&#34;)
+     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .rrdatas("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -334,7 +344,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -358,20 +369,21 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
-     *             .name(&#34;qa-zone&#34;)
+     *             .name("qa-zone")
      *             .build());
      * 
-     *         var dns = new RecordSet(&#34;dns&#34;, RecordSetArgs.builder()        
-     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
-     *             .type(&#34;TXT&#34;)
+     *         var dns = new RecordSet("dns", RecordSetArgs.builder()        
+     *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .type("TXT")
      *             .ttl(300)
-     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .rrdatas(&#34;test&#34;)
+     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .rrdatas("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -386,7 +398,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -410,20 +423,21 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
-     *             .name(&#34;qa-zone&#34;)
+     *             .name("qa-zone")
      *             .build());
      * 
-     *         var dns = new RecordSet(&#34;dns&#34;, RecordSetArgs.builder()        
-     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
-     *             .type(&#34;TXT&#34;)
+     *         var dns = new RecordSet("dns", RecordSetArgs.builder()        
+     *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .type("TXT")
      *             .ttl(300)
-     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .rrdatas(&#34;test&#34;)
+     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .rrdatas("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -438,7 +452,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -462,20 +477,21 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
-     *             .name(&#34;qa-zone&#34;)
+     *             .name("qa-zone")
      *             .build());
      * 
-     *         var dns = new RecordSet(&#34;dns&#34;, RecordSetArgs.builder()        
-     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
-     *             .type(&#34;TXT&#34;)
+     *         var dns = new RecordSet("dns", RecordSetArgs.builder()        
+     *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .type("TXT")
      *             .ttl(300)
-     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .rrdatas(&#34;test&#34;)
+     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .rrdatas("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -488,7 +504,8 @@ public final class DnsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -516,7 +533,8 @@ public final class DnsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -529,7 +547,8 @@ public final class DnsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -557,7 +576,8 @@ public final class DnsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -570,7 +590,8 @@ public final class DnsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -598,7 +619,8 @@ public final class DnsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -611,7 +633,8 @@ public final class DnsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -639,7 +662,8 @@ public final class DnsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -654,7 +678,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -676,12 +701,13 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
-     *             .project(&#34;my-project-id&#34;)
+     *             .project("my-project-id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -696,7 +722,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -718,12 +745,13 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
-     *             .project(&#34;my-project-id&#34;)
+     *             .project("my-project-id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -738,7 +766,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -760,12 +789,13 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
-     *             .project(&#34;my-project-id&#34;)
+     *             .project("my-project-id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -780,7 +810,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -802,12 +833,13 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
-     *             .project(&#34;my-project-id&#34;)
+     *             .project("my-project-id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -822,7 +854,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -844,12 +877,13 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
-     *             .project(&#34;my-project-id&#34;)
+     *             .project("my-project-id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -864,7 +898,8 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -886,12 +921,13 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
-     *             .project(&#34;my-project-id&#34;)
+     *             .project("my-project-id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

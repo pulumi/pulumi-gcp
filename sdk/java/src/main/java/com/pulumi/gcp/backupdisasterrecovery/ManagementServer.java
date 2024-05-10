@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Backup Dr Management Server
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,37 +52,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;vpc-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("vpc-network")
  *             .build());
  * 
- *         var privateIpAddress = new GlobalAddress(&#34;privateIpAddress&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;vpc-network&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
+ *         var privateIpAddress = new GlobalAddress("privateIpAddress", GlobalAddressArgs.builder()        
+ *             .name("vpc-network")
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
  *             .prefixLength(20)
  *             .network(default_.id())
  *             .build());
  * 
- *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()        
  *             .network(default_.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAddress.name())
  *             .build());
  * 
- *         var ms_console = new ManagementServer(&#34;ms-console&#34;, ManagementServerArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;ms-console&#34;)
- *             .type(&#34;BACKUP_RESTORE&#34;)
+ *         var ms_console = new ManagementServer("ms-console", ManagementServerArgs.builder()        
+ *             .location("us-central1")
+ *             .name("ms-console")
+ *             .type("BACKUP_RESTORE")
  *             .networks(ManagementServerNetworkArgs.builder()
  *                 .network(default_.id())
- *                 .peeringMode(&#34;PRIVATE_SERVICE_ACCESS&#34;)
+ *                 .peeringMode("PRIVATE_SERVICE_ACCESS")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

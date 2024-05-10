@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Dns Response Policy Rule Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,18 +54,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-1&#34;)
+ *         var network_1 = new Network("network-1", NetworkArgs.builder()        
+ *             .name("network-1")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_2 = new Network(&#34;network-2&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-2&#34;)
+ *         var network_2 = new Network("network-2", NetworkArgs.builder()        
+ *             .name("network-2")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var response_policy = new ResponsePolicy(&#34;response-policy&#34;, ResponsePolicyArgs.builder()        
- *             .responsePolicyName(&#34;example-response-policy&#34;)
+ *         var response_policy = new ResponsePolicy("response-policy", ResponsePolicyArgs.builder()        
+ *             .responsePolicyName("example-response-policy")
  *             .networks(            
  *                 ResponsePolicyNetworkArgs.builder()
  *                     .networkUrl(network_1.id())
@@ -74,23 +75,24 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var example_response_policy_rule = new ResponsePolicyRule(&#34;example-response-policy-rule&#34;, ResponsePolicyRuleArgs.builder()        
+ *         var example_response_policy_rule = new ResponsePolicyRule("example-response-policy-rule", ResponsePolicyRuleArgs.builder()        
  *             .responsePolicy(response_policy.responsePolicyName())
- *             .ruleName(&#34;example-rule&#34;)
- *             .dnsName(&#34;dns.example.com.&#34;)
+ *             .ruleName("example-rule")
+ *             .dnsName("dns.example.com.")
  *             .localData(ResponsePolicyRuleLocalDataArgs.builder()
  *                 .localDatas(ResponsePolicyRuleLocalDataLocalDataArgs.builder()
- *                     .name(&#34;dns.example.com.&#34;)
- *                     .type(&#34;A&#34;)
+ *                     .name("dns.example.com.")
+ *                     .type("A")
  *                     .ttl(300)
- *                     .rrdatas(&#34;192.0.2.91&#34;)
+ *                     .rrdatas("192.0.2.91")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

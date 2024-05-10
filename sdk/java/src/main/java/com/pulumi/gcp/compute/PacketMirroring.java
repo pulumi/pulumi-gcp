@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Compute Packet Mirroring Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -76,59 +77,59 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .build());
  * 
- *         var mirror = new Instance(&#34;mirror&#34;, InstanceArgs.builder()        
+ *         var mirror = new Instance("mirror", InstanceArgs.builder()        
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(default_.id())
  *                 .build())
- *             .name(&#34;my-instance&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *             .name("my-instance")
+ *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .image("debian-cloud/debian-11")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnetwork&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("my-subnetwork")
  *             .network(default_.id())
- *             .ipCidrRange(&#34;10.2.0.0/16&#34;)
+ *             .ipCidrRange("10.2.0.0/16")
  *             .build());
  * 
- *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;my-healthcheck&#34;)
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *             .name("my-healthcheck")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;my-service&#34;)
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .name("my-service")
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
- *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;my-ilb&#34;)
+ *         var defaultForwardingRule = new ForwardingRule("defaultForwardingRule", ForwardingRuleArgs.builder()        
+ *             .name("my-ilb")
  *             .isMirroringCollector(true)
- *             .ipProtocol(&#34;TCP&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *             .ipProtocol("TCP")
+ *             .loadBalancingScheme("INTERNAL")
  *             .backendService(defaultRegionBackendService.id())
  *             .allPorts(true)
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .networkTier(&#34;PREMIUM&#34;)
+ *             .networkTier("PREMIUM")
  *             .build());
  * 
- *         var foobar = new PacketMirroring(&#34;foobar&#34;, PacketMirroringArgs.builder()        
- *             .name(&#34;my-mirroring&#34;)
- *             .description(&#34;bar&#34;)
+ *         var foobar = new PacketMirroring("foobar", PacketMirroringArgs.builder()        
+ *             .name("my-mirroring")
+ *             .description("bar")
  *             .network(PacketMirroringNetworkArgs.builder()
  *                 .url(default_.id())
  *                 .build())
@@ -136,21 +137,22 @@ import javax.annotation.Nullable;
  *                 .url(defaultForwardingRule.id())
  *                 .build())
  *             .mirroredResources(PacketMirroringMirroredResourcesArgs.builder()
- *                 .tags(&#34;foo&#34;)
+ *                 .tags("foo")
  *                 .instances(PacketMirroringMirroredResourcesInstanceArgs.builder()
  *                     .url(mirror.id())
  *                     .build())
  *                 .build())
  *             .filter(PacketMirroringFilterArgs.builder()
- *                 .ipProtocols(&#34;tcp&#34;)
- *                 .cidrRanges(&#34;0.0.0.0/0&#34;)
- *                 .direction(&#34;BOTH&#34;)
+ *                 .ipProtocols("tcp")
+ *                 .cidrRanges("0.0.0.0/0")
+ *                 .direction("BOTH")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

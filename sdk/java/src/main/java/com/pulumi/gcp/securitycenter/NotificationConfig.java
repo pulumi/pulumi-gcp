@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Scc Notification Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,23 +60,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sccNotification = new Topic(&#34;sccNotification&#34;, TopicArgs.builder()        
- *             .name(&#34;my-topic&#34;)
+ *         var sccNotification = new Topic("sccNotification", TopicArgs.builder()        
+ *             .name("my-topic")
  *             .build());
  * 
- *         var customNotificationConfig = new NotificationConfig(&#34;customNotificationConfig&#34;, NotificationConfigArgs.builder()        
- *             .configId(&#34;my-config&#34;)
- *             .organization(&#34;123456789&#34;)
- *             .description(&#34;My custom Cloud Security Command Center Finding Notification Configuration&#34;)
+ *         var customNotificationConfig = new NotificationConfig("customNotificationConfig", NotificationConfigArgs.builder()        
+ *             .configId("my-config")
+ *             .organization("123456789")
+ *             .description("My custom Cloud Security Command Center Finding Notification Configuration")
  *             .pubsubTopic(sccNotification.id())
  *             .streamingConfig(NotificationConfigStreamingConfigArgs.builder()
- *                 .filter(&#34;category = \&#34;OPEN_FIREWALL\&#34; AND state = \&#34;ACTIVE\&#34;&#34;)
+ *                 .filter("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\"")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

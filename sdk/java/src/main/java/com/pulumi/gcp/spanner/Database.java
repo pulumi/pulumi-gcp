@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Spanner Database Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,25 +61,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new Instance(&#34;main&#34;, InstanceArgs.builder()        
- *             .config(&#34;regional-europe-west1&#34;)
- *             .displayName(&#34;main-instance&#34;)
+ *         var main = new Instance("main", InstanceArgs.builder()        
+ *             .config("regional-europe-west1")
+ *             .displayName("main-instance")
  *             .numNodes(1)
  *             .build());
  * 
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()        
  *             .instance(main.name())
- *             .name(&#34;my-database&#34;)
- *             .versionRetentionPeriod(&#34;3d&#34;)
+ *             .name("my-database")
+ *             .versionRetentionPeriod("3d")
  *             .ddls(            
- *                 &#34;CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)&#34;,
- *                 &#34;CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)&#34;)
+ *                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
+ *                 "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)")
  *             .deletionProtection(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

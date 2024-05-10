@@ -76,7 +76,7 @@ public final class JobQuery {
      */
     private @Nullable String maximumBytesBilled;
     /**
-     * @return Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+     * @return Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named ({@literal @}myparam) query parameters in this query.
      * 
      */
     private @Nullable String parameterMode;
@@ -216,7 +216,7 @@ public final class JobQuery {
         return Optional.ofNullable(this.maximumBytesBilled);
     }
     /**
-     * @return Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+     * @return Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named ({@literal @}myparam) query parameters in this query.
      * 
      */
     public Optional<String> parameterMode() {

@@ -43,7 +43,8 @@ import javax.annotation.Nullable;
  * ### Notebook Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,24 +66,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;notebooks-instance&#34;)
- *             .location(&#34;us-west1-a&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("notebooks-instance")
+ *             .location("us-west1-a")
+ *             .machineType("e2-medium")
  *             .vmImage(InstanceVmImageArgs.builder()
- *                 .project(&#34;deeplearning-platform-release&#34;)
- *                 .imageFamily(&#34;tf-latest-cpu&#34;)
+ *                 .project("deeplearning-platform-release")
+ *                 .imageFamily("tf-latest-cpu")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Notebook Instance Basic Stopped
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,25 +107,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;notebooks-instance&#34;)
- *             .location(&#34;us-west1-a&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("notebooks-instance")
+ *             .location("us-west1-a")
+ *             .machineType("e2-medium")
  *             .vmImage(InstanceVmImageArgs.builder()
- *                 .project(&#34;deeplearning-platform-release&#34;)
- *                 .imageFamily(&#34;tf-latest-cpu&#34;)
+ *                 .project("deeplearning-platform-release")
+ *                 .imageFamily("tf-latest-cpu")
  *                 .build())
- *             .desiredState(&#34;STOPPED&#34;)
+ *             .desiredState("STOPPED")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Notebook Instance Basic Container
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -144,25 +149,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;notebooks-instance&#34;)
- *             .location(&#34;us-west1-a&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .metadata(Map.of(&#34;proxy-mode&#34;, &#34;service_account&#34;))
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("notebooks-instance")
+ *             .location("us-west1-a")
+ *             .machineType("e2-medium")
+ *             .metadata(Map.of("proxy-mode", "service_account"))
  *             .containerImage(InstanceContainerImageArgs.builder()
- *                 .repository(&#34;gcr.io/deeplearning-platform-release/base-cpu&#34;)
- *                 .tag(&#34;latest&#34;)
+ *                 .repository("gcr.io/deeplearning-platform-release/base-cpu")
+ *                 .tag("latest")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Notebook Instance Basic Gpu
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -185,29 +192,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;notebooks-instance&#34;)
- *             .location(&#34;us-west1-a&#34;)
- *             .machineType(&#34;n1-standard-1&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("notebooks-instance")
+ *             .location("us-west1-a")
+ *             .machineType("n1-standard-1")
  *             .installGpuDriver(true)
  *             .acceleratorConfig(InstanceAcceleratorConfigArgs.builder()
- *                 .type(&#34;NVIDIA_TESLA_T4&#34;)
+ *                 .type("NVIDIA_TESLA_T4")
  *                 .coreCount(1)
  *                 .build())
  *             .vmImage(InstanceVmImageArgs.builder()
- *                 .project(&#34;deeplearning-platform-release&#34;)
- *                 .imageFamily(&#34;tf-latest-gpu&#34;)
+ *                 .project("deeplearning-platform-release")
+ *                 .imageFamily("tf-latest-gpu")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Notebook Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -233,49 +242,50 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;default&#34;)
+ *             .name("default")
  *             .build());
  * 
  *         final var mySubnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
- *             .name(&#34;default&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .name("default")
+ *             .region("us-central1")
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;notebooks-instance&#34;)
- *             .location(&#34;us-central1-a&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("notebooks-instance")
+ *             .location("us-central1-a")
+ *             .machineType("e2-medium")
  *             .vmImage(InstanceVmImageArgs.builder()
- *                 .project(&#34;deeplearning-platform-release&#34;)
- *                 .imageFamily(&#34;tf-latest-cpu&#34;)
+ *                 .project("deeplearning-platform-release")
+ *                 .imageFamily("tf-latest-cpu")
  *                 .build())
- *             .instanceOwners(&#34;my@service-account.com&#34;)
- *             .serviceAccount(&#34;my@service-account.com&#34;)
+ *             .instanceOwners("my{@literal @}service-account.com")
+ *             .serviceAccount("my{@literal @}service-account.com")
  *             .installGpuDriver(true)
- *             .bootDiskType(&#34;PD_SSD&#34;)
+ *             .bootDiskType("PD_SSD")
  *             .bootDiskSizeGb(110)
  *             .noPublicIp(true)
  *             .noProxyAccess(true)
- *             .network(myNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
- *             .subnet(mySubnetwork.applyValue(getSubnetworkResult -&gt; getSubnetworkResult.id()))
- *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
- *             .metadata(Map.of(&#34;terraform&#34;, &#34;true&#34;))
+ *             .network(myNetwork.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *             .subnet(mySubnetwork.applyValue(getSubnetworkResult -> getSubnetworkResult.id()))
+ *             .labels(Map.of("k", "val"))
+ *             .metadata(Map.of("terraform", "true"))
  *             .serviceAccountScopes(            
- *                 &#34;https://www.googleapis.com/auth/bigquery&#34;,
- *                 &#34;https://www.googleapis.com/auth/devstorage.read_write&#34;,
- *                 &#34;https://www.googleapis.com/auth/cloud-platform&#34;,
- *                 &#34;https://www.googleapis.com/auth/userinfo.email&#34;)
+ *                 "https://www.googleapis.com/auth/bigquery",
+ *                 "https://www.googleapis.com/auth/devstorage.read_write",
+ *                 "https://www.googleapis.com/auth/cloud-platform",
+ *                 "https://www.googleapis.com/auth/userinfo.email")
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
- *             .diskEncryption(&#34;CMEK&#34;)
- *             .kmsKey(&#34;my-crypto-key&#34;)
- *             .desiredState(&#34;ACTIVE&#34;)
+ *                 "foo",
+ *                 "bar")
+ *             .diskEncryption("CMEK")
+ *             .kmsKey("my-crypto-key")
+ *             .desiredState("ACTIVE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -505,7 +515,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The list of owners of this instance after creation.
-     * Format: alias@example.com.
+     * Format: alias{@literal @}example.com.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance&#39;s service account can use the instance.
@@ -516,7 +526,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The list of owners of this instance after creation.
-     * Format: alias@example.com.
+     * Format: alias{@literal @}example.com.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance&#39;s service account can use the instance.

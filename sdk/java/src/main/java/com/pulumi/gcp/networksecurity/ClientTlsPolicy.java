@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Network Security Client Tls Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,21 +46,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ClientTlsPolicy(&#34;default&#34;, ClientTlsPolicyArgs.builder()        
- *             .name(&#34;my-client-tls-policy&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .sni(&#34;secure.example.com&#34;)
+ *         var default_ = new ClientTlsPolicy("default", ClientTlsPolicyArgs.builder()        
+ *             .name("my-client-tls-policy")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .sni("secure.example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Client Tls Policy Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -84,31 +87,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ClientTlsPolicy(&#34;default&#34;, ClientTlsPolicyArgs.builder()        
- *             .name(&#34;my-client-tls-policy&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var default_ = new ClientTlsPolicy("default", ClientTlsPolicyArgs.builder()        
+ *             .name("my-client-tls-policy")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .clientCertificate(ClientTlsPolicyClientCertificateArgs.builder()
  *                 .certificateProviderInstance(ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs.builder()
- *                     .pluginInstance(&#34;google_cloud_private_spiffe&#34;)
+ *                     .pluginInstance("google_cloud_private_spiffe")
  *                     .build())
  *                 .build())
  *             .serverValidationCas(            
  *                 ClientTlsPolicyServerValidationCaArgs.builder()
  *                     .grpcEndpoint(ClientTlsPolicyServerValidationCaGrpcEndpointArgs.builder()
- *                         .targetUri(&#34;unix:mypath&#34;)
+ *                         .targetUri("unix:mypath")
  *                         .build())
  *                     .build(),
  *                 ClientTlsPolicyServerValidationCaArgs.builder()
  *                     .grpcEndpoint(ClientTlsPolicyServerValidationCaGrpcEndpointArgs.builder()
- *                         .targetUri(&#34;unix:mypath1&#34;)
+ *                         .targetUri("unix:mypath1")
  *                         .build())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

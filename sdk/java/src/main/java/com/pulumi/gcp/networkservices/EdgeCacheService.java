@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Network Services Edge Cache Service Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,50 +57,50 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dest = new Bucket(&#34;dest&#34;, BucketArgs.builder()        
- *             .name(&#34;my-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var dest = new Bucket("dest", BucketArgs.builder()        
+ *             .name("my-bucket")
+ *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var instance = new EdgeCacheOrigin(&#34;instance&#34;, EdgeCacheOriginArgs.builder()        
- *             .name(&#34;my-origin&#34;)
+ *         var instance = new EdgeCacheOrigin("instance", EdgeCacheOriginArgs.builder()        
+ *             .name("my-origin")
  *             .originAddress(dest.url())
- *             .description(&#34;The default bucket for media edge test&#34;)
+ *             .description("The default bucket for media edge test")
  *             .maxAttempts(2)
  *             .timeout(EdgeCacheOriginTimeoutArgs.builder()
- *                 .connectTimeout(&#34;10s&#34;)
+ *                 .connectTimeout("10s")
  *                 .build())
  *             .build());
  * 
- *         var instanceEdgeCacheService = new EdgeCacheService(&#34;instanceEdgeCacheService&#34;, EdgeCacheServiceArgs.builder()        
- *             .name(&#34;my-service&#34;)
- *             .description(&#34;some description&#34;)
+ *         var instanceEdgeCacheService = new EdgeCacheService("instanceEdgeCacheService", EdgeCacheServiceArgs.builder()        
+ *             .name("my-service")
+ *             .description("some description")
  *             .routing(EdgeCacheServiceRoutingArgs.builder()
  *                 .hostRules(EdgeCacheServiceRoutingHostRuleArgs.builder()
- *                     .description(&#34;host rule description&#34;)
- *                     .hosts(&#34;sslcert.tf-test.club&#34;)
- *                     .pathMatcher(&#34;routes&#34;)
+ *                     .description("host rule description")
+ *                     .hosts("sslcert.tf-test.club")
+ *                     .pathMatcher("routes")
  *                     .build())
  *                 .pathMatchers(EdgeCacheServiceRoutingPathMatcherArgs.builder()
- *                     .name(&#34;routes&#34;)
+ *                     .name("routes")
  *                     .routeRules(EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
- *                         .description(&#34;a route rule to match against&#34;)
+ *                         .description("a route rule to match against")
  *                         .priority(1)
  *                         .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .prefixMatch(&#34;/&#34;)
+ *                             .prefixMatch("/")
  *                             .build())
  *                         .origin(instance.name())
  *                         .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                             .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
- *                                 .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
- *                                 .defaultTtl(&#34;3600s&#34;)
+ *                                 .cacheMode("CACHE_ALL_STATIC")
+ *                                 .defaultTtl("3600s")
  *                                 .build())
  *                             .build())
  *                         .headerAction(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs.builder()
  *                             .responseHeaderToAdds(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs.builder()
- *                                 .headerName(&#34;x-cache-status&#34;)
- *                                 .headerValue(&#34;{cdn_cache_status}&#34;)
+ *                                 .headerName("x-cache-status")
+ *                                 .headerValue("{cdn_cache_status}")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -109,12 +110,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Edge Cache Service Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -142,179 +145,179 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dest = new Bucket(&#34;dest&#34;, BucketArgs.builder()        
- *             .name(&#34;my-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var dest = new Bucket("dest", BucketArgs.builder()        
+ *             .name("my-bucket")
+ *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var google = new EdgeCacheOrigin(&#34;google&#34;, EdgeCacheOriginArgs.builder()        
- *             .name(&#34;origin-google&#34;)
- *             .originAddress(&#34;google.com&#34;)
- *             .description(&#34;The default bucket for media edge test&#34;)
+ *         var google = new EdgeCacheOrigin("google", EdgeCacheOriginArgs.builder()        
+ *             .name("origin-google")
+ *             .originAddress("google.com")
+ *             .description("The default bucket for media edge test")
  *             .maxAttempts(2)
  *             .timeout(EdgeCacheOriginTimeoutArgs.builder()
- *                 .connectTimeout(&#34;10s&#34;)
+ *                 .connectTimeout("10s")
  *                 .build())
  *             .build());
  * 
- *         var instance = new EdgeCacheOrigin(&#34;instance&#34;, EdgeCacheOriginArgs.builder()        
- *             .name(&#34;my-origin&#34;)
+ *         var instance = new EdgeCacheOrigin("instance", EdgeCacheOriginArgs.builder()        
+ *             .name("my-origin")
  *             .originAddress(dest.url())
- *             .description(&#34;The default bucket for media edge test&#34;)
+ *             .description("The default bucket for media edge test")
  *             .maxAttempts(2)
  *             .timeout(EdgeCacheOriginTimeoutArgs.builder()
- *                 .connectTimeout(&#34;10s&#34;)
+ *                 .connectTimeout("10s")
  *                 .build())
  *             .build());
  * 
- *         var instanceEdgeCacheService = new EdgeCacheService(&#34;instanceEdgeCacheService&#34;, EdgeCacheServiceArgs.builder()        
- *             .name(&#34;my-service&#34;)
- *             .description(&#34;some description&#34;)
+ *         var instanceEdgeCacheService = new EdgeCacheService("instanceEdgeCacheService", EdgeCacheServiceArgs.builder()        
+ *             .name("my-service")
+ *             .description("some description")
  *             .disableQuic(true)
  *             .disableHttp2(true)
- *             .labels(Map.of(&#34;a&#34;, &#34;b&#34;))
+ *             .labels(Map.of("a", "b"))
  *             .routing(EdgeCacheServiceRoutingArgs.builder()
  *                 .hostRules(                
  *                     EdgeCacheServiceRoutingHostRuleArgs.builder()
- *                         .description(&#34;host rule description&#34;)
- *                         .hosts(&#34;sslcert.tf-test.club&#34;)
- *                         .pathMatcher(&#34;routes&#34;)
+ *                         .description("host rule description")
+ *                         .hosts("sslcert.tf-test.club")
+ *                         .pathMatcher("routes")
  *                         .build(),
  *                     EdgeCacheServiceRoutingHostRuleArgs.builder()
- *                         .description(&#34;host rule2&#34;)
- *                         .hosts(&#34;sslcert.tf-test2.club&#34;)
- *                         .pathMatcher(&#34;routes&#34;)
+ *                         .description("host rule2")
+ *                         .hosts("sslcert.tf-test2.club")
+ *                         .pathMatcher("routes")
  *                         .build(),
  *                     EdgeCacheServiceRoutingHostRuleArgs.builder()
- *                         .description(&#34;host rule3&#34;)
- *                         .hosts(&#34;sslcert.tf-test3.club&#34;)
- *                         .pathMatcher(&#34;routesAdvanced&#34;)
+ *                         .description("host rule3")
+ *                         .hosts("sslcert.tf-test3.club")
+ *                         .pathMatcher("routesAdvanced")
  *                         .build())
  *                 .pathMatchers(                
  *                     EdgeCacheServiceRoutingPathMatcherArgs.builder()
- *                         .name(&#34;routes&#34;)
+ *                         .name("routes")
  *                         .routeRules(EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
- *                             .description(&#34;a route rule to match against&#34;)
+ *                             .description("a route rule to match against")
  *                             .priority(1)
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
- *                                 .prefixMatch(&#34;/&#34;)
+ *                                 .prefixMatch("/")
  *                                 .build())
  *                             .origin(instance.name())
  *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
- *                                     .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
- *                                     .defaultTtl(&#34;3600s&#34;)
+ *                                     .cacheMode("CACHE_ALL_STATIC")
+ *                                     .defaultTtl("3600s")
  *                                     .build())
  *                                 .build())
  *                             .headerAction(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs.builder()
  *                                 .responseHeaderToAdds(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs.builder()
- *                                     .headerName(&#34;x-cache-status&#34;)
- *                                     .headerValue(&#34;{cdn_cache_status}&#34;)
+ *                                     .headerName("x-cache-status")
+ *                                     .headerValue("{cdn_cache_status}")
  *                                     .build())
  *                                 .build())
  *                             .build())
  *                         .build(),
  *                     EdgeCacheServiceRoutingPathMatcherArgs.builder()
- *                         .name(&#34;routesAdvanced&#34;)
- *                         .description(&#34;an advanced ruleset&#34;)
+ *                         .name("routesAdvanced")
+ *                         .description("an advanced ruleset")
  *                         .routeRules(                        
  *                             EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
- *                                 .description(&#34;an advanced route rule to match against&#34;)
+ *                                 .description("an advanced route rule to match against")
  *                                 .priority(1)
  *                                 .matchRules(                                
  *                                     EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
- *                                         .prefixMatch(&#34;/potato/&#34;)
+ *                                         .prefixMatch("/potato/")
  *                                         .queryParameterMatches(                                        
  *                                             EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs.builder()
- *                                                 .name(&#34;debug&#34;)
+ *                                                 .name("debug")
  *                                                 .presentMatch(true)
  *                                                 .build(),
  *                                             EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs.builder()
- *                                                 .name(&#34;state&#34;)
- *                                                 .exactMatch(&#34;debug&#34;)
+ *                                                 .name("state")
+ *                                                 .exactMatch("debug")
  *                                                 .build())
  *                                         .build(),
  *                                     EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
- *                                         .fullPathMatch(&#34;/apple&#34;)
+ *                                         .fullPathMatch("/apple")
  *                                         .build())
  *                                 .headerAction(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs.builder()
  *                                     .requestHeaderToAdds(                                    
  *                                         EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs.builder()
- *                                             .headerName(&#34;debug&#34;)
- *                                             .headerValue(&#34;true&#34;)
+ *                                             .headerName("debug")
+ *                                             .headerValue("true")
  *                                             .replace(true)
  *                                             .build(),
  *                                         EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs.builder()
- *                                             .headerName(&#34;potato&#34;)
- *                                             .headerValue(&#34;plant&#34;)
+ *                                             .headerName("potato")
+ *                                             .headerValue("plant")
  *                                             .build())
  *                                     .responseHeaderToAdds(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs.builder()
- *                                         .headerName(&#34;potato&#34;)
- *                                         .headerValue(&#34;plant&#34;)
+ *                                         .headerName("potato")
+ *                                         .headerValue("plant")
  *                                         .replace(true)
  *                                         .build())
  *                                     .requestHeaderToRemoves(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs.builder()
- *                                         .headerName(&#34;prod&#34;)
+ *                                         .headerName("prod")
  *                                         .build())
  *                                     .responseHeaderToRemoves(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs.builder()
- *                                         .headerName(&#34;prod&#34;)
+ *                                         .headerName("prod")
  *                                         .build())
  *                                     .build())
  *                                 .origin(instance.name())
  *                                 .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                     .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
- *                                         .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
- *                                         .defaultTtl(&#34;3800s&#34;)
- *                                         .clientTtl(&#34;3600s&#34;)
- *                                         .maxTtl(&#34;9000s&#34;)
+ *                                         .cacheMode("CACHE_ALL_STATIC")
+ *                                         .defaultTtl("3800s")
+ *                                         .clientTtl("3600s")
+ *                                         .maxTtl("9000s")
  *                                         .cacheKeyPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs.builder()
  *                                             .includeProtocol(true)
  *                                             .excludeHost(true)
  *                                             .includedQueryParameters(                                            
- *                                                 &#34;apple&#34;,
- *                                                 &#34;dev&#34;,
- *                                                 &#34;santa&#34;,
- *                                                 &#34;claus&#34;)
- *                                             .includedHeaderNames(&#34;banana&#34;)
- *                                             .includedCookieNames(&#34;orange&#34;)
+ *                                                 "apple",
+ *                                                 "dev",
+ *                                                 "santa",
+ *                                                 "claus")
+ *                                             .includedHeaderNames("banana")
+ *                                             .includedCookieNames("orange")
  *                                             .build())
  *                                         .negativeCaching(true)
- *                                         .signedRequestMode(&#34;DISABLED&#34;)
- *                                         .negativeCachingPolicy(Map.of(&#34;500&#34;, &#34;3000s&#34;))
+ *                                         .signedRequestMode("DISABLED")
+ *                                         .negativeCachingPolicy(Map.of("500", "3000s"))
  *                                         .build())
  *                                     .urlRewrite(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs.builder()
- *                                         .pathPrefixRewrite(&#34;/dev&#34;)
- *                                         .hostRewrite(&#34;dev.club&#34;)
+ *                                         .pathPrefixRewrite("/dev")
+ *                                         .hostRewrite("dev.club")
  *                                         .build())
  *                                     .corsPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs.builder()
- *                                         .maxAge(&#34;2500s&#34;)
+ *                                         .maxAge("2500s")
  *                                         .allowCredentials(true)
- *                                         .allowOrigins(&#34;*&#34;)
- *                                         .allowMethods(&#34;GET&#34;)
- *                                         .allowHeaders(&#34;dev&#34;)
- *                                         .exposeHeaders(&#34;prod&#34;)
+ *                                         .allowOrigins("*")
+ *                                         .allowMethods("GET")
+ *                                         .allowHeaders("dev")
+ *                                         .exposeHeaders("prod")
  *                                         .build())
  *                                     .build())
  *                                 .build(),
  *                             EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
- *                                 .description(&#34;a second route rule to match against&#34;)
+ *                                 .description("a second route rule to match against")
  *                                 .priority(2)
  *                                 .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
- *                                     .fullPathMatch(&#34;/yay&#34;)
+ *                                     .fullPathMatch("/yay")
  *                                     .build())
  *                                 .origin(instance.name())
  *                                 .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                     .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
- *                                         .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
- *                                         .defaultTtl(&#34;3600s&#34;)
+ *                                         .cacheMode("CACHE_ALL_STATIC")
+ *                                         .defaultTtl("3600s")
  *                                         .cacheKeyPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs.builder()
- *                                             .excludedQueryParameters(&#34;dev&#34;)
+ *                                             .excludedQueryParameters("dev")
  *                                             .build())
  *                                         .build())
  *                                     .corsPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs.builder()
- *                                         .maxAge(&#34;3000s&#34;)
- *                                         .allowHeaders(&#34;dev&#34;)
+ *                                         .maxAge("3000s")
+ *                                         .allowHeaders("dev")
  *                                         .disabled(true)
  *                                         .build())
  *                                     .build())
@@ -329,12 +332,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Edge Cache Service Dual Token
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -368,23 +373,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret-name&#34;)
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *             .secretId("secret-name")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secret_version_basic = new SecretVersion(&#34;secret-version-basic&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
- *         var keyset = new EdgeCacheKeyset(&#34;keyset&#34;, EdgeCacheKeysetArgs.builder()        
- *             .name(&#34;keyset-name&#34;)
- *             .description(&#34;The default keyset&#34;)
+ *         var keyset = new EdgeCacheKeyset("keyset", EdgeCacheKeysetArgs.builder()        
+ *             .name("keyset-name")
+ *             .description("The default keyset")
  *             .publicKeys(EdgeCacheKeysetPublicKeyArgs.builder()
- *                 .id(&#34;my-public-key&#34;)
+ *                 .id("my-public-key")
  *                 .managed(true)
  *                 .build())
  *             .validationSharedKeys(EdgeCacheKeysetValidationSharedKeyArgs.builder()
@@ -392,94 +397,94 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instance = new EdgeCacheOrigin(&#34;instance&#34;, EdgeCacheOriginArgs.builder()        
- *             .name(&#34;my-origin&#34;)
- *             .originAddress(&#34;gs://media-edge-default&#34;)
- *             .description(&#34;The default bucket for media edge test&#34;)
+ *         var instance = new EdgeCacheOrigin("instance", EdgeCacheOriginArgs.builder()        
+ *             .name("my-origin")
+ *             .originAddress("gs://media-edge-default")
+ *             .description("The default bucket for media edge test")
  *             .build());
  * 
- *         var instanceEdgeCacheService = new EdgeCacheService(&#34;instanceEdgeCacheService&#34;, EdgeCacheServiceArgs.builder()        
- *             .name(&#34;my-service&#34;)
- *             .description(&#34;some description&#34;)
+ *         var instanceEdgeCacheService = new EdgeCacheService("instanceEdgeCacheService", EdgeCacheServiceArgs.builder()        
+ *             .name("my-service")
+ *             .description("some description")
  *             .routing(EdgeCacheServiceRoutingArgs.builder()
  *                 .hostRules(EdgeCacheServiceRoutingHostRuleArgs.builder()
- *                     .description(&#34;host rule description&#34;)
- *                     .hosts(&#34;sslcert.tf-test.club&#34;)
- *                     .pathMatcher(&#34;routes&#34;)
+ *                     .description("host rule description")
+ *                     .hosts("sslcert.tf-test.club")
+ *                     .pathMatcher("routes")
  *                     .build())
  *                 .pathMatchers(EdgeCacheServiceRoutingPathMatcherArgs.builder()
- *                     .name(&#34;routes&#34;)
+ *                     .name("routes")
  *                     .routeRules(                    
  *                         EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
- *                             .description(&#34;a route rule to match against master playlist&#34;)
+ *                             .description("a route rule to match against master playlist")
  *                             .priority(1)
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
- *                                 .pathTemplateMatch(&#34;/master.m3u8&#34;)
+ *                                 .pathTemplateMatch("/master.m3u8")
  *                                 .build())
  *                             .origin(instance.name())
  *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
- *                                     .signedRequestMode(&#34;REQUIRE_TOKENS&#34;)
+ *                                     .signedRequestMode("REQUIRE_TOKENS")
  *                                     .signedRequestKeyset(keyset.id())
  *                                     .signedTokenOptions(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs.builder()
- *                                         .tokenQueryParameter(&#34;edge-cache-token&#34;)
+ *                                         .tokenQueryParameter("edge-cache-token")
  *                                         .build())
- *                                     .signedRequestMaximumExpirationTtl(&#34;600s&#34;)
+ *                                     .signedRequestMaximumExpirationTtl("600s")
  *                                     .addSignatures(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs.builder()
- *                                         .actions(&#34;GENERATE_COOKIE&#34;)
+ *                                         .actions("GENERATE_COOKIE")
  *                                         .keyset(keyset.id())
  *                                         .copiedParameters(                                        
- *                                             &#34;PathGlobs&#34;,
- *                                             &#34;SessionID&#34;)
+ *                                             "PathGlobs",
+ *                                             "SessionID")
  *                                         .build())
  *                                     .build())
  *                                 .build())
  *                             .build(),
  *                         EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
- *                             .description(&#34;a route rule to match against all playlists&#34;)
+ *                             .description("a route rule to match against all playlists")
  *                             .priority(2)
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
- *                                 .pathTemplateMatch(&#34;/*.m3u8&#34;)
+ *                                 .pathTemplateMatch("/*.m3u8")
  *                                 .build())
  *                             .origin(instance.name())
  *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
- *                                     .signedRequestMode(&#34;REQUIRE_TOKENS&#34;)
+ *                                     .signedRequestMode("REQUIRE_TOKENS")
  *                                     .signedRequestKeyset(keyset.id())
  *                                     .signedTokenOptions(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs.builder()
- *                                         .tokenQueryParameter(&#34;hdnts&#34;)
+ *                                         .tokenQueryParameter("hdnts")
  *                                         .allowedSignatureAlgorithms(                                        
- *                                             &#34;ED25519&#34;,
- *                                             &#34;HMAC_SHA_256&#34;,
- *                                             &#34;HMAC_SHA1&#34;)
+ *                                             "ED25519",
+ *                                             "HMAC_SHA_256",
+ *                                             "HMAC_SHA1")
  *                                         .build())
  *                                     .addSignatures(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs.builder()
- *                                         .actions(&#34;GENERATE_TOKEN_HLS_COOKIELESS&#34;)
+ *                                         .actions("GENERATE_TOKEN_HLS_COOKIELESS")
  *                                         .keyset(keyset.id())
- *                                         .tokenTtl(&#34;1200s&#34;)
- *                                         .tokenQueryParameter(&#34;hdntl&#34;)
- *                                         .copiedParameters(&#34;URLPrefix&#34;)
+ *                                         .tokenTtl("1200s")
+ *                                         .tokenQueryParameter("hdntl")
+ *                                         .copiedParameters("URLPrefix")
  *                                         .build())
  *                                     .build())
  *                                 .build())
  *                             .build(),
  *                         EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
- *                             .description(&#34;a route rule to match against&#34;)
+ *                             .description("a route rule to match against")
  *                             .priority(3)
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
- *                                 .pathTemplateMatch(&#34;/**.m3u8&#34;)
+ *                                 .pathTemplateMatch("/**.m3u8")
  *                                 .build())
  *                             .origin(instance.name())
  *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
- *                                     .signedRequestMode(&#34;REQUIRE_TOKENS&#34;)
+ *                                     .signedRequestMode("REQUIRE_TOKENS")
  *                                     .signedRequestKeyset(keyset.id())
  *                                     .signedTokenOptions(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs.builder()
- *                                         .tokenQueryParameter(&#34;hdntl&#34;)
+ *                                         .tokenQueryParameter("hdntl")
  *                                         .build())
  *                                     .addSignatures(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs.builder()
- *                                         .actions(&#34;PROPAGATE_TOKEN_HLS_COOKIELESS&#34;)
- *                                         .tokenQueryParameter(&#34;hdntl&#34;)
+ *                                         .actions("PROPAGATE_TOKEN_HLS_COOKIELESS")
+ *                                         .tokenQueryParameter("hdntl")
  *                                         .build())
  *                                     .build())
  *                                 .build())
@@ -490,7 +495,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

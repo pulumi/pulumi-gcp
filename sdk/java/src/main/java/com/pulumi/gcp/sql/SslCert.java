@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Example creating a SQL Client Certificate.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,26 +49,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()        
  *             .byteLength(4)
  *             .build());
  * 
- *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
- *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
- *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()        
+ *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+ *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .build())
  *             .build());
  * 
- *         var clientCert = new SslCert(&#34;clientCert&#34;, SslCertArgs.builder()        
- *             .commonName(&#34;client-name&#34;)
+ *         var clientCert = new SslCert("clientCert", SslCertArgs.builder()        
+ *             .commonName("client-name")
  *             .instance(main.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Index
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,35 +61,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;vertex-ai-index-test&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("vertex-ai-index-test")
+ *             .location("us-central1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         // The sample data comes from the following link:
  *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
- *         var data = new BucketObject(&#34;data&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;contents/data.json&#34;)
+ *         var data = new BucketObject("data", BucketObjectArgs.builder()        
+ *             .name("contents/data.json")
  *             .bucket(bucket.name())
- *             .content(&#34;&#34;&#34;
- * {&#34;id&#34;: &#34;42&#34;, &#34;embedding&#34;: [0.5, 1.0], &#34;restricts&#34;: [{&#34;namespace&#34;: &#34;class&#34;, &#34;allow&#34;: [&#34;cat&#34;, &#34;pet&#34;]},{&#34;namespace&#34;: &#34;category&#34;, &#34;allow&#34;: [&#34;feline&#34;]}]}
- * {&#34;id&#34;: &#34;43&#34;, &#34;embedding&#34;: [0.6, 1.0], &#34;restricts&#34;: [{&#34;namespace&#34;: &#34;class&#34;, &#34;allow&#34;: [&#34;dog&#34;, &#34;pet&#34;]},{&#34;namespace&#34;: &#34;category&#34;, &#34;allow&#34;: [&#34;canine&#34;]}]}
- *             &#34;&#34;&#34;)
+ *             .content("""
+ * {"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+ * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+ *             """)
  *             .build());
  * 
- *         var index = new AiIndex(&#34;index&#34;, AiIndexArgs.builder()        
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
- *             .displayName(&#34;test-index&#34;)
- *             .description(&#34;index for test&#34;)
+ *         var index = new AiIndex("index", AiIndexArgs.builder()        
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
+ *             .displayName("test-index")
+ *             .description("index for test")
  *             .metadata(AiIndexMetadataArgs.builder()
- *                 .contentsDeltaUri(bucket.name().applyValue(name -&gt; String.format(&#34;gs://%s/contents&#34;, name)))
+ *                 .contentsDeltaUri(bucket.name().applyValue(name -> String.format("gs://%s/contents", name)))
  *                 .config(AiIndexMetadataConfigArgs.builder()
  *                     .dimensions(2)
  *                     .approximateNeighborsCount(150)
- *                     .shardSize(&#34;SHARD_SIZE_SMALL&#34;)
- *                     .distanceMeasureType(&#34;DOT_PRODUCT_DISTANCE&#34;)
+ *                     .shardSize("SHARD_SIZE_SMALL")
+ *                     .distanceMeasureType("DOT_PRODUCT_DISTANCE")
  *                     .algorithmConfig(AiIndexMetadataConfigAlgorithmConfigArgs.builder()
  *                         .treeAhConfig(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs.builder()
  *                             .leafNodeEmbeddingCount(500)
@@ -97,17 +98,19 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .indexUpdateMethod(&#34;BATCH_UPDATE&#34;)
+ *             .indexUpdateMethod("BATCH_UPDATE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Index Streaming
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -136,46 +139,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;vertex-ai-index-test&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("vertex-ai-index-test")
+ *             .location("us-central1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         // The sample data comes from the following link:
  *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
- *         var data = new BucketObject(&#34;data&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;contents/data.json&#34;)
+ *         var data = new BucketObject("data", BucketObjectArgs.builder()        
+ *             .name("contents/data.json")
  *             .bucket(bucket.name())
- *             .content(&#34;&#34;&#34;
- * {&#34;id&#34;: &#34;42&#34;, &#34;embedding&#34;: [0.5, 1.0], &#34;restricts&#34;: [{&#34;namespace&#34;: &#34;class&#34;, &#34;allow&#34;: [&#34;cat&#34;, &#34;pet&#34;]},{&#34;namespace&#34;: &#34;category&#34;, &#34;allow&#34;: [&#34;feline&#34;]}]}
- * {&#34;id&#34;: &#34;43&#34;, &#34;embedding&#34;: [0.6, 1.0], &#34;restricts&#34;: [{&#34;namespace&#34;: &#34;class&#34;, &#34;allow&#34;: [&#34;dog&#34;, &#34;pet&#34;]},{&#34;namespace&#34;: &#34;category&#34;, &#34;allow&#34;: [&#34;canine&#34;]}]}
- *             &#34;&#34;&#34;)
+ *             .content("""
+ * {"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+ * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+ *             """)
  *             .build());
  * 
- *         var index = new AiIndex(&#34;index&#34;, AiIndexArgs.builder()        
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
- *             .displayName(&#34;test-index&#34;)
- *             .description(&#34;index for test&#34;)
+ *         var index = new AiIndex("index", AiIndexArgs.builder()        
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
+ *             .displayName("test-index")
+ *             .description("index for test")
  *             .metadata(AiIndexMetadataArgs.builder()
- *                 .contentsDeltaUri(bucket.name().applyValue(name -&gt; String.format(&#34;gs://%s/contents&#34;, name)))
+ *                 .contentsDeltaUri(bucket.name().applyValue(name -> String.format("gs://%s/contents", name)))
  *                 .config(AiIndexMetadataConfigArgs.builder()
  *                     .dimensions(2)
- *                     .shardSize(&#34;SHARD_SIZE_LARGE&#34;)
- *                     .distanceMeasureType(&#34;COSINE_DISTANCE&#34;)
- *                     .featureNormType(&#34;UNIT_L2_NORM&#34;)
+ *                     .shardSize("SHARD_SIZE_LARGE")
+ *                     .distanceMeasureType("COSINE_DISTANCE")
+ *                     .featureNormType("UNIT_L2_NORM")
  *                     .algorithmConfig(AiIndexMetadataConfigAlgorithmConfigArgs.builder()
  *                         .bruteForceConfig()
  *                         .build())
  *                     .build())
  *                 .build())
- *             .indexUpdateMethod(&#34;STREAM_UPDATE&#34;)
+ *             .indexUpdateMethod("STREAM_UPDATE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

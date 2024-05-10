@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Region Target Https Proxy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,68 +64,70 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionSslCertificate = new RegionSslCertificate(&#34;defaultRegionSslCertificate&#34;, RegionSslCertificateArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;my-certificate&#34;)
+ *         var defaultRegionSslCertificate = new RegionSslCertificate("defaultRegionSslCertificate", RegionSslCertificateArgs.builder()        
+ *             .region("us-central1")
+ *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/private.key&#34;)
+ *                 .input("path/to/private.key")
  *                 .build()).result())
  *             .certificate(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .input("path/to/certificate.crt")
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;http-health-check&#34;)
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *             .region("us-central1")
+ *             .name("http-health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;backend-service&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("backend-service")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .timeoutSec(10)
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;url-map&#34;)
- *             .description(&#34;a description&#34;)
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *             .region("us-central1")
+ *             .name("url-map")
+ *             .description("a description")
  *             .defaultService(defaultRegionBackendService.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultRegionBackendService.id())
  *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/*&#34;)
+ *                     .paths("/*")
  *                     .service(defaultRegionBackendService.id())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpsProxy(&#34;default&#34;, RegionTargetHttpsProxyArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;test-proxy&#34;)
+ *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()        
+ *             .region("us-central1")
+ *             .name("test-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
  *             .sslCertificates(defaultRegionSslCertificate.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Target Https Proxy Mtls
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -166,50 +169,50 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var defaultTrustConfig = new TrustConfig(&#34;defaultTrustConfig&#34;, TrustConfigArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-trust-config&#34;)
- *             .description(&#34;sample description for trust config&#34;)
+ *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-trust-config")
+ *             .description("sample description for trust config")
  *             .trustStores(TrustConfigTrustStoreArgs.builder()
  *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
  *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .input("test-fixtures/ca_cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
  *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .input("test-fixtures/ca_cert.pem")
  *                         .build()).result())
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var defaultServerTlsPolicy = new ServerTlsPolicy(&#34;defaultServerTlsPolicy&#34;, ServerTlsPolicyArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .name(&#34;my-tls-policy&#34;)
- *             .description(&#34;my description&#34;)
- *             .allowOpen(&#34;false&#34;)
+ *         var defaultServerTlsPolicy = new ServerTlsPolicy("defaultServerTlsPolicy", ServerTlsPolicyArgs.builder()        
+ *             .location("us-central1")
+ *             .name("my-tls-policy")
+ *             .description("my description")
+ *             .allowOpen("false")
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
- *                 .clientValidationMode(&#34;REJECT_INVALID&#34;)
- *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/us-central1/trustConfigs/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *                 .clientValidationMode("REJECT_INVALID")
+ *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -> String.format("projects/%s/locations/us-central1/trustConfigs/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionSslCertificate = new RegionSslCertificate(&#34;defaultRegionSslCertificate&#34;, RegionSslCertificateArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;my-certificate&#34;)
+ *         var defaultRegionSslCertificate = new RegionSslCertificate("defaultRegionSslCertificate", RegionSslCertificateArgs.builder()        
+ *             .region("us-central1")
+ *             .name("my-certificate")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/private.key&#34;)
+ *                 .input("path/to/private.key")
  *                 .build()).result())
  *             .certificate(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .input("path/to/certificate.crt")
  *                 .build()).result())
  *             .build());
  * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;http-health-check&#34;)
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *             .region("us-central1")
+ *             .name("http-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -217,38 +220,38 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;backend-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("backend-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;url-map&#34;)
- *             .description(&#34;a description&#34;)
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *             .region("us-central1")
+ *             .name("url-map")
+ *             .description("a description")
  *             .defaultService(defaultRegionBackendService.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultRegionBackendService.id())
  *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/*&#34;)
+ *                     .paths("/*")
  *                     .service(defaultRegionBackendService.id())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpsProxy(&#34;default&#34;, RegionTargetHttpsProxyArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;test-mtls-proxy&#34;)
+ *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()        
+ *             .region("us-central1")
+ *             .name("test-mtls-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
  *             .sslCertificates(defaultRegionSslCertificate.id())
  *             .serverTlsPolicy(defaultServerTlsPolicy.id())
@@ -256,12 +259,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Target Https Proxy Certificate Manager Certificate
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -289,42 +294,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
- *             .name(&#34;my-certificate&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()        
+ *             .name("my-certificate")
+ *             .location("us-central1")
  *             .selfManaged(CertificateSelfManagedArgs.builder()
  *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/cert.pem&#34;)
+ *                     .input("test-fixtures/cert.pem")
  *                     .build()).result())
  *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/private-key.pem&#34;)
+ *                     .input("test-fixtures/private-key.pem")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .protocol(&#34;HTTPS&#34;)
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .name("backend-service")
+ *             .region("us-central1")
+ *             .protocol("HTTPS")
  *             .timeoutSec(30)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
- *             .name(&#34;url-map&#34;)
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()        
+ *             .name("url-map")
  *             .defaultService(defaultRegionBackendService.id())
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .build());
  * 
- *         var default_ = new RegionTargetHttpsProxy(&#34;default&#34;, RegionTargetHttpsProxyArgs.builder()        
- *             .name(&#34;target-http-proxy&#34;)
+ *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()        
+ *             .name("target-http-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
- *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -&gt; String.format(&#34;//certificatemanager.googleapis.com/%s&#34;, id)))
+ *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -> String.format("//certificatemanager.googleapis.com/%s", id)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

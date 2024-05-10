@@ -44,7 +44,8 @@ import javax.annotation.Nullable;
  * ### Identity Platform Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -79,20 +80,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
- *             .name(&#34;my-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
- *             .labels(Map.of(&#34;firebase&#34;, &#34;enabled&#34;))
+ *         var default_ = new Project("default", ProjectArgs.builder()        
+ *             .projectId("my-project")
+ *             .name("my-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 
- *         var identitytoolkit = new Service(&#34;identitytoolkit&#34;, ServiceArgs.builder()        
+ *         var identitytoolkit = new Service("identitytoolkit", ServiceArgs.builder()        
  *             .project(default_.projectId())
- *             .service(&#34;identitytoolkit.googleapis.com&#34;)
+ *             .service("identitytoolkit.googleapis.com")
  *             .build());
  * 
- *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
+ *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
  *             .project(default_.projectId())
  *             .autodeleteAnonymousUsers(true)
  *             .signIn(ConfigSignInArgs.builder()
@@ -106,20 +107,20 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .phoneNumber(ConfigSignInPhoneNumberArgs.builder()
  *                     .enabled(true)
- *                     .testPhoneNumbers(Map.of(&#34;+11231231234&#34;, &#34;000000&#34;))
+ *                     .testPhoneNumbers(Map.of("+11231231234", "000000"))
  *                     .build())
  *                 .build())
  *             .smsRegionConfig(ConfigSmsRegionConfigArgs.builder()
  *                 .allowlistOnly(ConfigSmsRegionConfigAllowlistOnlyArgs.builder()
  *                     .allowedRegions(                    
- *                         &#34;US&#34;,
- *                         &#34;CA&#34;)
+ *                         "US",
+ *                         "CA")
  *                     .build())
  *                 .build())
  *             .blockingFunctions(ConfigBlockingFunctionsArgs.builder()
  *                 .triggers(ConfigBlockingFunctionsTriggerArgs.builder()
- *                     .eventType(&#34;beforeSignIn&#34;)
- *                     .functionUri(&#34;https://us-east1-my-project.cloudfunctions.net/before-sign-in&#34;)
+ *                     .eventType("beforeSignIn")
+ *                     .functionUri("https://us-east1-my-project.cloudfunctions.net/before-sign-in")
  *                     .build())
  *                 .forwardInboundCredentials(ConfigBlockingFunctionsForwardInboundCredentialsArgs.builder()
  *                     .refreshToken(true)
@@ -130,19 +131,20 @@ import javax.annotation.Nullable;
  *             .quota(ConfigQuotaArgs.builder()
  *                 .signUpQuotaConfig(ConfigQuotaSignUpQuotaConfigArgs.builder()
  *                     .quota(1000)
- *                     .startTime(&#34;&#34;)
- *                     .quotaDuration(&#34;7200s&#34;)
+ *                     .startTime("")
+ *                     .quotaDuration("7200s")
  *                     .build())
  *                 .build())
  *             .authorizedDomains(            
- *                 &#34;localhost&#34;,
- *                 &#34;my-project.firebaseapp.com&#34;,
- *                 &#34;my-project.web.app&#34;)
+ *                 "localhost",
+ *                 "my-project.firebaseapp.com",
+ *                 "my-project.web.app")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

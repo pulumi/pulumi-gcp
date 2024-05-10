@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Region Autoscaler Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,49 +69,49 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarInstanceTemplate = new InstanceTemplate(&#34;foobarInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
- *             .name(&#34;my-instance-template&#34;)
- *             .machineType(&#34;e2-standard-4&#34;)
+ *         var foobarInstanceTemplate = new InstanceTemplate("foobarInstanceTemplate", InstanceTemplateArgs.builder()        
+ *             .name("my-instance-template")
+ *             .machineType("e2-standard-4")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-11&#34;)
+ *                 .sourceImage("debian-cloud/debian-11")
  *                 .diskSizeGb(250)
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .accessConfigs(InstanceTemplateNetworkInterfaceAccessConfigArgs.builder()
- *                     .networkTier(&#34;PREMIUM&#34;)
+ *                     .networkTier("PREMIUM")
  *                     .build())
  *                 .build())
  *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
  *                 .scopes(                
- *                     &#34;https://www.googleapis.com/auth/devstorage.read_only&#34;,
- *                     &#34;https://www.googleapis.com/auth/logging.write&#34;,
- *                     &#34;https://www.googleapis.com/auth/monitoring.write&#34;,
- *                     &#34;https://www.googleapis.com/auth/pubsub&#34;,
- *                     &#34;https://www.googleapis.com/auth/service.management.readonly&#34;,
- *                     &#34;https://www.googleapis.com/auth/servicecontrol&#34;,
- *                     &#34;https://www.googleapis.com/auth/trace.append&#34;)
+ *                     "https://www.googleapis.com/auth/devstorage.read_only",
+ *                     "https://www.googleapis.com/auth/logging.write",
+ *                     "https://www.googleapis.com/auth/monitoring.write",
+ *                     "https://www.googleapis.com/auth/pubsub",
+ *                     "https://www.googleapis.com/auth/service.management.readonly",
+ *                     "https://www.googleapis.com/auth/servicecontrol",
+ *                     "https://www.googleapis.com/auth/trace.append")
  *                 .build())
  *             .build());
  * 
- *         var foobarTargetPool = new TargetPool(&#34;foobarTargetPool&#34;, TargetPoolArgs.builder()        
- *             .name(&#34;my-target-pool&#34;)
+ *         var foobarTargetPool = new TargetPool("foobarTargetPool", TargetPoolArgs.builder()        
+ *             .name("my-target-pool")
  *             .build());
  * 
- *         var foobarRegionInstanceGroupManager = new RegionInstanceGroupManager(&#34;foobarRegionInstanceGroupManager&#34;, RegionInstanceGroupManagerArgs.builder()        
- *             .name(&#34;my-region-igm&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var foobarRegionInstanceGroupManager = new RegionInstanceGroupManager("foobarRegionInstanceGroupManager", RegionInstanceGroupManagerArgs.builder()        
+ *             .name("my-region-igm")
+ *             .region("us-central1")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(foobarInstanceTemplate.id())
- *                 .name(&#34;primary&#34;)
+ *                 .name("primary")
  *                 .build())
  *             .targetPools(foobarTargetPool.id())
- *             .baseInstanceName(&#34;foobar&#34;)
+ *             .baseInstanceName("foobar")
  *             .build());
  * 
- *         var foobar = new RegionAutoscaler(&#34;foobar&#34;, RegionAutoscalerArgs.builder()        
- *             .name(&#34;my-region-autoscaler&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var foobar = new RegionAutoscaler("foobar", RegionAutoscalerArgs.builder()        
+ *             .name("my-region-autoscaler")
+ *             .region("us-central1")
  *             .target(foobarRegionInstanceGroupManager.id())
  *             .autoscalingPolicy(RegionAutoscalerAutoscalingPolicyArgs.builder()
  *                 .maxReplicas(5)
@@ -123,13 +124,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Basic_zone
  * A basic example of a dataplex zone
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,35 +54,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Lake(&#34;basic&#34;, LakeArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;lake&#34;)
- *             .description(&#34;Lake for DCL&#34;)
- *             .displayName(&#34;Lake for DCL&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .labels(Map.of(&#34;my-lake&#34;, &#34;exists&#34;))
+ *         var basic = new Lake("basic", LakeArgs.builder()        
+ *             .location("us-west1")
+ *             .name("lake")
+ *             .description("Lake for DCL")
+ *             .displayName("Lake for DCL")
+ *             .project("my-project-name")
+ *             .labels(Map.of("my-lake", "exists"))
  *             .build());
  * 
- *         var primary = new Zone(&#34;primary&#34;, ZoneArgs.builder()        
+ *         var primary = new Zone("primary", ZoneArgs.builder()        
  *             .discoverySpec(ZoneDiscoverySpecArgs.builder()
  *                 .enabled(false)
  *                 .build())
  *             .lake(basic.name())
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;zone&#34;)
+ *             .location("us-west1")
+ *             .name("zone")
  *             .resourceSpec(ZoneResourceSpecArgs.builder()
- *                 .locationType(&#34;MULTI_REGION&#34;)
+ *                 .locationType("MULTI_REGION")
  *                 .build())
- *             .type(&#34;RAW&#34;)
- *             .description(&#34;Zone for DCL&#34;)
- *             .displayName(&#34;Zone for DCL&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *             .type("RAW")
+ *             .description("Zone for DCL")
+ *             .displayName("Zone for DCL")
+ *             .project("my-project-name")
  *             .labels()
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

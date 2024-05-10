@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Metadata Store
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,15 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var store = new AiMetadataStore(&#34;store&#34;, AiMetadataStoreArgs.builder()        
- *             .name(&#34;test-store&#34;)
- *             .description(&#34;Store to test the terraform module&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var store = new AiMetadataStore("store", AiMetadataStoreArgs.builder()        
+ *             .name("test-store")
+ *             .description("Store to test the terraform module")
+ *             .region("us-central1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

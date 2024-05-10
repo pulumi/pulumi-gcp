@@ -48,14 +48,14 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+     * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute{@literal @}developer.gserviceaccount.com) is used.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+     * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute{@literal @}developer.gserviceaccount.com) is used.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -163,7 +163,7 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceAccount Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+         * @param serviceAccount Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute{@literal @}developer.gserviceaccount.com) is used.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceAccount Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+         * @param serviceAccount Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute{@literal @}developer.gserviceaccount.com) is used.
          * 
          * @return builder
          * 

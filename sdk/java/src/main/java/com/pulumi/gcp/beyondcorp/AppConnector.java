@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Beyondcorp App Connector Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,13 +60,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var appConnector = new AppConnector(&#34;appConnector&#34;, AppConnectorArgs.builder()        
- *             .name(&#34;my-app-connector&#34;)
+ *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()        
+ *             .name("my-app-connector")
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
  *                     .email(serviceAccount.email())
@@ -75,12 +76,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Beyondcorp App Connector Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -105,29 +108,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
+ *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var appConnector = new AppConnector(&#34;appConnector&#34;, AppConnectorArgs.builder()        
- *             .name(&#34;my-app-connector&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .displayName(&#34;some display name&#34;)
+ *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()        
+ *             .name("my-app-connector")
+ *             .region("us-central1")
+ *             .displayName("some display name")
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
  *                     .email(serviceAccount.email())
  *                     .build())
  *                 .build())
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                 Map.entry(&#34;bar&#34;, &#34;baz&#34;)
+ *                 Map.entry("foo", "bar"),
+ *                 Map.entry("bar", "baz")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

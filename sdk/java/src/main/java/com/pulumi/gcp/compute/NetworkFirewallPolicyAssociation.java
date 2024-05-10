@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * 
  * ### Global
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,26 +46,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var networkFirewallPolicy = new NetworkFirewallPolicy(&#34;networkFirewallPolicy&#34;, NetworkFirewallPolicyArgs.builder()        
- *             .name(&#34;policy&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .description(&#34;Sample global network firewall policy&#34;)
+ *         var networkFirewallPolicy = new NetworkFirewallPolicy("networkFirewallPolicy", NetworkFirewallPolicyArgs.builder()        
+ *             .name("policy")
+ *             .project("my-project-name")
+ *             .description("Sample global network firewall policy")
  *             .build());
  * 
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("network")
  *             .build());
  * 
- *         var primary = new NetworkFirewallPolicyAssociation(&#34;primary&#34;, NetworkFirewallPolicyAssociationArgs.builder()        
- *             .name(&#34;association&#34;)
+ *         var primary = new NetworkFirewallPolicyAssociation("primary", NetworkFirewallPolicyAssociationArgs.builder()        
+ *             .name("association")
  *             .attachmentTarget(network.id())
  *             .firewallPolicy(networkFirewallPolicy.name())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

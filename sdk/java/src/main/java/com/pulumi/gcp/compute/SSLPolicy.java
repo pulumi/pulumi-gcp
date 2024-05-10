@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Ssl Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,29 +52,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod_ssl_policy = new SSLPolicy(&#34;prod-ssl-policy&#34;, SSLPolicyArgs.builder()        
- *             .name(&#34;production-ssl-policy&#34;)
- *             .profile(&#34;MODERN&#34;)
+ *         var prod_ssl_policy = new SSLPolicy("prod-ssl-policy", SSLPolicyArgs.builder()        
+ *             .name("production-ssl-policy")
+ *             .profile("MODERN")
  *             .build());
  * 
- *         var nonprod_ssl_policy = new SSLPolicy(&#34;nonprod-ssl-policy&#34;, SSLPolicyArgs.builder()        
- *             .name(&#34;nonprod-ssl-policy&#34;)
- *             .profile(&#34;MODERN&#34;)
- *             .minTlsVersion(&#34;TLS_1_2&#34;)
+ *         var nonprod_ssl_policy = new SSLPolicy("nonprod-ssl-policy", SSLPolicyArgs.builder()        
+ *             .name("nonprod-ssl-policy")
+ *             .profile("MODERN")
+ *             .minTlsVersion("TLS_1_2")
  *             .build());
  * 
- *         var custom_ssl_policy = new SSLPolicy(&#34;custom-ssl-policy&#34;, SSLPolicyArgs.builder()        
- *             .name(&#34;custom-ssl-policy&#34;)
- *             .minTlsVersion(&#34;TLS_1_2&#34;)
- *             .profile(&#34;CUSTOM&#34;)
+ *         var custom_ssl_policy = new SSLPolicy("custom-ssl-policy", SSLPolicyArgs.builder()        
+ *             .name("custom-ssl-policy")
+ *             .minTlsVersion("TLS_1_2")
+ *             .profile("CUSTOM")
  *             .customFeatures(            
- *                 &#34;TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384&#34;,
- *                 &#34;TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384&#34;)
+ *                 "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+ *                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

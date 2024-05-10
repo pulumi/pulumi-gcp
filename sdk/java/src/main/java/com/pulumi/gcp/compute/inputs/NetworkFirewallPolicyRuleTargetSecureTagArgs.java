@@ -17,14 +17,14 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
     public static final NetworkFirewallPolicyRuleTargetSecureTagArgs Empty = new NetworkFirewallPolicyRuleTargetSecureTagArgs();
 
     /**
-     * Name of the secure tag, created with TagManager&#39;s TagValue API. @pattern tagValues/[0-9]+
+     * Name of the secure tag, created with TagManager&#39;s TagValue API.{@literal @}pattern tagValues/[0-9]+
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the secure tag, created with TagManager&#39;s TagValue API. @pattern tagValues/[0-9]+
+     * @return Name of the secure tag, created with TagManager&#39;s TagValue API.{@literal @}pattern tagValues/[0-9]+
      * 
      */
     public Output<String> name() {
@@ -72,7 +72,7 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
         }
 
         /**
-         * @param name Name of the secure tag, created with TagManager&#39;s TagValue API. @pattern tagValues/[0-9]+
+         * @param name Name of the secure tag, created with TagManager&#39;s TagValue API.{@literal @}pattern tagValues/[0-9]+
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
         }
 
         /**
-         * @param name Name of the secure tag, created with TagManager&#39;s TagValue API. @pattern tagValues/[0-9]+
+         * @param name Name of the secure tag, created with TagManager&#39;s TagValue API.{@literal @}pattern tagValues/[0-9]+
          * 
          * @return builder
          * 

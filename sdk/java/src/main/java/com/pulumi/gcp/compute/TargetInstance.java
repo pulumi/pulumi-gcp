@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Target Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,37 +63,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var vmimage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var target_vm = new Instance(&#34;target-vm&#34;, InstanceArgs.builder()        
- *             .name(&#34;target-vm&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *         var target_vm = new Instance("target-vm", InstanceArgs.builder()        
+ *             .name("target-vm")
+ *             .machineType("e2-medium")
+ *             .zone("us-central1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(vmimage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(vmimage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetInstance(&#34;default&#34;, TargetInstanceArgs.builder()        
- *             .name(&#34;target&#34;)
+ *         var default_ = new TargetInstance("default", TargetInstanceArgs.builder()        
+ *             .name("target")
  *             .instance(target_vm.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Target Instance Custom Network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -122,42 +125,44 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var target-vm = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;default&#34;)
+ *             .name("default")
  *             .build());
  * 
  *         final var vmimage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-10&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-10")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var target_vmInstance = new Instance(&#34;target-vmInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;custom-network-target-vm&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *         var target_vmInstance = new Instance("target-vmInstance", InstanceArgs.builder()        
+ *             .name("custom-network-target-vm")
+ *             .machineType("e2-medium")
+ *             .zone("us-central1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(vmimage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(vmimage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
  *             .build());
  * 
- *         var customNetwork = new TargetInstance(&#34;customNetwork&#34;, TargetInstanceArgs.builder()        
- *             .name(&#34;custom-network&#34;)
+ *         var customNetwork = new TargetInstance("customNetwork", TargetInstanceArgs.builder()        
+ *             .name("custom-network")
  *             .instance(target_vmInstance.id())
  *             .network(target_vm.selfLink())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Target Instance With Security Policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -194,76 +199,77 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;custom-default-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("custom-default-network")
  *             .autoCreateSubnetworks(false)
- *             .routingMode(&#34;REGIONAL&#34;)
+ *             .routingMode("REGIONAL")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;custom-default-subnet&#34;)
- *             .ipCidrRange(&#34;10.1.2.0/24&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("custom-default-subnet")
+ *             .ipCidrRange("10.1.2.0/24")
  *             .network(default_.id())
- *             .privateIpv6GoogleAccess(&#34;DISABLE_GOOGLE_ACCESS&#34;)
- *             .purpose(&#34;PRIVATE&#34;)
- *             .region(&#34;southamerica-west1&#34;)
- *             .stackType(&#34;IPV4_ONLY&#34;)
+ *             .privateIpv6GoogleAccess("DISABLE_GOOGLE_ACCESS")
+ *             .purpose("PRIVATE")
+ *             .region("southamerica-west1")
+ *             .stackType("IPV4_ONLY")
  *             .build());
  * 
  *         final var vmimage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var target_vm = new Instance(&#34;target-vm&#34;, InstanceArgs.builder()        
+ *         var target_vm = new Instance("target-vm", InstanceArgs.builder()        
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(default_.selfLink())
  *                 .subnetwork(defaultSubnetwork.selfLink())
  *                 .build())
- *             .name(&#34;target-vm&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .zone(&#34;southamerica-west1-a&#34;)
+ *             .name("target-vm")
+ *             .machineType("e2-medium")
+ *             .zone("southamerica-west1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(vmimage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(vmimage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var policyddosprotection = new RegionSecurityPolicy(&#34;policyddosprotection&#34;, RegionSecurityPolicyArgs.builder()        
- *             .region(&#34;southamerica-west1&#34;)
- *             .name(&#34;tf-test-policyddos_88717&#34;)
- *             .description(&#34;ddos protection security policy to set target instance&#34;)
- *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
+ *         var policyddosprotection = new RegionSecurityPolicy("policyddosprotection", RegionSecurityPolicyArgs.builder()        
+ *             .region("southamerica-west1")
+ *             .name("tf-test-policyddos_88717")
+ *             .description("ddos protection security policy to set target instance")
+ *             .type("CLOUD_ARMOR_NETWORK")
  *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
- *                 .ddosProtection(&#34;ADVANCED_PREVIEW&#34;)
+ *                 .ddosProtection("ADVANCED_PREVIEW")
  *                 .build())
  *             .build());
  * 
- *         var edgeSecService = new NetworkEdgeSecurityService(&#34;edgeSecService&#34;, NetworkEdgeSecurityServiceArgs.builder()        
- *             .region(&#34;southamerica-west1&#34;)
- *             .name(&#34;tf-test-edgesec_85794&#34;)
+ *         var edgeSecService = new NetworkEdgeSecurityService("edgeSecService", NetworkEdgeSecurityServiceArgs.builder()        
+ *             .region("southamerica-west1")
+ *             .name("tf-test-edgesec_85794")
  *             .securityPolicy(policyddosprotection.selfLink())
  *             .build());
  * 
- *         var regionsecuritypolicy = new RegionSecurityPolicy(&#34;regionsecuritypolicy&#34;, RegionSecurityPolicyArgs.builder()        
- *             .name(&#34;region-secpolicy&#34;)
- *             .region(&#34;southamerica-west1&#34;)
- *             .description(&#34;basic security policy for target instance&#34;)
- *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
+ *         var regionsecuritypolicy = new RegionSecurityPolicy("regionsecuritypolicy", RegionSecurityPolicyArgs.builder()        
+ *             .name("region-secpolicy")
+ *             .region("southamerica-west1")
+ *             .description("basic security policy for target instance")
+ *             .type("CLOUD_ARMOR_NETWORK")
  *             .build());
  * 
- *         var defaultTargetInstance = new TargetInstance(&#34;defaultTargetInstance&#34;, TargetInstanceArgs.builder()        
- *             .name(&#34;target-instance&#34;)
- *             .zone(&#34;southamerica-west1-a&#34;)
+ *         var defaultTargetInstance = new TargetInstance("defaultTargetInstance", TargetInstanceArgs.builder()        
+ *             .name("target-instance")
+ *             .zone("southamerica-west1-a")
  *             .instance(target_vm.id())
  *             .securityPolicy(regionsecuritypolicy.selfLink())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

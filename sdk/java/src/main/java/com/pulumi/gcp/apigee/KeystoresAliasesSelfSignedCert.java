@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Apigee Env Keystore Alias Self Signed Cert
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,86 +72,87 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
- *             .name(&#34;my-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("my-project")
+ *             .name("my-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var apigee = new Service(&#34;apigee&#34;, ServiceArgs.builder()        
+ *         var apigee = new Service("apigee", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;apigee.googleapis.com&#34;)
+ *             .service("apigee.googleapis.com")
  *             .build());
  * 
- *         var servicenetworking = new Service(&#34;servicenetworking&#34;, ServiceArgs.builder()        
+ *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .build());
  * 
- *         var compute = new Service(&#34;compute&#34;, ServiceArgs.builder()        
+ *         var compute = new Service("compute", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;compute.googleapis.com&#34;)
+ *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;apigee-network&#34;)
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *             .name("apigee-network")
  *             .project(project.projectId())
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;apigee-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(apigeeNetwork.id())
  *             .project(project.projectId())
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
  *             .network(apigeeNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *             .analyticsRegion("us-central1")
  *             .projectId(project.projectId())
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeEnvironmentKeystoreSsAlias = new Environment(&#34;apigeeEnvironmentKeystoreSsAlias&#34;, EnvironmentArgs.builder()        
+ *         var apigeeEnvironmentKeystoreSsAlias = new Environment("apigeeEnvironmentKeystoreSsAlias", EnvironmentArgs.builder()        
  *             .orgId(apigeeOrg.id())
- *             .name(&#34;env-name&#34;)
- *             .description(&#34;Apigee Environment&#34;)
- *             .displayName(&#34;environment-1&#34;)
+ *             .name("env-name")
+ *             .description("Apigee Environment")
+ *             .displayName("environment-1")
  *             .build());
  * 
- *         var apigeeEnvironmentKeystoreAlias = new EnvKeystore(&#34;apigeeEnvironmentKeystoreAlias&#34;, EnvKeystoreArgs.builder()        
- *             .name(&#34;env-keystore&#34;)
+ *         var apigeeEnvironmentKeystoreAlias = new EnvKeystore("apigeeEnvironmentKeystoreAlias", EnvKeystoreArgs.builder()        
+ *             .name("env-keystore")
  *             .envId(apigeeEnvironmentKeystoreSsAlias.id())
  *             .build());
  * 
- *         var apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert = new KeystoresAliasesSelfSignedCert(&#34;apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert&#34;, KeystoresAliasesSelfSignedCertArgs.builder()        
+ *         var apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert = new KeystoresAliasesSelfSignedCert("apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert", KeystoresAliasesSelfSignedCertArgs.builder()        
  *             .environment(apigeeEnvironmentKeystoreSsAlias.name())
  *             .orgId(apigeeOrg.name())
  *             .keystore(apigeeEnvironmentKeystoreAlias.name())
- *             .alias(&#34;alias&#34;)
+ *             .alias("alias")
  *             .keySize(1024)
- *             .sigAlg(&#34;SHA512withRSA&#34;)
+ *             .sigAlg("SHA512withRSA")
  *             .certValidityInDays(4)
  *             .subject(KeystoresAliasesSelfSignedCertSubjectArgs.builder()
- *                 .commonName(&#34;selfsigned_example&#34;)
- *                 .countryCode(&#34;US&#34;)
- *                 .locality(&#34;TX&#34;)
- *                 .org(&#34;CCE&#34;)
- *                 .orgUnit(&#34;PSO&#34;)
+ *                 .commonName("selfsigned_example")
+ *                 .countryCode("US")
+ *                 .locality("TX")
+ *                 .org("CCE")
+ *                 .orgUnit("PSO")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

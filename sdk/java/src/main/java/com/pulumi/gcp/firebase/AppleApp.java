@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ### Firebase Apple App Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,20 +42,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AppleApp(&#34;default&#34;, AppleAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Display Name Basic&#34;)
- *             .bundleId(&#34;apple.app.12345&#34;)
+ *         var default_ = new AppleApp("default", AppleAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Display Name Basic")
+ *             .bundleId("apple.app.12345")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebase Apple App Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -79,29 +82,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apple = new ApiKey(&#34;apple&#34;, ApiKeyArgs.builder()        
- *             .name(&#34;api-key&#34;)
- *             .displayName(&#34;Display Name Full&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var apple = new ApiKey("apple", ApiKeyArgs.builder()        
+ *             .name("api-key")
+ *             .displayName("Display Name Full")
+ *             .project("my-project-name")
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
  *                 .iosKeyRestrictions(ApiKeyRestrictionsIosKeyRestrictionsArgs.builder()
- *                     .allowedBundleIds(&#34;apple.app.12345&#34;)
+ *                     .allowedBundleIds("apple.app.12345")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var full = new AppleApp(&#34;full&#34;, AppleAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Display Name Full&#34;)
- *             .bundleId(&#34;apple.app.12345&#34;)
- *             .appStoreId(&#34;12345&#34;)
- *             .teamId(&#34;9987654321&#34;)
+ *         var full = new AppleApp("full", AppleAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Display Name Full")
+ *             .bundleId("apple.app.12345")
+ *             .appStoreId("12345")
+ *             .teamId("9987654321")
  *             .apiKeyId(apple.uid())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

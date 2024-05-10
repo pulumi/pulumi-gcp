@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * ### Netapp Volume Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,30 +67,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;test-network&#34;)
+ *             .name("test-network")
  *             .build());
  * 
- *         var defaultStoragePool = new StoragePool(&#34;defaultStoragePool&#34;, StoragePoolArgs.builder()        
- *             .name(&#34;test-pool&#34;)
- *             .location(&#34;us-west2&#34;)
- *             .serviceLevel(&#34;PREMIUM&#34;)
- *             .capacityGib(&#34;2048&#34;)
+ *         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()        
+ *             .name("test-pool")
+ *             .location("us-west2")
+ *             .serviceLevel("PREMIUM")
+ *             .capacityGib("2048")
  *             .network(default_.id())
  *             .build());
  * 
- *         var testVolume = new Volume(&#34;testVolume&#34;, VolumeArgs.builder()        
- *             .location(&#34;us-west2&#34;)
- *             .name(&#34;test-volume&#34;)
- *             .capacityGib(&#34;100&#34;)
- *             .shareName(&#34;test-volume&#34;)
+ *         var testVolume = new Volume("testVolume", VolumeArgs.builder()        
+ *             .location("us-west2")
+ *             .name("test-volume")
+ *             .capacityGib("100")
+ *             .shareName("test-volume")
  *             .storagePool(defaultStoragePool.name())
- *             .protocols(&#34;NFSV3&#34;)
- *             .deletionPolicy(&#34;DEFAULT&#34;)
+ *             .protocols("NFSV3")
+ *             .deletionPolicy("DEFAULT")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

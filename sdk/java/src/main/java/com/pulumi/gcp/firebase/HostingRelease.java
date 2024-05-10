@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ### Firebasehosting Release In Site
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,36 +47,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-id&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .redirects(HostingVersionConfigRedirectArgs.builder()
- *                     .glob(&#34;/google/**&#34;)
+ *                     .glob("/google/**")
  *                     .statusCode(302)
- *                     .location(&#34;https://www.google.com&#34;)
+ *                     .location("https://www.google.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
- *             .message(&#34;Test release&#34;)
+ *             .message("Test release")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Release In Channel
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -103,42 +106,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-with-channel&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-with-channel")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .redirects(HostingVersionConfigRedirectArgs.builder()
- *                     .glob(&#34;/google/**&#34;)
+ *                     .glob("/google/**")
  *                     .statusCode(302)
- *                     .location(&#34;https://www.google.com&#34;)
+ *                     .location("https://www.google.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingChannel = new HostingChannel(&#34;defaultHostingChannel&#34;, HostingChannelArgs.builder()        
+ *         var defaultHostingChannel = new HostingChannel("defaultHostingChannel", HostingChannelArgs.builder()        
  *             .siteId(default_.siteId())
- *             .channelId(&#34;channel-id&#34;)
+ *             .channelId("channel-id")
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
  *             .siteId(default_.siteId())
  *             .channelId(defaultHostingChannel.channelId())
  *             .versionName(defaultHostingVersion.name())
- *             .message(&#34;Test release in channel&#34;)
+ *             .message("Test release in channel")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Release Disable
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -161,20 +166,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-id&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
  *             .siteId(default_.siteId())
- *             .type(&#34;SITE_DISABLE&#34;)
- *             .message(&#34;Take down site&#34;)
+ *             .type("SITE_DISABLE")
+ *             .message("Take down site")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

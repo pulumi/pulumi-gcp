@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Network Services Gateway Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,21 +55,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Gateway(&#34;default&#34;, GatewayArgs.builder()        
- *             .name(&#34;my-gateway&#34;)
- *             .scope(&#34;default-scope-basic&#34;)
- *             .type(&#34;OPEN_MESH&#34;)
+ *         var default_ = new Gateway("default", GatewayArgs.builder()        
+ *             .name("my-gateway")
+ *             .scope("default-scope-basic")
+ *             .type("OPEN_MESH")
  *             .ports(443)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Gateway Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,23 +92,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Gateway(&#34;default&#34;, GatewayArgs.builder()        
- *             .name(&#34;my-gateway&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .type(&#34;OPEN_MESH&#34;)
+ *         var default_ = new Gateway("default", GatewayArgs.builder()        
+ *             .name("my-gateway")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .type("OPEN_MESH")
  *             .ports(443)
- *             .scope(&#34;default-scope-advance&#34;)
+ *             .scope("default-scope-advance")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Gateway Secure Web Proxy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -137,65 +142,65 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .name(&#34;my-certificate&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .name("my-certificate")
+ *             .location("us-central1")
  *             .selfManaged(CertificateSelfManagedArgs.builder()
  *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/cert.pem&#34;)
+ *                     .input("test-fixtures/cert.pem")
  *                     .build()).result())
  *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/private-key.pem&#34;)
+ *                     .input("test-fixtures/private-key.pem")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
- *             .routingMode(&#34;REGIONAL&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("my-network")
+ *             .routingMode("REGIONAL")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnetwork-name&#34;)
- *             .purpose(&#34;PRIVATE&#34;)
- *             .ipCidrRange(&#34;10.128.0.0/20&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("my-subnetwork-name")
+ *             .purpose("PRIVATE")
+ *             .ipCidrRange("10.128.0.0/20")
+ *             .region("us-central1")
  *             .network(defaultNetwork.id())
- *             .role(&#34;ACTIVE&#34;)
+ *             .role("ACTIVE")
  *             .build());
  * 
- *         var proxyonlysubnet = new Subnetwork(&#34;proxyonlysubnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-proxy-only-subnetwork&#34;)
- *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
- *             .ipCidrRange(&#34;192.168.0.0/23&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var proxyonlysubnet = new Subnetwork("proxyonlysubnet", SubnetworkArgs.builder()        
+ *             .name("my-proxy-only-subnetwork")
+ *             .purpose("REGIONAL_MANAGED_PROXY")
+ *             .ipCidrRange("192.168.0.0/23")
+ *             .region("us-central1")
  *             .network(defaultNetwork.id())
- *             .role(&#34;ACTIVE&#34;)
+ *             .role("ACTIVE")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
- *             .name(&#34;my-policy-name&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()        
+ *             .name("my-policy-name")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
- *             .name(&#34;my-policyrule-name&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()        
+ *             .name("my-policyrule-name")
+ *             .location("us-central1")
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
  *             .enabled(true)
  *             .priority(1)
- *             .sessionMatcher(&#34;host() == &#39;example.com&#39;&#34;)
- *             .basicProfile(&#34;ALLOW&#34;)
+ *             .sessionMatcher("host() == 'example.com'")
+ *             .basicProfile("ALLOW")
  *             .build());
  * 
- *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
- *             .name(&#34;my-gateway1&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .addresses(&#34;10.128.0.99&#34;)
- *             .type(&#34;SECURE_WEB_GATEWAY&#34;)
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *             .name("my-gateway1")
+ *             .location("us-central1")
+ *             .addresses("10.128.0.99")
+ *             .type("SECURE_WEB_GATEWAY")
  *             .ports(443)
- *             .scope(&#34;my-default-scope1&#34;)
+ *             .scope("my-default-scope1")
  *             .certificateUrls(default_.id())
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.id())
  *             .network(defaultNetwork.id())
@@ -205,12 +210,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Gateway Multiple Swp Same Network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -242,65 +249,65 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .name(&#34;my-certificate&#34;)
- *             .location(&#34;us-south1&#34;)
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .name("my-certificate")
+ *             .location("us-south1")
  *             .selfManaged(CertificateSelfManagedArgs.builder()
  *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/cert.pem&#34;)
+ *                     .input("test-fixtures/cert.pem")
  *                     .build()).result())
  *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;test-fixtures/private-key.pem&#34;)
+ *                     .input("test-fixtures/private-key.pem")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
- *             .routingMode(&#34;REGIONAL&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("my-network")
+ *             .routingMode("REGIONAL")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnetwork-name&#34;)
- *             .purpose(&#34;PRIVATE&#34;)
- *             .ipCidrRange(&#34;10.128.0.0/20&#34;)
- *             .region(&#34;us-south1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("my-subnetwork-name")
+ *             .purpose("PRIVATE")
+ *             .ipCidrRange("10.128.0.0/20")
+ *             .region("us-south1")
  *             .network(defaultNetwork.id())
- *             .role(&#34;ACTIVE&#34;)
+ *             .role("ACTIVE")
  *             .build());
  * 
- *         var proxyonlysubnet = new Subnetwork(&#34;proxyonlysubnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-proxy-only-subnetwork&#34;)
- *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
- *             .ipCidrRange(&#34;192.168.0.0/23&#34;)
- *             .region(&#34;us-south1&#34;)
+ *         var proxyonlysubnet = new Subnetwork("proxyonlysubnet", SubnetworkArgs.builder()        
+ *             .name("my-proxy-only-subnetwork")
+ *             .purpose("REGIONAL_MANAGED_PROXY")
+ *             .ipCidrRange("192.168.0.0/23")
+ *             .region("us-south1")
  *             .network(defaultNetwork.id())
- *             .role(&#34;ACTIVE&#34;)
+ *             .role("ACTIVE")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
- *             .name(&#34;my-policy-name&#34;)
- *             .location(&#34;us-south1&#34;)
+ *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()        
+ *             .name("my-policy-name")
+ *             .location("us-south1")
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
- *             .name(&#34;my-policyrule-name&#34;)
- *             .location(&#34;us-south1&#34;)
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", GatewaySecurityPolicyRuleArgs.builder()        
+ *             .name("my-policyrule-name")
+ *             .location("us-south1")
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
  *             .enabled(true)
  *             .priority(1)
- *             .sessionMatcher(&#34;host() == &#39;example.com&#39;&#34;)
- *             .basicProfile(&#34;ALLOW&#34;)
+ *             .sessionMatcher("host() == 'example.com'")
+ *             .basicProfile("ALLOW")
  *             .build());
  * 
- *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
- *             .name(&#34;my-gateway1&#34;)
- *             .location(&#34;us-south1&#34;)
- *             .addresses(&#34;10.128.0.99&#34;)
- *             .type(&#34;SECURE_WEB_GATEWAY&#34;)
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *             .name("my-gateway1")
+ *             .location("us-south1")
+ *             .addresses("10.128.0.99")
+ *             .type("SECURE_WEB_GATEWAY")
  *             .ports(443)
- *             .scope(&#34;my-default-scope1&#34;)
+ *             .scope("my-default-scope1")
  *             .certificateUrls(default_.id())
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.id())
  *             .network(defaultNetwork.id())
@@ -308,13 +315,13 @@ import javax.annotation.Nullable;
  *             .deleteSwgAutogenRouterOnDestroy(true)
  *             .build());
  * 
- *         var gateway2 = new Gateway(&#34;gateway2&#34;, GatewayArgs.builder()        
- *             .name(&#34;my-gateway2&#34;)
- *             .location(&#34;us-south1&#34;)
- *             .addresses(&#34;10.128.0.98&#34;)
- *             .type(&#34;SECURE_WEB_GATEWAY&#34;)
+ *         var gateway2 = new Gateway("gateway2", GatewayArgs.builder()        
+ *             .name("my-gateway2")
+ *             .location("us-south1")
+ *             .addresses("10.128.0.98")
+ *             .type("SECURE_WEB_GATEWAY")
  *             .ports(443)
- *             .scope(&#34;my-default-scope2&#34;)
+ *             .scope("my-default-scope2")
  *             .certificateUrls(default_.id())
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.id())
  *             .network(defaultNetwork.id())
@@ -324,7 +331,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

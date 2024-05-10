@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Gkebackup Restoreplan All Namespaces
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,27 +62,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;restore-all-ns-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("restore-all-ns-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;restore-all-ns&#34;)
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *             .name("restore-all-ns")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -89,30 +90,32 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var allNs = new RestorePlan(&#34;allNs&#34;, RestorePlanArgs.builder()        
- *             .name(&#34;restore-all-ns&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var allNs = new RestorePlan("allNs", RestorePlanArgs.builder()        
+ *             .name("restore-all-ns")
+ *             .location("us-central1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
  *                 .allNamespaces(true)
- *                 .namespacedResourceRestoreMode(&#34;FAIL_ON_CONFLICT&#34;)
- *                 .volumeDataRestorePolicy(&#34;RESTORE_VOLUME_DATA_FROM_BACKUP&#34;)
+ *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
+ *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
  *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
  *                     .allGroupKinds(true)
  *                     .build())
- *                 .clusterResourceConflictPolicy(&#34;USE_EXISTING_VERSION&#34;)
+ *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan Rollback Namespace
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -144,27 +147,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;rollback-ns-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("rollback-ns-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;rollback-ns&#34;)
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *             .name("rollback-ns")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -172,40 +175,42 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var rollbackNs = new RestorePlan(&#34;rollbackNs&#34;, RestorePlanArgs.builder()        
- *             .name(&#34;rollback-ns-rp&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var rollbackNs = new RestorePlan("rollbackNs", RestorePlanArgs.builder()        
+ *             .name("rollback-ns-rp")
+ *             .location("us-central1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
  *                 .selectedNamespaces(RestorePlanRestoreConfigSelectedNamespacesArgs.builder()
- *                     .namespaces(&#34;my-ns&#34;)
+ *                     .namespaces("my-ns")
  *                     .build())
- *                 .namespacedResourceRestoreMode(&#34;DELETE_AND_RESTORE&#34;)
- *                 .volumeDataRestorePolicy(&#34;RESTORE_VOLUME_DATA_FROM_BACKUP&#34;)
+ *                 .namespacedResourceRestoreMode("DELETE_AND_RESTORE")
+ *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
  *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
  *                     .selectedGroupKinds(                    
  *                         RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs.builder()
- *                             .resourceGroup(&#34;apiextension.k8s.io&#34;)
- *                             .resourceKind(&#34;CustomResourceDefinition&#34;)
+ *                             .resourceGroup("apiextension.k8s.io")
+ *                             .resourceKind("CustomResourceDefinition")
  *                             .build(),
  *                         RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs.builder()
- *                             .resourceGroup(&#34;storage.k8s.io&#34;)
- *                             .resourceKind(&#34;StorageClass&#34;)
+ *                             .resourceGroup("storage.k8s.io")
+ *                             .resourceKind("StorageClass")
  *                             .build())
  *                     .build())
- *                 .clusterResourceConflictPolicy(&#34;USE_EXISTING_VERSION&#34;)
+ *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan Protected Application
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -237,27 +242,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;rollback-app-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("rollback-app-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;rollback-app&#34;)
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *             .name("rollback-app")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -265,20 +270,20 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var rollbackApp = new RestorePlan(&#34;rollbackApp&#34;, RestorePlanArgs.builder()        
- *             .name(&#34;rollback-app-rp&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var rollbackApp = new RestorePlan("rollbackApp", RestorePlanArgs.builder()        
+ *             .name("rollback-app-rp")
+ *             .location("us-central1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
  *                 .selectedApplications(RestorePlanRestoreConfigSelectedApplicationsArgs.builder()
  *                     .namespacedNames(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs.builder()
- *                         .name(&#34;my-app&#34;)
- *                         .namespace(&#34;my-ns&#34;)
+ *                         .name("my-app")
+ *                         .namespace("my-ns")
  *                         .build())
  *                     .build())
- *                 .namespacedResourceRestoreMode(&#34;DELETE_AND_RESTORE&#34;)
- *                 .volumeDataRestorePolicy(&#34;REUSE_VOLUME_HANDLE_FROM_BACKUP&#34;)
+ *                 .namespacedResourceRestoreMode("DELETE_AND_RESTORE")
+ *                 .volumeDataRestorePolicy("REUSE_VOLUME_HANDLE_FROM_BACKUP")
  *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
  *                     .noGroupKinds(true)
  *                     .build())
@@ -287,12 +292,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan All Cluster Resources
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -323,27 +330,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;all-groupkinds-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("all-groupkinds-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;all-groupkinds&#34;)
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *             .name("all-groupkinds")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -351,29 +358,31 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var allClusterResources = new RestorePlan(&#34;allClusterResources&#34;, RestorePlanArgs.builder()        
- *             .name(&#34;all-groupkinds-rp&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var allClusterResources = new RestorePlan("allClusterResources", RestorePlanArgs.builder()        
+ *             .name("all-groupkinds-rp")
+ *             .location("us-central1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
  *                 .noNamespaces(true)
- *                 .namespacedResourceRestoreMode(&#34;FAIL_ON_CONFLICT&#34;)
+ *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
  *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
  *                     .allGroupKinds(true)
  *                     .build())
- *                 .clusterResourceConflictPolicy(&#34;USE_EXISTING_VERSION&#34;)
+ *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan Rename Namespace
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -405,27 +414,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;rename-ns-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("rename-ns-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;rename-ns&#34;)
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *             .name("rename-ns")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -433,44 +442,44 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var renameNs = new RestorePlan(&#34;renameNs&#34;, RestorePlanArgs.builder()        
- *             .name(&#34;rename-ns-rp&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var renameNs = new RestorePlan("renameNs", RestorePlanArgs.builder()        
+ *             .name("rename-ns-rp")
+ *             .location("us-central1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
  *                 .selectedNamespaces(RestorePlanRestoreConfigSelectedNamespacesArgs.builder()
- *                     .namespaces(&#34;ns1&#34;)
+ *                     .namespaces("ns1")
  *                     .build())
- *                 .namespacedResourceRestoreMode(&#34;FAIL_ON_CONFLICT&#34;)
- *                 .volumeDataRestorePolicy(&#34;REUSE_VOLUME_HANDLE_FROM_BACKUP&#34;)
+ *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
+ *                 .volumeDataRestorePolicy("REUSE_VOLUME_HANDLE_FROM_BACKUP")
  *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
  *                     .noGroupKinds(true)
  *                     .build())
  *                 .transformationRules(                
  *                     RestorePlanRestoreConfigTransformationRuleArgs.builder()
- *                         .description(&#34;rename namespace from ns1 to ns2&#34;)
+ *                         .description("rename namespace from ns1 to ns2")
  *                         .resourceFilter(RestorePlanRestoreConfigTransformationRuleResourceFilterArgs.builder()
  *                             .groupKinds(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs.builder()
- *                                 .resourceKind(&#34;Namespace&#34;)
+ *                                 .resourceKind("Namespace")
  *                                 .build())
- *                             .jsonPath(&#34;.metadata[?(@.name == &#39;ns1&#39;)]&#34;)
+ *                             .jsonPath(".metadata[?({@literal @}.name == 'ns1')]")
  *                             .build())
  *                         .fieldActions(RestorePlanRestoreConfigTransformationRuleFieldActionArgs.builder()
- *                             .op(&#34;REPLACE&#34;)
- *                             .path(&#34;/metadata/name&#34;)
- *                             .value(&#34;ns2&#34;)
+ *                             .op("REPLACE")
+ *                             .path("/metadata/name")
+ *                             .value("ns2")
  *                             .build())
  *                         .build(),
  *                     RestorePlanRestoreConfigTransformationRuleArgs.builder()
- *                         .description(&#34;move all resources from ns1 to ns2&#34;)
+ *                         .description("move all resources from ns1 to ns2")
  *                         .resourceFilter(RestorePlanRestoreConfigTransformationRuleResourceFilterArgs.builder()
- *                             .namespaces(&#34;ns1&#34;)
+ *                             .namespaces("ns1")
  *                             .build())
  *                         .fieldActions(RestorePlanRestoreConfigTransformationRuleFieldActionArgs.builder()
- *                             .op(&#34;REPLACE&#34;)
- *                             .path(&#34;/metadata/namespace&#34;)
- *                             .value(&#34;ns2&#34;)
+ *                             .op("REPLACE")
+ *                             .path("/metadata/namespace")
+ *                             .value("ns2")
  *                             .build())
  *                         .build())
  *                 .build())
@@ -478,12 +487,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan Second Transformation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -515,27 +526,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;transform-rule-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("transform-rule-cluster")
+ *             .location("us-central1")
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
  *             .addonsConfig(ClusterAddonsConfigArgs.builder()
  *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
- *             .name(&#34;transform-rule&#34;)
+ *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()        
+ *             .name("transform-rule")
  *             .cluster(primary.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -543,39 +554,39 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var transformRule = new RestorePlan(&#34;transformRule&#34;, RestorePlanArgs.builder()        
- *             .name(&#34;transform-rule-rp&#34;)
- *             .description(&#34;copy nginx env variables&#34;)
- *             .labels(Map.of(&#34;app&#34;, &#34;nginx&#34;))
- *             .location(&#34;us-central1&#34;)
+ *         var transformRule = new RestorePlan("transformRule", RestorePlanArgs.builder()        
+ *             .name("transform-rule-rp")
+ *             .description("copy nginx env variables")
+ *             .labels(Map.of("app", "nginx"))
+ *             .location("us-central1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
  *                 .excludedNamespaces(RestorePlanRestoreConfigExcludedNamespacesArgs.builder()
- *                     .namespaces(&#34;my-ns&#34;)
+ *                     .namespaces("my-ns")
  *                     .build())
- *                 .namespacedResourceRestoreMode(&#34;DELETE_AND_RESTORE&#34;)
- *                 .volumeDataRestorePolicy(&#34;RESTORE_VOLUME_DATA_FROM_BACKUP&#34;)
+ *                 .namespacedResourceRestoreMode("DELETE_AND_RESTORE")
+ *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
  *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
  *                     .excludedGroupKinds(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs.builder()
- *                         .resourceGroup(&#34;apiextension.k8s.io&#34;)
- *                         .resourceKind(&#34;CustomResourceDefinition&#34;)
+ *                         .resourceGroup("apiextension.k8s.io")
+ *                         .resourceKind("CustomResourceDefinition")
  *                         .build())
  *                     .build())
- *                 .clusterResourceConflictPolicy(&#34;USE_EXISTING_VERSION&#34;)
+ *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
  *                 .transformationRules(RestorePlanRestoreConfigTransformationRuleArgs.builder()
- *                     .description(&#34;Copy environment variables from the nginx container to the install init container.&#34;)
+ *                     .description("Copy environment variables from the nginx container to the install init container.")
  *                     .resourceFilter(RestorePlanRestoreConfigTransformationRuleResourceFilterArgs.builder()
  *                         .groupKinds(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs.builder()
- *                             .resourceKind(&#34;Pod&#34;)
- *                             .resourceGroup(&#34;&#34;)
+ *                             .resourceKind("Pod")
+ *                             .resourceGroup("")
  *                             .build())
- *                         .jsonPath(&#34;.metadata[?(@.name == &#39;nginx&#39;)]&#34;)
+ *                         .jsonPath(".metadata[?({@literal @}.name == 'nginx')]")
  *                         .build())
  *                     .fieldActions(RestorePlanRestoreConfigTransformationRuleFieldActionArgs.builder()
- *                         .op(&#34;COPY&#34;)
- *                         .path(&#34;/spec/initContainers/0/env&#34;)
- *                         .fromPath(&#34;/spec/containers/0/env&#34;)
+ *                         .op("COPY")
+ *                         .path("/spec/initContainers/0/env")
+ *                         .fromPath("/spec/containers/0/env")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -583,7 +594,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

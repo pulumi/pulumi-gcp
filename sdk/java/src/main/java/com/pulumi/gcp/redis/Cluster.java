@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Redis Cluster Ha
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,36 +65,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNet = new Network(&#34;producerNet&#34;, NetworkArgs.builder()        
- *             .name(&#34;mynetwork&#34;)
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()        
+ *             .name("mynetwork")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var cluster_ha = new Cluster(&#34;cluster-ha&#34;, ClusterArgs.builder()        
- *             .name(&#34;ha-cluster&#34;)
+ *         var cluster_ha = new Cluster("cluster-ha", ClusterArgs.builder()        
+ *             .name("ha-cluster")
  *             .shardCount(3)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
  *                 .network(producerNet.id())
  *                 .build())
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .replicaCount(1)
- *             .nodeType(&#34;REDIS_SHARED_CORE_NANO&#34;)
- *             .transitEncryptionMode(&#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;)
- *             .authorizationMode(&#34;AUTH_MODE_DISABLED&#34;)
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
+ *             .authorizationMode("AUTH_MODE_DISABLED")
  *             .build());
  * 
- *         var producerSubnet = new Subnetwork(&#34;producerSubnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;mysubnet&#34;)
- *             .ipCidrRange(&#34;10.0.0.248/29&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()        
+ *             .name("mysubnet")
+ *             .ipCidrRange("10.0.0.248/29")
+ *             .region("us-central1")
  *             .network(producerNet.id())
  *             .build());
  * 
- *         var default_ = new ServiceConnectionPolicy(&#34;default&#34;, ServiceConnectionPolicyArgs.builder()        
- *             .name(&#34;mypolicy&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .serviceClass(&#34;gcp-memorystore-redis&#34;)
- *             .description(&#34;my basic service connection policy&#34;)
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()        
+ *             .name("mypolicy")
+ *             .location("us-central1")
+ *             .serviceClass("gcp-memorystore-redis")
+ *             .description("my basic service connection policy")
  *             .network(producerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
  *                 .subnetworks(producerSubnet.id())
@@ -102,7 +103,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Cloud Asset Folder Feed
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,51 +63,52 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // The topic where the resource change notifications will be sent.
- *         var feedOutput = new Topic(&#34;feedOutput&#34;, TopicArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;network-updates&#34;)
+ *         var feedOutput = new Topic("feedOutput", TopicArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("network-updates")
  *             .build());
  * 
  *         // The folder that will be monitored for resource updates.
- *         var myFolder = new Folder(&#34;myFolder&#34;, FolderArgs.builder()        
- *             .displayName(&#34;Networking&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
+ *         var myFolder = new Folder("myFolder", FolderArgs.builder()        
+ *             .displayName("Networking")
+ *             .parent("organizations/123456789")
  *             .build());
  * 
  *         // Create a feed that sends notifications about network resource updates under a
  *         // particular folder.
- *         var folderFeed = new FolderFeed(&#34;folderFeed&#34;, FolderFeedArgs.builder()        
- *             .billingProject(&#34;my-project-name&#34;)
+ *         var folderFeed = new FolderFeed("folderFeed", FolderFeedArgs.builder()        
+ *             .billingProject("my-project-name")
  *             .folder(myFolder.folderId())
- *             .feedId(&#34;network-updates&#34;)
- *             .contentType(&#34;RESOURCE&#34;)
+ *             .feedId("network-updates")
+ *             .contentType("RESOURCE")
  *             .assetTypes(            
- *                 &#34;compute.googleapis.com/Subnetwork&#34;,
- *                 &#34;compute.googleapis.com/Network&#34;)
+ *                 "compute.googleapis.com/Subnetwork",
+ *                 "compute.googleapis.com/Network")
  *             .feedOutputConfig(FolderFeedFeedOutputConfigArgs.builder()
  *                 .pubsubDestination(FolderFeedFeedOutputConfigPubsubDestinationArgs.builder()
  *                     .topic(feedOutput.id())
  *                     .build())
  *                 .build())
  *             .condition(FolderFeedConditionArgs.builder()
- *                 .expression(&#34;&#34;&#34;
- * !temporal_asset.deleted &amp;&amp;
+ *                 .expression("""
+ * !temporal_asset.deleted &&
  * temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
- *                 &#34;&#34;&#34;)
- *                 .title(&#34;created&#34;)
- *                 .description(&#34;Send notifications on creation events&#34;)
+ *                 """)
+ *                 .title("created")
+ *                 .description("Send notifications on creation events")
  *                 .build())
  *             .build());
  * 
  *         // Find the project number of the project whose identity will be used for sending
  *         // the asset change notifications.
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .projectId(&#34;my-project-name&#34;)
+ *             .projectId("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

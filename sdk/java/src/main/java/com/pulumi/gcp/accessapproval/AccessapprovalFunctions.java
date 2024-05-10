@@ -32,7 +32,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -56,18 +57,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
-     *             .folderId(&#34;my-folder&#34;)
+     *             .folderId("my-folder")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -86,7 +88,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -110,18 +113,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
-     *             .folderId(&#34;my-folder&#34;)
+     *             .folderId("my-folder")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -140,7 +144,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -164,18 +169,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
-     *             .folderId(&#34;my-folder&#34;)
+     *             .folderId("my-folder")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -194,7 +200,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -218,18 +225,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
-     *             .folderId(&#34;my-folder&#34;)
+     *             .folderId("my-folder")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -248,7 +256,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -272,18 +281,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
-     *             .organizationId(&#34;my-organization&#34;)
+     *             .organizationId("my-organization")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -302,7 +312,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -326,18 +337,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
-     *             .organizationId(&#34;my-organization&#34;)
+     *             .organizationId("my-organization")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -356,7 +368,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -380,18 +393,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
-     *             .organizationId(&#34;my-organization&#34;)
+     *             .organizationId("my-organization")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -410,7 +424,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -434,18 +449,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
-     *             .organizationId(&#34;my-organization&#34;)
+     *             .organizationId("my-organization")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -464,7 +480,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -488,18 +505,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
-     *             .projectId(&#34;my-project&#34;)
+     *             .projectId("my-project")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -518,7 +536,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -542,18 +561,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
-     *             .projectId(&#34;my-project&#34;)
+     *             .projectId("my-project")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -572,7 +592,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -596,18 +617,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
-     *             .projectId(&#34;my-project&#34;)
+     *             .projectId("my-project")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -626,7 +648,8 @@ public final class AccessapprovalFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -650,18 +673,19 @@ public final class AccessapprovalFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
-     *             .projectId(&#34;my-project&#34;)
+     *             .projectId("my-project")
      *             .build());
      * 
-     *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(cryptoKey.id())
-     *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

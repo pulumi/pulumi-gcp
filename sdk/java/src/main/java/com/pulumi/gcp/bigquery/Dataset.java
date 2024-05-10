@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Dataset Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,36 +52,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bqowner = new Account(&#34;bqowner&#34;, AccountArgs.builder()        
- *             .accountId(&#34;bqowner&#34;)
+ *         var bqowner = new Account("bqowner", AccountArgs.builder()        
+ *             .accountId("bqowner")
  *             .build());
  * 
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;EU&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("EU")
  *             .defaultTableExpirationMs(3600000)
- *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
+ *             .labels(Map.of("env", "default"))
  *             .accesses(            
  *                 DatasetAccessArgs.builder()
- *                     .role(&#34;OWNER&#34;)
+ *                     .role("OWNER")
  *                     .userByEmail(bqowner.email())
  *                     .build(),
  *                 DatasetAccessArgs.builder()
- *                     .role(&#34;READER&#34;)
- *                     .domain(&#34;hashicorp.com&#34;)
+ *                     .role("READER")
+ *                     .domain("hashicorp.com")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Dataset Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -106,21 +109,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;example-keyring&#34;)
- *             .location(&#34;us&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("example-keyring")
+ *             .location("us")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;example-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("example-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .defaultTableExpirationMs(3600000)
  *             .defaultEncryptionConfiguration(DatasetDefaultEncryptionConfigurationArgs.builder()
  *                 .kmsKeyName(cryptoKey.id())
@@ -129,12 +132,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Dataset Authorized Dataset
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -160,43 +165,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bqowner = new Account(&#34;bqowner&#34;, AccountArgs.builder()        
- *             .accountId(&#34;bqowner&#34;)
+ *         var bqowner = new Account("bqowner", AccountArgs.builder()        
+ *             .accountId("bqowner")
  *             .build());
  * 
- *         var public_ = new Dataset(&#34;public&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;public&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This dataset is public&#34;)
- *             .location(&#34;EU&#34;)
+ *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *             .datasetId("public")
+ *             .friendlyName("test")
+ *             .description("This dataset is public")
+ *             .location("EU")
  *             .defaultTableExpirationMs(3600000)
- *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
+ *             .labels(Map.of("env", "default"))
  *             .accesses(            
  *                 DatasetAccessArgs.builder()
- *                     .role(&#34;OWNER&#34;)
+ *                     .role("OWNER")
  *                     .userByEmail(bqowner.email())
  *                     .build(),
  *                 DatasetAccessArgs.builder()
- *                     .role(&#34;READER&#34;)
- *                     .domain(&#34;hashicorp.com&#34;)
+ *                     .role("READER")
+ *                     .domain("hashicorp.com")
  *                     .build())
  *             .build());
  * 
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;private&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This dataset is private&#34;)
- *             .location(&#34;EU&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .datasetId("private")
+ *             .friendlyName("test")
+ *             .description("This dataset is private")
+ *             .location("EU")
  *             .defaultTableExpirationMs(3600000)
- *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
+ *             .labels(Map.of("env", "default"))
  *             .accesses(            
  *                 DatasetAccessArgs.builder()
- *                     .role(&#34;OWNER&#34;)
+ *                     .role("OWNER")
  *                     .userByEmail(bqowner.email())
  *                     .build(),
  *                 DatasetAccessArgs.builder()
- *                     .role(&#34;READER&#34;)
- *                     .domain(&#34;hashicorp.com&#34;)
+ *                     .role("READER")
+ *                     .domain("hashicorp.com")
  *                     .build(),
  *                 DatasetAccessArgs.builder()
  *                     .dataset(DatasetAccessDatasetArgs.builder()
@@ -204,19 +209,21 @@ import javax.annotation.Nullable;
  *                             .projectId(public_.project())
  *                             .datasetId(public_.datasetId())
  *                             .build())
- *                         .targetTypes(&#34;VIEWS&#34;)
+ *                         .targetTypes("VIEWS")
  *                         .build())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Dataset Authorized Routine
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -243,45 +250,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var public_ = new Dataset(&#34;public&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;public_dataset&#34;)
- *             .description(&#34;This dataset is public&#34;)
+ *         var public_ = new Dataset("public", DatasetArgs.builder()        
+ *             .datasetId("public_dataset")
+ *             .description("This dataset is public")
  *             .build());
  * 
- *         var publicRoutine = new Routine(&#34;publicRoutine&#34;, RoutineArgs.builder()        
+ *         var publicRoutine = new Routine("publicRoutine", RoutineArgs.builder()        
  *             .datasetId(public_.datasetId())
- *             .routineId(&#34;public_routine&#34;)
- *             .routineType(&#34;TABLE_VALUED_FUNCTION&#34;)
- *             .language(&#34;SQL&#34;)
- *             .definitionBody(&#34;&#34;&#34;
+ *             .routineId("public_routine")
+ *             .routineType("TABLE_VALUED_FUNCTION")
+ *             .language("SQL")
+ *             .definitionBody("""
  * SELECT 1 + value AS value
- *             &#34;&#34;&#34;)
+ *             """)
  *             .arguments(RoutineArgumentArgs.builder()
- *                 .name(&#34;value&#34;)
- *                 .argumentKind(&#34;FIXED_TYPE&#34;)
+ *                 .name("value")
+ *                 .argumentKind("FIXED_TYPE")
  *                 .dataType(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                         jsonProperty("typeKind", "INT64")
  *                     )))
  *                 .build())
  *             .returnTableType(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;columns&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;name&#34;, &#34;value&#34;),
- *                         jsonProperty(&#34;type&#34;, jsonObject(
- *                             jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                     jsonProperty("columns", jsonArray(jsonObject(
+ *                         jsonProperty("name", "value"),
+ *                         jsonProperty("type", jsonObject(
+ *                             jsonProperty("typeKind", "INT64")
  *                         ))
  *                     )))
  *                 )))
  *             .build());
  * 
- *         var private_ = new Dataset(&#34;private&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;private_dataset&#34;)
- *             .description(&#34;This dataset is private&#34;)
+ *         var private_ = new Dataset("private", DatasetArgs.builder()        
+ *             .datasetId("private_dataset")
+ *             .description("This dataset is private")
  *             .accesses(            
  *                 DatasetAccessArgs.builder()
- *                     .role(&#34;OWNER&#34;)
- *                     .userByEmail(&#34;my@service-account.com&#34;)
+ *                     .role("OWNER")
+ *                     .userByEmail("my{@literal @}service-account.com")
  *                     .build(),
  *                 DatasetAccessArgs.builder()
  *                     .routine(DatasetAccessRoutineArgs.builder()
@@ -294,12 +301,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Dataset External Reference Aws Docs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -321,20 +330,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;aws-us-east-1&#34;)
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()        
+ *             .datasetId("example_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("aws-us-east-1")
  *             .externalDatasetReference(DatasetExternalDatasetReferenceArgs.builder()
- *                 .externalSource(&#34;aws-glue://arn:aws:glue:us-east-1:999999999999:database/database&#34;)
- *                 .connection(&#34;projects/project/locations/aws-us-east-1/connections/connection&#34;)
+ *                 .externalSource("aws-glue://arn:aws:glue:us-east-1:999999999999:database/database")
+ *                 .connection("projects/project/locations/aws-us-east-1/connections/connection")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

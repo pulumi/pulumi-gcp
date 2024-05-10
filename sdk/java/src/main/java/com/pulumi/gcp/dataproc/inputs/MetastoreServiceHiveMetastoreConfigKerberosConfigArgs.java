@@ -48,14 +48,14 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs extends
     }
 
     /**
-     * A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form &#34;primary/instance@REALM&#34;, but there is no exact format.
+     * A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form &#34;primary/instance{@literal @}REALM&#34;, but there is no exact format.
      * 
      */
     @Import(name="principal", required=true)
     private Output<String> principal;
 
     /**
-     * @return A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form &#34;primary/instance@REALM&#34;, but there is no exact format.
+     * @return A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form &#34;primary/instance{@literal @}REALM&#34;, but there is no exact format.
      * 
      */
     public Output<String> principal() {
@@ -133,7 +133,7 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs extends
         }
 
         /**
-         * @param principal A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form &#34;primary/instance@REALM&#34;, but there is no exact format.
+         * @param principal A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form &#34;primary/instance{@literal @}REALM&#34;, but there is no exact format.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs extends
         }
 
         /**
-         * @param principal A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form &#34;primary/instance@REALM&#34;, but there is no exact format.
+         * @param principal A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form &#34;primary/instance{@literal @}REALM&#34;, but there is no exact format.
          * 
          * @return builder
          * 

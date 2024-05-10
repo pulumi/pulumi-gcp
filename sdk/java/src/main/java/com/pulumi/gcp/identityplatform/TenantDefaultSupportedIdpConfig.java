@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Identity Platform Tenant Default Supported Idp Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,21 +51,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tenant = new Tenant(&#34;tenant&#34;, TenantArgs.builder()        
- *             .displayName(&#34;tenant&#34;)
+ *         var tenant = new Tenant("tenant", TenantArgs.builder()        
+ *             .displayName("tenant")
  *             .build());
  * 
- *         var idpConfig = new TenantDefaultSupportedIdpConfig(&#34;idpConfig&#34;, TenantDefaultSupportedIdpConfigArgs.builder()        
+ *         var idpConfig = new TenantDefaultSupportedIdpConfig("idpConfig", TenantDefaultSupportedIdpConfigArgs.builder()        
  *             .enabled(true)
  *             .tenant(tenant.name())
- *             .idpId(&#34;playgames.google.com&#34;)
- *             .clientId(&#34;my-client-id&#34;)
- *             .clientSecret(&#34;secret&#34;)
+ *             .idpId("playgames.google.com")
+ *             .clientId("my-client-id")
+ *             .clientSecret("secret")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

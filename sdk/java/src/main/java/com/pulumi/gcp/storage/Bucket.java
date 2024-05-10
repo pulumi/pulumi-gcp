@@ -45,7 +45,8 @@ import javax.annotation.Nullable;
  * ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,37 +69,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_site = new Bucket(&#34;static-site&#34;, BucketArgs.builder()        
- *             .name(&#34;image-store.com&#34;)
- *             .location(&#34;EU&#34;)
+ *         var static_site = new Bucket("static-site", BucketArgs.builder()        
+ *             .name("image-store.com")
+ *             .location("EU")
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
  *             .website(BucketWebsiteArgs.builder()
- *                 .mainPageSuffix(&#34;index.html&#34;)
- *                 .notFoundPage(&#34;404.html&#34;)
+ *                 .mainPageSuffix("index.html")
+ *                 .notFoundPage("404.html")
  *                 .build())
  *             .cors(BucketCorArgs.builder()
- *                 .origins(&#34;http://image-store.com&#34;)
+ *                 .origins("http://image-store.com")
  *                 .methods(                
- *                     &#34;GET&#34;,
- *                     &#34;HEAD&#34;,
- *                     &#34;PUT&#34;,
- *                     &#34;POST&#34;,
- *                     &#34;DELETE&#34;)
- *                 .responseHeaders(&#34;*&#34;)
+ *                     "GET",
+ *                     "HEAD",
+ *                     "PUT",
+ *                     "POST",
+ *                     "DELETE")
+ *                 .responseHeaders("*")
  *                 .maxAgeSeconds(3600)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Life Cycle Settings For Storage Bucket Objects
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -122,9 +125,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auto_expire = new Bucket(&#34;auto-expire&#34;, BucketArgs.builder()        
- *             .name(&#34;auto-expiring-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()        
+ *             .name("auto-expiring-bucket")
+ *             .location("US")
  *             .forceDestroy(true)
  *             .lifecycleRules(            
  *                 BucketLifecycleRuleArgs.builder()
@@ -132,7 +135,7 @@ import javax.annotation.Nullable;
  *                         .age(3)
  *                         .build())
  *                     .action(BucketLifecycleRuleActionArgs.builder()
- *                         .type(&#34;Delete&#34;)
+ *                         .type("Delete")
  *                         .build())
  *                     .build(),
  *                 BucketLifecycleRuleArgs.builder()
@@ -140,20 +143,22 @@ import javax.annotation.Nullable;
  *                         .age(1)
  *                         .build())
  *                     .action(BucketLifecycleRuleActionArgs.builder()
- *                         .type(&#34;AbortIncompleteMultipartUpload&#34;)
+ *                         .type("AbortIncompleteMultipartUpload")
  *                         .build())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Enabling Public Access Prevention
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -174,16 +179,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auto_expire = new Bucket(&#34;auto-expire&#34;, BucketArgs.builder()        
- *             .name(&#34;no-public-access-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()        
+ *             .name("no-public-access-bucket")
+ *             .location("US")
  *             .forceDestroy(true)
- *             .publicAccessPrevention(&#34;enforced&#34;)
+ *             .publicAccessPrevention("enforced")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

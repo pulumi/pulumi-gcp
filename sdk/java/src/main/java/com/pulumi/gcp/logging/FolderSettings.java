@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Logging Folder Settings All
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,31 +56,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myFolder = new Folder(&#34;myFolder&#34;, FolderArgs.builder()        
- *             .displayName(&#34;folder-name&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
+ *         var myFolder = new Folder("myFolder", FolderArgs.builder()        
+ *             .displayName("folder-name")
+ *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var example = new FolderSettings(&#34;example&#34;, FolderSettingsArgs.builder()        
+ *         var example = new FolderSettings("example", FolderSettingsArgs.builder()        
  *             .disableDefaultSink(true)
  *             .folder(myFolder.folderId())
- *             .kmsKeyName(&#34;kms-key&#34;)
- *             .storageLocation(&#34;us-central1&#34;)
+ *             .kmsKeyName("kms-key")
+ *             .storageLocation("us-central1")
  *             .build());
  * 
  *         final var settings = LoggingFunctions.getFolderSettings(GetFolderSettingsArgs.builder()
  *             .folder(myFolder.folderId())
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;kms-key&#34;)
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(settings.applyValue(getFolderSettingsResult -&gt; getFolderSettingsResult).applyValue(settings -&gt; String.format(&#34;serviceAccount:%s&#34;, settings.applyValue(getFolderSettingsResult -&gt; getFolderSettingsResult.kmsServiceAccountId()))))
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("kms-key")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(settings.applyValue(getFolderSettingsResult -> getFolderSettingsResult).applyValue(settings -> String.format("serviceAccount:%s", settings.applyValue(getFolderSettingsResult -> getFolderSettingsResult.kmsServiceAccountId()))))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

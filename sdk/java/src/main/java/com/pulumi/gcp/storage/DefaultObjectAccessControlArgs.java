@@ -34,9 +34,9 @@ public final class DefaultObjectAccessControlArgs extends com.pulumi.resources.R
     /**
      * The entity holding the permission, in one of the following forms:
      * * user-{{userId}}
-     * * user-{{email}} (such as &#34;user-liz@example.com&#34;)
+     * * user-{{email}} (such as &#34;user-liz{@literal @}example.com&#34;)
      * * group-{{groupId}}
-     * * group-{{email}} (such as &#34;group-example@googlegroups.com&#34;)
+     * * group-{{email}} (such as &#34;group-example{@literal @}googlegroups.com&#34;)
      * * domain-{{domain}} (such as &#34;domain-example.com&#34;)
      * * project-team-{{projectId}}
      * * allUsers
@@ -49,9 +49,9 @@ public final class DefaultObjectAccessControlArgs extends com.pulumi.resources.R
     /**
      * @return The entity holding the permission, in one of the following forms:
      * * user-{{userId}}
-     * * user-{{email}} (such as &#34;user-liz@example.com&#34;)
+     * * user-{{email}} (such as &#34;user-liz{@literal @}example.com&#34;)
      * * group-{{groupId}}
-     * * group-{{email}} (such as &#34;group-example@googlegroups.com&#34;)
+     * * group-{{email}} (such as &#34;group-example{@literal @}googlegroups.com&#34;)
      * * domain-{{domain}} (such as &#34;domain-example.com&#34;)
      * * project-team-{{projectId}}
      * * allUsers
@@ -149,9 +149,9 @@ public final class DefaultObjectAccessControlArgs extends com.pulumi.resources.R
         /**
          * @param entity The entity holding the permission, in one of the following forms:
          * * user-{{userId}}
-         * * user-{{email}} (such as &#34;user-liz@example.com&#34;)
+         * * user-{{email}} (such as &#34;user-liz{@literal @}example.com&#34;)
          * * group-{{groupId}}
-         * * group-{{email}} (such as &#34;group-example@googlegroups.com&#34;)
+         * * group-{{email}} (such as &#34;group-example{@literal @}googlegroups.com&#34;)
          * * domain-{{domain}} (such as &#34;domain-example.com&#34;)
          * * project-team-{{projectId}}
          * * allUsers
@@ -168,9 +168,9 @@ public final class DefaultObjectAccessControlArgs extends com.pulumi.resources.R
         /**
          * @param entity The entity holding the permission, in one of the following forms:
          * * user-{{userId}}
-         * * user-{{email}} (such as &#34;user-liz@example.com&#34;)
+         * * user-{{email}} (such as &#34;user-liz{@literal @}example.com&#34;)
          * * group-{{groupId}}
-         * * group-{{email}} (such as &#34;group-example@googlegroups.com&#34;)
+         * * group-{{email}} (such as &#34;group-example{@literal @}googlegroups.com&#34;)
          * * domain-{{domain}} (such as &#34;domain-example.com&#34;)
          * * project-team-{{projectId}}
          * * allUsers

@@ -18,14 +18,14 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
     public static final GetAccountAccessTokenArgs Empty = new GetAccountAccessTokenArgs();
 
     /**
-     * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com&#34;]`)
+     * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account{@literal @}project-id.iam.gserviceaccount.com&#34;]`)
      * 
      */
     @Import(name="delegates")
     private @Nullable Output<List<String>> delegates;
 
     /**
-     * @return Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com&#34;]`)
+     * @return Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account{@literal @}project-id.iam.gserviceaccount.com&#34;]`)
      * 
      */
     public Optional<Output<List<String>>> delegates() {
@@ -63,14 +63,14 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+     * The service account _to_ impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
      * 
      */
     @Import(name="targetServiceAccount", required=true)
     private Output<String> targetServiceAccount;
 
     /**
-     * @return The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+     * @return The service account _to_ impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
      * 
      */
     public Output<String> targetServiceAccount() {
@@ -105,7 +105,7 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param delegates Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com&#34;]`)
+         * @param delegates Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account{@literal @}project-id.iam.gserviceaccount.com&#34;]`)
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param delegates Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com&#34;]`)
+         * @param delegates Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account{@literal @}project-id.iam.gserviceaccount.com&#34;]`)
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param delegates Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com&#34;]`)
+         * @param delegates Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `[&#34;projects/-/serviceAccounts/delegate-svc-account{@literal @}project-id.iam.gserviceaccount.com&#34;]`)
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param targetServiceAccount The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+         * @param targetServiceAccount The service account _to_ impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param targetServiceAccount The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+         * @param targetServiceAccount The service account _to_ impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
          * 
          * @return builder
          * 

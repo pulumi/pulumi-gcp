@@ -21,7 +21,8 @@ public final class DatastreamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -43,14 +44,15 @@ public final class DatastreamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datastreamIps = DatastreamFunctions.getStaticIps(GetStaticIpsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;ipList&#34;, datastreamIps.applyValue(getStaticIpsResult -&gt; getStaticIpsResult.staticIps()));
+     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -64,7 +66,8 @@ public final class DatastreamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -86,14 +89,15 @@ public final class DatastreamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datastreamIps = DatastreamFunctions.getStaticIps(GetStaticIpsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;ipList&#34;, datastreamIps.applyValue(getStaticIpsResult -&gt; getStaticIpsResult.staticIps()));
+     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -107,7 +111,8 @@ public final class DatastreamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -129,14 +134,15 @@ public final class DatastreamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datastreamIps = DatastreamFunctions.getStaticIps(GetStaticIpsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;ipList&#34;, datastreamIps.applyValue(getStaticIpsResult -&gt; getStaticIpsResult.staticIps()));
+     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -150,7 +156,8 @@ public final class DatastreamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -172,14 +179,15 @@ public final class DatastreamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datastreamIps = DatastreamFunctions.getStaticIps(GetStaticIpsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;ipList&#34;, datastreamIps.applyValue(getStaticIpsResult -&gt; getStaticIpsResult.staticIps()));
+     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -50,7 +50,8 @@ import javax.annotation.Nullable;
  * ### Managed Ssl Certificate Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -84,61 +85,62 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ManagedSslCertificate(&#34;default&#34;, ManagedSslCertificateArgs.builder()        
- *             .name(&#34;test-cert&#34;)
+ *         var default_ = new ManagedSslCertificate("default", ManagedSslCertificateArgs.builder()        
+ *             .name("test-cert")
  *             .managed(ManagedSslCertificateManagedArgs.builder()
- *                 .domains(&#34;sslcert.tf-test.club.&#34;)
+ *                 .domains("sslcert.tf-test.club.")
  *                 .build())
  *             .build());
  * 
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;http-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("http-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()        
+ *             .name("backend-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
- *             .name(&#34;url-map&#34;)
- *             .description(&#34;a description&#34;)
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()        
+ *             .name("url-map")
+ *             .description("a description")
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;sslcert.tf-test.club&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("sslcert.tf-test.club")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultBackendService.id())
  *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/*&#34;)
+ *                     .paths("/*")
  *                     .service(defaultBackendService.id())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultTargetHttpsProxy = new TargetHttpsProxy(&#34;defaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
- *             .name(&#34;test-proxy&#34;)
+ *         var defaultTargetHttpsProxy = new TargetHttpsProxy("defaultTargetHttpsProxy", TargetHttpsProxyArgs.builder()        
+ *             .name("test-proxy")
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(default_.id())
  *             .build());
  * 
- *         var defaultGlobalForwardingRule = new GlobalForwardingRule(&#34;defaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
- *             .name(&#34;forwarding-rule&#34;)
+ *         var defaultGlobalForwardingRule = new GlobalForwardingRule("defaultGlobalForwardingRule", GlobalForwardingRuleArgs.builder()        
+ *             .name("forwarding-rule")
  *             .target(defaultTargetHttpsProxy.id())
  *             .portRange(443)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## Import
  * 

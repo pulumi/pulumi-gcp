@@ -47,7 +47,8 @@ import javax.annotation.Nullable;
  * ### Alloydb Cluster Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -72,13 +73,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;alloydb-cluster&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("alloydb-cluster")
  *             .build());
  * 
- *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
- *             .clusterId(&#34;alloydb-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *             .clusterId("alloydb-cluster")
+ *             .location("us-central1")
  *             .network(defaultNetwork.id())
  *             .build());
  * 
@@ -86,12 +87,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Alloydb Cluster Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -121,29 +124,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;alloydb-cluster-full&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("alloydb-cluster-full")
  *             .build());
  * 
- *         var full = new Cluster(&#34;full&#34;, ClusterArgs.builder()        
- *             .clusterId(&#34;alloydb-cluster-full&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var full = new Cluster("full", ClusterArgs.builder()        
+ *             .clusterId("alloydb-cluster-full")
+ *             .location("us-central1")
  *             .network(default_.id())
- *             .databaseVersion(&#34;POSTGRES_15&#34;)
+ *             .databaseVersion("POSTGRES_15")
  *             .initialUser(ClusterInitialUserArgs.builder()
- *                 .user(&#34;alloydb-cluster-full&#34;)
- *                 .password(&#34;alloydb-cluster-full&#34;)
+ *                 .user("alloydb-cluster-full")
+ *                 .password("alloydb-cluster-full")
  *                 .build())
  *             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()
  *                 .enabled(true)
  *                 .recoveryWindowDays(14)
  *                 .build())
  *             .automatedBackupPolicy(ClusterAutomatedBackupPolicyArgs.builder()
- *                 .location(&#34;us-central1&#34;)
- *                 .backupWindow(&#34;1800s&#34;)
+ *                 .location("us-central1")
+ *                 .backupWindow("1800s")
  *                 .enabled(true)
  *                 .weeklySchedule(ClusterAutomatedBackupPolicyWeeklyScheduleArgs.builder()
- *                     .daysOfWeeks(&#34;MONDAY&#34;)
+ *                     .daysOfWeeks("MONDAY")
  *                     .startTimes(ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs.builder()
  *                         .hours(23)
  *                         .minutes(0)
@@ -154,21 +157,23 @@ import javax.annotation.Nullable;
  *                 .quantityBasedRetention(ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs.builder()
  *                     .count(1)
  *                     .build())
- *                 .labels(Map.of(&#34;test&#34;, &#34;alloydb-cluster-full&#34;))
+ *                 .labels(Map.of("test", "alloydb-cluster-full"))
  *                 .build())
- *             .labels(Map.of(&#34;test&#34;, &#34;alloydb-cluster-full&#34;))
+ *             .labels(Map.of("test", "alloydb-cluster-full"))
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Alloydb Cluster Restore
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -206,76 +211,78 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;alloydb-network&#34;)
+ *             .name("alloydb-network")
  *             .build());
  * 
- *         var source = new Cluster(&#34;source&#34;, ClusterArgs.builder()        
- *             .clusterId(&#34;alloydb-source-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var source = new Cluster("source", ClusterArgs.builder()        
+ *             .clusterId("alloydb-source-cluster")
+ *             .location("us-central1")
  *             .network(default_.id())
  *             .initialUser(ClusterInitialUserArgs.builder()
- *                 .password(&#34;alloydb-source-cluster&#34;)
+ *                 .password("alloydb-source-cluster")
  *                 .build())
  *             .build());
  * 
- *         var sourceInstance = new Instance(&#34;sourceInstance&#34;, InstanceArgs.builder()        
+ *         var sourceInstance = new Instance("sourceInstance", InstanceArgs.builder()        
  *             .cluster(source.name())
- *             .instanceId(&#34;alloydb-instance&#34;)
- *             .instanceType(&#34;PRIMARY&#34;)
+ *             .instanceId("alloydb-instance")
+ *             .instanceType("PRIMARY")
  *             .machineConfig(InstanceMachineConfigArgs.builder()
  *                 .cpuCount(2)
  *                 .build())
  *             .build());
  * 
- *         var sourceBackup = new Backup(&#34;sourceBackup&#34;, BackupArgs.builder()        
- *             .backupId(&#34;alloydb-backup&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var sourceBackup = new Backup("sourceBackup", BackupArgs.builder()        
+ *             .backupId("alloydb-backup")
+ *             .location("us-central1")
  *             .clusterName(source.name())
  *             .build());
  * 
- *         var restoredFromBackup = new Cluster(&#34;restoredFromBackup&#34;, ClusterArgs.builder()        
- *             .clusterId(&#34;alloydb-backup-restored&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var restoredFromBackup = new Cluster("restoredFromBackup", ClusterArgs.builder()        
+ *             .clusterId("alloydb-backup-restored")
+ *             .location("us-central1")
  *             .network(default_.id())
  *             .restoreBackupSource(ClusterRestoreBackupSourceArgs.builder()
  *                 .backupName(sourceBackup.name())
  *                 .build())
  *             .build());
  * 
- *         var restoredViaPitr = new Cluster(&#34;restoredViaPitr&#34;, ClusterArgs.builder()        
- *             .clusterId(&#34;alloydb-pitr-restored&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var restoredViaPitr = new Cluster("restoredViaPitr", ClusterArgs.builder()        
+ *             .clusterId("alloydb-pitr-restored")
+ *             .location("us-central1")
  *             .network(default_.id())
  *             .restoreContinuousBackupSource(ClusterRestoreContinuousBackupSourceArgs.builder()
  *                 .cluster(source.name())
- *                 .pointInTime(&#34;2023-08-03T19:19:00.094Z&#34;)
+ *                 .pointInTime("2023-08-03T19:19:00.094Z")
  *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;alloydb-source-cluster&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *             .name("alloydb-source-cluster")
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
  *             .prefixLength(16)
  *             .network(default_.id())
  *             .build());
  * 
- *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()        
  *             .network(default_.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Alloydb Secondary Cluster Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -309,30 +316,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;alloydb-secondary-cluster&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("alloydb-secondary-cluster")
  *             .build());
  * 
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .clusterId(&#34;alloydb-primary-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .clusterId("alloydb-primary-cluster")
+ *             .location("us-central1")
  *             .network(default_.id())
  *             .build());
  * 
- *         var primaryInstance = new Instance(&#34;primaryInstance&#34;, InstanceArgs.builder()        
+ *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()        
  *             .cluster(primary.name())
- *             .instanceId(&#34;alloydb-primary-instance&#34;)
- *             .instanceType(&#34;PRIMARY&#34;)
+ *             .instanceId("alloydb-primary-instance")
+ *             .instanceType("PRIMARY")
  *             .machineConfig(InstanceMachineConfigArgs.builder()
  *                 .cpuCount(2)
  *                 .build())
  *             .build());
  * 
- *         var secondary = new Cluster(&#34;secondary&#34;, ClusterArgs.builder()        
- *             .clusterId(&#34;alloydb-secondary-cluster&#34;)
- *             .location(&#34;us-east1&#34;)
+ *         var secondary = new Cluster("secondary", ClusterArgs.builder()        
+ *             .clusterId("alloydb-secondary-cluster")
+ *             .location("us-east1")
  *             .network(default_.id())
- *             .clusterType(&#34;SECONDARY&#34;)
+ *             .clusterType("SECONDARY")
  *             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()
  *                 .enabled(false)
  *                 .build())
@@ -343,23 +350,24 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;alloydb-secondary-cluster&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *             .name("alloydb-secondary-cluster")
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
  *             .prefixLength(16)
  *             .network(default_.id())
  *             .build());
  * 
- *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()        
  *             .network(default_.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

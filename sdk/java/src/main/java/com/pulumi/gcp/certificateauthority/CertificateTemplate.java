@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Basic_certificate_template
  * An example of a basic privateca certificate template
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,18 +61,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new CertificateTemplate(&#34;primary&#34;, CertificateTemplateArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;template&#34;)
- *             .description(&#34;An updated sample certificate template&#34;)
+ *         var primary = new CertificateTemplate("primary", CertificateTemplateArgs.builder()        
+ *             .location("us-west1")
+ *             .name("template")
+ *             .description("An updated sample certificate template")
  *             .identityConstraints(CertificateTemplateIdentityConstraintsArgs.builder()
  *                 .allowSubjectAltNamesPassthrough(true)
  *                 .allowSubjectPassthrough(true)
  *                 .celExpression(CertificateTemplateIdentityConstraintsCelExpressionArgs.builder()
- *                     .description(&#34;Always true&#34;)
- *                     .expression(&#34;true&#34;)
- *                     .location(&#34;any.file.anywhere&#34;)
- *                     .title(&#34;Sample expression&#34;)
+ *                     .description("Always true")
+ *                     .expression("true")
+ *                     .location("any.file.anywhere")
+ *                     .title("Sample expression")
  *                     .build())
  *                 .build())
  *             .passthroughExtensions(CertificateTemplatePassthroughExtensionsArgs.builder()
@@ -80,7 +81,7 @@ import javax.annotation.Nullable;
  *                         1,
  *                         6)
  *                     .build())
- *                 .knownExtensions(&#34;EXTENDED_KEY_USAGE&#34;)
+ *                 .knownExtensions("EXTENDED_KEY_USAGE")
  *                 .build())
  *             .predefinedValues(CertificateTemplatePredefinedValuesArgs.builder()
  *                 .additionalExtensions(CertificateTemplatePredefinedValuesAdditionalExtensionArgs.builder()
@@ -89,10 +90,10 @@ import javax.annotation.Nullable;
  *                             1,
  *                             6)
  *                         .build())
- *                     .value(&#34;c3RyaW5nCg==&#34;)
+ *                     .value("c3RyaW5nCg==")
  *                     .critical(true)
  *                     .build())
- *                 .aiaOcspServers(&#34;string&#34;)
+ *                 .aiaOcspServers("string")
  *                 .caOptions(CertificateTemplatePredefinedValuesCaOptionsArgs.builder()
  *                     .isCa(false)
  *                     .maxIssuerPathLength(6)
@@ -129,13 +130,14 @@ import javax.annotation.Nullable;
  *                         6)
  *                     .build())
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
- *             .labels(Map.of(&#34;label-two&#34;, &#34;value-two&#34;))
+ *             .project("my-project-name")
+ *             .labels(Map.of("label-two", "value-two"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -47,7 +47,8 @@ import javax.annotation.Nullable;
  * ### Notification Channel Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,21 +69,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new NotificationChannel(&#34;basic&#34;, NotificationChannelArgs.builder()        
- *             .displayName(&#34;Test Notification Channel&#34;)
- *             .type(&#34;email&#34;)
- *             .labels(Map.of(&#34;email_address&#34;, &#34;fake_email@blahblah.com&#34;))
+ *         var basic = new NotificationChannel("basic", NotificationChannelArgs.builder()        
+ *             .displayName("Test Notification Channel")
+ *             .type("email")
+ *             .labels(Map.of("email_address", "fake_email{@literal @}blahblah.com"))
  *             .forceDelete(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Notification Channel Sensitive
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,18 +107,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new NotificationChannel(&#34;default&#34;, NotificationChannelArgs.builder()        
- *             .displayName(&#34;Test Slack Channel&#34;)
- *             .type(&#34;slack&#34;)
- *             .labels(Map.of(&#34;channel_name&#34;, &#34;#foobar&#34;))
+ *         var default_ = new NotificationChannel("default", NotificationChannelArgs.builder()        
+ *             .displayName("Test Slack Channel")
+ *             .type("slack")
+ *             .labels(Map.of("channel_name", "#foobar"))
  *             .sensitiveLabels(NotificationChannelSensitiveLabelsArgs.builder()
- *                 .authToken(&#34;one&#34;)
+ *                 .authToken("one")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

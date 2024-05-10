@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ### Firebasestorage Bucket Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,20 +44,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Bucket(&#34;default&#34;, BucketArgs.builder()        
- *             .name(&#34;test_bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var default_ = new Bucket("default", BucketArgs.builder()        
+ *             .name("test_bucket")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var defaultStorageBucket = new StorageBucket(&#34;defaultStorageBucket&#34;, StorageBucketArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var defaultStorageBucket = new StorageBucket("defaultStorageBucket", StorageBucketArgs.builder()        
+ *             .project("my-project-name")
  *             .bucketId(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

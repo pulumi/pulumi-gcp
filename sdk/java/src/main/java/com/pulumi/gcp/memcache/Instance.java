@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### Memcache Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -70,41 +71,41 @@ import javax.annotation.Nullable;
  *         // Memcache instance and that network is not deleted when the user-created
  *         // network (authorized_network) is deleted, so this prevents issues
  *         // with tenant network quota.
- *         // If this network hasn&#39;t been created and you are using this example in your
+ *         // If this network hasn't been created and you are using this example in your
  *         // config, add an additional network resource or change
- *         // this from &#34;data&#34;to &#34;resource&#34;
- *         var memcacheNetwork = new Network(&#34;memcacheNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;test-network&#34;)
+ *         // this from "data"to "resource"
+ *         var memcacheNetwork = new Network("memcacheNetwork", NetworkArgs.builder()        
+ *             .name("test-network")
  *             .build());
  * 
- *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;address&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()        
+ *             .name("address")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(memcacheNetwork.id())
  *             .build());
  * 
- *         var privateServiceConnection = new Connection(&#34;privateServiceConnection&#34;, ConnectionArgs.builder()        
+ *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()        
  *             .network(memcacheNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;test-instance&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("test-instance")
  *             .authorizedNetwork(privateServiceConnection.network())
- *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *             .labels(Map.of("env", "test"))
  *             .nodeConfig(InstanceNodeConfigArgs.builder()
  *                 .cpuCount(1)
  *                 .memorySizeMb(1024)
  *                 .build())
  *             .nodeCount(1)
- *             .memcacheVersion(&#34;MEMCACHE_1_5&#34;)
+ *             .memcacheVersion("MEMCACHE_1_5")
  *             .maintenancePolicy(InstanceMaintenancePolicyArgs.builder()
  *                 .weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
- *                     .day(&#34;SATURDAY&#34;)
- *                     .duration(&#34;14400s&#34;)
+ *                     .day("SATURDAY")
+ *                     .duration("14400s")
  *                     .startTime(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
  *                         .hours(0)
  *                         .minutes(30)
@@ -117,7 +118,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

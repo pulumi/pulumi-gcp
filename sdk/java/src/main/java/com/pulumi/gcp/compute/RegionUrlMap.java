@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Region Url Map Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,72 +60,74 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()        
+ *             .region("us-central1")
+ *             .name("health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
- *                 .requestPath(&#34;/&#34;)
+ *                 .requestPath("/")
  *                 .build())
  *             .build());
  * 
- *         var login = new RegionBackendService(&#34;login&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;login&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *         var login = new RegionBackendService("login", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("login")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;home&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("home")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;regionurlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()        
+ *             .region("us-central1")
+ *             .name("regionurlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .pathRules(                
  *                     RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                         .paths(&#34;/home&#34;)
+ *                         .paths("/home")
  *                         .service(home.id())
  *                         .build(),
  *                     RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                         .paths(&#34;/login&#34;)
+ *                         .paths("/login")
  *                         .service(login.id())
  *                         .build())
  *                 .build())
  *             .tests(RegionUrlMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map Default Route Action
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -164,44 +167,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()        
+ *             .region("us-central1")
+ *             .name("health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
- *                 .requestPath(&#34;/&#34;)
+ *                 .requestPath("/")
  *                 .build())
  *             .build());
  * 
- *         var login = new RegionBackendService(&#34;login&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;login&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *         var login = new RegionBackendService("login", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("login")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;home&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("home")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;regionurlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()        
+ *             .region("us-central1")
+ *             .name("regionurlmap")
+ *             .description("a description")
  *             .defaultRouteAction(RegionUrlMapDefaultRouteActionArgs.builder()
  *                 .retryPolicy(RegionUrlMapDefaultRouteActionRetryPolicyArgs.builder()
  *                     .retryConditions(                    
- *                         &#34;5xx&#34;,
- *                         &#34;gateway-error&#34;)
+ *                         "5xx",
+ *                         "gateway-error")
  *                     .numRetries(3)
  *                     .perTryTimeout(RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs.builder()
  *                         .seconds(0)
@@ -217,17 +220,17 @@ import javax.annotation.Nullable;
  *                         .weight(200)
  *                         .headerAction(RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs.builder()
  *                             .requestHeadersToAdds(RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
- *                                 .headerName(&#34;foo-request-1&#34;)
- *                                 .headerValue(&#34;bar&#34;)
+ *                                 .headerName("foo-request-1")
+ *                                 .headerValue("bar")
  *                                 .replace(true)
  *                                 .build())
- *                             .requestHeadersToRemoves(&#34;fizz&#34;)
+ *                             .requestHeadersToRemoves("fizz")
  *                             .responseHeadersToAdds(RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
- *                                 .headerName(&#34;foo-response-1&#34;)
- *                                 .headerValue(&#34;bar&#34;)
+ *                                 .headerName("foo-response-1")
+ *                                 .headerValue("bar")
  *                                 .replace(true)
  *                                 .build())
- *                             .responseHeadersToRemoves(&#34;buzz&#34;)
+ *                             .responseHeadersToRemoves("buzz")
  *                             .build())
  *                         .build(),
  *                     RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs.builder()
@@ -236,43 +239,43 @@ import javax.annotation.Nullable;
  *                         .headerAction(RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs.builder()
  *                             .requestHeadersToAdds(                            
  *                                 RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
- *                                     .headerName(&#34;foo-request-1&#34;)
- *                                     .headerValue(&#34;bar&#34;)
+ *                                     .headerName("foo-request-1")
+ *                                     .headerValue("bar")
  *                                     .replace(true)
  *                                     .build(),
  *                                 RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
- *                                     .headerName(&#34;foo-request-2&#34;)
- *                                     .headerValue(&#34;bar&#34;)
+ *                                     .headerName("foo-request-2")
+ *                                     .headerValue("bar")
  *                                     .replace(true)
  *                                     .build())
- *                             .requestHeadersToRemoves(&#34;fizz&#34;)
+ *                             .requestHeadersToRemoves("fizz")
  *                             .responseHeadersToAdds(                            
  *                                 RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
- *                                     .headerName(&#34;foo-response-2&#34;)
- *                                     .headerValue(&#34;bar&#34;)
+ *                                     .headerName("foo-response-2")
+ *                                     .headerValue("bar")
  *                                     .replace(true)
  *                                     .build(),
  *                                 RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
- *                                     .headerName(&#34;foo-response-1&#34;)
- *                                     .headerValue(&#34;bar&#34;)
+ *                                     .headerName("foo-response-1")
+ *                                     .headerValue("bar")
  *                                     .replace(true)
  *                                     .build())
- *                             .responseHeadersToRemoves(&#34;buzz&#34;)
+ *                             .responseHeadersToRemoves("buzz")
  *                             .build())
  *                         .build())
  *                 .urlRewrite(RegionUrlMapDefaultRouteActionUrlRewriteArgs.builder()
- *                     .hostRewrite(&#34;dev.example.com&#34;)
- *                     .pathPrefixRewrite(&#34;/v1/api/&#34;)
+ *                     .hostRewrite("dev.example.com")
+ *                     .pathPrefixRewrite("/v1/api/")
  *                     .build())
  *                 .corsPolicy(RegionUrlMapDefaultRouteActionCorsPolicyArgs.builder()
  *                     .disabled(false)
  *                     .allowCredentials(true)
- *                     .allowHeaders(&#34;foobar&#34;)
+ *                     .allowHeaders("foobar")
  *                     .allowMethods(                    
- *                         &#34;GET&#34;,
- *                         &#34;POST&#34;)
- *                     .allowOrigins(&#34;example.com&#34;)
- *                     .exposeHeaders(&#34;foobar&#34;)
+ *                         "GET",
+ *                         "POST")
+ *                     .allowOrigins("example.com")
+ *                     .exposeHeaders("foobar")
  *                     .maxAge(60)
  *                     .build())
  *                 .faultInjectionPolicy(RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs.builder()
@@ -294,37 +297,39 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .pathRules(                
  *                     RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                         .paths(&#34;/home&#34;)
+ *                         .paths("/home")
  *                         .service(home.id())
  *                         .build(),
  *                     RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                         .paths(&#34;/login&#34;)
+ *                         .paths("/login")
  *                         .service(login.id())
  *                         .build())
  *                 .build())
  *             .tests(RegionUrlMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map L7 Ilb Path
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -353,41 +358,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;home&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()        
+ *             .name("home")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
- *             .name(&#34;regionurlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()        
+ *             .name("regionurlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/home&#34;)
+ *                     .paths("/home")
  *                     .routeAction(RegionUrlMapPathMatcherPathRuleRouteActionArgs.builder()
  *                         .corsPolicy(RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs.builder()
  *                             .allowCredentials(true)
- *                             .allowHeaders(&#34;Allowed content&#34;)
- *                             .allowMethods(&#34;GET&#34;)
- *                             .allowOrigins(&#34;Allowed origin&#34;)
- *                             .exposeHeaders(&#34;Exposed header&#34;)
+ *                             .allowHeaders("Allowed content")
+ *                             .allowMethods("GET")
+ *                             .allowOrigins("Allowed origin")
+ *                             .exposeHeaders("Exposed header")
  *                             .maxAge(30)
  *                             .disabled(false)
  *                             .build())
@@ -413,31 +418,31 @@ import javax.annotation.Nullable;
  *                                 .seconds(30)
  *                                 .build())
  *                             .retryConditions(                            
- *                                 &#34;5xx&#34;,
- *                                 &#34;deadline-exceeded&#34;)
+ *                                 "5xx",
+ *                                 "deadline-exceeded")
  *                             .build())
  *                         .timeout(RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs.builder()
  *                             .seconds(20)
  *                             .nanos(750000000)
  *                             .build())
  *                         .urlRewrite(RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs.builder()
- *                             .hostRewrite(&#34;dev.example.com&#34;)
- *                             .pathPrefixRewrite(&#34;/v1/api/&#34;)
+ *                             .hostRewrite("dev.example.com")
+ *                             .pathPrefixRewrite("/v1/api/")
  *                             .build())
  *                         .weightedBackendServices(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs.builder()
  *                             .backendService(home.id())
  *                             .weight(400)
  *                             .headerAction(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs.builder()
- *                                 .requestHeadersToRemoves(&#34;RemoveMe&#34;)
+ *                                 .requestHeadersToRemoves("RemoveMe")
  *                                 .requestHeadersToAdds(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
- *                                     .headerName(&#34;AddMe&#34;)
- *                                     .headerValue(&#34;MyValue&#34;)
+ *                                     .headerName("AddMe")
+ *                                     .headerValue("MyValue")
  *                                     .replace(true)
  *                                     .build())
- *                                 .responseHeadersToRemoves(&#34;RemoveMe&#34;)
+ *                                 .responseHeadersToRemoves("RemoveMe")
  *                                 .responseHeadersToAdds(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
- *                                     .headerName(&#34;AddMe&#34;)
- *                                     .headerValue(&#34;MyValue&#34;)
+ *                                     .headerName("AddMe")
+ *                                     .headerValue("MyValue")
  *                                     .replace(false)
  *                                     .build())
  *                                 .build())
@@ -447,19 +452,21 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .tests(RegionUrlMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map L7 Ilb Path Partial
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -488,34 +495,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;home&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()        
+ *             .name("home")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
- *             .name(&#34;regionurlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()        
+ *             .name("regionurlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/home&#34;)
+ *                     .paths("/home")
  *                     .routeAction(RegionUrlMapPathMatcherPathRuleRouteActionArgs.builder()
  *                         .retryPolicy(RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs.builder()
  *                             .numRetries(4)
@@ -523,24 +530,24 @@ import javax.annotation.Nullable;
  *                                 .seconds(30)
  *                                 .build())
  *                             .retryConditions(                            
- *                                 &#34;5xx&#34;,
- *                                 &#34;deadline-exceeded&#34;)
+ *                                 "5xx",
+ *                                 "deadline-exceeded")
  *                             .build())
  *                         .timeout(RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs.builder()
  *                             .seconds(20)
  *                             .nanos(750000000)
  *                             .build())
  *                         .urlRewrite(RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs.builder()
- *                             .hostRewrite(&#34;dev.example.com&#34;)
- *                             .pathPrefixRewrite(&#34;/v1/api/&#34;)
+ *                             .hostRewrite("dev.example.com")
+ *                             .pathPrefixRewrite("/v1/api/")
  *                             .build())
  *                         .weightedBackendServices(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs.builder()
  *                             .backendService(home.id())
  *                             .weight(400)
  *                             .headerAction(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs.builder()
  *                                 .responseHeadersToAdds(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
- *                                     .headerName(&#34;AddMe&#34;)
- *                                     .headerValue(&#34;MyValue&#34;)
+ *                                     .headerName("AddMe")
+ *                                     .headerValue("MyValue")
  *                                     .replace(false)
  *                                     .build())
  *                                 .build())
@@ -550,19 +557,21 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .tests(RegionUrlMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map L7 Ilb Route
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -591,92 +600,94 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;home&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()        
+ *             .name("home")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
- *             .name(&#34;regionurlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()        
+ *             .name("regionurlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .routeRules(RegionUrlMapPathMatcherRouteRuleArgs.builder()
  *                     .priority(1)
  *                     .headerAction(RegionUrlMapPathMatcherRouteRuleHeaderActionArgs.builder()
- *                         .requestHeadersToRemoves(&#34;RemoveMe2&#34;)
+ *                         .requestHeadersToRemoves("RemoveMe2")
  *                         .requestHeadersToAdds(RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs.builder()
- *                             .headerName(&#34;AddSomethingElse&#34;)
- *                             .headerValue(&#34;MyOtherValue&#34;)
+ *                             .headerName("AddSomethingElse")
+ *                             .headerValue("MyOtherValue")
  *                             .replace(true)
  *                             .build())
- *                         .responseHeadersToRemoves(&#34;RemoveMe3&#34;)
+ *                         .responseHeadersToRemoves("RemoveMe3")
  *                         .responseHeadersToAdds(RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs.builder()
- *                             .headerName(&#34;AddMe&#34;)
- *                             .headerValue(&#34;MyValue&#34;)
+ *                             .headerName("AddMe")
+ *                             .headerValue("MyValue")
  *                             .replace(false)
  *                             .build())
  *                         .build())
  *                     .matchRules(RegionUrlMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                         .fullPathMatch(&#34;a full path&#34;)
+ *                         .fullPathMatch("a full path")
  *                         .headerMatches(RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs.builder()
- *                             .headerName(&#34;someheader&#34;)
- *                             .exactMatch(&#34;match this exactly&#34;)
+ *                             .headerName("someheader")
+ *                             .exactMatch("match this exactly")
  *                             .invertMatch(true)
  *                             .build())
  *                         .ignoreCase(true)
  *                         .metadataFilters(RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs.builder()
- *                             .filterMatchCriteria(&#34;MATCH_ANY&#34;)
+ *                             .filterMatchCriteria("MATCH_ANY")
  *                             .filterLabels(RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs.builder()
- *                                 .name(&#34;PLANET&#34;)
- *                                 .value(&#34;MARS&#34;)
+ *                                 .name("PLANET")
+ *                                 .value("MARS")
  *                                 .build())
  *                             .build())
  *                         .queryParameterMatches(RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs.builder()
- *                             .name(&#34;a query parameter&#34;)
+ *                             .name("a query parameter")
  *                             .presentMatch(true)
  *                             .build())
  *                         .build())
  *                     .urlRedirect(RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs.builder()
- *                         .hostRedirect(&#34;A host&#34;)
+ *                         .hostRedirect("A host")
  *                         .httpsRedirect(false)
- *                         .pathRedirect(&#34;some/path&#34;)
- *                         .redirectResponseCode(&#34;TEMPORARY_REDIRECT&#34;)
+ *                         .pathRedirect("some/path")
+ *                         .redirectResponseCode("TEMPORARY_REDIRECT")
  *                         .stripQuery(true)
  *                         .build())
  *                     .build())
  *                 .build())
  *             .tests(RegionUrlMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map L7 Ilb Route Partial
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -705,47 +716,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()        
+ *             .name("health-check")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;home&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()        
+ *             .name("home")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
- *             .name(&#34;regionurlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()        
+ *             .name("regionurlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .routeRules(RegionUrlMapPathMatcherRouteRuleArgs.builder()
  *                     .priority(1)
  *                     .service(home.id())
  *                     .headerAction(RegionUrlMapPathMatcherRouteRuleHeaderActionArgs.builder()
- *                         .requestHeadersToRemoves(&#34;RemoveMe2&#34;)
+ *                         .requestHeadersToRemoves("RemoveMe2")
  *                         .build())
  *                     .matchRules(RegionUrlMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                         .fullPathMatch(&#34;a full path&#34;)
+ *                         .fullPathMatch("a full path")
  *                         .headerMatches(RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs.builder()
- *                             .headerName(&#34;someheader&#34;)
- *                             .exactMatch(&#34;match this exactly&#34;)
+ *                             .headerName("someheader")
+ *                             .exactMatch("match this exactly")
  *                             .invertMatch(true)
  *                             .build())
  *                         .queryParameterMatches(RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs.builder()
- *                             .name(&#34;a query parameter&#34;)
+ *                             .name("a query parameter")
  *                             .presentMatch(true)
  *                             .build())
  *                         .build())
@@ -753,19 +764,21 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .tests(RegionUrlMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Int Https Lb Https Redirect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -831,93 +844,93 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Internal HTTPS load balancer with HTTP-to-HTTPS redirect
  *         // VPC network
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;l7-ilb-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("l7-ilb-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // Proxy-only subnet
- *         var proxySubnet = new Subnetwork(&#34;proxySubnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;l7-ilb-proxy-subnet&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
- *             .region(&#34;europe-west1&#34;)
- *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
- *             .role(&#34;ACTIVE&#34;)
+ *         var proxySubnet = new Subnetwork("proxySubnet", SubnetworkArgs.builder()        
+ *             .name("l7-ilb-proxy-subnet")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("europe-west1")
+ *             .purpose("REGIONAL_MANAGED_PROXY")
+ *             .role("ACTIVE")
  *             .network(default_.id())
  *             .build());
  * 
  *         // Backend subnet
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;l7-ilb-subnet&#34;)
- *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
- *             .region(&#34;europe-west1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("l7-ilb-subnet")
+ *             .ipCidrRange("10.0.1.0/24")
+ *             .region("europe-west1")
  *             .network(default_.id())
  *             .build());
  * 
  *         // Reserved internal address
- *         var defaultAddress = new Address(&#34;defaultAddress&#34;, AddressArgs.builder()        
- *             .name(&#34;l7-ilb-ip&#34;)
+ *         var defaultAddress = new Address("defaultAddress", AddressArgs.builder()        
+ *             .name("l7-ilb-ip")
  *             .subnetwork(defaultSubnetwork.id())
- *             .addressType(&#34;INTERNAL&#34;)
- *             .address(&#34;10.0.1.5&#34;)
- *             .region(&#34;europe-west1&#34;)
- *             .purpose(&#34;SHARED_LOADBALANCER_VIP&#34;)
+ *             .addressType("INTERNAL")
+ *             .address("10.0.1.5")
+ *             .region("europe-west1")
+ *             .purpose("SHARED_LOADBALANCER_VIP")
  *             .build());
  * 
  *         // Self-signed regional SSL certificate for testing
- *         var defaultPrivateKey = new PrivateKey(&#34;defaultPrivateKey&#34;, PrivateKeyArgs.builder()        
- *             .algorithm(&#34;RSA&#34;)
+ *         var defaultPrivateKey = new PrivateKey("defaultPrivateKey", PrivateKeyArgs.builder()        
+ *             .algorithm("RSA")
  *             .rsaBits(2048)
  *             .build());
  * 
- *         var defaultSelfSignedCert = new SelfSignedCert(&#34;defaultSelfSignedCert&#34;, SelfSignedCertArgs.builder()        
+ *         var defaultSelfSignedCert = new SelfSignedCert("defaultSelfSignedCert", SelfSignedCertArgs.builder()        
  *             .keyAlgorithm(defaultPrivateKey.algorithm())
  *             .privateKeyPem(defaultPrivateKey.privateKeyPem())
  *             .validityPeriodHours(12)
  *             .earlyRenewalHours(3)
  *             .allowedUses(            
- *                 &#34;key_encipherment&#34;,
- *                 &#34;digital_signature&#34;,
- *                 &#34;server_auth&#34;)
- *             .dnsNames(&#34;example.com&#34;)
+ *                 "key_encipherment",
+ *                 "digital_signature",
+ *                 "server_auth")
+ *             .dnsNames("example.com")
  *             .subject(SelfSignedCertSubjectArgs.builder()
- *                 .commonName(&#34;example.com&#34;)
- *                 .organization(&#34;ACME Examples, Inc&#34;)
+ *                 .commonName("example.com")
+ *                 .organization("ACME Examples, Inc")
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionSslCertificate = new RegionSslCertificate(&#34;defaultRegionSslCertificate&#34;, RegionSslCertificateArgs.builder()        
- *             .namePrefix(&#34;my-certificate-&#34;)
+ *         var defaultRegionSslCertificate = new RegionSslCertificate("defaultRegionSslCertificate", RegionSslCertificateArgs.builder()        
+ *             .namePrefix("my-certificate-")
  *             .privateKey(defaultPrivateKey.privateKeyPem())
  *             .certificate(defaultSelfSignedCert.certPem())
- *             .region(&#34;europe-west1&#34;)
+ *             .region("europe-west1")
  *             .build());
  * 
  *         // Regional health check
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;l7-ilb-hc&#34;)
- *             .region(&#34;europe-west1&#34;)
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *             .name("l7-ilb-hc")
+ *             .region("europe-west1")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .portSpecification(&#34;USE_SERVING_PORT&#34;)
+ *                 .portSpecification("USE_SERVING_PORT")
  *                 .build())
  *             .build());
  * 
  *         // Instance template
- *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
  *                 .network(default_.id())
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
- *             .name(&#34;l7-ilb-mig-template&#34;)
- *             .machineType(&#34;e2-small&#34;)
- *             .tags(&#34;http-server&#34;)
+ *             .name("l7-ilb-mig-template")
+ *             .machineType("e2-small")
+ *             .tags("http-server")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-10&#34;)
+ *                 .sourceImage("debian-cloud/debian-10")
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
- *             .metadata(Map.of(&#34;startup-script&#34;, &#34;&#34;&#34;
+ *             .metadata(Map.of("startup-script", """
  * #! /bin/bash
  * set -euo pipefail
  * 
@@ -925,146 +938,146 @@ import javax.annotation.Nullable;
  * apt-get update
  * apt-get install -y nginx-light jq
  * 
- * NAME=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/hostname&#34;)
- * IP=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip&#34;)
- * METADATA=$(curl -f -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True&#34; | jq &#39;del(.[&#34;startup-script&#34;])&#39;)
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
  * 
- * cat &lt;&lt;EOF &gt; /var/www/html/index.html
- * &lt;pre&gt;
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
  * Name: $NAME
  * IP: $IP
  * Metadata: $METADATA
- * &lt;/pre&gt;
+ * </pre>
  * EOF
- *             &#34;&#34;&#34;))
+ *             """))
  *             .build());
  * 
  *         // Regional MIG
- *         var defaultRegionInstanceGroupManager = new RegionInstanceGroupManager(&#34;defaultRegionInstanceGroupManager&#34;, RegionInstanceGroupManagerArgs.builder()        
- *             .name(&#34;l7-ilb-mig1&#34;)
- *             .region(&#34;europe-west1&#34;)
+ *         var defaultRegionInstanceGroupManager = new RegionInstanceGroupManager("defaultRegionInstanceGroupManager", RegionInstanceGroupManagerArgs.builder()        
+ *             .name("l7-ilb-mig1")
+ *             .region("europe-west1")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(defaultInstanceTemplate.id())
- *                 .name(&#34;primary&#34;)
+ *                 .name("primary")
  *                 .build())
  *             .namedPorts(RegionInstanceGroupManagerNamedPortArgs.builder()
- *                 .name(&#34;http-server&#34;)
+ *                 .name("http-server")
  *                 .port(80)
  *                 .build())
- *             .baseInstanceName(&#34;vm&#34;)
+ *             .baseInstanceName("vm")
  *             .targetSize(2)
  *             .build());
  * 
  *         // Regional backend service
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;l7-ilb-backend-service&#34;)
- *             .region(&#34;europe-west1&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .portName(&#34;http-server&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .name("l7-ilb-backend-service")
+ *             .region("europe-west1")
+ *             .protocol("HTTP")
+ *             .portName("http-server")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .timeoutSec(10)
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .backends(RegionBackendServiceBackendArgs.builder()
  *                 .group(defaultRegionInstanceGroupManager.instanceGroup())
- *                 .balancingMode(&#34;UTILIZATION&#34;)
+ *                 .balancingMode("UTILIZATION")
  *                 .capacityScaler(1)
  *                 .build())
  *             .build());
  * 
  *         // Regional URL map
- *         var httpsLb = new RegionUrlMap(&#34;httpsLb&#34;, RegionUrlMapArgs.builder()        
- *             .name(&#34;l7-ilb-regional-url-map&#34;)
- *             .region(&#34;europe-west1&#34;)
+ *         var httpsLb = new RegionUrlMap("httpsLb", RegionUrlMapArgs.builder()        
+ *             .name("l7-ilb-regional-url-map")
+ *             .region("europe-west1")
  *             .defaultService(defaultRegionBackendService.id())
  *             .build());
  * 
  *         // Regional target HTTPS proxy
- *         var defaultRegionTargetHttpsProxy = new RegionTargetHttpsProxy(&#34;defaultRegionTargetHttpsProxy&#34;, RegionTargetHttpsProxyArgs.builder()        
- *             .name(&#34;l7-ilb-target-https-proxy&#34;)
- *             .region(&#34;europe-west1&#34;)
+ *         var defaultRegionTargetHttpsProxy = new RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy", RegionTargetHttpsProxyArgs.builder()        
+ *             .name("l7-ilb-target-https-proxy")
+ *             .region("europe-west1")
  *             .urlMap(httpsLb.id())
  *             .sslCertificates(defaultRegionSslCertificate.selfLink())
  *             .build());
  * 
  *         // Regional forwarding rule
- *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;l7-ilb-forwarding-rule&#34;)
- *             .region(&#34;europe-west1&#34;)
- *             .ipProtocol(&#34;TCP&#34;)
+ *         var defaultForwardingRule = new ForwardingRule("defaultForwardingRule", ForwardingRuleArgs.builder()        
+ *             .name("l7-ilb-forwarding-rule")
+ *             .region("europe-west1")
+ *             .ipProtocol("TCP")
  *             .ipAddress(defaultAddress.id())
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
- *             .portRange(&#34;443&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .portRange("443")
  *             .target(defaultRegionTargetHttpsProxy.id())
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .networkTier(&#34;PREMIUM&#34;)
+ *             .networkTier("PREMIUM")
  *             .build());
  * 
  *         // Allow all access to health check ranges
- *         var defaultFirewall = new Firewall(&#34;defaultFirewall&#34;, FirewallArgs.builder()        
- *             .name(&#34;l7-ilb-fw-allow-hc&#34;)
- *             .direction(&#34;INGRESS&#34;)
+ *         var defaultFirewall = new Firewall("defaultFirewall", FirewallArgs.builder()        
+ *             .name("l7-ilb-fw-allow-hc")
+ *             .direction("INGRESS")
  *             .network(default_.id())
  *             .sourceRanges(            
- *                 &#34;130.211.0.0/22&#34;,
- *                 &#34;35.191.0.0/16&#34;,
- *                 &#34;35.235.240.0/20&#34;)
+ *                 "130.211.0.0/22",
+ *                 "35.191.0.0/16",
+ *                 "35.235.240.0/20")
  *             .allows(FirewallAllowArgs.builder()
- *                 .protocol(&#34;tcp&#34;)
+ *                 .protocol("tcp")
  *                 .build())
  *             .build());
  * 
  *         // Allow http from proxy subnet to backends
- *         var backends = new Firewall(&#34;backends&#34;, FirewallArgs.builder()        
- *             .name(&#34;l7-ilb-fw-allow-ilb-to-backends&#34;)
- *             .direction(&#34;INGRESS&#34;)
+ *         var backends = new Firewall("backends", FirewallArgs.builder()        
+ *             .name("l7-ilb-fw-allow-ilb-to-backends")
+ *             .direction("INGRESS")
  *             .network(default_.id())
- *             .sourceRanges(&#34;10.0.0.0/24&#34;)
- *             .targetTags(&#34;http-server&#34;)
+ *             .sourceRanges("10.0.0.0/24")
+ *             .targetTags("http-server")
  *             .allows(FirewallAllowArgs.builder()
- *                 .protocol(&#34;tcp&#34;)
+ *                 .protocol("tcp")
  *                 .ports(                
- *                     &#34;80&#34;,
- *                     &#34;443&#34;,
- *                     &#34;8080&#34;)
+ *                     "80",
+ *                     "443",
+ *                     "8080")
  *                 .build())
  *             .build());
  * 
  *         // Test instance
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .name(&#34;l7-ilb-test-vm&#34;)
- *             .zone(&#34;europe-west1-b&#34;)
- *             .machineType(&#34;e2-small&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .name("l7-ilb-test-vm")
+ *             .zone("europe-west1-b")
+ *             .machineType("e2-small")
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .network(default_.id())
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-10&#34;)
+ *                     .image("debian-cloud/debian-10")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         //## HTTP-to-HTTPS redirect ###
  *         // Regional URL map
- *         var redirectRegionUrlMap = new RegionUrlMap(&#34;redirectRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
- *             .name(&#34;l7-ilb-redirect-url-map&#34;)
- *             .region(&#34;europe-west1&#34;)
+ *         var redirectRegionUrlMap = new RegionUrlMap("redirectRegionUrlMap", RegionUrlMapArgs.builder()        
+ *             .name("l7-ilb-redirect-url-map")
+ *             .region("europe-west1")
  *             .defaultService(defaultRegionBackendService.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;*&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("*")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(defaultRegionBackendService.id())
  *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
- *                     .paths(&#34;/&#34;)
+ *                     .paths("/")
  *                     .urlRedirect(RegionUrlMapPathMatcherPathRuleUrlRedirectArgs.builder()
  *                         .httpsRedirect(true)
- *                         .hostRedirect(&#34;10.0.1.5:443&#34;)
- *                         .redirectResponseCode(&#34;PERMANENT_REDIRECT&#34;)
+ *                         .hostRedirect("10.0.1.5:443")
+ *                         .redirectResponseCode("PERMANENT_REDIRECT")
  *                         .stripQuery(true)
  *                         .build())
  *                     .build())
@@ -1072,34 +1085,36 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Regional HTTP proxy
- *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
- *             .name(&#34;l7-ilb-target-http-proxy&#34;)
- *             .region(&#34;europe-west1&#34;)
+ *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy("defaultRegionTargetHttpProxy", RegionTargetHttpProxyArgs.builder()        
+ *             .name("l7-ilb-target-http-proxy")
+ *             .region("europe-west1")
  *             .urlMap(redirectRegionUrlMap.id())
  *             .build());
  * 
  *         // Regional forwarding rule
- *         var redirect = new ForwardingRule(&#34;redirect&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;l7-ilb-redirect&#34;)
- *             .region(&#34;europe-west1&#34;)
- *             .ipProtocol(&#34;TCP&#34;)
+ *         var redirect = new ForwardingRule("redirect", ForwardingRuleArgs.builder()        
+ *             .name("l7-ilb-redirect")
+ *             .region("europe-west1")
+ *             .ipProtocol("TCP")
  *             .ipAddress(defaultAddress.id())
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
- *             .portRange(&#34;80&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .portRange("80")
  *             .target(defaultRegionTargetHttpProxy.id())
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .networkTier(&#34;PREMIUM&#34;)
+ *             .networkTier("PREMIUM")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map Path Template Match
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -1127,75 +1142,75 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;health-check&#34;)
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()        
+ *             .region("us-central1")
+ *             .name("health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
- *                 .requestPath(&#34;/&#34;)
+ *                 .requestPath("/")
  *                 .build())
  *             .build());
  * 
- *         var home_backend = new RegionBackendService(&#34;home-backend&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;home-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var home_backend = new RegionBackendService("home-backend", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("home-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var cart_backend = new RegionBackendService(&#34;cart-backend&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;cart-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var cart_backend = new RegionBackendService("cart-backend", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("cart-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var user_backend = new RegionBackendService(&#34;user-backend&#34;, RegionBackendServiceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;user-service&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var user_backend = new RegionBackendService("user-backend", RegionBackendServiceArgs.builder()        
+ *             .region("us-central1")
+ *             .name("user-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var urlmap = new RegionUrlMap(&#34;urlmap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var urlmap = new RegionUrlMap("urlmap", RegionUrlMapArgs.builder()        
+ *             .region("us-central1")
+ *             .name("urlmap")
+ *             .description("a description")
  *             .defaultService(home_backend.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;mysite&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("mysite")
  *                 .build())
  *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
- *                 .name(&#34;mysite&#34;)
+ *                 .name("mysite")
  *                 .defaultService(home_backend.id())
  *                 .routeRules(                
  *                     RegionUrlMapPathMatcherRouteRuleArgs.builder()
  *                         .matchRules(RegionUrlMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .pathTemplateMatch(&#34;/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}&#34;)
+ *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}")
  *                             .build())
  *                         .service(cart_backend.id())
  *                         .priority(1)
  *                         .routeAction(RegionUrlMapPathMatcherRouteRuleRouteActionArgs.builder()
  *                             .urlRewrite(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs.builder()
- *                                 .pathTemplateRewrite(&#34;/{username}-{cartid}/&#34;)
+ *                                 .pathTemplateRewrite("/{username}-{cartid}/")
  *                                 .build())
  *                             .build())
  *                         .build(),
  *                     RegionUrlMapPathMatcherRouteRuleArgs.builder()
  *                         .matchRules(RegionUrlMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .pathTemplateMatch(&#34;/xyzwebservices/v2/xyz/users/*{@literal /}accountinfo/*&#34;)
+ *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/*{@literal /}accountinfo/*")
  *                             .build())
  *                         .service(user_backend.id())
  *                         .priority(2)
@@ -1205,7 +1220,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

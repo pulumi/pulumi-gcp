@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Example creating a RuntimeConfig resource.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,14 +42,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_runtime_config = new Config(&#34;my-runtime-config&#34;, ConfigArgs.builder()        
- *             .name(&#34;my-service-runtime-config&#34;)
- *             .description(&#34;Runtime configuration values for my service&#34;)
+ *         var my_runtime_config = new Config("my-runtime-config", ConfigArgs.builder()        
+ *             .name("my-service-runtime-config")
+ *             .description("Runtime configuration values for my service")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

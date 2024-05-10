@@ -50,7 +50,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -72,13 +73,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myCluster = VmwareengineFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .parent(&#34;project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("my-cluster")
+     *             .parent("project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -94,7 +96,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -116,13 +119,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myCluster = VmwareengineFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .parent(&#34;project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("my-cluster")
+     *             .parent("project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -138,7 +142,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -160,13 +165,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myCluster = VmwareengineFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .parent(&#34;project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("my-cluster")
+     *             .parent("project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -182,7 +188,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -204,13 +211,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myCluster = VmwareengineFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .parent(&#34;project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("my-cluster")
+     *             .parent("project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -226,7 +234,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -248,13 +257,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myExternalAccessRule = VmwareengineFunctions.getExternalAccessRule(GetExternalAccessRuleArgs.builder()
-     *             .name(&#34;my-external-access-rule&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/networkPolicies/my-network-policy&#34;)
+     *             .name("my-external-access-rule")
+     *             .parent("project/my-project/locations/us-west1-a/networkPolicies/my-network-policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -270,7 +280,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -292,13 +303,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myExternalAccessRule = VmwareengineFunctions.getExternalAccessRule(GetExternalAccessRuleArgs.builder()
-     *             .name(&#34;my-external-access-rule&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/networkPolicies/my-network-policy&#34;)
+     *             .name("my-external-access-rule")
+     *             .parent("project/my-project/locations/us-west1-a/networkPolicies/my-network-policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -314,7 +326,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -336,13 +349,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myExternalAccessRule = VmwareengineFunctions.getExternalAccessRule(GetExternalAccessRuleArgs.builder()
-     *             .name(&#34;my-external-access-rule&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/networkPolicies/my-network-policy&#34;)
+     *             .name("my-external-access-rule")
+     *             .parent("project/my-project/locations/us-west1-a/networkPolicies/my-network-policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -358,7 +372,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -380,13 +395,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myExternalAccessRule = VmwareengineFunctions.getExternalAccessRule(GetExternalAccessRuleArgs.builder()
-     *             .name(&#34;my-external-access-rule&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/networkPolicies/my-network-policy&#34;)
+     *             .name("my-external-access-rule")
+     *             .parent("project/my-project/locations/us-west1-a/networkPolicies/my-network-policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -402,7 +418,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -424,13 +441,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myExternalAddress = VmwareengineFunctions.getExternalAddress(GetExternalAddressArgs.builder()
-     *             .name(&#34;my-external-address&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("my-external-address")
+     *             .parent("project/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -446,7 +464,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -468,13 +487,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myExternalAddress = VmwareengineFunctions.getExternalAddress(GetExternalAddressArgs.builder()
-     *             .name(&#34;my-external-address&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("my-external-address")
+     *             .parent("project/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -490,7 +510,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -512,13 +533,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myExternalAddress = VmwareengineFunctions.getExternalAddress(GetExternalAddressArgs.builder()
-     *             .name(&#34;my-external-address&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("my-external-address")
+     *             .parent("project/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -534,7 +556,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -556,13 +579,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myExternalAddress = VmwareengineFunctions.getExternalAddress(GetExternalAddressArgs.builder()
-     *             .name(&#34;my-external-address&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("my-external-address")
+     *             .parent("project/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -578,7 +602,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -600,13 +625,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;us-central1-default&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("us-central1-default")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -622,7 +648,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -644,13 +671,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;us-central1-default&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("us-central1-default")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -666,7 +694,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -688,13 +717,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;us-central1-default&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("us-central1-default")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -710,7 +740,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -732,13 +763,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;us-central1-default&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("us-central1-default")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -754,7 +786,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -776,12 +809,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPeering = VmwareengineFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
-     *             .name(&#34;my-network-peering&#34;)
+     *             .name("my-network-peering")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -797,7 +831,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -819,12 +854,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPeering = VmwareengineFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
-     *             .name(&#34;my-network-peering&#34;)
+     *             .name("my-network-peering")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -840,7 +876,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -862,12 +899,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPeering = VmwareengineFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
-     *             .name(&#34;my-network-peering&#34;)
+     *             .name("my-network-peering")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -883,7 +921,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -905,12 +944,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPeering = VmwareengineFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
-     *             .name(&#34;my-network-peering&#34;)
+     *             .name("my-network-peering")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -926,7 +966,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -948,13 +989,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
-     *             .name(&#34;my-network-policy&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-network-policy")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -970,7 +1012,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -992,13 +1035,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
-     *             .name(&#34;my-network-policy&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-network-policy")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1014,7 +1058,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1036,13 +1081,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
-     *             .name(&#34;my-network-policy&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-network-policy")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1058,7 +1104,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1080,13 +1127,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
-     *             .name(&#34;my-network-policy&#34;)
-     *             .location(&#34;us-central1&#34;)
+     *             .name("my-network-policy")
+     *             .location("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1102,7 +1150,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1124,12 +1173,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = VmwareengineFunctions.getNsxCredentials(GetNsxCredentialsArgs.builder()
-     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1145,7 +1195,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1167,12 +1218,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = VmwareengineFunctions.getNsxCredentials(GetNsxCredentialsArgs.builder()
-     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1188,7 +1240,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1210,12 +1263,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = VmwareengineFunctions.getNsxCredentials(GetNsxCredentialsArgs.builder()
-     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1231,7 +1285,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1253,12 +1308,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = VmwareengineFunctions.getNsxCredentials(GetNsxCredentialsArgs.builder()
-     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1274,7 +1330,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1296,13 +1353,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .name(&#34;my-pc&#34;)
-     *             .location(&#34;us-central1-a&#34;)
+     *             .name("my-pc")
+     *             .location("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1318,7 +1376,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1340,13 +1399,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .name(&#34;my-pc&#34;)
-     *             .location(&#34;us-central1-a&#34;)
+     *             .name("my-pc")
+     *             .location("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1362,7 +1422,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1384,13 +1445,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .name(&#34;my-pc&#34;)
-     *             .location(&#34;us-central1-a&#34;)
+     *             .name("my-pc")
+     *             .location("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1406,7 +1468,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1428,13 +1491,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .name(&#34;my-pc&#34;)
-     *             .location(&#34;us-central1-a&#34;)
+     *             .name("my-pc")
+     *             .location("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1450,7 +1514,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1472,13 +1537,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mySubnet = VmwareengineFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;service-1&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("service-1")
+     *             .parent("project/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1494,7 +1560,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1516,13 +1583,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mySubnet = VmwareengineFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;service-1&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("service-1")
+     *             .parent("project/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1538,7 +1606,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1560,13 +1629,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mySubnet = VmwareengineFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;service-1&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("service-1")
+     *             .parent("project/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1582,7 +1652,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1604,13 +1675,14 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mySubnet = VmwareengineFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;service-1&#34;)
-     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .name("service-1")
+     *             .parent("project/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1626,7 +1698,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1648,12 +1721,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = VmwareengineFunctions.getVcenterCredentials(GetVcenterCredentialsArgs.builder()
-     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1669,7 +1743,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1691,12 +1766,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = VmwareengineFunctions.getVcenterCredentials(GetVcenterCredentialsArgs.builder()
-     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1712,7 +1788,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1734,12 +1811,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = VmwareengineFunctions.getVcenterCredentials(GetVcenterCredentialsArgs.builder()
-     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1755,7 +1833,8 @@ public final class VmwareengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1777,12 +1856,13 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = VmwareengineFunctions.getVcenterCredentials(GetVcenterCredentialsArgs.builder()
-     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

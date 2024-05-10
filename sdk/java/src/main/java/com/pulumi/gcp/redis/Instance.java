@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Redis Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,19 +59,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
- *             .name(&#34;memory-cache&#34;)
+ *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *             .name("memory-cache")
  *             .memorySizeGb(1)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Redis Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,30 +102,30 @@ import javax.annotation.Nullable;
  *         // Redis instance and that network is not deleted when the user-created
  *         // network (authorized_network) is deleted, so this prevents issues
  *         // with tenant network quota.
- *         // If this network hasn&#39;t been created and you are using this example in your
+ *         // If this network hasn't been created and you are using this example in your
  *         // config, add an additional network resource or change
- *         // this from &#34;data&#34;to &#34;resource&#34;
+ *         // this from "data"to "resource"
  *         final var redis-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;redis-test-network&#34;)
+ *             .name("redis-test-network")
  *             .build());
  * 
- *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
- *             .name(&#34;ha-memory-cache&#34;)
- *             .tier(&#34;STANDARD_HA&#34;)
+ *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *             .name("ha-memory-cache")
+ *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
- *             .locationId(&#34;us-central1-a&#34;)
- *             .alternativeLocationId(&#34;us-central1-f&#34;)
+ *             .locationId("us-central1-a")
+ *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
- *             .redisVersion(&#34;REDIS_4_0&#34;)
- *             .displayName(&#34;Test Instance&#34;)
- *             .reservedIpRange(&#34;192.168.0.0/29&#34;)
+ *             .redisVersion("REDIS_4_0")
+ *             .displayName("Test Instance")
+ *             .reservedIpRange("192.168.0.0/29")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_key&#34;, &#34;my_val&#34;),
- *                 Map.entry(&#34;other_key&#34;, &#34;other_val&#34;)
+ *                 Map.entry("my_key", "my_val"),
+ *                 Map.entry("other_key", "other_val")
  *             ))
  *             .maintenancePolicy(InstanceMaintenancePolicyArgs.builder()
  *                 .weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
- *                     .day(&#34;TUESDAY&#34;)
+ *                     .day("TUESDAY")
  *                     .startTime(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
  *                         .hours(0)
  *                         .minutes(30)
@@ -135,12 +138,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Redis Instance Full With Persistence Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -162,26 +167,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cache_persis = new Instance(&#34;cache-persis&#34;, InstanceArgs.builder()        
- *             .name(&#34;ha-memory-cache-persis&#34;)
- *             .tier(&#34;STANDARD_HA&#34;)
+ *         var cache_persis = new Instance("cache-persis", InstanceArgs.builder()        
+ *             .name("ha-memory-cache-persis")
+ *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
- *             .locationId(&#34;us-central1-a&#34;)
- *             .alternativeLocationId(&#34;us-central1-f&#34;)
+ *             .locationId("us-central1-a")
+ *             .alternativeLocationId("us-central1-f")
  *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
- *                 .persistenceMode(&#34;RDB&#34;)
- *                 .rdbSnapshotPeriod(&#34;TWELVE_HOURS&#34;)
+ *                 .persistenceMode("RDB")
+ *                 .rdbSnapshotPeriod("TWELVE_HOURS")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Redis Instance Private Service
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -213,47 +220,49 @@ import javax.annotation.Nullable;
  *         // Redis instance and that network is not deleted when the user-created
  *         // network (authorized_network) is deleted, so this prevents issues
  *         // with tenant network quota.
- *         // If this network hasn&#39;t been created and you are using this example in your
+ *         // If this network hasn't been created and you are using this example in your
  *         // config, add an additional network resource or change
- *         // this from &#34;data&#34;to &#34;resource&#34;
- *         var redis_network = new Network(&#34;redis-network&#34;, NetworkArgs.builder()        
- *             .name(&#34;redis-test-network&#34;)
+ *         // this from "data"to "resource"
+ *         var redis_network = new Network("redis-network", NetworkArgs.builder()        
+ *             .name("redis-test-network")
  *             .build());
  * 
- *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;address&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()        
+ *             .name("address")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(redis_network.id())
  *             .build());
  * 
- *         var privateServiceConnection = new Connection(&#34;privateServiceConnection&#34;, ConnectionArgs.builder()        
+ *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()        
  *             .network(redis_network.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
  * 
- *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
- *             .name(&#34;private-cache&#34;)
- *             .tier(&#34;STANDARD_HA&#34;)
+ *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *             .name("private-cache")
+ *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
- *             .locationId(&#34;us-central1-a&#34;)
- *             .alternativeLocationId(&#34;us-central1-f&#34;)
+ *             .locationId("us-central1-a")
+ *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
- *             .connectMode(&#34;PRIVATE_SERVICE_ACCESS&#34;)
- *             .redisVersion(&#34;REDIS_4_0&#34;)
- *             .displayName(&#34;Test Instance&#34;)
+ *             .connectMode("PRIVATE_SERVICE_ACCESS")
+ *             .redisVersion("REDIS_4_0")
+ *             .displayName("Test Instance")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Redis Instance Mrr
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -281,39 +290,41 @@ import javax.annotation.Nullable;
  *         // Redis instance and that network is not deleted when the user-created
  *         // network (authorized_network) is deleted, so this prevents issues
  *         // with tenant network quota.
- *         // If this network hasn&#39;t been created and you are using this example in your
+ *         // If this network hasn't been created and you are using this example in your
  *         // config, add an additional network resource or change
- *         // this from &#34;data&#34;to &#34;resource&#34;
+ *         // this from "data"to "resource"
  *         final var redis-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;redis-test-network&#34;)
+ *             .name("redis-test-network")
  *             .build());
  * 
- *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
- *             .name(&#34;mrr-memory-cache&#34;)
- *             .tier(&#34;STANDARD_HA&#34;)
+ *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *             .name("mrr-memory-cache")
+ *             .tier("STANDARD_HA")
  *             .memorySizeGb(5)
- *             .locationId(&#34;us-central1-a&#34;)
- *             .alternativeLocationId(&#34;us-central1-f&#34;)
+ *             .locationId("us-central1-a")
+ *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
- *             .redisVersion(&#34;REDIS_6_X&#34;)
- *             .displayName(&#34;Terraform Test Instance&#34;)
- *             .reservedIpRange(&#34;192.168.0.0/28&#34;)
+ *             .redisVersion("REDIS_6_X")
+ *             .displayName("Terraform Test Instance")
+ *             .reservedIpRange("192.168.0.0/28")
  *             .replicaCount(5)
- *             .readReplicasMode(&#34;READ_REPLICAS_ENABLED&#34;)
+ *             .readReplicasMode("READ_REPLICAS_ENABLED")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_key&#34;, &#34;my_val&#34;),
- *                 Map.entry(&#34;other_key&#34;, &#34;other_val&#34;)
+ *                 Map.entry("my_key", "my_val"),
+ *                 Map.entry("other_key", "other_val")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Redis Instance Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -340,13 +351,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var redisKeyring = new KeyRing(&#34;redisKeyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;redis-keyring&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var redisKeyring = new KeyRing("redisKeyring", KeyRingArgs.builder()        
+ *             .name("redis-keyring")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var redisKey = new CryptoKey(&#34;redisKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;redis-key&#34;)
+ *         var redisKey = new CryptoKey("redisKey", CryptoKeyArgs.builder()        
+ *             .name("redis-key")
  *             .keyRing(redisKeyring.id())
  *             .build());
  * 
@@ -355,33 +366,34 @@ import javax.annotation.Nullable;
  *         // Redis instance and that network is not deleted when the user-created
  *         // network (authorized_network) is deleted, so this prevents issues
  *         // with tenant network quota.
- *         // If this network hasn&#39;t been created and you are using this example in your
+ *         // If this network hasn't been created and you are using this example in your
  *         // config, add an additional network resource or change
- *         // this from &#34;data&#34;to &#34;resource&#34;
+ *         // this from "data"to "resource"
  *         final var redis-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;redis-test-network&#34;)
+ *             .name("redis-test-network")
  *             .build());
  * 
- *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
- *             .name(&#34;cmek-memory-cache&#34;)
- *             .tier(&#34;STANDARD_HA&#34;)
+ *         var cache = new Instance("cache", InstanceArgs.builder()        
+ *             .name("cmek-memory-cache")
+ *             .tier("STANDARD_HA")
  *             .memorySizeGb(1)
- *             .locationId(&#34;us-central1-a&#34;)
- *             .alternativeLocationId(&#34;us-central1-f&#34;)
+ *             .locationId("us-central1-a")
+ *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
- *             .redisVersion(&#34;REDIS_6_X&#34;)
- *             .displayName(&#34;Terraform Test Instance&#34;)
- *             .reservedIpRange(&#34;192.168.0.0/29&#34;)
+ *             .redisVersion("REDIS_6_X")
+ *             .displayName("Terraform Test Instance")
+ *             .reservedIpRange("192.168.0.0/29")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_key&#34;, &#34;my_val&#34;),
- *                 Map.entry(&#34;other_key&#34;, &#34;other_val&#34;)
+ *                 Map.entry("my_key", "my_val"),
+ *                 Map.entry("other_key", "other_val")
  *             ))
  *             .customerManagedKey(redisKey.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

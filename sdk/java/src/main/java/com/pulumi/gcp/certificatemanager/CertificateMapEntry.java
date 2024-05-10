@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Certificate Manager Certificate Map Entry Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,31 +54,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var certificateMap = new CertificateMap(&#34;certificateMap&#34;, CertificateMapArgs.builder()        
- *             .name(&#34;cert-map-entry&#34;)
- *             .description(&#34;My acceptance test certificate map&#34;)
+ *         var certificateMap = new CertificateMap("certificateMap", CertificateMapArgs.builder()        
+ *             .name("cert-map-entry")
+ *             .description("My acceptance test certificate map")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;terraform&#34;, true),
- *                 Map.entry(&#34;acc-test&#34;, true)
+ *                 Map.entry("terraform", true),
+ *                 Map.entry("acc-test", true)
  *             ))
  *             .build());
  * 
- *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth&#34;)
- *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth")
+ *             .description("The default dnss")
+ *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
- *             .name(&#34;dns-auth2&#34;)
- *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
+ *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()        
+ *             .name("dns-auth2")
+ *             .description("The default dnss")
+ *             .domain("subdomain2.hashicorptest.com")
  *             .build());
  * 
- *         var certificate = new Certificate(&#34;certificate&#34;, CertificateArgs.builder()        
- *             .name(&#34;cert-map-entry&#34;)
- *             .description(&#34;The default cert&#34;)
- *             .scope(&#34;DEFAULT&#34;)
+ *         var certificate = new Certificate("certificate", CertificateArgs.builder()        
+ *             .name("cert-map-entry")
+ *             .description("The default cert")
+ *             .scope("DEFAULT")
  *             .managed(CertificateManagedArgs.builder()
  *                 .domains(                
  *                     instance.domain(),
@@ -88,21 +89,22 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new CertificateMapEntry(&#34;default&#34;, CertificateMapEntryArgs.builder()        
- *             .name(&#34;cert-map-entry&#34;)
- *             .description(&#34;My acceptance test certificate map entry&#34;)
+ *         var default_ = new CertificateMapEntry("default", CertificateMapEntryArgs.builder()        
+ *             .name("cert-map-entry")
+ *             .description("My acceptance test certificate map entry")
  *             .map(certificateMap.name())
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;terraform&#34;, true),
- *                 Map.entry(&#34;acc-test&#34;, true)
+ *                 Map.entry("terraform", true),
+ *                 Map.entry("acc-test", true)
  *             ))
  *             .certificates(certificate.id())
- *             .matcher(&#34;PRIMARY&#34;)
+ *             .matcher("PRIMARY")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

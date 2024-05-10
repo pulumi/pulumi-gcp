@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Network Security Firewall Endpoint Association Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,23 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new FirewallEndpoint(&#34;default&#34;, FirewallEndpointArgs.builder()        
- *             .name(&#34;my-firewall-endpoint&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;us-central1-a&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var default_ = new FirewallEndpoint("default", FirewallEndpointArgs.builder()        
+ *             .name("my-firewall-endpoint")
+ *             .parent("organizations/123456789")
+ *             .location("us-central1-a")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var defaultAssociation = new FirewallEndpointAssociation(&#34;defaultAssociation&#34;, FirewallEndpointAssociationArgs.builder()        
- *             .name(&#34;my-firewall-endpoint-association&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .location(&#34;us-central1-a&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var defaultAssociation = new FirewallEndpointAssociation("defaultAssociation", FirewallEndpointAssociationArgs.builder()        
+ *             .name("my-firewall-endpoint-association")
+ *             .parent("projects/my-project-name")
+ *             .location("us-central1-a")
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,14 +49,15 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var application = ApphubFunctions.getApplication(GetApplicationArgs.builder()
-     *             .project(&#34;project-id&#34;)
-     *             .applicationId(&#34;application&#34;)
-     *             .location(&#34;location&#34;)
+     *             .project("project-id")
+     *             .applicationId("application")
+     *             .location("location")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -68,7 +70,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -90,14 +93,15 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var application = ApphubFunctions.getApplication(GetApplicationArgs.builder()
-     *             .project(&#34;project-id&#34;)
-     *             .applicationId(&#34;application&#34;)
-     *             .location(&#34;location&#34;)
+     *             .project("project-id")
+     *             .applicationId("application")
+     *             .location("location")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -110,7 +114,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -132,14 +137,15 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var application = ApphubFunctions.getApplication(GetApplicationArgs.builder()
-     *             .project(&#34;project-id&#34;)
-     *             .applicationId(&#34;application&#34;)
-     *             .location(&#34;location&#34;)
+     *             .project("project-id")
+     *             .applicationId("application")
+     *             .location("location")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -152,7 +158,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -174,14 +181,15 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var application = ApphubFunctions.getApplication(GetApplicationArgs.builder()
-     *             .project(&#34;project-id&#34;)
-     *             .applicationId(&#34;application&#34;)
-     *             .location(&#34;location&#34;)
+     *             .project("project-id")
+     *             .applicationId("application")
+     *             .location("location")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -194,7 +202,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -216,13 +225,14 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
-     *             .location(&#34;my-location&#34;)
-     *             .serviceUri(&#34;my-service-uri&#34;)
+     *             .location("my-location")
+     *             .serviceUri("my-service-uri")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -235,7 +245,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -257,13 +268,14 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
-     *             .location(&#34;my-location&#34;)
-     *             .serviceUri(&#34;my-service-uri&#34;)
+     *             .location("my-location")
+     *             .serviceUri("my-service-uri")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -276,7 +288,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -298,13 +311,14 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
-     *             .location(&#34;my-location&#34;)
-     *             .serviceUri(&#34;my-service-uri&#34;)
+     *             .location("my-location")
+     *             .serviceUri("my-service-uri")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -317,7 +331,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -339,13 +354,14 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
-     *             .location(&#34;my-location&#34;)
-     *             .serviceUri(&#34;my-service-uri&#34;)
+     *             .location("my-location")
+     *             .serviceUri("my-service-uri")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -358,7 +374,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -380,13 +397,14 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-workload = ApphubFunctions.getDiscoveredWorkload(GetDiscoveredWorkloadArgs.builder()
-     *             .location(&#34;us-central1&#34;)
-     *             .workloadUri(&#34;my-workload-uri&#34;)
+     *             .location("us-central1")
+     *             .workloadUri("my-workload-uri")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -399,7 +417,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -421,13 +440,14 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-workload = ApphubFunctions.getDiscoveredWorkload(GetDiscoveredWorkloadArgs.builder()
-     *             .location(&#34;us-central1&#34;)
-     *             .workloadUri(&#34;my-workload-uri&#34;)
+     *             .location("us-central1")
+     *             .workloadUri("my-workload-uri")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -440,7 +460,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -462,13 +483,14 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-workload = ApphubFunctions.getDiscoveredWorkload(GetDiscoveredWorkloadArgs.builder()
-     *             .location(&#34;us-central1&#34;)
-     *             .workloadUri(&#34;my-workload-uri&#34;)
+     *             .location("us-central1")
+     *             .workloadUri("my-workload-uri")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -481,7 +503,8 @@ public final class ApphubFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -503,13 +526,14 @@ public final class ApphubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-workload = ApphubFunctions.getDiscoveredWorkload(GetDiscoveredWorkloadArgs.builder()
-     *             .location(&#34;us-central1&#34;)
-     *             .workloadUri(&#34;my-workload-uri&#34;)
+     *             .location("us-central1")
+     *             .workloadUri("my-workload-uri")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

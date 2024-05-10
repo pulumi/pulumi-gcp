@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,28 +53,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;your-project-id&#34;)
- *             .name(&#34;your-project-id&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var default_ = new Project("default", ProjectArgs.builder()        
+ *             .projectId("your-project-id")
+ *             .name("your-project-id")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var basic = new ProjectBucketConfig(&#34;basic&#34;, ProjectBucketConfigArgs.builder()        
+ *         var basic = new ProjectBucketConfig("basic", ProjectBucketConfigArgs.builder()        
  *             .project(default_.projectId())
- *             .location(&#34;global&#34;)
+ *             .location("global")
  *             .retentionDays(30)
- *             .bucketId(&#34;_Default&#34;)
+ *             .bucketId("_Default")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Create logging bucket with customId
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,22 +97,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new ProjectBucketConfig(&#34;basic&#34;, ProjectBucketConfigArgs.builder()        
- *             .project(&#34;project_id&#34;)
- *             .location(&#34;global&#34;)
+ *         var basic = new ProjectBucketConfig("basic", ProjectBucketConfigArgs.builder()        
+ *             .project("project_id")
+ *             .location("global")
  *             .retentionDays(30)
- *             .bucketId(&#34;custom-bucket&#34;)
+ *             .bucketId("custom-bucket")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Create logging bucket with Log Analytics enabled
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -130,23 +135,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var analytics_enabled_bucket = new ProjectBucketConfig(&#34;analytics-enabled-bucket&#34;, ProjectBucketConfigArgs.builder()        
- *             .project(&#34;project_id&#34;)
- *             .location(&#34;global&#34;)
+ *         var analytics_enabled_bucket = new ProjectBucketConfig("analytics-enabled-bucket", ProjectBucketConfigArgs.builder()        
+ *             .project("project_id")
+ *             .location("global")
  *             .retentionDays(30)
  *             .enableAnalytics(true)
- *             .bucketId(&#34;custom-bucket&#34;)
+ *             .bucketId("custom-bucket")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Create logging bucket with customId and cmekSettings
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -177,31 +184,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var cmekSettings = LoggingFunctions.getProjectCmekSettings(GetProjectCmekSettingsArgs.builder()
- *             .project(&#34;project_id&#34;)
+ *             .project("project_id")
  *             .build());
  * 
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;keyring-example&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("keyring-example")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var key = new CryptoKey(&#34;key&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-key-example&#34;)
+ *         var key = new CryptoKey("key", CryptoKeyArgs.builder()        
+ *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
- *             .rotationPeriod(&#34;7776000s&#34;)
+ *             .rotationPeriod("7776000s")
  *             .build());
  * 
- *         var cryptoKeyBinding = new CryptoKeyIAMBinding(&#34;cryptoKeyBinding&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()        
  *             .cryptoKeyId(key.id())
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .members(String.format(&#34;serviceAccount:%s&#34;, cmekSettings.applyValue(getProjectCmekSettingsResult -&gt; getProjectCmekSettingsResult.serviceAccountId())))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .members(String.format("serviceAccount:%s", cmekSettings.applyValue(getProjectCmekSettingsResult -> getProjectCmekSettingsResult.serviceAccountId())))
  *             .build());
  * 
- *         var example_project_bucket_cmek_settings = new ProjectBucketConfig(&#34;example-project-bucket-cmek-settings&#34;, ProjectBucketConfigArgs.builder()        
- *             .project(&#34;project_id&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var example_project_bucket_cmek_settings = new ProjectBucketConfig("example-project-bucket-cmek-settings", ProjectBucketConfigArgs.builder()        
+ *             .project("project_id")
+ *             .location("us-central1")
  *             .retentionDays(30)
- *             .bucketId(&#34;custom-bucket&#34;)
+ *             .bucketId("custom-bucket")
  *             .cmekSettings(ProjectBucketConfigCmekSettingsArgs.builder()
  *                 .kmsKeyName(key.id())
  *                 .build())
@@ -209,13 +216,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Create logging bucket with index configs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -236,20 +245,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_project_bucket_index_configs = new ProjectBucketConfig(&#34;example-project-bucket-index-configs&#34;, ProjectBucketConfigArgs.builder()        
- *             .project(&#34;project_id&#34;)
- *             .location(&#34;global&#34;)
+ *         var example_project_bucket_index_configs = new ProjectBucketConfig("example-project-bucket-index-configs", ProjectBucketConfigArgs.builder()        
+ *             .project("project_id")
+ *             .location("global")
  *             .retentionDays(30)
- *             .bucketId(&#34;custom-bucket&#34;)
+ *             .bucketId("custom-bucket")
  *             .indexConfigs(ProjectBucketConfigIndexConfigArgs.builder()
- *                 .filePath(&#34;jsonPayload.request.status&#34;)
- *                 .type(&#34;INDEX_TYPE_STRING&#34;)
+ *                 .filePath("jsonPayload.request.status")
+ *                 .type("INDEX_TYPE_STRING")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

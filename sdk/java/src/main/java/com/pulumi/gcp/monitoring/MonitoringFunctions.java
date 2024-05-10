@@ -51,7 +51,8 @@ public final class MonitoringFunctions {
      * ### Monitoring App Engine Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -82,34 +83,34 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;appengine-static-content&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("appengine-static-content")
+     *             .location("US")
      *             .build());
      * 
-     *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
-     *             .name(&#34;hello-world.zip&#34;)
+     *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+     *             .name("hello-world.zip")
      *             .bucket(bucket.name())
-     *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
+     *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
      *             .build());
      * 
-     *         var myapp = new StandardAppVersion(&#34;myapp&#34;, StandardAppVersionArgs.builder()        
-     *             .versionId(&#34;v1&#34;)
-     *             .service(&#34;myapp&#34;)
-     *             .runtime(&#34;nodejs20&#34;)
+     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()        
+     *             .versionId("v1")
+     *             .service("myapp")
+     *             .runtime("nodejs20")
      *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
-     *                 .shell(&#34;node ./app.js&#34;)
+     *                 .shell("node ./app.js")
      *                 .build())
      *             .deployment(StandardAppVersionDeploymentArgs.builder()
      *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
      *                         var bucketName = values.t1;
      *                         var objectName = values.t2;
-     *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+     *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
      *                     }))
      *                     .build())
      *                 .build())
-     *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+     *             .envVariables(Map.of("port", "8080"))
      *             .deleteServiceOnDestroy(false)
      *             .build());
      * 
@@ -120,7 +121,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -147,7 +149,8 @@ public final class MonitoringFunctions {
      * ### Monitoring App Engine Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -178,34 +181,34 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;appengine-static-content&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("appengine-static-content")
+     *             .location("US")
      *             .build());
      * 
-     *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
-     *             .name(&#34;hello-world.zip&#34;)
+     *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+     *             .name("hello-world.zip")
      *             .bucket(bucket.name())
-     *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
+     *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
      *             .build());
      * 
-     *         var myapp = new StandardAppVersion(&#34;myapp&#34;, StandardAppVersionArgs.builder()        
-     *             .versionId(&#34;v1&#34;)
-     *             .service(&#34;myapp&#34;)
-     *             .runtime(&#34;nodejs20&#34;)
+     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()        
+     *             .versionId("v1")
+     *             .service("myapp")
+     *             .runtime("nodejs20")
      *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
-     *                 .shell(&#34;node ./app.js&#34;)
+     *                 .shell("node ./app.js")
      *                 .build())
      *             .deployment(StandardAppVersionDeploymentArgs.builder()
      *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
      *                         var bucketName = values.t1;
      *                         var objectName = values.t2;
-     *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+     *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
      *                     }))
      *                     .build())
      *                 .build())
-     *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+     *             .envVariables(Map.of("port", "8080"))
      *             .deleteServiceOnDestroy(false)
      *             .build());
      * 
@@ -216,7 +219,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -243,7 +247,8 @@ public final class MonitoringFunctions {
      * ### Monitoring App Engine Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -274,34 +279,34 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;appengine-static-content&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("appengine-static-content")
+     *             .location("US")
      *             .build());
      * 
-     *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
-     *             .name(&#34;hello-world.zip&#34;)
+     *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+     *             .name("hello-world.zip")
      *             .bucket(bucket.name())
-     *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
+     *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
      *             .build());
      * 
-     *         var myapp = new StandardAppVersion(&#34;myapp&#34;, StandardAppVersionArgs.builder()        
-     *             .versionId(&#34;v1&#34;)
-     *             .service(&#34;myapp&#34;)
-     *             .runtime(&#34;nodejs20&#34;)
+     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()        
+     *             .versionId("v1")
+     *             .service("myapp")
+     *             .runtime("nodejs20")
      *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
-     *                 .shell(&#34;node ./app.js&#34;)
+     *                 .shell("node ./app.js")
      *                 .build())
      *             .deployment(StandardAppVersionDeploymentArgs.builder()
      *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
      *                         var bucketName = values.t1;
      *                         var objectName = values.t2;
-     *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+     *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
      *                     }))
      *                     .build())
      *                 .build())
-     *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+     *             .envVariables(Map.of("port", "8080"))
      *             .deleteServiceOnDestroy(false)
      *             .build());
      * 
@@ -312,7 +317,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -339,7 +345,8 @@ public final class MonitoringFunctions {
      * ### Monitoring App Engine Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -370,34 +377,34 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
-     *             .name(&#34;appengine-static-content&#34;)
-     *             .location(&#34;US&#34;)
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *             .name("appengine-static-content")
+     *             .location("US")
      *             .build());
      * 
-     *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
-     *             .name(&#34;hello-world.zip&#34;)
+     *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+     *             .name("hello-world.zip")
      *             .bucket(bucket.name())
-     *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
+     *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
      *             .build());
      * 
-     *         var myapp = new StandardAppVersion(&#34;myapp&#34;, StandardAppVersionArgs.builder()        
-     *             .versionId(&#34;v1&#34;)
-     *             .service(&#34;myapp&#34;)
-     *             .runtime(&#34;nodejs20&#34;)
+     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()        
+     *             .versionId("v1")
+     *             .service("myapp")
+     *             .runtime("nodejs20")
      *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
-     *                 .shell(&#34;node ./app.js&#34;)
+     *                 .shell("node ./app.js")
      *                 .build())
      *             .deployment(StandardAppVersionDeploymentArgs.builder()
      *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
      *                         var bucketName = values.t1;
      *                         var objectName = values.t2;
-     *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+     *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
      *                     }))
      *                     .build())
      *                 .build())
-     *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+     *             .envVariables(Map.of("port", "8080"))
      *             .deleteServiceOnDestroy(false)
      *             .build());
      * 
@@ -408,7 +415,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -435,7 +443,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Cluster Istio Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -458,15 +467,16 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default ClusterIstio service
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
-     *             .location(&#34;us-west2-a&#34;)
-     *             .clusterName(&#34;west&#34;)
-     *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .serviceName(&#34;istio-policy&#34;)
+     *             .location("us-west2-a")
+     *             .clusterName("west")
+     *             .serviceNamespace("istio-system")
+     *             .serviceName("istio-policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -493,7 +503,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Cluster Istio Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -516,15 +527,16 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default ClusterIstio service
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
-     *             .location(&#34;us-west2-a&#34;)
-     *             .clusterName(&#34;west&#34;)
-     *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .serviceName(&#34;istio-policy&#34;)
+     *             .location("us-west2-a")
+     *             .clusterName("west")
+     *             .serviceNamespace("istio-system")
+     *             .serviceName("istio-policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -551,7 +563,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Cluster Istio Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -574,15 +587,16 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default ClusterIstio service
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
-     *             .location(&#34;us-west2-a&#34;)
-     *             .clusterName(&#34;west&#34;)
-     *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .serviceName(&#34;istio-policy&#34;)
+     *             .location("us-west2-a")
+     *             .clusterName("west")
+     *             .serviceNamespace("istio-system")
+     *             .serviceName("istio-policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -609,7 +623,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Cluster Istio Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -632,15 +647,16 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default ClusterIstio service
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
-     *             .location(&#34;us-west2-a&#34;)
-     *             .clusterName(&#34;west&#34;)
-     *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .serviceName(&#34;istio-policy&#34;)
+     *             .location("us-west2-a")
+     *             .clusterName("west")
+     *             .serviceNamespace("istio-system")
+     *             .serviceName("istio-policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -667,7 +683,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Istio Canonical Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -690,14 +707,15 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
-     *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
-     *             .canonicalService(&#34;prometheus&#34;)
+     *             .meshUid("proj-573164786102")
+     *             .canonicalServiceNamespace("istio-system")
+     *             .canonicalService("prometheus")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -724,7 +742,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Istio Canonical Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -747,14 +766,15 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
-     *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
-     *             .canonicalService(&#34;prometheus&#34;)
+     *             .meshUid("proj-573164786102")
+     *             .canonicalServiceNamespace("istio-system")
+     *             .canonicalService("prometheus")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -781,7 +801,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Istio Canonical Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -804,14 +825,15 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
-     *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
-     *             .canonicalService(&#34;prometheus&#34;)
+     *             .meshUid("proj-573164786102")
+     *             .canonicalServiceNamespace("istio-system")
+     *             .canonicalService("prometheus")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -838,7 +860,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Istio Canonical Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -861,14 +884,15 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
-     *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
-     *             .canonicalService(&#34;prometheus&#34;)
+     *             .meshUid("proj-573164786102")
+     *             .canonicalServiceNamespace("istio-system")
+     *             .canonicalService("prometheus")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -895,7 +919,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Mesh Istio Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -918,14 +943,15 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
-     *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .serviceName(&#34;prometheus&#34;)
+     *             .meshUid("proj-573164786102")
+     *             .serviceNamespace("istio-system")
+     *             .serviceName("prometheus")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -952,7 +978,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Mesh Istio Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -975,14 +1002,15 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
-     *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .serviceName(&#34;prometheus&#34;)
+     *             .meshUid("proj-573164786102")
+     *             .serviceNamespace("istio-system")
+     *             .serviceName("prometheus")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1009,7 +1037,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Mesh Istio Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1032,14 +1061,15 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
-     *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .serviceName(&#34;prometheus&#34;)
+     *             .meshUid("proj-573164786102")
+     *             .serviceNamespace("istio-system")
+     *             .serviceName("prometheus")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1066,7 +1096,8 @@ public final class MonitoringFunctions {
      * ### Monitoring Mesh Istio Service
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1089,14 +1120,15 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
-     *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .serviceName(&#34;prometheus&#34;)
+     *             .meshUid("proj-573164786102")
+     *             .serviceNamespace("istio-system")
+     *             .serviceName("prometheus")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1121,7 +1153,8 @@ public final class MonitoringFunctions {
      * ### Notification Channel Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1147,22 +1180,22 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
-     *             .displayName(&#34;Test Notification Channel&#34;)
+     *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
-     *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
-     *             .combiner(&#34;OR&#34;)
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *             .displayName("My Alert Policy")
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
-     *                 .displayName(&#34;test condition&#34;)
+     *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
-     *                     .duration(&#34;60s&#34;)
-     *                     .comparison(&#34;COMPARISON_GT&#34;)
+     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .duration("60s")
+     *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
-     *                         .alignmentPeriod(&#34;60s&#34;)
-     *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+     *                         .alignmentPeriod("60s")
+     *                         .perSeriesAligner("ALIGN_RATE")
      *                         .build())
      *                     .build())
      *                 .build())
@@ -1170,7 +1203,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1195,7 +1229,8 @@ public final class MonitoringFunctions {
      * ### Notification Channel Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1221,22 +1256,22 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
-     *             .displayName(&#34;Test Notification Channel&#34;)
+     *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
-     *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
-     *             .combiner(&#34;OR&#34;)
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *             .displayName("My Alert Policy")
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
-     *                 .displayName(&#34;test condition&#34;)
+     *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
-     *                     .duration(&#34;60s&#34;)
-     *                     .comparison(&#34;COMPARISON_GT&#34;)
+     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .duration("60s")
+     *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
-     *                         .alignmentPeriod(&#34;60s&#34;)
-     *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+     *                         .alignmentPeriod("60s")
+     *                         .perSeriesAligner("ALIGN_RATE")
      *                         .build())
      *                     .build())
      *                 .build())
@@ -1244,7 +1279,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1269,7 +1305,8 @@ public final class MonitoringFunctions {
      * ### Notification Channel Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1295,22 +1332,22 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
-     *             .displayName(&#34;Test Notification Channel&#34;)
+     *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
-     *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
-     *             .combiner(&#34;OR&#34;)
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *             .displayName("My Alert Policy")
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
-     *                 .displayName(&#34;test condition&#34;)
+     *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
-     *                     .duration(&#34;60s&#34;)
-     *                     .comparison(&#34;COMPARISON_GT&#34;)
+     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .duration("60s")
+     *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
-     *                         .alignmentPeriod(&#34;60s&#34;)
-     *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+     *                         .alignmentPeriod("60s")
+     *                         .perSeriesAligner("ALIGN_RATE")
      *                         .build())
      *                     .build())
      *                 .build())
@@ -1318,7 +1355,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1343,7 +1381,8 @@ public final class MonitoringFunctions {
      * ### Notification Channel Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1369,22 +1408,22 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
-     *             .displayName(&#34;Test Notification Channel&#34;)
+     *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
-     *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
-     *             .combiner(&#34;OR&#34;)
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *             .displayName("My Alert Policy")
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
-     *                 .displayName(&#34;test condition&#34;)
+     *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
-     *                     .duration(&#34;60s&#34;)
-     *                     .comparison(&#34;COMPARISON_GT&#34;)
+     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .duration("60s")
+     *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
-     *                         .alignmentPeriod(&#34;60s&#34;)
-     *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+     *                         .alignmentPeriod("60s")
+     *                         .perSeriesAligner("ALIGN_RATE")
      *                         .build())
      *                     .build())
      *                 .build())
@@ -1392,7 +1431,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1417,7 +1457,8 @@ public final class MonitoringFunctions {
      * ### Notification Channel Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1443,22 +1484,22 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
-     *             .displayName(&#34;Test Notification Channel&#34;)
+     *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
-     *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
-     *             .combiner(&#34;OR&#34;)
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *             .displayName("My Alert Policy")
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
-     *                 .displayName(&#34;test condition&#34;)
+     *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
-     *                     .duration(&#34;60s&#34;)
-     *                     .comparison(&#34;COMPARISON_GT&#34;)
+     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .duration("60s")
+     *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
-     *                         .alignmentPeriod(&#34;60s&#34;)
-     *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+     *                         .alignmentPeriod("60s")
+     *                         .perSeriesAligner("ALIGN_RATE")
      *                         .build())
      *                     .build())
      *                 .build())
@@ -1466,7 +1507,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1491,7 +1533,8 @@ public final class MonitoringFunctions {
      * ### Notification Channel Basic
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1517,22 +1560,22 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
-     *             .displayName(&#34;Test Notification Channel&#34;)
+     *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
-     *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
-     *             .combiner(&#34;OR&#34;)
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *             .displayName("My Alert Policy")
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
-     *                 .displayName(&#34;test condition&#34;)
+     *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
-     *                     .duration(&#34;60s&#34;)
-     *                     .comparison(&#34;COMPARISON_GT&#34;)
+     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .duration("60s")
+     *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
-     *                         .alignmentPeriod(&#34;60s&#34;)
-     *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+     *                         .alignmentPeriod("60s")
+     *                         .perSeriesAligner("ALIGN_RATE")
      *                         .build())
      *                     .build())
      *                 .build())
@@ -1540,7 +1583,8 @@ public final class MonitoringFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1553,7 +1597,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1575,12 +1620,13 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1597,7 +1643,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1619,12 +1666,13 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1641,7 +1689,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1663,12 +1712,13 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1685,7 +1735,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1707,12 +1758,13 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-     *             .secret(&#34;my-secret&#34;)
+     *             .secret("my-secret")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1730,7 +1782,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1752,10 +1805,11 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
      * 
-     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1769,7 +1823,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1791,10 +1846,11 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
      * 
-     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1808,7 +1864,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1830,10 +1887,11 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
      * 
-     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1847,7 +1905,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1869,10 +1928,11 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
      * 
-     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1886,7 +1946,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1908,10 +1969,11 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
      * 
-     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1925,7 +1987,8 @@ public final class MonitoringFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1947,10 +2010,11 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
      * 
-     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

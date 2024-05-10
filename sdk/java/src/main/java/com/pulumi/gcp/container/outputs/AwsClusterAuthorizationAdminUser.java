@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class AwsClusterAuthorizationAdminUser {
     /**
-     * @return The name of the user, e.g. `my-gcp-id@gmail.com`.
+     * @return The name of the user, e.g. `my-gcp-id{@literal @}gmail.com`.
      * 
      */
     private String username;
 
     private AwsClusterAuthorizationAdminUser() {}
     /**
-     * @return The name of the user, e.g. `my-gcp-id@gmail.com`.
+     * @return The name of the user, e.g. `my-gcp-id{@literal @}gmail.com`.
      * 
      */
     public String username() {

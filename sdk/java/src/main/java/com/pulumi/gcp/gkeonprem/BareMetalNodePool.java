@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Gkeonprem Bare Metal Node Pool Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,25 +67,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_basic = new BareMetalCluster(&#34;default-basic&#34;, BareMetalClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
- *             .bareMetalVersion(&#34;1.12.3&#34;)
+ *         var default_basic = new BareMetalCluster("default-basic", BareMetalClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-west1")
+ *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
+ *             .bareMetalVersion("1.12.3")
  *             .networkConfig(BareMetalClusterNetworkConfigArgs.builder()
  *                 .islandModeCidr(BareMetalClusterNetworkConfigIslandModeCidrArgs.builder()
- *                     .serviceAddressCidrBlocks(&#34;172.26.0.0/16&#34;)
- *                     .podAddressCidrBlocks(&#34;10.240.0.0/13&#34;)
+ *                     .serviceAddressCidrBlocks("172.26.0.0/16")
+ *                     .podAddressCidrBlocks("10.240.0.0/13")
  *                     .build())
  *                 .build())
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
  *                         .labels()
- *                         .operatingSystem(&#34;LINUX&#34;)
+ *                         .operatingSystem("LINUX")
  *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
  *                             .labels()
- *                             .nodeIp(&#34;10.200.0.9&#34;)
+ *                             .nodeIp("10.200.0.9")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -94,67 +95,69 @@ import javax.annotation.Nullable;
  *                     .controlPlaneLoadBalancerPort(443)
  *                     .build())
  *                 .vipConfig(BareMetalClusterLoadBalancerVipConfigArgs.builder()
- *                     .controlPlaneVip(&#34;10.200.0.13&#34;)
- *                     .ingressVip(&#34;10.200.0.14&#34;)
+ *                     .controlPlaneVip("10.200.0.13")
+ *                     .ingressVip("10.200.0.14")
  *                     .build())
  *                 .metalLbConfig(BareMetalClusterLoadBalancerMetalLbConfigArgs.builder()
  *                     .addressPools(BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
- *                         .pool(&#34;pool1&#34;)
+ *                         .pool("pool1")
  *                         .addresses(                        
- *                             &#34;10.200.0.14/32&#34;,
- *                             &#34;10.200.0.15/32&#34;,
- *                             &#34;10.200.0.16/32&#34;,
- *                             &#34;10.200.0.17/32&#34;,
- *                             &#34;10.200.0.18/32&#34;,
- *                             &#34;fd00:1::f/128&#34;,
- *                             &#34;fd00:1::10/128&#34;,
- *                             &#34;fd00:1::11/128&#34;,
- *                             &#34;fd00:1::12/128&#34;)
+ *                             "10.200.0.14/32",
+ *                             "10.200.0.15/32",
+ *                             "10.200.0.16/32",
+ *                             "10.200.0.17/32",
+ *                             "10.200.0.18/32",
+ *                             "fd00:1::f/128",
+ *                             "fd00:1::10/128",
+ *                             "fd00:1::11/128",
+ *                             "fd00:1::12/128")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .storage(BareMetalClusterStorageArgs.builder()
  *                 .lvpShareConfig(BareMetalClusterStorageLvpShareConfigArgs.builder()
  *                     .lvpConfig(BareMetalClusterStorageLvpShareConfigLvpConfigArgs.builder()
- *                         .path(&#34;/mnt/localpv-share&#34;)
- *                         .storageClass(&#34;local-shared&#34;)
+ *                         .path("/mnt/localpv-share")
+ *                         .storageClass("local-shared")
  *                         .build())
  *                     .sharedPathPvCount(5)
  *                     .build())
  *                 .lvpNodeMountsConfig(BareMetalClusterStorageLvpNodeMountsConfigArgs.builder()
- *                     .path(&#34;/mnt/localpv-disk&#34;)
- *                     .storageClass(&#34;local-disks&#34;)
+ *                     .path("/mnt/localpv-disk")
+ *                     .storageClass("local-disks")
  *                     .build())
  *                 .build())
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
  *                 .authorization(BareMetalClusterSecurityConfigAuthorizationArgs.builder()
  *                     .adminUsers(BareMetalClusterSecurityConfigAuthorizationAdminUserArgs.builder()
- *                         .username(&#34;admin@hashicorptest.com&#34;)
+ *                         .username("admin{@literal @}hashicorptest.com")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var nodepool_basic = new BareMetalNodePool(&#34;nodepool-basic&#34;, BareMetalNodePoolArgs.builder()        
- *             .name(&#34;my-nodepool&#34;)
+ *         var nodepool_basic = new BareMetalNodePool("nodepool-basic", BareMetalNodePoolArgs.builder()        
+ *             .name("my-nodepool")
  *             .bareMetalCluster(default_basic.name())
- *             .location(&#34;us-west1&#34;)
+ *             .location("us-west1")
  *             .nodePoolConfig(BareMetalNodePoolNodePoolConfigArgs.builder()
- *                 .operatingSystem(&#34;LINUX&#34;)
+ *                 .operatingSystem("LINUX")
  *                 .nodeConfigs(BareMetalNodePoolNodePoolConfigNodeConfigArgs.builder()
- *                     .nodeIp(&#34;10.200.0.11&#34;)
+ *                     .nodeIp("10.200.0.11")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkeonprem Bare Metal Node Pool Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -193,25 +196,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_full = new BareMetalCluster(&#34;default-full&#34;, BareMetalClusterArgs.builder()        
- *             .name(&#34;my-cluster&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
- *             .bareMetalVersion(&#34;1.12.3&#34;)
+ *         var default_full = new BareMetalCluster("default-full", BareMetalClusterArgs.builder()        
+ *             .name("my-cluster")
+ *             .location("us-west1")
+ *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
+ *             .bareMetalVersion("1.12.3")
  *             .networkConfig(BareMetalClusterNetworkConfigArgs.builder()
  *                 .islandModeCidr(BareMetalClusterNetworkConfigIslandModeCidrArgs.builder()
- *                     .serviceAddressCidrBlocks(&#34;172.26.0.0/16&#34;)
- *                     .podAddressCidrBlocks(&#34;10.240.0.0/13&#34;)
+ *                     .serviceAddressCidrBlocks("172.26.0.0/16")
+ *                     .podAddressCidrBlocks("10.240.0.0/13")
  *                     .build())
  *                 .build())
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
  *                         .labels()
- *                         .operatingSystem(&#34;LINUX&#34;)
+ *                         .operatingSystem("LINUX")
  *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
  *                             .labels()
- *                             .nodeIp(&#34;10.200.0.9&#34;)
+ *                             .nodeIp("10.200.0.9")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -221,71 +224,72 @@ import javax.annotation.Nullable;
  *                     .controlPlaneLoadBalancerPort(443)
  *                     .build())
  *                 .vipConfig(BareMetalClusterLoadBalancerVipConfigArgs.builder()
- *                     .controlPlaneVip(&#34;10.200.0.13&#34;)
- *                     .ingressVip(&#34;10.200.0.14&#34;)
+ *                     .controlPlaneVip("10.200.0.13")
+ *                     .ingressVip("10.200.0.14")
  *                     .build())
  *                 .metalLbConfig(BareMetalClusterLoadBalancerMetalLbConfigArgs.builder()
  *                     .addressPools(BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
- *                         .pool(&#34;pool1&#34;)
+ *                         .pool("pool1")
  *                         .addresses(                        
- *                             &#34;10.200.0.14/32&#34;,
- *                             &#34;10.200.0.15/32&#34;,
- *                             &#34;10.200.0.16/32&#34;,
- *                             &#34;10.200.0.17/32&#34;,
- *                             &#34;10.200.0.18/32&#34;,
- *                             &#34;fd00:1::f/128&#34;,
- *                             &#34;fd00:1::10/128&#34;,
- *                             &#34;fd00:1::11/128&#34;,
- *                             &#34;fd00:1::12/128&#34;)
+ *                             "10.200.0.14/32",
+ *                             "10.200.0.15/32",
+ *                             "10.200.0.16/32",
+ *                             "10.200.0.17/32",
+ *                             "10.200.0.18/32",
+ *                             "fd00:1::f/128",
+ *                             "fd00:1::10/128",
+ *                             "fd00:1::11/128",
+ *                             "fd00:1::12/128")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .storage(BareMetalClusterStorageArgs.builder()
  *                 .lvpShareConfig(BareMetalClusterStorageLvpShareConfigArgs.builder()
  *                     .lvpConfig(BareMetalClusterStorageLvpShareConfigLvpConfigArgs.builder()
- *                         .path(&#34;/mnt/localpv-share&#34;)
- *                         .storageClass(&#34;local-shared&#34;)
+ *                         .path("/mnt/localpv-share")
+ *                         .storageClass("local-shared")
  *                         .build())
  *                     .sharedPathPvCount(5)
  *                     .build())
  *                 .lvpNodeMountsConfig(BareMetalClusterStorageLvpNodeMountsConfigArgs.builder()
- *                     .path(&#34;/mnt/localpv-disk&#34;)
- *                     .storageClass(&#34;local-disks&#34;)
+ *                     .path("/mnt/localpv-disk")
+ *                     .storageClass("local-disks")
  *                     .build())
  *                 .build())
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
  *                 .authorization(BareMetalClusterSecurityConfigAuthorizationArgs.builder()
  *                     .adminUsers(BareMetalClusterSecurityConfigAuthorizationAdminUserArgs.builder()
- *                         .username(&#34;admin@hashicorptest.com&#34;)
+ *                         .username("admin{@literal @}hashicorptest.com")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var nodepool_full = new BareMetalNodePool(&#34;nodepool-full&#34;, BareMetalNodePoolArgs.builder()        
- *             .name(&#34;my-nodepool&#34;)
- *             .displayName(&#34;test-name&#34;)
+ *         var nodepool_full = new BareMetalNodePool("nodepool-full", BareMetalNodePoolArgs.builder()        
+ *             .name("my-nodepool")
+ *             .displayName("test-name")
  *             .bareMetalCluster(default_full.name())
- *             .location(&#34;us-west1&#34;)
+ *             .location("us-west1")
  *             .annotations()
  *             .nodePoolConfig(BareMetalNodePoolNodePoolConfigArgs.builder()
- *                 .operatingSystem(&#34;LINUX&#34;)
+ *                 .operatingSystem("LINUX")
  *                 .labels()
  *                 .nodeConfigs(BareMetalNodePoolNodePoolConfigNodeConfigArgs.builder()
- *                     .nodeIp(&#34;10.200.0.11&#34;)
+ *                     .nodeIp("10.200.0.11")
  *                     .labels()
  *                     .build())
  *                 .taints(BareMetalNodePoolNodePoolConfigTaintArgs.builder()
- *                     .key(&#34;test-key&#34;)
- *                     .value(&#34;test-value&#34;)
- *                     .effect(&#34;NO_EXECUTE&#34;)
+ *                     .key("test-key")
+ *                     .value("test-value")
+ *                     .effect("NO_EXECUTE")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Network Security Gateway Security Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,20 +48,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GatewaySecurityPolicy(&#34;default&#34;, GatewaySecurityPolicyArgs.builder()        
- *             .name(&#34;my-gateway-security-policy&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;my description&#34;)
+ *         var default_ = new GatewaySecurityPolicy("default", GatewaySecurityPolicyArgs.builder()        
+ *             .name("my-gateway-security-policy")
+ *             .location("us-central1")
+ *             .description("my description")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Security Gateway Security Policy Tls Inspection Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -107,16 +110,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
- *             .name(&#34;my-basic-ca-pool&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .tier(&#34;DEVOPS&#34;)
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *             .name("my-basic-ca-pool")
+ *             .location("us-central1")
+ *             .tier("DEVOPS")
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
  *                 .publishCaCert(false)
  *                 .publishCrl(false)
  *                 .build())
  *             .issuancePolicy(CaPoolIssuancePolicyArgs.builder()
- *                 .maximumLifetime(&#34;1209600s&#34;)
+ *                 .maximumLifetime("1209600s")
  *                 .baselineValues(CaPoolIssuancePolicyBaselineValuesArgs.builder()
  *                     .caOptions(CaPoolIssuancePolicyBaselineValuesCaOptionsArgs.builder()
  *                         .isCa(false)
@@ -131,20 +134,20 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()        
  *             .pool(default_.name())
- *             .certificateAuthorityId(&#34;my-basic-certificate-authority&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .lifetime(&#34;86400s&#34;)
- *             .type(&#34;SELF_SIGNED&#34;)
+ *             .certificateAuthorityId("my-basic-certificate-authority")
+ *             .location("us-central1")
+ *             .lifetime("86400s")
+ *             .type("SELF_SIGNED")
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;Test LLC&#34;)
- *                         .commonName(&#34;my-ca&#34;)
+ *                         .organization("Test LLC")
+ *                         .commonName("my-ca")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -163,36 +166,37 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .build());
  * 
- *         var nsSa = new ServiceIdentity(&#34;nsSa&#34;, ServiceIdentityArgs.builder()        
- *             .service(&#34;networksecurity.googleapis.com&#34;)
+ *         var nsSa = new ServiceIdentity("nsSa", ServiceIdentityArgs.builder()        
+ *             .service("networksecurity.googleapis.com")
  *             .build());
  * 
- *         var tlsInspectionPermission = new CaPoolIamMember(&#34;tlsInspectionPermission&#34;, CaPoolIamMemberArgs.builder()        
+ *         var tlsInspectionPermission = new CaPoolIamMember("tlsInspectionPermission", CaPoolIamMemberArgs.builder()        
  *             .caPool(default_.id())
- *             .role(&#34;roles/privateca.certificateManager&#34;)
- *             .member(nsSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/privateca.certificateManager")
+ *             .member(nsSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy(&#34;defaultTlsInspectionPolicy&#34;, TlsInspectionPolicyArgs.builder()        
- *             .name(&#34;my-tls-inspection-policy&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy("defaultTlsInspectionPolicy", TlsInspectionPolicyArgs.builder()        
+ *             .name("my-tls-inspection-policy")
+ *             .location("us-central1")
  *             .caPool(default_.id())
  *             .build());
  * 
- *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
- *             .name(&#34;my-gateway-security-policy&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;my description&#34;)
+ *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy("defaultGatewaySecurityPolicy", GatewaySecurityPolicyArgs.builder()        
+ *             .name("my-gateway-security-policy")
+ *             .location("us-central1")
+ *             .description("my description")
  *             .tlsInspectionPolicy(defaultTlsInspectionPolicy.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

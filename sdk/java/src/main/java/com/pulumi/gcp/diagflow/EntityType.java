@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Dialogflow Entity Type Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,33 +56,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicAgent = new Agent(&#34;basicAgent&#34;, AgentArgs.builder()        
- *             .displayName(&#34;example_agent&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
+ *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()        
+ *             .displayName("example_agent")
+ *             .defaultLanguageCode("en")
+ *             .timeZone("America/New_York")
  *             .build());
  * 
- *         var basicEntityType = new EntityType(&#34;basicEntityType&#34;, EntityTypeArgs.builder()        
- *             .displayName(&#34;&#34;)
- *             .kind(&#34;KIND_MAP&#34;)
+ *         var basicEntityType = new EntityType("basicEntityType", EntityTypeArgs.builder()        
+ *             .displayName("")
+ *             .kind("KIND_MAP")
  *             .entities(            
  *                 EntityTypeEntityArgs.builder()
- *                     .value(&#34;value1&#34;)
+ *                     .value("value1")
  *                     .synonyms(                    
- *                         &#34;synonym1&#34;,
- *                         &#34;synonym2&#34;)
+ *                         "synonym1",
+ *                         "synonym2")
  *                     .build(),
  *                 EntityTypeEntityArgs.builder()
- *                     .value(&#34;value2&#34;)
+ *                     .value("value2")
  *                     .synonyms(                    
- *                         &#34;synonym3&#34;,
- *                         &#34;synonym4&#34;)
+ *                         "synonym3",
+ *                         "synonym4")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

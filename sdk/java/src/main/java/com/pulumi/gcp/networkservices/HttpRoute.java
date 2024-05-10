@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Network Services Http Route Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,30 +46,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpRoute(&#34;default&#34;, HttpRouteArgs.builder()        
- *             .name(&#34;my-http-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .hostnames(&#34;example&#34;)
+ *         var default_ = new HttpRoute("default", HttpRouteArgs.builder()        
+ *             .name("my-http-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .hostnames("example")
  *             .rules(HttpRouteRuleArgs.builder()
  *                 .matches(HttpRouteRuleMatchArgs.builder()
  *                     .queryParameters(HttpRouteRuleMatchQueryParameterArgs.builder()
- *                         .queryParameter(&#34;key&#34;)
- *                         .exactMatch(&#34;value&#34;)
+ *                         .queryParameter("key")
+ *                         .exactMatch("value")
  *                         .build())
- *                     .fullPathMatch(&#34;example&#34;)
+ *                     .fullPathMatch("example")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Http Route Matches And Actions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -97,88 +100,88 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpRoute(&#34;default&#34;, HttpRouteArgs.builder()        
- *             .name(&#34;my-http-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .hostnames(&#34;example&#34;)
+ *         var default_ = new HttpRoute("default", HttpRouteArgs.builder()        
+ *             .name("my-http-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .hostnames("example")
  *             .rules(HttpRouteRuleArgs.builder()
  *                 .matches(                
  *                     HttpRouteRuleMatchArgs.builder()
  *                         .headers(HttpRouteRuleMatchHeaderArgs.builder()
- *                             .header(&#34;header&#34;)
+ *                             .header("header")
  *                             .invertMatch(false)
- *                             .regexMatch(&#34;header-value&#34;)
+ *                             .regexMatch("header-value")
  *                             .build())
  *                         .queryParameters(HttpRouteRuleMatchQueryParameterArgs.builder()
- *                             .queryParameter(&#34;key&#34;)
- *                             .exactMatch(&#34;value&#34;)
+ *                             .queryParameter("key")
+ *                             .exactMatch("value")
  *                             .build())
- *                         .prefixMatch(&#34;example&#34;)
+ *                         .prefixMatch("example")
  *                         .ignoreCase(false)
  *                         .build(),
  *                     HttpRouteRuleMatchArgs.builder()
  *                         .headers(HttpRouteRuleMatchHeaderArgs.builder()
- *                             .header(&#34;header&#34;)
+ *                             .header("header")
  *                             .invertMatch(false)
  *                             .presentMatch(true)
  *                             .build())
  *                         .queryParameters(HttpRouteRuleMatchQueryParameterArgs.builder()
- *                             .queryParameter(&#34;key&#34;)
- *                             .regexMatch(&#34;value&#34;)
+ *                             .queryParameter("key")
+ *                             .regexMatch("value")
  *                             .build())
- *                         .regexMatch(&#34;example&#34;)
+ *                         .regexMatch("example")
  *                         .ignoreCase(false)
  *                         .build(),
  *                     HttpRouteRuleMatchArgs.builder()
  *                         .headers(HttpRouteRuleMatchHeaderArgs.builder()
- *                             .header(&#34;header&#34;)
+ *                             .header("header")
  *                             .invertMatch(false)
  *                             .presentMatch(true)
  *                             .build())
  *                         .queryParameters(HttpRouteRuleMatchQueryParameterArgs.builder()
- *                             .queryParameter(&#34;key&#34;)
+ *                             .queryParameter("key")
  *                             .presentMatch(true)
  *                             .build())
- *                         .fullPathMatch(&#34;example&#34;)
+ *                         .fullPathMatch("example")
  *                         .ignoreCase(false)
  *                         .build())
  *                 .action(HttpRouteRuleActionArgs.builder()
  *                     .redirect(HttpRouteRuleActionRedirectArgs.builder()
- *                         .hostRedirect(&#34;new-host&#34;)
- *                         .pathRedirect(&#34;new-path&#34;)
- *                         .prefixRewrite(&#34;new-prefix&#34;)
+ *                         .hostRedirect("new-host")
+ *                         .pathRedirect("new-path")
+ *                         .prefixRewrite("new-prefix")
  *                         .httpsRedirect(true)
  *                         .stripQuery(true)
  *                         .portRedirect(8081)
  *                         .build())
  *                     .urlRewrite(HttpRouteRuleActionUrlRewriteArgs.builder()
- *                         .pathPrefixRewrite(&#34;new-prefix&#34;)
- *                         .hostRewrite(&#34;new-host&#34;)
+ *                         .pathPrefixRewrite("new-prefix")
+ *                         .hostRewrite("new-host")
  *                         .build())
  *                     .retryPolicy(HttpRouteRuleActionRetryPolicyArgs.builder()
- *                         .retryConditions(&#34;server_error&#34;)
+ *                         .retryConditions("server_error")
  *                         .numRetries(1)
- *                         .perTryTimeout(&#34;1s&#34;)
+ *                         .perTryTimeout("1s")
  *                         .build())
  *                     .requestMirrorPolicy(HttpRouteRuleActionRequestMirrorPolicyArgs.builder()
  *                         .destination(HttpRouteRuleActionRequestMirrorPolicyDestinationArgs.builder()
- *                             .serviceName(&#34;new&#34;)
+ *                             .serviceName("new")
  *                             .weight(1)
  *                             .build())
  *                         .build())
  *                     .corsPolicy(HttpRouteRuleActionCorsPolicyArgs.builder()
- *                         .allowOrigins(&#34;example&#34;)
+ *                         .allowOrigins("example")
  *                         .allowMethods(                        
- *                             &#34;GET&#34;,
- *                             &#34;PUT&#34;)
+ *                             "GET",
+ *                             "PUT")
  *                         .allowHeaders(                        
- *                             &#34;version&#34;,
- *                             &#34;type&#34;)
+ *                             "version",
+ *                             "type")
  *                         .exposeHeaders(                        
- *                             &#34;version&#34;,
- *                             &#34;type&#34;)
- *                         .maxAge(&#34;1s&#34;)
+ *                             "version",
+ *                             "type")
+ *                         .maxAge("1s")
  *                         .allowCredentials(true)
  *                         .disabled(false)
  *                         .build())
@@ -188,12 +191,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Http Route Actions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -226,16 +231,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HttpRoute(&#34;default&#34;, HttpRouteArgs.builder()        
- *             .name(&#34;my-http-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .hostnames(&#34;example&#34;)
+ *         var default_ = new HttpRoute("default", HttpRouteArgs.builder()        
+ *             .name("my-http-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .hostnames("example")
  *             .rules(HttpRouteRuleArgs.builder()
  *                 .action(HttpRouteRuleActionArgs.builder()
  *                     .faultInjectionPolicy(HttpRouteRuleActionFaultInjectionPolicyArgs.builder()
  *                         .delay(HttpRouteRuleActionFaultInjectionPolicyDelayArgs.builder()
- *                             .fixedDelay(&#34;1s&#34;)
+ *                             .fixedDelay("1s")
  *                             .percentage(1)
  *                             .build())
  *                         .abort(HttpRouteRuleActionFaultInjectionPolicyAbortArgs.builder()
@@ -244,50 +249,50 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .urlRewrite(HttpRouteRuleActionUrlRewriteArgs.builder()
- *                         .pathPrefixRewrite(&#34;new-prefix&#34;)
- *                         .hostRewrite(&#34;new-host&#34;)
+ *                         .pathPrefixRewrite("new-prefix")
+ *                         .hostRewrite("new-host")
  *                         .build())
  *                     .retryPolicy(HttpRouteRuleActionRetryPolicyArgs.builder()
- *                         .retryConditions(&#34;server_error&#34;)
+ *                         .retryConditions("server_error")
  *                         .numRetries(1)
- *                         .perTryTimeout(&#34;1s&#34;)
+ *                         .perTryTimeout("1s")
  *                         .build())
  *                     .requestMirrorPolicy(HttpRouteRuleActionRequestMirrorPolicyArgs.builder()
  *                         .destination(HttpRouteRuleActionRequestMirrorPolicyDestinationArgs.builder()
- *                             .serviceName(&#34;new&#34;)
+ *                             .serviceName("new")
  *                             .weight(1)
  *                             .build())
  *                         .build())
  *                     .corsPolicy(HttpRouteRuleActionCorsPolicyArgs.builder()
- *                         .allowOrigins(&#34;example&#34;)
+ *                         .allowOrigins("example")
  *                         .allowMethods(                        
- *                             &#34;GET&#34;,
- *                             &#34;PUT&#34;)
+ *                             "GET",
+ *                             "PUT")
  *                         .allowHeaders(                        
- *                             &#34;version&#34;,
- *                             &#34;type&#34;)
+ *                             "version",
+ *                             "type")
  *                         .exposeHeaders(                        
- *                             &#34;version&#34;,
- *                             &#34;type&#34;)
- *                         .maxAge(&#34;1s&#34;)
+ *                             "version",
+ *                             "type")
+ *                         .maxAge("1s")
  *                         .allowCredentials(true)
  *                         .disabled(false)
  *                         .build())
  *                     .requestHeaderModifier(HttpRouteRuleActionRequestHeaderModifierArgs.builder()
  *                         .set(Map.ofEntries(
- *                             Map.entry(&#34;version&#34;, &#34;1&#34;),
- *                             Map.entry(&#34;type&#34;, &#34;json&#34;)
+ *                             Map.entry("version", "1"),
+ *                             Map.entry("type", "json")
  *                         ))
- *                         .add(Map.of(&#34;minor-version&#34;, &#34;1&#34;))
- *                         .removes(&#34;arg&#34;)
+ *                         .add(Map.of("minor-version", "1"))
+ *                         .removes("arg")
  *                         .build())
  *                     .responseHeaderModifier(HttpRouteRuleActionResponseHeaderModifierArgs.builder()
  *                         .set(Map.ofEntries(
- *                             Map.entry(&#34;version&#34;, &#34;1&#34;),
- *                             Map.entry(&#34;type&#34;, &#34;json&#34;)
+ *                             Map.entry("version", "1"),
+ *                             Map.entry("type", "json")
  *                         ))
- *                         .add(Map.of(&#34;minor-version&#34;, &#34;1&#34;))
- *                         .removes(&#34;removearg&#34;)
+ *                         .add(Map.of("minor-version", "1"))
+ *                         .removes("removearg")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -295,12 +300,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Http Route Mesh Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -324,32 +331,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Mesh(&#34;default&#34;, MeshArgs.builder()        
- *             .name(&#34;my-http-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var default_ = new Mesh("default", MeshArgs.builder()        
+ *             .name("my-http-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .build());
  * 
- *         var defaultHttpRoute = new HttpRoute(&#34;defaultHttpRoute&#34;, HttpRouteArgs.builder()        
- *             .name(&#34;my-http-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .hostnames(&#34;example&#34;)
+ *         var defaultHttpRoute = new HttpRoute("defaultHttpRoute", HttpRouteArgs.builder()        
+ *             .name("my-http-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .hostnames("example")
  *             .meshes(default_.id())
  *             .rules(HttpRouteRuleArgs.builder()
  *                 .matches(HttpRouteRuleMatchArgs.builder()
  *                     .queryParameters(HttpRouteRuleMatchQueryParameterArgs.builder()
- *                         .queryParameter(&#34;key&#34;)
- *                         .exactMatch(&#34;value&#34;)
+ *                         .queryParameter("key")
+ *                         .exactMatch("value")
  *                         .build())
- *                     .fullPathMatch(&#34;example&#34;)
+ *                     .fullPathMatch("example")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

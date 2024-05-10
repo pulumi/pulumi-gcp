@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Iam Deny Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,52 +59,53 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
- *             .name(&#34;my-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("my-project")
+ *             .name("my-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var test_account = new Account(&#34;test-account&#34;, AccountArgs.builder()        
- *             .accountId(&#34;svc-acc&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
+ *         var test_account = new Account("test-account", AccountArgs.builder()        
+ *             .accountId("svc-acc")
+ *             .displayName("Test Service Account")
  *             .project(project.projectId())
  *             .build());
  * 
- *         var example = new DenyPolicy(&#34;example&#34;, DenyPolicyArgs.builder()        
- *             .parent(StdFunctions.urlencode().applyValue(invoke -&gt; invoke.result()))
- *             .name(&#34;my-deny-policy&#34;)
- *             .displayName(&#34;A deny rule&#34;)
+ *         var example = new DenyPolicy("example", DenyPolicyArgs.builder()        
+ *             .parent(StdFunctions.urlencode().applyValue(invoke -> invoke.result()))
+ *             .name("my-deny-policy")
+ *             .displayName("A deny rule")
  *             .rules(            
  *                 DenyPolicyRuleArgs.builder()
- *                     .description(&#34;First rule&#34;)
+ *                     .description("First rule")
  *                     .denyRule(DenyPolicyRuleDenyRuleArgs.builder()
- *                         .deniedPrincipals(&#34;principalSet://goog/public:all&#34;)
+ *                         .deniedPrincipals("principalSet://goog/public:all")
  *                         .denialCondition(DenyPolicyRuleDenyRuleDenialConditionArgs.builder()
- *                             .title(&#34;Some expr&#34;)
- *                             .expression(&#34;!resource.matchTag(&#39;12345678/env&#39;, &#39;test&#39;)&#34;)
+ *                             .title("Some expr")
+ *                             .expression("!resource.matchTag('12345678/env', 'test')")
  *                             .build())
- *                         .deniedPermissions(&#34;cloudresourcemanager.googleapis.com/projects.update&#34;)
+ *                         .deniedPermissions("cloudresourcemanager.googleapis.com/projects.update")
  *                         .build())
  *                     .build(),
  *                 DenyPolicyRuleArgs.builder()
- *                     .description(&#34;Second rule&#34;)
+ *                     .description("Second rule")
  *                     .denyRule(DenyPolicyRuleDenyRuleArgs.builder()
- *                         .deniedPrincipals(&#34;principalSet://goog/public:all&#34;)
+ *                         .deniedPrincipals("principalSet://goog/public:all")
  *                         .denialCondition(DenyPolicyRuleDenyRuleDenialConditionArgs.builder()
- *                             .title(&#34;Some expr&#34;)
- *                             .expression(&#34;!resource.matchTag(&#39;12345678/env&#39;, &#39;test&#39;)&#34;)
+ *                             .title("Some expr")
+ *                             .expression("!resource.matchTag('12345678/env', 'test')")
  *                             .build())
- *                         .deniedPermissions(&#34;cloudresourcemanager.googleapis.com/projects.update&#34;)
- *                         .exceptionPrincipals(test_account.email().applyValue(email -&gt; String.format(&#34;principal://iam.googleapis.com/projects/-/serviceAccounts/%s&#34;, email)))
+ *                         .deniedPermissions("cloudresourcemanager.googleapis.com/projects.update")
+ *                         .exceptionPrincipals(test_account.email().applyValue(email -> String.format("principal://iam.googleapis.com/projects/-/serviceAccounts/%s", email)))
  *                         .build())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

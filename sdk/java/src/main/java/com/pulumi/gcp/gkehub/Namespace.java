@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Gkehub Namespace Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,29 +54,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
- *             .scopeId(&#34;tf-test-scope_8493&#34;)
+ *         var scope = new Scope("scope", ScopeArgs.builder()        
+ *             .scopeId("tf-test-scope_8493")
  *             .build());
  * 
- *         var namespace = new Namespace(&#34;namespace&#34;, NamespaceArgs.builder()        
- *             .scopeNamespaceId(&#34;tf-test-namespace_9106&#34;)
+ *         var namespace = new Namespace("namespace", NamespaceArgs.builder()        
+ *             .scopeNamespaceId("tf-test-namespace_9106")
  *             .scopeId(scope.scopeId())
  *             .scope(scope.name())
  *             .namespaceLabels(Map.ofEntries(
- *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
- *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
- *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *                 Map.entry("keyb", "valueb"),
+ *                 Map.entry("keya", "valuea"),
+ *                 Map.entry("keyc", "valuec")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
- *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
- *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *                 Map.entry("keyb", "valueb"),
+ *                 Map.entry("keya", "valuea"),
+ *                 Map.entry("keyc", "valuec")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

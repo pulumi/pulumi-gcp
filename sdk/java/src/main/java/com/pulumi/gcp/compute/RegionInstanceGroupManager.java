@@ -46,7 +46,8 @@ import javax.annotation.Nullable;
  * ### With Top Level Instance Template (`Google` Provider)
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -74,36 +75,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var autohealing = new HealthCheck(&#34;autohealing&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;autohealing-health-check&#34;)
+ *         var autohealing = new HealthCheck("autohealing", HealthCheckArgs.builder()        
+ *             .name("autohealing-health-check")
  *             .checkIntervalSec(5)
  *             .timeoutSec(5)
  *             .healthyThreshold(2)
  *             .unhealthyThreshold(10)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
- *                 .requestPath(&#34;/healthz&#34;)
- *                 .port(&#34;8080&#34;)
+ *                 .requestPath("/healthz")
+ *                 .port("8080")
  *                 .build())
  *             .build());
  * 
- *         var appserver = new RegionInstanceGroupManager(&#34;appserver&#34;, RegionInstanceGroupManagerArgs.builder()        
- *             .name(&#34;appserver-igm&#34;)
- *             .baseInstanceName(&#34;app&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var appserver = new RegionInstanceGroupManager("appserver", RegionInstanceGroupManagerArgs.builder()        
+ *             .name("appserver-igm")
+ *             .baseInstanceName("app")
+ *             .region("us-central1")
  *             .distributionPolicyZones(            
- *                 &#34;us-central1-a&#34;,
- *                 &#34;us-central1-f&#34;)
+ *                 "us-central1-a",
+ *                 "us-central1-f")
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(appserverGoogleComputeInstanceTemplate.selfLinkUnique())
  *                 .build())
  *             .allInstancesConfig(RegionInstanceGroupManagerAllInstancesConfigArgs.builder()
- *                 .metadata(Map.of(&#34;metadata_key&#34;, &#34;metadata_value&#34;))
- *                 .labels(Map.of(&#34;label_key&#34;, &#34;label_value&#34;))
+ *                 .metadata(Map.of("metadata_key", "metadata_value"))
+ *                 .labels(Map.of("label_key", "label_value"))
  *                 .build())
  *             .targetPools(appserverGoogleComputeTargetPool.id())
  *             .targetSize(2)
  *             .namedPorts(RegionInstanceGroupManagerNamedPortArgs.builder()
- *                 .name(&#34;custom&#34;)
+ *                 .name("custom")
  *                 .port(8888)
  *                 .build())
  *             .autoHealingPolicies(RegionInstanceGroupManagerAutoHealingPoliciesArgs.builder()
@@ -114,12 +115,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### With Multiple Versions
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -142,10 +145,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var appserver = new RegionInstanceGroupManager(&#34;appserver&#34;, RegionInstanceGroupManagerArgs.builder()        
- *             .name(&#34;appserver-igm&#34;)
- *             .baseInstanceName(&#34;app&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var appserver = new RegionInstanceGroupManager("appserver", RegionInstanceGroupManagerArgs.builder()        
+ *             .name("appserver-igm")
+ *             .baseInstanceName("app")
+ *             .region("us-central1")
  *             .targetSize(5)
  *             .versions(            
  *                 RegionInstanceGroupManagerVersionArgs.builder()
@@ -161,7 +164,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

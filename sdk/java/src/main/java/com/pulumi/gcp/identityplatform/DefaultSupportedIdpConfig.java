@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Identity Platform Default Supported Idp Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var idpConfig = new DefaultSupportedIdpConfig(&#34;idpConfig&#34;, DefaultSupportedIdpConfigArgs.builder()        
+ *         var idpConfig = new DefaultSupportedIdpConfig("idpConfig", DefaultSupportedIdpConfigArgs.builder()        
  *             .enabled(true)
- *             .idpId(&#34;playgames.google.com&#34;)
- *             .clientId(&#34;client-id&#34;)
- *             .clientSecret(&#34;secret&#34;)
+ *             .idpId("playgames.google.com")
+ *             .clientId("client-id")
+ *             .clientSecret("secret")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

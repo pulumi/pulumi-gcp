@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Tpu V2 Vm Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,20 +57,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var available = TpuFunctions.getV2RuntimeVersions();
  * 
- *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
- *             .name(&#34;test-tpu&#34;)
- *             .zone(&#34;us-central1-c&#34;)
- *             .runtimeVersion(&#34;tpu-vm-tf-2.13.0&#34;)
+ *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+ *             .name("test-tpu")
+ *             .zone("us-central1-c")
+ *             .runtimeVersion("tpu-vm-tf-2.13.0")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Tpu V2 Vm Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -113,41 +116,41 @@ import javax.annotation.Nullable;
  * 
  *         final var availableGetV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
  * 
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;tpu-net&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("tpu-net")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;tpu-subnet&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()        
+ *             .name("tpu-subnet")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
  *             .network(network.id())
  *             .build());
  * 
- *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
- *             .accountId(&#34;tpu-sa&#34;)
- *             .displayName(&#34;Test TPU VM&#34;)
+ *         var sa = new Account("sa", AccountArgs.builder()        
+ *             .accountId("tpu-sa")
+ *             .displayName("Test TPU VM")
  *             .build());
  * 
- *         var disk = new Disk(&#34;disk&#34;, DiskArgs.builder()        
- *             .name(&#34;tpu-disk&#34;)
- *             .image(&#34;debian-cloud/debian-11&#34;)
+ *         var disk = new Disk("disk", DiskArgs.builder()        
+ *             .name("tpu-disk")
+ *             .image("debian-cloud/debian-11")
  *             .size(10)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-c&#34;)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-c")
  *             .build());
  * 
- *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
- *             .name(&#34;test-tpu&#34;)
- *             .zone(&#34;us-central1-c&#34;)
- *             .description(&#34;Text description of the TPU.&#34;)
- *             .runtimeVersion(&#34;tpu-vm-tf-2.13.0&#34;)
+ *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+ *             .name("test-tpu")
+ *             .zone("us-central1-c")
+ *             .description("Text description of the TPU.")
+ *             .runtimeVersion("tpu-vm-tf-2.13.0")
  *             .acceleratorConfig(V2VmAcceleratorConfigArgs.builder()
- *                 .type(&#34;V2&#34;)
- *                 .topology(&#34;2x2&#34;)
+ *                 .type("V2")
+ *                 .topology("2x2")
  *                 .build())
- *             .cidrBlock(&#34;10.0.0.0/29&#34;)
+ *             .cidrBlock("10.0.0.0/29")
  *             .networkConfig(V2VmNetworkConfigArgs.builder()
  *                 .canIpForward(true)
  *                 .enableExternalIps(true)
@@ -162,25 +165,26 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .serviceAccount(V2VmServiceAccountArgs.builder()
  *                 .email(sa.email())
- *                 .scopes(&#34;https://www.googleapis.com/auth/cloud-platform&#34;)
+ *                 .scopes("https://www.googleapis.com/auth/cloud-platform")
  *                 .build())
  *             .dataDisks(V2VmDataDiskArgs.builder()
  *                 .sourceDisk(disk.id())
- *                 .mode(&#34;READ_ONLY&#34;)
+ *                 .mode("READ_ONLY")
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .tags(&#34;foo&#34;)
+ *             .labels(Map.of("foo", "bar"))
+ *             .metadata(Map.of("foo", "bar"))
+ *             .tags("foo")
  *             .build());
  * 
  *         // Wait after service account creation to limit eventual consistency errors.
- *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;60s&#34;)
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *             .createDuration("60s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Cloudrunv2 Job Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,13 +61,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .name(&#34;cloudrun-job&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Job("default", JobArgs.builder()        
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -74,12 +75,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Job Limits
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,17 +105,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .name(&#34;cloudrun-job&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Job("default", JobArgs.builder()        
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                         .resources(JobTemplateTemplateContainerResourcesArgs.builder()
  *                             .limits(Map.ofEntries(
- *                                 Map.entry(&#34;cpu&#34;, &#34;2&#34;),
- *                                 Map.entry(&#34;memory&#34;, &#34;1024Mi&#34;)
+ *                                 Map.entry("cpu", "2"),
+ *                                 Map.entry("memory", "1024Mi")
  *                             ))
  *                             .build())
  *                         .build())
@@ -122,12 +125,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Job Sql
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -163,53 +168,53 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret&#34;)
+ *         var secret = new Secret("secret", SecretArgs.builder()        
+ *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;cloudrun-sql&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("cloudrun-sql")
+ *             .region("us-central1")
+ *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .name(&#34;cloudrun-job&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Job("default", JobArgs.builder()        
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .volumes(JobTemplateTemplateVolumeArgs.builder()
- *                         .name(&#34;cloudsql&#34;)
+ *                         .name("cloudsql")
  *                         .cloudSqlInstance(JobTemplateTemplateVolumeCloudSqlInstanceArgs.builder()
  *                             .instances(instance.connectionName())
  *                             .build())
  *                         .build())
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                         .envs(                        
  *                             JobTemplateTemplateContainerEnvArgs.builder()
- *                                 .name(&#34;FOO&#34;)
- *                                 .value(&#34;bar&#34;)
+ *                                 .name("FOO")
+ *                                 .value("bar")
  *                                 .build(),
  *                             JobTemplateTemplateContainerEnvArgs.builder()
- *                                 .name(&#34;latestdclsecret&#34;)
+ *                                 .name("latestdclsecret")
  *                                 .valueSource(JobTemplateTemplateContainerEnvValueSourceArgs.builder()
  *                                     .secretKeyRef(JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs.builder()
  *                                         .secret(secret.secretId())
- *                                         .version(&#34;1&#34;)
+ *                                         .version("1")
  *                                         .build())
  *                                     .build())
  *                                 .build())
  *                         .volumeMounts(JobTemplateTemplateContainerVolumeMountArgs.builder()
- *                             .name(&#34;cloudsql&#34;)
- *                             .mountPath(&#34;/cloudsql&#34;)
+ *                             .name("cloudsql")
+ *                             .mountPath("/cloudsql")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -218,25 +223,27 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var secret_version_data = new SecretVersion(&#34;secret-version-data&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()        
  *             .secret(secret.name())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
  *             .secretId(secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Job Vpcaccess
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -267,40 +274,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customTestNetwork = new Network(&#34;customTestNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;run-network&#34;)
+ *         var customTestNetwork = new Network("customTestNetwork", NetworkArgs.builder()        
+ *             .name("run-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var customTest = new Subnetwork(&#34;customTest&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;run-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.2.0.0/28&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var customTest = new Subnetwork("customTest", SubnetworkArgs.builder()        
+ *             .name("run-subnetwork")
+ *             .ipCidrRange("10.2.0.0/28")
+ *             .region("us-central1")
  *             .network(customTestNetwork.id())
  *             .build());
  * 
- *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
- *             .name(&#34;run-vpc&#34;)
+ *         var connector = new Connector("connector", ConnectorArgs.builder()        
+ *             .name("run-vpc")
  *             .subnet(ConnectorSubnetArgs.builder()
  *                 .name(customTest.name())
  *                 .build())
- *             .machineType(&#34;e2-standard-4&#34;)
+ *             .machineType("e2-standard-4")
  *             .minInstances(2)
  *             .maxInstances(3)
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .build());
  * 
- *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .name(&#34;cloudrun-job&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Job("default", JobArgs.builder()        
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                         .build())
  *                     .vpcAccess(JobTemplateTemplateVpcAccessArgs.builder()
  *                         .connector(connector.id())
- *                         .egress(&#34;ALL_TRAFFIC&#34;)
+ *                         .egress("ALL_TRAFFIC")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -308,12 +315,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Job Directvpc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -337,25 +346,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .name(&#34;cloudrun-job&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .launchStage(&#34;BETA&#34;)
+ *         var default_ = new Job("default", JobArgs.builder()        
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
+ *             .launchStage("BETA")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/job&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
  *                         .build())
  *                     .vpcAccess(JobTemplateTemplateVpcAccessArgs.builder()
  *                         .networkInterfaces(JobTemplateTemplateVpcAccessNetworkInterfaceArgs.builder()
- *                             .network(&#34;default&#34;)
- *                             .subnetwork(&#34;default&#34;)
+ *                             .network("default")
+ *                             .subnetwork("default")
  *                             .tags(                            
- *                                 &#34;tag1&#34;,
- *                                 &#34;tag2&#34;,
- *                                 &#34;tag3&#34;)
+ *                                 "tag1",
+ *                                 "tag2",
+ *                                 "tag3")
  *                             .build())
- *                         .egress(&#34;ALL_TRAFFIC&#34;)
+ *                         .egress("ALL_TRAFFIC")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -363,12 +372,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Job Secret
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -401,35 +412,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret&#34;)
+ *         var secret = new Secret("secret", SecretArgs.builder()        
+ *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .name(&#34;cloudrun-job&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Job("default", JobArgs.builder()        
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .volumes(JobTemplateTemplateVolumeArgs.builder()
- *                         .name(&#34;a-volume&#34;)
+ *                         .name("a-volume")
  *                         .secret(JobTemplateTemplateVolumeSecretArgs.builder()
  *                             .secret(secret.secretId())
  *                             .defaultMode(292)
  *                             .items(JobTemplateTemplateVolumeSecretItemArgs.builder()
- *                                 .version(&#34;1&#34;)
- *                                 .path(&#34;my-secret&#34;)
+ *                                 .version("1")
+ *                                 .path("my-secret")
  *                                 .mode(256)
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                         .volumeMounts(JobTemplateTemplateContainerVolumeMountArgs.builder()
- *                             .name(&#34;a-volume&#34;)
- *                             .mountPath(&#34;/secrets&#34;)
+ *                             .name("a-volume")
+ *                             .mountPath("/secrets")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -438,25 +449,27 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var secret_version_data = new SecretVersion(&#34;secret-version-data&#34;, SecretVersionArgs.builder()        
+ *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()        
  *             .secret(secret.name())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
  *             .secretId(secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Job Emptydir
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -479,24 +492,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .name(&#34;cloudrun-job&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .launchStage(&#34;BETA&#34;)
+ *         var default_ = new Job("default", JobArgs.builder()        
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
+ *             .launchStage("BETA")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                         .volumeMounts(JobTemplateTemplateContainerVolumeMountArgs.builder()
- *                             .name(&#34;empty-dir-volume&#34;)
- *                             .mountPath(&#34;/mnt&#34;)
+ *                             .name("empty-dir-volume")
+ *                             .mountPath("/mnt")
  *                             .build())
  *                         .build())
  *                     .volumes(JobTemplateTemplateVolumeArgs.builder()
- *                         .name(&#34;empty-dir-volume&#34;)
+ *                         .name("empty-dir-volume")
  *                         .emptyDir(JobTemplateTemplateVolumeEmptyDirArgs.builder()
- *                             .medium(&#34;MEMORY&#34;)
- *                             .sizeLimit(&#34;128Mi&#34;)
+ *                             .medium("MEMORY")
+ *                             .sizeLimit("128Mi")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -505,7 +518,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

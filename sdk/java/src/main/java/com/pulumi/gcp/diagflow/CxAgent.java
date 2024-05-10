@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Dialogflowcx Agent Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,23 +66,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;dialogflowcx-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("dialogflowcx-bucket")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var fullAgent = new CxAgent(&#34;fullAgent&#34;, CxAgentArgs.builder()        
- *             .displayName(&#34;dialogflowcx-agent&#34;)
- *             .location(&#34;global&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
+ *         var fullAgent = new CxAgent("fullAgent", CxAgentArgs.builder()        
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            
- *                 &#34;fr&#34;,
- *                 &#34;de&#34;,
- *                 &#34;es&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .description(&#34;Example description.&#34;)
- *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *                 "fr",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
  *             .enableStackdriverLogging(true)
  *             .enableSpellCorrection(true)
  *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
@@ -89,34 +90,34 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .advancedSettings(CxAgentAdvancedSettingsArgs.builder()
  *                 .audioExportGcsDestination(CxAgentAdvancedSettingsAudioExportGcsDestinationArgs.builder()
- *                     .uri(bucket.url().applyValue(url -&gt; String.format(&#34;%s/prefix-&#34;, url)))
+ *                     .uri(bucket.url().applyValue(url -> String.format("%s/prefix-", url)))
  *                     .build())
  *                 .dtmfSettings(CxAgentAdvancedSettingsDtmfSettingsArgs.builder()
  *                     .enabled(true)
  *                     .maxDigits(1)
- *                     .finishDigit(&#34;#&#34;)
+ *                     .finishDigit("#")
  *                     .build())
  *                 .build())
  *             .gitIntegrationSettings(CxAgentGitIntegrationSettingsArgs.builder()
  *                 .githubSettings(CxAgentGitIntegrationSettingsGithubSettingsArgs.builder()
- *                     .displayName(&#34;Github Repo&#34;)
- *                     .repositoryUri(&#34;https://api.github.com/repos/githubtraining/hellogitworld&#34;)
- *                     .trackingBranch(&#34;main&#34;)
- *                     .accessToken(&#34;secret-token&#34;)
- *                     .branches(&#34;main&#34;)
+ *                     .displayName("Github Repo")
+ *                     .repositoryUri("https://api.github.com/repos/githubtraining/hellogitworld")
+ *                     .trackingBranch("main")
+ *                     .accessToken("secret-token")
+ *                     .branches("main")
  *                     .build())
  *                 .build())
  *             .textToSpeechSettings(CxAgentTextToSpeechSettingsArgs.builder()
  *                 .synthesizeSpeechConfigs(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;en&#34;, jsonObject(
- *                             jsonProperty(&#34;voice&#34;, jsonObject(
- *                                 jsonProperty(&#34;name&#34;, &#34;en-US-Neural2-A&#34;)
+ *                         jsonProperty("en", jsonObject(
+ *                             jsonProperty("voice", jsonObject(
+ *                                 jsonProperty("name", "en-US-Neural2-A")
  *                             ))
  *                         )),
- *                         jsonProperty(&#34;fr&#34;, jsonObject(
- *                             jsonProperty(&#34;voice&#34;, jsonObject(
- *                                 jsonProperty(&#34;name&#34;, &#34;fr-CA-Neural2-A&#34;)
+ *                         jsonProperty("fr", jsonObject(
+ *                             jsonProperty("voice", jsonObject(
+ *                                 jsonProperty("name", "fr-CA-Neural2-A")
  *                             ))
  *                         ))
  *                     )))
@@ -125,7 +126,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

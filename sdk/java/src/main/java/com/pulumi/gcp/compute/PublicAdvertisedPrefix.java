@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Public Advertised Prefixes Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,16 +50,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prefixes = new PublicAdvertisedPrefix(&#34;prefixes&#34;, PublicAdvertisedPrefixArgs.builder()        
- *             .name(&#34;my-prefix&#34;)
- *             .description(&#34;description&#34;)
- *             .dnsVerificationIp(&#34;127.127.0.0&#34;)
- *             .ipCidrRange(&#34;127.127.0.0/16&#34;)
+ *         var prefixes = new PublicAdvertisedPrefix("prefixes", PublicAdvertisedPrefixArgs.builder()        
+ *             .name("my-prefix")
+ *             .description("description")
+ *             .dnsVerificationIp("127.127.0.0")
+ *             .ipCidrRange("127.127.0.0/16")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

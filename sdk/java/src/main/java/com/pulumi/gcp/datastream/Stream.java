@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Datastream Stream Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,12 +90,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .databaseVersion(&#34;MYSQL_8_0&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .region("us-central1")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
  *                     .enabled(true)
  *                     .binaryLogEnabled(true)
@@ -102,46 +103,46 @@ import javax.annotation.Nullable;
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
  *                     .authorizedNetworks(                    
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.71.242.81&#34;)
+ *                             .value("34.71.242.81")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.28.29&#34;)
+ *                             .value("34.72.28.29")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.6.157&#34;)
+ *                             .value("34.67.6.157")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.234.134&#34;)
+ *                             .value("34.67.234.134")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.239.218&#34;)
+ *                             .value("34.72.239.218")
  *                             .build())
  *                     .build())
  *                 .build())
  *             .deletionProtection(true)
  *             .build());
  * 
- *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()        
  *             .instance(instance.name())
- *             .name(&#34;db&#34;)
+ *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;user&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("user")
  *             .instance(instance.name())
- *             .host(&#34;%&#34;)
+ *             .host("%")
  *             .password(pwd.result())
  *             .build());
  * 
- *         var sourceConnectionProfile = new ConnectionProfile(&#34;sourceConnectionProfile&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Source connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;source-profile&#34;)
+ *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()        
+ *             .displayName("Source connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("source-profile")
  *             .mysqlProfile(ConnectionProfileMysqlProfileArgs.builder()
  *                 .hostname(instance.publicIpAddress())
  *                 .username(user.name())
@@ -149,84 +150,84 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;my-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("my-bucket")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var viewer = new BucketIAMMember(&#34;viewer&#34;, BucketIAMMemberArgs.builder()        
+ *         var viewer = new BucketIAMMember("viewer", BucketIAMMemberArgs.builder()        
  *             .bucket(bucket.name())
- *             .role(&#34;roles/storage.objectViewer&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/storage.objectViewer")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var creator = new BucketIAMMember(&#34;creator&#34;, BucketIAMMemberArgs.builder()        
+ *         var creator = new BucketIAMMember("creator", BucketIAMMemberArgs.builder()        
  *             .bucket(bucket.name())
- *             .role(&#34;roles/storage.objectCreator&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/storage.objectCreator")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var reader = new BucketIAMMember(&#34;reader&#34;, BucketIAMMemberArgs.builder()        
+ *         var reader = new BucketIAMMember("reader", BucketIAMMemberArgs.builder()        
  *             .bucket(bucket.name())
- *             .role(&#34;roles/storage.legacyBucketReader&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role("roles/storage.legacyBucketReader")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var keyUser = new CryptoKeyIAMMember(&#34;keyUser&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;kms-name&#34;)
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var keyUser = new CryptoKeyIAMMember("keyUser", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("kms-name")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var destinationConnectionProfile = new ConnectionProfile(&#34;destinationConnectionProfile&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;destination-profile&#34;)
+ *         var destinationConnectionProfile = new ConnectionProfile("destinationConnectionProfile", ConnectionProfileArgs.builder()        
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("destination-profile")
  *             .gcsProfile(ConnectionProfileGcsProfileArgs.builder()
  *                 .bucket(bucket.name())
- *                 .rootPath(&#34;/path&#34;)
+ *                 .rootPath("/path")
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Stream(&#34;default&#34;, StreamArgs.builder()        
- *             .streamId(&#34;my-stream&#34;)
- *             .desiredState(&#34;NOT_STARTED&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .displayName(&#34;my stream&#34;)
- *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *         var default_ = new Stream("default", StreamArgs.builder()        
+ *             .streamId("my-stream")
+ *             .desiredState("NOT_STARTED")
+ *             .location("us-central1")
+ *             .displayName("my stream")
+ *             .labels(Map.of("key", "value"))
  *             .sourceConfig(StreamSourceConfigArgs.builder()
  *                 .sourceConnectionProfile(sourceConnectionProfile.id())
  *                 .mysqlSourceConfig(StreamSourceConfigMysqlSourceConfigArgs.builder()
  *                     .includeObjects(StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs.builder()
  *                         .mysqlDatabases(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs.builder()
- *                             .database(&#34;my-database&#34;)
+ *                             .database("my-database")
  *                             .mysqlTables(                            
  *                                 StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs.builder()
- *                                     .table(&#34;includedTable&#34;)
+ *                                     .table("includedTable")
  *                                     .mysqlColumns(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs.builder()
- *                                         .column(&#34;includedColumn&#34;)
- *                                         .dataType(&#34;VARCHAR&#34;)
- *                                         .collation(&#34;utf8mb4&#34;)
+ *                                         .column("includedColumn")
+ *                                         .dataType("VARCHAR")
+ *                                         .collation("utf8mb4")
  *                                         .primaryKey(false)
  *                                         .nullable(false)
  *                                         .ordinalPosition(0)
  *                                         .build())
  *                                     .build(),
  *                                 StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs.builder()
- *                                     .table(&#34;includedTable_2&#34;)
+ *                                     .table("includedTable_2")
  *                                     .build())
  *                             .build())
  *                         .build())
  *                     .excludeObjects(StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs.builder()
  *                         .mysqlDatabases(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs.builder()
- *                             .database(&#34;my-database&#34;)
+ *                             .database("my-database")
  *                             .mysqlTables(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs.builder()
- *                                 .table(&#34;excludedTable&#34;)
+ *                                 .table("excludedTable")
  *                                 .mysqlColumns(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs.builder()
- *                                     .column(&#34;excludedColumn&#34;)
- *                                     .dataType(&#34;VARCHAR&#34;)
- *                                     .collation(&#34;utf8mb4&#34;)
+ *                                     .column("excludedColumn")
+ *                                     .dataType("VARCHAR")
+ *                                     .collation("utf8mb4")
  *                                     .primaryKey(false)
  *                                     .nullable(false)
  *                                     .ordinalPosition(0)
@@ -240,25 +241,25 @@ import javax.annotation.Nullable;
  *             .destinationConfig(StreamDestinationConfigArgs.builder()
  *                 .destinationConnectionProfile(destinationConnectionProfile.id())
  *                 .gcsDestinationConfig(StreamDestinationConfigGcsDestinationConfigArgs.builder()
- *                     .path(&#34;mydata&#34;)
+ *                     .path("mydata")
  *                     .fileRotationMb(200)
- *                     .fileRotationInterval(&#34;60s&#34;)
+ *                     .fileRotationInterval("60s")
  *                     .jsonFileFormat(StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs.builder()
- *                         .schemaFileFormat(&#34;NO_SCHEMA_FILE&#34;)
- *                         .compression(&#34;GZIP&#34;)
+ *                         .schemaFileFormat("NO_SCHEMA_FILE")
+ *                         .compression("GZIP")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .backfillAll(StreamBackfillAllArgs.builder()
  *                 .mysqlExcludedObjects(StreamBackfillAllMysqlExcludedObjectsArgs.builder()
  *                     .mysqlDatabases(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs.builder()
- *                         .database(&#34;my-database&#34;)
+ *                         .database("my-database")
  *                         .mysqlTables(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs.builder()
- *                             .table(&#34;excludedTable&#34;)
+ *                             .table("excludedTable")
  *                             .mysqlColumns(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs.builder()
- *                                 .column(&#34;excludedColumn&#34;)
- *                                 .dataType(&#34;VARCHAR&#34;)
- *                                 .collation(&#34;utf8mb4&#34;)
+ *                                 .column("excludedColumn")
+ *                                 .dataType("VARCHAR")
+ *                                 .collation("utf8mb4")
  *                                 .primaryKey(false)
  *                                 .nullable(false)
  *                                 .ordinalPosition(0)
@@ -267,17 +268,19 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .customerManagedEncryptionKey(&#34;kms-name&#34;)
+ *             .customerManagedEncryptionKey("kms-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Stream Postgresql
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -312,55 +315,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source = new ConnectionProfile(&#34;source&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Postgresql Source&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;source-profile&#34;)
+ *         var source = new ConnectionProfile("source", ConnectionProfileArgs.builder()        
+ *             .displayName("Postgresql Source")
+ *             .location("us-central1")
+ *             .connectionProfileId("source-profile")
  *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
- *                 .hostname(&#34;hostname&#34;)
+ *                 .hostname("hostname")
  *                 .port(3306)
- *                 .username(&#34;user&#34;)
- *                 .password(&#34;pass&#34;)
- *                 .database(&#34;postgres&#34;)
+ *                 .username("user")
+ *                 .password("pass")
+ *                 .database("postgres")
  *                 .build())
  *             .build());
  * 
- *         var destination = new ConnectionProfile(&#34;destination&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;BigQuery Destination&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;destination-profile&#34;)
+ *         var destination = new ConnectionProfile("destination", ConnectionProfileArgs.builder()        
+ *             .displayName("BigQuery Destination")
+ *             .location("us-central1")
+ *             .connectionProfileId("destination-profile")
  *             .bigqueryProfile()
  *             .build());
  * 
- *         var default_ = new Stream(&#34;default&#34;, StreamArgs.builder()        
- *             .displayName(&#34;Postgres to BigQuery&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .streamId(&#34;my-stream&#34;)
- *             .desiredState(&#34;RUNNING&#34;)
+ *         var default_ = new Stream("default", StreamArgs.builder()        
+ *             .displayName("Postgres to BigQuery")
+ *             .location("us-central1")
+ *             .streamId("my-stream")
+ *             .desiredState("RUNNING")
  *             .sourceConfig(StreamSourceConfigArgs.builder()
  *                 .sourceConnectionProfile(source.id())
  *                 .postgresqlSourceConfig(StreamSourceConfigPostgresqlSourceConfigArgs.builder()
  *                     .maxConcurrentBackfillTasks(12)
- *                     .publication(&#34;publication&#34;)
- *                     .replicationSlot(&#34;replication_slot&#34;)
+ *                     .publication("publication")
+ *                     .replicationSlot("replication_slot")
  *                     .includeObjects(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs.builder()
  *                         .postgresqlSchemas(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs.builder()
- *                             .schema(&#34;schema&#34;)
+ *                             .schema("schema")
  *                             .postgresqlTables(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs.builder()
- *                                 .table(&#34;table&#34;)
+ *                                 .table("table")
  *                                 .postgresqlColumns(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs.builder()
- *                                     .column(&#34;column&#34;)
+ *                                     .column("column")
  *                                     .build())
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .excludeObjects(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs.builder()
  *                         .postgresqlSchemas(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs.builder()
- *                             .schema(&#34;schema&#34;)
+ *                             .schema("schema")
  *                             .postgresqlTables(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs.builder()
- *                                 .table(&#34;table&#34;)
+ *                                 .table("table")
  *                                 .postgresqlColumns(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs.builder()
- *                                     .column(&#34;column&#34;)
+ *                                     .column("column")
  *                                     .build())
  *                                 .build())
  *                             .build())
@@ -370,10 +373,10 @@ import javax.annotation.Nullable;
  *             .destinationConfig(StreamDestinationConfigArgs.builder()
  *                 .destinationConnectionProfile(destination.id())
  *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
- *                     .dataFreshness(&#34;900s&#34;)
+ *                     .dataFreshness("900s")
  *                     .sourceHierarchyDatasets(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs.builder()
  *                         .datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs.builder()
- *                             .location(&#34;us-central1&#34;)
+ *                             .location("us-central1")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -381,11 +384,11 @@ import javax.annotation.Nullable;
  *             .backfillAll(StreamBackfillAllArgs.builder()
  *                 .postgresqlExcludedObjects(StreamBackfillAllPostgresqlExcludedObjectsArgs.builder()
  *                     .postgresqlSchemas(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs.builder()
- *                         .schema(&#34;schema&#34;)
+ *                         .schema("schema")
  *                         .postgresqlTables(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs.builder()
- *                             .table(&#34;table&#34;)
+ *                             .table("table")
  *                             .postgresqlColumns(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs.builder()
- *                                 .column(&#34;column&#34;)
+ *                                 .column("column")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -395,12 +398,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Stream Oracle
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -436,31 +441,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source = new ConnectionProfile(&#34;source&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Oracle Source&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;source-profile&#34;)
+ *         var source = new ConnectionProfile("source", ConnectionProfileArgs.builder()        
+ *             .displayName("Oracle Source")
+ *             .location("us-central1")
+ *             .connectionProfileId("source-profile")
  *             .oracleProfile(ConnectionProfileOracleProfileArgs.builder()
- *                 .hostname(&#34;hostname&#34;)
+ *                 .hostname("hostname")
  *                 .port(1521)
- *                 .username(&#34;user&#34;)
- *                 .password(&#34;pass&#34;)
- *                 .databaseService(&#34;ORCL&#34;)
+ *                 .username("user")
+ *                 .password("pass")
+ *                 .databaseService("ORCL")
  *                 .build())
  *             .build());
  * 
- *         var destination = new ConnectionProfile(&#34;destination&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;BigQuery Destination&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;destination-profile&#34;)
+ *         var destination = new ConnectionProfile("destination", ConnectionProfileArgs.builder()        
+ *             .displayName("BigQuery Destination")
+ *             .location("us-central1")
+ *             .connectionProfileId("destination-profile")
  *             .bigqueryProfile()
  *             .build());
  * 
- *         var stream5 = new Stream(&#34;stream5&#34;, StreamArgs.builder()        
- *             .displayName(&#34;Oracle to BigQuery&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .streamId(&#34;my-stream&#34;)
- *             .desiredState(&#34;RUNNING&#34;)
+ *         var stream5 = new Stream("stream5", StreamArgs.builder()        
+ *             .displayName("Oracle to BigQuery")
+ *             .location("us-central1")
+ *             .streamId("my-stream")
+ *             .desiredState("RUNNING")
  *             .sourceConfig(StreamSourceConfigArgs.builder()
  *                 .sourceConnectionProfile(source.id())
  *                 .oracleSourceConfig(StreamSourceConfigOracleSourceConfigArgs.builder()
@@ -468,22 +473,22 @@ import javax.annotation.Nullable;
  *                     .maxConcurrentBackfillTasks(12)
  *                     .includeObjects(StreamSourceConfigOracleSourceConfigIncludeObjectsArgs.builder()
  *                         .oracleSchemas(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs.builder()
- *                             .schema(&#34;schema&#34;)
+ *                             .schema("schema")
  *                             .oracleTables(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs.builder()
- *                                 .table(&#34;table&#34;)
+ *                                 .table("table")
  *                                 .oracleColumns(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs.builder()
- *                                     .column(&#34;column&#34;)
+ *                                     .column("column")
  *                                     .build())
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .excludeObjects(StreamSourceConfigOracleSourceConfigExcludeObjectsArgs.builder()
  *                         .oracleSchemas(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs.builder()
- *                             .schema(&#34;schema&#34;)
+ *                             .schema("schema")
  *                             .oracleTables(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs.builder()
- *                                 .table(&#34;table&#34;)
+ *                                 .table("table")
  *                                 .oracleColumns(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs.builder()
- *                                     .column(&#34;column&#34;)
+ *                                     .column("column")
  *                                     .build())
  *                                 .build())
  *                             .build())
@@ -494,10 +499,10 @@ import javax.annotation.Nullable;
  *             .destinationConfig(StreamDestinationConfigArgs.builder()
  *                 .destinationConnectionProfile(destination.id())
  *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
- *                     .dataFreshness(&#34;900s&#34;)
+ *                     .dataFreshness("900s")
  *                     .sourceHierarchyDatasets(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs.builder()
  *                         .datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs.builder()
- *                             .location(&#34;us-central1&#34;)
+ *                             .location("us-central1")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -505,11 +510,11 @@ import javax.annotation.Nullable;
  *             .backfillAll(StreamBackfillAllArgs.builder()
  *                 .oracleExcludedObjects(StreamBackfillAllOracleExcludedObjectsArgs.builder()
  *                     .oracleSchemas(StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs.builder()
- *                         .schema(&#34;schema&#34;)
+ *                         .schema("schema")
  *                         .oracleTables(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs.builder()
- *                             .table(&#34;table&#34;)
+ *                             .table("table")
  *                             .oracleColumns(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs.builder()
- *                                 .column(&#34;column&#34;)
+ *                                 .column("column")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -519,12 +524,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Stream Postgresql Bigquery Dataset Id
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -568,26 +575,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres = new Dataset(&#34;postgres&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;postgres&#34;)
- *             .friendlyName(&#34;postgres&#34;)
- *             .description(&#34;Database of postgres&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var postgres = new Dataset("postgres", DatasetArgs.builder()        
+ *             .datasetId("postgres")
+ *             .friendlyName("postgres")
+ *             .description("Database of postgres")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var destinationConnectionProfile2 = new ConnectionProfile(&#34;destinationConnectionProfile2&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;dest-profile&#34;)
+ *         var destinationConnectionProfile2 = new ConnectionProfile("destinationConnectionProfile2", ConnectionProfileArgs.builder()        
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("dest-profile")
  *             .bigqueryProfile()
  *             .build());
  * 
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;instance-name&#34;)
- *             .databaseVersion(&#34;MYSQL_8_0&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("instance-name")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .region("us-central1")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
  *                     .enabled(true)
  *                     .binaryLogEnabled(true)
@@ -595,41 +602,41 @@ import javax.annotation.Nullable;
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
  *                     .authorizedNetworks(                    
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.71.242.81&#34;)
+ *                             .value("34.71.242.81")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.28.29&#34;)
+ *                             .value("34.72.28.29")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.6.157&#34;)
+ *                             .value("34.67.6.157")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.234.134&#34;)
+ *                             .value("34.67.234.134")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.239.218&#34;)
+ *                             .value("34.72.239.218")
  *                             .build())
  *                     .build())
  *                 .build())
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;my-user&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("my-user")
  *             .instance(instance.name())
- *             .host(&#34;%&#34;)
+ *             .host("%")
  *             .password(pwd.result())
  *             .build());
  * 
- *         var sourceConnectionProfile = new ConnectionProfile(&#34;sourceConnectionProfile&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Source connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;source-profile&#34;)
+ *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()        
+ *             .displayName("Source connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("source-profile")
  *             .mysqlProfile(ConnectionProfileMysqlProfileArgs.builder()
  *                 .hostname(instance.publicIpAddress())
  *                 .username(user.name())
@@ -637,10 +644,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Stream(&#34;default&#34;, StreamArgs.builder()        
- *             .displayName(&#34;postgres to bigQuery&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .streamId(&#34;postgres-bigquery&#34;)
+ *         var default_ = new Stream("default", StreamArgs.builder()        
+ *             .displayName("postgres to bigQuery")
+ *             .location("us-central1")
+ *             .streamId("postgres-bigquery")
  *             .sourceConfig(StreamSourceConfigArgs.builder()
  *                 .sourceConnectionProfile(sourceConnectionProfile.id())
  *                 .mysqlSourceConfig()
@@ -648,7 +655,7 @@ import javax.annotation.Nullable;
  *             .destinationConfig(StreamDestinationConfigArgs.builder()
  *                 .destinationConnectionProfile(destinationConnectionProfile2.id())
  *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
- *                     .dataFreshness(&#34;900s&#34;)
+ *                     .dataFreshness("900s")
  *                     .singleTargetDataset(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs.builder()
  *                         .datasetId(postgres.id())
  *                         .build())
@@ -657,19 +664,21 @@ import javax.annotation.Nullable;
  *             .backfillAll()
  *             .build());
  * 
- *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()        
  *             .instance(instance.name())
- *             .name(&#34;db&#34;)
+ *             .name("db")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Stream Bigquery
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -720,12 +729,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .databaseVersion(&#34;MYSQL_8_0&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .region("us-central1")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
  *                     .enabled(true)
  *                     .binaryLogEnabled(true)
@@ -733,46 +742,46 @@ import javax.annotation.Nullable;
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
  *                     .authorizedNetworks(                    
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.71.242.81&#34;)
+ *                             .value("34.71.242.81")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.28.29&#34;)
+ *                             .value("34.72.28.29")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.6.157&#34;)
+ *                             .value("34.67.6.157")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.67.234.134&#34;)
+ *                             .value("34.67.234.134")
  *                             .build(),
  *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value(&#34;34.72.239.218&#34;)
+ *                             .value("34.72.239.218")
  *                             .build())
  *                     .build())
  *                 .build())
  *             .deletionProtection(true)
  *             .build());
  * 
- *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *         var db = new Database("db", DatabaseArgs.builder()        
  *             .instance(instance.name())
- *             .name(&#34;db&#34;)
+ *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()        
  *             .length(16)
  *             .special(false)
  *             .build());
  * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;user&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("user")
  *             .instance(instance.name())
- *             .host(&#34;%&#34;)
+ *             .host("%")
  *             .password(pwd.result())
  *             .build());
  * 
- *         var sourceConnectionProfile = new ConnectionProfile(&#34;sourceConnectionProfile&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Source connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;source-profile&#34;)
+ *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()        
+ *             .displayName("Source connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("source-profile")
  *             .mysqlProfile(ConnectionProfileMysqlProfileArgs.builder()
  *                 .hostname(instance.publicIpAddress())
  *                 .username(user.name())
@@ -782,23 +791,23 @@ import javax.annotation.Nullable;
  * 
  *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
  * 
- *         var bigqueryKeyUser = new CryptoKeyIAMMember(&#34;bigqueryKeyUser&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;bigquery-kms-name&#34;)
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
+ *         var bigqueryKeyUser = new CryptoKeyIAMMember("bigqueryKeyUser", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("bigquery-kms-name")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
  *             .build());
  * 
- *         var destinationConnectionProfile = new ConnectionProfile(&#34;destinationConnectionProfile&#34;, ConnectionProfileArgs.builder()        
- *             .displayName(&#34;Connection profile&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;destination-profile&#34;)
+ *         var destinationConnectionProfile = new ConnectionProfile("destinationConnectionProfile", ConnectionProfileArgs.builder()        
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("destination-profile")
  *             .bigqueryProfile()
  *             .build());
  * 
- *         var default_ = new Stream(&#34;default&#34;, StreamArgs.builder()        
- *             .streamId(&#34;my-stream&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .displayName(&#34;my stream&#34;)
+ *         var default_ = new Stream("default", StreamArgs.builder()        
+ *             .streamId("my-stream")
+ *             .location("us-central1")
+ *             .displayName("my stream")
  *             .sourceConfig(StreamSourceConfigArgs.builder()
  *                 .sourceConnectionProfile(sourceConnectionProfile.id())
  *                 .mysqlSourceConfig()
@@ -808,8 +817,8 @@ import javax.annotation.Nullable;
  *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
  *                     .sourceHierarchyDatasets(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs.builder()
  *                         .datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs.builder()
- *                             .location(&#34;us-central1&#34;)
- *                             .kmsKeyName(&#34;bigquery-kms-name&#34;)
+ *                             .location("us-central1")
+ *                             .kmsKeyName("bigquery-kms-name")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -819,7 +828,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

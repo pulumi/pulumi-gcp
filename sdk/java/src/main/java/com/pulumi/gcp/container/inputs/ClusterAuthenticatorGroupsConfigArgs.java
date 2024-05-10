@@ -15,14 +15,14 @@ public final class ClusterAuthenticatorGroupsConfigArgs extends com.pulumi.resou
     public static final ClusterAuthenticatorGroupsConfigArgs Empty = new ClusterAuthenticatorGroupsConfigArgs();
 
     /**
-     * The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
+     * The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups{@literal @}yourdomain.com`.
      * 
      */
     @Import(name="securityGroup", required=true)
     private Output<String> securityGroup;
 
     /**
-     * @return The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
+     * @return The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups{@literal @}yourdomain.com`.
      * 
      */
     public Output<String> securityGroup() {
@@ -54,7 +54,7 @@ public final class ClusterAuthenticatorGroupsConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param securityGroup The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
+         * @param securityGroup The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups{@literal @}yourdomain.com`.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ClusterAuthenticatorGroupsConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param securityGroup The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
+         * @param securityGroup The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups{@literal @}yourdomain.com`.
          * 
          * @return builder
          * 

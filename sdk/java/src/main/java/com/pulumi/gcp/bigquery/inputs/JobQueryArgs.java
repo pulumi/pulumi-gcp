@@ -175,14 +175,14 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+     * Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named ({@literal @}myparam) query parameters in this query.
      * 
      */
     @Import(name="parameterMode")
     private @Nullable Output<String> parameterMode;
 
     /**
-     * @return Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+     * @return Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named ({@literal @}myparam) query parameters in this query.
      * 
      */
     public Optional<Output<String>> parameterMode() {
@@ -592,7 +592,7 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameterMode Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+         * @param parameterMode Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named ({@literal @}myparam) query parameters in this query.
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameterMode Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+         * @param parameterMode Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named ({@literal @}myparam) query parameters in this query.
          * 
          * @return builder
          * 

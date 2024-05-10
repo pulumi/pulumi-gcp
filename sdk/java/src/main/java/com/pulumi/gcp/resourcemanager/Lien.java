@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Resource Manager Lien
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,21 +46,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;staging-project&#34;)
- *             .name(&#34;A very important project!&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("staging-project")
+ *             .name("A very important project!")
  *             .build());
  * 
- *         var lien = new Lien(&#34;lien&#34;, LienArgs.builder()        
- *             .parent(project.number().applyValue(number -&gt; String.format(&#34;projects/%s&#34;, number)))
- *             .restrictions(&#34;resourcemanager.projects.delete&#34;)
- *             .origin(&#34;machine-readable-explanation&#34;)
- *             .reason(&#34;This project is an important environment&#34;)
+ *         var lien = new Lien("lien", LienArgs.builder()        
+ *             .parent(project.number().applyValue(number -> String.format("projects/%s", number)))
+ *             .restrictions("resourcemanager.projects.delete")
+ *             .origin("machine-readable-explanation")
+ *             .reason("This project is an important environment")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

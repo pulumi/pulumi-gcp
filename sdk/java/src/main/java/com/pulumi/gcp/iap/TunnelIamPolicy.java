@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## google\_iap\_tunnel\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,25 +59,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/iap.tunnelResourceAccessor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelIamPolicy(&#34;policy&#34;, TunnelIamPolicyArgs.builder()        
+ *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()        
  *             .project(projectService.project())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -101,29 +104,31 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/iap.tunnelResourceAccessor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelIamPolicy(&#34;policy&#34;, TunnelIamPolicyArgs.builder()        
+ *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()        
  *             .project(projectService.project())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_iap\_tunnel\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -144,21 +149,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelIamBinding(&#34;binding&#34;, TunnelIamBindingArgs.builder()        
+ *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()        
  *             .project(projectService.project())
- *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.tunnelResourceAccessor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -180,25 +187,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelIamBinding(&#34;binding&#34;, TunnelIamBindingArgs.builder()        
+ *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()        
  *             .project(projectService.project())
- *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.tunnelResourceAccessor")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(TunnelIamBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_iap\_tunnel\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -219,21 +228,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelIamMember(&#34;member&#34;, TunnelIamMemberArgs.builder()        
+ *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()        
  *             .project(projectService.project())
- *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.tunnelResourceAccessor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -255,26 +266,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelIamMember(&#34;member&#34;, TunnelIamMemberArgs.builder()        
+ *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()        
  *             .project(projectService.project())
- *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.tunnelResourceAccessor")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(TunnelIamMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_iap\_tunnel\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -299,25 +312,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/iap.tunnelResourceAccessor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelIamPolicy(&#34;policy&#34;, TunnelIamPolicyArgs.builder()        
+ *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()        
  *             .project(projectService.project())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -342,29 +357,31 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/iap.tunnelResourceAccessor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelIamPolicy(&#34;policy&#34;, TunnelIamPolicyArgs.builder()        
+ *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()        
  *             .project(projectService.project())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_iap\_tunnel\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -385,21 +402,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelIamBinding(&#34;binding&#34;, TunnelIamBindingArgs.builder()        
+ *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()        
  *             .project(projectService.project())
- *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.tunnelResourceAccessor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -421,25 +440,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelIamBinding(&#34;binding&#34;, TunnelIamBindingArgs.builder()        
+ *         var binding = new TunnelIamBinding("binding", TunnelIamBindingArgs.builder()        
  *             .project(projectService.project())
- *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.tunnelResourceAccessor")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(TunnelIamBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_iap\_tunnel\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -460,21 +481,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelIamMember(&#34;member&#34;, TunnelIamMemberArgs.builder()        
+ *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()        
  *             .project(projectService.project())
- *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.tunnelResourceAccessor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -496,20 +519,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelIamMember(&#34;member&#34;, TunnelIamMemberArgs.builder()        
+ *         var member = new TunnelIamMember("member", TunnelIamMemberArgs.builder()        
  *             .project(projectService.project())
- *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.tunnelResourceAccessor")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(TunnelIamMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -527,7 +551,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:iap/tunnelIamPolicy:TunnelIamPolicy editor &#34;projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane@example.com&#34;
+ * $ pulumi import gcp:iap/tunnelIamPolicy:TunnelIamPolicy editor &#34;projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

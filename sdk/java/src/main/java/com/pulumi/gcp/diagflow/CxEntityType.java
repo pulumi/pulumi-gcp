@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Dialogflowcx Entity Type Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,17 +59,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent(&#34;agent&#34;, CxAgentArgs.builder()        
- *             .displayName(&#34;dialogflowcx-agent&#34;)
- *             .location(&#34;global&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            
- *                 &#34;fr&#34;,
- *                 &#34;de&#34;,
- *                 &#34;es&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .description(&#34;Example description.&#34;)
- *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *                 "fr",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
  *             .enableStackdriverLogging(true)
  *             .enableSpellCorrection(true)
  *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
@@ -76,29 +77,30 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicEntityType = new CxEntityType(&#34;basicEntityType&#34;, CxEntityTypeArgs.builder()        
+ *         var basicEntityType = new CxEntityType("basicEntityType", CxEntityTypeArgs.builder()        
  *             .parent(agent.id())
- *             .displayName(&#34;MyEntity&#34;)
- *             .kind(&#34;KIND_MAP&#34;)
+ *             .displayName("MyEntity")
+ *             .kind("KIND_MAP")
  *             .entities(            
  *                 CxEntityTypeEntityArgs.builder()
- *                     .value(&#34;value1&#34;)
+ *                     .value("value1")
  *                     .synonyms(                    
- *                         &#34;synonym1&#34;,
- *                         &#34;synonym2&#34;)
+ *                         "synonym1",
+ *                         "synonym2")
  *                     .build(),
  *                 CxEntityTypeEntityArgs.builder()
- *                     .value(&#34;value2&#34;)
+ *                     .value("value2")
  *                     .synonyms(                    
- *                         &#34;synonym3&#34;,
- *                         &#34;synonym4&#34;)
+ *                         "synonym3",
+ *                         "synonym4")
  *                     .build())
  *             .enableFuzzyExtraction(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

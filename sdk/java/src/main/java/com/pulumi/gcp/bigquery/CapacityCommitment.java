@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Reservation Capacity Commitment Docs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,17 +53,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CapacityCommitment(&#34;example&#34;, CapacityCommitmentArgs.builder()        
- *             .capacityCommitmentId(&#34;example-commitment&#34;)
- *             .location(&#34;us-west2&#34;)
+ *         var example = new CapacityCommitment("example", CapacityCommitmentArgs.builder()        
+ *             .capacityCommitmentId("example-commitment")
+ *             .location("us-west2")
  *             .slotCount(100)
- *             .plan(&#34;FLEX_FLAT_RATE&#34;)
- *             .edition(&#34;ENTERPRISE&#34;)
+ *             .plan("FLEX_FLAT_RATE")
+ *             .edition("ENTERPRISE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

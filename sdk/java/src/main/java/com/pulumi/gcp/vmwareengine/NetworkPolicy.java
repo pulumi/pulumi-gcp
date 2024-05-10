@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Vmware Engine Network Policy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,28 +52,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_policy_nw = new Network(&#34;network-policy-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;standard-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
- *             .description(&#34;VMwareEngine standard network sample&#34;)
+ *         var network_policy_nw = new Network("network-policy-nw", NetworkArgs.builder()        
+ *             .name("standard-nw")
+ *             .location("global")
+ *             .type("STANDARD")
+ *             .description("VMwareEngine standard network sample")
  *             .build());
  * 
- *         var vmw_engine_network_policy = new NetworkPolicy(&#34;vmw-engine-network-policy&#34;, NetworkPolicyArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;sample-network-policy&#34;)
- *             .edgeServicesCidr(&#34;192.168.30.0/26&#34;)
+ *         var vmw_engine_network_policy = new NetworkPolicy("vmw-engine-network-policy", NetworkPolicyArgs.builder()        
+ *             .location("us-west1")
+ *             .name("sample-network-policy")
+ *             .edgeServicesCidr("192.168.30.0/26")
  *             .vmwareEngineNetwork(network_policy_nw.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vmware Engine Network Policy Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -97,19 +100,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_policy_nw = new Network(&#34;network-policy-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;standard-full-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
- *             .description(&#34;VMwareEngine standard network sample&#34;)
+ *         var network_policy_nw = new Network("network-policy-nw", NetworkArgs.builder()        
+ *             .name("standard-full-nw")
+ *             .location("global")
+ *             .type("STANDARD")
+ *             .description("VMwareEngine standard network sample")
  *             .build());
  * 
- *         var vmw_engine_network_policy = new NetworkPolicy(&#34;vmw-engine-network-policy&#34;, NetworkPolicyArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;sample-network-policy-full&#34;)
- *             .edgeServicesCidr(&#34;192.168.30.0/26&#34;)
+ *         var vmw_engine_network_policy = new NetworkPolicy("vmw-engine-network-policy", NetworkPolicyArgs.builder()        
+ *             .location("us-west1")
+ *             .name("sample-network-policy-full")
+ *             .edgeServicesCidr("192.168.30.0/26")
  *             .vmwareEngineNetwork(network_policy_nw.id())
- *             .description(&#34;Sample Network Policy&#34;)
+ *             .description("Sample Network Policy")
  *             .internetAccess(NetworkPolicyInternetAccessArgs.builder()
  *                 .enabled(true)
  *                 .build())
@@ -120,7 +123,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

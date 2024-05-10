@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Dialogflowcx Intent Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,17 +61,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent(&#34;agent&#34;, CxAgentArgs.builder()        
- *             .displayName(&#34;dialogflowcx-agent&#34;)
- *             .location(&#34;global&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            
- *                 &#34;fr&#34;,
- *                 &#34;de&#34;,
- *                 &#34;es&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .description(&#34;Example description.&#34;)
- *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *                 "fr",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
  *             .enableStackdriverLogging(true)
  *             .enableSpellCorrection(true)
  *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
@@ -78,37 +79,38 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicIntent = new CxIntent(&#34;basicIntent&#34;, CxIntentArgs.builder()        
+ *         var basicIntent = new CxIntent("basicIntent", CxIntentArgs.builder()        
  *             .parent(agent.id())
- *             .displayName(&#34;Example&#34;)
+ *             .displayName("Example")
  *             .priority(1)
- *             .description(&#34;Intent example&#34;)
+ *             .description("Intent example")
  *             .trainingPhrases(CxIntentTrainingPhraseArgs.builder()
  *                 .parts(                
  *                     CxIntentTrainingPhrasePartArgs.builder()
- *                         .text(&#34;training&#34;)
+ *                         .text("training")
  *                         .build(),
  *                     CxIntentTrainingPhrasePartArgs.builder()
- *                         .text(&#34;phrase&#34;)
+ *                         .text("phrase")
  *                         .build(),
  *                     CxIntentTrainingPhrasePartArgs.builder()
- *                         .text(&#34;example&#34;)
+ *                         .text("example")
  *                         .build())
  *                 .repeatCount(1)
  *                 .build())
  *             .parameters(CxIntentParameterArgs.builder()
- *                 .id(&#34;param1&#34;)
- *                 .entityType(&#34;projects/-/locations/-/agents/-/entityTypes/sys.date&#34;)
+ *                 .id("param1")
+ *                 .entityType("projects/-/locations/-/agents/-/entityTypes/sys.date")
  *                 .build())
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;label1&#34;, &#34;value1&#34;),
- *                 Map.entry(&#34;label2&#34;, &#34;value2&#34;)
+ *                 Map.entry("label1", "value1"),
+ *                 Map.entry("label2", "value2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

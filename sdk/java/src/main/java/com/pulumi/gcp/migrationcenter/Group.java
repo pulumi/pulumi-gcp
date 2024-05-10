@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Migration Group Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,17 +46,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .groupId(&#34;group-test&#34;)
- *             .description(&#34;Terraform integration test description&#34;)
- *             .displayName(&#34;Terraform integration test display&#34;)
- *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *         var default_ = new Group("default", GroupArgs.builder()        
+ *             .location("us-central1")
+ *             .groupId("group-test")
+ *             .description("Terraform integration test description")
+ *             .displayName("Terraform integration test display")
+ *             .labels(Map.of("key", "value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

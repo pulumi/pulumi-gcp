@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * ### Firestore Index Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,38 +65,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;database-id&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_DISABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var my_index = new Index("my-index", IndexArgs.builder()        
+ *             .project("my-project-name")
  *             .database(database.name())
- *             .collection(&#34;atestcollection&#34;)
+ *             .collection("atestcollection")
  *             .fields(            
  *                 IndexFieldArgs.builder()
- *                     .fieldPath(&#34;name&#34;)
- *                     .order(&#34;ASCENDING&#34;)
+ *                     .fieldPath("name")
+ *                     .order("ASCENDING")
  *                     .build(),
  *                 IndexFieldArgs.builder()
- *                     .fieldPath(&#34;description&#34;)
- *                     .order(&#34;DESCENDING&#34;)
+ *                     .fieldPath("description")
+ *                     .order("DESCENDING")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Index Datastore Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -119,40 +122,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;database-id-dm&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;DATASTORE_MODE&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_DISABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("database-id-dm")
+ *             .locationId("nam5")
+ *             .type("DATASTORE_MODE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var my_index = new Index("my-index", IndexArgs.builder()        
+ *             .project("my-project-name")
  *             .database(database.name())
- *             .collection(&#34;atestcollection&#34;)
- *             .queryScope(&#34;COLLECTION_RECURSIVE&#34;)
- *             .apiScope(&#34;DATASTORE_MODE_API&#34;)
+ *             .collection("atestcollection")
+ *             .queryScope("COLLECTION_RECURSIVE")
+ *             .apiScope("DATASTORE_MODE_API")
  *             .fields(            
  *                 IndexFieldArgs.builder()
- *                     .fieldPath(&#34;name&#34;)
- *                     .order(&#34;ASCENDING&#34;)
+ *                     .fieldPath("name")
+ *                     .order("ASCENDING")
  *                     .build(),
  *                 IndexFieldArgs.builder()
- *                     .fieldPath(&#34;description&#34;)
- *                     .order(&#34;DESCENDING&#34;)
+ *                     .fieldPath("description")
+ *                     .order("DESCENDING")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Index Vector
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -178,30 +183,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .name(&#34;database-id-vector&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_DISABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .project("my-project-name")
+ *             .name("database-id-vector")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var my_index = new Index("my-index", IndexArgs.builder()        
+ *             .project("my-project-name")
  *             .database(database.name())
- *             .collection(&#34;atestcollection&#34;)
+ *             .collection("atestcollection")
  *             .fields(            
  *                 IndexFieldArgs.builder()
- *                     .fieldPath(&#34;field_name&#34;)
- *                     .order(&#34;ASCENDING&#34;)
+ *                     .fieldPath("field_name")
+ *                     .order("ASCENDING")
  *                     .build(),
  *                 IndexFieldArgs.builder()
- *                     .fieldPath(&#34;__name__&#34;)
- *                     .order(&#34;ASCENDING&#34;)
+ *                     .fieldPath("__name__")
+ *                     .order("ASCENDING")
  *                     .build(),
  *                 IndexFieldArgs.builder()
- *                     .fieldPath(&#34;description&#34;)
+ *                     .fieldPath("description")
  *                     .vectorConfig(IndexFieldVectorConfigArgs.builder()
  *                         .dimension(128)
  *                         .flat()
@@ -211,7 +216,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

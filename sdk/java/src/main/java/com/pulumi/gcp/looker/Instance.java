@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Looker Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,24 +60,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .platformEdition(&#34;LOOKER_CORE_STANDARD_ANNUAL&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
+ *             .region("us-central1")
  *             .oauthConfig(InstanceOauthConfigArgs.builder()
- *                 .clientId(&#34;my-client-id&#34;)
- *                 .clientSecret(&#34;my-client-secret&#34;)
+ *                 .clientId("my-client-id")
+ *                 .clientSecret("my-client-secret")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Looker Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -105,16 +108,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .platformEdition(&#34;LOOKER_CORE_STANDARD_ANNUAL&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
+ *             .region("us-central1")
  *             .publicIpEnabled(true)
  *             .adminSettings(InstanceAdminSettingsArgs.builder()
- *                 .allowedEmailDomains(&#34;google.com&#34;)
+ *                 .allowedEmailDomains("google.com")
  *                 .build())
  *             .maintenanceWindow(InstanceMaintenanceWindowArgs.builder()
- *                 .dayOfWeek(&#34;THURSDAY&#34;)
+ *                 .dayOfWeek("THURSDAY")
  *                 .startTime(InstanceMaintenanceWindowStartTimeArgs.builder()
  *                     .hours(22)
  *                     .minutes(0)
@@ -141,19 +144,21 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .oauthConfig(InstanceOauthConfigArgs.builder()
- *                 .clientId(&#34;my-client-id&#34;)
- *                 .clientSecret(&#34;my-client-secret&#34;)
+ *                 .clientId("my-client-id")
+ *                 .clientSecret("my-client-secret")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Looker Instance Enterprise Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -193,34 +198,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var lookerNetwork = new Network(&#34;lookerNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;looker-network&#34;)
+ *         var lookerNetwork = new Network("lookerNetwork", NetworkArgs.builder()        
+ *             .name("looker-network")
  *             .build());
  * 
- *         var lookerRange = new GlobalAddress(&#34;lookerRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;looker-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var lookerRange = new GlobalAddress("lookerRange", GlobalAddressArgs.builder()        
+ *             .name("looker-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(20)
  *             .network(lookerNetwork.id())
  *             .build());
  * 
- *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .platformEdition(&#34;LOOKER_CORE_ENTERPRISE_ANNUAL&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .platformEdition("LOOKER_CORE_ENTERPRISE_ANNUAL")
+ *             .region("us-central1")
  *             .privateIpEnabled(true)
  *             .publicIpEnabled(false)
  *             .reservedRange(lookerRange.name())
  *             .consumerNetwork(lookerNetwork.id())
  *             .adminSettings(InstanceAdminSettingsArgs.builder()
- *                 .allowedEmailDomains(&#34;google.com&#34;)
+ *                 .allowedEmailDomains("google.com")
  *                 .build())
  *             .encryptionConfig(InstanceEncryptionConfigArgs.builder()
- *                 .kmsKeyName(&#34;looker-kms-key&#34;)
+ *                 .kmsKeyName("looker-kms-key")
  *                 .build())
  *             .maintenanceWindow(InstanceMaintenanceWindowArgs.builder()
- *                 .dayOfWeek(&#34;THURSDAY&#34;)
+ *                 .dayOfWeek("THURSDAY")
  *                 .startTime(InstanceMaintenanceWindowStartTimeArgs.builder()
  *                     .hours(22)
  *                     .minutes(0)
@@ -247,33 +252,35 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .oauthConfig(InstanceOauthConfigArgs.builder()
- *                 .clientId(&#34;my-client-id&#34;)
- *                 .clientSecret(&#34;my-client-secret&#34;)
+ *                 .clientId("my-client-id")
+ *                 .clientSecret("my-client-secret")
  *                 .build())
  *             .build());
  * 
- *         var lookerVpcConnection = new Connection(&#34;lookerVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var lookerVpcConnection = new Connection("lookerVpcConnection", ConnectionArgs.builder()        
  *             .network(lookerNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(lookerRange.name())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;looker-kms-key&#34;)
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-looker.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("looker-kms-key")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-looker.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Looker Instance Custom Domain
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -296,22 +303,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-instance&#34;)
- *             .platformEdition(&#34;LOOKER_CORE_STANDARD_ANNUAL&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
+ *             .region("us-central1")
  *             .oauthConfig(InstanceOauthConfigArgs.builder()
- *                 .clientId(&#34;my-client-id&#34;)
- *                 .clientSecret(&#34;my-client-secret&#34;)
+ *                 .clientId("my-client-id")
+ *                 .clientSecret("my-client-secret")
  *                 .build())
  *             .customDomain(InstanceCustomDomainArgs.builder()
- *                 .domain(&#34;my-custom-domain.com&#34;)
+ *                 .domain("my-custom-domain.com")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

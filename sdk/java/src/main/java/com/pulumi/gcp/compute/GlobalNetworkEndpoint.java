@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Global Network Endpoint
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,21 +55,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var neg = new GlobalNetworkEndpointGroup(&#34;neg&#34;, GlobalNetworkEndpointGroupArgs.builder()        
- *             .name(&#34;my-lb-neg&#34;)
- *             .defaultPort(&#34;90&#34;)
- *             .networkEndpointType(&#34;INTERNET_FQDN_PORT&#34;)
+ *         var neg = new GlobalNetworkEndpointGroup("neg", GlobalNetworkEndpointGroupArgs.builder()        
+ *             .name("my-lb-neg")
+ *             .defaultPort("90")
+ *             .networkEndpointType("INTERNET_FQDN_PORT")
  *             .build());
  * 
- *         var default_endpoint = new GlobalNetworkEndpoint(&#34;default-endpoint&#34;, GlobalNetworkEndpointArgs.builder()        
+ *         var default_endpoint = new GlobalNetworkEndpoint("default-endpoint", GlobalNetworkEndpointArgs.builder()        
  *             .globalNetworkEndpointGroup(neg.name())
- *             .fqdn(&#34;www.example.com&#34;)
+ *             .fqdn("www.example.com")
  *             .port(90)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

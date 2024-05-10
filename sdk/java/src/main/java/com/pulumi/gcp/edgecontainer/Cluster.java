@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ### Edgecontainer Cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,35 +69,37 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
- *             .name(&#34;basic-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *             .name("basic-cluster")
+ *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username(&#34;admin@hashicorptest.com&#34;)
+ *                     .username("admin{@literal @}hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
- *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
- *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .clusterIpv4CidrBlocks("10.0.0.0/16")
+ *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_key&#34;, &#34;my_val&#34;),
- *                 Map.entry(&#34;other_key&#34;, &#34;other_val&#34;)
+ *                 Map.entry("my_key", "my_val"),
+ *                 Map.entry("other_key", "other_val")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Edgecontainer Cluster With Maintenance Window
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -129,29 +132,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
- *             .name(&#34;cluster-with-maintenance&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *             .name("cluster-with-maintenance")
+ *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username(&#34;admin@hashicorptest.com&#34;)
+ *                     .username("admin{@literal @}hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
- *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
- *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .clusterIpv4CidrBlocks("10.0.0.0/16")
+ *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
  *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
  *                 .window(ClusterMaintenancePolicyWindowArgs.builder()
  *                     .recurringWindow(ClusterMaintenancePolicyWindowRecurringWindowArgs.builder()
  *                         .window(ClusterMaintenancePolicyWindowRecurringWindowWindowArgs.builder()
- *                             .startTime(&#34;2023-01-01T08:00:00Z&#34;)
- *                             .endTime(&#34;2023-01-01T17:00:00Z&#34;)
+ *                             .startTime("2023-01-01T08:00:00Z")
+ *                             .endTime("2023-01-01T17:00:00Z")
  *                             .build())
- *                         .recurrence(&#34;FREQ=WEEKLY;BYDAY=SA&#34;)
+ *                         .recurrence("FREQ=WEEKLY;BYDAY=SA")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -159,12 +162,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Edgecontainer Local Control Plane Cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -195,35 +200,36 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
- *             .name(&#34;local-control-plane-cluster&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *             .name("local-control-plane-cluster")
+ *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username(&#34;admin@hashicorptest.com&#34;)
+ *                     .username("admin{@literal @}hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
- *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
- *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .clusterIpv4CidrBlocks("10.0.0.0/16")
+ *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .build())
- *             .externalLoadBalancerIpv4AddressPools(&#34;10.100.0.0-10.100.0.10&#34;)
+ *             .externalLoadBalancerIpv4AddressPools("10.100.0.0-10.100.0.10")
  *             .controlPlane(ClusterControlPlaneArgs.builder()
  *                 .local(ClusterControlPlaneLocalArgs.builder()
- *                     .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
+ *                     .nodeLocation("us-central1-edge-example-edgesite")
  *                     .nodeCount(1)
- *                     .machineFilter(&#34;machine-name&#34;)
- *                     .sharedDeploymentPolicy(&#34;ALLOWED&#34;)
+ *                     .machineFilter("machine-name")
+ *                     .sharedDeploymentPolicy("ALLOWED")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

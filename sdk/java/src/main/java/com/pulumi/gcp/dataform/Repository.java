@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Dataform Repository
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,38 +54,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;my-secret&#34;)
+ *         var secret = new Secret("secret", SecretArgs.builder()        
+ *             .secretId("my-secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var secretVersion = new SecretVersion(&#34;secretVersion&#34;, SecretVersionArgs.builder()        
+ *         var secretVersion = new SecretVersion("secretVersion", SecretVersionArgs.builder()        
  *             .secret(secret.id())
- *             .secretData(&#34;secret-data&#34;)
+ *             .secretData("secret-data")
  *             .build());
  * 
- *         var dataformRepository = new Repository(&#34;dataformRepository&#34;, RepositoryArgs.builder()        
- *             .name(&#34;dataform_repository&#34;)
- *             .displayName(&#34;dataform_repository&#34;)
+ *         var dataformRepository = new Repository("dataformRepository", RepositoryArgs.builder()        
+ *             .name("dataform_repository")
+ *             .displayName("dataform_repository")
  *             .npmrcEnvironmentVariablesSecretVersion(secretVersion.id())
- *             .labels(Map.of(&#34;label_foo1&#34;, &#34;label-bar1&#34;))
+ *             .labels(Map.of("label_foo1", "label-bar1"))
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
- *                 .url(&#34;https://github.com/OWNER/REPOSITORY.git&#34;)
- *                 .defaultBranch(&#34;main&#34;)
+ *                 .url("https://github.com/OWNER/REPOSITORY.git")
+ *                 .defaultBranch("main")
  *                 .authenticationTokenSecretVersion(secretVersion.id())
  *                 .build())
  *             .workspaceCompilationOverrides(RepositoryWorkspaceCompilationOverridesArgs.builder()
- *                 .defaultDatabase(&#34;database&#34;)
- *                 .schemaSuffix(&#34;_suffix&#34;)
- *                 .tablePrefix(&#34;prefix_&#34;)
+ *                 .defaultDatabase("database")
+ *                 .schemaSuffix("_suffix")
+ *                 .tablePrefix("prefix_")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

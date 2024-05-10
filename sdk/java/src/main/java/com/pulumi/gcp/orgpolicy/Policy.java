@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Enforce_policy
  * A test of an enforce orgpolicy policy for a project
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,30 +53,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;id&#34;)
- *             .name(&#34;id&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var basic = new Project("basic", ProjectArgs.builder()        
+ *             .projectId("id")
+ *             .name("id")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
- *             .name(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s/policies/iam.disableServiceAccountKeyUpload&#34;, name)))
- *             .parent(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s&#34;, name)))
+ *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *             .name(basic.name().applyValue(name -> String.format("projects/%s/policies/iam.disableServiceAccountKeyUpload", name)))
+ *             .parent(basic.name().applyValue(name -> String.format("projects/%s", name)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()
- *                     .enforce(&#34;FALSE&#34;)
+ *                     .enforce("FALSE")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Folder_policy
  * A test of an orgpolicy policy for a folder
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,30 +102,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Folder(&#34;basic&#34;, FolderArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .displayName(&#34;folder&#34;)
+ *         var basic = new Folder("basic", FolderArgs.builder()        
+ *             .parent("organizations/123456789")
+ *             .displayName("folder")
  *             .build());
  * 
- *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
- *             .name(basic.name().applyValue(name -&gt; String.format(&#34;%s/policies/gcp.resourceLocations&#34;, name)))
+ *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *             .name(basic.name().applyValue(name -> String.format("%s/policies/gcp.resourceLocations", name)))
  *             .parent(basic.name())
  *             .spec(PolicySpecArgs.builder()
  *                 .inheritFromParent(true)
  *                 .rules(PolicySpecRuleArgs.builder()
- *                     .denyAll(&#34;TRUE&#34;)
+ *                     .denyAll("TRUE")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Organization_policy
  * A test of an orgpolicy policy for an organization
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -144,9 +149,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
- *             .name(&#34;organizations/123456789/policies/gcp.detailedAuditLoggingMode&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
+ *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *             .name("organizations/123456789/policies/gcp.detailedAuditLoggingMode")
+ *             .parent("organizations/123456789")
  *             .spec(PolicySpecArgs.builder()
  *                 .reset(true)
  *                 .build())
@@ -154,12 +159,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Project_policy
  * A test of an orgpolicy policy for a project
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -183,42 +190,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;id&#34;)
- *             .name(&#34;id&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var basic = new Project("basic", ProjectArgs.builder()        
+ *             .projectId("id")
+ *             .name("id")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
- *             .name(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s/policies/gcp.resourceLocations&#34;, name)))
- *             .parent(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s&#34;, name)))
+ *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *             .name(basic.name().applyValue(name -> String.format("projects/%s/policies/gcp.resourceLocations", name)))
+ *             .parent(basic.name().applyValue(name -> String.format("projects/%s", name)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(                
  *                     PolicySpecRuleArgs.builder()
  *                         .condition(PolicySpecRuleConditionArgs.builder()
- *                             .description(&#34;A sample condition for the policy&#34;)
- *                             .expression(&#34;resource.matchLabels(&#39;labelKeys/123&#39;, &#39;labelValues/345&#39;)&#34;)
- *                             .location(&#34;sample-location.log&#34;)
- *                             .title(&#34;sample-condition&#34;)
+ *                             .description("A sample condition for the policy")
+ *                             .expression("resource.matchLabels('labelKeys/123', 'labelValues/345')")
+ *                             .location("sample-location.log")
+ *                             .title("sample-condition")
  *                             .build())
  *                         .values(PolicySpecRuleValuesArgs.builder()
- *                             .allowedValues(&#34;projects/allowed-project&#34;)
- *                             .deniedValues(&#34;projects/denied-project&#34;)
+ *                             .allowedValues("projects/allowed-project")
+ *                             .deniedValues("projects/denied-project")
  *                             .build())
  *                         .build(),
  *                     PolicySpecRuleArgs.builder()
- *                         .allowAll(&#34;TRUE&#34;)
+ *                         .allowAll("TRUE")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dry_run_spec
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -243,37 +252,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var constraint = new CustomConstraint(&#34;constraint&#34;, CustomConstraintArgs.builder()        
- *             .name(&#34;custom.disableGkeAutoUpgrade_75092&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .displayName(&#34;Disable GKE auto upgrade&#34;)
- *             .description(&#34;Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.&#34;)
- *             .actionType(&#34;ALLOW&#34;)
- *             .condition(&#34;resource.management.autoUpgrade == false&#34;)
- *             .methodTypes(&#34;CREATE&#34;)
- *             .resourceTypes(&#34;container.googleapis.com/NodePool&#34;)
+ *         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()        
+ *             .name("custom.disableGkeAutoUpgrade_75092")
+ *             .parent("organizations/123456789")
+ *             .displayName("Disable GKE auto upgrade")
+ *             .description("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.")
+ *             .actionType("ALLOW")
+ *             .condition("resource.management.autoUpgrade == false")
+ *             .methodTypes("CREATE")
+ *             .resourceTypes("container.googleapis.com/NodePool")
  *             .build());
  * 
- *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
- *             .name(constraint.name().applyValue(name -&gt; String.format(&#34;organizations/123456789/policies/%s&#34;, name)))
- *             .parent(&#34;organizations/123456789&#34;)
+ *         var primary = new Policy("primary", PolicyArgs.builder()        
+ *             .name(constraint.name().applyValue(name -> String.format("organizations/123456789/policies/%s", name)))
+ *             .parent("organizations/123456789")
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()
- *                     .enforce(&#34;FALSE&#34;)
+ *                     .enforce("FALSE")
  *                     .build())
  *                 .build())
  *             .dryRunSpec(PolicyDryRunSpecArgs.builder()
  *                 .inheritFromParent(false)
  *                 .reset(false)
  *                 .rules(PolicyDryRunSpecRuleArgs.builder()
- *                     .enforce(&#34;FALSE&#34;)
+ *                     .enforce("FALSE")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -51,13 +52,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU Node With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -82,17 +85,18 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
-     *             .cidrBlock(&#34;10.2.0.0/29&#34;)
+     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .acceleratorType("v3-8")
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+     *             .cidrBlock("10.2.0.0/29")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -105,7 +109,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -130,13 +135,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU Node With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -161,17 +168,18 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
-     *             .cidrBlock(&#34;10.2.0.0/29&#34;)
+     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .acceleratorType("v3-8")
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+     *             .cidrBlock("10.2.0.0/29")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -184,7 +192,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -209,13 +218,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU Node With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -240,17 +251,18 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
-     *             .cidrBlock(&#34;10.2.0.0/29&#34;)
+     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .acceleratorType("v3-8")
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+     *             .cidrBlock("10.2.0.0/29")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -263,7 +275,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -288,13 +301,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU Node With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -319,17 +334,18 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
-     *             .cidrBlock(&#34;10.2.0.0/29&#34;)
+     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .acceleratorType("v3-8")
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+     *             .cidrBlock("10.2.0.0/29")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -342,7 +358,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -367,13 +384,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU Node With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -398,17 +417,18 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
-     *             .cidrBlock(&#34;10.2.0.0/29&#34;)
+     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .acceleratorType("v3-8")
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+     *             .cidrBlock("10.2.0.0/29")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -421,7 +441,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -446,13 +467,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU Node With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -477,17 +500,18 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
-     *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
-     *             .cidrBlock(&#34;10.2.0.0/29&#34;)
+     *         var tpu = new Node("tpu", NodeArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .acceleratorType("v3-8")
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+     *             .cidrBlock("10.2.0.0/29")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -500,7 +524,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -525,13 +550,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -559,16 +586,17 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -> getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -581,7 +609,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -606,13 +635,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -640,16 +671,17 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -> getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -662,7 +694,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -687,13 +720,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -721,16 +756,17 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -> getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -743,7 +779,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -768,13 +805,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -802,16 +841,17 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -> getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -824,7 +864,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -849,13 +890,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -883,16 +926,17 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -> getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -905,7 +949,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -930,13 +975,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -964,16 +1011,17 @@ public final class TpuFunctions {
      * 
      *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -> getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -986,7 +1034,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1011,13 +1060,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1042,15 +1093,16 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1063,7 +1115,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1088,13 +1141,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1119,15 +1174,16 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1140,7 +1196,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1165,13 +1222,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1196,15 +1255,16 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1217,7 +1277,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1242,13 +1303,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1273,15 +1336,16 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1294,7 +1358,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1319,13 +1384,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1350,15 +1417,16 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1371,7 +1439,8 @@ public final class TpuFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1396,13 +1465,15 @@ public final class TpuFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Configure Basic TPU VM With Available Version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1427,15 +1498,16 @@ public final class TpuFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
-     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
-     *             .name(&#34;test-tpu&#34;)
-     *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *         var tpu = new V2Vm("tpu", V2VmArgs.builder()        
+     *             .name("test-tpu")
+     *             .zone("us-central1-b")
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -> getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

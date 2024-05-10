@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## google\_container\_analysis\_note\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,26 +57,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/containeranalysis.notes.occurrences.viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/containeranalysis.notes.occurrences.viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new NoteIamPolicy(&#34;policy&#34;, NoteIamPolicyArgs.builder()        
+ *         var policy = new NoteIamPolicy("policy", NoteIamPolicyArgs.builder()        
  *             .project(note.project())
  *             .note(note.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_container\_analysis\_note\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,22 +99,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new NoteIamBinding(&#34;binding&#34;, NoteIamBindingArgs.builder()        
+ *         var binding = new NoteIamBinding("binding", NoteIamBindingArgs.builder()        
  *             .project(note.project())
  *             .note(note.name())
- *             .role(&#34;roles/containeranalysis.notes.occurrences.viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/containeranalysis.notes.occurrences.viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_container\_analysis\_note\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -132,22 +137,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new NoteIamMember(&#34;member&#34;, NoteIamMemberArgs.builder()        
+ *         var member = new NoteIamMember("member", NoteIamMemberArgs.builder()        
  *             .project(note.project())
  *             .note(note.name())
- *             .role(&#34;roles/containeranalysis.notes.occurrences.viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/containeranalysis.notes.occurrences.viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_container\_analysis\_note\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -172,26 +179,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/containeranalysis.notes.occurrences.viewer&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/containeranalysis.notes.occurrences.viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new NoteIamPolicy(&#34;policy&#34;, NoteIamPolicyArgs.builder()        
+ *         var policy = new NoteIamPolicy("policy", NoteIamPolicyArgs.builder()        
  *             .project(note.project())
  *             .note(note.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_container\_analysis\_note\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -212,22 +221,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new NoteIamBinding(&#34;binding&#34;, NoteIamBindingArgs.builder()        
+ *         var binding = new NoteIamBinding("binding", NoteIamBindingArgs.builder()        
  *             .project(note.project())
  *             .note(note.name())
- *             .role(&#34;roles/containeranalysis.notes.occurrences.viewer&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/containeranalysis.notes.occurrences.viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_container\_analysis\_note\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -248,16 +259,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new NoteIamMember(&#34;member&#34;, NoteIamMemberArgs.builder()        
+ *         var member = new NoteIamMember("member", NoteIamMemberArgs.builder()        
  *             .project(note.project())
  *             .note(note.name())
- *             .role(&#34;roles/containeranalysis.notes.occurrences.viewer&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/containeranalysis.notes.occurrences.viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -277,7 +289,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:containeranalysis/noteIamPolicy:NoteIamPolicy editor &#34;projects/{{project}}/notes/{{note}} roles/containeranalysis.notes.occurrences.viewer user:jane@example.com&#34;
+ * $ pulumi import gcp:containeranalysis/noteIamPolicy:NoteIamPolicy editor &#34;projects/{{project}}/notes/{{note}} roles/containeranalysis.notes.occurrences.viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.

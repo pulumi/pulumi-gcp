@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Backend Service Signed Url Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,46 +64,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var urlSignature = new RandomId(&#34;urlSignature&#34;, RandomIdArgs.builder()        
+ *         var urlSignature = new RandomId("urlSignature", RandomIdArgs.builder()        
  *             .byteLength(16)
  *             .build());
  * 
- *         var webserver = new InstanceTemplate(&#34;webserver&#34;, InstanceTemplateArgs.builder()        
- *             .name(&#34;standard-webserver&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var webserver = new InstanceTemplate("webserver", InstanceTemplateArgs.builder()        
+ *             .name("standard-webserver")
+ *             .machineType("e2-medium")
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-11&#34;)
+ *                 .sourceImage("debian-cloud/debian-11")
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
  *             .build());
  * 
- *         var webservers = new InstanceGroupManager(&#34;webservers&#34;, InstanceGroupManagerArgs.builder()        
- *             .name(&#34;my-webservers&#34;)
+ *         var webservers = new InstanceGroupManager("webservers", InstanceGroupManagerArgs.builder()        
+ *             .name("my-webservers")
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(webserver.id())
- *                 .name(&#34;primary&#34;)
+ *                 .name("primary")
  *                 .build())
- *             .baseInstanceName(&#34;webserver&#34;)
- *             .zone(&#34;us-central1-f&#34;)
+ *             .baseInstanceName("webserver")
+ *             .zone("us-central1-f")
  *             .targetSize(1)
  *             .build());
  * 
- *         var default_ = new HttpHealthCheck(&#34;default&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;test&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()        
+ *             .name("test")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var exampleBackend = new BackendService(&#34;exampleBackend&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;my-backend-service&#34;)
- *             .description(&#34;Our company website&#34;)
- *             .portName(&#34;http&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var exampleBackend = new BackendService("exampleBackend", BackendServiceArgs.builder()        
+ *             .name("my-backend-service")
+ *             .description("Our company website")
+ *             .portName("http")
+ *             .protocol("HTTP")
  *             .timeoutSec(10)
  *             .enableCdn(true)
  *             .backends(BackendServiceBackendArgs.builder()
@@ -111,15 +112,16 @@ import javax.annotation.Nullable;
  *             .healthChecks(default_.id())
  *             .build());
  * 
- *         var backendKey = new BackendServiceSignedUrlKey(&#34;backendKey&#34;, BackendServiceSignedUrlKeyArgs.builder()        
- *             .name(&#34;test-key&#34;)
+ *         var backendKey = new BackendServiceSignedUrlKey("backendKey", BackendServiceSignedUrlKeyArgs.builder()        
+ *             .name("test-key")
  *             .keyValue(urlSignature.b64Url())
  *             .backendService(exampleBackend.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -63,7 +63,7 @@ public final class DatasetAccess {
     private @Nullable String specialGroup;
     /**
      * @return An email address of a user to grant access to. For example:
-     * fred@example.com
+     * fred{@literal @}example.com
      * 
      */
     private @Nullable String userByEmail;
@@ -142,7 +142,7 @@ public final class DatasetAccess {
     }
     /**
      * @return An email address of a user to grant access to. For example:
-     * fred@example.com
+     * fred{@literal @}example.com
      * 
      */
     public Optional<String> userByEmail() {

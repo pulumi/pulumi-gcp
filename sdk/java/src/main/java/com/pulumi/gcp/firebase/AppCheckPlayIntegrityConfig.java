@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Firebase App Check Play Integrity Config Minimal
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,39 +57,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enables the Play Integrity API
- *         var playIntegrity = new Service(&#34;playIntegrity&#34;, ServiceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .service(&#34;playintegrity.googleapis.com&#34;)
+ *         var playIntegrity = new Service("playIntegrity", ServiceArgs.builder()        
+ *             .project("my-project-name")
+ *             .service("playintegrity.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AndroidApp(&#34;default&#34;, AndroidAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Play Integrity app&#34;)
- *             .packageName(&#34;package.name.playintegrity&#34;)
- *             .sha1Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
- *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
+ *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Play Integrity app")
+ *             .packageName("package.name.playintegrity")
+ *             .sha1Hashes("2145bdf698b8715039bd0e83f2069bed435ac21c")
+ *             .sha256Hashes("2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc")
  *             .build());
  * 
  *         // It takes a while for App Check to recognize the new app
- *         // If your app already exists, you don&#39;t have to wait 30 seconds.
- *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;30s&#34;)
+ *         // If your app already exists, you don't have to wait 30 seconds.
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig(&#34;defaultAppCheckPlayIntegrityConfig&#34;, AppCheckPlayIntegrityConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()        
+ *             .project("my-project-name")
  *             .appId(default_.appId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebase App Check Play Integrity Config Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -116,35 +119,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enables the Play Integrity API
- *         var playIntegrity = new Service(&#34;playIntegrity&#34;, ServiceArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .service(&#34;playintegrity.googleapis.com&#34;)
+ *         var playIntegrity = new Service("playIntegrity", ServiceArgs.builder()        
+ *             .project("my-project-name")
+ *             .service("playintegrity.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var default_ = new AndroidApp(&#34;default&#34;, AndroidAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Play Integrity app&#34;)
- *             .packageName(&#34;package.name.playintegrity&#34;)
- *             .sha1Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
- *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
+ *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()        
+ *             .project("my-project-name")
+ *             .displayName("Play Integrity app")
+ *             .packageName("package.name.playintegrity")
+ *             .sha1Hashes("2145bdf698b8715039bd0e83f2069bed435ac21c")
+ *             .sha256Hashes("2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc")
  *             .build());
  * 
  *         // It takes a while for App Check to recognize the new app
- *         // If your app already exists, you don&#39;t have to wait 30 seconds.
- *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;30s&#34;)
+ *         // If your app already exists, you don't have to wait 30 seconds.
+ *         var wait30s = new Sleep("wait30s", SleepArgs.builder()        
+ *             .createDuration("30s")
  *             .build());
  * 
- *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig(&#34;defaultAppCheckPlayIntegrityConfig&#34;, AppCheckPlayIntegrityConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()        
+ *             .project("my-project-name")
  *             .appId(default_.appId())
- *             .tokenTtl(&#34;7200s&#34;)
+ *             .tokenTtl("7200s")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

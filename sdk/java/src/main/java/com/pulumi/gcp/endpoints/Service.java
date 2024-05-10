@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,28 +45,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var openapiService = new Service(&#34;openapiService&#34;, ServiceArgs.builder()        
- *             .serviceName(&#34;api-name.endpoints.project-id.cloud.goog&#34;)
- *             .project(&#34;project-id&#34;)
+ *         var openapiService = new Service("openapiService", ServiceArgs.builder()        
+ *             .serviceName("api-name.endpoints.project-id.cloud.goog")
+ *             .project("project-id")
  *             .openapiConfig(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;openapi_spec.yml&#34;)
+ *                 .input("openapi_spec.yml")
  *                 .build()).result())
  *             .build());
  * 
- *         var grpcService = new Service(&#34;grpcService&#34;, ServiceArgs.builder()        
- *             .serviceName(&#34;api-name.endpoints.project-id.cloud.goog&#34;)
- *             .project(&#34;project-id&#34;)
+ *         var grpcService = new Service("grpcService", ServiceArgs.builder()        
+ *             .serviceName("api-name.endpoints.project-id.cloud.goog")
+ *             .project("project-id")
  *             .grpcConfig(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;service_spec.yml&#34;)
+ *                 .input("service_spec.yml")
  *                 .build()).result())
  *             .protocOutputBase64(StdFunctions.filebase64(Filebase64Args.builder()
- *                 .input(&#34;compiled_descriptor_file.pb&#34;)
+ *                 .input("compiled_descriptor_file.pb")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.

@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ### Access Context Manager Service Perimeter Egress Policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,31 +67,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .title(&#34;Storage Policy&#34;)
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *             .parent("organizations/123456789")
+ *             .title("Storage Policy")
  *             .build());
  * 
- *         var storage_perimeter = new ServicePerimeter(&#34;storage-perimeter&#34;, ServicePerimeterArgs.builder()        
- *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accesspolicies/%s&#34;, name)))
- *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accesspolicies/%s/serviceperimeters/storage-perimeter&#34;, name)))
- *             .title(&#34;Storage Perimeter&#34;)
+ *         var storage_perimeter = new ServicePerimeter("storage-perimeter", ServicePerimeterArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -> String.format("accesspolicies/%s", name)))
+ *             .name(access_policy.name().applyValue(name -> String.format("accesspolicies/%s/serviceperimeters/storage-perimeter", name)))
+ *             .title("Storage Perimeter")
  *             .status(ServicePerimeterStatusArgs.builder()
- *                 .restrictedServices(&#34;storage.googleapis.com&#34;)
+ *                 .restrictedServices("storage.googleapis.com")
  *                 .build())
  *             .build());
  * 
- *         var egressPolicy = new ServicePerimeterEgressPolicy(&#34;egressPolicy&#34;, ServicePerimeterEgressPolicyArgs.builder()        
+ *         var egressPolicy = new ServicePerimeterEgressPolicy("egressPolicy", ServicePerimeterEgressPolicyArgs.builder()        
  *             .perimeter(storage_perimeter.name())
  *             .egressFrom(ServicePerimeterEgressPolicyEgressFromArgs.builder()
- *                 .identityType(&#34;ANY_IDENTITY&#34;)
+ *                 .identityType("ANY_IDENTITY")
  *                 .build())
  *             .egressTo(ServicePerimeterEgressPolicyEgressToArgs.builder()
- *                 .resources(&#34;*&#34;)
+ *                 .resources("*")
  *                 .operations(ServicePerimeterEgressPolicyEgressToOperationArgs.builder()
- *                     .serviceName(&#34;bigquery.googleapis.com&#34;)
+ *                     .serviceName("bigquery.googleapis.com")
  *                     .methodSelectors(ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs.builder()
- *                         .method(&#34;*&#34;)
+ *                         .method("*")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -98,7 +99,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

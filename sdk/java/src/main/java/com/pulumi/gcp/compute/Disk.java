@@ -51,7 +51,8 @@ import javax.annotation.Nullable;
  * ### Disk Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -72,23 +73,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
- *             .name(&#34;test-disk&#34;)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .image(&#34;debian-11-bullseye-v20220719&#34;)
- *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
+ *         var default_ = new Disk("default", DiskArgs.builder()        
+ *             .name("test-disk")
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .image("debian-11-bullseye-v20220719")
+ *             .labels(Map.of("environment", "dev"))
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Disk Async
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -110,17 +113,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Disk(&#34;primary&#34;, DiskArgs.builder()        
- *             .name(&#34;async-test-disk&#34;)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *         var primary = new Disk("primary", DiskArgs.builder()        
+ *             .name("async-test-disk")
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
- *         var secondary = new Disk(&#34;secondary&#34;, DiskArgs.builder()        
- *             .name(&#34;async-secondary-test-disk&#34;)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-east1-c&#34;)
+ *         var secondary = new Disk("secondary", DiskArgs.builder()        
+ *             .name("async-secondary-test-disk")
+ *             .type("pd-ssd")
+ *             .zone("us-east1-c")
  *             .asyncPrimaryDisk(DiskAsyncPrimaryDiskArgs.builder()
  *                 .disk(primary.id())
  *                 .build())
@@ -129,12 +132,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Disk Features
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -156,28 +161,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
- *             .name(&#34;test-disk-features&#34;)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
+ *         var default_ = new Disk("default", DiskArgs.builder()        
+ *             .name("test-disk-features")
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .labels(Map.of("environment", "dev"))
  *             .guestOsFeatures(            
  *                 DiskGuestOsFeatureArgs.builder()
- *                     .type(&#34;SECURE_BOOT&#34;)
+ *                     .type("SECURE_BOOT")
  *                     .build(),
  *                 DiskGuestOsFeatureArgs.builder()
- *                     .type(&#34;MULTI_IP_SUBNET&#34;)
+ *                     .type("MULTI_IP_SUBNET")
  *                     .build(),
  *                 DiskGuestOsFeatureArgs.builder()
- *                     .type(&#34;WINDOWS&#34;)
+ *                     .type("WINDOWS")
  *                     .build())
- *             .licenses(&#34;https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core&#34;)
+ *             .licenses("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core")
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

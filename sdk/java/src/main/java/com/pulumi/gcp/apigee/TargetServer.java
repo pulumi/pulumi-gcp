@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Apigee Target Server Test Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,73 +67,74 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
- *             .name(&#34;my-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var project = new Project("project", ProjectArgs.builder()        
+ *             .projectId("my-project")
+ *             .name("my-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         var apigee = new Service(&#34;apigee&#34;, ServiceArgs.builder()        
+ *         var apigee = new Service("apigee", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;apigee.googleapis.com&#34;)
+ *             .service("apigee.googleapis.com")
  *             .build());
  * 
- *         var servicenetworking = new Service(&#34;servicenetworking&#34;, ServiceArgs.builder()        
+ *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .build());
  * 
- *         var compute = new Service(&#34;compute&#34;, ServiceArgs.builder()        
+ *         var compute = new Service("compute", ServiceArgs.builder()        
  *             .project(project.projectId())
- *             .service(&#34;compute.googleapis.com&#34;)
+ *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;apigee-network&#34;)
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *             .name("apigee-network")
  *             .project(project.projectId())
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;apigee-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(apigeeNetwork.id())
  *             .project(project.projectId())
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
  *             .network(apigeeNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()        
+ *             .analyticsRegion("us-central1")
  *             .projectId(project.projectId())
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build());
  * 
- *         var apigeeEnvironment = new Environment(&#34;apigeeEnvironment&#34;, EnvironmentArgs.builder()        
+ *         var apigeeEnvironment = new Environment("apigeeEnvironment", EnvironmentArgs.builder()        
  *             .orgId(apigeeOrg.id())
- *             .name(&#34;my-environment-name&#34;)
- *             .description(&#34;Apigee Environment&#34;)
- *             .displayName(&#34;environment-1&#34;)
+ *             .name("my-environment-name")
+ *             .description("Apigee Environment")
+ *             .displayName("environment-1")
  *             .build());
  * 
- *         var apigeeTargetServer = new TargetServer(&#34;apigeeTargetServer&#34;, TargetServerArgs.builder()        
- *             .name(&#34;my-target-server&#34;)
- *             .description(&#34;Apigee Target Server&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .host(&#34;abc.foo.com&#34;)
+ *         var apigeeTargetServer = new TargetServer("apigeeTargetServer", TargetServerArgs.builder()        
+ *             .name("my-target-server")
+ *             .description("Apigee Target Server")
+ *             .protocol("HTTP")
+ *             .host("abc.foo.com")
  *             .port(8080)
  *             .envId(apigeeEnvironment.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

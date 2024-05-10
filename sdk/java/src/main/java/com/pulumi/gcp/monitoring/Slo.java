@@ -41,7 +41,8 @@ import javax.annotation.Nullable;
  * ### Monitoring Slo Appengine
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,34 +68,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = MonitoringFunctions.getAppEngineService(GetAppEngineServiceArgs.builder()
- *             .moduleId(&#34;default&#34;)
+ *             .moduleId("default")
  *             .build());
  * 
- *         var appengSlo = new Slo(&#34;appengSlo&#34;, SloArgs.builder()        
+ *         var appengSlo = new Slo("appengSlo", SloArgs.builder()        
  *             .service(default_.serviceId())
- *             .sloId(&#34;ae-slo&#34;)
- *             .displayName(&#34;Test SLO for App Engine&#34;)
+ *             .sloId("ae-slo")
+ *             .displayName("Test SLO for App Engine")
  *             .goal(0.9)
- *             .calendarPeriod(&#34;DAY&#34;)
+ *             .calendarPeriod("DAY")
  *             .basicSli(SloBasicSliArgs.builder()
  *                 .latency(SloBasicSliLatencyArgs.builder()
- *                     .threshold(&#34;1s&#34;)
+ *                     .threshold("1s")
  *                     .build())
  *                 .build())
  *             .userLabels(Map.ofEntries(
- *                 Map.entry(&#34;my_key&#34;, &#34;my_value&#34;),
- *                 Map.entry(&#34;my_other_key&#34;, &#34;my_other_value&#34;)
+ *                 Map.entry("my_key", "my_value"),
+ *                 Map.entry("my_other_key", "my_other_value")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Request Based
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -120,20 +123,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService(&#34;customsrv&#34;, CustomServiceArgs.builder()        
- *             .serviceId(&#34;custom-srv-request-slos&#34;)
- *             .displayName(&#34;My Custom Service&#34;)
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *             .serviceId("custom-srv-request-slos")
+ *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var requestBasedSlo = new Slo(&#34;requestBasedSlo&#34;, SloArgs.builder()        
+ *         var requestBasedSlo = new Slo("requestBasedSlo", SloArgs.builder()        
  *             .service(customsrv.serviceId())
- *             .sloId(&#34;consumed-api-slo&#34;)
- *             .displayName(&#34;Test SLO with request based SLI (good total ratio)&#34;)
+ *             .sloId("consumed-api-slo")
+ *             .displayName("Test SLO with request based SLI (good total ratio)")
  *             .goal(0.9)
  *             .rollingPeriodDays(30)
  *             .requestBasedSli(SloRequestBasedSliArgs.builder()
  *                 .distributionCut(SloRequestBasedSliDistributionCutArgs.builder()
- *                     .distributionFilter(&#34;metric.type=\&#34;serviceruntime.googleapis.com/api/request_latencies\&#34; resource.type=\&#34;api\&#34;  &#34;)
+ *                     .distributionFilter("metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  ")
  *                     .range(SloRequestBasedSliDistributionCutRangeArgs.builder()
  *                         .max(0.5)
  *                         .build())
@@ -143,12 +146,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Windows Based Good Bad Metric Filter
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -172,35 +177,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService(&#34;customsrv&#34;, CustomServiceArgs.builder()        
- *             .serviceId(&#34;custom-srv-windows-slos&#34;)
- *             .displayName(&#34;My Custom Service&#34;)
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *             .serviceId("custom-srv-windows-slos")
+ *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var windowsBased = new Slo(&#34;windowsBased&#34;, SloArgs.builder()        
+ *         var windowsBased = new Slo("windowsBased", SloArgs.builder()        
  *             .service(customsrv.serviceId())
- *             .displayName(&#34;Test SLO with window based SLI&#34;)
+ *             .displayName("Test SLO with window based SLI")
  *             .goal(0.95)
- *             .calendarPeriod(&#34;FORTNIGHT&#34;)
+ *             .calendarPeriod("FORTNIGHT")
  *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
- *                 .windowPeriod(&#34;400s&#34;)
+ *                 .windowPeriod("400s")
  *                 .goodBadMetricFilter(StdFunctions.join(JoinArgs.builder()
- *                     .separator(&#34; AND &#34;)
+ *                     .separator(" AND ")
  *                     .input(                    
- *                         &#34;metric.type=\&#34;monitoring.googleapis.com/uptime_check/check_passed\&#34;&#34;,
- *                         &#34;resource.type=\&#34;uptime_url\&#34;&#34;)
+ *                         "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\"",
+ *                         "resource.type=\"uptime_url\"")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Windows Based Metric Mean
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -226,24 +233,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService(&#34;customsrv&#34;, CustomServiceArgs.builder()        
- *             .serviceId(&#34;custom-srv-windows-slos&#34;)
- *             .displayName(&#34;My Custom Service&#34;)
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *             .serviceId("custom-srv-windows-slos")
+ *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var windowsBased = new Slo(&#34;windowsBased&#34;, SloArgs.builder()        
+ *         var windowsBased = new Slo("windowsBased", SloArgs.builder()        
  *             .service(customsrv.serviceId())
- *             .displayName(&#34;Test SLO with window based SLI&#34;)
+ *             .displayName("Test SLO with window based SLI")
  *             .goal(0.9)
  *             .rollingPeriodDays(20)
  *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
- *                 .windowPeriod(&#34;600s&#34;)
+ *                 .windowPeriod("600s")
  *                 .metricMeanInRange(SloWindowsBasedSliMetricMeanInRangeArgs.builder()
  *                     .timeSeries(StdFunctions.join(JoinArgs.builder()
- *                         .separator(&#34; AND &#34;)
+ *                         .separator(" AND ")
  *                         .input(                        
- *                             &#34;metric.type=\&#34;agent.googleapis.com/cassandra/client_request/latency/95p\&#34;&#34;,
- *                             &#34;resource.type=\&#34;gce_instance\&#34;&#34;)
+ *                             "metric.type=\"agent.googleapis.com/cassandra/client_request/latency/95p\"",
+ *                             "resource.type=\"gce_instance\"")
  *                         .build()).result())
  *                     .range(SloWindowsBasedSliMetricMeanInRangeRangeArgs.builder()
  *                         .max(5)
@@ -254,12 +261,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Windows Based Metric Sum
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -285,24 +294,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService(&#34;customsrv&#34;, CustomServiceArgs.builder()        
- *             .serviceId(&#34;custom-srv-windows-slos&#34;)
- *             .displayName(&#34;My Custom Service&#34;)
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *             .serviceId("custom-srv-windows-slos")
+ *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var windowsBased = new Slo(&#34;windowsBased&#34;, SloArgs.builder()        
+ *         var windowsBased = new Slo("windowsBased", SloArgs.builder()        
  *             .service(customsrv.serviceId())
- *             .displayName(&#34;Test SLO with window based SLI&#34;)
+ *             .displayName("Test SLO with window based SLI")
  *             .goal(0.9)
  *             .rollingPeriodDays(20)
  *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
- *                 .windowPeriod(&#34;400s&#34;)
+ *                 .windowPeriod("400s")
  *                 .metricSumInRange(SloWindowsBasedSliMetricSumInRangeArgs.builder()
  *                     .timeSeries(StdFunctions.join(JoinArgs.builder()
- *                         .separator(&#34; AND &#34;)
+ *                         .separator(" AND ")
  *                         .input(                        
- *                             &#34;metric.type=\&#34;monitoring.googleapis.com/uptime_check/request_latency\&#34;&#34;,
- *                             &#34;resource.type=\&#34;uptime_url\&#34;&#34;)
+ *                             "metric.type=\"monitoring.googleapis.com/uptime_check/request_latency\"",
+ *                             "resource.type=\"uptime_url\"")
  *                         .build()).result())
  *                     .range(SloWindowsBasedSliMetricSumInRangeRangeArgs.builder()
  *                         .max(5000)
@@ -313,12 +322,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Windows Based Ratio Threshold
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -346,27 +357,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customsrv = new CustomService(&#34;customsrv&#34;, CustomServiceArgs.builder()        
- *             .serviceId(&#34;custom-srv-windows-slos&#34;)
- *             .displayName(&#34;My Custom Service&#34;)
+ *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()        
+ *             .serviceId("custom-srv-windows-slos")
+ *             .displayName("My Custom Service")
  *             .build());
  * 
- *         var windowsBased = new Slo(&#34;windowsBased&#34;, SloArgs.builder()        
+ *         var windowsBased = new Slo("windowsBased", SloArgs.builder()        
  *             .service(customsrv.serviceId())
- *             .displayName(&#34;Test SLO with window based SLI&#34;)
+ *             .displayName("Test SLO with window based SLI")
  *             .goal(0.9)
  *             .rollingPeriodDays(20)
  *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
- *                 .windowPeriod(&#34;100s&#34;)
+ *                 .windowPeriod("100s")
  *                 .goodTotalRatioThreshold(SloWindowsBasedSliGoodTotalRatioThresholdArgs.builder()
  *                     .threshold(0.1)
  *                     .performance(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs.builder()
  *                         .distributionCut(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs.builder()
  *                             .distributionFilter(StdFunctions.join(JoinArgs.builder()
- *                                 .separator(&#34; AND &#34;)
+ *                                 .separator(" AND ")
  *                                 .input(                                
- *                                     &#34;metric.type=\&#34;serviceruntime.googleapis.com/api/request_latencies\&#34;&#34;,
- *                                     &#34;resource.type=\&#34;consumed_api\&#34;&#34;)
+ *                                     "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\"",
+ *                                     "resource.type=\"consumed_api\"")
  *                                 .build()).result())
  *                             .range(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs.builder()
  *                                 .min(1)
@@ -380,7 +391,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

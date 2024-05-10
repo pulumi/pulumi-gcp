@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Gkehub Scope Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,23 +52,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
- *             .scopeId(&#34;my-scope&#34;)
+ *         var scope = new Scope("scope", ScopeArgs.builder()        
+ *             .scopeId("my-scope")
  *             .namespaceLabels(Map.ofEntries(
- *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
- *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
- *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *                 Map.entry("keyb", "valueb"),
+ *                 Map.entry("keya", "valuea"),
+ *                 Map.entry("keyc", "valuec")
  *             ))
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
- *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
- *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *                 Map.entry("keyb", "valueb"),
+ *                 Map.entry("keya", "valuea"),
+ *                 Map.entry("keyc", "valuec")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

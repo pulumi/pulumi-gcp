@@ -41,7 +41,8 @@ import javax.annotation.Nullable;
  * ### Access Context Manager Service Perimeter Resource Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,28 +68,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .title(&#34;my policy&#34;)
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *             .parent("organizations/123456789")
+ *             .title("my policy")
  *             .build());
  * 
- *         var service_perimeter_resourceServicePerimeter = new ServicePerimeter(&#34;service-perimeter-resourceServicePerimeter&#34;, ServicePerimeterArgs.builder()        
- *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
- *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/servicePerimeters/restrict_all&#34;, name)))
- *             .title(&#34;restrict_all&#34;)
+ *         var service_perimeter_resourceServicePerimeter = new ServicePerimeter("service-perimeter-resourceServicePerimeter", ServicePerimeterArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
+ *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/servicePerimeters/restrict_all", name)))
+ *             .title("restrict_all")
  *             .status(ServicePerimeterStatusArgs.builder()
- *                 .restrictedServices(&#34;storage.googleapis.com&#34;)
+ *                 .restrictedServices("storage.googleapis.com")
  *                 .build())
  *             .build());
  * 
- *         var service_perimeter_resource = new ServicePerimeterResource(&#34;service-perimeter-resource&#34;, ServicePerimeterResourceArgs.builder()        
+ *         var service_perimeter_resource = new ServicePerimeterResource("service-perimeter-resource", ServicePerimeterResourceArgs.builder()        
  *             .perimeterName(service_perimeter_resourceServicePerimeter.name())
- *             .resource(&#34;projects/987654321&#34;)
+ *             .resource("projects/987654321")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

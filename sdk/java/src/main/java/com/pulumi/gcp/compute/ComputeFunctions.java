@@ -179,7 +179,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -205,25 +206,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAddress = ComputeFunctions.getAddress(GetAddressArgs.builder()
-     *             .name(&#34;foobar&#34;)
+     *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getAddressResult -&gt; getAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getAddressResult -> getAddressResult.address()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -237,7 +239,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -263,25 +266,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAddress = ComputeFunctions.getAddress(GetAddressArgs.builder()
-     *             .name(&#34;foobar&#34;)
+     *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getAddressResult -&gt; getAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getAddressResult -> getAddressResult.address()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -295,7 +299,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -321,25 +326,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAddress = ComputeFunctions.getAddress(GetAddressArgs.builder()
-     *             .name(&#34;foobar&#34;)
+     *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getAddressResult -&gt; getAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getAddressResult -> getAddressResult.address()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -353,7 +359,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -379,25 +386,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAddress = ComputeFunctions.getAddress(GetAddressArgs.builder()
-     *             .name(&#34;foobar&#34;)
+     *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getAddressResult -&gt; getAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getAddressResult -> getAddressResult.address()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -412,7 +420,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -438,25 +447,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
-     *             .filter(&#34;name:test-*&#34;)
+     *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -471,7 +481,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -497,25 +508,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
-     *             .filter(&#34;name:test-*&#34;)
+     *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -530,7 +542,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -556,25 +569,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
-     *             .filter(&#34;name:test-*&#34;)
+     *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -589,7 +603,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -615,25 +630,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
-     *             .filter(&#34;name:test-*&#34;)
+     *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -648,7 +664,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -674,25 +691,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
-     *             .filter(&#34;name:test-*&#34;)
+     *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -707,7 +725,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -733,25 +752,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
-     *             .filter(&#34;name:test-*&#34;)
+     *             .filter("name:test-*")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -904,7 +924,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -927,10 +948,11 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -943,7 +965,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -966,10 +989,11 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -982,7 +1006,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1005,10 +1030,11 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1021,7 +1047,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1044,10 +1071,11 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1060,7 +1088,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1083,10 +1112,11 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1099,7 +1129,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1122,10 +1153,11 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1140,7 +1172,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1165,11 +1198,11 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var persistent-boot-disk = ComputeFunctions.getDisk(GetDiskArgs.builder()
-     *             .name(&#34;persistent-boot-disk&#34;)
-     *             .project(&#34;example&#34;)
+     *             .name("persistent-boot-disk")
+     *             .project("example")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .source(persistent_boot_disk.selfLink())
      *                 .autoDelete(false)
@@ -1178,7 +1211,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1193,7 +1227,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1218,11 +1253,11 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var persistent-boot-disk = ComputeFunctions.getDisk(GetDiskArgs.builder()
-     *             .name(&#34;persistent-boot-disk&#34;)
-     *             .project(&#34;example&#34;)
+     *             .name("persistent-boot-disk")
+     *             .project("example")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .source(persistent_boot_disk.selfLink())
      *                 .autoDelete(false)
@@ -1231,7 +1266,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1246,7 +1282,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1271,11 +1308,11 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var persistent-boot-disk = ComputeFunctions.getDisk(GetDiskArgs.builder()
-     *             .name(&#34;persistent-boot-disk&#34;)
-     *             .project(&#34;example&#34;)
+     *             .name("persistent-boot-disk")
+     *             .project("example")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .source(persistent_boot_disk.selfLink())
      *                 .autoDelete(false)
@@ -1284,7 +1321,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1299,7 +1337,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1324,11 +1363,11 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var persistent-boot-disk = ComputeFunctions.getDisk(GetDiskArgs.builder()
-     *             .name(&#34;persistent-boot-disk&#34;)
-     *             .project(&#34;example&#34;)
+     *             .name("persistent-boot-disk")
+     *             .project("example")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .source(persistent_boot_disk.selfLink())
      *                 .autoDelete(false)
@@ -1337,7 +1376,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1350,7 +1390,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1379,7 +1420,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1392,7 +1434,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1421,7 +1464,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1434,7 +1478,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1463,7 +1508,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1476,7 +1522,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1505,7 +1552,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1609,7 +1657,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1635,25 +1684,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAddress = ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
-     *             .name(&#34;foobar&#34;)
+     *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -> getGlobalAddressResult.address()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1667,7 +1717,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1693,25 +1744,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAddress = ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
-     *             .name(&#34;foobar&#34;)
+     *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -> getGlobalAddressResult.address()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1725,7 +1777,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1751,25 +1804,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAddress = ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
-     *             .name(&#34;foobar&#34;)
+     *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -> getGlobalAddressResult.address()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1783,7 +1837,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1809,25 +1864,26 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAddress = ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
-     *             .name(&#34;foobar&#34;)
+     *             .name("foobar")
      *             .build());
      * 
-     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
-     *             .name(&#34;prod-zone&#34;)
-     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+     *             .name("prod-zone")
+     *             .dnsName("prod.mydomain.com.")
      *             .build());
      * 
-     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
-     *             .type(&#34;A&#34;)
+     *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
+     *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -> getGlobalAddressResult.address()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1949,7 +2005,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1975,21 +2032,22 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-     *             .family(&#34;debian-11&#34;)
-     *             .project(&#34;debian-cloud&#34;)
+     *             .family("debian-11")
+     *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2003,7 +2061,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2029,21 +2088,22 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-     *             .family(&#34;debian-11&#34;)
-     *             .project(&#34;debian-cloud&#34;)
+     *             .family("debian-11")
+     *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2057,7 +2117,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2083,21 +2144,22 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-     *             .family(&#34;debian-11&#34;)
-     *             .project(&#34;debian-cloud&#34;)
+     *             .family("debian-11")
+     *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2111,7 +2173,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2137,21 +2200,22 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-     *             .family(&#34;debian-11&#34;)
-     *             .project(&#34;debian-cloud&#34;)
+     *             .family("debian-11")
+     *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2165,7 +2229,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2191,21 +2256,22 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-     *             .family(&#34;debian-11&#34;)
-     *             .project(&#34;debian-cloud&#34;)
+     *             .family("debian-11")
+     *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2219,7 +2285,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2245,21 +2312,22 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-     *             .family(&#34;debian-11&#34;)
-     *             .project(&#34;debian-cloud&#34;)
+     *             .family("debian-11")
+     *             .project("debian-cloud")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2272,7 +2340,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2300,7 +2369,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2313,7 +2383,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2341,7 +2412,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2354,7 +2426,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2382,7 +2455,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2395,7 +2469,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2423,7 +2498,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2439,7 +2515,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2461,13 +2538,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;primary-application-server&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2483,7 +2561,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2505,13 +2584,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;primary-application-server&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2527,7 +2607,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2549,13 +2630,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;primary-application-server&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2571,7 +2653,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2593,13 +2676,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;primary-application-server&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2615,7 +2699,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2637,13 +2722,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;primary-application-server&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2659,7 +2745,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2681,13 +2768,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;primary-application-server&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2700,7 +2788,8 @@ public final class ComputeFunctions {
      * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2722,13 +2811,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("instance-group-name")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2741,7 +2831,8 @@ public final class ComputeFunctions {
      * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2763,13 +2854,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("instance-group-name")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2782,7 +2874,8 @@ public final class ComputeFunctions {
      * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2804,13 +2897,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("instance-group-name")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2823,7 +2917,8 @@ public final class ComputeFunctions {
      * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2845,13 +2940,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("instance-group-name")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2864,7 +2960,8 @@ public final class ComputeFunctions {
      * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2886,13 +2983,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("instance-group-name")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2905,7 +3003,8 @@ public final class ComputeFunctions {
      * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2927,13 +3026,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("instance-group-name")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2948,7 +3048,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2970,17 +3071,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .name(&#34;my-igm&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("my-igm")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2995,7 +3097,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3017,17 +3120,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .name(&#34;my-igm&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("my-igm")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3042,7 +3146,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3064,17 +3169,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .name(&#34;my-igm&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("my-igm")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3089,7 +3195,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3111,17 +3218,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .name(&#34;my-igm&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("my-igm")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3136,7 +3244,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3158,17 +3267,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .name(&#34;my-igm&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("my-igm")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3183,7 +3293,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3205,17 +3316,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .name(&#34;my-igm&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("my-igm")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3228,7 +3340,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3257,7 +3370,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3270,7 +3384,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3299,7 +3414,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3312,7 +3428,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3341,7 +3458,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3354,7 +3472,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3383,7 +3502,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3397,7 +3517,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3419,21 +3540,23 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *             .instance(&#34;my-instance&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .instance("my-instance")
+     *             .zone("us-central1-a")
      *             .port(1)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3461,35 +3584,35 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var windows = new Instance(&#34;windows&#34;, InstanceArgs.builder()        
+     *         var windows = new Instance("windows", InstanceArgs.builder()        
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
-     *                 .network(&#34;default&#34;)
+     *                 .network("default")
      *                 .build())
-     *             .name(&#34;windows-instance&#34;)
-     *             .machineType(&#34;e2-medium&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("windows-instance")
+     *             .machineType("e2-medium")
+     *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(&#34;windows-cloud/windows-2019&#34;)
+     *                     .image("windows-cloud/windows-2019")
      *                     .build())
      *                 .build())
      *             .metadata(Map.ofEntries(
-     *                 Map.entry(&#34;serial-port-logging-enable&#34;, &#34;TRUE&#34;),
-     *                 Map.entry(&#34;windows-keys&#34;, serializeJson(
+     *                 Map.entry("serial-port-logging-enable", "TRUE"),
+     *                 Map.entry("windows-keys", serializeJson(
      *                     jsonObject(
-     *                         jsonProperty(&#34;email&#34;, &#34;example.user@example.com&#34;),
-     *                         jsonProperty(&#34;expireOn&#34;, &#34;2020-04-14T01:37:19Z&#34;),
-     *                         jsonProperty(&#34;exponent&#34;, &#34;AQAB&#34;),
-     *                         jsonProperty(&#34;modulus&#34;, &#34;wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==&#34;),
-     *                         jsonProperty(&#34;userName&#34;, &#34;example-user&#34;)
+     *                         jsonProperty("email", "example.user{@literal @}example.com"),
+     *                         jsonProperty("expireOn", "2020-04-14T01:37:19Z"),
+     *                         jsonProperty("exponent", "AQAB"),
+     *                         jsonProperty("modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q=="),
+     *                         jsonProperty("userName", "example-user")
      *                     )))
      *             ))
      *             .serviceAccount(InstanceServiceAccountArgs.builder()
      *                 .scopes(                
-     *                     &#34;userinfo-email&#34;,
-     *                     &#34;compute-ro&#34;,
-     *                     &#34;storage-ro&#34;)
+     *                     "userinfo-email",
+     *                     "compute-ro",
+     *                     "storage-ro")
      *                 .build())
      *             .build());
      * 
@@ -3499,10 +3622,11 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).applyValue(serial -&gt; serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3516,7 +3640,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3538,21 +3663,23 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *             .instance(&#34;my-instance&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .instance("my-instance")
+     *             .zone("us-central1-a")
      *             .port(1)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3580,35 +3707,35 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var windows = new Instance(&#34;windows&#34;, InstanceArgs.builder()        
+     *         var windows = new Instance("windows", InstanceArgs.builder()        
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
-     *                 .network(&#34;default&#34;)
+     *                 .network("default")
      *                 .build())
-     *             .name(&#34;windows-instance&#34;)
-     *             .machineType(&#34;e2-medium&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("windows-instance")
+     *             .machineType("e2-medium")
+     *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(&#34;windows-cloud/windows-2019&#34;)
+     *                     .image("windows-cloud/windows-2019")
      *                     .build())
      *                 .build())
      *             .metadata(Map.ofEntries(
-     *                 Map.entry(&#34;serial-port-logging-enable&#34;, &#34;TRUE&#34;),
-     *                 Map.entry(&#34;windows-keys&#34;, serializeJson(
+     *                 Map.entry("serial-port-logging-enable", "TRUE"),
+     *                 Map.entry("windows-keys", serializeJson(
      *                     jsonObject(
-     *                         jsonProperty(&#34;email&#34;, &#34;example.user@example.com&#34;),
-     *                         jsonProperty(&#34;expireOn&#34;, &#34;2020-04-14T01:37:19Z&#34;),
-     *                         jsonProperty(&#34;exponent&#34;, &#34;AQAB&#34;),
-     *                         jsonProperty(&#34;modulus&#34;, &#34;wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==&#34;),
-     *                         jsonProperty(&#34;userName&#34;, &#34;example-user&#34;)
+     *                         jsonProperty("email", "example.user{@literal @}example.com"),
+     *                         jsonProperty("expireOn", "2020-04-14T01:37:19Z"),
+     *                         jsonProperty("exponent", "AQAB"),
+     *                         jsonProperty("modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q=="),
+     *                         jsonProperty("userName", "example-user")
      *                     )))
      *             ))
      *             .serviceAccount(InstanceServiceAccountArgs.builder()
      *                 .scopes(                
-     *                     &#34;userinfo-email&#34;,
-     *                     &#34;compute-ro&#34;,
-     *                     &#34;storage-ro&#34;)
+     *                     "userinfo-email",
+     *                     "compute-ro",
+     *                     "storage-ro")
      *                 .build())
      *             .build());
      * 
@@ -3618,10 +3745,11 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).applyValue(serial -&gt; serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3635,7 +3763,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3657,21 +3786,23 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *             .instance(&#34;my-instance&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .instance("my-instance")
+     *             .zone("us-central1-a")
      *             .port(1)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3699,35 +3830,35 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var windows = new Instance(&#34;windows&#34;, InstanceArgs.builder()        
+     *         var windows = new Instance("windows", InstanceArgs.builder()        
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
-     *                 .network(&#34;default&#34;)
+     *                 .network("default")
      *                 .build())
-     *             .name(&#34;windows-instance&#34;)
-     *             .machineType(&#34;e2-medium&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("windows-instance")
+     *             .machineType("e2-medium")
+     *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(&#34;windows-cloud/windows-2019&#34;)
+     *                     .image("windows-cloud/windows-2019")
      *                     .build())
      *                 .build())
      *             .metadata(Map.ofEntries(
-     *                 Map.entry(&#34;serial-port-logging-enable&#34;, &#34;TRUE&#34;),
-     *                 Map.entry(&#34;windows-keys&#34;, serializeJson(
+     *                 Map.entry("serial-port-logging-enable", "TRUE"),
+     *                 Map.entry("windows-keys", serializeJson(
      *                     jsonObject(
-     *                         jsonProperty(&#34;email&#34;, &#34;example.user@example.com&#34;),
-     *                         jsonProperty(&#34;expireOn&#34;, &#34;2020-04-14T01:37:19Z&#34;),
-     *                         jsonProperty(&#34;exponent&#34;, &#34;AQAB&#34;),
-     *                         jsonProperty(&#34;modulus&#34;, &#34;wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==&#34;),
-     *                         jsonProperty(&#34;userName&#34;, &#34;example-user&#34;)
+     *                         jsonProperty("email", "example.user{@literal @}example.com"),
+     *                         jsonProperty("expireOn", "2020-04-14T01:37:19Z"),
+     *                         jsonProperty("exponent", "AQAB"),
+     *                         jsonProperty("modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q=="),
+     *                         jsonProperty("userName", "example-user")
      *                     )))
      *             ))
      *             .serviceAccount(InstanceServiceAccountArgs.builder()
      *                 .scopes(                
-     *                     &#34;userinfo-email&#34;,
-     *                     &#34;compute-ro&#34;,
-     *                     &#34;storage-ro&#34;)
+     *                     "userinfo-email",
+     *                     "compute-ro",
+     *                     "storage-ro")
      *                 .build())
      *             .build());
      * 
@@ -3737,10 +3868,11 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).applyValue(serial -&gt; serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3754,7 +3886,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3776,21 +3909,23 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *             .instance(&#34;my-instance&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .instance("my-instance")
+     *             .zone("us-central1-a")
      *             .port(1)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3818,35 +3953,35 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var windows = new Instance(&#34;windows&#34;, InstanceArgs.builder()        
+     *         var windows = new Instance("windows", InstanceArgs.builder()        
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
-     *                 .network(&#34;default&#34;)
+     *                 .network("default")
      *                 .build())
-     *             .name(&#34;windows-instance&#34;)
-     *             .machineType(&#34;e2-medium&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("windows-instance")
+     *             .machineType("e2-medium")
+     *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(&#34;windows-cloud/windows-2019&#34;)
+     *                     .image("windows-cloud/windows-2019")
      *                     .build())
      *                 .build())
      *             .metadata(Map.ofEntries(
-     *                 Map.entry(&#34;serial-port-logging-enable&#34;, &#34;TRUE&#34;),
-     *                 Map.entry(&#34;windows-keys&#34;, serializeJson(
+     *                 Map.entry("serial-port-logging-enable", "TRUE"),
+     *                 Map.entry("windows-keys", serializeJson(
      *                     jsonObject(
-     *                         jsonProperty(&#34;email&#34;, &#34;example.user@example.com&#34;),
-     *                         jsonProperty(&#34;expireOn&#34;, &#34;2020-04-14T01:37:19Z&#34;),
-     *                         jsonProperty(&#34;exponent&#34;, &#34;AQAB&#34;),
-     *                         jsonProperty(&#34;modulus&#34;, &#34;wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==&#34;),
-     *                         jsonProperty(&#34;userName&#34;, &#34;example-user&#34;)
+     *                         jsonProperty("email", "example.user{@literal @}example.com"),
+     *                         jsonProperty("expireOn", "2020-04-14T01:37:19Z"),
+     *                         jsonProperty("exponent", "AQAB"),
+     *                         jsonProperty("modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q=="),
+     *                         jsonProperty("userName", "example-user")
      *                     )))
      *             ))
      *             .serviceAccount(InstanceServiceAccountArgs.builder()
      *                 .scopes(                
-     *                     &#34;userinfo-email&#34;,
-     *                     &#34;compute-ro&#34;,
-     *                     &#34;storage-ro&#34;)
+     *                     "userinfo-email",
+     *                     "compute-ro",
+     *                     "storage-ro")
      *                 .build())
      *             .build());
      * 
@@ -3856,10 +3991,11 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).applyValue(serial -&gt; serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4228,7 +4364,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4250,17 +4387,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4275,7 +4413,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4297,17 +4436,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4322,7 +4462,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4344,17 +4485,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4369,7 +4511,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4391,17 +4534,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4416,7 +4560,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4438,17 +4583,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4463,7 +4609,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4485,17 +4632,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4511,7 +4659,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4536,24 +4685,24 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .name(&#34;foobar&#34;)
-     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .name("foobar")
+     *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
-     *             .name(&#34;other&#34;)
-     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *         var other = new Network("other", NetworkArgs.builder()        
+     *             .name("other")
+     *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
-     *             .name(&#34;peering1&#34;)
+     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+     *             .name("peering1")
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
-     *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
-     *             .name(&#34;peering2&#34;)
+     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+     *             .name("peering2")
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
      *             .build());
@@ -4565,7 +4714,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4581,7 +4731,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4606,24 +4757,24 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .name(&#34;foobar&#34;)
-     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .name("foobar")
+     *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
-     *             .name(&#34;other&#34;)
-     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *         var other = new Network("other", NetworkArgs.builder()        
+     *             .name("other")
+     *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
-     *             .name(&#34;peering1&#34;)
+     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+     *             .name("peering1")
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
-     *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
-     *             .name(&#34;peering2&#34;)
+     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+     *             .name("peering2")
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
      *             .build());
@@ -4635,7 +4786,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4651,7 +4803,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4676,24 +4829,24 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .name(&#34;foobar&#34;)
-     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .name("foobar")
+     *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
-     *             .name(&#34;other&#34;)
-     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *         var other = new Network("other", NetworkArgs.builder()        
+     *             .name("other")
+     *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
-     *             .name(&#34;peering1&#34;)
+     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+     *             .name("peering1")
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
-     *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
-     *             .name(&#34;peering2&#34;)
+     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+     *             .name("peering2")
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
      *             .build());
@@ -4705,7 +4858,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4721,7 +4875,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4746,24 +4901,24 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .name(&#34;foobar&#34;)
-     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .name("foobar")
+     *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
-     *             .name(&#34;other&#34;)
-     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *         var other = new Network("other", NetworkArgs.builder()        
+     *             .name("other")
+     *             .autoCreateSubnetworks("false")
      *             .build());
      * 
-     *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
-     *             .name(&#34;peering1&#34;)
+     *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()        
+     *             .name("peering1")
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
-     *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
-     *             .name(&#34;peering2&#34;)
+     *         var peering2 = new NetworkPeering("peering2", NetworkPeeringArgs.builder()        
+     *             .name("peering2")
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
      *             .build());
@@ -4775,7 +4930,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4843,7 +4999,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4867,18 +5024,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
-     *             .zone(&#34;us-central1-b&#34;)
+     *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
-     *             .name(&#34;test-tmpl&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *             .name("test-tmpl")
+     *             .region("us-central1")
      *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4892,7 +5050,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4916,18 +5075,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
-     *             .zone(&#34;us-central1-b&#34;)
+     *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
-     *             .name(&#34;test-tmpl&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *             .name("test-tmpl")
+     *             .region("us-central1")
      *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4941,7 +5101,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4965,18 +5126,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
-     *             .zone(&#34;us-central1-b&#34;)
+     *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
-     *             .name(&#34;test-tmpl&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *             .name("test-tmpl")
+     *             .region("us-central1")
      *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4990,7 +5152,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5014,18 +5177,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
-     *             .zone(&#34;us-central1-b&#34;)
+     *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
-     *             .name(&#34;test-tmpl&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *             .name("test-tmpl")
+     *             .region("us-central1")
      *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5039,7 +5203,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5063,18 +5228,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
-     *             .zone(&#34;us-central1-b&#34;)
+     *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
-     *             .name(&#34;test-tmpl&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *             .name("test-tmpl")
+     *             .region("us-central1")
      *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5088,7 +5254,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5112,18 +5279,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
-     *             .zone(&#34;us-central1-b&#34;)
+     *             .zone("us-central1-b")
      *             .build());
      * 
-     *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
-     *             .name(&#34;test-tmpl&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()        
+     *             .name("test-tmpl")
+     *             .region("us-central1")
      *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5150,7 +5318,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5175,17 +5344,17 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
-     *             .name(&#34;persistent-regional-disk&#34;)
-     *             .project(&#34;example&#34;)
-     *             .region(&#34;us-central1&#34;)
-     *             .type(&#34;pd-ssd&#34;)
+     *             .name("persistent-regional-disk")
+     *             .project("example")
+     *             .region("us-central1")
+     *             .type("pd-ssd")
      *             .physicalBlockSizeBytes(4096)
      *             .replicaZones(            
-     *                 &#34;us-central1-a&#34;,
-     *                 &#34;us-central1-f&#34;)
+     *                 "us-central1-a",
+     *                 "us-central1-f")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
      *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
@@ -5193,7 +5362,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5208,7 +5378,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5233,17 +5404,17 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
-     *             .name(&#34;persistent-regional-disk&#34;)
-     *             .project(&#34;example&#34;)
-     *             .region(&#34;us-central1&#34;)
-     *             .type(&#34;pd-ssd&#34;)
+     *             .name("persistent-regional-disk")
+     *             .project("example")
+     *             .region("us-central1")
+     *             .type("pd-ssd")
      *             .physicalBlockSizeBytes(4096)
      *             .replicaZones(            
-     *                 &#34;us-central1-a&#34;,
-     *                 &#34;us-central1-f&#34;)
+     *                 "us-central1-a",
+     *                 "us-central1-f")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
      *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
@@ -5251,7 +5422,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5266,7 +5438,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5291,17 +5464,17 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
-     *             .name(&#34;persistent-regional-disk&#34;)
-     *             .project(&#34;example&#34;)
-     *             .region(&#34;us-central1&#34;)
-     *             .type(&#34;pd-ssd&#34;)
+     *             .name("persistent-regional-disk")
+     *             .project("example")
+     *             .region("us-central1")
+     *             .type("pd-ssd")
      *             .physicalBlockSizeBytes(4096)
      *             .replicaZones(            
-     *                 &#34;us-central1-a&#34;,
-     *                 &#34;us-central1-f&#34;)
+     *                 "us-central1-a",
+     *                 "us-central1-f")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
      *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
@@ -5309,7 +5482,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5324,7 +5498,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5349,17 +5524,17 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
-     *             .name(&#34;persistent-regional-disk&#34;)
-     *             .project(&#34;example&#34;)
-     *             .region(&#34;us-central1&#34;)
-     *             .type(&#34;pd-ssd&#34;)
+     *             .name("persistent-regional-disk")
+     *             .project("example")
+     *             .region("us-central1")
+     *             .type("pd-ssd")
      *             .physicalBlockSizeBytes(4096)
      *             .replicaZones(            
-     *                 &#34;us-central1-a&#34;,
-     *                 &#34;us-central1-f&#34;)
+     *                 "us-central1-a",
+     *                 "us-central1-f")
      *             .build());
      * 
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
      *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
@@ -5367,7 +5542,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5380,7 +5556,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5409,7 +5586,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5422,7 +5600,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5451,7 +5630,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5464,7 +5644,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5493,7 +5674,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5506,7 +5688,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5535,7 +5718,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5547,7 +5731,8 @@ public final class ComputeFunctions {
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5569,12 +5754,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
+     *             .name("instance-group-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -5588,7 +5774,8 @@ public final class ComputeFunctions {
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5610,12 +5797,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
+     *             .name("instance-group-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -5629,7 +5817,8 @@ public final class ComputeFunctions {
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5651,12 +5840,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
+     *             .name("instance-group-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -5670,7 +5860,8 @@ public final class ComputeFunctions {
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5692,12 +5883,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
+     *             .name("instance-group-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -5711,7 +5903,8 @@ public final class ComputeFunctions {
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5733,12 +5926,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
+     *             .name("instance-group-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -5752,7 +5946,8 @@ public final class ComputeFunctions {
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5774,12 +5969,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
-     *             .name(&#34;instance-group-name&#34;)
+     *             .name("instance-group-name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -5797,7 +5993,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5820,18 +6017,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .name("generic-tpl-20200107")
      *             .build());
      * 
      *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .filter("name != generic-tpl-20200107")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5847,7 +6045,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5870,18 +6069,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .name("generic-tpl-20200107")
      *             .build());
      * 
      *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .filter("name != generic-tpl-20200107")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5897,7 +6097,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5920,18 +6121,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .name("generic-tpl-20200107")
      *             .build());
      * 
      *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .filter("name != generic-tpl-20200107")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5947,7 +6149,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5970,18 +6173,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .name("generic-tpl-20200107")
      *             .build());
      * 
      *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .filter("name != generic-tpl-20200107")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5997,7 +6201,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6020,18 +6225,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .name("generic-tpl-20200107")
      *             .build());
      * 
      *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .filter("name != generic-tpl-20200107")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6047,7 +6253,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6070,18 +6277,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .name("generic-tpl-20200107")
      *             .build());
      * 
      *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .filter("name != generic-tpl-20200107")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6096,7 +6304,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6118,17 +6327,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .region("us-central1")
      *             .build());
      * 
      *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6143,7 +6353,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6165,17 +6376,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .region("us-central1")
      *             .build());
      * 
      *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6190,7 +6402,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6212,17 +6425,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .region("us-central1")
      *             .build());
      * 
      *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6237,7 +6451,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6259,17 +6474,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .region("us-central1")
      *             .build());
      * 
      *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6284,7 +6500,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6306,17 +6523,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .region("us-central1")
      *             .build());
      * 
      *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6331,7 +6549,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6353,17 +6572,18 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+     *             .region("us-central1")
      *             .build());
      * 
      *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
-     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .selfLink("https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6411,7 +6631,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6437,19 +6658,20 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getRegions();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
-     *                 .name(&#34;my-network&#34;)
-     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
-     *                 .network(&#34;my-network&#34;)
-     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *                 .name("my-network")
+     *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
+     *                 .network("my-network")
+     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
      *                 .build());
      * 
      *         
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6461,7 +6683,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6487,19 +6710,20 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getRegions();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
-     *                 .name(&#34;my-network&#34;)
-     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
-     *                 .network(&#34;my-network&#34;)
-     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *                 .name("my-network")
+     *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
+     *                 .network("my-network")
+     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
      *                 .build());
      * 
      *         
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6511,7 +6735,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6537,19 +6762,20 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getRegions();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
-     *                 .name(&#34;my-network&#34;)
-     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
-     *                 .network(&#34;my-network&#34;)
-     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *                 .name("my-network")
+     *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
+     *                 .network("my-network")
+     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
      *                 .build());
      * 
      *         
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6561,7 +6787,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6587,19 +6814,20 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getRegions();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
-     *                 .name(&#34;my-network&#34;)
-     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
-     *                 .network(&#34;my-network&#34;)
-     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *                 .name("my-network")
+     *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
+     *                 .network("my-network")
+     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
      *                 .build());
      * 
      *         
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6611,7 +6839,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6637,19 +6866,20 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getRegions();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
-     *                 .name(&#34;my-network&#34;)
-     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
-     *                 .network(&#34;my-network&#34;)
-     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *                 .name("my-network")
+     *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
+     *                 .network("my-network")
+     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
      *                 .build());
      * 
      *         
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6661,7 +6891,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6687,19 +6918,20 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getRegions();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
-     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
-     *                 .name(&#34;my-network&#34;)
-     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
-     *                 .network(&#34;my-network&#34;)
-     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()            
+     *                 .name("my-network")
+     *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
+     *                 .network("my-network")
+     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
      *                 .build());
      * 
      *         
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6711,7 +6943,8 @@ public final class ComputeFunctions {
      * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6733,13 +6966,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var reservation = ComputeFunctions.getReservation(GetReservationArgs.builder()
-     *             .name(&#34;gce-reservation&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("gce-reservation")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6751,7 +6985,8 @@ public final class ComputeFunctions {
      * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6773,13 +7008,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var reservation = ComputeFunctions.getReservation(GetReservationArgs.builder()
-     *             .name(&#34;gce-reservation&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("gce-reservation")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6791,7 +7027,8 @@ public final class ComputeFunctions {
      * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6813,13 +7050,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var reservation = ComputeFunctions.getReservation(GetReservationArgs.builder()
-     *             .name(&#34;gce-reservation&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("gce-reservation")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6831,7 +7069,8 @@ public final class ComputeFunctions {
      * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6853,13 +7092,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var reservation = ComputeFunctions.getReservation(GetReservationArgs.builder()
-     *             .name(&#34;gce-reservation&#34;)
-     *             .zone(&#34;us-central1-a&#34;)
+     *             .name("gce-reservation")
+     *             .zone("us-central1-a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6870,7 +7110,8 @@ public final class ComputeFunctions {
      * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6892,13 +7133,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
-     *             .name(&#34;daily&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("daily")
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6909,7 +7151,8 @@ public final class ComputeFunctions {
      * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6931,13 +7174,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
-     *             .name(&#34;daily&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("daily")
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6948,7 +7192,8 @@ public final class ComputeFunctions {
      * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6970,13 +7215,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
-     *             .name(&#34;daily&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("daily")
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6987,7 +7233,8 @@ public final class ComputeFunctions {
      * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7009,13 +7256,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
-     *             .name(&#34;daily&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *             .name("daily")
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7028,7 +7276,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7050,13 +7299,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;myrouter-us-east1&#34;)
-     *             .network(&#34;my-network&#34;)
+     *             .name("myrouter-us-east1")
+     *             .network("my-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7069,7 +7319,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7091,13 +7342,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;myrouter-us-east1&#34;)
-     *             .network(&#34;my-network&#34;)
+     *             .name("myrouter-us-east1")
+     *             .network("my-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7110,7 +7362,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7132,13 +7385,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;myrouter-us-east1&#34;)
-     *             .network(&#34;my-network&#34;)
+     *             .name("myrouter-us-east1")
+     *             .network("my-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7151,7 +7405,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7173,13 +7428,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;myrouter-us-east1&#34;)
-     *             .network(&#34;my-network&#34;)
+     *             .name("myrouter-us-east1")
+     *             .network("my-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7196,7 +7452,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7218,13 +7475,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ComputeFunctions.getRouterNat(GetRouterNatArgs.builder()
-     *             .name(&#34;my-nat&#34;)
-     *             .router(&#34;my-router&#34;)
+     *             .name("my-nat")
+     *             .router("my-router")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7241,7 +7499,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7263,13 +7522,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ComputeFunctions.getRouterNat(GetRouterNatArgs.builder()
-     *             .name(&#34;my-nat&#34;)
-     *             .router(&#34;my-router&#34;)
+     *             .name("my-nat")
+     *             .router("my-router")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7286,7 +7546,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7308,13 +7569,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ComputeFunctions.getRouterNat(GetRouterNatArgs.builder()
-     *             .name(&#34;my-nat&#34;)
-     *             .router(&#34;my-router&#34;)
+     *             .name("my-nat")
+     *             .router("my-router")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7331,7 +7593,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7353,13 +7616,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ComputeFunctions.getRouterNat(GetRouterNatArgs.builder()
-     *             .name(&#34;my-nat&#34;)
-     *             .router(&#34;my-router&#34;)
+     *             .name("my-nat")
+     *             .router("my-router")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7377,7 +7641,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7399,12 +7664,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
-     *             .name(&#34;myrouter&#34;)
+     *             .name("myrouter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7422,7 +7688,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7444,12 +7711,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
-     *             .name(&#34;myrouter&#34;)
+     *             .name("myrouter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7467,7 +7735,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7489,12 +7758,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
-     *             .name(&#34;myrouter&#34;)
+     *             .name("myrouter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7512,7 +7782,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7534,12 +7805,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
-     *             .name(&#34;myrouter&#34;)
+     *             .name("myrouter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7596,7 +7868,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7619,18 +7892,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;my-snapshot&#34;)
+     *             .name("my-snapshot")
      *             .build());
      * 
      *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .filter("name != my-snapshot")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7647,7 +7921,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7670,18 +7945,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;my-snapshot&#34;)
+     *             .name("my-snapshot")
      *             .build());
      * 
      *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .filter("name != my-snapshot")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7698,7 +7974,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7721,18 +7998,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;my-snapshot&#34;)
+     *             .name("my-snapshot")
      *             .build());
      * 
      *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .filter("name != my-snapshot")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7749,7 +8027,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7772,18 +8051,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;my-snapshot&#34;)
+     *             .name("my-snapshot")
      *             .build());
      * 
      *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .filter("name != my-snapshot")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7800,7 +8080,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7823,18 +8104,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;my-snapshot&#34;)
+     *             .name("my-snapshot")
      *             .build());
      * 
      *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .filter("name != my-snapshot")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7851,7 +8133,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7874,18 +8157,19 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;my-snapshot&#34;)
+     *             .name("my-snapshot")
      *             .build());
      * 
      *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .filter("name != my-snapshot")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7898,7 +8182,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7926,7 +8211,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7939,7 +8225,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7967,7 +8254,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7980,7 +8268,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8008,7 +8297,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8021,7 +8311,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8049,7 +8340,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8062,7 +8354,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8084,13 +8377,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
-     *             .name(&#34;default-us-east1&#34;)
-     *             .region(&#34;us-east1&#34;)
+     *             .name("default-us-east1")
+     *             .region("us-east1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8103,7 +8397,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8125,13 +8420,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
-     *             .name(&#34;default-us-east1&#34;)
-     *             .region(&#34;us-east1&#34;)
+     *             .name("default-us-east1")
+     *             .region("us-east1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8144,7 +8440,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8166,13 +8463,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
-     *             .name(&#34;default-us-east1&#34;)
-     *             .region(&#34;us-east1&#34;)
+     *             .name("default-us-east1")
+     *             .region("us-east1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8185,7 +8483,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8207,13 +8506,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
-     *             .name(&#34;default-us-east1&#34;)
-     *             .region(&#34;us-east1&#34;)
+     *             .name("default-us-east1")
+     *             .region("us-east1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8226,7 +8526,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8248,13 +8549,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
-     *             .name(&#34;default-us-east1&#34;)
-     *             .region(&#34;us-east1&#34;)
+     *             .name("default-us-east1")
+     *             .region("us-east1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8267,7 +8569,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8289,13 +8592,14 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
-     *             .name(&#34;default-us-east1&#34;)
-     *             .region(&#34;us-east1&#34;)
+     *             .name("default-us-east1")
+     *             .region("us-east1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8308,7 +8612,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8337,7 +8642,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8350,7 +8656,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8379,7 +8686,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8392,7 +8700,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8421,7 +8730,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8434,7 +8744,8 @@ public final class ComputeFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8463,7 +8774,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8511,7 +8823,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8537,12 +8850,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getZones();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
+     *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
-     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
      *                 .targetSize(1)
      *                 .build());
      * 
@@ -8550,7 +8863,8 @@ public final class ComputeFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8562,7 +8876,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8588,12 +8903,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getZones();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
+     *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
-     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
      *                 .targetSize(1)
      *                 .build());
      * 
@@ -8601,7 +8916,8 @@ public final class ComputeFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8613,7 +8929,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8639,12 +8956,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getZones();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
+     *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
-     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
      *                 .targetSize(1)
      *                 .build());
      * 
@@ -8652,7 +8969,8 @@ public final class ComputeFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8664,7 +8982,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8690,12 +9009,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getZones();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
+     *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
-     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
      *                 .targetSize(1)
      *                 .build());
      * 
@@ -8703,7 +9022,8 @@ public final class ComputeFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8715,7 +9035,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8741,12 +9062,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getZones();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
+     *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
-     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
      *                 .targetSize(1)
      *                 .build());
      * 
@@ -8754,7 +9075,8 @@ public final class ComputeFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8766,7 +9088,8 @@ public final class ComputeFunctions {
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8792,12 +9115,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = ComputeFunctions.getZones();
      * 
-     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
-     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *         for (var i = 0; i < available.applyValue(getZonesResult -> getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()            
+     *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
-     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
-     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.applyValue(getZonesResult -> getZonesResult.names())[range.value()])
      *                 .targetSize(1)
      *                 .build());
      * 
@@ -8805,7 +9128,8 @@ public final class ComputeFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8823,7 +9147,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8845,12 +9170,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
-     *             .name(&#34;myrouter&#34;)
+     *             .name("myrouter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -8872,7 +9198,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8894,12 +9221,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
-     *             .name(&#34;myrouter&#34;)
+     *             .name("myrouter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -8921,7 +9249,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8943,12 +9272,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
-     *             .name(&#34;myrouter&#34;)
+     *             .name("myrouter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -8970,7 +9300,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8992,12 +9323,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
-     *             .name(&#34;myrouter&#34;)
+     *             .name("myrouter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated

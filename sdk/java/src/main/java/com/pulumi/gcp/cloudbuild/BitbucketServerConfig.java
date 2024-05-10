@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Cloudbuild Bitbucket Server Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,27 +54,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bbs_config = new BitbucketServerConfig(&#34;bbs-config&#34;, BitbucketServerConfigArgs.builder()        
- *             .configId(&#34;bbs-config&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .hostUri(&#34;https://bbs.com&#34;)
+ *         var bbs_config = new BitbucketServerConfig("bbs-config", BitbucketServerConfigArgs.builder()        
+ *             .configId("bbs-config")
+ *             .location("us-central1")
+ *             .hostUri("https://bbs.com")
  *             .secrets(BitbucketServerConfigSecretsArgs.builder()
- *                 .adminAccessTokenVersionName(&#34;projects/myProject/secrets/mybbspat/versions/1&#34;)
- *                 .readAccessTokenVersionName(&#34;projects/myProject/secrets/mybbspat/versions/1&#34;)
- *                 .webhookSecretVersionName(&#34;projects/myProject/secrets/mybbspat/versions/1&#34;)
+ *                 .adminAccessTokenVersionName("projects/myProject/secrets/mybbspat/versions/1")
+ *                 .readAccessTokenVersionName("projects/myProject/secrets/mybbspat/versions/1")
+ *                 .webhookSecretVersionName("projects/myProject/secrets/mybbspat/versions/1")
  *                 .build())
- *             .username(&#34;test&#34;)
- *             .apiKey(&#34;&lt;api-key&gt;&#34;)
+ *             .username("test")
+ *             .apiKey("<api-key>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudbuild Bitbucket Server Config Repositories
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,36 +99,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bbs_config_with_repos = new BitbucketServerConfig(&#34;bbs-config-with-repos&#34;, BitbucketServerConfigArgs.builder()        
- *             .configId(&#34;bbs-config&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .hostUri(&#34;https://bbs.com&#34;)
+ *         var bbs_config_with_repos = new BitbucketServerConfig("bbs-config-with-repos", BitbucketServerConfigArgs.builder()        
+ *             .configId("bbs-config")
+ *             .location("us-central1")
+ *             .hostUri("https://bbs.com")
  *             .secrets(BitbucketServerConfigSecretsArgs.builder()
- *                 .adminAccessTokenVersionName(&#34;projects/myProject/secrets/mybbspat/versions/1&#34;)
- *                 .readAccessTokenVersionName(&#34;projects/myProject/secrets/mybbspat/versions/1&#34;)
- *                 .webhookSecretVersionName(&#34;projects/myProject/secrets/mybbspat/versions/1&#34;)
+ *                 .adminAccessTokenVersionName("projects/myProject/secrets/mybbspat/versions/1")
+ *                 .readAccessTokenVersionName("projects/myProject/secrets/mybbspat/versions/1")
+ *                 .webhookSecretVersionName("projects/myProject/secrets/mybbspat/versions/1")
  *                 .build())
- *             .username(&#34;test&#34;)
- *             .apiKey(&#34;&lt;api-key&gt;&#34;)
+ *             .username("test")
+ *             .apiKey("<api-key>")
  *             .connectedRepositories(            
  *                 BitbucketServerConfigConnectedRepositoryArgs.builder()
- *                     .projectKey(&#34;DEV&#34;)
- *                     .repoSlug(&#34;repo1&#34;)
+ *                     .projectKey("DEV")
+ *                     .repoSlug("repo1")
  *                     .build(),
  *                 BitbucketServerConfigConnectedRepositoryArgs.builder()
- *                     .projectKey(&#34;PROD&#34;)
- *                     .repoSlug(&#34;repo1&#34;)
+ *                     .projectKey("PROD")
+ *                     .repoSlug("repo1")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudbuild Bitbucket Server Config Peered Network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -159,52 +164,53 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var servicenetworking = new Service(&#34;servicenetworking&#34;, ServiceArgs.builder()        
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()        
+ *             .service("servicenetworking.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var vpcNetwork = new Network(&#34;vpcNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;vpc-network&#34;)
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()        
+ *             .name("vpc-network")
  *             .build());
  * 
- *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;private-ip-alloc&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *             .name("private-ip-alloc")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(vpcNetwork.id())
  *             .build());
  * 
- *         var default_ = new Connection(&#34;default&#34;, ConnectionArgs.builder()        
+ *         var default_ = new Connection("default", ConnectionArgs.builder()        
  *             .network(vpcNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
- *         var bbs_config_with_peered_network = new BitbucketServerConfig(&#34;bbs-config-with-peered-network&#34;, BitbucketServerConfigArgs.builder()        
- *             .configId(&#34;bbs-config&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .hostUri(&#34;https://bbs.com&#34;)
+ *         var bbs_config_with_peered_network = new BitbucketServerConfig("bbs-config-with-peered-network", BitbucketServerConfigArgs.builder()        
+ *             .configId("bbs-config")
+ *             .location("us-central1")
+ *             .hostUri("https://bbs.com")
  *             .secrets(BitbucketServerConfigSecretsArgs.builder()
- *                 .adminAccessTokenVersionName(&#34;projects/myProject/secrets/mybbspat/versions/1&#34;)
- *                 .readAccessTokenVersionName(&#34;projects/myProject/secrets/mybbspat/versions/1&#34;)
- *                 .webhookSecretVersionName(&#34;projects/myProject/secrets/mybbspat/versions/1&#34;)
+ *                 .adminAccessTokenVersionName("projects/myProject/secrets/mybbspat/versions/1")
+ *                 .readAccessTokenVersionName("projects/myProject/secrets/mybbspat/versions/1")
+ *                 .webhookSecretVersionName("projects/myProject/secrets/mybbspat/versions/1")
  *                 .build())
- *             .username(&#34;test&#34;)
- *             .apiKey(&#34;&lt;api-key&gt;&#34;)
- *             .peeredNetwork(vpcNetwork.id().applyValue(id -&gt; StdFunctions.replace()).applyValue(invoke -&gt; invoke.result()))
- *             .sslCa(&#34;&#34;&#34;
+ *             .username("test")
+ *             .apiKey("<api-key>")
+ *             .peeredNetwork(vpcNetwork.id().applyValue(id -> StdFunctions.replace()).applyValue(invoke -> invoke.result()))
+ *             .sslCa("""
  * -----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----
  * -----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Os Config Patch Deployment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,24 +58,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var patch = new PatchDeployment(&#34;patch&#34;, PatchDeploymentArgs.builder()        
- *             .patchDeploymentId(&#34;patch-deploy&#34;)
+ *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()        
+ *             .patchDeploymentId("patch-deploy")
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .all(true)
  *                 .build())
  *             .oneTimeSchedule(PatchDeploymentOneTimeScheduleArgs.builder()
- *                 .executeTime(&#34;2999-10-10T10:10:10.045123456Z&#34;)
+ *                 .executeTime("2999-10-10T10:10:10.045123456Z")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Os Config Patch Deployment Daily
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,14 +102,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var patch = new PatchDeployment(&#34;patch&#34;, PatchDeploymentArgs.builder()        
- *             .patchDeploymentId(&#34;patch-deploy&#34;)
+ *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()        
+ *             .patchDeploymentId("patch-deploy")
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .all(true)
  *                 .build())
  *             .recurringSchedule(PatchDeploymentRecurringScheduleArgs.builder()
  *                 .timeZone(PatchDeploymentRecurringScheduleTimeZoneArgs.builder()
- *                     .id(&#34;America/New_York&#34;)
+ *                     .id("America/New_York")
  *                     .build())
  *                 .timeOfDay(PatchDeploymentRecurringScheduleTimeOfDayArgs.builder()
  *                     .hours(0)
@@ -119,12 +122,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Os Config Patch Deployment Daily Midnight
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -149,14 +154,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var patch = new PatchDeployment(&#34;patch&#34;, PatchDeploymentArgs.builder()        
- *             .patchDeploymentId(&#34;patch-deploy&#34;)
+ *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()        
+ *             .patchDeploymentId("patch-deploy")
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .all(true)
  *                 .build())
  *             .recurringSchedule(PatchDeploymentRecurringScheduleArgs.builder()
  *                 .timeZone(PatchDeploymentRecurringScheduleTimeZoneArgs.builder()
- *                     .id(&#34;America/New_York&#34;)
+ *                     .id("America/New_York")
  *                     .build())
  *                 .timeOfDay(PatchDeploymentRecurringScheduleTimeOfDayArgs.builder()
  *                     .hours(0)
@@ -169,12 +174,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Os Config Patch Deployment Instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -210,31 +217,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobar = new Instance(&#34;foobar&#34;, InstanceArgs.builder()        
- *             .name(&#34;patch-deploy-inst&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *         var foobar = new Instance("foobar", InstanceArgs.builder()        
+ *             .name("patch-deploy-inst")
+ *             .machineType("e2-medium")
+ *             .zone("us-central1-a")
  *             .canIpForward(false)
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
+ *                 "foo",
+ *                 "bar")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
- *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .metadata(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var patch = new PatchDeployment(&#34;patch&#34;, PatchDeploymentArgs.builder()        
- *             .patchDeploymentId(&#34;patch-deploy&#34;)
+ *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()        
+ *             .patchDeploymentId("patch-deploy")
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .instances(foobar.id())
  *                 .build())
@@ -242,12 +249,12 @@ import javax.annotation.Nullable;
  *                 .yum(PatchDeploymentPatchConfigYumArgs.builder()
  *                     .security(true)
  *                     .minimal(true)
- *                     .excludes(&#34;bash&#34;)
+ *                     .excludes("bash")
  *                     .build())
  *                 .build())
  *             .recurringSchedule(PatchDeploymentRecurringScheduleArgs.builder()
  *                 .timeZone(PatchDeploymentRecurringScheduleTimeZoneArgs.builder()
- *                     .id(&#34;America/New_York&#34;)
+ *                     .id("America/New_York")
  *                     .build())
  *                 .timeOfDay(PatchDeploymentRecurringScheduleTimeOfDayArgs.builder()
  *                     .hours(0)
@@ -263,7 +270,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Os Config Patch Deployment Full
  * 

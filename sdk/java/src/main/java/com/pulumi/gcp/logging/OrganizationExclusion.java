@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_exclusion = new OrganizationExclusion(&#34;my-exclusion&#34;, OrganizationExclusionArgs.builder()        
- *             .name(&#34;my-instance-debug-exclusion&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .description(&#34;Exclude GCE instance debug logs&#34;)
- *             .filter(&#34;resource.type = gce_instance AND severity &lt;= DEBUG&#34;)
+ *         var my_exclusion = new OrganizationExclusion("my-exclusion", OrganizationExclusionArgs.builder()        
+ *             .name("my-instance-debug-exclusion")
+ *             .orgId("123456789")
+ *             .description("Exclude GCE instance debug logs")
+ *             .filter("resource.type = gce_instance AND severity <= DEBUG")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

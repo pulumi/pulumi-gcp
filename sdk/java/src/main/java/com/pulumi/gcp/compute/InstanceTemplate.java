@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -75,54 +76,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Account(&#34;default&#34;, AccountArgs.builder()        
- *             .accountId(&#34;service-account-id&#34;)
- *             .displayName(&#34;Service Account&#34;)
+ *         var default_ = new Account("default", AccountArgs.builder()        
+ *             .accountId("service-account-id")
+ *             .displayName("Service Account")
  *             .build());
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobar = new Disk(&#34;foobar&#34;, DiskArgs.builder()        
- *             .name(&#34;existing-disk&#34;)
- *             .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *         var foobar = new Disk("foobar", DiskArgs.builder()        
+ *             .name("existing-disk")
+ *             .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *             .size(10)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
  *             .build());
  * 
- *         var dailyBackup = new ResourcePolicy(&#34;dailyBackup&#34;, ResourcePolicyArgs.builder()        
- *             .name(&#34;every-day-4am&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var dailyBackup = new ResourcePolicy("dailyBackup", ResourcePolicyArgs.builder()        
+ *             .name("every-day-4am")
+ *             .region("us-central1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
  *                     .dailySchedule(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs.builder()
  *                         .daysInCycle(1)
- *                         .startTime(&#34;04:00&#34;)
+ *                         .startTime("04:00")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
- *             .name(&#34;appserver-template&#34;)
- *             .description(&#34;This template is used to create app server instances.&#34;)
+ *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()        
+ *             .name("appserver-template")
+ *             .description("This template is used to create app server instances.")
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
- *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
- *             .instanceDescription(&#34;description assigned to instances&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *                 "foo",
+ *                 "bar")
+ *             .labels(Map.of("environment", "dev"))
+ *             .instanceDescription("description assigned to instances")
+ *             .machineType("e2-medium")
  *             .canIpForward(false)
  *             .scheduling(InstanceTemplateSchedulingArgs.builder()
  *                 .automaticRestart(true)
- *                 .onHostMaintenance(&#34;MIGRATE&#34;)
+ *                 .onHostMaintenance("MIGRATE")
  *                 .build())
  *             .disks(            
  *                 InstanceTemplateDiskArgs.builder()
- *                     .sourceImage(&#34;debian-cloud/debian-11&#34;)
+ *                     .sourceImage("debian-cloud/debian-11")
  *                     .autoDelete(true)
  *                     .boot(true)
  *                     .resourcePolicies(dailyBackup.id())
@@ -133,24 +134,26 @@ import javax.annotation.Nullable;
  *                     .boot(false)
  *                     .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
- *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .metadata(Map.of("foo", "bar"))
  *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
  *                 .email(default_.email())
- *                 .scopes(&#34;cloud-platform&#34;)
+ *                 .scopes("cloud-platform")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Automatic Envoy Deployment
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -181,74 +184,75 @@ import javax.annotation.Nullable;
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobar = new InstanceTemplate(&#34;foobar&#34;, InstanceTemplateArgs.builder()        
- *             .name(&#34;appserver-template&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var foobar = new InstanceTemplate("foobar", InstanceTemplateArgs.builder()        
+ *             .name("appserver-template")
+ *             .machineType("e2-medium")
  *             .canIpForward(false)
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
+ *                 "foo",
+ *                 "bar")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                 .sourceImage(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
  *             .scheduling(InstanceTemplateSchedulingArgs.builder()
  *                 .preemptible(false)
  *                 .automaticRestart(true)
  *                 .build())
  *             .metadata(Map.ofEntries(
- *                 Map.entry(&#34;gce-software-declaration&#34;, &#34;&#34;&#34;
+ *                 Map.entry("gce-software-declaration", """
  * {
- *   &#34;softwareRecipes&#34;: [{
- *     &#34;name&#34;: &#34;install-gce-service-proxy-agent&#34;,
- *     &#34;desired_state&#34;: &#34;INSTALLED&#34;,
- *     &#34;installSteps&#34;: [{
- *       &#34;scriptRun&#34;: {
- *         &#34;script&#34;: &#34;#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-&#34;$ZONE&#34;/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   &#34;$SERVICE_PROXY_AGENT_DIRECTORY&#34;   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     &#34;$SERVICE_PROXY_AGENT_DIRECTORY&#34;\nsudo tar -xzf &#34;$SERVICE_PROXY_AGENT_DIRECTORY&#34;/service-proxy-agent-0.2.tgz -C &#34;$SERVICE_PROXY_AGENT_DIRECTORY&#34;\n&#34;$SERVICE_PROXY_AGENT_DIRECTORY&#34;/service-proxy-agent/service-proxy-agent-bootstrap.sh&#34;
+ *   "softwareRecipes": [{
+ *     "name": "install-gce-service-proxy-agent",
+ *     "desired_state": "INSTALLED",
+ *     "installSteps": [{
+ *       "scriptRun": {
+ *         "script": "#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
  *       }
  *     }]
  *   }]
  * }
- *                 &#34;&#34;&#34;),
- *                 Map.entry(&#34;gce-service-proxy&#34;, &#34;&#34;&#34;
+ *                 """),
+ *                 Map.entry("gce-service-proxy", """
  * {
- *   &#34;api-version&#34;: &#34;0.2&#34;,
- *   &#34;proxy-spec&#34;: {
- *     &#34;proxy-port&#34;: 15001,
- *     &#34;network&#34;: &#34;my-network&#34;,
- *     &#34;tracing&#34;: &#34;ON&#34;,
- *     &#34;access-log&#34;: &#34;/var/log/envoy/access.log&#34;
+ *   "api-version": "0.2",
+ *   "proxy-spec": {
+ *     "proxy-port": 15001,
+ *     "network": "my-network",
+ *     "tracing": "ON",
+ *     "access-log": "/var/log/envoy/access.log"
  *   }
- *   &#34;service&#34;: {
- *     &#34;serving-ports&#34;: [80, 81]
+ *   "service": {
+ *     "serving-ports": [80, 81]
  *   },
- *  &#34;labels&#34;: {
- *    &#34;app_name&#34;: &#34;bookserver_app&#34;,
- *    &#34;app_version&#34;: &#34;STABLE&#34;
+ *  "labels": {
+ *    "app_name": "bookserver_app",
+ *    "app_version": "STABLE"
  *   }
  * }
- *                 &#34;&#34;&#34;),
- *                 Map.entry(&#34;enable-guest-attributes&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;enable-osconfig&#34;, &#34;true&#34;)
+ *                 """),
+ *                 Map.entry("enable-guest-attributes", "true"),
+ *                 Map.entry("enable-osconfig", "true")
  *             ))
  *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
  *                 .email(default_.email())
- *                 .scopes(&#34;cloud-platform&#34;)
+ *                 .scopes("cloud-platform")
  *                 .build())
- *             .labels(Map.of(&#34;gce-service-proxy&#34;, &#34;on&#34;))
+ *             .labels(Map.of("gce-service-proxy", "on"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Using with Instance Group Manager
@@ -261,7 +265,8 @@ import javax.annotation.Nullable;
  * with `name_prefix`. Example:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -286,25 +291,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()        
  *             .disks()
  *             .networkInterfaces()
- *             .namePrefix(&#34;instance-template-&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .namePrefix("instance-template-")
+ *             .machineType("e2-medium")
+ *             .region("us-central1")
  *             .build());
  * 
- *         var instanceGroupManager = new InstanceGroupManager(&#34;instanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
- *             .name(&#34;instance-group-manager&#34;)
+ *         var instanceGroupManager = new InstanceGroupManager("instanceGroupManager", InstanceGroupManagerArgs.builder()        
+ *             .name("instance-group-manager")
  *             .instanceTemplate(instanceTemplate.id())
- *             .baseInstanceName(&#34;instance-group-manager&#34;)
- *             .zone(&#34;us-central1-f&#34;)
- *             .targetSize(&#34;1&#34;)
+ *             .baseInstanceName("instance-group-manager")
+ *             .zone("us-central1-f")
+ *             .targetSize("1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With this setup, this provider generates a unique name for your Instance

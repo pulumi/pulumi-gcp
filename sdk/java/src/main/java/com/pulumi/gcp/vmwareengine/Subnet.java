@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Vmware Engine Subnet User Defined
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,39 +59,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subnet_nw = new Network(&#34;subnet-nw&#34;, NetworkArgs.builder()        
- *             .name(&#34;pc-nw&#34;)
- *             .location(&#34;global&#34;)
- *             .type(&#34;STANDARD&#34;)
- *             .description(&#34;PC network description.&#34;)
+ *         var subnet_nw = new Network("subnet-nw", NetworkArgs.builder()        
+ *             .name("pc-nw")
+ *             .location("global")
+ *             .type("STANDARD")
+ *             .description("PC network description.")
  *             .build());
  * 
- *         var subnet_pc = new PrivateCloud(&#34;subnet-pc&#34;, PrivateCloudArgs.builder()        
- *             .location(&#34;us-west1-a&#34;)
- *             .name(&#34;sample-pc&#34;)
- *             .description(&#34;Sample test PC.&#34;)
+ *         var subnet_pc = new PrivateCloud("subnet-pc", PrivateCloudArgs.builder()        
+ *             .location("us-west1-a")
+ *             .name("sample-pc")
+ *             .description("Sample test PC.")
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
- *                 .managementCidr(&#34;192.168.50.0/24&#34;)
+ *                 .managementCidr("192.168.50.0/24")
  *                 .vmwareEngineNetwork(subnet_nw.id())
  *                 .build())
  *             .managementCluster(PrivateCloudManagementClusterArgs.builder()
- *                 .clusterId(&#34;sample-mgmt-cluster&#34;)
+ *                 .clusterId("sample-mgmt-cluster")
  *                 .nodeTypeConfigs(PrivateCloudManagementClusterNodeTypeConfigArgs.builder()
- *                     .nodeTypeId(&#34;standard-72&#34;)
+ *                     .nodeTypeId("standard-72")
  *                     .nodeCount(3)
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var vmw_engine_subnet = new Subnet(&#34;vmw-engine-subnet&#34;, SubnetArgs.builder()        
- *             .name(&#34;service-1&#34;)
+ *         var vmw_engine_subnet = new Subnet("vmw-engine-subnet", SubnetArgs.builder()        
+ *             .name("service-1")
  *             .parent(subnet_pc.id())
- *             .ipCidrRange(&#34;192.168.100.0/26&#34;)
+ *             .ipCidrRange("192.168.100.0/26")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

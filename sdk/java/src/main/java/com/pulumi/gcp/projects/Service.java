@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,15 +55,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Service(&#34;project&#34;, ServiceArgs.builder()        
- *             .project(&#34;your-project-id&#34;)
- *             .service(&#34;iam.googleapis.com&#34;)
+ *         var project = new Service("project", ServiceArgs.builder()        
+ *             .project("your-project-id")
+ *             .service("iam.googleapis.com")
  *             .disableDependentServices(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Network Services Tcp Route Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,26 +51,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;backend-service-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("backend-service-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;my-backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultTcpRoute = new TcpRoute(&#34;defaultTcpRoute&#34;, TcpRouteArgs.builder()        
- *             .name(&#34;my-tcp-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()        
+ *             .name("my-tcp-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .rules(TcpRouteRuleArgs.builder()
  *                 .matches(TcpRouteRuleMatchArgs.builder()
- *                     .address(&#34;10.0.0.1/32&#34;)
- *                     .port(&#34;8081&#34;)
+ *                     .address("10.0.0.1/32")
+ *                     .port("8081")
  *                     .build())
  *                 .action(TcpRouteRuleActionArgs.builder()
  *                     .destinations(TcpRouteRuleActionDestinationArgs.builder()
@@ -83,12 +84,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Tcp Route Actions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -115,22 +118,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;backend-service-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("backend-service-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;my-backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultTcpRoute = new TcpRoute(&#34;defaultTcpRoute&#34;, TcpRouteArgs.builder()        
- *             .name(&#34;my-tcp-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()        
+ *             .name("my-tcp-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .rules(TcpRouteRuleArgs.builder()
  *                 .action(TcpRouteRuleActionArgs.builder()
  *                     .destinations(TcpRouteRuleActionDestinationArgs.builder()
@@ -144,12 +147,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Tcp Route Mesh Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -178,33 +183,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;backend-service-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("backend-service-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;my-backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultMesh = new Mesh(&#34;defaultMesh&#34;, MeshArgs.builder()        
- *             .name(&#34;my-tcp-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var defaultMesh = new Mesh("defaultMesh", MeshArgs.builder()        
+ *             .name("my-tcp-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .build());
  * 
- *         var defaultTcpRoute = new TcpRoute(&#34;defaultTcpRoute&#34;, TcpRouteArgs.builder()        
- *             .name(&#34;my-tcp-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()        
+ *             .name("my-tcp-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .meshes(defaultMesh.id())
  *             .rules(TcpRouteRuleArgs.builder()
  *                 .matches(TcpRouteRuleMatchArgs.builder()
- *                     .address(&#34;10.0.0.1/32&#34;)
- *                     .port(&#34;8081&#34;)
+ *                     .address("10.0.0.1/32")
+ *                     .port("8081")
  *                     .build())
  *                 .action(TcpRouteRuleActionArgs.builder()
  *                     .destinations(TcpRouteRuleActionDestinationArgs.builder()
@@ -218,12 +223,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Tcp Route Gateway Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -252,36 +259,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
- *             .name(&#34;backend-service-health-check&#34;)
- *             .requestPath(&#34;/&#34;)
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()        
+ *             .name("backend-service-health-check")
+ *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;my-backend-service&#34;)
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()        
+ *             .name("my-backend-service")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
- *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
- *             .name(&#34;my-tcp-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
- *             .scope(&#34;my-scope&#34;)
- *             .type(&#34;OPEN_MESH&#34;)
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *             .name("my-tcp-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
+ *             .scope("my-scope")
+ *             .type("OPEN_MESH")
  *             .ports(443)
  *             .build());
  * 
- *         var defaultTcpRoute = new TcpRoute(&#34;defaultTcpRoute&#34;, TcpRouteArgs.builder()        
- *             .name(&#34;my-tcp-route&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .description(&#34;my description&#34;)
+ *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()        
+ *             .name("my-tcp-route")
+ *             .labels(Map.of("foo", "bar"))
+ *             .description("my description")
  *             .gateways(defaultGateway.id())
  *             .rules(TcpRouteRuleArgs.builder()
  *                 .matches(TcpRouteRuleMatchArgs.builder()
- *                     .address(&#34;10.0.0.1/32&#34;)
- *                     .port(&#34;8081&#34;)
+ *                     .address("10.0.0.1/32")
+ *                     .port("8081")
  *                     .build())
  *                 .action(TcpRouteRuleActionArgs.builder()
  *                     .destinations(TcpRouteRuleActionDestinationArgs.builder()
@@ -295,7 +302,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

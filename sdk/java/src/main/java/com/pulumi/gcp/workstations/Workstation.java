@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Workstation Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,53 +54,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;workstation-cluster&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;workstation-cluster&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("workstation-cluster")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
  *             .network(default_.name())
  *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster(&#34;defaultWorkstationCluster&#34;, WorkstationClusterArgs.builder()        
- *             .workstationClusterId(&#34;workstation-cluster&#34;)
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()        
+ *             .workstationClusterId("workstation-cluster")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .location(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
- *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .location("us-central1")
+ *             .labels(Map.of("label", "key"))
+ *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var defaultWorkstationConfig = new WorkstationConfig(&#34;defaultWorkstationConfig&#34;, WorkstationConfigArgs.builder()        
- *             .workstationConfigId(&#34;workstation-config&#34;)
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()        
+ *             .workstationConfigId("workstation-config")
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .host(WorkstationConfigHostArgs.builder()
  *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
- *                     .machineType(&#34;e2-standard-4&#34;)
+ *                     .machineType("e2-standard-4")
  *                     .bootDiskSizeGb(35)
  *                     .disablePublicIpAddresses(true)
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var defaultWorkstation = new Workstation(&#34;defaultWorkstation&#34;, WorkstationArgs.builder()        
- *             .workstationId(&#34;work-station&#34;)
+ *         var defaultWorkstation = new Workstation("defaultWorkstation", WorkstationArgs.builder()        
+ *             .workstationId("work-station")
  *             .workstationConfigId(defaultWorkstationConfig.workstationConfigId())
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
- *             .location(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
- *             .env(Map.of(&#34;name&#34;, &#34;foo&#34;))
- *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .location("us-central1")
+ *             .labels(Map.of("label", "key"))
+ *             .env(Map.of("name", "foo"))
+ *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

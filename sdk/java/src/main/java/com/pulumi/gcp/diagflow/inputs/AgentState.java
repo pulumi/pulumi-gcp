@@ -171,7 +171,7 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
      *   syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-     *   using @sys.any or very large developer entities.
+     *   using{@literal @}sys.any or very large developer entities.
      *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      * 
      */
@@ -183,7 +183,7 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
      *   syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-     *   using @sys.any or very large developer entities.
+     *   using{@literal @}sys.any or very large developer entities.
      *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      * 
      */
@@ -506,7 +506,7 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
          * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
          *   syntax and composite entities.
          * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-         *   using @sys.any or very large developer entities.
+         *   using{@literal @}sys.any or very large developer entities.
          *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
          * 
          * @return builder
@@ -522,7 +522,7 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
          * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
          *   syntax and composite entities.
          * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-         *   using @sys.any or very large developer entities.
+         *   using{@literal @}sys.any or very large developer entities.
          *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
          * 
          * @return builder

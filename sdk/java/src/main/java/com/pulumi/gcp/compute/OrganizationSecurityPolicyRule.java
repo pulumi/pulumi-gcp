@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Organization Security Policy Rule Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,28 +58,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new OrganizationSecurityPolicy(&#34;policy&#34;, OrganizationSecurityPolicyArgs.builder()        
- *             .displayName(&#34;tf-test&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()        
+ *             .displayName("tf-test")
+ *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule(&#34;policyOrganizationSecurityPolicyRule&#34;, OrganizationSecurityPolicyRuleArgs.builder()        
+ *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", OrganizationSecurityPolicyRuleArgs.builder()        
  *             .policyId(policy.id())
- *             .action(&#34;allow&#34;)
- *             .direction(&#34;INGRESS&#34;)
+ *             .action("allow")
+ *             .direction("INGRESS")
  *             .enableLogging(true)
  *             .match(OrganizationSecurityPolicyRuleMatchArgs.builder()
  *                 .config(OrganizationSecurityPolicyRuleMatchConfigArgs.builder()
  *                     .srcIpRanges(                    
- *                         &#34;192.168.0.0/16&#34;,
- *                         &#34;10.0.0.0/8&#34;)
+ *                         "192.168.0.0/16",
+ *                         "10.0.0.0/8")
  *                     .layer4Configs(                    
  *                         OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs.builder()
- *                             .ipProtocol(&#34;tcp&#34;)
- *                             .ports(&#34;22&#34;)
+ *                             .ipProtocol("tcp")
+ *                             .ports("22")
  *                             .build(),
  *                         OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs.builder()
- *                             .ipProtocol(&#34;icmp&#34;)
+ *                             .ipProtocol("icmp")
  *                             .build())
  *                     .build())
  *                 .build())
@@ -87,7 +88,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Network Connectivity Policy Based Route Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,28 +60,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNetwork = new Network(&#34;myNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var default_ = new PolicyBasedRoute(&#34;default&#34;, PolicyBasedRouteArgs.builder()        
- *             .name(&#34;my-pbr&#34;)
+ *         var default_ = new PolicyBasedRoute("default", PolicyBasedRouteArgs.builder()        
+ *             .name("my-pbr")
  *             .network(myNetwork.id())
  *             .filter(PolicyBasedRouteFilterArgs.builder()
- *                 .protocolVersion(&#34;IPV4&#34;)
+ *                 .protocolVersion("IPV4")
  *                 .build())
- *             .nextHopOtherRoutes(&#34;DEFAULT_ROUTING&#34;)
+ *             .nextHopOtherRoutes("DEFAULT_ROUTING")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Connectivity Policy Based Route Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -107,39 +110,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNetwork = new Network(&#34;myNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // This example substitutes an arbitrary internal IP for an internal network
  *         // load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
  *         // to set one up.
- *         var ilb = new GlobalAddress(&#34;ilb&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;my-ilb&#34;)
+ *         var ilb = new GlobalAddress("ilb", GlobalAddressArgs.builder()        
+ *             .name("my-ilb")
  *             .build());
  * 
- *         var default_ = new PolicyBasedRoute(&#34;default&#34;, PolicyBasedRouteArgs.builder()        
- *             .name(&#34;my-pbr&#34;)
- *             .description(&#34;My routing policy&#34;)
+ *         var default_ = new PolicyBasedRoute("default", PolicyBasedRouteArgs.builder()        
+ *             .name("my-pbr")
+ *             .description("My routing policy")
  *             .network(myNetwork.id())
  *             .priority(2302)
  *             .filter(PolicyBasedRouteFilterArgs.builder()
- *                 .protocolVersion(&#34;IPV4&#34;)
- *                 .ipProtocol(&#34;UDP&#34;)
- *                 .srcRange(&#34;10.0.0.0/24&#34;)
- *                 .destRange(&#34;0.0.0.0/0&#34;)
+ *                 .protocolVersion("IPV4")
+ *                 .ipProtocol("UDP")
+ *                 .srcRange("10.0.0.0/24")
+ *                 .destRange("0.0.0.0/0")
  *                 .build())
  *             .nextHopIlbIp(ilb.address())
  *             .virtualMachine(PolicyBasedRouteVirtualMachineArgs.builder()
- *                 .tags(&#34;restricted&#34;)
+ *                 .tags("restricted")
  *                 .build())
- *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
+ *             .labels(Map.of("env", "default"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

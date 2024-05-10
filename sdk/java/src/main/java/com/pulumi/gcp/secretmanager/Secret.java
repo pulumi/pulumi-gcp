@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Secret Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,17 +55,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret&#34;)
- *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()        
+ *             .secretId("secret")
+ *             .labels(Map.of("label", "my-label"))
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
  *                     .replicas(                    
  *                         SecretReplicationUserManagedReplicaArgs.builder()
- *                             .location(&#34;us-central1&#34;)
+ *                             .location("us-central1")
  *                             .build(),
  *                         SecretReplicationUserManagedReplicaArgs.builder()
- *                             .location(&#34;us-east1&#34;)
+ *                             .location("us-east1")
  *                             .build())
  *                     .build())
  *                 .build())
@@ -72,12 +73,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secret With Annotations
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,15 +103,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_with_annotations = new Secret(&#34;secret-with-annotations&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret&#34;)
- *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
+ *         var secret_with_annotations = new Secret("secret-with-annotations", SecretArgs.builder()        
+ *             .secretId("secret")
+ *             .labels(Map.of("label", "my-label"))
  *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;key1&#34;, &#34;someval&#34;),
- *                 Map.entry(&#34;key2&#34;, &#34;someval2&#34;),
- *                 Map.entry(&#34;key3&#34;, &#34;someval3&#34;),
- *                 Map.entry(&#34;key4&#34;, &#34;someval4&#34;),
- *                 Map.entry(&#34;key5&#34;, &#34;someval5&#34;)
+ *                 Map.entry("key1", "someval"),
+ *                 Map.entry("key2", "someval2"),
+ *                 Map.entry("key3", "someval3"),
+ *                 Map.entry("key4", "someval4"),
+ *                 Map.entry("key5", "someval5")
  *             ))
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
@@ -117,12 +120,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secret With Version Destroy Ttl
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -145,9 +150,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret_with_version_destroy_ttl = new Secret(&#34;secret-with-version-destroy-ttl&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret&#34;)
- *             .versionDestroyTtl(&#34;2592000s&#34;)
+ *         var secret_with_version_destroy_ttl = new Secret("secret-with-version-destroy-ttl", SecretArgs.builder()        
+ *             .secretId("secret")
+ *             .versionDestroyTtl("2592000s")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
@@ -155,12 +160,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secret With Automatic Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -190,18 +197,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var kms_secret_binding = new CryptoKeyIAMMember(&#34;kms-secret-binding&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;kms-key&#34;)
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-secretmanager.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var kms_secret_binding = new CryptoKeyIAMMember("kms-secret-binding", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("kms-key")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-secretmanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var secret_with_automatic_cmek = new Secret(&#34;secret-with-automatic-cmek&#34;, SecretArgs.builder()        
- *             .secretId(&#34;secret&#34;)
+ *         var secret_with_automatic_cmek = new Secret("secret-with-automatic-cmek", SecretArgs.builder()        
+ *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto(SecretReplicationAutoArgs.builder()
  *                     .customerManagedEncryption(SecretReplicationAutoCustomerManagedEncryptionArgs.builder()
- *                         .kmsKeyName(&#34;kms-key&#34;)
+ *                         .kmsKeyName("kms-key")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -209,7 +216,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

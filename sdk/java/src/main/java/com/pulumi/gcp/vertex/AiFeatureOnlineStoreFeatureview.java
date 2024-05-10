@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Vertex Ai Featureonlinestore Featureview
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,10 +68,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
- *             .name(&#34;example_feature_view&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *             .name("example_feature_view")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
  *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
  *                     .minNodeCount(1)
@@ -80,56 +81,56 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var tf_test_dataset = new Dataset(&#34;tf-test-dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_feature_view&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var tf_test_dataset = new Dataset("tf-test-dataset", DatasetArgs.builder()        
+ *             .datasetId("example_feature_view")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var tf_test_table = new Table(&#34;tf-test-table&#34;, TableArgs.builder()        
+ *         var tf_test_table = new Table("tf-test-table", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(tf_test_dataset.datasetId())
- *             .tableId(&#34;example_feature_view&#34;)
- *             .schema(&#34;&#34;&#34;
+ *             .tableId("example_feature_view")
+ *             .schema("""
  *   [
  *   {
- *     &#34;name&#34;: &#34;entity_id&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;description&#34;: &#34;Test default entity_id&#34;
+ *     "name": "entity_id",
+ *     "mode": "NULLABLE",
+ *     "type": "STRING",
+ *     "description": "Test default entity_id"
  *   },
  *     {
- *     &#34;name&#34;: &#34;test_entity_column&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;description&#34;: &#34;test secondary entity column&#34;
+ *     "name": "test_entity_column",
+ *     "mode": "NULLABLE",
+ *     "type": "STRING",
+ *     "description": "test secondary entity column"
  *   },
  *   {
- *     &#34;name&#34;: &#34;feature_timestamp&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;,
- *     &#34;type&#34;: &#34;TIMESTAMP&#34;,
- *     &#34;description&#34;: &#34;Default timestamp value&#34;
+ *     "name": "feature_timestamp",
+ *     "mode": "NULLABLE",
+ *     "type": "TIMESTAMP",
+ *     "description": "Default timestamp value"
  *   }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var featureview = new AiFeatureOnlineStoreFeatureview(&#34;featureview&#34;, AiFeatureOnlineStoreFeatureviewArgs.builder()        
- *             .name(&#34;example_feature_view&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var featureview = new AiFeatureOnlineStoreFeatureview("featureview", AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *             .name("example_feature_view")
+ *             .region("us-central1")
  *             .featureOnlineStore(featureonlinestore.name())
  *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
- *                 .cron(&#34;0 0 * * *&#34;)
+ *                 .cron("0 0 * * *")
  *                 .build())
  *             .bigQuerySource(AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs.builder()
- *                 .uri(Output.tuple(tf_test_table.project(), tf_test_table.datasetId(), tf_test_table.tableId()).applyValue(values -&gt; {
+ *                 .uri(Output.tuple(tf_test_table.project(), tf_test_table.datasetId(), tf_test_table.tableId()).applyValue(values -> {
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format(&#34;bq://%s.%s.%s&#34;, project,datasetId,tableId);
+ *                     return String.format("bq://%s.%s.%s", project,datasetId,tableId);
  *                 }))
- *                 .entityIdColumns(&#34;test_entity_column&#34;)
+ *                 .entityIdColumns("test_entity_column")
  *                 .build())
  *             .build());
  * 
@@ -137,12 +138,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featureonlinestore Featureview Feature Registry
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -179,10 +182,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
- *             .name(&#34;example_feature_view_feature_registry&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *             .name("example_feature_view_feature_registry")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
  *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
  *                     .minNodeCount(1)
@@ -192,70 +195,70 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sampleDataset = new Dataset(&#34;sampleDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_feature_view_feature_registry&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var sampleDataset = new Dataset("sampleDataset", DatasetArgs.builder()        
+ *             .datasetId("example_feature_view_feature_registry")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var sampleTable = new Table(&#34;sampleTable&#34;, TableArgs.builder()        
+ *         var sampleTable = new Table("sampleTable", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(sampleDataset.datasetId())
- *             .tableId(&#34;example_feature_view_feature_registry&#34;)
- *             .schema(&#34;&#34;&#34;
+ *             .tableId("example_feature_view_feature_registry")
+ *             .schema("""
  * [
  *     {
- *         &#34;name&#34;: &#34;feature_id&#34;,
- *         &#34;type&#34;: &#34;STRING&#34;,
- *         &#34;mode&#34;: &#34;NULLABLE&#34;
+ *         "name": "feature_id",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
  *     },
  *     {
- *         &#34;name&#34;: &#34;example_feature_view_feature_registry&#34;,
- *         &#34;type&#34;: &#34;STRING&#34;,
- *         &#34;mode&#34;: &#34;NULLABLE&#34;
+ *         "name": "example_feature_view_feature_registry",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
  *     },
  *     {
- *         &#34;name&#34;: &#34;feature_timestamp&#34;,
- *         &#34;type&#34;: &#34;TIMESTAMP&#34;,
- *         &#34;mode&#34;: &#34;NULLABLE&#34;
+ *         "name": "feature_timestamp",
+ *         "type": "TIMESTAMP",
+ *         "mode": "NULLABLE"
  *     }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var sampleFeatureGroup = new AiFeatureGroup(&#34;sampleFeatureGroup&#34;, AiFeatureGroupArgs.builder()        
- *             .name(&#34;example_feature_view_feature_registry&#34;)
- *             .description(&#34;A sample feature group&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *         var sampleFeatureGroup = new AiFeatureGroup("sampleFeatureGroup", AiFeatureGroupArgs.builder()        
+ *             .name("example_feature_view_feature_registry")
+ *             .description("A sample feature group")
+ *             .region("us-central1")
+ *             .labels(Map.of("label-one", "value-one"))
  *             .bigQuery(AiFeatureGroupBigQueryArgs.builder()
  *                 .bigQuerySource(AiFeatureGroupBigQueryBigQuerySourceArgs.builder()
- *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -&gt; {
+ *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> {
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
  *                         var tableId = values.t3;
- *                         return String.format(&#34;bq://%s.%s.%s&#34;, project,datasetId,tableId);
+ *                         return String.format("bq://%s.%s.%s", project,datasetId,tableId);
  *                     }))
  *                     .build())
- *                 .entityIdColumns(&#34;feature_id&#34;)
+ *                 .entityIdColumns("feature_id")
  *                 .build())
  *             .build());
  * 
- *         var sampleFeature = new AiFeatureGroupFeature(&#34;sampleFeature&#34;, AiFeatureGroupFeatureArgs.builder()        
- *             .name(&#34;example_feature_view_feature_registry&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var sampleFeature = new AiFeatureGroupFeature("sampleFeature", AiFeatureGroupFeatureArgs.builder()        
+ *             .name("example_feature_view_feature_registry")
+ *             .region("us-central1")
  *             .featureGroup(sampleFeatureGroup.name())
- *             .description(&#34;A sample feature&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .description("A sample feature")
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var featureviewFeatureregistry = new AiFeatureOnlineStoreFeatureview(&#34;featureviewFeatureregistry&#34;, AiFeatureOnlineStoreFeatureviewArgs.builder()        
- *             .name(&#34;example_feature_view_feature_registry&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var featureviewFeatureregistry = new AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry", AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *             .name("example_feature_view_feature_registry")
+ *             .region("us-central1")
  *             .featureOnlineStore(featureonlinestore.name())
  *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
- *                 .cron(&#34;0 0 * * *&#34;)
+ *                 .cron("0 0 * * *")
  *                 .build())
  *             .featureRegistrySource(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs.builder()
  *                 .featureGroups(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs.builder()
@@ -267,12 +270,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featureonlinestore Featureview With Vector Search
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -308,10 +313,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
- *             .name(&#34;example_feature_view_vector_search&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *             .name("example_feature_view_vector_search")
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
  *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
  *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
  *                     .minNodeCount(1)
@@ -324,90 +329,90 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var tf_test_dataset = new Dataset(&#34;tf-test-dataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_feature_view_vector_search&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var tf_test_dataset = new Dataset("tf-test-dataset", DatasetArgs.builder()        
+ *             .datasetId("example_feature_view_vector_search")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var tf_test_table = new Table(&#34;tf-test-table&#34;, TableArgs.builder()        
+ *         var tf_test_table = new Table("tf-test-table", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(tf_test_dataset.datasetId())
- *             .tableId(&#34;example_feature_view_vector_search&#34;)
- *             .schema(&#34;&#34;&#34;
+ *             .tableId("example_feature_view_vector_search")
+ *             .schema("""
  * [
  * {
- *   &#34;name&#34;: &#34;test_primary_id&#34;,
- *   &#34;mode&#34;: &#34;NULLABLE&#34;,
- *   &#34;type&#34;: &#34;STRING&#34;,
- *   &#34;description&#34;: &#34;primary test id&#34;
+ *   "name": "test_primary_id",
+ *   "mode": "NULLABLE",
+ *   "type": "STRING",
+ *   "description": "primary test id"
  * },
  * {
- *   &#34;name&#34;: &#34;embedding&#34;,
- *   &#34;mode&#34;: &#34;REPEATED&#34;,
- *   &#34;type&#34;: &#34;FLOAT&#34;,
- *   &#34;description&#34;: &#34;embedding column for primary_id column&#34;
+ *   "name": "embedding",
+ *   "mode": "REPEATED",
+ *   "type": "FLOAT",
+ *   "description": "embedding column for primary_id column"
  * },
  * {
- *   &#34;name&#34;: &#34;country&#34;,
- *   &#34;mode&#34;: &#34;NULLABLE&#34;,
- *   &#34;type&#34;: &#34;STRING&#34;,
- *   &#34;description&#34;: &#34;country&#34;
+ *   "name": "country",
+ *   "mode": "NULLABLE",
+ *   "type": "STRING",
+ *   "description": "country"
  * },
  * {
- *   &#34;name&#34;: &#34;test_crowding_column&#34;,
- *   &#34;mode&#34;: &#34;NULLABLE&#34;,
- *   &#34;type&#34;: &#34;INTEGER&#34;,
- *   &#34;description&#34;: &#34;test crowding column&#34;
+ *   "name": "test_crowding_column",
+ *   "mode": "NULLABLE",
+ *   "type": "INTEGER",
+ *   "description": "test crowding column"
  * },
  * {
- *   &#34;name&#34;: &#34;entity_id&#34;,
- *   &#34;mode&#34;: &#34;NULLABLE&#34;,
- *   &#34;type&#34;: &#34;STRING&#34;,
- *   &#34;description&#34;: &#34;Test default entity_id&#34;
+ *   "name": "entity_id",
+ *   "mode": "NULLABLE",
+ *   "type": "STRING",
+ *   "description": "Test default entity_id"
  * },
  * {
- *   &#34;name&#34;: &#34;test_entity_column&#34;,
- *   &#34;mode&#34;: &#34;NULLABLE&#34;,
- *   &#34;type&#34;: &#34;STRING&#34;,
- *   &#34;description&#34;: &#34;test secondary entity column&#34;
+ *   "name": "test_entity_column",
+ *   "mode": "NULLABLE",
+ *   "type": "STRING",
+ *   "description": "test secondary entity column"
  * },
  * {
- *   &#34;name&#34;: &#34;feature_timestamp&#34;,
- *   &#34;mode&#34;: &#34;NULLABLE&#34;,
- *   &#34;type&#34;: &#34;TIMESTAMP&#34;,
- *   &#34;description&#34;: &#34;Default timestamp value&#34;
+ *   "name": "feature_timestamp",
+ *   "mode": "NULLABLE",
+ *   "type": "TIMESTAMP",
+ *   "description": "Default timestamp value"
  * }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var featureviewVectorSearch = new AiFeatureOnlineStoreFeatureview(&#34;featureviewVectorSearch&#34;, AiFeatureOnlineStoreFeatureviewArgs.builder()        
- *             .name(&#34;example_feature_view_vector_search&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var featureviewVectorSearch = new AiFeatureOnlineStoreFeatureview("featureviewVectorSearch", AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *             .name("example_feature_view_vector_search")
+ *             .region("us-central1")
  *             .featureOnlineStore(featureonlinestore.name())
  *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
- *                 .cron(&#34;0 0 * * *&#34;)
+ *                 .cron("0 0 * * *")
  *                 .build())
  *             .bigQuerySource(AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs.builder()
- *                 .uri(Output.tuple(tf_test_table.project(), tf_test_table.datasetId(), tf_test_table.tableId()).applyValue(values -&gt; {
+ *                 .uri(Output.tuple(tf_test_table.project(), tf_test_table.datasetId(), tf_test_table.tableId()).applyValue(values -> {
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format(&#34;bq://%s.%s.%s&#34;, project,datasetId,tableId);
+ *                     return String.format("bq://%s.%s.%s", project,datasetId,tableId);
  *                 }))
- *                 .entityIdColumns(&#34;test_entity_column&#34;)
+ *                 .entityIdColumns("test_entity_column")
  *                 .build())
  *             .vectorSearchConfig(AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs.builder()
- *                 .embeddingColumn(&#34;embedding&#34;)
- *                 .filterColumns(&#34;country&#34;)
- *                 .crowdingColumn(&#34;test_crowding_column&#34;)
- *                 .distanceMeasureType(&#34;DOT_PRODUCT_DISTANCE&#34;)
+ *                 .embeddingColumn("embedding")
+ *                 .filterColumns("country")
+ *                 .crowdingColumn("test_crowding_column")
+ *                 .distanceMeasureType("DOT_PRODUCT_DISTANCE")
  *                 .treeAhConfig(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs.builder()
- *                     .leafNodeEmbeddingCount(&#34;1000&#34;)
+ *                     .leafNodeEmbeddingCount("1000")
  *                     .build())
- *                 .embeddingDimension(&#34;2&#34;)
+ *                 .embeddingDimension("2")
  *                 .build())
  *             .build());
  * 
@@ -415,7 +420,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Basic_azure_cluster
  * A basic example of a containerazure azure cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,58 +67,60 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var versions = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
- *             .project(&#34;my-project-name&#34;)
- *             .location(&#34;us-west1&#34;)
+ *             .project("my-project-name")
+ *             .location("us-west1")
  *             .build());
  * 
- *         var basic = new AzureClient(&#34;basic&#34;, AzureClientArgs.builder()        
- *             .applicationId(&#34;12345678-1234-1234-1234-123456789111&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;client-name&#34;)
- *             .tenantId(&#34;12345678-1234-1234-1234-123456789111&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var basic = new AzureClient("basic", AzureClientArgs.builder()        
+ *             .applicationId("12345678-1234-1234-1234-123456789111")
+ *             .location("us-west1")
+ *             .name("client-name")
+ *             .tenantId("12345678-1234-1234-1234-123456789111")
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var primary = new AzureCluster(&#34;primary&#34;, AzureClusterArgs.builder()        
+ *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()        
  *             .authorization(AzureClusterAuthorizationArgs.builder()
  *                 .adminUsers(AzureClusterAuthorizationAdminUserArgs.builder()
- *                     .username(&#34;mmv2@google.com&#34;)
+ *                     .username("mmv2{@literal @}google.com")
  *                     .build())
  *                 .adminGroups(AzureClusterAuthorizationAdminGroupArgs.builder()
- *                     .group(&#34;group@domain.com&#34;)
+ *                     .group("group{@literal @}domain.com")
  *                     .build())
  *                 .build())
- *             .azureRegion(&#34;westus2&#34;)
- *             .client(basic.name().applyValue(name -&gt; String.format(&#34;projects/my-project-number/locations/us-west1/azureClients/%s&#34;, name)))
+ *             .azureRegion("westus2")
+ *             .client(basic.name().applyValue(name -> String.format("projects/my-project-number/locations/us-west1/azureClients/%s", name)))
  *             .controlPlane(AzureClusterControlPlaneArgs.builder()
  *                 .sshConfig(AzureClusterControlPlaneSshConfigArgs.builder()
- *                     .authorizedKey(&#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers&#34;)
+ *                     .authorizedKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers")
  *                     .build())
- *                 .subnetId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default&#34;)
- *                 .version(versions.applyValue(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
+ *                 .subnetId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default")
+ *                 .version(versions.applyValue(getAzureVersionsResult -> getAzureVersionsResult.validVersions()[0]))
  *                 .build())
  *             .fleet(AzureClusterFleetArgs.builder()
- *                 .project(&#34;my-project-number&#34;)
+ *                 .project("my-project-number")
  *                 .build())
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;name&#34;)
+ *             .location("us-west1")
+ *             .name("name")
  *             .networking(AzureClusterNetworkingArgs.builder()
- *                 .podAddressCidrBlocks(&#34;10.200.0.0/16&#34;)
- *                 .serviceAddressCidrBlocks(&#34;10.32.0.0/24&#34;)
- *                 .virtualNetworkId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet&#34;)
+ *                 .podAddressCidrBlocks("10.200.0.0/16")
+ *                 .serviceAddressCidrBlocks("10.32.0.0/24")
+ *                 .virtualNetworkId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet")
  *                 .build())
- *             .resourceGroupId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *             .resourceGroupId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Beta_basic_enum_azure_cluster
  * A basic example of a containerazure azure cluster with lowercase enums (beta)
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -150,57 +153,58 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var versions = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
- *             .project(&#34;my-project-name&#34;)
- *             .location(&#34;us-west1&#34;)
+ *             .project("my-project-name")
+ *             .location("us-west1")
  *             .build());
  * 
- *         var basic = new AzureClient(&#34;basic&#34;, AzureClientArgs.builder()        
- *             .applicationId(&#34;12345678-1234-1234-1234-123456789111&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;client-name&#34;)
- *             .tenantId(&#34;12345678-1234-1234-1234-123456789111&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var basic = new AzureClient("basic", AzureClientArgs.builder()        
+ *             .applicationId("12345678-1234-1234-1234-123456789111")
+ *             .location("us-west1")
+ *             .name("client-name")
+ *             .tenantId("12345678-1234-1234-1234-123456789111")
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var primary = new AzureCluster(&#34;primary&#34;, AzureClusterArgs.builder()        
+ *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()        
  *             .authorization(AzureClusterAuthorizationArgs.builder()
  *                 .adminUsers(AzureClusterAuthorizationAdminUserArgs.builder()
- *                     .username(&#34;mmv2@google.com&#34;)
+ *                     .username("mmv2{@literal @}google.com")
  *                     .build())
  *                 .build())
- *             .azureRegion(&#34;westus2&#34;)
- *             .client(basic.name().applyValue(name -&gt; String.format(&#34;projects/my-project-number/locations/us-west1/azureClients/%s&#34;, name)))
+ *             .azureRegion("westus2")
+ *             .client(basic.name().applyValue(name -> String.format("projects/my-project-number/locations/us-west1/azureClients/%s", name)))
  *             .controlPlane(AzureClusterControlPlaneArgs.builder()
  *                 .sshConfig(AzureClusterControlPlaneSshConfigArgs.builder()
- *                     .authorizedKey(&#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers&#34;)
+ *                     .authorizedKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers")
  *                     .build())
- *                 .subnetId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default&#34;)
- *                 .version(versions.applyValue(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
+ *                 .subnetId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default")
+ *                 .version(versions.applyValue(getAzureVersionsResult -> getAzureVersionsResult.validVersions()[0]))
  *                 .build())
  *             .fleet(AzureClusterFleetArgs.builder()
- *                 .project(&#34;my-project-number&#34;)
+ *                 .project("my-project-number")
  *                 .build())
- *             .location(&#34;us-west1&#34;)
- *             .name(&#34;name&#34;)
+ *             .location("us-west1")
+ *             .name("name")
  *             .networking(AzureClusterNetworkingArgs.builder()
- *                 .podAddressCidrBlocks(&#34;10.200.0.0/16&#34;)
- *                 .serviceAddressCidrBlocks(&#34;10.32.0.0/24&#34;)
- *                 .virtualNetworkId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet&#34;)
+ *                 .podAddressCidrBlocks("10.200.0.0/16")
+ *                 .serviceAddressCidrBlocks("10.32.0.0/24")
+ *                 .virtualNetworkId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet")
  *                 .build())
- *             .resourceGroupId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *             .resourceGroupId("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
+ *             .project("my-project-name")
  *             .loggingConfig(AzureClusterLoggingConfigArgs.builder()
  *                 .componentConfig(AzureClusterLoggingConfigComponentConfigArgs.builder()
  *                     .enableComponents(                    
- *                         &#34;system_components&#34;,
- *                         &#34;workloads&#34;)
+ *                         "system_components",
+ *                         "workloads")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

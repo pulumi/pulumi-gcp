@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Tag Key Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,15 +51,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var key = new TagKey(&#34;key&#34;, TagKeyArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .shortName(&#34;keyname&#34;)
- *             .description(&#34;For keyname resources.&#34;)
+ *         var key = new TagKey("key", TagKeyArgs.builder()        
+ *             .parent("organizations/123456789")
+ *             .shortName("keyname")
+ *             .description("For keyname resources.")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

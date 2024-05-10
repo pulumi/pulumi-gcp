@@ -18,7 +18,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
     /**
      * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
      * in the cloud console. Your project&#39;s Compute Engine System service account
-     * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+     * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
      * 
@@ -29,7 +29,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
     /**
      * @return The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
      * in the cloud console. Your project&#39;s Compute Engine System service account
-     * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+     * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
      * 
@@ -121,7 +121,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
         /**
          * @param kmsKeySelfLink The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
          * in the cloud console. Your project&#39;s Compute Engine System service account
-         * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+         * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
          * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
          * 
@@ -136,7 +136,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
         /**
          * @param kmsKeySelfLink The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
          * in the cloud console. Your project&#39;s Compute Engine System service account
-         * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+         * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
          * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
          * 

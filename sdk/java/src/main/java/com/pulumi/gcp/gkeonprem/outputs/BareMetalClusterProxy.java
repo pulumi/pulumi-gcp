@@ -22,7 +22,7 @@ public final class BareMetalClusterProxy {
      * @return Specifies the address of your proxy server.
      * Examples: http://domain
      * WARNING: Do not provide credentials in the format
-     * http://(username:password@)domain these will be rejected by the server.
+     * http://(username:password{@literal @})domain these will be rejected by the server.
      * 
      */
     private String uri;
@@ -40,7 +40,7 @@ public final class BareMetalClusterProxy {
      * @return Specifies the address of your proxy server.
      * Examples: http://domain
      * WARNING: Do not provide credentials in the format
-     * http://(username:password@)domain these will be rejected by the server.
+     * http://(username:password{@literal @})domain these will be rejected by the server.
      * 
      */
     public String uri() {

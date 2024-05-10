@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Sql Database Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,29 +49,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-database-instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .databaseVersion(&#34;MYSQL_8_0&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("my-database-instance")
+ *             .region("us-central1")
+ *             .databaseVersion("MYSQL_8_0")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .name(&#34;my-database&#34;)
+ *         var database = new Database("database", DatabaseArgs.builder()        
+ *             .name("my-database")
  *             .instance(instance.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Sql Database Deletion Policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,25 +98,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
- *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-database-instance&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .databaseVersion(&#34;POSTGRES_14&#34;)
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *             .name("my-database-instance")
+ *             .region("us-central1")
+ *             .databaseVersion("POSTGRES_14")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-g1-small&#34;)
+ *                 .tier("db-g1-small")
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var databaseDeletionPolicy = new Database(&#34;databaseDeletionPolicy&#34;, DatabaseArgs.builder()        
- *             .name(&#34;my-database&#34;)
+ *         var databaseDeletionPolicy = new Database("databaseDeletionPolicy", DatabaseArgs.builder()        
+ *             .name("my-database")
  *             .instance(instance.name())
- *             .deletionPolicy(&#34;ABANDON&#34;)
+ *             .deletionPolicy("ABANDON")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterAuthenticatorGroupsConfig {
     /**
-     * @return The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format gke-security-groups@yourdomain.com.
+     * @return The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format gke-security-groups{@literal @}yourdomain.com.
      * 
      */
     private String securityGroup;
 
     private GetClusterAuthenticatorGroupsConfig() {}
     /**
-     * @return The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format gke-security-groups@yourdomain.com.
+     * @return The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format gke-security-groups{@literal @}yourdomain.com.
      * 
      */
     public String securityGroup() {

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Creating A New Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,25 +48,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myaccount = new Account(&#34;myaccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;myaccount&#34;)
- *             .displayName(&#34;My Service Account&#34;)
+ *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+ *             .accountId("myaccount")
+ *             .displayName("My Service Account")
  *             .build());
  * 
- *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
+ *         var mykey = new Key("mykey", KeyArgs.builder()        
  *             .serviceAccountId(myaccount.name())
- *             .publicKeyType(&#34;TYPE_X509_PEM_FILE&#34;)
+ *             .publicKeyType("TYPE_X509_PEM_FILE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating And Regularly Rotating A Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,30 +93,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myaccount = new Account(&#34;myaccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;myaccount&#34;)
- *             .displayName(&#34;My Service Account&#34;)
+ *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+ *             .accountId("myaccount")
+ *             .displayName("My Service Account")
  *             .build());
  * 
  *         // note this requires the terraform to be run regularly
- *         var mykeyRotation = new Rotating(&#34;mykeyRotation&#34;, RotatingArgs.builder()        
+ *         var mykeyRotation = new Rotating("mykeyRotation", RotatingArgs.builder()        
  *             .rotationDays(30)
  *             .build());
  * 
- *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
+ *         var mykey = new Key("mykey", KeyArgs.builder()        
  *             .serviceAccountId(myaccount.name())
- *             .keepers(Map.of(&#34;rotation_time&#34;, mykeyRotation.rotationRfc3339()))
+ *             .keepers(Map.of("rotation_time", mykeyRotation.rotationRfc3339()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Save Key In Kubernetes Secret - DEPRECATED
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -141,25 +146,26 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
  *         // https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
- *         var myaccount = new Account(&#34;myaccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;myaccount&#34;)
- *             .displayName(&#34;My Service Account&#34;)
+ *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+ *             .accountId("myaccount")
+ *             .displayName("My Service Account")
  *             .build());
  * 
- *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
+ *         var mykey = new Key("mykey", KeyArgs.builder()        
  *             .serviceAccountId(myaccount.name())
  *             .build());
  * 
- *         var google_application_credentials = new Secret(&#34;google-application-credentials&#34;, SecretArgs.builder()        
+ *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
  *             .metadata(ObjectMetaArgs.builder()
- *                 .name(&#34;google-application-credentials&#34;)
+ *                 .name("google-application-credentials")
  *                 .build())
- *             .data(Map.of(&#34;json&#34;, StdFunctions.base64decode().applyValue(invoke -&gt; invoke.result())))
+ *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

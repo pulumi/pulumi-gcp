@@ -42,7 +42,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,33 +68,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tpl = new InstanceTemplate(&#34;tpl&#34;, InstanceTemplateArgs.builder()        
- *             .name(&#34;template&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var tpl = new InstanceTemplate("tpl", InstanceTemplateArgs.builder()        
+ *             .name("template")
+ *             .machineType("e2-medium")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-11&#34;)
+ *                 .sourceImage("debian-cloud/debian-11")
  *                 .autoDelete(true)
  *                 .diskSizeGb(100)
  *                 .boot(true)
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
- *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .metadata(Map.of("foo", "bar"))
  *             .canIpForward(true)
  *             .build());
  * 
- *         var tplInstanceFromTemplate = new InstanceFromTemplate(&#34;tplInstanceFromTemplate&#34;, InstanceFromTemplateArgs.builder()        
- *             .name(&#34;instance-from-template&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *         var tplInstanceFromTemplate = new InstanceFromTemplate("tplInstanceFromTemplate", InstanceFromTemplateArgs.builder()        
+ *             .name("instance-from-template")
+ *             .zone("us-central1-a")
  *             .sourceInstanceTemplate(tpl.selfLinkUnique())
  *             .canIpForward(false)
- *             .labels(Map.of(&#34;my_key&#34;, &#34;my_value&#34;))
+ *             .labels(Map.of("my_key", "my_value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

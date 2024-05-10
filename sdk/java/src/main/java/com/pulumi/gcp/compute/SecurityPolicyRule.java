@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Security Policy Rule Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,34 +58,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityPolicy(&#34;default&#34;, SecurityPolicyArgs.builder()        
- *             .name(&#34;policyruletest&#34;)
- *             .description(&#34;basic global security policy&#34;)
- *             .type(&#34;CLOUD_ARMOR&#34;)
+ *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()        
+ *             .name("policyruletest")
+ *             .description("basic global security policy")
+ *             .type("CLOUD_ARMOR")
  *             .build());
  * 
- *         var policyRule = new SecurityPolicyRule(&#34;policyRule&#34;, SecurityPolicyRuleArgs.builder()        
+ *         var policyRule = new SecurityPolicyRule("policyRule", SecurityPolicyRuleArgs.builder()        
  *             .securityPolicy(default_.name())
- *             .description(&#34;new rule&#34;)
+ *             .description("new rule")
  *             .priority(100)
  *             .match(SecurityPolicyRuleMatchArgs.builder()
- *                 .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(SecurityPolicyRuleMatchConfigArgs.builder()
- *                     .srcIpRanges(&#34;10.10.0.0/16&#34;)
+ *                     .srcIpRanges("10.10.0.0/16")
  *                     .build())
  *                 .build())
- *             .action(&#34;allow&#34;)
+ *             .action("allow")
  *             .preview(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Security Policy Rule Default Rule
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -109,52 +112,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityPolicy(&#34;default&#34;, SecurityPolicyArgs.builder()        
- *             .name(&#34;policyruletest&#34;)
- *             .description(&#34;basic global security policy&#34;)
- *             .type(&#34;CLOUD_ARMOR&#34;)
+ *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()        
+ *             .name("policyruletest")
+ *             .description("basic global security policy")
+ *             .type("CLOUD_ARMOR")
  *             .build());
  * 
  *         // A default rule is generated when creating the security_policy resource, import is needed to patch it
  *         // import {
- *         //   id = &#34;projects//global/securityPolicies/policyruletest/priority/2147483647&#34;
+ *         //   id = "projects//global/securityPolicies/policyruletest/priority/2147483647"
  *         //   to = google_compute_security_policy_rule.default_rule
  *         // }
- *         var defaultRule = new SecurityPolicyRule(&#34;defaultRule&#34;, SecurityPolicyRuleArgs.builder()        
+ *         var defaultRule = new SecurityPolicyRule("defaultRule", SecurityPolicyRuleArgs.builder()        
  *             .securityPolicy(default_.name())
- *             .description(&#34;default rule&#34;)
- *             .action(&#34;allow&#34;)
- *             .priority(&#34;2147483647&#34;)
+ *             .description("default rule")
+ *             .action("allow")
+ *             .priority("2147483647")
  *             .match(SecurityPolicyRuleMatchArgs.builder()
- *                 .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(SecurityPolicyRuleMatchConfigArgs.builder()
- *                     .srcIpRanges(&#34;*&#34;)
+ *                     .srcIpRanges("*")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var policyRule = new SecurityPolicyRule(&#34;policyRule&#34;, SecurityPolicyRuleArgs.builder()        
+ *         var policyRule = new SecurityPolicyRule("policyRule", SecurityPolicyRuleArgs.builder()        
  *             .securityPolicy(default_.name())
- *             .description(&#34;new rule&#34;)
+ *             .description("new rule")
  *             .priority(100)
  *             .match(SecurityPolicyRuleMatchArgs.builder()
- *                 .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(SecurityPolicyRuleMatchConfigArgs.builder()
- *                     .srcIpRanges(&#34;10.10.0.0/16&#34;)
+ *                     .srcIpRanges("10.10.0.0/16")
  *                     .build())
  *                 .build())
- *             .action(&#34;allow&#34;)
+ *             .action("allow")
  *             .preview(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Security Policy Rule Multiple Rules
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -179,45 +184,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityPolicy(&#34;default&#34;, SecurityPolicyArgs.builder()        
- *             .name(&#34;policywithmultiplerules&#34;)
- *             .description(&#34;basic global security policy&#34;)
- *             .type(&#34;CLOUD_ARMOR&#34;)
+ *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()        
+ *             .name("policywithmultiplerules")
+ *             .description("basic global security policy")
+ *             .type("CLOUD_ARMOR")
  *             .build());
  * 
- *         var policyRuleOne = new SecurityPolicyRule(&#34;policyRuleOne&#34;, SecurityPolicyRuleArgs.builder()        
+ *         var policyRuleOne = new SecurityPolicyRule("policyRuleOne", SecurityPolicyRuleArgs.builder()        
  *             .securityPolicy(default_.name())
- *             .description(&#34;new rule one&#34;)
+ *             .description("new rule one")
  *             .priority(100)
  *             .match(SecurityPolicyRuleMatchArgs.builder()
- *                 .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(SecurityPolicyRuleMatchConfigArgs.builder()
- *                     .srcIpRanges(&#34;10.10.0.0/16&#34;)
+ *                     .srcIpRanges("10.10.0.0/16")
  *                     .build())
  *                 .build())
- *             .action(&#34;allow&#34;)
+ *             .action("allow")
  *             .preview(true)
  *             .build());
  * 
- *         var policyRuleTwo = new SecurityPolicyRule(&#34;policyRuleTwo&#34;, SecurityPolicyRuleArgs.builder()        
+ *         var policyRuleTwo = new SecurityPolicyRule("policyRuleTwo", SecurityPolicyRuleArgs.builder()        
  *             .securityPolicy(default_.name())
- *             .description(&#34;new rule two&#34;)
+ *             .description("new rule two")
  *             .priority(101)
  *             .match(SecurityPolicyRuleMatchArgs.builder()
- *                 .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(SecurityPolicyRuleMatchConfigArgs.builder()
  *                     .srcIpRanges(                    
- *                         &#34;192.168.0.0/16&#34;,
- *                         &#34;10.0.0.0/8&#34;)
+ *                         "192.168.0.0/16",
+ *                         "10.0.0.0/8")
  *                     .build())
  *                 .build())
- *             .action(&#34;allow&#34;)
+ *             .action("allow")
  *             .preview(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

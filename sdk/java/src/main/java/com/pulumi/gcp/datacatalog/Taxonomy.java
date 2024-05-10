@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Data Catalog Taxonomy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,15 +51,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicTaxonomy = new Taxonomy(&#34;basicTaxonomy&#34;, TaxonomyArgs.builder()        
- *             .displayName(&#34;my_taxonomy&#34;)
- *             .description(&#34;A collection of policy tags&#34;)
- *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
+ *         var basicTaxonomy = new Taxonomy("basicTaxonomy", TaxonomyArgs.builder()        
+ *             .displayName("my_taxonomy")
+ *             .description("A collection of policy tags")
+ *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Dialogflow Intent Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,24 +57,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicAgent = new Agent(&#34;basicAgent&#34;, AgentArgs.builder()        
- *             .displayName(&#34;example_agent&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
+ *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()        
+ *             .displayName("example_agent")
+ *             .defaultLanguageCode("en")
+ *             .timeZone("America/New_York")
  *             .build());
  * 
- *         var basicIntent = new Intent(&#34;basicIntent&#34;, IntentArgs.builder()        
- *             .displayName(&#34;basic-intent&#34;)
+ *         var basicIntent = new Intent("basicIntent", IntentArgs.builder()        
+ *             .displayName("basic-intent")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dialogflow Intent Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,54 +107,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agentProject = new Project(&#34;agentProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
- *             .name(&#34;my-project&#34;)
- *             .orgId(&#34;123456789&#34;)
+ *         var agentProject = new Project("agentProject", ProjectArgs.builder()        
+ *             .projectId("my-project")
+ *             .name("my-project")
+ *             .orgId("123456789")
  *             .build());
  * 
- *         var agentProjectService = new Service(&#34;agentProjectService&#34;, ServiceArgs.builder()        
+ *         var agentProjectService = new Service("agentProjectService", ServiceArgs.builder()        
  *             .project(agentProject.projectId())
- *             .service(&#34;dialogflow.googleapis.com&#34;)
+ *             .service("dialogflow.googleapis.com")
  *             .disableDependentServices(false)
  *             .build());
  * 
- *         var dialogflowServiceAccount = new Account(&#34;dialogflowServiceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
+ *         var dialogflowServiceAccount = new Account("dialogflowServiceAccount", AccountArgs.builder()        
+ *             .accountId("my-account")
  *             .build());
  * 
- *         var agentCreate = new IAMMember(&#34;agentCreate&#34;, IAMMemberArgs.builder()        
+ *         var agentCreate = new IAMMember("agentCreate", IAMMemberArgs.builder()        
  *             .project(agentProjectService.project())
- *             .role(&#34;roles/dialogflow.admin&#34;)
- *             .member(dialogflowServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .role("roles/dialogflow.admin")
+ *             .member(dialogflowServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var basicAgent = new Agent(&#34;basicAgent&#34;, AgentArgs.builder()        
+ *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()        
  *             .project(agentProject.projectId())
- *             .displayName(&#34;example_agent&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
+ *             .displayName("example_agent")
+ *             .defaultLanguageCode("en")
+ *             .timeZone("America/New_York")
  *             .build());
  * 
- *         var fullIntent = new Intent(&#34;fullIntent&#34;, IntentArgs.builder()        
+ *         var fullIntent = new Intent("fullIntent", IntentArgs.builder()        
  *             .project(agentProject.projectId())
- *             .displayName(&#34;full-intent&#34;)
- *             .webhookState(&#34;WEBHOOK_STATE_ENABLED&#34;)
+ *             .displayName("full-intent")
+ *             .webhookState("WEBHOOK_STATE_ENABLED")
  *             .priority(1)
  *             .isFallback(false)
  *             .mlDisabled(true)
- *             .action(&#34;some_action&#34;)
+ *             .action("some_action")
  *             .resetContexts(true)
- *             .inputContextNames(agentProject.projectId().applyValue(projectId -&gt; String.format(&#34;projects/%s/agent/sessions/-/contexts/some_id&#34;, projectId)))
- *             .events(&#34;some_event&#34;)
+ *             .inputContextNames(agentProject.projectId().applyValue(projectId -> String.format("projects/%s/agent/sessions/-/contexts/some_id", projectId)))
+ *             .events("some_event")
  *             .defaultResponsePlatforms(            
- *                 &#34;FACEBOOK&#34;,
- *                 &#34;SLACK&#34;)
+ *                 "FACEBOOK",
+ *                 "SLACK")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

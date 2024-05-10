@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ### Deployment Manager Deployment Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,24 +63,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var deployment = new Deployment(&#34;deployment&#34;, DeploymentArgs.builder()        
- *             .name(&#34;my-deployment&#34;)
+ *         var deployment = new Deployment("deployment", DeploymentArgs.builder()        
+ *             .name("my-deployment")
  *             .target(DeploymentTargetArgs.builder()
  *                 .config(DeploymentTargetConfigArgs.builder()
  *                     .content(StdFunctions.file(FileArgs.builder()
- *                         .input(&#34;path/to/config.yml&#34;)
+ *                         .input("path/to/config.yml")
  *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .labels(DeploymentLabelArgs.builder()
- *                 .key(&#34;foo&#34;)
- *                 .value(&#34;bar&#34;)
+ *                 .key("foo")
+ *                 .value("bar")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## Import
  * 

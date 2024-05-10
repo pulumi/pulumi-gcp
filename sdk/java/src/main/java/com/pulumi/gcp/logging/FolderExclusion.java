@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,21 +51,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_folder = new Folder(&#34;my-folder&#34;, FolderArgs.builder()        
- *             .displayName(&#34;My folder&#34;)
- *             .parent(&#34;organizations/123456&#34;)
+ *         var my_folder = new Folder("my-folder", FolderArgs.builder()        
+ *             .displayName("My folder")
+ *             .parent("organizations/123456")
  *             .build());
  * 
- *         var my_exclusion = new FolderExclusion(&#34;my-exclusion&#34;, FolderExclusionArgs.builder()        
- *             .name(&#34;my-instance-debug-exclusion&#34;)
+ *         var my_exclusion = new FolderExclusion("my-exclusion", FolderExclusionArgs.builder()        
+ *             .name("my-instance-debug-exclusion")
  *             .folder(my_folder.name())
- *             .description(&#34;Exclude GCE instance debug logs&#34;)
- *             .filter(&#34;resource.type = gce_instance AND severity &lt;= DEBUG&#34;)
+ *             .description("Exclude GCE instance debug logs")
+ *             .filter("resource.type = gce_instance AND severity <= DEBUG")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

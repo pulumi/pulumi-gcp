@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Scheduler Job Pubsub
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,30 +59,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;job-topic&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("job-topic")
  *             .build());
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .name(&#34;test-job&#34;)
- *             .description(&#34;test job&#34;)
- *             .schedule(&#34;*{@literal /}2 * * * *&#34;)
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .name("test-job")
+ *             .description("test job")
+ *             .schedule("*{@literal /}2 * * * *")
  *             .pubsubTarget(JobPubsubTargetArgs.builder()
  *                 .topicName(topic.id())
  *                 .data(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;test&#34;)
+ *                     .input("test")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Scheduler Job Http
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,33 +107,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .name(&#34;test-job&#34;)
- *             .description(&#34;test http job&#34;)
- *             .schedule(&#34;*{@literal /}8 * * * *&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .attemptDeadline(&#34;320s&#34;)
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .name("test-job")
+ *             .description("test http job")
+ *             .schedule("*{@literal /}8 * * * *")
+ *             .timeZone("America/New_York")
+ *             .attemptDeadline("320s")
  *             .retryConfig(JobRetryConfigArgs.builder()
  *                 .retryCount(1)
  *                 .build())
  *             .httpTarget(JobHttpTargetArgs.builder()
- *                 .httpMethod(&#34;POST&#34;)
- *                 .uri(&#34;https://example.com/&#34;)
+ *                 .httpMethod("POST")
+ *                 .uri("https://example.com/")
  *                 .body(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;{\&#34;foo\&#34;:\&#34;bar\&#34;}&#34;)
+ *                     .input("{\"foo\":\"bar\"}")
  *                     .build()).result())
- *                 .headers(Map.of(&#34;Content-Type&#34;, &#34;application/json&#34;))
+ *                 .headers(Map.of("Content-Type", "application/json"))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Scheduler Job Paused
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -153,34 +158,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()        
  *             .paused(true)
- *             .name(&#34;test-job&#34;)
- *             .description(&#34;test http job with updated fields&#34;)
- *             .schedule(&#34;*{@literal /}8 * * * *&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .attemptDeadline(&#34;320s&#34;)
+ *             .name("test-job")
+ *             .description("test http job with updated fields")
+ *             .schedule("*{@literal /}8 * * * *")
+ *             .timeZone("America/New_York")
+ *             .attemptDeadline("320s")
  *             .retryConfig(JobRetryConfigArgs.builder()
  *                 .retryCount(1)
  *                 .build())
  *             .httpTarget(JobHttpTargetArgs.builder()
- *                 .httpMethod(&#34;POST&#34;)
- *                 .uri(&#34;https://example.com/ping&#34;)
+ *                 .httpMethod("POST")
+ *                 .uri("https://example.com/ping")
  *                 .body(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;{\&#34;foo\&#34;:\&#34;bar\&#34;}&#34;)
+ *                     .input("{\"foo\":\"bar\"}")
  *                     .build()).result())
- *                 .headers(Map.of(&#34;Content-Type&#34;, &#34;application/json&#34;))
+ *                 .headers(Map.of("Content-Type", "application/json"))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Scheduler Job App Engine
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -204,37 +211,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .name(&#34;test-job&#34;)
- *             .schedule(&#34;*{@literal /}4 * * * *&#34;)
- *             .description(&#34;test app engine job&#34;)
- *             .timeZone(&#34;Europe/London&#34;)
- *             .attemptDeadline(&#34;320s&#34;)
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .name("test-job")
+ *             .schedule("*{@literal /}4 * * * *")
+ *             .description("test app engine job")
+ *             .timeZone("Europe/London")
+ *             .attemptDeadline("320s")
  *             .retryConfig(JobRetryConfigArgs.builder()
- *                 .minBackoffDuration(&#34;1s&#34;)
- *                 .maxRetryDuration(&#34;10s&#34;)
+ *                 .minBackoffDuration("1s")
+ *                 .maxRetryDuration("10s")
  *                 .maxDoublings(2)
  *                 .retryCount(3)
  *                 .build())
  *             .appEngineHttpTarget(JobAppEngineHttpTargetArgs.builder()
- *                 .httpMethod(&#34;POST&#34;)
+ *                 .httpMethod("POST")
  *                 .appEngineRouting(JobAppEngineHttpTargetAppEngineRoutingArgs.builder()
- *                     .service(&#34;web&#34;)
- *                     .version(&#34;prod&#34;)
- *                     .instance(&#34;my-instance-001&#34;)
+ *                     .service("web")
+ *                     .version("prod")
+ *                     .instance("my-instance-001")
  *                     .build())
- *                 .relativeUri(&#34;/ping&#34;)
+ *                 .relativeUri("/ping")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Scheduler Job Oauth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -261,15 +270,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .name(&#34;test-job&#34;)
- *             .description(&#34;test http job&#34;)
- *             .schedule(&#34;*{@literal /}8 * * * *&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .attemptDeadline(&#34;320s&#34;)
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .name("test-job")
+ *             .description("test http job")
+ *             .schedule("*{@literal /}8 * * * *")
+ *             .timeZone("America/New_York")
+ *             .attemptDeadline("320s")
  *             .httpTarget(JobHttpTargetArgs.builder()
- *                 .httpMethod(&#34;GET&#34;)
- *                 .uri(&#34;https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs&#34;)
+ *                 .httpMethod("GET")
+ *                 .uri("https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs")
  *                 .oauthToken(JobHttpTargetOauthTokenArgs.builder()
  *                     .serviceAccountEmail(default_.email())
  *                     .build())
@@ -278,12 +287,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Scheduler Job Oidc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -310,15 +321,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .name(&#34;test-job&#34;)
- *             .description(&#34;test http job&#34;)
- *             .schedule(&#34;*{@literal /}8 * * * *&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .attemptDeadline(&#34;320s&#34;)
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .name("test-job")
+ *             .description("test http job")
+ *             .schedule("*{@literal /}8 * * * *")
+ *             .timeZone("America/New_York")
+ *             .attemptDeadline("320s")
  *             .httpTarget(JobHttpTargetArgs.builder()
- *                 .httpMethod(&#34;GET&#34;)
- *                 .uri(&#34;https://example.com/ping&#34;)
+ *                 .httpMethod("GET")
+ *                 .uri("https://example.com/ping")
  *                 .oidcToken(JobHttpTargetOidcTokenArgs.builder()
  *                     .serviceAccountEmail(default_.email())
  *                     .build())
@@ -327,7 +338,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### Gkehub Membership Binding Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,43 +60,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .name(&#34;basic-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var primary = new Cluster("primary", ClusterArgs.builder()        
+ *             .name("basic-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
- *             .deletionProtection(&#34;true&#34;)
- *             .network(&#34;default&#34;)
- *             .subnetwork(&#34;default&#34;)
+ *             .deletionProtection("true")
+ *             .network("default")
+ *             .subnetwork("default")
  *             .build());
  * 
- *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;tf-test-membership_75125&#34;)
+ *         var membership = new Membership("membership", MembershipArgs.builder()        
+ *             .membershipId("tf-test-membership_75125")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
- *             .scopeId(&#34;tf-test-scope_88722&#34;)
+ *         var scope = new Scope("scope", ScopeArgs.builder()        
+ *             .scopeId("tf-test-scope_88722")
  *             .build());
  * 
- *         var membershipBinding = new MembershipBinding(&#34;membershipBinding&#34;, MembershipBindingArgs.builder()        
- *             .membershipBindingId(&#34;tf-test-membership-binding_39249&#34;)
+ *         var membershipBinding = new MembershipBinding("membershipBinding", MembershipBindingArgs.builder()        
+ *             .membershipBindingId("tf-test-membership-binding_39249")
  *             .scope(scope.name())
  *             .membershipId(membership.membershipId())
- *             .location(&#34;global&#34;)
+ *             .location("global")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
- *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
- *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *                 Map.entry("keyb", "valueb"),
+ *                 Map.entry("keya", "valuea"),
+ *                 Map.entry("keyc", "valuec")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

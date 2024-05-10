@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Identity Platform Tenant Oauth Idp Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,23 +51,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tenant = new Tenant(&#34;tenant&#34;, TenantArgs.builder()        
- *             .displayName(&#34;tenant&#34;)
+ *         var tenant = new Tenant("tenant", TenantArgs.builder()        
+ *             .displayName("tenant")
  *             .build());
  * 
- *         var tenantOauthIdpConfig = new TenantOauthIdpConfig(&#34;tenantOauthIdpConfig&#34;, TenantOauthIdpConfigArgs.builder()        
- *             .name(&#34;oidc.oauth-idp-config&#34;)
+ *         var tenantOauthIdpConfig = new TenantOauthIdpConfig("tenantOauthIdpConfig", TenantOauthIdpConfigArgs.builder()        
+ *             .name("oidc.oauth-idp-config")
  *             .tenant(tenant.name())
- *             .displayName(&#34;Display Name&#34;)
- *             .clientId(&#34;client-id&#34;)
- *             .issuer(&#34;issuer&#34;)
+ *             .displayName("Display Name")
+ *             .clientId("client-id")
+ *             .issuer("issuer")
  *             .enabled(true)
- *             .clientSecret(&#34;secret&#34;)
+ *             .clientSecret("secret")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

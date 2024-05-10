@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * ### Privateca Certificate Authority Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,19 +72,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Authority(&#34;default&#34;, AuthorityArgs.builder()        
- *             .pool(&#34;ca-pool&#34;)
- *             .certificateAuthorityId(&#34;my-certificate-authority&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .deletionProtection(&#34;true&#34;)
+ *         var default_ = new Authority("default", AuthorityArgs.builder()        
+ *             .pool("ca-pool")
+ *             .certificateAuthorityId("my-certificate-authority")
+ *             .location("us-central1")
+ *             .deletionProtection("true")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -112,20 +113,22 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .lifetime(&#34;86400s&#34;)
+ *             .lifetime("86400s")
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate Authority Subordinate
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -157,18 +160,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var root_ca = new Authority(&#34;root-ca&#34;, AuthorityArgs.builder()        
- *             .pool(&#34;ca-pool&#34;)
- *             .certificateAuthorityId(&#34;my-certificate-authority-root&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var root_ca = new Authority("root-ca", AuthorityArgs.builder()        
+ *             .pool("ca-pool")
+ *             .certificateAuthorityId("my-certificate-authority-root")
+ *             .location("us-central1")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -187,29 +190,29 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
  *             .deletionProtection(false)
  *             .skipGracePeriod(true)
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var default_ = new Authority(&#34;default&#34;, AuthorityArgs.builder()        
- *             .pool(&#34;ca-pool&#34;)
- *             .certificateAuthorityId(&#34;my-certificate-authority-sub&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .deletionProtection(&#34;true&#34;)
+ *         var default_ = new Authority("default", AuthorityArgs.builder()        
+ *             .pool("ca-pool")
+ *             .certificateAuthorityId("my-certificate-authority-sub")
+ *             .location("us-central1")
+ *             .deletionProtection("true")
  *             .subordinateConfig(AuthoritySubordinateConfigArgs.builder()
  *                 .certificateAuthority(root_ca.name())
  *                 .build())
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-subordinate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-subordinate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -238,21 +241,23 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .lifetime(&#34;86400s&#34;)
+ *             .lifetime("86400s")
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
  *                 .build())
- *             .type(&#34;SUBORDINATE&#34;)
+ *             .type("SUBORDINATE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate Authority Byo Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -287,35 +292,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var privatecaSa = new ServiceIdentity(&#34;privatecaSa&#34;, ServiceIdentityArgs.builder()        
- *             .service(&#34;privateca.googleapis.com&#34;)
+ *         var privatecaSa = new ServiceIdentity("privatecaSa", ServiceIdentityArgs.builder()        
+ *             .service("privateca.googleapis.com")
  *             .build());
  * 
- *         var privatecaSaKeyuserSignerverifier = new CryptoKeyIAMMember(&#34;privatecaSaKeyuserSignerverifier&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key&#34;)
- *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
- *             .member(privatecaSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *         var privatecaSaKeyuserSignerverifier = new CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key")
+ *             .role("roles/cloudkms.signerVerifier")
+ *             .member(privatecaSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var privatecaSaKeyuserViewer = new CryptoKeyIAMMember(&#34;privatecaSaKeyuserViewer&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key&#34;)
- *             .role(&#34;roles/viewer&#34;)
- *             .member(privatecaSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *         var privatecaSaKeyuserViewer = new CryptoKeyIAMMember("privatecaSaKeyuserViewer", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key")
+ *             .role("roles/viewer")
+ *             .member(privatecaSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var default_ = new Authority(&#34;default&#34;, AuthorityArgs.builder()        
- *             .pool(&#34;ca-pool&#34;)
- *             .certificateAuthorityId(&#34;my-certificate-authority&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .deletionProtection(&#34;true&#34;)
+ *         var default_ = new Authority("default", AuthorityArgs.builder()        
+ *             .pool("ca-pool")
+ *             .certificateAuthorityId("my-certificate-authority")
+ *             .location("us-central1")
+ *             .deletionProtection("true")
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .cloudKmsKeyVersion(&#34;projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1&#34;)
+ *                 .cloudKmsKeyVersion("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1")
  *                 .build())
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;Example, Org.&#34;)
- *                         .commonName(&#34;Example Authority&#34;)
+ *                         .organization("Example, Org.")
+ *                         .commonName("Example Authority")
  *                         .build())
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
@@ -334,14 +339,14 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .nameConstraints(AuthorityConfigX509ConfigNameConstraintsArgs.builder()
  *                         .critical(true)
- *                         .permittedDnsNames(&#34;*.example.com&#34;)
- *                         .excludedDnsNames(&#34;*.deny.example.com&#34;)
- *                         .permittedIpRanges(&#34;10.0.0.0/8&#34;)
- *                         .excludedIpRanges(&#34;10.1.1.0/24&#34;)
- *                         .permittedEmailAddresses(&#34;.example.com&#34;)
- *                         .excludedEmailAddresses(&#34;.deny.example.com&#34;)
- *                         .permittedUris(&#34;.example.com&#34;)
- *                         .excludedUris(&#34;.deny.example.com&#34;)
+ *                         .permittedDnsNames("*.example.com")
+ *                         .excludedDnsNames("*.deny.example.com")
+ *                         .permittedIpRanges("10.0.0.0/8")
+ *                         .excludedIpRanges("10.1.1.0/24")
+ *                         .permittedEmailAddresses(".example.com")
+ *                         .excludedEmailAddresses(".deny.example.com")
+ *                         .permittedUris(".example.com")
+ *                         .excludedUris(".deny.example.com")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -349,12 +354,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate Authority Custom Ski
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -386,23 +393,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Authority(&#34;default&#34;, AuthorityArgs.builder()        
- *             .pool(&#34;ca-pool&#34;)
- *             .certificateAuthorityId(&#34;my-certificate-authority&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .deletionProtection(&#34;true&#34;)
+ *         var default_ = new Authority("default", AuthorityArgs.builder()        
+ *             .pool("ca-pool")
+ *             .certificateAuthorityId("my-certificate-authority")
+ *             .location("us-central1")
+ *             .deletionProtection("true")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization(&#34;HashiCorp&#34;)
- *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .organization("HashiCorp")
+ *                         .commonName("my-certificate-authority")
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
- *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .dnsNames("hashicorp.com")
  *                         .build())
  *                     .build())
  *                 .subjectKeyId(AuthorityConfigSubjectKeyIdArgs.builder()
- *                     .keyId(&#34;4cf3372289b1d411b999dbb9ebcd44744b6b2fca&#34;)
+ *                     .keyId("4cf3372289b1d411b999dbb9ebcd44744b6b2fca")
  *                     .build())
  *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
  *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
@@ -430,15 +437,16 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .lifetime(&#34;86400s&#34;)
+ *             .lifetime("86400s")
  *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .cloudKmsKeyVersion(&#34;projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1&#34;)
+ *                 .cloudKmsKeyVersion("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

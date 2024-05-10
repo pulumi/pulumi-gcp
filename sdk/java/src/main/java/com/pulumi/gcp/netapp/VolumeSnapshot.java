@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### Volume Snapshot Create
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,35 +65,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;test-network&#34;)
+ *             .name("test-network")
  *             .build());
  * 
- *         var defaultStoragePool = new StoragePool(&#34;defaultStoragePool&#34;, StoragePoolArgs.builder()        
- *             .name(&#34;test-pool&#34;)
- *             .location(&#34;us-west2&#34;)
- *             .serviceLevel(&#34;PREMIUM&#34;)
+ *         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()        
+ *             .name("test-pool")
+ *             .location("us-west2")
+ *             .serviceLevel("PREMIUM")
  *             .capacityGib(2048)
  *             .network(default_.id())
  *             .build());
  * 
- *         var defaultVolume = new Volume(&#34;defaultVolume&#34;, VolumeArgs.builder()        
+ *         var defaultVolume = new Volume("defaultVolume", VolumeArgs.builder()        
  *             .location(defaultStoragePool.location())
- *             .name(&#34;test-volume&#34;)
+ *             .name("test-volume")
  *             .capacityGib(100)
- *             .shareName(&#34;test-volume&#34;)
+ *             .shareName("test-volume")
  *             .storagePool(defaultStoragePool.name())
- *             .protocols(&#34;NFSV3&#34;)
+ *             .protocols("NFSV3")
  *             .build());
  * 
- *         var testSnapshot = new VolumeSnapshot(&#34;testSnapshot&#34;, VolumeSnapshotArgs.builder()        
+ *         var testSnapshot = new VolumeSnapshot("testSnapshot", VolumeSnapshotArgs.builder()        
  *             .location(defaultVolume.location())
  *             .volumeName(defaultVolume.name())
- *             .name(&#34;testvolumesnap&#34;)
+ *             .name("testvolumesnap")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

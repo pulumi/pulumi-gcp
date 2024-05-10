@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Kms Config Create
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,26 +58,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;key-ring&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("key-ring")
+ *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-name&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("crypto-name")
  *             .keyRing(keyring.id())
  *             .build());
  * 
- *         var kmsConfig = new Kmsconfig(&#34;kmsConfig&#34;, KmsconfigArgs.builder()        
- *             .name(&#34;kms-test&#34;)
- *             .description(&#34;this is a test description&#34;)
+ *         var kmsConfig = new Kmsconfig("kmsConfig", KmsconfigArgs.builder()        
+ *             .name("kms-test")
+ *             .description("this is a test description")
  *             .cryptoKeyName(cryptoKey.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

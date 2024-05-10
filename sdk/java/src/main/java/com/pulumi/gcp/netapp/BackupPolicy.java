@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Netapp Backup Policy Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,20 +56,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testBackupPolicyFull = new BackupPolicy(&#34;testBackupPolicyFull&#34;, BackupPolicyArgs.builder()        
- *             .name(&#34;test-backup-policy-full&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var testBackupPolicyFull = new BackupPolicy("testBackupPolicyFull", BackupPolicyArgs.builder()        
+ *             .name("test-backup-policy-full")
+ *             .location("us-central1")
  *             .dailyBackupLimit(2)
  *             .weeklyBackupLimit(1)
  *             .monthlyBackupLimit(1)
- *             .description(&#34;TF test backup schedule&#34;)
+ *             .description("TF test backup schedule")
  *             .enabled(true)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

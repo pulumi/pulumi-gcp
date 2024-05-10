@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Project Access Approval Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,25 +52,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var projectAccessApproval = new AccessApprovalSettings(&#34;projectAccessApproval&#34;, AccessApprovalSettingsArgs.builder()        
- *             .projectId(&#34;my-project-name&#34;)
+ *         var projectAccessApproval = new AccessApprovalSettings("projectAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *             .projectId("my-project-name")
  *             .notificationEmails(            
- *                 &#34;testuser@example.com&#34;,
- *                 &#34;example.user@example.com&#34;)
+ *                 "testuser{@literal @}example.com",
+ *                 "example.user{@literal @}example.com")
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
- *                 .cloudProduct(&#34;all&#34;)
- *                 .enrollmentLevel(&#34;BLOCK_ALL&#34;)
+ *                 .cloudProduct("all")
+ *                 .enrollmentLevel("BLOCK_ALL")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Project Access Approval Active Key Version
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,46 +105,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;key-ring&#34;)
- *             .location(&#34;global&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("key-ring")
+ *             .location("global")
+ *             .project("my-project-name")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("crypto-key")
  *             .keyRing(keyRing.id())
- *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
+ *             .purpose("ASYMMETRIC_SIGN")
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
- *                 .algorithm(&#34;EC_SIGN_P384_SHA384&#34;)
+ *                 .algorithm("EC_SIGN_P384_SHA384")
  *                 .build())
  *             .build());
  * 
  *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
- *             .projectId(&#34;my-project-name&#34;)
+ *             .projectId("my-project-name")
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
- *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
- *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+ *             .role("roles/cloudkms.signerVerifier")
+ *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
  *             .build());
  * 
  *         final var cryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
  *             .cryptoKey(cryptoKey.id())
  *             .build());
  * 
- *         var projectAccessApproval = new AccessApprovalSettings(&#34;projectAccessApproval&#34;, AccessApprovalSettingsArgs.builder()        
- *             .projectId(&#34;my-project-name&#34;)
- *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -&gt; cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.name())))
+ *         var projectAccessApproval = new AccessApprovalSettings("projectAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *             .projectId("my-project-name")
+ *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -> cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.name())))
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
- *                 .cloudProduct(&#34;all&#34;)
+ *                 .cloudProduct("all")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

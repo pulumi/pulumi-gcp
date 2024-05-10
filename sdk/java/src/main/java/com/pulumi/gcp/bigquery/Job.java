@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### Bigquery Job Query
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,24 +65,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Dataset(&#34;bar&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;job_query_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var bar = new Dataset("bar", DatasetArgs.builder()        
+ *             .datasetId("job_query_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var foo = new Table(&#34;foo&#34;, TableArgs.builder()        
+ *         var foo = new Table("foo", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(bar.datasetId())
- *             .tableId(&#34;job_query_table&#34;)
+ *             .tableId("job_query_table")
  *             .build());
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .jobId(&#34;job_query&#34;)
- *             .labels(Map.of(&#34;example-label&#34;, &#34;example-value&#34;))
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .jobId("job_query")
+ *             .labels(Map.of("example-label", "example-value"))
  *             .query(JobQueryArgs.builder()
- *                 .query(&#34;SELECT state FROM [lookerdata:cdc.project_tycho_reports]&#34;)
+ *                 .query("SELECT state FROM [lookerdata:cdc.project_tycho_reports]")
  *                 .destinationTable(JobQueryDestinationTableArgs.builder()
  *                     .projectId(foo.project())
  *                     .datasetId(foo.datasetId())
@@ -90,19 +91,21 @@ import javax.annotation.Nullable;
  *                 .allowLargeResults(true)
  *                 .flattenResults(true)
  *                 .scriptOptions(JobQueryScriptOptionsArgs.builder()
- *                     .keyResultStatement(&#34;LAST&#34;)
+ *                     .keyResultStatement("LAST")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Job Query Table Reference
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -131,24 +134,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Dataset(&#34;bar&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;job_query_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var bar = new Dataset("bar", DatasetArgs.builder()        
+ *             .datasetId("job_query_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var foo = new Table(&#34;foo&#34;, TableArgs.builder()        
+ *         var foo = new Table("foo", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(bar.datasetId())
- *             .tableId(&#34;job_query_table&#34;)
+ *             .tableId("job_query_table")
  *             .build());
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .jobId(&#34;job_query&#34;)
- *             .labels(Map.of(&#34;example-label&#34;, &#34;example-value&#34;))
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .jobId("job_query")
+ *             .labels(Map.of("example-label", "example-value"))
  *             .query(JobQueryArgs.builder()
- *                 .query(&#34;SELECT state FROM [lookerdata:cdc.project_tycho_reports]&#34;)
+ *                 .query("SELECT state FROM [lookerdata:cdc.project_tycho_reports]")
  *                 .destinationTable(JobQueryDestinationTableArgs.builder()
  *                     .tableId(foo.id())
  *                     .build())
@@ -158,19 +161,21 @@ import javax.annotation.Nullable;
  *                 .allowLargeResults(true)
  *                 .flattenResults(true)
  *                 .scriptOptions(JobQueryScriptOptionsArgs.builder()
- *                     .keyResultStatement(&#34;LAST&#34;)
+ *                     .keyResultStatement("LAST")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Job Load
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -197,24 +202,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Dataset(&#34;bar&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;job_load_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var bar = new Dataset("bar", DatasetArgs.builder()        
+ *             .datasetId("job_load_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var foo = new Table(&#34;foo&#34;, TableArgs.builder()        
+ *         var foo = new Table("foo", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(bar.datasetId())
- *             .tableId(&#34;job_load_table&#34;)
+ *             .tableId("job_load_table")
  *             .build());
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .jobId(&#34;job_load&#34;)
- *             .labels(Map.of(&#34;my_job&#34;, &#34;load&#34;))
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .jobId("job_load")
+ *             .labels(Map.of("my_job", "load"))
  *             .load(JobLoadArgs.builder()
- *                 .sourceUris(&#34;gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv&#34;)
+ *                 .sourceUris("gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv")
  *                 .destinationTable(JobLoadDestinationTableArgs.builder()
  *                     .projectId(foo.project())
  *                     .datasetId(foo.datasetId())
@@ -222,21 +227,23 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .skipLeadingRows(1)
  *                 .schemaUpdateOptions(                
- *                     &#34;ALLOW_FIELD_RELAXATION&#34;,
- *                     &#34;ALLOW_FIELD_ADDITION&#34;)
- *                 .writeDisposition(&#34;WRITE_APPEND&#34;)
+ *                     "ALLOW_FIELD_RELAXATION",
+ *                     "ALLOW_FIELD_ADDITION")
+ *                 .writeDisposition("WRITE_APPEND")
  *                 .autodetect(true)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Job Load Geojson
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -267,65 +274,67 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = &#34;my-project-name&#34;;
+ *         final var project = "my-project-name";
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(String.format(&#34;%s-bq-geojson&#34;, project))
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name(String.format("%s-bq-geojson", project))
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;geojson-data.jsonl&#34;)
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *             .name("geojson-data.jsonl")
  *             .bucket(bucket.name())
- *             .content(&#34;&#34;&#34;
- * {&#34;type&#34;:&#34;Feature&#34;,&#34;properties&#34;:{&#34;continent&#34;:&#34;Europe&#34;,&#34;region&#34;:&#34;Scandinavia&#34;},&#34;geometry&#34;:{&#34;type&#34;:&#34;Polygon&#34;,&#34;coordinates&#34;:[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
- * {&#34;type&#34;:&#34;Feature&#34;,&#34;properties&#34;:{&#34;continent&#34;:&#34;Africa&#34;,&#34;region&#34;:&#34;West Africa&#34;},&#34;geometry&#34;:{&#34;type&#34;:&#34;Polygon&#34;,&#34;coordinates&#34;:[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
- *             &#34;&#34;&#34;)
+ *             .content("""
+ * {"type":"Feature","properties":{"continent":"Europe","region":"Scandinavia"},"geometry":{"type":"Polygon","coordinates":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+ * {"type":"Feature","properties":{"continent":"Africa","region":"West Africa"},"geometry":{"type":"Polygon","coordinates":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+ *             """)
  *             .build());
  * 
- *         var bar = new Dataset(&#34;bar&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;job_load_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var bar = new Dataset("bar", DatasetArgs.builder()        
+ *             .datasetId("job_load_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var foo = new Table(&#34;foo&#34;, TableArgs.builder()        
+ *         var foo = new Table("foo", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(bar.datasetId())
- *             .tableId(&#34;job_load_table&#34;)
+ *             .tableId("job_load_table")
  *             .build());
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .jobId(&#34;job_load&#34;)
- *             .labels(Map.of(&#34;my_job&#34;, &#34;load&#34;))
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .jobId("job_load")
+ *             .labels(Map.of("my_job", "load"))
  *             .load(JobLoadArgs.builder()
- *                 .sourceUris(Output.tuple(object.bucket(), object.name()).applyValue(values -&gt; {
+ *                 .sourceUris(Output.tuple(object.bucket(), object.name()).applyValue(values -> {
  *                     var bucket = values.t1;
  *                     var name = values.t2;
- *                     return String.format(&#34;gs://%s/%s&#34;, bucket,name);
+ *                     return String.format("gs://%s/%s", bucket,name);
  *                 }))
  *                 .destinationTable(JobLoadDestinationTableArgs.builder()
  *                     .projectId(foo.project())
  *                     .datasetId(foo.datasetId())
  *                     .tableId(foo.tableId())
  *                     .build())
- *                 .writeDisposition(&#34;WRITE_TRUNCATE&#34;)
+ *                 .writeDisposition("WRITE_TRUNCATE")
  *                 .autodetect(true)
- *                 .sourceFormat(&#34;NEWLINE_DELIMITED_JSON&#34;)
- *                 .jsonExtension(&#34;GEOJSON&#34;)
+ *                 .sourceFormat("NEWLINE_DELIMITED_JSON")
+ *                 .jsonExtension("GEOJSON")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Job Load Parquet
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -358,39 +367,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Bucket(&#34;test&#34;, BucketArgs.builder()        
- *             .name(&#34;job_load_bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var test = new Bucket("test", BucketArgs.builder()        
+ *             .name("job_load_bucket")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var testBucketObject = new BucketObject(&#34;testBucketObject&#34;, BucketObjectArgs.builder()        
- *             .name(&#34;job_load_bucket_object&#34;)
- *             .source(new FileAsset(&#34;./test-fixtures/test.parquet.gzip&#34;))
+ *         var testBucketObject = new BucketObject("testBucketObject", BucketObjectArgs.builder()        
+ *             .name("job_load_bucket_object")
+ *             .source(new FileAsset("./test-fixtures/test.parquet.gzip"))
  *             .bucket(test.name())
  *             .build());
  * 
- *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;job_load_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var testDataset = new Dataset("testDataset", DatasetArgs.builder()        
+ *             .datasetId("job_load_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var testTable = new Table(&#34;testTable&#34;, TableArgs.builder()        
+ *         var testTable = new Table("testTable", TableArgs.builder()        
  *             .deletionProtection(false)
- *             .tableId(&#34;job_load_table&#34;)
+ *             .tableId("job_load_table")
  *             .datasetId(testDataset.datasetId())
  *             .build());
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .jobId(&#34;job_load&#34;)
- *             .labels(Map.of(&#34;my_job&#34;, &#34;load&#34;))
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .jobId("job_load")
+ *             .labels(Map.of("my_job", "load"))
  *             .load(JobLoadArgs.builder()
- *                 .sourceUris(Output.tuple(testBucketObject.bucket(), testBucketObject.name()).applyValue(values -&gt; {
+ *                 .sourceUris(Output.tuple(testBucketObject.bucket(), testBucketObject.name()).applyValue(values -> {
  *                     var bucket = values.t1;
  *                     var name = values.t2;
- *                     return String.format(&#34;gs://%s/%s&#34;, bucket,name);
+ *                     return String.format("gs://%s/%s", bucket,name);
  *                 }))
  *                 .destinationTable(JobLoadDestinationTableArgs.builder()
  *                     .projectId(testTable.project())
@@ -398,10 +407,10 @@ import javax.annotation.Nullable;
  *                     .tableId(testTable.tableId())
  *                     .build())
  *                 .schemaUpdateOptions(                
- *                     &#34;ALLOW_FIELD_RELAXATION&#34;,
- *                     &#34;ALLOW_FIELD_ADDITION&#34;)
- *                 .writeDisposition(&#34;WRITE_APPEND&#34;)
- *                 .sourceFormat(&#34;PARQUET&#34;)
+ *                     "ALLOW_FIELD_RELAXATION",
+ *                     "ALLOW_FIELD_ADDITION")
+ *                 .writeDisposition("WRITE_APPEND")
+ *                 .sourceFormat("PARQUET")
  *                 .autodetect(true)
  *                 .parquetOptions(JobLoadParquetOptionsArgs.builder()
  *                     .enumAsString(true)
@@ -412,12 +421,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Job Copy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -455,101 +466,101 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         for (var i = 0; i &lt; 2; i++) {
- *             new Dataset(&#34;sourceDataset-&#34; + i, DatasetArgs.builder()            
- *                 .datasetId(String.format(&#34;job_copy_%s_dataset&#34;, range.value()))
- *                 .friendlyName(&#34;test&#34;)
- *                 .description(&#34;This is a test description&#34;)
- *                 .location(&#34;US&#34;)
+ *         for (var i = 0; i < 2; i++) {
+ *             new Dataset("sourceDataset-" + i, DatasetArgs.builder()            
+ *                 .datasetId(String.format("job_copy_%s_dataset", range.value()))
+ *                 .friendlyName("test")
+ *                 .description("This is a test description")
+ *                 .location("US")
  *                 .build());
  * 
  *         
  * }
- *         for (var i = 0; i &lt; sourceDataset.length(); i++) {
- *             new Table(&#34;source-&#34; + i, TableArgs.builder()            
+ *         for (var i = 0; i < sourceDataset.length(); i++) {
+ *             new Table("source-" + i, TableArgs.builder()            
  *                 .deletionProtection(false)
  *                 .datasetId(sourceDataset[range.value()].datasetId())
- *                 .tableId(String.format(&#34;job_copy_%s_table&#34;, range.value()))
- *                 .schema(&#34;&#34;&#34;
+ *                 .tableId(String.format("job_copy_%s_table", range.value()))
+ *                 .schema("""
  * [
  *   {
- *     &#34;name&#34;: &#34;name&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     "name": "name",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
  *   },
  *   {
- *     &#34;name&#34;: &#34;post_abbr&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     "name": "post_abbr",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
  *   },
  *   {
- *     &#34;name&#34;: &#34;date&#34;,
- *     &#34;type&#34;: &#34;DATE&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     "name": "date",
+ *     "type": "DATE",
+ *     "mode": "NULLABLE"
  *   }
  * ]
- *                 &#34;&#34;&#34;)
+ *                 """)
  *                 .build());
  * 
  *         
  * }
- *         var destDataset = new Dataset(&#34;destDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;job_copy_dest_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var destDataset = new Dataset("destDataset", DatasetArgs.builder()        
+ *             .datasetId("job_copy_dest_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
- *             .name(&#34;example-keyring&#34;)
- *             .location(&#34;global&#34;)
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *             .name("example-keyring")
+ *             .location("global")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;example-key&#34;)
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *             .name("example-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var dest = new Table(&#34;dest&#34;, TableArgs.builder()        
+ *         var dest = new Table("dest", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(destDataset.datasetId())
- *             .tableId(&#34;job_copy_dest_table&#34;)
- *             .schema(&#34;&#34;&#34;
+ *             .tableId("job_copy_dest_table")
+ *             .schema("""
  * [
  *   {
- *     &#34;name&#34;: &#34;name&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     "name": "name",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
  *   },
  *   {
- *     &#34;name&#34;: &#34;post_abbr&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     "name": "post_abbr",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
  *   },
  *   {
- *     &#34;name&#34;: &#34;date&#34;,
- *     &#34;type&#34;: &#34;DATE&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     "name": "date",
+ *     "type": "DATE",
+ *     "mode": "NULLABLE"
  *   }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .encryptionConfiguration(TableEncryptionConfigurationArgs.builder()
  *                 .kmsKeyName(cryptoKey.id())
  *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .projectId(&#34;my-project-name&#34;)
+ *             .projectId("my-project-name")
  *             .build());
  * 
- *         var encryptRole = new IAMMember(&#34;encryptRole&#34;, IAMMemberArgs.builder()        
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:bq-%s@bigquery-encryption.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *         var encryptRole = new IAMMember("encryptRole", IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:bq-%s{@literal @}bigquery-encryption.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .jobId(&#34;job_copy&#34;)
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .jobId("job_copy")
  *             .copy(JobCopyArgs.builder()
  *                 .sourceTables(                
  *                     JobCopySourceTableArgs.builder()
@@ -575,12 +586,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Job Extract
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -609,61 +622,62 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source_oneDataset = new Dataset(&#34;source-oneDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;job_extract_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
+ *         var source_oneDataset = new Dataset("source-oneDataset", DatasetArgs.builder()        
+ *             .datasetId("job_extract_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
  *             .build());
  * 
- *         var source_one = new Table(&#34;source-one&#34;, TableArgs.builder()        
+ *         var source_one = new Table("source-one", TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(source_oneDataset.datasetId())
- *             .tableId(&#34;job_extract_table&#34;)
- *             .schema(&#34;&#34;&#34;
+ *             .tableId("job_extract_table")
+ *             .schema("""
  * [
  *   {
- *     &#34;name&#34;: &#34;name&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     "name": "name",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
  *   },
  *   {
- *     &#34;name&#34;: &#34;post_abbr&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     "name": "post_abbr",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
  *   },
  *   {
- *     &#34;name&#34;: &#34;date&#34;,
- *     &#34;type&#34;: &#34;DATE&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     "name": "date",
+ *     "type": "DATE",
+ *     "mode": "NULLABLE"
  *   }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var dest = new Bucket(&#34;dest&#34;, BucketArgs.builder()        
- *             .name(&#34;job_extract_bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var dest = new Bucket("dest", BucketArgs.builder()        
+ *             .name("job_extract_bucket")
+ *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .jobId(&#34;job_extract&#34;)
+ *         var job = new Job("job", JobArgs.builder()        
+ *             .jobId("job_extract")
  *             .extract(JobExtractArgs.builder()
- *                 .destinationUris(dest.url().applyValue(url -&gt; String.format(&#34;%s/extract&#34;, url)))
+ *                 .destinationUris(dest.url().applyValue(url -> String.format("%s/extract", url)))
  *                 .sourceTable(JobExtractSourceTableArgs.builder()
  *                     .projectId(source_one.project())
  *                     .datasetId(source_one.datasetId())
  *                     .tableId(source_one.tableId())
  *                     .build())
- *                 .destinationFormat(&#34;NEWLINE_DELIMITED_JSON&#34;)
- *                 .compression(&#34;GZIP&#34;)
+ *                 .destinationFormat("NEWLINE_DELIMITED_JSON")
+ *                 .compression("GZIP")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

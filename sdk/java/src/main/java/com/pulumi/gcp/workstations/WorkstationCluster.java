@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Workstation Cluster Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,37 +54,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;workstation-cluster&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("workstation-cluster")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;workstation-cluster&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("workstation-cluster")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
  *             .network(defaultNetwork.name())
  *             .build());
  * 
- *         var default_ = new WorkstationCluster(&#34;default&#34;, WorkstationClusterArgs.builder()        
- *             .workstationClusterId(&#34;workstation-cluster&#34;)
+ *         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()        
+ *             .workstationClusterId("workstation-cluster")
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .location(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
- *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .location("us-central1")
+ *             .labels(Map.of("label", "key"))
+ *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Workstation Cluster Private
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -111,40 +114,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;workstation-cluster-private&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("workstation-cluster-private")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;workstation-cluster-private&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("workstation-cluster-private")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
  *             .network(defaultNetwork.name())
  *             .build());
  * 
- *         var default_ = new WorkstationCluster(&#34;default&#34;, WorkstationClusterArgs.builder()        
- *             .workstationClusterId(&#34;workstation-cluster-private&#34;)
+ *         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()        
+ *             .workstationClusterId("workstation-cluster-private")
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .privateClusterConfig(WorkstationClusterPrivateClusterConfigArgs.builder()
  *                 .enablePrivateEndpoint(true)
  *                 .build())
- *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
- *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of("label", "key"))
+ *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Workstation Cluster Custom Domain
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -173,38 +178,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;workstation-cluster-custom-domain&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("workstation-cluster-custom-domain")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;workstation-cluster-custom-domain&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("workstation-cluster-custom-domain")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
  *             .network(defaultNetwork.name())
  *             .build());
  * 
- *         var default_ = new WorkstationCluster(&#34;default&#34;, WorkstationClusterArgs.builder()        
- *             .workstationClusterId(&#34;workstation-cluster-custom-domain&#34;)
+ *         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()        
+ *             .workstationClusterId("workstation-cluster-custom-domain")
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .location(&#34;us-central1&#34;)
+ *             .location("us-central1")
  *             .privateClusterConfig(WorkstationClusterPrivateClusterConfigArgs.builder()
  *                 .enablePrivateEndpoint(true)
  *                 .build())
  *             .domainConfig(WorkstationClusterDomainConfigArgs.builder()
- *                 .domain(&#34;workstations.example.com&#34;)
+ *                 .domain("workstations.example.com")
  *                 .build())
- *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
- *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of("label", "key"))
+ *             .annotations(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

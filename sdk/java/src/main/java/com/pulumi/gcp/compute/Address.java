@@ -44,7 +44,8 @@ import javax.annotation.Nullable;
  * ### Address Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,18 +66,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ipAddress = new Address(&#34;ipAddress&#34;, AddressArgs.builder()        
- *             .name(&#34;my-address&#34;)
+ *         var ipAddress = new Address("ipAddress", AddressArgs.builder()        
+ *             .name("my-address")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Address With Subnetwork
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -101,33 +104,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;my-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("my-network")
  *             .build());
  * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;my-subnet&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()        
+ *             .name("my-subnet")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
  *             .network(default_.id())
  *             .build());
  * 
- *         var internalWithSubnetAndAddress = new Address(&#34;internalWithSubnetAndAddress&#34;, AddressArgs.builder()        
- *             .name(&#34;my-internal-address&#34;)
+ *         var internalWithSubnetAndAddress = new Address("internalWithSubnetAndAddress", AddressArgs.builder()        
+ *             .name("my-internal-address")
  *             .subnetwork(defaultSubnetwork.id())
- *             .addressType(&#34;INTERNAL&#34;)
- *             .address(&#34;10.0.42.42&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .addressType("INTERNAL")
+ *             .address("10.0.42.42")
+ *             .region("us-central1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Address With Gce Endpoint
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -148,20 +153,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var internalWithGceEndpoint = new Address(&#34;internalWithGceEndpoint&#34;, AddressArgs.builder()        
- *             .name(&#34;my-internal-address-&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;GCE_ENDPOINT&#34;)
+ *         var internalWithGceEndpoint = new Address("internalWithGceEndpoint", AddressArgs.builder()        
+ *             .name("my-internal-address-")
+ *             .addressType("INTERNAL")
+ *             .purpose("GCE_ENDPOINT")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Instance With Ip
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -189,26 +196,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_ = new Address(&#34;static&#34;, AddressArgs.builder()        
- *             .name(&#34;ipv4-address&#34;)
+ *         var static_ = new Address("static", AddressArgs.builder()        
+ *             .name("ipv4-address")
  *             .build());
  * 
  *         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var instanceWithIp = new Instance(&#34;instanceWithIp&#34;, InstanceArgs.builder()        
- *             .name(&#34;vm-instance&#34;)
- *             .machineType(&#34;f1-micro&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *         var instanceWithIp = new Instance("instanceWithIp", InstanceArgs.builder()        
+ *             .name("vm-instance")
+ *             .machineType("f1-micro")
+ *             .zone("us-central1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(debianImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(debianImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
  *                     .natIp(static_.address())
  *                     .build())
@@ -217,12 +224,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Compute Address Ipsec Interconnect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -245,23 +254,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;test-network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var ipsec_interconnect_address = new Address(&#34;ipsec-interconnect-address&#34;, AddressArgs.builder()        
- *             .name(&#34;test-address&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;IPSEC_INTERCONNECT&#34;)
- *             .address(&#34;192.168.1.0&#34;)
+ *         var ipsec_interconnect_address = new Address("ipsec-interconnect-address", AddressArgs.builder()        
+ *             .name("test-address")
+ *             .addressType("INTERNAL")
+ *             .purpose("IPSEC_INTERCONNECT")
+ *             .address("192.168.1.0")
  *             .prefixLength(29)
  *             .network(network.selfLink())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

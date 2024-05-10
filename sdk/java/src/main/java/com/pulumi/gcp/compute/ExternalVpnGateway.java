@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### External Vpn Gateway
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,103 +67,103 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;network-1&#34;)
- *             .routingMode(&#34;GLOBAL&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("network-1")
+ *             .routingMode("GLOBAL")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var haGateway = new HaVpnGateway(&#34;haGateway&#34;, HaVpnGatewayArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .name(&#34;ha-vpn&#34;)
+ *         var haGateway = new HaVpnGateway("haGateway", HaVpnGatewayArgs.builder()        
+ *             .region("us-central1")
+ *             .name("ha-vpn")
  *             .network(network.id())
  *             .build());
  * 
- *         var externalGateway = new ExternalVpnGateway(&#34;externalGateway&#34;, ExternalVpnGatewayArgs.builder()        
- *             .name(&#34;external-gateway&#34;)
- *             .redundancyType(&#34;SINGLE_IP_INTERNALLY_REDUNDANT&#34;)
- *             .description(&#34;An externally managed VPN gateway&#34;)
+ *         var externalGateway = new ExternalVpnGateway("externalGateway", ExternalVpnGatewayArgs.builder()        
+ *             .name("external-gateway")
+ *             .redundancyType("SINGLE_IP_INTERNALLY_REDUNDANT")
+ *             .description("An externally managed VPN gateway")
  *             .interfaces(ExternalVpnGatewayInterfaceArgs.builder()
  *                 .id(0)
- *                 .ipAddress(&#34;8.8.8.8&#34;)
+ *                 .ipAddress("8.8.8.8")
  *                 .build())
  *             .build());
  * 
- *         var networkSubnet1 = new Subnetwork(&#34;networkSubnet1&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;ha-vpn-subnet-1&#34;)
- *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var networkSubnet1 = new Subnetwork("networkSubnet1", SubnetworkArgs.builder()        
+ *             .name("ha-vpn-subnet-1")
+ *             .ipCidrRange("10.0.1.0/24")
+ *             .region("us-central1")
  *             .network(network.id())
  *             .build());
  * 
- *         var networkSubnet2 = new Subnetwork(&#34;networkSubnet2&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;ha-vpn-subnet-2&#34;)
- *             .ipCidrRange(&#34;10.0.2.0/24&#34;)
- *             .region(&#34;us-west1&#34;)
+ *         var networkSubnet2 = new Subnetwork("networkSubnet2", SubnetworkArgs.builder()        
+ *             .name("ha-vpn-subnet-2")
+ *             .ipCidrRange("10.0.2.0/24")
+ *             .region("us-west1")
  *             .network(network.id())
  *             .build());
  * 
- *         var router1 = new Router(&#34;router1&#34;, RouterArgs.builder()        
- *             .name(&#34;ha-vpn-router1&#34;)
+ *         var router1 = new Router("router1", RouterArgs.builder()        
+ *             .name("ha-vpn-router1")
  *             .network(network.name())
  *             .bgp(RouterBgpArgs.builder()
  *                 .asn(64514)
  *                 .build())
  *             .build());
  * 
- *         var tunnel1 = new VPNTunnel(&#34;tunnel1&#34;, VPNTunnelArgs.builder()        
- *             .name(&#34;ha-vpn-tunnel1&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var tunnel1 = new VPNTunnel("tunnel1", VPNTunnelArgs.builder()        
+ *             .name("ha-vpn-tunnel1")
+ *             .region("us-central1")
  *             .vpnGateway(haGateway.id())
  *             .peerExternalGateway(externalGateway.id())
  *             .peerExternalGatewayInterface(0)
- *             .sharedSecret(&#34;a secret message&#34;)
+ *             .sharedSecret("a secret message")
  *             .router(router1.id())
  *             .vpnGatewayInterface(0)
  *             .build());
  * 
- *         var tunnel2 = new VPNTunnel(&#34;tunnel2&#34;, VPNTunnelArgs.builder()        
- *             .name(&#34;ha-vpn-tunnel2&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var tunnel2 = new VPNTunnel("tunnel2", VPNTunnelArgs.builder()        
+ *             .name("ha-vpn-tunnel2")
+ *             .region("us-central1")
  *             .vpnGateway(haGateway.id())
  *             .peerExternalGateway(externalGateway.id())
  *             .peerExternalGatewayInterface(0)
- *             .sharedSecret(&#34;a secret message&#34;)
- *             .router(router1.id().applyValue(id -&gt; String.format(&#34; %s&#34;, id)))
+ *             .sharedSecret("a secret message")
+ *             .router(router1.id().applyValue(id -> String.format(" %s", id)))
  *             .vpnGatewayInterface(1)
  *             .build());
  * 
- *         var router1Interface1 = new RouterInterface(&#34;router1Interface1&#34;, RouterInterfaceArgs.builder()        
- *             .name(&#34;router1-interface1&#34;)
+ *         var router1Interface1 = new RouterInterface("router1Interface1", RouterInterfaceArgs.builder()        
+ *             .name("router1-interface1")
  *             .router(router1.name())
- *             .region(&#34;us-central1&#34;)
- *             .ipRange(&#34;169.254.0.1/30&#34;)
+ *             .region("us-central1")
+ *             .ipRange("169.254.0.1/30")
  *             .vpnTunnel(tunnel1.name())
  *             .build());
  * 
- *         var router1Peer1 = new RouterPeer(&#34;router1Peer1&#34;, RouterPeerArgs.builder()        
- *             .name(&#34;router1-peer1&#34;)
+ *         var router1Peer1 = new RouterPeer("router1Peer1", RouterPeerArgs.builder()        
+ *             .name("router1-peer1")
  *             .router(router1.name())
- *             .region(&#34;us-central1&#34;)
- *             .peerIpAddress(&#34;169.254.0.2&#34;)
+ *             .region("us-central1")
+ *             .peerIpAddress("169.254.0.2")
  *             .peerAsn(64515)
  *             .advertisedRoutePriority(100)
  *             .interface_(router1Interface1.name())
  *             .build());
  * 
- *         var router1Interface2 = new RouterInterface(&#34;router1Interface2&#34;, RouterInterfaceArgs.builder()        
- *             .name(&#34;router1-interface2&#34;)
+ *         var router1Interface2 = new RouterInterface("router1Interface2", RouterInterfaceArgs.builder()        
+ *             .name("router1-interface2")
  *             .router(router1.name())
- *             .region(&#34;us-central1&#34;)
- *             .ipRange(&#34;169.254.1.1/30&#34;)
+ *             .region("us-central1")
+ *             .ipRange("169.254.1.1/30")
  *             .vpnTunnel(tunnel2.name())
  *             .build());
  * 
- *         var router1Peer2 = new RouterPeer(&#34;router1Peer2&#34;, RouterPeerArgs.builder()        
- *             .name(&#34;router1-peer2&#34;)
+ *         var router1Peer2 = new RouterPeer("router1Peer2", RouterPeerArgs.builder()        
+ *             .name("router1-peer2")
  *             .router(router1.name())
- *             .region(&#34;us-central1&#34;)
- *             .peerIpAddress(&#34;169.254.1.2&#34;)
+ *             .region("us-central1")
+ *             .peerIpAddress("169.254.1.2")
  *             .peerAsn(64515)
  *             .advertisedRoutePriority(100)
  *             .interface_(router1Interface2.name())
@@ -170,7 +171,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

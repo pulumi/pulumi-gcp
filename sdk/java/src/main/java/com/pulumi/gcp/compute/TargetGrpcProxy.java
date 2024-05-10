@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Target Grpc Proxy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,98 +64,99 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;healthcheck&#34;)
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *             .name("healthcheck")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .grpcHealthCheck(HealthCheckGrpcHealthCheckArgs.builder()
- *                 .portName(&#34;health-check-port&#34;)
- *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .grpcServiceName(&#34;testservice&#34;)
+ *                 .portName("health-check-port")
+ *                 .portSpecification("USE_NAMED_PORT")
+ *                 .grpcServiceName("testservice")
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService(&#34;home&#34;, BackendServiceArgs.builder()        
- *             .name(&#34;backend&#34;)
- *             .portName(&#34;grpc&#34;)
- *             .protocol(&#34;GRPC&#34;)
+ *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *             .name("backend")
+ *             .portName("grpc")
+ *             .protocol("GRPC")
  *             .timeoutSec(10)
  *             .healthChecks(defaultHealthCheck.id())
- *             .loadBalancingScheme(&#34;INTERNAL_SELF_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
- *             .name(&#34;urlmap&#34;)
- *             .description(&#34;a description&#34;)
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *             .name("urlmap")
+ *             .description("a description")
  *             .defaultService(home.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
- *                 .hosts(&#34;mysite.com&#34;)
- *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
- *                 .name(&#34;allpaths&#34;)
+ *                 .name("allpaths")
  *                 .defaultService(home.id())
  *                 .routeRules(URLMapPathMatcherRouteRuleArgs.builder()
  *                     .priority(1)
  *                     .headerAction(URLMapPathMatcherRouteRuleHeaderActionArgs.builder()
- *                         .requestHeadersToRemoves(&#34;RemoveMe2&#34;)
+ *                         .requestHeadersToRemoves("RemoveMe2")
  *                         .requestHeadersToAdds(URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs.builder()
- *                             .headerName(&#34;AddSomethingElse&#34;)
- *                             .headerValue(&#34;MyOtherValue&#34;)
+ *                             .headerName("AddSomethingElse")
+ *                             .headerValue("MyOtherValue")
  *                             .replace(true)
  *                             .build())
- *                         .responseHeadersToRemoves(&#34;RemoveMe3&#34;)
+ *                         .responseHeadersToRemoves("RemoveMe3")
  *                         .responseHeadersToAdds(URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs.builder()
- *                             .headerName(&#34;AddMe&#34;)
- *                             .headerValue(&#34;MyValue&#34;)
+ *                             .headerName("AddMe")
+ *                             .headerValue("MyValue")
  *                             .replace(false)
  *                             .build())
  *                         .build())
  *                     .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                         .fullPathMatch(&#34;a full path&#34;)
+ *                         .fullPathMatch("a full path")
  *                         .headerMatches(URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs.builder()
- *                             .headerName(&#34;someheader&#34;)
- *                             .exactMatch(&#34;match this exactly&#34;)
+ *                             .headerName("someheader")
+ *                             .exactMatch("match this exactly")
  *                             .invertMatch(true)
  *                             .build())
  *                         .ignoreCase(true)
  *                         .metadataFilters(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs.builder()
- *                             .filterMatchCriteria(&#34;MATCH_ANY&#34;)
+ *                             .filterMatchCriteria("MATCH_ANY")
  *                             .filterLabels(URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs.builder()
- *                                 .name(&#34;PLANET&#34;)
- *                                 .value(&#34;MARS&#34;)
+ *                                 .name("PLANET")
+ *                                 .value("MARS")
  *                                 .build())
  *                             .build())
  *                         .queryParameterMatches(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs.builder()
- *                             .name(&#34;a query parameter&#34;)
+ *                             .name("a query parameter")
  *                             .presentMatch(true)
  *                             .build())
  *                         .build())
  *                     .urlRedirect(URLMapPathMatcherRouteRuleUrlRedirectArgs.builder()
- *                         .hostRedirect(&#34;A host&#34;)
+ *                         .hostRedirect("A host")
  *                         .httpsRedirect(false)
- *                         .pathRedirect(&#34;some/path&#34;)
- *                         .redirectResponseCode(&#34;TEMPORARY_REDIRECT&#34;)
+ *                         .pathRedirect("some/path")
+ *                         .redirectResponseCode("TEMPORARY_REDIRECT")
  *                         .stripQuery(true)
  *                         .build())
  *                     .build())
  *                 .build())
  *             .tests(URLMapTestArgs.builder()
  *                 .service(home.id())
- *                 .host(&#34;hi.com&#34;)
- *                 .path(&#34;/home&#34;)
+ *                 .host("hi.com")
+ *                 .path("/home")
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetGrpcProxy(&#34;default&#34;, TargetGrpcProxyArgs.builder()        
- *             .name(&#34;proxy&#34;)
+ *         var default_ = new TargetGrpcProxy("default", TargetGrpcProxyArgs.builder()        
+ *             .name("proxy")
  *             .urlMap(urlmap.id())
  *             .validateForProxyless(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

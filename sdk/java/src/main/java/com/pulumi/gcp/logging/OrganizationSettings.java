@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Logging Organization Settings All
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,26 +54,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OrganizationSettings(&#34;example&#34;, OrganizationSettingsArgs.builder()        
+ *         var example = new OrganizationSettings("example", OrganizationSettingsArgs.builder()        
  *             .disableDefaultSink(true)
- *             .kmsKeyName(&#34;kms-key&#34;)
- *             .organization(&#34;123456789&#34;)
- *             .storageLocation(&#34;us-central1&#34;)
+ *             .kmsKeyName("kms-key")
+ *             .organization("123456789")
+ *             .storageLocation("us-central1")
  *             .build());
  * 
  *         final var settings = LoggingFunctions.getOrganizationSettings(GetOrganizationSettingsArgs.builder()
- *             .organization(&#34;123456789&#34;)
+ *             .organization("123456789")
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(&#34;kms-key&#34;)
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:%s&#34;, settings.applyValue(getOrganizationSettingsResult -&gt; getOrganizationSettingsResult.kmsServiceAccountId())))
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId("kms-key")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:%s", settings.applyValue(getOrganizationSettingsResult -> getOrganizationSettingsResult.kmsServiceAccountId())))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

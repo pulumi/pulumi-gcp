@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * 
  * ### Linked_vpc_network
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,38 +55,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var basicHub = new Hub(&#34;basicHub&#34;, HubArgs.builder()        
- *             .name(&#34;hub&#34;)
- *             .description(&#34;A sample hub&#34;)
- *             .labels(Map.of(&#34;label-two&#34;, &#34;value-one&#34;))
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()        
+ *             .name("hub")
+ *             .description("A sample hub")
+ *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
- *         var primary = new Spoke(&#34;primary&#34;, SpokeArgs.builder()        
- *             .name(&#34;name&#34;)
- *             .location(&#34;global&#34;)
- *             .description(&#34;A sample spoke with a linked routher appliance instance&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *         var primary = new Spoke("primary", SpokeArgs.builder()        
+ *             .name("name")
+ *             .location("global")
+ *             .description("A sample spoke with a linked routher appliance instance")
+ *             .labels(Map.of("label-one", "value-one"))
  *             .hub(basicHub.id())
  *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
  *                 .excludeExportRanges(                
- *                     &#34;198.51.100.0/24&#34;,
- *                     &#34;10.10.0.0/16&#34;)
+ *                     "198.51.100.0/24",
+ *                     "10.10.0.0/16")
  *                 .uri(network.selfLink())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Router_appliance
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -118,53 +121,53 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork = new Subnetwork(&#34;subnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;subnet&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/28&#34;)
- *             .region(&#34;us-west1&#34;)
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()        
+ *             .name("subnet")
+ *             .ipCidrRange("10.0.0.0/28")
+ *             .region("us-west1")
  *             .network(network.selfLink())
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .name("instance")
+ *             .machineType("e2-medium")
  *             .canIpForward(true)
- *             .zone(&#34;us-west1-a&#34;)
+ *             .zone("us-west1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;projects/debian-cloud/global/images/debian-10-buster-v20210817&#34;)
+ *                     .image("projects/debian-cloud/global/images/debian-10-buster-v20210817")
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .subnetwork(subnetwork.name())
- *                 .networkIp(&#34;10.0.0.2&#34;)
+ *                 .networkIp("10.0.0.2")
  *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
- *                     .networkTier(&#34;PREMIUM&#34;)
+ *                     .networkTier("PREMIUM")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var basicHub = new Hub(&#34;basicHub&#34;, HubArgs.builder()        
- *             .name(&#34;hub&#34;)
- *             .description(&#34;A sample hub&#34;)
- *             .labels(Map.of(&#34;label-two&#34;, &#34;value-one&#34;))
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()        
+ *             .name("hub")
+ *             .description("A sample hub")
+ *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
- *         var primary = new Spoke(&#34;primary&#34;, SpokeArgs.builder()        
- *             .name(&#34;name&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .description(&#34;A sample spoke with a linked routher appliance instance&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *         var primary = new Spoke("primary", SpokeArgs.builder()        
+ *             .name("name")
+ *             .location("us-west1")
+ *             .description("A sample spoke with a linked routher appliance instance")
+ *             .labels(Map.of("label-one", "value-one"))
  *             .hub(basicHub.id())
  *             .linkedRouterApplianceInstances(SpokeLinkedRouterApplianceInstancesArgs.builder()
  *                 .instances(SpokeLinkedRouterApplianceInstancesInstanceArgs.builder()
  *                     .virtualMachine(instance.selfLink())
- *                     .ipAddress(&#34;10.0.0.2&#34;)
+ *                     .ipAddress("10.0.0.2")
  *                     .build())
  *                 .siteToSiteDataTransfer(true)
  *                 .build())
@@ -172,7 +175,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

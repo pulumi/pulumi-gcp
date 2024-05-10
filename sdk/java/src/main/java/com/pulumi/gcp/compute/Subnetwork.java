@@ -54,7 +54,8 @@ import javax.annotation.Nullable;
  * ### Subnetwork Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -78,30 +79,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
- *             .name(&#34;test-network&#34;)
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *             .name("test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_with_private_secondary_ip_ranges = new Subnetwork(&#34;network-with-private-secondary-ip-ranges&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;test-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.2.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var network_with_private_secondary_ip_ranges = new Subnetwork("network-with-private-secondary-ip-ranges", SubnetworkArgs.builder()        
+ *             .name("test-subnetwork")
+ *             .ipCidrRange("10.2.0.0/16")
+ *             .region("us-central1")
  *             .network(custom_test.id())
  *             .secondaryIpRanges(SubnetworkSecondaryIpRangeArgs.builder()
- *                 .rangeName(&#34;tf-test-secondary-range-update1&#34;)
- *                 .ipCidrRange(&#34;192.168.10.0/24&#34;)
+ *                 .rangeName("tf-test-secondary-range-update1")
+ *                 .ipCidrRange("192.168.10.0/24")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Subnetwork Logging Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -125,31 +128,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
- *             .name(&#34;log-test-network&#34;)
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *             .name("log-test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnet_with_logging = new Subnetwork(&#34;subnet-with-logging&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;log-test-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.2.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var subnet_with_logging = new Subnetwork("subnet-with-logging", SubnetworkArgs.builder()        
+ *             .name("log-test-subnetwork")
+ *             .ipCidrRange("10.2.0.0/16")
+ *             .region("us-central1")
  *             .network(custom_test.id())
  *             .logConfig(SubnetworkLogConfigArgs.builder()
- *                 .aggregationInterval(&#34;INTERVAL_10_MIN&#34;)
+ *                 .aggregationInterval("INTERVAL_10_MIN")
  *                 .flowSampling(0.5)
- *                 .metadata(&#34;INCLUDE_ALL_METADATA&#34;)
+ *                 .metadata("INCLUDE_ALL_METADATA")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Subnetwork Internal L7lb
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -172,28 +177,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
- *             .name(&#34;l7lb-test-network&#34;)
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *             .name("l7lb-test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var network_for_l7lb = new Subnetwork(&#34;network-for-l7lb&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;l7lb-test-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
- *             .role(&#34;ACTIVE&#34;)
+ *         var network_for_l7lb = new Subnetwork("network-for-l7lb", SubnetworkArgs.builder()        
+ *             .name("l7lb-test-subnetwork")
+ *             .ipCidrRange("10.0.0.0/22")
+ *             .region("us-central1")
+ *             .purpose("REGIONAL_MANAGED_PROXY")
+ *             .role("ACTIVE")
  *             .network(custom_test.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Subnetwork Ipv6
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -216,28 +223,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
- *             .name(&#34;ipv6-test-network&#34;)
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *             .name("ipv6-test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_ipv6 = new Subnetwork(&#34;subnetwork-ipv6&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;ipv6-test-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
- *             .region(&#34;us-west2&#34;)
- *             .stackType(&#34;IPV4_IPV6&#34;)
- *             .ipv6AccessType(&#34;EXTERNAL&#34;)
+ *         var subnetwork_ipv6 = new Subnetwork("subnetwork-ipv6", SubnetworkArgs.builder()        
+ *             .name("ipv6-test-subnetwork")
+ *             .ipCidrRange("10.0.0.0/22")
+ *             .region("us-west2")
+ *             .stackType("IPV4_IPV6")
+ *             .ipv6AccessType("EXTERNAL")
  *             .network(custom_test.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Subnetwork Internal Ipv6
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -260,29 +269,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
- *             .name(&#34;internal-ipv6-test-network&#34;)
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *             .name("internal-ipv6-test-network")
  *             .autoCreateSubnetworks(false)
  *             .enableUlaInternalIpv6(true)
  *             .build());
  * 
- *         var subnetwork_internal_ipv6 = new Subnetwork(&#34;subnetwork-internal-ipv6&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;internal-ipv6-test-subnetwork&#34;)
- *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
- *             .region(&#34;us-west2&#34;)
- *             .stackType(&#34;IPV4_IPV6&#34;)
- *             .ipv6AccessType(&#34;INTERNAL&#34;)
+ *         var subnetwork_internal_ipv6 = new Subnetwork("subnetwork-internal-ipv6", SubnetworkArgs.builder()        
+ *             .name("internal-ipv6-test-subnetwork")
+ *             .ipCidrRange("10.0.0.0/22")
+ *             .region("us-west2")
+ *             .stackType("IPV4_IPV6")
+ *             .ipv6AccessType("INTERNAL")
  *             .network(custom_test.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Subnetwork Purpose Private Nat
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -305,27 +316,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
- *             .name(&#34;subnet-purpose-test-network&#34;)
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()        
+ *             .name("subnet-purpose-test-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_purpose_private_nat = new Subnetwork(&#34;subnetwork-purpose-private-nat&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;subnet-purpose-test-subnetwork&#34;)
- *             .region(&#34;us-west2&#34;)
- *             .ipCidrRange(&#34;192.168.1.0/24&#34;)
- *             .purpose(&#34;PRIVATE_NAT&#34;)
+ *         var subnetwork_purpose_private_nat = new Subnetwork("subnetwork-purpose-private-nat", SubnetworkArgs.builder()        
+ *             .name("subnet-purpose-test-subnetwork")
+ *             .region("us-west2")
+ *             .ipCidrRange("192.168.1.0/24")
+ *             .purpose("PRIVATE_NAT")
  *             .network(custom_test.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Subnetwork Cidr Overlap
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -348,22 +361,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net_cidr_overlap = new Network(&#34;net-cidr-overlap&#34;, NetworkArgs.builder()        
- *             .name(&#34;net-cidr-overlap&#34;)
+ *         var net_cidr_overlap = new Network("net-cidr-overlap", NetworkArgs.builder()        
+ *             .name("net-cidr-overlap")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var subnetwork_cidr_overlap = new Subnetwork(&#34;subnetwork-cidr-overlap&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;subnet-cidr-overlap&#34;)
- *             .region(&#34;us-west2&#34;)
- *             .ipCidrRange(&#34;192.168.1.0/24&#34;)
+ *         var subnetwork_cidr_overlap = new Subnetwork("subnetwork-cidr-overlap", SubnetworkArgs.builder()        
+ *             .name("subnet-cidr-overlap")
+ *             .region("us-west2")
+ *             .ipCidrRange("192.168.1.0/24")
  *             .allowSubnetCidrRoutesOverlap(true)
  *             .network(net_cidr_overlap.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

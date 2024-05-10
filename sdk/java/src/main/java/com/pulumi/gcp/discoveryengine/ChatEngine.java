@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Discoveryengine Chat Engine Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,48 +59,49 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testDataStore = new DataStore(&#34;testDataStore&#34;, DataStoreArgs.builder()        
- *             .location(&#34;global&#34;)
- *             .dataStoreId(&#34;data-store&#34;)
- *             .displayName(&#34;Structured datastore&#34;)
- *             .industryVertical(&#34;GENERIC&#34;)
- *             .contentConfig(&#34;NO_CONTENT&#34;)
- *             .solutionTypes(&#34;SOLUTION_TYPE_CHAT&#34;)
+ *         var testDataStore = new DataStore("testDataStore", DataStoreArgs.builder()        
+ *             .location("global")
+ *             .dataStoreId("data-store")
+ *             .displayName("Structured datastore")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("NO_CONTENT")
+ *             .solutionTypes("SOLUTION_TYPE_CHAT")
  *             .build());
  * 
- *         var testDataStore2 = new DataStore(&#34;testDataStore2&#34;, DataStoreArgs.builder()        
+ *         var testDataStore2 = new DataStore("testDataStore2", DataStoreArgs.builder()        
  *             .location(testDataStore.location())
- *             .dataStoreId(&#34;data-store-2&#34;)
- *             .displayName(&#34;Structured datastore 2&#34;)
- *             .industryVertical(&#34;GENERIC&#34;)
- *             .contentConfig(&#34;NO_CONTENT&#34;)
- *             .solutionTypes(&#34;SOLUTION_TYPE_CHAT&#34;)
+ *             .dataStoreId("data-store-2")
+ *             .displayName("Structured datastore 2")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("NO_CONTENT")
+ *             .solutionTypes("SOLUTION_TYPE_CHAT")
  *             .build());
  * 
- *         var primary = new ChatEngine(&#34;primary&#34;, ChatEngineArgs.builder()        
- *             .engineId(&#34;chat-engine-id&#34;)
- *             .collectionId(&#34;default_collection&#34;)
+ *         var primary = new ChatEngine("primary", ChatEngineArgs.builder()        
+ *             .engineId("chat-engine-id")
+ *             .collectionId("default_collection")
  *             .location(testDataStore.location())
- *             .displayName(&#34;Chat engine&#34;)
- *             .industryVertical(&#34;GENERIC&#34;)
+ *             .displayName("Chat engine")
+ *             .industryVertical("GENERIC")
  *             .dataStoreIds(            
  *                 testDataStore.dataStoreId(),
  *                 testDataStore2.dataStoreId())
  *             .commonConfig(ChatEngineCommonConfigArgs.builder()
- *                 .companyName(&#34;test-company&#34;)
+ *                 .companyName("test-company")
  *                 .build())
  *             .chatEngineConfig(ChatEngineChatEngineConfigArgs.builder()
  *                 .agentCreationConfig(ChatEngineChatEngineConfigAgentCreationConfigArgs.builder()
- *                     .business(&#34;test business name&#34;)
- *                     .defaultLanguageCode(&#34;en&#34;)
- *                     .timeZone(&#34;America/Los_Angeles&#34;)
+ *                     .business("test business name")
+ *                     .defaultLanguageCode("en")
+ *                     .timeZone("America/Los_Angeles")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Tpu Node Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,22 +59,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var available = TpuFunctions.getTensorflowVersions();
  * 
- *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
- *             .name(&#34;test-tpu&#34;)
- *             .zone(&#34;us-central1-b&#34;)
- *             .acceleratorType(&#34;v3-8&#34;)
- *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
- *             .cidrBlock(&#34;10.2.0.0/29&#34;)
+ *         var tpu = new Node("tpu", NodeArgs.builder()        
+ *             .name("test-tpu")
+ *             .zone("us-central1-b")
+ *             .acceleratorType("v3-8")
+ *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+ *             .cidrBlock("10.2.0.0/29")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Tpu Node Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -105,33 +108,33 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var available = TpuFunctions.getTensorflowVersions();
  * 
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .name(&#34;tpu-node-network&#34;)
+ *         var network = new Network("network", NetworkArgs.builder()        
+ *             .name("tpu-node-network")
  *             .build());
  * 
- *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;my-global-address&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var serviceRange = new GlobalAddress("serviceRange", GlobalAddressArgs.builder()        
+ *             .name("my-global-address")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(network.id())
  *             .build());
  * 
- *         var privateServiceConnection = new Connection(&#34;privateServiceConnection&#34;, ConnectionArgs.builder()        
+ *         var privateServiceConnection = new Connection("privateServiceConnection", ConnectionArgs.builder()        
  *             .network(network.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
  * 
- *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
- *             .name(&#34;test-tpu&#34;)
- *             .zone(&#34;us-central1-b&#34;)
- *             .acceleratorType(&#34;v3-8&#34;)
- *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
- *             .description(&#34;Google Provider test TPU&#34;)
+ *         var tpu = new Node("tpu", NodeArgs.builder()        
+ *             .name("test-tpu")
+ *             .zone("us-central1-b")
+ *             .acceleratorType("v3-8")
+ *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+ *             .description("Google Provider test TPU")
  *             .useServiceNetworking(true)
  *             .network(privateServiceConnection.network())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .schedulingConfig(NodeSchedulingConfigArgs.builder()
  *                 .preemptible(true)
  *                 .build())
@@ -139,7 +142,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

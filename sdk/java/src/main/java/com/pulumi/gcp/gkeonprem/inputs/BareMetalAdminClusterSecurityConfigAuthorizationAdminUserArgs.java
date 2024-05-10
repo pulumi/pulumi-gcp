@@ -15,14 +15,14 @@ public final class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs
     public static final BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs Empty = new BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs();
 
     /**
-     * The name of the user, e.g. `my-gcp-id@gmail.com`.
+     * The name of the user, e.g. `my-gcp-id{@literal @}gmail.com`.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return The name of the user, e.g. `my-gcp-id@gmail.com`.
+     * @return The name of the user, e.g. `my-gcp-id{@literal @}gmail.com`.
      * 
      */
     public Output<String> username() {
@@ -54,7 +54,7 @@ public final class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs
         }
 
         /**
-         * @param username The name of the user, e.g. `my-gcp-id@gmail.com`.
+         * @param username The name of the user, e.g. `my-gcp-id{@literal @}gmail.com`.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs
         }
 
         /**
-         * @param username The name of the user, e.g. `my-gcp-id@gmail.com`.
+         * @param username The name of the user, e.g. `my-gcp-id{@literal @}gmail.com`.
          * 
          * @return builder
          * 

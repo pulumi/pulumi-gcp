@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Binding a DNS name to the ephemeral IP of a new instance:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,43 +52,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var frontendInstance = new Instance(&#34;frontendInstance&#34;, InstanceArgs.builder()        
+ *         var frontendInstance = new Instance("frontendInstance", InstanceArgs.builder()        
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
- *             .name(&#34;frontend&#34;)
- *             .machineType(&#34;g1-small&#34;)
- *             .zone(&#34;us-central1-b&#34;)
+ *             .name("frontend")
+ *             .machineType("g1-small")
+ *             .zone("us-central1-b")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .image("debian-cloud/debian-11")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;prod-zone&#34;)
- *             .dnsName(&#34;prod.mydomain.com.&#34;)
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *             .name("prod-zone")
+ *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
- *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
- *             .type(&#34;A&#34;)
+ *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()        
+ *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+ *             .type("A")
  *             .ttl(300)
  *             .managedZone(prod.name())
- *             .rrdatas(frontendInstance.networkInterfaces().applyValue(networkInterfaces -&gt; networkInterfaces[0].accessConfigs()[0].natIp()))
+ *             .rrdatas(frontendInstance.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].accessConfigs()[0].natIp()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Adding an A record
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -110,28 +113,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;prod-zone&#34;)
- *             .dnsName(&#34;prod.mydomain.com.&#34;)
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *             .name("prod-zone")
+ *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var a = new RecordSet(&#34;a&#34;, RecordSetArgs.builder()        
- *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;backend.%s&#34;, dnsName)))
+ *         var a = new RecordSet("a", RecordSetArgs.builder()        
+ *             .name(prod.dnsName().applyValue(dnsName -> String.format("backend.%s", dnsName)))
  *             .managedZone(prod.name())
- *             .type(&#34;A&#34;)
+ *             .type("A")
  *             .ttl(300)
- *             .rrdatas(&#34;8.8.8.8&#34;)
+ *             .rrdatas("8.8.8.8")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Adding an MX record
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -154,27 +159,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;prod-zone&#34;)
- *             .dnsName(&#34;prod.mydomain.com.&#34;)
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *             .name("prod-zone")
+ *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var mx = new RecordSet(&#34;mx&#34;, RecordSetArgs.builder()        
+ *         var mx = new RecordSet("mx", RecordSetArgs.builder()        
  *             .name(prod.dnsName())
  *             .managedZone(prod.name())
- *             .type(&#34;MX&#34;)
+ *             .type("MX")
  *             .ttl(3600)
  *             .rrdatas(            
- *                 &#34;1 aspmx.l.google.com.&#34;,
- *                 &#34;5 alt1.aspmx.l.google.com.&#34;,
- *                 &#34;5 alt2.aspmx.l.google.com.&#34;,
- *                 &#34;10 alt3.aspmx.l.google.com.&#34;,
- *                 &#34;10 alt4.aspmx.l.google.com.&#34;)
+ *                 "1 aspmx.l.google.com.",
+ *                 "5 alt1.aspmx.l.google.com.",
+ *                 "5 alt2.aspmx.l.google.com.",
+ *                 "10 alt3.aspmx.l.google.com.",
+ *                 "10 alt4.aspmx.l.google.com.")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Adding an SPF record
@@ -182,7 +188,8 @@ import javax.annotation.Nullable;
  * Quotes (`&#34;&#34;`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -205,22 +212,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;prod-zone&#34;)
- *             .dnsName(&#34;prod.mydomain.com.&#34;)
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *             .name("prod-zone")
+ *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var spf = new RecordSet(&#34;spf&#34;, RecordSetArgs.builder()        
- *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+ *         var spf = new RecordSet("spf", RecordSetArgs.builder()        
+ *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
  *             .managedZone(prod.name())
- *             .type(&#34;TXT&#34;)
+ *             .type("TXT")
  *             .ttl(300)
- *             .rrdatas(&#34;\&#34;v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\&#34;&#34;)
+ *             .rrdatas("\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\"")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Adding a CNAME record
@@ -228,7 +236,8 @@ import javax.annotation.Nullable;
  *  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -251,29 +260,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;prod-zone&#34;)
- *             .dnsName(&#34;prod.mydomain.com.&#34;)
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *             .name("prod-zone")
+ *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var cname = new RecordSet(&#34;cname&#34;, RecordSetArgs.builder()        
- *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+ *         var cname = new RecordSet("cname", RecordSetArgs.builder()        
+ *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
  *             .managedZone(prod.name())
- *             .type(&#34;CNAME&#34;)
+ *             .type("CNAME")
  *             .ttl(300)
- *             .rrdatas(&#34;frontend.mydomain.com.&#34;)
+ *             .rrdatas("frontend.mydomain.com.")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Setting Routing Policy instead of using rrdatas
  * ### Geolocation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -295,33 +306,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var geo = new RecordSet(&#34;geo&#34;, RecordSetArgs.builder()        
- *             .name(String.format(&#34;backend.%s&#34;, prod.dnsName()))
+ *         var geo = new RecordSet("geo", RecordSetArgs.builder()        
+ *             .name(String.format("backend.%s", prod.dnsName()))
  *             .managedZone(prod.name())
- *             .type(&#34;A&#34;)
+ *             .type("A")
  *             .ttl(300)
  *             .routingPolicy(RecordSetRoutingPolicyArgs.builder()
  *                 .geos(                
  *                     RecordSetRoutingPolicyGeoArgs.builder()
- *                         .location(&#34;asia-east1&#34;)
- *                         .rrdatas(&#34;10.128.1.1&#34;)
+ *                         .location("asia-east1")
+ *                         .rrdatas("10.128.1.1")
  *                         .build(),
  *                     RecordSetRoutingPolicyGeoArgs.builder()
- *                         .location(&#34;us-central1&#34;)
- *                         .rrdatas(&#34;10.130.1.1&#34;)
+ *                         .location("us-central1")
+ *                         .rrdatas("10.130.1.1")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Failover
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -353,44 +366,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
- *             .name(&#34;prod-zone&#34;)
- *             .dnsName(&#34;prod.mydomain.com.&#34;)
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()        
+ *             .name("prod-zone")
+ *             .dnsName("prod.mydomain.com.")
  *             .build());
  * 
- *         var prodRegionBackendService = new RegionBackendService(&#34;prodRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;prod-backend&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var prodRegionBackendService = new RegionBackendService("prodRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .name("prod-backend")
+ *             .region("us-central1")
  *             .build());
  * 
- *         var prodNetwork = new Network(&#34;prodNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;prod-network&#34;)
+ *         var prodNetwork = new Network("prodNetwork", NetworkArgs.builder()        
+ *             .name("prod-network")
  *             .build());
  * 
- *         var prodForwardingRule = new ForwardingRule(&#34;prodForwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;prod-ilb&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *         var prodForwardingRule = new ForwardingRule("prodForwardingRule", ForwardingRuleArgs.builder()        
+ *             .name("prod-ilb")
+ *             .region("us-central1")
+ *             .loadBalancingScheme("INTERNAL")
  *             .backendService(prodRegionBackendService.id())
  *             .allPorts(true)
  *             .network(prodNetwork.name())
  *             .allowGlobalAccess(true)
  *             .build());
  * 
- *         var a = new RecordSet(&#34;a&#34;, RecordSetArgs.builder()        
- *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;backend.%s&#34;, dnsName)))
+ *         var a = new RecordSet("a", RecordSetArgs.builder()        
+ *             .name(prod.dnsName().applyValue(dnsName -> String.format("backend.%s", dnsName)))
  *             .managedZone(prod.name())
- *             .type(&#34;A&#34;)
+ *             .type("A")
  *             .ttl(300)
  *             .routingPolicy(RecordSetRoutingPolicyArgs.builder()
  *                 .primaryBackup(RecordSetRoutingPolicyPrimaryBackupArgs.builder()
  *                     .trickleRatio(0.1)
  *                     .primary(RecordSetRoutingPolicyPrimaryBackupPrimaryArgs.builder()
  *                         .internalLoadBalancers(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs.builder()
- *                             .loadBalancerType(&#34;regionalL4ilb&#34;)
+ *                             .loadBalancerType("regionalL4ilb")
  *                             .ipAddress(prodForwardingRule.ipAddress())
- *                             .port(&#34;80&#34;)
- *                             .ipProtocol(&#34;tcp&#34;)
+ *                             .port("80")
+ *                             .ipProtocol("tcp")
  *                             .networkUrl(prodNetwork.id())
  *                             .project(prodForwardingRule.project())
  *                             .region(prodForwardingRule.region())
@@ -398,12 +411,12 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .backupGeos(                    
  *                         RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs.builder()
- *                             .location(&#34;asia-east1&#34;)
- *                             .rrdatas(&#34;10.128.1.1&#34;)
+ *                             .location("asia-east1")
+ *                             .rrdatas("10.128.1.1")
  *                             .build(),
  *                         RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs.builder()
- *                             .location(&#34;us-west1&#34;)
- *                             .rrdatas(&#34;10.130.1.1&#34;)
+ *                             .location("us-west1")
+ *                             .rrdatas("10.130.1.1")
  *                             .build())
  *                     .build())
  *                 .build())
@@ -411,7 +424,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

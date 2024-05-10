@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,18 +44,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var config = new IamAuditConfig(&#34;config&#34;, IamAuditConfigArgs.builder()        
- *             .orgId(&#34;your-organization-id&#34;)
- *             .service(&#34;allServices&#34;)
+ *         var config = new IamAuditConfig("config", IamAuditConfigArgs.builder()        
+ *             .orgId("your-organization-id")
+ *             .service("allServices")
  *             .auditLogConfigs(IamAuditConfigAuditLogConfigArgs.builder()
- *                 .logType(&#34;DATA_READ&#34;)
- *                 .exemptedMembers(&#34;user:joebloggs@example.com&#34;)
+ *                 .logType("DATA_READ")
+ *                 .exemptedMembers("user:joebloggs{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

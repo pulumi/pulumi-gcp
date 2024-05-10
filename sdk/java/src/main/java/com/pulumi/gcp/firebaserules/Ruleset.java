@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Basic_ruleset
  * Creates a basic Firestore ruleset
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,26 +47,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Ruleset(&#34;primary&#34;, RulesetArgs.builder()        
+ *         var primary = new Ruleset("primary", RulesetArgs.builder()        
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
- *                     .content(&#34;service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }&#34;)
- *                     .name(&#34;firestore.rules&#34;)
- *                     .fingerprint(&#34;&#34;)
+ *                     .content("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }")
+ *                     .name("firestore.rules")
+ *                     .fingerprint("")
  *                     .build())
- *                 .language(&#34;&#34;)
+ *                 .language("")
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Minimal_ruleset
  * Creates a minimal Firestore ruleset
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -87,19 +90,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Ruleset(&#34;primary&#34;, RulesetArgs.builder()        
+ *         var primary = new Ruleset("primary", RulesetArgs.builder()        
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
- *                     .content(&#34;service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }&#34;)
- *                     .name(&#34;firestore.rules&#34;)
+ *                     .content("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }")
+ *                     .name("firestore.rules")
  *                     .build())
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
+ *             .project("my-project-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

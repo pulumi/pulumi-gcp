@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Pubsub Lite Topic Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,15 +63,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new LiteReservation(&#34;example&#34;, LiteReservationArgs.builder()        
- *             .name(&#34;example-reservation&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
+ *         var example = new LiteReservation("example", LiteReservationArgs.builder()        
+ *             .name("example-reservation")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .throughputCapacity(2)
  *             .build());
  * 
- *         var exampleLiteTopic = new LiteTopic(&#34;exampleLiteTopic&#34;, LiteTopicArgs.builder()        
- *             .name(&#34;example-topic&#34;)
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
+ *         var exampleLiteTopic = new LiteTopic("exampleLiteTopic", LiteTopicArgs.builder()        
+ *             .name("example-topic")
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .partitionConfig(LiteTopicPartitionConfigArgs.builder()
  *                 .count(1)
  *                 .capacity(LiteTopicPartitionConfigCapacityArgs.builder()
@@ -88,7 +89,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

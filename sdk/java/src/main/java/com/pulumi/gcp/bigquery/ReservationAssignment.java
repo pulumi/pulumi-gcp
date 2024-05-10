@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * 
  * ### Basic
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,23 +44,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Reservation(&#34;basic&#34;, ReservationArgs.builder()        
- *             .name(&#34;tf-test-my-reservation&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var basic = new Reservation("basic", ReservationArgs.builder()        
+ *             .name("tf-test-my-reservation")
+ *             .project("my-project-name")
+ *             .location("us-central1")
  *             .slotCapacity(0)
  *             .ignoreIdleSlots(false)
  *             .build());
  * 
- *         var primary = new ReservationAssignment(&#34;primary&#34;, ReservationAssignmentArgs.builder()        
- *             .assignee(&#34;projects/my-project-name&#34;)
- *             .jobType(&#34;PIPELINE&#34;)
+ *         var primary = new ReservationAssignment("primary", ReservationAssignmentArgs.builder()        
+ *             .assignee("projects/my-project-name")
+ *             .jobType("PIPELINE")
  *             .reservation(basic.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,12 +49,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-connection = BeyondcorpFunctions.getAppConnection(GetAppConnectionArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-connection&#34;)
+     *             .name("my-beyondcorp-app-connection")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -66,7 +68,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -88,12 +91,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-connection = BeyondcorpFunctions.getAppConnection(GetAppConnectionArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-connection&#34;)
+     *             .name("my-beyondcorp-app-connection")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -106,7 +110,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -128,12 +133,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-connection = BeyondcorpFunctions.getAppConnection(GetAppConnectionArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-connection&#34;)
+     *             .name("my-beyondcorp-app-connection")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -146,7 +152,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -168,12 +175,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-connection = BeyondcorpFunctions.getAppConnection(GetAppConnectionArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-connection&#34;)
+     *             .name("my-beyondcorp-app-connection")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -186,7 +194,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -208,12 +217,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-connector = BeyondcorpFunctions.getAppConnector(GetAppConnectorArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-connector&#34;)
+     *             .name("my-beyondcorp-app-connector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -226,7 +236,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -248,12 +259,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-connector = BeyondcorpFunctions.getAppConnector(GetAppConnectorArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-connector&#34;)
+     *             .name("my-beyondcorp-app-connector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -266,7 +278,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -288,12 +301,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-connector = BeyondcorpFunctions.getAppConnector(GetAppConnectorArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-connector&#34;)
+     *             .name("my-beyondcorp-app-connector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -306,7 +320,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -328,12 +343,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-connector = BeyondcorpFunctions.getAppConnector(GetAppConnectorArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-connector&#34;)
+     *             .name("my-beyondcorp-app-connector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -346,7 +362,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -368,12 +385,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-gateway = BeyondcorpFunctions.getAppGateway(GetAppGatewayArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-gateway&#34;)
+     *             .name("my-beyondcorp-app-gateway")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -386,7 +404,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -408,12 +427,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-gateway = BeyondcorpFunctions.getAppGateway(GetAppGatewayArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-gateway&#34;)
+     *             .name("my-beyondcorp-app-gateway")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -426,7 +446,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -448,12 +469,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-gateway = BeyondcorpFunctions.getAppGateway(GetAppGatewayArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-gateway&#34;)
+     *             .name("my-beyondcorp-app-gateway")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -466,7 +488,8 @@ public final class BeyondcorpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -488,12 +511,13 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-beyondcorp-app-gateway = BeyondcorpFunctions.getAppGateway(GetAppGatewayArgs.builder()
-     *             .name(&#34;my-beyondcorp-app-gateway&#34;)
+     *             .name("my-beyondcorp-app-gateway")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

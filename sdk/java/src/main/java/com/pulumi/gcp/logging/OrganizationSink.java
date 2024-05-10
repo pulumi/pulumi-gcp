@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,28 +53,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var log_bucket = new Bucket(&#34;log-bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;organization-logging-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var log_bucket = new Bucket("log-bucket", BucketArgs.builder()        
+ *             .name("organization-logging-bucket")
+ *             .location("US")
  *             .build());
  * 
- *         var my_sink = new OrganizationSink(&#34;my-sink&#34;, OrganizationSinkArgs.builder()        
- *             .name(&#34;my-sink&#34;)
- *             .description(&#34;some explanation on what this is&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .destination(log_bucket.name().applyValue(name -&gt; String.format(&#34;storage.googleapis.com/%s&#34;, name)))
- *             .filter(&#34;resource.type = gce_instance AND severity &gt;= WARNING&#34;)
+ *         var my_sink = new OrganizationSink("my-sink", OrganizationSinkArgs.builder()        
+ *             .name("my-sink")
+ *             .description("some explanation on what this is")
+ *             .orgId("123456789")
+ *             .destination(log_bucket.name().applyValue(name -> String.format("storage.googleapis.com/%s", name)))
+ *             .filter("resource.type = gce_instance AND severity >= WARNING")
  *             .build());
  * 
- *         var log_writer = new IAMMember(&#34;log-writer&#34;, IAMMemberArgs.builder()        
- *             .project(&#34;your-project-id&#34;)
- *             .role(&#34;roles/storage.objectCreator&#34;)
+ *         var log_writer = new IAMMember("log-writer", IAMMemberArgs.builder()        
+ *             .project("your-project-id")
+ *             .role("roles/storage.objectCreator")
  *             .member(my_sink.writerIdentity())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

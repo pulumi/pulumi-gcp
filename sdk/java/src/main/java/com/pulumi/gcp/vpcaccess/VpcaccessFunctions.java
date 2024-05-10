@@ -26,7 +26,8 @@ public final class VpcaccessFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -50,19 +51,20 @@ public final class VpcaccessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sample = VpcaccessFunctions.getConnector(GetConnectorArgs.builder()
-     *             .name(&#34;vpc-con&#34;)
+     *             .name("vpc-con")
      *             .build());
      * 
-     *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
-     *             .name(&#34;vpc-con&#34;)
-     *             .ipCidrRange(&#34;10.8.0.0/28&#34;)
-     *             .network(&#34;default&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var connector = new Connector("connector", ConnectorArgs.builder()        
+     *             .name("vpc-con")
+     *             .ipCidrRange("10.8.0.0/28")
+     *             .network("default")
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -81,7 +83,8 @@ public final class VpcaccessFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -105,19 +108,20 @@ public final class VpcaccessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sample = VpcaccessFunctions.getConnector(GetConnectorArgs.builder()
-     *             .name(&#34;vpc-con&#34;)
+     *             .name("vpc-con")
      *             .build());
      * 
-     *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
-     *             .name(&#34;vpc-con&#34;)
-     *             .ipCidrRange(&#34;10.8.0.0/28&#34;)
-     *             .network(&#34;default&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var connector = new Connector("connector", ConnectorArgs.builder()        
+     *             .name("vpc-con")
+     *             .ipCidrRange("10.8.0.0/28")
+     *             .network("default")
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -136,7 +140,8 @@ public final class VpcaccessFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -160,19 +165,20 @@ public final class VpcaccessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sample = VpcaccessFunctions.getConnector(GetConnectorArgs.builder()
-     *             .name(&#34;vpc-con&#34;)
+     *             .name("vpc-con")
      *             .build());
      * 
-     *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
-     *             .name(&#34;vpc-con&#34;)
-     *             .ipCidrRange(&#34;10.8.0.0/28&#34;)
-     *             .network(&#34;default&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var connector = new Connector("connector", ConnectorArgs.builder()        
+     *             .name("vpc-con")
+     *             .ipCidrRange("10.8.0.0/28")
+     *             .network("default")
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -191,7 +197,8 @@ public final class VpcaccessFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -215,19 +222,20 @@ public final class VpcaccessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sample = VpcaccessFunctions.getConnector(GetConnectorArgs.builder()
-     *             .name(&#34;vpc-con&#34;)
+     *             .name("vpc-con")
      *             .build());
      * 
-     *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
-     *             .name(&#34;vpc-con&#34;)
-     *             .ipCidrRange(&#34;10.8.0.0/28&#34;)
-     *             .network(&#34;default&#34;)
-     *             .region(&#34;us-central1&#34;)
+     *         var connector = new Connector("connector", ConnectorArgs.builder()        
+     *             .name("vpc-con")
+     *             .ipCidrRange("10.8.0.0/28")
+     *             .network("default")
+     *             .region("us-central1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

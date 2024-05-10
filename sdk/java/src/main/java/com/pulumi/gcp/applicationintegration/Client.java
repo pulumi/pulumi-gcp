@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Integrations Client Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,19 +53,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Client(&#34;example&#34;, ClientArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var example = new Client("example", ClientArgs.builder()        
+ *             .location("us-central1")
  *             .provisionGmek(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Integrations Client Advance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -98,42 +101,43 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .name(&#34;my-keyring&#34;)
- *             .location(&#34;us-east1&#34;)
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *             .name("my-keyring")
+ *             .location("us-east1")
  *             .build());
  * 
- *         var cryptokey = new CryptoKey(&#34;cryptokey&#34;, CryptoKeyArgs.builder()        
- *             .name(&#34;crypto-key-example&#34;)
+ *         var cryptokey = new CryptoKey("cryptokey", CryptoKeyArgs.builder()        
+ *             .name("crypto-key-example")
  *             .keyRing(keyring.id())
- *             .rotationPeriod(&#34;7776000s&#34;)
+ *             .rotationPeriod("7776000s")
  *             .build());
  * 
- *         var testKey = new CryptoKeyVersion(&#34;testKey&#34;, CryptoKeyVersionArgs.builder()        
+ *         var testKey = new CryptoKeyVersion("testKey", CryptoKeyVersionArgs.builder()        
  *             .cryptoKey(cryptokey.id())
  *             .build());
  * 
- *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;service-account-id&#34;)
- *             .displayName(&#34;Service Account&#34;)
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *             .accountId("service-account-id")
+ *             .displayName("Service Account")
  *             .build());
  * 
- *         var example = new Client(&#34;example&#34;, ClientArgs.builder()        
- *             .location(&#34;us-east1&#34;)
+ *         var example = new Client("example", ClientArgs.builder()        
+ *             .location("us-east1")
  *             .createSampleWorkflows(true)
  *             .runAsServiceAccount(serviceAccount.email())
  *             .cloudKmsConfig(ClientCloudKmsConfigArgs.builder()
- *                 .kmsLocation(&#34;us-east1&#34;)
+ *                 .kmsLocation("us-east1")
  *                 .kmsRing(keyring.id())
  *                 .key(cryptokey.id())
  *                 .keyVersion(testKey.id())
- *                 .kmsProjectId(testProject.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *                 .kmsProjectId(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

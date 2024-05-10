@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ### Dialogflowcx Flow Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,17 +62,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent(&#34;agent&#34;, CxAgentArgs.builder()        
- *             .displayName(&#34;dialogflowcx-agent&#34;)
- *             .location(&#34;global&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            
- *                 &#34;fr&#34;,
- *                 &#34;de&#34;,
- *                 &#34;es&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .description(&#34;Example description.&#34;)
- *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *                 "fr",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
  *             .enableStackdriverLogging(true)
  *             .enableSpellCorrection(true)
  *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
@@ -79,44 +80,44 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicFlow = new CxFlow(&#34;basicFlow&#34;, CxFlowArgs.builder()        
+ *         var basicFlow = new CxFlow("basicFlow", CxFlowArgs.builder()        
  *             .parent(agent.id())
- *             .displayName(&#34;MyFlow&#34;)
- *             .description(&#34;Test Flow&#34;)
+ *             .displayName("MyFlow")
+ *             .description("Test Flow")
  *             .nluSettings(CxFlowNluSettingsArgs.builder()
  *                 .classificationThreshold(0.3)
- *                 .modelType(&#34;MODEL_TYPE_STANDARD&#34;)
+ *                 .modelType("MODEL_TYPE_STANDARD")
  *                 .build())
  *             .eventHandlers(            
  *                 CxFlowEventHandlerArgs.builder()
- *                     .event(&#34;custom-event&#34;)
+ *                     .event("custom-event")
  *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
  *                         .returnPartialResponses(false)
  *                         .messages(CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
- *                                 .texts(&#34;I didn&#39;t get that. Can you say it again?&#34;)
+ *                                 .texts("I didn't get that. Can you say it again?")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build(),
  *                 CxFlowEventHandlerArgs.builder()
- *                     .event(&#34;sys.no-match-default&#34;)
+ *                     .event("sys.no-match-default")
  *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
  *                         .returnPartialResponses(false)
  *                         .messages(CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
- *                                 .texts(&#34;Sorry, could you say that again?&#34;)
+ *                                 .texts("Sorry, could you say that again?")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build(),
  *                 CxFlowEventHandlerArgs.builder()
- *                     .event(&#34;sys.no-input-default&#34;)
+ *                     .event("sys.no-input-default")
  *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
  *                         .returnPartialResponses(false)
  *                         .messages(CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
- *                                 .texts(&#34;One more time?&#34;)
+ *                                 .texts("One more time?")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -125,12 +126,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dialogflowcx Flow Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -165,17 +168,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent(&#34;agent&#34;, CxAgentArgs.builder()        
- *             .displayName(&#34;dialogflowcx-agent&#34;)
- *             .location(&#34;global&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            
- *                 &#34;fr&#34;,
- *                 &#34;de&#34;,
- *                 &#34;es&#34;)
- *             .timeZone(&#34;America/New_York&#34;)
- *             .description(&#34;Example description.&#34;)
- *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *                 "fr",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
  *             .enableStackdriverLogging(true)
  *             .enableSpellCorrection(true)
  *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
@@ -183,142 +186,142 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .name(&#34;dialogflowcx-bucket&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *             .name("dialogflowcx-bucket")
+ *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var basicFlow = new CxFlow(&#34;basicFlow&#34;, CxFlowArgs.builder()        
+ *         var basicFlow = new CxFlow("basicFlow", CxFlowArgs.builder()        
  *             .parent(agent.id())
- *             .displayName(&#34;MyFlow&#34;)
- *             .description(&#34;Test Flow&#34;)
+ *             .displayName("MyFlow")
+ *             .description("Test Flow")
  *             .nluSettings(CxFlowNluSettingsArgs.builder()
  *                 .classificationThreshold(0.3)
- *                 .modelType(&#34;MODEL_TYPE_STANDARD&#34;)
+ *                 .modelType("MODEL_TYPE_STANDARD")
  *                 .build())
  *             .eventHandlers(            
  *                 CxFlowEventHandlerArgs.builder()
- *                     .event(&#34;custom-event&#34;)
+ *                     .event("custom-event")
  *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
  *                         .returnPartialResponses(false)
  *                         .messages(CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
- *                                 .texts(&#34;I didn&#39;t get that. Can you say it again?&#34;)
+ *                                 .texts("I didn't get that. Can you say it again?")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build(),
  *                 CxFlowEventHandlerArgs.builder()
- *                     .event(&#34;sys.no-match-default&#34;)
+ *                     .event("sys.no-match-default")
  *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
  *                         .returnPartialResponses(false)
  *                         .messages(CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
- *                                 .texts(&#34;Sorry, could you say that again?&#34;)
+ *                                 .texts("Sorry, could you say that again?")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build(),
  *                 CxFlowEventHandlerArgs.builder()
- *                     .event(&#34;sys.no-input-default&#34;)
+ *                     .event("sys.no-input-default")
  *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
  *                         .returnPartialResponses(false)
  *                         .messages(CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                             .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
- *                                 .texts(&#34;One more time?&#34;)
+ *                                 .texts("One more time?")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build(),
  *                 CxFlowEventHandlerArgs.builder()
- *                     .event(&#34;another-event&#34;)
+ *                     .event("another-event")
  *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
  *                         .returnPartialResponses(true)
  *                         .messages(                        
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
- *                                 .channel(&#34;some-channel&#34;)
+ *                                 .channel("some-channel")
  *                                 .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
- *                                     .texts(&#34;Some text&#34;)
+ *                                     .texts("Some text")
  *                                     .build())
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
- *                                 .payload(&#34;&#34;&#34;
- *           {&#34;some-key&#34;: &#34;some-value&#34;, &#34;other-key&#34;: [&#34;other-value&#34;]}
- *                                 &#34;&#34;&#34;)
+ *                                 .payload("""
+ *           {"some-key": "some-value", "other-key": ["other-value"]}
+ *                                 """)
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .conversationSuccess(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs.builder()
- *                                     .metadata(&#34;&#34;&#34;
- *             {&#34;some-metadata-key&#34;: &#34;some-value&#34;, &#34;other-metadata-key&#34;: 1234}
- *                                     &#34;&#34;&#34;)
+ *                                     .metadata("""
+ *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *                                     """)
  *                                     .build())
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .outputAudioText(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs.builder()
- *                                     .text(&#34;some output text&#34;)
+ *                                     .text("some output text")
  *                                     .build())
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .outputAudioText(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs.builder()
- *                                     .ssml(&#34;&#34;&#34;
- *             &lt;speak&gt;Some example &lt;say-as interpret-as=&#34;characters&#34;&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
- *                                     &#34;&#34;&#34;)
+ *                                     .ssml("""
+ *             <speak>Some example <say-as interpret-as="characters">SSML XML</say-as></speak>
+ *                                     """)
  *                                     .build())
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .liveAgentHandoff(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
- *                                     .metadata(&#34;&#34;&#34;
- *             {&#34;some-metadata-key&#34;: &#34;some-value&#34;, &#34;other-metadata-key&#34;: 1234}
- *                                     &#34;&#34;&#34;)
+ *                                     .metadata("""
+ *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *                                     """)
  *                                     .build())
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .playAudio(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs.builder()
- *                                     .audioUri(&#34;http://example.com/some-audio-file.mp3&#34;)
+ *                                     .audioUri("http://example.com/some-audio-file.mp3")
  *                                     .build())
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .telephonyTransferCall(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs.builder()
- *                                     .phoneNumber(&#34;1-234-567-8901&#34;)
+ *                                     .phoneNumber("1-234-567-8901")
  *                                     .build())
  *                                 .build())
  *                         .setParameterActions(                        
  *                             CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs.builder()
- *                                 .parameter(&#34;some-param&#34;)
- *                                 .value(&#34;123.45&#34;)
+ *                                 .parameter("some-param")
+ *                                 .value("123.45")
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs.builder()
- *                                 .parameter(&#34;another-param&#34;)
+ *                                 .parameter("another-param")
  *                                 .value(serializeJson(
- *                                     &#34;abc&#34;))
+ *                                     "abc"))
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs.builder()
- *                                 .parameter(&#34;other-param&#34;)
+ *                                 .parameter("other-param")
  *                                 .value(serializeJson(
- *                                     jsonArray(&#34;foo&#34;)))
+ *                                     jsonArray("foo")))
  *                                 .build())
  *                         .conditionalCases(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs.builder()
  *                             .cases(serializeJson(
  *                                 jsonArray(
  *                                     jsonObject(
- *                                         jsonProperty(&#34;condition&#34;, &#34;$sys.func.RAND() &lt; 0.5&#34;),
- *                                         jsonProperty(&#34;caseContent&#34;, jsonArray(
+ *                                         jsonProperty("condition", "$sys.func.RAND() < 0.5"),
+ *                                         jsonProperty("caseContent", jsonArray(
  *                                             jsonObject(
- *                                                 jsonProperty(&#34;message&#34;, jsonObject(
- *                                                     jsonProperty(&#34;text&#34;, jsonObject(
- *                                                         jsonProperty(&#34;text&#34;, jsonArray(&#34;First case&#34;))
+ *                                                 jsonProperty("message", jsonObject(
+ *                                                     jsonProperty("text", jsonObject(
+ *                                                         jsonProperty("text", jsonArray("First case"))
  *                                                     ))
  *                                                 ))
  *                                             ), 
  *                                             jsonObject(
- *                                                 jsonProperty(&#34;additionalCases&#34;, jsonObject(
- *                                                     jsonProperty(&#34;cases&#34;, jsonArray(jsonObject(
- *                                                         jsonProperty(&#34;condition&#34;, &#34;$sys.func.RAND() &lt; 0.2&#34;),
- *                                                         jsonProperty(&#34;caseContent&#34;, jsonArray(jsonObject(
- *                                                             jsonProperty(&#34;message&#34;, jsonObject(
- *                                                                 jsonProperty(&#34;text&#34;, jsonObject(
- *                                                                     jsonProperty(&#34;text&#34;, jsonArray(&#34;Nested case&#34;))
+ *                                                 jsonProperty("additionalCases", jsonObject(
+ *                                                     jsonProperty("cases", jsonArray(jsonObject(
+ *                                                         jsonProperty("condition", "$sys.func.RAND() < 0.2"),
+ *                                                         jsonProperty("caseContent", jsonArray(jsonObject(
+ *                                                             jsonProperty("message", jsonObject(
+ *                                                                 jsonProperty("text", jsonObject(
+ *                                                                     jsonProperty("text", jsonArray("Nested case"))
  *                                                                 ))
  *                                                             ))
  *                                                         )))
@@ -328,10 +331,10 @@ import javax.annotation.Nullable;
  *                                         ))
  *                                     ), 
  *                                     jsonObject(
- *                                         jsonProperty(&#34;caseContent&#34;, jsonArray(jsonObject(
- *                                             jsonProperty(&#34;message&#34;, jsonObject(
- *                                                 jsonProperty(&#34;text&#34;, jsonObject(
- *                                                     jsonProperty(&#34;text&#34;, jsonArray(&#34;Final case&#34;))
+ *                                         jsonProperty("caseContent", jsonArray(jsonObject(
+ *                                             jsonProperty("message", jsonObject(
+ *                                                 jsonProperty("text", jsonObject(
+ *                                                     jsonProperty("text", jsonArray("Final case"))
  *                                                 ))
  *                                             ))
  *                                         )))
@@ -341,93 +344,93 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *             .transitionRoutes(CxFlowTransitionRouteArgs.builder()
- *                 .condition(&#34;true&#34;)
+ *                 .condition("true")
  *                 .triggerFulfillment(CxFlowTransitionRouteTriggerFulfillmentArgs.builder()
  *                     .returnPartialResponses(true)
  *                     .messages(                    
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
- *                             .channel(&#34;some-channel&#34;)
+ *                             .channel("some-channel")
  *                             .text(CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs.builder()
- *                                 .texts(&#34;Some text&#34;)
+ *                                 .texts("Some text")
  *                                 .build())
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
- *                             .payload(&#34;&#34;&#34;
- *           {&#34;some-key&#34;: &#34;some-value&#34;, &#34;other-key&#34;: [&#34;other-value&#34;]}
- *                             &#34;&#34;&#34;)
+ *                             .payload("""
+ *           {"some-key": "some-value", "other-key": ["other-value"]}
+ *                             """)
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .conversationSuccess(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs.builder()
- *                                 .metadata(&#34;&#34;&#34;
- *             {&#34;some-metadata-key&#34;: &#34;some-value&#34;, &#34;other-metadata-key&#34;: 1234}
- *                                 &#34;&#34;&#34;)
+ *                                 .metadata("""
+ *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .outputAudioText(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs.builder()
- *                                 .text(&#34;some output text&#34;)
+ *                                 .text("some output text")
  *                                 .build())
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .outputAudioText(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs.builder()
- *                                 .ssml(&#34;&#34;&#34;
- *             &lt;speak&gt;Some example &lt;say-as interpret-as=&#34;characters&#34;&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
- *                                 &#34;&#34;&#34;)
+ *                                 .ssml("""
+ *             <speak>Some example <say-as interpret-as="characters">SSML XML</say-as></speak>
+ *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .liveAgentHandoff(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
- *                                 .metadata(&#34;&#34;&#34;
- *             {&#34;some-metadata-key&#34;: &#34;some-value&#34;, &#34;other-metadata-key&#34;: 1234}
- *                                 &#34;&#34;&#34;)
+ *                                 .metadata("""
+ *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .playAudio(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs.builder()
- *                                 .audioUri(&#34;http://example.com/some-audio-file.mp3&#34;)
+ *                                 .audioUri("http://example.com/some-audio-file.mp3")
  *                                 .build())
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .telephonyTransferCall(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs.builder()
- *                                 .phoneNumber(&#34;1-234-567-8901&#34;)
+ *                                 .phoneNumber("1-234-567-8901")
  *                                 .build())
  *                             .build())
  *                     .setParameterActions(                    
  *                         CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs.builder()
- *                             .parameter(&#34;some-param&#34;)
- *                             .value(&#34;123.45&#34;)
+ *                             .parameter("some-param")
+ *                             .value("123.45")
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs.builder()
- *                             .parameter(&#34;another-param&#34;)
+ *                             .parameter("another-param")
  *                             .value(serializeJson(
- *                                 &#34;abc&#34;))
+ *                                 "abc"))
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs.builder()
- *                             .parameter(&#34;other-param&#34;)
+ *                             .parameter("other-param")
  *                             .value(serializeJson(
- *                                 jsonArray(&#34;foo&#34;)))
+ *                                 jsonArray("foo")))
  *                             .build())
  *                     .conditionalCases(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs.builder()
  *                         .cases(serializeJson(
  *                             jsonArray(
  *                                 jsonObject(
- *                                     jsonProperty(&#34;condition&#34;, &#34;$sys.func.RAND() &lt; 0.5&#34;),
- *                                     jsonProperty(&#34;caseContent&#34;, jsonArray(
+ *                                     jsonProperty("condition", "$sys.func.RAND() < 0.5"),
+ *                                     jsonProperty("caseContent", jsonArray(
  *                                         jsonObject(
- *                                             jsonProperty(&#34;message&#34;, jsonObject(
- *                                                 jsonProperty(&#34;text&#34;, jsonObject(
- *                                                     jsonProperty(&#34;text&#34;, jsonArray(&#34;First case&#34;))
+ *                                             jsonProperty("message", jsonObject(
+ *                                                 jsonProperty("text", jsonObject(
+ *                                                     jsonProperty("text", jsonArray("First case"))
  *                                                 ))
  *                                             ))
  *                                         ), 
  *                                         jsonObject(
- *                                             jsonProperty(&#34;additionalCases&#34;, jsonObject(
- *                                                 jsonProperty(&#34;cases&#34;, jsonArray(jsonObject(
- *                                                     jsonProperty(&#34;condition&#34;, &#34;$sys.func.RAND() &lt; 0.2&#34;),
- *                                                     jsonProperty(&#34;caseContent&#34;, jsonArray(jsonObject(
- *                                                         jsonProperty(&#34;message&#34;, jsonObject(
- *                                                             jsonProperty(&#34;text&#34;, jsonObject(
- *                                                                 jsonProperty(&#34;text&#34;, jsonArray(&#34;Nested case&#34;))
+ *                                             jsonProperty("additionalCases", jsonObject(
+ *                                                 jsonProperty("cases", jsonArray(jsonObject(
+ *                                                     jsonProperty("condition", "$sys.func.RAND() < 0.2"),
+ *                                                     jsonProperty("caseContent", jsonArray(jsonObject(
+ *                                                         jsonProperty("message", jsonObject(
+ *                                                             jsonProperty("text", jsonObject(
+ *                                                                 jsonProperty("text", jsonArray("Nested case"))
  *                                                             ))
  *                                                         ))
  *                                                     )))
@@ -437,10 +440,10 @@ import javax.annotation.Nullable;
  *                                     ))
  *                                 ), 
  *                                 jsonObject(
- *                                     jsonProperty(&#34;caseContent&#34;, jsonArray(jsonObject(
- *                                         jsonProperty(&#34;message&#34;, jsonObject(
- *                                             jsonProperty(&#34;text&#34;, jsonObject(
- *                                                 jsonProperty(&#34;text&#34;, jsonArray(&#34;Final case&#34;))
+ *                                     jsonProperty("caseContent", jsonArray(jsonObject(
+ *                                         jsonProperty("message", jsonObject(
+ *                                             jsonProperty("text", jsonObject(
+ *                                                 jsonProperty("text", jsonArray("Final case"))
  *                                             ))
  *                                         ))
  *                                     )))
@@ -452,19 +455,20 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .advancedSettings(CxFlowAdvancedSettingsArgs.builder()
  *                 .audioExportGcsDestination(CxFlowAdvancedSettingsAudioExportGcsDestinationArgs.builder()
- *                     .uri(bucket.url().applyValue(url -&gt; String.format(&#34;%s/prefix-&#34;, url)))
+ *                     .uri(bucket.url().applyValue(url -> String.format("%s/prefix-", url)))
  *                     .build())
  *                 .dtmfSettings(CxFlowAdvancedSettingsDtmfSettingsArgs.builder()
  *                     .enabled(true)
  *                     .maxDigits(1)
- *                     .finishDigit(&#34;#&#34;)
+ *                     .finishDigit("#")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

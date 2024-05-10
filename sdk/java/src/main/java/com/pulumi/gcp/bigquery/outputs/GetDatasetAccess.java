@@ -69,7 +69,7 @@ public final class GetDatasetAccess {
     private String specialGroup;
     /**
      * @return An email address of a user to grant access to. For example:
-     * fred@example.com
+     * fred{@literal @}example.com
      * 
      */
     private String userByEmail;
@@ -153,7 +153,7 @@ public final class GetDatasetAccess {
     }
     /**
      * @return An email address of a user to grant access to. For example:
-     * fred@example.com
+     * fred{@literal @}example.com
      * 
      */
     public String userByEmail() {

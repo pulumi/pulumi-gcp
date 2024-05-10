@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Network Peering Routes Config Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,45 +57,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var networkPrimary = new Network(&#34;networkPrimary&#34;, NetworkArgs.builder()        
- *             .name(&#34;primary-network&#34;)
- *             .autoCreateSubnetworks(&#34;false&#34;)
+ *         var networkPrimary = new Network("networkPrimary", NetworkArgs.builder()        
+ *             .name("primary-network")
+ *             .autoCreateSubnetworks("false")
  *             .build());
  * 
- *         var networkSecondary = new Network(&#34;networkSecondary&#34;, NetworkArgs.builder()        
- *             .name(&#34;secondary-network&#34;)
- *             .autoCreateSubnetworks(&#34;false&#34;)
+ *         var networkSecondary = new Network("networkSecondary", NetworkArgs.builder()        
+ *             .name("secondary-network")
+ *             .autoCreateSubnetworks("false")
  *             .build());
  * 
- *         var peeringPrimary = new NetworkPeering(&#34;peeringPrimary&#34;, NetworkPeeringArgs.builder()        
- *             .name(&#34;primary-peering&#34;)
+ *         var peeringPrimary = new NetworkPeering("peeringPrimary", NetworkPeeringArgs.builder()        
+ *             .name("primary-peering")
  *             .network(networkPrimary.id())
  *             .peerNetwork(networkSecondary.id())
  *             .importCustomRoutes(true)
  *             .exportCustomRoutes(true)
  *             .build());
  * 
- *         var peeringPrimaryRoutes = new NetworkPeeringRoutesConfig(&#34;peeringPrimaryRoutes&#34;, NetworkPeeringRoutesConfigArgs.builder()        
+ *         var peeringPrimaryRoutes = new NetworkPeeringRoutesConfig("peeringPrimaryRoutes", NetworkPeeringRoutesConfigArgs.builder()        
  *             .peering(peeringPrimary.name())
  *             .network(networkPrimary.name())
  *             .importCustomRoutes(true)
  *             .exportCustomRoutes(true)
  *             .build());
  * 
- *         var peeringSecondary = new NetworkPeering(&#34;peeringSecondary&#34;, NetworkPeeringArgs.builder()        
- *             .name(&#34;secondary-peering&#34;)
+ *         var peeringSecondary = new NetworkPeering("peeringSecondary", NetworkPeeringArgs.builder()        
+ *             .name("secondary-peering")
  *             .network(networkSecondary.id())
  *             .peerNetwork(networkPrimary.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Peering Routes Config Gke
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -125,49 +128,49 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var containerNetwork = new Network(&#34;containerNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;container-network&#34;)
+ *         var containerNetwork = new Network("containerNetwork", NetworkArgs.builder()        
+ *             .name("container-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var containerSubnetwork = new Subnetwork(&#34;containerSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;container-subnetwork&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var containerSubnetwork = new Subnetwork("containerSubnetwork", SubnetworkArgs.builder()        
+ *             .name("container-subnetwork")
+ *             .region("us-central1")
  *             .network(containerNetwork.name())
- *             .ipCidrRange(&#34;10.0.36.0/24&#34;)
+ *             .ipCidrRange("10.0.36.0/24")
  *             .privateIpGoogleAccess(true)
  *             .secondaryIpRanges(            
  *                 SubnetworkSecondaryIpRangeArgs.builder()
- *                     .rangeName(&#34;pod&#34;)
- *                     .ipCidrRange(&#34;10.0.0.0/19&#34;)
+ *                     .rangeName("pod")
+ *                     .ipCidrRange("10.0.0.0/19")
  *                     .build(),
  *                 SubnetworkSecondaryIpRangeArgs.builder()
- *                     .rangeName(&#34;svc&#34;)
- *                     .ipCidrRange(&#34;10.0.32.0/22&#34;)
+ *                     .rangeName("svc")
+ *                     .ipCidrRange("10.0.32.0/22")
  *                     .build())
  *             .build());
  * 
- *         var privateCluster = new Cluster(&#34;privateCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;private-cluster&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var privateCluster = new Cluster("privateCluster", ClusterArgs.builder()        
+ *             .name("private-cluster")
+ *             .location("us-central1-a")
  *             .initialNodeCount(1)
  *             .network(containerNetwork.name())
  *             .subnetwork(containerSubnetwork.name())
  *             .privateClusterConfig(ClusterPrivateClusterConfigArgs.builder()
  *                 .enablePrivateEndpoint(true)
  *                 .enablePrivateNodes(true)
- *                 .masterIpv4CidrBlock(&#34;10.42.0.0/28&#34;)
+ *                 .masterIpv4CidrBlock("10.42.0.0/28")
  *                 .build())
  *             .masterAuthorizedNetworksConfig()
  *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
- *                 .clusterSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[0].rangeName()))
- *                 .servicesSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[1].rangeName()))
+ *                 .clusterSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[0].rangeName()))
+ *                 .servicesSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[1].rangeName()))
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .deletionProtection("true")
  *             .build());
  * 
- *         var peeringGkeRoutes = new NetworkPeeringRoutesConfig(&#34;peeringGkeRoutes&#34;, NetworkPeeringRoutesConfigArgs.builder()        
- *             .peering(privateCluster.privateClusterConfig().applyValue(privateClusterConfig -&gt; privateClusterConfig.peeringName()))
+ *         var peeringGkeRoutes = new NetworkPeeringRoutesConfig("peeringGkeRoutes", NetworkPeeringRoutesConfigArgs.builder()        
+ *             .peering(privateCluster.privateClusterConfig().applyValue(privateClusterConfig -> privateClusterConfig.peeringName()))
  *             .network(containerNetwork.name())
  *             .importCustomRoutes(true)
  *             .exportCustomRoutes(true)
@@ -175,7 +178,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

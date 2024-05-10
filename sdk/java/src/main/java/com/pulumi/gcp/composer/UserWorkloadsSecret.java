@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,35 +47,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Environment(&#34;example&#34;, EnvironmentArgs.builder()        
- *             .name(&#34;example-environment&#34;)
- *             .project(&#34;example-project&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var example = new Environment("example", EnvironmentArgs.builder()        
+ *             .name("example-environment")
+ *             .project("example-project")
+ *             .region("us-central1")
  *             .config(EnvironmentConfigArgs.builder()
  *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
- *                     .imageVersion(&#34;example-image-version&#34;)
+ *                     .imageVersion("example-image-version")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var exampleUserWorkloadsSecret = new UserWorkloadsSecret(&#34;exampleUserWorkloadsSecret&#34;, UserWorkloadsSecretArgs.builder()        
- *             .name(&#34;example-secret&#34;)
- *             .project(&#34;example-project&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var exampleUserWorkloadsSecret = new UserWorkloadsSecret("exampleUserWorkloadsSecret", UserWorkloadsSecretArgs.builder()        
+ *             .name("example-secret")
+ *             .project("example-project")
+ *             .region("us-central1")
  *             .environment(example.name())
  *             .data(Map.ofEntries(
- *                 Map.entry(&#34;email&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;example-email&#34;)
+ *                 Map.entry("email", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("example-email")
  *                     .build()).result()),
- *                 Map.entry(&#34;password&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;example-password&#34;)
+ *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("example-password")
  *                     .build()).result())
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

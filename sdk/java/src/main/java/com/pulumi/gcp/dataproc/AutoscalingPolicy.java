@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Dataproc Autoscaling Policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,24 +54,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var asp = new AutoscalingPolicy(&#34;asp&#34;, AutoscalingPolicyArgs.builder()        
- *             .policyId(&#34;dataproc-policy&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var asp = new AutoscalingPolicy("asp", AutoscalingPolicyArgs.builder()        
+ *             .policyId("dataproc-policy")
+ *             .location("us-central1")
  *             .workerConfig(AutoscalingPolicyWorkerConfigArgs.builder()
  *                 .maxInstances(3)
  *                 .build())
  *             .basicAlgorithm(AutoscalingPolicyBasicAlgorithmArgs.builder()
  *                 .yarnConfig(AutoscalingPolicyBasicAlgorithmYarnConfigArgs.builder()
- *                     .gracefulDecommissionTimeout(&#34;30s&#34;)
+ *                     .gracefulDecommissionTimeout("30s")
  *                     .scaleUpFactor(0.5)
  *                     .scaleDownFactor(0.5)
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var basic = new Cluster(&#34;basic&#34;, ClusterArgs.builder()        
- *             .name(&#34;dataproc-policy&#34;)
- *             .region(&#34;us-central1&#34;)
+ *         var basic = new Cluster("basic", ClusterArgs.builder()        
+ *             .name("dataproc-policy")
+ *             .region("us-central1")
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .autoscalingConfig(ClusterClusterConfigAutoscalingConfigArgs.builder()
  *                     .policyUri(asp.name())
@@ -80,7 +81,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

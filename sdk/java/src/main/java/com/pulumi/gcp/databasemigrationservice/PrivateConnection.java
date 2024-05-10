@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Database Migration Service Private Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,23 +58,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;my-network&#34;)
+ *             .name("my-network")
  *             .build());
  * 
- *         var defaultPrivateConnection = new PrivateConnection(&#34;defaultPrivateConnection&#34;, PrivateConnectionArgs.builder()        
- *             .displayName(&#34;dbms_pc&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .privateConnectionId(&#34;my-connection&#34;)
- *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *         var defaultPrivateConnection = new PrivateConnection("defaultPrivateConnection", PrivateConnectionArgs.builder()        
+ *             .displayName("dbms_pc")
+ *             .location("us-central1")
+ *             .privateConnectionId("my-connection")
+ *             .labels(Map.of("key", "value"))
  *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
  *                 .vpcName(default_.id())
- *                 .subnet(&#34;10.0.0.0/29&#34;)
+ *                 .subnet("10.0.0.0/29")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

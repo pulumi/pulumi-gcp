@@ -116,7 +116,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      * 
@@ -130,7 +130,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      * 
@@ -549,7 +549,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * is disabled.
          * The Cloud Pub/Sub service account associated with this subscription&#39;s
          * parent project (i.e.,
-         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
          * permission to Acknowledge() messages on this subscription.
          * Structure is documented below.
          * 
@@ -567,7 +567,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * is disabled.
          * The Cloud Pub/Sub service account associated with this subscription&#39;s
          * parent project (i.e.,
-         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
          * permission to Acknowledge() messages on this subscription.
          * Structure is documented below.
          * 

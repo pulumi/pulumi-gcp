@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Edgenetwork Subnet
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,32 +55,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .networkId(&#34;example-network&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .zone(&#34;&#34;)
- *             .description(&#34;Example network.&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .networkId("example-network")
+ *             .location("us-west1")
+ *             .zone("")
+ *             .description("Example network.")
  *             .mtu(9000)
  *             .build());
  * 
- *         var exampleSubnet = new Subnet(&#34;exampleSubnet&#34;, SubnetArgs.builder()        
- *             .subnetId(&#34;example-subnet&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .zone(&#34;&#34;)
- *             .description(&#34;Example subnet.&#34;)
+ *         var exampleSubnet = new Subnet("exampleSubnet", SubnetArgs.builder()        
+ *             .subnetId("example-subnet")
+ *             .location("us-west1")
+ *             .zone("")
+ *             .description("Example subnet.")
  *             .network(exampleNetwork.id())
- *             .ipv4Cidrs(&#34;4.4.4.1/24&#34;)
- *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
+ *             .ipv4Cidrs("4.4.4.1/24")
+ *             .labels(Map.of("environment", "dev"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Edgenetwork Subnet With Vlan Id
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,28 +105,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .networkId(&#34;example-network&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .zone(&#34;&#34;)
- *             .description(&#34;Example network.&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .networkId("example-network")
+ *             .location("us-west1")
+ *             .zone("")
+ *             .description("Example network.")
  *             .mtu(9000)
  *             .build());
  * 
- *         var exampleSubnetWithVlanId = new Subnet(&#34;exampleSubnetWithVlanId&#34;, SubnetArgs.builder()        
- *             .subnetId(&#34;example-subnet-with-vlan-id&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .zone(&#34;&#34;)
- *             .description(&#34;Example subnet with VLAN ID.&#34;)
+ *         var exampleSubnetWithVlanId = new Subnet("exampleSubnetWithVlanId", SubnetArgs.builder()        
+ *             .subnetId("example-subnet-with-vlan-id")
+ *             .location("us-west1")
+ *             .zone("")
+ *             .description("Example subnet with VLAN ID.")
  *             .network(exampleNetwork.id())
- *             .ipv6Cidrs(&#34;4444:4444:4444:4444::1/64&#34;)
+ *             .ipv6Cidrs("4444:4444:4444:4444::1/64")
  *             .vlanId(44)
- *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
+ *             .labels(Map.of("environment", "dev"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

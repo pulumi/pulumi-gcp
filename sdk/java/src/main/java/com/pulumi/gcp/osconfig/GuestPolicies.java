@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Os Config Guest Policies Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,48 +67,50 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobar = new Instance(&#34;foobar&#34;, InstanceArgs.builder()        
- *             .name(&#34;guest-policy-inst&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *         var foobar = new Instance("foobar", InstanceArgs.builder()        
+ *             .name("guest-policy-inst")
+ *             .machineType("e2-medium")
+ *             .zone("us-central1-a")
  *             .canIpForward(false)
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
+ *                 "foo",
+ *                 "bar")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
- *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .metadata(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var guestPolicies = new GuestPolicies(&#34;guestPolicies&#34;, GuestPoliciesArgs.builder()        
- *             .guestPolicyId(&#34;guest-policy&#34;)
+ *         var guestPolicies = new GuestPolicies("guestPolicies", GuestPoliciesArgs.builder()        
+ *             .guestPolicyId("guest-policy")
  *             .assignment(GuestPoliciesAssignmentArgs.builder()
  *                 .instances(foobar.id())
  *                 .build())
  *             .packages(GuestPoliciesPackageArgs.builder()
- *                 .name(&#34;my-package&#34;)
- *                 .desiredState(&#34;UPDATED&#34;)
+ *                 .name("my-package")
+ *                 .desiredState("UPDATED")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Os Config Guest Policies Packages
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -133,66 +136,68 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var guestPolicies = new GuestPolicies(&#34;guestPolicies&#34;, GuestPoliciesArgs.builder()        
- *             .guestPolicyId(&#34;guest-policy&#34;)
+ *         var guestPolicies = new GuestPolicies("guestPolicies", GuestPoliciesArgs.builder()        
+ *             .guestPolicyId("guest-policy")
  *             .assignment(GuestPoliciesAssignmentArgs.builder()
  *                 .groupLabels(                
  *                     GuestPoliciesAssignmentGroupLabelArgs.builder()
  *                         .labels(Map.ofEntries(
- *                             Map.entry(&#34;color&#34;, &#34;red&#34;),
- *                             Map.entry(&#34;env&#34;, &#34;test&#34;)
+ *                             Map.entry("color", "red"),
+ *                             Map.entry("env", "test")
  *                         ))
  *                         .build(),
  *                     GuestPoliciesAssignmentGroupLabelArgs.builder()
  *                         .labels(Map.ofEntries(
- *                             Map.entry(&#34;color&#34;, &#34;blue&#34;),
- *                             Map.entry(&#34;env&#34;, &#34;test&#34;)
+ *                             Map.entry("color", "blue"),
+ *                             Map.entry("env", "test")
  *                         ))
  *                         .build())
  *                 .build())
  *             .packages(            
  *                 GuestPoliciesPackageArgs.builder()
- *                     .name(&#34;my-package&#34;)
- *                     .desiredState(&#34;INSTALLED&#34;)
+ *                     .name("my-package")
+ *                     .desiredState("INSTALLED")
  *                     .build(),
  *                 GuestPoliciesPackageArgs.builder()
- *                     .name(&#34;bad-package-1&#34;)
- *                     .desiredState(&#34;REMOVED&#34;)
+ *                     .name("bad-package-1")
+ *                     .desiredState("REMOVED")
  *                     .build(),
  *                 GuestPoliciesPackageArgs.builder()
- *                     .name(&#34;bad-package-2&#34;)
- *                     .desiredState(&#34;REMOVED&#34;)
- *                     .manager(&#34;APT&#34;)
+ *                     .name("bad-package-2")
+ *                     .desiredState("REMOVED")
+ *                     .manager("APT")
  *                     .build())
  *             .packageRepositories(            
  *                 GuestPoliciesPackageRepositoryArgs.builder()
  *                     .apt(GuestPoliciesPackageRepositoryAptArgs.builder()
- *                         .uri(&#34;https://packages.cloud.google.com/apt&#34;)
- *                         .archiveType(&#34;DEB&#34;)
- *                         .distribution(&#34;cloud-sdk-stretch&#34;)
- *                         .components(&#34;main&#34;)
+ *                         .uri("https://packages.cloud.google.com/apt")
+ *                         .archiveType("DEB")
+ *                         .distribution("cloud-sdk-stretch")
+ *                         .components("main")
  *                         .build())
  *                     .build(),
  *                 GuestPoliciesPackageRepositoryArgs.builder()
  *                     .yum(GuestPoliciesPackageRepositoryYumArgs.builder()
- *                         .id(&#34;google-cloud-sdk&#34;)
- *                         .displayName(&#34;Google Cloud SDK&#34;)
- *                         .baseUrl(&#34;https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64&#34;)
+ *                         .id("google-cloud-sdk")
+ *                         .displayName("Google Cloud SDK")
+ *                         .baseUrl("https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64")
  *                         .gpgKeys(                        
- *                             &#34;https://packages.cloud.google.com/yum/doc/yum-key.gpg&#34;,
- *                             &#34;https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg&#34;)
+ *                             "https://packages.cloud.google.com/yum/doc/yum-key.gpg",
+ *                             "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg")
  *                         .build())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Os Config Guest Policies Recipes
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -215,27 +220,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var guestPolicies = new GuestPolicies(&#34;guestPolicies&#34;, GuestPoliciesArgs.builder()        
- *             .guestPolicyId(&#34;guest-policy&#34;)
+ *         var guestPolicies = new GuestPolicies("guestPolicies", GuestPoliciesArgs.builder()        
+ *             .guestPolicyId("guest-policy")
  *             .assignment(GuestPoliciesAssignmentArgs.builder()
  *                 .zones(                
- *                     &#34;us-east1-b&#34;,
- *                     &#34;us-east1-d&#34;)
+ *                     "us-east1-b",
+ *                     "us-east1-d")
  *                 .build())
  *             .recipes(GuestPoliciesRecipeArgs.builder()
- *                 .name(&#34;guest-policy-recipe&#34;)
- *                 .desiredState(&#34;INSTALLED&#34;)
+ *                 .name("guest-policy-recipe")
+ *                 .desiredState("INSTALLED")
  *                 .artifacts(GuestPoliciesRecipeArtifactArgs.builder()
- *                     .id(&#34;guest-policy-artifact-id&#34;)
+ *                     .id("guest-policy-artifact-id")
  *                     .gcs(GuestPoliciesRecipeArtifactGcsArgs.builder()
- *                         .bucket(&#34;my-bucket&#34;)
- *                         .object(&#34;executable.msi&#34;)
+ *                         .bucket("my-bucket")
+ *                         .object("executable.msi")
  *                         .generation(1546030865175603)
  *                         .build())
  *                     .build())
  *                 .installSteps(GuestPoliciesRecipeInstallStepArgs.builder()
  *                     .msiInstallation(GuestPoliciesRecipeInstallStepMsiInstallationArgs.builder()
- *                         .artifactId(&#34;guest-policy-artifact-id&#34;)
+ *                         .artifactId("guest-policy-artifact-id")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -243,7 +248,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

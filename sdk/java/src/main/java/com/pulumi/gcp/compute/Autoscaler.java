@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### Autoscaler Single Instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -70,58 +71,58 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
- *             .name(&#34;my-instance-template&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()        
+ *             .name("my-instance-template")
+ *             .machineType("e2-medium")
  *             .canIpForward(false)
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
+ *                 "foo",
+ *                 "bar")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
+ *                 .sourceImage(debian9.applyValue(getImageResult -> getImageResult.id()))
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
- *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .metadata(Map.of("foo", "bar"))
  *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
  *                 .scopes(                
- *                     &#34;userinfo-email&#34;,
- *                     &#34;compute-ro&#34;,
- *                     &#34;storage-ro&#34;)
+ *                     "userinfo-email",
+ *                     "compute-ro",
+ *                     "storage-ro")
  *                 .build())
  *             .build());
  * 
- *         var defaultTargetPool = new TargetPool(&#34;defaultTargetPool&#34;, TargetPoolArgs.builder()        
- *             .name(&#34;my-target-pool&#34;)
+ *         var defaultTargetPool = new TargetPool("defaultTargetPool", TargetPoolArgs.builder()        
+ *             .name("my-target-pool")
  *             .build());
  * 
- *         var defaultInstanceGroupManager = new InstanceGroupManager(&#34;defaultInstanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
- *             .name(&#34;my-igm&#34;)
- *             .zone(&#34;us-central1-f&#34;)
+ *         var defaultInstanceGroupManager = new InstanceGroupManager("defaultInstanceGroupManager", InstanceGroupManagerArgs.builder()        
+ *             .name("my-igm")
+ *             .zone("us-central1-f")
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(defaultInstanceTemplate.id())
- *                 .name(&#34;primary&#34;)
+ *                 .name("primary")
  *                 .build())
  *             .targetPools(defaultTargetPool.id())
- *             .baseInstanceName(&#34;autoscaler-sample&#34;)
+ *             .baseInstanceName("autoscaler-sample")
  *             .build());
  * 
- *         var default_ = new Autoscaler(&#34;default&#34;, AutoscalerArgs.builder()        
- *             .name(&#34;my-autoscaler&#34;)
- *             .zone(&#34;us-central1-f&#34;)
+ *         var default_ = new Autoscaler("default", AutoscalerArgs.builder()        
+ *             .name("my-autoscaler")
+ *             .zone("us-central1-f")
  *             .target(defaultInstanceGroupManager.id())
  *             .autoscalingPolicy(AutoscalerAutoscalingPolicyArgs.builder()
  *                 .maxReplicas(5)
  *                 .minReplicas(1)
  *                 .cooldownPeriod(60)
  *                 .metrics(AutoscalerAutoscalingPolicyMetricArgs.builder()
- *                     .name(&#34;pubsub.googleapis.com/subscription/num_undelivered_messages&#34;)
- *                     .filter(&#34;resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription&#34;)
+ *                     .name("pubsub.googleapis.com/subscription/num_undelivered_messages")
+ *                     .filter("resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription")
  *                     .singleInstanceAssignment(65535)
  *                     .build())
  *                 .build())
@@ -129,12 +130,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Autoscaler Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -170,50 +173,50 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
+ *             .family("debian-11")
+ *             .project("debian-cloud")
  *             .build());
  * 
- *         var foobarInstanceTemplate = new InstanceTemplate(&#34;foobarInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
- *             .name(&#34;my-instance-template&#34;)
- *             .machineType(&#34;e2-medium&#34;)
+ *         var foobarInstanceTemplate = new InstanceTemplate("foobarInstanceTemplate", InstanceTemplateArgs.builder()        
+ *             .name("my-instance-template")
+ *             .machineType("e2-medium")
  *             .canIpForward(false)
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
+ *                 "foo",
+ *                 "bar")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
+ *                 .sourceImage(debian9.applyValue(getImageResult -> getImageResult.id()))
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
+ *                 .network("default")
  *                 .build())
- *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .metadata(Map.of("foo", "bar"))
  *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
  *                 .scopes(                
- *                     &#34;userinfo-email&#34;,
- *                     &#34;compute-ro&#34;,
- *                     &#34;storage-ro&#34;)
+ *                     "userinfo-email",
+ *                     "compute-ro",
+ *                     "storage-ro")
  *                 .build())
  *             .build());
  * 
- *         var foobarTargetPool = new TargetPool(&#34;foobarTargetPool&#34;, TargetPoolArgs.builder()        
- *             .name(&#34;my-target-pool&#34;)
+ *         var foobarTargetPool = new TargetPool("foobarTargetPool", TargetPoolArgs.builder()        
+ *             .name("my-target-pool")
  *             .build());
  * 
- *         var foobarInstanceGroupManager = new InstanceGroupManager(&#34;foobarInstanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
- *             .name(&#34;my-igm&#34;)
- *             .zone(&#34;us-central1-f&#34;)
+ *         var foobarInstanceGroupManager = new InstanceGroupManager("foobarInstanceGroupManager", InstanceGroupManagerArgs.builder()        
+ *             .name("my-igm")
+ *             .zone("us-central1-f")
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(foobarInstanceTemplate.id())
- *                 .name(&#34;primary&#34;)
+ *                 .name("primary")
  *                 .build())
  *             .targetPools(foobarTargetPool.id())
- *             .baseInstanceName(&#34;foobar&#34;)
+ *             .baseInstanceName("foobar")
  *             .build());
  * 
- *         var foobar = new Autoscaler(&#34;foobar&#34;, AutoscalerArgs.builder()        
- *             .name(&#34;my-autoscaler&#34;)
- *             .zone(&#34;us-central1-f&#34;)
+ *         var foobar = new Autoscaler("foobar", AutoscalerArgs.builder()        
+ *             .name("my-autoscaler")
+ *             .zone("us-central1-f")
  *             .target(foobarInstanceGroupManager.id())
  *             .autoscalingPolicy(AutoscalerAutoscalingPolicyArgs.builder()
  *                 .maxReplicas(5)
@@ -227,7 +230,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

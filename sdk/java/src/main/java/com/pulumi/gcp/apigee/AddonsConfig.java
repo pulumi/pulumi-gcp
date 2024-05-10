@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Apigee Addons Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,8 +54,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testOrganization = new AddonsConfig(&#34;testOrganization&#34;, AddonsConfigArgs.builder()        
- *             .org(&#34;test_organization&#34;)
+ *         var testOrganization = new AddonsConfig("testOrganization", AddonsConfigArgs.builder()        
+ *             .org("test_organization")
  *             .addonsConfig(AddonsConfigAddonsConfigArgs.builder()
  *                 .apiSecurityConfig(AddonsConfigAddonsConfigApiSecurityConfigArgs.builder()
  *                     .enabled(true)
@@ -67,12 +68,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Addons Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -112,49 +115,49 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = OrganizationsFunctions.getClientConfig();
  * 
- *         var apigee = new Service(&#34;apigee&#34;, ServiceArgs.builder()        
- *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
- *             .service(&#34;apigee.googleapis.com&#34;)
+ *         var apigee = new Service("apigee", ServiceArgs.builder()        
+ *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .service("apigee.googleapis.com")
  *             .build());
  * 
- *         var compute = new Service(&#34;compute&#34;, ServiceArgs.builder()        
- *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
- *             .service(&#34;compute.googleapis.com&#34;)
+ *         var compute = new Service("compute", ServiceArgs.builder()        
+ *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var servicenetworking = new Service(&#34;servicenetworking&#34;, ServiceArgs.builder()        
- *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()        
+ *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .service("servicenetworking.googleapis.com")
  *             .build());
  * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;apigee-network&#34;)
- *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()        
+ *             .name("apigee-network")
+ *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .build());
  * 
- *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;apigee-range&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()        
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
  *             .prefixLength(16)
  *             .network(apigeeNetwork.id())
- *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .project(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .build());
  * 
- *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()        
  *             .network(apigeeNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(apigeeRange.name())
  *             .build());
  * 
- *         var org = new Organization(&#34;org&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
- *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *         var org = new Organization("org", OrganizationArgs.builder()        
+ *             .analyticsRegion("us-central1")
+ *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .billingType(&#34;EVALUATION&#34;)
+ *             .billingType("EVALUATION")
  *             .build());
  * 
- *         var testOrganization = new AddonsConfig(&#34;testOrganization&#34;, AddonsConfigArgs.builder()        
+ *         var testOrganization = new AddonsConfig("testOrganization", AddonsConfigArgs.builder()        
  *             .org(org.name())
  *             .addonsConfig(AddonsConfigAddonsConfigArgs.builder()
  *                 .integrationConfig(AddonsConfigAddonsConfigIntegrationConfigArgs.builder()
@@ -177,7 +180,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Public Delegated Prefixes Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,24 +53,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var advertised = new PublicAdvertisedPrefix(&#34;advertised&#34;, PublicAdvertisedPrefixArgs.builder()        
- *             .name(&#34;my-prefix&#34;)
- *             .description(&#34;description&#34;)
- *             .dnsVerificationIp(&#34;127.127.0.0&#34;)
- *             .ipCidrRange(&#34;127.127.0.0/16&#34;)
+ *         var advertised = new PublicAdvertisedPrefix("advertised", PublicAdvertisedPrefixArgs.builder()        
+ *             .name("my-prefix")
+ *             .description("description")
+ *             .dnsVerificationIp("127.127.0.0")
+ *             .ipCidrRange("127.127.0.0/16")
  *             .build());
  * 
- *         var prefixes = new PublicDelegatedPrefix(&#34;prefixes&#34;, PublicDelegatedPrefixArgs.builder()        
- *             .name(&#34;my-prefix&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .description(&#34;my description&#34;)
- *             .ipCidrRange(&#34;127.127.0.0/24&#34;)
+ *         var prefixes = new PublicDelegatedPrefix("prefixes", PublicDelegatedPrefixArgs.builder()        
+ *             .name("my-prefix")
+ *             .region("us-central1")
+ *             .description("my description")
+ *             .ipCidrRange("127.127.0.0/24")
  *             .parentPrefix(advertised.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

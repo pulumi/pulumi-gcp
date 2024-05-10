@@ -24,7 +24,8 @@ public final class RuntimeconfigFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,12 +47,13 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
-     *             .name(&#34;my-service&#34;)
+     *             .name("my-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -62,7 +64,8 @@ public final class RuntimeconfigFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -84,12 +87,13 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
-     *             .name(&#34;my-service&#34;)
+     *             .name("my-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -100,7 +104,8 @@ public final class RuntimeconfigFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -122,12 +127,13 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
-     *             .name(&#34;my-service&#34;)
+     *             .name("my-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -138,7 +144,8 @@ public final class RuntimeconfigFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -160,12 +167,13 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
-     *             .name(&#34;my-service&#34;)
+     *             .name("my-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -188,7 +196,8 @@ public final class RuntimeconfigFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -210,13 +219,14 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
-     *             .parent(&#34;my-service&#34;)
-     *             .name(&#34;prod-variables/hostname&#34;)
+     *             .parent("my-service")
+     *             .name("prod-variables/hostname")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -227,7 +237,8 @@ public final class RuntimeconfigFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -249,13 +260,14 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
-     *             .parent(&#34;my-service&#34;)
-     *             .name(&#34;prod-variables/hostname&#34;)
+     *             .parent("my-service")
+     *             .name("prod-variables/hostname")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -266,7 +278,8 @@ public final class RuntimeconfigFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -288,13 +301,14 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
-     *             .parent(&#34;my-service&#34;)
-     *             .name(&#34;prod-variables/hostname&#34;)
+     *             .parent("my-service")
+     *             .name("prod-variables/hostname")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -305,7 +319,8 @@ public final class RuntimeconfigFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -327,13 +342,14 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
-     *             .parent(&#34;my-service&#34;)
-     *             .name(&#34;prod-variables/hostname&#34;)
+     *             .parent("my-service")
+     *             .name("prod-variables/hostname")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

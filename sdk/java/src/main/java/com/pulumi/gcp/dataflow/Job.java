@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,25 +49,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigDataJob = new Job(&#34;bigDataJob&#34;, JobArgs.builder()        
- *             .name(&#34;dataflow-job&#34;)
- *             .templateGcsPath(&#34;gs://my-bucket/templates/template_file&#34;)
- *             .tempGcsLocation(&#34;gs://my-bucket/tmp_dir&#34;)
+ *         var bigDataJob = new Job("bigDataJob", JobArgs.builder()        
+ *             .name("dataflow-job")
+ *             .templateGcsPath("gs://my-bucket/templates/template_file")
+ *             .tempGcsLocation("gs://my-bucket/tmp_dir")
  *             .parameters(Map.ofEntries(
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                 Map.entry(&#34;baz&#34;, &#34;qux&#34;)
+ *                 Map.entry("foo", "bar"),
+ *                 Map.entry("baz", "qux")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Streaming Job
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,41 +94,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .name(&#34;dataflow-job1&#34;)
+ *         var topic = new Topic("topic", TopicArgs.builder()        
+ *             .name("dataflow-job1")
  *             .build());
  * 
- *         var bucket1 = new Bucket(&#34;bucket1&#34;, BucketArgs.builder()        
- *             .name(&#34;tf-test-bucket1&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket1 = new Bucket("bucket1", BucketArgs.builder()        
+ *             .name("tf-test-bucket1")
+ *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var bucket2 = new Bucket(&#34;bucket2&#34;, BucketArgs.builder()        
- *             .name(&#34;tf-test-bucket2&#34;)
- *             .location(&#34;US&#34;)
+ *         var bucket2 = new Bucket("bucket2", BucketArgs.builder()        
+ *             .name("tf-test-bucket2")
+ *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var pubsubStream = new Job(&#34;pubsubStream&#34;, JobArgs.builder()        
- *             .name(&#34;tf-test-dataflow-job1&#34;)
- *             .templateGcsPath(&#34;gs://my-bucket/templates/template_file&#34;)
- *             .tempGcsLocation(&#34;gs://my-bucket/tmp_dir&#34;)
+ *         var pubsubStream = new Job("pubsubStream", JobArgs.builder()        
+ *             .name("tf-test-dataflow-job1")
+ *             .templateGcsPath("gs://my-bucket/templates/template_file")
+ *             .tempGcsLocation("gs://my-bucket/tmp_dir")
  *             .enableStreamingEngine(true)
  *             .parameters(Map.ofEntries(
- *                 Map.entry(&#34;inputFilePattern&#34;, bucket1.url().applyValue(url -&gt; String.format(&#34;%s/*.json&#34;, url))),
- *                 Map.entry(&#34;outputTopic&#34;, topic.id())
+ *                 Map.entry("inputFilePattern", bucket1.url().applyValue(url -> String.format("%s/*.json", url))),
+ *                 Map.entry("outputTopic", topic.id())
  *             ))
  *             .transformNameMapping(Map.ofEntries(
- *                 Map.entry(&#34;name&#34;, &#34;test_job&#34;),
- *                 Map.entry(&#34;env&#34;, &#34;test&#34;)
+ *                 Map.entry("name", "test_job"),
+ *                 Map.entry("env", "test")
  *             ))
- *             .onDelete(&#34;cancel&#34;)
+ *             .onDelete("cancel")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Note on &#34;destroy&#34; / &#34;apply&#34;
@@ -139,7 +143,8 @@ import javax.annotation.Nullable;
  * You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -163,26 +168,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var bigDataJobSubscriptionId = config.get(&#34;bigDataJobSubscriptionId&#34;).orElse(&#34;projects/myproject/subscriptions/messages&#34;);
- *         var bigDataJobNameSuffix = new RandomId(&#34;bigDataJobNameSuffix&#34;, RandomIdArgs.builder()        
+ *         final var bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId").orElse("projects/myproject/subscriptions/messages");
+ *         var bigDataJobNameSuffix = new RandomId("bigDataJobNameSuffix", RandomIdArgs.builder()        
  *             .byteLength(4)
  *             .keepers(Map.ofEntries(
- *                 Map.entry(&#34;region&#34;, region),
- *                 Map.entry(&#34;subscription_id&#34;, bigDataJobSubscriptionId)
+ *                 Map.entry("region", region),
+ *                 Map.entry("subscription_id", bigDataJobSubscriptionId)
  *             ))
  *             .build());
  * 
- *         var bigDataJob = new FlexTemplateJob(&#34;bigDataJob&#34;, FlexTemplateJobArgs.builder()        
- *             .name(bigDataJobNameSuffix.dec().applyValue(dec -&gt; String.format(&#34;dataflow-flextemplates-job-%s&#34;, dec)))
+ *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()        
+ *             .name(bigDataJobNameSuffix.dec().applyValue(dec -> String.format("dataflow-flextemplates-job-%s", dec)))
  *             .region(region)
- *             .containerSpecGcsPath(&#34;gs://my-bucket/templates/template.json&#34;)
+ *             .containerSpecGcsPath("gs://my-bucket/templates/template.json")
  *             .skipWaitOnJobTermination(true)
- *             .parameters(Map.of(&#34;inputSubscription&#34;, bigDataJobSubscriptionId))
+ *             .parameters(Map.of("inputSubscription", bigDataJobSubscriptionId))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

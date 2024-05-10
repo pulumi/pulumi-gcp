@@ -15,14 +15,14 @@ public final class AwsClusterAuthorizationAdminGroupArgs extends com.pulumi.reso
     public static final AwsClusterAuthorizationAdminGroupArgs Empty = new AwsClusterAuthorizationAdminGroupArgs();
 
     /**
-     * The name of the group, e.g. `my-group@domain.com`.
+     * The name of the group, e.g. `my-group{@literal @}domain.com`.
      * 
      */
     @Import(name="group", required=true)
     private Output<String> group;
 
     /**
-     * @return The name of the group, e.g. `my-group@domain.com`.
+     * @return The name of the group, e.g. `my-group{@literal @}domain.com`.
      * 
      */
     public Output<String> group() {
@@ -54,7 +54,7 @@ public final class AwsClusterAuthorizationAdminGroupArgs extends com.pulumi.reso
         }
 
         /**
-         * @param group The name of the group, e.g. `my-group@domain.com`.
+         * @param group The name of the group, e.g. `my-group{@literal @}domain.com`.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class AwsClusterAuthorizationAdminGroupArgs extends com.pulumi.reso
         }
 
         /**
-         * @param group The name of the group, e.g. `my-group@domain.com`.
+         * @param group The name of the group, e.g. `my-group{@literal @}domain.com`.
          * 
          * @return builder
          * 

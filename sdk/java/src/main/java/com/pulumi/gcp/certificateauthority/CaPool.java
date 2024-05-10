@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Privateca Capool Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,25 +51,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
- *             .name(&#34;my-pool&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *             .name("my-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
  *                 .publishCaCert(true)
  *                 .publishCrl(true)
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Capool All Fields
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,21 +103,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
- *             .name(&#34;my-pool&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .tier(&#34;ENTERPRISE&#34;)
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()        
+ *             .name("my-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
  *                 .publishCaCert(false)
  *                 .publishCrl(true)
- *                 .encodingFormat(&#34;PEM&#34;)
+ *                 .encodingFormat("PEM")
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .issuancePolicy(CaPoolIssuancePolicyArgs.builder()
  *                 .allowedKeyTypes(                
  *                     CaPoolIssuancePolicyAllowedKeyTypeArgs.builder()
  *                         .ellipticCurve(CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs.builder()
- *                             .signatureAlgorithm(&#34;ECDSA_P256&#34;)
+ *                             .signatureAlgorithm("ECDSA_P256")
  *                             .build())
  *                         .build(),
  *                     CaPoolIssuancePolicyAllowedKeyTypeArgs.builder()
@@ -123,7 +126,7 @@ import javax.annotation.Nullable;
  *                             .maxModulusSize(10)
  *                             .build())
  *                         .build())
- *                 .maximumLifetime(&#34;50000s&#34;)
+ *                 .maximumLifetime("50000s")
  *                 .allowedIssuanceModes(CaPoolIssuancePolicyAllowedIssuanceModesArgs.builder()
  *                     .allowCsrBasedIssuance(true)
  *                     .allowConfigBasedIssuance(true)
@@ -132,15 +135,15 @@ import javax.annotation.Nullable;
  *                     .allowSubjectPassthrough(true)
  *                     .allowSubjectAltNamesPassthrough(true)
  *                     .celExpression(CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs.builder()
- *                         .expression(&#34;subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )&#34;)
- *                         .title(&#34;My title&#34;)
+ *                         .expression("subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )")
+ *                         .title("My title")
  *                         .build())
  *                     .build())
  *                 .baselineValues(CaPoolIssuancePolicyBaselineValuesArgs.builder()
- *                     .aiaOcspServers(&#34;example.com&#34;)
+ *                     .aiaOcspServers("example.com")
  *                     .additionalExtensions(CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs.builder()
  *                         .critical(true)
- *                         .value(&#34;asdf&#34;)
+ *                         .value("asdf")
  *                         .objectId(CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs.builder()
  *                             .objectIdPaths(                            
  *                                 1,
@@ -185,29 +188,29 @@ import javax.annotation.Nullable;
  *                     .nameConstraints(CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs.builder()
  *                         .critical(true)
  *                         .permittedDnsNames(                        
- *                             &#34;*.example1.com&#34;,
- *                             &#34;*.example2.com&#34;)
+ *                             "*.example1.com",
+ *                             "*.example2.com")
  *                         .excludedDnsNames(                        
- *                             &#34;*.deny.example1.com&#34;,
- *                             &#34;*.deny.example2.com&#34;)
+ *                             "*.deny.example1.com",
+ *                             "*.deny.example2.com")
  *                         .permittedIpRanges(                        
- *                             &#34;10.0.0.0/8&#34;,
- *                             &#34;11.0.0.0/8&#34;)
+ *                             "10.0.0.0/8",
+ *                             "11.0.0.0/8")
  *                         .excludedIpRanges(                        
- *                             &#34;10.1.1.0/24&#34;,
- *                             &#34;11.1.1.0/24&#34;)
+ *                             "10.1.1.0/24",
+ *                             "11.1.1.0/24")
  *                         .permittedEmailAddresses(                        
- *                             &#34;.example1.com&#34;,
- *                             &#34;.example2.com&#34;)
+ *                             ".example1.com",
+ *                             ".example2.com")
  *                         .excludedEmailAddresses(                        
- *                             &#34;.deny.example1.com&#34;,
- *                             &#34;.deny.example2.com&#34;)
+ *                             ".deny.example1.com",
+ *                             ".deny.example2.com")
  *                         .permittedUris(                        
- *                             &#34;.example1.com&#34;,
- *                             &#34;.example2.com&#34;)
+ *                             ".example1.com",
+ *                             ".example2.com")
  *                         .excludedUris(                        
- *                             &#34;.deny.example1.com&#34;,
- *                             &#34;.deny.example2.com&#34;)
+ *                             ".deny.example1.com",
+ *                             ".deny.example2.com")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -215,7 +218,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Firebasehosting Channel Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,24 +47,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-with-channel&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-with-channel")
  *             .build());
  * 
- *         var defaultHostingChannel = new HostingChannel(&#34;defaultHostingChannel&#34;, HostingChannelArgs.builder()        
+ *         var defaultHostingChannel = new HostingChannel("defaultHostingChannel", HostingChannelArgs.builder()        
  *             .siteId(default_.siteId())
- *             .channelId(&#34;channel-basic&#34;)
+ *             .channelId("channel-basic")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Channel Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -86,22 +89,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-with-channel&#34;)
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *             .project("my-project-name")
+ *             .siteId("site-with-channel")
  *             .build());
  * 
- *         var full = new HostingChannel(&#34;full&#34;, HostingChannelArgs.builder()        
+ *         var full = new HostingChannel("full", HostingChannelArgs.builder()        
  *             .siteId(default_.siteId())
- *             .channelId(&#34;channel-full&#34;)
- *             .ttl(&#34;86400s&#34;)
+ *             .channelId("channel-full")
+ *             .ttl("86400s")
  *             .retainedReleaseCount(20)
- *             .labels(Map.of(&#34;some-key&#34;, &#34;some-value&#34;))
+ *             .labels(Map.of("some-key", "some-value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

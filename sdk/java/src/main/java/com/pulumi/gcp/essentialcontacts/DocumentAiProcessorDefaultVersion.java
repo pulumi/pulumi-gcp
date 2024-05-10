@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ### Documentai Default Version
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,20 +45,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var processor = new DocumentAiProcessor(&#34;processor&#34;, DocumentAiProcessorArgs.builder()        
- *             .location(&#34;us&#34;)
- *             .displayName(&#34;test-processor&#34;)
- *             .type(&#34;OCR_PROCESSOR&#34;)
+ *         var processor = new DocumentAiProcessor("processor", DocumentAiProcessorArgs.builder()        
+ *             .location("us")
+ *             .displayName("test-processor")
+ *             .type("OCR_PROCESSOR")
  *             .build());
  * 
- *         var processorDocumentAiProcessorDefaultVersion = new DocumentAiProcessorDefaultVersion(&#34;processorDocumentAiProcessorDefaultVersion&#34;, DocumentAiProcessorDefaultVersionArgs.builder()        
+ *         var processorDocumentAiProcessorDefaultVersion = new DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", DocumentAiProcessorDefaultVersionArgs.builder()        
  *             .processor(processor.id())
- *             .version(processor.id().applyValue(id -&gt; String.format(&#34;%s/processorVersions/stable&#34;, id)))
+ *             .version(processor.id().applyValue(id -> String.format("%s/processorVersions/stable", id)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

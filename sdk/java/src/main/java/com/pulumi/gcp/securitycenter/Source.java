@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Scc Source Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,15 +53,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customSource = new Source(&#34;customSource&#34;, SourceArgs.builder()        
- *             .displayName(&#34;My Source&#34;)
- *             .organization(&#34;123456789&#34;)
- *             .description(&#34;My custom Cloud Security Command Center Finding Source&#34;)
+ *         var customSource = new Source("customSource", SourceArgs.builder()        
+ *             .displayName("My Source")
+ *             .organization("123456789")
+ *             .description("My custom Cloud Security Command Center Finding Source")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

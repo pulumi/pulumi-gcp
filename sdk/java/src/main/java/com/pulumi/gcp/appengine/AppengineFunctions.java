@@ -20,7 +20,8 @@ public final class AppengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -43,10 +44,11 @@ public final class AppengineFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -59,7 +61,8 @@ public final class AppengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -82,10 +85,11 @@ public final class AppengineFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -98,7 +102,8 @@ public final class AppengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -121,10 +126,11 @@ public final class AppengineFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -137,7 +143,8 @@ public final class AppengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -160,10 +167,11 @@ public final class AppengineFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -176,7 +184,8 @@ public final class AppengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -199,10 +208,11 @@ public final class AppengineFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -215,7 +225,8 @@ public final class AppengineFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -238,10 +249,11 @@ public final class AppengineFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *         ctx.export("defaultAccount", default_.email());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

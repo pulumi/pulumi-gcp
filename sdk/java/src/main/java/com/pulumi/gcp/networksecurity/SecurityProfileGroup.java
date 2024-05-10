@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Network Security Security Profile Group Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,24 +46,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var securityProfile = new SecurityProfile(&#34;securityProfile&#34;, SecurityProfileArgs.builder()        
- *             .name(&#34;sec-profile&#34;)
- *             .type(&#34;THREAT_PREVENTION&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;global&#34;)
+ *         var securityProfile = new SecurityProfile("securityProfile", SecurityProfileArgs.builder()        
+ *             .name("sec-profile")
+ *             .type("THREAT_PREVENTION")
+ *             .parent("organizations/123456789")
+ *             .location("global")
  *             .build());
  * 
- *         var default_ = new SecurityProfileGroup(&#34;default&#34;, SecurityProfileGroupArgs.builder()        
- *             .name(&#34;sec-profile-group&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .description(&#34;my description&#34;)
+ *         var default_ = new SecurityProfileGroup("default", SecurityProfileGroupArgs.builder()        
+ *             .name("sec-profile-group")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
  *             .threatPreventionProfile(securityProfile.id())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

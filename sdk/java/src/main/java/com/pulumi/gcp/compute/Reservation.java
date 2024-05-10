@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ### Reservation Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,21 +62,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gceReservation = new Reservation(&#34;gceReservation&#34;, ReservationArgs.builder()        
- *             .name(&#34;gce-reservation&#34;)
- *             .zone(&#34;us-central1-a&#34;)
+ *         var gceReservation = new Reservation("gceReservation", ReservationArgs.builder()        
+ *             .name("gce-reservation")
+ *             .zone("us-central1-a")
  *             .specificReservation(ReservationSpecificReservationArgs.builder()
  *                 .count(1)
  *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
- *                     .minCpuPlatform(&#34;Intel Cascade Lake&#34;)
- *                     .machineType(&#34;n2-standard-2&#34;)
+ *                     .minCpuPlatform("Intel Cascade Lake")
+ *                     .machineType("n2-standard-2")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

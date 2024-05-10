@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Region Target Tcp Proxy Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,34 +59,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .name(&#34;health-check&#34;)
- *             .region(&#34;europe-west4&#34;)
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()        
+ *             .name("health-check")
+ *             .region("europe-west4")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;backend-service&#34;)
- *             .protocol(&#34;TCP&#34;)
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()        
+ *             .name("backend-service")
+ *             .protocol("TCP")
  *             .timeoutSec(10)
- *             .region(&#34;europe-west4&#34;)
+ *             .region("europe-west4")
  *             .healthChecks(defaultRegionHealthCheck.id())
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
- *         var default_ = new RegionTargetTcpProxy(&#34;default&#34;, RegionTargetTcpProxyArgs.builder()        
- *             .name(&#34;test-proxy&#34;)
- *             .region(&#34;europe-west4&#34;)
+ *         var default_ = new RegionTargetTcpProxy("default", RegionTargetTcpProxyArgs.builder()        
+ *             .name("test-proxy")
+ *             .region("europe-west4")
  *             .backendService(defaultRegionBackendService.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

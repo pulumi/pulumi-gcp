@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ### Backend Bucket Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,26 +61,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var imageBucket = new Bucket(&#34;imageBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;image-store-bucket&#34;)
- *             .location(&#34;EU&#34;)
+ *         var imageBucket = new Bucket("imageBucket", BucketArgs.builder()        
+ *             .name("image-store-bucket")
+ *             .location("EU")
  *             .build());
  * 
- *         var imageBackend = new BackendBucket(&#34;imageBackend&#34;, BackendBucketArgs.builder()        
- *             .name(&#34;image-backend-bucket&#34;)
- *             .description(&#34;Contains beautiful images&#34;)
+ *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()        
+ *             .name("image-backend-bucket")
+ *             .description("Contains beautiful images")
  *             .bucketName(imageBucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Bucket Security Policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,20 +107,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var imageBackendBucket = new Bucket(&#34;imageBackendBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;image-store-bucket&#34;)
- *             .location(&#34;EU&#34;)
+ *         var imageBackendBucket = new Bucket("imageBackendBucket", BucketArgs.builder()        
+ *             .name("image-store-bucket")
+ *             .location("EU")
  *             .build());
  * 
- *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
- *             .name(&#34;image-store-bucket&#34;)
- *             .description(&#34;basic security policy&#34;)
- *             .type(&#34;CLOUD_ARMOR_EDGE&#34;)
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *             .name("image-store-bucket")
+ *             .description("basic security policy")
+ *             .type("CLOUD_ARMOR_EDGE")
  *             .build());
  * 
- *         var imageBackend = new BackendBucket(&#34;imageBackend&#34;, BackendBucketArgs.builder()        
- *             .name(&#34;image-backend-bucket&#34;)
- *             .description(&#34;Contains beautiful images&#34;)
+ *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()        
+ *             .name("image-backend-bucket")
+ *             .description("Contains beautiful images")
  *             .bucketName(imageBackendBucket.name())
  *             .enableCdn(true)
  *             .edgeSecurityPolicy(policy.id())
@@ -125,12 +128,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Bucket Query String Whitelist
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -155,31 +160,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var imageBucket = new Bucket(&#34;imageBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;image-backend-bucket&#34;)
- *             .location(&#34;EU&#34;)
+ *         var imageBucket = new Bucket("imageBucket", BucketArgs.builder()        
+ *             .name("image-backend-bucket")
+ *             .location("EU")
  *             .build());
  * 
- *         var imageBackend = new BackendBucket(&#34;imageBackend&#34;, BackendBucketArgs.builder()        
- *             .name(&#34;image-backend-bucket&#34;)
- *             .description(&#34;Contains beautiful images&#34;)
+ *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()        
+ *             .name("image-backend-bucket")
+ *             .description("Contains beautiful images")
  *             .bucketName(imageBucket.name())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendBucketCdnPolicyArgs.builder()
  *                 .cacheKeyPolicy(BackendBucketCdnPolicyCacheKeyPolicyArgs.builder()
- *                     .queryStringWhitelists(&#34;image-version&#34;)
+ *                     .queryStringWhitelists("image-version")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Backend Bucket Include Http Headers
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -204,26 +211,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var imageBucket = new Bucket(&#34;imageBucket&#34;, BucketArgs.builder()        
- *             .name(&#34;image-backend-bucket&#34;)
- *             .location(&#34;EU&#34;)
+ *         var imageBucket = new Bucket("imageBucket", BucketArgs.builder()        
+ *             .name("image-backend-bucket")
+ *             .location("EU")
  *             .build());
  * 
- *         var imageBackend = new BackendBucket(&#34;imageBackend&#34;, BackendBucketArgs.builder()        
- *             .name(&#34;image-backend-bucket&#34;)
- *             .description(&#34;Contains beautiful images&#34;)
+ *         var imageBackend = new BackendBucket("imageBackend", BackendBucketArgs.builder()        
+ *             .name("image-backend-bucket")
+ *             .description("Contains beautiful images")
  *             .bucketName(imageBucket.name())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendBucketCdnPolicyArgs.builder()
  *                 .cacheKeyPolicy(BackendBucketCdnPolicyCacheKeyPolicyArgs.builder()
- *                     .includeHttpHeaders(&#34;X-My-Header-Field&#34;)
+ *                     .includeHttpHeaders("X-My-Header-Field")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

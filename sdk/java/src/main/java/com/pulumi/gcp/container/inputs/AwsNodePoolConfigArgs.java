@@ -207,14 +207,14 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+     * Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+     * @return Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -536,7 +536,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+         * @param tags Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+         * @param tags Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:{@literal @}/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
          * 
          * @return builder
          * 

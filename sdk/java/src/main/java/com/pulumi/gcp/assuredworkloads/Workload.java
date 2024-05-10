@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Basic_workload
  * A basic test of a assuredworkloads api
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,41 +57,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Workload(&#34;primary&#34;, WorkloadArgs.builder()        
- *             .complianceRegime(&#34;FEDRAMP_MODERATE&#34;)
- *             .displayName(&#34;{{display}}&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .organization(&#34;123456789&#34;)
- *             .billingAccount(&#34;billingAccounts/000000-0000000-0000000-000000&#34;)
+ *         var primary = new Workload("primary", WorkloadArgs.builder()        
+ *             .complianceRegime("FEDRAMP_MODERATE")
+ *             .displayName("{{display}}")
+ *             .location("us-west1")
+ *             .organization("123456789")
+ *             .billingAccount("billingAccounts/000000-0000000-0000000-000000")
  *             .kmsSettings(WorkloadKmsSettingsArgs.builder()
- *                 .nextRotationTime(&#34;9999-10-02T15:01:23Z&#34;)
- *                 .rotationPeriod(&#34;10368000s&#34;)
+ *                 .nextRotationTime("9999-10-02T15:01:23Z")
+ *                 .rotationPeriod("10368000s")
  *                 .build())
- *             .provisionedResourcesParent(&#34;folders/519620126891&#34;)
+ *             .provisionedResourcesParent("folders/519620126891")
  *             .resourceSettings(            
  *                 WorkloadResourceSettingArgs.builder()
- *                     .displayName(&#34;folder-display-name&#34;)
- *                     .resourceType(&#34;CONSUMER_FOLDER&#34;)
+ *                     .displayName("folder-display-name")
+ *                     .resourceType("CONSUMER_FOLDER")
  *                     .build(),
  *                 WorkloadResourceSettingArgs.builder()
- *                     .resourceType(&#34;ENCRYPTION_KEYS_PROJECT&#34;)
+ *                     .resourceType("ENCRYPTION_KEYS_PROJECT")
  *                     .build(),
  *                 WorkloadResourceSettingArgs.builder()
- *                     .resourceId(&#34;ring&#34;)
- *                     .resourceType(&#34;KEYRING&#34;)
+ *                     .resourceId("ring")
+ *                     .resourceType("KEYRING")
  *                     .build())
  *             .violationNotificationsEnabled(true)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Sovereign_controls_workload
  * A Sovereign Controls test of the assuredworkloads api
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -113,34 +116,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Workload(&#34;primary&#34;, WorkloadArgs.builder()        
- *             .complianceRegime(&#34;EU_REGIONS_AND_SUPPORT&#34;)
- *             .displayName(&#34;display&#34;)
- *             .location(&#34;europe-west9&#34;)
- *             .organization(&#34;123456789&#34;)
- *             .billingAccount(&#34;billingAccounts/000000-0000000-0000000-000000&#34;)
+ *         var primary = new Workload("primary", WorkloadArgs.builder()        
+ *             .complianceRegime("EU_REGIONS_AND_SUPPORT")
+ *             .displayName("display")
+ *             .location("europe-west9")
+ *             .organization("123456789")
+ *             .billingAccount("billingAccounts/000000-0000000-0000000-000000")
  *             .enableSovereignControls(true)
  *             .kmsSettings(WorkloadKmsSettingsArgs.builder()
- *                 .nextRotationTime(&#34;9999-10-02T15:01:23Z&#34;)
- *                 .rotationPeriod(&#34;10368000s&#34;)
+ *                 .nextRotationTime("9999-10-02T15:01:23Z")
+ *                 .rotationPeriod("10368000s")
  *                 .build())
  *             .resourceSettings(            
  *                 WorkloadResourceSettingArgs.builder()
- *                     .resourceType(&#34;CONSUMER_FOLDER&#34;)
+ *                     .resourceType("CONSUMER_FOLDER")
  *                     .build(),
  *                 WorkloadResourceSettingArgs.builder()
- *                     .resourceType(&#34;ENCRYPTION_KEYS_PROJECT&#34;)
+ *                     .resourceType("ENCRYPTION_KEYS_PROJECT")
  *                     .build(),
  *                 WorkloadResourceSettingArgs.builder()
- *                     .resourceId(&#34;ring&#34;)
- *                     .resourceType(&#34;KEYRING&#34;)
+ *                     .resourceId("ring")
+ *                     .resourceType("KEYRING")
  *                     .build())
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

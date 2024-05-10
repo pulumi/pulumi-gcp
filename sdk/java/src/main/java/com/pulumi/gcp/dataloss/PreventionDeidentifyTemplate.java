@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Dlp Deidentify Template Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,16 +53,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionDeidentifyTemplate(&#34;basic&#34;, PreventionDeidentifyTemplateArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var basic = new PreventionDeidentifyTemplate("basic", PreventionDeidentifyTemplateArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .deidentifyConfig(PreventionDeidentifyTemplateDeidentifyConfigArgs.builder()
  *                 .infoTypeTransformations(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs.builder()
  *                     .transformations(                    
  *                         PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs.builder()
  *                             .infoTypes(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs.builder()
- *                                 .name(&#34;FIRST_NAME&#34;)
+ *                                 .name("FIRST_NAME")
  *                                 .build())
  *                             .primitiveTransformation(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs.builder()
  *                                 .replaceWithInfoTypeConfig(true)
@@ -70,10 +71,10 @@ import javax.annotation.Nullable;
  *                         PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs.builder()
  *                             .infoTypes(                            
  *                                 PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs.builder()
- *                                     .name(&#34;PHONE_NUMBER&#34;)
+ *                                     .name("PHONE_NUMBER")
  *                                     .build(),
  *                                 PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs.builder()
- *                                     .name(&#34;AGE&#34;)
+ *                                     .name("AGE")
  *                                     .build())
  *                             .primitiveTransformation(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs.builder()
  *                                 .replaceConfig(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs.builder()
@@ -86,25 +87,25 @@ import javax.annotation.Nullable;
  *                         PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs.builder()
  *                             .infoTypes(                            
  *                                 PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs.builder()
- *                                     .name(&#34;EMAIL_ADDRESS&#34;)
+ *                                     .name("EMAIL_ADDRESS")
  *                                     .build(),
  *                                 PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs.builder()
- *                                     .name(&#34;LAST_NAME&#34;)
+ *                                     .name("LAST_NAME")
  *                                     .build())
  *                             .primitiveTransformation(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs.builder()
  *                                 .characterMaskConfig(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs.builder()
- *                                     .maskingCharacter(&#34;X&#34;)
+ *                                     .maskingCharacter("X")
  *                                     .numberToMask(4)
  *                                     .reverseOrder(true)
  *                                     .charactersToIgnores(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs.builder()
- *                                         .commonCharactersToIgnore(&#34;PUNCTUATION&#34;)
+ *                                         .commonCharactersToIgnore("PUNCTUATION")
  *                                         .build())
  *                                     .build())
  *                                 .build())
  *                             .build(),
  *                         PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs.builder()
  *                             .infoTypes(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs.builder()
- *                                 .name(&#34;DATE_OF_BIRTH&#34;)
+ *                                 .name("DATE_OF_BIRTH")
  *                                 .build())
  *                             .primitiveTransformation(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs.builder()
  *                                 .replaceConfig(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs.builder()
@@ -120,20 +121,20 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs.builder()
  *                             .infoTypes(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs.builder()
- *                                 .name(&#34;CREDIT_CARD_NUMBER&#34;)
+ *                                 .name("CREDIT_CARD_NUMBER")
  *                                 .build())
  *                             .primitiveTransformation(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs.builder()
  *                                 .cryptoDeterministicConfig(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs.builder()
  *                                     .context(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs.builder()
- *                                         .name(&#34;sometweak&#34;)
+ *                                         .name("sometweak")
  *                                         .build())
  *                                     .cryptoKey(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs.builder()
  *                                         .transient_(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs.builder()
- *                                             .name(&#34;beep&#34;)
+ *                                             .name("beep")
  *                                             .build())
  *                                         .build())
  *                                     .surrogateInfoType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs.builder()
- *                                         .name(&#34;abc&#34;)
+ *                                         .name("abc")
  *                                         .build())
  *                                     .build())
  *                                 .build())
@@ -144,12 +145,14 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Deidentify Template Image Transformations
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -172,10 +175,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionDeidentifyTemplate(&#34;basic&#34;, PreventionDeidentifyTemplateArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .description(&#34;Description&#34;)
- *             .displayName(&#34;Displayname&#34;)
+ *         var basic = new PreventionDeidentifyTemplate("basic", PreventionDeidentifyTemplateArgs.builder()        
+ *             .parent("projects/my-project-name")
+ *             .description("Description")
+ *             .displayName("Displayname")
  *             .deidentifyConfig(PreventionDeidentifyTemplateDeidentifyConfigArgs.builder()
  *                 .imageTransformations(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs.builder()
  *                     .transforms(                    
@@ -187,8 +190,8 @@ import javax.annotation.Nullable;
  *                                 .build())
  *                             .selectedInfoTypes(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs.builder()
  *                                 .infoTypes(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs.builder()
- *                                     .name(&#34;COLOR_INFO&#34;)
- *                                     .version(&#34;latest&#34;)
+ *                                     .name("COLOR_INFO")
+ *                                     .version("latest")
  *                                     .build())
  *                                 .build())
  *                             .build(),
@@ -204,7 +207,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

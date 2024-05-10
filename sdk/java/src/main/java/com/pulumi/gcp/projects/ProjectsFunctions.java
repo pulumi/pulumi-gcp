@@ -29,7 +29,8 @@ public final class ProjectsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -51,12 +52,13 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ProjectsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(&#34;myproject&#34;)
+     *             .project("myproject")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -69,7 +71,8 @@ public final class ProjectsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -91,12 +94,13 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ProjectsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(&#34;myproject&#34;)
+     *             .project("myproject")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -109,7 +113,8 @@ public final class ProjectsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -131,12 +136,13 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ProjectsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(&#34;myproject&#34;)
+     *             .project("myproject")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -149,7 +155,8 @@ public final class ProjectsFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -171,12 +178,13 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ProjectsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(&#34;myproject&#34;)
+     *             .project("myproject")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -191,7 +199,8 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -213,14 +222,15 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
-     *             .project(&#34;project-id&#34;)
-     *             .constraint(&#34;constraints/serviceuser.services&#34;)
+     *             .project("project-id")
+     *             .constraint("constraints/serviceuser.services")
      *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -235,7 +245,8 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -257,14 +268,15 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
-     *             .project(&#34;project-id&#34;)
-     *             .constraint(&#34;constraints/serviceuser.services&#34;)
+     *             .project("project-id")
+     *             .constraint("constraints/serviceuser.services")
      *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -279,7 +291,8 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -301,14 +314,15 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
-     *             .project(&#34;project-id&#34;)
-     *             .constraint(&#34;constraints/serviceuser.services&#34;)
+     *             .project("project-id")
+     *             .constraint("constraints/serviceuser.services")
      *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -323,7 +337,8 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -345,14 +360,15 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
-     *             .project(&#34;project-id&#34;)
-     *             .constraint(&#34;constraints/serviceuser.services&#34;)
+     *             .project("project-id")
+     *             .constraint("constraints/serviceuser.services")
      *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -369,7 +385,8 @@ public final class ProjectsFunctions {
      * ### Searching For Projects About To Be Deleted In An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -393,7 +410,7 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
-     *             .filter(&#34;parent.id:012345678910 lifecycleState:DELETE_REQUESTED&#34;)
+     *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
      *             .build());
      * 
      *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
@@ -402,7 +419,8 @@ public final class ProjectsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -419,7 +437,8 @@ public final class ProjectsFunctions {
      * ### Searching For Projects About To Be Deleted In An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -443,7 +462,7 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
-     *             .filter(&#34;parent.id:012345678910 lifecycleState:DELETE_REQUESTED&#34;)
+     *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
      *             .build());
      * 
      *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
@@ -452,7 +471,8 @@ public final class ProjectsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -469,7 +489,8 @@ public final class ProjectsFunctions {
      * ### Searching For Projects About To Be Deleted In An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -493,7 +514,7 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
-     *             .filter(&#34;parent.id:012345678910 lifecycleState:DELETE_REQUESTED&#34;)
+     *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
      *             .build());
      * 
      *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
@@ -502,7 +523,8 @@ public final class ProjectsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -519,7 +541,8 @@ public final class ProjectsFunctions {
      * ### Searching For Projects About To Be Deleted In An Org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -543,7 +566,7 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
-     *             .filter(&#34;parent.id:012345678910 lifecycleState:DELETE_REQUESTED&#34;)
+     *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
      *             .build());
      * 
      *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
@@ -552,7 +575,8 @@ public final class ProjectsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -577,7 +601,8 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -599,12 +624,13 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-project-service = ProjectsFunctions.getProjectService(GetProjectServiceArgs.builder()
-     *             .service(&#34;my-project-service&#34;)
+     *             .service("my-project-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -629,7 +655,8 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -651,12 +678,13 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-project-service = ProjectsFunctions.getProjectService(GetProjectServiceArgs.builder()
-     *             .service(&#34;my-project-service&#34;)
+     *             .service("my-project-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -681,7 +709,8 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -703,12 +732,13 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-project-service = ProjectsFunctions.getProjectService(GetProjectServiceArgs.builder()
-     *             .service(&#34;my-project-service&#34;)
+     *             .service("my-project-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -733,7 +763,8 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -755,12 +786,13 @@ public final class ProjectsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-project-service = ProjectsFunctions.getProjectService(GetProjectServiceArgs.builder()
-     *             .service(&#34;my-project-service&#34;)
+     *             .service("my-project-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

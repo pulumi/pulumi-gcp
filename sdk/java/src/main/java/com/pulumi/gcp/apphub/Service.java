@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Apphub Service Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,77 +72,77 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var application = new Application(&#34;application&#34;, ApplicationArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .applicationId(&#34;example-application-1&#34;)
+ *         var application = new Application("application", ApplicationArgs.builder()        
+ *             .location("us-central1")
+ *             .applicationId("example-application-1")
  *             .scope(ApplicationScopeArgs.builder()
- *                 .type(&#34;REGIONAL&#34;)
+ *                 .type("REGIONAL")
  *                 .build())
  *             .build());
  * 
- *         var serviceProject = new Project(&#34;serviceProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-1&#34;)
- *             .name(&#34;Service Project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *             .projectId("project-1")
+ *             .name("Service Project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service(&#34;computeServiceProject&#34;, ServiceArgs.builder()        
+ *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()        
  *             .project(serviceProject.projectId())
- *             .service(&#34;compute.googleapis.com&#34;)
+ *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var wait120s = new Sleep(&#34;wait120s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
- *         var serviceProjectAttachment = new ServiceProjectAttachment(&#34;serviceProjectAttachment&#34;, ServiceProjectAttachmentArgs.builder()        
+ *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()        
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
  *         // VPC network
- *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;l7-ilb-network&#34;)
+ *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()        
+ *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // backend subnet
- *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;l7-ilb-subnet&#34;)
+ *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()        
+ *             .name("l7-ilb-subnet")
  *             .project(serviceProject.projectId())
- *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .ipCidrRange("10.0.1.0/24")
+ *             .region("us-central1")
  *             .network(ilbNetwork.id())
  *             .build());
  * 
  *         // health check
- *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;l7-ilb-hc&#34;)
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *             .name("l7-ilb-hc")
  *             .project(serviceProject.projectId())
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .build());
  * 
  *         // backend service
- *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;l7-ilb-backend-subnet&#34;)
+ *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()        
+ *             .name("l7-ilb-backend-subnet")
  *             .project(serviceProject.projectId())
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .healthChecks(default_.id())
  *             .build());
  * 
  *         // forwarding rule
- *         var forwardingRule = new ForwardingRule(&#34;forwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;l7-ilb-forwarding-rule&#34;)
+ *         var forwardingRule = new ForwardingRule("forwardingRule", ForwardingRuleArgs.builder()        
+ *             .name("l7-ilb-forwarding-rule")
  *             .project(serviceProject.projectId())
- *             .region(&#34;us-central1&#34;)
- *             .ipVersion(&#34;IPV4&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *             .region("us-central1")
+ *             .ipVersion("IPV4")
+ *             .loadBalancingScheme("INTERNAL")
  *             .allPorts(true)
  *             .backendService(backend.id())
  *             .network(ilbNetwork.id())
@@ -150,29 +151,31 @@ import javax.annotation.Nullable;
  * 
  *         // discovered service block
  *         final var catalog-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
- *             .location(&#34;us-central1&#34;)
- *             .serviceUri(forwardingRule.id().applyValue(id -&gt; String.format(&#34;//compute.googleapis.com/%s&#34;, id)))
+ *             .location("us-central1")
+ *             .serviceUri(forwardingRule.id().applyValue(id -> String.format("//compute.googleapis.com/%s", id)))
  *             .build());
  * 
- *         var wait120sForResourceIngestion = new Sleep(&#34;wait120sForResourceIngestion&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
- *         var example = new Service(&#34;example&#34;, ServiceArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var example = new Service("example", ServiceArgs.builder()        
+ *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .serviceId(forwardingRule.name())
- *             .discoveredService(catalog_service.applyValue(catalog_service -&gt; catalog_service.name()))
+ *             .discoveredService(catalog_service.applyValue(catalog_service -> catalog_service.name()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apphub Service Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -220,77 +223,77 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var application = new Application(&#34;application&#34;, ApplicationArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .applicationId(&#34;example-application-1&#34;)
+ *         var application = new Application("application", ApplicationArgs.builder()        
+ *             .location("us-central1")
+ *             .applicationId("example-application-1")
  *             .scope(ApplicationScopeArgs.builder()
- *                 .type(&#34;REGIONAL&#34;)
+ *                 .type("REGIONAL")
  *                 .build())
  *             .build());
  * 
- *         var serviceProject = new Project(&#34;serviceProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-1&#34;)
- *             .name(&#34;Service Project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *         var serviceProject = new Project("serviceProject", ProjectArgs.builder()        
+ *             .projectId("project-1")
+ *             .name("Service Project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service(&#34;computeServiceProject&#34;, ServiceArgs.builder()        
+ *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()        
  *             .project(serviceProject.projectId())
- *             .service(&#34;compute.googleapis.com&#34;)
+ *             .service("compute.googleapis.com")
  *             .build());
  * 
- *         var wait120s = new Sleep(&#34;wait120s&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
- *         var serviceProjectAttachment = new ServiceProjectAttachment(&#34;serviceProjectAttachment&#34;, ServiceProjectAttachmentArgs.builder()        
+ *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()        
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
  *         // VPC network
- *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;l7-ilb-network&#34;)
+ *         var ilbNetwork = new Network("ilbNetwork", NetworkArgs.builder()        
+ *             .name("l7-ilb-network")
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         // backend subnet
- *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
- *             .name(&#34;l7-ilb-subnet&#34;)
+ *         var ilbSubnet = new Subnetwork("ilbSubnet", SubnetworkArgs.builder()        
+ *             .name("l7-ilb-subnet")
  *             .project(serviceProject.projectId())
- *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .ipCidrRange("10.0.1.0/24")
+ *             .region("us-central1")
  *             .network(ilbNetwork.id())
  *             .build());
  * 
  *         // health check
- *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
- *             .name(&#34;l7-ilb-hc&#34;)
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()        
+ *             .name("l7-ilb-hc")
  *             .project(serviceProject.projectId())
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;80&#34;)
+ *                 .port("80")
  *                 .build())
  *             .build());
  * 
  *         // backend service
- *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
- *             .name(&#34;l7-ilb-backend-subnet&#34;)
+ *         var backend = new RegionBackendService("backend", RegionBackendServiceArgs.builder()        
+ *             .name("l7-ilb-backend-subnet")
  *             .project(serviceProject.projectId())
- *             .region(&#34;us-central1&#34;)
+ *             .region("us-central1")
  *             .healthChecks(default_.id())
  *             .build());
  * 
  *         // forwarding rule
- *         var forwardingRule = new ForwardingRule(&#34;forwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .name(&#34;l7-ilb-forwarding-rule&#34;)
+ *         var forwardingRule = new ForwardingRule("forwardingRule", ForwardingRuleArgs.builder()        
+ *             .name("l7-ilb-forwarding-rule")
  *             .project(serviceProject.projectId())
- *             .region(&#34;us-central1&#34;)
- *             .ipVersion(&#34;IPV4&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *             .region("us-central1")
+ *             .ipVersion("IPV4")
+ *             .loadBalancingScheme("INTERNAL")
  *             .allPorts(true)
  *             .backendService(backend.id())
  *             .network(ilbNetwork.id())
@@ -299,46 +302,47 @@ import javax.annotation.Nullable;
  * 
  *         // discovered service block
  *         final var catalog-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
- *             .location(&#34;us-central1&#34;)
- *             .serviceUri(forwardingRule.id().applyValue(id -&gt; String.format(&#34;//compute.googleapis.com/%s&#34;, id)))
+ *             .location("us-central1")
+ *             .serviceUri(forwardingRule.id().applyValue(id -> String.format("//compute.googleapis.com/%s", id)))
  *             .build());
  * 
- *         var wait120sForResourceIngestion = new Sleep(&#34;wait120sForResourceIngestion&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;120s&#34;)
+ *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()        
+ *             .createDuration("120s")
  *             .build());
  * 
- *         var example = new Service(&#34;example&#34;, ServiceArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *         var example = new Service("example", ServiceArgs.builder()        
+ *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .serviceId(forwardingRule.name())
- *             .discoveredService(catalog_service.applyValue(catalog_service -&gt; catalog_service.name()))
- *             .displayName(&#34;Example Service Full&#34;)
- *             .description(&#34;Register service for testing&#34;)
+ *             .discoveredService(catalog_service.applyValue(catalog_service -> catalog_service.name()))
+ *             .displayName("Example Service Full")
+ *             .description("Register service for testing")
  *             .attributes(ServiceAttributesArgs.builder()
  *                 .environment(ServiceAttributesEnvironmentArgs.builder()
- *                     .type(&#34;STAGING&#34;)
+ *                     .type("STAGING")
  *                     .build())
  *                 .criticality(ServiceAttributesCriticalityArgs.builder()
- *                     .type(&#34;MISSION_CRITICAL&#34;)
+ *                     .type("MISSION_CRITICAL")
  *                     .build())
  *                 .businessOwners(ServiceAttributesBusinessOwnerArgs.builder()
- *                     .displayName(&#34;Alice&#34;)
- *                     .email(&#34;alice@google.com&#34;)
+ *                     .displayName("Alice")
+ *                     .email("alice{@literal @}google.com")
  *                     .build())
  *                 .developerOwners(ServiceAttributesDeveloperOwnerArgs.builder()
- *                     .displayName(&#34;Bob&#34;)
- *                     .email(&#34;bob@google.com&#34;)
+ *                     .displayName("Bob")
+ *                     .email("bob{@literal @}google.com")
  *                     .build())
  *                 .operatorOwners(ServiceAttributesOperatorOwnerArgs.builder()
- *                     .displayName(&#34;Charlie&#34;)
- *                     .email(&#34;charlie@google.com&#34;)
+ *                     .displayName("Charlie")
+ *                     .email("charlie{@literal @}google.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

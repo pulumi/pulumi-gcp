@@ -17,7 +17,7 @@ public final class GetSubscriptionDeadLetterPolicy {
      * 
      * The Cloud Pub/Sub service account associated with the enclosing subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
      * permission to Publish() to this topic.
      * 
      * The operation will fail if the topic does not exist.
@@ -50,7 +50,7 @@ public final class GetSubscriptionDeadLetterPolicy {
      * 
      * The Cloud Pub/Sub service account associated with the enclosing subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
      * permission to Publish() to this topic.
      * 
      * The operation will fail if the topic does not exist.

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Queue Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,19 +48,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Queue(&#34;default&#34;, QueueArgs.builder()        
- *             .name(&#34;cloud-tasks-queue-test&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var default_ = new Queue("default", QueueArgs.builder()        
+ *             .name("cloud-tasks-queue-test")
+ *             .location("us-central1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloud Tasks Queue Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -84,13 +87,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var advancedConfiguration = new Queue(&#34;advancedConfiguration&#34;, QueueArgs.builder()        
- *             .name(&#34;instance-name&#34;)
- *             .location(&#34;us-central1&#34;)
+ *         var advancedConfiguration = new Queue("advancedConfiguration", QueueArgs.builder()        
+ *             .name("instance-name")
+ *             .location("us-central1")
  *             .appEngineRoutingOverride(QueueAppEngineRoutingOverrideArgs.builder()
- *                 .service(&#34;worker&#34;)
- *                 .version(&#34;1.0&#34;)
- *                 .instance(&#34;test&#34;)
+ *                 .service("worker")
+ *                 .version("1.0")
+ *                 .instance("test")
  *                 .build())
  *             .rateLimits(QueueRateLimitsArgs.builder()
  *                 .maxConcurrentDispatches(3)
@@ -98,9 +101,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .retryConfig(QueueRetryConfigArgs.builder()
  *                 .maxAttempts(5)
- *                 .maxRetryDuration(&#34;4s&#34;)
- *                 .maxBackoff(&#34;3s&#34;)
- *                 .minBackoff(&#34;2s&#34;)
+ *                 .maxRetryDuration("4s")
+ *                 .maxBackoff("3s")
+ *                 .minBackoff("2s")
  *                 .maxDoublings(1)
  *                 .build())
  *             .stackdriverLoggingConfig(QueueStackdriverLoggingConfigArgs.builder()
@@ -110,7 +113,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

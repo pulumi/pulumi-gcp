@@ -32,7 +32,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -61,7 +62,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -74,7 +76,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -103,7 +106,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -116,7 +120,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -145,7 +150,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -158,7 +164,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -187,7 +194,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -202,7 +210,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -224,13 +233,14 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataset = BigqueryFunctions.getDataset(GetDatasetArgs.builder()
-     *             .datasetId(&#34;my-bq-dataset&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -245,7 +255,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -267,13 +278,14 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataset = BigqueryFunctions.getDataset(GetDatasetArgs.builder()
-     *             .datasetId(&#34;my-bq-dataset&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -288,7 +300,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -310,13 +323,14 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataset = BigqueryFunctions.getDataset(GetDatasetArgs.builder()
-     *             .datasetId(&#34;my-bq-dataset&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -331,7 +345,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -353,13 +368,14 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataset = BigqueryFunctions.getDataset(GetDatasetArgs.builder()
-     *             .datasetId(&#34;my-bq-dataset&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -372,7 +388,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -399,7 +416,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -412,7 +430,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -439,7 +458,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -452,7 +472,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -479,7 +500,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -492,7 +514,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -519,7 +542,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -540,7 +564,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -565,15 +590,16 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(key.id())
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -594,7 +620,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -619,15 +646,16 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(key.id())
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -648,7 +676,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -673,15 +702,16 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(key.id())
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -702,7 +732,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -727,15 +758,16 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(key.id())
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -756,7 +788,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -781,15 +814,16 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(key.id())
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -810,7 +844,8 @@ public final class BigqueryFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -835,15 +870,16 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(key.id())
-     *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -856,7 +892,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -885,7 +922,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -898,7 +936,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -927,7 +966,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -940,7 +980,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -969,7 +1010,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -982,7 +1024,8 @@ public final class BigqueryFunctions {
      * ## example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1011,7 +1054,8 @@ public final class BigqueryFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

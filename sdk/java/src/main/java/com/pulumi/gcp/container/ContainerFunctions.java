@@ -41,7 +41,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -63,16 +64,17 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var manifest = ContainerFunctions.getAttachedInstallManifest(GetAttachedInstallManifestArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .clusterId(&#34;test-cluster-1&#34;)
-     *             .platformVersion(&#34;1.25.0-gke.1&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
+     *             .clusterId("test-cluster-1")
+     *             .platformVersion("1.25.0-gke.1")
      *             .build());
      * 
-     *         ctx.export(&#34;installManifest&#34;, manifest.applyValue(getAttachedInstallManifestResult -&gt; getAttachedInstallManifestResult));
+     *         ctx.export("installManifest", manifest.applyValue(getAttachedInstallManifestResult -> getAttachedInstallManifestResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -85,7 +87,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -107,16 +110,17 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var manifest = ContainerFunctions.getAttachedInstallManifest(GetAttachedInstallManifestArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .clusterId(&#34;test-cluster-1&#34;)
-     *             .platformVersion(&#34;1.25.0-gke.1&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
+     *             .clusterId("test-cluster-1")
+     *             .platformVersion("1.25.0-gke.1")
      *             .build());
      * 
-     *         ctx.export(&#34;installManifest&#34;, manifest.applyValue(getAttachedInstallManifestResult -&gt; getAttachedInstallManifestResult));
+     *         ctx.export("installManifest", manifest.applyValue(getAttachedInstallManifestResult -> getAttachedInstallManifestResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -129,7 +133,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -151,16 +156,17 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var manifest = ContainerFunctions.getAttachedInstallManifest(GetAttachedInstallManifestArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .clusterId(&#34;test-cluster-1&#34;)
-     *             .platformVersion(&#34;1.25.0-gke.1&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
+     *             .clusterId("test-cluster-1")
+     *             .platformVersion("1.25.0-gke.1")
      *             .build());
      * 
-     *         ctx.export(&#34;installManifest&#34;, manifest.applyValue(getAttachedInstallManifestResult -&gt; getAttachedInstallManifestResult));
+     *         ctx.export("installManifest", manifest.applyValue(getAttachedInstallManifestResult -> getAttachedInstallManifestResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -173,7 +179,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -195,16 +202,17 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var manifest = ContainerFunctions.getAttachedInstallManifest(GetAttachedInstallManifestArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .clusterId(&#34;test-cluster-1&#34;)
-     *             .platformVersion(&#34;1.25.0-gke.1&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
+     *             .clusterId("test-cluster-1")
+     *             .platformVersion("1.25.0-gke.1")
      *             .build());
      * 
-     *         ctx.export(&#34;installManifest&#34;, manifest.applyValue(getAttachedInstallManifestResult -&gt; getAttachedInstallManifestResult));
+     *         ctx.export("installManifest", manifest.applyValue(getAttachedInstallManifestResult -> getAttachedInstallManifestResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -217,7 +225,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -239,14 +248,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var uswest = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -259,7 +269,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -281,14 +292,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var uswest = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -301,7 +313,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -323,14 +336,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var uswest = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -343,7 +357,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -365,14 +380,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var uswest = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -385,7 +401,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -407,14 +424,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -427,7 +445,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -449,14 +468,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -469,7 +489,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -491,14 +512,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -511,7 +533,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -533,14 +556,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -553,7 +577,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -575,14 +600,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -595,7 +621,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -617,14 +644,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -637,7 +665,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -659,14 +688,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -679,7 +709,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -701,14 +732,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -721,7 +753,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -743,14 +776,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -763,7 +797,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -785,14 +820,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -805,7 +841,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -827,14 +864,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -847,7 +885,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -869,14 +908,15 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
-     *             .location(&#34;us-west1&#34;)
-     *             .project(&#34;my-project&#34;)
+     *             .location("us-west1")
+     *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -931,7 +971,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -955,22 +996,23 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
-     *             .location(&#34;us-central1-b&#34;)
-     *             .versionPrefix(&#34;1.12.&#34;)
+     *             .location("us-central1-b")
+     *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
-     *             .name(&#34;test-cluster&#34;)
-     *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *             .name("test-cluster")
+     *             .location("us-central1-b")
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -989,7 +1031,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1013,22 +1056,23 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
-     *             .location(&#34;us-central1-b&#34;)
-     *             .versionPrefix(&#34;1.12.&#34;)
+     *             .location("us-central1-b")
+     *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
-     *             .name(&#34;test-cluster&#34;)
-     *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *             .name("test-cluster")
+     *             .location("us-central1-b")
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1047,7 +1091,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1071,22 +1116,23 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
-     *             .location(&#34;us-central1-b&#34;)
-     *             .versionPrefix(&#34;1.12.&#34;)
+     *             .location("us-central1-b")
+     *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
-     *             .name(&#34;test-cluster&#34;)
-     *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *             .name("test-cluster")
+     *             .location("us-central1-b")
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1105,7 +1151,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1129,22 +1176,23 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
-     *             .location(&#34;us-central1-b&#34;)
-     *             .versionPrefix(&#34;1.12.&#34;)
+     *             .location("us-central1-b")
+     *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
-     *             .name(&#34;test-cluster&#34;)
-     *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *             .name("test-cluster")
+     *             .location("us-central1-b")
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1163,7 +1211,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1187,22 +1236,23 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
-     *             .location(&#34;us-central1-b&#34;)
-     *             .versionPrefix(&#34;1.12.&#34;)
+     *             .location("us-central1-b")
+     *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
-     *             .name(&#34;test-cluster&#34;)
-     *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *             .name("test-cluster")
+     *             .location("us-central1-b")
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1221,7 +1271,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1245,22 +1296,23 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
-     *             .location(&#34;us-central1-b&#34;)
-     *             .versionPrefix(&#34;1.12.&#34;)
+     *             .location("us-central1-b")
+     *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
-     *             .name(&#34;test-cluster&#34;)
-     *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *             .name("test-cluster")
+     *             .location("us-central1-b")
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1275,7 +1327,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1297,13 +1350,14 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var debian = ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
-     *             .name(&#34;debian&#34;)
+     *             .name("debian")
      *             .build());
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, debian.applyValue(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
+     *         ctx.export("gcrLocation", debian.applyValue(getRegistryImageResult -> getRegistryImageResult.imageUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1318,7 +1372,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1340,13 +1395,14 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var debian = ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
-     *             .name(&#34;debian&#34;)
+     *             .name("debian")
      *             .build());
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, debian.applyValue(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
+     *         ctx.export("gcrLocation", debian.applyValue(getRegistryImageResult -> getRegistryImageResult.imageUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1361,7 +1417,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1383,13 +1440,14 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var debian = ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
-     *             .name(&#34;debian&#34;)
+     *             .name("debian")
      *             .build());
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, debian.applyValue(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
+     *         ctx.export("gcrLocation", debian.applyValue(getRegistryImageResult -> getRegistryImageResult.imageUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1404,7 +1462,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1426,13 +1485,14 @@ public final class ContainerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var debian = ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
-     *             .name(&#34;debian&#34;)
+     *             .name("debian")
      *             .build());
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, debian.applyValue(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
+     *         ctx.export("gcrLocation", debian.applyValue(getRegistryImageResult -> getRegistryImageResult.imageUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1447,7 +1507,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1470,10 +1531,11 @@ public final class ContainerFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1488,7 +1550,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1511,10 +1574,11 @@ public final class ContainerFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1529,7 +1593,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1552,10 +1617,11 @@ public final class ContainerFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1570,7 +1636,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1593,10 +1660,11 @@ public final class ContainerFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1611,7 +1679,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1634,10 +1703,11 @@ public final class ContainerFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1652,7 +1722,8 @@ public final class ContainerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1675,10 +1746,11 @@ public final class ContainerFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

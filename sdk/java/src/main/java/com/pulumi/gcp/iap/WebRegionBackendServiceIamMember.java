@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ## google\_iap\_web\_region\_backend\_service\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,27 +61,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/iap.httpsResourceAccessor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebRegionBackendServiceIamPolicy(&#34;policy&#34;, WebRegionBackendServiceIamPolicyArgs.builder()        
+ *         var policy = new WebRegionBackendServiceIamPolicy("policy", WebRegionBackendServiceIamPolicyArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -105,31 +108,33 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/iap.httpsResourceAccessor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebRegionBackendServiceIamPolicy(&#34;policy&#34;, WebRegionBackendServiceIamPolicyArgs.builder()        
+ *         var policy = new WebRegionBackendServiceIamPolicy("policy", WebRegionBackendServiceIamPolicyArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_iap\_web\_region\_backend\_service\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -150,23 +155,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebRegionBackendServiceIamBinding(&#34;binding&#34;, WebRegionBackendServiceIamBindingArgs.builder()        
+ *         var binding = new WebRegionBackendServiceIamBinding("binding", WebRegionBackendServiceIamBindingArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.httpsResourceAccessor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -188,27 +195,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebRegionBackendServiceIamBinding(&#34;binding&#34;, WebRegionBackendServiceIamBindingArgs.builder()        
+ *         var binding = new WebRegionBackendServiceIamBinding("binding", WebRegionBackendServiceIamBindingArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.httpsResourceAccessor")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(WebRegionBackendServiceIamBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_iap\_web\_region\_backend\_service\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -229,23 +238,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebRegionBackendServiceIamMember(&#34;member&#34;, WebRegionBackendServiceIamMemberArgs.builder()        
+ *         var member = new WebRegionBackendServiceIamMember("member", WebRegionBackendServiceIamMemberArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.httpsResourceAccessor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -267,28 +278,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebRegionBackendServiceIamMember(&#34;member&#34;, WebRegionBackendServiceIamMemberArgs.builder()        
+ *         var member = new WebRegionBackendServiceIamMember("member", WebRegionBackendServiceIamMemberArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.httpsResourceAccessor")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(WebRegionBackendServiceIamMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_iap\_web\_region\_backend\_service\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -313,27 +326,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/iap.httpsResourceAccessor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebRegionBackendServiceIamPolicy(&#34;policy&#34;, WebRegionBackendServiceIamPolicyArgs.builder()        
+ *         var policy = new WebRegionBackendServiceIamPolicy("policy", WebRegionBackendServiceIamPolicyArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -358,31 +373,33 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .role("roles/iap.httpsResourceAccessor")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title(&#34;expires_after_2019_12_31&#34;)
- *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var policy = new WebRegionBackendServiceIamPolicy(&#34;policy&#34;, WebRegionBackendServiceIamPolicyArgs.builder()        
+ *         var policy = new WebRegionBackendServiceIamPolicy("policy", WebRegionBackendServiceIamPolicyArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_iap\_web\_region\_backend\_service\_iam\_binding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -403,23 +420,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebRegionBackendServiceIamBinding(&#34;binding&#34;, WebRegionBackendServiceIamBindingArgs.builder()        
+ *         var binding = new WebRegionBackendServiceIamBinding("binding", WebRegionBackendServiceIamBindingArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.httpsResourceAccessor")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -441,27 +460,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new WebRegionBackendServiceIamBinding(&#34;binding&#34;, WebRegionBackendServiceIamBindingArgs.builder()        
+ *         var binding = new WebRegionBackendServiceIamBinding("binding", WebRegionBackendServiceIamBindingArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.httpsResourceAccessor")
+ *             .members("user:jane{@literal @}example.com")
  *             .condition(WebRegionBackendServiceIamBindingConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_iap\_web\_region\_backend\_service\_iam\_member
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -482,23 +503,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebRegionBackendServiceIamMember(&#34;member&#34;, WebRegionBackendServiceIamMemberArgs.builder()        
+ *         var member = new WebRegionBackendServiceIamMember("member", WebRegionBackendServiceIamMemberArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.httpsResourceAccessor")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -520,22 +543,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new WebRegionBackendServiceIamMember(&#34;member&#34;, WebRegionBackendServiceIamMemberArgs.builder()        
+ *         var member = new WebRegionBackendServiceIamMember("member", WebRegionBackendServiceIamMemberArgs.builder()        
  *             .project(default_.project())
  *             .region(default_.region())
  *             .webRegionBackendService(default_.name())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .role("roles/iap.httpsResourceAccessor")
+ *             .member("user:jane{@literal @}example.com")
  *             .condition(WebRegionBackendServiceIamMemberConditionArgs.builder()
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -557,7 +581,7 @@ import javax.annotation.Nullable;
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember editor &#34;projects/{{project}}/iap_web/compute-{{region}}/services/{{web_region_backend_service}} roles/iap.httpsResourceAccessor user:jane@example.com&#34;
+ * $ pulumi import gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember editor &#34;projects/{{project}}/iap_web/compute-{{region}}/services/{{web_region_backend_service}} roles/iap.httpsResourceAccessor user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
@@ -614,9 +638,9 @@ public class WebRegionBackendServiceIamMember extends com.pulumi.resources.Custo
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
@@ -631,9 +655,9 @@ public class WebRegionBackendServiceIamMember extends com.pulumi.resources.Custo
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;

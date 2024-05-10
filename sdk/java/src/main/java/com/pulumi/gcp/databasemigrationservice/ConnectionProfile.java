@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### Database Migration Service Connection Profile Cloudsql
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -73,34 +74,34 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cloudsqldb = new DatabaseInstance(&#34;cloudsqldb&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-database&#34;)
- *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+ *         var cloudsqldb = new DatabaseInstance("cloudsqldb", DatabaseInstanceArgs.builder()        
+ *             .name("my-database")
+ *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-n1-standard-1&#34;)
+ *                 .tier("db-n1-standard-1")
  *                 .deletionProtectionEnabled(false)
  *                 .build())
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var sqlClientCert = new SslCert(&#34;sqlClientCert&#34;, SslCertArgs.builder()        
- *             .commonName(&#34;my-cert&#34;)
+ *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()        
+ *             .commonName("my-cert")
  *             .instance(cloudsqldb.name())
  *             .build());
  * 
- *         var sqldbUser = new User(&#34;sqldbUser&#34;, UserArgs.builder()        
- *             .name(&#34;my-username&#34;)
+ *         var sqldbUser = new User("sqldbUser", UserArgs.builder()        
+ *             .name("my-username")
  *             .instance(cloudsqldb.name())
- *             .password(&#34;my-password&#34;)
+ *             .password("my-password")
  *             .build());
  * 
- *         var cloudsqlprofile = new ConnectionProfile(&#34;cloudsqlprofile&#34;, ConnectionProfileArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;my-fromprofileid&#34;)
- *             .displayName(&#34;my-fromprofileid_display&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var cloudsqlprofile = new ConnectionProfile("cloudsqlprofile", ConnectionProfileArgs.builder()        
+ *             .location("us-central1")
+ *             .connectionProfileId("my-fromprofileid")
+ *             .displayName("my-fromprofileid_display")
+ *             .labels(Map.of("foo", "bar"))
  *             .mysql(ConnectionProfileMysqlArgs.builder()
- *                 .host(cloudsqldb.ipAddresses().applyValue(ipAddresses -&gt; ipAddresses[0].ipAddress()))
+ *                 .host(cloudsqldb.ipAddresses().applyValue(ipAddresses -> ipAddresses[0].ipAddress()))
  *                 .port(3306)
  *                 .username(sqldbUser.name())
  *                 .password(sqldbUser.password())
@@ -109,45 +110,47 @@ import javax.annotation.Nullable;
  *                     .clientCertificate(sqlClientCert.cert())
  *                     .caCertificate(sqlClientCert.serverCaCert())
  *                     .build())
- *                 .cloudSqlId(&#34;my-database&#34;)
+ *                 .cloudSqlId("my-database")
  *                 .build())
  *             .build());
  * 
- *         var cloudsqlprofileDestination = new ConnectionProfile(&#34;cloudsqlprofileDestination&#34;, ConnectionProfileArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;my-toprofileid&#34;)
- *             .displayName(&#34;my-toprofileid_displayname&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var cloudsqlprofileDestination = new ConnectionProfile("cloudsqlprofileDestination", ConnectionProfileArgs.builder()        
+ *             .location("us-central1")
+ *             .connectionProfileId("my-toprofileid")
+ *             .displayName("my-toprofileid_displayname")
+ *             .labels(Map.of("foo", "bar"))
  *             .cloudsql(ConnectionProfileCloudsqlArgs.builder()
  *                 .settings(ConnectionProfileCloudsqlSettingsArgs.builder()
- *                     .databaseVersion(&#34;MYSQL_5_7&#34;)
- *                     .userLabels(Map.of(&#34;cloudfoo&#34;, &#34;cloudbar&#34;))
- *                     .tier(&#34;db-n1-standard-1&#34;)
- *                     .edition(&#34;ENTERPRISE&#34;)
- *                     .storageAutoResizeLimit(&#34;0&#34;)
- *                     .activationPolicy(&#34;ALWAYS&#34;)
+ *                     .databaseVersion("MYSQL_5_7")
+ *                     .userLabels(Map.of("cloudfoo", "cloudbar"))
+ *                     .tier("db-n1-standard-1")
+ *                     .edition("ENTERPRISE")
+ *                     .storageAutoResizeLimit("0")
+ *                     .activationPolicy("ALWAYS")
  *                     .ipConfig(ConnectionProfileCloudsqlSettingsIpConfigArgs.builder()
  *                         .enableIpv4(true)
  *                         .requireSsl(true)
  *                         .build())
  *                     .autoStorageIncrease(true)
- *                     .dataDiskType(&#34;PD_HDD&#34;)
- *                     .dataDiskSizeGb(&#34;11&#34;)
- *                     .zone(&#34;us-central1-b&#34;)
- *                     .sourceId(String.format(&#34;projects/%s/locations/us-central1/connectionProfiles/my-fromprofileid&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.projectId())))
- *                     .rootPassword(&#34;testpasscloudsql&#34;)
+ *                     .dataDiskType("PD_HDD")
+ *                     .dataDiskSizeGb("11")
+ *                     .zone("us-central1-b")
+ *                     .sourceId(String.format("projects/%s/locations/us-central1/connectionProfiles/my-fromprofileid", project.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *                     .rootPassword("testpasscloudsql")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Database Migration Service Connection Profile Postgres
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -177,33 +180,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgresqldb = new DatabaseInstance(&#34;postgresqldb&#34;, DatabaseInstanceArgs.builder()        
- *             .name(&#34;my-database&#34;)
- *             .databaseVersion(&#34;POSTGRES_12&#34;)
+ *         var postgresqldb = new DatabaseInstance("postgresqldb", DatabaseInstanceArgs.builder()        
+ *             .name("my-database")
+ *             .databaseVersion("POSTGRES_12")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-custom-2-13312&#34;)
+ *                 .tier("db-custom-2-13312")
  *                 .build())
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var sqlClientCert = new SslCert(&#34;sqlClientCert&#34;, SslCertArgs.builder()        
- *             .commonName(&#34;my-cert&#34;)
+ *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()        
+ *             .commonName("my-cert")
  *             .instance(postgresqldb.name())
  *             .build());
  * 
- *         var sqldbUser = new User(&#34;sqldbUser&#34;, UserArgs.builder()        
- *             .name(&#34;my-username&#34;)
+ *         var sqldbUser = new User("sqldbUser", UserArgs.builder()        
+ *             .name("my-username")
  *             .instance(postgresqldb.name())
- *             .password(&#34;my-password&#34;)
+ *             .password("my-password")
  *             .build());
  * 
- *         var postgresprofile = new ConnectionProfile(&#34;postgresprofile&#34;, ConnectionProfileArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;my-profileid&#34;)
- *             .displayName(&#34;my-profileid_display&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var postgresprofile = new ConnectionProfile("postgresprofile", ConnectionProfileArgs.builder()        
+ *             .location("us-central1")
+ *             .connectionProfileId("my-profileid")
+ *             .displayName("my-profileid_display")
+ *             .labels(Map.of("foo", "bar"))
  *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
- *                 .host(postgresqldb.ipAddresses().applyValue(ipAddresses -&gt; ipAddresses[0].ipAddress()))
+ *                 .host(postgresqldb.ipAddresses().applyValue(ipAddresses -> ipAddresses[0].ipAddress()))
  *                 .port(5432)
  *                 .username(sqldbUser.name())
  *                 .password(sqldbUser.password())
@@ -212,18 +215,20 @@ import javax.annotation.Nullable;
  *                     .clientCertificate(sqlClientCert.cert())
  *                     .caCertificate(sqlClientCert.serverCaCert())
  *                     .build())
- *                 .cloudSqlId(&#34;my-database&#34;)
+ *                 .cloudSqlId("my-database")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Database Migration Service Connection Profile Oracle
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -246,29 +251,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var oracleprofile = new ConnectionProfile(&#34;oracleprofile&#34;, ConnectionProfileArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;my-profileid&#34;)
- *             .displayName(&#34;my-profileid_display&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var oracleprofile = new ConnectionProfile("oracleprofile", ConnectionProfileArgs.builder()        
+ *             .location("us-central1")
+ *             .connectionProfileId("my-profileid")
+ *             .displayName("my-profileid_display")
+ *             .labels(Map.of("foo", "bar"))
  *             .oracle(ConnectionProfileOracleArgs.builder()
- *                 .host(&#34;host&#34;)
+ *                 .host("host")
  *                 .port(1521)
- *                 .username(&#34;username&#34;)
- *                 .password(&#34;password&#34;)
- *                 .databaseService(&#34;dbprovider&#34;)
+ *                 .username("username")
+ *                 .password("password")
+ *                 .databaseService("dbprovider")
  *                 .staticServiceIpConnectivity()
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Database Migration Service Connection Profile Alloydb
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -304,45 +311,45 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .name(&#34;vpc-network&#34;)
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .name("vpc-network")
  *             .build());
  * 
- *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
- *             .name(&#34;private-ip-alloc&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;VPC_PEERING&#34;)
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()        
+ *             .name("private-ip-alloc")
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
  *             .prefixLength(16)
  *             .network(default_.id())
  *             .build());
  * 
- *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()        
  *             .network(default_.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
- *         var alloydbprofile = new ConnectionProfile(&#34;alloydbprofile&#34;, ConnectionProfileArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .connectionProfileId(&#34;my-profileid&#34;)
- *             .displayName(&#34;my-profileid_display&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *         var alloydbprofile = new ConnectionProfile("alloydbprofile", ConnectionProfileArgs.builder()        
+ *             .location("us-central1")
+ *             .connectionProfileId("my-profileid")
+ *             .displayName("my-profileid_display")
+ *             .labels(Map.of("foo", "bar"))
  *             .alloydb(ConnectionProfileAlloydbArgs.builder()
- *                 .clusterId(&#34;tf-test-dbmsalloycluster_21197&#34;)
+ *                 .clusterId("tf-test-dbmsalloycluster_21197")
  *                 .settings(ConnectionProfileAlloydbSettingsArgs.builder()
  *                     .initialUser(ConnectionProfileAlloydbSettingsInitialUserArgs.builder()
- *                         .user(&#34;alloyuser_52865&#34;)
- *                         .password(&#34;alloypass_85840&#34;)
+ *                         .user("alloyuser_52865")
+ *                         .password("alloypass_85840")
  *                         .build())
  *                     .vpcNetwork(default_.id())
- *                     .labels(Map.of(&#34;alloyfoo&#34;, &#34;alloybar&#34;))
+ *                     .labels(Map.of("alloyfoo", "alloybar"))
  *                     .primaryInstanceSettings(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs.builder()
- *                         .id(&#34;priminstid&#34;)
+ *                         .id("priminstid")
  *                         .machineConfig(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs.builder()
  *                             .cpuCount(2)
  *                             .build())
  *                         .databaseFlags()
- *                         .labels(Map.of(&#34;alloysinstfoo&#34;, &#34;allowinstbar&#34;))
+ *                         .labels(Map.of("alloysinstfoo", "allowinstbar"))
  *                         .build())
  *                     .build())
  *                 .build())
@@ -350,7 +357,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

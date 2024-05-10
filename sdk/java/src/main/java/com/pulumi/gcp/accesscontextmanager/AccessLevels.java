@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Access Context Manager Access Levels Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,47 +58,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .title(&#34;my policy&#34;)
+ *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()        
+ *             .parent("organizations/123456789")
+ *             .title("my policy")
  *             .build());
  * 
- *         var access_levels = new AccessLevels(&#34;access-levels&#34;, AccessLevelsArgs.builder()        
- *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *         var access_levels = new AccessLevels("access-levels", AccessLevelsArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
  *             .accessLevels(            
  *                 AccessLevelsAccessLevelArgs.builder()
- *                     .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/accessLevels/chromeos_no_lock&#34;, name)))
- *                     .title(&#34;chromeos_no_lock&#34;)
+ *                     .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
+ *                     .title("chromeos_no_lock")
  *                     .basic(AccessLevelsAccessLevelBasicArgs.builder()
  *                         .conditions(AccessLevelsAccessLevelBasicConditionArgs.builder()
  *                             .devicePolicy(AccessLevelsAccessLevelBasicConditionDevicePolicyArgs.builder()
  *                                 .requireScreenLock(true)
  *                                 .osConstraints(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs.builder()
- *                                     .osType(&#34;DESKTOP_CHROME_OS&#34;)
+ *                                     .osType("DESKTOP_CHROME_OS")
  *                                     .build())
  *                                 .build())
  *                             .regions(                            
- *                                 &#34;CH&#34;,
- *                                 &#34;IT&#34;,
- *                                 &#34;US&#34;)
+ *                                 "CH",
+ *                                 "IT",
+ *                                 "US")
  *                             .build())
  *                         .build())
  *                     .build(),
  *                 AccessLevelsAccessLevelArgs.builder()
- *                     .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/accessLevels/mac_no_lock&#34;, name)))
- *                     .title(&#34;mac_no_lock&#34;)
+ *                     .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/mac_no_lock", name)))
+ *                     .title("mac_no_lock")
  *                     .basic(AccessLevelsAccessLevelBasicArgs.builder()
  *                         .conditions(AccessLevelsAccessLevelBasicConditionArgs.builder()
  *                             .devicePolicy(AccessLevelsAccessLevelBasicConditionDevicePolicyArgs.builder()
  *                                 .requireScreenLock(true)
  *                                 .osConstraints(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs.builder()
- *                                     .osType(&#34;DESKTOP_MAC&#34;)
+ *                                     .osType("DESKTOP_MAC")
  *                                     .build())
  *                                 .build())
  *                             .regions(                            
- *                                 &#34;CH&#34;,
- *                                 &#34;IT&#34;,
- *                                 &#34;US&#34;)
+ *                                 "CH",
+ *                                 "IT",
+ *                                 "US")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -105,7 +106,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
