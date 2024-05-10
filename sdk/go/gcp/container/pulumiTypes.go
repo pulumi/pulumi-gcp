@@ -19297,6 +19297,8 @@ type ClusterNodeConfig struct {
 	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
+	// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+	SecondaryBootDisks []ClusterNodeConfigSecondaryBootDisk `pulumi:"secondaryBootDisks"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -19436,6 +19438,8 @@ type ClusterNodeConfigArgs struct {
 	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+	SecondaryBootDisks ClusterNodeConfigSecondaryBootDiskArrayInput `pulumi:"secondaryBootDisks"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -19733,6 +19737,11 @@ func (o ClusterNodeConfigOutput) ResourceManagerTags() pulumi.MapOutput {
 // Sandbox configuration for this node.
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
+}
+
+// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+func (o ClusterNodeConfigOutput) SecondaryBootDisks() ClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigSecondaryBootDisk { return v.SecondaryBootDisks }).(ClusterNodeConfigSecondaryBootDiskArrayOutput)
 }
 
 // The service account to be used by the Node VMs.
@@ -20151,6 +20160,16 @@ func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConf
 		}
 		return v.SandboxConfig
 	}).(ClusterNodeConfigSandboxConfigPtrOutput)
+}
+
+// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+func (o ClusterNodeConfigPtrOutput) SecondaryBootDisks() ClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) []ClusterNodeConfigSecondaryBootDisk {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryBootDisks
+	}).(ClusterNodeConfigSecondaryBootDiskArrayOutput)
 }
 
 // The service account to be used by the Node VMs.
@@ -21474,6 +21493,7 @@ type ClusterNodeConfigGuestAcceleratorGpuSharingConfig struct {
 	// The type of GPU sharing strategy to enable on the GPU node.
 	// Accepted values are:
 	// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+	// * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
 	GpuSharingStrategy string `pulumi:"gpuSharingStrategy"`
 	// The maximum number of containers that can share a GPU.
 	MaxSharedClientsPerGpu int `pulumi:"maxSharedClientsPerGpu"`
@@ -21494,6 +21514,7 @@ type ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs struct {
 	// The type of GPU sharing strategy to enable on the GPU node.
 	// Accepted values are:
 	// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+	// * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
 	GpuSharingStrategy pulumi.StringInput `pulumi:"gpuSharingStrategy"`
 	// The maximum number of containers that can share a GPU.
 	MaxSharedClientsPerGpu pulumi.IntInput `pulumi:"maxSharedClientsPerGpu"`
@@ -21579,6 +21600,7 @@ func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClusterNodeCo
 // The type of GPU sharing strategy to enable on the GPU node.
 // Accepted values are:
 // * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+// * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
 func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) GpuSharingStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigGuestAcceleratorGpuSharingConfig) string { return v.GpuSharingStrategy }).(pulumi.StringOutput)
 }
@@ -21615,6 +21637,7 @@ func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) Elem() Clust
 // The type of GPU sharing strategy to enable on the GPU node.
 // Accepted values are:
 // * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+// * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
 func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) GpuSharingStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigGuestAcceleratorGpuSharingConfig) *string {
 		if v == nil {
@@ -22805,6 +22828,112 @@ func (o ClusterNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringPtrO
 		}
 		return &v.SandboxType
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeConfigSecondaryBootDisk struct {
+	// Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+	DiskImage string `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+	Mode *string `pulumi:"mode"`
+}
+
+// ClusterNodeConfigSecondaryBootDiskInput is an input type that accepts ClusterNodeConfigSecondaryBootDiskArgs and ClusterNodeConfigSecondaryBootDiskOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigSecondaryBootDiskInput` via:
+//
+//	ClusterNodeConfigSecondaryBootDiskArgs{...}
+type ClusterNodeConfigSecondaryBootDiskInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigSecondaryBootDiskOutput() ClusterNodeConfigSecondaryBootDiskOutput
+	ToClusterNodeConfigSecondaryBootDiskOutputWithContext(context.Context) ClusterNodeConfigSecondaryBootDiskOutput
+}
+
+type ClusterNodeConfigSecondaryBootDiskArgs struct {
+	// Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+	DiskImage pulumi.StringInput `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (ClusterNodeConfigSecondaryBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigSecondaryBootDiskArgs) ToClusterNodeConfigSecondaryBootDiskOutput() ClusterNodeConfigSecondaryBootDiskOutput {
+	return i.ToClusterNodeConfigSecondaryBootDiskOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigSecondaryBootDiskArgs) ToClusterNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) ClusterNodeConfigSecondaryBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigSecondaryBootDiskOutput)
+}
+
+// ClusterNodeConfigSecondaryBootDiskArrayInput is an input type that accepts ClusterNodeConfigSecondaryBootDiskArray and ClusterNodeConfigSecondaryBootDiskArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigSecondaryBootDiskArrayInput` via:
+//
+//	ClusterNodeConfigSecondaryBootDiskArray{ ClusterNodeConfigSecondaryBootDiskArgs{...} }
+type ClusterNodeConfigSecondaryBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigSecondaryBootDiskArrayOutput() ClusterNodeConfigSecondaryBootDiskArrayOutput
+	ToClusterNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Context) ClusterNodeConfigSecondaryBootDiskArrayOutput
+}
+
+type ClusterNodeConfigSecondaryBootDiskArray []ClusterNodeConfigSecondaryBootDiskInput
+
+func (ClusterNodeConfigSecondaryBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigSecondaryBootDiskArray) ToClusterNodeConfigSecondaryBootDiskArrayOutput() ClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return i.ToClusterNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigSecondaryBootDiskArray) ToClusterNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) ClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigSecondaryBootDiskArrayOutput)
+}
+
+type ClusterNodeConfigSecondaryBootDiskOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigSecondaryBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigSecondaryBootDiskOutput) ToClusterNodeConfigSecondaryBootDiskOutput() ClusterNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSecondaryBootDiskOutput) ToClusterNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) ClusterNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+// Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+func (o ClusterNodeConfigSecondaryBootDiskOutput) DiskImage() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigSecondaryBootDisk) string { return v.DiskImage }).(pulumi.StringOutput)
+}
+
+// Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+func (o ClusterNodeConfigSecondaryBootDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigSecondaryBootDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeConfigSecondaryBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigSecondaryBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigSecondaryBootDiskArrayOutput) ToClusterNodeConfigSecondaryBootDiskArrayOutput() ClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSecondaryBootDiskArrayOutput) ToClusterNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) ClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSecondaryBootDiskArrayOutput) Index(i pulumi.IntInput) ClusterNodeConfigSecondaryBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigSecondaryBootDisk {
+		return vs[0].([]ClusterNodeConfigSecondaryBootDisk)[vs[1].(int)]
+	}).(ClusterNodeConfigSecondaryBootDiskOutput)
 }
 
 type ClusterNodeConfigShieldedInstanceConfig struct {
@@ -25796,6 +25925,8 @@ type ClusterNodePoolNodeConfig struct {
 	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
+	// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+	SecondaryBootDisks []ClusterNodePoolNodeConfigSecondaryBootDisk `pulumi:"secondaryBootDisks"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -25935,6 +26066,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+	SecondaryBootDisks ClusterNodePoolNodeConfigSecondaryBootDiskArrayInput `pulumi:"secondaryBootDisks"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -26246,6 +26379,13 @@ func (o ClusterNodePoolNodeConfigOutput) ResourceManagerTags() pulumi.MapOutput 
 // Sandbox configuration for this node.
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
+}
+
+// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+func (o ClusterNodePoolNodeConfigOutput) SecondaryBootDisks() ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigSecondaryBootDisk {
+		return v.SecondaryBootDisks
+	}).(ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput)
 }
 
 // The service account to be used by the Node VMs.
@@ -26670,6 +26810,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeC
 		}
 		return v.SandboxConfig
 	}).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
+}
+
+// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+func (o ClusterNodePoolNodeConfigPtrOutput) SecondaryBootDisks() ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigSecondaryBootDisk {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryBootDisks
+	}).(ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput)
 }
 
 // The service account to be used by the Node VMs.
@@ -27995,6 +28145,7 @@ type ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig struct {
 	// The type of GPU sharing strategy to enable on the GPU node.
 	// Accepted values are:
 	// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+	// * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
 	GpuSharingStrategy string `pulumi:"gpuSharingStrategy"`
 	// The maximum number of containers that can share a GPU.
 	MaxSharedClientsPerGpu int `pulumi:"maxSharedClientsPerGpu"`
@@ -28015,6 +28166,7 @@ type ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs struct {
 	// The type of GPU sharing strategy to enable on the GPU node.
 	// Accepted values are:
 	// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+	// * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
 	GpuSharingStrategy pulumi.StringInput `pulumi:"gpuSharingStrategy"`
 	// The maximum number of containers that can share a GPU.
 	MaxSharedClientsPerGpu pulumi.IntInput `pulumi:"maxSharedClientsPerGpu"`
@@ -28100,6 +28252,7 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClust
 // The type of GPU sharing strategy to enable on the GPU node.
 // Accepted values are:
 // * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+// * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
 func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) GpuSharingStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) string { return v.GpuSharingStrategy }).(pulumi.StringOutput)
 }
@@ -28136,6 +28289,7 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) Elem
 // The type of GPU sharing strategy to enable on the GPU node.
 // Accepted values are:
 // * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+// * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
 func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) GpuSharingStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) *string {
 		if v == nil {
@@ -29326,6 +29480,112 @@ func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.St
 		}
 		return &v.SandboxType
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigSecondaryBootDisk struct {
+	// Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+	DiskImage string `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+	Mode *string `pulumi:"mode"`
+}
+
+// ClusterNodePoolNodeConfigSecondaryBootDiskInput is an input type that accepts ClusterNodePoolNodeConfigSecondaryBootDiskArgs and ClusterNodePoolNodeConfigSecondaryBootDiskOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigSecondaryBootDiskInput` via:
+//
+//	ClusterNodePoolNodeConfigSecondaryBootDiskArgs{...}
+type ClusterNodePoolNodeConfigSecondaryBootDiskInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigSecondaryBootDiskOutput() ClusterNodePoolNodeConfigSecondaryBootDiskOutput
+	ToClusterNodePoolNodeConfigSecondaryBootDiskOutputWithContext(context.Context) ClusterNodePoolNodeConfigSecondaryBootDiskOutput
+}
+
+type ClusterNodePoolNodeConfigSecondaryBootDiskArgs struct {
+	// Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+	DiskImage pulumi.StringInput `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (ClusterNodePoolNodeConfigSecondaryBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigSecondaryBootDiskArgs) ToClusterNodePoolNodeConfigSecondaryBootDiskOutput() ClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return i.ToClusterNodePoolNodeConfigSecondaryBootDiskOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigSecondaryBootDiskArgs) ToClusterNodePoolNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigSecondaryBootDiskOutput)
+}
+
+// ClusterNodePoolNodeConfigSecondaryBootDiskArrayInput is an input type that accepts ClusterNodePoolNodeConfigSecondaryBootDiskArray and ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigSecondaryBootDiskArrayInput` via:
+//
+//	ClusterNodePoolNodeConfigSecondaryBootDiskArray{ ClusterNodePoolNodeConfigSecondaryBootDiskArgs{...} }
+type ClusterNodePoolNodeConfigSecondaryBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput() ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput
+	ToClusterNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Context) ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput
+}
+
+type ClusterNodePoolNodeConfigSecondaryBootDiskArray []ClusterNodePoolNodeConfigSecondaryBootDiskInput
+
+func (ClusterNodePoolNodeConfigSecondaryBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigSecondaryBootDiskArray) ToClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput() ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return i.ToClusterNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigSecondaryBootDiskArray) ToClusterNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput)
+}
+
+type ClusterNodePoolNodeConfigSecondaryBootDiskOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigSecondaryBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigSecondaryBootDiskOutput) ToClusterNodePoolNodeConfigSecondaryBootDiskOutput() ClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSecondaryBootDiskOutput) ToClusterNodePoolNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+// Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+func (o ClusterNodePoolNodeConfigSecondaryBootDiskOutput) DiskImage() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigSecondaryBootDisk) string { return v.DiskImage }).(pulumi.StringOutput)
+}
+
+// Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+func (o ClusterNodePoolNodeConfigSecondaryBootDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigSecondaryBootDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput) ToClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput() ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput) ToClusterNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigSecondaryBootDisk {
+		return vs[0].([]ClusterNodePoolNodeConfigSecondaryBootDisk)[vs[1].(int)]
+	}).(ClusterNodePoolNodeConfigSecondaryBootDiskOutput)
 }
 
 type ClusterNodePoolNodeConfigShieldedInstanceConfig struct {
@@ -34868,6 +35128,8 @@ type NodePoolNodeConfig struct {
 	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig *NodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
+	// Secondary boot disks for preloading data or container images.
+	SecondaryBootDisks []NodePoolNodeConfigSecondaryBootDisk `pulumi:"secondaryBootDisks"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
@@ -34958,6 +35220,8 @@ type NodePoolNodeConfigArgs struct {
 	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig NodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	// Secondary boot disks for preloading data or container images.
+	SecondaryBootDisks NodePoolNodeConfigSecondaryBootDiskArrayInput `pulumi:"secondaryBootDisks"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options.
@@ -35210,6 +35474,11 @@ func (o NodePoolNodeConfigOutput) ResourceManagerTags() pulumi.MapOutput {
 // Sandbox configuration for this node.
 func (o NodePoolNodeConfigOutput) SandboxConfig() NodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(NodePoolNodeConfigSandboxConfigPtrOutput)
+}
+
+// Secondary boot disks for preloading data or container images.
+func (o NodePoolNodeConfigOutput) SecondaryBootDisks() NodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) []NodePoolNodeConfigSecondaryBootDisk { return v.SecondaryBootDisks }).(NodePoolNodeConfigSecondaryBootDiskArrayOutput)
 }
 
 // The Google Cloud Platform Service Account to be used by the node VMs.
@@ -35579,6 +35848,16 @@ func (o NodePoolNodeConfigPtrOutput) SandboxConfig() NodePoolNodeConfigSandboxCo
 		}
 		return v.SandboxConfig
 	}).(NodePoolNodeConfigSandboxConfigPtrOutput)
+}
+
+// Secondary boot disks for preloading data or container images.
+func (o NodePoolNodeConfigPtrOutput) SecondaryBootDisks() NodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) []NodePoolNodeConfigSecondaryBootDisk {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryBootDisks
+	}).(NodePoolNodeConfigSecondaryBootDiskArrayOutput)
 }
 
 // The Google Cloud Platform Service Account to be used by the node VMs.
@@ -38095,6 +38374,112 @@ func (o NodePoolNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringPtr
 		}
 		return &v.SandboxType
 	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNodeConfigSecondaryBootDisk struct {
+	// Disk image to create the secondary boot disk from
+	DiskImage string `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used.
+	Mode *string `pulumi:"mode"`
+}
+
+// NodePoolNodeConfigSecondaryBootDiskInput is an input type that accepts NodePoolNodeConfigSecondaryBootDiskArgs and NodePoolNodeConfigSecondaryBootDiskOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigSecondaryBootDiskInput` via:
+//
+//	NodePoolNodeConfigSecondaryBootDiskArgs{...}
+type NodePoolNodeConfigSecondaryBootDiskInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigSecondaryBootDiskOutput() NodePoolNodeConfigSecondaryBootDiskOutput
+	ToNodePoolNodeConfigSecondaryBootDiskOutputWithContext(context.Context) NodePoolNodeConfigSecondaryBootDiskOutput
+}
+
+type NodePoolNodeConfigSecondaryBootDiskArgs struct {
+	// Disk image to create the secondary boot disk from
+	DiskImage pulumi.StringInput `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (NodePoolNodeConfigSecondaryBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigSecondaryBootDiskArgs) ToNodePoolNodeConfigSecondaryBootDiskOutput() NodePoolNodeConfigSecondaryBootDiskOutput {
+	return i.ToNodePoolNodeConfigSecondaryBootDiskOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigSecondaryBootDiskArgs) ToNodePoolNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) NodePoolNodeConfigSecondaryBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigSecondaryBootDiskOutput)
+}
+
+// NodePoolNodeConfigSecondaryBootDiskArrayInput is an input type that accepts NodePoolNodeConfigSecondaryBootDiskArray and NodePoolNodeConfigSecondaryBootDiskArrayOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigSecondaryBootDiskArrayInput` via:
+//
+//	NodePoolNodeConfigSecondaryBootDiskArray{ NodePoolNodeConfigSecondaryBootDiskArgs{...} }
+type NodePoolNodeConfigSecondaryBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigSecondaryBootDiskArrayOutput() NodePoolNodeConfigSecondaryBootDiskArrayOutput
+	ToNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Context) NodePoolNodeConfigSecondaryBootDiskArrayOutput
+}
+
+type NodePoolNodeConfigSecondaryBootDiskArray []NodePoolNodeConfigSecondaryBootDiskInput
+
+func (NodePoolNodeConfigSecondaryBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigSecondaryBootDiskArray) ToNodePoolNodeConfigSecondaryBootDiskArrayOutput() NodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return i.ToNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigSecondaryBootDiskArray) ToNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) NodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigSecondaryBootDiskArrayOutput)
+}
+
+type NodePoolNodeConfigSecondaryBootDiskOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigSecondaryBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigSecondaryBootDiskOutput) ToNodePoolNodeConfigSecondaryBootDiskOutput() NodePoolNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSecondaryBootDiskOutput) ToNodePoolNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) NodePoolNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+// Disk image to create the secondary boot disk from
+func (o NodePoolNodeConfigSecondaryBootDiskOutput) DiskImage() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigSecondaryBootDisk) string { return v.DiskImage }).(pulumi.StringOutput)
+}
+
+// Mode for how the secondary boot disk is used.
+func (o NodePoolNodeConfigSecondaryBootDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigSecondaryBootDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNodeConfigSecondaryBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigSecondaryBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigSecondaryBootDiskArrayOutput) ToNodePoolNodeConfigSecondaryBootDiskArrayOutput() NodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSecondaryBootDiskArrayOutput) ToNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) NodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSecondaryBootDiskArrayOutput) Index(i pulumi.IntInput) NodePoolNodeConfigSecondaryBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigSecondaryBootDisk {
+		return vs[0].([]NodePoolNodeConfigSecondaryBootDisk)[vs[1].(int)]
+	}).(NodePoolNodeConfigSecondaryBootDiskOutput)
 }
 
 type NodePoolNodeConfigShieldedInstanceConfig struct {
@@ -45499,6 +45884,8 @@ type GetClusterNodeConfig struct {
 	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfigs []GetClusterNodeConfigSandboxConfig `pulumi:"sandboxConfigs"`
+	// Secondary boot disks for preloading data or container images.
+	SecondaryBootDisks []GetClusterNodeConfigSecondaryBootDisk `pulumi:"secondaryBootDisks"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
@@ -45589,6 +45976,8 @@ type GetClusterNodeConfigArgs struct {
 	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfigs GetClusterNodeConfigSandboxConfigArrayInput `pulumi:"sandboxConfigs"`
+	// Secondary boot disks for preloading data or container images.
+	SecondaryBootDisks GetClusterNodeConfigSecondaryBootDiskArrayInput `pulumi:"secondaryBootDisks"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	// Shielded Instance options.
@@ -45819,6 +46208,11 @@ func (o GetClusterNodeConfigOutput) ResourceManagerTags() pulumi.MapOutput {
 // Sandbox configuration for this node.
 func (o GetClusterNodeConfigOutput) SandboxConfigs() GetClusterNodeConfigSandboxConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigSandboxConfig { return v.SandboxConfigs }).(GetClusterNodeConfigSandboxConfigArrayOutput)
+}
+
+// Secondary boot disks for preloading data or container images.
+func (o GetClusterNodeConfigOutput) SecondaryBootDisks() GetClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigSecondaryBootDisk { return v.SecondaryBootDisks }).(GetClusterNodeConfigSecondaryBootDiskArrayOutput)
 }
 
 // The Google Cloud Platform Service Account to be used by the node VMs.
@@ -47650,6 +48044,112 @@ func (o GetClusterNodeConfigSandboxConfigArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigSandboxConfig {
 		return vs[0].([]GetClusterNodeConfigSandboxConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigSandboxConfigOutput)
+}
+
+type GetClusterNodeConfigSecondaryBootDisk struct {
+	// Disk image to create the secondary boot disk from
+	DiskImage string `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used.
+	Mode string `pulumi:"mode"`
+}
+
+// GetClusterNodeConfigSecondaryBootDiskInput is an input type that accepts GetClusterNodeConfigSecondaryBootDiskArgs and GetClusterNodeConfigSecondaryBootDiskOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigSecondaryBootDiskInput` via:
+//
+//	GetClusterNodeConfigSecondaryBootDiskArgs{...}
+type GetClusterNodeConfigSecondaryBootDiskInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigSecondaryBootDiskOutput() GetClusterNodeConfigSecondaryBootDiskOutput
+	ToGetClusterNodeConfigSecondaryBootDiskOutputWithContext(context.Context) GetClusterNodeConfigSecondaryBootDiskOutput
+}
+
+type GetClusterNodeConfigSecondaryBootDiskArgs struct {
+	// Disk image to create the secondary boot disk from
+	DiskImage pulumi.StringInput `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetClusterNodeConfigSecondaryBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigSecondaryBootDiskArgs) ToGetClusterNodeConfigSecondaryBootDiskOutput() GetClusterNodeConfigSecondaryBootDiskOutput {
+	return i.ToGetClusterNodeConfigSecondaryBootDiskOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigSecondaryBootDiskArgs) ToGetClusterNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) GetClusterNodeConfigSecondaryBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigSecondaryBootDiskOutput)
+}
+
+// GetClusterNodeConfigSecondaryBootDiskArrayInput is an input type that accepts GetClusterNodeConfigSecondaryBootDiskArray and GetClusterNodeConfigSecondaryBootDiskArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigSecondaryBootDiskArrayInput` via:
+//
+//	GetClusterNodeConfigSecondaryBootDiskArray{ GetClusterNodeConfigSecondaryBootDiskArgs{...} }
+type GetClusterNodeConfigSecondaryBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigSecondaryBootDiskArrayOutput() GetClusterNodeConfigSecondaryBootDiskArrayOutput
+	ToGetClusterNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Context) GetClusterNodeConfigSecondaryBootDiskArrayOutput
+}
+
+type GetClusterNodeConfigSecondaryBootDiskArray []GetClusterNodeConfigSecondaryBootDiskInput
+
+func (GetClusterNodeConfigSecondaryBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigSecondaryBootDiskArray) ToGetClusterNodeConfigSecondaryBootDiskArrayOutput() GetClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return i.ToGetClusterNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigSecondaryBootDiskArray) ToGetClusterNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigSecondaryBootDiskArrayOutput)
+}
+
+type GetClusterNodeConfigSecondaryBootDiskOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigSecondaryBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigSecondaryBootDiskOutput) ToGetClusterNodeConfigSecondaryBootDiskOutput() GetClusterNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSecondaryBootDiskOutput) ToGetClusterNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) GetClusterNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+// Disk image to create the secondary boot disk from
+func (o GetClusterNodeConfigSecondaryBootDiskOutput) DiskImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigSecondaryBootDisk) string { return v.DiskImage }).(pulumi.StringOutput)
+}
+
+// Mode for how the secondary boot disk is used.
+func (o GetClusterNodeConfigSecondaryBootDiskOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigSecondaryBootDisk) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigSecondaryBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigSecondaryBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigSecondaryBootDiskArrayOutput) ToGetClusterNodeConfigSecondaryBootDiskArrayOutput() GetClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSecondaryBootDiskArrayOutput) ToGetClusterNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSecondaryBootDiskArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigSecondaryBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigSecondaryBootDisk {
+		return vs[0].([]GetClusterNodeConfigSecondaryBootDisk)[vs[1].(int)]
+	}).(GetClusterNodeConfigSecondaryBootDiskOutput)
 }
 
 type GetClusterNodeConfigShieldedInstanceConfig struct {
@@ -49804,6 +50304,8 @@ type GetClusterNodePoolNodeConfig struct {
 	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfigs []GetClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfigs"`
+	// Secondary boot disks for preloading data or container images.
+	SecondaryBootDisks []GetClusterNodePoolNodeConfigSecondaryBootDisk `pulumi:"secondaryBootDisks"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
@@ -49894,6 +50396,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfigs GetClusterNodePoolNodeConfigSandboxConfigArrayInput `pulumi:"sandboxConfigs"`
+	// Secondary boot disks for preloading data or container images.
+	SecondaryBootDisks GetClusterNodePoolNodeConfigSecondaryBootDiskArrayInput `pulumi:"secondaryBootDisks"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	// Shielded Instance options.
@@ -50138,6 +50642,13 @@ func (o GetClusterNodePoolNodeConfigOutput) SandboxConfigs() GetClusterNodePoolN
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigSandboxConfig {
 		return v.SandboxConfigs
 	}).(GetClusterNodePoolNodeConfigSandboxConfigArrayOutput)
+}
+
+// Secondary boot disks for preloading data or container images.
+func (o GetClusterNodePoolNodeConfigOutput) SecondaryBootDisks() GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigSecondaryBootDisk {
+		return v.SecondaryBootDisks
+	}).(GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput)
 }
 
 // The Google Cloud Platform Service Account to be used by the node VMs.
@@ -51975,6 +52486,112 @@ func (o GetClusterNodePoolNodeConfigSandboxConfigArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigSandboxConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigSandboxConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigSandboxConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigSecondaryBootDisk struct {
+	// Disk image to create the secondary boot disk from
+	DiskImage string `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used.
+	Mode string `pulumi:"mode"`
+}
+
+// GetClusterNodePoolNodeConfigSecondaryBootDiskInput is an input type that accepts GetClusterNodePoolNodeConfigSecondaryBootDiskArgs and GetClusterNodePoolNodeConfigSecondaryBootDiskOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigSecondaryBootDiskInput` via:
+//
+//	GetClusterNodePoolNodeConfigSecondaryBootDiskArgs{...}
+type GetClusterNodePoolNodeConfigSecondaryBootDiskInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigSecondaryBootDiskOutput() GetClusterNodePoolNodeConfigSecondaryBootDiskOutput
+	ToGetClusterNodePoolNodeConfigSecondaryBootDiskOutputWithContext(context.Context) GetClusterNodePoolNodeConfigSecondaryBootDiskOutput
+}
+
+type GetClusterNodePoolNodeConfigSecondaryBootDiskArgs struct {
+	// Disk image to create the secondary boot disk from
+	DiskImage pulumi.StringInput `pulumi:"diskImage"`
+	// Mode for how the secondary boot disk is used.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetClusterNodePoolNodeConfigSecondaryBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigSecondaryBootDiskArgs) ToGetClusterNodePoolNodeConfigSecondaryBootDiskOutput() GetClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return i.ToGetClusterNodePoolNodeConfigSecondaryBootDiskOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigSecondaryBootDiskArgs) ToGetClusterNodePoolNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigSecondaryBootDiskOutput)
+}
+
+// GetClusterNodePoolNodeConfigSecondaryBootDiskArrayInput is an input type that accepts GetClusterNodePoolNodeConfigSecondaryBootDiskArray and GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigSecondaryBootDiskArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigSecondaryBootDiskArray{ GetClusterNodePoolNodeConfigSecondaryBootDiskArgs{...} }
+type GetClusterNodePoolNodeConfigSecondaryBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput() GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput
+	ToGetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigSecondaryBootDiskArray []GetClusterNodePoolNodeConfigSecondaryBootDiskInput
+
+func (GetClusterNodePoolNodeConfigSecondaryBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigSecondaryBootDiskArray) ToGetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput() GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigSecondaryBootDiskArray) ToGetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigSecondaryBootDiskOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigSecondaryBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigSecondaryBootDiskOutput) ToGetClusterNodePoolNodeConfigSecondaryBootDiskOutput() GetClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSecondaryBootDiskOutput) ToGetClusterNodePoolNodeConfigSecondaryBootDiskOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return o
+}
+
+// Disk image to create the secondary boot disk from
+func (o GetClusterNodePoolNodeConfigSecondaryBootDiskOutput) DiskImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSecondaryBootDisk) string { return v.DiskImage }).(pulumi.StringOutput)
+}
+
+// Mode for how the secondary boot disk is used.
+func (o GetClusterNodePoolNodeConfigSecondaryBootDiskOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSecondaryBootDisk) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigSecondaryBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput) ToGetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput() GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput) ToGetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigSecondaryBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigSecondaryBootDisk {
+		return vs[0].([]GetClusterNodePoolNodeConfigSecondaryBootDisk)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigSecondaryBootDiskOutput)
 }
 
 type GetClusterNodePoolNodeConfigShieldedInstanceConfig struct {
@@ -55155,6 +55772,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigReservationAffinityPtrInput)(nil)).Elem(), ClusterNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSandboxConfigInput)(nil)).Elem(), ClusterNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSandboxConfigPtrInput)(nil)).Elem(), ClusterNodeConfigSandboxConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSecondaryBootDiskInput)(nil)).Elem(), ClusterNodeConfigSecondaryBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSecondaryBootDiskArrayInput)(nil)).Elem(), ClusterNodeConfigSecondaryBootDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), ClusterNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigShieldedInstanceConfigPtrInput)(nil)).Elem(), ClusterNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSoleTenantConfigInput)(nil)).Elem(), ClusterNodeConfigSoleTenantConfigArgs{})
@@ -55227,6 +55846,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigReservationAffinityPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSandboxConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSandboxConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigSandboxConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSecondaryBootDiskInput)(nil)).Elem(), ClusterNodePoolNodeConfigSecondaryBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSecondaryBootDiskArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigSecondaryBootDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigSoleTenantConfigArgs{})
@@ -55331,6 +55952,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigReservationAffinityPtrInput)(nil)).Elem(), NodePoolNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSandboxConfigInput)(nil)).Elem(), NodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSandboxConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigSandboxConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSecondaryBootDiskInput)(nil)).Elem(), NodePoolNodeConfigSecondaryBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSecondaryBootDiskArrayInput)(nil)).Elem(), NodePoolNodeConfigSecondaryBootDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), NodePoolNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigShieldedInstanceConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfigInput)(nil)).Elem(), NodePoolNodeConfigSoleTenantConfigArgs{})
@@ -55493,6 +56116,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigReservationAffinityArrayInput)(nil)).Elem(), GetClusterNodeConfigReservationAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSandboxConfigInput)(nil)).Elem(), GetClusterNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSandboxConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigSandboxConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSecondaryBootDiskInput)(nil)).Elem(), GetClusterNodeConfigSecondaryBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSecondaryBootDiskArrayInput)(nil)).Elem(), GetClusterNodeConfigSecondaryBootDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), GetClusterNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigShieldedInstanceConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigShieldedInstanceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfigInput)(nil)).Elem(), GetClusterNodeConfigSoleTenantConfigArgs{})
@@ -55565,6 +56190,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigReservationAffinityArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigReservationAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSandboxConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSandboxConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSandboxConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSecondaryBootDiskInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSecondaryBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSecondaryBootDiskArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSecondaryBootDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigShieldedInstanceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSoleTenantConfigArgs{})
@@ -55895,6 +56522,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigSandboxConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigSecondaryBootDiskOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigSecondaryBootDiskArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigSoleTenantConfigOutput{})
@@ -55967,6 +56596,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSandboxConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSecondaryBootDiskOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSoleTenantConfigOutput{})
@@ -56071,6 +56702,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigSandboxConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigSecondaryBootDiskOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigSecondaryBootDiskArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigSoleTenantConfigOutput{})
@@ -56233,6 +56866,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigReservationAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigSandboxConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigSecondaryBootDiskOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigSecondaryBootDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigShieldedInstanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigSoleTenantConfigOutput{})
@@ -56305,6 +56940,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigReservationAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSandboxConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSecondaryBootDiskOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSoleTenantConfigOutput{})

@@ -18,6 +18,7 @@ import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -81,6 +82,7 @@ import javax.annotation.Nullable;
  *             .nodeType("REDIS_SHARED_CORE_NANO")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
  *             .authorizationMode("AUTH_MODE_DISABLED")
+ *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
  *             .build());
  * 
  *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()        
@@ -283,6 +285,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ClusterPscConnection>> pscConnections() {
         return this.pscConnections;
+    }
+    /**
+     * Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+     * documentation for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+     * 
+     */
+    @Export(name="redisConfigs", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> redisConfigs;
+
+    /**
+     * @return Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+     * documentation for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+     * 
+     */
+    public Output<Optional<Map<String,String>>> redisConfigs() {
+        return Codegen.optional(this.redisConfigs);
     }
     /**
      * The name of the region of the Redis cluster.

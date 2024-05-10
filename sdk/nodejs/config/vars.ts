@@ -1009,6 +1009,14 @@ Object.defineProperty(exports, "privatecaCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const privilegedAccessManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "privilegedAccessManagerCustomEndpoint", {
+    get() {
+        return __config.get("privilegedAccessManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const project: string | undefined;
 Object.defineProperty(exports, "project", {
     get() {

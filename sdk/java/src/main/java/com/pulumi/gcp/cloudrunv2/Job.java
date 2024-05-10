@@ -349,7 +349,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Job("default", JobArgs.builder()        
  *             .name("cloudrun-job")
  *             .location("us-central1")
- *             .launchStage("BETA")
+ *             .launchStage("GA")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
@@ -364,7 +364,6 @@ import javax.annotation.Nullable;
  *                                 "tag2",
  *                                 "tag3")
  *                             .build())
- *                         .egress("ALL_TRAFFIC")
  *                         .build())
  *                     .build())
  *                 .build())

@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLinuxNodeConfig
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigSandboxConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigTaint;
@@ -227,6 +228,11 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig;
+    /**
+     * @return Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+     * 
+     */
+    private @Nullable List<ClusterNodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks;
     /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
@@ -531,6 +537,13 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.sandboxConfig);
     }
     /**
+     * @return Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+     * 
+     */
+    public List<ClusterNodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks() {
+        return this.secondaryBootDisks == null ? List.of() : this.secondaryBootDisks;
+    }
+    /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
@@ -632,6 +645,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable Map<String,String> resourceLabels;
         private @Nullable Map<String,Object> resourceManagerTags;
         private @Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig;
+        private @Nullable List<ClusterNodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks;
         private @Nullable String serviceAccount;
         private @Nullable ClusterNodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable ClusterNodePoolNodeConfigSoleTenantConfig soleTenantConfig;
@@ -673,6 +687,7 @@ public final class ClusterNodePoolNodeConfig {
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.sandboxConfig = defaults.sandboxConfig;
+    	      this.secondaryBootDisks = defaults.secondaryBootDisks;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.soleTenantConfig = defaults.soleTenantConfig;
@@ -878,6 +893,15 @@ public final class ClusterNodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder secondaryBootDisks(@Nullable List<ClusterNodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks) {
+
+            this.secondaryBootDisks = secondaryBootDisks;
+            return this;
+        }
+        public Builder secondaryBootDisks(ClusterNodePoolNodeConfigSecondaryBootDisk... secondaryBootDisks) {
+            return secondaryBootDisks(List.of(secondaryBootDisks));
+        }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
 
             this.serviceAccount = serviceAccount;
@@ -958,6 +982,7 @@ public final class ClusterNodePoolNodeConfig {
             _resultValue.resourceLabels = resourceLabels;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.sandboxConfig = sandboxConfig;
+            _resultValue.secondaryBootDisks = secondaryBootDisks;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
             _resultValue.soleTenantConfig = soleTenantConfig;

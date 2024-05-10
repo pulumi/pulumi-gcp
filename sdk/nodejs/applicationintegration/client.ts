@@ -24,12 +24,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.applicationintegration.Client("example", {
- *     location: "us-central1",
- *     provisionGmek: true,
- * });
+ * const example = new gcp.applicationintegration.Client("example", {location: "us-central1"});
  * ```
- * ### Integrations Client Advance
+ * ### Integrations Client Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +49,7 @@ import * as utilities from "../utilities";
  * });
  * const example = new gcp.applicationintegration.Client("example", {
  *     location: "us-east1",
- *     createSampleWorkflows: true,
+ *     createSampleIntegrations: true,
  *     runAsServiceAccount: serviceAccount.email,
  *     cloudKmsConfig: {
  *         kmsLocation: "us-east1",
@@ -122,7 +119,16 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly cloudKmsConfig!: pulumi.Output<outputs.applicationintegration.ClientCloudKmsConfig | undefined>;
     /**
+     * Indicates if sample integrations should be created along with provisioning.
+     */
+    public readonly createSampleIntegrations!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Optional, Deprecated)
      * Indicates if sample workflow should be created along with provisioning.
+     *
+     * > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
+     *
+     * @deprecated `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
      */
     public readonly createSampleWorkflows!: pulumi.Output<boolean | undefined>;
     /**
@@ -138,7 +144,12 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * Indicates provision with GMEK or CMEK.
+     *
+     * > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
+     *
+     * @deprecated `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
      */
     public readonly provisionGmek!: pulumi.Output<boolean | undefined>;
     /**
@@ -160,6 +171,7 @@ export class Client extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClientState | undefined;
             resourceInputs["cloudKmsConfig"] = state ? state.cloudKmsConfig : undefined;
+            resourceInputs["createSampleIntegrations"] = state ? state.createSampleIntegrations : undefined;
             resourceInputs["createSampleWorkflows"] = state ? state.createSampleWorkflows : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -171,6 +183,7 @@ export class Client extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["cloudKmsConfig"] = args ? args.cloudKmsConfig : undefined;
+            resourceInputs["createSampleIntegrations"] = args ? args.createSampleIntegrations : undefined;
             resourceInputs["createSampleWorkflows"] = args ? args.createSampleWorkflows : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -192,7 +205,16 @@ export interface ClientState {
      */
     cloudKmsConfig?: pulumi.Input<inputs.applicationintegration.ClientCloudKmsConfig>;
     /**
+     * Indicates if sample integrations should be created along with provisioning.
+     */
+    createSampleIntegrations?: pulumi.Input<boolean>;
+    /**
+     * (Optional, Deprecated)
      * Indicates if sample workflow should be created along with provisioning.
+     *
+     * > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
+     *
+     * @deprecated `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
      */
     createSampleWorkflows?: pulumi.Input<boolean>;
     /**
@@ -208,7 +230,12 @@ export interface ClientState {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * Indicates provision with GMEK or CMEK.
+     *
+     * > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
+     *
+     * @deprecated `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
      */
     provisionGmek?: pulumi.Input<boolean>;
     /**
@@ -227,7 +254,16 @@ export interface ClientArgs {
      */
     cloudKmsConfig?: pulumi.Input<inputs.applicationintegration.ClientCloudKmsConfig>;
     /**
+     * Indicates if sample integrations should be created along with provisioning.
+     */
+    createSampleIntegrations?: pulumi.Input<boolean>;
+    /**
+     * (Optional, Deprecated)
      * Indicates if sample workflow should be created along with provisioning.
+     *
+     * > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
+     *
+     * @deprecated `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
      */
     createSampleWorkflows?: pulumi.Input<boolean>;
     /**
@@ -243,7 +279,12 @@ export interface ClientArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * Indicates provision with GMEK or CMEK.
+     *
+     * > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
+     *
+     * @deprecated `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
      */
     provisionGmek?: pulumi.Input<boolean>;
     /**

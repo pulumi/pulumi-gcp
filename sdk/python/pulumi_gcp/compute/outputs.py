@@ -29022,6 +29022,8 @@ class RouterPeerBfd(dict):
         :param int multiplier: The number of consecutive BFD packets that must be missed before
                BFD declares that a peer is unavailable. If set, the value must
                be a value between 5 and 16.
+               
+               <a name="nested_md5_authentication_key"></a>The `md5_authentication_key` block supports:
         """
         pulumi.set(__self__, "session_initialization_mode", session_initialization_mode)
         if min_receive_interval is not None:
@@ -29075,6 +29077,8 @@ class RouterPeerBfd(dict):
         The number of consecutive BFD packets that must be missed before
         BFD declares that a peer is unavailable. If set, the value must
         be a value between 5 and 16.
+
+        <a name="nested_md5_authentication_key"></a>The `md5_authentication_key` block supports:
         """
         return pulumi.get(self, "multiplier")
 

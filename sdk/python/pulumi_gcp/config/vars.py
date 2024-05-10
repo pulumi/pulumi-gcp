@@ -517,6 +517,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('privatecaCustomEndpoint')
 
     @property
+    def privileged_access_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('privilegedAccessManagerCustomEndpoint')
+
+    @property
     def project(self) -> Optional[str]:
         return __config__.get('project') or _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
 

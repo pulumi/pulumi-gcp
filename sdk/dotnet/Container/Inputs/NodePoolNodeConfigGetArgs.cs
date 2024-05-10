@@ -240,6 +240,18 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("sandboxConfig")]
         public Input<Inputs.NodePoolNodeConfigSandboxConfigGetArgs>? SandboxConfig { get; set; }
 
+        [Input("secondaryBootDisks")]
+        private InputList<Inputs.NodePoolNodeConfigSecondaryBootDiskGetArgs>? _secondaryBootDisks;
+
+        /// <summary>
+        /// Secondary boot disks for preloading data or container images.
+        /// </summary>
+        public InputList<Inputs.NodePoolNodeConfigSecondaryBootDiskGetArgs> SecondaryBootDisks
+        {
+            get => _secondaryBootDisks ?? (_secondaryBootDisks = new InputList<Inputs.NodePoolNodeConfigSecondaryBootDiskGetArgs>());
+            set => _secondaryBootDisks = value;
+        }
+
         /// <summary>
         /// The Google Cloud Platform Service Account to be used by the node VMs.
         /// </summary>

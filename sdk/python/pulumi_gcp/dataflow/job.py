@@ -52,7 +52,9 @@ class JobArgs:
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+               case-sensitive based on the language on which the pipeline is coded, mostly Java.
+               **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
@@ -252,7 +254,9 @@ class JobArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        case-sensitive based on the language on which the pipeline is coded, mostly Java.
+        **Note**: do not configure Dataflow options here in parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -389,7 +393,9 @@ class _JobState:
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+               case-sensitive based on the language on which the pipeline is coded, mostly Java.
+               **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the created job should run.
@@ -606,7 +612,9 @@ class _JobState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        case-sensitive based on the language on which the pipeline is coded, mostly Java.
+        **Note**: do not configure Dataflow options here in parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -900,7 +908,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+               case-sensitive based on the language on which the pipeline is coded, mostly Java.
+               **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
@@ -1149,7 +1159,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+               case-sensitive based on the language on which the pipeline is coded, mostly Java.
+               **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the created job should run.
@@ -1298,7 +1310,9 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        case-sensitive based on the language on which the pipeline is coded, mostly Java.
+        **Note**: do not configure Dataflow options here in parameters.
         """
         return pulumi.get(self, "parameters")
 

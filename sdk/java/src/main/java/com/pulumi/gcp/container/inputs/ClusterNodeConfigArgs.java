@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLocalNvmeSsdBlockConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigSandboxConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigSecondaryBootDiskArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigShieldedInstanceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigSoleTenantConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigTaintArgs;
@@ -579,6 +580,21 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+     * 
+     */
+    @Import(name="secondaryBootDisks")
+    private @Nullable Output<List<ClusterNodeConfigSecondaryBootDiskArgs>> secondaryBootDisks;
+
+    /**
+     * @return Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+     * 
+     */
+    public Optional<Output<List<ClusterNodeConfigSecondaryBootDiskArgs>>> secondaryBootDisks() {
+        return Optional.ofNullable(this.secondaryBootDisks);
+    }
+
+    /**
      * The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
@@ -741,6 +757,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.resourceLabels = $.resourceLabels;
         this.resourceManagerTags = $.resourceManagerTags;
         this.sandboxConfig = $.sandboxConfig;
+        this.secondaryBootDisks = $.secondaryBootDisks;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.soleTenantConfig = $.soleTenantConfig;
@@ -1526,6 +1543,37 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder sandboxConfig(ClusterNodeConfigSandboxConfigArgs sandboxConfig) {
             return sandboxConfig(Output.of(sandboxConfig));
+        }
+
+        /**
+         * @param secondaryBootDisks Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryBootDisks(@Nullable Output<List<ClusterNodeConfigSecondaryBootDiskArgs>> secondaryBootDisks) {
+            $.secondaryBootDisks = secondaryBootDisks;
+            return this;
+        }
+
+        /**
+         * @param secondaryBootDisks Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryBootDisks(List<ClusterNodeConfigSecondaryBootDiskArgs> secondaryBootDisks) {
+            return secondaryBootDisks(Output.of(secondaryBootDisks));
+        }
+
+        /**
+         * @param secondaryBootDisks Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryBootDisks(ClusterNodeConfigSecondaryBootDiskArgs... secondaryBootDisks) {
+            return secondaryBootDisks(List.of(secondaryBootDisks));
         }
 
         /**

@@ -296,7 +296,7 @@ import (
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
 //				Name:        pulumi.String("cloudrun-job"),
 //				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("BETA"),
+//				LaunchStage: pulumi.String("GA"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -316,7 +316,6 @@ import (
 //									},
 //								},
 //							},
-//							Egress: pulumi.String("ALL_TRAFFIC"),
 //						},
 //					},
 //				},

@@ -390,6 +390,9 @@ public final class Config {
     public Optional<String> privatecaCustomEndpoint() {
         return Codegen.stringProp("privatecaCustomEndpoint").config(config).get();
     }
+    public Optional<String> privilegedAccessManagerCustomEndpoint() {
+        return Codegen.stringProp("privilegedAccessManagerCustomEndpoint").config(config).get();
+    }
     public Optional<String> project() {
         return Codegen.stringProp("project").config(config).env("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").get();
     }

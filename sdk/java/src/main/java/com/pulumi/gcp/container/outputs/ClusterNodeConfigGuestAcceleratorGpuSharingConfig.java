@@ -15,6 +15,7 @@ public final class ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
      * @return The type of GPU sharing strategy to enable on the GPU node.
      * Accepted values are:
      * * `&#34;TIME_SHARING&#34;`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+     * * `&#34;MPS&#34;`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
      * 
      */
     private String gpuSharingStrategy;
@@ -29,6 +30,7 @@ public final class ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
      * @return The type of GPU sharing strategy to enable on the GPU node.
      * Accepted values are:
      * * `&#34;TIME_SHARING&#34;`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+     * * `&#34;MPS&#34;`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
      * 
      */
     public String gpuSharingStrategy() {

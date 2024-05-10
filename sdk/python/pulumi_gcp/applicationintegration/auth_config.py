@@ -568,9 +568,7 @@ class AuthConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        client = gcp.applicationintegration.Client("client",
-            location="us-west1",
-            provision_gmek=True)
+        client = gcp.applicationintegration.Client("client", location="us-west1")
         basic_example = gcp.applicationintegration.AuthConfig("basic_example",
             location="us-west1",
             display_name="test-authconfig",
@@ -641,9 +639,7 @@ class AuthConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        client = gcp.applicationintegration.Client("client",
-            location="us-west1",
-            provision_gmek=True)
+        client = gcp.applicationintegration.Client("client", location="us-west1")
         basic_example = gcp.applicationintegration.AuthConfig("basic_example",
             location="us-west1",
             display_name="test-authconfig",

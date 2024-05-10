@@ -24,10 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const client = new gcp.applicationintegration.Client("client", {
- *     location: "us-west1",
- *     provisionGmek: true,
- * });
+ * const client = new gcp.applicationintegration.Client("client", {location: "us-west1"});
  * const basicExample = new gcp.applicationintegration.AuthConfig("basic_example", {
  *     location: "us-west1",
  *     displayName: "test-authconfig",

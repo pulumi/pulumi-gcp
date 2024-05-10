@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLocalNvmeSsdBlockConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSandboxConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigTaint;
@@ -189,6 +190,11 @@ public final class GetClusterNodeConfig {
      * 
      */
     private List<GetClusterNodeConfigSandboxConfig> sandboxConfigs;
+    /**
+     * @return Secondary boot disks for preloading data or container images.
+     * 
+     */
+    private List<GetClusterNodeConfigSecondaryBootDisk> secondaryBootDisks;
     /**
      * @return The Google Cloud Platform Service Account to be used by the node VMs.
      * 
@@ -444,6 +450,13 @@ public final class GetClusterNodeConfig {
         return this.sandboxConfigs;
     }
     /**
+     * @return Secondary boot disks for preloading data or container images.
+     * 
+     */
+    public List<GetClusterNodeConfigSecondaryBootDisk> secondaryBootDisks() {
+        return this.secondaryBootDisks;
+    }
+    /**
      * @return The Google Cloud Platform Service Account to be used by the node VMs.
      * 
      */
@@ -533,6 +546,7 @@ public final class GetClusterNodeConfig {
         private Map<String,String> resourceLabels;
         private Map<String,Object> resourceManagerTags;
         private List<GetClusterNodeConfigSandboxConfig> sandboxConfigs;
+        private List<GetClusterNodeConfigSecondaryBootDisk> secondaryBootDisks;
         private String serviceAccount;
         private List<GetClusterNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<GetClusterNodeConfigSoleTenantConfig> soleTenantConfigs;
@@ -574,6 +588,7 @@ public final class GetClusterNodeConfig {
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.sandboxConfigs = defaults.sandboxConfigs;
+    	      this.secondaryBootDisks = defaults.secondaryBootDisks;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.soleTenantConfigs = defaults.soleTenantConfigs;
@@ -880,6 +895,17 @@ public final class GetClusterNodeConfig {
             return sandboxConfigs(List.of(sandboxConfigs));
         }
         @CustomType.Setter
+        public Builder secondaryBootDisks(List<GetClusterNodeConfigSecondaryBootDisk> secondaryBootDisks) {
+            if (secondaryBootDisks == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "secondaryBootDisks");
+            }
+            this.secondaryBootDisks = secondaryBootDisks;
+            return this;
+        }
+        public Builder secondaryBootDisks(GetClusterNodeConfigSecondaryBootDisk... secondaryBootDisks) {
+            return secondaryBootDisks(List.of(secondaryBootDisks));
+        }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             if (serviceAccount == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfig", "serviceAccount");
@@ -983,6 +1009,7 @@ public final class GetClusterNodeConfig {
             _resultValue.resourceLabels = resourceLabels;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.sandboxConfigs = sandboxConfigs;
+            _resultValue.secondaryBootDisks = secondaryBootDisks;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.shieldedInstanceConfigs = shieldedInstanceConfigs;
             _resultValue.soleTenantConfigs = soleTenantConfigs;

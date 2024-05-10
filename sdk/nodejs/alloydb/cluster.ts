@@ -339,6 +339,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * MaintenanceUpdatePolicy defines the policy for system updates.
+     * Structure is documented below.
+     */
+    public readonly maintenanceUpdatePolicy!: pulumi.Output<outputs.alloydb.ClusterMaintenanceUpdatePolicy | undefined>;
+    /**
      * Cluster created via DMS migration.
      * Structure is documented below.
      */
@@ -433,6 +438,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["initialUser"] = state ? state.initialUser : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["maintenanceUpdatePolicy"] = state ? state.maintenanceUpdatePolicy : undefined;
             resourceInputs["migrationSources"] = state ? state.migrationSources : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
@@ -466,6 +472,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["initialUser"] = args ? args.initialUser : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maintenanceUpdatePolicy"] = args ? args.maintenanceUpdatePolicy : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -586,6 +593,11 @@ export interface ClusterState {
      * - - -
      */
     location?: pulumi.Input<string>;
+    /**
+     * MaintenanceUpdatePolicy defines the policy for system updates.
+     * Structure is documented below.
+     */
+    maintenanceUpdatePolicy?: pulumi.Input<inputs.alloydb.ClusterMaintenanceUpdatePolicy>;
     /**
      * Cluster created via DMS migration.
      * Structure is documented below.
@@ -725,6 +737,11 @@ export interface ClusterArgs {
      * - - -
      */
     location: pulumi.Input<string>;
+    /**
+     * MaintenanceUpdatePolicy defines the policy for system updates.
+     * Structure is documented below.
+     */
+    maintenanceUpdatePolicy?: pulumi.Input<inputs.alloydb.ClusterMaintenanceUpdatePolicy>;
     /**
      * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:

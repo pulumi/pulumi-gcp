@@ -17,6 +17,7 @@ import com.pulumi.gcp.alloydb.outputs.ClusterContinuousBackupInfo;
 import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionInfo;
 import com.pulumi.gcp.alloydb.outputs.ClusterInitialUser;
+import com.pulumi.gcp.alloydb.outputs.ClusterMaintenanceUpdatePolicy;
 import com.pulumi.gcp.alloydb.outputs.ClusterMigrationSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterNetworkConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreBackupSource;
@@ -688,6 +689,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * MaintenanceUpdatePolicy defines the policy for system updates.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="maintenanceUpdatePolicy", refs={ClusterMaintenanceUpdatePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterMaintenanceUpdatePolicy> maintenanceUpdatePolicy;
+
+    /**
+     * @return MaintenanceUpdatePolicy defines the policy for system updates.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterMaintenanceUpdatePolicy>> maintenanceUpdatePolicy() {
+        return Codegen.optional(this.maintenanceUpdatePolicy);
     }
     /**
      * Cluster created via DMS migration.

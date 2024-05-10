@@ -140,6 +140,7 @@ class ProviderArgs:
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 privileged_access_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -436,6 +437,8 @@ class ProviderArgs:
             pulumi.set(__self__, "parallelstore_custom_endpoint", parallelstore_custom_endpoint)
         if privateca_custom_endpoint is not None:
             pulumi.set(__self__, "privateca_custom_endpoint", privateca_custom_endpoint)
+        if privileged_access_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "privileged_access_manager_custom_endpoint", privileged_access_manager_custom_endpoint)
         if project is None:
             project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
         if project is not None:
@@ -1655,6 +1658,15 @@ class ProviderArgs:
         pulumi.set(self, "privateca_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="privilegedAccessManagerCustomEndpoint")
+    def privileged_access_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "privileged_access_manager_custom_endpoint")
+
+    @privileged_access_manager_custom_endpoint.setter
+    def privileged_access_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "privileged_access_manager_custom_endpoint", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -2172,6 +2184,7 @@ class Provider(pulumi.ProviderResource):
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 privileged_access_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2377,6 +2390,7 @@ class Provider(pulumi.ProviderResource):
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 privileged_access_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2554,6 +2568,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["os_login_custom_endpoint"] = os_login_custom_endpoint
             __props__.__dict__["parallelstore_custom_endpoint"] = parallelstore_custom_endpoint
             __props__.__dict__["privateca_custom_endpoint"] = privateca_custom_endpoint
+            __props__.__dict__["privileged_access_manager_custom_endpoint"] = privileged_access_manager_custom_endpoint
             if project is None:
                 project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
             __props__.__dict__["project"] = project
@@ -3210,6 +3225,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="privatecaCustomEndpoint")
     def privateca_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "privateca_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="privilegedAccessManagerCustomEndpoint")
+    def privileged_access_manager_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "privileged_access_manager_custom_endpoint")
 
     @property
     @pulumi.getter

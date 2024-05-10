@@ -64,9 +64,9 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as
-               used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-               such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+               case-sensitive based on the language on which the pipeline is coded, mostly Java.
+               **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
@@ -307,9 +307,9 @@ class FlexTemplateJobArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Key/Value pairs to be passed to the Dataflow job (as
-        used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-        such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        case-sensitive based on the language on which the pipeline is coded, mostly Java.
+        **Note**: do not configure Dataflow options here in parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -483,9 +483,9 @@ class _FlexTemplateJobState:
         :param pulumi.Input[int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as
-               used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-               such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+               case-sensitive based on the language on which the pipeline is coded, mostly Java.
+               **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -761,9 +761,9 @@ class _FlexTemplateJobState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Key/Value pairs to be passed to the Dataflow job (as
-        used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-        such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        case-sensitive based on the language on which the pipeline is coded, mostly Java.
+        **Note**: do not configure Dataflow options here in parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -1043,9 +1043,9 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as
-               used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-               such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+               case-sensitive based on the language on which the pipeline is coded, mostly Java.
+               **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
         :param pulumi.Input[str] region: Immutable. The region in which the created job should run.
@@ -1287,9 +1287,9 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as
-               used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-               such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+               case-sensitive based on the language on which the pipeline is coded, mostly Java.
+               **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -1477,9 +1477,9 @@ class FlexTemplateJob(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        Key/Value pairs to be passed to the Dataflow job (as
-        used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-        such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        case-sensitive based on the language on which the pipeline is coded, mostly Java.
+        **Note**: do not configure Dataflow options here in parameters.
         """
         return pulumi.get(self, "parameters")
 

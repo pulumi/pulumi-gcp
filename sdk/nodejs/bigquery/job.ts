@@ -240,8 +240,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const count = 2;
  * const sourceDataset: gcp.bigquery.Dataset[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
+ * for (const range = {value: 0}; range.value < count; range.value++) {
  *     sourceDataset.push(new gcp.bigquery.Dataset(`source-${range.value}`, {
  *         datasetId: `job_copy_${range.value}_dataset`,
  *         friendlyName: "test",
@@ -250,13 +251,12 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * const source: gcp.bigquery.Table[] = [];
- * sourceDataset.length.apply(rangeBody => {
- *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
- *         source.push(new gcp.bigquery.Table(`source-${range.value}`, {
- *             deletionProtection: false,
- *             datasetId: sourceDataset[range.value].datasetId,
- *             tableId: `job_copy_${range.value}_table`,
- *             schema: `[
+ * for (const range = {value: 0}; range.value < count; range.value++) {
+ *     source.push(new gcp.bigquery.Table(`source-${range.value}`, {
+ *         deletionProtection: false,
+ *         datasetId: sourceDataset[range.value].datasetId,
+ *         tableId: `job_copy_${range.value}_table`,
+ *         schema: `[
  *   {
  *     "name": "name",
  *     "type": "STRING",
@@ -274,9 +274,8 @@ import * as utilities from "../utilities";
  *   }
  * ]
  * `,
- *         }));
- *     }
- * });
+ *     }));
+ * }
  * const destDataset = new gcp.bigquery.Dataset("dest", {
  *     datasetId: "job_copy_dest_dataset",
  *     friendlyName: "test",

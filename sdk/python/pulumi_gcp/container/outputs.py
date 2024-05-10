@@ -149,6 +149,7 @@ __all__ = [
     'ClusterNodeConfigLocalNvmeSsdBlockConfig',
     'ClusterNodeConfigReservationAffinity',
     'ClusterNodeConfigSandboxConfig',
+    'ClusterNodeConfigSecondaryBootDisk',
     'ClusterNodeConfigShieldedInstanceConfig',
     'ClusterNodeConfigSoleTenantConfig',
     'ClusterNodeConfigSoleTenantConfigNodeAffinity',
@@ -185,6 +186,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig',
     'ClusterNodePoolNodeConfigReservationAffinity',
     'ClusterNodePoolNodeConfigSandboxConfig',
+    'ClusterNodePoolNodeConfigSecondaryBootDisk',
     'ClusterNodePoolNodeConfigShieldedInstanceConfig',
     'ClusterNodePoolNodeConfigSoleTenantConfig',
     'ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity',
@@ -237,6 +239,7 @@ __all__ = [
     'NodePoolNodeConfigLocalNvmeSsdBlockConfig',
     'NodePoolNodeConfigReservationAffinity',
     'NodePoolNodeConfigSandboxConfig',
+    'NodePoolNodeConfigSecondaryBootDisk',
     'NodePoolNodeConfigShieldedInstanceConfig',
     'NodePoolNodeConfigSoleTenantConfig',
     'NodePoolNodeConfigSoleTenantConfigNodeAffinity',
@@ -318,6 +321,7 @@ __all__ = [
     'GetClusterNodeConfigLocalNvmeSsdBlockConfigResult',
     'GetClusterNodeConfigReservationAffinityResult',
     'GetClusterNodeConfigSandboxConfigResult',
+    'GetClusterNodeConfigSecondaryBootDiskResult',
     'GetClusterNodeConfigShieldedInstanceConfigResult',
     'GetClusterNodeConfigSoleTenantConfigResult',
     'GetClusterNodeConfigSoleTenantConfigNodeAffinityResult',
@@ -354,6 +358,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult',
     'GetClusterNodePoolNodeConfigReservationAffinityResult',
     'GetClusterNodePoolNodeConfigSandboxConfigResult',
+    'GetClusterNodePoolNodeConfigSecondaryBootDiskResult',
     'GetClusterNodePoolNodeConfigShieldedInstanceConfigResult',
     'GetClusterNodePoolNodeConfigSoleTenantConfigResult',
     'GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult',
@@ -6442,6 +6447,8 @@ class ClusterNodeConfig(dict):
             suggest = "resource_manager_tags"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
+        elif key == "secondaryBootDisks":
+            suggest = "secondary_boot_disks"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
@@ -6494,6 +6501,7 @@ class ClusterNodeConfig(dict):
                  resource_labels: Optional[Mapping[str, str]] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  sandbox_config: Optional['outputs.ClusterNodeConfigSandboxConfig'] = None,
+                 secondary_boot_disks: Optional[Sequence['outputs.ClusterNodeConfigSecondaryBootDisk']] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodeConfigShieldedInstanceConfig'] = None,
                  sole_tenant_config: Optional['outputs.ClusterNodeConfigSoleTenantConfig'] = None,
@@ -6579,6 +6587,7 @@ class ClusterNodeConfig(dict):
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
+        :param Sequence['ClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
@@ -6661,6 +6670,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
+        if secondary_boot_disks is not None:
+            pulumi.set(__self__, "secondary_boot_disks", secondary_boot_disks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
@@ -6969,6 +6980,14 @@ class ClusterNodeConfig(dict):
         Sandbox configuration for this node.
         """
         return pulumi.get(self, "sandbox_config")
+
+    @property
+    @pulumi.getter(name="secondaryBootDisks")
+    def secondary_boot_disks(self) -> Optional[Sequence['outputs.ClusterNodeConfigSecondaryBootDisk']]:
+        """
+        Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+        """
+        return pulumi.get(self, "secondary_boot_disks")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -7402,6 +7421,7 @@ class ClusterNodeConfigGuestAcceleratorGpuSharingConfig(dict):
         :param str gpu_sharing_strategy: The type of GPU sharing strategy to enable on the GPU node.
                Accepted values are:
                * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+               * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
         :param int max_shared_clients_per_gpu: The maximum number of containers that can share a GPU.
         """
         pulumi.set(__self__, "gpu_sharing_strategy", gpu_sharing_strategy)
@@ -7414,6 +7434,7 @@ class ClusterNodeConfigGuestAcceleratorGpuSharingConfig(dict):
         The type of GPU sharing strategy to enable on the GPU node.
         Accepted values are:
         * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+        * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
         """
         return pulumi.get(self, "gpu_sharing_strategy")
 
@@ -7781,6 +7802,53 @@ class ClusterNodeConfigSandboxConfig(dict):
         * `"gvisor"`: Pods run within a gVisor sandbox.
         """
         return pulumi.get(self, "sandbox_type")
+
+
+@pulumi.output_type
+class ClusterNodeConfigSecondaryBootDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskImage":
+            suggest = "disk_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigSecondaryBootDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigSecondaryBootDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigSecondaryBootDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_image: str,
+                 mode: Optional[str] = None):
+        """
+        :param str disk_image: Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+        :param str mode: Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+        """
+        pulumi.set(__self__, "disk_image", disk_image)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="diskImage")
+    def disk_image(self) -> str:
+        """
+        Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+        """
+        return pulumi.get(self, "disk_image")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -8932,6 +9000,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "resource_manager_tags"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
+        elif key == "secondaryBootDisks":
+            suggest = "secondary_boot_disks"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
@@ -8984,6 +9054,7 @@ class ClusterNodePoolNodeConfig(dict):
                  resource_labels: Optional[Mapping[str, str]] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  sandbox_config: Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig'] = None,
+                 secondary_boot_disks: Optional[Sequence['outputs.ClusterNodePoolNodeConfigSecondaryBootDisk']] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig'] = None,
                  sole_tenant_config: Optional['outputs.ClusterNodePoolNodeConfigSoleTenantConfig'] = None,
@@ -9069,6 +9140,7 @@ class ClusterNodePoolNodeConfig(dict):
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
+        :param Sequence['ClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
@@ -9151,6 +9223,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
+        if secondary_boot_disks is not None:
+            pulumi.set(__self__, "secondary_boot_disks", secondary_boot_disks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
@@ -9459,6 +9533,14 @@ class ClusterNodePoolNodeConfig(dict):
         Sandbox configuration for this node.
         """
         return pulumi.get(self, "sandbox_config")
+
+    @property
+    @pulumi.getter(name="secondaryBootDisks")
+    def secondary_boot_disks(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigSecondaryBootDisk']]:
+        """
+        Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+        """
+        return pulumi.get(self, "secondary_boot_disks")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -9892,6 +9974,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
         :param str gpu_sharing_strategy: The type of GPU sharing strategy to enable on the GPU node.
                Accepted values are:
                * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+               * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
         :param int max_shared_clients_per_gpu: The maximum number of containers that can share a GPU.
         """
         pulumi.set(__self__, "gpu_sharing_strategy", gpu_sharing_strategy)
@@ -9904,6 +9987,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
         The type of GPU sharing strategy to enable on the GPU node.
         Accepted values are:
         * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+        * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
         """
         return pulumi.get(self, "gpu_sharing_strategy")
 
@@ -10271,6 +10355,53 @@ class ClusterNodePoolNodeConfigSandboxConfig(dict):
         * `"gvisor"`: Pods run within a gVisor sandbox.
         """
         return pulumi.get(self, "sandbox_type")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigSecondaryBootDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskImage":
+            suggest = "disk_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigSecondaryBootDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigSecondaryBootDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigSecondaryBootDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_image: str,
+                 mode: Optional[str] = None):
+        """
+        :param str disk_image: Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+        :param str mode: Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+        """
+        pulumi.set(__self__, "disk_image", disk_image)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="diskImage")
+    def disk_image(self) -> str:
+        """
+        Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+        """
+        return pulumi.get(self, "disk_image")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -11987,6 +12118,8 @@ class NodePoolNodeConfig(dict):
             suggest = "resource_manager_tags"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
+        elif key == "secondaryBootDisks":
+            suggest = "secondary_boot_disks"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
@@ -12039,6 +12172,7 @@ class NodePoolNodeConfig(dict):
                  resource_labels: Optional[Mapping[str, str]] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  sandbox_config: Optional['outputs.NodePoolNodeConfigSandboxConfig'] = None,
+                 secondary_boot_disks: Optional[Sequence['outputs.NodePoolNodeConfigSecondaryBootDisk']] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.NodePoolNodeConfigShieldedInstanceConfig'] = None,
                  sole_tenant_config: Optional['outputs.NodePoolNodeConfigSoleTenantConfig'] = None,
@@ -12078,6 +12212,7 @@ class NodePoolNodeConfig(dict):
         :param Mapping[str, str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param 'NodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
+        :param Sequence['NodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Secondary boot disks for preloading data or container images.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
         :param 'NodePoolNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options.
         :param 'NodePoolNodeConfigSoleTenantConfigArgs' sole_tenant_config: Node affinity options for sole tenant node pools.
@@ -12148,6 +12283,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
+        if secondary_boot_disks is not None:
+            pulumi.set(__self__, "secondary_boot_disks", secondary_boot_disks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
@@ -12410,6 +12547,14 @@ class NodePoolNodeConfig(dict):
         Sandbox configuration for this node.
         """
         return pulumi.get(self, "sandbox_config")
+
+    @property
+    @pulumi.getter(name="secondaryBootDisks")
+    def secondary_boot_disks(self) -> Optional[Sequence['outputs.NodePoolNodeConfigSecondaryBootDisk']]:
+        """
+        Secondary boot disks for preloading data or container images.
+        """
+        return pulumi.get(self, "secondary_boot_disks")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -13146,6 +13291,53 @@ class NodePoolNodeConfigSandboxConfig(dict):
         Type of the sandbox to use for the node (e.g. 'gvisor')
         """
         return pulumi.get(self, "sandbox_type")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigSecondaryBootDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskImage":
+            suggest = "disk_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigSecondaryBootDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigSecondaryBootDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigSecondaryBootDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_image: str,
+                 mode: Optional[str] = None):
+        """
+        :param str disk_image: Disk image to create the secondary boot disk from
+        :param str mode: Mode for how the secondary boot disk is used.
+        """
+        pulumi.set(__self__, "disk_image", disk_image)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="diskImage")
+    def disk_image(self) -> str:
+        """
+        Disk image to create the secondary boot disk from
+        """
+        return pulumi.get(self, "disk_image")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Mode for how the secondary boot disk is used.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -15273,6 +15465,7 @@ class GetClusterNodeConfigResult(dict):
                  resource_labels: Mapping[str, str],
                  resource_manager_tags: Mapping[str, Any],
                  sandbox_configs: Sequence['outputs.GetClusterNodeConfigSandboxConfigResult'],
+                 secondary_boot_disks: Sequence['outputs.GetClusterNodeConfigSecondaryBootDiskResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodeConfigShieldedInstanceConfigResult'],
                  sole_tenant_configs: Sequence['outputs.GetClusterNodeConfigSoleTenantConfigResult'],
@@ -15312,6 +15505,7 @@ class GetClusterNodeConfigResult(dict):
         :param Mapping[str, str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence['GetClusterNodeConfigSandboxConfigArgs'] sandbox_configs: Sandbox configuration for this node.
+        :param Sequence['GetClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Secondary boot disks for preloading data or container images.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
         :param Sequence['GetClusterNodeConfigShieldedInstanceConfigArgs'] shielded_instance_configs: Shielded Instance options.
         :param Sequence['GetClusterNodeConfigSoleTenantConfigArgs'] sole_tenant_configs: Node affinity options for sole tenant node pools.
@@ -15351,6 +15545,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "resource_labels", resource_labels)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
+        pulumi.set(__self__, "secondary_boot_disks", secondary_boot_disks)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
         pulumi.set(__self__, "sole_tenant_configs", sole_tenant_configs)
@@ -15606,6 +15801,14 @@ class GetClusterNodeConfigResult(dict):
         Sandbox configuration for this node.
         """
         return pulumi.get(self, "sandbox_configs")
+
+    @property
+    @pulumi.getter(name="secondaryBootDisks")
+    def secondary_boot_disks(self) -> Sequence['outputs.GetClusterNodeConfigSecondaryBootDiskResult']:
+        """
+        Secondary boot disks for preloading data or container images.
+        """
+        return pulumi.get(self, "secondary_boot_disks")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -16111,6 +16314,35 @@ class GetClusterNodeConfigSandboxConfigResult(dict):
         Type of the sandbox to use for the node (e.g. 'gvisor')
         """
         return pulumi.get(self, "sandbox_type")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigSecondaryBootDiskResult(dict):
+    def __init__(__self__, *,
+                 disk_image: str,
+                 mode: str):
+        """
+        :param str disk_image: Disk image to create the secondary boot disk from
+        :param str mode: Mode for how the secondary boot disk is used.
+        """
+        pulumi.set(__self__, "disk_image", disk_image)
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="diskImage")
+    def disk_image(self) -> str:
+        """
+        Disk image to create the secondary boot disk from
+        """
+        return pulumi.get(self, "disk_image")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Mode for how the secondary boot disk is used.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -16868,6 +17100,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  resource_labels: Mapping[str, str],
                  resource_manager_tags: Mapping[str, Any],
                  sandbox_configs: Sequence['outputs.GetClusterNodePoolNodeConfigSandboxConfigResult'],
+                 secondary_boot_disks: Sequence['outputs.GetClusterNodePoolNodeConfigSecondaryBootDiskResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult'],
                  sole_tenant_configs: Sequence['outputs.GetClusterNodePoolNodeConfigSoleTenantConfigResult'],
@@ -16907,6 +17140,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param Mapping[str, str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence['GetClusterNodePoolNodeConfigSandboxConfigArgs'] sandbox_configs: Sandbox configuration for this node.
+        :param Sequence['GetClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Secondary boot disks for preloading data or container images.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
         :param Sequence['GetClusterNodePoolNodeConfigShieldedInstanceConfigArgs'] shielded_instance_configs: Shielded Instance options.
         :param Sequence['GetClusterNodePoolNodeConfigSoleTenantConfigArgs'] sole_tenant_configs: Node affinity options for sole tenant node pools.
@@ -16946,6 +17180,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "resource_labels", resource_labels)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
+        pulumi.set(__self__, "secondary_boot_disks", secondary_boot_disks)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
         pulumi.set(__self__, "sole_tenant_configs", sole_tenant_configs)
@@ -17201,6 +17436,14 @@ class GetClusterNodePoolNodeConfigResult(dict):
         Sandbox configuration for this node.
         """
         return pulumi.get(self, "sandbox_configs")
+
+    @property
+    @pulumi.getter(name="secondaryBootDisks")
+    def secondary_boot_disks(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigSecondaryBootDiskResult']:
+        """
+        Secondary boot disks for preloading data or container images.
+        """
+        return pulumi.get(self, "secondary_boot_disks")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -17706,6 +17949,35 @@ class GetClusterNodePoolNodeConfigSandboxConfigResult(dict):
         Type of the sandbox to use for the node (e.g. 'gvisor')
         """
         return pulumi.get(self, "sandbox_type")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigSecondaryBootDiskResult(dict):
+    def __init__(__self__, *,
+                 disk_image: str,
+                 mode: str):
+        """
+        :param str disk_image: Disk image to create the secondary boot disk from
+        :param str mode: Mode for how the secondary boot disk is used.
+        """
+        pulumi.set(__self__, "disk_image", disk_image)
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="diskImage")
+    def disk_image(self) -> str:
+        """
+        Disk image to create the secondary boot disk from
+        """
+        return pulumi.get(self, "disk_image")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Mode for how the secondary boot disk is used.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type

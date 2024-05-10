@@ -286,6 +286,18 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("sandboxConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigSandboxConfigArgs>? SandboxConfig { get; set; }
 
+        [Input("secondaryBootDisks")]
+        private InputList<Inputs.ClusterNodePoolNodeConfigSecondaryBootDiskArgs>? _secondaryBootDisks;
+
+        /// <summary>
+        /// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+        /// </summary>
+        public InputList<Inputs.ClusterNodePoolNodeConfigSecondaryBootDiskArgs> SecondaryBootDisks
+        {
+            get => _secondaryBootDisks ?? (_secondaryBootDisks = new InputList<Inputs.ClusterNodePoolNodeConfigSecondaryBootDiskArgs>());
+            set => _secondaryBootDisks = value;
+        }
+
         /// <summary>
         /// The service account to be used by the Node VMs.
         /// If not specified, the "default" service account is used.

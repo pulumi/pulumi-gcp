@@ -273,6 +273,42 @@ import (
 // }
 // ```
 //
+// ### Router Peer Md5 Authentication Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRouterPeer(ctx, "foobar", &compute.RouterPeerArgs{
+//				Name:                    pulumi.String("%s-peer"),
+//				Router:                  pulumi.Any(foobarGoogleComputeRouter.Name),
+//				Region:                  pulumi.Any(foobarGoogleComputeRouter.Region),
+//				PeerAsn:                 pulumi.Int(65515),
+//				AdvertisedRoutePriority: pulumi.Int(100),
+//				Interface:               pulumi.Any(foobarGoogleComputeRouterInterface.Name),
+//				PeerIpAddress:           pulumi.String("169.254.3.2"),
+//				Md5AuthenticationKey: &compute.RouterPeerMd5AuthenticationKeyArgs{
+//					Name: pulumi.String("%s-peer-key"),
+//					Key:  pulumi.String("%s-peer-key-value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RouterBgpPeer can be imported using any of these accepted formats:
@@ -350,8 +386,8 @@ type RouterPeer struct {
 	Ipv6NexthopAddress pulumi.StringOutput `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer.
 	ManagementType pulumi.StringOutput `pulumi:"managementType"`
-	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	// Configuration for MD5 authentication on the BGP session.
+	// Structure is documented below.
 	Md5AuthenticationKey RouterPeerMd5AuthenticationKeyPtrOutput `pulumi:"md5AuthenticationKey"`
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -474,8 +510,8 @@ type routerPeerState struct {
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer.
 	ManagementType *string `pulumi:"managementType"`
-	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	// Configuration for MD5 authentication on the BGP session.
+	// Structure is documented below.
 	Md5AuthenticationKey *RouterPeerMd5AuthenticationKey `pulumi:"md5AuthenticationKey"`
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -560,8 +596,8 @@ type RouterPeerState struct {
 	Ipv6NexthopAddress pulumi.StringPtrInput
 	// The resource that configures and manages this BGP peer.
 	ManagementType pulumi.StringPtrInput
-	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	// Configuration for MD5 authentication on the BGP session.
+	// Structure is documented below.
 	Md5AuthenticationKey RouterPeerMd5AuthenticationKeyPtrInput
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -648,8 +684,8 @@ type routerPeerArgs struct {
 	// If you do not specify the next hop addresses, Google Cloud automatically
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
-	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	// Configuration for MD5 authentication on the BGP session.
+	// Structure is documented below.
 	Md5AuthenticationKey *RouterPeerMd5AuthenticationKey `pulumi:"md5AuthenticationKey"`
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -733,8 +769,8 @@ type RouterPeerArgs struct {
 	// If you do not specify the next hop addresses, Google Cloud automatically
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress pulumi.StringPtrInput
-	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	// Configuration for MD5 authentication on the BGP session.
+	// Structure is documented below.
 	Md5AuthenticationKey RouterPeerMd5AuthenticationKeyPtrInput
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -944,8 +980,8 @@ func (o RouterPeerOutput) ManagementType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.ManagementType }).(pulumi.StringOutput)
 }
 
-// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-// Router.md5_authentication_keys. The field must comply with RFC1035.
+// Configuration for MD5 authentication on the BGP session.
+// Structure is documented below.
 func (o RouterPeerOutput) Md5AuthenticationKey() RouterPeerMd5AuthenticationKeyPtrOutput {
 	return o.ApplyT(func(v *RouterPeer) RouterPeerMd5AuthenticationKeyPtrOutput { return v.Md5AuthenticationKey }).(RouterPeerMd5AuthenticationKeyPtrOutput)
 }

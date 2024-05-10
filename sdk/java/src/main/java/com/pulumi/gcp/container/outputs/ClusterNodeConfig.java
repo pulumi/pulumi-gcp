@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLocalNvmeSsdBlockConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigSandboxConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigTaint;
@@ -227,6 +228,11 @@ public final class ClusterNodeConfig {
      * 
      */
     private @Nullable ClusterNodeConfigSandboxConfig sandboxConfig;
+    /**
+     * @return Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+     * 
+     */
+    private @Nullable List<ClusterNodeConfigSecondaryBootDisk> secondaryBootDisks;
     /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
@@ -531,6 +537,13 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.sandboxConfig);
     }
     /**
+     * @return Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+     * 
+     */
+    public List<ClusterNodeConfigSecondaryBootDisk> secondaryBootDisks() {
+        return this.secondaryBootDisks == null ? List.of() : this.secondaryBootDisks;
+    }
+    /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
@@ -632,6 +645,7 @@ public final class ClusterNodeConfig {
         private @Nullable Map<String,String> resourceLabels;
         private @Nullable Map<String,Object> resourceManagerTags;
         private @Nullable ClusterNodeConfigSandboxConfig sandboxConfig;
+        private @Nullable List<ClusterNodeConfigSecondaryBootDisk> secondaryBootDisks;
         private @Nullable String serviceAccount;
         private @Nullable ClusterNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable ClusterNodeConfigSoleTenantConfig soleTenantConfig;
@@ -673,6 +687,7 @@ public final class ClusterNodeConfig {
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.sandboxConfig = defaults.sandboxConfig;
+    	      this.secondaryBootDisks = defaults.secondaryBootDisks;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.soleTenantConfig = defaults.soleTenantConfig;
@@ -878,6 +893,15 @@ public final class ClusterNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder secondaryBootDisks(@Nullable List<ClusterNodeConfigSecondaryBootDisk> secondaryBootDisks) {
+
+            this.secondaryBootDisks = secondaryBootDisks;
+            return this;
+        }
+        public Builder secondaryBootDisks(ClusterNodeConfigSecondaryBootDisk... secondaryBootDisks) {
+            return secondaryBootDisks(List.of(secondaryBootDisks));
+        }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
 
             this.serviceAccount = serviceAccount;
@@ -958,6 +982,7 @@ public final class ClusterNodeConfig {
             _resultValue.resourceLabels = resourceLabels;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.sandboxConfig = sandboxConfig;
+            _resultValue.secondaryBootDisks = secondaryBootDisks;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
             _resultValue.soleTenantConfig = soleTenantConfig;

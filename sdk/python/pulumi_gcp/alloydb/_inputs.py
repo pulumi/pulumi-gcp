@@ -27,6 +27,9 @@ __all__ = [
     'ClusterEncryptionConfigArgs',
     'ClusterEncryptionInfoArgs',
     'ClusterInitialUserArgs',
+    'ClusterMaintenanceUpdatePolicyArgs',
+    'ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs',
+    'ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs',
     'ClusterMigrationSourceArgs',
     'ClusterNetworkConfigArgs',
     'ClusterRestoreBackupSourceArgs',
@@ -814,6 +817,142 @@ class ClusterInitialUserArgs:
     @user.setter
     def user(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user", value)
+
+
+@pulumi.input_type
+class ClusterMaintenanceUpdatePolicyArgs:
+    def __init__(__self__, *,
+                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs']]] maintenance_windows: Preferred windows to perform maintenance. Currently limited to 1.
+               Structure is documented below.
+        """
+        if maintenance_windows is not None:
+            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs']]]]:
+        """
+        Preferred windows to perform maintenance. Currently limited to 1.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+    @maintenance_windows.setter
+    def maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs']]]]):
+        pulumi.set(self, "maintenance_windows", value)
+
+
+@pulumi.input_type
+class ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 day: pulumi.Input[str],
+                 start_time: pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs']):
+        """
+        :param pulumi.Input[str] day: Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        :param pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs'] start_time: Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> pulumi.Input[str]:
+        """
+        Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: pulumi.Input[str]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs']:
+        """
+        Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs']):
+        pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs:
+    def __init__(__self__, *,
+                 hours: pulumi.Input[int],
+                 minutes: Optional[pulumi.Input[int]] = None,
+                 nanos: Optional[pulumi.Input[int]] = None,
+                 seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
+        :param pulumi.Input[int] minutes: Minutes of hour of day. Currently, only the value 0 is supported.
+        :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        :param pulumi.Input[int] seconds: Seconds of minutes of the time. Currently, only the value 0 is supported.
+        """
+        pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> pulumi.Input[int]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: pulumi.Input[int]):
+        pulumi.set(self, "hours", value)
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minutes of hour of day. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minutes", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds of minutes of the time. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "seconds", value)
 
 
 @pulumi.input_type

@@ -34,7 +34,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///     var client = new Gcp.ApplicationIntegration.Client("client", new()
     ///     {
     ///         Location = "us-west1",
-    ///         ProvisionGmek = true,
     ///     });
     /// 
     ///     var basicExample = new Gcp.ApplicationIntegration.AuthConfig("basic_example", new()

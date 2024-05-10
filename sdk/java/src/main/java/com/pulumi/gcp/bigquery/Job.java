@@ -466,7 +466,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         for (var i = 0; i < 2; i++) {
+ *         final var count = 2;
+ * 
+ *         for (var i = 0; i < count; i++) {
  *             new Dataset("sourceDataset-" + i, DatasetArgs.builder()            
  *                 .datasetId(String.format("job_copy_%s_dataset", range.value()))
  *                 .friendlyName("test")
@@ -476,7 +478,7 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         for (var i = 0; i < sourceDataset.length(); i++) {
+ *         for (var i = 0; i < count; i++) {
  *             new Table("source-" + i, TableArgs.builder()            
  *                 .deletionProtection(false)
  *                 .datasetId(sourceDataset[range.value()].datasetId())

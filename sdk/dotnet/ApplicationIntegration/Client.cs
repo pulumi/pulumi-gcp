@@ -34,12 +34,11 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///     var example = new Gcp.ApplicationIntegration.Client("example", new()
     ///     {
     ///         Location = "us-central1",
-    ///         ProvisionGmek = true,
     ///     });
     /// 
     /// });
     /// ```
-    /// ### Integrations Client Advance
+    /// ### Integrations Client Full
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -78,7 +77,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///     var example = new Gcp.ApplicationIntegration.Client("example", new()
     ///     {
     ///         Location = "us-east1",
-    ///         CreateSampleWorkflows = true,
+    ///         CreateSampleIntegrations = true,
     ///         RunAsServiceAccount = serviceAccount.Email,
     ///         CloudKmsConfig = new Gcp.ApplicationIntegration.Inputs.ClientCloudKmsConfigArgs
     ///         {
@@ -128,7 +127,16 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Output<Outputs.ClientCloudKmsConfig?> CloudKmsConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if sample integrations should be created along with provisioning.
+        /// </summary>
+        [Output("createSampleIntegrations")]
+        public Output<bool?> CreateSampleIntegrations { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Deprecated)
         /// Indicates if sample workflow should be created along with provisioning.
+        /// 
+        /// &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         /// </summary>
         [Output("createSampleWorkflows")]
         public Output<bool?> CreateSampleWorkflows { get; private set; } = null!;
@@ -150,7 +158,10 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Indicates provision with GMEK or CMEK.
+        /// 
+        /// &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         /// </summary>
         [Output("provisionGmek")]
         public Output<bool?> ProvisionGmek { get; private set; } = null!;
@@ -215,7 +226,16 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Input<Inputs.ClientCloudKmsConfigArgs>? CloudKmsConfig { get; set; }
 
         /// <summary>
+        /// Indicates if sample integrations should be created along with provisioning.
+        /// </summary>
+        [Input("createSampleIntegrations")]
+        public Input<bool>? CreateSampleIntegrations { get; set; }
+
+        /// <summary>
+        /// (Optional, Deprecated)
         /// Indicates if sample workflow should be created along with provisioning.
+        /// 
+        /// &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         /// </summary>
         [Input("createSampleWorkflows")]
         public Input<bool>? CreateSampleWorkflows { get; set; }
@@ -237,7 +257,10 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Indicates provision with GMEK or CMEK.
+        /// 
+        /// &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         /// </summary>
         [Input("provisionGmek")]
         public Input<bool>? ProvisionGmek { get; set; }
@@ -264,7 +287,16 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Input<Inputs.ClientCloudKmsConfigGetArgs>? CloudKmsConfig { get; set; }
 
         /// <summary>
+        /// Indicates if sample integrations should be created along with provisioning.
+        /// </summary>
+        [Input("createSampleIntegrations")]
+        public Input<bool>? CreateSampleIntegrations { get; set; }
+
+        /// <summary>
+        /// (Optional, Deprecated)
         /// Indicates if sample workflow should be created along with provisioning.
+        /// 
+        /// &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         /// </summary>
         [Input("createSampleWorkflows")]
         public Input<bool>? CreateSampleWorkflows { get; set; }
@@ -286,7 +318,10 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Indicates provision with GMEK or CMEK.
+        /// 
+        /// &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         /// </summary>
         [Input("provisionGmek")]
         public Input<bool>? ProvisionGmek { get; set; }

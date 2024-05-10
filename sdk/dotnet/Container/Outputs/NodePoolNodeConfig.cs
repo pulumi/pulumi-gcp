@@ -138,6 +138,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigSandboxConfig? SandboxConfig;
         /// <summary>
+        /// Secondary boot disks for preloading data or container images.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.NodePoolNodeConfigSecondaryBootDisk> SecondaryBootDisks;
+        /// <summary>
         /// The Google Cloud Platform Service Account to be used by the node VMs.
         /// </summary>
         public readonly string? ServiceAccount;
@@ -230,6 +234,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.NodePoolNodeConfigSandboxConfig? sandboxConfig,
 
+            ImmutableArray<Outputs.NodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks,
+
             string? serviceAccount,
 
             Outputs.NodePoolNodeConfigShieldedInstanceConfig? shieldedInstanceConfig,
@@ -275,6 +281,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ResourceLabels = resourceLabels;
             ResourceManagerTags = resourceManagerTags;
             SandboxConfig = sandboxConfig;
+            SecondaryBootDisks = secondaryBootDisks;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             SoleTenantConfig = soleTenantConfig;

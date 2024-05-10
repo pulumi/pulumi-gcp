@@ -743,6 +743,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> privatecaCustomEndpoint() {
         return Codegen.optional(this.privatecaCustomEndpoint);
     }
+    @Export(name="privilegedAccessManagerCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> privilegedAccessManagerCustomEndpoint;
+
+    public Output<Optional<String>> privilegedAccessManagerCustomEndpoint() {
+        return Codegen.optional(this.privilegedAccessManagerCustomEndpoint);
+    }
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> project;
 

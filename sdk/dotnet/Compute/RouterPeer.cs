@@ -238,6 +238,35 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
+    /// ### Router Peer Md5 Authentication Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Gcp.Compute.RouterPeer("foobar", new()
+    ///     {
+    ///         Name = "%s-peer",
+    ///         Router = foobarGoogleComputeRouter.Name,
+    ///         Region = foobarGoogleComputeRouter.Region,
+    ///         PeerAsn = 65515,
+    ///         AdvertisedRoutePriority = 100,
+    ///         Interface = foobarGoogleComputeRouterInterface.Name,
+    ///         PeerIpAddress = "169.254.3.2",
+    ///         Md5AuthenticationKey = new Gcp.Compute.Inputs.RouterPeerMd5AuthenticationKeyArgs
+    ///         {
+    ///             Name = "%s-peer-key",
+    ///             Key = "%s-peer-key-value",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RouterBgpPeer can be imported using any of these accepted formats:
@@ -369,8 +398,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> ManagementType { get; private set; } = null!;
 
         /// <summary>
-        /// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-        /// Router.md5_authentication_keys. The field must comply with RFC1035.
+        /// Configuration for MD5 authentication on the BGP session.
+        /// Structure is documented below.
         /// </summary>
         [Output("md5AuthenticationKey")]
         public Output<Outputs.RouterPeerMd5AuthenticationKey?> Md5AuthenticationKey { get; private set; } = null!;
@@ -597,8 +626,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Ipv6NexthopAddress { get; set; }
 
         /// <summary>
-        /// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-        /// Router.md5_authentication_keys. The field must comply with RFC1035.
+        /// Configuration for MD5 authentication on the BGP session.
+        /// Structure is documented below.
         /// </summary>
         [Input("md5AuthenticationKey")]
         public Input<Inputs.RouterPeerMd5AuthenticationKeyArgs>? Md5AuthenticationKey { get; set; }
@@ -793,8 +822,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ManagementType { get; set; }
 
         /// <summary>
-        /// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-        /// Router.md5_authentication_keys. The field must comply with RFC1035.
+        /// Configuration for MD5 authentication on the BGP session.
+        /// Structure is documented below.
         /// </summary>
         [Input("md5AuthenticationKey")]
         public Input<Inputs.RouterPeerMd5AuthenticationKeyGetArgs>? Md5AuthenticationKey { get; set; }

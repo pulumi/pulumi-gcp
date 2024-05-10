@@ -280,7 +280,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Dataset External Reference Aws Docs
+// ### Bigquery Dataset External Reference Aws
 //
 // ```go
 // package main

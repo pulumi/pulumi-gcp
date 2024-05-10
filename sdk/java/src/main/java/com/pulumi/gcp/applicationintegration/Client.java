@@ -55,7 +55,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Client("example", ClientArgs.builder()        
  *             .location("us-central1")
- *             .provisionGmek(true)
  *             .build());
  * 
  *     }
@@ -63,7 +62,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Integrations Client Advance
+ * ### Integrations Client Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -123,7 +122,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new Client("example", ClientArgs.builder()        
  *             .location("us-east1")
- *             .createSampleWorkflows(true)
+ *             .createSampleIntegrations(true)
  *             .runAsServiceAccount(serviceAccount.email())
  *             .cloudKmsConfig(ClientCloudKmsConfigArgs.builder()
  *                 .kmsLocation("us-east1")
@@ -184,14 +183,38 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudKmsConfig);
     }
     /**
-     * Indicates if sample workflow should be created along with provisioning.
+     * Indicates if sample integrations should be created along with provisioning.
      * 
      */
+    @Export(name="createSampleIntegrations", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createSampleIntegrations;
+
+    /**
+     * @return Indicates if sample integrations should be created along with provisioning.
+     * 
+     */
+    public Output<Optional<Boolean>> createSampleIntegrations() {
+        return Codegen.optional(this.createSampleIntegrations);
+    }
+    /**
+     * (Optional, Deprecated)
+     * Indicates if sample workflow should be created along with provisioning.
+     * 
+     * &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
+     * 
+     * @deprecated
+     * `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
+     * 
+     */
+    @Deprecated /* `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead. */
     @Export(name="createSampleWorkflows", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> createSampleWorkflows;
 
     /**
-     * @return Indicates if sample workflow should be created along with provisioning.
+     * @return (Optional, Deprecated)
+     * Indicates if sample workflow should be created along with provisioning.
+     * 
+     * &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
      * 
      */
     public Output<Optional<Boolean>> createSampleWorkflows() {
@@ -232,14 +255,24 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * (Optional, Deprecated)
      * Indicates provision with GMEK or CMEK.
      * 
+     * &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
+     * 
+     * @deprecated
+     * `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
+     * 
      */
+    @Deprecated /* `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given. */
     @Export(name="provisionGmek", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> provisionGmek;
 
     /**
-     * @return Indicates provision with GMEK or CMEK.
+     * @return (Optional, Deprecated)
+     * Indicates provision with GMEK or CMEK.
+     * 
+     * &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
      * 
      */
     public Output<Optional<Boolean>> provisionGmek() {

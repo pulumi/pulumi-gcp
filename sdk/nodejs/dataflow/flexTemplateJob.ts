@@ -178,9 +178,9 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly onDelete!: pulumi.Output<string | undefined>;
     /**
-     * Key/Value pairs to be passed to the Dataflow job (as
-     * used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-     * such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+     * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      */
     public readonly parameters!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -390,9 +390,9 @@ export interface FlexTemplateJobState {
      */
     onDelete?: pulumi.Input<string>;
     /**
-     * Key/Value pairs to be passed to the Dataflow job (as
-     * used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-     * such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+     * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      */
     parameters?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -514,9 +514,9 @@ export interface FlexTemplateJobArgs {
      */
     onDelete?: pulumi.Input<string>;
     /**
-     * Key/Value pairs to be passed to the Dataflow job (as
-     * used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-     * such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+     * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      */
     parameters?: pulumi.Input<{[key: string]: any}>;
     /**

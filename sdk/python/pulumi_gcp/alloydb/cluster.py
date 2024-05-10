@@ -29,6 +29,7 @@ class ClusterArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_update_policy: Optional[pulumi.Input['ClusterMaintenanceUpdatePolicyArgs']] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -68,6 +69,8 @@ class ClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['ClusterMaintenanceUpdatePolicyArgs'] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
+               Structure is documented below.
         :param pulumi.Input[str] network: (Optional, Deprecated)
                The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -108,6 +111,8 @@ class ClusterArgs:
             pulumi.set(__self__, "initial_user", initial_user)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_update_policy is not None:
+            pulumi.set(__self__, "maintenance_update_policy", maintenance_update_policy)
         if network is not None:
             warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
             pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
@@ -299,6 +304,19 @@ class ClusterArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenanceUpdatePolicy")
+    def maintenance_update_policy(self) -> Optional[pulumi.Input['ClusterMaintenanceUpdatePolicyArgs']]:
+        """
+        MaintenanceUpdatePolicy defines the policy for system updates.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_update_policy")
+
+    @maintenance_update_policy.setter
+    def maintenance_update_policy(self, value: Optional[pulumi.Input['ClusterMaintenanceUpdatePolicyArgs']]):
+        pulumi.set(self, "maintenance_update_policy", value)
+
+    @property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
@@ -404,6 +422,7 @@ class _ClusterState:
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_update_policy: Optional[pulumi.Input['ClusterMaintenanceUpdatePolicyArgs']] = None,
                  migration_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -457,6 +476,8 @@ class _ClusterState:
                
                
                - - -
+        :param pulumi.Input['ClusterMaintenanceUpdatePolicyArgs'] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
@@ -519,6 +540,8 @@ class _ClusterState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maintenance_update_policy is not None:
+            pulumi.set(__self__, "maintenance_update_policy", maintenance_update_policy)
         if migration_sources is not None:
             pulumi.set(__self__, "migration_sources", migration_sources)
         if name is not None:
@@ -783,6 +806,19 @@ class _ClusterState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="maintenanceUpdatePolicy")
+    def maintenance_update_policy(self) -> Optional[pulumi.Input['ClusterMaintenanceUpdatePolicyArgs']]:
+        """
+        MaintenanceUpdatePolicy defines the policy for system updates.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_update_policy")
+
+    @maintenance_update_policy.setter
+    def maintenance_update_policy(self, value: Optional[pulumi.Input['ClusterMaintenanceUpdatePolicyArgs']]):
+        pulumi.set(self, "maintenance_update_policy", value)
+
+    @property
     @pulumi.getter(name="migrationSources")
     def migration_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]]]:
         """
@@ -961,6 +997,7 @@ class Cluster(pulumi.CustomResource):
                  initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_update_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1198,6 +1235,8 @@ class Cluster(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
+               Structure is documented below.
         :param pulumi.Input[str] network: (Optional, Deprecated)
                The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -1445,6 +1484,7 @@ class Cluster(pulumi.CustomResource):
                  initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_update_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1477,6 +1517,7 @@ class Cluster(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["maintenance_update_policy"] = maintenance_update_policy
             __props__.__dict__["network"] = network
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
@@ -1524,6 +1565,7 @@ class Cluster(pulumi.CustomResource):
             initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            maintenance_update_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']]] = None,
             migration_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMigrationSourceArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
@@ -1582,6 +1624,8 @@ class Cluster(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMigrationSourceArgs']]]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
@@ -1630,6 +1674,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["initial_user"] = initial_user
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["maintenance_update_policy"] = maintenance_update_policy
         __props__.__dict__["migration_sources"] = migration_sources
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -1806,6 +1851,15 @@ class Cluster(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="maintenanceUpdatePolicy")
+    def maintenance_update_policy(self) -> pulumi.Output[Optional['outputs.ClusterMaintenanceUpdatePolicy']]:
+        """
+        MaintenanceUpdatePolicy defines the policy for system updates.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_update_policy")
 
     @property
     @pulumi.getter(name="migrationSources")

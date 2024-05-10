@@ -2031,6 +2031,46 @@ export namespace alloydb {
         user?: pulumi.Input<string>;
     }
 
+    export interface ClusterMaintenanceUpdatePolicy {
+        /**
+         * Preferred windows to perform maintenance. Currently limited to 1.
+         * Structure is documented below.
+         */
+        maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterMaintenanceUpdatePolicyMaintenanceWindow>[]>;
+    }
+
+    export interface ClusterMaintenanceUpdatePolicyMaintenanceWindow {
+        /**
+         * Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        day: pulumi.Input<string>;
+        /**
+         * Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+         * Structure is documented below.
+         */
+        startTime: pulumi.Input<inputs.alloydb.ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime>;
+    }
+
+    export interface ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         */
+        hours: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Currently, only the value 0 is supported.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Currently, only the value 0 is supported.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
     export interface ClusterMigrationSource {
         /**
          * The host and port of the on-premises instance in host:port format
@@ -23111,6 +23151,8 @@ export namespace compute {
          * The number of consecutive BFD packets that must be missed before
          * BFD declares that a peer is unavailable. If set, the value must
          * be a value between 5 and 16.
+         *
+         * <a name="nestedMd5AuthenticationKey"></a>The `md5AuthenticationKey` block supports:
          */
         multiplier?: pulumi.Input<number>;
         /**
@@ -27521,6 +27563,10 @@ export namespace container {
          */
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodeConfigSandboxConfig>;
         /**
+         * Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         */
+        secondaryBootDisks?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigSecondaryBootDisk>[]>;
+        /**
          * The service account to be used by the Node VMs.
          * If not specified, the "default" service account is used.
          */
@@ -27660,6 +27706,7 @@ export namespace container {
          * The type of GPU sharing strategy to enable on the GPU node.
          * Accepted values are:
          * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+         * * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
          */
         gpuSharingStrategy: pulumi.Input<string>;
         /**
@@ -27764,6 +27811,17 @@ export namespace container {
          * * `"gvisor"`: Pods run within a gVisor sandbox.
          */
         sandboxType: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeConfigSecondaryBootDisk {
+        /**
+         * Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+         */
+        diskImage: pulumi.Input<string>;
+        /**
+         * Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+         */
+        mode?: pulumi.Input<string>;
     }
 
     export interface ClusterNodeConfigShieldedInstanceConfig {
@@ -28248,6 +28306,10 @@ export namespace container {
          */
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigSandboxConfig>;
         /**
+         * Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         */
+        secondaryBootDisks?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigSecondaryBootDisk>[]>;
+        /**
          * The service account to be used by the Node VMs.
          * If not specified, the "default" service account is used.
          */
@@ -28387,6 +28449,7 @@ export namespace container {
          * The type of GPU sharing strategy to enable on the GPU node.
          * Accepted values are:
          * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+         * * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
          */
         gpuSharingStrategy: pulumi.Input<string>;
         /**
@@ -28491,6 +28554,17 @@ export namespace container {
          * * `"gvisor"`: Pods run within a gVisor sandbox.
          */
         sandboxType: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodePoolNodeConfigSecondaryBootDisk {
+        /**
+         * Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+         */
+        diskImage: pulumi.Input<string>;
+        /**
+         * Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+         */
+        mode?: pulumi.Input<string>;
     }
 
     export interface ClusterNodePoolNodeConfigShieldedInstanceConfig {
@@ -29079,6 +29153,10 @@ export namespace container {
          */
         sandboxConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigSandboxConfig>;
         /**
+         * Secondary boot disks for preloading data or container images.
+         */
+        secondaryBootDisks?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigSecondaryBootDisk>[]>;
+        /**
          * The Google Cloud Platform Service Account to be used by the node VMs.
          */
         serviceAccount?: pulumi.Input<string>;
@@ -29278,6 +29356,17 @@ export namespace container {
          * Type of the sandbox to use for the node (e.g. 'gvisor')
          */
         sandboxType: pulumi.Input<string>;
+    }
+
+    export interface NodePoolNodeConfigSecondaryBootDisk {
+        /**
+         * Disk image to create the secondary boot disk from
+         */
+        diskImage: pulumi.Input<string>;
+        /**
+         * Mode for how the secondary boot disk is used.
+         */
+        mode?: pulumi.Input<string>;
     }
 
     export interface NodePoolNodeConfigShieldedInstanceConfig {
@@ -58149,6 +58238,133 @@ export namespace osconfig {
          * Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
          */
         percentage?: pulumi.Input<number>;
+    }
+}
+
+export namespace priviligedaccessmanager {
+    export interface EntitlementAdditionalNotificationTargets {
+        /**
+         * Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+         */
+        adminEmailRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. Additional email address to be notified about an eligible entitlement.
+         */
+        requesterEmailRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EntitlementApprovalWorkflow {
+        /**
+         * A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+         * The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+         * This can be used to create approval workflows such as
+         * * Require an approval from any user in a group G.
+         * * Require an approval from any k number of users from a Group G.
+         * * Require an approval from any user in a group G and then from a user U. etc.
+         * A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+         * Structure is documented below.
+         */
+        manualApprovals: pulumi.Input<inputs.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovals>;
+    }
+
+    export interface EntitlementApprovalWorkflowManualApprovals {
+        /**
+         * Optional. Do the approvers need to provide a justification for their actions?
+         */
+        requireApproverJustification?: pulumi.Input<boolean>;
+        /**
+         * List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+         * Structure is documented below.
+         */
+        steps: pulumi.Input<pulumi.Input<inputs.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStep>[]>;
+    }
+
+    export interface EntitlementApprovalWorkflowManualApprovalsStep {
+        /**
+         * How many users from the above list need to approve.
+         * If there are not enough distinct users in the list above then the workflow
+         * will indefinitely block. Should always be greater than 0. Currently 1 is the only
+         * supported value.
+         */
+        approvalsNeeded?: pulumi.Input<number>;
+        /**
+         * Optional. Additional email addresses to be notified when a grant is pending approval.
+         */
+        approverEmailRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The potential set of approvers in this step. This list should contain at only one entry.
+         * Structure is documented below.
+         */
+        approvers: pulumi.Input<inputs.priviligedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApprovers>;
+    }
+
+    export interface EntitlementApprovalWorkflowManualApprovalsStepApprovers {
+        /**
+         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+         */
+        principals: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EntitlementEligibleUser {
+        /**
+         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+         */
+        principals: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EntitlementPrivilegedAccess {
+        /**
+         * GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+         * Structure is documented below.
+         */
+        gcpIamAccess: pulumi.Input<inputs.priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccess>;
+    }
+
+    export interface EntitlementPrivilegedAccessGcpIamAccess {
+        /**
+         * Name of the resource.
+         */
+        resource: pulumi.Input<string>;
+        /**
+         * The type of this resource.
+         */
+        resourceType: pulumi.Input<string>;
+        /**
+         * Role bindings to be created on successful grant.
+         * Structure is documented below.
+         */
+        roleBindings: pulumi.Input<pulumi.Input<inputs.priviligedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBinding>[]>;
+    }
+
+    export interface EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
+        /**
+         * The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+         * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+         */
+        conditionExpression?: pulumi.Input<string>;
+        /**
+         * IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+         */
+        role: pulumi.Input<string>;
+    }
+
+    export interface EntitlementRequesterJustificationConfig {
+        /**
+         * The justification is not mandatory but can be provided in any of the supported formats.
+         */
+        notMandatory?: pulumi.Input<inputs.priviligedaccessmanager.EntitlementRequesterJustificationConfigNotMandatory>;
+        /**
+         * The requester has to provide a justification in the form of free flowing text.
+         *
+         * - - -
+         */
+        unstructured?: pulumi.Input<inputs.priviligedaccessmanager.EntitlementRequesterJustificationConfigUnstructured>;
+    }
+
+    export interface EntitlementRequesterJustificationConfigNotMandatory {
+    }
+
+    export interface EntitlementRequesterJustificationConfigUnstructured {
     }
 }
 

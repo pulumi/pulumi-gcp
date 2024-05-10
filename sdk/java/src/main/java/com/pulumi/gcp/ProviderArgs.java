@@ -895,6 +895,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.privatecaCustomEndpoint);
     }
 
+    @Import(name="privilegedAccessManagerCustomEndpoint")
+    private @Nullable Output<String> privilegedAccessManagerCustomEndpoint;
+
+    public Optional<Output<String>> privilegedAccessManagerCustomEndpoint() {
+        return Optional.ofNullable(this.privilegedAccessManagerCustomEndpoint);
+    }
+
     @Import(name="project")
     private @Nullable Output<String> project;
 
@@ -1324,6 +1331,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.osLoginCustomEndpoint = $.osLoginCustomEndpoint;
         this.parallelstoreCustomEndpoint = $.parallelstoreCustomEndpoint;
         this.privatecaCustomEndpoint = $.privatecaCustomEndpoint;
+        this.privilegedAccessManagerCustomEndpoint = $.privilegedAccessManagerCustomEndpoint;
         this.project = $.project;
         this.publicCaCustomEndpoint = $.publicCaCustomEndpoint;
         this.pubsubCustomEndpoint = $.pubsubCustomEndpoint;
@@ -2514,6 +2522,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder privatecaCustomEndpoint(String privatecaCustomEndpoint) {
             return privatecaCustomEndpoint(Output.of(privatecaCustomEndpoint));
+        }
+
+        public Builder privilegedAccessManagerCustomEndpoint(@Nullable Output<String> privilegedAccessManagerCustomEndpoint) {
+            $.privilegedAccessManagerCustomEndpoint = privilegedAccessManagerCustomEndpoint;
+            return this;
+        }
+
+        public Builder privilegedAccessManagerCustomEndpoint(String privilegedAccessManagerCustomEndpoint) {
+            return privilegedAccessManagerCustomEndpoint(Output.of(privilegedAccessManagerCustomEndpoint));
         }
 
         public Builder project(@Nullable Output<String> project) {

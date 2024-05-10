@@ -13,6 +13,7 @@ import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -176,6 +177,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+     * documentation for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+     * 
+     */
+    @Import(name="redisConfigs")
+    private @Nullable Output<Map<String,String>> redisConfigs;
+
+    /**
+     * @return Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+     * documentation for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+     * 
+     */
+    public Optional<Output<Map<String,String>>> redisConfigs() {
+        return Optional.ofNullable(this.redisConfigs);
+    }
+
+    /**
      * The name of the region of the Redis cluster.
      * 
      */
@@ -313,6 +333,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.pscConfigs = $.pscConfigs;
         this.pscConnections = $.pscConnections;
+        this.redisConfigs = $.redisConfigs;
         this.region = $.region;
         this.replicaCount = $.replicaCount;
         this.shardCount = $.shardCount;
@@ -579,6 +600,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pscConnections(ClusterPscConnectionArgs... pscConnections) {
             return pscConnections(List.of(pscConnections));
+        }
+
+        /**
+         * @param redisConfigs Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+         * documentation for the list of supported parameters:
+         * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redisConfigs(@Nullable Output<Map<String,String>> redisConfigs) {
+            $.redisConfigs = redisConfigs;
+            return this;
+        }
+
+        /**
+         * @param redisConfigs Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+         * documentation for the list of supported parameters:
+         * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redisConfigs(Map<String,String> redisConfigs) {
+            return redisConfigs(Output.of(redisConfigs));
         }
 
         /**

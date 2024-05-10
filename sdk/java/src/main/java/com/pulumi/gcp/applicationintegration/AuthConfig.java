@@ -60,7 +60,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var client = new Client("client", ClientArgs.builder()        
  *             .location("us-west1")
- *             .provisionGmek(true)
  *             .build());
  * 
  *         var basicExample = new AuthConfig("basicExample", AuthConfigArgs.builder()        
