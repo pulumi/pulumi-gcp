@@ -942,6 +942,23 @@
                     "initial_user": {
                         "maxItemsOne": true
                     },
+                    "maintenance_update_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "maintenance_windows": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "start_time": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "migration_source": {
                         "maxItemsOne": false
                     },
@@ -9361,6 +9378,9 @@
                                 "sandbox_config": {
                                     "maxItemsOne": true
                                 },
+                                "secondary_boot_disks": {
+                                    "maxItemsOne": false
+                                },
                                 "shielded_instance_config": {
                                     "maxItemsOne": true
                                 },
@@ -9499,6 +9519,9 @@
                                             },
                                             "sandbox_config": {
                                                 "maxItemsOne": true
+                                            },
+                                            "secondary_boot_disks": {
+                                                "maxItemsOne": false
                                             },
                                             "shielded_instance_config": {
                                                 "maxItemsOne": true
@@ -9778,6 +9801,9 @@
                                 },
                                 "sandbox_config": {
                                     "maxItemsOne": true
+                                },
+                                "secondary_boot_disks": {
+                                    "maxItemsOne": false
                                 },
                                 "shielded_instance_config": {
                                     "maxItemsOne": true
@@ -22089,6 +22115,99 @@
                 "current": "gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy",
                 "majorVersion": 7
             },
+            "google_privileged_access_manager_entitlement": {
+                "current": "gcp:priviligedaccessmanager/entitlement:Entitlement",
+                "majorVersion": 7,
+                "fields": {
+                    "additional_notification_targets": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "admin_email_recipients": {
+                                    "maxItemsOne": false
+                                },
+                                "requester_email_recipients": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "approval_workflow": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "manual_approvals": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "steps": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "approver_email_recipients": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "approvers": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "principals": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "eligible_users": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "principals": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "privileged_access": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "gcp_iam_access": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "role_bindings": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "requester_justification_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "not_mandatory": {
+                                    "maxItemsOne": true
+                                },
+                                "unstructured": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_project": {
                 "current": "gcp:organizations/project:Project",
                 "majorVersion": 7
@@ -27687,6 +27806,9 @@
                                 "sandbox_config": {
                                     "maxItemsOne": false
                                 },
+                                "secondary_boot_disks": {
+                                    "maxItemsOne": false
+                                },
                                 "shielded_instance_config": {
                                     "maxItemsOne": false
                                 },
@@ -27824,6 +27946,9 @@
                                                 }
                                             },
                                             "sandbox_config": {
+                                                "maxItemsOne": false
+                                            },
+                                            "secondary_boot_disks": {
                                                 "maxItemsOne": false
                                             },
                                             "shielded_instance_config": {
@@ -29632,6 +29757,15 @@
                 "majorVersion": 7,
                 "fields": {
                     "bucket_objects": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_storage_buckets": {
+                "current": "gcp:storage/getBuckets:getBuckets",
+                "majorVersion": 7,
+                "fields": {
+                    "buckets": {
                         "maxItemsOne": false
                     }
                 }
@@ -31499,6 +31633,7 @@
             "gcp:osconfig/patchDeployment:PatchDeployment": 0,
             "gcp:oslogin/sshPublicKey:SshPublicKey": 0,
             "gcp:parallelstore/instance:Instance": 0,
+            "gcp:priviligedaccessmanager/entitlement:Entitlement": 0,
             "gcp:projects/accessApprovalSettings:AccessApprovalSettings": 0,
             "gcp:projects/apiKey:ApiKey": 0,
             "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts": 0,
@@ -31933,6 +32068,7 @@
             "gcp:storage/getBucketObject:getBucketObject": 0,
             "gcp:storage/getBucketObjectContent:getBucketObjectContent": 0,
             "gcp:storage/getBucketObjects:getBucketObjects": 0,
+            "gcp:storage/getBuckets:getBuckets": 0,
             "gcp:storage/getObjectSignedUrl:getObjectSignedUrl": 0,
             "gcp:storage/getProjectServiceAccount:getProjectServiceAccount": 0,
             "gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount": 0,
