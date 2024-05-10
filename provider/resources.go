@@ -131,7 +131,7 @@ const (
 	gcpOsConfig                 = "OsConfig"                 // OsConfig resources
 	gcpOsLogin                  = "OsLogin"                  // OsLogin resources
 	gcpParallelStore            = "ParallelStore"            // ParallelStore resources
-	gcpPriviligedAccessManager  = "PriviligedAccessManager"  // Priviliged Access Manager
+	gcpPrivilegedAccessManager  = "PrivilegedAccessManager"  // Privileged Access Manager
 	gcpProject                  = "Projects"                 // Project resources
 	gcpPubSub                   = "PubSub"                   // PubSub resources
 	gcpRecaptcha                = "Recaptcha"                // Recaptcha resources
@@ -256,7 +256,7 @@ var moduleMapping = map[string]string{
 	"os_login":                   gcpOsLogin,
 	"parallelstore":              gcpParallelStore,
 	"privateca":                  gcpCertificateAuthority,
-	"privileged_access_manager":  gcpPriviligedAccessManager,
+	"privileged_access_manager":  gcpPrivilegedAccessManager,
 	"project":                    gcpProject,
 	"public":                     gcpCompute,
 	"pubsub":                     gcpPubSub,
