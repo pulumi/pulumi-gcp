@@ -3898,6 +3898,13 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "data_source_sourcerepo_repository.html.markdown",
 				},
 			},
+
+			"google_privileged_access_manager_entitlement": {
+				Tok: gcpDataSource(gcpPrivilegedAccessManager, "getEntitlement"),
+				Docs: &tfbridge.DocInfo{
+					Source: "privileged_access_manager_entitlement.html.markdown",
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
