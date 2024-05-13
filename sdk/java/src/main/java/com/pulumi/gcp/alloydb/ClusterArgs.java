@@ -10,6 +10,7 @@ import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterMaintenanceUpdatePolicyArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
@@ -255,6 +256,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * MaintenanceUpdatePolicy defines the policy for system updates.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenanceUpdatePolicy")
+    private @Nullable Output<ClusterMaintenanceUpdatePolicyArgs> maintenanceUpdatePolicy;
+
+    /**
+     * @return MaintenanceUpdatePolicy defines the policy for system updates.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterMaintenanceUpdatePolicyArgs>> maintenanceUpdatePolicy() {
+        return Optional.ofNullable(this.maintenanceUpdatePolicy);
+    }
+
+    /**
      * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
@@ -386,6 +404,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.initialUser = $.initialUser;
         this.labels = $.labels;
         this.location = $.location;
+        this.maintenanceUpdatePolicy = $.maintenanceUpdatePolicy;
         this.network = $.network;
         this.networkConfig = $.networkConfig;
         this.project = $.project;
@@ -717,6 +736,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param maintenanceUpdatePolicy MaintenanceUpdatePolicy defines the policy for system updates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceUpdatePolicy(@Nullable Output<ClusterMaintenanceUpdatePolicyArgs> maintenanceUpdatePolicy) {
+            $.maintenanceUpdatePolicy = maintenanceUpdatePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenanceUpdatePolicy MaintenanceUpdatePolicy defines the policy for system updates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceUpdatePolicy(ClusterMaintenanceUpdatePolicyArgs maintenanceUpdatePolicy) {
+            return maintenanceUpdatePolicy(Output.of(maintenanceUpdatePolicy));
         }
 
         /**

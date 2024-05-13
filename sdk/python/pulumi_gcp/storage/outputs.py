@@ -72,6 +72,7 @@ __all__ = [
     'GetBucketSoftDeletePolicyResult',
     'GetBucketVersioningResult',
     'GetBucketWebsiteResult',
+    'GetBucketsBucketResult',
 ]
 
 @pulumi.output_type
@@ -3221,5 +3222,67 @@ class GetBucketWebsiteResult(dict):
         The custom object to return when a requested resource is not found.
         """
         return pulumi.get(self, "not_found_page")
+
+
+@pulumi.output_type
+class GetBucketsBucketResult(dict):
+    def __init__(__self__, *,
+                 labels: Mapping[str, str],
+                 location: str,
+                 name: str,
+                 self_link: str,
+                 storage_class: str):
+        """
+        :param Mapping[str, str] labels: User-provided bucket labels, in key/value pairs.
+        :param str location: The location of the bucket.
+        :param str name: The name of the bucket.
+        :param str self_link: A url reference to the bucket.
+        :param str storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "storage_class", storage_class)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        User-provided bucket labels, in key/value pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the bucket.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the bucket.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        A url reference to the bucket.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket.
+        """
+        return pulumi.get(self, "storage_class")
 
 

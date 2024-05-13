@@ -38,6 +38,9 @@ import * as utilities from "../utilities";
  *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
  *     authorizationMode: "AUTH_MODE_DISABLED",
+ *     redisConfigs: {
+ *         "maxmemory-policy": "volatile-ttl",
+ *     },
  * });
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "mysubnet",
@@ -162,6 +165,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly pscConnections!: pulumi.Output<outputs.redis.ClusterPscConnection[]>;
     /**
+     * Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+     * documentation for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+     */
+    public readonly redisConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The name of the region of the Redis cluster.
      */
     public readonly region!: pulumi.Output<string>;
@@ -219,6 +228,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pscConfigs"] = state ? state.pscConfigs : undefined;
             resourceInputs["pscConnections"] = state ? state.pscConnections : undefined;
+            resourceInputs["redisConfigs"] = state ? state.redisConfigs : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["replicaCount"] = state ? state.replicaCount : undefined;
             resourceInputs["shardCount"] = state ? state.shardCount : undefined;
@@ -240,6 +250,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pscConfigs"] = args ? args.pscConfigs : undefined;
+            resourceInputs["redisConfigs"] = args ? args.redisConfigs : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
             resourceInputs["shardCount"] = args ? args.shardCount : undefined;
@@ -309,6 +320,12 @@ export interface ClusterState {
      */
     pscConnections?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscConnection>[]>;
     /**
+     * Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+     * documentation for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+     */
+    redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The name of the region of the Redis cluster.
      */
     region?: pulumi.Input<string>;
@@ -373,6 +390,12 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     pscConfigs: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscConfig>[]>;
+    /**
+     * Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+     * documentation for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+     */
+    redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the region of the Redis cluster.
      */

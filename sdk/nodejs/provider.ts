@@ -147,6 +147,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly osLoginCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly parallelstoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly privatecaCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly privilegedAccessManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string | undefined>;
     public readonly publicCaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly pubsubCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -325,6 +326,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
             resourceInputs["parallelstoreCustomEndpoint"] = args ? args.parallelstoreCustomEndpoint : undefined;
             resourceInputs["privatecaCustomEndpoint"] = args ? args.privatecaCustomEndpoint : undefined;
+            resourceInputs["privilegedAccessManagerCustomEndpoint"] = args ? args.privilegedAccessManagerCustomEndpoint : undefined;
             resourceInputs["project"] = (args ? args.project : undefined) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
             resourceInputs["publicCaCustomEndpoint"] = args ? args.publicCaCustomEndpoint : undefined;
             resourceInputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
@@ -505,6 +507,7 @@ export interface ProviderArgs {
     osLoginCustomEndpoint?: pulumi.Input<string>;
     parallelstoreCustomEndpoint?: pulumi.Input<string>;
     privatecaCustomEndpoint?: pulumi.Input<string>;
+    privilegedAccessManagerCustomEndpoint?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     publicCaCustomEndpoint?: pulumi.Input<string>;
     pubsubCustomEndpoint?: pulumi.Input<string>;

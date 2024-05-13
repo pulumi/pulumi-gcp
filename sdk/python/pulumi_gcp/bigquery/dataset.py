@@ -1071,7 +1071,7 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
-        ### Bigquery Dataset External Reference Aws Docs
+        ### Bigquery Dataset External Reference Aws
 
         ```python
         import pulumi
@@ -1355,7 +1355,7 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
-        ### Bigquery Dataset External Reference Aws Docs
+        ### Bigquery Dataset External Reference Aws
 
         ```python
         import pulumi

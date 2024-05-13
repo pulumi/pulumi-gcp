@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
-    ///         LaunchStage = "BETA",
+    ///         LaunchStage = "GA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -304,7 +304,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                             },
     ///                         },
     ///                     },
-    ///                     Egress = "ALL_TRAFFIC",
     ///                 },
     ///             },
     ///         },

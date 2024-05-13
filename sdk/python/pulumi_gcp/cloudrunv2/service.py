@@ -1111,7 +1111,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
-            launch_stage="BETA",
+            launch_stage="GA",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
@@ -1126,7 +1126,6 @@ class Service(pulumi.CustomResource):
                             "tag3",
                         ],
                     )],
-                    egress="ALL_TRAFFIC",
                 ),
             ))
         ```
@@ -1565,7 +1564,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
-            launch_stage="BETA",
+            launch_stage="GA",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
@@ -1580,7 +1579,6 @@ class Service(pulumi.CustomResource):
                             "tag3",
                         ],
                     )],
-                    egress="ALL_TRAFFIC",
                 ),
             ))
         ```

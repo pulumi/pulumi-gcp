@@ -38,8 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := applicationintegration.NewClient(ctx, "client", &applicationintegration.ClientArgs{
-//				Location:      pulumi.String("us-west1"),
-//				ProvisionGmek: pulumi.Bool(true),
+//				Location: pulumi.String("us-west1"),
 //			})
 //			if err != nil {
 //				return err

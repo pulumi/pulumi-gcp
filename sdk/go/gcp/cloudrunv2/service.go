@@ -300,7 +300,7 @@ import (
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
 //				Name:        pulumi.String("cloudrun-service"),
 //				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("BETA"),
+//				LaunchStage: pulumi.String("GA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -319,7 +319,6 @@ import (
 //								},
 //							},
 //						},
-//						Egress: pulumi.String("ALL_TRAFFIC"),
 //					},
 //				},
 //			})

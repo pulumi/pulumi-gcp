@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     ///     var primary = new Gcp.Firebaserules.Release("primary", new()
     ///     {
-    ///         Name = "cloud.firestore",
+    ///         Name = "cloud.firestore/database",
     ///         RulesetName = firestore.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
     ///         Project = "my-project-name",
     ///     });

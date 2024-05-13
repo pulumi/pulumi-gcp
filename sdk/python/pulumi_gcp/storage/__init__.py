@@ -19,6 +19,7 @@ from .get_bucket_iam_policy import *
 from .get_bucket_object import *
 from .get_bucket_object_content import *
 from .get_bucket_objects import *
+from .get_buckets import *
 from .get_object_signed_url import *
 from .get_project_service_account import *
 from .get_transfer_project_service_account import *

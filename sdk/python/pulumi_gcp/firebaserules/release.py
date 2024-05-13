@@ -215,7 +215,7 @@ class Release(pulumi.CustomResource):
             ),
             project="my-project-name")
         primary = gcp.firebaserules.Release("primary",
-            name="cloud.firestore",
+            name="cloud.firestore/database",
             ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
             project="my-project-name")
         ```
@@ -296,7 +296,7 @@ class Release(pulumi.CustomResource):
             ),
             project="my-project-name")
         primary = gcp.firebaserules.Release("primary",
-            name="cloud.firestore",
+            name="cloud.firestore/database",
             ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
             project="my-project-name")
         ```

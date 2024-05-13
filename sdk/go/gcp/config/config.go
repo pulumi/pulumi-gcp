@@ -386,6 +386,9 @@ func GetParallelstoreCustomEndpoint(ctx *pulumi.Context) string {
 func GetPrivatecaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:privatecaCustomEndpoint")
 }
+func GetPrivilegedAccessManagerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:privilegedAccessManagerCustomEndpoint")
+}
 func GetProject(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "gcp:project")
 	if err == nil {

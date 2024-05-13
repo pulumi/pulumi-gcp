@@ -178,7 +178,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     name: "cloudrun-job",
  *     location: "us-central1",
- *     launchStage: "BETA",
+ *     launchStage: "GA",
  *     template: {
  *         template: {
  *             containers: [{
@@ -194,7 +194,6 @@ import * as utilities from "../utilities";
  *                         "tag3",
  *                     ],
  *                 }],
- *                 egress: "ALL_TRAFFIC",
  *             },
  *         },
  *     },

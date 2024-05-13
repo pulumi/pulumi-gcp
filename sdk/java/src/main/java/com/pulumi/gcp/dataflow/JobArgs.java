@@ -176,14 +176,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     * **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<Map<String,Object>> parameters;
 
     /**
-     * @return Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     * @return **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
     public Optional<Output<Map<String,Object>>> parameters() {
@@ -597,7 +601,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Key/Value pairs to be passed to the Dataflow job (as used in the template).
+         * @param parameters **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
+         * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+         * **Note**: do not configure Dataflow options here in parameters.
          * 
          * @return builder
          * 
@@ -608,7 +614,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Key/Value pairs to be passed to the Dataflow job (as used in the template).
+         * @param parameters **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
+         * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+         * **Note**: do not configure Dataflow options here in parameters.
          * 
          * @return builder
          * 

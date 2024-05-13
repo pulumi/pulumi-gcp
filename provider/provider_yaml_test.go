@@ -432,6 +432,7 @@ func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
 				  "resourceManagerTags": {},
 				  "sandboxConfig": null,
 				  "serviceAccount": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
+				  "secondaryBootDisks": [],
 				  "shieldedInstanceConfig": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
 				  "soleTenantConfig": null,
 				  "spot": false,

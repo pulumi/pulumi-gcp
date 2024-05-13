@@ -260,6 +260,8 @@ parallelstoreCustomEndpoint: Optional[str]
 
 privatecaCustomEndpoint: Optional[str]
 
+privilegedAccessManagerCustomEndpoint: Optional[str]
+
 project: Optional[str]
 
 publicCaCustomEndpoint: Optional[str]

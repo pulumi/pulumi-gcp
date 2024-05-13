@@ -393,8 +393,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			count := 2
 //			var sourceDataset []*bigquery.Dataset
-//			for index := 0; index < 2; index++ {
+//			for index := 0; index < count; index++ {
 //				key0 := index
 //				val0 := index
 //				__res, err := bigquery.NewDataset(ctx, fmt.Sprintf("source-%v", key0), &bigquery.DatasetArgs{
@@ -409,7 +410,7 @@ import (
 //				sourceDataset = append(sourceDataset, __res)
 //			}
 //			var source []*bigquery.Table
-//			for index := 0; index < len(sourceDataset); index++ {
+//			for index := 0; index < count; index++ {
 //				key0 := index
 //				val0 := index
 //				__res, err := bigquery.NewTable(ctx, fmt.Sprintf("source-%v", key0), &bigquery.TableArgs{

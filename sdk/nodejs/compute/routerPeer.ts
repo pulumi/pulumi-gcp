@@ -170,6 +170,27 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Router Peer Md5 Authentication Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foobar = new gcp.compute.RouterPeer("foobar", {
+ *     name: "%s-peer",
+ *     router: foobarGoogleComputeRouter.name,
+ *     region: foobarGoogleComputeRouter.region,
+ *     peerAsn: 65515,
+ *     advertisedRoutePriority: 100,
+ *     "interface": foobarGoogleComputeRouterInterface.name,
+ *     peerIpAddress: "169.254.3.2",
+ *     md5AuthenticationKey: {
+ *         name: "%s-peer-key",
+ *         key: "%s-peer-key-value",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * RouterBgpPeer can be imported using any of these accepted formats:
@@ -300,8 +321,8 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public /*out*/ readonly managementType!: pulumi.Output<string>;
     /**
-     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * Configuration for MD5 authentication on the BGP session.
+     * Structure is documented below.
      */
     public readonly md5AuthenticationKey!: pulumi.Output<outputs.compute.RouterPeerMd5AuthenticationKey | undefined>;
     /**
@@ -511,8 +532,8 @@ export interface RouterPeerState {
      */
     managementType?: pulumi.Input<string>;
     /**
-     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * Configuration for MD5 authentication on the BGP session.
+     * Structure is documented below.
      */
     md5AuthenticationKey?: pulumi.Input<inputs.compute.RouterPeerMd5AuthenticationKey>;
     /**
@@ -643,8 +664,8 @@ export interface RouterPeerArgs {
      */
     ipv6NexthopAddress?: pulumi.Input<string>;
     /**
-     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * Configuration for MD5 authentication on the BGP session.
+     * Structure is documented below.
      */
     md5AuthenticationKey?: pulumi.Input<inputs.compute.RouterPeerMd5AuthenticationKey>;
     /**

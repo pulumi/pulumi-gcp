@@ -304,7 +304,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Dataset External Reference Aws Docs
+ * ### Bigquery Dataset External Reference Aws
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

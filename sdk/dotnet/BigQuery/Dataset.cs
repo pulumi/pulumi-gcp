@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Dataset External Reference Aws Docs
+    /// ### Bigquery Dataset External Reference Aws
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

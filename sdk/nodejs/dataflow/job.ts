@@ -186,7 +186,9 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly onDelete!: pulumi.Output<string | undefined>;
     /**
-     * Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      */
     public readonly parameters!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -374,7 +376,9 @@ export interface JobState {
      */
     onDelete?: pulumi.Input<string>;
     /**
-     * Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      */
     parameters?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -476,7 +480,9 @@ export interface JobArgs {
      */
     onDelete?: pulumi.Input<string>;
     /**
-     * Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      */
     parameters?: pulumi.Input<{[key: string]: any}>;
     /**

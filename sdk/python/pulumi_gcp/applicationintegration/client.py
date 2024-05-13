@@ -18,6 +18,7 @@ class ClientArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  cloud_kms_config: Optional[pulumi.Input['ClientCloudKmsConfigArgs']] = None,
+                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  create_sample_workflows: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provision_gmek: Optional[pulumi.Input[bool]] = None,
@@ -30,19 +31,34 @@ class ClientArgs:
                - - -
         :param pulumi.Input['ClientCloudKmsConfigArgs'] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
-        :param pulumi.Input[bool] create_sample_workflows: Indicates if sample workflow should be created along with provisioning.
+        :param pulumi.Input[bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
+        :param pulumi.Input[bool] create_sample_workflows: (Optional, Deprecated)
+               Indicates if sample workflow should be created along with provisioning.
+               
+               > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] provision_gmek: Indicates provision with GMEK or CMEK.
+        :param pulumi.Input[bool] provision_gmek: (Optional, Deprecated)
+               Indicates provision with GMEK or CMEK.
+               
+               > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         :param pulumi.Input[str] run_as_service_account: User input run-as service account, if empty, will bring up a new default service account.
         """
         pulumi.set(__self__, "location", location)
         if cloud_kms_config is not None:
             pulumi.set(__self__, "cloud_kms_config", cloud_kms_config)
+        if create_sample_integrations is not None:
+            pulumi.set(__self__, "create_sample_integrations", create_sample_integrations)
+        if create_sample_workflows is not None:
+            warnings.warn("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""", DeprecationWarning)
+            pulumi.log.warn("""create_sample_workflows is deprecated: `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
         if create_sample_workflows is not None:
             pulumi.set(__self__, "create_sample_workflows", create_sample_workflows)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if provision_gmek is not None:
+            warnings.warn("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""", DeprecationWarning)
+            pulumi.log.warn("""provision_gmek is deprecated: `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
         if provision_gmek is not None:
             pulumi.set(__self__, "provision_gmek", provision_gmek)
         if run_as_service_account is not None:
@@ -77,11 +93,29 @@ class ClientArgs:
         pulumi.set(self, "cloud_kms_config", value)
 
     @property
+    @pulumi.getter(name="createSampleIntegrations")
+    def create_sample_integrations(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if sample integrations should be created along with provisioning.
+        """
+        return pulumi.get(self, "create_sample_integrations")
+
+    @create_sample_integrations.setter
+    def create_sample_integrations(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_sample_integrations", value)
+
+    @property
     @pulumi.getter(name="createSampleWorkflows")
     def create_sample_workflows(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         Indicates if sample workflow should be created along with provisioning.
+
+        > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         """
+        warnings.warn("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""", DeprecationWarning)
+        pulumi.log.warn("""create_sample_workflows is deprecated: `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
+
         return pulumi.get(self, "create_sample_workflows")
 
     @create_sample_workflows.setter
@@ -105,8 +139,14 @@ class ClientArgs:
     @pulumi.getter(name="provisionGmek")
     def provision_gmek(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         Indicates provision with GMEK or CMEK.
+
+        > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         """
+        warnings.warn("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""", DeprecationWarning)
+        pulumi.log.warn("""provision_gmek is deprecated: `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
+
         return pulumi.get(self, "provision_gmek")
 
     @provision_gmek.setter
@@ -130,6 +170,7 @@ class ClientArgs:
 class _ClientState:
     def __init__(__self__, *,
                  cloud_kms_config: Optional[pulumi.Input['ClientCloudKmsConfigArgs']] = None,
+                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  create_sample_workflows: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -139,24 +180,39 @@ class _ClientState:
         Input properties used for looking up and filtering Client resources.
         :param pulumi.Input['ClientCloudKmsConfigArgs'] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
-        :param pulumi.Input[bool] create_sample_workflows: Indicates if sample workflow should be created along with provisioning.
+        :param pulumi.Input[bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
+        :param pulumi.Input[bool] create_sample_workflows: (Optional, Deprecated)
+               Indicates if sample workflow should be created along with provisioning.
+               
+               > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
                
                
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] provision_gmek: Indicates provision with GMEK or CMEK.
+        :param pulumi.Input[bool] provision_gmek: (Optional, Deprecated)
+               Indicates provision with GMEK or CMEK.
+               
+               > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         :param pulumi.Input[str] run_as_service_account: User input run-as service account, if empty, will bring up a new default service account.
         """
         if cloud_kms_config is not None:
             pulumi.set(__self__, "cloud_kms_config", cloud_kms_config)
+        if create_sample_integrations is not None:
+            pulumi.set(__self__, "create_sample_integrations", create_sample_integrations)
+        if create_sample_workflows is not None:
+            warnings.warn("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""", DeprecationWarning)
+            pulumi.log.warn("""create_sample_workflows is deprecated: `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
         if create_sample_workflows is not None:
             pulumi.set(__self__, "create_sample_workflows", create_sample_workflows)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if provision_gmek is not None:
+            warnings.warn("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""", DeprecationWarning)
+            pulumi.log.warn("""provision_gmek is deprecated: `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
         if provision_gmek is not None:
             pulumi.set(__self__, "provision_gmek", provision_gmek)
         if run_as_service_account is not None:
@@ -176,11 +232,29 @@ class _ClientState:
         pulumi.set(self, "cloud_kms_config", value)
 
     @property
+    @pulumi.getter(name="createSampleIntegrations")
+    def create_sample_integrations(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if sample integrations should be created along with provisioning.
+        """
+        return pulumi.get(self, "create_sample_integrations")
+
+    @create_sample_integrations.setter
+    def create_sample_integrations(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_sample_integrations", value)
+
+    @property
     @pulumi.getter(name="createSampleWorkflows")
     def create_sample_workflows(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         Indicates if sample workflow should be created along with provisioning.
+
+        > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         """
+        warnings.warn("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""", DeprecationWarning)
+        pulumi.log.warn("""create_sample_workflows is deprecated: `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
+
         return pulumi.get(self, "create_sample_workflows")
 
     @create_sample_workflows.setter
@@ -219,8 +293,14 @@ class _ClientState:
     @pulumi.getter(name="provisionGmek")
     def provision_gmek(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         Indicates provision with GMEK or CMEK.
+
+        > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         """
+        warnings.warn("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""", DeprecationWarning)
+        pulumi.log.warn("""provision_gmek is deprecated: `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
+
         return pulumi.get(self, "provision_gmek")
 
     @provision_gmek.setter
@@ -246,6 +326,7 @@ class Client(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_kms_config: Optional[pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']]] = None,
+                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  create_sample_workflows: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -270,11 +351,9 @@ class Client(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.applicationintegration.Client("example",
-            location="us-central1",
-            provision_gmek=True)
+        example = gcp.applicationintegration.Client("example", location="us-central1")
         ```
-        ### Integrations Client Advance
+        ### Integrations Client Full
 
         ```python
         import pulumi
@@ -294,7 +373,7 @@ class Client(pulumi.CustomResource):
             display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
             location="us-east1",
-            create_sample_workflows=True,
+            create_sample_integrations=True,
             run_as_service_account=service_account.email,
             cloud_kms_config=gcp.applicationintegration.ClientCloudKmsConfigArgs(
                 kms_location="us-east1",
@@ -333,14 +412,21 @@ class Client(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
-        :param pulumi.Input[bool] create_sample_workflows: Indicates if sample workflow should be created along with provisioning.
+        :param pulumi.Input[bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
+        :param pulumi.Input[bool] create_sample_workflows: (Optional, Deprecated)
+               Indicates if sample workflow should be created along with provisioning.
+               
+               > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
                
                
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] provision_gmek: Indicates provision with GMEK or CMEK.
+        :param pulumi.Input[bool] provision_gmek: (Optional, Deprecated)
+               Indicates provision with GMEK or CMEK.
+               
+               > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         :param pulumi.Input[str] run_as_service_account: User input run-as service account, if empty, will bring up a new default service account.
         """
         ...
@@ -367,11 +453,9 @@ class Client(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.applicationintegration.Client("example",
-            location="us-central1",
-            provision_gmek=True)
+        example = gcp.applicationintegration.Client("example", location="us-central1")
         ```
-        ### Integrations Client Advance
+        ### Integrations Client Full
 
         ```python
         import pulumi
@@ -391,7 +475,7 @@ class Client(pulumi.CustomResource):
             display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
             location="us-east1",
-            create_sample_workflows=True,
+            create_sample_integrations=True,
             run_as_service_account=service_account.email,
             cloud_kms_config=gcp.applicationintegration.ClientCloudKmsConfigArgs(
                 kms_location="us-east1",
@@ -442,6 +526,7 @@ class Client(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_kms_config: Optional[pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']]] = None,
+                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  create_sample_workflows: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -457,6 +542,7 @@ class Client(pulumi.CustomResource):
             __props__ = ClientArgs.__new__(ClientArgs)
 
             __props__.__dict__["cloud_kms_config"] = cloud_kms_config
+            __props__.__dict__["create_sample_integrations"] = create_sample_integrations
             __props__.__dict__["create_sample_workflows"] = create_sample_workflows
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -475,6 +561,7 @@ class Client(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_kms_config: Optional[pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']]] = None,
+            create_sample_integrations: Optional[pulumi.Input[bool]] = None,
             create_sample_workflows: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -489,14 +576,21 @@ class Client(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClientCloudKmsConfigArgs']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
-        :param pulumi.Input[bool] create_sample_workflows: Indicates if sample workflow should be created along with provisioning.
+        :param pulumi.Input[bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
+        :param pulumi.Input[bool] create_sample_workflows: (Optional, Deprecated)
+               Indicates if sample workflow should be created along with provisioning.
+               
+               > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
                
                
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] provision_gmek: Indicates provision with GMEK or CMEK.
+        :param pulumi.Input[bool] provision_gmek: (Optional, Deprecated)
+               Indicates provision with GMEK or CMEK.
+               
+               > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         :param pulumi.Input[str] run_as_service_account: User input run-as service account, if empty, will bring up a new default service account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -504,6 +598,7 @@ class Client(pulumi.CustomResource):
         __props__ = _ClientState.__new__(_ClientState)
 
         __props__.__dict__["cloud_kms_config"] = cloud_kms_config
+        __props__.__dict__["create_sample_integrations"] = create_sample_integrations
         __props__.__dict__["create_sample_workflows"] = create_sample_workflows
         __props__.__dict__["location"] = location
         __props__.__dict__["project"] = project
@@ -521,11 +616,25 @@ class Client(pulumi.CustomResource):
         return pulumi.get(self, "cloud_kms_config")
 
     @property
+    @pulumi.getter(name="createSampleIntegrations")
+    def create_sample_integrations(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates if sample integrations should be created along with provisioning.
+        """
+        return pulumi.get(self, "create_sample_integrations")
+
+    @property
     @pulumi.getter(name="createSampleWorkflows")
     def create_sample_workflows(self) -> pulumi.Output[Optional[bool]]:
         """
+        (Optional, Deprecated)
         Indicates if sample workflow should be created along with provisioning.
+
+        > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         """
+        warnings.warn("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""", DeprecationWarning)
+        pulumi.log.warn("""create_sample_workflows is deprecated: `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
+
         return pulumi.get(self, "create_sample_workflows")
 
     @property
@@ -552,8 +661,14 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="provisionGmek")
     def provision_gmek(self) -> pulumi.Output[Optional[bool]]:
         """
+        (Optional, Deprecated)
         Indicates provision with GMEK or CMEK.
+
+        > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         """
+        warnings.warn("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""", DeprecationWarning)
+        pulumi.log.warn("""provision_gmek is deprecated: `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
+
         return pulumi.get(self, "provision_gmek")
 
     @property

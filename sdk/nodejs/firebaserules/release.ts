@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * const primary = new gcp.firebaserules.Release("primary", {
- *     name: "cloud.firestore",
+ *     name: "cloud.firestore/database",
  *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${firestore.name}`,
  *     project: "my-project-name",
  * });

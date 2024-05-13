@@ -255,16 +255,16 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * Configuration for MD5 authentication on the BGP session.
+     * Structure is documented below.
      * 
      */
     @Import(name="md5AuthenticationKey")
     private @Nullable Output<RouterPeerMd5AuthenticationKeyArgs> md5AuthenticationKey;
 
     /**
-     * @return Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * @return Configuration for MD5 authentication on the BGP session.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RouterPeerMd5AuthenticationKeyArgs>> md5AuthenticationKey() {
@@ -824,8 +824,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param md5AuthenticationKey Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-         * Router.md5_authentication_keys. The field must comply with RFC1035.
+         * @param md5AuthenticationKey Configuration for MD5 authentication on the BGP session.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -836,8 +836,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param md5AuthenticationKey Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-         * Router.md5_authentication_keys. The field must comply with RFC1035.
+         * @param md5AuthenticationKey Configuration for MD5 authentication on the BGP session.
+         * Structure is documented below.
          * 
          * @return builder
          * 

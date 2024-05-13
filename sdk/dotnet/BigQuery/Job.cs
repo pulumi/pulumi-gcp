@@ -351,8 +351,10 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var count = 2;
+    /// 
     ///     var sourceDataset = new List&lt;Gcp.BigQuery.Dataset&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         sourceDataset.Add(new Gcp.BigQuery.Dataset($"source-{range.Value}", new()
@@ -364,7 +366,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         }));
     ///     }
     ///     var source = new List&lt;Gcp.BigQuery.Table&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; sourceDataset.Length; rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         source.Add(new Gcp.BigQuery.Table($"source-{range.Value}", new()

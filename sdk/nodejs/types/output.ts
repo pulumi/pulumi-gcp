@@ -2028,6 +2028,46 @@ export namespace alloydb {
         user?: string;
     }
 
+    export interface ClusterMaintenanceUpdatePolicy {
+        /**
+         * Preferred windows to perform maintenance. Currently limited to 1.
+         * Structure is documented below.
+         */
+        maintenanceWindows?: outputs.alloydb.ClusterMaintenanceUpdatePolicyMaintenanceWindow[];
+    }
+
+    export interface ClusterMaintenanceUpdatePolicyMaintenanceWindow {
+        /**
+         * Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        day: string;
+        /**
+         * Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+         * Structure is documented below.
+         */
+        startTime: outputs.alloydb.ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime;
+    }
+
+    export interface ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         */
+        hours: number;
+        /**
+         * Minutes of hour of day. Currently, only the value 0 is supported.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Currently, only the value 0 is supported.
+         */
+        seconds?: number;
+    }
+
     export interface ClusterMigrationSource {
         /**
          * The host and port of the on-premises instance in host:port format
@@ -31975,6 +32015,8 @@ export namespace compute {
          * The number of consecutive BFD packets that must be missed before
          * BFD declares that a peer is unavailable. If set, the value must
          * be a value between 5 and 16.
+         *
+         * <a name="nestedMd5AuthenticationKey"></a>The `md5AuthenticationKey` block supports:
          */
         multiplier?: number;
         /**
@@ -36583,6 +36625,10 @@ export namespace container {
          */
         sandboxConfig?: outputs.container.ClusterNodeConfigSandboxConfig;
         /**
+         * Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         */
+        secondaryBootDisks?: outputs.container.ClusterNodeConfigSecondaryBootDisk[];
+        /**
          * The service account to be used by the Node VMs.
          * If not specified, the "default" service account is used.
          */
@@ -36722,6 +36768,7 @@ export namespace container {
          * The type of GPU sharing strategy to enable on the GPU node.
          * Accepted values are:
          * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+         * * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
          */
         gpuSharingStrategy: string;
         /**
@@ -36826,6 +36873,17 @@ export namespace container {
          * * `"gvisor"`: Pods run within a gVisor sandbox.
          */
         sandboxType: string;
+    }
+
+    export interface ClusterNodeConfigSecondaryBootDisk {
+        /**
+         * Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+         */
+        diskImage: string;
+        /**
+         * Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+         */
+        mode?: string;
     }
 
     export interface ClusterNodeConfigShieldedInstanceConfig {
@@ -37310,6 +37368,10 @@ export namespace container {
          */
         sandboxConfig?: outputs.container.ClusterNodePoolNodeConfigSandboxConfig;
         /**
+         * Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         */
+        secondaryBootDisks?: outputs.container.ClusterNodePoolNodeConfigSecondaryBootDisk[];
+        /**
          * The service account to be used by the Node VMs.
          * If not specified, the "default" service account is used.
          */
@@ -37449,6 +37511,7 @@ export namespace container {
          * The type of GPU sharing strategy to enable on the GPU node.
          * Accepted values are:
          * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+         * * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
          */
         gpuSharingStrategy: string;
         /**
@@ -37553,6 +37616,17 @@ export namespace container {
          * * `"gvisor"`: Pods run within a gVisor sandbox.
          */
         sandboxType: string;
+    }
+
+    export interface ClusterNodePoolNodeConfigSecondaryBootDisk {
+        /**
+         * Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
+         */
+        diskImage: string;
+        /**
+         * Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
+         */
+        mode?: string;
     }
 
     export interface ClusterNodePoolNodeConfigShieldedInstanceConfig {
@@ -38613,6 +38687,10 @@ export namespace container {
          */
         sandboxConfigs: outputs.container.GetClusterNodeConfigSandboxConfig[];
         /**
+         * Secondary boot disks for preloading data or container images.
+         */
+        secondaryBootDisks: outputs.container.GetClusterNodeConfigSecondaryBootDisk[];
+        /**
          * The Google Cloud Platform Service Account to be used by the node VMs.
          */
         serviceAccount: string;
@@ -38811,6 +38889,17 @@ export namespace container {
          * Type of the sandbox to use for the node (e.g. 'gvisor')
          */
         sandboxType: string;
+    }
+
+    export interface GetClusterNodeConfigSecondaryBootDisk {
+        /**
+         * Disk image to create the secondary boot disk from
+         */
+        diskImage: string;
+        /**
+         * Mode for how the secondary boot disk is used.
+         */
+        mode: string;
     }
 
     export interface GetClusterNodeConfigShieldedInstanceConfig {
@@ -39207,6 +39296,10 @@ export namespace container {
          */
         sandboxConfigs: outputs.container.GetClusterNodePoolNodeConfigSandboxConfig[];
         /**
+         * Secondary boot disks for preloading data or container images.
+         */
+        secondaryBootDisks: outputs.container.GetClusterNodePoolNodeConfigSecondaryBootDisk[];
+        /**
          * The Google Cloud Platform Service Account to be used by the node VMs.
          */
         serviceAccount: string;
@@ -39405,6 +39498,17 @@ export namespace container {
          * Type of the sandbox to use for the node (e.g. 'gvisor')
          */
         sandboxType: string;
+    }
+
+    export interface GetClusterNodePoolNodeConfigSecondaryBootDisk {
+        /**
+         * Disk image to create the secondary boot disk from
+         */
+        diskImage: string;
+        /**
+         * Mode for how the secondary boot disk is used.
+         */
+        mode: string;
     }
 
     export interface GetClusterNodePoolNodeConfigShieldedInstanceConfig {
@@ -39956,6 +40060,10 @@ export namespace container {
          */
         sandboxConfig?: outputs.container.NodePoolNodeConfigSandboxConfig;
         /**
+         * Secondary boot disks for preloading data or container images.
+         */
+        secondaryBootDisks?: outputs.container.NodePoolNodeConfigSecondaryBootDisk[];
+        /**
          * The Google Cloud Platform Service Account to be used by the node VMs.
          */
         serviceAccount: string;
@@ -40155,6 +40263,17 @@ export namespace container {
          * Type of the sandbox to use for the node (e.g. 'gvisor')
          */
         sandboxType: string;
+    }
+
+    export interface NodePoolNodeConfigSecondaryBootDisk {
+        /**
+         * Disk image to create the secondary boot disk from
+         */
+        diskImage: string;
+        /**
+         * Mode for how the secondary boot disk is used.
+         */
+        mode?: string;
     }
 
     export interface NodePoolNodeConfigShieldedInstanceConfig {
@@ -69690,6 +69809,134 @@ export namespace osconfig {
 
 }
 
+export namespace privilegedaccessmanager {
+    export interface EntitlementAdditionalNotificationTargets {
+        /**
+         * Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+         */
+        adminEmailRecipients?: string[];
+        /**
+         * Optional. Additional email address to be notified about an eligible entitlement.
+         */
+        requesterEmailRecipients?: string[];
+    }
+
+    export interface EntitlementApprovalWorkflow {
+        /**
+         * A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+         * The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+         * This can be used to create approval workflows such as
+         * * Require an approval from any user in a group G.
+         * * Require an approval from any k number of users from a Group G.
+         * * Require an approval from any user in a group G and then from a user U. etc.
+         * A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+         * Structure is documented below.
+         */
+        manualApprovals: outputs.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovals;
+    }
+
+    export interface EntitlementApprovalWorkflowManualApprovals {
+        /**
+         * Optional. Do the approvers need to provide a justification for their actions?
+         */
+        requireApproverJustification?: boolean;
+        /**
+         * List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+         * Structure is documented below.
+         */
+        steps: outputs.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStep[];
+    }
+
+    export interface EntitlementApprovalWorkflowManualApprovalsStep {
+        /**
+         * How many users from the above list need to approve.
+         * If there are not enough distinct users in the list above then the workflow
+         * will indefinitely block. Should always be greater than 0. Currently 1 is the only
+         * supported value.
+         */
+        approvalsNeeded?: number;
+        /**
+         * Optional. Additional email addresses to be notified when a grant is pending approval.
+         */
+        approverEmailRecipients?: string[];
+        /**
+         * The potential set of approvers in this step. This list should contain at only one entry.
+         * Structure is documented below.
+         */
+        approvers: outputs.privilegedaccessmanager.EntitlementApprovalWorkflowManualApprovalsStepApprovers;
+    }
+
+    export interface EntitlementApprovalWorkflowManualApprovalsStepApprovers {
+        /**
+         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+         */
+        principals: string[];
+    }
+
+    export interface EntitlementEligibleUser {
+        /**
+         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+         */
+        principals: string[];
+    }
+
+    export interface EntitlementPrivilegedAccess {
+        /**
+         * GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+         * Structure is documented below.
+         */
+        gcpIamAccess: outputs.privilegedaccessmanager.EntitlementPrivilegedAccessGcpIamAccess;
+    }
+
+    export interface EntitlementPrivilegedAccessGcpIamAccess {
+        /**
+         * Name of the resource.
+         */
+        resource: string;
+        /**
+         * The type of this resource.
+         */
+        resourceType: string;
+        /**
+         * Role bindings to be created on successful grant.
+         * Structure is documented below.
+         */
+        roleBindings: outputs.privilegedaccessmanager.EntitlementPrivilegedAccessGcpIamAccessRoleBinding[];
+    }
+
+    export interface EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
+        /**
+         * The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+         * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+         */
+        conditionExpression?: string;
+        /**
+         * IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+         */
+        role: string;
+    }
+
+    export interface EntitlementRequesterJustificationConfig {
+        /**
+         * The justification is not mandatory but can be provided in any of the supported formats.
+         */
+        notMandatory?: outputs.privilegedaccessmanager.EntitlementRequesterJustificationConfigNotMandatory;
+        /**
+         * The requester has to provide a justification in the form of free flowing text.
+         *
+         * - - -
+         */
+        unstructured?: outputs.privilegedaccessmanager.EntitlementRequesterJustificationConfigUnstructured;
+    }
+
+    export interface EntitlementRequesterJustificationConfigNotMandatory {
+    }
+
+    export interface EntitlementRequesterJustificationConfigUnstructured {
+    }
+
+}
+
 export namespace projects {
     export interface AccessApprovalSettingsEnrolledService {
         /**
@@ -74617,6 +74864,29 @@ export namespace storage {
          * The custom object to return when a requested resource is not found.
          */
         notFoundPage: string;
+    }
+
+    export interface GetBucketsBucket {
+        /**
+         * User-provided bucket labels, in key/value pairs.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The location of the bucket.
+         */
+        location: string;
+        /**
+         * The name of the bucket.
+         */
+        name: string;
+        /**
+         * A url reference to the bucket.
+         */
+        selfLink: string;
+        /**
+         * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket.
+         */
+        storageClass: string;
     }
 
     export interface InsightsReportConfigCsvOptions {

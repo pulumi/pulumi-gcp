@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSandboxConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSecondaryBootDiskArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigShieldedInstanceConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSoleTenantConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigTaintArgs;
@@ -505,6 +506,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Secondary boot disks for preloading data or container images.
+     * 
+     */
+    @Import(name="secondaryBootDisks")
+    private @Nullable Output<List<NodePoolNodeConfigSecondaryBootDiskArgs>> secondaryBootDisks;
+
+    /**
+     * @return Secondary boot disks for preloading data or container images.
+     * 
+     */
+    public Optional<Output<List<NodePoolNodeConfigSecondaryBootDiskArgs>>> secondaryBootDisks() {
+        return Optional.ofNullable(this.secondaryBootDisks);
+    }
+
+    /**
      * The Google Cloud Platform Service Account to be used by the node VMs.
      * 
      */
@@ -643,6 +659,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.resourceLabels = $.resourceLabels;
         this.resourceManagerTags = $.resourceManagerTags;
         this.sandboxConfig = $.sandboxConfig;
+        this.secondaryBootDisks = $.secondaryBootDisks;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.soleTenantConfig = $.soleTenantConfig;
@@ -1349,6 +1366,37 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder sandboxConfig(NodePoolNodeConfigSandboxConfigArgs sandboxConfig) {
             return sandboxConfig(Output.of(sandboxConfig));
+        }
+
+        /**
+         * @param secondaryBootDisks Secondary boot disks for preloading data or container images.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryBootDisks(@Nullable Output<List<NodePoolNodeConfigSecondaryBootDiskArgs>> secondaryBootDisks) {
+            $.secondaryBootDisks = secondaryBootDisks;
+            return this;
+        }
+
+        /**
+         * @param secondaryBootDisks Secondary boot disks for preloading data or container images.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryBootDisks(List<NodePoolNodeConfigSecondaryBootDiskArgs> secondaryBootDisks) {
+            return secondaryBootDisks(Output.of(secondaryBootDisks));
+        }
+
+        /**
+         * @param secondaryBootDisks Secondary boot disks for preloading data or container images.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryBootDisks(NodePoolNodeConfigSecondaryBootDiskArgs... secondaryBootDisks) {
+            return secondaryBootDisks(List.of(secondaryBootDisks));
         }
 
         /**

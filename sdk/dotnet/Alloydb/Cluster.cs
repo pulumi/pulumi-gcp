@@ -446,6 +446,13 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// MaintenanceUpdatePolicy defines the policy for system updates.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenanceUpdatePolicy")]
+        public Output<Outputs.ClusterMaintenanceUpdatePolicy?> MaintenanceUpdatePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Cluster created via DMS migration.
         /// Structure is documented below.
         /// </summary>
@@ -690,6 +697,13 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// MaintenanceUpdatePolicy defines the policy for system updates.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenanceUpdatePolicy")]
+        public Input<Inputs.ClusterMaintenanceUpdatePolicyArgs>? MaintenanceUpdatePolicy { get; set; }
+
+        /// <summary>
         /// (Optional, Deprecated)
         /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         /// "projects/{projectNumber}/global/networks/{network_id}".
@@ -913,6 +927,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// MaintenanceUpdatePolicy defines the policy for system updates.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenanceUpdatePolicy")]
+        public Input<Inputs.ClusterMaintenanceUpdatePolicyGetArgs>? MaintenanceUpdatePolicy { get; set; }
 
         [Input("migrationSources")]
         private InputList<Inputs.ClusterMigrationSourceGetArgs>? _migrationSources;

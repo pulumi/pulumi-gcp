@@ -279,7 +279,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
-    ///         LaunchStage = "BETA",
+    ///         LaunchStage = "GA",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -305,7 +305,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                         },
     ///                     },
     ///                 },
-    ///                 Egress = "ALL_TRAFFIC",
     ///             },
     ///         },
     ///     });

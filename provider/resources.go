@@ -131,6 +131,7 @@ const (
 	gcpOsConfig                 = "OsConfig"                 // OsConfig resources
 	gcpOsLogin                  = "OsLogin"                  // OsLogin resources
 	gcpParallelStore            = "ParallelStore"            // ParallelStore resources
+	gcpPrivilegedAccessManager  = "PrivilegedAccessManager"  // Privileged Access Manager
 	gcpProject                  = "Projects"                 // Project resources
 	gcpPubSub                   = "PubSub"                   // PubSub resources
 	gcpRecaptcha                = "Recaptcha"                // Recaptcha resources
@@ -255,6 +256,7 @@ var moduleMapping = map[string]string{
 	"os_login":                   gcpOsLogin,
 	"parallelstore":              gcpParallelStore,
 	"privateca":                  gcpCertificateAuthority,
+	"privileged_access_manager":  gcpPrivilegedAccessManager,
 	"project":                    gcpProject,
 	"public":                     gcpCompute,
 	"pubsub":                     gcpPubSub,
@@ -3331,6 +3333,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_network_endpoints": {
 				Tok: gcpResource(gcpCompute, "NetworkEndpointList"),
+			},
+			"google_privileged_access_manager_entitlement": {
+				Tok: gcpResource(gcpPrivilegedAccessManager, "entitlement"),
+				Docs: &tfbridge.DocInfo{
+					Source: "privileged_access_manager_entitlement.html.markdown",
+				},
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{

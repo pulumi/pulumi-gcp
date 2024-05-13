@@ -315,6 +315,52 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Router Peer Md5 Authentication Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RouterPeer;
+ * import com.pulumi.gcp.compute.RouterPeerArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterPeerMd5AuthenticationKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new RouterPeer("foobar", RouterPeerArgs.builder()        
+ *             .name("%s-peer")
+ *             .router(foobarGoogleComputeRouter.name())
+ *             .region(foobarGoogleComputeRouter.region())
+ *             .peerAsn(65515)
+ *             .advertisedRoutePriority(100)
+ *             .interface_(foobarGoogleComputeRouterInterface.name())
+ *             .peerIpAddress("169.254.3.2")
+ *             .md5AuthenticationKey(RouterPeerMd5AuthenticationKeyArgs.builder()
+ *                 .name("%s-peer-key")
+ *                 .key("%s-peer-key-value")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * RouterBgpPeer can be imported using any of these accepted formats:
@@ -569,16 +615,16 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
         return this.managementType;
     }
     /**
-     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * Configuration for MD5 authentication on the BGP session.
+     * Structure is documented below.
      * 
      */
     @Export(name="md5AuthenticationKey", refs={RouterPeerMd5AuthenticationKey.class}, tree="[0]")
     private Output</* @Nullable */ RouterPeerMd5AuthenticationKey> md5AuthenticationKey;
 
     /**
-     * @return Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * @return Configuration for MD5 authentication on the BGP session.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RouterPeerMd5AuthenticationKey>> md5AuthenticationKey() {

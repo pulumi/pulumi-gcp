@@ -52,6 +52,10 @@ namespace Pulumi.Gcp.Redis
     ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
     ///         AuthorizationMode = "AUTH_MODE_DISABLED",
+    ///         RedisConfigs = 
+    ///         {
+    ///             { "maxmemory-policy", "volatile-ttl" },
+    ///         },
     ///     });
     /// 
     ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
@@ -177,6 +181,14 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("pscConnections")]
         public Output<ImmutableArray<Outputs.ClusterPscConnection>> PscConnections { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+        /// documentation for the list of supported parameters:
+        /// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+        /// </summary>
+        [Output("redisConfigs")]
+        public Output<ImmutableDictionary<string, string>?> RedisConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The name of the region of the Redis cluster.
@@ -315,6 +327,20 @@ namespace Pulumi.Gcp.Redis
             set => _pscConfigs = value;
         }
 
+        [Input("redisConfigs")]
+        private InputMap<string>? _redisConfigs;
+
+        /// <summary>
+        /// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+        /// documentation for the list of supported parameters:
+        /// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+        /// </summary>
+        public InputMap<string> RedisConfigs
+        {
+            get => _redisConfigs ?? (_redisConfigs = new InputMap<string>());
+            set => _redisConfigs = value;
+        }
+
         /// <summary>
         /// The name of the region of the Redis cluster.
         /// </summary>
@@ -429,6 +455,20 @@ namespace Pulumi.Gcp.Redis
         {
             get => _pscConnections ?? (_pscConnections = new InputList<Inputs.ClusterPscConnectionGetArgs>());
             set => _pscConnections = value;
+        }
+
+        [Input("redisConfigs")]
+        private InputMap<string>? _redisConfigs;
+
+        /// <summary>
+        /// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+        /// documentation for the list of supported parameters:
+        /// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+        /// </summary>
+        public InputMap<string> RedisConfigs
+        {
+            get => _redisConfigs ?? (_redisConfigs = new InputMap<string>());
+            set => _redisConfigs = value;
         }
 
         /// <summary>

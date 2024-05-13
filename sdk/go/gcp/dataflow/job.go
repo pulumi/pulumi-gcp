@@ -215,7 +215,9 @@ type Job struct {
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrOutput `pulumi:"onDelete"`
-	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
+	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
+	// **Note**: do not configure Dataflow options here in parameters.
 	Parameters pulumi.MapOutput `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -312,7 +314,9 @@ type jobState struct {
 	Network *string `pulumi:"network"`
 	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete *string `pulumi:"onDelete"`
-	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
+	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
+	// **Note**: do not configure Dataflow options here in parameters.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -369,7 +373,9 @@ type JobState struct {
 	Network pulumi.StringPtrInput
 	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrInput
-	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
+	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
+	// **Note**: do not configure Dataflow options here in parameters.
 	Parameters pulumi.MapInput
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -426,7 +432,9 @@ type jobArgs struct {
 	Network *string `pulumi:"network"`
 	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete *string `pulumi:"onDelete"`
-	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
+	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
+	// **Note**: do not configure Dataflow options here in parameters.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -474,7 +482,9 @@ type JobArgs struct {
 	Network pulumi.StringPtrInput
 	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrInput
-	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
+	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
+	// **Note**: do not configure Dataflow options here in parameters.
 	Parameters pulumi.MapInput
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -647,7 +657,9 @@ func (o JobOutput) OnDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.OnDelete }).(pulumi.StringPtrOutput)
 }
 
-// Key/Value pairs to be passed to the Dataflow job (as used in the template).
+// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+// case-sensitive based on the language on which the pipeline is coded, mostly Java.
+// **Note**: do not configure Dataflow options here in parameters.
 func (o JobOutput) Parameters() pulumi.MapOutput {
 	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.Parameters }).(pulumi.MapOutput)
 }

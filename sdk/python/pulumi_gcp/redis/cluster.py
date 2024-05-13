@@ -22,6 +22,7 @@ class ClusterArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None):
@@ -39,6 +40,9 @@ class ClusterArgs:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
                ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+               documentation for the list of supported parameters:
+               https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
@@ -55,6 +59,8 @@ class ClusterArgs:
             pulumi.set(__self__, "node_type", node_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if redis_configs is not None:
+            pulumi.set(__self__, "redis_configs", redis_configs)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if replica_count is not None:
@@ -139,6 +145,20 @@ class ClusterArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="redisConfigs")
+    def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+        documentation for the list of supported parameters:
+        https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+        """
+        return pulumi.get(self, "redis_configs")
+
+    @redis_configs.setter
+    def redis_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "redis_configs", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -189,6 +209,7 @@ class _ClusterState:
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
                  psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]] = None,
+                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
@@ -220,6 +241,9 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+               documentation for the list of supported parameters:
+               https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[int] shard_count: Required. Number of shards for the Redis cluster.
@@ -250,6 +274,8 @@ class _ClusterState:
             pulumi.set(__self__, "psc_configs", psc_configs)
         if psc_connections is not None:
             pulumi.set(__self__, "psc_connections", psc_connections)
+        if redis_configs is not None:
+            pulumi.set(__self__, "redis_configs", redis_configs)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if replica_count is not None:
@@ -386,6 +412,20 @@ class _ClusterState:
         pulumi.set(self, "psc_connections", value)
 
     @property
+    @pulumi.getter(name="redisConfigs")
+    def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+        documentation for the list of supported parameters:
+        https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+        """
+        return pulumi.get(self, "redis_configs")
+
+    @redis_configs.setter
+    def redis_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "redis_configs", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -495,6 +535,7 @@ class Cluster(pulumi.CustomResource):
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
+                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
@@ -530,7 +571,10 @@ class Cluster(pulumi.CustomResource):
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            authorization_mode="AUTH_MODE_DISABLED")
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            })
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="mysubnet",
             ip_cidr_range="10.0.0.248/29",
@@ -590,6 +634,9 @@ class Cluster(pulumi.CustomResource):
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+               documentation for the list of supported parameters:
+               https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[int] shard_count: Required. Number of shards for the Redis cluster.
@@ -633,7 +680,10 @@ class Cluster(pulumi.CustomResource):
             replica_count=1,
             node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            authorization_mode="AUTH_MODE_DISABLED")
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            })
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="mysubnet",
             ip_cidr_range="10.0.0.248/29",
@@ -700,6 +750,7 @@ class Cluster(pulumi.CustomResource):
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
+                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
@@ -720,6 +771,7 @@ class Cluster(pulumi.CustomResource):
             if psc_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'psc_configs'")
             __props__.__dict__["psc_configs"] = psc_configs
+            __props__.__dict__["redis_configs"] = redis_configs
             __props__.__dict__["region"] = region
             __props__.__dict__["replica_count"] = replica_count
             if shard_count is None and not opts.urn:
@@ -753,6 +805,7 @@ class Cluster(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
             psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConnectionArgs']]]]] = None,
+            redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             replica_count: Optional[pulumi.Input[int]] = None,
             shard_count: Optional[pulumi.Input[int]] = None,
@@ -789,6 +842,9 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConnectionArgs']]]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+               documentation for the list of supported parameters:
+               https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[int] shard_count: Required. Number of shards for the Redis cluster.
@@ -814,6 +870,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_configs"] = psc_configs
         __props__.__dict__["psc_connections"] = psc_connections
+        __props__.__dict__["redis_configs"] = redis_configs
         __props__.__dict__["region"] = region
         __props__.__dict__["replica_count"] = replica_count
         __props__.__dict__["shard_count"] = shard_count
@@ -905,6 +962,16 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "psc_connections")
+
+    @property
+    @pulumi.getter(name="redisConfigs")
+    def redis_configs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+        documentation for the list of supported parameters:
+        https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+        """
+        return pulumi.get(self, "redis_configs")
 
     @property
     @pulumi.getter

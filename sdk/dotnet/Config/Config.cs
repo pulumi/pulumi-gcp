@@ -907,6 +907,13 @@ namespace Pulumi.Gcp
             set => _privatecaCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _privilegedAccessManagerCustomEndpoint = new __Value<string?>(() => __config.Get("privilegedAccessManagerCustomEndpoint"));
+        public static string? PrivilegedAccessManagerCustomEndpoint
+        {
+            get => _privilegedAccessManagerCustomEndpoint.Get();
+            set => _privilegedAccessManagerCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _project = new __Value<string?>(() => __config.Get("project") ?? Utilities.GetEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT"));
         public static string? Project
         {

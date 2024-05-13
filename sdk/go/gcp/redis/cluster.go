@@ -58,6 +58,9 @@ import (
 //				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
+//				RedisConfigs: pulumi.StringMap{
+//					"maxmemory-policy": pulumi.String("volatile-ttl"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -154,6 +157,10 @@ type Cluster struct {
 	// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
 	// Structure is documented below.
 	PscConnections ClusterPscConnectionArrayOutput `pulumi:"pscConnections"`
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+	// documentation for the list of supported parameters:
+	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+	RedisConfigs pulumi.StringMapOutput `pulumi:"redisConfigs"`
 	// The name of the region of the Redis cluster.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Optional. The number of replica nodes per shard.
@@ -241,6 +248,10 @@ type clusterState struct {
 	// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
 	// Structure is documented below.
 	PscConnections []ClusterPscConnection `pulumi:"pscConnections"`
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+	// documentation for the list of supported parameters:
+	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The name of the region of the Redis cluster.
 	Region *string `pulumi:"region"`
 	// Optional. The number of replica nodes per shard.
@@ -293,6 +304,10 @@ type ClusterState struct {
 	// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
 	// Structure is documented below.
 	PscConnections ClusterPscConnectionArrayInput
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+	// documentation for the list of supported parameters:
+	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+	RedisConfigs pulumi.StringMapInput
 	// The name of the region of the Redis cluster.
 	Region pulumi.StringPtrInput
 	// Optional. The number of replica nodes per shard.
@@ -335,6 +350,10 @@ type clusterArgs struct {
 	// Currently, only one PscConfig is supported.
 	// Structure is documented below.
 	PscConfigs []ClusterPscConfig `pulumi:"pscConfigs"`
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+	// documentation for the list of supported parameters:
+	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The name of the region of the Redis cluster.
 	Region *string `pulumi:"region"`
 	// Optional. The number of replica nodes per shard.
@@ -365,6 +384,10 @@ type ClusterArgs struct {
 	// Currently, only one PscConfig is supported.
 	// Structure is documented below.
 	PscConfigs ClusterPscConfigArrayInput
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+	// documentation for the list of supported parameters:
+	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+	RedisConfigs pulumi.StringMapInput
 	// The name of the region of the Redis cluster.
 	Region pulumi.StringPtrInput
 	// Optional. The number of replica nodes per shard.
@@ -519,6 +542,13 @@ func (o ClusterOutput) PscConfigs() ClusterPscConfigArrayOutput {
 // Structure is documented below.
 func (o ClusterOutput) PscConnections() ClusterPscConnectionArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterPscConnectionArrayOutput { return v.PscConnections }).(ClusterPscConnectionArrayOutput)
+}
+
+// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
+// documentation for the list of supported parameters:
+// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
+func (o ClusterOutput) RedisConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.RedisConfigs }).(pulumi.StringMapOutput)
 }
 
 // The name of the region of the Redis cluster.

@@ -379,14 +379,18 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onDelete);
     }
     /**
-     * Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     * **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
     @Export(name="parameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> parameters;
 
     /**
-     * @return Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     * @return **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
+     * case-sensitive based on the language on which the pipeline is coded, mostly Java.
+     * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
     public Output<Optional<Map<String,Object>>> parameters() {

@@ -184,6 +184,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeConfigSandboxConfig? SandboxConfig;
         /// <summary>
+        /// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterNodeConfigSecondaryBootDisk> SecondaryBootDisks;
+        /// <summary>
         /// The service account to be used by the Node VMs.
         /// If not specified, the "default" service account is used.
         /// </summary>
@@ -288,6 +292,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodeConfigSandboxConfig? sandboxConfig,
 
+            ImmutableArray<Outputs.ClusterNodeConfigSecondaryBootDisk> secondaryBootDisks,
+
             string? serviceAccount,
 
             Outputs.ClusterNodeConfigShieldedInstanceConfig? shieldedInstanceConfig,
@@ -333,6 +339,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ResourceLabels = resourceLabels;
             ResourceManagerTags = resourceManagerTags;
             SandboxConfig = sandboxConfig;
+            SecondaryBootDisks = secondaryBootDisks;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             SoleTenantConfig = soleTenantConfig;

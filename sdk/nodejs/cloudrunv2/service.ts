@@ -180,7 +180,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
- *     launchStage: "BETA",
+ *     launchStage: "GA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
@@ -195,7 +195,6 @@ import * as utilities from "../utilities";
  *                     "tag3",
  *                 ],
  *             }],
- *             egress: "ALL_TRAFFIC",
  *         },
  *     },
  * });

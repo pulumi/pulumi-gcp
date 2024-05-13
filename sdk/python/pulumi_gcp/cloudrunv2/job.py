@@ -894,7 +894,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
-            launch_stage="BETA",
+            launch_stage="GA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
@@ -910,7 +910,6 @@ class Job(pulumi.CustomResource):
                                 "tag3",
                             ],
                         )],
-                        egress="ALL_TRAFFIC",
                     ),
                 ),
             ))
@@ -1213,7 +1212,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
-            launch_stage="BETA",
+            launch_stage="GA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
@@ -1229,7 +1228,6 @@ class Job(pulumi.CustomResource):
                                 "tag3",
                             ],
                         )],
-                        egress="ALL_TRAFFIC",
                     ),
                 ),
             ))

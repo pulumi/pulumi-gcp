@@ -209,9 +209,9 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string?> OnDelete { get; private set; } = null!;
 
         /// <summary>
-        /// Key/Value pairs to be passed to the Dataflow job (as
-        /// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-        /// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        /// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        /// case-sensitive based on the language on which the pipeline is coded, mostly Java.
+        /// **Note**: do not configure Dataflow options here in parameters.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableDictionary<string, object>?> Parameters { get; private set; } = null!;
@@ -447,9 +447,9 @@ namespace Pulumi.Gcp.Dataflow
         private InputMap<object>? _parameters;
 
         /// <summary>
-        /// Key/Value pairs to be passed to the Dataflow job (as
-        /// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-        /// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        /// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        /// case-sensitive based on the language on which the pipeline is coded, mostly Java.
+        /// **Note**: do not configure Dataflow options here in parameters.
         /// </summary>
         public InputMap<object> Parameters
         {
@@ -651,9 +651,9 @@ namespace Pulumi.Gcp.Dataflow
         private InputMap<object>? _parameters;
 
         /// <summary>
-        /// Key/Value pairs to be passed to the Dataflow job (as
-        /// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
-        /// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        /// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        /// case-sensitive based on the language on which the pipeline is coded, mostly Java.
+        /// **Note**: do not configure Dataflow options here in parameters.
         /// </summary>
         public InputMap<object> Parameters
         {

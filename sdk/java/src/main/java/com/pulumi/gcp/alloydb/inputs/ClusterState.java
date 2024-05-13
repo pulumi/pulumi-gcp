@@ -12,6 +12,7 @@ import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupInfoArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionInfoArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterMaintenanceUpdatePolicyArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterMigrationSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
@@ -335,6 +336,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * MaintenanceUpdatePolicy defines the policy for system updates.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenanceUpdatePolicy")
+    private @Nullable Output<ClusterMaintenanceUpdatePolicyArgs> maintenanceUpdatePolicy;
+
+    /**
+     * @return MaintenanceUpdatePolicy defines the policy for system updates.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterMaintenanceUpdatePolicyArgs>> maintenanceUpdatePolicy() {
+        return Optional.ofNullable(this.maintenanceUpdatePolicy);
+    }
+
+    /**
      * Cluster created via DMS migration.
      * Structure is documented below.
      * 
@@ -569,6 +587,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.initialUser = $.initialUser;
         this.labels = $.labels;
         this.location = $.location;
+        this.maintenanceUpdatePolicy = $.maintenanceUpdatePolicy;
         this.migrationSources = $.migrationSources;
         this.name = $.name;
         this.network = $.network;
@@ -1041,6 +1060,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param maintenanceUpdatePolicy MaintenanceUpdatePolicy defines the policy for system updates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceUpdatePolicy(@Nullable Output<ClusterMaintenanceUpdatePolicyArgs> maintenanceUpdatePolicy) {
+            $.maintenanceUpdatePolicy = maintenanceUpdatePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenanceUpdatePolicy MaintenanceUpdatePolicy defines the policy for system updates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceUpdatePolicy(ClusterMaintenanceUpdatePolicyArgs maintenanceUpdatePolicy) {
+            return maintenanceUpdatePolicy(Output.of(maintenanceUpdatePolicy));
         }
 
         /**

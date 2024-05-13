@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeCon
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigSandboxConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigTaint;
@@ -189,6 +190,11 @@ public final class GetClusterNodePoolNodeConfig {
      * 
      */
     private List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs;
+    /**
+     * @return Secondary boot disks for preloading data or container images.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks;
     /**
      * @return The Google Cloud Platform Service Account to be used by the node VMs.
      * 
@@ -444,6 +450,13 @@ public final class GetClusterNodePoolNodeConfig {
         return this.sandboxConfigs;
     }
     /**
+     * @return Secondary boot disks for preloading data or container images.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks() {
+        return this.secondaryBootDisks;
+    }
+    /**
      * @return The Google Cloud Platform Service Account to be used by the node VMs.
      * 
      */
@@ -533,6 +546,7 @@ public final class GetClusterNodePoolNodeConfig {
         private Map<String,String> resourceLabels;
         private Map<String,Object> resourceManagerTags;
         private List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs;
+        private List<GetClusterNodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks;
         private String serviceAccount;
         private List<GetClusterNodePoolNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<GetClusterNodePoolNodeConfigSoleTenantConfig> soleTenantConfigs;
@@ -574,6 +588,7 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.sandboxConfigs = defaults.sandboxConfigs;
+    	      this.secondaryBootDisks = defaults.secondaryBootDisks;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.soleTenantConfigs = defaults.soleTenantConfigs;
@@ -880,6 +895,17 @@ public final class GetClusterNodePoolNodeConfig {
             return sandboxConfigs(List.of(sandboxConfigs));
         }
         @CustomType.Setter
+        public Builder secondaryBootDisks(List<GetClusterNodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks) {
+            if (secondaryBootDisks == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "secondaryBootDisks");
+            }
+            this.secondaryBootDisks = secondaryBootDisks;
+            return this;
+        }
+        public Builder secondaryBootDisks(GetClusterNodePoolNodeConfigSecondaryBootDisk... secondaryBootDisks) {
+            return secondaryBootDisks(List.of(secondaryBootDisks));
+        }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             if (serviceAccount == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "serviceAccount");
@@ -983,6 +1009,7 @@ public final class GetClusterNodePoolNodeConfig {
             _resultValue.resourceLabels = resourceLabels;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.sandboxConfigs = sandboxConfigs;
+            _resultValue.secondaryBootDisks = secondaryBootDisks;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.shieldedInstanceConfigs = shieldedInstanceConfigs;
             _resultValue.soleTenantConfigs = soleTenantConfigs;

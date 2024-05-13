@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSandboxConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigTaint;
@@ -190,6 +191,11 @@ public final class NodePoolNodeConfig {
      * 
      */
     private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
+    /**
+     * @return Secondary boot disks for preloading data or container images.
+     * 
+     */
+    private @Nullable List<NodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks;
     /**
      * @return The Google Cloud Platform Service Account to be used by the node VMs.
      * 
@@ -445,6 +451,13 @@ public final class NodePoolNodeConfig {
         return Optional.ofNullable(this.sandboxConfig);
     }
     /**
+     * @return Secondary boot disks for preloading data or container images.
+     * 
+     */
+    public List<NodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks() {
+        return this.secondaryBootDisks == null ? List.of() : this.secondaryBootDisks;
+    }
+    /**
      * @return The Google Cloud Platform Service Account to be used by the node VMs.
      * 
      */
@@ -534,6 +547,7 @@ public final class NodePoolNodeConfig {
         private @Nullable Map<String,String> resourceLabels;
         private @Nullable Map<String,Object> resourceManagerTags;
         private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
+        private @Nullable List<NodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks;
         private @Nullable String serviceAccount;
         private @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable NodePoolNodeConfigSoleTenantConfig soleTenantConfig;
@@ -575,6 +589,7 @@ public final class NodePoolNodeConfig {
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.sandboxConfig = defaults.sandboxConfig;
+    	      this.secondaryBootDisks = defaults.secondaryBootDisks;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.soleTenantConfig = defaults.soleTenantConfig;
@@ -780,6 +795,15 @@ public final class NodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder secondaryBootDisks(@Nullable List<NodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks) {
+
+            this.secondaryBootDisks = secondaryBootDisks;
+            return this;
+        }
+        public Builder secondaryBootDisks(NodePoolNodeConfigSecondaryBootDisk... secondaryBootDisks) {
+            return secondaryBootDisks(List.of(secondaryBootDisks));
+        }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
 
             this.serviceAccount = serviceAccount;
@@ -860,6 +884,7 @@ public final class NodePoolNodeConfig {
             _resultValue.resourceLabels = resourceLabels;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.sandboxConfig = sandboxConfig;
+            _resultValue.secondaryBootDisks = secondaryBootDisks;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
             _resultValue.soleTenantConfig = soleTenantConfig;

@@ -28,6 +28,9 @@ __all__ = [
     'ClusterEncryptionConfig',
     'ClusterEncryptionInfo',
     'ClusterInitialUser',
+    'ClusterMaintenanceUpdatePolicy',
+    'ClusterMaintenanceUpdatePolicyMaintenanceWindow',
+    'ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime',
     'ClusterMigrationSource',
     'ClusterNetworkConfig',
     'ClusterRestoreBackupSource',
@@ -929,6 +932,148 @@ class ClusterInitialUser(dict):
         The database username.
         """
         return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class ClusterMaintenanceUpdatePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceWindows":
+            suggest = "maintenance_windows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenanceUpdatePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMaintenanceUpdatePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMaintenanceUpdatePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 maintenance_windows: Optional[Sequence['outputs.ClusterMaintenanceUpdatePolicyMaintenanceWindow']] = None):
+        """
+        :param Sequence['ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs'] maintenance_windows: Preferred windows to perform maintenance. Currently limited to 1.
+               Structure is documented below.
+        """
+        if maintenance_windows is not None:
+            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Optional[Sequence['outputs.ClusterMaintenanceUpdatePolicyMaintenanceWindow']]:
+        """
+        Preferred windows to perform maintenance. Currently limited to 1.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+
+@pulumi.output_type
+class ClusterMaintenanceUpdatePolicyMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenanceUpdatePolicyMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMaintenanceUpdatePolicyMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMaintenanceUpdatePolicyMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day: str,
+                 start_time: 'outputs.ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime'):
+        """
+        :param str day: Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        :param 'ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs' start_time: Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        """
+        Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> 'outputs.ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime':
+        """
+        Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime(dict):
+    def __init__(__self__, *,
+                 hours: int,
+                 minutes: Optional[int] = None,
+                 nanos: Optional[int] = None,
+                 seconds: Optional[int] = None):
+        """
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23.
+        :param int minutes: Minutes of hour of day. Currently, only the value 0 is supported.
+        :param int nanos: Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        :param int seconds: Seconds of minutes of the time. Currently, only the value 0 is supported.
+        """
+        pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> int:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[int]:
+        """
+        Minutes of hour of day. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        Seconds of minutes of the time. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "seconds")
 
 
 @pulumi.output_type

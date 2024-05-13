@@ -194,6 +194,8 @@ if typing.TYPE_CHECKING:
     oslogin = __oslogin
     import pulumi_gcp.parallelstore as __parallelstore
     parallelstore = __parallelstore
+    import pulumi_gcp.privilegedaccessmanager as __privilegedaccessmanager
+    privilegedaccessmanager = __privilegedaccessmanager
     import pulumi_gcp.projects as __projects
     projects = __projects
     import pulumi_gcp.pubsub as __pubsub
@@ -339,6 +341,7 @@ else:
     osconfig = _utilities.lazy_import('pulumi_gcp.osconfig')
     oslogin = _utilities.lazy_import('pulumi_gcp.oslogin')
     parallelstore = _utilities.lazy_import('pulumi_gcp.parallelstore')
+    privilegedaccessmanager = _utilities.lazy_import('pulumi_gcp.privilegedaccessmanager')
     projects = _utilities.lazy_import('pulumi_gcp.projects')
     pubsub = _utilities.lazy_import('pulumi_gcp.pubsub')
     recaptcha = _utilities.lazy_import('pulumi_gcp.recaptcha')
@@ -6279,6 +6282,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.parallelstore",
   "classes": {
    "gcp:parallelstore/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "privilegedaccessmanager/entitlement",
+  "fqn": "pulumi_gcp.privilegedaccessmanager",
+  "classes": {
+   "gcp:privilegedaccessmanager/entitlement:entitlement": "Entitlement"
   }
  },
  {

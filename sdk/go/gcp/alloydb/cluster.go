@@ -420,6 +420,9 @@ type Cluster struct {
 	//
 	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
+	// MaintenanceUpdatePolicy defines the policy for system updates.
+	// Structure is documented below.
+	MaintenanceUpdatePolicy ClusterMaintenanceUpdatePolicyPtrOutput `pulumi:"maintenanceUpdatePolicy"`
 	// Cluster created via DMS migration.
 	// Structure is documented below.
 	MigrationSources ClusterMigrationSourceArrayOutput `pulumi:"migrationSources"`
@@ -558,6 +561,9 @@ type clusterState struct {
 	//
 	// ***
 	Location *string `pulumi:"location"`
+	// MaintenanceUpdatePolicy defines the policy for system updates.
+	// Structure is documented below.
+	MaintenanceUpdatePolicy *ClusterMaintenanceUpdatePolicy `pulumi:"maintenanceUpdatePolicy"`
 	// Cluster created via DMS migration.
 	// Structure is documented below.
 	MigrationSources []ClusterMigrationSource `pulumi:"migrationSources"`
@@ -656,6 +662,9 @@ type ClusterState struct {
 	//
 	// ***
 	Location pulumi.StringPtrInput
+	// MaintenanceUpdatePolicy defines the policy for system updates.
+	// Structure is documented below.
+	MaintenanceUpdatePolicy ClusterMaintenanceUpdatePolicyPtrInput
 	// Cluster created via DMS migration.
 	// Structure is documented below.
 	MigrationSources ClusterMigrationSourceArrayInput
@@ -745,6 +754,9 @@ type clusterArgs struct {
 	//
 	// ***
 	Location string `pulumi:"location"`
+	// MaintenanceUpdatePolicy defines the policy for system updates.
+	// Structure is documented below.
+	MaintenanceUpdatePolicy *ClusterMaintenanceUpdatePolicy `pulumi:"maintenanceUpdatePolicy"`
 	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -815,6 +827,9 @@ type ClusterArgs struct {
 	//
 	// ***
 	Location pulumi.StringInput
+	// MaintenanceUpdatePolicy defines the policy for system updates.
+	// Structure is documented below.
+	MaintenanceUpdatePolicy ClusterMaintenanceUpdatePolicyPtrInput
 	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -1035,6 +1050,12 @@ func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 // ***
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// MaintenanceUpdatePolicy defines the policy for system updates.
+// Structure is documented below.
+func (o ClusterOutput) MaintenanceUpdatePolicy() ClusterMaintenanceUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterMaintenanceUpdatePolicyPtrOutput { return v.MaintenanceUpdatePolicy }).(ClusterMaintenanceUpdatePolicyPtrOutput)
 }
 
 // Cluster created via DMS migration.

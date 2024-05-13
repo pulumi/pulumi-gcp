@@ -105,6 +105,7 @@ import * as orgpolicy from "./orgpolicy";
 import * as osconfig from "./osconfig";
 import * as oslogin from "./oslogin";
 import * as parallelstore from "./parallelstore";
+import * as privilegedaccessmanager from "./privilegedaccessmanager";
 import * as projects from "./projects";
 import * as pubsub from "./pubsub";
 import * as recaptcha from "./recaptcha";
@@ -226,6 +227,7 @@ export {
     osconfig,
     oslogin,
     parallelstore,
+    privilegedaccessmanager,
     projects,
     pubsub,
     recaptcha,

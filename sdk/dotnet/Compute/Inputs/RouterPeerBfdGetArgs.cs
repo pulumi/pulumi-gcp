@@ -36,6 +36,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// The number of consecutive BFD packets that must be missed before
         /// BFD declares that a peer is unavailable. If set, the value must
         /// be a value between 5 and 16.
+        /// 
+        /// &lt;a name="nested_md5_authentication_key"&gt;&lt;/a&gt;The `md5_authentication_key` block supports:
         /// </summary>
         [Input("multiplier")]
         public Input<int>? Multiplier { get; set; }

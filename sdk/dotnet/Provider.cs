@@ -378,6 +378,9 @@ namespace Pulumi.Gcp
         [Output("privatecaCustomEndpoint")]
         public Output<string?> PrivatecaCustomEndpoint { get; private set; } = null!;
 
+        [Output("privilegedAccessManagerCustomEndpoint")]
+        public Output<string?> PrivilegedAccessManagerCustomEndpoint { get; private set; } = null!;
+
         [Output("project")]
         public Output<string?> Project { get; private set; } = null!;
 
@@ -926,6 +929,9 @@ namespace Pulumi.Gcp
 
         [Input("privatecaCustomEndpoint")]
         public Input<string>? PrivatecaCustomEndpoint { get; set; }
+
+        [Input("privilegedAccessManagerCustomEndpoint")]
+        public Input<string>? PrivilegedAccessManagerCustomEndpoint { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

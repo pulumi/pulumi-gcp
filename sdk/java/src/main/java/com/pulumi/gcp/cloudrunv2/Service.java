@@ -349,7 +349,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()        
  *             .name("cloudrun-service")
  *             .location("us-central1")
- *             .launchStage("BETA")
+ *             .launchStage("GA")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
@@ -363,7 +363,6 @@ import javax.annotation.Nullable;
  *                             "tag2",
  *                             "tag3")
  *                         .build())
- *                     .egress("ALL_TRAFFIC")
  *                     .build())
  *                 .build())
  *             .build());

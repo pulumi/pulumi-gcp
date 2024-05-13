@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
-//				Name: pulumi.String("cloud.firestore"),
+//				Name: pulumi.String("cloud.firestore/database"),
 //				RulesetName: firestore.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
 //				}).(pulumi.StringOutput),

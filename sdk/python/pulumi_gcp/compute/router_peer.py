@@ -77,8 +77,8 @@ class RouterPeerArgs:
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
-        :param pulumi.Input['RouterPeerMd5AuthenticationKeyArgs'] md5_authentication_key: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-               Router.md5_authentication_keys. The field must comply with RFC1035.
+        :param pulumi.Input['RouterPeerMd5AuthenticationKeyArgs'] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -338,8 +338,8 @@ class RouterPeerArgs:
     @pulumi.getter(name="md5AuthenticationKey")
     def md5_authentication_key(self) -> Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]:
         """
-        Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-        Router.md5_authentication_keys. The field must comply with RFC1035.
+        Configuration for MD5 authentication on the BGP session.
+        Structure is documented below.
         """
         return pulumi.get(self, "md5_authentication_key")
 
@@ -506,8 +506,8 @@ class _RouterPeerState:
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer.
-        :param pulumi.Input['RouterPeerMd5AuthenticationKeyArgs'] md5_authentication_key: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-               Router.md5_authentication_keys. The field must comply with RFC1035.
+        :param pulumi.Input['RouterPeerMd5AuthenticationKeyArgs'] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -762,8 +762,8 @@ class _RouterPeerState:
     @pulumi.getter(name="md5AuthenticationKey")
     def md5_authentication_key(self) -> Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]:
         """
-        Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-        Router.md5_authentication_keys. The field must comply with RFC1035.
+        Configuration for MD5 authentication on the BGP session.
+        Structure is documented below.
         """
         return pulumi.get(self, "md5_authentication_key")
 
@@ -1076,6 +1076,26 @@ class RouterPeer(pulumi.CustomResource):
             peer_ip_address=addr_peer.address)
         ```
 
+        ### Router Peer Md5 Authentication Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar = gcp.compute.RouterPeer("foobar",
+            name="%s-peer",
+            router=foobar_google_compute_router["name"],
+            region=foobar_google_compute_router["region"],
+            peer_asn=65515,
+            advertised_route_priority=100,
+            interface=foobar_google_compute_router_interface["name"],
+            peer_ip_address="169.254.3.2",
+            md5_authentication_key=gcp.compute.RouterPeerMd5AuthenticationKeyArgs(
+                name="%s-peer-key",
+                key="%s-peer-key-value",
+            ))
+        ```
+
         ## Import
 
         RouterBgpPeer can be imported using any of these accepted formats:
@@ -1139,8 +1159,8 @@ class RouterPeer(pulumi.CustomResource):
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
-        :param pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']] md5_authentication_key: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-               Router.md5_authentication_keys. The field must comply with RFC1035.
+        :param pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -1325,6 +1345,26 @@ class RouterPeer(pulumi.CustomResource):
             peer_ip_address=addr_peer.address)
         ```
 
+        ### Router Peer Md5 Authentication Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar = gcp.compute.RouterPeer("foobar",
+            name="%s-peer",
+            router=foobar_google_compute_router["name"],
+            region=foobar_google_compute_router["region"],
+            peer_asn=65515,
+            advertised_route_priority=100,
+            interface=foobar_google_compute_router_interface["name"],
+            peer_ip_address="169.254.3.2",
+            md5_authentication_key=gcp.compute.RouterPeerMd5AuthenticationKeyArgs(
+                name="%s-peer-key",
+                key="%s-peer-key-value",
+            ))
+        ```
+
         ## Import
 
         RouterBgpPeer can be imported using any of these accepted formats:
@@ -1502,8 +1542,8 @@ class RouterPeer(pulumi.CustomResource):
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer.
-        :param pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']] md5_authentication_key: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-               Router.md5_authentication_keys. The field must comply with RFC1035.
+        :param pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -1688,8 +1728,8 @@ class RouterPeer(pulumi.CustomResource):
     @pulumi.getter(name="md5AuthenticationKey")
     def md5_authentication_key(self) -> pulumi.Output[Optional['outputs.RouterPeerMd5AuthenticationKey']]:
         """
-        Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
-        Router.md5_authentication_keys. The field must comply with RFC1035.
+        Configuration for MD5 authentication on the BGP session.
+        Structure is documented below.
         """
         return pulumi.get(self, "md5_authentication_key")
 

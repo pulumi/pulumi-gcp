@@ -9179,6 +9179,139 @@ func (o GetBucketWebsiteArrayOutput) Index(i pulumi.IntInput) GetBucketWebsiteOu
 	}).(GetBucketWebsiteOutput)
 }
 
+type GetBucketsBucket struct {
+	// User-provided bucket labels, in key/value pairs.
+	Labels map[string]string `pulumi:"labels"`
+	// The location of the bucket.
+	Location string `pulumi:"location"`
+	// The name of the bucket.
+	Name string `pulumi:"name"`
+	// A url reference to the bucket.
+	SelfLink string `pulumi:"selfLink"`
+	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket.
+	StorageClass string `pulumi:"storageClass"`
+}
+
+// GetBucketsBucketInput is an input type that accepts GetBucketsBucketArgs and GetBucketsBucketOutput values.
+// You can construct a concrete instance of `GetBucketsBucketInput` via:
+//
+//	GetBucketsBucketArgs{...}
+type GetBucketsBucketInput interface {
+	pulumi.Input
+
+	ToGetBucketsBucketOutput() GetBucketsBucketOutput
+	ToGetBucketsBucketOutputWithContext(context.Context) GetBucketsBucketOutput
+}
+
+type GetBucketsBucketArgs struct {
+	// User-provided bucket labels, in key/value pairs.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The location of the bucket.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The name of the bucket.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A url reference to the bucket.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket.
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+}
+
+func (GetBucketsBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketsBucket)(nil)).Elem()
+}
+
+func (i GetBucketsBucketArgs) ToGetBucketsBucketOutput() GetBucketsBucketOutput {
+	return i.ToGetBucketsBucketOutputWithContext(context.Background())
+}
+
+func (i GetBucketsBucketArgs) ToGetBucketsBucketOutputWithContext(ctx context.Context) GetBucketsBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketOutput)
+}
+
+// GetBucketsBucketArrayInput is an input type that accepts GetBucketsBucketArray and GetBucketsBucketArrayOutput values.
+// You can construct a concrete instance of `GetBucketsBucketArrayInput` via:
+//
+//	GetBucketsBucketArray{ GetBucketsBucketArgs{...} }
+type GetBucketsBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketsBucketArrayOutput() GetBucketsBucketArrayOutput
+	ToGetBucketsBucketArrayOutputWithContext(context.Context) GetBucketsBucketArrayOutput
+}
+
+type GetBucketsBucketArray []GetBucketsBucketInput
+
+func (GetBucketsBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketsBucket)(nil)).Elem()
+}
+
+func (i GetBucketsBucketArray) ToGetBucketsBucketArrayOutput() GetBucketsBucketArrayOutput {
+	return i.ToGetBucketsBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketsBucketArray) ToGetBucketsBucketArrayOutputWithContext(ctx context.Context) GetBucketsBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketArrayOutput)
+}
+
+type GetBucketsBucketOutput struct{ *pulumi.OutputState }
+
+func (GetBucketsBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketsBucket)(nil)).Elem()
+}
+
+func (o GetBucketsBucketOutput) ToGetBucketsBucketOutput() GetBucketsBucketOutput {
+	return o
+}
+
+func (o GetBucketsBucketOutput) ToGetBucketsBucketOutputWithContext(ctx context.Context) GetBucketsBucketOutput {
+	return o
+}
+
+// User-provided bucket labels, in key/value pairs.
+func (o GetBucketsBucketOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetBucketsBucket) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The location of the bucket.
+func (o GetBucketsBucketOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the bucket.
+func (o GetBucketsBucketOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A url reference to the bucket.
+func (o GetBucketsBucketOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket.
+func (o GetBucketsBucketOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+type GetBucketsBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketsBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketsBucket)(nil)).Elem()
+}
+
+func (o GetBucketsBucketArrayOutput) ToGetBucketsBucketArrayOutput() GetBucketsBucketArrayOutput {
+	return o
+}
+
+func (o GetBucketsBucketArrayOutput) ToGetBucketsBucketArrayOutputWithContext(ctx context.Context) GetBucketsBucketArrayOutput {
+	return o
+}
+
+func (o GetBucketsBucketArrayOutput) Index(i pulumi.IntInput) GetBucketsBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketsBucket {
+		return vs[0].([]GetBucketsBucket)[vs[1].(int)]
+	}).(GetBucketsBucketOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassInput)(nil)).Elem(), BucketAutoclassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassPtrInput)(nil)).Elem(), BucketAutoclassArgs{})
@@ -9300,6 +9433,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketVersioningArrayInput)(nil)).Elem(), GetBucketVersioningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketWebsiteInput)(nil)).Elem(), GetBucketWebsiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketWebsiteArrayInput)(nil)).Elem(), GetBucketWebsiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketInput)(nil)).Elem(), GetBucketsBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketArrayInput)(nil)).Elem(), GetBucketsBucketArray{})
 	pulumi.RegisterOutputType(BucketAutoclassOutput{})
 	pulumi.RegisterOutputType(BucketAutoclassPtrOutput{})
 	pulumi.RegisterOutputType(BucketCorOutput{})
@@ -9420,4 +9555,6 @@ func init() {
 	pulumi.RegisterOutputType(GetBucketVersioningArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketWebsiteOutput{})
 	pulumi.RegisterOutputType(GetBucketWebsiteArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketsBucketOutput{})
+	pulumi.RegisterOutputType(GetBucketsBucketArrayOutput{})
 }

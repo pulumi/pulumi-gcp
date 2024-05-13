@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Release("primary", ReleaseArgs.builder()        
- *             .name("cloud.firestore")
+ *             .name("cloud.firestore/database")
  *             .rulesetName(firestore.name().applyValue(name -> String.format("projects/my-project-name/rulesets/%s", name)))
  *             .project("my-project-name")
  *             .build());

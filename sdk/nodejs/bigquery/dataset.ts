@@ -169,7 +169,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Bigquery Dataset External Reference Aws Docs
+ * ### Bigquery Dataset External Reference Aws
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
