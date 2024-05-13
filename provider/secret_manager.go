@@ -43,7 +43,7 @@ func resourceSecretManagerSecret() *tfbridge.ResourceInfo {
 	return &tfbridge.ResourceInfo{
 		DeleteBeforeReplace: true,
 		TransformFromState: func(
-			ctx context.Context, pm resource.PropertyMap,
+			_ context.Context, pm resource.PropertyMap,
 		) (resource.PropertyMap, error) {
 			return fixReplicationAuto(pm), nil
 		},

@@ -85,7 +85,7 @@ func composeTransform(f1, f2 tfbridge.PropertyTransform) tfbridge.PropertyTransf
 // creating a permanent diff.
 // See also: https://github.com/pulumi/pulumi-gcp/issues/1314
 func ensureLabelPathsExist(paths []resource.PropertyPath) tfbridge.PropertyTransform {
-	return func(ctx context.Context, prop resource.PropertyMap) (resource.PropertyMap, error) {
+	return func(_ context.Context, prop resource.PropertyMap) (resource.PropertyMap, error) {
 		obj := resource.NewObjectProperty(prop)
 		for _, path := range expandPathSet(paths, obj) {
 			// If a `pulumiLabels` field is not set at the expected path, we will set it to an empty property Map,

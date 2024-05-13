@@ -70,7 +70,7 @@ const (
 	gcpCloudFunctions           = "CloudFunctions"           // CloudFunction resources
 	gcpCloudFunctionsV2         = "CloudFunctionsV2"         // CloudFunction (2nd Gen) resources
 	gcpCloudIdentity            = "CloudIdentity"            // CloudIdentity resources
-	gcpCloudIds                 = "CloudIds"                 // CloudIds resources
+	gcpCloudIDs                 = "CloudIds"                 // CloudIds resources
 	gcpCloudRun                 = "CloudRun"                 // CloudRun resources
 	gcpCloudRunV2               = "CloudRunV2"               // CloudRun (2nd Gen) resources
 	gcpCloudScheduler           = "CloudScheduler"           // Cloud Scheduler resources
@@ -184,7 +184,7 @@ var moduleMapping = map[string]string{
 	"certificate_manager":             gcpCertificateManager,
 	"cloud_asset":                     gcpCloudAsset,
 	"cloud_identity":                  gcpCloudIdentity,
-	"cloud_ids":                       gcpCloudIds,
+	"cloud_ids":                       gcpCloudIDs,
 	"cloud_quota":                     "CloudQuota",
 	"cloud_run":                       gcpCloudRun,
 	"cloud_run_v2":                    gcpCloudRunV2,
@@ -372,7 +372,7 @@ func logOrPrint(ctx context.Context, host *provider.HostClient, msg string) {
 func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpClientOpts []option.ClientOption) func(
 	ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig,
 ) error {
-	return func(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
+	return func(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, _ shim.ResourceConfig) error {
 		if !credentialsValidationRun.CompareAndSwap(false, true) {
 			return nil
 		}
