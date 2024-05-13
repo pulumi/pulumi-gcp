@@ -18,7 +18,7 @@ func RegionListReturnHandler(regions []string) func(http.ResponseWriter, *http.R
 	for _, region := range regions {
 		regionList = append(regionList, &compute.Region{Name: region})
 	}
-	return func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, _ *http.Request) {
 		resp := &compute.RegionList{
 			Items: regionList,
 		}
@@ -98,7 +98,7 @@ func TestPreConfigureCallbackNoErrWhenRegionCheckSkipped(t *testing.T) {
 }
 
 func RegionListErrorHandler(message string, status int) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, _ *http.Request) {
 		http.Error(w, message, status)
 	}
 }

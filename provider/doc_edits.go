@@ -24,7 +24,7 @@ var effectiveLabelsRegexp = regexp.MustCompile(effectiveLabels)
 
 var fixupEffectiveLabels = tfbridge.DocsEdit{
 	Path: "*",
-	Edit: func(path string, content []byte) ([]byte, error) {
+	Edit: func(_ string, content []byte) ([]byte, error) {
 		content = effectiveLabelsRegexp.ReplaceAllLiteral(content, []byte("including the labels configured through Pulumi"))
 		return content, nil
 	},
@@ -38,7 +38,7 @@ var secretsInPlainTextNoteRegexps = []*regexp.Regexp{
 
 var removeSecretsInPlainTextNote = tfbridge.DocsEdit{
 	Path: "*",
-	Edit: func(path string, content []byte) ([]byte, error) {
+	Edit: func(_ string, content []byte) ([]byte, error) {
 		for _, r := range secretsInPlainTextNoteRegexps {
 			content = r.ReplaceAllLiteral(content, nil)
 		}
@@ -65,7 +65,7 @@ var betaRegexps = []*regexp.Regexp{
 
 var removeBetaFromDescriptionField = tfbridge.DocsEdit{
 	Path: "*",
-	Edit: func(path string, content []byte) ([]byte, error) {
+	Edit: func(_ string, content []byte) ([]byte, error) {
 		for _, betaRegex := range betaRegexps {
 			content = betaRegex.ReplaceAllLiteral(content, nil)
 		}
@@ -81,7 +81,7 @@ var substituteRandomSuffix = (func() tfbridge.DocsEdit {
 	randGen := rand.New(rand.NewSource(123456789))
 	return tfbridge.DocsEdit{
 		Path: "*",
-		Edit: func(path string, content []byte) ([]byte, error) {
+		Edit: func(_ string, content []byte) ([]byte, error) {
 			return pattern.ReplaceAllFunc(content, func([]byte) []byte {
 				//nolint:gosec
 				return []byte(fmt.Sprintf("_%d", randGen.Intn(100000)))
@@ -96,7 +96,7 @@ var memberRegexp = regexp.MustCompile("`member/members`")
 
 var rewritemembersField = tfbridge.DocsEdit{
 	Path: "*iam.html.markdown",
-	Edit: func(path string, content []byte) ([]byte, error) {
+	Edit: func(_ string, content []byte) ([]byte, error) {
 		membersByte := []byte("`members`")
 		memberByte := []byte("`member`")
 		var returnContent []byte
