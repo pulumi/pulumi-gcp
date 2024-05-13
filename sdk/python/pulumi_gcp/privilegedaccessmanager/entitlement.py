@@ -500,7 +500,7 @@ class Entitlement(pulumi.CustomResource):
         When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:privilegedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
+        $ pulumi import gcp:privilegedaccessmanager/entitlement:entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -586,7 +586,7 @@ class Entitlement(pulumi.CustomResource):
         When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:privilegedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
+        $ pulumi import gcp:privilegedaccessmanager/entitlement:entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -650,10 +650,8 @@ class Entitlement(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="gcp:priviligedaccessmanager/entitlement:Entitlement")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Entitlement, __self__).__init__(
-            'gcp:privilegedaccessmanager/entitlement:Entitlement',
+            'gcp:privilegedaccessmanager/entitlement:entitlement',
             resource_name,
             __props__,
             opts)

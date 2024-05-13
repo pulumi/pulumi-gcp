@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
  *
  * ```sh
- * $ pulumi import gcp:privilegedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
+ * $ pulumi import gcp:privilegedaccessmanager/entitlement:entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
  * ```
  */
 export class Entitlement extends pulumi.CustomResource {
@@ -82,7 +82,7 @@ export class Entitlement extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:privilegedaccessmanager/entitlement:Entitlement';
+    public static readonly __pulumiType = 'gcp:privilegedaccessmanager/entitlement:entitlement';
 
     /**
      * Returns true if the given object is an instance of Entitlement.  This is designed to work even
@@ -229,14 +229,12 @@ export class Entitlement extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "gcp:priviligedaccessmanager/entitlement:Entitlement" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Entitlement.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering Entitlement resources.
+ * Input properties used for looking up and filtering entitlement resources.
  */
 export interface EntitlementState {
     /**

@@ -3334,6 +3334,12 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_network_endpoints": {
 				Tok: gcpResource(gcpCompute, "NetworkEndpointList"),
 			},
+			"google_privileged_access_manager_entitlement": {
+				Tok: gcpResource(gcpPrivilegedAccessManager, "entitlement"),
+				Docs: &tfbridge.DocInfo{
+					Source: "privileged_access_manager_entitlement.html.markdown",
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Access Approval
@@ -3896,13 +3902,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpSourceRepo, "getRepository"),
 				Docs: &tfbridge.DocInfo{
 					Source: "data_source_sourcerepo_repository.html.markdown",
-				},
-			},
-
-			"google_privileged_access_manager_entitlement": {
-				Tok: gcpDataSource(gcpPrivilegedAccessManager, "getEntitlement"),
-				Docs: &tfbridge.DocInfo{
-					Source: "privileged_access_manager_entitlement.html.markdown",
 				},
 			},
 		},

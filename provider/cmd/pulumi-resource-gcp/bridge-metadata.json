@@ -22116,14 +22116,7 @@
                 "majorVersion": 7
             },
             "google_privileged_access_manager_entitlement": {
-                "current": "gcp:privilegedaccessmanager/entitlement:Entitlement",
-                "past": [
-                    {
-                        "name": "gcp:priviligedaccessmanager/entitlement:Entitlement",
-                        "inCodegen": true,
-                        "majorVersion": 7
-                    }
-                ],
+                "current": "gcp:privilegedaccessmanager/entitlement:entitlement",
                 "majorVersion": 7,
                 "fields": {
                     "additional_notification_targets": {
@@ -30062,11 +30055,6 @@
                     "config.$.vsphere_config": false
                 }
             },
-            "google_privileged_access_manager_entitlement": {
-                "aliases": [
-                    "gcp:priviligedaccessmanager/entitlement:Entitlement"
-                ]
-            },
             "google_service_account": {
                 "renames": [
                     "gcp:serviceAccount/account:Account"
@@ -31645,8 +31633,7 @@
             "gcp:osconfig/patchDeployment:PatchDeployment": 0,
             "gcp:oslogin/sshPublicKey:SshPublicKey": 0,
             "gcp:parallelstore/instance:Instance": 0,
-            "gcp:privilegedaccessmanager/entitlement:Entitlement": 0,
-            "gcp:priviligedaccessmanager/entitlement:Entitlement": 0,
+            "gcp:privilegedaccessmanager/entitlement:entitlement": 0,
             "gcp:projects/accessApprovalSettings:AccessApprovalSettings": 0,
             "gcp:projects/apiKey:ApiKey": 0,
             "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts": 0,

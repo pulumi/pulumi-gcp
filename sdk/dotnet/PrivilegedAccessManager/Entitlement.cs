@@ -108,10 +108,10 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
     /// When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:privilegedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
+    /// $ pulumi import gcp:privilegedaccessmanager/entitlement:entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
     /// ```
     /// </summary>
-    [GcpResourceType("gcp:privilegedaccessmanager/entitlement:Entitlement")]
+    [GcpResourceType("gcp:privilegedaccessmanager/entitlement:entitlement")]
     public partial class Entitlement : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -218,12 +218,12 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Entitlement(string name, EntitlementArgs args, CustomResourceOptions? options = null)
-            : base("gcp:privilegedaccessmanager/entitlement:Entitlement", name, args ?? new EntitlementArgs(), MakeResourceOptions(options, ""))
+            : base("gcp:privilegedaccessmanager/entitlement:entitlement", name, args ?? new EntitlementArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Entitlement(string name, Input<string> id, EntitlementState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:privilegedaccessmanager/entitlement:Entitlement", name, state, MakeResourceOptions(options, id))
+            : base("gcp:privilegedaccessmanager/entitlement:entitlement", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -232,10 +232,6 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "gcp:priviligedaccessmanager/entitlement:Entitlement" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

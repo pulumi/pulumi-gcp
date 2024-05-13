@@ -3,7 +3,6 @@
 
 package com.pulumi.gcp.privilegedaccessmanager;
 
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -34,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.privilegedaccessmanager.Entitlement;
+ * import com.pulumi.gcp.privilegedaccessmanager.entitlement;
  * import com.pulumi.gcp.privilegedaccessmanager.EntitlementArgs;
  * import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementRequesterJustificationConfigArgs;
  * import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementRequesterJustificationConfigUnstructuredArgs;
@@ -111,11 +110,11 @@ import javax.annotation.Nullable;
  * When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
  * 
  * ```sh
- * $ pulumi import gcp:privilegedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
+ * $ pulumi import gcp:privilegedaccessmanager/entitlement:entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
  * ```
  * 
  */
-@ResourceType(type="gcp:privilegedaccessmanager/entitlement:Entitlement")
+@ResourceType(type="gcp:privilegedaccessmanager/entitlement:entitlement")
 public class Entitlement extends com.pulumi.resources.CustomResource {
     /**
      * AdditionalNotificationTargets includes email addresses to be notified.
@@ -358,19 +357,16 @@ public class Entitlement extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Entitlement(String name, EntitlementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:privilegedaccessmanager/entitlement:Entitlement", name, args == null ? EntitlementArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:privilegedaccessmanager/entitlement:entitlement", name, args == null ? EntitlementArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
     private Entitlement(String name, Output<String> id, @Nullable EntitlementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:privilegedaccessmanager/entitlement:Entitlement", name, state, makeResourceOptions(options, id));
+        super("gcp:privilegedaccessmanager/entitlement:entitlement", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("gcp:priviligedaccessmanager/entitlement:Entitlement").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

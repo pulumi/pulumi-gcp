@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := privilegedaccessmanager.NewEntitlement(ctx, "tfentitlement", &privilegedaccessmanager.EntitlementArgs{
+//			_, err := privilegedaccessmanager.Newentitlement(ctx, "tfentitlement", &privilegedaccessmanager.entitlementArgs{
 //				EntitlementId:      pulumi.String("example-entitlement"),
 //				Location:           pulumi.String("global"),
 //				MaxRequestDuration: pulumi.String("43200s"),
@@ -100,7 +100,7 @@ import (
 // When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
 //
 // ```sh
-// $ pulumi import gcp:privilegedaccessmanager/entitlement:Entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
+// $ pulumi import gcp:privilegedaccessmanager/entitlement:entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
 // ```
 type Entitlement struct {
 	pulumi.CustomResourceState
@@ -174,15 +174,9 @@ func NewEntitlement(ctx *pulumi.Context,
 	if args.RequesterJustificationConfig == nil {
 		return nil, errors.New("invalid value for required argument 'RequesterJustificationConfig'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:priviligedaccessmanager/entitlement:Entitlement"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Entitlement
-	err := ctx.RegisterResource("gcp:privilegedaccessmanager/entitlement:Entitlement", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:privilegedaccessmanager/entitlement:entitlement", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -194,7 +188,7 @@ func NewEntitlement(ctx *pulumi.Context,
 func GetEntitlement(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *EntitlementState, opts ...pulumi.ResourceOption) (*Entitlement, error) {
 	var resource Entitlement
-	err := ctx.ReadResource("gcp:privilegedaccessmanager/entitlement:Entitlement", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:privilegedaccessmanager/entitlement:entitlement", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

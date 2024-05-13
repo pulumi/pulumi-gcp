@@ -15,7 +15,7 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp:privilegedaccessmanager/entitlement:Entitlement":
+            case "gcp:privilegedaccessmanager/entitlement:entitlement":
                 return new Entitlement(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
