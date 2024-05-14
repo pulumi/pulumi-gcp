@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var projectAccessApproval = new AccessApprovalSettings("projectAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *         var projectAccessApproval = new AccessApprovalSettings("projectAccessApproval", AccessApprovalSettingsArgs.builder()
  *             .projectId("my-project-name")
  *             .notificationEmails(            
  *                 "testuser{@literal @}example.com",
@@ -105,13 +105,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("key-ring")
  *             .location("global")
  *             .project("my-project-name")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("crypto-key")
  *             .keyRing(keyRing.id())
  *             .purpose("ASYMMETRIC_SIGN")
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  *             .projectId("my-project-name")
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.signerVerifier")
  *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *             .cryptoKey(cryptoKey.id())
  *             .build());
  * 
- *         var projectAccessApproval = new AccessApprovalSettings("projectAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *         var projectAccessApproval = new AccessApprovalSettings("projectAccessApproval", AccessApprovalSettingsArgs.builder()
  *             .projectId("my-project-name")
  *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -> cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.name())))
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()

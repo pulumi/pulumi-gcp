@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .name("test-network")
  *             .build());
  * 
- *         var sourcePool = new StoragePool("sourcePool", StoragePoolArgs.builder()        
+ *         var sourcePool = new StoragePool("sourcePool", StoragePoolArgs.builder()
  *             .name("source-pool")
  *             .location("us-central1")
  *             .serviceLevel("PREMIUM")
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var destinationPool = new StoragePool("destinationPool", StoragePoolArgs.builder()        
+ *         var destinationPool = new StoragePool("destinationPool", StoragePoolArgs.builder()
  *             .name("destination-pool")
  *             .location("us-west2")
  *             .serviceLevel("PREMIUM")
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         var sourceVolume = new Volume("sourceVolume", VolumeArgs.builder()        
+ *         var sourceVolume = new Volume("sourceVolume", VolumeArgs.builder()
  *             .location(sourcePool.location())
  *             .name("source-volume")
  *             .capacityGib(100)
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("FORCE")
  *             .build());
  * 
- *         var testReplication = new VolumeReplication("testReplication", VolumeReplicationArgs.builder()        
+ *         var testReplication = new VolumeReplication("testReplication", VolumeReplicationArgs.builder()
  *             .location(sourceVolume.location())
  *             .volumeName(sourceVolume.name())
  *             .name("test-replication")

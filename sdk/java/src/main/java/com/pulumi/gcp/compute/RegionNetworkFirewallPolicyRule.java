@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicRegionalNetworksecurityAddressGroup = new AddressGroup("basicRegionalNetworksecurityAddressGroup", AddressGroupArgs.builder()        
+ *         var basicRegionalNetworksecurityAddressGroup = new AddressGroup("basicRegionalNetworksecurityAddressGroup", AddressGroupArgs.builder()
  *             .name("policy")
  *             .parent("projects/my-project-name")
  *             .description("Sample regional networksecurity_address_group")
@@ -69,18 +69,18 @@ import javax.annotation.Nullable;
  *             .capacity(100)
  *             .build());
  * 
- *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()        
+ *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
  *             .name("policy")
  *             .description("Sample regional network firewall policy")
  *             .project("my-project-name")
  *             .region("us-west1")
  *             .build());
  * 
- *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()        
+ *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()
  *             .name("network")
  *             .build());
  * 
- *         var basicKey = new TagKey("basicKey", TagKeyArgs.builder()        
+ *         var basicKey = new TagKey("basicKey", TagKeyArgs.builder()
  *             .description("For keyname resources.")
  *             .parent("organizations/123456789")
  *             .purpose("GCE_FIREWALL")
@@ -88,13 +88,13 @@ import javax.annotation.Nullable;
  *             .purposeData(Map.of("network", basicNetwork.name().applyValue(name -> String.format("my-project-name/%s", name))))
  *             .build());
  * 
- *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()        
+ *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()
  *             .description("For valuename resources.")
  *             .parent(basicKey.name().applyValue(name -> String.format("tagKeys/%s", name)))
  *             .shortName("tagvalue")
  *             .build());
  * 
- *         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()        
+ *         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()
  *             .action("allow")
  *             .description("This is a simple rule description")
  *             .direction("INGRESS")

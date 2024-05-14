@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()
  *             .name("default")
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new NodePool("default", NodePoolArgs.builder()        
+ *         var default_ = new NodePool("default", NodePoolArgs.builder()
  *             .name("nodepool-1")
  *             .cluster(cluster.name())
  *             .location("us-central1")
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()
  *             .name("default")
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
@@ -158,23 +158,23 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("keyring")
  *             .location("us-central1")
  *             .build());
  * 
- *         var cryptoKeyCryptoKey = new CryptoKey("cryptoKeyCryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKeyCryptoKey = new CryptoKey("cryptoKeyCryptoKey", CryptoKeyArgs.builder()
  *             .name("key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKeyCryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-edgecontainer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var default_ = new NodePool("default", NodePoolArgs.builder()        
+ *         var default_ = new NodePool("default", NodePoolArgs.builder()
  *             .name("nodepool-1")
  *             .cluster(cluster.name())
  *             .location("us-central1")
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .name("")
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
@@ -253,7 +253,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()        
+ *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
  *             .name("nodepool-1")
  *             .cluster(cluster.name())
  *             .location("us-central1")

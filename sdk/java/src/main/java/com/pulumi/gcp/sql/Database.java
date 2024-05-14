@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
  *             .region("us-central1")
  *             .databaseVersion("MYSQL_8_0")
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .name("my-database")
  *             .instance(instance.name())
  *             .build());
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
  *             .region("us-central1")
  *             .databaseVersion("POSTGRES_14")
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var databaseDeletionPolicy = new Database("databaseDeletionPolicy", DatabaseArgs.builder()        
+ *         var databaseDeletionPolicy = new Database("databaseDeletionPolicy", DatabaseArgs.builder()
  *             .name("my-database")
  *             .instance(instance.name())
  *             .deletionPolicy("ABANDON")

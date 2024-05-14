@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_policy_nw = new Network("network-policy-nw", NetworkArgs.builder()        
+ *         var network_policy_nw = new Network("network-policy-nw", NetworkArgs.builder()
  *             .name("standard-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .description("VMwareEngine standard network sample")
  *             .build());
  * 
- *         var vmw_engine_network_policy = new NetworkPolicy("vmw-engine-network-policy", NetworkPolicyArgs.builder()        
+ *         var vmw_engine_network_policy = new NetworkPolicy("vmw-engine-network-policy", NetworkPolicyArgs.builder()
  *             .location("us-west1")
  *             .name("sample-network-policy")
  *             .edgeServicesCidr("192.168.30.0/26")
@@ -100,14 +100,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_policy_nw = new Network("network-policy-nw", NetworkArgs.builder()        
+ *         var network_policy_nw = new Network("network-policy-nw", NetworkArgs.builder()
  *             .name("standard-full-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .description("VMwareEngine standard network sample")
  *             .build());
  * 
- *         var vmw_engine_network_policy = new NetworkPolicy("vmw-engine-network-policy", NetworkPolicyArgs.builder()        
+ *         var vmw_engine_network_policy = new NetworkPolicy("vmw-engine-network-policy", NetworkPolicyArgs.builder()
  *             .location("us-west1")
  *             .name("sample-network-policy-full")
  *             .edgeServicesCidr("192.168.30.0/26")

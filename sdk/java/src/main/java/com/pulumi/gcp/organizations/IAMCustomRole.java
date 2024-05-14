@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_custom_role = new IAMCustomRole("my-custom-role", IAMCustomRoleArgs.builder()        
+ *         var my_custom_role = new IAMCustomRole("my-custom-role", IAMCustomRoleArgs.builder()
  *             .roleId("myCustomRole")
  *             .orgId("123456789")
  *             .title("My Custom Role")

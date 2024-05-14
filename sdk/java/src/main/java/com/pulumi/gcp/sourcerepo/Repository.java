@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .name("my/repository")
  *             .build());
  * 
@@ -92,16 +92,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testAccount = new Account("testAccount", AccountArgs.builder()        
+ *         var testAccount = new Account("testAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var topic = new Topic("topic", TopicArgs.builder()        
+ *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("my-topic")
  *             .build());
  * 
- *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()        
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
  *             .name("my-repository")
  *             .pubsubConfigs(RepositoryPubsubConfigArgs.builder()
  *                 .topic(topic.id())

@@ -47,7 +47,7 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()        
+     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()
      *             .name("composer-environment")
      *             .build());
      * 
@@ -96,7 +96,7 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()        
+     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()
      *             .name("composer-environment")
      *             .build());
      * 
@@ -145,7 +145,7 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()        
+     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()
      *             .name("composer-environment")
      *             .build());
      * 
@@ -194,7 +194,7 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()        
+     *         var composerEnvEnvironment = new Environment("composerEnvEnvironment", EnvironmentArgs.builder()
      *             .name("composer-environment")
      *             .build());
      * 
@@ -247,7 +247,7 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
@@ -301,7 +301,7 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
@@ -355,7 +355,7 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
@@ -409,7 +409,7 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
@@ -463,7 +463,7 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
@@ -517,7 +517,7 @@ public final class ComposerFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
-     *         var test = new Environment("test", EnvironmentArgs.builder()        
+     *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()

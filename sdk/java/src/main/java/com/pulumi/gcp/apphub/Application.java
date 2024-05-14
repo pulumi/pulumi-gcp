@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .location("us-east1")
  *             .applicationId("example-application")
  *             .scope(ApplicationScopeArgs.builder()
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example2 = new Application("example2", ApplicationArgs.builder()        
+ *         var example2 = new Application("example2", ApplicationArgs.builder()
  *             .location("us-east1")
  *             .applicationId("example-application")
  *             .displayName("Application Full")

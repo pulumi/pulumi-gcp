@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfentitlement = new Entitlement("tfentitlement", EntitlementArgs.builder()        
+ *         var tfentitlement = new Entitlement("tfentitlement", EntitlementArgs.builder()
  *             .entitlementId("example-entitlement")
  *             .location("global")
  *             .maxRequestDuration("43200s")

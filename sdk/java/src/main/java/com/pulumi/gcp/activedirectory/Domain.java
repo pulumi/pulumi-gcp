@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ad_domain = new Domain("ad-domain", DomainArgs.builder()        
+ *         var ad_domain = new Domain("ad-domain", DomainArgs.builder()
  *             .domainName("tfgen.org.com")
  *             .locations("us-central1")
  *             .reservedIpRange("192.168.255.0/24")

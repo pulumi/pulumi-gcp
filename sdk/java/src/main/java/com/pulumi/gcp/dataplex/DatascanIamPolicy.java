@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DatascanIamPolicy("policy", DatascanIamPolicyArgs.builder()        
+ *         var policy = new DatascanIamPolicy("policy", DatascanIamPolicyArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()        
+ *         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()        
+ *         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DatascanIamPolicy("policy", DatascanIamPolicyArgs.builder()        
+ *         var policy = new DatascanIamPolicy("policy", DatascanIamPolicyArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()        
+ *         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()        
+ *         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())

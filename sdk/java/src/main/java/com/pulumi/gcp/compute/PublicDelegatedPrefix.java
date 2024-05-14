@@ -53,14 +53,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var advertised = new PublicAdvertisedPrefix("advertised", PublicAdvertisedPrefixArgs.builder()        
+ *         var advertised = new PublicAdvertisedPrefix("advertised", PublicAdvertisedPrefixArgs.builder()
  *             .name("my-prefix")
  *             .description("description")
  *             .dnsVerificationIp("127.127.0.0")
  *             .ipCidrRange("127.127.0.0/16")
  *             .build());
  * 
- *         var prefixes = new PublicDelegatedPrefix("prefixes", PublicDelegatedPrefixArgs.builder()        
+ *         var prefixes = new PublicDelegatedPrefix("prefixes", PublicDelegatedPrefixArgs.builder()
  *             .name("my-prefix")
  *             .region("us-central1")
  *             .description("my description")

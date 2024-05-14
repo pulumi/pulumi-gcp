@@ -68,12 +68,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can interact with")
  *             .build());
  * 
- *         var admin_account_iam = new IAMPolicy("admin-account-iam", IAMPolicyArgs.builder()        
+ *         var admin_account_iam = new IAMPolicy("admin-account-iam", IAMPolicyArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -111,12 +111,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can use")
  *             .build());
  * 
- *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()        
+ *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .members("user:jane{@literal @}example.com")
@@ -156,12 +156,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can use")
  *             .build());
  * 
- *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()        
+ *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .members("user:jane{@literal @}example.com")
@@ -209,19 +209,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that Jane can use")
  *             .build());
  * 
- *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()        
+ *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *         // Allow SA service account use the default GCE account
- *         var gce_default_account_iam = new IAMMember("gce-default-account-iam", IAMMemberArgs.builder()        
+ *         var gce_default_account_iam = new IAMMember("gce-default-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(default_.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .member(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
@@ -261,12 +261,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that Jane can use")
  *             .build());
  * 
- *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()        
+ *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .member("user:jane{@literal @}example.com")
@@ -321,12 +321,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can interact with")
  *             .build());
  * 
- *         var admin_account_iam = new IAMPolicy("admin-account-iam", IAMPolicyArgs.builder()        
+ *         var admin_account_iam = new IAMPolicy("admin-account-iam", IAMPolicyArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -364,12 +364,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can use")
  *             .build());
  * 
- *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()        
+ *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .members("user:jane{@literal @}example.com")
@@ -409,12 +409,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can use")
  *             .build());
  * 
- *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()        
+ *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .members("user:jane{@literal @}example.com")
@@ -462,19 +462,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that Jane can use")
  *             .build());
  * 
- *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()        
+ *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *         // Allow SA service account use the default GCE account
- *         var gce_default_account_iam = new IAMMember("gce-default-account-iam", IAMMemberArgs.builder()        
+ *         var gce_default_account_iam = new IAMMember("gce-default-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(default_.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .member(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
@@ -514,12 +514,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sa = new Account("sa", AccountArgs.builder()        
+ *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that Jane can use")
  *             .build());
  * 
- *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()        
+ *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
  *             .member("user:jane{@literal @}example.com")

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reservation = new Reservation("reservation", ReservationArgs.builder()        
+ *         var reservation = new Reservation("reservation", ReservationArgs.builder()
  *             .name("my-reservation")
  *             .location("us-west2")
  *             .slotCapacity(0)

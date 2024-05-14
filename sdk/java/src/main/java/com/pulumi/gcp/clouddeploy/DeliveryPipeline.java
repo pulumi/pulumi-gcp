@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()
  *             .location("us-west1")
  *             .name("pipeline")
  *             .description("basic description")
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()
  *             .location("us-west1")
  *             .name("pipeline")
  *             .description("basic description")
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()
  *             .location("us-west1")
  *             .name("pipeline")
  *             .description("basic description")
@@ -240,7 +240,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()
  *             .location("us-west1")
  *             .name("pipeline")
  *             .description("basic description")
@@ -303,7 +303,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()        
+ *         var primary = new DeliveryPipeline("primary", DeliveryPipelineArgs.builder()
  *             .location("us-west1")
  *             .name("pipeline")
  *             .description("basic description")

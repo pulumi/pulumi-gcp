@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()        
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("healthcheck")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var home = new BackendService("home", BackendServiceArgs.builder()        
+ *         var home = new BackendService("home", BackendServiceArgs.builder()
  *             .name("backend")
  *             .portName("grpc")
  *             .protocol("GRPC")
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .build());
  * 
- *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()        
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
  *             .name("urlmap")
  *             .description("a description")
  *             .defaultService(home.id())
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new TargetGrpcProxy("default", TargetGrpcProxyArgs.builder()        
+ *         var default_ = new TargetGrpcProxy("default", TargetGrpcProxyArgs.builder()
  *             .name("proxy")
  *             .urlMap(urlmap.id())
  *             .validateForProxyless(true)

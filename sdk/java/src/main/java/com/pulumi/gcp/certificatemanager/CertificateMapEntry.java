@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var certificateMap = new CertificateMap("certificateMap", CertificateMapArgs.builder()        
+ *         var certificateMap = new CertificateMap("certificateMap", CertificateMapArgs.builder()
  *             .name("cert-map-entry")
  *             .description("My acceptance test certificate map")
  *             .labels(Map.ofEntries(
@@ -63,19 +63,19 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()        
+ *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()
  *             .name("dns-auth")
  *             .description("The default dnss")
  *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()        
+ *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()
  *             .name("dns-auth2")
  *             .description("The default dnss")
  *             .domain("subdomain2.hashicorptest.com")
  *             .build());
  * 
- *         var certificate = new Certificate("certificate", CertificateArgs.builder()        
+ *         var certificate = new Certificate("certificate", CertificateArgs.builder()
  *             .name("cert-map-entry")
  *             .description("The default cert")
  *             .scope("DEFAULT")
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new CertificateMapEntry("default", CertificateMapEntryArgs.builder()        
+ *         var default_ = new CertificateMapEntry("default", CertificateMapEntryArgs.builder()
  *             .name("cert-map-entry")
  *             .description("My acceptance test certificate map entry")
  *             .map(certificateMap.name())

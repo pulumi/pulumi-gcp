@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var template = new NodeTemplate("template", NodeTemplateArgs.builder()        
+ *         var template = new NodeTemplate("template", NodeTemplateArgs.builder()
  *             .name("soletenant-tmpl")
  *             .region("us-central1")
  *             .nodeType("n1-node-96-624")
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .build());
  * 
- *         var template = new NodeTemplate("template", NodeTemplateArgs.builder()        
+ *         var template = new NodeTemplate("template", NodeTemplateArgs.builder()
  *             .name("soletenant-with-licenses")
  *             .region("us-central1")
  *             .nodeType("n1-node-96-624")

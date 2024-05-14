@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connector = new Connector("connector", ConnectorArgs.builder()        
+ *         var connector = new Connector("connector", ConnectorArgs.builder()
  *             .name("vpc-con")
  *             .ipCidrRange("10.8.0.0/28")
  *             .network("default")
@@ -94,19 +94,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customTestNetwork = new Network("customTestNetwork", NetworkArgs.builder()        
+ *         var customTestNetwork = new Network("customTestNetwork", NetworkArgs.builder()
  *             .name("vpc-con")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var customTest = new Subnetwork("customTest", SubnetworkArgs.builder()        
+ *         var customTest = new Subnetwork("customTest", SubnetworkArgs.builder()
  *             .name("vpc-con")
  *             .ipCidrRange("10.2.0.0/28")
  *             .region("us-central1")
  *             .network(customTestNetwork.id())
  *             .build());
  * 
- *         var connector = new Connector("connector", ConnectorArgs.builder()        
+ *         var connector = new Connector("connector", ConnectorArgs.builder()
  *             .name("vpc-con")
  *             .subnet(ConnectorSubnetArgs.builder()
  *                 .name(customTest.name())

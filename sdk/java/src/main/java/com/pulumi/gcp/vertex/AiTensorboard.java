@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tensorboard = new AiTensorboard("tensorboard", AiTensorboardArgs.builder()        
+ *         var tensorboard = new AiTensorboard("tensorboard", AiTensorboardArgs.builder()
  *             .displayName("terraform")
  *             .description("sample description")
  *             .labels(Map.ofEntries(
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tensorboard = new AiTensorboard("tensorboard", AiTensorboardArgs.builder()        
+ *         var tensorboard = new AiTensorboard("tensorboard", AiTensorboardArgs.builder()
  *             .displayName("terraform")
  *             .description("sample description")
  *             .labels(Map.ofEntries(
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-name")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))

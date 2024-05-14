@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new TrustConfig("default", TrustConfigArgs.builder()        
+ *         var default_ = new TrustConfig("default", TrustConfigArgs.builder()
  *             .name("trust-config")
  *             .description("sample description for the trust config")
  *             .location("us-central1")

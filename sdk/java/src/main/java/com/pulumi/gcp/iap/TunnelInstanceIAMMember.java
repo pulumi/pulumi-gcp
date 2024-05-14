@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelInstanceIAMPolicy("policy", TunnelInstanceIAMPolicyArgs.builder()        
+ *         var policy = new TunnelInstanceIAMPolicy("policy", TunnelInstanceIAMPolicyArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelInstanceIAMPolicy("policy", TunnelInstanceIAMPolicyArgs.builder()        
+ *         var policy = new TunnelInstanceIAMPolicy("policy", TunnelInstanceIAMPolicyArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelInstanceIAMBinding("binding", TunnelInstanceIAMBindingArgs.builder()        
+ *         var binding = new TunnelInstanceIAMBinding("binding", TunnelInstanceIAMBindingArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -195,7 +195,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelInstanceIAMBinding("binding", TunnelInstanceIAMBindingArgs.builder()        
+ *         var binding = new TunnelInstanceIAMBinding("binding", TunnelInstanceIAMBindingArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -238,7 +238,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelInstanceIAMMember("member", TunnelInstanceIAMMemberArgs.builder()        
+ *         var member = new TunnelInstanceIAMMember("member", TunnelInstanceIAMMemberArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -278,7 +278,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelInstanceIAMMember("member", TunnelInstanceIAMMemberArgs.builder()        
+ *         var member = new TunnelInstanceIAMMember("member", TunnelInstanceIAMMemberArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -331,7 +331,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelInstanceIAMPolicy("policy", TunnelInstanceIAMPolicyArgs.builder()        
+ *         var policy = new TunnelInstanceIAMPolicy("policy", TunnelInstanceIAMPolicyArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -383,7 +383,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TunnelInstanceIAMPolicy("policy", TunnelInstanceIAMPolicyArgs.builder()        
+ *         var policy = new TunnelInstanceIAMPolicy("policy", TunnelInstanceIAMPolicyArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -420,7 +420,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelInstanceIAMBinding("binding", TunnelInstanceIAMBindingArgs.builder()        
+ *         var binding = new TunnelInstanceIAMBinding("binding", TunnelInstanceIAMBindingArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -460,7 +460,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TunnelInstanceIAMBinding("binding", TunnelInstanceIAMBindingArgs.builder()        
+ *         var binding = new TunnelInstanceIAMBinding("binding", TunnelInstanceIAMBindingArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -503,7 +503,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelInstanceIAMMember("member", TunnelInstanceIAMMemberArgs.builder()        
+ *         var member = new TunnelInstanceIAMMember("member", TunnelInstanceIAMMemberArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
@@ -543,7 +543,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TunnelInstanceIAMMember("member", TunnelInstanceIAMMemberArgs.builder()        
+ *         var member = new TunnelInstanceIAMMember("member", TunnelInstanceIAMMemberArgs.builder()
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())

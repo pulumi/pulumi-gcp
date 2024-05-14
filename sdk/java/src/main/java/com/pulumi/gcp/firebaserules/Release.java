@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var firestore = new Ruleset("firestore", RulesetArgs.builder()        
+ *         var firestore = new Ruleset("firestore", RulesetArgs.builder()
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
  *                     .content("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }")
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *         var primary = new Release("primary", ReleaseArgs.builder()        
+ *         var primary = new Release("primary", ReleaseArgs.builder()
  *             .name("cloud.firestore/database")
  *             .rulesetName(firestore.name().applyValue(name -> String.format("projects/my-project-name/rulesets/%s", name)))
  *             .project("my-project-name")
@@ -101,14 +101,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Provision a non-default Cloud Storage bucket.
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .project("my-project-name")
  *             .name("bucket")
  *             .location("us-west1")
  *             .build());
  * 
  *         // Create a ruleset of Firebase Security Rules from a local file.
- *         var storage = new Ruleset("storage", RulesetArgs.builder()        
+ *         var storage = new Ruleset("storage", RulesetArgs.builder()
  *             .project("my-project-name")
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
@@ -118,14 +118,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var primary = new Release("primary", ReleaseArgs.builder()        
+ *         var primary = new Release("primary", ReleaseArgs.builder()
  *             .name(bucket.name().applyValue(name -> String.format("firebase.storage/%s", name)))
  *             .rulesetName(storage.name().applyValue(name -> String.format("projects/my-project-name/rulesets/%s", name)))
  *             .project("my-project-name")
  *             .build());
  * 
  *         // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
- *         var bucketStorageBucket = new StorageBucket("bucketStorageBucket", StorageBucketArgs.builder()        
+ *         var bucketStorageBucket = new StorageBucket("bucketStorageBucket", StorageBucketArgs.builder()
  *             .project("my-project-name")
  *             .bucketId(bucket.name())
  *             .build());

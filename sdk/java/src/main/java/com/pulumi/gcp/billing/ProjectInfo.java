@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("tf-test_15222")
  *             .name("tf-test_81126")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var default_ = new ProjectInfo("default", ProjectInfoArgs.builder()        
+ *         var default_ = new ProjectInfo("default", ProjectInfoArgs.builder()
  *             .project(project.projectId())
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());

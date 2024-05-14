@@ -56,14 +56,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external_address_nw = new Network("external-address-nw", NetworkArgs.builder()        
+ *         var external_address_nw = new Network("external-address-nw", NetworkArgs.builder()
  *             .name("pc-nw")
  *             .location("global")
  *             .type("STANDARD")
  *             .description("PC network description.")
  *             .build());
  * 
- *         var external_address_pc = new PrivateCloud("external-address-pc", PrivateCloudArgs.builder()        
+ *         var external_address_pc = new PrivateCloud("external-address-pc", PrivateCloudArgs.builder()
  *             .location("-a")
  *             .name("sample-pc")
  *             .description("Sample test PC.")
@@ -80,14 +80,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var external_address_np = new NetworkPolicy("external-address-np", NetworkPolicyArgs.builder()        
+ *         var external_address_np = new NetworkPolicy("external-address-np", NetworkPolicyArgs.builder()
  *             .location("")
  *             .name("sample-np")
  *             .edgeServicesCidr("192.168.30.0/26")
  *             .vmwareEngineNetwork(external_address_nw.id())
  *             .build());
  * 
- *         var vmw_engine_external_address = new ExternalAddress("vmw-engine-external-address", ExternalAddressArgs.builder()        
+ *         var vmw_engine_external_address = new ExternalAddress("vmw-engine-external-address", ExternalAddressArgs.builder()
  *             .name("sample-external-address")
  *             .parent(external_address_pc.id())
  *             .internalIp("192.168.0.66")

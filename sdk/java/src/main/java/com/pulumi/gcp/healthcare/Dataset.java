@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Dataset("default", DatasetArgs.builder()        
+ *         var default_ = new Dataset("default", DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .timeZone("UTC")

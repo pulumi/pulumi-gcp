@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testBackupPolicyFull = new BackupPolicy("testBackupPolicyFull", BackupPolicyArgs.builder()        
+ *         var testBackupPolicyFull = new BackupPolicy("testBackupPolicyFull", BackupPolicyArgs.builder()
  *             .name("test-backup-policy-full")
  *             .location("us-central1")
  *             .dailyBackupLimit(2)

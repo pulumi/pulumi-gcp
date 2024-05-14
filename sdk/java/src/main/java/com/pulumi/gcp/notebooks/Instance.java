@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("notebooks-instance")
  *             .location("us-west1-a")
  *             .machineType("e2-medium")
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("notebooks-instance")
  *             .location("us-west1-a")
  *             .machineType("e2-medium")
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("notebooks-instance")
  *             .location("us-west1-a")
  *             .machineType("e2-medium")
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("notebooks-instance")
  *             .location("us-west1-a")
  *             .machineType("n1-standard-1")
@@ -250,7 +250,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("notebooks-instance")
  *             .location("us-central1-a")
  *             .machineType("e2-medium")
