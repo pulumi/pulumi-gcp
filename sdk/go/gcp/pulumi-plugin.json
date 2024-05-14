@@ -1,4 +1,5 @@
 {
   "resource": true,
-  "name": "gcp"
+  "name": "gcp",
+  "version": "7.0.0-alpha.0+dev"
 }

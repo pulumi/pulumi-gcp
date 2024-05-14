@@ -3945,6 +3945,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			RespectSchemaVersion: true,
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: path.Join(
@@ -3954,9 +3955,11 @@ func Provider() tfbridge.ProviderInfo {
 				gcpPackage,
 			),
 			GenerateResourceContainerTypes: true,
+			RespectSchemaVersion:           true,
 		},
 		Python: (func() *tfbridge.PythonInfo {
 			i := &tfbridge.PythonInfo{
+				RespectSchemaVersion: true,
 				Requires: map[string]string{
 					"pulumi": ">=3.0.0,<4.0.0",
 				},
@@ -3966,6 +3969,7 @@ func Provider() tfbridge.ProviderInfo {
 		})(),
 
 		CSharp: &tfbridge.CSharpInfo{
+			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
