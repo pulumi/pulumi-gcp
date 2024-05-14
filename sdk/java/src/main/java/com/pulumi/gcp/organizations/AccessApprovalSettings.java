@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organizationAccessApproval = new AccessApprovalSettings("organizationAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *         var organizationAccessApproval = new AccessApprovalSettings("organizationAccessApproval", AccessApprovalSettingsArgs.builder()
  *             .organizationId("123456789")
  *             .notificationEmails(            
  *                 "testuser{@literal @}example.com",
@@ -111,19 +111,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()        
+ *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("My Project")
  *             .projectId("your-project-id")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("key-ring")
  *             .location("global")
  *             .project(myProject.projectId())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("crypto-key")
  *             .keyRing(keyRing.id())
  *             .purpose("ASYMMETRIC_SIGN")
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *             .organizationId("123456789")
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()        
+ *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.signerVerifier")
  *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  *             .cryptoKey(cryptoKey.id())
  *             .build());
  * 
- *         var organizationAccessApproval = new AccessApprovalSettings("organizationAccessApproval", AccessApprovalSettingsArgs.builder()        
+ *         var organizationAccessApproval = new AccessApprovalSettings("organizationAccessApproval", AccessApprovalSettingsArgs.builder()
  *             .organizationId("123456789")
  *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -> cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.name())))
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()

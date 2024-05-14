@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ScopeIamPolicy("policy", ScopeIamPolicyArgs.builder()        
+ *         var policy = new ScopeIamPolicy("policy", ScopeIamPolicyArgs.builder()
  *             .project(scope.project())
  *             .scopeId(scope.scopeId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ScopeIamBinding("binding", ScopeIamBindingArgs.builder()        
+ *         var binding = new ScopeIamBinding("binding", ScopeIamBindingArgs.builder()
  *             .project(scope.project())
  *             .scopeId(scope.scopeId())
  *             .role("roles/viewer")
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ScopeIamMember("member", ScopeIamMemberArgs.builder()        
+ *         var member = new ScopeIamMember("member", ScopeIamMemberArgs.builder()
  *             .project(scope.project())
  *             .scopeId(scope.scopeId())
  *             .role("roles/viewer")
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new ScopeIamPolicy("policy", ScopeIamPolicyArgs.builder()        
+ *         var policy = new ScopeIamPolicy("policy", ScopeIamPolicyArgs.builder()
  *             .project(scope.project())
  *             .scopeId(scope.scopeId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -223,7 +223,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ScopeIamBinding("binding", ScopeIamBindingArgs.builder()        
+ *         var binding = new ScopeIamBinding("binding", ScopeIamBindingArgs.builder()
  *             .project(scope.project())
  *             .scopeId(scope.scopeId())
  *             .role("roles/viewer")
@@ -261,7 +261,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ScopeIamMember("member", ScopeIamMemberArgs.builder()        
+ *         var member = new ScopeIamMember("member", ScopeIamMemberArgs.builder()
  *             .project(scope.project())
  *             .scopeId(scope.scopeId())
  *             .role("roles/viewer")

@@ -68,29 +68,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("project-id")
  *             .name("project-id")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build());
  * 
- *         var firestore = new Service("firestore", ServiceArgs.builder()        
+ *         var firestore = new Service("firestore", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("firestore.googleapis.com")
  *             .build());
  * 
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project(project.projectId())
  *             .name("(default)")
  *             .locationId("nam5")
  *             .type("FIRESTORE_NATIVE")
  *             .build());
  * 
- *         var mydoc = new Document("mydoc", DocumentArgs.builder()        
+ *         var mydoc = new Document("mydoc", DocumentArgs.builder()
  *             .project(project.projectId())
  *             .database(database.name())
  *             .collection("somenewcollection")
@@ -136,29 +136,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("project-id")
  *             .name("project-id")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()        
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build());
  * 
- *         var firestore = new Service("firestore", ServiceArgs.builder()        
+ *         var firestore = new Service("firestore", ServiceArgs.builder()
  *             .project(project.projectId())
  *             .service("firestore.googleapis.com")
  *             .build());
  * 
- *         var database = new Database("database", DatabaseArgs.builder()        
+ *         var database = new Database("database", DatabaseArgs.builder()
  *             .project(project.projectId())
  *             .name("(default)")
  *             .locationId("nam5")
  *             .type("FIRESTORE_NATIVE")
  *             .build());
  * 
- *         var mydoc = new Document("mydoc", DocumentArgs.builder()        
+ *         var mydoc = new Document("mydoc", DocumentArgs.builder()
  *             .project(project.projectId())
  *             .database(database.name())
  *             .collection("somenewcollection")
@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}")
  *             .build());
  * 
- *         var subDocument = new Document("subDocument", DocumentArgs.builder()        
+ *         var subDocument = new Document("subDocument", DocumentArgs.builder()
  *             .project(project.projectId())
  *             .database(database.name())
  *             .collection(mydoc.path().applyValue(path -> String.format("%s/subdocs", path)))
@@ -174,7 +174,7 @@ import javax.annotation.Nullable;
  *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}")
  *             .build());
  * 
- *         var subSubDocument = new Document("subSubDocument", DocumentArgs.builder()        
+ *         var subSubDocument = new Document("subSubDocument", DocumentArgs.builder()
  *             .project(project.projectId())
  *             .database(database.name())
  *             .collection(subDocument.path().applyValue(path -> String.format("%s/subsubdocs", path)))

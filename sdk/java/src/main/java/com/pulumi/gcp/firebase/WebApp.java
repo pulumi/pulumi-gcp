@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new ApiKey("web", ApiKeyArgs.builder()        
+ *         var web = new ApiKey("web", ApiKeyArgs.builder()
  *             .project("my-project-name")
  *             .name("api-key")
  *             .displayName("Display Name")
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new WebApp("default", WebAppArgs.builder()        
+ *         var default_ = new WebApp("default", WebAppArgs.builder()
  *             .project("my-project-name")
  *             .displayName("Display Name")
  *             .apiKeyId(web.uid())

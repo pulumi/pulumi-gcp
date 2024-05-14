@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicSecuritySettings = new CxSecuritySettings("basicSecuritySettings", CxSecuritySettingsArgs.builder()        
+ *         var basicSecuritySettings = new CxSecuritySettings("basicSecuritySettings", CxSecuritySettingsArgs.builder()
  *             .displayName("dialogflowcx-security-settings")
  *             .location("global")
  *             .purgeDataTypes()
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var inspect = new PreventionInspectTemplate("inspect", PreventionInspectTemplateArgs.builder()        
+ *         var inspect = new PreventionInspectTemplate("inspect", PreventionInspectTemplateArgs.builder()
  *             .parent("projects/my-project-name/locations/global")
  *             .displayName("dialogflowcx-inspect-template")
  *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var deidentify = new PreventionDeidentifyTemplate("deidentify", PreventionDeidentifyTemplateArgs.builder()        
+ *         var deidentify = new PreventionDeidentifyTemplate("deidentify", PreventionDeidentifyTemplateArgs.builder()
  *             .parent("projects/my-project-name/locations/global")
  *             .displayName("dialogflowcx-deidentify-template")
  *             .deidentifyConfig(PreventionDeidentifyTemplateDeidentifyConfigArgs.builder()
@@ -131,13 +131,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("dialogflowcx-bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var basicSecuritySettings = new CxSecuritySettings("basicSecuritySettings", CxSecuritySettingsArgs.builder()        
+ *         var basicSecuritySettings = new CxSecuritySettings("basicSecuritySettings", CxSecuritySettingsArgs.builder()
  *             .displayName("dialogflowcx-security-settings")
  *             .location("global")
  *             .redactionStrategy("REDACT_WITH_SERVICE")

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()        
+ *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()
  *             .name("policy")
  *             .parent("organizations/123456789")
  *             .description("Sample global networksecurity_address_group")
@@ -64,18 +64,18 @@ import javax.annotation.Nullable;
  *             .capacity(100)
  *             .build());
  * 
- *         var folder = new Folder("folder", FolderArgs.builder()        
+ *         var folder = new Folder("folder", FolderArgs.builder()
  *             .displayName("policy")
  *             .parent("organizations/123456789")
  *             .build());
  * 
- *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()        
+ *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()
  *             .parent(folder.id())
  *             .shortName("policy")
  *             .description("Resource created for Terraform acceptance testing")
  *             .build());
  * 
- *         var primary = new FirewallPolicyRule("primary", FirewallPolicyRuleArgs.builder()        
+ *         var primary = new FirewallPolicyRule("primary", FirewallPolicyRuleArgs.builder()
  *             .firewallPolicy(default_.name())
  *             .description("Resource created for Terraform acceptance testing")
  *             .priority(9000)

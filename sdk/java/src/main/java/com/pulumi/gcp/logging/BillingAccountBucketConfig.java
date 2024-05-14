@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .billingAccount("00AA00-000AAA-00AA0A")
  *             .build());
  * 
- *         var basic = new BillingAccountBucketConfig("basic", BillingAccountBucketConfigArgs.builder()        
+ *         var basic = new BillingAccountBucketConfig("basic", BillingAccountBucketConfigArgs.builder()
  *             .billingAccount(default_.billingAccount())
  *             .location("global")
  *             .retentionDays(30)
@@ -72,43 +72,6 @@ import javax.annotation.Nullable;
  * Create logging bucket with index configs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.logging.BillingAccountBucketConfig;
- * import com.pulumi.gcp.logging.BillingAccountBucketConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example_billing_account_bucket_index_configs = new BillingAccountBucketConfig("example-billing-account-bucket-index-configs", BillingAccountBucketConfigArgs.builder()        
- *             .folder(default_.billingAccount())
- *             .location("global")
- *             .retentionDays(30)
- *             .bucketId("_Default")
- *             .indexConfigs(BillingAccountBucketConfigIndexConfigArgs.builder()
- *                 .filePath("jsonPayload.request.status")
- *                 .type("INDEX_TYPE_STRING")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("test-instance-for-snapshot")
  *             .location("us-east1")
  *             .tier("ENTERPRISE")
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()        
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()
  *             .name("test-snapshot")
  *             .instance(instance.name())
  *             .location("us-east1")
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("test-instance-for-snapshot")
  *             .location("us-west1")
  *             .tier("ENTERPRISE")
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()        
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()
  *             .name("test-snapshot")
  *             .instance(instance.name())
  *             .location("us-west1")

@@ -83,18 +83,18 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("appengine-static-content")
      *             .location("US")
      *             .build());
      * 
-     *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+     *         var object = new BucketObject("object", BucketObjectArgs.builder()
      *             .name("hello-world.zip")
      *             .bucket(bucket.name())
      *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
      *             .build());
      * 
-     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()        
+     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()
      *             .versionId("v1")
      *             .service("myapp")
      *             .runtime("nodejs20")
@@ -181,18 +181,18 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("appengine-static-content")
      *             .location("US")
      *             .build());
      * 
-     *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+     *         var object = new BucketObject("object", BucketObjectArgs.builder()
      *             .name("hello-world.zip")
      *             .bucket(bucket.name())
      *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
      *             .build());
      * 
-     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()        
+     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()
      *             .versionId("v1")
      *             .service("myapp")
      *             .runtime("nodejs20")
@@ -279,18 +279,18 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("appengine-static-content")
      *             .location("US")
      *             .build());
      * 
-     *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+     *         var object = new BucketObject("object", BucketObjectArgs.builder()
      *             .name("hello-world.zip")
      *             .bucket(bucket.name())
      *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
      *             .build());
      * 
-     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()        
+     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()
      *             .versionId("v1")
      *             .service("myapp")
      *             .runtime("nodejs20")
@@ -377,18 +377,18 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
      *             .name("appengine-static-content")
      *             .location("US")
      *             .build());
      * 
-     *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+     *         var object = new BucketObject("object", BucketObjectArgs.builder()
      *             .name("hello-world.zip")
      *             .bucket(bucket.name())
      *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
      *             .build());
      * 
-     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()        
+     *         var myapp = new StandardAppVersion("myapp", StandardAppVersionArgs.builder()
      *             .versionId("v1")
      *             .service("myapp")
      *             .runtime("nodejs20")
@@ -1183,7 +1183,7 @@ public final class MonitoringFunctions {
      *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
      *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
      *             .combiner("OR")
@@ -1259,7 +1259,7 @@ public final class MonitoringFunctions {
      *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
      *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
      *             .combiner("OR")
@@ -1335,7 +1335,7 @@ public final class MonitoringFunctions {
      *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
      *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
      *             .combiner("OR")
@@ -1411,7 +1411,7 @@ public final class MonitoringFunctions {
      *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
      *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
      *             .combiner("OR")
@@ -1487,7 +1487,7 @@ public final class MonitoringFunctions {
      *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
      *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
      *             .combiner("OR")
@@ -1563,7 +1563,7 @@ public final class MonitoringFunctions {
      *             .displayName("Test Notification Channel")
      *             .build());
      * 
-     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()        
+     *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
      *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
      *             .combiner("OR")

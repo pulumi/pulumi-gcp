@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var deployment = new Deployment("deployment", DeploymentArgs.builder()        
+ *         var deployment = new Deployment("deployment", DeploymentArgs.builder()
  *             .name("my-deployment")
  *             .target(DeploymentTargetArgs.builder()
  *                 .config(DeploymentTargetConfigArgs.builder()

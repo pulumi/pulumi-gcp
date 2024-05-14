@@ -65,20 +65,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var permissions = new IAMMember("permissions", IAMMemberArgs.builder()        
+ *         var permissions = new IAMMember("permissions", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/iam.serviceAccountTokenCreator")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()        
+ *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
  *             .datasetId("my_dataset")
  *             .friendlyName("foo")
  *             .description("bar")
  *             .location("asia-northeast1")
  *             .build());
  * 
- *         var queryConfig = new DataTransferConfig("queryConfig", DataTransferConfigArgs.builder()        
+ *         var queryConfig = new DataTransferConfig("queryConfig", DataTransferConfigArgs.builder()
  *             .displayName("my-query")
  *             .location("asia-northeast1")
  *             .dataSourceId("scheduled_query")

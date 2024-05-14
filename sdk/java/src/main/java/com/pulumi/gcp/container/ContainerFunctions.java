@@ -1000,7 +1000,7 @@ public final class ContainerFunctions {
      *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
@@ -1060,7 +1060,7 @@ public final class ContainerFunctions {
      *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
@@ -1120,7 +1120,7 @@ public final class ContainerFunctions {
      *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
@@ -1180,7 +1180,7 @@ public final class ContainerFunctions {
      *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
@@ -1240,7 +1240,7 @@ public final class ContainerFunctions {
      *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
@@ -1300,7 +1300,7 @@ public final class ContainerFunctions {
      *             .versionPrefix("1.12.")
      *             .build());
      * 
-     *         var foo = new Cluster("foo", ClusterArgs.builder()        
+     *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))

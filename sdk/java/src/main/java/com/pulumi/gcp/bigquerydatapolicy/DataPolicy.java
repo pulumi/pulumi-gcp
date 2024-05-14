@@ -55,20 +55,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var taxonomy = new Taxonomy("taxonomy", TaxonomyArgs.builder()        
+ *         var taxonomy = new Taxonomy("taxonomy", TaxonomyArgs.builder()
  *             .region("us-central1")
  *             .displayName("taxonomy")
  *             .description("A collection of policy tags")
  *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")
  *             .build());
  * 
- *         var policyTag = new PolicyTag("policyTag", PolicyTagArgs.builder()        
+ *         var policyTag = new PolicyTag("policyTag", PolicyTagArgs.builder()
  *             .taxonomy(taxonomy.id())
  *             .displayName("Low security")
  *             .description("A policy tag normally associated with low security items")
  *             .build());
  * 
- *         var dataPolicy = new DataPolicy("dataPolicy", DataPolicyArgs.builder()        
+ *         var dataPolicy = new DataPolicy("dataPolicy", DataPolicyArgs.builder()
  *             .location("us-central1")
  *             .dataPolicyId("data_policy")
  *             .policyTag(policyTag.name())
@@ -115,25 +115,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var taxonomy = new Taxonomy("taxonomy", TaxonomyArgs.builder()        
+ *         var taxonomy = new Taxonomy("taxonomy", TaxonomyArgs.builder()
  *             .region("us-central1")
  *             .displayName("taxonomy")
  *             .description("A collection of policy tags")
  *             .activatedPolicyTypes("FINE_GRAINED_ACCESS_CONTROL")
  *             .build());
  * 
- *         var policyTag = new PolicyTag("policyTag", PolicyTagArgs.builder()        
+ *         var policyTag = new PolicyTag("policyTag", PolicyTagArgs.builder()
  *             .taxonomy(taxonomy.id())
  *             .displayName("Low security")
  *             .description("A policy tag normally associated with low security items")
  *             .build());
  * 
- *         var test = new Dataset("test", DatasetArgs.builder()        
+ *         var test = new Dataset("test", DatasetArgs.builder()
  *             .datasetId("dataset_id")
  *             .location("us-central1")
  *             .build());
  * 
- *         var customMaskingRoutine = new Routine("customMaskingRoutine", RoutineArgs.builder()        
+ *         var customMaskingRoutine = new Routine("customMaskingRoutine", RoutineArgs.builder()
  *             .datasetId(test.datasetId())
  *             .routineId("custom_masking_routine")
  *             .routineType("SCALAR_FUNCTION")
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var dataPolicy = new DataPolicy("dataPolicy", DataPolicyArgs.builder()        
+ *         var dataPolicy = new DataPolicy("dataPolicy", DataPolicyArgs.builder()
  *             .location("us-central1")
  *             .dataPolicyId("data_policy")
  *             .policyTag(policyTag.name())

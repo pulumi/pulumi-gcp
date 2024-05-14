@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agent = new CxAgent("agent", CxAgentArgs.builder()        
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
  *             .location("global")
  *             .defaultLanguageCode("en")
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var version1 = new CxVersion("version1", CxVersionArgs.builder()        
+ *         var version1 = new CxVersion("version1", CxVersionArgs.builder()
  *             .parent(agent.startFlow())
  *             .displayName("1.0.0")
  *             .description("version 1.0.0")

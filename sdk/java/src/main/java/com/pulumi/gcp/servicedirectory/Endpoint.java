@@ -56,17 +56,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Namespace("example", NamespaceArgs.builder()        
+ *         var example = new Namespace("example", NamespaceArgs.builder()
  *             .namespaceId("example-namespace")
  *             .location("us-central1")
  *             .build());
  * 
- *         var exampleService = new Service("exampleService", ServiceArgs.builder()        
+ *         var exampleService = new Service("exampleService", ServiceArgs.builder()
  *             .serviceId("example-service")
  *             .namespace(example.id())
  *             .build());
  * 
- *         var exampleEndpoint = new Endpoint("exampleEndpoint", EndpointArgs.builder()        
+ *         var exampleEndpoint = new Endpoint("exampleEndpoint", EndpointArgs.builder()
  *             .endpointId("example-endpoint")
  *             .service(exampleService.id())
  *             .metadata(Map.ofEntries(
@@ -117,21 +117,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .name("example-network")
  *             .build());
  * 
- *         var exampleNamespace = new Namespace("exampleNamespace", NamespaceArgs.builder()        
+ *         var exampleNamespace = new Namespace("exampleNamespace", NamespaceArgs.builder()
  *             .namespaceId("example-namespace")
  *             .location("us-central1")
  *             .build());
  * 
- *         var exampleService = new Service("exampleService", ServiceArgs.builder()        
+ *         var exampleService = new Service("exampleService", ServiceArgs.builder()
  *             .serviceId("example-service")
  *             .namespace(exampleNamespace.id())
  *             .build());
  * 
- *         var exampleEndpoint = new Endpoint("exampleEndpoint", EndpointArgs.builder()        
+ *         var exampleEndpoint = new Endpoint("exampleEndpoint", EndpointArgs.builder()
  *             .endpointId("example-endpoint")
  *             .service(exampleService.id())
  *             .metadata(Map.ofEntries(

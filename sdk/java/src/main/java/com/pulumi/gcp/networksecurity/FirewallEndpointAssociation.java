@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new FirewallEndpoint("default", FirewallEndpointArgs.builder()        
+ *         var default_ = new FirewallEndpoint("default", FirewallEndpointArgs.builder()
  *             .name("my-firewall-endpoint")
  *             .parent("organizations/123456789")
  *             .location("us-central1-a")
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
- *         var defaultAssociation = new FirewallEndpointAssociation("defaultAssociation", FirewallEndpointAssociationArgs.builder()        
+ *         var defaultAssociation = new FirewallEndpointAssociation("defaultAssociation", FirewallEndpointAssociationArgs.builder()
  *             .name("my-firewall-endpoint-association")
  *             .parent("projects/my-project-name")
  *             .location("us-central1-a")

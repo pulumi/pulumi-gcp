@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
  *             .location("us-west1-a")
  *             .build());
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
  *             .location("us-west1-a")
  *             .gceSetup(InstanceGceSetupArgs.builder()
@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
  *             .location("us-central1-a")
  *             .gceSetup(InstanceGceSetupArgs.builder()
@@ -178,7 +178,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
  *             .location("us-central1-a")
  *             .gceSetup(InstanceGceSetupArgs.builder()
@@ -236,19 +236,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()        
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()
  *             .name("wbi-test-default")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()        
+ *         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()
  *             .name("wbi-test-default")
  *             .network(myNetwork.id())
  *             .region("us-central1")
  *             .ipCidrRange("10.0.1.0/24")
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
  *             .location("us-central1-a")
  *             .gceSetup(InstanceGceSetupArgs.builder()

@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new InstanceIamPolicy("editor", InstanceIamPolicyArgs.builder()        
+ *         var editor = new InstanceIamPolicy("editor", InstanceIamPolicyArgs.builder()
  *             .project("your-project")
  *             .instance("your-bigtable-instance")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new InstanceIamBinding("editor", InstanceIamBindingArgs.builder()        
+ *         var editor = new InstanceIamBinding("editor", InstanceIamBindingArgs.builder()
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
  *             .members("user:jane{@literal @}example.com")
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new InstanceIamMember("editor", InstanceIamMemberArgs.builder()        
+ *         var editor = new InstanceIamMember("editor", InstanceIamMemberArgs.builder()
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
  *             .member("user:jane{@literal @}example.com")
@@ -180,7 +180,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var editor = new InstanceIamPolicy("editor", InstanceIamPolicyArgs.builder()        
+ *         var editor = new InstanceIamPolicy("editor", InstanceIamPolicyArgs.builder()
  *             .project("your-project")
  *             .instance("your-bigtable-instance")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new InstanceIamBinding("editor", InstanceIamBindingArgs.builder()        
+ *         var editor = new InstanceIamBinding("editor", InstanceIamBindingArgs.builder()
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
  *             .members("user:jane{@literal @}example.com")
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new InstanceIamMember("editor", InstanceIamMemberArgs.builder()        
+ *         var editor = new InstanceIamMember("editor", InstanceIamMemberArgs.builder()
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
  *             .member("user:jane{@literal @}example.com")

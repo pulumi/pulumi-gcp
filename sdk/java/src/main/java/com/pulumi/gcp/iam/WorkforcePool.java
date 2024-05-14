@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkforcePool("example", WorkforcePoolArgs.builder()        
+ *         var example = new WorkforcePool("example", WorkforcePoolArgs.builder()
  *             .workforcePoolId("example-pool")
  *             .parent("organizations/123456789")
  *             .location("global")
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkforcePool("example", WorkforcePoolArgs.builder()        
+ *         var example = new WorkforcePool("example", WorkforcePoolArgs.builder()
  *             .workforcePoolId("example-pool")
  *             .parent("organizations/123456789")
  *             .location("global")

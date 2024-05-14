@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()        
+ *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()
  *             .name("my-app-connector")
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var appConnection = new AppConnection("appConnection", AppConnectionArgs.builder()        
+ *         var appConnection = new AppConnection("appConnection", AppConnectionArgs.builder()
  *             .name("my-app-connection")
  *             .type("TCP_PROXY")
  *             .applicationEndpoint(AppConnectionApplicationEndpointArgs.builder()
@@ -127,18 +127,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()        
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
  *             .accountId("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 
- *         var appGateway = new AppGateway("appGateway", AppGatewayArgs.builder()        
+ *         var appGateway = new AppGateway("appGateway", AppGatewayArgs.builder()
  *             .name("my-app-gateway")
  *             .type("TCP_PROXY")
  *             .hostType("GCP_REGIONAL_MIG")
  *             .build());
  * 
- *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()        
+ *         var appConnector = new AppConnector("appConnector", AppConnectorArgs.builder()
  *             .name("my-app-connector")
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var appConnection = new AppConnection("appConnection", AppConnectionArgs.builder()        
+ *         var appConnection = new AppConnection("appConnection", AppConnectionArgs.builder()
  *             .name("my-app-connection")
  *             .type("TCP_PROXY")
  *             .displayName("some display name")

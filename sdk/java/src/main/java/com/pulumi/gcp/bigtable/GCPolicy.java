@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("tf-instance")
  *             .clusters(InstanceClusterArgs.builder()
  *                 .clusterId("tf-instance-cluster")
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var table = new Table("table", TableArgs.builder()        
+ *         var table = new Table("table", TableArgs.builder()
  *             .name("tf-table")
  *             .instanceName(instance.name())
  *             .columnFamilies(TableColumnFamilyArgs.builder()
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()        
+ *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()
  *             .instanceName(instance.name())
  *             .table(table.name())
  *             .columnFamily("name")
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()        
+ *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()
  *             .instanceName(instance.name())
  *             .table(table.name())
  *             .columnFamily("name")
@@ -182,7 +182,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("instance_name")
  *             .clusters(InstanceClusterArgs.builder()
  *                 .clusterId("cid")
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var table = new Table("table", TableArgs.builder()        
+ *         var table = new Table("table", TableArgs.builder()
  *             .name("your-table")
  *             .instanceName(instance.id())
  *             .columnFamilies(TableColumnFamilyArgs.builder()
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()        
+ *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()
  *             .instanceName(instance.id())
  *             .table(table.name())
  *             .columnFamily("cf1")

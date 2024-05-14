@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vm = new Instance("vm", InstanceArgs.builder()        
+ *         var vm = new Instance("vm", InstanceArgs.builder()
  *             .name("my-vm")
  *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var image = new MachineImage("image", MachineImageArgs.builder()        
+ *         var image = new MachineImage("image", MachineImageArgs.builder()
  *             .name("my-image")
  *             .sourceInstance(vm.selfLink())
  *             .build());
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vm = new Instance("vm", InstanceArgs.builder()        
+ *         var vm = new Instance("vm", InstanceArgs.builder()
  *             .name("my-vm")
  *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -131,17 +131,17 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("keyring")
  *             .location("us")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var image = new MachineImage("image", MachineImageArgs.builder()        
+ *         var image = new MachineImage("image", MachineImageArgs.builder()
  *             .name("my-image")
  *             .sourceInstance(vm.selfLink())
  *             .machineImageEncryptionKey(MachineImageMachineImageEncryptionKeyArgs.builder()

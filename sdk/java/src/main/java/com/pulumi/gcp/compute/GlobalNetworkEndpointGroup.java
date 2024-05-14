@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var neg = new GlobalNetworkEndpointGroup("neg", GlobalNetworkEndpointGroupArgs.builder()        
+ *         var neg = new GlobalNetworkEndpointGroup("neg", GlobalNetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .defaultPort("90")
  *             .networkEndpointType("INTERNET_FQDN_PORT")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var neg = new GlobalNetworkEndpointGroup("neg", GlobalNetworkEndpointGroupArgs.builder()        
+ *         var neg = new GlobalNetworkEndpointGroup("neg", GlobalNetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .networkEndpointType("INTERNET_IP_PORT")
  *             .defaultPort(90)

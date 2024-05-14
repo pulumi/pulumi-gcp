@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("my-policy")
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()        
+ *         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
  *             .displayName("display-name")
  *             .labels(Map.of("label-one", "value-one"))
  *             .project("my-project-name")
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("my-policy")
  *             .description("basic security policy")
  *             .type("CLOUD_ARMOR")
@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("my-policy")
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
@@ -246,7 +246,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()        
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
  *             .name("%s")
  *             .description("throttle rule with enforce_on_key_configs")
  *             .rules(SecurityPolicyRuleArgs.builder()

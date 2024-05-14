@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var filename_trigger = new Trigger("filename-trigger", TriggerArgs.builder()        
+ *         var filename_trigger = new Trigger("filename-trigger", TriggerArgs.builder()
  *             .location("us-central1")
  *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
  *                 .branchName("main")
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var build_trigger = new Trigger("build-trigger", TriggerArgs.builder()        
+ *         var build_trigger = new Trigger("build-trigger", TriggerArgs.builder()
  *             .name("my-trigger")
  *             .location("global")
  *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
@@ -245,11 +245,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cloudbuildServiceAccount = new Account("cloudbuildServiceAccount", AccountArgs.builder()        
+ *         var cloudbuildServiceAccount = new Account("cloudbuildServiceAccount", AccountArgs.builder()
  *             .accountId("cloud-sa")
  *             .build());
  * 
- *         var service_account_trigger = new Trigger("service-account-trigger", TriggerArgs.builder()        
+ *         var service_account_trigger = new Trigger("service-account-trigger", TriggerArgs.builder()
  *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
  *                 .branchName("main")
  *                 .repoName("my-repo")
@@ -258,13 +258,13 @@ import javax.annotation.Nullable;
  *             .filename("cloudbuild.yaml")
  *             .build());
  * 
- *         var actAs = new IAMMember("actAs", IAMMemberArgs.builder()        
+ *         var actAs = new IAMMember("actAs", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/iam.serviceAccountUser")
  *             .member(cloudbuildServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var logsWriter = new IAMMember("logsWriter", IAMMemberArgs.builder()        
+ *         var logsWriter = new IAMMember("logsWriter", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/logging.logWriter")
  *             .member(cloudbuildServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
@@ -302,7 +302,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var include_build_logs_trigger = new Trigger("include-build-logs-trigger", TriggerArgs.builder()        
+ *         var include_build_logs_trigger = new Trigger("include-build-logs-trigger", TriggerArgs.builder()
  *             .location("us-central1")
  *             .name("include-build-logs-trigger")
  *             .filename("cloudbuild.yaml")
@@ -351,11 +351,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytopic = new Topic("mytopic", TopicArgs.builder()        
+ *         var mytopic = new Topic("mytopic", TopicArgs.builder()
  *             .name("my-topic")
  *             .build());
  * 
- *         var pubsub_config_trigger = new Trigger("pubsub-config-trigger", TriggerArgs.builder()        
+ *         var pubsub_config_trigger = new Trigger("pubsub-config-trigger", TriggerArgs.builder()
  *             .location("us-central1")
  *             .name("pubsub-trigger")
  *             .description("acceptance test example pubsub build trigger")
@@ -421,7 +421,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var webhookTriggerSecretKey = new Secret("webhookTriggerSecretKey", SecretArgs.builder()        
+ *         var webhookTriggerSecretKey = new Secret("webhookTriggerSecretKey", SecretArgs.builder()
  *             .secretId("webhook-trigger-secret-key")
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
@@ -432,7 +432,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var webhookTriggerSecretKeyData = new SecretVersion("webhookTriggerSecretKeyData", SecretVersionArgs.builder()        
+ *         var webhookTriggerSecretKeyData = new SecretVersion("webhookTriggerSecretKeyData", SecretVersionArgs.builder()
  *             .secret(webhookTriggerSecretKey.id())
  *             .secretData("secretkeygoeshere")
  *             .build());
@@ -446,13 +446,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()        
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .project(webhookTriggerSecretKey.project())
  *             .secretId(webhookTriggerSecretKey.secretId())
  *             .policyData(secretAccessor.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *         var webhook_config_trigger = new Trigger("webhook-config-trigger", TriggerArgs.builder()        
+ *         var webhook_config_trigger = new Trigger("webhook-config-trigger", TriggerArgs.builder()
  *             .name("webhook-trigger")
  *             .description("acceptance test example webhook build trigger")
  *             .webhookConfig(TriggerWebhookConfigArgs.builder()
@@ -504,7 +504,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var manual_trigger = new Trigger("manual-trigger", TriggerArgs.builder()        
+ *         var manual_trigger = new Trigger("manual-trigger", TriggerArgs.builder()
  *             .name("manual-trigger")
  *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
  *                 .uri("https://hashicorp/terraform-provider-google-beta")
@@ -554,7 +554,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var manual_ghe_trigger = new Trigger("manual-ghe-trigger", TriggerArgs.builder()        
+ *         var manual_ghe_trigger = new Trigger("manual-ghe-trigger", TriggerArgs.builder()
  *             .name("")
  *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
  *                 .uri("https://hashicorp/terraform-provider-google-beta")
@@ -603,7 +603,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var manual_bitbucket_trigger = new Trigger("manual-bitbucket-trigger", TriggerArgs.builder()        
+ *         var manual_bitbucket_trigger = new Trigger("manual-bitbucket-trigger", TriggerArgs.builder()
  *             .name("terraform-manual-bbs-trigger")
  *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
  *                 .uri("https://bbs.com/scm/stag/test-repo.git")
@@ -658,7 +658,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()        
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
  *             .location("us-central1")
  *             .name("my-connection")
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
@@ -669,13 +669,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var my_repository = new Repository("my-repository", RepositoryArgs.builder()        
+ *         var my_repository = new Repository("my-repository", RepositoryArgs.builder()
  *             .name("my-repo")
  *             .parentConnection(my_connection.id())
  *             .remoteUri("https://github.com/myuser/my-repo.git")
  *             .build());
  * 
- *         var repo_trigger = new Trigger("repo-trigger", TriggerArgs.builder()        
+ *         var repo_trigger = new Trigger("repo-trigger", TriggerArgs.builder()
  *             .location("us-central1")
  *             .repositoryEventConfig(TriggerRepositoryEventConfigArgs.builder()
  *                 .repository(my_repository.id())
@@ -718,7 +718,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bbs_push_trigger = new Trigger("bbs-push-trigger", TriggerArgs.builder()        
+ *         var bbs_push_trigger = new Trigger("bbs-push-trigger", TriggerArgs.builder()
  *             .name("bbs-push-trigger")
  *             .location("us-central1")
  *             .bitbucketServerTriggerConfig(TriggerBitbucketServerTriggerConfigArgs.builder()
@@ -765,7 +765,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bbs_pull_request_trigger = new Trigger("bbs-pull-request-trigger", TriggerArgs.builder()        
+ *         var bbs_pull_request_trigger = new Trigger("bbs-pull-request-trigger", TriggerArgs.builder()
  *             .name("ghe-trigger")
  *             .location("us-central1")
  *             .bitbucketServerTriggerConfig(TriggerBitbucketServerTriggerConfigArgs.builder()
@@ -813,7 +813,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ghe_trigger = new Trigger("ghe-trigger", TriggerArgs.builder()        
+ *         var ghe_trigger = new Trigger("ghe-trigger", TriggerArgs.builder()
  *             .name("ghe-trigger")
  *             .location("us-central1")
  *             .github(TriggerGithubArgs.builder()
@@ -865,7 +865,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var allow_failure_trigger = new Trigger("allow-failure-trigger", TriggerArgs.builder()        
+ *         var allow_failure_trigger = new Trigger("allow-failure-trigger", TriggerArgs.builder()
  *             .name("my-trigger")
  *             .location("global")
  *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
@@ -970,7 +970,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var allow_exit_codes_trigger = new Trigger("allow-exit-codes-trigger", TriggerArgs.builder()        
+ *         var allow_exit_codes_trigger = new Trigger("allow-exit-codes-trigger", TriggerArgs.builder()
  *             .name("my-trigger")
  *             .location("global")
  *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
@@ -1080,7 +1080,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()        
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
  *             .location("us-central1")
  *             .name("my-connection")
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
@@ -1091,17 +1091,17 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var my_repository = new Repository("my-repository", RepositoryArgs.builder()        
+ *         var my_repository = new Repository("my-repository", RepositoryArgs.builder()
  *             .name("my-repo")
  *             .parentConnection(my_connection.id())
  *             .remoteUri("https://github.com/myuser/my-repo.git")
  *             .build());
  * 
- *         var mytopic = new Topic("mytopic", TopicArgs.builder()        
+ *         var mytopic = new Topic("mytopic", TopicArgs.builder()
  *             .name("my-topic")
  *             .build());
  * 
- *         var pubsub_with_repo_trigger = new Trigger("pubsub-with-repo-trigger", TriggerArgs.builder()        
+ *         var pubsub_with_repo_trigger = new Trigger("pubsub-with-repo-trigger", TriggerArgs.builder()
  *             .name("pubsub-with-repo-trigger")
  *             .location("us-central1")
  *             .pubsubConfig(TriggerPubsubConfigArgs.builder()

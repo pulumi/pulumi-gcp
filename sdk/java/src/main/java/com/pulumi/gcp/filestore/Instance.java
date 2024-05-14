@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("test-instance")
  *             .location("us-central1-b")
  *             .tier("BASIC_HDD")
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("test-instance")
  *             .location("us-central1-b")
  *             .tier("BASIC_SSD")
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("test-instance")
  *             .location("us-central1")
  *             .tier("ENTERPRISE")
@@ -215,17 +215,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var filestoreKeyring = new KeyRing("filestoreKeyring", KeyRingArgs.builder()        
+ *         var filestoreKeyring = new KeyRing("filestoreKeyring", KeyRingArgs.builder()
  *             .name("filestore-keyring")
  *             .location("us-central1")
  *             .build());
  * 
- *         var filestoreKey = new CryptoKey("filestoreKey", CryptoKeyArgs.builder()        
+ *         var filestoreKey = new CryptoKey("filestoreKey", CryptoKeyArgs.builder()
  *             .name("filestore-key")
  *             .keyRing(filestoreKeyring.id())
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("test-instance")
  *             .location("us-central1")
  *             .tier("ENTERPRISE")

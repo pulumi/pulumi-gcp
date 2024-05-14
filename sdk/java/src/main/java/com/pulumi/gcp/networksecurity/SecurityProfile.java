@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityProfile("default", SecurityProfileArgs.builder()        
+ *         var default_ = new SecurityProfile("default", SecurityProfileArgs.builder()
  *             .name("my-security-profile")
  *             .parent("organizations/123456789")
  *             .description("my description")
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityProfile("default", SecurityProfileArgs.builder()        
+ *         var default_ = new SecurityProfile("default", SecurityProfileArgs.builder()
  *             .name("my-security-profile")
  *             .parent("organizations/123456789")
  *             .description("my description")

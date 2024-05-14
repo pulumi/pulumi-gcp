@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()        
+ *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()
  *             .name("policy")
  *             .parent("projects/my-project-name")
  *             .description("Sample global networksecurity_address_group")
@@ -69,17 +69,17 @@ import javax.annotation.Nullable;
  *             .capacity(100)
  *             .build());
  * 
- *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy("basicNetworkFirewallPolicy", NetworkFirewallPolicyArgs.builder()        
+ *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy("basicNetworkFirewallPolicy", NetworkFirewallPolicyArgs.builder()
  *             .name("policy")
  *             .description("Sample global network firewall policy")
  *             .project("my-project-name")
  *             .build());
  * 
- *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()        
+ *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()
  *             .name("network")
  *             .build());
  * 
- *         var basicKey = new TagKey("basicKey", TagKeyArgs.builder()        
+ *         var basicKey = new TagKey("basicKey", TagKeyArgs.builder()
  *             .description("For keyname resources.")
  *             .parent("organizations/123456789")
  *             .purpose("GCE_FIREWALL")
@@ -87,13 +87,13 @@ import javax.annotation.Nullable;
  *             .purposeData(Map.of("network", basicNetwork.name().applyValue(name -> String.format("my-project-name/%s", name))))
  *             .build());
  * 
- *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()        
+ *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()
  *             .description("For valuename resources.")
  *             .parent(basicKey.name().applyValue(name -> String.format("tagKeys/%s", name)))
  *             .shortName("tagvalue")
  *             .build());
  * 
- *         var primary = new NetworkFirewallPolicyRule("primary", NetworkFirewallPolicyRuleArgs.builder()        
+ *         var primary = new NetworkFirewallPolicyRule("primary", NetworkFirewallPolicyRuleArgs.builder()
  *             .action("allow")
  *             .description("This is a simple rule description")
  *             .direction("INGRESS")

@@ -57,19 +57,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var log_bucket = new Bucket("log-bucket", BucketArgs.builder()        
+ *         var log_bucket = new Bucket("log-bucket", BucketArgs.builder()
  *             .name("billing-logging-bucket")
  *             .location("US")
  *             .build());
  * 
- *         var my_sink = new BillingAccountSink("my-sink", BillingAccountSinkArgs.builder()        
+ *         var my_sink = new BillingAccountSink("my-sink", BillingAccountSinkArgs.builder()
  *             .name("my-sink")
  *             .description("some explanation on what this is")
  *             .billingAccount("ABCDEF-012345-GHIJKL")
  *             .destination(log_bucket.name().applyValue(name -> String.format("storage.googleapis.com/%s", name)))
  *             .build());
  * 
- *         var log_writer = new IAMBinding("log-writer", IAMBindingArgs.builder()        
+ *         var log_writer = new IAMBinding("log-writer", IAMBindingArgs.builder()
  *             .project("your-project-id")
  *             .role("roles/storage.objectCreator")
  *             .members(my_sink.writerIdentity())
