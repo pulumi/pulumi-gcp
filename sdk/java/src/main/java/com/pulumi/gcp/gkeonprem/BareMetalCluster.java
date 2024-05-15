@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster_basic = new BareMetalCluster("cluster-basic", BareMetalClusterArgs.builder()        
+ *         var cluster_basic = new BareMetalCluster("cluster-basic", BareMetalClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster_manuallb = new BareMetalCluster("cluster-manuallb", BareMetalClusterArgs.builder()        
+ *         var cluster_manuallb = new BareMetalCluster("cluster-manuallb", BareMetalClusterArgs.builder()
  *             .name("cluster-manuallb")
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
@@ -315,7 +315,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster_bgplb = new BareMetalCluster("cluster-bgplb", BareMetalClusterArgs.builder()        
+ *         var cluster_bgplb = new BareMetalCluster("cluster-bgplb", BareMetalClusterArgs.builder()
  *             .name("cluster-bgplb")
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")

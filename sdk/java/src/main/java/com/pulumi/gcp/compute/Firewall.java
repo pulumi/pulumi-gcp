@@ -70,11 +70,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("test-network")
  *             .build());
  * 
- *         var default_ = new Firewall("default", FirewallArgs.builder()        
+ *         var default_ = new Firewall("default", FirewallArgs.builder()
  *             .name("test-firewall")
  *             .network(defaultNetwork.name())
  *             .allows(            
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rules = new Firewall("rules", FirewallArgs.builder()        
+ *         var rules = new Firewall("rules", FirewallArgs.builder()
  *             .project("my-project-name")
  *             .name("my-firewall-rule")
  *             .network("default")

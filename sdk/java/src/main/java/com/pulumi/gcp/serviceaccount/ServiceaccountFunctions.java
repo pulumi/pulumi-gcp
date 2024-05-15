@@ -101,11 +101,11 @@ public final class ServiceaccountFunctions {
      *             .accountId("myaccount-id")
      *             .build());
      * 
-     *         var mykey = new Key("mykey", KeyArgs.builder()        
+     *         var mykey = new Key("mykey", KeyArgs.builder()
      *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
      *             .build());
      * 
-     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
+     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
      *             .metadata(ObjectMetaArgs.builder()
      *                 .name("google-application-credentials")
      *                 .build())
@@ -194,11 +194,11 @@ public final class ServiceaccountFunctions {
      *             .accountId("myaccount-id")
      *             .build());
      * 
-     *         var mykey = new Key("mykey", KeyArgs.builder()        
+     *         var mykey = new Key("mykey", KeyArgs.builder()
      *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
      *             .build());
      * 
-     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
+     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
      *             .metadata(ObjectMetaArgs.builder()
      *                 .name("google-application-credentials")
      *                 .build())
@@ -287,11 +287,11 @@ public final class ServiceaccountFunctions {
      *             .accountId("myaccount-id")
      *             .build());
      * 
-     *         var mykey = new Key("mykey", KeyArgs.builder()        
+     *         var mykey = new Key("mykey", KeyArgs.builder()
      *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
      *             .build());
      * 
-     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
+     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
      *             .metadata(ObjectMetaArgs.builder()
      *                 .name("google-application-credentials")
      *                 .build())
@@ -380,11 +380,11 @@ public final class ServiceaccountFunctions {
      *             .accountId("myaccount-id")
      *             .build());
      * 
-     *         var mykey = new Key("mykey", KeyArgs.builder()        
+     *         var mykey = new Key("mykey", KeyArgs.builder()
      *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
      *             .build());
      * 
-     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()        
+     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
      *             .metadata(ObjectMetaArgs.builder()
      *                 .name("google-application-credentials")
      *                 .build())
@@ -436,7 +436,7 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()        
+     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()
      *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
      *             .role("roles/iam.serviceAccountTokenCreator")
      *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
@@ -536,7 +536,7 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()        
+     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()
      *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
      *             .role("roles/iam.serviceAccountTokenCreator")
      *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
@@ -636,7 +636,7 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()        
+     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()
      *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
      *             .role("roles/iam.serviceAccountTokenCreator")
      *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
@@ -736,7 +736,7 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()        
+     *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()
      *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
      *             .role("roles/iam.serviceAccountTokenCreator")
      *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
@@ -1629,11 +1629,11 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+     *         var myaccount = new Account("myaccount", AccountArgs.builder()
      *             .accountId("dev-foo-account")
      *             .build());
      * 
-     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()        
+     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
@@ -1684,11 +1684,11 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+     *         var myaccount = new Account("myaccount", AccountArgs.builder()
      *             .accountId("dev-foo-account")
      *             .build());
      * 
-     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()        
+     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
@@ -1739,11 +1739,11 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+     *         var myaccount = new Account("myaccount", AccountArgs.builder()
      *             .accountId("dev-foo-account")
      *             .build());
      * 
-     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()        
+     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
@@ -1794,11 +1794,11 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myaccount = new Account("myaccount", AccountArgs.builder()        
+     *         var myaccount = new Account("myaccount", AccountArgs.builder()
      *             .accountId("dev-foo-account")
      *             .build());
      * 
-     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()        
+     *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 

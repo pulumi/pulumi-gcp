@@ -50,14 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionSecurityPolicy("default", RegionSecurityPolicyArgs.builder()        
+ *         var default_ = new RegionSecurityPolicy("default", RegionSecurityPolicyArgs.builder()
  *             .region("us-west2")
  *             .name("policyruletest")
  *             .description("basic region security policy")
  *             .type("CLOUD_ARMOR")
  *             .build());
  * 
- *         var policyRule = new RegionSecurityPolicyRule("policyRule", RegionSecurityPolicyRuleArgs.builder()        
+ *         var policyRule = new RegionSecurityPolicyRule("policyRule", RegionSecurityPolicyRuleArgs.builder()
  *             .region("us-west2")
  *             .securityPolicy(default_.name())
  *             .description("new rule")
@@ -106,14 +106,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegionSecurityPolicy("default", RegionSecurityPolicyArgs.builder()        
+ *         var default_ = new RegionSecurityPolicy("default", RegionSecurityPolicyArgs.builder()
  *             .region("us-west2")
  *             .name("policywithmultiplerules")
  *             .description("basic region security policy")
  *             .type("CLOUD_ARMOR")
  *             .build());
  * 
- *         var policyRuleOne = new RegionSecurityPolicyRule("policyRuleOne", RegionSecurityPolicyRuleArgs.builder()        
+ *         var policyRuleOne = new RegionSecurityPolicyRule("policyRuleOne", RegionSecurityPolicyRuleArgs.builder()
  *             .region("us-west2")
  *             .securityPolicy(default_.name())
  *             .description("new rule one")
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  *             .preview(true)
  *             .build());
  * 
- *         var policyRuleTwo = new RegionSecurityPolicyRule("policyRuleTwo", RegionSecurityPolicyRuleArgs.builder()        
+ *         var policyRuleTwo = new RegionSecurityPolicyRule("policyRuleTwo", RegionSecurityPolicyRuleArgs.builder()
  *             .region("us-west2")
  *             .securityPolicy(default_.name())
  *             .description("new rule two")
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // First activate advanced network DDoS protection for the desired region
- *         var policyddosprotection = new RegionSecurityPolicy("policyddosprotection", RegionSecurityPolicyArgs.builder()        
+ *         var policyddosprotection = new RegionSecurityPolicy("policyddosprotection", RegionSecurityPolicyArgs.builder()
  *             .region("us-west2")
  *             .name("policyddosprotection")
  *             .description("policy for activating network DDoS protection for the desired region")
@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var edgeSecService = new NetworkEdgeSecurityService("edgeSecService", NetworkEdgeSecurityServiceArgs.builder()        
+ *         var edgeSecService = new NetworkEdgeSecurityService("edgeSecService", NetworkEdgeSecurityServiceArgs.builder()
  *             .region("us-west2")
  *             .name("edgesecservice")
  *             .description("linking policy to edge security service")
@@ -201,7 +201,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Add the desired policy and custom rule.
- *         var policynetworkmatch = new RegionSecurityPolicy("policynetworkmatch", RegionSecurityPolicyArgs.builder()        
+ *         var policynetworkmatch = new RegionSecurityPolicy("policynetworkmatch", RegionSecurityPolicyArgs.builder()
  *             .region("us-west2")
  *             .name("policyfornetworkmatch")
  *             .description("region security policy for network match")
@@ -215,7 +215,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policyRuleNetworkMatch = new RegionSecurityPolicyRule("policyRuleNetworkMatch", RegionSecurityPolicyRuleArgs.builder()        
+ *         var policyRuleNetworkMatch = new RegionSecurityPolicyRule("policyRuleNetworkMatch", RegionSecurityPolicyRuleArgs.builder()
  *             .region("us-west2")
  *             .securityPolicy(policynetworkmatch.name())
  *             .description("custom rule for network match")

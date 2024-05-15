@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var note = new Note("note", NoteArgs.builder()        
+ *         var note = new Note("note", NoteArgs.builder()
  *             .name("test-attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()
  *             .name("test-attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
@@ -133,12 +133,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()        
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .name("test-attestor-key-ring")
  *             .location("global")
  *             .build());
  * 
- *         var crypto_key = new CryptoKey("crypto-key", CryptoKeyArgs.builder()        
+ *         var crypto_key = new CryptoKey("crypto-key", CryptoKeyArgs.builder()
  *             .name("test-attestor-key")
  *             .keyRing(keyring.id())
  *             .purpose("ASYMMETRIC_SIGN")
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  *             .cryptoKey(crypto_key.id())
  *             .build());
  * 
- *         var note = new Note("note", NoteArgs.builder()        
+ *         var note = new Note("note", NoteArgs.builder()
  *             .name("test-attestor-note")
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var attestor = new Attestor("attestor", AttestorArgs.builder()        
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()
  *             .name("test-attestor")
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())

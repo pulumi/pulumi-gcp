@@ -65,20 +65,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Dataset("bar", DatasetArgs.builder()        
+ *         var bar = new Dataset("bar", DatasetArgs.builder()
  *             .datasetId("job_query_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var foo = new Table("foo", TableArgs.builder()        
+ *         var foo = new Table("foo", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(bar.datasetId())
  *             .tableId("job_query_table")
  *             .build());
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .jobId("job_query")
  *             .labels(Map.of("example-label", "example-value"))
  *             .query(JobQueryArgs.builder()
@@ -134,20 +134,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Dataset("bar", DatasetArgs.builder()        
+ *         var bar = new Dataset("bar", DatasetArgs.builder()
  *             .datasetId("job_query_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var foo = new Table("foo", TableArgs.builder()        
+ *         var foo = new Table("foo", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(bar.datasetId())
  *             .tableId("job_query_table")
  *             .build());
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .jobId("job_query")
  *             .labels(Map.of("example-label", "example-value"))
  *             .query(JobQueryArgs.builder()
@@ -202,20 +202,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Dataset("bar", DatasetArgs.builder()        
+ *         var bar = new Dataset("bar", DatasetArgs.builder()
  *             .datasetId("job_load_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var foo = new Table("foo", TableArgs.builder()        
+ *         var foo = new Table("foo", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(bar.datasetId())
  *             .tableId("job_load_table")
  *             .build());
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .jobId("job_load")
  *             .labels(Map.of("my_job", "load"))
  *             .load(JobLoadArgs.builder()
@@ -276,13 +276,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = "my-project-name";
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-bq-geojson", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("geojson-data.jsonl")
  *             .bucket(bucket.name())
  *             .content("""
@@ -291,20 +291,20 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var bar = new Dataset("bar", DatasetArgs.builder()        
+ *         var bar = new Dataset("bar", DatasetArgs.builder()
  *             .datasetId("job_load_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var foo = new Table("foo", TableArgs.builder()        
+ *         var foo = new Table("foo", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(bar.datasetId())
  *             .tableId("job_load_table")
  *             .build());
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .jobId("job_load")
  *             .labels(Map.of("my_job", "load"))
  *             .load(JobLoadArgs.builder()
@@ -367,32 +367,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Bucket("test", BucketArgs.builder()        
+ *         var test = new Bucket("test", BucketArgs.builder()
  *             .name("job_load_bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var testBucketObject = new BucketObject("testBucketObject", BucketObjectArgs.builder()        
+ *         var testBucketObject = new BucketObject("testBucketObject", BucketObjectArgs.builder()
  *             .name("job_load_bucket_object")
  *             .source(new FileAsset("./test-fixtures/test.parquet.gzip"))
  *             .bucket(test.name())
  *             .build());
  * 
- *         var testDataset = new Dataset("testDataset", DatasetArgs.builder()        
+ *         var testDataset = new Dataset("testDataset", DatasetArgs.builder()
  *             .datasetId("job_load_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var testTable = new Table("testTable", TableArgs.builder()        
+ *         var testTable = new Table("testTable", TableArgs.builder()
  *             .deletionProtection(false)
  *             .tableId("job_load_table")
  *             .datasetId(testDataset.datasetId())
  *             .build());
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .jobId("job_load")
  *             .labels(Map.of("my_job", "load"))
  *             .load(JobLoadArgs.builder()
@@ -469,7 +469,7 @@ import javax.annotation.Nullable;
  *         final var count = 2;
  * 
  *         for (var i = 0; i < count; i++) {
- *             new Dataset("sourceDataset-" + i, DatasetArgs.builder()            
+ *             new Dataset("sourceDataset-" + i, DatasetArgs.builder()
  *                 .datasetId(String.format("job_copy_%s_dataset", range.value()))
  *                 .friendlyName("test")
  *                 .description("This is a test description")
@@ -479,7 +479,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         for (var i = 0; i < count; i++) {
- *             new Table("source-" + i, TableArgs.builder()            
+ *             new Table("source-" + i, TableArgs.builder()
  *                 .deletionProtection(false)
  *                 .datasetId(sourceDataset[range.value()].datasetId())
  *                 .tableId(String.format("job_copy_%s_table", range.value()))
@@ -506,24 +506,24 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         var destDataset = new Dataset("destDataset", DatasetArgs.builder()        
+ *         var destDataset = new Dataset("destDataset", DatasetArgs.builder()
  *             .datasetId("job_copy_dest_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()        
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("example-keyring")
  *             .location("global")
  *             .build());
  * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()        
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
  *             .name("example-key")
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var dest = new Table("dest", TableArgs.builder()        
+ *         var dest = new Table("dest", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(destDataset.datasetId())
  *             .tableId("job_copy_dest_table")
@@ -555,13 +555,13 @@ import javax.annotation.Nullable;
  *             .projectId("my-project-name")
  *             .build());
  * 
- *         var encryptRole = new IAMMember("encryptRole", IAMMemberArgs.builder()        
+ *         var encryptRole = new IAMMember("encryptRole", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:bq-%s{@literal @}bigquery-encryption.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .jobId("job_copy")
  *             .copy(JobCopyArgs.builder()
  *                 .sourceTables(                
@@ -624,14 +624,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source_oneDataset = new Dataset("source-oneDataset", DatasetArgs.builder()        
+ *         var source_oneDataset = new Dataset("source-oneDataset", DatasetArgs.builder()
  *             .datasetId("job_extract_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var source_one = new Table("source-one", TableArgs.builder()        
+ *         var source_one = new Table("source-one", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(source_oneDataset.datasetId())
  *             .tableId("job_extract_table")
@@ -656,13 +656,13 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var dest = new Bucket("dest", BucketArgs.builder()        
+ *         var dest = new Bucket("dest", BucketArgs.builder()
  *             .name("job_extract_bucket")
  *             .location("US")
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var job = new Job("job", JobArgs.builder()        
+ *         var job = new Job("job", JobArgs.builder()
  *             .jobId("job_extract")
  *             .extract(JobExtractArgs.builder()
  *                 .destinationUris(dest.url().applyValue(url -> String.format("%s/extract", url)))

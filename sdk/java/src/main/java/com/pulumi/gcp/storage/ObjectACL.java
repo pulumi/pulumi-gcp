@@ -60,18 +60,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var image_store = new Bucket("image-store", BucketArgs.builder()        
+ *         var image_store = new Bucket("image-store", BucketArgs.builder()
  *             .name("image-store-bucket")
  *             .location("EU")
  *             .build());
  * 
- *         var image = new BucketObject("image", BucketObjectArgs.builder()        
+ *         var image = new BucketObject("image", BucketObjectArgs.builder()
  *             .name("image1")
  *             .bucket(image_store.name())
  *             .source(new FileAsset("image1.jpg"))
  *             .build());
  * 
- *         var image_store_acl = new ObjectACL("image-store-acl", ObjectACLArgs.builder()        
+ *         var image_store_acl = new ObjectACL("image-store-acl", ObjectACLArgs.builder()
  *             .bucket(image_store.name())
  *             .object(image.outputName())
  *             .roleEntities(            

@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .name("basic-cluster")
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .name("cluster-with-maintenance")
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .name("local-control-plane-cluster")
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()

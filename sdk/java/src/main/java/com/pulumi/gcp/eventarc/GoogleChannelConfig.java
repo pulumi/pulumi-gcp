@@ -64,13 +64,13 @@ import javax.annotation.Nullable;
  *             .keyRing(testKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
  *             .build());
  * 
- *         var key1Member = new CryptoKeyIAMMember("key1Member", CryptoKeyIAMMemberArgs.builder()        
+ *         var key1Member = new CryptoKeyIAMMember("key1Member", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(key1.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-eventarc.iam.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         var primary = new GoogleChannelConfig("primary", GoogleChannelConfigArgs.builder()        
+ *         var primary = new GoogleChannelConfig("primary", GoogleChannelConfigArgs.builder()
  *             .location("us-west1")
  *             .name("channel")
  *             .project(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))

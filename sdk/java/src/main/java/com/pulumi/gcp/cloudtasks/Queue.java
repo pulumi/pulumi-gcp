@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Queue("default", QueueArgs.builder()        
+ *         var default_ = new Queue("default", QueueArgs.builder()
  *             .name("cloud-tasks-queue-test")
  *             .location("us-central1")
  *             .build());
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var advancedConfiguration = new Queue("advancedConfiguration", QueueArgs.builder()        
+ *         var advancedConfiguration = new Queue("advancedConfiguration", QueueArgs.builder()
  *             .name("instance-name")
  *             .location("us-central1")
  *             .appEngineRoutingOverride(QueueAppEngineRoutingOverrideArgs.builder()

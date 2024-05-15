@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var service1 = new SharedVPCServiceProject("service1", SharedVPCServiceProjectArgs.builder()        
+ *         var service1 = new SharedVPCServiceProject("service1", SharedVPCServiceProjectArgs.builder()
  *             .hostProject("host-project-id")
  *             .serviceProject("service-project-id-1")
  *             .build());

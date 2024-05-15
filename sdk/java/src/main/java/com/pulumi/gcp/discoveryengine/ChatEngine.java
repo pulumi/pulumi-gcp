@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testDataStore = new DataStore("testDataStore", DataStoreArgs.builder()        
+ *         var testDataStore = new DataStore("testDataStore", DataStoreArgs.builder()
  *             .location("global")
  *             .dataStoreId("data-store")
  *             .displayName("Structured datastore")
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .solutionTypes("SOLUTION_TYPE_CHAT")
  *             .build());
  * 
- *         var testDataStore2 = new DataStore("testDataStore2", DataStoreArgs.builder()        
+ *         var testDataStore2 = new DataStore("testDataStore2", DataStoreArgs.builder()
  *             .location(testDataStore.location())
  *             .dataStoreId("data-store-2")
  *             .displayName("Structured datastore 2")
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .solutionTypes("SOLUTION_TYPE_CHAT")
  *             .build());
  * 
- *         var primary = new ChatEngine("primary", ChatEngineArgs.builder()        
+ *         var primary = new ChatEngine("primary", ChatEngineArgs.builder()
  *             .engineId("chat-engine-id")
  *             .collectionId("default_collection")
  *             .location(testDataStore.location())

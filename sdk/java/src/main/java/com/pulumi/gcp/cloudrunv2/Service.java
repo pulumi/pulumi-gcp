@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .ingress("INGRESS_TRAFFIC_ALL")
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .ingress("INGRESS_TRAFFIC_ALL")
@@ -166,14 +166,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret = new Secret("secret", SecretArgs.builder()        
+ *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret-1")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()        
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("cloudrun-sql")
  *             .region("us-central1")
  *             .databaseVersion("MYSQL_5_7")
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection("true")
  *             .build());
  * 
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .ingress("INGRESS_TRAFFIC_ALL")
@@ -227,12 +227,12 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()        
+ *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()
  *             .secret(secret.name())
  *             .secretData("secret-data")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(secret.id())
  *             .role("roles/secretmanager.secretAccessor")
  *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
@@ -277,19 +277,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customTestNetwork = new Network("customTestNetwork", NetworkArgs.builder()        
+ *         var customTestNetwork = new Network("customTestNetwork", NetworkArgs.builder()
  *             .name("run-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var customTest = new Subnetwork("customTest", SubnetworkArgs.builder()        
+ *         var customTest = new Subnetwork("customTest", SubnetworkArgs.builder()
  *             .name("run-subnetwork")
  *             .ipCidrRange("10.2.0.0/28")
  *             .region("us-central1")
  *             .network(customTestNetwork.id())
  *             .build());
  * 
- *         var connector = new Connector("connector", ConnectorArgs.builder()        
+ *         var connector = new Connector("connector", ConnectorArgs.builder()
  *             .name("run-vpc")
  *             .subnet(ConnectorSubnetArgs.builder()
  *                 .name(customTest.name())
@@ -300,7 +300,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .build());
  * 
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
@@ -346,7 +346,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .launchStage("GA")
@@ -398,7 +398,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
@@ -463,14 +463,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret = new Secret("secret", SecretArgs.builder()        
+ *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret-1")
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .ingress("INGRESS_TRAFFIC_ALL")
@@ -498,12 +498,12 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()        
+ *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()
  *             .secret(secret.name())
  *             .secretData("secret-data")
  *             .build());
  * 
- *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()        
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(secret.id())
  *             .role("roles/secretmanager.secretAccessor")
  *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
@@ -540,7 +540,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .launchStage("BETA")
@@ -615,12 +615,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .name("cloudrun-service")
  *             .location("US")
  *             .build());
  * 
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .launchStage("BETA")
@@ -679,7 +679,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1-b")
  *             .tier("BASIC_HDD")
@@ -693,7 +693,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_ = new Service("default", ServiceArgs.builder()        
+ *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .ingress("INGRESS_TRAFFIC_ALL")

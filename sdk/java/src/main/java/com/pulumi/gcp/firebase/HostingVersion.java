@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .redirects(HostingVersionConfigRedirectArgs.builder()
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message("Redirect to Google")
@@ -105,12 +105,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message("Path Rewrite")
@@ -164,12 +164,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-id")
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .name("cloud-run-service-via-hosting")
  *             .location("us-central1")
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message("Cloud Run Integration")
@@ -242,25 +242,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HostingSite("default", HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
  *             .project("my-project-name")
  *             .siteId("site-id")
  *             .build());
  * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()        
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .project("my-project-name")
  *             .name("site-id-function-source")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()        
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
  *             .name("function-source.zip")
  *             .bucket(bucket.name())
  *             .source(new FileAsset("function-source.zip"))
  *             .build());
  * 
- *         var function = new Function("function", FunctionArgs.builder()        
+ *         var function = new Function("function", FunctionArgs.builder()
  *             .project("my-project-name")
  *             .name("cloud-function-via-hosting")
  *             .description("A Cloud Function connected to Firebase Hosing")
@@ -272,7 +272,7 @@ import javax.annotation.Nullable;
  *             .entryPoint("helloHttp")
  *             .build());
  * 
- *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()        
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()
  *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
@@ -282,7 +282,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()        
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
  *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message("Cloud Functions Integration")

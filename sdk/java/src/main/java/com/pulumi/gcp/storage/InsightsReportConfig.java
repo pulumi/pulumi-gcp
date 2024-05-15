@@ -68,14 +68,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var reportBucket = new Bucket("reportBucket", BucketArgs.builder()        
+ *         var reportBucket = new Bucket("reportBucket", BucketArgs.builder()
  *             .name("my-bucket")
  *             .location("us-central1")
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var config = new InsightsReportConfig("config", InsightsReportConfigArgs.builder()        
+ *         var config = new InsightsReportConfig("config", InsightsReportConfigArgs.builder()
  *             .displayName("Test Report Config")
  *             .location("us-central1")
  *             .frequencyOptions(InsightsReportConfigFrequencyOptionsArgs.builder()
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()        
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(reportBucket.name())
  *             .role("roles/storage.admin")
  *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-storageinsights.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))

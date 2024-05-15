@@ -55,25 +55,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()        
+ *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("project_id")
  *             .name("project_id")
  *             .orgId("123456789")
  *             .build());
  * 
- *         var key = new TagKey("key", TagKeyArgs.builder()        
+ *         var key = new TagKey("key", TagKeyArgs.builder()
  *             .parent("organizations/123456789")
  *             .shortName("keyname")
  *             .description("For keyname resources.")
  *             .build());
  * 
- *         var value = new TagValue("value", TagValueArgs.builder()        
+ *         var value = new TagValue("value", TagValueArgs.builder()
  *             .parent(key.name().applyValue(name -> String.format("tagKeys/%s", name)))
  *             .shortName("valuename")
  *             .description("For valuename resources.")
  *             .build());
  * 
- *         var binding = new TagBinding("binding", TagBindingArgs.builder()        
+ *         var binding = new TagBinding("binding", TagBindingArgs.builder()
  *             .parent(project.number().applyValue(number -> String.format("//cloudresourcemanager.googleapis.com/projects/%s", number)))
  *             .tagValue(value.name().applyValue(name -> String.format("tagValues/%s", name)))
  *             .build());

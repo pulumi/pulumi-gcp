@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TaskIamPolicy("policy", TaskIamPolicyArgs.builder()        
+ *         var policy = new TaskIamPolicy("policy", TaskIamPolicyArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TaskIamBinding("binding", TaskIamBindingArgs.builder()        
+ *         var binding = new TaskIamBinding("binding", TaskIamBindingArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TaskIamMember("member", TaskIamMemberArgs.builder()        
+ *         var member = new TaskIamMember("member", TaskIamMemberArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TaskIamPolicy("policy", TaskIamPolicyArgs.builder()        
+ *         var policy = new TaskIamPolicy("policy", TaskIamPolicyArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TaskIamBinding("binding", TaskIamBindingArgs.builder()        
+ *         var binding = new TaskIamBinding("binding", TaskIamBindingArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())
@@ -271,7 +271,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TaskIamMember("member", TaskIamMemberArgs.builder()        
+ *         var member = new TaskIamMember("member", TaskIamMemberArgs.builder()
  *             .project(example.project())
  *             .location(example.location())
  *             .lake(example.lake())

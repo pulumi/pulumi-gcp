@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var scope = new Scope("scope", ScopeArgs.builder()        
+ *         var scope = new Scope("scope", ScopeArgs.builder()
  *             .scopeId("my-scope")
  *             .namespaceLabels(Map.ofEntries(
  *                 Map.entry("keyb", "valueb"),

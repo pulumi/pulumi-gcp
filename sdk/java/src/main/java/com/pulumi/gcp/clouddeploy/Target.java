@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Target("primary", TargetArgs.builder()        
+ *         var primary = new Target("primary", TargetArgs.builder()
  *             .location("us-west1")
  *             .name("target")
  *             .deployParameters()
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Target("primary", TargetArgs.builder()        
+ *         var primary = new Target("primary", TargetArgs.builder()
  *             .location("us-west1")
  *             .name("target")
  *             .deployParameters()
@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Target("primary", TargetArgs.builder()        
+ *         var primary = new Target("primary", TargetArgs.builder()
  *             .location("us-west1")
  *             .name("target")
  *             .deployParameters(Map.of("deployParameterKey", "deployParameterValue"))

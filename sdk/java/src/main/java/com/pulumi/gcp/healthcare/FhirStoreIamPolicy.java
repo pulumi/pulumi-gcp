@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var fhirStore = new FhirStoreIamPolicy("fhirStore", FhirStoreIamPolicyArgs.builder()        
+ *         var fhirStore = new FhirStoreIamPolicy("fhirStore", FhirStoreIamPolicyArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fhirStore = new FhirStoreIamBinding("fhirStore", FhirStoreIamBindingArgs.builder()        
+ *         var fhirStore = new FhirStoreIamBinding("fhirStore", FhirStoreIamBindingArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fhirStore = new FhirStoreIamMember("fhirStore", FhirStoreIamMemberArgs.builder()        
+ *         var fhirStore = new FhirStoreIamMember("fhirStore", FhirStoreIamMemberArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var fhirStore = new FhirStoreIamPolicy("fhirStore", FhirStoreIamPolicyArgs.builder()        
+ *         var fhirStore = new FhirStoreIamPolicy("fhirStore", FhirStoreIamPolicyArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fhirStore = new FhirStoreIamBinding("fhirStore", FhirStoreIamBindingArgs.builder()        
+ *         var fhirStore = new FhirStoreIamBinding("fhirStore", FhirStoreIamBindingArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .role("roles/editor")
  *             .members("user:jane{@literal @}example.com")
@@ -250,7 +250,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fhirStore = new FhirStoreIamMember("fhirStore", FhirStoreIamMemberArgs.builder()        
+ *         var fhirStore = new FhirStoreIamMember("fhirStore", FhirStoreIamMemberArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .role("roles/editor")
  *             .member("user:jane{@literal @}example.com")

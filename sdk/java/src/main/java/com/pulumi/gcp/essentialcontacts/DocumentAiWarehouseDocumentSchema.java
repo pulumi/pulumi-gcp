@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleText = new DocumentAiWarehouseDocumentSchema("exampleText", DocumentAiWarehouseDocumentSchemaArgs.builder()        
+ *         var exampleText = new DocumentAiWarehouseDocumentSchema("exampleText", DocumentAiWarehouseDocumentSchemaArgs.builder()
  *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
  *             .displayName("test-property-text")
  *             .location("us")

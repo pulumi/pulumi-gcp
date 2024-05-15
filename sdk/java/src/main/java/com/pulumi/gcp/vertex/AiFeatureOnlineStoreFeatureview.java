@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_view")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
@@ -81,14 +81,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var tf_test_dataset = new Dataset("tf-test-dataset", DatasetArgs.builder()        
+ *         var tf_test_dataset = new Dataset("tf-test-dataset", DatasetArgs.builder()
  *             .datasetId("example_feature_view")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var tf_test_table = new Table("tf-test-table", TableArgs.builder()        
+ *         var tf_test_table = new Table("tf-test-table", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(tf_test_dataset.datasetId())
  *             .tableId("example_feature_view")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var featureview = new AiFeatureOnlineStoreFeatureview("featureview", AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *         var featureview = new AiFeatureOnlineStoreFeatureview("featureview", AiFeatureOnlineStoreFeatureviewArgs.builder()
  *             .name("example_feature_view")
  *             .region("us-central1")
  *             .featureOnlineStore(featureonlinestore.name())
@@ -182,7 +182,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_view_feature_registry")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
@@ -195,14 +195,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sampleDataset = new Dataset("sampleDataset", DatasetArgs.builder()        
+ *         var sampleDataset = new Dataset("sampleDataset", DatasetArgs.builder()
  *             .datasetId("example_feature_view_feature_registry")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var sampleTable = new Table("sampleTable", TableArgs.builder()        
+ *         var sampleTable = new Table("sampleTable", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(sampleDataset.datasetId())
  *             .tableId("example_feature_view_feature_registry")
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var sampleFeatureGroup = new AiFeatureGroup("sampleFeatureGroup", AiFeatureGroupArgs.builder()        
+ *         var sampleFeatureGroup = new AiFeatureGroup("sampleFeatureGroup", AiFeatureGroupArgs.builder()
  *             .name("example_feature_view_feature_registry")
  *             .description("A sample feature group")
  *             .region("us-central1")
@@ -245,7 +245,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sampleFeature = new AiFeatureGroupFeature("sampleFeature", AiFeatureGroupFeatureArgs.builder()        
+ *         var sampleFeature = new AiFeatureGroupFeature("sampleFeature", AiFeatureGroupFeatureArgs.builder()
  *             .name("example_feature_view_feature_registry")
  *             .region("us-central1")
  *             .featureGroup(sampleFeatureGroup.name())
@@ -253,7 +253,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
- *         var featureviewFeatureregistry = new AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry", AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *         var featureviewFeatureregistry = new AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry", AiFeatureOnlineStoreFeatureviewArgs.builder()
  *             .name("example_feature_view_feature_registry")
  *             .region("us-central1")
  *             .featureOnlineStore(featureonlinestore.name())
@@ -313,7 +313,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()        
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_view_vector_search")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
@@ -329,14 +329,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var tf_test_dataset = new Dataset("tf-test-dataset", DatasetArgs.builder()        
+ *         var tf_test_dataset = new Dataset("tf-test-dataset", DatasetArgs.builder()
  *             .datasetId("example_feature_view_vector_search")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
  *             .build());
  * 
- *         var tf_test_table = new Table("tf-test-table", TableArgs.builder()        
+ *         var tf_test_table = new Table("tf-test-table", TableArgs.builder()
  *             .deletionProtection(false)
  *             .datasetId(tf_test_dataset.datasetId())
  *             .tableId("example_feature_view_vector_search")
@@ -388,7 +388,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var featureviewVectorSearch = new AiFeatureOnlineStoreFeatureview("featureviewVectorSearch", AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *         var featureviewVectorSearch = new AiFeatureOnlineStoreFeatureview("featureviewVectorSearch", AiFeatureOnlineStoreFeatureviewArgs.builder()
  *             .name("example_feature_view_vector_search")
  *             .region("us-central1")
  *             .featureOnlineStore(featureonlinestore.name())

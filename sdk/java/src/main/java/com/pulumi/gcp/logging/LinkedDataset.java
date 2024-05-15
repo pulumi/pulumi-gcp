@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingLinkedDataset = new ProjectBucketConfig("loggingLinkedDataset", ProjectBucketConfigArgs.builder()        
+ *         var loggingLinkedDataset = new ProjectBucketConfig("loggingLinkedDataset", ProjectBucketConfigArgs.builder()
  *             .location("global")
  *             .project("my-project-name")
  *             .enableAnalytics(true)
  *             .bucketId("my-bucket")
  *             .build());
  * 
- *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset("loggingLinkedDatasetLinkedDataset", LinkedDatasetArgs.builder()        
+ *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset("loggingLinkedDatasetLinkedDataset", LinkedDatasetArgs.builder()
  *             .linkId("mylink")
  *             .bucket(loggingLinkedDataset.id())
  *             .description("Linked dataset test")
@@ -99,14 +99,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingLinkedDataset = new ProjectBucketConfig("loggingLinkedDataset", ProjectBucketConfigArgs.builder()        
+ *         var loggingLinkedDataset = new ProjectBucketConfig("loggingLinkedDataset", ProjectBucketConfigArgs.builder()
  *             .location("global")
  *             .project("my-project-name")
  *             .enableAnalytics(true)
  *             .bucketId("my-bucket")
  *             .build());
  * 
- *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset("loggingLinkedDatasetLinkedDataset", LinkedDatasetArgs.builder()        
+ *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset("loggingLinkedDatasetLinkedDataset", LinkedDatasetArgs.builder()
  *             .linkId("mylink")
  *             .bucket("my-bucket")
  *             .parent("projects/my-project-name")

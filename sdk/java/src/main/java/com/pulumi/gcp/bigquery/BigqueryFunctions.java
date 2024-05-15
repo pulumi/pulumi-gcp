@@ -590,7 +590,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
@@ -646,7 +646,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
@@ -702,7 +702,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
@@ -758,7 +758,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
@@ -814,7 +814,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
@@ -870,7 +870,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))

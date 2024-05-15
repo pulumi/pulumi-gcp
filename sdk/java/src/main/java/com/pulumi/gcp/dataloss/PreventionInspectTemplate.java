@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new PreventionInspectTemplate("basic", PreventionInspectTemplateArgs.builder()        
+ *         var basic = new PreventionInspectTemplate("basic", PreventionInspectTemplateArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("My description")
  *             .displayName("display_name")
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom = new PreventionInspectTemplate("custom", PreventionInspectTemplateArgs.builder()        
+ *         var custom = new PreventionInspectTemplate("custom", PreventionInspectTemplateArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("My description")
  *             .displayName("display_name")
@@ -279,7 +279,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customTypeSurrogate = new PreventionInspectTemplate("customTypeSurrogate", PreventionInspectTemplateArgs.builder()        
+ *         var customTypeSurrogate = new PreventionInspectTemplate("customTypeSurrogate", PreventionInspectTemplateArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("My description")
  *             .displayName("display_name")

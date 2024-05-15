@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .networkId("example-network")
  *             .location("us-west1")
  *             .zone("")
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .mtu(9000)
  *             .build());
  * 
- *         var exampleSubnet = new Subnet("exampleSubnet", SubnetArgs.builder()        
+ *         var exampleSubnet = new Subnet("exampleSubnet", SubnetArgs.builder()
  *             .subnetId("example-subnet")
  *             .location("us-west1")
  *             .zone("")
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .networkId("example-network")
  *             .location("us-west1")
  *             .zone("")
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *             .mtu(9000)
  *             .build());
  * 
- *         var exampleSubnetWithVlanId = new Subnet("exampleSubnetWithVlanId", SubnetArgs.builder()        
+ *         var exampleSubnetWithVlanId = new Subnet("exampleSubnetWithVlanId", SubnetArgs.builder()
  *             .subnetId("example-subnet-with-vlan-id")
  *             .location("us-west1")
  *             .zone("")
